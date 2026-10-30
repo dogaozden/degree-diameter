@@ -77,7 +77,7 @@ static int cost(const int *S, int k, int lim) {
 }
 /* fast rejection: is every z in P P?  z in PP iff x^-1 z in P for some x in P.  Targets are tried in a
  * move-to-front order (recent failures first), so a typical bad set is rejected after a few targets. */
-static uint32_t stM = 0;
+static uint32_t stM = 0; static int last_fail_t = 0, NEAR = 0;
 static int pp_full(const int *S, int k, int left, int *ord) {
     int X[64], nx = 0; stM++;
     for (int i = 0; i < k; i++) for (int j = 0; j < k; j++) {
@@ -87,7 +87,7 @@ static int pp_full(const int *S, int k, int left, int *ord) {
     const uint16_t *rows[64]; for (int i = 0; i < nx; i++) rows[i] = mul + (size_t)inv[X[i]] * n;
     for (int t = 0; t < n; t++) { int z = ord[t], ok = 0;
         for (int i = 0; i < nx; i++) if (mk[rows[i][z]] == stM) { ok = 1; break; }
-        if (!ok) { if (t) { int u = t / 2; ord[t] = ord[u]; ord[u] = z; } return 0; } }
+        if (!ok) { last_fail_t = t; if (t) { int u = t / 2; ord[t] = ord[u]; ord[u] = z; } return 0; } }
     return 1;
 }
 static long long npassA = 0;
@@ -170,6 +170,8 @@ static void eval_set(int k, const char *tag) {
         if (fast_ok(Sbuf, k)) { if (fullcheck(Sbuf, k)) { typesol++; typebest = 0; report(Sbuf, k, tag); } return; }
         if (npassA > pa) {   /* XX = G but YY != G: record the YY cost as a near miss */
             int c = cost(Sbuf, k, 1 << 30); evals--; if (c < typebest) typebest = c; }
+        else if (anti && NEAR && last_fail_t >= NEAR) {   /* self-dual near miss: exact |G \ XX| */
+            int c = xx_uncov(Sbuf, k, 1, 1 << 30); if (c < typebest) typebest = c; }
         return;
     }
     int c = cost(Sbuf, k, typebest < 1000000 ? (int)typebest : 1000000);
@@ -218,6 +220,17 @@ static void run_anti4(int a) {
         for (int t = 0; t < n2; t++) { Sbuf[5] = o2[t][0]; Sbuf[6] = o2[t][1]; eval_set(7, tagbuf); }
         for (int u = 0; u < nf; u++) if (fx[u] != 0) for (int v = u + 1; v < nf; v++) if (fx[v] != 0) { Sbuf[5] = fx[u]; Sbuf[6] = fx[v]; eval_set(7, tagbuf); }
     }
+    /* sets made of psi's fixed points and 2-cycles only: (1,3), (3,2), (5,1) (still self-dual; beta^2-invariant) */
+    long long lim = evals + cap_ev_lo; int fz[64];
+    for (int i = 0, k = 0; i < nf && k < 64; i++) if (fx[i] != 0) fz[k++] = fx[i];
+    int nz = nf - 1 < 64 ? nf - 1 : 64; Sbuf[0] = 0;
+    for (int a1 = 0; a1 < n2 && evals < lim; a1++) for (int a2 = a1 + 1; a2 < n2; a2++) {
+        Sbuf[1] = o2[a1][0]; Sbuf[2] = o2[a1][1]; Sbuf[3] = o2[a2][0]; Sbuf[4] = o2[a2][1];
+        for (int a3 = a2 + 1; a3 < n2; a3++) { Sbuf[5] = o2[a3][0]; Sbuf[6] = o2[a3][1]; eval_set(7, tagbuf); }
+        for (int u = 0; u < nz; u++) for (int v = u + 1; v < nz; v++) { Sbuf[5] = fz[u]; Sbuf[6] = fz[v]; eval_set(7, tagbuf); } }
+    for (int a1 = 0; a1 < n2 && evals < lim; a1++) { Sbuf[1] = o2[a1][0]; Sbuf[2] = o2[a1][1];
+        for (int u = 0; u < nz; u++) for (int v = u + 1; v < nz; v++) for (int w = v + 1; w < nz; w++) for (int z = w + 1; z < nz; z++) {
+            Sbuf[3] = fz[u]; Sbuf[4] = fz[v]; Sbuf[5] = fz[w]; Sbuf[6] = fz[z]; eval_set(7, tagbuf); } }
     printf("ANTI4 alpha %d p 4 fixed %d two %d four %d best %lld sols %lld evals %lld passXX %lld secs %.1f\n", a, nf, n2, n4,
            typebest, typesol, evals - e0, npassA - p0, (double)(clock() - c0) / CLOCKS_PER_SEC);
     fflush(stdout); free(ps); free(seen); free(fx); free(o2); free(o4);
@@ -294,6 +307,7 @@ int main(int argc, char **argv) {
     printf("GROUP %s n %d ninv %d nalpha %d\n", argv[1], n, ninv, nal);
     if (getenv("SLOW")) use_fast = 0;
     if (getenv("MAXEV")) cap_ev_lo = cap_ev_hi = atoll(getenv("MAXEV"));
+    if (getenv("NEAR")) NEAR = atoi(getenv("NEAR"));
     if (getenv("NFIXBIG")) NFIXBIG = atoi(getenv("NFIXBIG"));
     if (getenv("MAXEVF")) cap_ev_hi = atoll(getenv("MAXEVF"));   /* cap for types with >= 4 fixed elements */
     if (!strcmp(argv[2], "exh")) run_exh();

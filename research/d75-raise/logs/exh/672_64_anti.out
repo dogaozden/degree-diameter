@@ -1,0 +1,20 @@
+alpha 0: p 2 fixed 2 orbits 335 reps 19
+GROUP /tmp/d75/g672_64.ht n 672 ninv 1 nalpha 64
+ANTI alpha 0 p 1 f 1 m 3 best 1099511627776 sols 0 evals 1056609 passXX 0 secs 0.1
+alpha 1: p 2 fixed 226 orbits 223 reps 17
+ANTI alpha 1 p 2 f 1 m 3 best 1099511627776 sols 0 evals 417027 passXX 0 secs 0.0
+ANTI alpha 1 p 2 f 3 m 2 best 260 sols 0 evals 3000000 passXX 0 secs 0.3 CAPPED
+ANTI alpha 1 p 2 f 5 m 1 best 228 sols 0 evals 3000000 passXX 0 secs 0.4 CAPPED
+ANTI alpha 1 p 2 f 7 m 0 best 372 sols 0 evals 3000000 passXX 0 secs 0.3 CAPPED
+ANTI4 alpha 2 p 4 fixed 2 two 167 four 84 best 1099511627776 sols 0 evals 776383 passXX 0 secs 0.1
+alpha 3: p 2 fixed 46 orbits 313 reps 19
+ANTI alpha 3 p 2 f 1 m 3 best 1099511627776 sols 0 evals 921804 passXX 0 secs 0.1
+ANTI alpha 3 p 2 f 3 m 2 best 78 sols 0 evals 5868720 passXX 0 secs 0.8
+ANTI alpha 3 p 2 f 5 m 1 best 184 sols 0 evals 2830905 passXX 0 secs 0.5
+ANTI alpha 3 p 2 f 7 m 0 best 1099511627776 sols 0 evals 3000000 passXX 0 secs 0.4 CAPPED
+alpha 4: p 2 fixed 74 orbits 299 reps 17
+ANTI alpha 4 p 2 f 1 m 3 best 218 sols 0 evals 752301 passXX 0 secs 0.1
+ANTI alpha 4 p 2 f 3 m 2 best 58 sols 0 evals 13313448 passXX 0 secs 1.8
+ANTI alpha 4 p 2 f 5 m 1 best 72 sols 0 evals 3000000 passXX 0 secs 0.4 CAPPED
+ANTI alpha 4 p 2 f 7 m 0 best 1099511627776 sols 0 evals 3000000 passXX 0 secs 0.3 CAPPED
+alpha 6: p 2 fixed 14 orbits 329 reps 20
