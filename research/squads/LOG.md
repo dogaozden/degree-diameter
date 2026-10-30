@@ -119,3 +119,20 @@ were weak (round 2), so nothing is lost for the conclusions.
 Kept: the C3 x SmallGroup(256,357) cluster (2-generator groups of class 5, like the (5,5) record's P128 =
 SmallGroup(128,139)); the director runs long anneals on it and sweeps all 2-generator groups of order 256 (ids
 1-541, any involution count). Round 7: the whole squad closes the Haar family at 352-360 with the new haarex3.
+
+### Round s65r7 (10:21-10:40 UTC, 8 cards, research/squads/s65r7/)
+Cards: c1-c8 exhaustive Haar search with the director's new haarex3 (research/s65/tools/haarex3.c: the sixth element of S
+solved exactly instead of enumerated; validated against haarex2 on SmallGroup(342,12), the 684 record group: same 28
+side-A covers and the same 10 VALID sets, and on SmallGroup(360,53); about 4x faster) over the 255 open groups of order
+352-360 with more than 3 involutions (research/s65/haar/hi_list_0..7.txt).
+Result: all 255 finished (each card 31-33 groups in 13-17 minutes; high-involution groups have large automorphism
+groups and run fast); no VALID set and not a single side-A cover. Two cards reran the 342_12 control themselves.
+**Haar closure:** with rounds 2-6, this job's director runs (360_53, 352_43, 360_61, 360_74, 360_52 rerun) and job
+fresh-6-5's 24 groups, every one of the 353 non-abelian groups of order 352-360 is now closed exhaustively (check:
+research/s65/haar/all_352_360.txt against the logs); abelian groups give at most 542 vertices (fresh-6-5's counting
+bound). With fresh-6-5's theorem for orders 343-351: there is no Haar graph of degree 6 and diameter 5 on 686-720
+vertices. Round 8 extends this to orders 361-380.
+Director meanwhile: long anneals of the best C3 x P256 pair (C3 x SmallGroup(256,357), H = K): three seeds x 120 s all
+stop at cost 14 (bad 2688), found in the first minute; its group is a 2-generator class-5 group like the (5,5)
+record's P128 but contains no copy of SmallGroup(128,139). Sweep of all 2-generator groups P of order 256 (ids 1-541)
+not swept before is running.
