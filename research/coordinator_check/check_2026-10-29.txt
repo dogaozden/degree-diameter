@@ -46,3 +46,10 @@ rebuilt on the Mac mini with the coordinator's own lift code (records/coordinato
 identity and associativity checked; voltages SOL x 6 y 1 2 z 39 45 81 w 20 on the base [[2,3],[3,2]]): n = 384, edges = 960, 5-regular, bipartite
 apsp_mt (all pairs, no symmetry) on the rebuild -> RESULT VALID d=5 D=5 n=384; at D = 4 -> RESULT INVALID
 apsp_mt on the finder's records/d5D5_n384_a2_g96_17.edges (sha256 2b45098b49ab8a753eb89e8210d9a34467aa0f78b771462ed9a0c3b0f7a3e2af) -> RESULT VALID d=5 D=5 n=384
+
+== (17,7) 5,693,959 (new cell beyond the table) — job conics-2, branch claude/conics-2-diameter-7-ic0oat (research/synthetic/conics2/d17D7/)
+rebuilt on the Mac mini with research/synthetic/conics2/typed_build.py build from research/frontier/sols/d17D7_hex13_typedwhisk_nu0_n5693959.sol
+and research/p4/d6/hex/hex_q13.bin: n = 5693959, edges = 48243644, degree min 15 max 17
+edge list sha256 bb3c24f77d1d152916163b667d69a77a617820619762fb954fd45373601ab80f (matches the finder's)
+apsp_mt (all pairs, no symmetry), Thu Oct 29 11:40 to Fri Oct 30 00:26 PDT -> diameter=7, RESULT VALID d=17 D=7 n=5693959
+(the 8 cloud source ranges in research/synthetic/conics2/d17D7/checks/ also passed with apsp_fast)
