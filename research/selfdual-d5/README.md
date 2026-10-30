@@ -67,4 +67,11 @@ Check of every hit: research/lifts/coordinator_check/apsp.c (`src/apsp`), VALID 
   families, nothing above 684 (`../squads/LOG.md`).
 - (9,5): sdtabu K = 9 sweep of groups of order 1380-1460 (no 1408, 1440, 1456, 1458), odd order first, then by number of
   involutions; SECS = 2 per (record, type), DEEP = 10,25, types (1,4), (3,3), (5,2) ((7,1), (9,0) are hopeless on
-  C197 : C7: best 362 and 1182).
+  C197 : C7: best 362 and 1182). Hits: 1395 (groups 1, 2, 3, 5: C31 : C45, C9 x (C31 : C5), C5 x (C31 : C9),
+  C3 x (C31 : C15)) -> 2,790; 1407 (2: C7 x (C67 : C3), 4: C469 : C3) -> 2,814; then the metacyclic list
+  (`src/meta_group.g`, `src/run_meta.sh`: C_p : C_k with y acting with order d >= 3, p >= 31 prime, orders 1379-1800,
+  `logs/meta9_list.txt`): C61 : C24 (d = 6) -> 2,928. After each hit the lists were cut to larger orders. Near misses
+  (|G \ X X| = 2) at 1467 (C163 : C9), 1474 (C67 : C22), 1485 (SmallGroup(1485,4), (1485,5)); a probe of the metacyclic
+  groups of order 1569-1635 stays at 10 or more, so the frontier of this family is around 1470-1500.
+- (7,5): SmallGroup(660,16) (the previous job's near miss) with every type uncapped: no solution, best 2
+  (`logs/K7/deep/660_16_all.out`).
