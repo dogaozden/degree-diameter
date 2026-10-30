@@ -64,3 +64,24 @@ Director: wrote haar2lift.py / bicay2lift.py / normlift.py (Haar and bi-Cayley g
 subgroup; checked: same score65 as the original graphs) and ran exact 2-opt from the 12 side-A covers of 360_53
 (lift cost 4 each, bad 360): no cost-0 neighbour in any of them; nor from the 704 bi-Cayley and tabu near misses.
 Status of the exhaustive Haar campaign: research/s65/haar/STATUS.md (50 of 69 groups closed after this round).
+
+### Round s65r4 (08:42-09:22 UTC, 8 cards, research/squads/s65r4/)
+Cards: c1-c3 exhaustive Haar (haarex2) on the open groups of order 352-360 (resumes of partial runs, the 352 list, a
+mixed list incl. 360_125/136) · c4 exhaustive Haar at orders 361-380 (low-involution groups, large |Aut| first) · c5
+tabu from the 12 Haar near misses of 360_53 written as 2+2 lifts · c6 bi-Cayley annealing on untried bc files, then
+tabu in the lift space · c7 tabu from random starts at 704/720, exact 2-opt on the finals · c8 tabu on 3+3 lifts.
+Best per card: c1 closed 360_95 (minA 4) · c2 closed 352_56/64/84/100/139/154 (minA >= 7) · c3 closed 352_163, 354_1,
+360_23/93/103/113/125/136; 360_125 and 360_136 (9 involutions) have side-A covers, side B >= 4 short · c4 closed 31
+groups of order 363-380 (726-760 vertices), none valid; 372_1 = C31:C12 covers side A (side B >= 4 short) · c5 tabu
+never left cost 4 from the 360_53 near misses (5 starts x 90 s) · c6 bi-Cayley best 6 at 704 (bad 1056) · c7 tabu
+best 6 at 704 (C11:Q16, bad 528), no 2-opt fix · c8 tabu 3+3: 14 at 696 (annealing in round 1: 28; bad 812).
+Director: the 360_53 near miss also written as 3+3, 4+4 and 8+8 lifts (subgroups of index 3, 4, 8; tools/haar2liftN.py):
+no cost-0 exact 2-opt neighbour in any (about 1M candidates each); tabu in the 8+8 form never left its start (16).
+Tabu on Haar graphs finds the 684 record in 0.9 s but stops at 6 on the 351_5 wall group (annealing: 2), so Haar search
+stays with haarex2/mcos. Haar annealing over all non-abelian groups of order 362-380 (research/s65/haar/
+anneal_362_380.txt): best 6 (372_1, 372_9). Exhaustive Haar status after this round (research/s65/haar/STATUS.md): 96 of
+99 searched groups of order 352-380 complete, none valid.
+Calibrated the search that found the vertex-transitive (5,5) record: non-Haar |H| = 2 bi-coset graphs of C3 x P128 over
+the 602 groups P of order 128 with <= 11 involutions (231 pairs H = K, 2 s anneals): one cost-0 pair (the record) and
+12, 30, 34, 44, ... (median ~56 of 384) for the rest. Its (6,5) analogue, C3 x P256 on 768 vertices (2.03 walks per
+target, more slack than the record's 1.78), is round 5 (4,284 groups P with <= 11 involutions).
