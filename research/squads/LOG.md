@@ -38,3 +38,11 @@ calibrated (720 unions on SmallGroup(1200,475), as bic75) · c2 cost 13 (1,344, 
 c4 tabu re-finds the 1,312 and 1,240 solutions in 60 s (the first local search that passes a Delta = 7 calibration);
 (5,1) looks structurally poor (best 207 on 656_28); capped types at 680-696: 58+ · c7 cost 10 (1,314); not calibrated ·
 c8 8 new groups (664-716, 672:747), 0 solutions.
+c3 pattern: in all three metacyclic hits G = C_p : C_2d (y^d central) and beta = (x -> x^-1, y -> y^v), v in {1, 1+d};
+formula-only dd_meta.c (calibrated: 18/18 solutions on 656_28) shows no metacyclic C_p : C_2d of order 661-800 has a
+solution (complete) · c5 doubly symmetric sets, orders 701-800 (e.g. 756): best cost 231+ · c6 self-dual bi-coset
+|H| = 3, |G| = 1971-1998: no solution.
+Kept: c4's tabu (calibrated inside the self-dual family), c1's self-dual bi-coset tool, c3's pattern and dd_meta. The
+director's own sweep then showed order 672 (1,344 vertices) is "warm": many groups C7 : (2-group x C3) with 3
+involutions miss by only 4-6 elements (672_22, 672_34: 4), so the remaining CPU went to all order-672 groups with
+<= 7 involutions. Round 2 added tools and negatives but no graph; no round 3 (two rounds without a new graph).

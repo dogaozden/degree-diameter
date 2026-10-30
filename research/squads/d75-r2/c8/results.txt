@@ -1,0 +1,12 @@
+c8 results (haar75 anti, MAXEV=1e8 MAXEVF=3e6). Runner: run_c8.sh LABEL "GAP expr"; per-group logs in logs/.
+Calibration: SmallGroup(656,28) via same runner -> 9 SOL lines (1312-vertex hit reproduced).
+Family (a) C_p:C_(d e), kernel C_e central, new orders (IdGroup), 0 solutions:
+  664:1 (C83:C8, d=2,e=4)  666:1 (C37:C18, d=6,e=3)  668:1 (C167:C4)  678:2 (C113:C6, e=3)
+  711:1 (C79:C9, e=3)  712:1 (C89:C8, e=4)  716:1 (C179:C4)
+  Already in sweep_anti.txt, skipped: 657:1, 666:8, 684:16, 684:17, 692:1, 710:2, 712:3.
+Family (d): SL(2,3) x C28 = 672:747 -> 0 solutions (150 s). 2O x C14 (672:1070) interrupted at the time box.
+Not run (queued candidates, IdGroup known, not in sweep_anti.txt):
+  cand_bd.txt  (family b: C_m x (C_p:C_d), 42 candidates; d-lines: SL23xC30 720:707, SL25xC6 720:421,
+                GL23xC14 672:1071)
+  cand_c_status.txt (family c: C_n:C_k with n=pq, 58 lines; ~50 unique new IDs)
+Best: no hit. Groups tried with 0 solutions: 8.

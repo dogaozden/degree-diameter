@@ -1,0 +1,14 @@
+Syntax warning: Unbound global variable in /home/user/degree-diameter/research\
+/d75-raise/src/export.g:20
+  AppendTo(f, JoinStringsWithSeparator(List([1..n], b -> String(pos(x * els[ol\
+d[b]]))), " "), "\n");
+                                                                    ^
+Syntax warning: Unbound global variable in /home/user/degree-diameter/research\
+/d75-raise/src/export.g:49
+      AppendTo(f, JoinStringsWithSeparator(List([1..n], b -> String(b^r - 1)),\
+ " "), "\n");
+                                                                      ^
+
+real	0m3.333s
+user	0m2.381s
+sys	0m0.588s

@@ -80,6 +80,10 @@ Negative results of this job, other families (all at 1,204-1,344 vertices, no va
   groups (only 5 of the first 74).
 - bi-coset graphs |H| = |K| = 2 (`bic75`, exhaustive up to 2e8 unions per case): SmallGroup(1210,12/13/15) and
   (1260,61/62), the cases the previous job left unfinished: no union passes the side-A test.
+- bi-coset graph of AGL(1,37) = C37 : C36 (1,332 vertices, non-Haar), H = <x -> -x>: all 2.2e7 unions, none passes
+  the side-A test.
+- metacyclic C_p : C_2d with y^d central (the family of the 1,240 and 1,312 graphs): every such group of order 661-800
+  has no self-dual solution (squad card d75-r2/c3, formula-only `src/dd_meta.c`, calibrated: 18/18 known 1,312 sets).
 - 4-vertex-base lifts (`lift22`, annealing and tabu): cost 20+ at 1,216-1,344, and the calibration fails (tabu does not
   re-find the 1,152 graph as a lift by A4 x C24 or S4 x C12 in 90 s), so local search is not reliable at Delta = 7.
 - squad rounds d75-r1 and d75-r2 (`../squads/LOG.md`).
