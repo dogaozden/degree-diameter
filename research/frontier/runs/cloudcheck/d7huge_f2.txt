@@ -2,17 +2,17 @@
 
 Machine: nproc = 4; free -g:
                total        used        free      shared  buff/cache   available
-Mem:              15           1          10           0           3          14
+Mem:              15           0          12           0           2          15
 Swap:              0           0           0
 
 Graph: research/frontier/sols/d20D7_hex16_typedwhisk_nu0_n15795219.sol (branch claude/conics-2-diameter-7-ic0oat, checked
-out in a detached worktree; the same file is at commit cbfa594 of that branch).
+out in a detached worktree at commit cbfa594 of that branch).
 
 Checks (run in the worktree, paths relative to it):
   sha256sum hex/hex_q16.bin
     f7a701a11c2edcdc0014bd8a0eaa2a0ecce11e5953fd4bc63cc8a61c327a4394  hex/hex_q16.bin   (matches expected f7a7...4394)
-  sha256sum g20.edges
-    f9e6399daa20c5d1022acb10f068a19303d3ba10b38cc0c8c1e18f00d1d0dbba  g20.edges   (matches expected f9e6...dbba)
+  sha256sum g20.edges   (checked at build time, 06:49 UTC, and again after the container restart, 14:04 UTC)
+    f9e6399daa20c5d1022acb10f068a19303d3ba10b38cc0c8c1e18f00d1d0dbba  g20.edges   (matches expected f9e6...dbba both times)
 
 Commands:
   git fetch origin claude/conics-2-diameter-7-ic0oat
@@ -25,6 +25,7 @@ Commands:
   nohup ./apsp_fast g20.edges 20 7 4 5265080 5923215 > range_d20_9.out 2> range_d20_9.err < /dev/null &   (range 9)
 
 Ranges (range i = (i-1)*658135 .. min(i*658135, 15795219)): range 8 = 4606945..5265080, range 9 = 5265080..5923215.
+Four threads (T = 4) on a 4-core machine; one range at a time.
 
 ## Range d20 8 (sources 4606945..5265080)
 
@@ -37,4 +38,13 @@ Last progress line on stderr:
 
 ## Range d20 9 (sources 5265080..5923215)
 
-(running, started 10:54:47 UTC; result to be added when it finishes)
+First attempt: started 10:54:47 UTC; interrupted when the container restarted at about 14:00 UTC, at 491520 of 658135
+sources (last progress line: "491520 of 658135 sources done (1793368758)"). No result from that attempt; apsp_fast keeps no
+checkpoint, so the range was run again from the start (same command, 14:04 UTC).
+
+Second attempt (complete): started 14:04 UTC, finished 16:13:42 UTC. Final lines of stdout, copied unedited:
+n=15795219 edges=157589798 degree min=18 max=20 bipartite=yes diameter=7 sources=5265080..5923215
+RESULT VALID d=20 D=7 n=15795219 (sources in the range only)
+
+Last progress line on stderr:
+658135 of 658135 sources done (1793376816)
