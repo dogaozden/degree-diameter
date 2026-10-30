@@ -35,10 +35,10 @@ computer at all.
   a spread); Theorem 1.7 and Corollary 1.8 for every odd $q$ and every even $q\ge4$ (resting on POLISHED.md Lemmas 6.1,
   6.6, 6.10, 6.12 and Theorems 6.5, 6.14, which are refereed and Lean-checked there); Proposition 1.9; Theorems 2.1 and
   2.2; Theorem 3.1 and Corollary 3.2 given a hub graph; Lemmas 4.1–4.3; Theorem 4.4(a).
-- **Theorem 4.4(b)** is a theorem with a computer-made certificate list: 590 sums of at most nine blown-up hexagons
-  ($q\le200$), each checkable by hand, plus a scan with Lemma 4.1 alone for $200<q\le2\cdot10^5$. I re-checked both with
-  independent code (all 590 certificates valid; the scan succeeds everywhere, with $c\le2$). "Computer-assisted" is the
-  right label.
+- **Theorem 4.4(b)** is a theorem with a computer-made certificate list for $q\le200$ (495 sums at full slots, each of at
+  most seven blown-up hexagons and checkable by hand; 95 more below the slots for the "proved" values of §5.2), plus a
+  scan with Lemma 4.1 alone for $200<q\le2\cdot10^5$. I re-checked both with independent code (all 590 certificates
+  valid; the scan succeeds everywhere, with $c\le2$). "Computer-assisted" is the right label.
 - **Bounds.** $n_b(q+1+k,7)\ge F_k(q)$ for $2\le k\le12$ and every prime power $q\ge q_k$ (table of Theorem 4.4), and
   for every $k\ge2$ and every prime power $q\ge300k$. The "proved" column of §5.2 ($\Delta = 14,\dots,26$) is right as
   printed; each value is Theorem 3.1 with an explicit sum of blown-up hexagons.
@@ -48,7 +48,7 @@ computer at all.
 - **Built graphs and records.** None of the cells $(17,7)$–$(26,7)$ has a value on master; "the lab's value 7,309,092"
   is the conics-2 branch value. The new (18,7) graph is reproducible: I rebuilt it from its solution file (edge-list
   sha256 `c80d9c0e…` as recorded) and checked it with my own BFS from all 78,432 hubs and from 6,400 random level
-  vertices (results below). The bound does not depend on a full all-pairs check, since every ingredient is proved and
+  vertices: VALID. The bound does not depend on a full all-pairs check, since every ingredient is proved and
   the hypotheses hold by construction; but the lab's rule for recording a value still asks for the coordinator's
   all-pairs check of the built graph, as the note says.
 - The **Heuristic** label in §4 is right: it is an observation on 17 runs.
@@ -69,10 +69,10 @@ edge list (conics2/typed_build.py), as in the earlier referee report.
 | table of build layouts (§2) | symbolic slot vectors of $HDHDH$, $HHDHHDD$, $HHDHDHDHD$ | equal to the table; $HHDHDHDHD$ is a rotation of the alternating typing |
 | Corollary 3.2 | closed forms against the slot formulas, every prime power $q\le200$, $1\le k\le q-1$ (5,025 pairs); $F_2,F_3,F_4$ | all equal |
 | §5.1, "the formulas reproduce all fifteen builds" | the 12 make logs on the conics-2 branch parsed: $\lvert R_H\rvert$, $\lvert R_L\rvert$, $m$, slot vectors, hub counts, $n$ (`builds.py`) | all 12 agree; the other 3 (job conics) agree by order (issue 6) |
-| Theorem 4.4(b), $q\le200$ | every line of `hubopt.out` against Lemmas 4.1–4.2 and the slot counts (`certs.py`) | 590 certificates, all valid; thresholds $q_k$ exactly as in the table |
+| Theorem 4.4(b), $q\le200$ | every line of `hubopt.out` against Lemmas 4.1–4.2 and the slot counts (`certs.py`) | 590 certificate lines (495 at full slots), all valid; thresholds $q_k$ exactly as in the table |
 | Theorem 4.4(b), $200<q\le2\cdot10^5$ | own scan, Lemma 4.1 alone, $2\le k\le12$ (198,660 pairs) | no failure; $c\le2$ always suffices |
 | Theorem 4.4(a) | the numbers of the chain | $600^{4/5}=166.9$, $q^{-4/5}\le0.00599$, $1.2^5(1+1/600)/0.97 = 2.570 < 3$, $3\cdot300^{-1/5} = 0.9587$ |
-| $q_k$ and §5.2 values below $q_k$ | own search (blow-ups, at most one pendant-tree part last, $\le10$ parts) for all 96 $(q,k)$ below $q_k$, $k\le12$ (`mysearch.py`) | same best value as `hubopt.out` at all 96; no full-slot sum (issue 7) |
+| $q_k$ and §5.2 values below $q_k$ | own search (blow-ups, at most one pendant-tree part last, $\le10$ parts) for all 95 $(q,k)$ below $q_k$, $k\le12$ (`mysearch.py`) | same best value as `hubopt.out` at all 95; no full-slot sum (issue 7) |
 | §5.2 table | best $(q,k)$ per cell, level-graph value, $F_k$, status, proved value (`table52.py`) | all 13 rows reproduced; the proved values are the best over all $(q,k)$ and exceed the level graphs |
 | §4 random-hub-graph table | $K_{\mathcal B}$, $K_{\mathcal A}$, $M(\delta)/K_{\mathcal B}$ | all 17 rows reproduced |
 | own $H(q)$ | from the quadric and Tits' equations, $q = 2,3,4,5,7$ (`t_hex.py`) | $N$ points, $N$ lines, $q+1$ per element, distance profile $1,(q+1),\dots,q^5$ |
@@ -83,10 +83,23 @@ edge list (conics2/typed_build.py), as in the earlier referee report.
 | Lemmas 4.2, 4.3 | $H(3)+H(2)^{\times2}+H(2)+$ pendant-tree part on PG(2,2) (asymmetric sizes); a pendant-tree part on PG(2,3) alone | same colour $\le6$ (the tree part has different-colour distance 7, as the note says) |
 | negative control | pendant-tree part first, $H(2)$ second | 1,992 same-colour pairs at distance 8 |
 | the hub graphs of the two headline bounds | $H(7)+H(7)$; the (16,2) certificate $H(8)+H(7)+H(5)+H(4)^{\times2}[2730]+H(4)^{\times2}[2372]$ built by my code | HG(39216,39216;9), 9-regular; HG(66065,66065;14); same colour $\le6$ |
-| stored hub graphs | the hub graph in the (18,7) solution file; PSL(2,29) of job conics; the (17,7) and (20,7) random ones (`hubfiles.py`) | see `hubfiles.log` (results below) |
-| (18,7) graph | rebuilt from `d18D7_hex13_typedwhisk_h7h7_n7318644.sol`; own BFS from all 78,432 hubs and from 6,400 random level vertices | see `d18_check.log` (results below) |
+| stored hub graphs | the hub graph in the (18,7) solution file; PSL(2,29) of job conics; the (17,7) and (20,7) random ones (`hubfiles.py`) | all valid (below) |
+| (18,7) graph | rebuilt from `d18D7_hex13_typedwhisk_h7h7_n7318644.sol`; own BFS from all 78,432 hubs and from 6,400 random level vertices | VALID (below) |
+| §1.3 Remark (ii) | the 288-line set of card conics2-r1/c8 in the card's $H(4)$ | a dual segment set; the geometry is $H(4)$ (below) |
 
-(The (18,7) and stored-hub-graph results are added below when the runs finish.)
+Results of the last three rows:
+
+- **Stored hub graphs** (`hubfiles.log`): the hub graph in the (18,7) solution file is HG(39216,39216;9), 9-regular;
+  the PSL(2,29) graph of job conics is HG(12180,12180;8); the (17,7) graph is HG(32356,30327;10) and the (20,7) graph
+  HG(70163,66322;13). All: simple, bipartite, connected, no same-colour pair at distance more than 6.
+- **(18,7) graph** (`d18_check.log`): my rebuild gives the recorded edge-list sha256 `c80d9c0e…ed1a`; $n=7{,}318{,}644$,
+  $65{,}612{,}918$ edges, simple, bipartite, connected, degrees 15 to 18. BFS from all 78,432 hubs: every hub within
+  distance 7 of every vertex (29 minutes on 4 cores). BFS from 6,400 random level vertices: eccentricity at most 7.
+  With the note's own runs (all hubs, 786,432 level sources) this is consistent with diameter 7; the full all-pairs
+  check is still the coordinator's.
+- **Remark (ii) of §1.3** (`dualseg288.py`): the 288-line set of squad card conics2-r1/c8 is a dual segment set in the
+  card's geometry, which is a generalized hexagon of order $(4,4)$ whose points are distance-2 regular, like the points
+  of my own $H(4)$ and unlike its lines; so it is $H(4)$, not the dual, and $288>276$ holds.
 
 ## Issues
 
@@ -128,7 +141,8 @@ blown-up hexagons)". If the note is to be sent outside the lab, run the literatu
 The bound $n_b(18,7)\ge7{,}318{,}644$ needs no computer: Theorem 3.1 at $(q,k)=(13,4)$ with the sets of Corollary 1.8
 and Proposition 1.9 (slots $2(\Lambda(13)+170) = 57{,}826$ per side) and the hub graph $H(7)+H(7)$ of Lemma 4.2
 ($39{,}216$ per colour, degree $8+1 = 9 = q-k$). Every ingredient is classical or explicit, so the result can be checked
-by hand. It is also the only cell where an explicit construction beats a value the lab found by search. Say this in the
+by hand. It is also the only cell of §5.1 where an explicit construction beats the value the lab found by search. Say
+this in the
 abstract and in §5.1 ("Theorem; all ingredients explicit. The graph with the build's 792-point set was also built and
 checked from every hub"). Also say that the lab's 7,309,092 is a branch value (conics-2), not a value on master.
 
@@ -151,7 +165,7 @@ agree). *Fix:* say so.
 ### 7. PRESENTATION. Theorem 4.4(b), "These are the thresholds of our search, not of the method"
 
 My search, written independently with the same lemmas (blow-ups, at most one pendant-tree part, last; at most ten
-parts; sizes filled in order), finds exactly the note's best value at all 96 $(q,k)$ below $q_k$ with $k\le12$, and no
+parts; sizes filled in order), finds exactly the note's best value at all 95 $(q,k)$ below $q_k$ with $k\le12$, and no
 full-slot sum. So the $q_k$ are the thresholds of sums of Lemmas 4.1–4.3 as far as two independent searches can tell
 (neither search is exhaustive over size assignments, so this is not a proof of optimality); a better threshold needs a
 different kind of hub graph. *Fix:* "the smallest $q$ from which our sums of Lemmas 4.1–4.3 reach the full slots (two
@@ -160,7 +174,8 @@ blow-up with $c\le2$ suffices.
 
 ### 8. PRESENTATION. §1.3, Remark (iii): "… is at least as good as any typed layout, by Theorem 2.1"
 
-Theorem 2.1 assumes friendly sets of sizes $P$, $\Lambda$ and non-friendly sets of size $m\le\Lambda$. At $q=3^h$ a
+The consequences of Theorem 2.1 assume friendly sets of sizes $P$, $\Lambda$ and non-friendly sets of size
+$m\le\Lambda$. At $q=3^h$ a
 non-friendly $H\to H$ transition with a duality can free all $P(q)$ spread points (D7_HEXAGON.md, Corollary 4.3(3)), so
 Theorem 2.1 does not cover the typed layouts at $q=3^h$. The statement is true for a simpler reason: every freed set
 allowed by Theorems B and C has at most $P(q)$ elements (Proposition 1.4; a non-collinear set has at most
@@ -235,7 +250,7 @@ d7thm/d18D7/README.md), or put it in a footnote.
   $S_z$ through $X$ for each $z = tz_0$, not $v$, not in $S$, meeting $\Pi$ only in $X$, distinct for distinct $z$;
   $F(tz_0) = tF(z_0)$ with $F(z_0)\ne0$ since $G$ is zero-free and $N$ anisotropic; $\nu$ constant on spread lines by
   POLISHED Lemmas 6.6(d), 6.12(d)); Corollary 1.8 (maximality from Theorem 1.4(c)); Remarks (i)–(iv) (numbers 12, 18,
-  276; (iii) see issue 8); Proposition 1.9.
+  276; (ii) re-checked, see above; (iii) see issue 8); Proposition 1.9.
 - **§2.** The slot formulas ($Y_j=\Lambda$ at $H$ levels since friendly transitions into $H$ come from $D$); $(\ast)$ for
   $k\le2q+1$, $m\le q^2+1$, and the two ranges; Theorem 2.1 (a)–(c) ($\sum_{\tau_j=H}(k-f_j) = \binom h2$ and the three
   counts) and all four consequences (the even case needs only $\Lambda-m\ge(a-1)(P-\Lambda)$, true for $k=2$); Theorem

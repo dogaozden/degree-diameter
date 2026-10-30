@@ -3,7 +3,7 @@ q=3 k=2: c = 1, (c0, c1) = (1, 2) (2 admissible pairs)
   sets: |P_S| = 112 segment set; |W| = 72 exact; |S_0| = 9 (nu = 0); |R_L| = 93 dual segment set, maximal
   non-friendly: 10 pairwise opposite points of an elliptic quadric section, sigma a local duality at each
   layout HDHDH: alpha [122, 103, 122, 186, 122] beta [103, 224, 103, 122, 103]; min = (103, 103) = Theorem 2.2
-  hub graph edge: 1 + 1 hubs, max degree 1 <= q-k = 1; n = 3642 = 2(2k+1)N + K1 + K2 = 3642; wrote /tmp/claude-0/-home-user-degree-diameter/c8de9376-5fd7-5ec3-9342-2eb354d63a0f/scratchpad/g_3_2.edges (0.2s)
+  hub graph edge: 1 + 1 hubs, max degree 1 <= q-k = 1; n = 3642 = 2(2k+1)N + K1 + K2 = 3642; wrote g_3_2.edges (0.2s)
 n=3642 m=10276 simple=yes bipartite=yes components=1 degree 4..6
 max distance same colour 6, different colour 7; ordered pairs at distance > 7: 0; unreachable ordered pairs: 0
 RESULT VALID (diameter <= 7)
@@ -12,7 +12,7 @@ q=4 k=2: delta = 2, (c0, c1) = (2, 0) (4 admissible pairs)
   sets: |P_S| = 325 segment set; |W| = 240 exact; |S_0| = 16 (nu = 0); |R_L| = 276 dual segment set, maximal
   non-friendly: 17 pairwise opposite points of an elliptic quadric section, sigma a local duality at each
   layout HDHDH: alpha [342, 293, 342, 552, 342] beta [293, 650, 293, 342, 293]; min = (293, 293) = Theorem 2.2
-  hub graph c12: 6 + 6 hubs, max degree 2 <= q-k = 2; n = 13662 = 2(2k+1)N + K1 + K2 = 13662; wrote /tmp/claude-0/-home-user-degree-diameter/c8de9376-5fd7-5ec3-9342-2eb354d63a0f/scratchpad/g_4_2.edges (0.7s)
+  hub graph c12: 6 + 6 hubs, max degree 2 <= q-k = 2; n = 13662 = 2(2k+1)N + K1 + K2 = 13662; wrote g_4_2.edges (0.7s)
 n=13662 m=45976 simple=yes bipartite=yes components=1 degree 5..7
 max distance same colour 6, different colour 7; ordered pairs at distance > 7: 0; unreachable ordered pairs: 0
 RESULT VALID (diameter <= 7)
@@ -21,7 +21,7 @@ q=4 k=3: delta = 2, (c0, c1) = (2, 0) (4 admissible pairs)
   sets: |P_S| = 325 segment set; |W| = 240 exact; |S_0| = 16 (nu = 0); |R_L| = 276 dual segment set, maximal
   non-friendly: 17 pairwise opposite points of an elliptic quadric section, sigma a local duality at each
   layout HDHDHDH: alpha [667, 569, 667, 569, 359, 569, 359] beta [310, 667, 310, 667, 569, 667, 569]; min = (359, 310) = Theorem 2.2
-  hub graph edge: 1 + 1 hubs, max degree 1 <= q-k = 1; n = 19112 = 2(2k+1)N + K1 + K2 = 19112; wrote /tmp/claude-0/-home-user-degree-diameter/c8de9376-5fd7-5ec3-9342-2eb354d63a0f/scratchpad/g_4_3.edges (0.7s)
+  hub graph edge: 1 + 1 hubs, max degree 1 <= q-k = 1; n = 19112 = 2(2k+1)N + K1 + K2 = 19112; wrote g_4_3.edges (0.7s)
 n=19112 m=72696 simple=yes bipartite=yes components=1 degree 5..8
 max distance same colour 6, different colour 7; ordered pairs at distance > 7: 0; unreachable ordered pairs: 0
 RESULT VALID (diameter <= 7)
@@ -30,7 +30,7 @@ q=5 k=2: c = 2, (c0, c1) = (1, 0) (6 admissible pairs)
   sets: |P_S| = 756 segment set; |W| = 600 exact; |S_0| = 25 (nu = 0); |R_L| = 655 dual segment set, maximal
   non-friendly: 26 pairwise opposite points of an elliptic quadric section, sigma a local duality at each
   layout HDHDH: alpha [782, 681, 782, 1310, 782] beta [681, 1512, 681, 782, 681]; min = (681, 681) = Theorem 2.2
-  hub graph H2: 63 + 63 hubs, max degree 3 <= q-k = 3; n = 39186 = 2(2k+1)N + K1 + K2 = 39186; wrote /tmp/claude-0/-home-user-degree-diameter/c8de9376-5fd7-5ec3-9342-2eb354d63a0f/scratchpad/g_5_2.edges (4.0s)
+  hub graph H2: 63 + 63 hubs, max degree 3 <= q-k = 3; n = 39186 = 2(2k+1)N + K1 + K2 = 39186; wrote g_5_2.edges (4.0s)
 n=39186 m=152722 simple=yes bipartite=yes components=1 degree 6..8
 max distance same colour 6, different colour 7; ordered pairs at distance > 7: 0; unreachable ordered pairs: 0
 RESULT VALID (diameter <= 7)
@@ -39,7 +39,7 @@ q=5 k=3: c = 2, (c0, c1) = (1, 0) (6 admissible pairs)
   sets: |P_S| = 756 segment set; |W| = 600 exact; |S_0| = 25 (nu = 0); |R_L| = 655 dual segment set, maximal
   non-friendly: 26 pairwise opposite points of an elliptic quadric section, sigma a local duality at each
   layout HDHDHDH: alpha [1538, 1336, 1538, 1336, 808, 1336, 808] beta [707, 1538, 707, 1538, 1336, 1538, 1336]; min = (808, 707) = Theorem 2.2
-  hub graph c12: 6 + 6 hubs, max degree 2 <= q-k = 2; n = 54696 = 2(2k+1)N + K1 + K2 = 54696; wrote /tmp/claude-0/-home-user-degree-diameter/c8de9376-5fd7-5ec3-9342-2eb354d63a0f/scratchpad/g_5_3.edges (4.1s)
+  hub graph c12: 6 + 6 hubs, max degree 2 <= q-k = 2; n = 54696 = 2(2k+1)N + K1 + K2 = 54696; wrote g_5_3.edges (4.1s)
 n=54696 m=237474 simple=yes bipartite=yes components=1 degree 6..9
 max distance same colour 6, different colour 7; ordered pairs at distance > 7: 0; unreachable ordered pairs: 0
 RESULT VALID (diameter <= 7)
@@ -48,7 +48,7 @@ q=5 k=4: c = 2, (c0, c1) = (1, 0) (6 admissible pairs)
   sets: |P_S| = 756 segment set; |W| = 600 exact; |S_0| = 25 (nu = 0); |R_L| = 655 dual segment set, maximal
   non-friendly: 26 pairwise opposite points of an elliptic quadric section, sigma a local duality at each
   layout HDHDHDHDH: alpha [1564, 1362, 1564, 1362, 1564, 1991, 1564, 1991, 1564] beta [1362, 2294, 1362, 2294, 1362, 1564, 1362, 1564, 1362]; min = (1362, 1362) = Theorem 2.2
-  hub graph edge: 1 + 1 hubs, max degree 1 <= q-k = 1; n = 70310 = 2(2k+1)N + K1 + K2 = 70310; wrote /tmp/claude-0/-home-user-degree-diameter/c8de9376-5fd7-5ec3-9342-2eb354d63a0f/scratchpad/g_5_4.edges (4.1s)
+  hub graph edge: 1 + 1 hubs, max degree 1 <= q-k = 1; n = 70310 = 2(2k+1)N + K1 + K2 = 70310; wrote g_5_4.edges (4.1s)
 n=70310 m=337033 simple=yes bipartite=yes components=1 degree 6..10
 max distance same colour 6, different colour 7; ordered pairs at distance > 7: 0; unreachable ordered pairs: 0
 RESULT VALID (diameter <= 7)
@@ -61,7 +61,7 @@ q=5 k=2: c = 2, (c0, c1) = (1, 0) (6 admissible pairs)
   sets: |P_S| = 756 segment set; |W| = 600 exact; |S_0| = 25 (nu = 0); |R_L| = 655 dual segment set, maximal
   non-friendly: 26 pairwise opposite points of an elliptic quadric section, sigma a local duality at each
   layout HDHDH: alpha [782, 681, 782, 1310, 782] beta [681, 1512, 681, 782, 681]; min = (681, 681) = Theorem 2.2
-  hub graph H2: 63 + 63 hubs, max degree 3 <= q-k = 3; n = 39186 = 2(2k+1)N + K1 + K2 = 39186; wrote /tmp/claude-0/-home-user-degree-diameter/c8de9376-5fd7-5ec3-9342-2eb354d63a0f/scratchpad/g_5_2_nohg.edges (3.9s)
+  hub graph H2: 63 + 63 hubs, max degree 3 <= q-k = 3; n = 39186 = 2(2k+1)N + K1 + K2 = 39186; wrote g_5_2_nohg.edges (3.9s)
 n=39186 m=152533 simple=yes bipartite=yes components=1 degree 5..8
 max distance same colour 8, different colour 7; ordered pairs at distance > 7: 680; unreachable ordered pairs: 0
 RESULT INVALID (diameter > 7)

@@ -3,7 +3,7 @@ q=7 k=2: c = 1, (c0, c1) = (1, 0) (14 admissible pairs)
   sets: |P_S| = 2752 segment set; |W| = 2352 exact; |S_0| = 49 (nu = 0); |R_L| = 2457 dual segment set, maximal
   non-friendly: 50 pairwise opposite points of an elliptic quadric section, sigma a local duality at each
   layout HDHDH: alpha [2802, 2507, 2802, 4914, 2802] beta [2507, 5504, 2507, 2802, 2507]; min = (2507, 2507) = Theorem 2.2
-  hub graph H4: 1365 + 1365 hubs, max degree 5 <= q-k = 5; n = 198810 = 2(2k+1)N + K1 + K2 = 198810; wrote /tmp/claude-0/-home-user-degree-diameter/c8de9376-5fd7-5ec3-9342-2eb354d63a0f/scratchpad/g_7_2.edges (63.6s)
+  hub graph H4: 1365 + 1365 hubs, max degree 5 <= q-k = 5; n = 198810 = 2(2k+1)N + K1 + K2 = 198810; wrote g_7_2.edges (63.6s)
 n=198810 m=985048 simple=yes bipartite=yes components=1 degree 8..10
 max distance same colour 6, different colour 7; ordered pairs at distance > 7: 0; unreachable ordered pairs: 0
 RESULT VALID (diameter <= 7)
@@ -12,7 +12,7 @@ q=7 k=3: c = 1, (c0, c1) = (1, 0) (14 admissible pairs)
   sets: |P_S| = 2752 segment set; |W| = 2352 exact; |S_0| = 49 (nu = 0); |R_L| = 2457 dual segment set, maximal
   non-friendly: 50 pairwise opposite points of an elliptic quadric section, sigma a local duality at each
   layout HDHDHDH: alpha [5554, 4964, 5554, 4964, 2852, 4964, 2852] beta [2557, 5554, 2557, 5554, 4964, 5554, 4964]; min = (2852, 2557) = Theorem 2.2
-  hub graph H3: 364 + 364 hubs, max degree 4 <= q-k = 4; n = 275240 = 2(2k+1)N + K1 + K2 = 275240; wrote /tmp/claude-0/-home-user-degree-diameter/c8de9376-5fd7-5ec3-9342-2eb354d63a0f/scratchpad/g_7_3.edges (63.4s)
+  hub graph H3: 364 + 364 hubs, max degree 4 <= q-k = 4; n = 275240 = 2(2k+1)N + K1 + K2 = 275240; wrote g_7_3.edges (63.4s)
 n=275240 m=1484664 simple=yes bipartite=yes components=1 degree 8..11
 max distance same colour 6, different colour 7; ordered pairs at distance > 7: 0; unreachable ordered pairs: 0
 RESULT VALID (diameter <= 7)
@@ -21,7 +21,7 @@ q=8 k=2: delta = 1, (c0, c1) = (2, 4) (18 admissible pairs)
   sets: |P_S| = 4617 segment set; |W| = 4032 exact; |S_0| = 64 (nu = 0); |R_L| = 4168 dual segment set, maximal
   non-friendly: 65 pairwise opposite points of an elliptic quadric section, sigma a local duality at each
   layout HDHDH: alpha [4682, 4233, 4682, 8336, 4682] beta [4233, 9234, 4233, 4682, 4233]; min = (4233, 4233) = Theorem 2.2
-  hub graph H4+H2: 1428 + 1428 hubs, max degree 6 <= q-k = 6; n = 377346 = 2(2k+1)N + K1 + K2 = 377346; wrote /tmp/claude-0/-home-user-degree-diameter/c8de9376-5fd7-5ec3-9342-2eb354d63a0f/scratchpad/g_8_2.edges (173.1s)
+  hub graph H4+H2: 1428 + 1428 hubs, max degree 6 <= q-k = 6; n = 377346 = 2(2k+1)N + K1 + K2 = 377346; wrote g_8_2.edges (173.1s)
 n=377346 m=2054500 simple=yes bipartite=yes components=1 degree 9..11
 max distance same colour 6, different colour 7; ordered pairs at distance > 7: 0; unreachable ordered pairs: 0
 RESULT VALID (diameter <= 7)

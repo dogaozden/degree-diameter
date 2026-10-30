@@ -1,2 +1,21 @@
 === (18,7) rebuilt with conics2/typed_build.py from d18D7_hex13_typedwhisk_h7h7_n7318644.sol; sha256 c80d9c0e6a569508b2314c3c3cd6c53babce0ecb844017fdf7f86f297426ed1a
 === bfsd from all hubs (sources 7240212..7318643)
+n=7318644 m=65612918 simple=yes bipartite=yes components=1 degree 15..18
+sources: 78432 (range)
+max distance same colour 6, different colour 7; ordered pairs at distance > 7: 0; unreachable ordered pairs: 0
+same-colour ordered pairs at distance > 7: 0 (hub-graph condition: VALID if 0 and connected)
+RESULT VALID (diameter <= 7)
+
+real	28m51.361s
+user	110m43.433s
+sys	0m14.064s
+=== bfsd from 6400 random level vertices (seed 1)
+n=7318644 m=65612918 simple=yes bipartite=yes components=1 degree 15..18
+sources: 6400 (random sample of the range)
+max distance same colour 6, different colour 7; ordered pairs at distance > 7: 0; unreachable ordered pairs: 0
+same-colour ordered pairs at distance > 7: 0 (hub-graph condition: VALID if 0 and connected)
+RESULT VALID (diameter <= 7)
+
+real	2m28.054s
+user	8m25.510s
+sys	0m13.553s
