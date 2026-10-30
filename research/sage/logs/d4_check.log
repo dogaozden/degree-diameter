@@ -1,0 +1,26 @@
+AS(3) is a generalized quadrangle of order (2,4): True
+weighted 2-ovoid (eps=2, c1=1, c2=2): total weight 18, line sums {2}
+Theorem A, q=3: vertices 90 (expected 90), max degree 5 (expected 5), bipartite True, diameter 4 (expected 4)  ->  OK
+   (q+2)-regular: True
+AS(5) is a generalized quadrangle of order (4,6): True
+weighted 2-ovoid (eps=2, c1=1, c2=2): total weight 50, line sums {2}
+Theorem A, q=5: vertices 350 (expected 350), max degree 7 (expected 7), bipartite True, diameter 4 (expected 4)  ->  OK
+   (q+2)-regular: True
+W(3): 40 points, 40 lines; O has 20 points and meets every line twice: True; the 10 spread lines partition the points: True
+core (before the completion): degrees [4, 6]
+Proposition C, q=3: vertices 120 (expected 120), max degree 6 (expected 6), bipartite True, diameter 4 (expected 4)  ->  OK
+   (q+3)-regular: True
+W(5): 156 points, 156 lines; O has 52 points and meets every line twice: True; the 26 spread lines partition the points: True
+core (before the completion): degrees [6, 8]
+Proposition C, q=5: vertices 416 (expected 416), max degree 8 (expected 8), bipartite True, diameter 4 (expected 4)  ->  OK
+   (q+3)-regular: True
+Q(4,5): 156 points, 156 lines, ovoid of 26 points meeting every line once: True
+(7,4): Q(4,5) + 26 clones + 21 shadow lines: vertices 359 (expected 359), max degree 7 (expected 7), bipartite True, diameter 4 (expected 4)  ->  OK
+AS(7) is a generalized quadrangle of order (6,8): True
+weighted 2-ovoid (eps=3, c1=1, c2=3): total weight 98, line sums {2}
+Theorem A, q=7: vertices 882 (expected 882), max degree 9 (expected 9), bipartite True, diameter 4 (expected 4)  ->  OK
+   (q+2)-regular: True
+W(7): 400 points, 400 lines; O has 100 points and meets every line twice: True; the 50 spread lines partition the points: True
+core (before the completion): degrees [8, 10]
+Proposition C, q=7: vertices 1000 (expected 1000), max degree 10 (expected 10), bipartite True, diameter 4 (expected 4)  ->  OK
+   (q+3)-regular: True
