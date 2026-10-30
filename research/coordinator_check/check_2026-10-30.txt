@@ -10,3 +10,9 @@ rebuilt on the Mac mini from the formula alone with the coordinator's own code (
 (g,A) ~ (s g, B); BFS from every vertex): n = 2928, simple, 9-regular, bipartite, diameter 5
 apsp (research/lifts/coordinator_check/apsp.c, all pairs, no symmetry) on the finder's records/d9D5_n2928_haar_c61c24.edges
 (sha256 b018047dc73e01113857ca8eb258da2d6ae3f7e693dd64f08466dead75ecd233) -> RESULT VALID d=9 D=5 n=2928; at D = 4 -> RESULT INVALID
+
+== (9,5) 2,970 — job selfdual-d5, same branch (research/selfdual-d5/records/)
+rebuilt on the Mac mini from the formula alone with the coordinator's own code (G = Heis(3) x (C11 : C5), (a,b,c,i,j)(a',b',c',i',j') = (a+a', b+b', c+c'+ab', i+3^j i', j+j'),
+associativity spot-checked; S = {(0,0,0,0,0), (1,2,0,5,0), (0,0,1,2,0), (2,1,1,9,4), (2,1,1,3,1), (1,0,2,10,1), (2,0,2,4,4), (1,1,1,5,1), (0,1,2,6,4)}; BFS from every vertex):
+n = 2970, simple, 9-regular, bipartite, diameter 5
+apsp on the finder's records/d9D5_n2970_haar_heis3_f55.edges (sha256 d51d229ebb737ce955e642776d453413393bca46bea4549e53f3f631821b8827) -> RESULT VALID d=9 D=5 n=2970; at D = 4 -> RESULT INVALID
