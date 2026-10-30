@@ -1,0 +1,16 @@
+GROUP /home/user/degree-diameter/research/squads/sd5-r1/c1/tmp/g376_6.ht n 376 ninv 3 nalpha 2 mode o4
+ALPHA4 rec 0 fixed 1 two 93 four 47 other 0
+PAT A rec 0 nF 1 n2 93 n4 47 sets 47 passXX 0 best 368 sols 0 secs 0.00
+PAT B rec 0 nF 1 n2 93 n4 47 sets 4371 passXX 0 best 346 sols 0 secs 0.00
+PAT X5 skipped (nF 1 n2 93 n4 47)
+PAT X31 skipped (nF 1 n2 93 n4 47)
+PAT X12 rec 0 nF 1 n2 93 n4 47 sets 4278 passXX 0 best 1073741824 sols 0 secs 0.00
+PAT X03 rec 0 nF 1 n2 93 n4 47 sets 129766 passXX 0 best 1073741824 sols 0 secs 0.02
+ALPHA4 rec 1 fixed 93 two 47 four 47 other 0
+PAT A rec 1 nF 93 n2 47 n4 47 sets 4371 passXX 0 best 328 sols 0 secs 0.00
+PAT B rec 1 nF 93 n2 47 n4 47 sets 2209 passXX 0 best 358 sols 0 secs 0.00
+PAT X5 rec 1 nF 93 n2 47 n4 47 sets 300000 passXX 0 best 1073741824 sols 0 CAPPED secs 0.06
+PAT X31 rec 1 nF 93 n2 47 n4 47 sets 300000 passXX 0 best 1073741824 sols 0 CAPPED secs 0.04
+PAT X12 rec 1 nF 93 n2 47 n4 47 sets 100533 passXX 0 best 1073741824 sols 0 secs 0.01
+PAT X03 rec 1 nF 93 n2 47 n4 47 sets 16215 passXX 0 best 1073741824 sols 0 secs 0.00
+DONE n 376 2n 752 records 2 sols 0 best 328 bestrec 1 evals 861790 passXX 0 anomaly_yy 0 anomaly_odd 0 secs 0.1
