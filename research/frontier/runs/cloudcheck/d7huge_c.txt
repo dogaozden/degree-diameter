@@ -8,7 +8,7 @@ Range 10 = 6365781..7073090, range 12 = 7780399..8487708.
 ```
 nproc: 4
                total        used        free      shared  buff/cache   available
-Mem:              15           1           9           0           5          14
+Mem:              15           0          13           0           1          15
 Swap:              0           0           0
 ```
 
@@ -29,6 +29,8 @@ nohup ./apsp_fast d19.edges 19 7 4 6365781 7073090 > d19_r10.out 2>&1 &   # rang
 nohup ./apsp_fast d19.edges 19 7 4 7780399 8487708 > d19_r12.out 2>&1 &   # range 12
 ```
 
+Note: the first run of range 12 was killed when the worker restarted (at about 425,000 of 707,309 sources, no RESULT line). It was rerun from source 7780399 with the same command; the partial output was discarded and is not a result.
+
 ## Range 10: d19D7(11,316,940), sources 6365781..7073090
 Final lines of the checker output, copied unedited:
 ```
@@ -40,5 +42,7 @@ RESULT VALID d=19 D=7 n=11316940 (sources in the range only)
 ## Range 12: d19D7(11,316,940), sources 7780399..8487708
 Final lines of the checker output, copied unedited:
 ```
-(still running)
+707309 of 707309 sources done (1793329301)
+n=11316940 edges=107433784 degree min=17 max=19 bipartite=yes diameter=7 sources=7780399..8487708
+RESULT VALID d=19 D=7 n=11316940 (sources in the range only)
 ```
