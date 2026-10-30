@@ -5,6 +5,18 @@ Job "selfdual-d5" (Opus cloud session, Oct 30 2026, from 20:35 UTC). Method from
 (t^2 = c, t x t^-1 = beta(x)), then H(G,S) = Cay(G^, tS) is vertex-transitive and only X X = G (X = S^-1 S) has to
 be checked. Work in progress; see the status section at the end.
 
+**NEW (9,5): 2,790 vertices** (our value was 2,758; it was the Haar graph of C197 : C7): the Haar graph of
+G = C31 : C45 = <x, y | x^31 = y^45 = 1, y x y^-1 = x^28> = SmallGroup(1395,1) (y acts with order 15), elements x^i y^j
+written (i,j), S = {(0,0), (28,20), (18,25), (24,26), (22,19), (21,28), (3,17), (10,41), (4,4)}, (g,A) ~ (s g, B).
+9-regular, bipartite, diameter 5. S is self-dual for beta(x) = x^-1, beta(y) = y (psi fixes (0,0) and swaps the four
+pairs), so the graph is also the Cayley graph of C31 : C90 = G : <t> with T = S t (one involution, four inverse pairs).
+Checks: apsp.c RESULT VALID at D = 5 and INVALID at D = 4 (`records/d9D5_n2790_apsp.txt`), independent Python checker
+VALID (`records/d9D5_n2790_check_independent.txt`), GAP-free rebuild from the formula identical to the saved edge list,
+the Cayley build and the search's own build have the same nauty canonical form. Files:
+`records/d9D5_n2790_haar_c31c45.edges` (sha256 5d63f5bee169b51c1fbe38ab0ca7971c35460b7f73e8cf25884db9cc21b9b6b7),
+rebuild `records/build_d9D5_n2790.sh`, search output `records/sg1395_1_tabu.out` (sdtabu K = 9, type (1,4), found in
+the DEEP phase of record 1 within 27 s).
+
 ## Tools (src/)
 
 | file | what it does | calibration |
