@@ -1,0 +1,25 @@
+job check-d7huge-j2, verification letter j2, branch claude/d7huge-verify-j2-fi43l5
+Checked graph source: branch claude/conics-2-diameter-7-ic0oat (commit cbfa594); sols research/frontier/sols/d19D7_hex16_typedwhisk_nu0_n11316940.sol and d20D7_hex16_typedwhisk_nu0_n15795219.sol
+
+Machine: nproc = 4; free -g: total 15, used 0, free 15, buff/cache 0 (cloud container, Linux 6.18.44-fc-v185)
+Scratch directory (not committed): /tmp/claude-0/-home-user-degree-diameter/80a5407d-2630-5456-bf35-3b3c3fd1943d/scratchpad/j2
+
+sha256 checks:
+  hex_q16.bin (hexgen2 16, output hex/hex_q16.bin)           f7a701a11c2edcdc0014bd8a0eaa2a0ecce11e5953fd4bc63cc8a61c327a4394  MATCH
+  (19,7) 11,316,940 edge list (typed_build.py build)         d71baea19994d2fb013823260b5c8f44e8407207eaa52c0b24fcc78dd1fc7fc1  MATCH
+  (20,7) 15,795,219 edge list (typed_build.py build)         f9e6399daa20c5d1022acb10f068a19303d3ba10b38cc0c8c1e18f00d1d0dbba  MATCH
+
+Commands (run from the scratch directory, after git fetch origin claude/conics-2-diameter-7-ic0oat and git checkout of it):
+  cc -O2 -o hexgen2 research/d10D7/hexgen2.c
+  mkdir -p hex && ./hexgen2 16                       (writes hex/hex_q16.bin)
+  python3 research/synthetic/conics2/typed_build.py build hex/hex_q16.bin research/frontier/sols/d20D7_hex16_typedwhisk_nu0_n15795219.sol g20.edges
+  python3 research/synthetic/conics2/typed_build.py build hex/hex_q16.bin research/frontier/sols/d19D7_hex16_typedwhisk_nu0_n11316940.sol g19.edges
+  cc -O3 -march=native -pthread -o apsp_fast research/synthetic/conics/apsp_fast.c
+  nohup ./apsp_fast g20.edges 20 7 4 12504565 13162700 > d20_r20.out 2>&1 &    (range 20 = (20-1)*658135 .. 20*658135)
+  nohup ./apsp_fast g20.edges 20 7 4 13162700 13820835 > d20_r21.out 2>&1 &    (range 21 = 20*658135 .. 21*658135)
+
+Ranges (apsp_fast usage EDGES d D [T [LO HI]], T = 4 threads, one range at a time):
+--- d20 range 20 (sources 12504565..13162700), started 12:12:21 UTC 30 Oct 2026, finished 15:08:59 UTC; output d20_r20.out, final lines copied unedited:
+658135 of 658135 sources done (1793372937)
+n=15795219 edges=157589798 degree min=18 max=20 bipartite=yes diameter=7 sources=12504565..13162700
+RESULT VALID d=20 D=7 n=15795219 (sources in the range only)
