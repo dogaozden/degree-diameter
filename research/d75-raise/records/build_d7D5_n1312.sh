@@ -12,3 +12,7 @@ cmp /tmp/d7D5_n1312.edges records/d7D5_n1312_haar_c41c16.edges && echo "identica
 # 3) the search that found it (GAP + C): export SmallGroup(656,28) and run the self-dual orbit search
 #    gap -q -c 'N:=656;; ID:=28;; OUT:="/tmp/g656_28.ht";;' src/export.g; gcc -O3 -o src/haar75 src/haar75.c -lm
 #    MAXEV=100000000 MAXEVF=8000000 src/haar75 /tmp/g656_28.ht anti     (9 solutions, type anti f 3 m 2)
+# 4) second description: Cayley graph of a group of order 1,312 (G : <t>, t x t = x^-1, t y t = y^9), BFS from the
+#    identity; nauty-labelg gives the same canonical form as the saved edge list
+python3 records/build_d7D5_n1312_cayley.py /tmp/d7D5_n1312_cayley.edges
+/tmp/apsp /tmp/d7D5_n1312_cayley.edges 7 5 | tail -1

@@ -11,7 +11,11 @@ independent Python BFS VALID (`records/d7D5_n1312_check_independent.txt`), GAP-f
 to the saved edge list. Files: `records/d7D5_n1312_haar_c41c16.edges` (sha256 95642aa9962145b817de0b66dacb7fa17e994e9e16c219db0ce22ab351653b73),
 rebuild `records/build_d7D5_n1312.sh` (uses `records/build_metacyclic_haar.py`), all 9 solutions of the search in
 `records/sg656_28_anti_solutions.txt`. nauty: |Aut| = 1,312, one vertex orbit, so the automorphism group acts
-regularly and the graph is a Cayley graph of a group of order 1,312 (G extended by the colour swap below).
+regularly and the graph is a Cayley graph of a group of order 1,312: Ĝ = <x, y, t | x^41 = y^16 = t^2 = 1,
+y x y^-1 = x^38, t x t = x^-1, t y t = y^9>, connection set T = S t (three involutions t, x^3 y^8 t, x^18 y^8 t and
+two inverse pairs); `records/build_d7D5_n1312_cayley.py` builds it (apsp VALID, nauty canonical form equal to the
+saved edge list). The self-dual map is psi(g) = beta(g)^-1 with beta(x) = x^-1, beta(y) = y^9; it fixes 1, x^3 y^8,
+x^18 y^8 and swaps x^14 y^3 <-> x y^5, x^32 y^14 <-> x y^2.
 
 Earlier in this job: **1,240** (C31 : C20 = SmallGroup(620,1), y x y^-1 = x^29, S = {(0,0), (1,10), (15,10), (27,17),
 (1,3), (13,2), (11,18)}; same checks, `records/d7D5_n1240_*`, `records/build_d7D5_n1240.sh`), 1,210 (SmallGroup(605,6) =
