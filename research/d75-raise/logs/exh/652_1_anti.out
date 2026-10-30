@@ -1,0 +1,19 @@
+alpha 0: p 2 fixed 2 orbits 325 reps 3
+GROUP /tmp/d75/g652_1.ht n 652 ninv 1 nalpha 6
+ANTI alpha 0 p 1 f 1 m 3 best 1099511627776 sols 0 evals 156978 passXX 0 secs 0.0
+alpha 1: p 2 fixed 326 orbits 163 reps 2
+ANTI alpha 1 p 2 f 1 m 3 best 1099511627776 sols 0 evals 26082 passXX 0 secs 0.0
+ANTI alpha 1 p 2 f 3 m 2 best 1099511627776 sols 0 evals 17058600 passXX 0 secs 1.9
+ANTI alpha 1 p 2 f 5 m 1 best 1099511627776 sols 0 evals 8000000 passXX 0 secs 1.3 CAPPED
+ANTI alpha 1 p 2 f 7 m 0 best 1099511627776 sols 0 evals 8000000 passXX 0 secs 0.9 CAPPED
+alpha 4: p 2 fixed 328 orbits 162 reps 2
+ANTI alpha 4 p 2 f 1 m 3 best 1099511627776 sols 0 evals 25760 passXX 0 secs 0.0
+ANTI alpha 4 p 2 f 3 m 2 best 1099511627776 sols 0 evals 17162922 passXX 0 secs 1.7
+ANTI alpha 4 p 2 f 5 m 1 best 1099511627776 sols 0 evals 8000000 passXX 0 secs 1.3 CAPPED
+ANTI alpha 4 p 2 f 7 m 0 best 1099511627776 sols 0 evals 8000000 passXX 0 secs 0.9 CAPPED
+alpha 5: p 2 fixed 328 orbits 162 reps 1
+ANTI alpha 5 p 2 f 1 m 3 best 1099511627776 sols 0 evals 12880 passXX 0 secs 0.0
+ANTI alpha 5 p 2 f 3 m 2 best 1099511627776 sols 0 evals 8581461 passXX 0 secs 0.9
+ANTI alpha 5 p 2 f 5 m 1 best 1099511627776 sols 0 evals 8000000 passXX 0 secs 1.7 CAPPED
+ANTI alpha 5 p 2 f 7 m 0 best 1099511627776 sols 0 evals 8000000 passXX 0 secs 0.8 CAPPED
+DONE evals 91024683 sols 0

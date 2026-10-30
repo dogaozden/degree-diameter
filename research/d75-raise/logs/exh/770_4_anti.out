@@ -1,0 +1,19 @@
+alpha 0: p 2 fixed 2 orbits 384 reps 14
+GROUP /tmp/d75/g770_4.ht n 770 ninv 1 nalpha 10
+ANTI alpha 0 p 1 f 1 m 3 best 1099511627776 sols 0 evals 1024142 passXX 0 secs 0.1
+alpha 1: p 2 fixed 22 orbits 374 reps 20
+ANTI alpha 1 p 2 f 1 m 3 best 94 sols 0 evals 1387560 passXX 0 secs 0.2
+ANTI alpha 1 p 2 f 3 m 2 best 500 sols 0 evals 1566600 passXX 0 secs 0.1
+ANTI alpha 1 p 2 f 5 m 1 best 1099511627776 sols 0 evals 119700 passXX 0 secs 0.0
+ANTI alpha 1 p 2 f 7 m 0 best 1099511627776 sols 0 evals 54264 passXX 0 secs 0.0
+alpha 8: p 2 fixed 14 orbits 378 reps 12
+ANTI alpha 8 p 2 f 1 m 3 best 50 sols 0 evals 850512 passXX 0 secs 0.1
+ANTI alpha 8 p 2 f 3 m 2 best 156 sols 0 evals 352872 passXX 0 secs 0.0
+ANTI alpha 8 p 2 f 5 m 1 best 1099511627776 sols 0 evals 8580 passXX 0 secs 0.0
+ANTI alpha 8 p 2 f 7 m 0 best 1099511627776 sols 0 evals 1716 passXX 0 secs 0.0
+alpha 9: p 2 fixed 154 orbits 308 reps 16
+ANTI alpha 9 p 2 f 1 m 3 best 76 sols 0 evals 300000 passXX 0 secs 0.0 CAPPED
+ANTI alpha 9 p 2 f 3 m 2 best 84 sols 0 evals 300000 passXX 0 secs 0.0 CAPPED
+ANTI alpha 9 p 2 f 5 m 1 best 114 sols 0 evals 300000 passXX 0 secs 0.0 CAPPED
+ANTI alpha 9 p 2 f 7 m 0 best 1099511627776 sols 0 evals 300000 passXX 0 secs 0.0 CAPPED
+DONE evals 6565946 sols 0

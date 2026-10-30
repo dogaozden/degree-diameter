@@ -1,0 +1,14 @@
+alpha 0: p 2 fixed 2 orbits 300 reps 8
+GROUP /tmp/d75/g602_2.ht n 602 ninv 1 nalpha 10
+ANTI alpha 0 p 1 f 1 m 3 best 1099511627776 sols 0 evals 356408 passXX 0 secs 0.1
+alpha 9: p 2 fixed 86 orbits 258 reps 12
+ANTI alpha 9 p 2 f 1 m 3 best 1099511627776 sols 0 evals 394752 passXX 0 secs 0.1
+SOL anti_a9_p2_f3_m2 0 11 97 21 240 285 490
+SOL anti_a9_p2_f3_m2 0 29 223 7 336 32 464
+SOL anti_a9_p2_f3_m2 0 69 174 26 247 264 511
+SOL anti_a9_p2_f3_m2 0 153 230 10 343 415 486
+SOL anti_a9_p2_f3_m2 0 202 419 26 247 217 250
+ANTI alpha 9 p 2 f 3 m 2 best 0 sols 5 evals 8000000 passXX 5 secs 1.4 CAPPED
+ANTI alpha 9 p 2 f 5 m 1 best 1099511627776 sols 0 evals 8000000 passXX 0 secs 1.3 CAPPED
+ANTI alpha 9 p 2 f 7 m 0 best 1099511627776 sols 0 evals 8000000 passXX 0 secs 1.2 CAPPED
+DONE evals 24751160 sols 5

@@ -1,0 +1,9 @@
+Syntax warning: Unbound global variable in enum.g:8
+    ninv := Number(AsList(G), x -> x <> One(G) and x^2 = One(G));
+                                            ^
+Syntax warning: Unbound global variable in enum.g:8
+    ninv := Number(AsList(G), x -> x <> One(G) and x^2 = One(G));
+                                                             ^
+Syntax warning: Unbound global variable in enum.g:10
+    nn := Filtered(NormalSubgroups(G), H -> Index(G, H) = 3);
+                                                  ^

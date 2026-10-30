@@ -1,0 +1,9 @@
+alpha 0: p 2 fixed 2 orbits 386 reps 8
+GROUP /tmp/d75/g774_2.ht n 774 ninv 1 nalpha 16
+ANTI alpha 0 p 1 f 1 m 3 best 374 sols 0 evals 591360 passXX 0 secs 0.1
+alpha 15: p 2 fixed 86 orbits 344 reps 8
+ANTI alpha 15 p 2 f 1 m 3 best 64 sols 0 evals 469224 passXX 0 secs 0.1
+ANTI alpha 15 p 2 f 3 m 2 best 38 sols 0 evals 9796080 passXX 0 secs 0.8
+ANTI alpha 15 p 2 f 5 m 1 best 1099511627776 sols 0 evals 300000 passXX 0 secs 0.0 CAPPED
+ANTI alpha 15 p 2 f 7 m 0 best 1099511627776 sols 0 evals 300000 passXX 0 secs 0.0 CAPPED
+DONE evals 11456664 sols 0

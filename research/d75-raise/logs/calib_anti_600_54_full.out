@@ -1,0 +1,62 @@
+alpha 0: p 2 fixed 2 orbits 299 reps 12
+GROUP /tmp/claude-0/sc/q600_54.ht n 600 ninv 1 nalpha 18
+ANTI alpha 0 p 1 f 1 m 3 best 1099511627776 sols 0 evals 531036 passXX 0 secs 0.1
+alpha 2: p 2 fixed 30 orbits 285 reps 29
+ANTI alpha 2 p 2 f 1 m 3 best 1099511627776 sols 0 evals 1165394 passXX 0 secs 0.2
+ANTI alpha 2 p 2 f 3 m 2 best 1099511627776 sols 0 evals 3343816 passXX 0 secs 0.5
+ANTI alpha 2 p 2 f 5 m 1 best 1099511627776 sols 0 evals 688779 passXX 0 secs 0.1
+ANTI alpha 2 p 2 f 7 m 0 best 1099511627776 sols 0 evals 475020 passXX 0 secs 0.1
+ANTI4 alpha 3 p 4 fixed 2 two 9 four 145 best 1099511627776 sols 0 evals 1389 passXX 0 secs 0.0
+alpha 5: p 2 fixed 20 orbits 290 reps 25
+ANTI alpha 5 p 2 f 1 m 3 best 1099511627776 sols 0 evals 1040400 passXX 0 secs 0.2
+ANTI alpha 5 p 2 f 3 m 2 best 1099511627776 sols 0 evals 1235475 passXX 0 secs 0.2
+ANTI alpha 5 p 2 f 5 m 1 best 1099511627776 sols 0 evals 96900 passXX 0 secs 0.0
+ANTI alpha 5 p 2 f 7 m 0 best 1099511627776 sols 0 evals 27132 passXX 0 secs 0.0
+ANTI4 alpha 6 p 4 fixed 2 two 59 four 120 best 1099511627776 sols 0 evals 39589 passXX 0 secs 0.0
+ANTI4 alpha 7 p 4 fixed 30 two 45 four 120 best 1099511627776 sols 0 evals 1539045 passXX 0 secs 0.3
+ANTI4 alpha 8 p 4 fixed 2 two 1 four 149 best 1099511627776 sols 0 evals 149 passXX 0 secs 0.0
+ANTI4 alpha 9 p 4 fixed 20 two 50 four 120 best 1099511627776 sols 0 evals 449395 passXX 0 secs 0.1
+ANTI4 alpha 10 p 4 fixed 2 two 59 four 120 best 1099511627776 sols 0 evals 39589 passXX 0 secs 0.0
+ANTI4 alpha 11 p 4 fixed 30 two 45 four 120 best 1099511627776 sols 0 evals 1539045 passXX 0 secs 0.3
+ANTI4 alpha 12 p 4 fixed 2 two 1 four 149 best 1099511627776 sols 0 evals 149 passXX 0 secs 0.0
+ANTI4 alpha 13 p 4 fixed 20 two 50 four 120 best 1099511627776 sols 0 evals 449395 passXX 0 secs 0.1
+alpha 14: p 2 fixed 10 orbits 295 reps 10
+ANTI alpha 14 p 2 f 1 m 3 best 1099511627776 sols 0 evals 430710 passXX 0 secs 0.1
+ANTI alpha 14 p 2 f 3 m 2 best 1099511627776 sols 0 evals 105840 passXX 0 secs 0.0
+ANTI alpha 14 p 2 f 5 m 1 best 1099511627776 sols 0 evals 1260 passXX 0 secs 0.0
+ANTI alpha 14 p 2 f 7 m 0 best 1099511627776 sols 0 evals 84 passXX 0 secs 0.0
+alpha 15: p 2 fixed 150 orbits 225 reps 22
+ANTI alpha 15 p 2 f 1 m 3 best 1099511627776 sols 0 evals 549472 passXX 0 secs 0.1
+ANTI alpha 15 p 2 f 3 m 2 best 1099511627776 sols 0 evals 54336128 passXX 0 secs 9.0
+SOL anti_a15_p2_f5_m1 0 5 12 274 358 171 341
+SOL anti_a15_p2_f5_m1 0 7 17 249 573 261 496
+SOL anti_a15_p2_f5_m1 0 8 91 481 513 61 306
+SOL anti_a15_p2_f5_m1 0 10 17 303 459 161 396
+SOL anti_a15_p2_f5_m1 0 11 20 457 581 165 535
+SOL anti_a15_p2_f5_m1 0 11 21 100 419 61 306
+SOL anti_a15_p2_f5_m1 0 12 20 459 582 165 535
+SOL anti_a15_p2_f5_m1 0 13 20 456 583 165 535
+SOL anti_a15_p2_f5_m1 0 14 20 458 584 165 535
+SOL anti_a15_p2_f5_m1 0 16 20 291 427 55 350
+SOL anti_a15_p2_f5_m1 0 16 388 428 480 55 350
+SOL anti_a15_p2_f5_m1 0 17 20 292 429 55 350
+SOL anti_a15_p2_f5_m1 0 17 386 426 480 55 350
+SOL anti_a15_p2_f5_m1 0 18 20 293 426 55 350
+SOL anti_a15_p2_f5_m1 0 18 389 429 480 55 350
+SOL anti_a15_p2_f5_m1 0 19 20 294 428 55 350
+SOL anti_a15_p2_f5_m1 0 19 387 427 480 55 350
+SOL anti_a15_p2_f5_m1 0 21 333 418 456 61 306
+SOL anti_a15_p2_f5_m1 0 23 89 332 425 161 396
+SOL anti_a15_p2_f5_m1 0 24 92 459 573 66 501
+SOL anti_a15_p2_f5_m1 0 88 97 389 418 171 341
+SOL anti_a15_p2_f5_m1 0 91 97 331 425 165 535
+SOL anti_a15_p2_f5_m1 0 92 99 332 425 165 535
+SOL anti_a15_p2_f5_m1 0 93 96 333 425 165 535
+SOL anti_a15_p2_f5_m1 0 94 98 334 425 165 535
+SOL anti_a15_p2_f5_m1 0 94 248 457 484 66 501
+SOL anti_a15_p2_f5_m1 0 98 419 425 482 171 341
+SOL anti_a15_p2_f5_m1 0 125 156 291 429 31 186
+SOL anti_a15_p2_f5_m1 0 125 301 481 514 61 306
+SOL anti_a15_p2_f5_m1 0 273 357 389 583 171 341
+SOL anti_a15_p2_f5_m1 0 294 302 427 573 261 496
+ANTI alpha 15 p 2 f 5 m 1 best 0 sols 31 evals 433840053 passXX 31 secs 90.4

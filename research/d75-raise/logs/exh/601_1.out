@@ -1,0 +1,12 @@
+alpha 0: p 5 fixed 1 orbits 120 reps 1
+alpha 1: p 5 fixed 1 orbits 120 reps 1
+alpha 2: p 5 fixed 1 orbits 120 reps 1
+alpha 3: p 5 fixed 1 orbits 120 reps 1
+alpha 4: p 3 fixed 1 orbits 200 reps 1
+GROUP /tmp/d75/g601_1.ht n 601 ninv 0 nalpha 7
+TYPE alpha 4 p 3 f 1 m 2 best 1099511627776 sols 0 evals 199 passXX 0 secs 0.0
+alpha 5: p 3 fixed 1 orbits 200 reps 1
+TYPE alpha 5 p 3 f 1 m 2 best 1099511627776 sols 0 evals 199 passXX 0 secs 0.0
+alpha 6: p 2 fixed 1 orbits 300 reps 1
+TYPE alpha 6 p 2 f 1 m 3 best 1099511627776 sols 0 evals 44551 passXX 0 secs 0.0
+DONE evals 44949 sols 0

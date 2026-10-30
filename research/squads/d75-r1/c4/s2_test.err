@@ -1,0 +1,11 @@
+Syntax warning: Unbound global variable in stage2.g:12
+  Hs := Filtered(Hs, H -> Size(Core(G, H)) = 1);
+                                    ^
+Syntax warning: Unbound global variable in stage2.g:13
+  Hs := Filtered(Hs, H -> ForAll(NormalSubgroups(G), N -> Index(G, N) <> 2 or \
+Size(Intersection(N, H)) > 1));
+                                                 ^
+Syntax warning: Unbound global variable in stage2.g:13
+  Hs := Filtered(Hs, H -> ForAll(NormalSubgroups(G), N -> Index(G, N) <> 2 or \
+Size(Intersection(N, H)) > 1));
+                                                                ^

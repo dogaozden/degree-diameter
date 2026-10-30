@@ -1,0 +1,14 @@
+alpha 0: p 2 fixed 1 orbits 312 reps 4
+GROUP /tmp/d75/g625_14.ht n 625 ninv 0 nalpha 23
+ANTI alpha 0 p 1 f 1 m 3 best 1099511627776 sols 0 evals 192820 passXX 0 secs 0.0
+alpha 10: p 2 fixed 25 orbits 300 reps 4
+ANTI alpha 10 p 2 f 1 m 3 best 1099511627776 sols 0 evals 178204 passXX 0 secs 0.0
+ANTI alpha 10 p 2 f 3 m 2 best 1099511627776 sols 0 evals 330096 passXX 0 secs 0.1
+ANTI alpha 10 p 2 f 5 m 1 best 1099511627776 sols 0 evals 42504 passXX 0 secs 0.0
+ANTI alpha 10 p 2 f 7 m 0 best 1099511627776 sols 0 evals 134596 passXX 0 secs 0.0
+alpha 11: p 2 fixed 125 orbits 250 reps 6
+ANTI alpha 11 p 2 f 1 m 3 best 1099511627776 sols 0 evals 185256 passXX 0 secs 0.0
+ANTI alpha 11 p 2 f 3 m 2 best 1099511627776 sols 0 evals 8000000 passXX 0 secs 1.3 CAPPED
+ANTI alpha 11 p 2 f 5 m 1 best 1099511627776 sols 0 evals 8000000 passXX 0 secs 1.4 CAPPED
+ANTI alpha 11 p 2 f 7 m 0 best 1099511627776 sols 0 evals 8000000 passXX 0 secs 1.2 CAPPED
+DONE evals 25063476 sols 0

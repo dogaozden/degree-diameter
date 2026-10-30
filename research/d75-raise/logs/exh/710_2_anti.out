@@ -1,0 +1,9 @@
+alpha 0: p 2 fixed 2 orbits 354 reps 6
+GROUP /tmp/d75/g710_2.ht n 710 ninv 1 nalpha 12
+ANTI alpha 0 p 1 f 1 m 3 best 1099511627776 sols 0 evals 372768 passXX 0 secs 0.0
+alpha 11: p 2 fixed 142 orbits 284 reps 8
+ANTI alpha 11 p 2 f 1 m 3 best 1099511627776 sols 0 evals 319224 passXX 0 secs 0.1
+ANTI alpha 11 p 2 f 3 m 2 best 1099511627776 sols 0 evals 22345680 passXX 0 secs 3.0
+ANTI alpha 11 p 2 f 5 m 1 best 1099511627776 sols 0 evals 3000000 passXX 0 secs 0.6 CAPPED
+ANTI alpha 11 p 2 f 7 m 0 best 1099511627776 sols 0 evals 3000000 passXX 0 secs 0.4 CAPPED
+DONE evals 29037672 sols 0

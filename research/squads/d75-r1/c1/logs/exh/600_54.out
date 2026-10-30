@@ -1,0 +1,30 @@
+alpha 0: p 5 fixed 50 orbits 110 reps 44
+GROUP /home/user/degree-diameter/research/squads/d75-r1/c1/tmp/d75/g600_54.ht n 600 ninv 1 nalpha 7
+TYPE alpha 0 p 5 f 2 m 1 best 1099511627776 sols 0 evals 2156 passXX 0 secs 0.0
+alpha 1: p 2 fixed 20 orbits 290 reps 32
+TYPE alpha 1 p 2 f 1 m 3 best 4 sols 0 evals 1331712 passXX 6 secs 0.2
+TYPE alpha 1 p 2 f 3 m 2 best 1099511627776 sols 0 evals 1581408 passXX 0 secs 0.3
+TYPE alpha 1 p 2 f 5 m 1 best 1099511627776 sols 0 evals 124032 passXX 0 secs 0.0
+alpha 2: p 3 fixed 30 orbits 190 reps 38
+TYPE alpha 2 p 3 f 1 m 2 best 1099511627776 sols 0 evals 7182 passXX 0 secs 0.0
+TYPE alpha 2 p 3 f 4 m 1 best 1099511627776 sols 0 evals 138852 passXX 0 secs 0.0
+alpha 3: p 2 fixed 30 orbits 285 reps 22
+SOL a3_p2_f1_m3 0 36 491 123 578 221 456
+SOL a3_p2_f1_m3 0 56 151 77 137 432 507
+SOL a3_p2_f1_m3 0 56 151 87 252 382 467
+SOL a3_p2_f1_m3 0 76 136 58 153 431 506
+TYPE alpha 3 p 2 f 1 m 3 best 0 sols 4 evals 884096 passXX 11 secs 0.2
+TYPE alpha 3 p 2 f 3 m 2 best 1099511627776 sols 0 evals 2536688 passXX 0 secs 0.5
+TYPE alpha 3 p 2 f 5 m 1 best 1099511627776 sols 0 evals 522522 passXX 0 secs 0.1
+alpha 4: p 2 fixed 120 orbits 240 reps 7
+TYPE alpha 4 p 2 f 1 m 3 best 1099511627776 sols 0 evals 199087 passXX 0 secs 0.0
+TYPE alpha 4 p 2 f 3 m 2 best 1099511627776 sols 0 evals 10000000 passXX 0 secs 1.5 CAPPED
+TYPE alpha 4 p 2 f 5 m 1 best 1099511627776 sols 0 evals 10000000 passXX 0 secs 1.7 CAPPED
+alpha 5: p 2 fixed 4 orbits 298 reps 35
+TYPE alpha 5 p 2 f 1 m 3 best 1099511627776 sols 0 evals 1538460 passXX 0 secs 0.2
+TYPE alpha 5 p 2 f 3 m 2 best 1099511627776 sols 0 evals 31185 passXX 0 secs 0.0
+alpha 6: p 2 fixed 6 orbits 297 reps 26
+TYPE alpha 6 p 2 f 1 m 3 best 1099511627776 sols 0 evals 1135160 passXX 0 secs 0.2
+TYPE alpha 6 p 2 f 3 m 2 best 1099511627776 sols 0 evals 76960 passXX 0 secs 0.0
+TYPE alpha 6 p 2 f 5 m 1 best 1099511627776 sols 0 evals 130 passXX 0 secs 0.0
+DONE evals 30109630 sols 4
