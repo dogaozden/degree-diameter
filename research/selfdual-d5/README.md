@@ -97,5 +97,12 @@ Check of every hit: research/lifts/coordinator_check/apsp.c (`src/apsp`), VALID 
   `logs/meta9_list.txt`): C61 : C24 (d = 6) -> 2,928. After each hit the lists were cut to larger orders. Near misses
   (|G \ X X| = 2) at 1467 (C163 : C9), 1474 (C67 : C22), 1485 (SmallGroup(1485,4), (1485,5)); a probe of the metacyclic
   groups of order 1569-1635 stays at 10 or more, so the frontier of this family is around 1470-1500.
+  Later: 1464 (C61 : C24, metacyclic list) -> 2,928; deep runs (`src/deep_tabu.sh`, `src/deep_loop.py`: 300 s per
+  near-miss record/type, best <= 3, above the current record order) gave 1467 (C163 : C9) -> 2,934 and 1485
+  (Heis(3) x (C11 : C5)) -> 2,970. From 22:57: odd-order groups and groups with one involution (center <= 30, not
+  nilpotent, `logs/wl9_inv1_1468_1560.txt`) of order 1486-1560, two deep workers (seeds 11 and 23).
+- (8,5): self-dual tabu on AGL(1,7) x C21 (order 882, the old Haar record group): a (4,2) set in 0.3 s, many types at 1.
+  Metacyclic probe at 1025 (C41 : C25): best 4 after 13 min; stopped (1025 is 16% above 882).
 - (7,5): SmallGroup(660,16) (the previous job's near miss) with every type uncapped: no solution, best 2
-  (`logs/K7/deep/660_16_all.out`).
+  (`logs/K7/deep/660_16_all.out`). From 23:00 the 600 uncovered groups of order 657-672 (`logs/wl7_a_657_672.txt`,
+  MAXEVF 3e5 as in the previous job, oversized types sampled) run at low priority.
