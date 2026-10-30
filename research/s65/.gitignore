@@ -1,0 +1,13 @@
+# regenerable group tables (tools/export_all.sh, tools/export_sg.sh) and binaries
+groups/**/*.txt
+groups/**/*.log
+val/bc_120_*.txt
+tools/bicay
+tools/score65
+tools/apsp
+tools/vl
+tools/kopt
+tools/dcenum
+tools/b4a2x
+tools/haarex2
+*.o
