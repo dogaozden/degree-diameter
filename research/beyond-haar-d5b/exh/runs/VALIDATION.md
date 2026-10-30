@@ -19,5 +19,6 @@ loop order, so it reports fewer (equivalent) solutions. Compared by nauty canoni
 
 # b4a2y on a group with solutions, against b4a2x
 
-- SmallGroup(96,17): see runs/val_b4a2x_96_17.* (b4a2x, exhaustive) against the b4a2y solutions in
-  runs/b4a2y_96_17.sol (filled in when the b4a2x run ends).
+- SmallGroup(96,17) (a group with solutions): b4a2x, stopped at a 3,000 s cap on a loaded machine, found 12
+  solutions (runs/val_b4a2x_96_17.sol), all in one isomorphism class; b4a2y (exhaustive, 53 s) found 2 solutions in
+  one class, the same one (nauty canonical forms equal).
