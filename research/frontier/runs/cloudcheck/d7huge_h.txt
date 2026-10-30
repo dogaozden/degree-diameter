@@ -29,4 +29,9 @@ Range d20 12 (7239485..7897620), final lines of range_d20_12.out:
 n=15795219 edges=157589798 degree min=18 max=20 bipartite=yes diameter=7 sources=7239485..7897620
 RESULT VALID d=20 D=7 n=15795219 (sources in the range only)
 
-Range d20 14 (8555755..9213890): pending
+Range d20 14 (8555755..9213890), final lines of range_d20_14.out:
+658135 of 658135 sources done (1793337104)
+n=15795219 edges=157589798 degree min=18 max=20 bipartite=yes diameter=7 sources=8555755..9213890
+RESULT VALID d=20 D=7 n=15795219 (sources in the range only)
+
+Note: the first run of range d20 14 was cut off at 557056 of 658135 sources by a worker restart; it was rerun from the start with the same command, and only the complete rerun is copied above.
