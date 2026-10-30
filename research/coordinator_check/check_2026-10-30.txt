@@ -1,0 +1,6 @@
+== (7,5) 1,312 — job d75-raise, branch claude/d75-raise-optimization-v25kr8 (research/d75-raise/records/)
+rebuilt on the Mac mini from the formula alone with the coordinator's own code (G = C41 : C16, y x y^-1 = x^38, S = {(0,0), (3,8), (18,8), (14,3), (1,5), (32,14), (1,2)},
+(g,A) ~ (s g, B); BFS from every vertex): n = 1312, simple, 7-regular, bipartite, diameter 5
+finder's records/d7D5_n1312_haar_c41c16.edges (sha256 95642aa9962145b817de0b66dacb7fa17e994e9e16c219db0ce22ab351653b73) rebuilt identically by records/build_metacyclic_haar.py
+apsp (research/lifts/coordinator_check/apsp.c, all pairs, no symmetry) on the finder's edge list -> RESULT VALID d=7 D=5 n=1312; at D = 4 -> RESULT INVALID
+records/build_d7D5_n1312_cayley.py (the same graph as a Cayley graph of a group of order 1,312) -> apsp RESULT VALID d=7 D=5 n=1312
