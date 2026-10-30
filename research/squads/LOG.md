@@ -126,7 +126,8 @@ solved exactly instead of enumerated; validated against haarex2 on SmallGroup(34
 side-A covers and the same 10 VALID sets, and on SmallGroup(360,53); about 4x faster) over the 255 open groups of order
 352-360 with more than 3 involutions (research/s65/haar/hi_list_0..7.txt).
 Result: all 255 finished (each card 31-33 groups in 13-17 minutes; high-involution groups have large automorphism
-groups and run fast); no VALID set and not a single side-A cover. Two cards reran the 342_12 control themselves.
+groups and run fast); no VALID set. Side-A covers only in SmallGroup(360,126) (4 sets) and (360,138) (44 sets), side B
+at least 4 short in all (card c2, whose report went out before these runs finished). Two cards reran the 342_12 control.
 **Haar closure:** with rounds 2-6, this job's director runs (360_53, 352_43, 360_61, 360_74, 360_52 rerun) and job
 fresh-6-5's 24 groups, every one of the 353 non-abelian groups of order 352-360 is now closed exhaustively (check:
 research/s65/haar/all_352_360.txt against the logs); abelian groups give at most 542 vertices (fresh-6-5's counting

@@ -28,10 +28,11 @@ research/squads/LOG.md). Result so far: **no graph above 684**; the work below n
   exhaustively for a 6-element S with H(G,S) of diameter 5 (haarex2 for the 93 groups with <= 3 involutions, 24 of
   them in job fresh-6-5, and 5 more; haarex3 for the other 255, round s65r7): none exists. Abelian groups give at
   most 542 vertices (fresh-6-5's counting bound), and fresh-6-5 closed orders 343-351 the same way. Side-A covers (side
-  B then 2 or more short) occur only in SmallGroup(360,53), (360,55), (360,56), (360,125), (360,136). Check script and
+  B then 2 or more short) occur only in SmallGroup(360,53), (360,55), (360,56), (360,125), (360,126), (360,136), (360,138). Check script and
   lists: `haar/all_352_360.txt`, `haar/STATUS.md`; logs in research/squads/s65r2-s65r7/c*/h*.log.
-- **Haar graphs, orders 361-380** (722-760): the 41 low-involution groups with large |Aut| closed in round s65r4, the
-  other 111 non-abelian groups in round s65r8 (status in the log); annealing over all of them: best 6.
+- **No Haar graph on 722-760 vertices either**: all 151 non-abelian groups of order 361-380 closed (40 in round s65r4,
+  111 in round s65r8; side-A covers only in 372_1 = C31:C12). So the 684 record is the largest Haar graph of degree 6
+  and diameter 5 below 762 vertices. `python3 research/s65/haar/check_closure.py` re-derives `haar/STATUS.md` from the logs.
 - **Non-Haar coset graphs**: a bi-coset graph B(G;H,H) with an index-|H| normal subgroup N meeting H trivially is a Haar
   graph of N, so sweeps keep only the other H (`SKIPHAAR`). |H| = 2: orders 686-720 and 704 (all groups), best 8
   (SmallGroup(720,439)); |H| = 3: only orders 1050/1053 have non-Haar pairs (best 150); 1080: best 12 (3.A6, exhaustive
