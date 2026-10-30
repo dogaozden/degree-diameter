@@ -1,8 +1,9 @@
 # Exhaustive Haar search (haarex2), job squad-6-5
 
-Generated from the haarex2 logs of rounds s65r2-s65r5 and research/s65/haar/h360_53/. "complete" = every pair class
-0..P-1 is covered by DONE runs or by finished PAIR lines of an interrupted run. 360_52: complete per its card table
-(log overwritten by a rerun): 116,195,962 sets, minA 4.
+Generated from the haarex2 logs of rounds s65r2-s65r6 and research/s65/haar/h360_53/. "complete" = every pair class
+0..P-1 is covered by DONE runs or by the finished PAIR lines of interrupted runs. 360_52: complete per its card table
+(log overwritten by a rerun). Earlier (job fresh-6-5): all 41 non-abelian groups of order 343-351, and 24 groups of
+order 352-360 (research/squads/cells/d6D5.md on claude/bipartite-6-5-fresh-16bvjp).
 
 | group | complete | sets (DONE runs) | side-A covers | valid | min uncovered side A |
 |---|---|---|---|---|---|
@@ -47,11 +48,12 @@ Generated from the haarex2 logs of rounds s65r2-s65r5 and research/s65/haar/h360
 | 352_154 | yes | 132,961,473 | 0 | 0 | 18 |
 | 352_160 | yes | 119,864,680 | 0 | 0 | 6 |
 | 352_163 | yes | 123,089,395 | 0 | 0 | 6 |
-| 352_169 | PARTIAL | 0 | 0 | 0 | - |
+| 352_169 | yes | 20,920,652 | 0 | 0 | 10 |
 | 354_1 | yes | 125,131,010 | 0 | 0 | 4 |
 | 360_18 | yes | 191,115,425 | 0 | 0 | 6 |
 | 360_23 | yes | 153,073,692 | 0 | 0 | 5 |
-| 360_52 | PARTIAL | 0 | 0 | 0 | - |
+| 360_28 | yes | 103,630,070 | 0 | 0 | 103 |
+| 360_52 | yes | 116,195,962 | 0 | 0 | 4 |
 | 360_53 | yes | 77,497,443 | 17 | 0 | 0 |
 | 360_54 | yes | 65,110,226 | 0 | 0 | 2 |
 | 360_55 | yes | 101,459,186 | 3 | 0 | 0 |
@@ -66,15 +68,18 @@ Generated from the haarex2 logs of rounds s65r2-s65r5 and research/s65/haar/h360
 | 360_90 | yes | 116,673,834 | 0 | 0 | 6 |
 | 360_93 | yes | 116,673,834 | 0 | 0 | 11 |
 | 360_95 | yes | 64,487,432 | 0 | 0 | 4 |
-| 360_100 | PARTIAL | 0 | 0 | 0 | - |
+| 360_98 | yes | 316,900,559 | 0 | 0 | 10 |
+| 360_100 | yes | 51,149,375 | 0 | 0 | 8 |
 | 360_103 | yes | 183,211,496 | 0 | 0 | 8 |
 | 360_105 | yes | 108,358,704 | 0 | 0 | 6 |
+| 360_108 | yes | 108,358,704 | 0 | 0 | 8 |
 | 360_110 | yes | 70,809,613 | 0 | 0 | 106 |
 | 360_113 | yes | 70,809,613 | 0 | 0 | 108 |
 | 360_117 | yes | 129,466,784 | 0 | 0 | 21 |
 | 360_125 | yes | 64,286,378 | 5 | 0 | 0 |
 | 360_136 | yes | 53,511,537 | 11 | 0 | 0 |
 | 363_2 | yes | 9,389,024 | 0 | 0 | 2 |
+| 364_1 | PARTIAL | 0 | 0 | 0 | 8 |
 | 364_2 | yes | 86,867,098 | 0 | 0 | 6 |
 | 364_3 | yes | 55,173,163 | 0 | 0 | 104 |
 | 366_2 | yes | 23,573,360 | 0 | 0 | 3 |
@@ -94,14 +99,21 @@ Generated from the haarex2 logs of rounds s65r2-s65r5 and research/s65/haar/h360
 | 372_5 | yes | 62,883,849 | 0 | 0 | 114 |
 | 372_9 | yes | 41,345,411 | 0 | 0 | 2 |
 | 372_11 | yes | 28,512,117 | 0 | 0 | 2 |
+| 375_2 | yes | 28,402,885 | 0 | 0 | 2 |
 | 375_4 | yes | 25,813,268 | 0 | 0 | 6 |
+| 375_5 | yes | 64,576,777 | 0 | 0 | 2 |
 | 375_6 | yes | 39,961,591 | 0 | 0 | 4 |
 | 376_1 | yes | 53,212,899 | 0 | 0 | 27 |
 | 376_3 | yes | 52,191,197 | 0 | 0 | 114 |
 | 376_6 | yes | 52,191,197 | 0 | 0 | 117 |
+| 376_10 | yes | 144,739,561 | 0 | 0 | 23 |
+| 378_23 | yes | 145,100,198 | 0 | 0 | 2 |
 | 378_26 | yes | 82,209,555 | 0 | 0 | 5 |
+| 378_27 | yes | 84,474,201 | 0 | 0 | 3 |
 | 378_28 | yes | 83,604,262 | 0 | 0 | 3 |
 | 378_45 | yes | 127,967,842 | 0 | 0 | 8 |
+| 378_48 | yes | 124,835,953 | 0 | 0 | 3 |
 | 378_52 | yes | 59,030,152 | 0 | 0 | 5 |
+| 378_54 | yes | 171,300,278 | 0 | 0 | 12 |
 | 380_2 | yes | 91,827,024 | 0 | 0 | 10 |
 | 380_3 | yes | 66,226,130 | 0 | 0 | 120 |

@@ -23,14 +23,24 @@ research/squads/LOG.md). Result so far: **no graph above 684**; the work below n
 
 ## Results
 
-- **Haar graphs, orders 352-360** (704-720 vertices): exhaustive haarex2 over the low-involution groups (<= 3
-  involutions), table in `haar/STATUS.md`; no Haar graph of diameter 5. Side-A covers (side B then 2+ short) only in
-  SmallGroup(360,53), (360,55), (360,56). Annealing over the 260 groups with more involutions: best cost 4.
-- **Non-Haar coset graphs**: |H| = 2 at 686-720 (non-Haar pairs only after round 1; a bi-coset graph B(G;H,H) with an
-  index-2 normal subgroup N not containing H is a Haar graph of N), best 8 (SmallGroup(720,439)); |H| = 3 at 1035-1080,
-  best 12 (3.A6, exhaustive optimum 12); |H| = 4: only Haar-type pairs at orders 4p.
-- **2+2 lifts** (orders 160-180): exact 2-opt after annealing solves 640 vertices (calibration), not 672; tabu reaches
-  lift cost 4-6 at 704-720; the Haar near misses of 360_53 and the best bi-Cayley near miss (704), written as lifts, have
-  no cost-0 2-opt neighbour.
-- Other families (all far): tri-Cayley (10 at 690), 3+3 lifts (28 at 696), alpha-invariant 2+2 lifts (38), multi-orbit
-  "1|2,2" (27), vertex deletion + rewiring of near misses (1428 bad pairs at 686).
+- **Haar graphs, orders 352-360** (704-720 vertices): exhaustive haarex2 runs now cover **all 93 non-abelian groups of
+  order 352-360 with at most 3 involutions** (24 in job fresh-6-5, 69 in this job): no Haar graph of degree 6 and
+  diameter 5. Together with fresh-6-5's theorem for 343-351 this leaves, below 722 vertices, only Haar graphs of the
+  groups of order 352-360 with more than 3 involutions; annealing over 215 of those 260 reaches cost 4 at best, and the
+  two best (360_125, 360_136) were also closed exhaustively. Side-A covers (side B then 2+ short) exist only in
+  360_53/55/56/125/136. Table: `haar/STATUS.md` (109 complete exhaustive runs, orders 352-380).
+- **Haar graphs, orders 361-380** (722-760): 41 low-involution groups closed exhaustively (none valid; 372_1 = C31:C12
+  covers side A); annealing over all non-abelian groups of these orders: best 6 (`haar/anneal_362_380.txt`).
+- **Non-Haar coset graphs**: a bi-coset graph B(G;H,H) with an index-|H| normal subgroup N meeting H trivially is a Haar
+  graph of N, so sweeps keep only the other H (`SKIPHAAR`). |H| = 2: orders 686-720 and 704 (all groups), best 8
+  (SmallGroup(720,439)); |H| = 3: only orders 1050/1053 have non-Haar pairs (best 150); 1080: best 12 (3.A6, exhaustive
+  optimum 12); |H| = 4: only Haar-type pairs at orders 4p.
+- **C3 x P256 (768 vertices)**, the analogue of the vertex-transitive (5,5) record (C3 x SmallGroup(128,139), |H| = 2;
+  calibration: the same pipeline re-finds it, and it is the only cost-0 pair among the 231 non-Haar pairs of C3 x P128):
+  about 670 pairs over the 4,284 groups P with <= 11 involutions, best 48 of 768, median ~100; semidirect C3 : P256 best 62.
+- **2+2 lifts** (orders 160-192): annealing + exact 2-opt solves 640 vertices (calibration), not 672; tabu reaches lift
+  cost 4-6 at 704-720, 22-36 at 768. The Haar near misses of 360_53 (bad 360, the closest graphs above 684 found here)
+  written as 2+2, 3+3, 4+4 and 8+8 lifts have no cost-0 2-opt neighbour, and tabu does not move them below cost 4.
+- Other families (all far): tri-Cayley (10 at 690), 3+3 lifts (14 at 696 with tabu), alpha-invariant 2+2 lifts (38),
+  bi-Cayley (4 at 704 with annealing), multi-orbit "1|2,2" (27), self-dual Haar (no side-A cover even on the 684 group),
+  vertex deletion + rewiring of near misses (1428 bad pairs at 686).
