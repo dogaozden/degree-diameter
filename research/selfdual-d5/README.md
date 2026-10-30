@@ -5,7 +5,19 @@ Job "selfdual-d5" (Opus cloud session, Oct 30 2026, from 20:35 UTC). Method from
 (t^2 = c, t x t^-1 = beta(x)), then H(G,S) = Cay(G^, tS) is vertex-transitive and only X X = G (X = S^-1 S) has to
 be checked. Work in progress; see the status section at the end.
 
-**NEW (9,5): 2,790 vertices** (our value was 2,758; it was the Haar graph of C197 : C7): the Haar graph of
+**NEW (9,5): 2,814 vertices** (our value was 2,758, the Haar graph of C197 : C7; 2,790 earlier in this job): the
+Haar graph of G = C67 : C21 = <x, y | x^67 = y^21 = 1, y x y^-1 = x^29> = SmallGroup(1407,2) = C7 x (C67 : C3), elements
+x^i y^j written (i,j), S = {(0,0), (51,0), (4,0), (22,10), (10,11), (44,5), (3,16), (55,19), (25,2)}, (g,A) ~ (s g, B).
+9-regular, bipartite, diameter 5. Self-dual for beta(x) = x^-1, beta(y) = y (psi fixes (0,0), (51,0), (4,0) and swaps
+three pairs), so also the Cayley graph of G : <tau> = C67 : C42 with T = S tau (three involutions, three inverse pairs).
+Checks: apsp.c RESULT VALID at D = 5 and INVALID at D = 4 (`records/d9D5_n2814_apsp.txt`), independent Python checker
+VALID (`records/d9D5_n2814_check_independent.txt`), GAP-free rebuild from the formula identical to the saved edge
+list, Cayley build (`records/build_metacyclic_cayley.py`) and the search's own build: same nauty canonical form. Files:
+`records/d9D5_n2814_haar_c67c21.edges` (sha256 951655670d9d7bed30f3568c696814e397a010081bc26827268c58046d7e42d8),
+rebuild `records/build_d9D5_n2814.sh`, search output `records/sg1407_2_tabu.out` (sdtabu K = 9, type (3,3)). A second
+group of the same order also works: C469 : C3 = SmallGroup(1407,4) (`records/sg1407_4_tabu.out`, apsp VALID).
+
+Earlier in this job, **2,790 vertices**: the Haar graph of
 G = C31 : C45 = <x, y | x^31 = y^45 = 1, y x y^-1 = x^28> = SmallGroup(1395,1) (y acts with order 15), elements x^i y^j
 written (i,j), S = {(0,0), (28,20), (18,25), (24,26), (22,19), (21,28), (3,17), (10,41), (4,4)}, (g,A) ~ (s g, B).
 9-regular, bipartite, diameter 5. S is self-dual for beta(x) = x^-1, beta(y) = y (psi fixes (0,0) and swaps the four
