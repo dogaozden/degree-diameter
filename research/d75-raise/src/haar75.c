@@ -162,7 +162,7 @@ static void build_orbits(int a) {
     fprintf(stderr, "alpha %d: p %d fixed %d orbits %d reps %d\n", a, p, nfix, norb, nrep);
 }
 
-static int use_fast = 1; static long long cap_ev = 30000000, type_e0 = 0; static int capped = 0;
+static int use_fast = 1; static long long cap_ev = 30000000, cap_ev_lo = 30000000, cap_ev_hi = 30000000, type_e0 = 0; static int capped = 0;
 static void eval_set(int k, const char *tag) {
     if (evals - type_e0 >= cap_ev) { capped = 1; return; }
     if (use_fast) {
@@ -211,6 +211,7 @@ static void run_anti(void) {
             if (f > nfix || m > norb) continue;
             want_m = m; want_f = f; typebest = 1LL << 40; typesol = 0;
             long long e0 = evals, p0 = npassA; clock_t c0 = clock(); type_e0 = evals; capped = 0;
+            cap_ev = f >= 4 ? cap_ev_hi : cap_ev_lo;
             snprintf(tagbuf, sizeof tagbuf, "anti_a%d_p%d_f%d_m%d", a, alp[a], f, m);
             Sbuf[0] = 0; rec_fix(f - 1, 0, 1);
             printf("ANTI alpha %d p %d f %d m %d best %lld sols %lld evals %lld passXX %lld secs %.1f%s\n", a, alp[a], f, m,
@@ -229,6 +230,7 @@ static void run_exh(void) {
             if (f > nfix || m > norb) continue;
             want_m = m; want_f = f; typebest = 1LL << 40; typesol = 0;
             long long e0 = evals, p0 = npassA; clock_t c0 = clock(); type_e0 = evals; capped = 0;
+            cap_ev = f >= 4 ? cap_ev_hi : cap_ev_lo;
             snprintf(tagbuf, sizeof tagbuf, "a%d_p%d_f%d_m%d", a, alp[a], f, m);
             if (f >= 1) { Sbuf[0] = 0; rec_fix(f - 1, 0, 1); } else rec_fix(0, 0, 0);
             printf("TYPE alpha %d p %d f %d m %d best %lld sols %lld evals %lld passXX %lld secs %.1f%s\n", a, alp[a], f, m,
@@ -267,7 +269,8 @@ int main(int argc, char **argv) {
     load(argv[1]);
     printf("GROUP %s n %d ninv %d nalpha %d\n", argv[1], n, ninv, nal);
     if (getenv("SLOW")) use_fast = 0;
-    if (getenv("MAXEV")) cap_ev = atoll(getenv("MAXEV"));
+    if (getenv("MAXEV")) cap_ev_lo = cap_ev_hi = atoll(getenv("MAXEV"));
+    if (getenv("MAXEVF")) cap_ev_hi = atoll(getenv("MAXEVF"));   /* cap for types with >= 4 fixed elements */
     if (!strcmp(argv[2], "exh")) run_exh();
     else if (!strcmp(argv[2], "anti")) run_anti();
     else if (!strcmp(argv[2], "both")) { run_exh(); run_anti(); } else run_sa();
