@@ -1,0 +1,11 @@
+1. W(q), Q(4,q) = W(q)^D are GQs of order (q,q): checked for q = 2, 3, 5
+2. Theorem A: random tournaments, typings, bijections, q = 2, 3, r = 1, 2: regular, diameter 5
+3. Theorem E agrees with the brute force on 336 transitions (35 repaired; failing only (E2): 1, only (E3): 0, both: 300)
+4. Theorem B: identity transitions on Q(4,3) and W(3) (20 non-collinear sets repaired, 20 sets with a collinear pair not), and the duality of W(2): checked
+5. Proposition 6.4 and Theorem C (q = 3, 5), triad centres (Q(4,q): 0, 2; W(q): 1, q+1), Corollary 6.2: checked
+6. Propositions 7.1 and 7.2 (relaxed freed sets, the hub rule): checked for q = 3, 5
+7. Lemma 9.1, hub graphs (Y1) and (Y2) with pendants, s = 2, 3: checked
+8. Propositions 8.1-8.3 (slot vectors) and the family values 4,044, 6,090, 8,430, 11,552, 14,812, 20,598 (prime powers q <= 13): checked
+9. seven copies HHHDHHD over Q(4,5), 15 freed lines with one partner pair meeting at an ovoid point, 2 + 2 hubs placed by Lemma 7.3: 2188 elements, max degree 9, diameter 5
+10. Corollary 10.2 at q = 7 (five copies HHDHD over Q(4,7), 22 + 22 hubs): 4044 elements, max degree 10, diameter 5
+ALL CHECKS PASSED
