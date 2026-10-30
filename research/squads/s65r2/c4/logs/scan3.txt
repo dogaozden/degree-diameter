@@ -1,0 +1,19 @@
+    Hs := Filtered(Hs, H -> Size(Core(G, H)) = 1);
+    Hs := Filtered(Hs, H -> ForAll(NormalSubgroups(G), N -> Index(G, N) <> 3 o\
+r Size(Intersection(N, H)) > 1));
+    Hs := Filtered(Hs, H -> ForAll(NormalSubgroups(G), N -> Index(G, N) <> 3 o\
+r Size(Intersection(N, H)) > 1));
+ORDER 1035 valid-H groups: [  ]
+ORDER 1038 valid-H groups: [  ]
+ORDER 1041 valid-H groups: [  ]
+ORDER 1047 valid-H groups: [  ]
+ORDER 1050 valid-H groups: [ 13, 14 ]
+ORDER 1053 valid-H groups: [ 7, 8, 9, 10, 28, 29, 30, 31, 32, 33, 34, 35, 36, 
+  37, 50, 51 ]
+ORDER 1059 valid-H groups: [  ]
+ORDER 1062 valid-H groups: [  ]
+ORDER 1065 valid-H groups: [  ]
+ORDER 1068 valid-H groups: [  ]
+ORDER 1071 valid-H groups: [  ]
+ORDER 1074 valid-H groups: [  ]
+ORDER 1077 valid-H groups: [  ]

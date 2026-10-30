@@ -1,0 +1,25 @@
+START 352_163 08:39:28 timeout=1200
+EXPORT EXPORTED hx_352_163.txt n=352 |Aut|=5120 gens=10 C11 x (C4 : Q8)
+END 352_163 rc=0 08:42:40 lastline=DONE N=352 pairs=0..603 sets=123089395 Acovered=0 valid=0 minA=6
+START 354_1 08:42:40 timeout=1200
+EXPORT EXPORTED hx_354_1.txt n=354 |Aut|=348 gens=4 C59 x S3
+END 354_1 rc=0 08:45:35 lastline=DONE N=354 pairs=0..655 sets=125131010 Acovered=0 valid=0 minA=4
+START 360_23 08:45:35 timeout=1200
+EXPORT EXPORTED hx_360_23.txt n=360 |Aut|=1728 gens=6 C10 x (C9 : C4)
+END 360_23 rc=0 08:49:12 lastline=DONE N=360 pairs=0..1321 sets=153073692 Acovered=0 valid=0 minA=5
+START 360_93 08:49:12 timeout=1200
+EXPORT EXPORTED hx_360_93.txt n=360 |Aut|=7680 gens=5 C3 x C6 x (C5 : C4)
+END 360_93 rc=0 08:51:32 lastline=DONE N=360 pairs=0..488 sets=116673834 Acovered=0 valid=0 minA=11
+START 360_103 08:51:32 timeout=1200
+EXPORT EXPORTED hx_360_103.txt n=360 |Aut|=1920 gens=6 C6 x (C15 : C4)
+END 360_103 rc=0 08:54:33 lastline=DONE N=360 pairs=0..1854 sets=183211496 Acovered=0 valid=0 minA=8
+START 360_113 08:54:33 timeout=1075
+EXPORT EXPORTED hx_360_113.txt n=360 |Aut|=69120 gens=5 C2 x ((C3 x C3) : (C5 : C4))
+END 360_113 rc=0 08:55:37 lastline=DONE N=360 pairs=0..419 sets=70809613 Acovered=0 valid=0 minA=108
+START 360_125 08:55:37 timeout=1011
+EXPORT EXPORTED hx_360_125.txt n=360 |Aut|=1440 gens=3 (C3 x C3) : (C5 : C8)
+END 360_125 rc=0 08:56:28 lastline=DONE N=360 pairs=0..325 sets=64286378 Acovered=5 valid=0 minA=0
+START 360_136 08:56:28 timeout=960
+EXPORT EXPORTED hx_360_136.txt n=360 |Aut|=2880 gens=4 (C3 x C3) : (C5 : Q8)
+END 360_136 rc=0 08:57:26 lastline=DONE N=360 pairs=0..223 sets=53511537 Acovered=11 valid=0 minA=0
+ALLDONE 08:57:26

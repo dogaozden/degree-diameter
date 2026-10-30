@@ -1,0 +1,5 @@
+order_id | structure | pairs covered (a..b of total) | sets | valid | minA | min Bunc
+360_95 | SmallGroup(360,95) = C15 x (C3 : Q8), Aut 384 | 0..2297 of 2298 (0..259 in s65r3/c1 log, 260..2297 here, DONE) | resume 64487432 (earlier part not summed) | 0 | 4 | - (Acovered=0, no ASIDE)
+360_100 | SmallGroup(360,100) = C3 x (C3 : (C5 : Q8)), Aut 1920 | 0..129 of 1854 (s65r3/c2 log; NOT resumed, time box) | - | 0 | 8 | -
+352_169 | SmallGroup(352,169) = C22 x Q16, Aut 2560 | 0..131 of 792 (s65r3/c3 log; NOT resumed, time box) | - | 0 | 10 | -
+360_98, 360_28, 360_108 | not run (time box) | - | - | - | - | -

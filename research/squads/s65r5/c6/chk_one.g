@@ -1,0 +1,12 @@
+Read("dc2_lib.g");
+P := SmallGroup(256, 26446);
+G := DirectProduct(CyclicGroup(3), P);
+G := Image(IsomorphismPermGroup(G));
+Hs := SubsOfOrder(G, 2);
+Print("num order-2 classes: ", Length(Hs), "\n");
+Print("core-free: ", List(Hs, H -> Size(Core(G,H))), "\n");
+Print("Frattini of P size: ", Size(FrattiniSubgroup(P)), " |Z(P)|=", Size(Centre(P)), "\n");
+Print("normal index-2 subgroups of G: ", Length(Filtered(NormalSubgroups(G), N -> Index(G,N)=2)), "\n");
+Print("H in every index-2 normal N: ", List(Hs, H -> ForAll(NormalSubgroups(G), N -> Index(G,N)<>2 or Size(Intersection(N,H))>1)), "\n");
+Print("involutions of P: ", Number(Elements(P), x -> Order(x)=2), " in Frattini: ", Number(Elements(FrattiniSubgroup(P)), x -> Order(x)=2), "\n");
+QUIT;

@@ -1,0 +1,11 @@
+order_id | structure | pairs covered (a..b of total) | sets | valid | minA | min Bunc
+352_163 | C11 x (C4 : Q8), Aut 5120 | 0..603 of 603 | 123089395 | 0 | 6 | - (no side-A cover)
+354_1 | C59 x S3, Aut 348 | 0..655 of 655 | 125131010 | 0 | 4 | - (no side-A cover)
+360_23 | C10 x (C9 : C4), Aut 1728 | 0..1321 of 1321 | 153073692 | 0 | 5 | - (no side-A cover)
+360_93 | C3 x C6 x (C5 : C4), Aut 7680 | 0..488 of 488 | 116673834 | 0 | 11 | - (no side-A cover)
+360_103 | C6 x (C15 : C4), Aut 1920 | 0..1854 of 1854 | 183211496 | 0 | 8 | - (no side-A cover)
+360_113 | C2 x ((C3xC3):(C5:C4)), Aut 69120 | 0..419 of 419 | 70809613 | 0 | 108 | - (no side-A cover)
+360_125 | (C3xC3):(C5:C8), Aut 1440 | 0..325 of 325 | 64286378 | 0 | 0 | >=4 (5 side-A covers; ASIDE prints only below 4)
+360_136 | (C3xC3):(C5:Q8), Aut 2880 | 0..223 of 223 | 53511537 | 0 | 0 | >=4 (11 side-A covers; ASIDE prints only below 4)
+# all eight groups finished exhaustively (DONE lines in h<ID>.log); no VALID and no ASIDE line (side B missing < 4) in any log.
+# 360_113 sets count (70809613) equals the STATUS.md count for 360_110, but minA differs (108 vs 106); not investigated.

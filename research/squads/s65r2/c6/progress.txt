@@ -1,0 +1,7 @@
+07:32 start 1388
+07:42 1388 sweep killed: GAP export of IDS [1..4] stalled >10 min; testing groups singly
+07:44 sweep 1388 restart with per-group export timeout 150
+07:47 1388: groups 1,2,4 no non-Haar H (empty), group 3 export >150s (skipped)
+07:49 1436 same: groups of order 4p (p=359) have normal Sylow-p, all |H|=4 subgroups give Haar graphs; 1396, 1412 are also 4p -> skipped
+07:53 1384: ids 1-7 gave no non-Haar H; sweep killed by 230 s limit during id 8. Time box reached, stopping. No graph, no re-anneal.
+07:54 final: scoreboard line appended (c6)
