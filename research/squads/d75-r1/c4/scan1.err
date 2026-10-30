@@ -1,0 +1,6 @@
+Syntax warning: Unbound global variable in scan1.g:6
+    ninv := Number(AsList(G), x -> x <> One(G) and x^2 = One(G));
+                                            ^
+Syntax warning: Unbound global variable in scan1.g:6
+    ninv := Number(AsList(G), x -> x <> One(G) and x^2 = One(G));
+                                                             ^

@@ -1,0 +1,16 @@
+alpha 0: p 2 fixed 320 orbits 160 reps 2
+GROUP /home/user/degree-diameter/research/squads/d75-r1/c1/tmp/d75/g640_3.ht n 640 ninv 1 nalpha 4
+TYPE alpha 0 p 2 f 1 m 3 best 1099511627776 sols 0 evals 25122 passXX 0 secs 0.0
+TYPE alpha 0 p 2 f 3 m 2 best 1099511627776 sols 0 evals 10000000 passXX 0 secs 1.3 CAPPED
+TYPE alpha 0 p 2 f 5 m 1 best 1099511627776 sols 0 evals 10000000 passXX 0 secs 1.7 CAPPED
+alpha 1: p 5 fixed 160 orbits 96 reps 4
+TYPE alpha 1 p 5 f 2 m 1 best 1099511627776 sols 0 evals 636 passXX 0 secs 0.0
+alpha 2: p 2 fixed 128 orbits 256 reps 14
+TYPE alpha 2 p 2 f 1 m 3 best 1099511627776 sols 0 evals 453390 passXX 0 secs 0.1
+TYPE alpha 2 p 2 f 3 m 2 best 1099511627776 sols 0 evals 10000000 passXX 0 secs 1.6 CAPPED
+TYPE alpha 2 p 2 f 5 m 1 best 1099511627776 sols 0 evals 10000000 passXX 0 secs 1.6 CAPPED
+alpha 3: p 2 fixed 64 orbits 288 reps 16
+TYPE alpha 3 p 2 f 1 m 3 best 1099511627776 sols 0 evals 656656 passXX 0 secs 0.1
+TYPE alpha 3 p 2 f 3 m 2 best 1099511627776 sols 0 evals 8968176 passXX 0 secs 1.4
+TYPE alpha 3 p 2 f 5 m 1 best 1099511627776 sols 0 evals 9530640 passXX 0 secs 1.7
+DONE evals 59634620 sols 0

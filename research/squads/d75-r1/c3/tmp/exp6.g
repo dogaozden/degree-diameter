@@ -1,0 +1,1 @@
+G := DirectProduct(SmallGroup(8,4), CyclicGroup(39)); N:=312; ID:=0; OUT:="/home/user/degree-diameter/research/squads/d75-r1/c3/tmp/k312q8.ht"; Read("/home/user/degree-diameter/research/d75-raise/src/export.g");
