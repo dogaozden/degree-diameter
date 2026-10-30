@@ -1,0 +1,8 @@
+360_52 | C3 x C3 x (C5 : C8) | finished yes (554/554 pairs; run 1, haarex2 original, 194 s, log overwritten) | sets=116195962 | valid=0 | minA=4 | cover-A hits=0 | best S (rerun with haarex2b, cut at 200 s, PAIR 90 of 554): BEST unc=4 S = 0 1 16 46 54 134 (score65 bad=1800, RESULT INVALID)
+360_53 | C3 x (C3 : (C5 : C8)) | finished no (last PAIR printed 57 of 1698; rc=124) | sets=89786854 | valid=0 | minA=0 | started 07:39:33 | BEST unc=0 S = 0 1 19 79 228 282
+360_54 | (C3 x C3) : (C5 : C8) | finished yes (368/368 pairs) | sets=65110226 | valid=0 | minA=2 | started 07:43:01 | BEST unc=2 S = 0 1 13 23 120 350
+360_55 | C5 x ((C3 x C3) : C8) | finished yes (442/442 pairs) | sets=101459186 | valid=0 | minA=0 | started 07:45:38 | BEST unc=0 S = 0 1 15 65 211 331
+360_56 | (C3 x C3) : (C5 : C8) | finished yes (325/325 pairs) | sets=63806907 | valid=0 | minA=0 | started 07:49:04 | BEST unc=0 S = 0 1 13 64 134 234
+360_57 | (C3 x C3) : (C5 : C8) | finished yes (418/418 pairs) | sets=58156189 | valid=0 | minA=2 | started 07:50:48 | BEST unc=2 S = 0 1 4 11 144 283
+360_64 | not run (driver stopped at 07:52 for the 30-min box; 360_64..360_117 and 352/354 ids not reached) | - | - | - | - 
+360_53 note: partial (57 of 1698 pairs) when stopped; director is finishing it in research/s65/haar/h360_53/
