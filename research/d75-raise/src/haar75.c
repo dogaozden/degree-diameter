@@ -204,6 +204,39 @@ static void rec_fix(int need, int fs, int at) {
     for (int i = fs; i < nfix; i++) if (fixel[i] != 0) { Sbuf[at] = fixel[i]; rec_fix(need - 1, i + 1, at + 1); }
 }
 
+
+/* anti type (3,2) with prefix reuse: S = {e, f1, a, psi a, b, psi b} + f2 (f2 innermost).  Same sets as rec_fix/rec_orb:
+ * f1 < f2 non-identity psi-fixed, first orbit a representative, second orbit any other. */
+static uint32_t *mk2; static uint32_t stP2 = 0;
+static void anti32_fast(void) {
+    if (!mk2) mk2 = calloc(n, sizeof(uint32_t));
+    int fz[4096], nz = 0; for (int i = 0; i < nfix && nz < 4096; i++) if (fixel[i] != 0) fz[nz++] = fixel[i];
+    int P[6], XP[64], nxp, Xn[16];
+    for (int i1 = 0; i1 < nz && !capped; i1++) for (int o1 = 0; o1 < norb && !capped; o1++) if (isrep[o1]) for (int o2 = 0; o2 < norb && !capped; o2++) if (o2 != o1) {
+        P[0] = 0; P[1] = fz[i1]; P[2] = orbel[orbstart[o1]]; P[3] = orbel[orbstart[o1] + 1]; P[4] = orbel[orbstart[o2]]; P[5] = orbel[orbstart[o2] + 1];
+        stP2 += 2; uint32_t sp = stP2 - 1; nxp = 0;      /* sp marks the prefix; stP2 is reused per set below */
+        for (int i = 0; i < 6; i++) for (int j = 0; j < 6; j++) { int x = M(inv[P[i]], P[j]); if (mk2[x] != sp) { mk2[x] = sp; XP[nxp++] = x; } }
+        for (int i2 = i1 + 1; i2 < nz; i2++) {
+            if (evals - type_e0 >= cap_ev) { capped = 1; break; }
+            evals++;
+            int f2 = fz[i2], fi = inv[f2], nn = 0; uint32_t sn = ++stP2; stP2++;   /* fresh stamp per set, never equal to sp */
+            for (int i = 0; i < 6; i++) { int x = M(fi, P[i]), y = M(inv[P[i]], f2);
+                if (mk2[x] != sp && mk2[x] != sn) { mk2[x] = sn; Xn[nn++] = x; }
+                if (mk2[y] != sp && mk2[y] != sn) { mk2[y] = sn; Xn[nn++] = y; } }
+            /* targets: z in XX iff some x in X has x^-1 z in X */
+            int ok_all = 1;
+            for (int t = 0; t < n; t++) { int z = ordA[t], ok = 0;
+                for (int i = 0; i < nxp && !ok; i++) { uint32_t v = mk2[M(inv[XP[i]], z)]; if (v == sp || v == sn) ok = 1; }
+                for (int i = 0; i < nn && !ok; i++) { uint32_t v = mk2[M(inv[Xn[i]], z)]; if (v == sp || v == sn) ok = 1; }
+                if (!ok) { last_fail_t = t; if (t) { int u = t / 2; ordA[t] = ordA[u]; ordA[u] = z; } ok_all = 0; break; } }
+            /* the per-set stamp may have overwritten prefix marks? no: only unmarked (!= sp) entries get sn */
+            Sbuf[0] = 0; Sbuf[1] = P[1]; Sbuf[2] = f2; Sbuf[3] = P[2]; Sbuf[4] = P[3]; Sbuf[5] = P[4]; Sbuf[6] = P[5];
+            if (ok_all) { npassA++;
+                if (fullcheck(Sbuf, 7)) { typesol++; typebest = 0; report(Sbuf, 7, tagbuf); } }
+            else if (NEAR && last_fail_t >= NEAR) { int c = xx_uncov(Sbuf, 7, 1, 1 << 30); if (c < typebest) typebest = c; }
+        }
+    }
+}
 /* beta of order 4: psi = inv o beta has order 4, orbits of size 1, 2, 4; S = {e} + one 2-orbit + one 4-orbit, or
  * {e} + 2 fixed + one 4-orbit (sets without a 4-orbit are psi^3- or beta^2-invariant, covered elsewhere) */
 static void run_anti4(int a) {
@@ -251,7 +284,8 @@ static void run_anti(void) {
             long long e0 = evals, p0 = npassA; clock_t c0 = clock(); type_e0 = evals; capped = 0;
             cap_ev = (f >= 4 || nfix > NFIXBIG) ? cap_ev_hi : cap_ev_lo;
             snprintf(tagbuf, sizeof tagbuf, "anti_a%d_p%d_f%d_m%d", a, alp[a], f, m);
-            Sbuf[0] = 0; rec_fix(f - 1, 0, 1);
+            Sbuf[0] = 0;
+            if (f == 3 && m == 2 && !getenv("SLOW32")) anti32_fast(); else rec_fix(f - 1, 0, 1);
             printf("ANTI alpha %d p %d f %d m %d best %lld sols %lld evals %lld passXX %lld secs %.1f%s\n", a, alp[a], f, m,
                    typebest, typesol, evals - e0, npassA - p0, (double)(clock() - c0) / CLOCKS_PER_SEC, capped ? " CAPPED" : "");
             fflush(stdout);
