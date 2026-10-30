@@ -34,3 +34,11 @@ n=11316940 edges=107433784 degree min=17 max=19 bipartite=yes diameter=7 sources
 RESULT VALID d=19 D=7 n=11316940 (sources in the range only)
 exit 0
 
+
+### range 7 (sources 4243854..4951163): output file d19_i7.out, last lines unedited
+n=11316940 edges=107433784 degree min=17 max=19 bipartite=yes diameter=7 sources=4243854..4951163
+RESULT VALID d=19 D=7 n=11316940 (sources in the range only)
+exit 0
+
+## Status of worker a
+Both assigned ranges (d19 5, d19 7) are VALID. Assigned ranges of worker a are complete; no (20,7) range is assigned to worker a.
