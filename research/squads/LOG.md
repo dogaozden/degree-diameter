@@ -30,3 +30,37 @@ wall; bi-Cayley exhaustive campaign too slow under load (600 s per configuration
 Kept for round 2: non-Haar |H| = 2 bi-coset graphs (the family of the vertex-transitive (5,5) 384 graph) at orders
 704-720, |H| = 3/4 coset graphs, and the unfinished exhaustive Haar search at orders 352-360 (69 low-involution
 groups never run).
+
+### Round s65r2 (07:37-08:05 UTC, 8 cards, research/squads/s65r2/)
+Cards: c1/c2 non-Haar |H| = 2 bi-coset graphs (dc2_lib SKIPHAAR), order 704 (two halves of the 1387 groups) · c3 the
+same at 706-718 and 720 (ids 1-450) · c4 non-Haar |H| = 3, orders 1035-1077 · c5 non-Haar |H| = 3, order 1080 · c6
+non-Haar |H| = 4, orders 1372-1436 · c7 exhaustive Haar (haarex2), the 69 never-run low-involution groups of order
+352-360 · c8 mcos multi-orbit families ("1|2,2", "1,1|2,2,2,2", ...) on orders 352-360 and 172-180.
+Best per card (internal cost; none valid): c1, c2 48 (704) · c3 8 (SmallGroup(720,439) = Dic3 x (C15:C4), non-Haar;
+25M director anneal steps also stay at 8) · c4 150 (only 1050/1053 have non-Haar |H| = 3 pairs) · c5 12 (3.A6 =
+SmallGroup(1080,260); director's exhaustive check: optimum 12 over all 7,140 unions) · c6 none (orders 4p have only
+Haar-type H; other exports timed out) · c7 closed 360_52, 54, 55, 56, 57 (no Haar graph; 360_55/56 have side-A covers,
+side B >= 4 short) and ran 360_53 halfway (side-A covers with side B 2 short, bad 360) · c8 "1|2,2" plateaus at 27
+where Haar graphs of the same groups reach 6.
+Director: finished SmallGroup(360,53) exhaustively (pairs 57-1698 in research/s65/haar/h360_53/; 168M sets in all, no
+Haar graph). Lift calibration (research/s65/calib/): annealing + exact 2-opt (kopt K=2) gives VALID (6,5) lifts on
+640 vertices (order 160; apsp VALID, score65 bad 0; calibration only); 672 (order 168) is stuck at cost 6, a strict
+2-opt local minimum (new tools/kdesc.c: exact steepest descent over all 1- and 2-changes). Self-dual Haar graphs
+(phi(S) = S^-1 for an involutory automorphism phi, which makes side B automatic; tools/sdhaar.c) fail the positive
+control: on the 684 record's own group no such S covers side A (best 7 missing, 51M sets), so the family was dropped.
+Kept: exhaustive Haar at 352-360 (decisive, minutes per group) and the lift tools; non-Haar cosets dropped.
+
+### Round s65r3 (08:01-08:38 UTC, 8 cards, research/squads/s65r3/)
+Cards: c1-c4 exhaustive Haar (haarex2) on four interleaved quarters of the open low-involution groups of order 352-360
+· c5 annealing + exact 2-opt pipeline at 704/720 (orders 176/180, three 2+2 bases) · c6 a better lift local search
+(tabu over single-voltage changes with exact best-move selection) · c7 bi-Cayley annealing over the bc files of
+orders 344-360 · c8 Haar annealing over the 260 never-run groups of order 352-360 with more than 3 involutions.
+Best per card: c1-c4 closed 45 more groups (13 + 8 + 13 + 11), none valid and none with a side-A cover; best side-A
+miss 1 (352_50), then 2 (352_55, 352_57, 360_76, 360_88, 360_89) · c5 lift cost 4 at 704 (C11:Q16 = SmallGroup(176,17),
+base [[1,5],[5,1]]), no 2-opt fix · c6 TABU beats annealing: 672: 4 vs 8; 704 (C11 x Q16): 6 vs 12-14 (bad 528) ·
+c7 cost 4 at 704 (SmallGroup(352,141), a = b = 3; bad 704), a quarter of the space covered · c8 best 4 (360_125,
+360_136; 9 involutions), cost grows with the involution count.
+Director: wrote haar2lift.py / bicay2lift.py / normlift.py (Haar and bi-Cayley graphs as 2+2 lifts by an index-2
+subgroup; checked: same score65 as the original graphs) and ran exact 2-opt from the 12 side-A covers of 360_53
+(lift cost 4 each, bad 360): no cost-0 neighbour in any of them; nor from the 704 bi-Cayley and tabu near misses.
+Status of the exhaustive Haar campaign: research/s65/haar/STATUS.md (50 of 69 groups closed after this round).

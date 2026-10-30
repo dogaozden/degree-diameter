@@ -1,0 +1,10 @@
+# keep code, logs, summaries and best edge lists; drop regenerable bulk (group tables, per-run solutions, binaries)
+*/groups/
+*/runs/
+*/alpha/
+*/sol/
+*/tmp*/
+*/bin/
+*.dc2
+*.o
+*/hx_*.txt
