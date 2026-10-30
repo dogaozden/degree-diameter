@@ -1,0 +1,18 @@
+alpha 0: p 2 fixed 1 orbits 322 reps 5
+GROUP /tmp/d75/g645_1.ht n 645 ninv 0 nalpha 12
+ANTI alpha 0 p 1 f 1 m 3 best 1099511627776 sols 0 evals 256800 passXX 0 secs 0.1
+alpha 9: p 2 fixed 5 orbits 320 reps 4
+ANTI alpha 9 p 2 f 1 m 3 best 1099511627776 sols 0 evals 202884 passXX 0 secs 0.1
+ANTI alpha 9 p 2 f 3 m 2 best 1099511627776 sols 0 evals 7656 passXX 0 secs 0.0
+ANTI alpha 9 p 2 f 5 m 1 best 1099511627776 sols 0 evals 4 passXX 0 secs 0.0
+alpha 10: p 2 fixed 43 orbits 301 reps 6
+ANTI alpha 10 p 2 f 1 m 3 best 1099511627776 sols 0 evals 269100 passXX 0 secs 0.1
+ANTI alpha 10 p 2 f 3 m 2 best 1099511627776 sols 0 evals 1549800 passXX 0 secs 0.3
+ANTI alpha 10 p 2 f 5 m 1 best 1099511627776 sols 0 evals 671580 passXX 0 secs 0.1
+ANTI alpha 10 p 2 f 7 m 0 best 1099511627776 sols 0 evals 5245786 passXX 0 secs 1.7
+alpha 11: p 2 fixed 215 orbits 215 reps 4
+ANTI alpha 11 p 2 f 1 m 3 best 1099511627776 sols 0 evals 91164 passXX 0 secs 0.0
+ANTI alpha 11 p 2 f 3 m 2 best 1099511627776 sols 0 evals 8000000 passXX 0 secs 1.6 CAPPED
+ANTI alpha 11 p 2 f 5 m 1 best 1099511627776 sols 0 evals 8000000 passXX 0 secs 1.4 CAPPED
+ANTI alpha 11 p 2 f 7 m 0 best 1099511627776 sols 0 evals 8000000 passXX 0 secs 0.9 CAPPED
+DONE evals 32294774 sols 0

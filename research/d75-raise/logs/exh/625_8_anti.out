@@ -1,0 +1,9 @@
+alpha 0: p 2 fixed 1 orbits 312 reps 5
+GROUP /tmp/d75/g625_8.ht n 625 ninv 0 nalpha 48
+ANTI alpha 0 p 1 f 1 m 3 best 1099511627776 sols 0 evals 241025 passXX 0 secs 0.0
+alpha 7: p 2 fixed 125 orbits 250 reps 8
+ANTI alpha 7 p 2 f 1 m 3 best 1099511627776 sols 0 evals 247008 passXX 0 secs 0.0
+ANTI alpha 7 p 2 f 3 m 2 best 1099511627776 sols 0 evals 8000000 passXX 0 secs 1.3 CAPPED
+ANTI alpha 7 p 2 f 5 m 1 best 1099511627776 sols 0 evals 8000000 passXX 0 secs 1.6 CAPPED
+ANTI alpha 7 p 2 f 7 m 0 best 1099511627776 sols 0 evals 8000000 passXX 0 secs 1.4 CAPPED
+DONE evals 24488033 sols 0
