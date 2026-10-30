@@ -4,6 +4,3 @@ four hats, q=4, with filler: vertices 52 (expected 52), max degree 6 (expected 6
 four hats, q=5, core: vertices 72 (expected 72), max degree 7 (expected 7), bipartite True, diameter 3 (expected 3)  ->  OK
 four hats, q=5, with filler: vertices 72 (expected 72), max degree 7 (expected 7), bipartite True, diameter 3 (expected 3)  ->  OK
    filled graph is 7-regular: True
-degrees: [14, 15, 16]  edges: 2979
-(16,3), PG(2,13) + three four-hat gadgets + 3 cross edges: vertices 396 (expected 396), max degree 16 (expected 16), bipartite True, diameter 3 (expected 3)  ->  OK
-without the 3 cross edges: edges 2976  diameter 4 (the cross edges are needed)

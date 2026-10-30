@@ -1,5 +1,3 @@
-(7,5): Haar graph of SL(2,5) x Z_5, |S| = 7: vertices 1200 (expected 1200), max degree 7 (expected 7), bipartite True, diameter 5 (expected 5), regular  ->  OK
-(5,5): lift of [[2,3],[3,2]] by C15 x S3: vertices 360 (expected 360), max degree 5 (expected 5), bipartite True, diameter 5 (expected 5), regular  ->  OK
 SmallGroup(96,31) = C3 : (C2 . ((C4 x C2) : C2) = (C2 x C2) . (C4 x C2)): Cayley table equals the record table g96_31.txt: True
 (5,5): lift by SmallGroup(96,31), a1_g96_31: vertices 384 (expected 384), max degree 5 (expected 5), bipartite True, diameter 5 (expected 5), regular  ->  OK
 SmallGroup(96,17) = C3 : (Q8 : C4): Cayley table equals the record table g96_17.txt: True

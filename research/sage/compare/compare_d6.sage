@@ -1,6 +1,6 @@
 r"""
 Compare d6_theoremD_hexagon_doubling.sage with the repo's Python builders (research/synthetic/checks/check_d6.py for q = 2, 3 and
-check_d6_even.py for q = 4, with incidence.py).  Run from research/sage/compare/:   sage compare_d6.sage
+check_d6_even.py for q = 4, with incidence.py).  Run from research/sage/:   sage compare/compare_d6.sage   (or from research/sage/compare/)
 For each q:  (a) the Python hexagon and the Sage hexagon have the same flags after relabelling the points by their coordinates;
 (b) the Hermitian spreads agree; (c) the exact whisker sets: if both use the same constants (c0, c1) they must agree; q = 2 is found by
 a search in both programs, so the two sets may differ; (d) the doubled graphs: with the whisker set of the Python program fed to the Sage
@@ -11,6 +11,8 @@ import sys, os, itertools, runpy, io, contextlib
 from pathlib import Path
 
 HERE = Path(os.getcwd()).resolve()
+HERE = HERE if (HERE / 'hexagon.sage').exists() else HERE.parent     # run from research/sage or research/sage/compare
+HERE = HERE / 'compare'
 REPO = HERE.parents[2]
 CHECKS = REPO / 'research' / 'synthetic' / 'checks'
 sys.path.insert(0, str(CHECKS))

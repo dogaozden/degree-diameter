@@ -1,0 +1,3 @@
+degrees: [14, 15, 16]  edges: 2979
+(16,3), PG(2,13) + three four-hat gadgets + 3 cross edges: vertices 396 (expected 396), max degree 16 (expected 16), bipartite True, diameter 3 (expected 3)  ->  OK
+without the 3 cross edges: edges 2976  diameter 4 (the cross edges are needed)
