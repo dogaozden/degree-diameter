@@ -4,22 +4,21 @@ Shared context, scorer, rules: CONTEXT.md. Director's own line meanwhile: exhaus
 over all groups of order 344-360 (research/s65/bc_campaign/).
 
 - **c1 tri-Cayley.** 3-orbit graphs of a group G of order 230-240 with an index-2 subgroup E, each orbit meeting both
-  colours (the k = 3 analogue of the (5,5) record's family): vertices (g,i), i = 0,1,2, colour par(g) xor c_i;
-  loops R_i (odd, inverse-closed), links S_ij (parity 1 xor c_i xor c_j). New code tri.c from bicay.c; annealing +
-  exhaustive where small. 690-720 vertices.
-- **c2 semi-exact 2+2 lifts.** b4a2x.c generalised to degree 6 and |Γ| <= 256 (bases [[2,4],[4,2]], [[3,3],[3,3]],
-  [[1,5],[5,1]]): tree voltages 1, the last A1-B1 voltage w solved exactly from the missed elements, the other
-  voltages annealed/random-restarted. Γ of order 172-180 (non-abelian; incl. GL(2,4) = C3 x A5 = SmallGroup(180,19)).
-- **c3 semi-exact 3+3 lifts.** Same idea for 6-vertex bases (all 6-regular 3x3 multiplicity matrices), one voltage
-  solved exactly, Γ of order 116-120 (incl. SL(2,5), S5, C2 x A5 at 120 -> 720 vertices).
-- **c4 α-invariant 2+2 lifts.** Voltage multisets invariant under an automorphism α of Γ (order 2, 3 or 4) acting on
-  each parallel class separately (colour-preserving, NOT side-transitive, so not a Haar graph); the reduced space is
-  searched exhaustively. Γ of order 172-180.
-- **c5 non-split coset graphs, solvable.** B(G; <t>, <t>) for involutions t not complemented by an index-2 subgroup,
-  |G| = 686-718: continue the earlier scan (51 of 334 done, best 18), few-involution groups first; dcenum
-  exhaustive/SA.
-- **c6 coset graphs of non-solvable groups.** The non-almost-simple non-solvable groups of order 720 with |H| = 2
-  (A5 x A4, S5 x S3, SL(2,5) x S3, A5 x D12, ...; 720 vertices) and of order 1080 with |H| = 3 (3.A6, A6 x C3,
-  ...); dc2_export + dcenum.
-- **c7 wildcard (combinatorial).** Any approach none of c1-c6 or the ruled-out list uses.
-- **c8 wildcard (algebraic).** Any algebraic/geometric construction none of c1-c6 or the ruled-out list uses.
+  colours: vertices (g,i), i = 0,1,2, colour par(g) xor c_i; loops R_i (odd, inverse-closed), links S_ij. New code
+  from bicay.c; annealing (exhaustive where small). 690-720 vertices.
+- **c2 semi-exact 2+2 lifts.** vl.c with the last voltage solved exactly at every step (b4a2x idea): anneal 8
+  voltages, pick the best w by tallying, over the missed elements, which w covers them. Few-involution groups of
+  order 176-192 (C11 x Q16, C11:Q16, C11 x (C4:C4), C23:Q8, 3 x 64 groups with few involutions).
+- **c3 3+3 lifts at 696-720.** Screen of all 6-regular 3x3 base matrices x groups of order 116, 117, 118, 120 with
+  vl, longer anneals for the best pairs.
+- **c4 alpha-invariant 2+2 lifts.** Voltage multisets invariant under an automorphism alpha of Gamma (order 2, 3, 4),
+  acting on each parallel class (colour-preserving, fibre-fixing, so not a Haar graph); exhaustive over the reduced
+  space. Gamma of order 172-192.
+- **c5 |H| = 2 bi-coset sweep 686-702.** Every SmallGroup of order 686, 690, 692, 694, 696, 698, 700, 702 with a
+  non-central involution, H = K (sweep_diag.sh, short anneals), then long anneals of the best five.
+- **c6 non-solvable coset graphs.** Non-solvable, non-almost-simple groups: order 720 with |H| = 2, order 1080 with
+  |H| = 3, order 1440 with |H| = 4 (720 vertices each), sweep.sh over all (H, K) classes.
+- **c7 near-miss repair.** Delete k vertices from a structured near miss above 684 (Haar cost-2 graphs on 702-720
+  vertices, or the 704-vertex lift at cost 14) and rewire the freed degree with a fast incremental annealer; bar
+  to beat: 144 bad pairs at 686.
+- **c8 wildcard.** Any construction or search none of c1-c7 or the ruled-out list uses.
