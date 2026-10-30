@@ -4,6 +4,6 @@
 # SmallGroup(384,543) with |H| = 2 and is re-found this way in under a second.
 SECS=${1:-3}; shift
 for o in "$@"; do
-  ./sweep.sh $o 2 5 $SECS "[1..NrSmallGroups($o)]" 1
+  ./sweep_exh.sh $o 2 5 $SECS "[1..NrSmallGroups($o)]" 1
   echo "$o done $(date -u +%H:%M)" >> logs/queue55.log
 done

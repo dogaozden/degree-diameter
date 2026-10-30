@@ -59,9 +59,21 @@ searches also cover those Haar graphs.
   b4a2y: this job, `exh/runs/b4a2y_9[1-5].txt`). With the Haar searches below this rules out every (5,5) graph on
   364, 368, 372 (except 3+3 and larger bases), 376, 380 vertices whose free colour-preserving automorphisms include a
   group of order N/4 or N/2.
-- Order 96 (384 vertices): solutions (table above). Groups with solutions so far: b4a2y (96,17), (96,23); b4a1x
-  (96,31), (96,51), (96,66). Runs continue (status at the end of this file).
-- Haar graphs (haar5x, every group): orders 181-191 and 193-194 so far: none (362-388 vertices).
+- Order 96 (384 vertices): solutions. b4a1x ([[1,4],[4,1]], all 231 groups): 248 solutions in SmallGroup(96, i),
+  i = 31, 51, 66, 178, 184; b4a2y ([[2,3],[3,2]], in progress): i = 17, 23 so far. All solutions together form 8
+  isomorphism classes (`exh/runs/iso96.txt`; the same graph often arises from several groups, e.g. (96,51), (96,178)
+  and (96,184)).
+- Orders 97-121, base [[1,4],[4,1]] (b4a1x, every group): no solution. Base [[2,3],[3,2]] (b4a2y): orders 97-101
+  every group, no solution; 102-110 running.
+- Haar graphs (haar5x, every group of order 181-200 except 192): no valency-5 diameter-5 Haar graph on 362-400
+  vertices. For an odd order m this is the only way a 2m-vertex graph can have a free colour-preserving group with at
+  most 2 orbits per side, so with the lift searches: no (5,5) graph on 362, 366, 370, 374, 378 vertices has a
+  colour-preserving group of order N/2 acting freely, and none on 364, 368, 372, 376, 380 has one of order N/4 or
+  N/2.
+- The vertex-transitive 384 graph is also the bi-coset graph of its colour-preserving group SmallGroup(384,543)
+  with a core-free H of order 2; the fixed annealer re-finds it from the .dc2 export in under a second (23k
+  evaluations). The previous job's |H| = 2 sweep of orders 356-400 (slow annealer, best cost 8) had missed it. So
+  this job reruns that sweep above 384 (`coset/queue55.sh`, logs `coset/logs/sw_<order>_h2_d5.txt`).
 
 ## (7,5)
 
