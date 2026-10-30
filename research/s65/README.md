@@ -32,7 +32,10 @@ research/squads/LOG.md). Result so far: **no graph above 684**; the work below n
   lists: `haar/all_352_360.txt`, `haar/STATUS.md`; logs in research/squads/s65r2-s65r7/c*/h*.log.
 - **No Haar graph on 722-760 vertices either**: all 151 non-abelian groups of order 361-380 closed (40 in round s65r4,
   111 in round s65r8; side-A covers only in 372_1 = C31:C12). So the 684 record is the largest Haar graph of degree 6
-  and diameter 5 below 762 vertices. `python3 research/s65/haar/check_closure.py` re-derives `haar/STATUS.md` from the logs.
+  and diameter 5 below 762 vertices. Orders 381-400 except 384 (301 non-abelian groups, director's run with haarex3,
+  logs in `haar/o381_400/`): none either, and no side-A cover at all. So the only Haar graphs of degree 6 and diameter 5
+  that could exceed 684 vertices below 802 are those of the groups of order 384 (20,169 groups, not searched).
+  `python3 research/s65/haar/check_closure.py` re-derives `haar/STATUS.md` from the logs (0 VALID lines in all logs).
 - **Non-Haar coset graphs**: a bi-coset graph B(G;H,H) with an index-|H| normal subgroup N meeting H trivially is a Haar
   graph of N, so sweeps keep only the other H (`SKIPHAAR`). |H| = 2: orders 686-720 and 704 (all groups), best 8
   (SmallGroup(720,439)); |H| = 3: only orders 1050/1053 have non-Haar pairs (best 150); 1080: best 12 (3.A6, exhaustive
@@ -41,7 +44,9 @@ research/squads/LOG.md). Result so far: **no graph above 684**; the work below n
   calibration: the same pipeline re-finds it, and it is the only cost-0 pair among the 231 non-Haar pairs of C3 x P128):
   about 1,500 pairs over the 4,284 groups P with <= 11 involutions and 400 with 15, median ~100 of 768; best 14 for
   C3 x SmallGroup(256,357), H = K (three 120 s anneals stay at 14; neighbours 256_362, 256_413: 22), a cluster of
-  2-generator class-5 groups like the record's P128; semidirect C3 : P256 best 62.
+  2-generator class-5 groups like the record's P128; semidirect C3 : P256 best 62. A further sweep of the 2-generator
+  groups P (ids 1-541) not covered before reached 85 groups / 837 pairs before it was stopped: best 22 (256_336, 256_338,
+  256_363), median 392 (`c3p256/rank2/`).
 - **2+2 lifts** (orders 160-192): annealing + exact 2-opt solves 640 vertices (calibration), not 672; tabu reaches lift
   cost 4-6 at 704-720, 22-36 at 768. The Haar near misses of 360_53 (bad 360, the closest graphs above 684 found here)
   written as 2+2, 3+3, 4+4 and 8+8 lifts have no cost-0 2-opt neighbour, and tabu does not move them below cost 4.

@@ -3,7 +3,7 @@
 
 A group order_id is complete when its pair classes 0..P-1 (P from the log's first line) are covered by "DONE" runs or by
 the PAIR lines of interrupted runs. Logs: research/squads/s65r2..s65r8/c*/h<order>_<id>[_resume].log,
-research/s65/haar/h360_53/p*.log (SmallGroup(360,53)), research/s65/haar/hi/h*.log. The 24 groups of order 352-360 closed
+research/s65/haar/h360_53/p*.log (SmallGroup(360,53)), research/s65/haar/hi/h*.log, research/s65/haar/o381_400/h*.log. The 24 groups of order 352-360 closed
 in job fresh-6-5 (research/squads/cells/d6D5.md on branch claude/bipartite-6-5-fresh-16bvjp) are listed below.
 usage (from the repository root): python3 research/s65/haar/check_closure.py
 """
@@ -17,7 +17,7 @@ FRESH = {'352_1', '352_7', '352_35', '352_62', '355_1', '356_1', '357_1', '360_1
 
 def main():
     logs = (glob.glob('research/squads/s65r[2-9]/c*/h*.log') + glob.glob('research/s65/haar/h360_53/p*.log')
-            + glob.glob('research/s65/haar/hi/h*.log'))
+            + glob.glob('research/s65/haar/hi/h*.log') + glob.glob('research/s65/haar/o381_400/h*.log'))
     cover, nvalid, ncov = {}, 0, {}
     for f in logs:
         m = re.search(r'/h(\d+_\d+)', f)
@@ -49,14 +49,14 @@ def main():
              'Non-abelian groups of each order (GAP lists all_352_360.txt, all_361_380.txt), closed = all pair classes',
              'searched by haarex2/haarex3 (or in job fresh-6-5). Abelian groups: at most 542 vertices (fresh-6-5).', '',
              '| orders | non-abelian groups | closed | open | side-A covers (groups) | VALID |', '|---|---|---|---|---|---|']
-    for fn, label in (('research/s65/haar/all_352_360.txt', '352-360'), ('research/s65/haar/all_361_380.txt', '361-380')):
+    for fn, label in (('research/s65/haar/all_352_360.txt', '352-360'), ('research/s65/haar/all_361_380.txt', '361-380'),
+                      ('research/s65/haar/all_381_400.txt', '381-400 (not 384)')):
         groups = [l.split()[0] for l in open(fn) if l.strip()]
         closed = [g for g in groups if g in FRESH or (g in cover and complete(cover[g]))]
         opn = [g for g in groups if g not in closed]
         withcov = [g for g in groups if ncov.get(g, 0) > 0]
         lines.append(f'| {label} | {len(groups)} | {len(closed)} | {len(opn)} {" ".join(opn)} | {len(withcov)} '
                      f'({" ".join(withcov)}) | |')
-    lines[-2] = lines[-2]
     lines.append('')
     lines.append(f'VALID lines in all logs: {nvalid}.')
     open('research/s65/haar/STATUS.md', 'w').write('\n'.join(lines) + '\n')

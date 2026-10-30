@@ -159,3 +159,11 @@ Honest reading: the squad was most useful as parallel hands for well-calibrated 
 ideas it produced one (tabu). Next for this cell, if anyone returns: non-Haar constructions only (Haar graphs are
 closed through 760); the C3 x P256 class-5 cluster (ids 330-420) at cost 14-22 is the closest non-Haar family to the
 (5,5) analogy, and an exhaustive bi-coset search with symmetry reduction there would settle it.
+
+### Director, after round 8 (10:51-11:20 UTC, no squad)
+Extended the Haar closure without a round (mechanical, three processes): haarex3 over all 301 non-abelian groups of
+order 381-400 except 384 (research/s65/haar/o381_400/): every run finished, no VALID set, no side-A cover.
+`python3 research/s65/haar/check_closure.py`: 352-360 353/353, 361-380 151/151, 381-400 (not 384) 301/301 closed, 0 VALID
+lines in all logs. So a Haar graph of degree 6 and diameter 5 above 684 vertices and below 802 can only come from a
+group of order 384. The 2-generator C3 x P256 sweep (ids 1-541 not covered before) was stopped after 85 groups / 837
+pairs: best 22, median 392; the best C3 x P256 pair stays C3 x SmallGroup(256,357) at 14.
