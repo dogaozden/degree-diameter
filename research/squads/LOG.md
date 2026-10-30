@@ -46,3 +46,6 @@ Kept: c4's tabu (calibrated inside the self-dual family), c1's self-dual bi-cose
 director's own sweep then showed order 672 (1,344 vertices) is "warm": many groups C7 : (2-group x C3) with 3
 involutions miss by only 4-6 elements (672_22, 672_34: 4), so the remaining CPU went to all order-672 groups with
 <= 7 involutions. Round 2 added tools and negatives but no graph; no round 3 (two rounds without a new graph).
+Final (19:20 UTC, director): the self-dual sweep ended with 1,307 groups searched (every group of order 657-700 with
+<= 7 involutions, order 672 up to 31, <= 1 involution up to 800): no solution above 1,312; closest |G \ X X| = 2 at
+1,320 (SmallGroup(660,16)) and 1,344 (SmallGroup(672,297), (672,1045)). Record of the job: 1,312.

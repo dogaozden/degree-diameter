@@ -1,0 +1,123 @@
+alpha 0: p 2 fixed 2 orbits 399 reps 20
+GROUP /tmp/d75/g800_199.ht n 800 ninv 1 nalpha 64
+ANTI alpha 0 p 1 f 1 m 3 best 1099511627776 sols 0 evals 1580060 passXX 0 secs 0.1
+alpha 1: p 2 fixed 2 orbits 399 reps 20
+ANTI alpha 1 p 2 f 1 m 3 best 458 sols 0 evals 1580060 passXX 0 secs 0.2
+ANTI4 alpha 2 p 4 fixed 2 two 199 four 100 best 1099511627776 sols 0 evals 1313599 passXX 0 secs 0.1
+ANTI4 alpha 3 p 4 fixed 2 two 199 four 100 best 1099511627776 sols 0 evals 1313599 passXX 0 secs 0.1
+alpha 4: p 2 fixed 10 orbits 395 reps 18
+ANTI alpha 4 p 2 f 1 m 3 best 1099511627776 sols 0 evals 1393578 passXX 0 secs 0.2
+ANTI alpha 4 p 2 f 3 m 2 best 1099511627776 sols 0 evals 255312 passXX 0 secs 0.0
+ANTI alpha 4 p 2 f 5 m 1 best 1099511627776 sols 0 evals 2268 passXX 0 secs 0.0
+ANTI alpha 4 p 2 f 7 m 0 best 1099511627776 sols 0 evals 84 passXX 0 secs 0.0
+alpha 5: p 2 fixed 10 orbits 395 reps 18
+ANTI alpha 5 p 2 f 1 m 3 best 238 sols 0 evals 1393578 passXX 0 secs 0.2
+ANTI alpha 5 p 2 f 3 m 2 best 1099511627776 sols 0 evals 255312 passXX 0 secs 0.0
+ANTI alpha 5 p 2 f 5 m 1 best 1099511627776 sols 0 evals 2268 passXX 0 secs 0.0
+ANTI alpha 5 p 2 f 7 m 0 best 1099511627776 sols 0 evals 84 passXX 0 secs 0.0
+ANTI4 alpha 6 p 4 fixed 10 two 195 four 100 best 1099511627776 sols 0 evals 1945475 passXX 0 secs 0.2
+ANTI4 alpha 7 p 4 fixed 10 two 195 four 100 best 1099511627776 sols 0 evals 1945475 passXX 0 secs 0.2
+ANTI4 alpha 8 p 4 fixed 2 two 79 four 160 best 1099511627776 sols 0 evals 91719 passXX 0 secs 0.0
+ANTI4 alpha 9 p 4 fixed 2 two 79 four 160 best 1099511627776 sols 0 evals 91719 passXX 0 secs 0.0
+ANTI4 alpha 10 p 4 fixed 2 two 39 four 180 best 1099511627776 sols 0 evals 16159 passXX 0 secs 0.0
+ANTI4 alpha 11 p 4 fixed 2 two 39 four 180 best 1099511627776 sols 0 evals 16159 passXX 0 secs 0.0
+ANTI4 alpha 12 p 4 fixed 2 two 79 four 160 best 1099511627776 sols 0 evals 91719 passXX 0 secs 0.0
+ANTI4 alpha 13 p 4 fixed 2 two 79 four 160 best 1099511627776 sols 0 evals 91719 passXX 0 secs 0.0
+ANTI4 alpha 14 p 4 fixed 2 two 39 four 180 best 1099511627776 sols 0 evals 16159 passXX 0 secs 0.0
+ANTI4 alpha 15 p 4 fixed 2 two 39 four 180 best 1099511627776 sols 0 evals 16159 passXX 0 secs 0.0
+alpha 16: p 2 fixed 16 orbits 392 reps 17
+ANTI alpha 16 p 2 f 1 m 3 best 1099511627776 sols 0 evals 1296165 passXX 0 secs 0.1
+ANTI alpha 16 p 2 f 3 m 2 best 1099511627776 sols 0 evals 697935 passXX 0 secs 0.1
+ANTI alpha 16 p 2 f 5 m 1 best 1099511627776 sols 0 evals 23205 passXX 0 secs 0.0
+ANTI alpha 16 p 2 f 7 m 0 best 1099511627776 sols 0 evals 5005 passXX 0 secs 0.0
+alpha 17: p 2 fixed 96 orbits 352 reps 16
+ANTI alpha 17 p 2 f 1 m 3 best 1099511627776 sols 0 evals 982800 passXX 0 secs 0.1
+ANTI alpha 17 p 2 f 3 m 2 best 98 sols 0 evals 25075440 passXX 0 secs 2.0
+ANTI alpha 17 p 2 f 5 m 1 best 364 sols 0 evals 300000 passXX 0 secs 0.1 CAPPED
+ANTI alpha 17 p 2 f 7 m 0 best 1099511627776 sols 0 evals 300000 passXX 0 secs 0.0 CAPPED
+ANTI4 alpha 18 p 4 fixed 8 two 196 four 100 best 1099511627776 sols 0 evals 1665650 passXX 0 secs 0.2
+ANTI4 alpha 19 p 4 fixed 8 two 196 four 100 best 1099511627776 sols 0 evals 1665650 passXX 0 secs 0.2
+alpha 20: p 2 fixed 80 orbits 360 reps 12
+ANTI alpha 20 p 2 f 1 m 3 best 1099511627776 sols 0 evals 771132 passXX 0 secs 0.1
+ANTI alpha 20 p 2 f 3 m 2 best 380 sols 0 evals 13272948 passXX 0 secs 1.0
+ANTI alpha 20 p 2 f 5 m 1 best 1099511627776 sols 0 evals 300000 passXX 0 secs 0.0 CAPPED
+ANTI alpha 20 p 2 f 7 m 0 best 1099511627776 sols 0 evals 300000 passXX 0 secs 0.0 CAPPED
+alpha 21: p 2 fixed 480 orbits 160 reps 10
+ANTI alpha 21 p 2 f 1 m 3 best 1099511627776 sols 0 evals 125610 passXX 0 secs 0.0
+ANTI alpha 21 p 2 f 3 m 2 best 1099511627776 sols 0 evals 300000 passXX 0 secs 0.0 CAPPED
+ANTI alpha 21 p 2 f 5 m 1 best 306 sols 0 evals 300000 passXX 0 secs 0.0 CAPPED
+ANTI alpha 21 p 2 f 7 m 0 best 286 sols 0 evals 300000 passXX 0 secs 0.0 CAPPED
+ANTI4 alpha 22 p 4 fixed 40 two 180 four 100 best 1099511627776 sols 0 evals 10107394 passXX 0 secs 0.9
+ANTI4 alpha 23 p 4 fixed 40 two 180 four 100 best 1099511627776 sols 0 evals 10107394 passXX 0 secs 1.0
+ANTI4 alpha 24 p 4 fixed 16 two 72 four 160 best 1099511627776 sols 0 evals 454620 passXX 0 secs 0.1
+ANTI4 alpha 25 p 4 fixed 96 two 32 four 160 best 1099511627776 sols 0 evals 10733201 passXX 0 secs 1.3
+ANTI4 alpha 26 p 4 fixed 8 two 36 four 180 best 1099511627776 sols 0 evals 31890 passXX 0 secs 0.0
+ANTI4 alpha 27 p 4 fixed 8 two 36 four 180 best 1099511627776 sols 0 evals 31890 passXX 0 secs 0.0
+ANTI4 alpha 28 p 4 fixed 16 two 72 four 160 best 1099511627776 sols 0 evals 454620 passXX 0 secs 0.1
+ANTI4 alpha 29 p 4 fixed 96 two 32 four 160 best 1099511627776 sols 0 evals 10733201 passXX 0 secs 1.5
+ANTI4 alpha 30 p 4 fixed 8 two 36 four 180 best 1099511627776 sols 0 evals 31890 passXX 0 secs 0.0
+ANTI4 alpha 31 p 4 fixed 8 two 36 four 180 best 1099511627776 sols 0 evals 31890 passXX 0 secs 0.0
+alpha 33: p 2 fixed 10 orbits 395 reps 20
+ANTI alpha 33 p 2 f 1 m 3 best 1099511627776 sols 0 evals 1548420 passXX 0 secs 0.2
+ANTI alpha 33 p 2 f 3 m 2 best 1099511627776 sols 0 evals 283680 passXX 0 secs 0.0
+ANTI alpha 33 p 2 f 5 m 1 best 1099511627776 sols 0 evals 2520 passXX 0 secs 0.0
+ANTI alpha 33 p 2 f 7 m 0 best 1099511627776 sols 0 evals 84 passXX 0 secs 0.0
+alpha 34: p 2 fixed 10 orbits 395 reps 20
+ANTI alpha 34 p 2 f 1 m 3 best 1099511627776 sols 0 evals 1548420 passXX 0 secs 0.2
+ANTI alpha 34 p 2 f 3 m 2 best 1099511627776 sols 0 evals 283680 passXX 0 secs 0.0
+ANTI alpha 34 p 2 f 5 m 1 best 1099511627776 sols 0 evals 2520 passXX 0 secs 0.0
+ANTI alpha 34 p 2 f 7 m 0 best 1099511627776 sols 0 evals 84 passXX 0 secs 0.0
+ANTI4 alpha 35 p 4 fixed 10 two 195 four 100 best 1099511627776 sols 0 evals 1945475 passXX 0 secs 0.2
+ANTI4 alpha 36 p 4 fixed 10 two 195 four 100 best 1099511627776 sols 0 evals 1945475 passXX 0 secs 0.2
+alpha 37: p 2 fixed 50 orbits 375 reps 16
+ANTI alpha 37 p 2 f 1 m 3 best 1099511627776 sols 0 evals 1116016 passXX 0 secs 0.1
+ANTI alpha 37 p 2 f 3 m 2 best 147 sols 0 evals 7037184 passXX 0 secs 0.6
+ANTI alpha 37 p 2 f 5 m 1 best 1099511627776 sols 0 evals 300000 passXX 0 secs 0.0 CAPPED
+ANTI alpha 37 p 2 f 7 m 0 best 1099511627776 sols 0 evals 300000 passXX 0 secs 0.1 CAPPED
+alpha 38: p 2 fixed 50 orbits 375 reps 16
+ANTI alpha 38 p 2 f 1 m 3 best 1099511627776 sols 0 evals 1116016 passXX 0 secs 0.2
+ANTI alpha 38 p 2 f 3 m 2 best 127 sols 0 evals 7037184 passXX 0 secs 0.5
+ANTI alpha 38 p 2 f 5 m 1 best 1099511627776 sols 0 evals 300000 passXX 0 secs 0.0 CAPPED
+ANTI alpha 38 p 2 f 7 m 0 best 1099511627776 sols 0 evals 300000 passXX 0 secs 0.1 CAPPED
+ANTI4 alpha 39 p 4 fixed 50 two 175 four 100 best 1099511627776 sols 0 evals 10240195 passXX 0 secs 1.0
+ANTI4 alpha 40 p 4 fixed 50 two 175 four 100 best 1099511627776 sols 0 evals 10240195 passXX 0 secs 1.0
+ANTI4 alpha 41 p 4 fixed 10 two 75 four 160 best 1099511627776 sols 0 evals 194635 passXX 0 secs 0.0
+ANTI4 alpha 42 p 4 fixed 10 two 75 four 160 best 1099511627776 sols 0 evals 194635 passXX 0 secs 0.0
+ANTI4 alpha 43 p 4 fixed 10 two 35 four 180 best 1099511627776 sols 0 evals 45155 passXX 0 secs 0.0
+ANTI4 alpha 44 p 4 fixed 10 two 35 four 180 best 1099511627776 sols 0 evals 45155 passXX 0 secs 0.0
+ANTI4 alpha 45 p 4 fixed 10 two 75 four 160 best 1099511627776 sols 0 evals 194635 passXX 0 secs 0.0
+ANTI4 alpha 46 p 4 fixed 10 two 75 four 160 best 1099511627776 sols 0 evals 194635 passXX 0 secs 0.0
+ANTI4 alpha 47 p 4 fixed 10 two 35 four 180 best 1099511627776 sols 0 evals 45155 passXX 0 secs 0.0
+ANTI4 alpha 48 p 4 fixed 10 two 35 four 180 best 1099511627776 sols 0 evals 45155 passXX 0 secs 0.0
+alpha 49: p 2 fixed 80 orbits 360 reps 14
+ANTI alpha 49 p 2 f 1 m 3 best 1099511627776 sols 0 evals 899654 passXX 0 secs 0.1
+ANTI alpha 49 p 2 f 3 m 2 best 101 sols 0 evals 15485106 passXX 0 secs 1.2
+ANTI alpha 49 p 2 f 5 m 1 best 1099511627776 sols 0 evals 300000 passXX 0 secs 0.0 CAPPED
+ANTI alpha 49 p 2 f 7 m 0 best 1099511627776 sols 0 evals 300000 passXX 0 secs 0.0 CAPPED
+alpha 50: p 2 fixed 96 orbits 352 reps 13
+ANTI alpha 50 p 2 f 1 m 3 best 1099511627776 sols 0 evals 798525 passXX 0 secs 0.1
+ANTI alpha 50 p 2 f 3 m 2 best 93 sols 0 evals 20373795 passXX 0 secs 1.6
+ANTI alpha 50 p 2 f 5 m 1 best 284 sols 0 evals 300000 passXX 0 secs 0.0 CAPPED
+ANTI alpha 50 p 2 f 7 m 0 best 1099511627776 sols 0 evals 300000 passXX 0 secs 0.0 CAPPED
+ANTI4 alpha 51 p 4 fixed 40 two 180 four 100 best 1099511627776 sols 0 evals 10107394 passXX 0 secs 1.0
+ANTI4 alpha 52 p 4 fixed 40 two 180 four 100 best 1099511627776 sols 0 evals 10107394 passXX 0 secs 1.0
+alpha 53: p 2 fixed 400 orbits 200 reps 4
+ANTI alpha 53 p 2 f 1 m 3 best 1099511627776 sols 0 evals 78804 passXX 0 secs 0.0
+ANTI alpha 53 p 2 f 3 m 2 best 1099511627776 sols 0 evals 300000 passXX 0 secs 0.0 CAPPED
+ANTI alpha 53 p 2 f 5 m 1 best 1099511627776 sols 0 evals 300000 passXX 0 secs 0.0 CAPPED
+ANTI alpha 53 p 2 f 7 m 0 best 1099511627776 sols 0 evals 300000 passXX 0 secs 0.0 CAPPED
+alpha 54: p 2 fixed 480 orbits 160 reps 2
+ANTI alpha 54 p 2 f 1 m 3 best 1099511627776 sols 0 evals 25122 passXX 0 secs 0.0
+ANTI alpha 54 p 2 f 3 m 2 best 1099511627776 sols 0 evals 300000 passXX 0 secs 0.0 CAPPED
+ANTI alpha 54 p 2 f 5 m 1 best 295 sols 0 evals 300000 passXX 0 secs 0.0 CAPPED
+ANTI alpha 54 p 2 f 7 m 0 best 434 sols 0 evals 300000 passXX 0 secs 0.0 CAPPED
+ANTI4 alpha 55 p 4 fixed 200 two 100 four 100 best 1099511627776 sols 0 evals 11987724 passXX 0 secs 1.0
+ANTI4 alpha 56 p 4 fixed 200 two 100 four 100 best 1099511627776 sols 0 evals 11987724 passXX 0 secs 1.4
+ANTI4 alpha 57 p 4 fixed 80 two 40 four 160 best 1099511627776 sols 0 evals 10521858 passXX 0 secs 1.1
+ANTI4 alpha 58 p 4 fixed 96 two 32 four 160 best 1099511627776 sols 0 evals 10733201 passXX 0 secs 1.3
+ANTI4 alpha 59 p 4 fixed 40 two 20 four 180 best 1099511627776 sols 0 evals 1923930 passXX 0 secs 0.2
+ANTI4 alpha 60 p 4 fixed 40 two 20 four 180 best 1099511627776 sols 0 evals 1923930 passXX 0 secs 0.3
+ANTI4 alpha 61 p 4 fixed 80 two 40 four 160 best 1099511627776 sols 0 evals 10521858 passXX 0 secs 1.2
+ANTI4 alpha 62 p 4 fixed 96 two 32 four 160 best 1099511627776 sols 0 evals 10733201 passXX 0 secs 1.2
+ANTI4 alpha 63 p 4 fixed 40 two 20 four 180 best 1099511627776 sols 0 evals 1923930 passXX 0 secs 0.3
+DONE evals 283451252 sols 0

@@ -1,0 +1,9 @@
+alpha 0: p 2 fixed 1 orbits 364 reps 12
+GROUP /tmp/d75/g729_22.ht n 729 ninv 0 nalpha 22
+ANTI alpha 0 p 1 f 1 m 3 best 318 sols 0 evals 788436 passXX 0 secs 0.1
+alpha 21: p 2 fixed 27 orbits 351 reps 28
+ANTI alpha 21 p 2 f 1 m 3 best 20 sols 0 evals 1710100 passXX 0 secs 0.2
+ANTI alpha 21 p 2 f 3 m 2 best 136 sols 0 evals 3185000 passXX 0 secs 0.2
+ANTI alpha 21 p 2 f 5 m 1 best 1099511627776 sols 0 evals 300000 passXX 0 secs 0.1 CAPPED
+ANTI alpha 21 p 2 f 7 m 0 best 1099511627776 sols 0 evals 230230 passXX 0 secs 0.1
+DONE evals 6213766 sols 0

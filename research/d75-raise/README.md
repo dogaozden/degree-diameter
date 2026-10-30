@@ -21,7 +21,7 @@ Earlier in this job: **1,240** (C31 : C20 = SmallGroup(620,1), y x y^-1 = x^29, 
 (1,3), (13,2), (11,18)}; same checks, `records/d7D5_n1240_*`, `records/build_d7D5_n1240.sh`), 1,210 (SmallGroup(605,6) =
 (C11 x C11) : C5) and 1,204 (SmallGroup(602,2)); edge lists in `records/` (apsp VALID).
 
-Status: in progress, see the end of this file.
+Status: see the end of this file.
 
 ## How: self-dual connection sets
 
@@ -90,22 +90,33 @@ Negative results of this job, other families (all at 1,204-1,344 vertices, no va
   re-find the 1,152 graph as a lift by A4 x C24 or S4 x C12 in 90 s), so local search is not reliable at Delta = 7.
 - squad rounds d75-r1 and d75-r2 (`../squads/LOG.md`).
 
-## Status (updated during the job)
+## Status at the end of the session
 
-- Record: **1,312** (C41 : C16, self-dual Haar = bipartite Cayley graph of a group of order 1,312), pushed with
-  builders and checks. Earlier steps 1,204 -> 1,210 -> 1,240 -> 1,312, all from `haar75 anti`.
-- Self-dual (bipartite Cayley) sweep: `logs/sweep_anti.txt` (one line per group: N ID anti types T best B passXX P
-  sols S rc R secs; B is the smallest |G \ X X| seen among sets that survive the first NEAR = 25 targets, or 0 for
-  solutions; 1099511627776 = nothing passed). Coverage per order: `python3 src/sweep_table.py`.
-  Orders 601-620: every non-abelian group (the early part with an 8e6 cap on (3,2)); 621-660: every group with <= 1
-  involution; 657-800: every group with <= 1 involution except the 493 groups of order 729; order 672 (1,344
-  vertices): the closest region, many groups C7 : (C3 x P32) and P32 x (C7 : C3) miss by 4-6 elements
-  (672_22, 672_34: 4); see the end of this file for what was finished.
-- Closest above 1,312: SmallGroup(672,22) and (672,34), 4 elements of G uncovered (1,344 vertices).
+- **Record: 1,312** (Haar graph of C41 : C16 with a self-dual S = a bipartite Cayley graph of a group of order 1,312),
+  pushed with two independent builders and three checks. Steps during the job: 1,204 -> 1,210 -> 1,240 -> 1,312,
+  all from `haar75 anti`.
+- Self-dual (= bipartite Cayley) sweep, `logs/sweep_anti.txt`, one line per group: `N ID anti types T best B passXX P
+  sols S rc R secs` (B = smallest |G \ X X| among sets that survived the first NEAR = 25 targets, 0 for solutions,
+  1099511627776 = nothing passed; NEAR was on from 15:45 UTC). Per order: `python3 src/sweep_table.py`.
+  Coverage for the orders that could beat 1,312 (|G| >= 657, non-abelian groups; "inv" = number of involutions):
+  | orders | inv <= 1 | inv 3 | inv 5-7 | inv 8-31 | inv > 31 |
+  |---|---:|---:|---:|---:|---:|
+  | 657-672 | 42 / 42 | 222 / 222 | 150 / 150 | 336 / 344 | 0 / 592 |
+  | 673-700 | 74 / 74 | 26 / 26 | 20 / 20 | 3 / 38 | 6 / 107 |
+  | 701-800 (no 729, 768) | 321 / 321 | 0 / 628 | 0 / 473 | 0 / 1002 | 0 / 2176 |
+  (searched / non-abelian groups; order 729 = 3^6, 493 groups, only a few run; 768 not listed)
+  Below 657 (cannot beat 1,312 any more): every group of order 601-656 with <= 1 involution, and others early on.
+- No solution at any order >= 657. Closest (|G \ X X| = 2): SmallGroup(660,16) (1,320 vertices), SmallGroup(672,297)
+  = C7 : (C3 x ((C4 x C4) : C2)) and SmallGroup(672,1045) (1,344 vertices); then 672_22, 672_34 (4). Order 672 is the
+  warm region: many groups C7 : (C3 x P32), P32 x (C7 : C3) miss by 2-6. A deep run of 672_297 (every type uncapped,
+  246 types, `logs/deep/`) and full (5,1)/(7,0) runs of 672_22, 672_34, 672_14 (`logs/warm/`) found nothing more.
+- Types (5,1) and (7,0) were token-sampled (3e5 sets per class) in the bulk of the sweep: no hit in any exhaustive run.
 
 ## Next steps
 
-- Finish order 672 (all groups with <= 7 involutions; then the rest), and 3-involution groups of 673-700.
+- Not searched yet: order 672 groups with more than 31 involutions (592), groups of 673-700 with 8+ involutions, groups
+  of 701-800 with 3+ involutions, and order 729 (493 odd 3-groups). Resume with `MODE=anti NEAR=25 MAXEV=100000000
+  MAXEVF=300000 src/sweep1.sh LIST 4` on a list filtered against `logs/sweep_anti.txt`.
 - The same self-dual (bipartite Cayley) search for other cells: (5,5), (6,5), (8,5) and beyond: haar75 is written for
   valency 7 (the types table), a valency parameter is a small change. At (6,5) the table value 684 is itself a Haar
   graph, so the self-dual family is a natural first try there.
