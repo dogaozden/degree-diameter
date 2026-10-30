@@ -4,7 +4,7 @@
 \usepackage{enumitem,booktabs,array,multirow}
 \usepackage[dvipsnames]{xcolor}
 \usepackage{tikz}
-\usetikzlibrary{arrows.meta,calc,positioning,shapes.geometric}
+\usetikzlibrary{arrows.meta,calc,positioning,shapes.geometric,decorations.pathmorphing}
 \usepackage[hyphens]{url}
 \usepackage[hidelinks]{hyperref}
 
@@ -898,23 +898,23 @@ We check \eqref{eq:repair5}. Distances between points of one copy are even, betw
 \begin{figure}[ht]
 \centering
 \begin{tikzpicture}[xscale=1.15,yscale=1.0]
-  \draw[rounded corners=8pt,gray] (-0.6,-0.7) rectangle (4.3,3.0); \node[font=\small] at (1.85,3.3) {copy $\cQ_j$};
-  \draw[rounded corners=8pt,gray] (5.3,-0.7) rectangle (10.0,3.0); \node[font=\small] at (7.65,3.3) {copy $\cQ_{j'}$};
-  \node[pt] (x) at (0.2,2.2) {}; \node[above] at (x) {$x_j$};
-  \node[pt] (y) at (2.0,2.2) {}; \node[above] at (y) {$y_j$};
+  \draw[rounded corners=8pt,gray] (-1.0,-0.6) rectangle (4.3,2.75); \node[font=\small] at (1.65,3.75) {copy $\cQ_j$};
+  \draw[rounded corners=8pt,gray] (5.3,-0.6) rectangle (10.0,2.75); \node[font=\small] at (7.65,3.75) {copy $\cQ_{j'}$};
+  \node[pt] (x) at (0.2,2.2) {}; \node[left] at (x) {$x_j$};
+  \node[pt] (y) at (2.0,2.2) {}; \node[above left] at (y) {$y_j$};
   \node[ln] (xy) at (1.1,1.2) {}; \node[left] at (xy) {$(xy)_j$};
   \node[ln] (lj) at (3.0,1.2) {}; \node[right] at (lj) {$\ell_j$};
   \foreach \t/\n in {2.5/a,3.0/b,3.5/c} {\node[pt] (\n) at (\t,0.0) {}; \draw[old] (lj)--(\n);}
-  \node[font=\scriptsize] at (3.0,-0.4) {not collinear with $x$};
+  \node[font=\scriptsize,align=right,left] at (2.35,0.0) {not collinear\\ with $x$};
   \draw[old] (x)--(xy); \draw[old] (y)--(xy); \draw[old] (y)--(lj);
-  \node[ln] (Mx) at (6.2,2.2) {}; \node[above] at (Mx) {$x_{j'}$};
-  \node[ln] (My) at (8.0,2.2) {}; \node[above] at (My) {$y_{j'}$};
+  \node[ln] (Mx) at (6.2,2.2) {}; \node[right] at (Mx) {$x_{j'}$};
+  \node[ln] (My) at (8.0,2.2) {}; \node[right] at (My) {$y_{j'}$};
   \node[pt] (lp) at (8.9,1.2) {}; \node[right] at (lp) {$\ell_{j'}$};
   \draw[old] (My)--(lp);
   \foreach \t/\n in {2.5/a,3.0/b,3.5/c} {\node[ln] (\n2) at (\t+5.9,0.0) {}; \draw[old] (lp)--(\n2); }
-  \draw[gone] (x) to[out=15,in=165] (Mx);
-  \draw[gone] (y) to[out=15,in=165] (My);
-  \draw[old,gray!70] (a) to[out=-20,in=200] (a2);
+  \draw[gone] (x) to[out=50,in=130] (Mx);
+  \draw[gone] (y) to[out=50,in=130] (My);
+  \draw[old,gray!70] (a) to[out=-30,in=210] (a2);
 \end{tikzpicture}
 \caption{Why a friendly transition with $M$ the identity ($\cQ_j$ a copy of $\cQ$, $\cQ_{j'}$ of $\cQ^D$) cannot free two collinear points $x,y$. Dashed: the deleted incidences $x_j\I x_{j'}$, $y_j\I y_{j'}$. Take a line $\ell\ne xy$ through $y$; in $\cQ_{j'}$ it is a point $\ell_{j'}$. A path of length $4$ from $x_j$ to $\ell_{j'}$ must be $x_j$, a line, a point $a_j$ collinear with $x$, the line $a_{j'}$, then $\ell_{j'}$; so $a$ must be a point of $\ell$ collinear with $x$. The only one is $y$ (Q2), and $y$ is freed. The other points of $\ell$ (bottom) are not collinear with $x$, so their incidences with $\cQ_{j'}$ (grey) do not help: in these two copies $d(x_j,\ell_{j'})=6$.}
 \label{fig:collinearpair}
@@ -978,26 +978,26 @@ For $p\in m\setminus\{z\}$: $\ell_{j'}$, $g_\ell$, $o_j$, $m_j$, $p_j$ is a path
 \begin{figure}[ht]
 \centering
 \begin{tikzpicture}[xscale=1.2,yscale=1.0]
-  \draw[rounded corners=8pt,gray] (-0.9,-1.2) rectangle (3.9,2.9); \node[font=\small] at (1.5,3.2) {$\cQ_j$, type $D$};
-  \draw[rounded corners=8pt,gray] (5.6,-1.2) rectangle (10.4,2.9); \node[font=\small] at (8.0,3.2) {$\cQ_{j'}$, type $H$};
-  \node[pt] (lj) at (0.3,1.9) {}; \node[left] at (lj) {$\ell_j$};
-  \node[pt] (mj) at (2.7,1.9) {}; \node[right] at (mj) {$m_j$};
-  \node[ln] (zj) at (1.5,2.5) {}; \node[above] at (zj) {$z_j$};
+  \draw[rounded corners=8pt,gray] (-0.4,-0.3) rectangle (3.7,3.1); \node[font=\small] at (1.65,4.45) {$\cQ_j$, type $D$};
+  \draw[rounded corners=8pt,gray] (5.6,-0.3) rectangle (9.8,3.1); \node[font=\small] at (7.7,4.45) {$\cQ_{j'}$, type $H$};
+  \node[pt] (lj) at (0.6,2.0) {}; \node[left] at (lj) {$\ell_j$};
+  \node[pt] (mj) at (2.6,2.0) {}; \node[right] at (mj) {$m_j$};
+  \node[ln] (zj) at (1.6,2.6) {}; \node[below=1pt] at (zj) {$z_j$};
   \draw[old] (lj)--(zj)--(mj);
-  \node[ln] (oj) at (2.2,0.7) {}; \node[left] at (oj) {$o_j$};
-  \node[ln] (opj) at (0.6,0.7) {}; \node[left] at (opj) {$o'_j$};
-  \node[ln] (pj) at (3.2,0.7) {}; \node[right] at (pj) {$p_j$};
+  \node[ln] (oj) at (2.1,0.7) {}; \node[left] at (oj) {$o_j$};
+  \node[ln] (pj) at (3.2,0.9) {}; \node[right] at (pj) {$p_j$};
+  \node[ln] (opj) at (0.3,0.7) {}; \node[left] at (opj) {$o'_j$};
   \draw[old] (mj)--(oj); \draw[old] (mj)--(pj); \draw[old] (lj)--(opj);
-  \node[ln] (lp) at (6.6,1.9) {}; \node[left] at (lp) {$\ell_{j'}$};
-  \node[ln] (mp) at (9.2,1.9) {}; \node[right] at (mp) {$m_{j'}$};
-  \node[pt] (zp) at (7.9,2.5) {}; \node[above] at (zp) {$z_{j'}$};
+  \node[ln] (lp) at (6.4,2.0) {}; \node[below right] at (lp) {$\ell_{j'}$};
+  \node[ln] (mp) at (8.6,2.0) {}; \node[right] at (mp) {$m_{j'}$};
+  \node[pt] (zp) at (7.5,2.6) {}; \node[below=1pt] at (zp) {$z_{j'}$};
   \draw[old] (lp)--(zp)--(mp);
-  \node[pt] (pp) at (9.7,0.7) {}; \node[right] at (pp) {$p_{j'}$};
+  \node[pt] (pp) at (9.1,0.9) {}; \node[right] at (pp) {$p_{j'}$};
   \draw[old] (mp)--(pp);
-  \draw[gone] (lj) to[out=40,in=150] (lp);
-  \draw[gone] (mj) to[out=40,in=150] (mp);
-  \node[npt] (gl) at (4.75,-0.15) {}; \node[below] at (gl) {\textcolor{BrickRed}{$g_\ell$}};
-  \node[npt] (gm) at (4.75,0.75) {}; \node[above=1pt] at (gm) {\textcolor{BrickRed}{$g_m$}};
+  \draw[gone] (lj) to[bend left=42] (lp);
+  \draw[gone] (mj) to[bend left=42] (mp);
+  \node[npt] (gl) at (4.6,0.5) {}; \node[below] at (gl) {\textcolor{BrickRed}{$g_\ell$}};
+  \node[npt] (gm) at (4.6,-0.9) {}; \node[below] at (gm) {\textcolor{BrickRed}{$g_m$}};
   \draw[added] (gl)--(lp); \draw[added] (gl)--(oj);
   \draw[added] (gm)--(mp); \draw[added] (gm)--(opj);
 \end{tikzpicture}
@@ -1025,11 +1025,11 @@ Over $\cQ=Q(4,q)$, $q$ odd, let every transition from type $H$ to type $D$ be th
     \node[draw,circle,inner sep=1.5pt,minimum size=0.62cm,font=\small,fill=white] (c\j) at ({90-360*\j/7}:1.55) {$\t_{\j}$};
   }
   \foreach \a/\b in {0/3,1/3,2/3,4/6,5/6}
-    \draw[-{Stealth[length=4pt]},black,thick,shorten <=9pt,shorten >=9pt] (c\a)--(c\b);
+    \draw[-{Stealth[length=5pt]},black,thick,shorten >=1pt] (c\a)--(c\b);
   \foreach \a/\b in {3/4,3/5,6/0,6/1,6/2}
-    \draw[-{Stealth[length=4pt]},BrickRed,thick,shorten <=9pt,shorten >=9pt] (c\a)--(c\b);
+    \draw[-{Stealth[length=5pt]},BrickRed,thick,shorten >=1pt] (c\a)--(c\b);
   \foreach \a/\b in {0/1,0/2,1/2,1/4,2/4,2/5,4/5,4/0,5/0,5/1,3/6}
-    \draw[-{Stealth[length=3pt]},gray,densely dotted,shorten <=9pt,shorten >=9pt] (c\a)--(c\b);
+    \draw[-{Stealth[length=4pt]},gray,densely dotted,shorten >=1pt] (c\a)--(c\b);
 \end{tikzpicture}
 \caption{The seven-copy layout $HHHDHHD$ (transitions $j\to j+1,j+2,j+3$). Black: the five transitions from type $H$ to type $D$, identity, freeing an ovoid of $Q(4,q)$ ($a=q^2+1$ points). Red: the five from $D$ to $H$, identity, freeing $b$ lines (a partial spread, or a set with partner pairs and the hub rule). Dotted: the eleven between copies of the same type (ten $H\to H$ and $3\to6$), each a local duality on two points.}
 \label{fig:layout7}
@@ -1048,11 +1048,13 @@ The hub incidences form a bipartite graph $Y$ whose two sides are the line-hubs 
 \emph{The ingredients} (by their combinatorial property, with the reason they exist). An ovoid of $Q(4,q)$: $q^2+1$ points meeting every line once; it exists for every $q$ \cite[3.4.1]{PT}, and \path{D5_QUADRANGLE.md}, Lemma~1.1, gives one explicitly. For $q$ odd, $q\ge5$, a partial spread of $Q(4,q)$ with $3q-1$ lines, that is, $3q-1$ pairwise non-collinear points of $W(q)$: explicit in \path{D5_QUADRANGLE.md}, Lemma~1.3 (found by the lab; we did not find it in the sources we read). Two-point local dualities (\S\ref{ssec:thmC5}). For $q$ even, a duality and an ovoid of $W(q)$ \cite[3.2.1, 3.4.1]{PT}. The hub graphs of \S\ref{ssec:hubgraphs}.
 
 \emph{The families} (Corollaries~10.1--10.4). For $q$ even and $1\le r\le q-1$: $n_b(q+1+r,5)\ge(2r+1)\cdot2N+K+K'$ with $K,K'\le r(q^2+1)$ and a hub graph with $\delta=q-r$. For $q$ odd, $q\ge5$, with $a=q^2+1$, $b=3q-1$, $c=2$ (on the transition between the two copies of type $D$, $2\to4$, $3\to6$ and $4\to8$ in the three layouts, $M$ goes from the lines to the points of $Q(4,q)$, and the dual of the two-point recipe is used):
-\begin{align*}
-n_b(q+3,5)&\ge 10N+K+K', & K,K'&\le 3q+1, & \delta&=q-2;\\
-n_b(q+4,5)&\ge 14N+K+K', & K&\le 6q,\ K'\le 3q+3, & \delta&=q-3;\\
-n_b(q+5,5)&\ge 18N+K+K', & K&\le\min(q^2+7,9q-1),\ K'\le 3q+5, & \delta&=q-4.
-\end{align*}
+\[
+\begin{array}{@{}l@{\qquad}l@{\qquad}l@{}}
+n_b(q+3,5)\ge 10N+K+K', & K,K'\le 3q+1, & \delta=q-2;\\
+n_b(q+4,5)\ge 14N+K+K', & K\le 6q,\ K'\le 3q+3, & \delta=q-3;\\
+n_b(q+5,5)\ge 18N+K+K', & K\le\min(q^2+7,9q-1),\ K'\le 3q+5, & \delta=q-4.
+\end{array}
+\]
 Every transition is repaired by Theorems~\ref{thm:B5} and~\ref{thm:C5}, and Theorem~\ref{thm:assembly5} gives the bound. With the hub graphs of \S\ref{ssec:hubgraphs}:
 
 \begin{center}\small
@@ -1074,6 +1076,164 @@ $(15,5)$ & 20{,}496 & 20{,}598 & $q=11$, seven copies, $66+36$ & 20{,}736 (route
 These are above the 2013 table in all six cells and below the lab's values in all six (\path{D5_QUADRANGLE.md}, \S14). With computer-found freed sets the same construction gives $11{,}636$ at $(13,5)$ and $20{,}715$ at $(15,5)$ (seven copies over $Q(4,9)$ and $Q(4,11)$, freed lines with $30$ and $36$ partner pairs and the hub rule), both checked by breadth-first search from every vertex, and both below the lab's values. A count of slots (Proposition~14.1) shows that, with at most two freed points on each transition between copies of the same type, no structure of this kind reaches the lab's values in the cells $(10,5)$--$(14,5)$ and $(16,5)$; at $(15,5)$ it would need a set $T$ of at least $111$ points of $W(11)$, against the $89$ found.
 
 \emph{Credits.} The level structures themselves are not ours (their orders are the table values credited to \cite{DGQ}). Deleting the incidences of an identity matching at a set of pairwise non-collinear points and attaching new vertices is in Rajiv's preprint \cite{R26} for general (non-bipartite) graphs; Theorem~\ref{thm:B5} is the bipartite version of that step at diameter $5$, with one-sided hubs. We did not search the literature for a criterion like Theorem~\ref{thm:E} or for the bound of two points for local dualities.
+
+\section{Diameter 8: G\'omez's construction on generalized hexagons, and a labelling for each copy}\label{sec:d8}
+
+(Theorems 1--4 and the other numbered statements cited in this section are those of \path{OMEGA_NOTE.md}.)
+
+Six entries of the 2013 table at diameter $8$, the cells $(10,8)$, $(11,8)$, $(12,8)$, $(14,8)$, $(15,8)$ and $(16,8)$, are the orders of the compound graphs $\Omega H_q$ of J.~G\'omez \cite[\S2.9.3]{G86} for $q=7,8,9,11,11,13$; the table credits them to Delorme, G\'omez and Quisquater \cite{DGQ}. \emph{The construction is G\'omez's}: the copies of the hexagon, the wiring of the new elements (his Figures 2.21a,b), the order, the degree, and the claim that the diameter is at most $D_1+2=8$, which the thesis states without proof. \emph{What follows is ours}: the construction in incidence terms; a proof that, as defined, it has diameter at least $9$ (\S\ref{ssec:omegafail}); and the attempt to \emph{repair} it by giving every copy its own labelling (\S\ref{ssec:relabel}). The repair works at $q=2$ and $q=3$, with labellings found by computer; for every $q\ge7$ it provably fails for all labellings that respect the geometry; for other labellings it is open. So, unlike Sections~\ref{sec:d3}--\ref{sec:d5}, this section describes a construction that does not reach the diameter claimed for it, and why.
+
+Let $\Gamma$ be a generalized hexagon of order $(q,q)$, with $N=(q+1)(q^4+q^2+1)$ points and $N$ lines (Section~\ref{sec:d6}); for the table, $\Gamma$ is the split Cayley hexagon $H(q)$ \cite{T59,VM98}. Recall: any two elements are at distance at most $6$, there are no circuits of length less than $12$, and elements at distance $6$ are \emph{opposite}. By the argument of Lemma~\ref{lem:diam}, an incidence structure has diameter at most $8$ if and only if every point is within distance $7$ of every line. Two counts in $\Gamma$ are used.
+
+\begin{lemma}[Lemmas 1.4 and 1.6]\label{lem:hexcounts}
+Let $t$ be an element of $\Gamma$.
+\begin{enumerate}[label=\textup{(\alph*)}]
+\item For $1\le i\le5$ there are $(q+1)q^{i-1}$ elements at distance $i$ from $t$, and $q^5$ elements opposite $t$.
+\item Let $z$ be an element of the same kind as $t$. Among the elements opposite $t$, exactly $q^4$ are within distance $4$ of $z$ if $z\ne t$, and none if $z=t$; exactly $q^2$ are within distance $2$ of $z$ if $d(t,z)\in\{4,6\}$, and none if $d(t,z)\le 2$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+(a) A walk that never steps straight back is a shortest path as long as its length is at most $6$, and it is the only shortest path between its ends when its length is at most $5$; otherwise two of them would close a circuit shorter than $12$. Such walks have $q+1$ choices for the first step and $q$ for each later one. (b) If $d(t,u)=k$ with $1\le k\le5$, exactly one element incident with $u$ is at distance $k-1$ from $t$ and the other $q$ at distance $k+1$; if $k=6$, all $q+1$ are at distance $5$. Follow the distance to $t$ along the walks of length at most $4$ from $z$ that never step straight back. For example, if $d(t,z)=2$, a walk of length $4$ ends opposite $t$ exactly when every step goes away from $t$, which happens for $q\cdot q^3$ walks, and the walks of length $2$ or $0$ end at distance at most $4$ from $t$. The cases $d(t,z)=4$ and $6$ are the same bookkeeping (\path{OMEGA_NOTE.md}, Lemma~1.6).
+\end{proof}
+
+\subsection{G\'omez's construction}\label{ssec:gomez}
+Put $\alpha=\lfloor(q+3)/2\rfloor$, so that $2\alpha$ is $q+3$ or $q+2$. Take $5\alpha$ copies $\Gamma_c$ of $\Gamma$, numbered $c=5B+i$ with a \emph{block} $B\in\{0,\dots,\alpha-1\}$ and a \emph{position} $i\in\mathbb{Z}_5$; each block has a \emph{type}, $a$ or $b$. The thesis gives the points of $\Gamma$ a set of $N$ labels, and the lines the same set of labels, and uses \emph{the same labels in every copy}. We write $x_c$ for the copy in $\Gamma_c$ of an element $x$ of $\Gamma$.
+
+The new elements come in ten \emph{classes}: an \emph{unbarred} class $k$ and a \emph{barred} class $\bar k$ for each $k\in\mathbb{Z}_5$. Each class has one new element for each label, and each class \emph{meets} $2\alpha$ of the copies, two in every block:
+\begin{center}\small
+\renewcommand{\arraystretch}{1.15}
+\begin{tabular}{@{}lll@{}}
+\toprule
+ & in a block of type $a$ & in a block of type $b$\\
+\midrule
+class $k$ meets the copies at positions & $k-1$, $k+1$ & $k+3$, $k+4$\\
+class $\bar k$ meets the copies at positions & $k+2$, $k+3$ & $k-1$, $k+1$\\
+\bottomrule
+\end{tabular}
+\end{center}
+Read the other way: the copy at position $i$ of a block of type $a$ is met by the unbarred classes $i\pm1$ and the barred classes $i+2,i+3$; of a block of type $b$, by the unbarred classes $i+1,i+2$ and the barred classes $i\pm1$. So every copy is met by exactly two classes of each bar, and every class misses $3\alpha$ copies (Figure~\ref{fig:pentagon}).
+
+In every copy it meets, the new element of a class with label $t$ is incident with exactly one element of that copy: the point labelled $t$ or the line labelled $t$. Which of the two is fixed per class and copy by the figures of the thesis, which draw each copy with an outer and an inner dot and do not say which dot is the points; the natural reading (\emph{reading~2}) is that the unbarred classes sit on points and the barred classes on lines, in every copy. In incidence terms, G\'omez's structure in reading~2 is:
+\begin{itemize}[leftmargin=1.5em]
+\item the points and lines of all $5\alpha$ copies, with their incidences;
+\item for every point $p$ of $\Gamma$ and every $k\in\mathbb{Z}_5$, a new line $p^{(k)}$ through the copies $p_c$ of $p$ in the $2\alpha$ copies $\Gamma_c$ met by $k$;
+\item for every line $L$ of $\Gamma$ and every $k\in\mathbb{Z}_5$, a new point $L^{(\bar k)}$ on the copies $L_c$ of $L$ in the $2\alpha$ copies met by $\bar k$.
+\end{itemize}
+There are no other incidences; in particular no two new elements are incident. In the other reading of the figures (\emph{reading~1}) a new element of label $t$ is incident with the line labelled $t$ in the copies of one block type and with the point labelled $t$ in the copies of the other, so the copies of one block type become copies of the dual $\Gamma^D$, and the pairing of point labels with line labels, which the thesis leaves open, now matters.
+
+\emph{Counts.} Every point and line of every copy gains two incidences (it carries the labels of one point or one line, and two classes of the right bar meet its copy), so it has degree $q+3$. A new element has degree $2\alpha\le q+3$. There are $5\alpha\cdot2N$ old and $10N$ new elements, $5(\alpha+1)\cdot2N$ in all:
+
+\begin{center}\small
+\renewcommand{\arraystretch}{1.15}
+\begin{tabular}{@{}lrrrr@{}}
+\toprule
+cell & $q$ & $\alpha$ & copies & order $5(\alpha+1)\cdot2N$\\
+\midrule
+$(10,8)$ & $7$ & $5$ & $25$ & $1{,}176{,}480$\\
+$(11,8)$ & $8$ & $5$ & $25$ & $2{,}246{,}940$\\
+$(12,8)$ & $9$ & $6$ & $30$ & $4{,}650{,}100$\\
+$(14,8)$ and $(15,8)$ & $11$ & $7$ & $35$ & $14{,}172{,}480$\\
+$(16,8)$ & $13$ & $8$ & $40$ & $36{,}201{,}060$\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\begin{figure}[ht]
+\centering
+\begin{tikzpicture}[scale=1.05]
+\newcommand{\pent}[2]{%
+  \foreach \i in {0,...,4} {\node[draw,circle,inner sep=0pt,minimum size=0.55cm,font=\scriptsize,fill=white] (#1\i) at ({90-72*\i}:1.6) {$\Gamma_{\i}$};}
+}
+\begin{scope}
+  \pent{A}{}
+  \node at (0,-2.25) {\small block of type $a$};
+  \foreach \k in {0,...,4} {
+    \pgfmathtruncatemacro{\u}{mod(\k+4,5)} \pgfmathtruncatemacro{\v}{mod(\k+1,5)}
+    \pgfmathtruncatemacro{\x}{mod(\k+2,5)} \pgfmathtruncatemacro{\y}{mod(\k+3,5)}
+    \draw[added] (A\u)--(A\v); \node[nln] at ($(A\u)!0.5!(A\v)$) {};
+    \node[font=\scriptsize,BrickRed] at ($(A\u)!0.5!(A\v)!-0.75!(0,0)$) {$\k$};
+    \draw[thick,BrickRed,densely dashed] (A\x)--(A\y); \node[npt] (m\k) at ($(A\x)!0.5!(A\y)$) {};
+    \node[font=\scriptsize,BrickRed] at ($(A\x)!0.5!(A\y)!-0.38!(0,0)$) {$\bar\k$};
+  }
+\end{scope}
+\begin{scope}[xshift=6.2cm]
+  \pent{Bb}{}
+  \node at (0,-2.25) {\small block of type $b$};
+  \foreach \k in {0,...,4} {
+    \pgfmathtruncatemacro{\u}{mod(\k+4,5)} \pgfmathtruncatemacro{\v}{mod(\k+1,5)}
+    \pgfmathtruncatemacro{\x}{mod(\k+3,5)} \pgfmathtruncatemacro{\y}{mod(\k+4,5)}
+    \draw[thick,BrickRed,densely dashed] (Bb\u)--(Bb\v); \node[npt] at ($(Bb\u)!0.5!(Bb\v)$) {};
+    \node[font=\scriptsize,BrickRed] at ($(Bb\u)!0.5!(Bb\v)!-0.75!(0,0)$) {$\bar\k$};
+    \draw[added] (Bb\x)--(Bb\y); \node[nln] at ($(Bb\x)!0.5!(Bb\y)$) {};
+    \node[font=\scriptsize,BrickRed] at ($(Bb\x)!0.5!(Bb\y)!-0.38!(0,0)$) {$\k$};
+  }
+\end{scope}
+\end{tikzpicture}
+\caption{G\'omez's wiring of one block of five copies (after his Figures 2.21a,b; copy $\Gamma_i$ is the copy at position $i$ of the block). Each red segment is a class: its new elements meet the two copies at its ends. Squares on solid segments are the unbarred classes $k$ (in reading~2, new lines through the copies of a point), circles on dashed segments the barred classes $\bar k$ (new points on the copies of a line). In a block of type $a$ the unbarred classes are the diagonals and the barred classes the sides of the pentagon; in a block of type $b$ the other way round. A new element meets the two copies at the ends of its class in every block, $2\alpha$ copies in all.}
+\label{fig:pentagon}
+\end{figure}
+
+\subsection{What happens: the diameter is at least \texorpdfstring{$9$}{9}}\label{ssec:omegafail}
+A new element is incident only with copies of \emph{one} element of $\Gamma$. So passing through it lets a path change copy, but not move in $\Gamma$. This is the whole difficulty.
+
+\begin{theorem}[Theorem 1 and Corollary 3.1]\label{thm:projection}
+In reading~$2$, for every new element $x$ with label $t$ \textup{(}the point $p$ for $p^{(k)}$, the line $L$ for $L^{(\bar k)}$\textup{)}, every copy $\Gamma_{c'}$ that $x$ misses and every element $v$ of $\Gamma$ opposite $t$, the distance from $x$ to $v_{c'}$ is at least $9$. So the structure has diameter at least $9$, for every $q$ and every choice of block types.
+\end{theorem}
+
+\begin{proof}
+Send every element $y_c$ of a copy to $y$, and every new element to its label. Along a path starting at $x$, an incidence inside a copy is sent to an incidence of $\Gamma$, and a passage copy, new element, copy uses two incidences and is sent to a single element (the new element is incident only with copies of its label). A path from $x$ to $v_{c'}$ starts with an incidence from $x$ to a copy of $t$ in a copy that $x$ meets; to reach $\Gamma_{c'}$ it must pass through at least one more new element. Removing the passages, its image is a walk in $\Gamma$ from $t$ to $v$, of length at least $6$. So the path has length at least $1+6+2=9$ (Figure~\ref{fig:projection}).
+\end{proof}
+
+The argument uses only that every new element meets copies of a single element and misses some copy; it holds for any bipartite graph in place of the hexagon, and it is formalised in Lean (\path{OMEGA_NOTE.md}, \S3). In reading~1 a new element meets the point labelled $t$ in some copies and the line labelled $t$ in others, so its image may jump between the two; a count of the possible images still leaves elements far away:
+
+\begin{theorem}[Theorem 2]\label{thm:twolabels}
+Let $q\ge7$. In every reading, for every block types and every pairing of point labels with line labels, every new element has, in every copy it misses, at least $q^5-5q^4-8q^3-12q^2-16q-10>0$ elements at distance at least $9$.
+\end{theorem}
+
+\emph{Why.} Let $x$ have label $t$, and let $z$ be the element labelled $t$ of the kind of the elements of $\Gamma_{c'}$ that $x$ must reach within $7$. A path of length at most $7$ from $x$ into $\Gamma_{c'}$ passes through $1$, $2$ or $3$ new elements and uses at most $4$ incidences inside copies; each passage keeps the image or switches it between the point and the line with the same label. Counting the possible images with Lemma~\ref{lem:hexcounts}(a): at most $A+B+1$ elements opposite $z$ are reached, where $A=\sum_{e_1+e_2\in\{0,2,4\}}s_{e_1}s_{e_2}=5q^4+8q^3+6q^2+4q+2$ and $B=\sum_{e_1+e_2+e_3\le2}s_{e_1}s_{e_2}s_{e_3}=6q^2+12q+7$, with $s_0=1$, $s_i=(q+1)q^{i-1}$. For $q\ge7$ this is less than $q^5$ (for example $15{,}459<16{,}807$ at $q=7$).
+
+By computer, the diameter is exactly $9$ for $q=2,3,5,7,9$ with both block types (for the patterns and readings computed), the eccentricity of a new element is $9$ at the orders of all six table entries, and with a single block type the diameter is $10$ (\path{OMEGA_NOTE.md}, C2, C3; checked again here for $q=2,3$).
+
+\begin{figure}[ht]
+\centering
+\begin{tikzpicture}[xscale=1.0,yscale=0.95]
+  \draw[rounded corners=8pt,gray] (-0.3,-0.4) rectangle (3.3,1.4); \node[font=\small] at (1.5,1.75) {$\Gamma_{c_1}$ (met by $x$)};
+  \draw[rounded corners=8pt,gray] (4.7,-0.4) rectangle (8.3,1.4); \node[font=\small] at (6.5,1.75) {$\Gamma_{c_2}$};
+  \draw[rounded corners=8pt,gray] (9.7,-0.4) rectangle (13.3,1.4); \node[font=\small] at (11.5,1.75) {$\Gamma_{c'}$ (missed by $x$)};
+  \node[nln] (x) at (0.0,2.6) {}; \node[left] at (x) {\textcolor{BrickRed}{$x=p^{(k)}$}};
+  \node[pt] (p1) at (0.3,0.5) {}; \node[below] at (p1) {$p_{c_1}$};
+  \node[pt] (u1) at (2.7,0.5) {}; \node[below] at (u1) {$u_{c_1}$};
+  \draw[old,decorate,decoration={snake,amplitude=1.2pt,segment length=6pt}] (p1)--(u1);
+  \node[nln] (h) at (4.0,2.6) {}; \node[above] at (h) {\textcolor{BrickRed}{$u^{(k')}$}};
+  \node[pt] (u2) at (5.3,0.5) {}; \node[below] at (u2) {$u_{c_2}$};
+  \node[ln] (w2) at (7.7,0.5) {}; \node[below] at (w2) {$w_{c_2}$};
+  \draw[old,decorate,decoration={snake,amplitude=1.2pt,segment length=6pt}] (u2)--(w2);
+  \node[npt] (h2) at (9.0,2.6) {}; \node[above] at (h2) {\textcolor{BrickRed}{$w^{(\bar k'')}$}};
+  \node[ln] (w3) at (10.3,0.5) {}; \node[below] at (w3) {$w_{c'}$};
+  \node[pt] (v) at (12.7,0.5) {}; \node[below] at (v) {$v_{c'}$};
+  \draw[old,decorate,decoration={snake,amplitude=1.2pt,segment length=6pt}] (w3)--(v);
+  \draw[added] (x)--(p1); \draw[added] (u1)--(h)--(u2); \draw[added] (w2)--(h2)--(w3);
+  \node[font=\small] at (6.5,-1.2) {image in $\Gamma$:\quad $p \leadsto u \leadsto w \leadsto v$, a walk of length $\ge d(p,v)=6$};
+\end{tikzpicture}
+\caption{The projection (Theorem~\ref{thm:projection}, reading~2). Wavy: walks inside one copy; red: new elements. A new element meets only the copies of its label, so a passage copy, new element, copy costs two incidences and does not move the image in $\Gamma$ ($u_{c_1}$ and $u_{c_2}$ are copies of the same point). If $v$ is opposite $p$ and $x$ misses $\Gamma_{c'}$, every path from $x$ to $v_{c'}$ has length at least $1+6+2=9$.}
+\label{fig:projection}
+\end{figure}
+
+\subsection{The repair: a labelling for each copy}\label{ssec:relabel}
+The thesis uses one labelling for all copies. The obvious repair keeps the wiring and gives every copy $c$ its own labelling: bijections $P_c$ and $L_c$ from the labels to the points and lines of $\Gamma$, with the new element of label $t$ incident, in copy $c$, with $P_c(t)$ or $L_c(t)$. Degrees and counts do not change. A passage from copy $c$ to copy $d$ through a new element of class $Y$ now moves the image in $\Gamma$ by the \emph{transfer} $P_dP_c^{-1}$ (or $L_dL_c^{-1}$, $L_dP_c^{-1}$, $P_dL_c^{-1}$, according to what $Y$ sits on in $c$ and $d$), and Theorem~\ref{thm:projection} no longer applies. What is known:
+
+\begin{itemize}[leftmargin=1.5em]
+\item \emph{At $q=2$ and $q=3$ the repair works} (C7). Labellings found by annealing in the lab's table audit give diameter $8$: at $q=2$, block types $ab$, $1{,}890$ elements, old elements of degree $5$ and new ones of degree $4$; at $q=3$, block types $aba$, reading~$1$, $14{,}560$ elements, $6$-regular. We rebuilt the $q=3$ structure from the audit's files and checked its diameter (Appendix~\ref{app:checks}). These are far below the table at $(5,8)$ and $(6,8)$; they only show that a suitable labelling can reach $D_1+2$. We have no description of these labellings.
+\item \emph{Relabelling a copy by an automorphism of $\Gamma$ changes nothing} (Lemma~5.2): if $P_c$ and $L_c$ are $P_0$ and $L_0$ followed by one collineation $g_c$ of $\Gamma$, then $y_c\mapsto (g_c^{-1}(y))_c$ is an isomorphism onto G\'omez's structure.
+\item \emph{Geometric labellings cannot work for $q\ge7$} (Theorems 3, 4). Call a labelling \emph{geometric} if every transfer is induced by an automorphism of $\Gamma$: a collineation, or a duality, which exists for the split Cayley hexagon $H(q)$ only when $q$ is a power of $3$ \cite{VM98}. For $q\ge7$, every geometric labelling, every reading, every choice of which side each class sits on, and every choice of block types, the diameter is at least $9$.
+\item \emph{Open}: labellings that are not geometric, for every $q\ge4$ (searches at $q=4,5$ found none of diameter $8$); labellings chosen separately for each pair (class, copy); other wirings.
+\end{itemize}
+
+\emph{Why geometric labellings fail} (combinatorially, for $q\ge8$). After relabelling each copy by an automorphism (which changes nothing), the transfers of one bar, the \emph{point bar}, are the identity and those of the other, the \emph{line bar}, are collineations (Lemma~5.3; for $q$ not a power of $3$ every class sits on one kind in all copies it meets). Collineations preserve distances. A path of length at most $7$ from a new element $x$ of the point bar with label $t$ into a copy $\Gamma_{c'}$ it misses passes through one, two or three new elements; a passage through the point bar keeps the image, a passage through the line bar applies a collineation $\lambda$ that depends only on the two copies. So every point of $\Gamma_{c'}$ within distance $7$ of $x$ lies in $B(t,4)$, in a ball $B(\lambda(t),4)$ for each copy $c_1$ met by $x$ that shares a class of the line bar with $c'$ (one passage through the line bar), or in one of at most $m_2$ balls of radius $2$ (two passages; Lemma~5.4). Call $(x,c')$ \emph{starved} if only $\alpha$ of the $2\alpha$ copies met by $x$ share a class of the other bar with $c'$; for every choice of block types starved pairs exist (Lemma~5.6, a property of the wiring alone). By Lemma~\ref{lem:hexcounts}(b) the balls then contain at most $\alpha q^4+m_2q^2$ of the $q^5$ elements opposite $t$, and a count of the two-passage words gives $m_2\le 8\alpha^2-1$ in general and $m_2\le140$, $201$ for $\alpha=5,6$. So for $q\ge8$ every new element of a starved pair has at least $q^5-\alpha q^4-m_2q^2$ elements at distance at least $9$ in the missed copy: at least $3{,}328$, $3{,}402$, $11{,}253$, $56{,}446$ for $q=8,9,11,13$ (by hand for $q\ge10$; for $q=8,9$ the bounds on $m_2$ are counts done by computer, which we repeated). At $q=7$ the count is negative ($16{,}807-5\cdot2{,}401-140\cdot49<0$), and the proof uses the embedding of $H(7)$ in the quadric $Q(6,7)$: the overlaps of the balls, and a character-sum bound on how many points a collineation without fixed points moves to points perpendicular to them (\path{OMEGA_NOTE.md}, \S5.5). We do not reproduce it here.
+
+\subsection{What can be claimed}\label{ssec:omegaclaim}
+The six entries $(10,8)$, $(11,8)$, $(12,8)$, $(14,8)$, $(15,8)$, $(16,8)$ are the orders of G\'omez's structures $\Omega H_q$, $q=7,8,9,11,11,13$. As defined in the thesis (every copy of the hexagon carries the same labels, and a new element with label $t$ is incident only with elements labelled $t$), they have diameter at least $9$ for each of these $q$, under every reading of the figures and every pairing of point labels with line labels (Theorems~\ref{thm:projection} and~\ref{thm:twolabels}, and computation). The paper the table cites was never published, as far as we could find, so these cells have no checkable structure of diameter $8$. Giving each copy its own labelling repairs the construction at $q=2,3$; for $q\ge7$ no geometric labelling does. (For $q=7,8,11,13$, reading~$1$ with both block types has no geometric labelling at all, since a transfer from points to lines would be a duality; there Theorem~\ref{thm:twolabels} covers the thesis labelling.) We do not claim that no structure with these parameters exists, nor that no labelling works.
 
 \appendix
 \section{Coordinates and checks}\label{app:checks}
@@ -1100,6 +1260,7 @@ The record values themselves were checked by the lab's coordinator with all-pair
 \bibitem{P71} S.~E. Payne, Nonisomorphic generalized quadrangles, J. Algebra \textbf{18} (1971), 201--212.
 \bibitem{PT} S.~E. Payne and J.~A. Thas, Finite Generalized Quadrangles, 2nd ed., European Mathematical Society, 2009.
 \bibitem{DGQ} C.~Delorme, J.~G\'omez and J.-J.~Quisquater, On large bipartite graphs, manuscript, cited as submitted by \cite{LPP}; we could not find it.
+\bibitem{G86} J.~G\'omez Mart\'{\i}, Di\'ametro y vulnerabilidad en redes de interconexi\'on, PhD thesis, Universitat Polit\`ecnica de Catalunya, Barcelona, 1986.
 \bibitem{LPP} E.~Loz, H.~P\'erez-Ros\'es and G.~Pineda-Villavicencio, The degree--diameter problem for bipartite graphs, CombinatoricsWiki (2010); table as of January 2012, equal to \cite[Table 4]{MS13}, read through the Internet Archive.
 \bibitem{MS13} M.~Miller and J.~\v{S}ir\'a\v{n}, Moore graphs and beyond: a survey of the degree/diameter problem, Electron. J. Combin. (2013), dynamic survey DS14v2.
 \bibitem{R26} R.~Rajiv, preprint, Zenodo, 30 September 2026, doi:10.5281/zenodo.23052995.
