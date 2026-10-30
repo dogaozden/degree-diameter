@@ -1,0 +1,8 @@
+AS(3) is a generalized quadrangle of order (2,4): True
+weighted 2-ovoid (eps=2, c1=1, c2=2): total weight 18, line sums {2}
+Theorem A, q=3: vertices 90 (expected 90), max degree 5 (expected 5), bipartite True, diameter 4 (expected 4)  ->  OK
+   (q+2)-regular: True
+AS(5) is a generalized quadrangle of order (4,6): True
+weighted 2-ovoid (eps=2, c1=1, c2=2): total weight 50, line sums {2}
+Theorem A, q=5: vertices 350 (expected 350), max degree 7 (expected 7), bipartite True, diameter 4 (expected 4)  ->  OK
+   (q+2)-regular: True

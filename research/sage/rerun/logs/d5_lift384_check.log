@@ -1,0 +1,4 @@
+SmallGroup(96,31) = C3 : (C2 . ((C4 x C2) : C2) = (C2 x C2) . (C4 x C2)): Cayley table equals the record table g96_31.txt: True
+(5,5): lift by SmallGroup(96,31), a1_g96_31: vertices 384 (expected 384), max degree 5 (expected 5), bipartite True, diameter 5 (expected 5), regular  ->  OK
+SmallGroup(96,17) = C3 : (Q8 : C4): Cayley table equals the record table g96_17.txt: True
+(5,5): lift by SmallGroup(96,17), a2_g96_17: vertices 384 (expected 384), max degree 5 (expected 5), bipartite True, diameter 5 (expected 5), regular  ->  OK

@@ -1,0 +1,11 @@
+H(2): N = 63, |Sigma| = 9, free points 24, |W| = 12, c = 1
+Theorem D, q=2, m=2: vertices 208 (expected 208), max degree 4 (expected 4), bipartite True, diameter 6 (expected 6)  ->  OK
+   block-by-block edges equal the generic definition 3.1: True
+Theorem R, q=2, m=2: vertices 192 (expected 192), max degree 4 (expected 4), bipartite True, diameter 6 (expected 6), min degree 4  ->  OK
+H(2): N = 63, |Sigma| = 9, free points 24, |W| = 12, c = 1
+Theorem D, q=2, m=3: vertices 324 (expected 324), max degree 5 (expected 5), bipartite True, diameter 6 (expected 6)  ->  OK
+   block-by-block edges equal the generic definition 3.1: True
+H(3): N = 364, |Sigma| = 28, free points 216, |W| = 72, c = 1
+Theorem D, q=3, m=2: vertices 1020 (expected 1020), max degree 5 (expected 5), bipartite True, diameter 6 (expected 6)  ->  OK
+   block-by-block edges equal the generic definition 3.1: True
+Theorem R, q=3, m=2: vertices 968 (expected 968), max degree 5 (expected 5), bipartite True, diameter 6 (expected 6), min degree 5  ->  OK

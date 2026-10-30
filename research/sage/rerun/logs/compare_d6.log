@@ -1,0 +1,15 @@
+[q=3] (a) hexagon flag sets equal after relabelling: True
+[q=3] (b) Hermitian spread equal: True   (Sage c = 1)
+[q=3] (c) whisker sets: Sage default = Python  (|W| = 72)
+[q=3] (d) Sage doubling with the Python whiskers: 1020 vertices; edge set EXACTLY equal to the Python one: True
+[q=2] (a) hexagon flag sets equal after relabelling: True
+[q=2] (b) Hermitian spread equal: True   (Sage c = 1)
+[q=2] (c) whisker sets: Sage default != Python  (|W| = 12)
+[q=2] (d) Sage doubling with the Python whiskers: 208 vertices; edge set EXACTLY equal to the Python one: True
+[q=2]     Sage default whiskers: graph has 208 vertices, degrees [3, 4]; is_isomorphic to the Python graph: True
+check_d6_even.py output: H(4): 1365 points; (c0,c1) = (2,0); |W| = 240; doubled: 3524 elements, max degree 6 | ALL CHECKS PASSED
+[q=4] (a) hexagon flag sets equal after relabelling: True
+[q=4] (b) Hermitian spread equal: True   (Sage c = t)
+[q=4] (c) whisker sets: Sage default = Python  (|W| = 240)
+[q=4] (d) Sage doubling with the Python whiskers: 3524 vertices; edge set EXACTLY equal to the Python one: True
+ALL COMPARISONS EQUAL [('q=3', True), ('q=2', True), ('q=4', True)]
