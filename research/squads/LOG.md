@@ -102,3 +102,20 @@ cost-0 pair among 231 pairs with the rest at 12+, so the (6,5) distribution (bes
 2 rest), adds P with 15 involutions, and moves the non-Haar |H| = 2 sweep to orders 722-760 and 720 (ids 451-840).
 Director meanwhile: 2+2 lifts by few-involution groups of order 192 (768 vertices, the lift analogue of the (5,5) order-96
 records) under tabu: 22-36, far behind order 176 (6); dropped.
+
+### Round s65r6 (09:53-10:23 UTC, 8 cards, research/squads/s65r6/)
+Cards: c1-c3 the rest of the C3 x P256 sweep (P with <= 11 involutions) · c4 C3 x P256 with 15 involutions (first 400) ·
+c5 exhaustive Haar, the slow low-involution groups of order 361-380 · c6/c7 non-Haar |H| = 2 bi-coset graphs at orders
+722-740 / 742-760 · c8 the same at 720, ids 451-840.
+Best per card (coset cost; none valid): c1 **14 of 768** for C3 x SmallGroup(256,357), pair (1,1), in a 2 s anneal
+(416 pairs, median 108; its neighbours 256_362 and 256_413 give 22, 256_356 and 256_361 give 34) · c2 52 (328 pairs) ·
+c3 68 (69 pairs) · c4 34 (450 pairs, 15 involutions) · c5 slow groups partly run (see its table) · c6 20 at 732
+(SmallGroup(732,10), exhaustive optimum 20; only 47 non-Haar pairs in 722-740; orders 2 x odd have none) · c7 22 at
+756 (SmallGroup(756,86); 56 pairs in 742-760) · c8 12 at 720 (SmallGroup(720,557) and (720,560); 261 runs, ids
+451-840 done).
+Card c7 noted that dc2_lib's SKIPHAAR drops a class H when ANY index-2 normal subgroup misses it, so pairs (H, K) with
+only H outside N (half-Haar: N regular on one side only) were skipped; those are the mcos "1|2,2"-type graphs, which
+were weak (round 2), so nothing is lost for the conclusions.
+Kept: the C3 x SmallGroup(256,357) cluster (2-generator groups of class 5, like the (5,5) record's P128 =
+SmallGroup(128,139)); the director runs long anneals on it and sweeps all 2-generator groups of order 256 (ids
+1-541, any involution count). Round 7: the whole squad closes the Haar family at 352-360 with the new haarex3.
