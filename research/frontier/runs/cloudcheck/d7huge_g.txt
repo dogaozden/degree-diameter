@@ -1,28 +1,35 @@
 # d7huge check, worker g: d20(15,795,219) ranges 10 and 11 (of 24)
-# Run in a cloud worker from branch claude/conics-2-diameter-7-ic0oat (commit cbfa594 or later), checker research/synthetic/conics/apsp_fast.c.
+# Checker: research/synthetic/conics/apsp_fast.c, built from branch claude/conics-2-diameter-7-ic0oat (head cbfa594 at fetch time).
 
 ## Machine
 ```
 nproc: 4
                total        used        free      shared  buff/cache   available
-Mem:              15           3           9           0           2          11
+Mem:              15           0          12           0           2          15
 Swap:              0           0           0
 ```
 
 ## Input checks
-- hex_q16.bin (cc -O2 -o hexgen2 research/d10D7/hexgen2.c && ./hexgen2 16, run in a scratch dir that has hex/): sha256 f7a701a11c2edcdc0014bd8a0eaa2a0ecce11e5953fd4bc63cc8a61c327a4394 (matches the brief).
-- g.edges (python3 research/synthetic/conics2/typed_build.py build hex/hex_q16.bin research/frontier/sols/d20D7_hex16_typedwhisk_nu0_n15795219.sol g.edges): sha256 f9e6399daa20c5d1022acb10f068a19303d3ba10b38cc0c8c1e18f00d1d0dbba (matches the brief; the builder's own write line and an independent sha256sum agree; 157589798 edges).
+- hex_q16.bin (cc -O2 -o hexgen2 research/d10D7/hexgen2.c && ./hexgen2 16, run in a scratch dir that has hex/ and writes hex/hex_q16.bin): sha256 f7a701a11c2edcdc0014bd8a0eaa2a0ecce11e5953fd4bc63cc8a61c327a4394 (matches the brief).
+- g.edges (python3 research/synthetic/conics2/typed_build.py build hex/hex_q16.bin research/frontier/sols/d20D7_hex16_typedwhisk_nu0_n15795219.sol g.edges): sha256 f9e6399daa20c5d1022acb10f068a19303d3ba10b38cc0c8c1e18f00d1d0dbba (matches the brief; the builder's write line and an independent sha256sum agree; 157589798 edges, 2614794855 bytes).
 
 ## Commands
 ```
+cc -O2 -o hexgen2 research/d10D7/hexgen2.c && ./hexgen2 16
+python3 research/synthetic/conics2/typed_build.py build hex/hex_q16.bin research/frontier/sols/d20D7_hex16_typedwhisk_nu0_n15795219.sol g.edges
 cc -O3 -march=native -pthread -o apsp_fast research/synthetic/conics/apsp_fast.c
-./apsp_fast g.edges 20 7 4 LO HI   # one run per chunk; LO..HI are the chunk bounds below
+./apsp_fast g.edges 20 7 4 LO HI   # one run per chunk, 4 threads; LO..HI are the chunk bounds listed below
 ```
 
 ## How the brief's ranges were run
-Each brief range was run as 8 consecutive chunks of its sources, one chunk at a time, each with 4 threads. The chunks tile the brief's range exactly (checked from the printed sources= fields). A range counts as covered only when all 8 chunks print RESULT VALID; this follows from the checker's per-source checks (BFS from each source, exact eccentricity maximum, global simple/degree/bipartite/connected checks) being additive over disjoint source sets.
-Reason: this worker's sessions were restarted twice during a single-range run (about 4.3 h per range), which killed the process without a result. The chunks (about 35 min each) let each finished chunk survive a restart; the driver script skips finished chunks on rerun.
-The killed single-run attempts printed no RESULT line and are not counted: one run of range 10 killed at 606208 of 658135 sources, another at 278528 of 658135 sources (both at 4 threads, both with the same arguments).
+Each brief range was run as 8 consecutive chunks, one chunk at a time, 4 threads each. Chunk i of a range covers LO + floor(N*i/8) to LO + floor(N*(i+1)/8), N being the range length (658135), so the chunks tile the brief's range exactly; the tiling was checked from the printed sources= fields. A range counts as covered only when all 8 of its chunks print RESULT VALID. This follows from the checker's per-source work (BFS from each source of the chunk, with the global simple/degree/bipartite/connected checks) being additive over disjoint source sets.
+Reason for chunks: the worker session was restarted during the single-range runs (one range takes about 4.3 h at the speed seen earlier), and each restart killed the running checker without a result. Chunks of about 35 min let finished chunks survive a restart; a driver script skips any chunk whose output already has a RESULT line.
+
+Runs that did not produce a result and are not counted:
+- range 10 as one run, 4 threads, killed by a restart at 606208 of 658135 sources (first attempt);
+- range 10 as one run, 4 threads, same arguments, killed by a restart at 278528 of 658135 sources (second attempt);
+- range 11 chunk 4 (6910417..6992684), killed by a restart at 32768 of 82267 sources; it was rerun from the start and its rerun is the result below;
+- a duplicate start of the range-10 run (two copies writing the same files) was noticed and both copies were killed before any output; the run was restarted once cleanly.
 
 ## Range 10: sources 5923215..6581350 (8 chunks, all VALID)
 
@@ -74,5 +81,52 @@ n=15795219 edges=157589798 degree min=18 max=20 bipartite=yes diameter=7 sources
 RESULT VALID d=20 D=7 n=15795219 (sources in the range only)
 ```
 
-## Range 11: sources 6581350..7239485
-Pending (not run yet at the time of this commit).
+## Range 11: sources 6581350..7239485 (8 chunks, all VALID)
+
+### chunk 0
+```
+n=15795219 edges=157589798 degree min=18 max=20 bipartite=yes diameter=7 sources=6581350..6663616
+RESULT VALID d=20 D=7 n=15795219 (sources in the range only)
+```
+
+### chunk 1
+```
+n=15795219 edges=157589798 degree min=18 max=20 bipartite=yes diameter=7 sources=6663616..6745883
+RESULT VALID d=20 D=7 n=15795219 (sources in the range only)
+```
+
+### chunk 2
+```
+n=15795219 edges=157589798 degree min=18 max=20 bipartite=yes diameter=7 sources=6745883..6828150
+RESULT VALID d=20 D=7 n=15795219 (sources in the range only)
+```
+
+### chunk 3
+```
+n=15795219 edges=157589798 degree min=18 max=20 bipartite=yes diameter=7 sources=6828150..6910417
+RESULT VALID d=20 D=7 n=15795219 (sources in the range only)
+```
+
+### chunk 4
+```
+n=15795219 edges=157589798 degree min=18 max=20 bipartite=yes diameter=7 sources=6910417..6992684
+RESULT VALID d=20 D=7 n=15795219 (sources in the range only)
+```
+
+### chunk 5
+```
+n=15795219 edges=157589798 degree min=18 max=20 bipartite=yes diameter=7 sources=6992684..7074951
+RESULT VALID d=20 D=7 n=15795219 (sources in the range only)
+```
+
+### chunk 6
+```
+n=15795219 edges=157589798 degree min=18 max=20 bipartite=yes diameter=7 sources=7074951..7157218
+RESULT VALID d=20 D=7 n=15795219 (sources in the range only)
+```
+
+### chunk 7
+```
+n=15795219 edges=157589798 degree min=18 max=20 bipartite=yes diameter=7 sources=7157218..7239485
+RESULT VALID d=20 D=7 n=15795219 (sources in the range only)
+```
