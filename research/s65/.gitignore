@@ -29,3 +29,15 @@ haar/h360_53/hx_*.txt
 haar/hx_*.txt
 c3p256/rank2/keep/*.dc2
 haar/o381_400/hx_*.txt
+# regenerable exports and binaries (job squad-6-5)
+*.dc2
+tools/tabu
+tools/sdhaar
+tools/haarex3
+haar/*/hx_*.txt
+calib/vk/*.sol.k2
+o192/sg_*.txt
+sdh/sd_*.txt
+haar2lift/N53.txt
+haar2liftN/G_*.txt
+bc2lift/E141.txt

@@ -1,0 +1,8 @@
+m 344 nonabelian 1 type 2,2|2,2 classes: order2 3, order3 0
+COMB 1 1 0 0 stabgens 3 3 2 2 n 2 1 1 2 vertices 688 best 1604 evals 411519
+COMB 0 1 0 0 stabgens 2 3 2 2 n 2 1 1 2 vertices 688 best -1 evals 0 (split impossible)
+COMB 2 2 0 1 stabgens 8 8 2 3 n 2 1 1 2 vertices 688 best 1604 evals 368206
+COMB 0 0 1 2 stabgens 2 2 3 8 n 2 1 1 2 vertices 688 best 1604 evals 431280
+COMB 1 2 0 1 stabgens 3 8 2 3 n 2 1 1 2 vertices 688 best -1 evals 0 (split impossible)
+COMB 0 1 2 2 stabgens 2 3 8 8 n 2 1 1 2 vertices 688 best 1604 evals 374350
+RESULT best 1604 combinations 6 secs 40.1
