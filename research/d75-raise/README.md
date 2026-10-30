@@ -87,3 +87,25 @@ Negative results of this job, other families (all at 1,204-1,344 vertices, no va
 - 4-vertex-base lifts (`lift22`, annealing and tabu): cost 20+ at 1,216-1,344, and the calibration fails (tabu does not
   re-find the 1,152 graph as a lift by A4 x C24 or S4 x C12 in 90 s), so local search is not reliable at Delta = 7.
 - squad rounds d75-r1 and d75-r2 (`../squads/LOG.md`).
+
+## Status (updated during the job)
+
+- Record: **1,312** (C41 : C16, self-dual Haar = bipartite Cayley graph of a group of order 1,312), pushed with
+  builders and checks. Earlier steps 1,204 -> 1,210 -> 1,240 -> 1,312, all from `haar75 anti`.
+- Self-dual (bipartite Cayley) sweep: `logs/sweep_anti.txt` (one line per group: N ID anti types T best B passXX P
+  sols S rc R secs; B is the smallest |G \ X X| seen among sets that survive the first NEAR = 25 targets, or 0 for
+  solutions; 1099511627776 = nothing passed). Coverage per order: `python3 src/sweep_table.py`.
+  Orders 601-620: every non-abelian group (the early part with an 8e6 cap on (3,2)); 621-660: every group with <= 1
+  involution; 657-800: every group with <= 1 involution except the 493 groups of order 729; order 672 (1,344
+  vertices): the closest region, many groups C7 : (C3 x P32) and P32 x (C7 : C3) miss by 4-6 elements
+  (672_22, 672_34: 4); see the end of this file for what was finished.
+- Closest above 1,312: SmallGroup(672,22) and (672,34), 4 elements of G uncovered (1,344 vertices).
+
+## Next steps
+
+- Finish order 672 (all groups with <= 7 involutions; then the rest), and 3-involution groups of 673-700.
+- The same self-dual (bipartite Cayley) search for other cells: (5,5), (6,5), (8,5) and beyond: haar75 is written for
+  valency 7 (the types table), a valency parameter is a small change. At (6,5) the table value 684 is itself a Haar
+  graph, so the self-dual family is a natural first try there.
+- Types (5,1) and (7,0) (5 or 7 involutions in the Cayley connection set) were only sampled (3e5 sets per automorphism
+  class); no hit in any exhaustive run (620_1, 600_54 partly), and squad tabu found them structurally poor.
