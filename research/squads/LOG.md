@@ -136,3 +136,25 @@ Director meanwhile: long anneals of the best C3 x P256 pair (C3 x SmallGroup(256
 stop at cost 14 (bad 2688), found in the first minute; its group is a 2-generator class-5 group like the (5,5)
 record's P128 but contains no copy of SmallGroup(128,139). Sweep of all 2-generator groups P of order 256 (ids 1-541)
 not swept before is running.
+
+### Round s65r8 (10:38-10:50 UTC, 8 cards, research/squads/s65r8/)
+Cards: c1-c8 haarex3 over the 111 non-abelian groups of order 361-380 not closed in round 4 (research/s65/haar/
+r8_list_0..7.txt). Result: all 111 finished (8-17 minutes per card), no VALID set, no side-A cover (111 logs, all
+Acovered=0). Cards c2 and c7 finished their groups but wrote no scoreboard line; their logs are complete.
+**Haar closure, final:** every non-abelian group of order 343-380 has been searched exhaustively (343-351: fresh-6-5;
+352-360: rounds 2-7; 361-380: rounds 4 and 8; check: research/s65/haar/all_352_360.txt, all_361_380.txt against the
+logs), and abelian groups stop at 542 vertices. So no Haar graph of degree 6 and diameter 5 has 686-760 vertices;
+the 684 record is the largest Haar graph below 762 vertices.
+
+### Director's close (10:55 UTC)
+No graph above 684. Eight rounds, 64 Haiku cards. What the squad added: breadth in rounds 1-3 (every non-Haar family
+tried came out far from 0: tri-Cayley 10, coset graphs 8-150, lifts 4-38, bi-Cayley 4, multi-orbit 27, rewiring 1428
+bad pairs), the tabu search that beats annealing on lifts (card s65r3-c6), and raw throughput on the decisive
+exhaustive Haar runs once the director had calibrated tools (rounds 3-8: about 600 exhaustive group runs). The decisive
+steps were the director's: the "Haar graphs in disguise" lemma that cleared the coset near misses, the calibration of
+the (5,5) vertex-transitive record search (and its (6,5) analogue C3 x P256, best 14 of 768 for C3 x SmallGroup(256,357)),
+and haarex3 (4x faster, validated), which made the full Haar closure at 686-760 vertices possible in two rounds.
+Honest reading: the squad was most useful as parallel hands for well-calibrated exhaustive work; as a source of new
+ideas it produced one (tabu). Next for this cell, if anyone returns: non-Haar constructions only (Haar graphs are
+closed through 760); the C3 x P256 class-5 cluster (ids 330-420) at cost 14-22 is the closest non-Haar family to the
+(5,5) analogy, and an exhaustive bi-coset search with symmetry reduction there would settle it.
