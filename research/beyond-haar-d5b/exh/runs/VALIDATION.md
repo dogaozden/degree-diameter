@@ -10,3 +10,14 @@ loop order, so it reports fewer (equivalent) solutions. Compared by nauty canoni
   exhaustive, 7 solutions in 265 s = the same 2 classes. So these are all the 360-vertex lifts of this base by this
   group up to isomorphism.
 - Groups of order 92-94 that b4a2x finished (C23:C4, D92, C31:C3, D94): no solution in either program.
+
+# haar5x (exhaustive valency-5 Haar graphs, diameter 5)
+
+- SmallGroup(150,5) = (C5 x C5) : S3: with the Aut-orbit restriction on a, 288 solutions in 1.1 s; with no
+  automorphisms (empty generator file, so every 4-subset {a, b, c, d} is tested), 3,000 solutions in 9.2 s. Both
+  give the same single isomorphism class (nauty). One solution: apsp VALID, 300 vertices.
+
+# b4a2y on a group with solutions, against b4a2x
+
+- SmallGroup(96,17): see runs/val_b4a2x_96_17.* (b4a2x, exhaustive) against the b4a2y solutions in
+  runs/b4a2y_96_17.sol (filled in when the b4a2x run ends).

@@ -108,3 +108,19 @@ research/beyond-haar-d5b/coset/dcenum.c (4.6x more evaluations; the 1,200 graph 
 anneal after 04:27 uses the fix. Meanwhile (not from the squad) the exact lift searches found (5,5) graphs on 384
 vertices (research/beyond-haar-d5b/README.md). Honest reading: the squad found no graph, but its one bug report
 was worth the round.
+
+### Round bh5b-r2 (04:45 UTC, 8 cards, research/squads/bh5b-r2/)
+Context given to the cards: (5,5) 384 had just been found by exact search (2+2 lifts by groups of order 96 = 2^5 x 3)
+and dcenum's annealer was 4.6x faster. Cards: c1 (7,5) fast re-anneal of SmallGroup(1260, 61/62), (1320, 133..138),
+|H| = 2 · c2 (7,5) |H| = 3 near misses SmallGroup(1806, 15/2), (1830, 2) · c3 (7,5) |H| = 2 sweep from order 1318
+downward · c4 (7,5) 2+2 lifts over 2-rich groups of order 304-320 · c5 (6,5) 2+2 lifts over groups of order 176/192
+· c6 (8,5) 2+2 lifts over groups of order 516-560 · c7 (5,5) > 384 with 3+3 lifts over groups of order 64-72 · c8
+wildcard (it chose surgery on the 384 graphs: add two vertices and rewire with the 2-switch annealer).
+Best per card (cost 0 = valid): c1 16 (SmallGroup(1260,61/62)), 30 at 1320 · c2 13 (1806,15), 16 (1830,2) · c3 263
+(1316) · c4 34 (SmallGroup(312,55)) · c5 15 (order 176) · c6 123 (SmallGroup(544,221)) · c7 31 at 384 (annealing does
+not even reach the known order-64 level; 118 at 432) · c8 no valid graph.
+The machine was overloaded (load 11-14 on 4 cores from the exact searches plus 8 cards), which cut every card's
+effective budget; several cards overran the time box. Reading: no new graph and no new idea; the squad confirmed that
+annealing is far off for (6,5), (7,5), (8,5) lifts and for 3+3 (5,5) lifts. Two rounds in a row without a graph, so
+no third round; the remaining time went to exhaustive bi-coset sweeps (|H| = 2, 3, 4 at (5,5); |H| = 3 at (6,5) and
+(7,5)) and to finishing the exact lift searches.

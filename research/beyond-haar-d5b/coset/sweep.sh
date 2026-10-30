@@ -9,7 +9,7 @@ gap -q -c "ORDER:=$order; H_ORDER:=$h; OUTDIR:=\"$dir\"; IDS:=$ids;" sg_export.g
 for f in $dir/*.dc2; do
   [ -e "$f" ] || continue
   for s in $(seq 1 $seeds); do
-    r=$(SA=1 SECS=$secs SEED=$s timeout $((secs+120)) nice -n 5 ./dcenum $f $delta 5 ${f%.dc2}_s$s.edges 2>/dev/null | tail -1)
+    r=$(SA=1 SECS=$secs SEED=$s timeout $((secs*8+600)) nice -n 5 ./dcenum $f $delta 5 ${f%.dc2}_s$s.edges 2>/dev/null | tail -1)
     echo "$r seed $s" >> logs/sw_${order}_h${h}_d${delta}.txt
     case "$r" in *"best 0 "*) cp ${f%.dc2}_s$s.edges logs/HIT_$(basename ${f%.dc2})_s$s.edges; cp $f logs/; echo "HIT $r";; esac
   done

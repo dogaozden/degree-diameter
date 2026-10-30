@@ -1,92 +1,147 @@
 # beyond-haar-d5b: exact lift searches for (5,5), coset annealing for (7,5)
 
-Job "beyond-haar-d5b" (Opus cloud session, Oct 30 2026, from 03:35 UTC). Follow-up to beyond-haar-d5
+Job "beyond-haar-d5b" (Opus cloud session, Oct 30 2026, 03:35-09:30 UTC). Follow-up to beyond-haar-d5
 (`../beyond-haar-d5/README.md`; its tools and logs were brought into this branch unchanged). Goal: raise (5,5) above
 360 and (7,5) above 1,200, and try the same tools at (6,5) (table 684, not beaten here) and (8,5) (ours 2,048).
 
 **NEW (5,5): 384 vertices (our value was 360).** 5-regular bipartite graphs of diameter exactly 5 on 384 vertices:
-regular voltage lifts of 4-vertex bases by groups of order 96, found by the exact searches below.
+regular voltage lifts of 4-vertex bases by groups of order 96, found by exact searches. None is a Haar graph.
 
 | graph | base | group | voltages (element numbers of `records/g96_<i>.txt`, identity 0) | Aut | Haar? |
 |---|---|---|---|---|---|
 | `records/d5D5_n384_a2_g96_17.edges` | [[2,3],[3,2]] | SmallGroup(96,17) = C3 : (Q8 : C4) | x 6, y 1 2, z 39 45 81, w 20 | 192, vertex orbits 192 + 192 | no |
 | `records/d5D5_n384_a1_g96_31.edges` | [[1,4],[4,1]] | SmallGroup(96,31) | g 1 2 84, d 2 27 85, c 41 | 192, orbits 192 + 192 | no |
-| `records/d5D5_n384_a1_g96_51.edges` | [[1,4],[4,1]] | SmallGroup(96,51) | first line of `records/b4a1x_96_51.sol` | 768, vertex-transitive | no (not Cayley either) |
-| `records/d5D5_n384_a1_g96_66.edges` | [[1,4],[4,1]] | SmallGroup(96,66) = Q8 : (C3 : C4) | first line of `records/b4a1x_96_66.sol` | 96, 4 orbits | no |
+| `records/d5D5_n384_a1_g96_51.edges` | [[1,4],[4,1]] | SmallGroup(96,51) | `records/d5D5_n384_a1_g96_51.sol` | 768, vertex-transitive | no (not Cayley either) |
+| `records/d5D5_n384_a1_g96_66.edges` | [[1,4],[4,1]] | SmallGroup(96,66) = Q8 : (C3 : C4) | `records/d5D5_n384_a1_g96_66.sol` | 96, 4 orbits | no |
 
 Base [[2,3],[3,2]]: A0-B0 voltages {1, x}, A0-B1 {1, y1, y2}, A1-B0 {z0, z1, z2}, A1-B1 {1, w}. Base [[1,4],[4,1]]:
 A0-B0 {1}, A0-B1 {1, g2, g3, g4}, A1-B0 {1, d2, d3, d4}, A1-B1 {c}. Edges are oriented A -> B and a base edge a -> b
 of voltage g joins (a, h) and (b, h g); lift vertex (v, h) has index v*96 + h (A0, A1, B0, B1 = 0, 1, 2, 3).
+All four have girth 6; distances from a vertex: 1, 5, 20, 73-77, 171, 110-114.
 
-Checks (`records/d5D5_n384_checks.txt`): `../lifts/coordinator_check/apsp.c` on each edge list: degree 5, bipartite,
-diameter 5, RESULT VALID at D = 5 and RESULT INVALID at D = 4; independent Python all-pairs BFS
-(`records/check_bfs.py`): VALID, diameter 5. Rebuild without our tables: `records/build_lift_perm.py` takes the
-voltages as permutations (`records/d5D5_n384_*.perm`, written by `records/perm_voltages.g`, which also checks that
-our table is the multiplication table of SmallGroup(96, i) in that numbering), generates the group by closure and
-builds the lift; its output is isomorphic to the saved edge list (nauty) and BFS VALID. With GAP:
-`exh/gap_tab_gens.g` writes the tables, `exh/lift_edges.py TABLE "SOL ..." OUT.edges` the edge list.
+**Checks** (`records/d5D5_n384_checks.txt`): `../lifts/coordinator_check/apsp.c` on each edge list: degree 5,
+bipartite, diameter 5, RESULT VALID at D = 5 and RESULT INVALID at D = 4; independent Python all-pairs BFS
+(`records/check_bfs.py`): VALID, diameter 5. **Rebuild** (`records/build_d5D5_n384.sh`, output
+`records/d5D5_n384_rebuild.txt`): from GAP's SmallGroup(96, i) tables and the solution lines (apsp VALID at 5,
+INVALID at 4), and without GAP or our tables from voltages given as permutations (`records/d5D5_n384_*.perm`,
+written by `records/perm_voltages.g`, which also checks our table against GAP; `records/build_lift_perm.py`
+generates the group by closure and builds the lift; BFS VALID); both rebuilds are isomorphic to the saved edge lists
+(nauty). sha256 of the edge lists in `records/d5D5_n384_checks.txt`.
 
-Not Haar graphs (`records/aut_haar.sh`, output `records/d5D5_n384_aut.txt`, nauty + GAP): a Haar graph on 384
-vertices needs a colour-preserving automorphism group containing a subgroup of order 192 that is regular on each
-colour class. For the (96,17), (96,31) and (96,66) graphs the colour-preserving group is the voltage group itself
-(order 96). The (96,51) graph is vertex-transitive (|Aut| = 768, colour-preserving part of order 384), but none of the
-3 conjugacy classes of subgroups of order 192 of the colour-preserving part is transitive on both sides, so it is not
-a Haar graph, and not a Cayley graph (a bipartite Cayley graph is the Haar graph of the colour-preserving index-2
-subgroup of its regular group).
+**Not Haar graphs** (`records/aut_haar.sh`, output `records/d5D5_n384_aut.txt`, nauty + GAP): a Haar graph on 384
+vertices needs a colour-preserving automorphism group with a subgroup of order 192 regular on each colour class.
+For the (96,17), (96,31) and (96,66) graphs the colour-preserving group is the voltage group itself (order 96). The
+(96,51) graph is vertex-transitive (|Aut| = 768, colour-preserving part SmallGroup(384,543) of order 384), but none
+of the 3 conjugacy classes of subgroups of order 192 of the colour-preserving part is transitive on both sides, so it
+is not a Haar graph, and not a Cayley graph (a bipartite Cayley graph is the Haar graph of the colour-preserving
+index-2 subgroup of its regular group). It is the bi-coset graph of SmallGroup(384,543) on the cosets of a core-free
+subgroup of order 2.
 
-## Tools (this folder)
+All 295 order-96 solutions (both bases, every group) fall into 9 isomorphism classes (`exh/runs/iso96.txt`); the
+same graph often arises from several groups and from both bases (e.g. one class from (96,51), (96,178), (96,184)
+with [[1,4],[4,1]] and (96,51), (96,58), (96,181), (96,184) with [[2,3],[3,2]]). apsp: all 47 solutions of
+[[2,3],[3,2]] VALID, and one solution per group of [[1,4],[4,1]] VALID.
+The good voltage groups are C3 extended by a 2-group of order 32, mostly with few involutions (Sylow 2-subgroups
+Q8 : C4, C4 : Q8, C2 x Q16, (C2 x Q8) : C2, (C8 x C2) : C2, SmallGroup(32,8)).
 
-| file | what it does |
-|---|---|
-| `exh/b4a2y.c` | exact search over all lifts of [[2,3],[3,2]] by a group of order <= 128 (same lifts and final test as `../beyond-haar-d5/exh/b4a2x.c`). More symmetry: Aut(G) by generators (union-find on the (x, {y1, y2}) states), x -> x^-1, the three tree-edge choices in the A0-B1 class (Y -> Y y^-1), w -> w^-1, and the base rotation A0 <-> A1, B0 <-> B1 (x' = w, w' = z0 x z0^-1, so cls(x) <= cls(w) for the Aut-and-inversion classes). Loop order: the second A1-B1 voltage w is fixed outside the z loops, closed walks at A0 and B0 are grouped by which z slots they use, and counting bounds prune z0, z1, z2. |
-| `exh/runs/VALIDATION.md` | b4a2y against b4a2x: SmallGroup(72,30) exhaustive in both, the same 362 isomorphism classes (b4a2x 25,740 solutions in 1,331 s, b4a2y 3,481 in 190 s; 99 s with the rotation symmetry, same classes); SmallGroup(90,6): the same 2 classes. |
-| `exh/b4a1x.c` | copy of the previous job's exact search for [[1,4],[4,1]]; `exh/gap_tab_autlist.g` gives it all of Aut(G) when |Aut| <= 5000, else 5000 elements including the identity (a subset keeps the canonical test complete, it only keeps more representatives). |
-| `exh/haar5x.c` | exhaustive search of all Haar graphs of valency 5 and diameter 5 of a group of order <= 256 (S = {1, a, b, c, d}, a the smallest element of its Aut-orbit, incremental bitset cover of S^-1 S S^-1 S and S S^-1 S S^-1). |
-| `exh/run_one.sh`, `exh/run_one_a1.sh`, `exh/run_one_h.sh` | per-group drivers (GAP export, search, one line per group in `exh/runs/<prog>_<order>.txt`, hits in `exh/runs/HITS.txt`). |
-| `exh/sol2g6.py`, `exh/lift_edges.py` | graph6 / edge lists of solutions (nauty-labelg for isomorphism classes). |
-| `coset/dcenum.c` | the previous job's coset-graph enumerator/annealer with a fix: in SA mode it rewrote the edge file on every evaluation (test() resets the running best); now it writes only on improvements. 4.6x more evaluations per second; the 1,200 (7,5) graph is re-found in 15 s (SEED=3) instead of 15 CPU-min. RESULT lines now report the number of evaluations. |
-| `coset/sweep.sh`, `coset/queue75.sh`, `coset/focus1210.sh` | (7,5) annealing sweeps over SmallGroups with core-free H of order 2 (Haar-type H kept: any valid graph counts). |
-| `records/` | the record graphs, tables, solution files, checks, the Haar test, the permutation rebuild. |
-
-## Exact (5,5) results so far
+## Exact (5,5) results
 
 A colour-preserving group acting freely with 4 orbits on a 4k-vertex graph makes it a lift of one of the two 2+2
 bases [[1,4],[4,1]] and [[2,3],[3,2]] by a group of order k. A Haar graph of a group of order 2k that has an index-2
 subgroup K is such a K-lift (its quotient by K is a 2+2 base with |S n K| and |S \ K| parallel edges), so these
 searches also cover those Haar graphs.
 
-- Orders 91, 92, 93, 94, 95 (364-380 vertices): every group, both bases: no (5,5) lift (b4a1x: previous job;
-  b4a2y: this job, `exh/runs/b4a2y_9[1-5].txt`). With the Haar searches below this rules out every (5,5) graph on
-  364, 368, 372 (except 3+3 and larger bases), 376, 380 vertices whose free colour-preserving automorphisms include a
-  group of order N/4 or N/2.
-- Order 96 (384 vertices): solutions. b4a1x ([[1,4],[4,1]], all 231 groups): 248 solutions in SmallGroup(96, i),
-  i = 31, 51, 66, 178, 184; b4a2y ([[2,3],[3,2]], in progress): i = 17, 23 so far. All solutions together form 8
-  isomorphism classes (`exh/runs/iso96.txt`; the same graph often arises from several groups, e.g. (96,51), (96,178)
-  and (96,184)).
-- Orders 97-121, base [[1,4],[4,1]] (b4a1x, every group): no solution. Base [[2,3],[3,2]] (b4a2y): orders 97-101
-  every group, no solution; 102-110 running.
-- Haar graphs (haar5x, every group of order 181-200 except 192): no valency-5 diameter-5 Haar graph on 362-400
-  vertices. For an odd order m this is the only way a 2m-vertex graph can have a free colour-preserving group with at
-  most 2 orbits per side, so with the lift searches: no (5,5) graph on 362, 366, 370, 374, 378 vertices has a
-  colour-preserving group of order N/2 acting freely, and none on 364, 368, 372, 376, 380 has one of order N/4 or
-  N/2.
-- The vertex-transitive 384 graph is also the bi-coset graph of its colour-preserving group SmallGroup(384,543)
-  with a core-free H of order 2; the fixed annealer re-finds it from the .dc2 export in under a second (23k
-  evaluations). The previous job's |H| = 2 sweep of orders 356-400 (slow annealer, best cost 8) had missed it. So
-  this job reruns that sweep above 384 (`coset/queue55.sh`, logs `coset/logs/sw_<order>_h2_d5.txt`).
+Per order (`exh/runs/TABLE.md`, generated by `exh/table.py` from `exh/runs/*.txt`):
+
+- Orders 91-95 (364-380 vertices): every group, both bases: no (5,5) lift.
+- **Order 96 (384 vertices): solutions.** [[1,4],[4,1]]: all 231 groups, 248 solutions in SmallGroup(96, i), i = 31,
+  51, 66, 178, 184. [[2,3],[3,2]]: all 231 groups, 47 solutions in i = 17, 23, 38, 47, 51, 58, 175, 181, 184.
+- Orders 97-127 (388-508 vertices): every group, both bases (including all 45 groups of order 108, 43 of order 112
+  and 47 of order 120): no solution. So among lifts of 4-vertex bases (groups of order <= 127, the limit of the
+  128-bit programs) 384 is the largest (5,5) graph.
+- Haar graphs (haar5x, every group of order 181-200 except 192, and 201-220, status at the end): no valency-5
+  diameter-5 Haar graph. For odd m a Haar graph is the only way a 2m-vertex graph can have a free colour-preserving
+  group with one orbit per side, so with the lift searches: no (5,5) graph on 362, 366, 370, 374, 378 vertices has a
+  colour-preserving group of order N/2 acting freely, and none on 364, 368, 372, 376, 380 has one of order N/4 or N/2.
+- Bi-coset graphs with a core-free H of order 2 (`coset/sweep_exh.sh`; for degree 5 there are few enough unions of
+  double cosets to test all of them; logs `coset/logs/sx_<order>_h2_d5.txt`): every group of every even order
+  394-440, all pairs of classes of core-free subgroups of order 2, exhaustive (400 and 416: status at the end): no
+  (5,5) graph; closest cost 8 (408 vertices). Orders 386-392 were annealed (`coset/logs/sw_*_h2_d5.txt`, best 18).
+  The vertex-transitive 384 graph is in this family and the fixed annealer re-finds it from the .dc2 export in under
+  a second; the previous job's |H| = 2 sweep of orders 356-400 (slow annealer, best cost 8) had missed it.
+- |H| = 3 and |H| = 4 bi-coset graphs (|G| = 3N/2 and 2N, N = 388-440), exhaustive: status at the end.
+
+6-vertex bases: a 3+3 lift by G (order m) that has an automorphism rotating the three fibres on each side, with
+cube in G, is a Haar graph of the group of order 3m generated by G and that automorphism (it acts regularly on each
+side). So the haar5x runs cover exactly the 3+3 lifts with that symmetry for m = 61-73 (orders 183-219, all groups
+except 192): none is a (5,5) graph. General 3+3 lifts were not searched exactly, for the reason below.
+
+Why larger bases were not searched exactly: from a vertex there are 341 non-backtracking walks of even length <= 4,
+and they must reach all N/2 vertices of its own side, so N <= 682/r where r is the average number of walks per
+target. The 360 graph has r = 1.89, the 384 graphs r = 1.78. A 3+3 base lifted by a group of order m has 6m
+vertices and the same budget, so 3+3 lifts at m = 65-72 (390-432 vertices) need r = 1.75-1.58, at least as hard as
+2+2 lifts at orders 97-108 (none exists), and the groups of order 65-70 are cyclic or close to it. An exact 3+3
+search (10 free voltages) is also several orders of magnitude larger than the 2+2 one. Annealing 3+3 lifts by groups
+of order 64 and 72 (squad r2-c7) plateaus at cost 31-118, while the same annealer finds a 384 solution of the 2+2
+base over SmallGroup(96,51) in 20 s (seed 2), so annealing is not the tool there either.
 
 ## (7,5)
 
-Coset-graph annealing (|H| = 2) over SmallGroups of order 1202-1320 (`coset/logs/sw_*.txt`), a focused rerun of the
-1210 near misses with the fixed annealer, and a squad round (below). No graph above 1,200 yet.
+No graph above 1,200. Best costs (vertices missed within distance 5 from the two base vertices; 0 = valid):
 
-## Squad round bh5b-r1 (04:25 UTC)
+| family | vertices | best cost | where |
+|---|---:|---:|---|
+| coset graphs \|H\| = 2 of SmallGroup(1206,1) = C67 : C18 | 1206 | 14 | `coset/logs/sw_1206_h2_d7.txt` |
+| \|H\| = 4 of PSL(2,17), exhaustive over all unions (squad r1-c3) | 1224 | 14 | `../squads/bh5b-r1/c3/` |
+| \|H\| = 2 of SmallGroup(1260, 61/62) (squad r2-c1, fast annealer) | 1260 | 16 | `../squads/bh5b-r2/c1/` |
+| \|H\| = 2 of SmallGroup(1210, 12/13/15), the (C11 x C11):C5 near miss of the previous job | 1210 | 18-20 | `coset/logs/sw_1210_h2_d7.txt`, squad r1-c1 (tabu) |
+| 2+2 lifts over C43:C7 (squad r1-c4), few-involution groups of order 304-336 (`d7/screen7.txt`) | 1204-1344 | 20, 26+ | |
+| rich products with \|H\| = 2: S4 x C52..55, GL(2,3) x C26/27, binary octahedral x C26/27, A5 x C21/22, S5 x C11, PGL(2,7) x C4, AGL(1,q) x C_k (`coset/queue_prod7.sh`) | 1218-1344 | 34+ | `coset/logs/prod_d7.txt` |
+| \|H\| = 2 of SmallGroups of order 1202-1218 (upward sweep), 1316-1318 (squad r2-c3, downward) | | 14 / 263 | `coset/logs/sw_12*.txt` |
+| \|H\| = 2 of C_k x P (P a 2-group) of order 1312 and 1248, H = K | 1248, 1312 | 222+ | `coset/logs/sd_*_d7.txt` |
+| \|H\| = 3 of SmallGroup(1806, 15 / 2), (1830, 2) (squad r2-c2), (1878,2) (r1-c2) | 1204-1252 | status at end | |
 
-Cards and scoreboard: `../squads/bh5b-r1/`. Best per card (cost 0 = valid): c1 (7,5) 1210 tabu over SmallGroup(1210,13):
-18; c3 (7,5) |H| = 4 of PSL(2,17) (1224, exhaustive): 14; c4 (7,5) 2+2 lifts at 1204 over C43:C7: 20; c5 (6,5) coset
-graphs of orders 686-718: 926 (the box was overloaded); c6 (6,5) 3+3 lifts at 720 over C5 x SL(2,3): 32. Useful
-outcome: c1 found the dcenum SA write bug.
+The fix to `coset/dcenum.c` (below) matters for every (7,5) anneal of the previous job: those runs did about 1/5 of
+the evaluations their time budget allowed. With the fix the 1,200 graph is re-found in 15 s.
 
-## Status
+## (6,5) and (8,5)
 
-(updated during the session)
+No graph above 684 (6,5) or 2,048 (8,5). Best costs: (6,5) 2+2 lifts over groups of order 172-192 (`d6/probe1.txt`,
+`d6/fewinv_probe.txt`): 14 (C11 x Q16, base [[1,5],[5,1]], 704 vertices); 3+3 lifts at 720 (squad r1-c6): 32; coset
+graphs |H| = 2 of orders 686-720 (squads, `coset/logs/sd_688_h2_d6.txt`): 152+. (8,5): 2+2 lifts over groups of
+order 520-560 (squad r2-c6): 123; |H| = 2 coset graphs of S6 x C3 (2160, squad r1-c7): 61; C65 x P32 (2080): 468.
+Calibration: the same annealer solves (5,5) 2+2 lifts by groups of order 80 in under a second (3 of 4 groups;
+about 2.1 closed walks per element of a fibre), but stays at 14+ for (6,5) lifts by groups of order 172-192 at a
+similar walk ratio. A first-moment count (expected misses N e^(-walks/m) per fibre against the log of the number of
+voltage choices) puts random 2+2 lifts for (6,5) near 620 vertices, below the table's 684, so a (6,5) lift above
+684 would need the kind of structure the order-96 groups give at (5,5); the exact 2+2 search that finds it there
+does not scale to 9 free voltages in groups of order 172+.
+The orbit-type Haar search `../structured/haar_sym.c` (never run at D = 5 before) gave cost 78 for Heis(7) at (6,5)
+with three-element orbits and 120 for PSL(2,13) at (8,5) with a seven-element orbit, far from 0. For (9,5) and (10,5)
+the exact lift tools do not reach the required group orders (690+ and 1,201+) and the coset tools need groups
+outside the SmallGroups library; not run.
+
+## Tools (this folder)
+
+| file | what it does |
+|---|---|
+| `exh/b4a2y.c` | exact search over all lifts of [[2,3],[3,2]] by a group of order <= 128 (same lifts and final test as `../beyond-haar-d5/exh/b4a2x.c`). More symmetry: Aut(G) by generators (union-find on the (x, {y1, y2}) states), x -> x^-1, the three tree-edge choices in the A0-B1 class (Y -> Y y^-1), w -> w^-1, and the base rotation A0 <-> A1, B0 <-> B1 (x' = w, w' = z0 x z0^-1, so cls(x) <= cls(w) for the Aut-and-inversion classes). Loop order: the second A1-B1 voltage w is fixed outside the z loops, closed walks at A0 and B0 are grouped by which z slots they use, and counting bounds prune z0, z1, z2. 10-50x faster than b4a2x on orders 90-100. |
+| `exh/runs/VALIDATION.md` | b4a2y against b4a2x: SmallGroup(72,30) exhaustive in both, the same 362 isomorphism classes (b4a2x 25,740 solutions in 1,331 s, b4a2y 3,481 in 190 s; 99 s with the rotation symmetry, same classes); SmallGroup(90,6): the same 2 classes; haar5x with and without the symmetry reduction. |
+| `exh/b4a1x.c` | copy of the previous job's exact search for [[1,4],[4,1]]; `exh/gap_tab_autlist.g` gives it all of Aut(G) when \|Aut\| <= 5000, else 5000 elements including the identity (a subset keeps the canonical test complete, it only keeps more representatives). |
+| `exh/haar5x.c` | exhaustive search of all Haar graphs of valency 5 and diameter 5 of a group of order <= 256 (S = {1, a, b, c, d}, a the smallest element of its Aut-orbit, incremental bitset cover of S^-1 S S^-1 S and S S^-1 S S^-1). |
+| `exh/run_one.sh`, `exh/run_one_a1.sh`, `exh/run_one_h.sh` | per-group drivers (GAP export, search, one line per group in `exh/runs/<prog>_<order>.txt`, hits in `exh/runs/HITS.txt`). |
+| `exh/sol2g6.py`, `exh/lift_edges.py`, `exh/iso96.sh`, `exh/table.py` | graph6 / edge lists of solutions, isomorphism classes (nauty-labelg), the per-order table. |
+| `coset/dcenum.c` | the previous job's coset-graph enumerator/annealer with a fix: in SA mode it rewrote the edge file on every evaluation (test() resets the running best); now it writes only on improvements. 4.6x more evaluations per second; the 1,200 (7,5) graph is re-found in 15 s (SEED=3) instead of 15 CPU-min. RESULT lines report the number of evaluations. Note: SECS is CPU time, so wall-clock safety timeouts must be generous on a loaded machine (fixed in the drivers here at 05:40; earlier long runs in `coset/logs/sw_1210*`, `sw_1815*` were cut off and logged no RESULT). |
+| `coset/sweep.sh`, `coset/sweep_exh.sh`, `coset/sweep_diag.sh`, `coset/sweep_dp.sh`, `coset/prod_sweep.sh` | annealing / exhaustive sweeps over SmallGroups, H = K only, C_k x SmallGroup(2^a, j), and constructed groups (core-free H; Haar-type H kept, since any valid graph counts). |
+| `coset/queue*.sh`, `coset/focus*.sh` | the queues run in this session. |
+| `src/` | copies of the previous job's `vl.c`, `kopt.c`, `gap_tables.g`; `apsp` built from `../lifts/coordinator_check/apsp.c`. |
+| `records/` | the record graphs, tables, solution files, checks, the Haar test, the rebuilds. |
+
+## Squad rounds
+
+Log: `../squads/LOG.md`. Round bh5b-r1 (04:25, `../squads/bh5b-r1/`): no graph; c1 found the dcenum SA write bug.
+Round bh5b-r2 (04:45, `../squads/bh5b-r2/`): see the log.
+
+## Status at the end of the session
+
+(filled in at the end)

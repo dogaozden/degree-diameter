@@ -1,0 +1,13 @@
+Syntax warning: Unbound global variable in fewinv7.g:9
+  for g in el do AppendTo(out, JoinStringsWithSeparator(List(el, h -> String(P\
+osition(el, g*h) - 1)), " "), "\n"); od;
+                                                                              \
+        ^^
+sl23xc13 order 312 involutions 1
+q16xc19 order 304 involutions 1
+q8xc39 order 312 involutions 1
+bo48xc7 order 336 involutions 1
+q32xc10 order 320 involutions 3
+sl23xc14 order 336 involutions 3
+q8c4xc10 order 320 involutions 7
+c4q8xc10 order 320 involutions 7

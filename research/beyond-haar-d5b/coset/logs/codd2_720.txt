@@ -1,0 +1,9 @@
+Error, no method found! For debugging hints type ?Recovery from NoMethodFound
+Error, no 1st choice method found for `IsCyclic' on 1 arguments
+The 1st argument is 'fail' which might point to an earlier problem
+ at /usr/share/gap/lib/methsel2.g:249 called from
+IsCyclic( K ) at list_codd2.g:8 called from
+<function "unknown">( <arguments> )
+ called from read-eval loop at list_codd2.g:10
+type 'quit;' to quit to outer loop
+[1m[34m[0m[31m
