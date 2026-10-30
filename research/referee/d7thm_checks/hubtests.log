@@ -1,0 +1,35 @@
+=== blow2
+wrote hub_blow2.edges: 121 + 135 vertices, 774 edges
+n=256 m=774 simple=yes bipartite=yes components=1 degree 3..9
+max distance same colour 6, different colour 5; ordered pairs at distance > 6: 0; unreachable ordered pairs: 0
+same-colour ordered pairs at distance > 6: 0 (hub-graph condition: VALID if 0 and connected)
+=== blow3
+wrote hub_blow3.edges: 536 + 548 vertices, 3223 edges
+n=1084 m=3223 simple=yes bipartite=yes components=1 degree 4..8
+max distance same colour 6, different colour 5; ordered pairs at distance > 6: 0; unreachable ordered pairs: 0
+same-colour ordered pairs at distance > 6: 0 (hub-graph condition: VALID if 0 and connected)
+=== sum
+wrote hub_sum.edges: 581 + 556 vertices, 2967 edges
+n=1137 m=2967 simple=yes bipartite=yes components=1 degree 4..9
+max distance same colour 6, different colour 7; ordered pairs at distance > 6: 20724; unreachable ordered pairs: 0
+same-colour ordered pairs at distance > 6: 0 (hub-graph condition: VALID if 0 and connected)
+=== tree
+wrote hub_tree.edges: 159 + 159 vertices, 344 edges
+n=318 m=344 simple=yes bipartite=yes components=1 degree 1..6
+max distance same colour 6, different colour 7; ordered pairs at distance > 6: 19940; unreachable ordered pairs: 0
+same-colour ordered pairs at distance > 6: 0 (hub-graph condition: VALID if 0 and connected)
+=== treefirst
+wrote hub_treefirst.edges: 222 + 222 vertices, 659 edges
+n=444 m=659 simple=yes bipartite=yes components=1 degree 1..7
+max distance same colour 8, different colour 7; ordered pairs at distance > 6: 33546; unreachable ordered pairs: 0
+same-colour ordered pairs at distance > 6: 1992 (hub-graph condition: VALID if 0 and connected)
+=== h7h7
+wrote hub_h7h7.edges: 39216 + 39216 vertices, 352944 edges
+n=78432 m=352944 simple=yes bipartite=yes components=1 degree 9..9
+max distance same colour 6, different colour 7; ordered pairs at distance > 6: 692119748; unreachable ordered pairs: 0
+same-colour ordered pairs at distance > 6: 0 (hub-graph condition: VALID if 0 and connected)
+=== cert16
+wrote hub_cert16.edges: 66065 + 66065 vertices, 655479 edges
+n=132130 m=655479 simple=yes bipartite=yes components=1 degree 8..14
+max distance same colour 6, different colour 7; ordered pairs at distance > 6: 2512382912; unreachable ordered pairs: 0
+same-colour ordered pairs at distance > 6: 0 (hub-graph condition: VALID if 0 and connected)
