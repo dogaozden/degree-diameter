@@ -59,4 +59,23 @@ Check: `src/apsp` is research/lifts/coordinator_check/apsp.c (all-pairs BFS, no 
 
 ## Results
 
-(filled in as the job runs)
+| graph | group | vertices | how | checks |
+|---|---|---:|---|---|
+| **`records/d7D5_n1312_haar_c41c16.edges`** | C41 : C16 = SmallGroup(656,28) | **1,312** | haar75 anti, type (3,2), 9 solutions | apsp VALID (INVALID at D=4), Python BFS VALID, formula rebuild identical |
+| `records/d7D5_n1240_haar_c31c20.edges` | C31 : C20 = SmallGroup(620,1) | 1,240 | haar75 anti, type (3,2), 9 solutions | apsp VALID (INVALID at D=4), Python BFS VALID, formula rebuild identical |
+| `records/d7D5_n1210_haar_sg605_6.edges` | (C11 x C11) : C5 = SmallGroup(605,6) | 1,210 | haar75 anti (3,2), 9 solutions in the capped part | apsp VALID |
+| `records/d7D5_n1204_haar_sg602_2.edges` | C2 x (C43 : C7) = SmallGroup(602,2) | 1,204 | haar75 anti (3,2), 5 solutions | apsp VALID |
+
+The self-dual sweep (`logs/sweep_anti.txt`, one line per group; `python3 src/sweep_table.py` prints the table per
+order) and the plain symmetric sweep (`logs/sweep.txt`, orders 601-620 only before it was replaced): see the status
+section at the end.
+
+Negative results of this job, other families (all at 1,204-1,344 vertices, no valid graph):
+- plain automorphism-invariant Haar sets (`haar75 exh`), every non-abelian group of order 601-620 and part of 621-640:
+  best cost 2 at 1,210 (SmallGroup(605,4), the known near miss); no symmetric set passes even the side-A test in most
+  groups (only 5 of the first 74).
+- bi-coset graphs |H| = |K| = 2 (`bic75`, exhaustive up to 2e8 unions per case): SmallGroup(1210,12/13/15) and
+  (1260,61/62), the cases the previous job left unfinished: no union passes the side-A test.
+- 4-vertex-base lifts (`lift22`, annealing and tabu): cost 20+ at 1,216-1,344, and the calibration fails (tabu does not
+  re-find the 1,152 graph as a lift by A4 x C24 or S4 x C12 in 90 s), so local search is not reliable at Delta = 7.
+- squad rounds d75-r1 and d75-r2 (`../squads/LOG.md`).

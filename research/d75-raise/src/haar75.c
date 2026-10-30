@@ -20,7 +20,7 @@
 #include <stdint.h>
 
 static int n, ninv;
-static uint16_t *mul;   /* n*n */
+static uint16_t *mul, *mulT;   /* n*n, and transposed: mulT[z*n + y] = y z */
 static int *inv;
 static int nal; static int alp[64]; static int *aperm[64]; static int ncent[64]; static int **cent[64];
 static uint32_t *stampA, *stampB; static uint32_t stA = 0, stB = 0;
@@ -38,6 +38,8 @@ static void load(const char *path) {
     mul = malloc(sizeof(uint16_t) * n * n); inv = malloc(sizeof(int) * n);
     for (int i = 0; i < n * n; i++) mul[i] = rdint(f);
     for (int i = 0; i < n; i++) inv[i] = rdint(f);
+    mulT = malloc(sizeof(uint16_t) * n * n);
+    for (int a = 0; a < n; a++) for (int b = 0; b < n; b++) mulT[(size_t)b * n + a] = mul[(size_t)a * n + b];
     char w[32];
     while (fscanf(f, "%31s", w) == 1) {
         if (!strcmp(w, "ALPHA")) {
@@ -84,9 +86,9 @@ static int pp_full(const int *S, int k, int left, int *ord) {
         int x = left ? M(inv[S[i]], S[j]) : M(S[i], inv[S[j]]);
         if (mk[x] != stM) { mk[x] = stM; X[nx++] = x; }
     }
-    const uint16_t *rows[64]; for (int i = 0; i < nx; i++) rows[i] = mul + (size_t)inv[X[i]] * n;
-    for (int t = 0; t < n; t++) { int z = ord[t], ok = 0;
-        for (int i = 0; i < nx; i++) if (mk[rows[i][z]] == stM) { ok = 1; break; }
+    int ix[64]; for (int i = 0; i < nx; i++) ix[i] = inv[X[i]];
+    for (int t = 0; t < n; t++) { int z = ord[t], ok = 0; const uint16_t *col = mulT + (size_t)z * n;   /* col[y] = y z */
+        for (int i = 0; i < nx; i++) if (mk[col[ix[i]]] == stM) { ok = 1; break; }
         if (!ok) { last_fail_t = t; if (t) { int u = t / 2; ord[t] = ord[u]; ord[u] = z; } return 0; } }
     return 1;
 }
