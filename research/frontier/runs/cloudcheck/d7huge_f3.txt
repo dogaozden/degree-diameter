@@ -1,5 +1,5 @@
 job check-d7huge-f3 (letter f3): all-pairs check of one source range of the (20,7) graph n = 15,795,219
-status: RUNNING (range d20 9 started 13:11 UTC 30 Oct 2026; not finished at the time of this write-up; no VALID claim)
+status: range d20 9 finished (13:11 to 17:06 UTC, 30 Oct 2026); checker output below, copied unedited. The (19,7) graph was not in this worker's ranges.
 
 machine
   nproc: 4
@@ -10,17 +10,19 @@ machine
 
 inputs and sha256 checks (branch claude/conics-2-diameter-7-ic0oat, commit cbfa594)
   hex_q16.bin (cc -O2 -o hexgen2 research/d10D7/hexgen2.c && ./hexgen2 16, run in a scratch directory with hex/ present)
+    expected f7a701a11c2edcdc0014bd8a0eaa2a0ecce11e5953fd4bc63cc8a61c327a4394
     sha256 f7a701a11c2edcdc0014bd8a0eaa2a0ecce11e5953fd4bc63cc8a61c327a4394  hex/hex_q16.bin   MATCH
   (20,7) edge list g20.edges (typed_build.py build, sol research/frontier/sols/d20D7_hex16_typedwhisk_nu0_n15795219.sol)
     expected f9e6399daa20c5d1022acb10f068a19303d3ba10b38cc0c8c1e18f00d1d0dbba
     sha256 f9e6399daa20c5d1022acb10f068a19303d3ba10b38cc0c8c1e18f00d1d0dbba  g20.edges   MATCH
-  (typed_build.py output: n = 15795219, edges = 157589798, degree min 18 max 20, hub graph edges 862118, hubs per side 70163 66322)
-  The (19,7) graph was not built or checked by this worker (range assigned: d20 9 only).
+  (typed_build.py output: n = 15795219, edges = 157589798, degree min 18 max 20, hub graph edges 862118, hubs per side 70163 66322;
+  build took 4 min 32 s; g20.edges is 2,614,794,855 bytes)
 
-commands
+commands (scratch paths: <scratchpad> is the session scratch directory, <conics> is a detached worktree of origin/claude/conics-2-diameter-7-ic0oat)
   git fetch origin claude/conics-2-diameter-7-ic0oat
   git worktree add --detach <scratchpad>/conics origin/claude/conics-2-diameter-7-ic0oat
-  cc -O2 -o hexgen2 <conics>/research/d10D7/hexgen2.c && ./hexgen2 16          (in <scratchpad>/work)
+  mkdir -p <scratchpad>/work/hex && cd <scratchpad>/work
+  cc -O2 -o hexgen2 <conics>/research/d10D7/hexgen2.c && ./hexgen2 16
   sha256sum hex/hex_q16.bin
   python3 <conics>/research/synthetic/conics2/typed_build.py build hex/hex_q16.bin <conics>/research/frontier/sols/d20D7_hex16_typedwhisk_nu0_n15795219.sol g20.edges
   sha256sum g20.edges
@@ -28,8 +30,12 @@ commands
   nohup ./apsp_fast g20.edges 20 7 4 5265080 5923215 > d20D7_f3_range.out 2> d20D7_f3_range.err &
   (range 9 of 24: (9-1)*658135 = 5265080 .. min(9*658135, 15795219) = 5923215; 4 threads)
 
-ranges (the checker's final lines are copied unedited below when the run ends)
-  d20 9  sources 5265080..5923215   pending
+ranges
+  d20 9  sources 5265080..5923215   finished; checker's final lines (stdout, unedited):
+    n=15795219 edges=157589798 degree min=18 max=20 bipartite=yes diameter=7 sources=5265080..5923215
+    RESULT VALID d=20 D=7 n=15795219 (sources in the range only)
+  stderr, last lines (unedited):
+    638976 of 658135 sources done (1793379580)
+    655360 of 658135 sources done (1793379910)
+    658135 of 658135 sources done (1793379968)
 
-progress (stderr of the run, unedited)
-  16384 of 658135 sources done (1793366352)   at 13:21 UTC
