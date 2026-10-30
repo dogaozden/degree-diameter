@@ -1,0 +1,300 @@
+order 516 groups 15
+516 1 C43 : C12 aut=3612 2part=true
+516 2 C4 x (C43 : C3) aut=3612 2part=true
+516 3 C43 x (C3 : C4) aut=504 2part=true
+516 4 C3 x (C43 : C4) aut=7224 2part=true
+516 5 C3 : (C43 : C4) aut=21672 2part=true
+516 6 C516 aut=168 2part=true
+516 7 C2 x (C43 : C6) aut=3612 2part=true
+516 8 S3 x D86 aut=10836 2part=true
+516 9 C2 x C2 x (C43 : C3) aut=10836 2part=true
+516 10 C43 x A4 aut=1008 2part=true
+516 11 (C2 x C2) : (C43 : C3) aut=21672 2part=true
+516 12 C6 x D86 aut=7224 2part=true
+516 13 C86 x S3 aut=504 2part=true
+516 14 D516 aut=21672 2part=true
+516 15 C258 x C2 aut=504 2part=true
+order 520 groups 49
+520 1 C13 x (C5 : C8) aut=960 2part=true
+520 2 C5 x (C13 : C8) aut=2496 2part=true
+520 3 C5 : (C13 : C8) aut=12480 2part=true
+520 4 C520 aut=192 2part=true
+520 5 C5 x (C13 : C8) aut=1248 2part=true
+520 6 C5 : (C13 : C8) aut=6240 2part=true
+520 7 C13 x (C5 : C8) aut=480 2part=true
+520 8 C5 : (C13 : C8) aut=6240 2part=true
+520 9 C5 : (C13 : C8) aut=6240 2part=true
+520 10 C5 : (C13 : C8) aut=6240 2part=true
+520 11 (C5 : C4) x D26 aut=12480 2part=true
+520 12 D10 x (C13 : C4) aut=12480 2part=true
+520 13 C5 : (C4 x D26) aut=12480 2part=true
+520 14 C5 : (C13 : D8) aut=12480 2part=true
+520 15 C5 : D104 aut=12480 2part=true
+520 16 C5 : (C13 : D8) aut=12480 2part=true
+520 17 C5 : (C13 : Q8) aut=12480 2part=true
+520 18 C5 x (C13 : Q8) aut=4992 2part=true
+520 19 C20 x D26 aut=2496 2part=true
+520 20 C5 x D104 aut=4992 2part=true
+520 21 C10 x (C13 : C4) aut=4992 2part=true
+520 22 C5 x (C13 : D8) aut=2496 2part=true
+520 23 C13 x (C5 : Q8) aut=1920 2part=true
+520 24 C52 x D10 aut=960 2part=true
+520 25 C13 x D40 aut=1920 2part=true
+520 26 C26 x (C5 : C4) aut=1920 2part=true
+520 27 C13 x ((C10 x C2) : C2) aut=960 2part=true
+520 28 C5 : (C13 : Q8) aut=24960 2part=true
+520 29 C4 x D130 aut=12480 2part=true
+520 30 D520 aut=24960 2part=true
+520 31 C2 x (C5 : (C13 : C4)) aut=24960 2part=true
+520 32 C5 : (C13 : D8) aut=12480 2part=true
+520 33 C260 x C2 aut=384 2part=true
+520 34 C65 x D8 aut=384 2part=true
+520 35 C65 x Q8 aut=1152 2part=true
+520 36 C5 : (C2 x (C13 : C4)) aut=3120 2part=true
+520 37 (C5 : C4) x D26 aut=3120 2part=true
+520 38 D10 x (C13 : C4) aut=3120 2part=true
+520 39 C10 x (C13 : C4) aut=1248 2part=true
+520 40 C26 x (C5 : C4) aut=480 2part=true
+520 41 C2 x (C5 : (C13 : C4)) aut=6240 2part=true
+520 42 C2 x (C5 : (C13 : C4)) aut=6240 2part=true
+520 43 C2 x (C5 : (C13 : C4)) aut=6240 2part=true
+520 44 C2 x (C5 : (C13 : C4)) aut=6240 2part=true
+520 45 C2 x D10 x D26 aut=12480 2part=true
+520 46 C2 x C10 x D26 aut=14976 2part=true
+520 47 C2 x C26 x D10 aut=5760 2part=true
+520 48 C2 x C2 x D130 aut=74880 2part=true
+520 49 C130 x C2 x C2 aut=8064 2part=true
+order 528 groups 170
+528 1 C11 x (C3 : C16) aut=480 2part=true
+528 2 C3 x (C11 : C16) aut=1760 2part=true
+528 3 C3 : (C11 : C16) aut=5280 2part=true
+528 4 C528 aut=160 2part=true
+528 5 (C3 : C8) x D22 aut=5280 2part=true
+528 6 S3 x (C11 : C8) aut=5280 2part=true
+528 7 C3 : (C8 x D22) aut=5280 2part=true
+528 8 C3 : (C11 : (C8 : C2)) aut=5280 2part=true
+528 9 C3 : (C11 : (C8 : C2)) aut=5280 2part=true
+528 10 C3 : (C11 : (C8 : C2)) aut=5280 2part=true
+528 11 C3 : (C11 : D16) aut=10560 2part=true
+528 12 C3 : D176 aut=10560 2part=true
+528 13 C3 : (C11 : D16) aut=10560 2part=true
+528 14 C3 : (C11 : QD16) aut=10560 2part=true
+528 15 C3 : (C11 : QD16) aut=10560 2part=true
+528 16 C3 : (C11 : QD16) aut=10560 2part=true
+528 17 C3 : (C11 : QD16) aut=10560 2part=true
+528 18 C3 : (C11 : QD16) aut=10560 2part=true
+528 19 C3 : (C11 : QD16) aut=10560 2part=true
+528 20 C3 : (C11 : Q16) aut=10560 2part=true
+528 21 C3 : (C11 : Q16) aut=10560 2part=true
+528 22 C3 : (C11 : Q16) aut=10560 2part=true
+528 23 (C3 : C4) x (C11 : C4) aut=10560 2part=true
+528 24 C3 : (C11 : ((C4 x C2) : C2)) aut=10560 2part=true
+528 25 C3 : (C11 : ((C4 x C2) : C2)) aut=10560 2part=true
+528 26 C3 : (C11 : ((C4 x C2) : C2)) aut=10560 2part=true
+528 27 C3 : (C11 : (C4 : C4)) aut=10560 2part=true
+528 28 C3 : (C11 : (C4 : C4)) aut=10560 2part=true
+528 29 C3 : (C11 : (C4 : C4)) aut=10560 2part=true
+528 30 C11 x ((C4 x C4) : C3) aut=3840 2part=true
+528 31 C24 x D22 aut=1760 2part=true
+528 32 C3 x (C11 : (C8 : C2)) aut=1760 2part=true
+528 33 C3 x (C11 : QD16) aut=3520 2part=true
+528 34 C3 x D176 aut=7040 2part=true
+528 35 C3 x (C11 : Q16) aut=7040 2part=true
+528 36 C6 x (C11 : C8) aut=3520 2part=true
+528 37 C3 x (C11 : (C8 : C2)) aut=3520 2part=true
+528 38 C12 x (C11 : C4) aut=7040 2part=true
+528 39 C3 x (C11 : (C4 : C4)) aut=3520 2part=true
+528 40 C3 x (C11 : (C4 : C4)) aut=7040 2part=true
+528 41 C3 x (C11 : ((C4 x C2) : C2)) aut=3520 2part=true
+528 42 C3 x (C11 : D16) aut=3520 2part=true
+528 43 C3 x (C11 : QD16) aut=3520 2part=true
+528 44 C3 x (C11 : QD16) aut=3520 2part=true
+528 45 C3 x (C11 : Q16) aut=3520 2part=true
+528 46 C3 x (C11 : ((C4 x C2) : C2)) aut=7040 2part=true
+528 47 C88 x S3 aut=480 2part=true
+528 48 C11 x (C24 : C2) aut=480 2part=true
+528 49 C11 x (C24 : C2) aut=960 2part=true
+528 50 C11 x D48 aut=1920 2part=true
+528 51 C11 x (C3 : Q16) aut=1920 2part=true
+528 52 C22 x (C3 : C8) aut=960 2part=true
+528 53 C11 x ((C3 : C8) : C2) aut=960 2part=true
+528 54 C44 x (C3 : C4) aut=1920 2part=true
+528 55 C11 x ((C3 : C4) : C4) aut=960 2part=true
+528 56 C11 x (C12 : C4) aut=1920 2part=true
+528 57 C11 x ((C12 x C2) : C2) aut=960 2part=true
+528 58 C11 x ((C3 x D8) : C2) aut=960 2part=true
+528 59 C11 x ((C3 : Q8) : C2) aut=960 2part=true
+528 60 C11 x ((C3 x Q8) : C2) aut=960 2part=true
+528 61 C11 x (C3 : Q16) aut=960 2part=true
+528 62 C11 x ((C6 x C2) : C4) aut=1920 2part=true
+528 63 C8 x D66 aut=5280 2part=true
+528 64 C3 : (C11 : (C8 : C2)) aut=5280 2part=true
+528 65 C3 : (C11 : QD16) aut=10560 2part=true
+528 66 D528 aut=21120 2part=true
+528 67 C3 : (C11 : Q16) aut=21120 2part=true
+528 68 C2 x (C3 : (C11 : C8)) aut=10560 2part=true
+528 69 C3 : (C11 : (C8 : C2)) aut=10560 2part=true
+528 70 C4 x (C3 : (C11 : C4)) aut=21120 2part=true
+528 71 C3 : (C11 : (C4 : C4)) aut=10560 2part=true
+528 72 C3 : (C11 : (C4 : C4)) aut=21120 2part=true
+528 73 C3 : (C11 : ((C4 x C2) : C2)) aut=10560 2part=true
+528 74 C3 : (C11 : D16) aut=10560 2part=true
+528 75 C3 : (C11 : QD16) aut=10560 2part=true
+528 76 C3 : (C11 : QD16) aut=10560 2part=true
+528 77 C3 : (C11 : Q16) aut=10560 2part=true
+528 78 C3 : (C11 : ((C4 x C2) : C2)) aut=21120 2part=true
+528 79 C132 x C4 aut=1920 2part=true
+528 80 C33 x ((C4 x C2) : C2) aut=640 2part=true
+528 81 C33 x (C4 : C4) aut=640 2part=true
+528 82 C264 x C2 aut=320 2part=true
+528 83 C33 x (C8 : C2) aut=320 2part=true
+528 84 C33 x D16 aut=640 2part=true
+528 85 C33 x QD16 aut=320 2part=true
+528 86 C33 x Q16 aut=640 2part=true
+528 87 C11 x (C2 . S4 = SL(2,3) . C2) aut=480 2part=true
+528 88 C11 x GL(2,3) aut=480 2part=true
+528 89 C11 x (A4 : C4) aut=480 2part=true
+528 90 C11 : (C2 . S4 = SL(2,3) . C2) aut=5280 2part=true
+528 91 C11 : GL(2,3) aut=5280 2part=true
+528 92 C11 : (A4 : C4) aut=5280 2part=true
+528 93 C11 : (((C4 x C2) : C2) : C3) aut=5280 2part=true
+528 94 D22 x SL(2,3) aut=5280 2part=true
+528 95 A4 x (C11 : C4) aut=5280 2part=true
+528 96 (C3 : Q8) x D22 aut=10560 2part=true
+528 97 C3 : (C11 : ((C4 x C2) : C2)) aut=10560 2part=true
+528 98 C3 : (C11 : ((C4 x C2) : C2)) aut=10560 2part=true
+528 99 S3 x (C11 : Q8) aut=10560 2part=true
+528 100 C3 : (C11 : ((C4 x C2) : C2)) aut=10560 2part=true
+528 101 C3 : (C11 : ((C4 x C2) : C2)) aut=10560 2part=true
+528 102 C3 : (Q8 x D22) aut=10560 2part=true
+528 103 C3 : (C11 : ((C4 x C2) : C2)) aut=5280 2part=true
+528 104 C3 : (C11 : ((C4 x C2) : C2)) aut=10560 2part=true
+528 105 C3 : (C11 : ((C4 x C2) : C2)) aut=10560 2part=true
+528 106 C4 x S3 x D22 aut=5280 2part=true
+528 107 D24 x D22 aut=10560 2part=true
+528 108 S3 x D88 aut=10560 2part=true
+528 109 C3 : (D8 x D22) aut=10560 2part=true
+528 110 C2 x ((C3 : C4) x D22) aut=21120 2part=true
+528 111 C3 : (C11 : ((C4 x C2) : C2)) aut=5280 2part=true
+528 112 C3 : (C11 : ((C4 x C2) : C2)) aut=5280 2part=true
+528 113 C2 x (S3 x (C11 : C4)) aut=21120 2part=true
+528 114 C3 : (C11 : ((C4 x C2) : C2)) aut=5280 2part=true
+528 115 C2 x (C3 : (C4 x D22)) aut=21120 2part=true
+528 116 C2 x (C3 : ((C22 x C2) : C2)) aut=21120 2part=true
+528 117 C2 x (C3 : D88) aut=21120 2part=true
+528 118 C2 x (C3 : ((C22 x C2) : C2)) aut=21120 2part=true
+528 119 C2 x (C3 : (C11 : Q8)) aut=21120 2part=true
+528 120 ((C6 x C2) : C2) x D22 aut=5280 2part=true
+528 121 S3 x ((C22 x C2) : C2) aut=5280 2part=true
+528 122 C3 : (D8 x D22) aut=5280 2part=true
+528 123 C44 x A4 aut=480 2part=true
+528 124 C22 x SL(2,3) aut=480 2part=true
+528 125 C11 x (((C4 x C2) : C2) : C3) aut=480 2part=true
+528 126 C6 x (C11 : Q8) aut=14080 2part=true
+528 127 C2 x C12 x D22 aut=7040 2part=true
+528 128 C6 x D88 aut=14080 2part=true
+528 129 C3 x (C11 : ((C4 x C2) : C2)) aut=3520 2part=true
+528 130 C3 x D8 x D22 aut=3520 2part=true
+528 131 C3 x (C11 : ((C4 x C2) : C2)) aut=3520 2part=true
+528 132 C3 x Q8 x D22 aut=10560 2part=true
+528 133 C3 x (C11 : ((C4 x C2) : C2)) aut=10560 2part=true
+528 134 C2 x C6 x (C11 : C4) aut=42240 2part=true
+528 135 C6 x ((C22 x C2) : C2) aut=7040 2part=true
+528 136 C22 x (C3 : Q8) aut=3840 2part=true
+528 137 C2 x C44 x S3 aut=1920 2part=true
+528 138 C22 x D24 aut=3840 2part=true
+528 139 C11 x ((C12 x C2) : C2) aut=960 2part=true
+528 140 C11 x D8 x S3 aut=960 2part=true
+528 141 C11 x ((C4 x S3) : C2) aut=960 2part=true
+528 142 C11 x Q8 x S3 aut=2880 2part=true
+528 143 C11 x ((C4 x S3) : C2) aut=2880 2part=true
+528 144 C2 x C22 x (C3 : C4) aut=11520 2part=true
+528 145 C22 x ((C6 x C2) : C2) aut=1920 2part=true
+528 146 C2 x (C3 : (C11 : Q8)) aut=42240 2part=true
+528 147 C2 x C4 x D66 aut=21120 2part=true
+528 148 C2 x D264 aut=42240 2part=true
+528 149 C3 : (C11 : ((C4 x C2) : C2)) aut=10560 2part=true
+528 150 D8 x D66 aut=10560 2part=true
+528 151 C3 : (C11 : ((C4 x C2) : C2)) aut=10560 2part=true
+528 152 Q8 x D66 aut=31680 2part=true
+528 153 C3 : (C11 : ((C4 x C2) : C2)) aut=31680 2part=true
+528 154 C2 x C2 x (C3 : (C11 : C4)) aut=126720 2part=true
+528 155 C2 x (C3 : ((C22 x C2) : C2)) aut=21120 2part=true
+528 156 C132 x C2 x C2 aut=3840 2part=true
+528 157 C66 x D8 aut=1280 2part=true
+528 158 C66 x Q8 aut=3840 2part=true
+528 159 C33 x ((C4 x C2) : C2) aut=960 2part=true
+528 160 D22 x S4 aut=2640 2part=true
+528 161 C22 x S4 aut=480 2part=true
+528 162 C2 x (C11 : S4) aut=5280 2part=true
+528 163 C2 x A4 x D22 aut=5280 2part=true
+528 164 C2 x C2 x S3 x D22 aut=63360 2part=true
+528 165 C2 x C22 x A4 aut=1440 2part=true
+528 166 C11 x ((C2 x C2 x C2 x C2) : C3) aut=57600 2part=true
+528 167 C2 x C2 x C6 x D22 aut=295680 2part=true
+528 168 C2 x C2 x C22 x S3 aut=80640 2part=true
+528 169 C2 x C2 x C2 x D66 aut=887040 2part=true
+528 170 C66 x C2 x C2 x C2 aut=403200 2part=true
+order 540 groups 119
+540 1 C5 x (C27 : C4) aut=3888 2part=true
+540 2 C27 x (C5 : C4) aut=720 2part=true
+540 3 C27 : (C5 : C4) aut=19440 2part=true
+540 4 C540 aut=144 2part=true
+540 5 C27 x (C5 : C4) aut=360 2part=true
+540 6 C27 : (C5 : C4) aut=9720 2part=true
+540 7 D10 x D54 aut=9720 2part=true
+540 8 C5 x ((C2 x C2) : C27) aut=864 2part=true
+540 9 C54 x D10 aut=720 2part=true
+540 10 C10 x D54 aut=3888 2part=true
+540 11 D540 aut=19440 2part=true
+540 12 C270 x C2 aut=432 2part=true
+540 13 C3 x C9 x (C5 : C4) aut=4320 2part=true
+540 14 ((C3 x C3) : C3) x (C5 : C4) aut=17280 2part=true
+540 15 (C9 : C3) x (C5 : C4) aut=2160 2part=true
+540 16 C15 x (C9 : C4) aut=864 2part=true
+540 17 C45 x (C3 : C4) aut=288 2part=true
+540 18 C5 x (((C3 x C3) : C3) : C4) aut=864 2part=true
+540 19 C5 x ((C9 : C3) : C4) aut=432 2part=true
+540 20 C3 x (C9 : (C5 : C4)) aut=4320 2part=true
+540 21 C9 x (C15 : C4) aut=1440 2part=true
+540 22 ((C3 x C3) : C3) : (C5 : C4) aut=4320 2part=true
+540 23 (C9 : C3) : (C5 : C4) aut=2160 2part=true
+540 24 C5 x ((C9 x C3) : C4) aut=23328 2part=true
+540 25 C5 x (((C3 x C3) : C3) : C4) aut=3456 2part=true
+540 26 (C9 x C3) : (C5 : C4) aut=116640 2part=true
+540 27 ((C3 x C3) : C3) : (C5 : C4) aut=17280 2part=true
+540 28 C180 x C3 aut=864 2part=true
+540 29 C20 x ((C3 x C3) : C3) aut=3456 2part=true
+540 30 C20 x (C9 : C3) aut=432 2part=true
+540 31 C9 x A5 aut=720 2part=true
+540 32 C3 x C9 x (C5 : C4) aut=2160 2part=true
+540 33 ((C3 x C3) : C3) x (C5 : C4) aut=8640 2part=true
+540 34 (C9 : C3) x (C5 : C4) aut=1080 2part=true
+540 35 C3 x (C9 : (C5 : C4)) aut=2160 2part=true
+540 36 C9 x (C15 : C4) aut=720 2part=true
+540 37 ((C3 x C3) : C3) : (C5 : C4) aut=2160 2part=true
+540 38 (C9 : C3) : (C5 : C4) aut=1080 2part=true
+540 39 (C9 x C3) : (C5 : C4) aut=58320 2part=true
+540 40 ((C3 x C3) : C3) : (C5 : C4) aut=8640 2part=true
+540 41 C5 x (((C3 x C3) : C3) : C4) aut=576 2part=true
+540 42 ((C3 x C3) : C3) : (C5 : C4) aut=2880 2part=true
+540 43 ((C3 x C3) : C3) : (C5 : C4) aut=1440 2part=true
+540 44 C3 x D10 x D18 aut=2160 2part=true
+540 45 C9 x S3 x D10 aut=720 2part=true
+540 46 ((C3 x C3) : C6) x D10 aut=2160 2part=true
+540 47 D10 x (C9 : C6) aut=1080 2part=true
+540 48 D10 x ((C9 x C3) : C2) aut=58320 2part=true
+540 49 D10 x (((C3 x C3) : C3) : C2) aut=8640 2part=true
+540 50 C5 x S3 x D18 aut=1296 2part=true
+540 51 C5 x (((C3 x C3) : C3) : (C2 x C2)) aut=864 2part=true
+540 52 S3 x D90 aut=6480 2part=true
+540 53 D30 x D18 aut=6480 2part=true
+540 54 ((C3 x C3) : C3) : D20 aut=2160 2part=true
+540 55 (C9 x C3) : D20 aut=6480 2part=true
+540 56 ((C3 x C3) : C3) : D20 aut=4320 2part=true
+540 57 C45 x A4 aut=1728 2part=true
+540 58 C5 x ((C2 x C2) : (C9 : C3)) aut=864 2part=true
+540 59 C15 x ((C2 x C2) : C9) aut=5184 2part=true
+540 60 C5 x ((C2 x C2) : (C9 : C3)) aut=2592 2part=true
+540 61 C5 x ((C2 x C2) : ((C3 x C3) : C3)) aut=5184 2part=true
+540 62 C3 x C18 x D10 aut=4320 2part=true

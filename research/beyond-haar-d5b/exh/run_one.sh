@@ -1,7 +1,10 @@
 #!/bin/bash
 # usage: run_one.sh ORDER ID  -- export SmallGroup(ORDER, ID) (table + Aut generators) and run b4a2y on it;
-# one result line in runs/b4a2y_ORDER.txt, solutions in runs/b4a2y_ORDER_ID.sol
+# one result line in runs/b4a2y_ORDER.txt, solutions in runs/b4a2y_ORDER_ID.sol. A lock directory lets several
+# queues share one job list (a group already taken is skipped).
 o=$1; i=$2
+mkdir -p locks; mkdir locks/y_${o}_$i 2>/dev/null || exit 0
+grep -q "^$o $i " runs/b4a2y_$o.txt 2>/dev/null && exit 0
 [ -f grp/g${o}_$i.gens ] || gap -q -c "ORDER:=$o; ID:=$i; OUT:=\"grp/g${o}_$i\";" gap_tab_gens.g > /dev/null 2>&1
 info=$(cat grp/g${o}_$i.info)
 r=$(nice -n 3 ./b4a2y grp/g${o}_$i.txt grp/g${o}_$i.gens 2>&1 > runs/b4a2y_${o}_$i.sol | tail -1)

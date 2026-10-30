@@ -2,3 +2,6 @@
 1206 done 03:56
 1208 done 04:12
 04:27 dcenum rebuilt: SA no longer rewrites the edge file on every evaluation (4.6x more evaluations; the 1200 graph is re-found in 15 s with SEED=3); sweep lines after this time use it
+1212 done 04:34
+1214 done 04:36
+04:50 queue75 stopped (during order 1216 or so) to free a core for the (5,5) bi-coset sweep

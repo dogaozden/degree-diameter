@@ -92,3 +92,19 @@ Opus (22:37-23:38): b4a2x over 23 groups of order 90..102 (364..408 vertices, 4 
 beyond order 90. Exhaustive and empty: C23:C4, D92, C31:C3, D94, C4 x C4 x S3, D98, D100; the rest partial (see
 research/beyond-haar-d5/README.md, end). The (7,5) coset sweeps at 1204..1320 were stopped at 22:37 to free the
 CPUs (best costs 18-36, no hit). Session totals: (5,5) 360 (non-Haar), (7,5) 1,200 (Haar via the coset route).
+
+## 2026-10-30, job beyond-haar-d5b (Opus cloud session), goals (7,5) > 1,200, (6,5) > 684, (8,5) > 2,048
+
+### Round bh5b-r1 (04:25 UTC, 8 cards, research/squads/bh5b-r1/)
+Cards: c1 (7,5) long anneals of coset graphs of SmallGroup(1210, 12/13/15), |H| = 2 · c2 (7,5) |H| = 3, SmallGroups of
+order 1848-1980 · c3 (7,5) |H| = 4/6 of constructed product groups (order 2404+) · c4 (7,5) 2+2 / 3+3 lifts over
+orders 301-330 / 201-220 · c5 (6,5) |H| = 2, SmallGroups of order 686-720 · c6 (6,5) 3+3..5+5 lifts over orders
+115-125 / 86-95 / 69-75 · c7 (8,5) coset graphs of SL(2,13), PGL(2,13), products (order 2050+) · c8 wildcard.
+Best per card (cost 0 = valid): c1 18 (tabu, SmallGroup(1210,13)) · c2 338 (SmallGroup(1878,2), 1252) · c3 14
+(PSL(2,17), |H| = 4, 1224, exhaustive) · c4 20 (C43:C7, [[3,4],[4,3]], 1204) · c5 926 (box overloaded, 5 s anneals)
+· c6 32 (C5 x SL(2,3), 3+3 all-2 base, 720) · c7, c8: see below.
+Kept: c1's observation that dcenum's SA mode rewrote its edge file on every evaluation: fixed in
+research/beyond-haar-d5b/coset/dcenum.c (4.6x more evaluations; the 1,200 graph is re-found in 15 s), and every (7,5)
+anneal after 04:27 uses the fix. Meanwhile (not from the squad) the exact lift searches found (5,5) graphs on 384
+vertices (research/beyond-haar-d5b/README.md). Honest reading: the squad found no graph, but its one bug report
+was worth the round.
