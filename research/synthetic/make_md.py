@@ -62,6 +62,7 @@ def roman(n):
 
 t = tex
 t = re.sub(r'\\begin\{tikzpicture\}.*?\\end\{tikzpicture\}', r'\\emph{[Figure: see SYNTHETIC.pdf.]}', t, flags=re.S)
+t = t.replace('\\emergencystretch=3em', '')
 t = re.sub(r'\\path\{([^}]*)\}', lambda m: r'\texttt{' + m.group(1).replace('_', r'\_') + '}', t)
 t = re.sub(r'~?\\ref\{([^}]*)\}', lambda m: ' ' + labels.get(m.group(1), '??'), t)
 t = re.sub(r'~?\\cite(\[[^\]]*\])?\{([^}]*)\}',
@@ -158,6 +159,6 @@ for ln in md.split('\n'):
 md = '\n'.join(out)
 header = ('<!-- Generated from SYNTHETIC.tex by make_md.py; the figures are in SYNTHETIC.pdf. -->\n\n'
           '# Adding points and lines to generalized polygons: the constructions without coordinates\n\n'
-          '*Degree–diameter lab, 28 October 2026. Markdown copy of `SYNTHETIC.tex`; the PDF has the figures.*\n\n')
+          '*Degree–diameter lab, 30 October 2026. Markdown copy of `SYNTHETIC.tex`; the PDF has the figures.*\n\n')
 (HERE / 'SYNTHETIC.md').write_text(header + md)
 print('wrote SYNTHETIC.md,', len(md.split()), 'words')

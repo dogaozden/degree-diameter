@@ -2,11 +2,11 @@
 
 # Adding points and lines to generalized polygons: the constructions without coordinates
 
-*Degree–diameter lab, 28 October 2026. Markdown copy of `SYNTHETIC.tex`; the PDF has the figures.*
+*Degree–diameter lab, 30 October 2026. Markdown copy of `SYNTHETIC.tex`; the PDF has the figures.*
 
-*Abstract.* Written for Gabriela Araujo-Pardo and Ignacio López. Each construction of the lab is described here only in terms of incidence: points, lines, the lines through a point, the points of a line, flags, anti-flags, collinearity, distances in the incidence graph, and configurations (ovoids, spreads, $m$-ovoids, whiskers) defined by their combinatorial properties. For each construction we say what is chosen in the starting geometry, which incidences are deleted or moved, which new points and lines are added and exactly what they are incident with, which pairs of elements stop being collinear or concurrent and how the new elements repair this, and why the diameter and the degrees are as claimed. Section 1 treats the diameter-$3$ constructions in a projective plane: the three hats of Araujo-Pardo and López and our four hats, side by side and in the same words. Sections 2– 4 treat diameters $4$, $6$ and $7$ in generalized quadrangles and hexagons. The sections can be read independently.
+*Abstract.* Written for Gabriela Araujo-Pardo and Ignacio López. Each construction of the lab is described here only in terms of incidence: points, lines, the lines through a point, the points of a line, flags, anti-flags, collinearity, distances in the incidence graph, and configurations (ovoids, spreads, $m$-ovoids, whiskers, partial ovoids, local dualities) defined by their combinatorial properties. For each construction we say what is chosen in the starting geometry, which incidences are deleted or moved, which new points and lines are added and exactly what they are incident with, which pairs of elements stop being collinear or concurrent and how the new elements repair this, and why the diameter and the degrees are as claimed. Section 1 treats the diameter-$3$ constructions in a projective plane: the three hats of Araujo-Pardo and López and our four hats, side by side and in the same words. Sections 2– 4 treat diameters $4$, $6$ and $7$ in generalized quadrangles and hexagons, and Section 5 treats diameter $5$: copies of a quadrangle joined by bijections, freed incidences and hubs, with an exact combinatorial criterion for which incidences can be freed. Section 6 treats Gómez’s diameter-$8$ construction on copies of a generalized hexagon: it says what is his, why as defined its diameter is at least $9$, and what is known about repairing it with a separate labelling of each copy (it works for $q=2,3$, fails for geometric labellings when $q\ge7$, and is open otherwise). The sections can be read independently.
 
-*Sources.* Everything here is taken from the lab’s notes: `research/theorems/POLISHED.md` (coordinates and complete proofs for diameters $3$, $4$ and $6$), `research/theorems/D7_HEXAGON.md` (the same for diameter $7$), `research/geometry/geometry.tex`, `research/plus2/coords/coords.tex` and the joint draft `research/paper/joint.tex`. No new result is claimed. Every combinatorial statement in Section 1 was checked by a program that builds both structures from the rules below on a plane given only by its incidence relation (`research/synthetic/checks/check_d3.py`: $\mathrm{PG}(2,q)$ for $q=3,4,5,7,8,9$, the two non-Desarguesian nearfield planes of order $9$, and agreement with the coordinate version for $q\le 9$). The other sections were checked in the same way on small quadrangles and hexagons (Appendix A).
+*Sources.* Everything here is taken from the lab’s notes: `research/theorems/POLISHED.md` (coordinates and complete proofs for diameters $3$, $4$ and $6$), `research/theorems/D7_HEXAGON.md` (the same for diameter $7$), `research/theorems/D5_QUADRANGLE.md` (diameter $5$; the corrected version on branch `claude/d5-relax-searches-osr72a`, read with its referee report `research/referee/d5-quadrangle.md` on `claude/referee-d5-quadrangle-621u7o`), `research/theorems/OMEGA_NOTE.md` (diameter $8$, branch `claude/omega-d8-note-xrbqux`; it extends the note `papers/Ozden_OmegaH_D8_note.pdf`), `research/geometry/geometry.tex`, `research/plus2/coords/coords.tex` and the joint draft `research/paper/joint.tex`. No new result is claimed. Every combinatorial statement in Section 1 was checked by a program that builds both structures from the rules below on a plane given only by its incidence relation (`research/synthetic/checks/check_d3.py`: $\mathrm{PG}(2,q)$ for $q=3,4,5,7,8,9$, the two non-Desarguesian nearfield planes of order $9$, and agreement with the coordinate version for $q\le 9$). The other sections were checked in the same way on small quadrangles and hexagons (Appendix A).
 
 # 0. Conventions
 
@@ -16,12 +16,14 @@ The *incidence graph* has the elements as vertices and the flags as edges; it is
 
 A *generalized $n$-gon* is an incidence structure whose incidence graph has diameter $n$ and girth $2n$; elements at distance $n$ are *opposite*. It has *order $(s,t)$* if every line has $s+1$ points and every point is on $t+1$ lines. Projective planes are the generalized $3$-gons, generalized quadrangles the $4$-gons, generalized hexagons the $6$-gons. Write $n_b(\Delta,D)$ for the largest number of elements of an incidence structure with all degrees at most $\Delta$ and diameter at most $D$ (the bipartite degree–diameter problem). A generalized $n$-gon of order $(q,q)$ attains the counting (Moore) bound for $n_b(q+1,n)$. When $q+1$ is not a prime power, no generalized polygon of order $(q+1,q+1)$ is known, and every construction below starts from a generalized polygon of order $(q,q)$ (or $(q-1,q+1)$) and adds points and lines so that the maximum degree becomes $q+2$ (or more) while the diameter stays the same. Table 1 is a summary.
 
-| §   | start                                              | chosen configuration                                                                                                              | changed incidences                                                       | added elements                                        |
-|:----|:---------------------------------------------------|:----------------------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------|:------------------------------------------------------|
-| 1   | projective plane of order $q$; $D=3$, $\Delta=q+2$ | an anti-flag $(A,\ell)$ and $3$ or $4$ points of $\ell$                                                                           | $1$ flag deleted (three hats); $4$ deleted and $3$ added (four hats)     | $4+4$ or $5+5$: hat points and hat lines, $Q$ and $M$ |
-| 2   | generalized quadrangle; $D=4$                      | a weighted $m$-ovoid and a weighted $m'$-cover (two elliptic quadrics in $\mathrm{AS}(q)$; a $2$-ovoid and a spread of $W(q)$; …) | none                                                                     | clones of points and shadow lines                     |
-| 3   | generalized hexagon of order $(q,q)$; $D=6$        | a spread $\Sigma$, a line $v\in\Sigma$, an exact whisker set                                                                      | none; every element of three nested sets is replaced by several versions | $(m-1)\sum_k m^k\lvert\mathcal{A}_k\rvert$ versions   |
-| 4   | $2r+1$ copies of a generalized hexagon; $D=7$      | bijections from the points of one copy to the lines of another; freed sets (segment sets, local dualities)                        | the incidences between copies at the freed points are deleted            | hub points and hub lines                              |
+| §   | start                                                                                                    | chosen configuration                                                                                                              | changed incidences                                                       | added elements                                                            |
+|:----|:---------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------|:--------------------------------------------------------------------------|
+| 1   | projective plane of order $q$; $D=3$, $\Delta=q+2$                                                       | an anti-flag $(A,\ell)$ and $3$ or $4$ points of $\ell$                                                                           | $1$ flag deleted (three hats); $4$ deleted and $3$ added (four hats)     | $4+4$ or $5+5$: hat points and hat lines, $Q$ and $M$                     |
+| 2   | generalized quadrangle; $D=4$                                                                            | a weighted $m$-ovoid and a weighted $m'$-cover (two elliptic quadrics in $\mathrm{AS}(q)$; a $2$-ovoid and a spread of $W(q)$; …) | none                                                                     | clones of points and shadow lines                                         |
+| 3   | generalized hexagon of order $(q,q)$; $D=6$                                                              | a spread $\Sigma$, a line $v\in\Sigma$, an exact whisker set                                                                      | none; every element of three nested sets is replaced by several versions | $(m-1)\sum_k m^k\lvert\mathcal{A}_k\rvert$ versions                       |
+| 4   | $2r+1$ copies of a generalized hexagon; $D=7$                                                            | bijections from the points of one copy to the lines of another; freed sets (segment sets, local dualities)                        | the incidences between copies at the freed points are deleted            | hub points and hub lines                                                  |
+| 5   | $2r+1$ copies of a generalized quadrangle or its dual; $D=5$                                             | bijections as in §4; freed sets (partial ovoids and spreads, two-point local dualities, concurrent pairs)                         | the incidences between copies at the freed points are deleted            | hub points and hub lines                                                  |
+| 6   | $5\alpha$ copies of a generalized hexagon, $\alpha=\lfloor(q+3)/2\rfloor$; $D=8$ claimed, $9$ as defined | a labelling of the points and lines of each copy; block types                                                                     | none                                                                     | $10N$ new elements, each on the copies of one element in $2\alpha$ copies |
 
 *Table 1.* The constructions at a glance.
 
@@ -549,13 +551,285 @@ In each case the structure is that of §4.2, every transition is repaired by The
 
 With classical ingredients only (the $q^2+1$ points of an elliptic quadric section, $q^2+1$ lines of a Hermitian spread, and an explicit hub graph built from a projective plane with pendant trees) the same theorems give $n_b(q+2,7)\ge 6N+2(q^2+1)$ for every $q\ge5$ (`D7_HEXAGON.md`, Corollary 9.1).
 
+# 5. Diameter 5: level structures of generalized quadrangles, freed sets and hubs
+
+(Theorems A, B, C, E and the other numbered statements cited in this section are those of `D5_QUADRANGLE.md`.)
+
+This section follows the plan of Section 4 one step lower: copies of a generalized quadrangle joined by bijections have diameter $5$, and freeing some of the joining incidences makes room for new points and lines. The difference is that at diameter $5$ there is an exact criterion for which incidences can be freed, and it is much more restrictive than at diameter $7$.
+
+Let $\mathcal{Q}$ be a generalized quadrangle of order $(q,q)$ (Section 2): every line has $q+1$ points, every point is on $q+1$ lines, and for every anti-flag $(p,L)$ exactly one point of $L$ is collinear with $p$. It has $N=(q+1)(q^2+1)$ points and $N$ lines, and its dual $\mathcal{Q}^D$ (points and lines exchanged) is again a quadrangle of order $(q,q)$. Three facts are used throughout:
+
+(Q1) two distinct points are collinear or have a common collinear point, so they are at distance $2$ or $4$; a point and a line are at distance $1$ or $3$; dually for lines;
+
+(Q2) a line not through $p$ has exactly one point collinear with $p$, and a line through $p$ has $q$ of them; dually, a point not on $L$ is on exactly one line concurrent with $L$;
+
+(Q3) for every point $p$ and every line $L$, some point collinear with $p$ lies on $L$ (by (Q2), or another point of $L$ if $p\mathrel{\mathrm{I}}L$); dually.
+
+The quadrangles used are $W(q)$ and $Q(4,q)$ \[PT\], and $Q(4,q)$ is isomorphic to the dual of $W(q)$ \[PT, 3.2.1\]. As in Lemma 0.1, distances in a structure of diameter $5$ can be read off from pairs of the same kind:
+
+**Lemma 5.1.** An incidence structure in which every element is incident with something has diameter at most $5$ if and only if any two points, and any two lines, are at distance at most $4$; that is, any two points are collinear or both collinear with a third point, and dually.
+
+*Proof.* Same-kind distances are even and point–line distances odd. If $p$ is a point and $L$ a line, and $p'$ is a point of $L$, then $d(p,L)\le d(p,p')+1\le 5$. $\square$
+
+## 5.1 Level structures
+
+Fix $r\ge1$ and take $2r+1$ copies $\mathcal{Q}_0,\dots,\mathcal{Q}_{2r}$, indexed modulo $2r+1$, each a copy of $\mathcal{Q}$ (*type* $H$) or of $\mathcal{Q}^D$ (*type* $D$). For an element $x$ of $\mathcal{Q}$ write $x_j$ for its copy in $\mathcal{Q}_j$; if $\mathcal{Q}_j$ has type $D$, a line $\ell$ of $\mathcal{Q}$ gives a point $\ell_j$ and a point $p$ gives a line $p_j$. The *transitions* are the pairs $j\to j+k$, $1\le k\le r$; every two copies are joined by exactly one transition. (Any orientation of the pairs in which every copy has $r$ outgoing transitions would do; all layouts below use this one.) For each transition $t=(j\to j')$ choose a bijection $M_t$ from the points of $\mathcal{Q}_j$ to the lines of $\mathcal{Q}_{j'}$.
+
+**Definition 5.2 (Level structure).** Its points are the points of all copies, its lines the lines of all copies, and its incidences are those inside each copy together with $p\mathrel{\mathrm{I}}M_t(p)$ for every transition $t=(j\to j')$ and every point $p$ of $\mathcal{Q}_j$.
+
+Every point gains $r$ lines and every line $r$ points, so the structure is $(q+1+r)$-regular with $(2r+1)\cdot 2N$ elements. A transition is *friendly* if the two copies have different types. Then a point $p_j$ of $\mathcal{Q}_j$ and the line $p_{j'}$ of $\mathcal{Q}_{j'}$ come from the same element $p$ of $\mathcal{Q}$, and $M_t$ may be the *identity* $p_j\mapsto p_{j'}$. For $q=7,8,9,9,9,11$ and $2r+1=5,5,5,7,9,7$ the orders $(2r+1)\cdot2N$ are the values of the 2013 table in the cells $(10,5)$–$(15,5)$, which the CombinatoricsWiki \[LPP\] credits to Delorme, Gómez and Quisquater \[DGQ\]. We could not find that paper; the cell $(16,5)$, credited to them as well, is not of this form, so we can say only that the orders coincide.
+
+**Theorem 5.3 (Theorem A).** For any types and bijections, the level structure has diameter at most $5$.
+
+*Proof.* By Lemma 5.1 it suffices to join two points, and two lines, by a path of length at most $4$. Inside one copy this is (Q1). Otherwise take $u$ in $\mathcal{Q}_j$ and $v$ in $\mathcal{Q}_{j'}$ with a transition $M$ from $j$ to $j'$ (one of the two directions is a transition). Two points: $u$, the line $M(u)$, then $v$ inside $\mathcal{Q}_{j'}$, at most $1+3$. Two lines: $u$ to the point $M^{-1}(v)$ inside $\mathcal{Q}_j$, then $v$, at most $3+1$. $\square$
+
+## 5.2 Freeing incidences and adding hubs
+
+For each transition $t=(j\to j')$ choose a set $R_t$ of points of $\mathcal{Q}_j$, the *freed* points, and:
+
+(1) delete the incidences $p\mathrel{\mathrm{I}}M_t(p)$, $p\in R_t$; each deletion leaves a free incidence (a *slot*) at the point $p$ of $\mathcal{Q}_j$ and one at the line $M_t(p)$ of $\mathcal{Q}_{j'}$;
+
+(2) add $K$ new lines, the *line-hubs*, each incident with one freed point in *every* copy (taking a slot there), and $K'$ new points, the *point-hubs*, each incident with one freed line in every copy; every slot is taken at most once;
+
+(3) add incidences between line-hubs and point-hubs (the *hub graph* $Y$), at most $q-r$ at each hub.
+
+Copy $j$ has $\alpha_j=\sum_{t\text{ out of }j}|R_t|$ free point slots and $\beta_j=\sum_{t\text{ into }j}|R_t|$ free line slots, so $K\le\min_j\alpha_j$ and $K'\le\min_j\beta_j$. All degrees stay at most $q+1+r$ (a hub has $2r+1$ incidences with the copies), and there are $(2r+1)\cdot 2N+K+K'$ elements. This is the operation of §4.2 with quadrangles in place of hexagons.
+
+Call the transition $t$ *repaired* if after the deletion every point of $\mathcal{Q}_j$ is within distance $4$ of every point of $\mathcal{Q}_{j'}$, and every line of $\mathcal{Q}_j$ of every line of $\mathcal{Q}_{j'}$, using only these two copies and the remaining incidences of $t$. A shortest such path uses exactly one incidence of $t$: it uses an odd number of them, and with three it would contain a path between two distinct lines of $\mathcal{Q}_{j'}$ and one between two distinct points of $\mathcal{Q}_j$, each of length at least $2$, so its length would be at least $3+2+2=7$. So $t$ is repaired if and only if for all $u$ in $\mathcal{Q}_j$ and $v$ in $\mathcal{Q}_{j'}$ of the same kind there is a point $a\notin R_t$ of $\mathcal{Q}_j$ with $$d(u,a)+1+d(M_t(a),v)\le 4 .$$
+
+**Theorem 5.4 (Assembly; Theorems 3.5, 3.6).** If every transition is repaired, any two line-hubs and any two point-hubs are within distance $4$, and every hub is on at most $q-r$ hub incidences, the structure has diameter at most $5$ and maximum degree at most $q+1+r$; so $n_b(q+1+r,5)\ge(2r+1)\cdot 2N+K+K'$.
+
+*Proof.* By Lemma 5.1. Two old points or two old lines: inside a copy by (Q1), in different copies through their transition. A line-hub $h$ and an old line $v$ of $\mathcal{Q}_j$: $h$ contains a point of $\mathcal{Q}_j$, which is within $3$ of $v$; dually for point-hubs and old points. Two hubs of the same kind: by hypothesis. $\square$
+
+The hypothesis on the hubs holds, for instance, if $Y$ alone has all same-kind distances at most $4$ (§5.8). The hypothesis on the transitions is a property of one bijection and one freed set, and the next theorem decides it exactly.
+
+## 5.3 The exact criterion
+
+**Theorem 5.5 (Theorem E).** Let $t=(j\to j')$ be a transition with bijection $M$ and freed set $R$. Then $t$ is repaired if and only if for every $x\in R$:
+
+(E2) every point of $\mathcal{Q}_{j'}$ lies on $M(a)$ for some point $a\notin R$ collinear with $x$;
+
+(E3) every line of $\mathcal{Q}_j$ contains a point $a\notin R$ such that $M(a)$ and $M(x)$ are concurrent.
+
+*Proof.* We check <a href="#eq:repair5" data-reference-type="eqref" data-reference="eq:repair5">[eq:repair5]</a>. Distances between points of one copy are even, between a point and a line odd. *Two points $u\in\mathcal{Q}_j$, $v\in\mathcal{Q}_{j'}$*: we need $d(u,a)+d(M(a),v)\le3$, with $d(u,a)\in\{0,2,4\}$ and $d(M(a),v)\in\{1,3\}$. If $u\notin R$, take $a=u$: $d(M(u),v)\le 3$ by (Q1). If $u=x\in R$, then $a\ne x$, so we need $d(x,a)=2$ and $d(M(a),v)=1$: a point $a\notin R$ collinear with $x$ with $v$ on $M(a)$. For all $v$ this is (E2). *Two lines $u\in\mathcal{Q}_j$, $v\in\mathcal{Q}_{j'}$*: now $d(u,a)\in\{1,3\}$ and $d(M(a),v)\in\{0,2,4\}$, so the possibilities are $(1,0)$, $(1,2)$, $(3,0)$. If $v=M(b)$ with $b\notin R$, take $a=b$: $d(u,b)\le3$. If $v=M(x)$ with $x\in R$, then $M(a)=v$ is impossible, so we need $a\mathrel{\mathrm{I}}u$, $a\notin R$, and $M(a)$ concurrent with $M(x)$. For all $u$ this is (E3). $\square$
+
+(The note’s proof also goes through point–line pairs and a condition (E1), which (E2) implies; with Lemma 5.1 these are not needed. The program `check_d5.py` compares (E2), (E3) with a direct computation of distances on $336$ transitions in $W(q)$ and $Q(4,q)$, $q=2,3$.)
+
+*\[Figure: see SYNTHETIC.pdf.\]*
+
+*Figure 7.* Why a friendly transition with $M$ the identity ($\mathcal{Q}_j$ a copy of $\mathcal{Q}$, $\mathcal{Q}_{j'}$ of $\mathcal{Q}^D$) cannot free two collinear points $x,y$. Dashed: the deleted incidences $x_j\mathrel{\mathrm{I}}x_{j'}$, $y_j\mathrel{\mathrm{I}}y_{j'}$. Take a line $\ell\ne xy$ through $y$; in $\mathcal{Q}_{j'}$ it is a point $\ell_{j'}$. A path of length $4$ from $x_j$ to $\ell_{j'}$ must be $x_j$, a line, a point $a_j$ collinear with $x$, the line $a_{j'}$, then $\ell_{j'}$; so $a$ must be a point of $\ell$ collinear with $x$. The only one is $y$ (Q2), and $y$ is freed. The other points of $\ell$ (bottom) are not collinear with $x$, so their incidences with $\mathcal{Q}_{j'}$ (grey) do not help: in these two copies $d(x_j,\ell_{j'})=6$.
+
+## 5.4 Transitions given by an isomorphism: partial ovoids
+
+Call a transition *automorphic* if $M$ is the restriction of an isomorphism from $\mathcal{Q}_j$ to the dual of $\mathcal{Q}_{j'}$: the identity of a friendly transition, or a duality of $\mathcal{Q}$ (an incidence-preserving bijection exchanging points and lines; $W(q)$ has one exactly when $q$ is even \[PT, 3.2.1\]).
+
+**Theorem 5.6 (Theorem B).** An automorphic transition is repaired if and only if its freed points are pairwise non-collinear (a *partial ovoid* of $\mathcal{Q}_j$).
+
+*Proof.* An isomorphism preserves incidence and collinearity, so (E2) and (E3) for $x$ both say: every line of $\mathcal{Q}_j$ contains a point $a\notin R$ collinear with $x$. A line through $x$ has $q$ points collinear with $x$, a line $\ell$ not through $x$ exactly one, $p_\ell$ (Q2). If no freed point is collinear with $x$, every line is covered. If a freed point $y$ is collinear with $x$, every line $\ell\ne xy$ through $y$ has $p_\ell=y$ and is not covered (Figure 7). $\square$
+
+At diameter $7$ the corresponding sets were the segment sets (Theorem 4.5), which may contain collinear pairs; at diameter $5$ a single collinear pair breaks the transition. In $W(q)$ and $Q(4,q)$ the largest partial ovoids are the ovoids, $q^2+1$ points meeting every line once; $Q(4,q)$ has ovoids for every $q$, $W(q)$ only for $q$ even \[PT, 3.4.1, 3.4.2\]. Dually, freed lines on a friendly transition from a copy of $\mathcal{Q}^D$ must be pairwise non-concurrent lines of $\mathcal{Q}$ (a *partial spread*).
+
+## 5.5 Local dualities, and why they stop at two points for odd $q$
+
+For a transition between two copies of the same type, $M$ goes from the points to the lines of $\mathcal{Q}$ itself, and for $Q(4,q)$ with $q$ odd there is no duality. As at diameter $7$ (§4.4), it is enough that $M$ looks like a duality near the freed points.
+
+**Theorem 5.7 (Theorem C).** The transition is repaired if
+
+(H1) no two freed points are collinear, and
+
+(H3) for every $x\in R$, $M$ maps the points collinear with $x$ onto the lines concurrent with $M(x)$.
+
+*Proof.* (E2): by (H1) no point collinear with $x$ is freed, so by (H3) the lines $M(a)$, $a\notin R$ collinear with $x$, are all the lines concurrent with $M(x)$, and every point lies on one of them (Q3). (E3): the points $a$ with $M(a)$ concurrent with $M(x)$ are exactly the points collinear with $x$, none of them freed, and every line contains one (Q3). $\square$
+
+The diameter-$7$ condition (H2), that the lines $M(R)$ be pairwise non-concurrent, follows here: for $x\ne y$ in $R$, $M$ maps the $q+1$ points collinear with both onto the lines concurrent with both $M(x)$ and $M(y)$, and two concurrent lines have only $q-1$ such lines (those through their common point).
+
+*Two points always work* (Proposition 6.4). Let $x,y$ be non-collinear points and $\ell,m$ non-concurrent lines. The sets $\{x,y\}$, $\{x,y\}^\perp$ (the $q+1$ points collinear with both), the $q^2-1$ other points collinear with $x$, and the $q^2-1$ other points collinear with $y$ are disjoint, and the same holds for $\{\ell,m\}$ and the lines concurrent with them, with the same sizes. A bijection sending $x\mapsto\ell$, $y\mapsto m$ and each piece onto the corresponding piece, extended arbitrarily, satisfies (H1) and (H3) for $R=\{x,y\}$.
+
+*Not three* (Corollary 6.2). Three pairwise non-collinear points form a *triad*, and its *centres* are the points collinear with all three; dually for lines. Under (H1) and (H3), $M$ maps the centres of a triad $\{x,y,z\}\subseteq R$ onto the lines concurrent with all of $M(x),M(y),M(z)$, which are pairwise non-concurrent by the remark above; so a triad and its image have the same number of centres. For $q$ odd the points of $Q(4,q)$ are *antiregular* (every triad has $0$ or $2$ centres) and the points of $W(q)$ *regular* (every triad has $1$ or $q+1$ centres) \[PT, 1.3.6, 3.3.1\]. A triad of lines of $Q(4,q)$ is a triad of points of $W(q)$, so the two counts never agree, and a local duality of $Q(4,q)$ (or of $W(q)$) has at most two freed points. At diameter $7$ local dualities carried $81$ to $768$ freed points per transition; here they carry two.
+
+## 5.6 Freeing concurrent lines in pairs, and the hub rule
+
+On a friendly transition the freed set must be a partial ovoid or a partial spread (Theorem 5.6), and in the layouts of §5.7 the number of freed lines on the transitions from type $D$ to type $H$ limits everything. Some concurrent pairs can be freed if the hubs are placed with care.
+
+Let $\mathcal{Q}=Q(4,q)$, let $\mathcal{Q}_j$ have type $D$ and $\mathcal{Q}_{j'}$ type $H$, and let $M$ be the identity: the point $\ell_j$ of $\mathcal{Q}_j$ ($\ell$ a line of $\mathcal{Q}$) is matched with the line $\ell_{j'}$. Free a set $T$ of lines of $\mathcal{Q}$ in which every line meets at most one other line of $T$, its *partner*.
+
+**Proposition 5.8 (Proposition 7.1).** After the deletion, the pairs of the same kind in $\mathcal{Q}_j\cup\mathcal{Q}_{j'}$ at distance more than $4$ are exactly the following, for every partner pair $\ell,m$ with common point $z$ and every point $p\ne z$ of $m$: the points $\ell_j$ and $p_{j'}$; the lines $p_j$ and $\ell_{j'}$; and the same with $\ell$ and $m$ exchanged. That is $4q$ pairs for each partner pair.
+
+*Proof.* For a line $\ell\in T$ without partner, (E2) and (E3) hold as in Theorem 5.6. Let $\ell$ have partner $m$. (E2) for $\ell$ asks that every point $v$ of $\mathcal{Q}$ lie on a line $a\notin T$ meeting $\ell$, $a\ne\ell$. A point $v$ on $\ell$ is on $q$ such lines, at most one of them in $T$. A point $v$ off $\ell$ is on exactly one line meeting $\ell$ (Q2), and this line is in $T$ only if it is $m$, that is, $v\in m\setminus\{z\}$. (E3) for $\ell$ asks the same of every point $u$ of $\mathcal{Q}$, read as the line $u_j$ of $\mathcal{Q}_j$. Following the proof of Theorem 5.5, the failures are exactly the stated pairs. $\square$
+
+**Proposition 5.9 (Proposition 7.2: the hub rule).** Suppose that, for every line $\ell\in T$ with partner $m$, the slot at the line $\ell_{j'}$ is taken by a point-hub $g_\ell$ whose line in $\mathcal{Q}_j$ is $o_j$ for some point $o$ of $m$. Then all the pairs of Proposition 5.8 are within distance $4$.
+
+*Proof.* For $p\in m\setminus\{z\}$: $\ell_{j'}$, $g_\ell$, $o_j$, $m_j$, $p_j$ is a path, since $o$ and $p$ are points of $m$, so that the lines $o_j$ and $p_j$ of $\mathcal{Q}_j$ pass through its point $m_j$. And $\ell_j$, $o'_j$, $g_m$, $m_{j'}$, $p_{j'}$ is a path, where $o'$ is the point of $\ell$ at which the hub $g_m$ of the partner sits in $\mathcal{Q}_j$. $\square$
+
+*\[Figure: see SYNTHETIC.pdf.\]*
+
+*Figure 8.* The hub rule at a partner pair $\ell,m$ of freed lines of $\mathcal{Q}=Q(4,q)$ meeting in $z$. In the copy $\mathcal{Q}_j$ of the dual the lines $\ell,m$ are collinear points $\ell_j,m_j$, and their matched lines $\ell_{j'},m_{j'}$ (dashed incidences deleted) are concurrent in $\mathcal{Q}_{j'}$. The point-hub $g_\ell$ that takes the slot at $\ell_{j'}$ is put, in $\mathcal{Q}_j$, on a line $o_j$ through $m_j$ ($o$ a point of $m$), and likewise $g_m$ on a line $o'_j$ through $\ell_j$. Then $p_j$ and $\ell_{j'}$ are joined through $g_\ell$, and $\ell_j$ and $p_{j'}$ through $g_m$, for every point $p\ne z$ of $m$; these are the pairs that the deletion broke.
+
+*The hubs exist* (Lemma 7.3). In the seven-copy layout of §5.7 the transitions from type $H$ to type $D$ free an ovoid $O$ of $Q(4,q)$, which meets every line exactly once; put $g_\ell$, in the two copies of type $D$, at the point $o=O\cap m$ of the partner. A point of $O$ has three free slots in one of these copies and two in the other, and at most two lines of $T$ pass through a point, so at most two hubs ask for it. The requests can be met whatever the common points of the partners are, even when a partner pair meets at a point of $O$ (then both hubs sit there). One point-hub per line of $T$ suffices, because in this layout the transitions out of the two copies of type $D$ end in different copies.
+
+How large can $T$ be? Read in $W(q)$, $T$ is a set of points each collinear with at most one other. A single point uses its $q+1$ lines, a pair $2q+1$ lines, and no line is shared, so $|T|\le 2(q+1)(q^2+1)/(2q+1)$, which is $86$ at $q=9$; for partial ovoids of $W(q)$, $q$ odd, Tallini’s bound is $q^2-q+1$ \[Ta91\]. Computer searches found $66$ at $q=9$ and $89$ at $q=11$ (`D5_QUADRANGLE.md`, §7).
+
+## 5.7 Layouts and slot counts
+
+Over $\mathcal{Q}=Q(4,q)$, $q$ odd, let every transition from type $H$ to type $D$ be the identity and free $a$ points, every transition from $D$ to $H$ the identity and free $b$ lines, and every transition between copies of the same type free $c$ points with a local duality ($c=2$). Counting the transitions out of and into each copy (Propositions 8.1–8.3):
+
+- five copies $HHDHD$ ($r=2$): $\min_j\alpha_j=\min_j\beta_j=b+c$;
+
+- seven copies $HHHDHHD$ ($r=3$): $\alpha=(a+2c,a+2c,a+2c,2b+c,a+2c,a+2c,3b)$, $\beta=(b+2c,b+2c,b+2c,3a,b+2c,b+2c,2a+c)$;
+
+- nine copies $HHHHDHHHD$ ($r=4$): $\min_j\alpha_j=\min(a+3c,3b+c)$, $\min_j\beta_j=b+3c$.
+
+(Over all regular tournaments on seven vertices and all typings, the best value of $\min\alpha+\min\beta$ is $\min(a+b+4c,3b+3c)$, `D5_QUADRANGLE.md`, §8.) With three copies some copy has no friendly outgoing transition, and hubs are limited by $c$. For $q$ even all copies have type $H$ over $W(q)$, every transition is a duality restricted to the points, and every transition frees an ovoid of $W(q)$, so $\alpha_j=\beta_j=r(q^2+1)$.
+
+*\[Figure: see SYNTHETIC.pdf.\]*
+
+*Figure 9.* The seven-copy layout $HHHDHHD$ (transitions $j\to j+1,j+2,j+3$). Black: the five transitions from type $H$ to type $D$, identity, freeing an ovoid of $Q(4,q)$ ($a=q^2+1$ points). Red: the five from $D$ to $H$, identity, freeing $b$ lines (a partial spread, or a set with partner pairs and the hub rule). Dotted: the eleven between copies of the same type (ten $H\to H$ and $3\to6$), each a local duality on two points.
+
+## 5.8 Hub graphs
+
+The hub incidences form a bipartite graph $Y$ whose two sides are the line-hubs and the point-hubs. It needs all degrees at most $\delta=q-r$ and any two vertices of the same side within distance $4$ (Lemma 9.1). Either side may play either role below. Explicit ones:
+
+(Y0) $K,K'\le\delta$: the complete bipartite graph;
+
+(Y1) the incidence graph of a projective plane of order $s$, $s+1\le\delta$, with up to $\delta-s-1$ new vertices of degree one attached to every vertex: $s^2+s+1\le K,K'\le(s^2+s+1)(\delta-s)$. Two old vertices of one side are at distance $2$. A new vertex on $c$ and an old vertex $x$ of its side are within $1+3$, since $c$ and $x$ are on different sides; two new vertices of one side hang on vertices at distance at most $2$;
+
+(Y2) the incidence graph of a quadrangle of order $(s,s)$, $s+1\le\delta$, with up to $\delta-s-1$ new vertices of degree one attached to each of the $s+1$ lines through a fixed point and to each of the $s+1$ points of a fixed line: $N(s)\le K,K'\le N(s)+(s+1)(\delta-s-1)$;
+
+(Y3) the incidence graph of the level structure of Theorem 5.3 built on a quadrangle of order $(s,s)$ with $2r'+1$ copies, $s+1+r'\le\delta$: $K=K'=(2r'+1)N(s)$.
+
+## 5.9 What the constructions give
+
+*The ingredients* (by their combinatorial property, with the reason they exist). An ovoid of $Q(4,q)$: $q^2+1$ points meeting every line once; it exists for every $q$ \[PT, 3.4.1\], and `D5_QUADRANGLE.md`, Lemma 1.1, gives one explicitly. For $q$ odd, $q\ge5$, a partial spread of $Q(4,q)$ with $3q-1$ lines, that is, $3q-1$ pairwise non-collinear points of $W(q)$: explicit in `D5_QUADRANGLE.md`, Lemma 1.3 (found by the lab; we did not find it in the sources we read). Two-point local dualities (§5.5). For $q$ even, a duality and an ovoid of $W(q)$ \[PT, 3.2.1, 3.4.1\]. The hub graphs of §5.8.
+
+*The families* (Corollaries 10.1–10.4). For $q$ even and $1\le r\le q-1$: $n_b(q+1+r,5)\ge(2r+1)\cdot2N+K+K'$ with $K,K'\le r(q^2+1)$ and a hub graph with $\delta=q-r$. For $q$ odd, $q\ge5$, with $a=q^2+1$, $b=3q-1$, $c=2$ (on the transition between the two copies of type $D$, $2\to4$, $3\to6$ and $4\to8$ in the three layouts, $M$ goes from the lines to the points of $Q(4,q)$, and the dual of the two-point recipe is used): $$\begin{array}{@{}l@{\qquad}l@{\qquad}l@{}}
+n_b(q+3,5)\ge 10N+K+K', & K,K'\le 3q+1, & \delta=q-2;\\
+n_b(q+4,5)\ge 14N+K+K', & K\le 6q,\ K'\le 3q+3, & \delta=q-3;\\
+n_b(q+5,5)\ge 18N+K+K', & K\le\min(q^2+7,9q-1),\ K'\le 3q+5, & \delta=q-4.
+\end{array}$$ Every transition is repaired by Theorems 5.6 and 5.7, and Theorem 5.4 gives the bound. With the hub graphs of §5.8:
+
+<div class="center">
+
+| cell     | 2013 table | these families |                             from | lab value (construction)  |
+|:---------|-----------:|---------------:|---------------------------------:|:--------------------------|
+| $(10,5)$ |      4,000 |          4,044 | $q=7$, five copies, $22+22$ hubs | 4,800 (lift of $W(7)$)    |
+| $(11,5)$ |      5,850 |          6,090 |          $q=8$, $r=2$, $120+120$ | 7,020 (lift of $W(8)$)    |
+| $(12,5)$ |      8,200 |          8,430 |          $q=8$, $r=3$, $120+120$ | 9,840 (lift of $W(9)$)    |
+| $(13,5)$ |     11,480 |         11,552 |     $q=9$, seven copies, $42+30$ | 11,700 (lift of $W(8)$)   |
+| $(14,5)$ |     14,760 |         14,812 |      $q=9$, nine copies, $26+26$ | 17,568 (lift of $W(11)$)  |
+| $(15,5)$ |     20,496 |         20,598 |    $q=11$, seven copies, $66+36$ | 20,736 (route-chart lift) |
+
+</div>
+
+These are above the 2013 table in all six cells and below the lab’s values in all six (`D5_QUADRANGLE.md`, §14). With computer-found freed sets the same construction gives $11{,}636$ at $(13,5)$ and $20{,}715$ at $(15,5)$ (seven copies over $Q(4,9)$ and $Q(4,11)$, freed lines with $30$ and $36$ partner pairs and the hub rule), both checked by breadth-first search from every vertex, and both below the lab’s values. A count of slots (Proposition 14.1) shows that, with at most two freed points on each transition between copies of the same type, no structure of this kind reaches the lab’s values in the cells $(10,5)$–$(14,5)$ and $(16,5)$; at $(15,5)$ it would need a set $T$ of at least $111$ points of $W(11)$, against the $89$ found.
+
+*Credits.* The level structures themselves are not ours (their orders are the table values credited to \[DGQ\]). Deleting the incidences of an identity matching at a set of pairwise non-collinear points and attaching new vertices is in Rajiv’s preprint \[R26\] for general (non-bipartite) graphs; Theorem 5.6 is the bipartite version of that step at diameter $5$, with one-sided hubs. We did not search the literature for a criterion like Theorem 5.5 or for the bound of two points for local dualities.
+
+# 6. Diameter 8: Gómez’s construction on generalized hexagons, and a labelling for each copy
+
+(Theorems 1–4 and the other numbered statements cited in this section are those of `OMEGA_NOTE.md`.)
+
+Six entries of the 2013 table at diameter $8$, the cells $(10,8)$, $(11,8)$, $(12,8)$, $(14,8)$, $(15,8)$ and $(16,8)$, are the orders of the compound graphs $\Omega H_q$ of J. Gómez \[G86, §2.9.3\] for $q=7,8,9,11,11,13$; the table credits them to Delorme, Gómez and Quisquater \[DGQ\]. *The construction is Gómez’s*: the copies of the hexagon, the wiring of the new elements (his Figures 2.21a,b), the order, the degree, and the claim that the diameter is at most $D_1+2=8$, which the thesis states without proof. *What follows is ours*: the construction in incidence terms; a proof that, as defined, it has diameter at least $9$ (§6.2); and the attempt to *repair* it by giving every copy its own labelling (§6.3). The repair works at $q=2$ and $q=3$, with labellings found by computer; for every $q\ge7$ it provably fails for all labellings that respect the geometry; for other labellings it is open. So, unlike Sections 1– 5, this section describes a construction that does not reach the diameter claimed for it, and why.
+
+Let $\Gamma$ be a generalized hexagon of order $(q,q)$, with $N=(q+1)(q^4+q^2+1)$ points and $N$ lines (Section 3); for the table, $\Gamma$ is the split Cayley hexagon $H(q)$ \[T59, VM98\]. Recall: any two elements are at distance at most $6$, there are no circuits of length less than $12$, and elements at distance $6$ are *opposite*. By the argument of Lemma 0.1, an incidence structure has diameter at most $8$ if and only if every point is within distance $7$ of every line. Two counts in $\Gamma$ are used.
+
+**Lemma 6.1 (Lemmas 1.4 and 1.6).** Let $t$ be an element of $\Gamma$.
+
+(a) For $1\le i\le5$ there are $(q+1)q^{i-1}$ elements at distance $i$ from $t$, and $q^5$ elements opposite $t$.
+
+(b) Let $z$ be an element of the same kind as $t$. Among the elements opposite $t$, exactly $q^4$ are within distance $4$ of $z$ if $z\ne t$, and none if $z=t$; exactly $q^2$ are within distance $2$ of $z$ if $d(t,z)\in\{4,6\}$, and none if $d(t,z)\le 2$.
+
+*Proof.* (a) A walk that never steps straight back is a shortest path as long as its length is at most $6$, and it is the only shortest path between its ends when its length is at most $5$; otherwise two of them would close a circuit shorter than $12$. Such walks have $q+1$ choices for the first step and $q$ for each later one. (b) If $d(t,u)=k$ with $1\le k\le5$, exactly one element incident with $u$ is at distance $k-1$ from $t$ and the other $q$ at distance $k+1$; if $k=6$, all $q+1$ are at distance $5$. Follow the distance to $t$ along the walks of length at most $4$ from $z$ that never step straight back. For example, if $d(t,z)=2$, a walk of length $4$ ends opposite $t$ exactly when every step goes away from $t$, which happens for $q\cdot q^3$ walks, and the walks of length $2$ or $0$ end at distance at most $4$ from $t$. The cases $d(t,z)=4$ and $6$ are the same bookkeeping (`OMEGA_NOTE.md`, Lemma 1.6). $\square$
+
+## 6.1 Gómez’s construction
+
+Put $\alpha=\lfloor(q+3)/2\rfloor$, so that $2\alpha$ is $q+3$ or $q+2$. Take $5\alpha$ copies $\Gamma_c$ of $\Gamma$, numbered $c=5B+i$ with a *block* $B\in\{0,\dots,\alpha-1\}$ and a *position* $i\in\mathbb{Z}_5$; each block has a *type*, $a$ or $b$. The thesis gives the points of $\Gamma$ a set of $N$ labels, and the lines the same set of labels, and uses *the same labels in every copy*. We write $x_c$ for the copy in $\Gamma_c$ of an element $x$ of $\Gamma$.
+
+The new elements come in ten *classes*: an *unbarred* class $k$ and a *barred* class $\bar k$ for each $k\in\mathbb{Z}_5$. Each class has one new element for each label, and each class *meets* $2\alpha$ of the copies, two in every block:
+
+<div class="center">
+
+|                                              | in a block of type $a$ | in a block of type $b$ |
+|:---------------------------------------------|:-----------------------|:-----------------------|
+| class $k$ meets the copies at positions      | $k-1$, $k+1$           | $k+3$, $k+4$           |
+| class $\bar k$ meets the copies at positions | $k+2$, $k+3$           | $k-1$, $k+1$           |
+
+</div>
+
+Read the other way: the copy at position $i$ of a block of type $a$ is met by the unbarred classes $i\pm1$ and the barred classes $i+2,i+3$; of a block of type $b$, by the unbarred classes $i+1,i+2$ and the barred classes $i\pm1$. So every copy is met by exactly two classes of each bar, and every class misses $3\alpha$ copies (Figure 10).
+
+In every copy it meets, the new element of a class with label $t$ is incident with exactly one element of that copy: the point labelled $t$ or the line labelled $t$. Which of the two is fixed per class and copy by the figures of the thesis, which draw each copy with an outer and an inner dot and do not say which dot is the points; the natural reading (*reading 2*) is that the unbarred classes sit on points and the barred classes on lines, in every copy. In incidence terms, Gómez’s structure in reading 2 is:
+
+- the points and lines of all $5\alpha$ copies, with their incidences;
+
+- for every point $p$ of $\Gamma$ and every $k\in\mathbb{Z}_5$, a new line $p^{(k)}$ through the copies $p_c$ of $p$ in the $2\alpha$ copies $\Gamma_c$ met by $k$;
+
+- for every line $L$ of $\Gamma$ and every $k\in\mathbb{Z}_5$, a new point $L^{(\bar k)}$ on the copies $L_c$ of $L$ in the $2\alpha$ copies met by $\bar k$.
+
+There are no other incidences; in particular no two new elements are incident. In the other reading of the figures (*reading 1*) a new element of label $t$ is incident with the line labelled $t$ in the copies of one block type and with the point labelled $t$ in the copies of the other, so the copies of one block type become copies of the dual $\Gamma^D$, and the pairing of point labels with line labels, which the thesis leaves open, now matters.
+
+*Counts.* Every point and line of every copy gains two incidences (it carries the labels of one point or one line, and two classes of the right bar meet its copy), so it has degree $q+3$. A new element has degree $2\alpha\le q+3$. There are $5\alpha\cdot2N$ old and $10N$ new elements, $5(\alpha+1)\cdot2N$ in all:
+
+<div class="center">
+
+| cell                  |  $q$ | $\alpha$ | copies | order $5(\alpha+1)\cdot2N$ |
+|:----------------------|-----:|---------:|-------:|---------------------------:|
+| $(10,8)$              |  $7$ |      $5$ |   $25$ |            $1{,}176{,}480$ |
+| $(11,8)$              |  $8$ |      $5$ |   $25$ |            $2{,}246{,}940$ |
+| $(12,8)$              |  $9$ |      $6$ |   $30$ |            $4{,}650{,}100$ |
+| $(14,8)$ and $(15,8)$ | $11$ |      $7$ |   $35$ |           $14{,}172{,}480$ |
+| $(16,8)$              | $13$ |      $8$ |   $40$ |           $36{,}201{,}060$ |
+
+</div>
+
+*\[Figure: see SYNTHETIC.pdf.\]*
+
+*Figure 10.* Gómez’s wiring of one block of five copies (after his Figures 2.21a,b; copy $\Gamma_i$ is the copy at position $i$ of the block). Each red segment is a class: its new elements meet the two copies at its ends. Squares on solid segments are the unbarred classes $k$ (in reading 2, new lines through the copies of a point), circles on dashed segments the barred classes $\bar k$ (new points on the copies of a line). In a block of type $a$ the unbarred classes are the diagonals and the barred classes the sides of the pentagon; in a block of type $b$ the other way round. A new element meets the two copies at the ends of its class in every block, $2\alpha$ copies in all.
+
+## 6.2 What happens: the diameter is at least $9$
+
+A new element is incident only with copies of *one* element of $\Gamma$. So passing through it lets a path change copy, but not move in $\Gamma$. This is the whole difficulty.
+
+**Theorem 6.2 (Theorem 1 and Corollary 3.1).** In reading $2$, for every new element $x$ with label $t$ (the point $p$ for $p^{(k)}$, the line $L$ for $L^{(\bar k)}$), every copy $\Gamma_{c'}$ that $x$ misses and every element $v$ of $\Gamma$ opposite $t$, the distance from $x$ to $v_{c'}$ is at least $9$. So the structure has diameter at least $9$, for every $q$ and every choice of block types.
+
+*Proof.* Send every element $y_c$ of a copy to $y$, and every new element to its label. Along a path starting at $x$, an incidence inside a copy is sent to an incidence of $\Gamma$, and a passage copy, new element, copy uses two incidences and is sent to a single element (the new element is incident only with copies of its label). A path from $x$ to $v_{c'}$ starts with an incidence from $x$ to a copy of $t$ in a copy that $x$ meets; to reach $\Gamma_{c'}$ it must pass through at least one more new element. Removing the passages, its image is a walk in $\Gamma$ from $t$ to $v$, of length at least $6$. So the path has length at least $1+6+2=9$ (Figure 11). $\square$
+
+The argument uses only that every new element meets copies of a single element and misses some copy; it holds for any bipartite graph in place of the hexagon, and it is formalised in Lean (`OMEGA_NOTE.md`, §3). In reading 1 a new element meets the point labelled $t$ in some copies and the line labelled $t$ in others, so its image may jump between the two; a count of the possible images still leaves elements far away:
+
+**Theorem 6.3 (Theorem 2).** Let $q\ge7$. In every reading, for every block types and every pairing of point labels with line labels, every new element has, in every copy it misses, at least $q^5-5q^4-8q^3-12q^2-16q-10>0$ elements at distance at least $9$.
+
+*Why.* Let $x$ have label $t$, and let $z$ be the element labelled $t$ of the kind of the elements of $\Gamma_{c'}$ that $x$ must reach within $7$. A path of length at most $7$ from $x$ into $\Gamma_{c'}$ passes through $1$, $2$ or $3$ new elements and uses at most $4$ incidences inside copies; each passage keeps the image or switches it between the point and the line with the same label. Counting the possible images with Lemma 6.1(a): at most $A+B+1$ elements opposite $z$ are reached, where $A=\sum_{e_1+e_2\in\{0,2,4\}}s_{e_1}s_{e_2}=5q^4+8q^3+6q^2+4q+2$ and $B=\sum_{e_1+e_2+e_3\le2}s_{e_1}s_{e_2}s_{e_3}=6q^2+12q+7$, with $s_0=1$, $s_i=(q+1)q^{i-1}$. For $q\ge7$ this is less than $q^5$ (for example $15{,}459<16{,}807$ at $q=7$).
+
+By computer, the diameter is exactly $9$ for $q=2,3,5,7,9$ with both block types (for the patterns and readings computed), the eccentricity of a new element is $9$ at the orders of all six table entries, and with a single block type the diameter is $10$ (`OMEGA_NOTE.md`, C2, C3; checked again here for $q=2,3$).
+
+*\[Figure: see SYNTHETIC.pdf.\]*
+
+*Figure 11.* The projection (Theorem 6.2, reading 2). Wavy: walks inside one copy; red: new elements. A new element meets only the copies of its label, so a passage copy, new element, copy costs two incidences and does not move the image in $\Gamma$ ($u_{c_1}$ and $u_{c_2}$ are copies of the same point). If $v$ is opposite $p$ and $x$ misses $\Gamma_{c'}$, every path from $x$ to $v_{c'}$ has length at least $1+6+2=9$.
+
+## 6.3 The repair: a labelling for each copy
+
+The thesis uses one labelling for all copies. The obvious repair keeps the wiring and gives every copy $c$ its own labelling: bijections $P_c$ and $L_c$ from the labels to the points and lines of $\Gamma$, with the new element of label $t$ incident, in copy $c$, with $P_c(t)$ or $L_c(t)$. Degrees and counts do not change. A passage from copy $c$ to copy $d$ through a new element of class $Y$ now moves the image in $\Gamma$ by the *transfer* $P_dP_c^{-1}$ (or $L_dL_c^{-1}$, $L_dP_c^{-1}$, $P_dL_c^{-1}$, according to what $Y$ sits on in $c$ and $d$), and Theorem 6.2 no longer applies. What is known:
+
+- *At $q=2$ and $q=3$ the repair works* (C7). Labellings found by annealing in the lab’s table audit give diameter $8$: at $q=2$, block types $ab$, $1{,}890$ elements, old elements of degree $5$ and new ones of degree $4$; at $q=3$, block types $aba$, reading $1$, $14{,}560$ elements, $6$-regular. We rebuilt the $q=3$ structure from the audit’s files and checked its diameter (Appendix A). These are far below the table at $(5,8)$ and $(6,8)$; they only show that a suitable labelling can reach $D_1+2$. We have no description of these labellings.
+
+- *Relabelling a copy by an automorphism of $\Gamma$ changes nothing* (Lemma 5.2): if $P_c$ and $L_c$ are $P_0$ and $L_0$ followed by one collineation $g_c$ of $\Gamma$, then $y_c\mapsto (g_c^{-1}(y))_c$ is an isomorphism onto Gómez’s structure.
+
+- *Geometric labellings cannot work for $q\ge7$* (Theorems 3, 4). Call a labelling *geometric* if every transfer is induced by an automorphism of $\Gamma$: a collineation, or a duality, which exists for the split Cayley hexagon $H(q)$ only when $q$ is a power of $3$ \[VM98\]. For $q\ge7$, every geometric labelling, every reading, every choice of which side each class sits on, and every choice of block types, the diameter is at least $9$.
+
+- *Open*: labellings that are not geometric, for every $q\ge4$ (searches at $q=4,5$ found none of diameter $8$); labellings chosen separately for each pair (class, copy); other wirings.
+
+*Why geometric labellings fail* (combinatorially, for $q\ge8$). After relabelling each copy by an automorphism (which changes nothing), the transfers of one bar, the *point bar*, are the identity and those of the other, the *line bar*, are collineations (Lemma 5.3; for $q$ not a power of $3$ every class sits on one kind in all copies it meets). Collineations preserve distances. A path of length at most $7$ from a new element $x$ of the point bar with label $t$ into a copy $\Gamma_{c'}$ it misses passes through one, two or three new elements; a passage through the point bar keeps the image, a passage through the line bar applies a collineation $\lambda$ that depends only on the two copies. So every point of $\Gamma_{c'}$ within distance $7$ of $x$ lies in $B(t,4)$, in a ball $B(\lambda(t),4)$ for each copy $c_1$ met by $x$ that shares a class of the line bar with $c'$ (one passage through the line bar), or in one of at most $m_2$ balls of radius $2$ (two passages; Lemma 5.4). Call $(x,c')$ *starved* if only $\alpha$ of the $2\alpha$ copies met by $x$ share a class of the other bar with $c'$; for every choice of block types starved pairs exist (Lemma 5.6, a property of the wiring alone). By Lemma 6.1(b) the balls then contain at most $\alpha q^4+m_2q^2$ of the $q^5$ elements opposite $t$, and a count of the two-passage words gives $m_2\le 8\alpha^2-1$ in general and $m_2\le140$, $201$ for $\alpha=5,6$. So for $q\ge8$ every new element of a starved pair has at least $q^5-\alpha q^4-m_2q^2$ elements at distance at least $9$ in the missed copy: at least $3{,}328$, $3{,}402$, $11{,}253$, $56{,}446$ for $q=8,9,11,13$ (by hand for $q\ge10$; for $q=8,9$ the bounds on $m_2$ are counts done by computer, which we repeated). At $q=7$ the count is negative ($16{,}807-5\cdot2{,}401-140\cdot49<0$), and the proof uses the embedding of $H(7)$ in the quadric $Q(6,7)$: the overlaps of the balls, and a character-sum bound on how many points a collineation without fixed points moves to points perpendicular to them (`OMEGA_NOTE.md`, §5.5). We do not reproduce it here.
+
+## 6.4 What can be claimed
+
+The six entries $(10,8)$, $(11,8)$, $(12,8)$, $(14,8)$, $(15,8)$, $(16,8)$ are the orders of Gómez’s structures $\Omega H_q$, $q=7,8,9,11,11,13$. As defined in the thesis (every copy of the hexagon carries the same labels, and a new element with label $t$ is incident only with elements labelled $t$), they have diameter at least $9$ for each of these $q$, under every reading of the figures and every pairing of point labels with line labels (Theorems 6.2 and 6.3, and computation). The paper the table cites was never published, as far as we could find, so these cells have no checkable structure of diameter $8$. Giving each copy its own labelling repairs the construction at $q=2,3$; for $q\ge7$ no geometric labelling does. (For $q=7,8,11,13$, reading $1$ with both block types has no geometric labelling at all, since a transfer from points to lines would be a duality; there Theorem 6.3 covers the thesis labelling.) We do not claim that no structure with these parameters exists, nor that no labelling works.
+
 # Appendix A. Coordinates and checks
 
-*Coordinates.* Explicit coordinates for every construction: `research/theorems/POLISHED.md` (§2 for the hats, §§3–5 for diameter $4$, §§6–7 for diameter $6$; on branch `claude/thm-polish-2oddll`), `research/plus2/coords/coords.tex` (the hats, with a hand-checkable proof), and `research/theorems/D7_HEXAGON.md` (diameter $7$; branch `claude/d7-hexagon-theorems-4w1prt`).
+*Coordinates.* Explicit coordinates for every construction: `research/theorems/POLISHED.md` (§2 for the hats, §§3–5 for diameter $4$, §§6–7 for diameter $6$; on branch `claude/thm-polish-2oddll`), `research/plus2/coords/coords.tex` (the hats, with a hand-checkable proof), `research/theorems/D7_HEXAGON.md` (diameter $7$; branch `claude/d7-hexagon-theorems-4w1prt`), `research/theorems/D5_QUADRANGLE.md` (diameter $5$: §1.2 for $W(q)$ and $Q(4,q)$, Lemma 1.1 for an explicit ovoid of $Q(4,q)$, Lemma 1.3 for the $3q-1$ pairwise non-collinear points of $W(q)$, Lemma 1.4 for a duality of $W(q)$, $q$ even; branch `claude/d5-relax-searches-osr72a`), and `research/theorems/OMEGA_NOTE.md` (diameter $8$: §1.1 for $H(q)$ in the quadric $Q(6,q)$, §5.5 for the case $q=7$; branch `claude/omega-d8-note-xrbqux`).
 
 *The completing matching of \[AL20\].* In coordinates, \[AL20\] (arXiv v1, p. 8) complete the three-hat structure by the pairs $(x,y)\sim[x,y]$ and $P_i\sim L_i$; with the index set $i\in\mathrm{GF}(q)\setminus\{0,1,a\}$ printed there, the four elements $P_1,P_a,L_1,L_a$ keep degree $q+1$, and $i\in\mathrm{GF}(q)^*$ gives a regular structure (`POLISHED.md`, Remark 2.7; we have not seen the journal version). Neither the order nor the diameter depends on the matching (§1.5).
 
-*Checks.* The scripts are in `research/synthetic/checks/`, each with its output in a `.out` file. They build the classical geometries from coordinates and then use only incidence; each runs in a few seconds.
+*Checks.* The scripts are in `research/synthetic/checks/`, each with its output in a `.out` file. They build the classical geometries from coordinates and then use only incidence; each runs in a few seconds, except `check_d8.py` (about three minutes).
 
 - `check_d3.py` (Section 1): both hat constructions from rules (R1)– (R6) on a plane given by its incidence relation; equality with the coordinate construction of `coords.py` for $q=4,5,7,8,9$ and every admissible $(a,c)$; the gadget tables; the matching of Figure 1; the crossed doubling and the patches (Proposition 1.2, Lemma 1.3, including the extra far pair at $q=3$); the broken pairs and their repairs; every line of Table 4; degrees and the deficient elements (Lemma 1.4); the duality (Lemma 1.6); diameter $3$; the changes of §1.7. Planes: $\mathrm{PG}(2,q)$, $q=3,4,5,7,8,9$, and the two planes of order $9$ over the Dickson nearfield (lines $y=x\circ m+b$ and $y=m\circ x+b$), with random frames.
 
@@ -565,10 +839,14 @@ With classical ingredients only (the $q^2+1$ points of an elliptic quadric secti
 
 - `check_d7.py` (Section 4): Theorem 4.2 with random matchings on $H(2)$, $r=1,2$; Theorem 4.5 on $H(3)$ (a spread’s point set and a non-collinear set are repaired, a turning triple is not); Theorem 4.6 on $H(3)$ with a local duality at three pairwise opposite points (and a random bijection at the same set is not repaired); a three-copy structure with hubs on $H(3)$, diameter $7$.
 
+- `check_d5.py` (Section 5): $W(q)$ from the symplectic form of `D5_QUADRANGLE.md` and $Q(4,q)$ as its dual, $q=2,3,5,7$; Theorem 5.3 on random level structures ($q=2,3$, $r=1,2$); Theorem 5.5 against a direct distance computation on $336$ transitions; Theorem 5.6 for identity transitions ($q=3$) and for the duality of $W(2)$; the two-point recipe, Theorem 5.7 and the remark on (H2) ($q=3,5$); triad centres in $W(q)$ and $Q(4,q)$ ($q=3$ all triads, $q=5$ a sample); Propositions 5.8 and 5.9 ($q=3,5$); the hub graphs (Y1), (Y2) ($s=2,3$); the slot vectors and the six family values; seven copies $HHHDHHD$ over $Q(4,5)$ with a partner pair meeting at an ovoid point and hubs placed as in Lemma 7.3 ($2{,}188$ elements, diameter $5$); and the family of §5.9 at $q=7$ in full ($4{,}044$ elements, maximum degree $10$, diameter $5$).
+
+- `check_d8.py` (Section 6): Lemma 6.1 on $H(2)$, $H(3)$; Gómez’s wiring for all block types, both readings and random pairings ($q=2,3$): degrees, counts, colouring; the far sets of Theorem 6.2; exact diameters $9$ ($q=2$: $ab$; $q=3$: $aba$; both readings) and $10$ (one block type); the constants of Theorem 6.3; the starved pairs and the counts of two-passage words for $\alpha=5,\dots,8$ and every choice of block types (largest $m_2$ of a starved pair $140$, $201$, $272$, $353$; in every choice some starved pair with $m_2\le134$, $197$, $262$, $347$), written from the wiring alone; Lemma 5.2 at $q=2$ with collineations $(v,a,w)\mapsto(Av,a,A^{-T}w)$; and the $q=3$ labelling of the table audit (`research/projects/table-audit/omega/labs/q3_aba_LLL_G13.lab` on branch `claude/table-audit-2-p7x6hn`, with the audit’s base hexagon, both copied into `checks/`), rebuilt from the definition: $14{,}560$ elements, $6$-regular, diameter $8$.
+
 The record values themselves were checked by the lab’s coordinator with all-pairs breadth-first search (`research/coordinator_check/`).
 
 <div class="thebibliography">
 
-99 G. Araujo-Pardo and N. López, On new record graphs close to bipartite Moore graphs, Graphs Combin. **38** (2022), no. 4, Paper 110; arXiv:2005.02427. J. Bamberg, M. Law and T. Penttila, Tight sets and $m$-ovoids of generalised quadrangles, Combinatorica **29** (2009), 1–17. C. Delorme, Grands graphes de degré et diamètre donnés, European J. Combin. **6** (1985), 291–302. J. A. Thas, Polar spaces, generalized hexagons and perfect codes, J. Combin. Theory Ser. A **29** (1980), 87–93. J. Tits, Sur la trialité et certains groupes qui s’en déduisent, Publ. Math. IHÉS **2** (1959), 13–60. H. Van Maldeghem, Generalized Polygons, Birkhäuser, 1998. S. E. Payne, Nonisomorphic generalized quadrangles, J. Algebra **18** (1971), 201–212. S. E. Payne and J. A. Thas, Finite Generalized Quadrangles, 2nd ed., European Mathematical Society, 2009.
+99 G. Araujo-Pardo and N. López, On new record graphs close to bipartite Moore graphs, Graphs Combin. **38** (2022), no. 4, Paper 110; arXiv:2005.02427. J. Bamberg, M. Law and T. Penttila, Tight sets and $m$-ovoids of generalised quadrangles, Combinatorica **29** (2009), 1–17. C. Delorme, Grands graphes de degré et diamètre donnés, European J. Combin. **6** (1985), 291–302. J. A. Thas, Polar spaces, generalized hexagons and perfect codes, J. Combin. Theory Ser. A **29** (1980), 87–93. J. Tits, Sur la trialité et certains groupes qui s’en déduisent, Publ. Math. IHÉS **2** (1959), 13–60. H. Van Maldeghem, Generalized Polygons, Birkhäuser, 1998. S. E. Payne, Nonisomorphic generalized quadrangles, J. Algebra **18** (1971), 201–212. S. E. Payne and J. A. Thas, Finite Generalized Quadrangles, 2nd ed., European Mathematical Society, 2009. C. Delorme, J. Gómez and J.-J. Quisquater, On large bipartite graphs, manuscript, cited as submitted by \[LPP\]; we could not find it. J. Gómez Martı́, Diámetro y vulnerabilidad en redes de interconexión, PhD thesis, Universitat Politècnica de Catalunya, Barcelona, 1986. E. Loz, H. Pérez-Rosés and G. Pineda-Villavicencio, The degree–diameter problem for bipartite graphs, CombinatoricsWiki (2010); table as of January 2012, equal to \[MS13, Table 4\], read through the Internet Archive. M. Miller and J. Širáň, Moore graphs and beyond: a survey of the degree/diameter problem, Electron. J. Combin. (2013), dynamic survey DS14v2. R. Rajiv, preprint, Zenodo, 30 September 2026, doi:10.5281/zenodo.23052995. G. Tallini, Blocking sets with respect to planes in $\mathrm{PG}(3,q)$ and maximal spreads of a nonsingular quadric in $\mathrm{PG}(4,q)$, Mitt. Math. Sem. Giessen **201** (1991), 141–147.
 
 </div>
