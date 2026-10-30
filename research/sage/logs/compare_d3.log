@@ -1,0 +1,40 @@
+four hats vs coords.py
+  four hats q=4 a=2 c=3 filler=False: edges 153 vs 153, exact edge-set equality: True
+  four hats q=4 a=2 c=3 filler=True: edges 156 vs 156, exact edge-set equality: True
+  four hats q=4 a=3 c=2 filler=False: edges 153 vs 153, exact edge-set equality: True
+  four hats q=4 a=3 c=2 filler=True: edges 156 vs 156, exact edge-set equality: True
+  four hats q=5 a=2 c=3 filler=False: edges 244 vs 244, exact edge-set equality: True
+  four hats q=5 a=2 c=3 filler=True: edges 252 vs 252, exact edge-set equality: True
+  four hats q=5 a=2 c=4 filler=False: edges 244 vs 244, exact edge-set equality: True
+  four hats q=5 a=2 c=4 filler=True: edges 252 vs 252, exact edge-set equality: True
+  four hats q=5 a=3 c=2 filler=False: edges 244 vs 244, exact edge-set equality: True
+  four hats q=5 a=3 c=2 filler=True: edges 252 vs 252, exact edge-set equality: True
+  four hats q=5 a=3 c=4 filler=False: edges 244 vs 244, exact edge-set equality: True
+  four hats q=5 a=3 c=4 filler=True: edges 252 vs 252, exact edge-set equality: True
+  four hats q=5 a=4 c=2 filler=False: edges 244 vs 244, exact edge-set equality: True
+  four hats q=5 a=4 c=2 filler=True: edges 252 vs 252, exact edge-set equality: True
+  four hats q=5 a=4 c=3 filler=False: edges 244 vs 244, exact edge-set equality: True
+  four hats q=5 a=4 c=3 filler=True: edges 252 vs 252, exact edge-set equality: True
+  four hats q=7 a=2 c=3 filler=False: edges 534 vs 534, exact edge-set equality: True
+  four hats q=7 a=2 c=3 filler=True: edges 558 vs 558, exact edge-set equality: True
+  four hats q=7 a=5 c=4 filler=False: edges 534 vs 534, exact edge-set equality: True
+  four hats q=7 a=5 c=4 filler=True: edges 558 vs 558, exact edge-set equality: True
+  four hats q=8 a=2 c=3 filler=False: edges 745 vs 745, exact edge-set equality: True
+  four hats q=8 a=2 c=3 filler=True: edges 780 vs 780, exact edge-set equality: True
+  four hats q=8 a=7 c=5 filler=False: edges 745 vs 745, exact edge-set equality: True
+  four hats q=8 a=7 c=5 filler=True: edges 780 vs 780, exact edge-set equality: True
+  four hats q=9 a=2 c=3 filler=False: edges 1008 vs 1008, exact edge-set equality: True
+  four hats q=9 a=2 c=3 filler=True: edges 1056 vs 1056, exact edge-set equality: True
+  four hats q=9 a=8 c=4 filler=False: edges 1008 vs 1008, exact edge-set equality: True
+  four hats q=9 a=8 c=4 filler=True: edges 1056 vs 1056, exact edge-set equality: True
+three hats (Araujo-Pardo--Lopez) vs coords.py
+  three hats q=4 a=2: edges 144 vs 144, exact edge-set equality: True
+  three hats q=4 a=3: edges 144 vs 144, exact edge-set equality: True
+  three hats q=5 a=2: edges 233 vs 233, exact edge-set equality: True
+  three hats q=5 a=3: edges 233 vs 233, exact edge-set equality: True
+  three hats q=5 a=4: edges 233 vs 233, exact edge-set equality: True
+  three hats q=9 a=2: edges 989 vs 989, exact edge-set equality: True
+  three hats q=9 a=5: edges 989 vs 989, exact edge-set equality: True
+(16,3) vs the verified record file
+  (16,3): Sage 396 vertices 2979 edges, json 396 vertices 2979 edges, exact edge-set equality with sym3_q13_d16_n396.json: True
+ALL COMPARISONS PASS
