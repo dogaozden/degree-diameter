@@ -1,0 +1,3 @@
+q=2 ab, thesis labelling, reading 2 (as defined: diameter >= 9): vertices 1890 (expected 1890), max degree 5 (expected 5), bipartite True, diameter 9 (expected 9)  ->  OK
+q=3 aba, thesis labelling, reading 2 (as defined: diameter >= 9): vertices 14560 (expected 14560), max degree 6 (expected 6), bipartite True, diameter 9 (expected 9)  ->  OK
+q=3 aba, audit labelling (per-copy), reading 1 (repair): vertices 14560 (expected 14560), max degree 6 (expected 6), bipartite True, diameter 8 (expected 8)  ->  OK

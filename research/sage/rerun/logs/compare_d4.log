@@ -1,0 +1,10 @@
+Theorem A vs research/gq4x/as_w2.py
+  Theorem A q=3: Sage 90 vertices 225 edges, Python 225 edges, exact edge-set equality: True
+  Theorem A q=5: Sage 350 vertices 1225 edges, Python 1225 edges, exact edge-set equality: True
+  Theorem A q=7: Sage 882 vertices 3969 edges, Python 3969 edges, exact edge-set equality: True
+Proposition C vs research/synthetic/checks/check_d4.py
+  Proposition C q=3: Sage 120 vertices 360 edges, Python 360 edges, exact edge-set equality: True
+  Proposition C q=5: Sage 416 vertices 1664 edges, Python 1664 edges, exact edge-set equality: True
+(7,4) example vs research/synthetic/checks/check_d4.py
+  (7,4): Sage 359 vertices 1218 edges, Python 1218 edges, exact edge-set equality: True
+ALL COMPARISONS PASS
