@@ -1,0 +1,17 @@
+# keep code, logs, summaries and best edge lists; drop regenerable bulk (group tables, per-run solutions, binaries)
+*/groups/
+*/runs/
+*/alpha/
+*/sol/
+*/tmp*/
+*/bin/
+*.dc2
+*.o
+c1/tri
+c2/vlx
+c4/bin/a2inv
+c5/dcenum
+c6/dcenum
+c7/rep
+c7/score65
+c8/mm

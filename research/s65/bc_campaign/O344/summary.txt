@@ -3,3 +3,18 @@ bc_344_10_1 a=4 b=2 | C43 x Q8 | E = C172 | Aut 1008 | A 336 | odd involutions 0
 bc_344_10_1 a=3 b=3 | C43 x Q8 | E = C172 | Aut 1008 | A 336 | odd involutions 0 | RESULT best -1 (no odd set of size 3)
 bc_344_10_1 a=1 b=5 | C43 x Q8 | E = C172 | Aut 1008 | A 336 | odd involutions 0 | RESULT best -1 (no odd set of size 5)
 bc_344_10_1 a=5 b=1 | C43 x Q8 | E = C172 | Aut 1008 | A 336 | odd involutions 0 | RESULT best -1 (no odd set of size 1)
+bc_344_11_1 a=2 b=4 | C2 x C2 x D86 | E = D172 | Aut 43344 | A 86 | odd involutions 88 | RESULT best 1073741824 mode exh sols 0 evals 0 time 600.8 PARTIAL
+bc_344_11_1 a=4 b=2 | C2 x C2 x D86 | E = D172 | Aut 43344 | A 86 | odd involutions 88 | RESULT best 1073741824 mode exh sols 0 evals 0 time 150.0 PARTIAL
+bc_344_11_1 a=3 b=3 | C2 x C2 x D86 | E = D172 | Aut 43344 | A 86 | odd involutions 88 | RESULT best 1073741824 mode exh sols 0 evals 0 time 150.0 PARTIAL
+bc_344_11_1 a=1 b=5 | C2 x C2 x D86 | E = D172 | Aut 43344 | A 86 | odd involutions 88 | RESULT skipped: more than 3000000 odd 5-sets
+bc_344_11_1 a=5 b=1 | C2 x C2 x D86 | E = D172 | Aut 43344 | A 86 | odd involutions 88 | RESULT best 1073741824 mode exh sols 0 evals 0 time 150.0 PARTIAL
+bc_344_11_2 a=2 b=4 | C2 x C2 x D86 | E = C86 x C2 | Aut 43344 | A 86 | odd involutions 172 | RESULT skipped: more than 3000000 odd 4-sets
+bc_344_11_2 a=4 b=2 | C2 x C2 x D86 | E = C86 x C2 | Aut 43344 | A 86 | odd involutions 172 | RESULT best 1073741824 mode exh sols 0 evals 0 time 150.0 PARTIAL
+bc_344_11_2 a=3 b=3 | C2 x C2 x D86 | E = C86 x C2 | Aut 43344 | A 86 | odd involutions 172 | RESULT best 1073741824 mode exh sols 0 evals 0 time 150.2 PARTIAL
+bc_344_11_2 a=1 b=5 | C2 x C2 x D86 | E = C86 x C2 | Aut 43344 | A 86 | odd involutions 172 | RESULT skipped: more than 3000000 odd 5-sets
+bc_344_11_2 a=5 b=1 | C2 x C2 x D86 | E = C86 x C2 | Aut 43344 | A 86 | odd involutions 172 | RESULT best 1073741824 mode exh sols 0 evals 0 time 150.0 PARTIAL
+bc_344_1_1 a=2 b=4 | C43 : C8 | E = C172 | Aut 7224 | A 86 | odd involutions 0 | RESULT best 1073741824 mode exh sols 0 evals 0 time 5.1 COMPLETE
+bc_344_1_1 a=4 b=2 | C43 : C8 | E = C172 | Aut 7224 | A 86 | odd involutions 0 | RESULT best 1073741824 mode exh sols 0 evals 0 time 53.9 COMPLETE
+bc_344_1_1 a=3 b=3 | C43 : C8 | E = C172 | Aut 7224 | A 86 | odd involutions 0 | RESULT best -1 (no odd set of size 3)
+bc_344_1_1 a=1 b=5 | C43 : C8 | E = C172 | Aut 7224 | A 86 | odd involutions 0 | RESULT best -1 (no odd set of size 5)
+bc_344_1_1 a=5 b=1 | C43 : C8 | E = C172 | Aut 7224 | A 86 | odd involutions 0 | RESULT best -1 (no odd set of size 1)

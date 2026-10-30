@@ -1,10 +1,10 @@
 /* mcos.c: annealer for bipartite multi-orbit coset graphs of a group G at degree 6, diameter 5.
  *
  * G acts on each colour class with several orbits; orbit o is the coset space G/H_o of a cyclic subgroup
- * H_o = <h_o> (order 1, 2 or 3). Edges between an A-orbit a and a B-orbit b form a union of FULL-SIZE double cosets
+ * H_o = <h_o> (cyclic, order 1..8). Edges between an A-orbit a and a B-orbit b form a union of FULL-SIZE double cosets
  * D = H_a u H_b (|D| = |H_a||H_b|): xH_a ~ yH_b iff x^-1 y in D. Each double coset adds |H_a| to the degree of
- * every b-vertex and |H_b| to the degree of every a-vertex, so the counts n_ab of double cosets per block fix the
- * degrees: sum_b n_ab |H_b| = 6 for every A-orbit a and sum_a n_ab |H_a| = 6 for every B-orbit b.
+ * every a-vertex and |H_b| to the degree of every b-vertex, so the counts n_ab of double cosets per block fix the
+ * degrees: sum_b n_ab |H_a| = 6 for every A-orbit a and sum_a n_ab |H_b| = 6 for every B-orbit b.
  * Families: TYPE "1|1" = Haar graphs H(G,S); "2|2" = bi-coset graphs with |H| = |K| = 2 (|G| vertices);
  * "1|2,2" = G regular on A, B = G/K1 u G/K2 (2|G| vertices; neither Haar nor bi-coset in general);
  * "2,2|2,2", "1|3,3,3", "3,3,3|3,3,3", ...
@@ -15,7 +15,7 @@
  * env: TYPE ("1|2,2"), N ("n_ab row-major over blocks, e.g. 3,3"; default: the unique or a balanced split),
  *      CLS (conjugacy-class choice per non-trivial orbit, comma list of indices into the class list printed at
  *      start; default: loop over all combinations), SECS (per combination, 20), SEED (1), ITERS (per restart, 30000),
- *      T0 (2.0), T1 (0.05), EDGES (write the best graph found as an edge list), MAXCOMB (cap on combinations, 1000)
+ *      RANDCOMB (instead: this many random combinations), T0 (2.0), T1 (0.05), EDGES (write the best graph found as an edge list), MAXCOMB (cap on combinations, 1000)
  * Output: one "COMB ... best <cost>" line per combination, "SOL ..." for cost-0 graphs, "RESULT best <cost>" at the end.
  */
 #include <math.h>
@@ -133,22 +133,25 @@ int main(int argc, char **argv) {
     for (const char *p = type; *p; ) { if (*p == '|') { sd = 1; p++; continue; } if (*p == ',') { p++; continue; }
         side_[no] = sd; sord[no] = (int)strtol(p, (char **)&p, 10); no++; }
     nA = 0; for (int o = 0; o < no; o++) nA += side_[o] == 0;
-    /* conjugacy classes of elements of order 2 and 3 (representatives = smallest index) */
-    int clsrep[3][MAXM], ncls[3] = {0, 0, 0}; static char seen[MAXM];
-    for (int o = 2; o <= 3; o++) { memset(seen, 0, sizeof seen);
+    /* conjugacy classes of elements of order 2..8 (representatives = smallest index) */
+    static int clsrep[9][MAXM]; int ncls[9] = {0}; static char seen[MAXM];
+    for (int o = 2; o <= 8; o++) { memset(seen, 0, sizeof seen);
         for (int x = 1; x < m; x++) if (ord_[x] == o && !seen[x]) { clsrep[o - 1][ncls[o - 1]++] = x;
             for (int g = 0; g < m; g++) seen[MUL(MUL(g, x), inv_[g])] = 1; } }
     int nonab = 0; for (int i = 0; i < m && !nonab; i++) for (int j = 0; j < m; j++) if (MUL(i, j) != MUL(j, i)) { nonab = 1; break; }
-    fprintf(stderr, "m %d nonabelian %d type %s classes: order2 %d, order3 %d\n", m, nonab, type, ncls[1], ncls[2]);
+    fprintf(stderr, "m %d nonabelian %d type %s classes of elements of order 2..8:", m, nonab, type);
+    for (int o = 2; o <= 8; o++) fprintf(stderr, " %d", ncls[o - 1]); fprintf(stderr, "\n");
     for (int o = 0; o < no; o++) { cid[o] = malloc(sizeof(int) * m); }
     for (int k = 0; k < MAXO * MAXO; k++) { dcof[k] = malloc(sizeof(int) * m); dcrep[k] = malloc(sizeof(int) * m);
         dcfull[k] = malloc(sizeof(int) * m); fulllist[k] = malloc(sizeof(int) * m); isch[k] = malloc(m); }
     /* class combinations: orbits with sord 1 need none; others pick a class; orbits on the same side with the
        same order are interchangeable, so class indices are non-decreasing there */
-    int nt = 0, tor[MAXO]; for (int o = 0; o < no; o++) if (sord[o] > 1) { if (ncls[sord[o] - 1] == 0) { printf("RESULT best -1 (no elements of order %d)\n", sord[o]); return 0; } tor[nt++] = o; }
+    int nt = 0, tor[MAXO]; for (int o = 0; o < no; o++) if (sord[o] > 1) { if (sord[o] > 8 || ncls[sord[o] - 1] == 0) { printf("RESULT best -1 (no elements of order %d)\n", sord[o]); return 0; } tor[nt++] = o; }
     int fixed[MAXO], hasfixed = 0;
     if (getenv("CLS")) { hasfixed = 1; const char *p = getenv("CLS"); for (int i = 0; i < nt; i++) { fixed[i] = (int)strtol(p, (char **)&p, 10); if (*p == ',') p++; } }
     int comb[MAXO]; for (int i = 0; i < nt; i++) comb[i] = hasfixed ? fixed[i] : 0;
+    int RANDCOMB = getenv("RANDCOMB") ? atoi(getenv("RANDCOMB")) : 0, nrand = 0;   /* sample this many random combinations */
+    if (RANDCOMB) for (int i = 0; i < nt; i++) comb[i] = rnd() % ncls[sord[tor[i]] - 1];
     int ncomb = 0, gbest = 1 << 30; double tstart = now();
     const char *EDGES = getenv("EDGES");
     while (1) {
@@ -170,7 +173,7 @@ int main(int argc, char **argv) {
                 for (int k = 0; k < nblk; k++) nab[k] = 0;
                 int need[MAXO]; for (int o = 0; o < no; o++) need[o] = 6;
                 for (int it = 0; it < 64; it++) for (int k = 0; k < nblk; k++) { int a = ba[k], b = bb[k];
-                    if (need[a] >= sord[b] && need[b] >= sord[a]) { nab[k]++; need[a] -= sord[b]; need[b] -= sord[a]; } }
+                    if (need[a] >= sord[a] && need[b] >= sord[b]) { nab[k]++; need[a] -= sord[a]; need[b] -= sord[b]; } }
             }
             int bad = 0; for (int k = 0; k < nblk; k++) if (nab[k] > nfull[k] || nab[k] > 8) bad = 1;
             int best = 1 << 30; long evals = 0;
@@ -207,6 +210,7 @@ int main(int argc, char **argv) {
             if (ncomb >= MAXCOMB || hasfixed) break;
         }
         if (hasfixed) break;
+        if (RANDCOMB) { if (ok) nrand++; if (nrand >= RANDCOMB) break; for (int j = 0; j < nt; j++) comb[j] = rnd() % ncls[sord[tor[j]] - 1]; continue; }
         int i = nt - 1;
         while (i >= 0) { comb[i]++; if (comb[i] < ncls[sord[tor[i]] - 1]) break; comb[i] = 0; i--; }
         if (i < 0) break;
