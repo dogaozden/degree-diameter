@@ -48,7 +48,9 @@ research/squads/LOG.md). Result so far: **no graph above 684**; the work below n
   groups P (ids 1-541) not covered before reached 85 groups / 837 pairs before it was stopped: best 22 (256_336, 256_338,
   256_363), median 392 (`c3p256/rank2/`).
 - **2+2 lifts** (orders 160-192): annealing + exact 2-opt solves 640 vertices (calibration), not 672; tabu reaches lift
-  cost 4-6 at 704-720, 22-36 at 768. The Haar near misses of 360_53 (bad 360, the closest graphs above 684 found here)
+  cost 4-6 at 704-720 (best: a 704-vertex lift by C11:Q16 = SmallGroup(176,17), base [[1,5],[5,1]], lift cost 4,
+  bad 352, the closest graph above 684 found here; research/squads/s65r3/c5/out/best_c5.edges), 22-36 at 768. The Haar
+  near misses of 360_53 (bad 360)
   written as 2+2, 3+3, 4+4 and 8+8 lifts have no cost-0 2-opt neighbour, and tabu does not move them below cost 4.
 - Other families (all far): tri-Cayley (10 at 690), 3+3 lifts (14 at 696 with tabu), alpha-invariant 2+2 lifts (38),
   bi-Cayley (4 at 704 with annealing), multi-orbit "1|2,2" (27), self-dual Haar (no side-A cover even on the 684 group),
