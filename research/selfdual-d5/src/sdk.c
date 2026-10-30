@@ -16,8 +16,9 @@
  * X X = G gets the full three-condition check (both sides and the odd condition) before it is reported.
  * Env: K (valency, default 6), MAXEV (cap per type, default 1e8), MAXEVF (cap for types with f >= 4, default MAXEV),
  *   NEAR (exact |G \ XX| for sets surviving NEAR targets), EDGES (edge list of the first solution), ONLY (ALPHA|EXT),
- *   SAMPLE=1: instead of enumerating, draw MAXEV (MAXEVF) uniformly random sets of each type (SEED), for types too
- *   large to enumerate; TYPES=f1,f2,..: only these numbers of psi-fixed elements.
+ *   SAMPLE: 2 (default) = a type with more sets than its cap is not enumerated but sampled: MAXEV (MAXEVF) uniformly
+ *   random sets (SEED); 1 = sample every type; 0 = enumerate and cut at the cap (CAPPED); TYPES=f1,f2,..: only these
+ *   numbers of psi-fixed elements.
  * Output: "SOL tag s_0 .. s_K-1" (element indices), one "TYPE" line per (record, type), "DONE".
  * usage: sdk FILE.ht
  */
@@ -168,7 +169,7 @@ static void setup(int r) {
 
 static uint64_t rs = 88172645463325252ULL;
 static inline uint64_t rnd(void) { rs ^= rs << 13; rs ^= rs >> 7; rs ^= rs << 17; return rs; }
-static int sample = 0;
+static int sample = 2;
 /* random set of the type: e (+ c^-1 for EXT), f-1 distinct non-identity fixed elements, the remaining 2-orbits distinct */
 static void sample_type(int r, int f, int m) {
     int pick[32];
@@ -184,13 +185,23 @@ static void sample_type(int r, int f, int m) {
         eval_set();
     }
 }
+static double binom(int a, int b) { if (b < 0 || a < b) return 0; double x = 1; for (int i = 0; i < b; i++) x = x * (a - i) / (i + 1); return x; }
+/* number of sets the enumeration of this type visits */
+static double type_size(int r, int f, int m) {
+    int nro = 0, nrf = 0; for (int o = 0; o < nol; o++) nro += isrep_o[o]; for (int i = 0; i < nfl; i++) nrf += isrep_f[i];
+    if (rkind[r]) { int oe = orbof[0]; return m == 1 ? 1 : (nro - isrep_o[oe]) * binom(nol - 2, m - 2); }
+    if (m >= 1) return nro * binom(nol - 1, m - 1) * binom(nfl, f - 1);
+    return nrf * binom(nfl - 1, f - 2);
+}
 static void run_type(int r, int f, int m) {
     tbest = 1LL << 40; tsol = 0; capped = 0; type_e0 = evals;
     cap_ev = (f >= 4 && cap_hi >= 0) ? cap_hi : cap_lo;
+    double tsz = type_size(r, f, m);
+    int smp = sample == 1 || (sample == 2 && tsz > (double)cap_ev);   /* SAMPLE=2 (default): sample only types larger than the cap */
     long long p0 = npassA; clock_t c0 = clock();
-    snprintf(tag, sizeof tag, "r%d_%s%d_f%d_m%d%s", r, rkind[r] ? "ext" : "alpha", rkind[r] ? rc[r] : rp[r], f, m, sample ? "_rnd" : "");
+    snprintf(tag, sizeof tag, "r%d_%s%d_f%d_m%d%s", r, rkind[r] ? "ext" : "alpha", rkind[r] ? rc[r] : rp[r], f, m, smp ? "_rnd" : "");
     Sb[0] = 0; excl_o1 = excl_o2 = excl_f = -1;
-    if (sample) sample_type(r, f, m);
+    if (smp) sample_type(r, f, m);
     else if (rkind[r] == 0) {
         if (m >= 1) {
             fneed = f - 1;
@@ -207,9 +218,9 @@ static void run_type(int r, int f, int m) {
         else for (int o = 0; o < nol && !capped; o++) if (o != oe && isrep_o[o]) {
             Sb[2] = ol[o][0]; Sb[3] = ol[o][1]; excl_o2 = o; rec_o(m - 2, 0, 4); }
     }
-    printf("TYPE rec %d %s %d f %d m %d best %lld sols %lld evals %lld passXX %lld secs %.1f%s\n", r, rkind[r] ? "ext" : "alpha",
-           rkind[r] ? rc[r] : rp[r], f, m, tbest, tsol, evals - type_e0, npassA - p0, (double)(clock() - c0) / CLOCKS_PER_SEC,
-           sample ? " SAMPLED" : capped ? " CAPPED" : "");
+    printf("TYPE rec %d %s %d f %d m %d best %lld sols %lld evals %lld size %.3g passXX %lld secs %.1f%s\n", r, rkind[r] ? "ext" : "alpha",
+           rkind[r] ? rc[r] : rp[r], f, m, tbest, tsol, evals - type_e0, tsz, npassA - p0, (double)(clock() - c0) / CLOCKS_PER_SEC,
+           smp ? " SAMPLED" : capped ? " CAPPED" : "");
     fflush(stdout);
 }
 

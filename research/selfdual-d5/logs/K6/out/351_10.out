@@ -41,3 +41,13 @@ TYPE rec 16 ext 5 f 0 m 3 best 1099511627776 sols 0 evals 1169 passXX 0 secs 0.0
 record 17 ALPHA: fixed 116 (non-identity) orbits 117 reps 4
 TYPE rec 17 alpha 2 f 2 m 2 best 1099511627776 sols 0 evals 53824 passXX 0 secs 0.0
 TYPE rec 17 alpha 2 f 4 m 1 best 52 sols 0 evals 1013840 passXX 0 secs 0.1
+TYPE rec 17 alpha 2 f 6 m 0 best 10 sols 0 evals 20000000 passXX 0 secs 2.3 CAPPED
+record 18 EXT: fixed 117 (non-identity) orbits 117 reps 4
+TYPE rec 18 ext 4 f 0 m 3 best 1099511627776 sols 0 evals 345 passXX 0 secs 0.0
+record 19 ALPHA: fixed 116 (non-identity) orbits 117 reps 6
+TYPE rec 19 alpha 2 f 2 m 2 best 38 sols 0 evals 80736 passXX 0 secs 0.0
+TYPE rec 19 alpha 2 f 4 m 1 best 24 sols 0 evals 1520760 passXX 0 secs 0.2
+TYPE rec 19 alpha 2 f 6 m 0 best 1099511627776 sols 0 evals 20000000 passXX 0 secs 2.4 CAPPED
+record 20 EXT: fixed 117 (non-identity) orbits 117 reps 6
+TYPE rec 20 ext 9 f 0 m 3 best 1099511627776 sols 0 evals 575 passXX 0 secs 0.0
+DONE evals 42748403 sols 0

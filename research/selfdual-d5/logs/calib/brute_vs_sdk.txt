@@ -1,0 +1,114 @@
+# brute.c (no normalisation, BFS diameter) vs sdk.c, isomorphism classes by nauty-labelg (src/canon_cmp.py)
+## G = SL(2,7) = SmallGroup(336,114), K = 6; the 4 groups of order 672 with an index-2 subgroup SL(2,7)
+### SmallGroup(672,1044)
+N 672 coset involutions 56 pairs 140
+TYPE f 0 m 3 sets 447580 hits 0
+TYPE f 2 m 2 sets 14984200 hits 672
+TYPE f 4 m 1 sets 51420600 hits 672
+TYPE f 6 m 0 sets 32468436 hits 0
+DONE hits 1344
+### SmallGroup(672,1045)
+N 672 coset involutions 0 pairs 168
+TYPE f 0 m 3 sets 776216 hits 0
+TYPE f 2 m 2 sets 0 hits 0
+TYPE f 4 m 1 sets 0 hits 0
+TYPE f 6 m 0 sets 0 hits 0
+DONE hits 0
+### SmallGroup(672,1047)
+N 672 coset involutions 42 pairs 147
+TYPE f 0 m 3 sets 518665 hits 0
+TYPE f 2 m 2 sets 9239391 hits 1344
+TYPE f 4 m 1 sets 16453710 hits 672
+TYPE f 6 m 0 sets 5245786 hits 0
+DONE hits 2016
+### SmallGroup(672,1048)
+N 672 coset involutions 2 pairs 167
+TYPE f 0 m 3 sets 762355 hits 0
+TYPE f 2 m 2 sets 13861 hits 0
+TYPE f 4 m 1 sets 0 hits 0
+TYPE f 6 m 0 sets 0 hits 0
+DONE hits 0
+canon_cmp: sdk 5 classes; 1044: 1344 hits 2 classes, 1045: 0, 1047: 2016 hits 3 classes, 1048: 0; union 5 classes = sdk's 5: RESULT MATCH
+
+## G = C5 x (C13 : C4) = SmallGroup(260,2), K = 6; the 10 groups of order 520 with an index-2 subgroup 260_2 (FMAX=2 where the coset has > 60 involutions)
+### b12_0 (SmallGroup(520,i)_sub)
+N 520 coset involutions 10 pairs 125
+TYPE f 0 m 3 sets 317750 hits 0
+TYPE f 2 m 2 sets 348750 hits 0
+TYPE f 4 m 1 sets 26250 hits 0
+TYPE f 6 m 0 sets 210 hits 0
+DONE hits 0
+### b13_0 (SmallGroup(520,i)_sub)
+N 520 coset involutions 130 pairs 65
+TYPE f 0 m 3 sets 43680 hits 0
+TYPE f 2 m 2 sets 17440800 hits 0
+DONE hits 0
+### b16_0 (SmallGroup(520,i)_sub)
+N 520 coset involutions 140 pairs 60
+TYPE f 0 m 3 sets 34220 hits 0
+TYPE f 2 m 2 sets 17222100 hits 0
+DONE hits 0
+### b17_0 (SmallGroup(520,i)_sub)
+N 520 coset involutions 0 pairs 130
+TYPE f 0 m 3 sets 357760 hits 0
+TYPE f 2 m 2 sets 0 hits 0
+TYPE f 4 m 1 sets 0 hits 0
+TYPE f 6 m 0 sets 0 hits 0
+DONE hits 0
+### b18_0 (SmallGroup(520,i)_sub)
+N 520 coset involutions 0 pairs 130
+TYPE f 0 m 3 sets 357760 hits 0
+TYPE f 2 m 2 sets 0 hits 0
+TYPE f 4 m 1 sets 0 hits 0
+TYPE f 6 m 0 sets 0 hits 0
+DONE hits 0
+### b18_1 (SmallGroup(520,i)_sub)
+N 520 coset involutions 0 pairs 130
+TYPE f 0 m 3 sets 357760 hits 0
+TYPE f 2 m 2 sets 0 hits 0
+TYPE f 4 m 1 sets 0 hits 0
+TYPE f 6 m 0 sets 0 hits 0
+DONE hits 0
+### b19_0 (SmallGroup(520,i)_sub)
+N 520 coset involutions 26 pairs 117
+TYPE f 0 m 3 sets 260130 hits 0
+TYPE f 2 m 2 sets 2205450 hits 0
+TYPE f 4 m 1 sets 1749150 hits 0
+TYPE f 6 m 0 sets 230230 hits 0
+DONE hits 0
+### b21_0 (SmallGroup(520,i)_sub)
+N 520 coset involutions 2 pairs 129
+TYPE f 0 m 3 sets 349504 hits 0
+TYPE f 2 m 2 sets 8256 hits 0
+TYPE f 4 m 1 sets 0 hits 0
+TYPE f 6 m 0 sets 0 hits 0
+DONE hits 0
+### b21_1 (SmallGroup(520,i)_sub)
+N 520 coset involutions 2 pairs 129
+TYPE f 0 m 3 sets 349504 hits 0
+TYPE f 2 m 2 sets 8256 hits 0
+TYPE f 4 m 1 sets 0 hits 0
+TYPE f 6 m 0 sets 0 hits 0
+DONE hits 0
+### b22_0 (SmallGroup(520,i)_sub)
+N 520 coset involutions 28 pairs 116
+TYPE f 0 m 3 sets 253460 hits 0
+TYPE f 2 m 2 sets 2521260 hits 0
+TYPE f 4 m 1 sets 2375100 hits 0
+TYPE f 6 m 0 sets 376740 hits 0
+DONE hits 0
+### b5_0 (SmallGroup(520,i)_sub)
+N 520 coset involutions 0 pairs 130
+TYPE f 0 m 3 sets 357760 hits 6240
+TYPE f 2 m 2 sets 0 hits 0
+TYPE f 4 m 1 sets 0 hits 0
+TYPE f 6 m 0 sets 0 hits 0
+DONE hits 6240
+### b6_0 (SmallGroup(520,i)_sub)
+N 520 coset involutions 0 pairs 130
+TYPE f 0 m 3 sets 357760 hits 12480
+TYPE f 2 m 2 sets 0 hits 0
+TYPE f 4 m 1 sets 0 hits 0
+TYPE f 6 m 0 sets 0 hits 0
+DONE hits 12480
+sdk on 260_2: 780 sets (696 of type (6,0), 84 EXT (0,3)), 10 classes; EXT sets: 7 classes; brute on the non-split 520_5 (6240 hits, 5 classes) and 520_6 (12480 hits, 2 classes): union 7 = sdk's EXT classes: RESULT MATCH; no brute class outside sdk's 10

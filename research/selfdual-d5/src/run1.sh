@@ -12,7 +12,7 @@ t1=$(date +%s)
 K=$K EDGES=$C/sd${K}_${N}_${ID}.edges timeout ${SDKT:-3600} nice -n 5 $R/src/sdk $F > $L/out/${N}_${ID}.out 2>&1
 rc=$?
 O=$L/out/${N}_${ID}.out
-nty=$(grep -c "^TYPE" $O); sols=$(grep -c "^SOL" $O); ncap=$(grep "^TYPE" $O | grep -c CAPPED)
+nty=$(grep -c "^TYPE" $O); sols=$(grep -c "^SOL" $O); ncap=$(grep "^TYPE" $O | grep -c -E "CAPPED|SAMPLED")
 nrec=$(grep -E "^(ALPHA|EXT)" $F | wc -l); next=$(grep -c "^EXT" $F)
 best=$(grep "^TYPE" $O | awk '{for(i=1;i<NF;i++) if ($i=="best") print $(i+1)}' | sort -n | head -1)
 pass=$(grep "^TYPE" $O | awk '{for(i=1;i<NF;i++) if ($i=="passXX") s+=$(i+1)} END {print s+0}')

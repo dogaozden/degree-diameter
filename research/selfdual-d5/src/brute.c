@@ -1,7 +1,7 @@
 /* brute.c: independent check of sdk.c.  Every K-valent bipartite Cayley graph Cay(H, T) of a group H of order 2n
  * with T = T^-1 inside the coset H \ G of an index-2 subgroup G (export_hat.g), no normalisation at all:
  * T = f involutions + m inverse pairs of the coset.  Diameter by BFS from the identity (Cayley graphs are
- * vertex-transitive).  Prints "HIT f m t_1 .. t_K" for every T of diameter <= 5 and writes each graph as an edge list
+ * vertex-transitive); FMAX limits the number of involutions in T.  Prints "HIT f m t_1 .. t_K" for every T of diameter <= 5 and writes each graph as an edge list
  * (x ~ t x) to OUTDIR/hit_<count>.edges if OUTDIR is set.  usage: brute FILE.hat SUBINDEX K  */
 #include <stdio.h>
 #include <stdlib.h>
@@ -43,7 +43,8 @@ int main(int argc, char **argv) {
         if (inv[x] == x) I[nI++] = x; else { P[nP][0] = x; P[nP][1] = inv[x]; nP++; } }
     dist = malloc(sizeof(int) * N); q = malloc(sizeof(int) * N);
     fprintf(stderr, "N %d coset involutions %d pairs %d\n", N, nI, nP);
-    for (F = K % 2; F <= K; F += 2) { Mm = (K - F) / 2; long long c0 = cnt, s0 = nsets; recI(F, 0, 0);
+    int fmax = getenv("FMAX") ? atoi(getenv("FMAX")) : K;   /* FMAX: only T with at most FMAX involutions */
+    for (F = K % 2; F <= fmax; F += 2) { Mm = (K - F) / 2; long long c0 = cnt, s0 = nsets; recI(F, 0, 0);
         printf("TYPE f %d m %d sets %lld hits %lld\n", F, Mm, nsets - s0, cnt - c0); fflush(stdout); }
     printf("DONE hits %lld\n", cnt);
     return 0;
