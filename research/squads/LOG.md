@@ -24,3 +24,17 @@ psi make the Haar graph colour-swapping-symmetric, so only half the diameter tes
 that family (haar75 anti) found 1,204 (602,2), 1,210 (605,6) and **1,240 (620,1) = new record** within minutes. The
 squad round did not find it, but its negative results (all symmetric/annealing routes at 1,210+ stuck at cost 2+)
 are what pushed the director to look at the record's own structure.
+
+## 2026-10-30, job d75-raise, round d75-r2 (15:37-16:20 UTC), goal (7,5) > 1,312
+
+Context: the director had just found 1,240 and 1,312 with self-dual Haar sets (haar75 anti). Round 2 generalised the
+self-dual (colour-swap) idea in 8 directions (rules `d75-r2/COMMON.md`, scoreboard `d75-r2/scoreboard.jsonl`):
+c1 self-dual bi-coset graphs |H| = 2 · c2 self-dual 4-vertex-base lifts · c3 pattern mining + formula-only search of
+metacyclic C_p : C_k · c4 annealing/tabu inside the capped self-dual types · c5 doubly symmetric (alpha- and
+psi-invariant) sets at orders 701-800 · c6 self-dual bi-coset |H| = 3 · c7 wildcard: psi(x) = beta(x)^-1 w with w != e ·
+c8 self-dual Haar sets on hand-built families (C_p : C_k with central kernels, SL(2,3) x C28, ...).
+Best per card (no card found a graph above 1,312): c1 0 solutions on C73:C18 (1,314) and C74:C18 (1,332); tool
+calibrated (720 unions on SmallGroup(1200,475), as bic75) · c2 cost 13 (1,344, C7:C48); calibrated at (5,5) (valid 384) ·
+c4 tabu re-finds the 1,312 and 1,240 solutions in 60 s (the first local search that passes a Delta = 7 calibration);
+(5,1) looks structurally poor (best 207 on 656_28); capped types at 680-696: 58+ · c7 cost 10 (1,314); not calibrated ·
+c8 8 new groups (664-716, 672:747), 0 solutions.

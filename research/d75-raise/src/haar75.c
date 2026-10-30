@@ -223,7 +223,7 @@ static void run_anti4(int a) {
         for (int u = 0; u < nf; u++) if (fx[u] != 0) for (int v = u + 1; v < nf; v++) if (fx[v] != 0) { Sbuf[5] = fx[u]; Sbuf[6] = fx[v]; eval_set(7, tagbuf); }
     }
     /* sets made of psi's fixed points and 2-cycles only: (1,3), (3,2), (5,1) (still self-dual; beta^2-invariant) */
-    long long lim = evals + cap_ev_lo; int fz[64];
+    long long lim = evals + (getenv("MAXEV4") ? atoll(getenv("MAXEV4")) : 10000000LL); int fz[64];
     for (int i = 0, k = 0; i < nf && k < 64; i++) if (fx[i] != 0) fz[k++] = fx[i];
     int nz = nf - 1 < 64 ? nf - 1 : 64; Sbuf[0] = 0;
     for (int a1 = 0; a1 < n2 && evals < lim; a1++) for (int a2 = a1 + 1; a2 < n2; a2++) {
@@ -231,7 +231,7 @@ static void run_anti4(int a) {
         for (int a3 = a2 + 1; a3 < n2; a3++) { Sbuf[5] = o2[a3][0]; Sbuf[6] = o2[a3][1]; eval_set(7, tagbuf); }
         for (int u = 0; u < nz; u++) for (int v = u + 1; v < nz; v++) { Sbuf[5] = fz[u]; Sbuf[6] = fz[v]; eval_set(7, tagbuf); } }
     for (int a1 = 0; a1 < n2 && evals < lim; a1++) { Sbuf[1] = o2[a1][0]; Sbuf[2] = o2[a1][1];
-        for (int u = 0; u < nz; u++) for (int v = u + 1; v < nz; v++) for (int w = v + 1; w < nz; w++) for (int z = w + 1; z < nz; z++) {
+        for (int u = 0; u < nz && evals < lim; u++) for (int v = u + 1; v < nz; v++) for (int w = v + 1; w < nz; w++) for (int z = w + 1; z < nz; z++) {
             Sbuf[3] = fz[u]; Sbuf[4] = fz[v]; Sbuf[5] = fz[w]; Sbuf[6] = fz[z]; eval_set(7, tagbuf); } }
     printf("ANTI4 alpha %d p 4 fixed %d two %d four %d best %lld sols %lld evals %lld passXX %lld secs %.1f\n", a, nf, n2, n4,
            typebest, typesol, evals - e0, npassA - p0, (double)(clock() - c0) / CLOCKS_PER_SEC);
