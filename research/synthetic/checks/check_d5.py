@@ -10,7 +10,8 @@ of Lemma 1.3, the duality of Lemma 1.4 for q = 2).
   2. Theorem A (level structures): random tournaments, typings and bijections, q = 2, 3, r = 1, 2:
      (q+1+r)-regular, (2r+1) 2N elements, diameter 5.
   3. Theorem E: the two conditions (E2), (E3) against a brute-force two-copy distance check, on random
-     friendly and non-friendly transitions with freed sets of several kinds (q = 2, 3).
+     friendly and non-friendly transitions with freed sets of several kinds, perturbed two-point local
+     dualities, and transitions built to keep one condition and (usually) break the other (q = 2, 3).
   4. Theorem B: friendly transition with M = identity (q = 3, both quadrangles) and a transition given
      by a duality (q = 2): repaired iff the freed set is pairwise non-collinear.
   5. Theorem C / Proposition 6.4: two-point local dualities built by the recipe are repaired, and
@@ -30,7 +31,7 @@ of Lemma 1.3, the duality of Lemma 1.4 for q = 2).
  10. Corollary 10.2 at full size: five copies HHDHD over Q(4,7), 22 + 22 hubs on a (Y1) hub graph:
      4,044 elements, max degree 10, diameter 5.
 
-Run: python3 check_d5.py      (about two minutes)
+Run: python3 check_d5.py      (a few seconds)
 """
 import itertools
 import random
@@ -452,6 +453,44 @@ def part3(geo, rng):
                 e2, e3 = conditions_E(GA, GB, M, R)
                 bad = two_copy_bad(GA, GB, M, R)
                 check((e2 and e3) == (not bad), f'Theorem E (perturbed local dualities, q={q})')
+                stats['agree'] += 1
+                stats['repaired'] += (not bad)
+                stats['only_e2'] += (not e2 and e3)
+                stats['only_e3'] += (e2 and not e3)
+                stats['both_fail'] += (not e2 and not e3)
+    # targeted: M maps the points collinear with x onto the lines concurrent with another line L1 ((E2) holds,
+    # (E3) usually fails), or maps the points collinear with another point x2 onto the lines concurrent with
+    # M(x) ((E3) holds, (E2) usually fails)
+    for q in (2, 3):
+        Wq, Qq = geo[q]
+        N = Wq.np
+        for kind in ('E2 kept', 'E3 kept'):
+            for trial in range(20):
+                GA, GB = [(Qq, Qq), (Wq, Wq), (Qq, Wq), (Wq, Qq)][trial % 4]
+                x = rng.randrange(N)
+                l0 = rng.randrange(N)
+                M = [None] * N
+                M[x] = l0
+                if kind == 'E2 kept':
+                    L1 = rng.choice([L for L in range(N) if L != l0 and not GB.concurrent(l0, L)])
+                    A, B = sorted(GA.coll_set(x)), sorted(GB.conc_set(L1))
+                else:
+                    x2 = rng.choice([p for p in range(N) if p != x and not GA.collinear(x, p)])
+                    A, B = sorted(GA.coll_set(x2)), sorted(GB.conc_set(l0))
+                rng.shuffle(B)
+                for a, b in zip(A, B):
+                    M[a] = b
+                restA = [p for p in range(N) if M[p] is None]
+                used = set(M) - {None}
+                restB = [L for L in range(N) if L not in used]
+                rng.shuffle(restB)
+                for a, b in zip(restA, restB):
+                    M[a] = b
+                R = {x}
+                e2, e3 = conditions_E(GA, GB, M, R)
+                check(e2 if kind == 'E2 kept' else e3, 'targeted Theorem E test keeps the intended condition')
+                bad = two_copy_bad(GA, GB, M, R)
+                check((e2 and e3) == (not bad), f'Theorem E (targeted, q={q})')
                 stats['agree'] += 1
                 stats['repaired'] += (not bad)
                 stats['only_e2'] += (not e2 and e3)

@@ -27,7 +27,7 @@ H(2), H(3) are built from coordinates as in check_d6.py; after that only inciden
      of its moore_build.c (omega_q3_base.txt, re-checked here to be a generalized hexagon of order
      (3,3)), rebuilt here from Definition 2.1: 14,560 elements, 6-regular, bipartite, diameter 8.
 
-Run: python3 check_d8.py      (about a minute)
+Run: python3 check_d8.py      (about three minutes)
 """
 import itertools
 import random
