@@ -5,7 +5,7 @@
 nproc: 4
 free -g:
                total        used        free      shared  buff/cache   available
-Mem:              15           2           9           0           4          13
+Mem:              15           2          10           0           2          12
 Swap:              0           0           0
 
 ## sha256 checks
@@ -68,3 +68,8 @@ stderr (last line): 658135 of 658135 sources done (1793345989)
 n=15795219 edges=157589798 degree min=18 max=20 bipartite=yes diameter=7 sources=1974405..2632540
 RESULT VALID d=20 D=7 n=15795219 (sources in the range only)
 stderr (last line): 658135 of 658135 sources done (1793354254)
+
+### d20_r7_3948810_4606945
+n=15795219 edges=157589798 degree min=18 max=20 bipartite=yes diameter=7 sources=3948810..4606945
+RESULT VALID d=20 D=7 n=15795219 (sources in the range only)
+stderr (last line): 658135 of 658135 sources done (1793364859)
