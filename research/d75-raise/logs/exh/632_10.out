@@ -1,0 +1,32 @@
+alpha 0: p 2 fixed 316 orbits 158 reps 2
+GROUP /tmp/d75/g632_10.ht n 632 ninv 1 nalpha 10
+TYPE alpha 0 p 2 f 1 m 3 best 1099511627776 sols 0 evals 24492 passXX 0 secs 0.0
+TYPE alpha 0 p 2 f 3 m 2 best 1099511627776 sols 0 evals 8000000 passXX 0 secs 1.0 CAPPED
+TYPE alpha 0 p 2 f 5 m 1 best 1099511627776 sols 0 evals 8000000 passXX 0 secs 1.5 CAPPED
+alpha 1: p 3 fixed 158 orbits 158 reps 4
+TYPE alpha 1 p 3 f 1 m 2 best 1099511627776 sols 0 evals 628 passXX 0 secs 0.0
+TYPE alpha 1 p 3 f 4 m 1 best 1099511627776 sols 0 evals 2530840 passXX 0 secs 0.4
+alpha 2: p 2 fixed 158 orbits 237 reps 4
+TYPE alpha 2 p 2 f 1 m 3 best 1099511627776 sols 0 evals 110920 passXX 0 secs 0.0
+TYPE alpha 2 p 2 f 3 m 2 best 1099511627776 sols 0 evals 8000000 passXX 0 secs 1.1 CAPPED
+TYPE alpha 2 p 2 f 5 m 1 best 1099511627776 sols 0 evals 8000000 passXX 0 secs 1.3 CAPPED
+alpha 3: p 3 fixed 8 orbits 208 reps 3
+TYPE alpha 3 p 3 f 1 m 2 best 1099511627776 sols 0 evals 621 passXX 0 secs 0.0
+TYPE alpha 3 p 3 f 4 m 1 best 1099511627776 sols 0 evals 105 passXX 0 secs 0.0
+alpha 4: p 3 fixed 2 orbits 210 reps 6
+TYPE alpha 4 p 3 f 1 m 2 best 1099511627776 sols 0 evals 1254 passXX 0 secs 0.0
+alpha 5: p 3 fixed 8 orbits 208 reps 3
+TYPE alpha 5 p 3 f 1 m 2 best 1099511627776 sols 0 evals 621 passXX 0 secs 0.0
+TYPE alpha 5 p 3 f 4 m 1 best 1099511627776 sols 0 evals 105 passXX 0 secs 0.0
+alpha 6: p 3 fixed 2 orbits 210 reps 6
+TYPE alpha 6 p 3 f 1 m 2 best 1099511627776 sols 0 evals 1254 passXX 0 secs 0.0
+alpha 7: p 2 fixed 8 orbits 312 reps 3
+TYPE alpha 7 p 2 f 1 m 3 best 1099511627776 sols 0 evals 144615 passXX 0 secs 0.0
+TYPE alpha 7 p 2 f 3 m 2 best 1099511627776 sols 0 evals 19593 passXX 0 secs 0.0
+TYPE alpha 7 p 2 f 5 m 1 best 1099511627776 sols 0 evals 105 passXX 0 secs 0.0
+alpha 8: p 2 fixed 4 orbits 314 reps 5
+TYPE alpha 8 p 2 f 1 m 3 best 1099511627776 sols 0 evals 244140 passXX 0 secs 0.1
+TYPE alpha 8 p 2 f 3 m 2 best 1099511627776 sols 0 evals 4695 passXX 0 secs 0.0
+alpha 9: p 2 fixed 2 orbits 315 reps 6
+TYPE alpha 9 p 2 f 1 m 3 best 1099511627776 sols 0 evals 294846 passXX 0 secs 0.1
+DONE evals 35378834 sols 0

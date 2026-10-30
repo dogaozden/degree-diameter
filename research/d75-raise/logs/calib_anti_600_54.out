@@ -1,0 +1,55 @@
+alpha 0: p 2 fixed 2 orbits 299 reps 12
+GROUP /tmp/claude-0/sc/g600_54b.ht n 600 ninv 1 nalpha 8
+ANTI alpha 0 p 1 f 1 m 3 best 1099511627776 sols 0 evals 531036 passXX 0 secs 0.1
+alpha 2: p 2 fixed 30 orbits 285 reps 29
+ANTI alpha 2 p 2 f 1 m 3 best 1099511627776 sols 0 evals 1165394 passXX 0 secs 0.2
+ANTI alpha 2 p 2 f 3 m 2 best 1099511627776 sols 0 evals 3343816 passXX 0 secs 0.8
+ANTI alpha 2 p 2 f 5 m 1 best 1099511627776 sols 0 evals 688779 passXX 0 secs 0.2
+ANTI alpha 2 p 2 f 7 m 0 best 1099511627776 sols 0 evals 475020 passXX 0 secs 0.1
+alpha 4: p 2 fixed 20 orbits 290 reps 25
+ANTI alpha 4 p 2 f 1 m 3 best 1099511627776 sols 0 evals 1040400 passXX 0 secs 0.2
+ANTI alpha 4 p 2 f 3 m 2 best 1099511627776 sols 0 evals 1235475 passXX 0 secs 0.2
+ANTI alpha 4 p 2 f 5 m 1 best 1099511627776 sols 0 evals 96900 passXX 0 secs 0.0
+ANTI alpha 4 p 2 f 7 m 0 best 1099511627776 sols 0 evals 27132 passXX 0 secs 0.0
+alpha 5: p 2 fixed 10 orbits 295 reps 10
+ANTI alpha 5 p 2 f 1 m 3 best 1099511627776 sols 0 evals 430710 passXX 0 secs 0.1
+ANTI alpha 5 p 2 f 3 m 2 best 1099511627776 sols 0 evals 105840 passXX 0 secs 0.0
+ANTI alpha 5 p 2 f 5 m 1 best 1099511627776 sols 0 evals 1260 passXX 0 secs 0.0
+ANTI alpha 5 p 2 f 7 m 0 best 1099511627776 sols 0 evals 84 passXX 0 secs 0.0
+alpha 6: p 2 fixed 150 orbits 225 reps 22
+ANTI alpha 6 p 2 f 1 m 3 best 1099511627776 sols 0 evals 549472 passXX 0 secs 0.1
+ANTI alpha 6 p 2 f 3 m 2 best 1099511627776 sols 0 evals 30000000 passXX 0 secs 5.6 CAPPED
+ANTI alpha 6 p 2 f 5 m 1 best 1099511627776 sols 0 evals 30000000 passXX 0 secs 6.2 CAPPED
+ANTI alpha 6 p 2 f 7 m 0 best 1099511627776 sols 0 evals 30000000 passXX 0 secs 3.8 CAPPED
+alpha 7: p 2 fixed 100 orbits 250 reps 20
+SOL anti_a7_p2_f1_m3 0 36 591 241 356 413 498
+SOL anti_a7_p2_f1_m3 0 66 406 191 401 413 498
+SOL anti_a7_p2_f1_m3 0 411 496 37 592 242 357
+SOL anti_a7_p2_f1_m3 0 411 496 42 282 107 527
+SOL anti_a7_p2_f1_m3 0 411 496 67 407 192 402
+SOL anti_a7_p2_f1_m3 0 411 496 92 347 382 432
+SOL anti_a7_p2_f1_m3 0 411 496 97 562 467 507
+SOL anti_a7_p2_f1_m3 0 411 496 157 487 187 492
+ANTI alpha 7 p 2 f 1 m 3 best 0 sols 8 evals 617528 passXX 8 secs 0.1
+SOL anti_a7_p2_f3_m2 0 123 341 61 161 87 137
+SOL anti_a7_p2_f3_m2 0 147 248 76 251 187 492
+SOL anti_a7_p2_f3_m2 0 154 476 36 591 298 318
+SOL anti_a7_p2_f3_m2 0 207 344 61 161 85 135
+SOL anti_a7_p2_f3_m2 0 248 556 61 161 77 252
+SOL anti_a7_p2_f3_m2 0 249 558 76 251 63 163
+SOL anti_a7_p2_f3_m2 0 294 476 36 591 88 138
+SOL anti_a7_p2_f3_m2 0 306 372 75 250 328 568
+SOL anti_a7_p2_f3_m2 0 306 557 75 250 63 163
+SOL anti_a7_p2_f3_m2 0 307 374 75 250 326 566
+SOL anti_a7_p2_f3_m2 0 307 559 61 161 75 250
+SOL anti_a7_p2_f3_m2 0 307 559 75 250 61 161
+SOL anti_a7_p2_f3_m2 0 308 371 75 250 329 569
+SOL anti_a7_p2_f3_m2 0 308 556 75 250 64 164
+SOL anti_a7_p2_f3_m2 0 309 373 75 250 327 567
+SOL anti_a7_p2_f3_m2 0 309 558 75 250 62 162
+SOL anti_a7_p2_f3_m2 0 373 579 76 251 328 568
+SOL anti_a7_p2_f3_m2 0 417 578 76 251 42 282
+ANTI alpha 7 p 2 f 3 m 2 best 0 sols 18 evals 24157998 passXX 18 secs 4.9
+ANTI alpha 7 p 2 f 5 m 1 best 1099511627776 sols 0 evals 30000000 passXX 0 secs 7.3 CAPPED
+ANTI alpha 7 p 2 f 7 m 0 best 1099511627776 sols 0 evals 30000000 passXX 0 secs 3.6 CAPPED
+DONE evals 184466844 sols 26

@@ -127,8 +127,14 @@ static int *isrep;
 static long long typebest; static long long typesol;
 static int Sbuf[16];
 
+static int anti = 0, *apm;
 static void build_orbits(int a) {
     int p = alp[a]; int *pm = aperm[a];
+    if (anti) {   /* psi(x) = beta(x)^-1, beta = alpha_a of order 1 or 2: orbits of size 1 (beta(x) = x^-1) and 2 */
+        if (!apm) apm = malloc(sizeof(int) * n);
+        for (int i = 0; i < n; i++) apm[i] = inv[pm[i]];
+        pm = apm; p = 2;
+    }
     free(orbstart); free(orbel); free(orbid); free(fixel); free(isrep);
     orbstart = malloc(sizeof(int) * (n + 1)); orbel = malloc(sizeof(int) * n); orbid = malloc(sizeof(int) * n);
     fixel = malloc(sizeof(int) * n); isrep = malloc(sizeof(int) * n);
@@ -138,7 +144,7 @@ static void build_orbits(int a) {
         if (pm[i] == i) { orbid[i] = -1; fixel[nfix++] = i; continue; }
         orbstart[norb] = ne; int x = i, c = 0;
         do { orbid[x] = norb; orbel[ne++] = x; x = pm[x]; c++; } while (x != i);
-        if (c != p) { fprintf(stderr, "orbit size %d != %d\n", c, p); exit(1); }
+        if (c != p && !(p == 1)) { fprintf(stderr, "orbit size %d != %d\n", c, p); exit(1); }
         norb++;
     }
     orbstart[norb] = ne;
@@ -194,6 +200,26 @@ static void rec_fix(int need, int fs, int at) {
     for (int i = fs; i < nfix; i++) if (fixel[i] != 0) { Sbuf[at] = fixel[i]; rec_fix(need - 1, i + 1, at + 1); }
 }
 
+static void run_anti(void) {
+    static const int types[][2] = { {1,3}, {3,2}, {5,1}, {7,0} };
+    anti = 1;
+    for (int a = 0; a < nal; a++) {
+        if (alp[a] != 1 && alp[a] != 2) continue;
+        build_orbits(a);
+        for (int t = 0; t < 4; t++) {
+            int f = types[t][0], m = types[t][1];
+            if (f > nfix || m > norb) continue;
+            want_m = m; want_f = f; typebest = 1LL << 40; typesol = 0;
+            long long e0 = evals, p0 = npassA; clock_t c0 = clock(); type_e0 = evals; capped = 0;
+            snprintf(tagbuf, sizeof tagbuf, "anti_a%d_p%d_f%d_m%d", a, alp[a], f, m);
+            Sbuf[0] = 0; rec_fix(f - 1, 0, 1);
+            printf("ANTI alpha %d p %d f %d m %d best %lld sols %lld evals %lld passXX %lld secs %.1f%s\n", a, alp[a], f, m,
+                   typebest, typesol, evals - e0, npassA - p0, (double)(clock() - c0) / CLOCKS_PER_SEC, capped ? " CAPPED" : "");
+            fflush(stdout);
+        }
+    }
+}
+
 static void run_exh(void) {
     static const int types[][3] = { {2,1,3}, {2,3,2}, {2,5,1}, {3,1,2}, {3,4,1}, {5,2,1}, {7,0,1} };
     for (int a = 0; a < nal; a++) {
@@ -242,7 +268,9 @@ int main(int argc, char **argv) {
     printf("GROUP %s n %d ninv %d nalpha %d\n", argv[1], n, ninv, nal);
     if (getenv("SLOW")) use_fast = 0;
     if (getenv("MAXEV")) cap_ev = atoll(getenv("MAXEV"));
-    if (!strcmp(argv[2], "exh")) run_exh(); else run_sa();
+    if (!strcmp(argv[2], "exh")) run_exh();
+    else if (!strcmp(argv[2], "anti")) run_anti();
+    else if (!strcmp(argv[2], "both")) { run_exh(); run_anti(); } else run_sa();
     printf("DONE evals %lld sols %d\n", evals, nsol);
     return 0;
 }

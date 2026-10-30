@@ -1,0 +1,28 @@
+alpha 0: p 5 fixed 20 orbits 120 reps 15
+GROUP /tmp/d75/g620_1.ht n 620 ninv 1 nalpha 9
+TYPE alpha 0 p 5 f 2 m 1 best 1099511627776 sols 0 evals 285 passXX 0 secs 0.0
+alpha 1: p 5 fixed 20 orbits 120 reps 15
+TYPE alpha 1 p 5 f 2 m 1 best 1099511627776 sols 0 evals 285 passXX 0 secs 0.0
+alpha 2: p 5 fixed 20 orbits 120 reps 15
+TYPE alpha 2 p 5 f 2 m 1 best 1099511627776 sols 0 evals 285 passXX 0 secs 0.0
+alpha 3: p 5 fixed 20 orbits 120 reps 15
+TYPE alpha 3 p 5 f 2 m 1 best 1099511627776 sols 0 evals 285 passXX 0 secs 0.0
+alpha 4: p 3 fixed 20 orbits 200 reps 15
+TYPE alpha 4 p 3 f 1 m 2 best 1099511627776 sols 0 evals 2985 passXX 0 secs 0.0
+TYPE alpha 4 p 3 f 4 m 1 best 1099511627776 sols 0 evals 14535 passXX 0 secs 0.0
+alpha 5: p 3 fixed 20 orbits 200 reps 15
+TYPE alpha 5 p 3 f 1 m 2 best 1099511627776 sols 0 evals 2985 passXX 0 secs 0.0
+TYPE alpha 5 p 3 f 4 m 1 best 1099511627776 sols 0 evals 14535 passXX 0 secs 0.0
+alpha 6: p 2 fixed 310 orbits 155 reps 5
+TYPE alpha 6 p 2 f 1 m 3 best 1099511627776 sols 0 evals 58905 passXX 0 secs 0.0
+TYPE alpha 6 p 2 f 3 m 2 best 1099511627776 sols 0 evals 30000000 passXX 0 secs 4.2 CAPPED
+TYPE alpha 6 p 2 f 5 m 1 best 1099511627776 sols 0 evals 30000000 passXX 0 secs 5.1 CAPPED
+alpha 7: p 2 fixed 20 orbits 300 reps 15
+TYPE alpha 7 p 2 f 1 m 3 best 1099511627776 sols 0 evals 668265 passXX 0 secs 0.1
+TYPE alpha 7 p 2 f 3 m 2 best 1099511627776 sols 0 evals 766935 passXX 0 secs 0.1
+TYPE alpha 7 p 2 f 5 m 1 best 1099511627776 sols 0 evals 58140 passXX 0 secs 0.0
+alpha 8: p 2 fixed 10 orbits 305 reps 20
+TYPE alpha 8 p 2 f 1 m 3 best 1099511627776 sols 0 evals 921120 passXX 0 secs 0.1
+TYPE alpha 8 p 2 f 3 m 2 best 1099511627776 sols 0 evals 218880 passXX 0 secs 0.0
+TYPE alpha 8 p 2 f 5 m 1 best 1099511627776 sols 0 evals 2520 passXX 0 secs 0.0
+DONE evals 62730945 sols 0

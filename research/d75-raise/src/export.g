@@ -20,10 +20,27 @@ for a in [1..n] do
   AppendTo(f, JoinStringsWithSeparator(List([1..n], b -> String(pos(x * els[old[b]]))), " "), "\n");
 od;
 AppendTo(f, JoinStringsWithSeparator(List([1..n], b -> String(pos(els[old[b]]^-1))), " "), "\n");
+if IsBound(INVS) then
+  # conjugacy-class representatives of the involutions (for bi-coset graphs with |H| = |K| = 2)
+  for c in ConjugacyClasses(G) do
+    if Order(Representative(c)) = 2 then AppendTo(f, "INV ", Size(c), " ", pos(Representative(c)), "\n"); fi;
+  od;
+  # index-2 subgroups R: the involution classes (numbered as above) outside R (Haar type if both h, k are outside)
+  icl := Filtered(ConjugacyClasses(G), c -> Order(Representative(c)) = 2);
+  for R in Filtered(NormalSubgroups(G), N -> Index(G, N) = 2) do
+    out := Filtered([1..Length(icl)], i -> not Representative(icl[i]) in R);
+    AppendTo(f, "IDX2 ", Length(out), " ", JoinStringsWithSeparator(List(out, i -> String(i - 1)), " "), "\n");
+  od;
+fi;
 if not IsBound(NOAUT) then
   A := AutomorphismGroup(G);;
   toperm := a -> PermList(List([1..n], b -> pos(Image(a, els[old[b]])) + 1));;
   P := Group(List(GeneratorsOfGroup(A), toperm), ());;
+  # identity (p = 1) with the generators of Aut(G) as its centralizer, for haar75's anti-orbit types
+  AppendTo(f, "ALPHA 1\n", JoinStringsWithSeparator(List([0..n-1], String), " "), "\n");
+  gs := GeneratorsOfGroup(P); if Length(gs) > 12 then gs := SmallGeneratingSet(P); fi;
+  AppendTo(f, "CENT ", Length(gs), "\n");
+  for g in gs do AppendTo(f, JoinStringsWithSeparator(List([1..n], b -> String(b^g - 1)), " "), "\n"); od;
   cc := ConjugacyClasses(P);;
   for c in cc do
     r := Representative(c); p := Order(r);
