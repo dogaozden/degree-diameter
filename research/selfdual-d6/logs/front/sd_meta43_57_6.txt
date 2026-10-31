@@ -1,0 +1,13 @@
+GROUP C43:C57(r=6) x Z1 N 2451 (Haar graph on 4902 vertices) K 7 D 6
+PSI 0 [u0*beta(g)^-1,beta(x)=x^1,beta(y)=y^1,u0=(0,0)] x [z->0-1*z] order 2 orbits(len<=K): 1x1 2x1225
+TABU psi0_t1+2+2+2 best 542 sols 0 steps 22395 evals 805416 restarts 55 secs 40.0
+PSI 1 [u0*beta(g)^-1,beta(x)=x^42,beta(y)=y^1,u0=(0,0)] x [z->0-1*z] order 2 orbits(len<=K): 1x43 2x1204
+TABU psi1_t1+2+2+2 best 14 sols 0 steps 10311 evals 494952 restarts 23 secs 40.0
+TABU psi1_t1+1+1+2+2 best 754 sols 0 steps 13756 evals 660326 restarts 37 secs 40.0
+PSI 2 [u0*beta(g)^-1,beta(x)=x^1,beta(y)=y^37,u0=(0,0)] x [z->0-1*z] order 2 orbits(len<=K): 1x19 2x1216
+TABU psi2_t1+2+2+2 best 25 sols 0 steps 10294 evals 494140 restarts 27 secs 40.0
+TABU psi2_t1+1+1+2+2 best 1186 sols 0 steps 22036 evals 1057800 restarts 71 secs 40.0
+PSI 3 [u0*beta(g)^-1,beta(x)=x^42,beta(y)=y^37,u0=(0,0)] x [z->0-1*z] order 2 orbits(len<=K): 1x817 2x817
+TABU psi3_t1+2+2+2 best 336 sols 0 steps 11966 evals 574393 restarts 24 secs 40.0
+TABU psi3_t1+1+1+2+2 best 79 sols 0 steps 10439 evals 501093 restarts 20 secs 40.0
+DONE sols 0

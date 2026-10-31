@@ -9,3 +9,24 @@ TABU psi1_t1+1+1+1+1+1+1 best 2338 sols 0 steps 221697 evals 10642193 restarts 7
 PSI 2 [x->-x^-1] x [z->0-1*z] order 2 orbits(len<=K): 1x42 2x1155
 SOL psi2_t1+2+2+2 diam 6 S 476 1848 228 1599 187 1213 252 = [1 3 5 2]|0 [5 3 5 6]|0 [0 5 4 3]|4 [4 5 4 0]|3 [0 4 5 4]|5 [3 4 5 0]|2 [0 6 1 0]|0
 TABU psi2_t1+2+2+2 best 0 sols 1 steps 4450 evals 213611 restarts 10 secs 15.0
+TABU psi2_t1+1+1+2+2 best 8 sols 0 steps 4401 evals 211257 restarts 8 secs 15.0
+TABU psi2_t1+1+1+1+1+2 best 336 sols 0 steps 5286 evals 253743 restarts 14 secs 15.0
+TABU psi2_t1+1+1+1+1+1+1 best 2016 sols 0 steps 12199 evals 585593 restarts 40 secs 15.0
+PSI 3 [x->-x^-1] x [z->0-6*z] order 2 orbits(len<=K): 1x294 2x1029
+TABU psi3_t1+2+2+2 best 16 sols 0 steps 1716 evals 82372 restarts 3 secs 15.0
+TABU psi3_t1+1+1+2+2 best 10 sols 0 steps 2014 evals 96677 restarts 4 secs 15.0
+TABU psi3_t1+1+1+1+1+2 best 7 sols 0 steps 1264 evals 60676 restarts 3 secs 15.0
+TABU psi3_t1+1+1+1+1+1+1 best 12 sols 0 steps 931 evals 44691 restarts 2 secs 15.0
+PSI 4 [x->(hxh)^-1,h=diag(1,3)] x [z->0-1*z] order 2 orbits(len<=K): 2x1176
+PSI 5 [x->(hxh)^-1,h=diag(1,3)] x [z->0-6*z] order 2 orbits(len<=K): 2x1176
+PSI 6 [x->-(hxh)^-1,h=diag(1,3)] x [z->0-1*z] order 2 orbits(len<=K): 1x56 2x1148
+TABU psi6_t1+2+2+2 best 4 sols 0 steps 944 evals 45315 restarts 2 secs 15.0
+TABU psi6_t1+1+1+2+2 best 4 sols 0 steps 755 evals 36242 restarts 1 secs 15.0
+TABU psi6_t1+1+1+1+1+2 best 248 sols 0 steps 1135 evals 54482 restarts 1 secs 15.0
+TABU psi6_t1+1+1+1+1+1+1 best 2016 sols 0 steps 6051 evals 290469 restarts 20 secs 15.0
+PSI 7 [x->-(hxh)^-1,h=diag(1,3)] x [z->0-6*z] order 2 orbits(len<=K): 1x392 2x980
+TABU psi7_t1+2+2+2 best 25 sols 0 steps 1994 evals 95717 restarts 4 secs 15.0
+TABU psi7_t1+1+1+2+2 best 17 sols 0 steps 1759 evals 84435 restarts 2 secs 15.0
+TABU psi7_t1+1+1+1+1+2 best 12 sols 0 steps 2011 evals 96532 restarts 3 secs 15.0
+TABU psi7_t1+1+1+1+1+1+1 best 11 sols 0 steps 1852 evals 88899 restarts 2 secs 15.0
+DONE sols 1

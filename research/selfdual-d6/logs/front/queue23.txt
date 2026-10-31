@@ -1,0 +1,16 @@
+THREADS=1 ORBIT="3 2 1" timeout 700 src/haar_sd 7 6 600 1 8 logs/front/o3_psl7_15.sol psl 7 15 > logs/front/o3_psl7_15.log 2>&1
+THREADS=1 ORBIT="3 2 1" timeout 700 src/haar_sd 7 6 600 1 8 logs/front/o3_psl17.sol psl 17 1 > logs/front/o3_psl17.log 2>&1
+THREADS=1 ORBIT="2 3 1" SDUAL="tw 1 0" timeout 700 src/haar_sd 7 6 600 1 8 logs/front/sdtw_psl17.sol psl 17 1 > logs/front/sdtw_psl17.log 2>&1
+THREADS=1 ORBIT="3 2 1" timeout 700 src/haar_sd 7 6 600 1 8 logs/front/o3_psl7_16.sol psl 7 16 > logs/front/o3_psl7_16.log 2>&1
+THREADS=1 ORBIT="2 3 1" SDUAL="ninv 1 0" timeout 700 src/haar_sd 7 6 600 1 8 logs/front/sdninv_sl7_8.sol sl 7 8 > logs/front/sdninv_sl7_8.log 2>&1
+THREADS=1 ORBIT="2 3 1" SDUAL="ninv 1 0" timeout 400 src/haar_sd 7 6 300 2 8 logs/front/sdninv_sl7_7.sol sl 7 7 > logs/front/sdninv_sl7_7.log 2>&1
+THREADS=1 timeout 400 src/haar_sd 11 6 300 1 8 logs/k11/pl_psl29.sol psl 29 1 > logs/k11/pl_psl29.log 2>&1
+THREADS=1 ORBIT="2 5 1" SDUAL="tw 1 0" timeout 400 src/haar_sd 11 6 300 1 8 logs/k11/sdtw_psl29.sol psl 29 1 > logs/k11/sdtw_psl29.log 2>&1
+THREADS=1 timeout 400 src/haar_sd 11 6 300 1 8 logs/k11/pl_psl31.sol psl 31 1 > logs/k11/pl_psl31.log 2>&1
+THREADS=1 timeout 700 src/haar_sd 11 6 600 1 8 logs/k11/pl_sl43.sol sl 43 1 > logs/k11/pl_sl43.log 2>&1
+THREADS=1 ORBIT="2 5 1" SDUAL="ninv 1 0" timeout 700 src/haar_sd 11 6 600 1 8 logs/k11/sdninv_sl43.sol sl 43 1 > logs/k11/sdninv_sl43.log 2>&1
+THREADS=1 timeout 700 src/haar_sd 11 6 600 1 8 logs/k11/pl_psl11_113.sol psl 11 113 > logs/k11/pl_psl11_113.log 2>&1
+THREADS=1 ORBIT="2 5 1" SDUAL="tw 1 0" timeout 700 src/haar_sd 11 6 600 1 8 logs/k11/sdtw_psl43_2.sol psl 43 2 > logs/k11/sdtw_psl43_2.log 2>&1
+THREADS=1 ORBIT="2 5 1" SDUAL="ninv 1 0" timeout 400 src/haar_sd 11 6 300 1 8 logs/k11/sdninv_sl23.sol sl 23 1 > logs/k11/sdninv_sl23.log 2>&1
+SECS=600 MAXSOL=1 PSI=3 TYPES=1+2+2+2 timeout 900 src/sdhi 7 6 sl 17 > logs/target/sd_sl17_psi3_long.txt 2>&1
+THREADS=1 ORBIT="2 3 1" SDUAL="ninv 1 0" timeout 900 src/haar_sd 7 6 800 3 8 logs/target/sdninv_sl17.sol sl 17 1 > logs/target/sdninv_sl17.log 2>&1

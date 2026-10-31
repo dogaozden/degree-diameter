@@ -1,0 +1,6 @@
+group psl 7 x Z_15, N=2520, identity 315, H order 60, rows 42, threads 1, setup 0.00s
+wide rows: HW order 105, rows 24, setup 0.00s
+alpha: conj by mat(0,3,2,1) (index 15), z -> 1 z on Z_15
+ORBIT k=3 m=2 f=1: |Fix(alpha)| = 44 (+e); mu = 62.13, mu/k = 20.71, fixed-point misses ~ 13.10
+start cost=542
+t=30 steps=976145 evals=7809161 cost=149 best=149 T=0.53
