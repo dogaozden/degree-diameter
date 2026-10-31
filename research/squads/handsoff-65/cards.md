@@ -80,3 +80,52 @@ same with the base of the 704-vertex near miss (shared/near704_c11q16.edges: a 2
 Steps: find S (GAP: search 6-subsets of SmallGroup(342, i) for the diameter-5 Haar graph with mcos "1|1" or haarex3,
 or ask GAP for the group and anneal), write the quotient base in vl format, calibrate (tabu on the base by N itself
 must re-find cost 0), then run tabu over M. Base size limit: tabu.c MAXB 64.
+
+# Round 2 (17:55-19:50 UTC). Round 1 results: c7 surgery 686: bad 177 (2-opt local minimum; 140 of 177 far pairs
+# between old vertices, single-edge deletion of the 684 graph costs 44-83 pairs); c5 mcos 1|3,3,3 on C2 x (C61:C3) 732:
+# bad 915 (cost 7); c1 2+2 lift C11:Q16 704: cost 4 (= prior, same 2 missed fibres every time); c4 2|2 at 756: cost 12;
+# c2 3+3 lift 696: cost 14; c6 Haar + twist: no twist beats the Haar floor (360 at 720); c3 almost simple bi-coset:
+# 4320+; c8 GH(5,5) quotients: 9520 at 686. Read any round-1 folder (c1..c9, NOTES.md) for code and lessons.
+
+## c10 (small): augmented quotient bases (structured surgery)
+Quotient the 684 graph H(G,S), G = SmallGroup(342,12) (c7/h684.edges, c5 has the S), by a normal subgroup N: a base
+on 2(342/|N|) vertices with voltages in N whose lift by N is the 684 graph. ADD j new vertex pairs to the BASE (j = 1,
+2), rewire a few base edges to give them degree 6, and lift by N again: n = 684 + 2j|N| (N = C19: 722; N = C6: 696;
+N = C3: 690; N = C2: 688; N = C19:C3 or C57: 798). Every move is now N-equivariant, so the surgery keeps a symmetry and
+the search is over a small base. Start voltages from the 684 graph, run shared/tabu (copy tabu.c and raise MAXB/MAXE
+if the base is bigger than 64 vertices). Calibrate: the unaugmented base by N must give cost 0.
+
+## c11 (small): 2+2 lifts with an imposed swap symmetry
+c1 found that SmallGroup(176,17) and (176,40) 2+2 lifts (base [[2,4],[4,2]]) stall at cost 4 always missing the same
+two fibres at A1 and B2 (the base's swap pair). Impose the base automorphism A1<->B2, A2<->B1 combined with a group
+automorphism or anti-automorphism on the voltages (half the free voltages), and run tabu in that smaller space; do it
+for all groups of order 176, then 180, 184, 186, 188, 190 (704-760 vertices). Also try other bases with a swap.
+
+## c12 (large): mixed-orbit coset graphs with mcos, beyond 1|2,2
+mcos needs equal reciprocal sums on the two sides. c5's best type 1|3,3,3 (732: cost 7). Types to try: 1|3,3,3 on
+all groups of order 343..400 with elements of order 3 (not 384), 1|2,3,6, 1|4,4,2, 1|4,4,4,4, 1|6,6,6,6,6,6,
+3,3,3|3,3,3, 2,2|2,2 variants. Screen by bad pairs (score65 on the exported edges), 60 s per combo, then long anneals
+on the best 5. c5's notes: research/squads/handsoff-65/c5/NOTES.md.
+
+## c13 (small): continue the surgery lead (c7)
+Start from c7/best686_bad177.edges and c7's code. Things c7 did not try: iterated local search (kick with k random
+2-switches, re-descend, accept if not worse); choosing the new vertices' neighbours by an exact covering search
+(their 3-balls must cover the opposite side); symmetric insertion of 2 or 3 vertex pairs as an orbit of a subgroup
+(688, 690); removing a vertex pair of the 684 graph and inserting 2 pairs elsewhere. Target bad 0 at 686.
+
+## c14 (small): re-coordinatise near misses as lifts with bigger bases
+The 704 lift by C11:Q16 (c1/best704.edges, 2+2 base) is a 2-opt local minimum. Write it as a lift of a 4+4 base by an
+index-2 subgroup (order 88), an 8+8 base by an index-4 subgroup (44), or 22+22 by an order-16 subgroup
+(shared/haar2liftN.py, normlift.py show how for Haar graphs); the bigger base gives more voltage freedom near the
+same graph. Run tabu/kdesc from that start. Same for c5's 732 graph and the 720 Haar near miss of SmallGroup(360,53).
+
+## c15 (large): bi-coset |H| = |K| = 2 on the rest of orders 722..766
+c4 swept 206 of 705 even-order groups (diagonal class pairs, dcenum SA 6 s per pair): best 12 at SmallGroup(756,74).
+Sweep the remaining groups (c4/results.txt says which are done), then rerun the best 10 with long anneals. Use
+c4's scripts (c4/NOTES.md).
+
+## c16 (wildcard): a family nobody tried
+Tried so far (this job and before): Haar graphs (closed 686-800 except 768), 2+2/3+3/4+4.. lifts, bi-coset |H|=2,3
+and almost simple, multi-orbit mcos types, bi-Cayley, tri-Cayley, Haar + twist, surgery on the 684 graph, GH(5,5) and
+GQ(5,5) pieces, quotient re-lifts (c9). Find a different construction you think can reach 686+ with diameter 5,
+argue it in NOTES.md, implement it, score it.

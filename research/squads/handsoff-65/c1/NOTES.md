@@ -40,3 +40,24 @@
 - kdesc (exact 2-change descent) from cost 4: no improving 2-change (1.07M candidates, 37 s): a true 2-opt local minimum.
 - vl (simulated annealing, T0=3 T1=0.2) on the same group: 18 after 60 s. Tabu is much better than SA here.
 - param.sh: tabu parameter sweep on 176/17 a2 (default, TMIN/TMAX long and short, TABUEDGE, STALL/KICK), 3 seeds x 40 s each -> param.tsv.
+
+### Later runs (16:36-16:56)
+- param.sh (3 seeds x 40 s, 176/17 a2): default 8,8,14; TMIN/TMAX 15-30: 8,4,10; TMIN/TMAX 3-8: 8,8,12; TABUEDGE: 18,16,20; STALL 600 KICK 4: 8,8,14. Default kept.
+- q3: 176/17 a1 (60 s x3): 14,14,10. 176/17 a3 (60 s x2): 16,8. 176/25 a1 (100 s x3): 10,6,6.
+- Solutions with cost 4 (seeds 13, 14 of 176/17 a2) both show the same kind of miss: two same-side fibres at A1 and two at B2.
+- Now: restart.sh (tabu INIT=sol from the cost-4 solutions, KICK=3, STALL=800, 100 s) -> deep.tsv (rows 'restart').
+- best704.edges (cost 4, bad=352) is the personal best file; scoreboard line written at 16:46.
+
+### Last round (16:56-17:30)
+- restart.sh from the cost-4 solutions (INIT=sol, 100 s x 5): all stayed at 4 (no descent at all from the start point).
+- q5: 176/17 a2 seeds 71..76 x 100 s: 10, 4, 8, 4, 4, 12. Floor 4 again, never below.
+- q6: 176/39 a1 and 176/40 a1 x 2 seeds x 100 s (last runs).
+- Summary: best n = 704 (176/17 C11:Q16 with base [[2,4],[4,2]]), lift cost 4, bad = 352. No cost 0 found for any 2+2 lift with
+  order 171..180. The screen of all groups of orders 172..180 (5 s each) gives costs >= 8 for every group except 176; 172..175,177..180 gave >= 14.
+- Conclusion for c1: the 2+2 lift family appears to have a floor of 4 for order 176 (cost-4 minima have the same two-miss
+  pattern on the A1 and B2 fibres). No record found.
+- Final (17:24): 176/40 a1 seed 82 also reached cost 4 with the same two-miss pattern (A1 and B2 fibres); kdesc from it is also a 2-opt minimum.
+- No processes of c1 left running at the end.
+- q7 (17:25-17:33): 176/17 a2 seeds 91..95 x 100 s: 6, 8, 8, 8, 14. Never below 4. Finished 17:35, all c1 processes stopped.
+- Next ideas if continued: symmetric lifts (impose the A1<->B2, A2<->B1 swap as a voltage symmetry to shrink the search space);
+  faster incremental cost (the 1-change scan is ~40 ms per step at m=176).

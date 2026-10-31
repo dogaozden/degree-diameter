@@ -10,3 +10,13 @@ c3	bi-coset (A6 x C4) H order 4 exhaustive, degree 6	720	bad=4320	research/squad
 c7	guided SA from 684 Haar + one vertex pair (5 edges moved), 2-switches toward far pairs	686	bad=178	research/squads/handsoff-65/c7/best686_bad178.edges	16:17
 c2	3+3 lift C29:C4 (p=3 full base, tabu 9 min)	696	bad=1160 (liftcost 20)	research/squads/handsoff-65/c2/best696.edges	16:25
 c6	Haar SmallGroup(360,53) mcos floor (twist scan: no automorphism twist beats it)	720	bad=360	research/squads/handsoff-65/c6/h360_53.edges	16:30
+c9	quotient base 6+6 of the C57 quotient of the 684 Haar graph lifted by SmallGroup(58,2) = C58, vl SA 20 s (liftcost 82)	696	bad=2378 (liftcost 82)	research/squads/handsoff-65/c9/best_n696_C58.edges	16:45
+c1	2+2 lift SmallGroup(176,17) C11:Q16 base [[2,4],[4,2]] tabu 60-100s	704	bad=352 (liftcost 4)	research/squads/handsoff-65/c1/best704.edges	16:46
+c2	CORRECTION to the line above: the 696 graph uses sg_116_2 = C116 (cyclic, abelian), not C29:C4; cost 20 after 9 min	696	bad=1160 (liftcost 20)	research/squads/handsoff-65/c2/best696.edges	17:01
+c5	mcos 1|3,3,3 SmallGroup(366,2) C2x(C61:C3) anneal	732	bad=1769 (mcos cost 21)	research/squads/handsoff-65/c5/scan/1_3-3-3.sg_366_2.best.edges	17:06
+c5	mcos 1|3,3,3 SmallGroup(366,2) C2x(C61:C3) anneal 60 s/combo	732	bad=915 (mcos cost 7)	research/squads/handsoff-65/c5/deep/1_3-3-3.sg_366_2.best.edges	17:10
+c2	3+3 lift, base = doubled K33 (each pair x2), group C29:C4, tabu 9 min	696	bad=812 (liftcost 14)	research/squads/handsoff-65/c2/best696_c29c4_cls17.edges	17:10
+c9	quotient base 2+2 (C3x(C19:C3) quotient of the 684 Haar graph) lifted by SmallGroup(174,1)=C29xS3, vl SA 12 s (liftcost 17)	696	bad=1479 (liftcost 17)	research/squads/handsoff-65/c9/best_n696_F174.edges	17:18
+c9	quotient base 2+2 (C3x(C19:C3) quotient of the 684 Haar graph) lifted by SmallGroup(174,4)=C174, vl SA 12 s (liftcost 12)	696	bad=1044 (liftcost 12)	research/squads/handsoff-65/c9/best_n696_F174_C174.edges	17:18
+c7	guided SA from 684 Haar + one vertex pair (insertion seed 15), 2-switches toward far pairs	686	bad=177	research/squads/handsoff-65/c7/best686_bad177.edges	17:37
+c9	quotient base 2+2 (C3x(C19:C3) quotient of the 684 Haar graph) lifted by SmallGroup(176,26)=C11xQ16, vl SA 15 s x 6 seeds (liftcost 12)	704	bad=1056 (liftcost 12)	research/squads/handsoff-65/c9/best_n704_C11Q16.edges	17:39

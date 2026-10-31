@@ -28,3 +28,26 @@
 - chain1 (src/chain1.sh): A_L13 (C57 6+6) orders 58-60: best so far C58 cost 82, C59 88, C60 107-112 (abelian best). Running B_L7, C_L5, D_L6 next.
 - chain2 (src/chain2.sh, waits for chain1): E_L14 (3+3, C114) orders 115-120, A2_L13 orders 61-66, B2_L7 orders 61-66.
 - summary: src/summary.sh prints the best five per runs/*.tsv.
+
+## Results 16:49
+- A_L13 (C57 quotient, 6+6), orders 58-60 (16 groups, 20 s vl SA each): best C58 cost 82, C59 88, C30xC2 92.
+- B_L7 (C19:C3 quotient, 6+6), orders 58-60: best C3x(C5:C4) 84, C59 92, C58 96.
+- Lift check: runs/A_L13_58_2.base lifted (src/lift.py) gives n=696, bad=2378 (check.sh-style count). Edge list best_n696_C58.edges.
+  Scoreboard line appended (first personal best at n=696).
+- Queue (src/chain1.sh -> src/chain2c.sh): C_L5 (18+18, orders 20-22), D_L6 (9+9, 39,40,42), then F_L15 (2+2, 172-180,
+  12 s each), E_L14 (3+3, 115-120, 12 s), then src/longrun.py 8 200 1 (best 8 rows over all runs, 200 s SA each).
+- Calibration status: C57 base does not re-find the 684 from random (SA cost plateau 46 at 60 s); the 1+1 base does (8.7 s).
+
+## 2+2 scan (F_L15, base = quotient of the 684 graph by C3x(C19:C3), orders 172-180, 94 groups, 12 s each), 17:18
+- best vl costs: C174 (SmallGroup(174,4)) 12; C2x(C11:Q8) (176,27) 14; C11:(C4:C4) (176,12) 16; C29xS3 17.
+- n=696 lifts: C174 bad=1044 (best_n696_F174_C174.edges, scoreboard line appended); C29xS3 bad=1479.
+- Costs for 2+2 bases are much smaller than for 6+6 (4 base vertices), so compare bad pairs, not costs, across bases.
+- Long runs (src/longrun.py 6 180 1, top 6 rows) started 17:18; then the 3+3 scan E_L14 (src/chain2d.sh).
+
+## 17:27 status
+- longrun with ITERS=1e8 was a mistake (the annealing schedule never cools inside SECS); stopped it after one result (C174 seed 1004: cost 16).
+- Multi-seed short anneals (src/ms.py, 15 s, ITERS 60000, base F_L15) on the top 8 2+2 groups: C174 gives 18-27 across seeds;
+  the earlier 12 (12 s run, seed 1) is a lucky tail. Typical cost ~20 for the best groups.
+- Queue (chain4): tabu 300 s on the C174 2+2 best (runs/tabu_174_4_s1.*), then 3+3 scan E_L14 (12 s each).
+- 17:37: multi-seed 2+2 (src/ms.py, 6 seeds x 15 s on 8 groups): best cost 12 for C11xQ16 (176,26) and C174 (12 earlier).
+  n=704 lift of the C11xQ16 cost-12 solution: bad=1056 (best_n704_C11Q16.edges); scoreboard line appended (first n=704 entry).

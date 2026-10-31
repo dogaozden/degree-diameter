@@ -37,7 +37,7 @@ Target: 6-regular bipartite lift with n = 2pm > 684 and diameter 5 (bad = 0).
   evaluates b DFS sources, so bigger p gets fewer steps.
 
 ## Long runs (540 s, export via export_c2.py, scored by shared/check.sh)
-- p=3 full base seed 101, C29:C4 (sg_116_2), N=696: cost 20 (from 24 in the screen), 4819 steps.
+- p=3 full base seed 101, C116 (sg_116_2, ABELIAN; not C29:C4 as first written), N=696: cost 20 (from 24 in the screen), 4819 steps.
   Exported lift: c2/long/p3_116_C29C4_lift.edges (copy c2/best696.edges). bad = 1160 far pairs
   (orbit cost x m / 2). Scoreboard line added.
 - Cost-to-bad conversion: far unordered pairs ~ cost * m / 2 (each orbit has m pairs, counted from both ends).
@@ -45,3 +45,25 @@ Target: 6-regular bipartite lift with n = 2pm > 684 and diameter 5 (bad = 0).
 ## Base-class sweep (in progress)
 - enum3.py: 18 classes of 3x3 multiplicity matrices (row/col sums 6, connected) -> bases/class3_k.base; class_sweep.sh
   runs each for 60 s with C29:C4 (results in classes.txt).
+
+## Correction and base-class results
+- Group labels: sg_116_1 = C29:C4 (nonabelian), sg_116_2 = C116 (abelian), sg_116_5 = C58xC2, sg_116_4 = D116.
+  The 696 graph (best696.edges) is a lift by C116.
+- Long run p=3 N=720, sg_120_14 (C3:...), base 305: cost 22 after 9 min (4411 steps).
+- Long run p=4 N=704, sg_88_1 (C11:...), base 403: cost 35 after 9 min (3848 steps). p=4 is worse than p=3 here.
+- Base-class sweep (60 s each, C29:C4 group, 18 classes of 3x3 multiplicity matrices): best = class 17 = 2*J
+  (every pair doubled, cost 18), then class 15 (26), class 10 and 5 (28), class 16 (28). Unbalanced classes with
+  entries 0/1 and 5/6 are bad (94-108).
+- Running now (long2.sh): class 17 with C29:C4 (seed 2) and class 17 with C116 (seed 3), 9 min each.
+
+## Final state (17:28 UTC)
+- Best: n = 696 (2*3*116), bad = 812 far pairs (tabu cost 14, orbit units). File: c2/best696_c29c4_cls17.edges.
+  Base = doubled K_{3,3} (class 17: every pair of the 3+3 base joined by 2 edges), group C29:C4 (sg_116_1).
+  Reproduced at a second seed (cost 14 at 500 s). C116 with the same base: cost 20.
+- Other 540 s runs: p=3 full base C116 n=696 cost 20 (bad 1160); p=3 full base C3:... n=720 cost 22;
+  p=4 n=704 cost 35. Short screens: p=5..8 worse at equal time (fewer tabu steps per second).
+- Nothing reached cost 0 with n > 684 in any run here. No CLAIM.
+- Not tried: incremental (faster) evaluation; SA on the doubled base with other groups of order 117..120;
+  class-17 base with groups of order 117 / 119 / 120.
+- Last run (17:28-17:36): class 17 with sg_120_14 (n = 720, 480 s): cost 22. Higher than the n = 696 runs.
+  All processes stopped. Final best: n = 696, cost 14 (bad 812).

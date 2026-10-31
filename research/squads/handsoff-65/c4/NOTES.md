@@ -30,3 +30,23 @@ even-order groups of 722..766 in random order (driver2.sh), 6 s per pair, as far
   best/g756_74_p1_s1.edges. A 60 s anneal gave the same 12 (converged). Next: 756,69 cost 52; 726,6 cost 38.
 - deepen.sh ORDER ID PAIR SECS SEED re-exports the group and anneals the diagonal pair (edges to best/).
 - Costs are noisy: most groups 90..600 with 6 s SA. No cost-0 graph; no HIT so far.
+
+## Status 17:16
+- Diagonal 2|2 sweep: about 390 SA result lines total (about 180 groups of the 705 even-order groups of 722..766,
+  random order; the rest untouched). Best cost 12: SmallGroup(756,74) (pairs 1,1 and 2,2 both give 12, 60 s SA
+  also 12). Next best: 18 (744,11 p2), 24 (756,79), 28 (756,84), 38 (726,6), 52 (756,69). Many groups 50..600.
+- Exhaustive dcenum on 756,74 pair (1,1) (216 double cosets) did not finish in 8 min: exhaustive is only feasible for
+  small double-coset counts (3|3 at 1083 ran in seconds; 3|3 at 1113 blew up).
+- 3|3 (|G| 1083..1149): exhaustive done for 1083 (groups 1..6, best 182 at 722 vertices), 1086..1101 partly;
+  stopped at 1113. Not pursued further (best 182 far from 0).
+- No cost-0 graph; no HIT. Scoreboard: one line for c4 (756, cost 12, bad=2268, best/g756_74_p1_s1.edges).
+
+Ideas not done: SA with more seeds on the 756 family (it looks richest: cost 12 twice); mixed class pairs (H != K) for
+groups where diagonal pairs are poor; |H| = |K| = 4 (n = |G|/2 .. ) which the card did not cover; a tabu instead of SA
+over unions (the landscape looks plateau-like: many runs stop exactly at 12, 24, 28).
+
+## Final 17:30
+- Sweep stopped by timeouts (no processes left). About 470 SA result lines covering roughly 230 groups (diagonal
+  class pairs). Best cost 12 at SmallGroup(756,74) (best/g756_74_p1_s1.edges, shared/check.sh bad = 2268 far pairs).
+- No cost-0 graph, no HIT. tmp/ removed (results.txt keeps every line).
+- 17:33 last check: SmallGroup(756,74) p(1,1) with seed 7, 120 s anneal: still cost 12.
