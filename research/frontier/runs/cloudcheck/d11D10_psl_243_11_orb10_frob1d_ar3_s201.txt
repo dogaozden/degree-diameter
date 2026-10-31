@@ -1,0 +1,30 @@
+machine: vm; nproc=4; free -g: total 15G used 0G free 14G avail 15G; Linux 6.18.44-fc-v185; gcc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0
+sha256: ffdc15c632d5b9dd1d79150388ef8959640c8f991bc381678504efd0a70cabf1  research/frontier/sols/d11D10_psl_243_11_orb10_frob1d_ar3_s201.txt  (identical to the sha256 on line 2 of the earlier report on branch claude/bigcheck-7b-haar-verify-bfxz02)
+
+################ haarcheck_gen (new low-memory checker, research/frontier/haarcheck_gen.c; two BFS on the group, N-bit bitsets, no edge lists): gcc -O3 -fopenmp -o haarcheck_gen haarcheck_gen.c && ./haarcheck_gen research/frontier/sols/d11D10_psl_243_11_orb10_frob1d_ar3_s201.txt   (stdout, complete)
+selftest psl 243 poly x^5+2x+1: |M| = 7174332, index round trip over all elements ok
+selftest group multiplication: associativity, identity, inverse on 20000 random triples ok
+file research/frontier/sols/d11D10_psl_243_11_orb10_frob1d_ar3_s201.txt
+header: 11 10 psl 243 poly x^5+2x+1 n 11 N 78917652
+group psl 243 poly x^5+2x+1 x Z_11, |G| = 78917652 = N, vertices 2N = 157835304; 11 distinct generators
+from (e,A): reached A 78917652/78917652, B 78917652/78917652 within 10; ecc 10; level sizes [1, 11, 110, 1100, 11000, 109930, 1092050, 10241260, 58411824, 68565351, 19402667]  (10s)
+from (e,B): reached A 78917652/78917652, B 78917652/78917652 within 10; ecc 10; level sizes [1, 11, 110, 1100, 11000, 109930, 1092095, 10241260, 58412342, 68565351, 19402104]  (19s)
+VALID d=11 D=10 group=psl 243 poly x^5+2x+1 x Z_11 N=78917652 vertices=157835304 (distinct generators, 11-regular simple; every vertex within 10 of both (e,A) and (e,B); ecc 10; 19s)
+[exit 0; wall 20s; peak RSS 58 MB; 4 threads]
+
+################ build_haar2.py (reference checker): NOT RUN on this file, does not fit in 15 GB (see the note in the earlier report below). This file's two checkers are haarcheck_gen (above) and check_haar_indep.py (below).
+
+################ comparison (computed mechanically from the two outputs): haarcheck_gen verdict VALID, check_haar_indep.py verdict VALID; BFS level sizes from (e,A) and from (e,B) IDENTICAL between the two checkers.
+
+################ earlier output of check_haar_indep.py, copied unedited from research/frontier/runs/cloudcheck/d11D10_psl_243_11_orb10_frob1d_ar3_s201.txt on branch claude/bigcheck-7b-haar-verify-bfxz02 (from its '################ independent checker' line to the end):
+################ independent checker: check_haar_indep.py research/frontier/sols/d11D10_psl_243_11_orb10_frob1d_ar3_s201.txt   [exit 0]
+file research/frontier/sols/d11D10_psl_243_11_orb10_frob1d_ar3_s201.txt
+header: d=11 D=10 spec=psl 243 poly x^5+2x+1 NCYC=11 N=78917652
+group order |G|=7174332 (factors [7174332]), x Z_11 -> 78917652; vertices 2N=157835304
+distinct generators (as full group elements): 11 of d=11
+permutations built (95s)
+BFS from A: ecc=10 reached 157835304 of 157835304 (unreached 0); level sizes [1, 11, 110, 1100, 11000, 109930, 1092050, 10241260, 58411824, 68565351, 19402667]
+BFS from B: ecc=10 reached 157835304 of 157835304 (unreached 0); level sizes [1, 11, 110, 1100, 11000, 109930, 1092095, 10241260, 58412342, 68565351, 19402104]
+every vertex has exactly 11 distinct neighbours: True
+RESULT VALID d=11 D=10 eccA=10 eccB=10 n=157835304 (259s)
+
