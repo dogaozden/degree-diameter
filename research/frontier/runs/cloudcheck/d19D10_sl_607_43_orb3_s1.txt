@@ -13,3 +13,7 @@ from (e,B): reached A 9616861248/9616861248, B 9616861248/9616861248 within 10; 
 VALID d=19 D=10 group=sl 607 x Z_43 N=9616861248 vertices=19233722496 (distinct generators, 19-regular simple; every vertex within 10 of both (e,A) and (e,B); ecc 10; 2847s)
 [exit 0; wall 2848s; peak RSS 6882 MB]
 
+
+################ haarcheck_sl (research/frontier/haarcheck_sl.c from master, built gcc -O3 haarcheck_sl.c -o haarcheck_sl; single-threaded): ./haarcheck_sl research/frontier/sols/d19D10_sl_607_43_orb3_s1.txt   (stdout, complete)
+# STATUS: PARTIAL. haarcheck_sl running since about 32 min before this commit (single thread, ~99% CPU, 7.0 GB RSS); it prints only after each BFS, so no output yet.
+[run in progress; no exit line yet]
