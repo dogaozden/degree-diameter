@@ -1,0 +1,14 @@
+GROUP SL(2,4) x Z83 N 4980 (Haar graph on 9960 vertices) K 5 D 8 field poly 3 (base 2 coefficients of x^0..x^1, monic)
+PSI 0 [x->x^-1] x [z->0-1*z] order 2 orbits(len<=K): 1x16 2x2482
+TABU psi0_t1+2+2 best 635 sols 0 steps 148 evals 7105 restarts 0 secs 2.0
+TABU psi0_t1+1+1+2 best 4288 sols 0 steps 571 evals 27410 restarts 1 secs 2.0
+PSI 1 [x->x^-1] x [z->0-82*z] order 2 orbits(len<=K): 1x1328 2x1826
+TABU psi1_t1+2+2 best 2572 sols 0 steps 239 evals 11473 restarts 0 secs 2.0
+TABU psi1_t1+1+1+2 best 188 sols 0 steps 148 evals 7105 restarts 0 secs 2.0
+PSI 2 [x->sigma(x)^-1,sigma=frob^1] x [z->0-1*z] order 2 orbits(len<=K): 1x10 2x2485
+TABU psi2_t1+2+2 best 542 sols 0 steps 177 evals 8497 restarts 0 secs 2.0
+TABU psi2_t1+1+1+2 best 4346 sols 0 steps 842 evals 40419 restarts 2 secs 2.0
+PSI 3 [x->sigma(x)^-1,sigma=frob^1] x [z->0-82*z] order 2 orbits(len<=K): 1x830 2x2075
+TABU psi3_t1+2+2 best 2554 sols 0 steps 220 evals 10561 restarts 0 secs 2.0
+TABU psi3_t1+1+1+2 best 189 sols 0 steps 141 evals 6769 restarts 0 secs 2.0
+DONE sols 0

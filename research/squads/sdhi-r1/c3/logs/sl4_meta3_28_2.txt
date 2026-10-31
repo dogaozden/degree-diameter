@@ -1,0 +1,42 @@
+GROUP SL(2,4) x C3:C28(r=2) N 5040 (Haar graph on 10080 vertices) K 5 D 8 field poly 3 (base 2 coefficients of x^0..x^1, monic)
+PSI 0 [x->x^-1] x [u0*beta(g)^-1,beta(x)=x^1,beta(y)=y^1,u0=(0,0)] order 2 orbits(len<=K): 1x32 2x2504
+TABU psi0_t1+2+2 best 114 sols 0 steps 145 evals 6961 restarts 0 secs 2.0
+TABU psi0_t1+1+1+2 best 3742 sols 0 steps 413 evals 19826 restarts 1 secs 2.0
+PSI 1 [x->x^-1] x [u0*beta(g)^-1,beta(x)=x^1,beta(y)=y^1,u0=(0,2)] order 2 orbits(len<=K): 1x96 2x2472
+TABU psi1_t1+2+2 best 73 sols 0 steps 180 evals 8641 restarts 0 secs 2.0
+TABU psi1_t1+1+1+2 best 1530 sols 0 steps 209 evals 10033 restarts 0 secs 2.0
+PSI 2 [x->x^-1] x [u0*beta(g)^-1,beta(x)=x^1,beta(y)=y^13,u0=(0,0)] order 2 orbits(len<=K): 1x224 2x2408
+TABU psi2_t1+2+2 best 79 sols 0 steps 183 evals 8785 restarts 0 secs 2.0
+TABU psi2_t1+1+1+2 best 2520 sols 0 steps 172 evals 8257 restarts 0 secs 2.0
+PSI 3 [x->x^-1] x [u0*beta(g)^-1,beta(x)=x^1,beta(y)=y^13,u0=(0,14)] order 2 orbits(len<=K): 1x672 2x2184
+TABU psi3_t1+2+2 best 103 sols 0 steps 148 evals 7105 restarts 0 secs 2.0
+TABU psi3_t1+1+1+2 best 46 sols 0 steps 125 evals 6001 restarts 0 secs 2.0
+PSI 4 [x->x^-1] x [u0*beta(g)^-1,beta(x)=x^1,beta(y)=y^15,u0=(0,0)] order 2 orbits(len<=K): 1x128 2x2456
+TABU psi4_t1+2+2 best 37 sols 0 steps 149 evals 7153 restarts 0 secs 2.0
+TABU psi4_t1+1+1+2 best 66 sols 0 steps 149 evals 7153 restarts 0 secs 2.0
+PSI 5 [x->x^-1] x [u0*beta(g)^-1,beta(x)=x^1,beta(y)=y^15,u0=(0,2)] order 2 orbits(len<=K): 2x2520
+PSI 6 [x->x^-1] x [u0*beta(g)^-1,beta(x)=x^1,beta(y)=y^27,u0=(0,0)] order 2 orbits(len<=K): 1x896 2x2072
+TABU psi6_t1+2+2 best 308 sols 0 steps 177 evals 8497 restarts 0 secs 2.0
+TABU psi6_t1+1+1+2 best 60 sols 0 steps 121 evals 5809 restarts 0 secs 2.0
+PSI 7 [x->x^-1] x [u0*beta(g)^-1,beta(x)=x^1,beta(y)=y^27,u0=(0,14)] order 2 orbits(len<=K): 2x2520
+PSI 8 [x->sigma(x)^-1,sigma=frob^1] x [u0*beta(g)^-1,beta(x)=x^1,beta(y)=y^1,u0=(0,0)] order 2 orbits(len<=K): 1x20 2x2510
+TABU psi8_t1+2+2 best 53 sols 0 steps 171 evals 8209 restarts 0 secs 2.0
+TABU psi8_t1+1+1+2 best 3812 sols 0 steps 432 evals 20738 restarts 1 secs 2.0
+PSI 9 [x->sigma(x)^-1,sigma=frob^1] x [u0*beta(g)^-1,beta(x)=x^1,beta(y)=y^1,u0=(0,2)] order 2 orbits(len<=K): 1x60 2x2490
+TABU psi9_t1+2+2 best 43 sols 0 steps 138 evals 6625 restarts 0 secs 2.0
+TABU psi9_t1+1+1+2 best 1668 sols 0 steps 175 evals 8401 restarts 0 secs 2.0
+PSI 10 [x->sigma(x)^-1,sigma=frob^1] x [u0*beta(g)^-1,beta(x)=x^1,beta(y)=y^13,u0=(0,0)] order 2 orbits(len<=K): 1x140 2x2450
+TABU psi10_t1+2+2 best 56 sols 0 steps 144 evals 6913 restarts 0 secs 2.0
+TABU psi10_t1+1+1+2 best 2520 sols 0 steps 166 evals 7969 restarts 0 secs 2.0
+PSI 11 [x->sigma(x)^-1,sigma=frob^1] x [u0*beta(g)^-1,beta(x)=x^1,beta(y)=y^13,u0=(0,14)] order 2 orbits(len<=K): 1x420 2x2310
+TABU psi11_t1+2+2 best 69 sols 0 steps 128 evals 6145 restarts 0 secs 2.0
+TABU psi11_t1+1+1+2 best 38 sols 0 steps 126 evals 6049 restarts 0 secs 2.0
+PSI 12 [x->sigma(x)^-1,sigma=frob^1] x [u0*beta(g)^-1,beta(x)=x^1,beta(y)=y^15,u0=(0,0)] order 2 orbits(len<=K): 1x80 2x2480
+TABU psi12_t1+2+2 best 27 sols 0 steps 117 evals 5617 restarts 0 secs 2.0
+TABU psi12_t1+1+1+2 best 66 sols 0 steps 152 evals 7297 restarts 0 secs 2.0
+PSI 13 [x->sigma(x)^-1,sigma=frob^1] x [u0*beta(g)^-1,beta(x)=x^1,beta(y)=y^15,u0=(0,2)] order 2 orbits(len<=K): 2x2520
+PSI 14 [x->sigma(x)^-1,sigma=frob^1] x [u0*beta(g)^-1,beta(x)=x^1,beta(y)=y^27,u0=(0,0)] order 2 orbits(len<=K): 1x560 2x2240
+TABU psi14_t1+2+2 best 221 sols 0 steps 142 evals 6817 restarts 0 secs 2.0
+TABU psi14_t1+1+1+2 best 58 sols 0 steps 120 evals 5761 restarts 0 secs 2.0
+PSI 15 [x->sigma(x)^-1,sigma=frob^1] x [u0*beta(g)^-1,beta(x)=x^1,beta(y)=y^27,u0=(0,14)] order 2 orbits(len<=K): 2x2520
+DONE sols 0

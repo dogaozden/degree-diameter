@@ -1,0 +1,51 @@
+GROUP C7:C231(r=2) x Z1 N 1617 (Haar graph on 3234 vertices) K 5 D 7
+PSI 0 [u0*beta(g)^-1,beta(x)=x^1,beta(y)=y^1,u0=(0,0)] x [z->0-1*z] order 2 orbits(len<=K): 1x1 2x808
+GAMMA generators 69
+ENUM psi0_t1+2+2_enum reps 231 sets 186417 passed 0 near 6 best 1532 sols 0 secs 1.4
+PSI 1 [u0*beta(g)^-1,beta(x)=x^6,beta(y)=y^1,u0=(0,0)] x [z->0-1*z] order 2 orbits(len<=K): 1x7 2x805
+GAMMA generators 69
+ENUM psi1_t1+2+2_enum reps 230 sets 1294440 passed 0 near 0 best -1 sols 0 secs 9.4
+ENUM psi1_t1+1+1+2_enum reps 230 sets 8050 passed 0 near 0 best -1 sols 0 secs 0.0
+ENUM psi1_t1+1+1+1+1_enum reps 2 sets 30 passed 0 near 0 best -1 sols 0 secs 0.0
+PSI 2 [u0*beta(g)^-1,beta(x)=x^1,beta(y)=y^34,u0=(0,0)] x [z->0-1*z] order 2 orbits(len<=K): 1x7 2x805
+GAMMA generators 69
+ENUM psi2_t1+2+2_enum reps 231 sets 1300068 passed 0 near 6 best 154 sols 0 secs 7.2
+ENUM psi2_t1+1+1+2_enum reps 231 sets 8085 passed 0 near 0 best -1 sols 0 secs 0.0
+ENUM psi2_t1+1+1+1+1_enum reps 7 sets 105 passed 0 near 0 best -1 sols 0 secs 0.0
+PSI 3 [u0*beta(g)^-1,beta(x)=x^6,beta(y)=y^34,u0=(0,0)] x [z->0-1*z] order 2 orbits(len<=K): 1x49 2x784
+GAMMA generators 69
+TYPE psi3_t1+2+2 has 8.59e+06 sets > ECAP: tabu
+TABU psi3_t1+2+2 best 68 sols 0 steps 2878 evals 138154 restarts 9 secs 20.0
+TYPE psi3_t1+1+1+2 has 4.13e+06 sets > ECAP: tabu
+TABU psi3_t1+1+1+2 best 1138 sols 0 steps 5978 evals 286964 restarts 19 secs 20.0
+ENUM psi3_t1+1+1+1+1_enum reps 14 sets 2724120 passed 0 near 0 best -1 sols 0 secs 10.8
+PSI 4 [u0*beta(g)^-1,beta(x)=x^1,beta(y)=y^43,u0=(0,0)] x [z->0-1*z] order 2 orbits(len<=K): 1x11 2x803
+GAMMA generators 69
+ENUM psi4_t1+2+2_enum reps 231 sets 2037882 passed 0 near 0 best -1 sols 0 secs 11.9
+ENUM psi4_t1+1+1+2_enum reps 231 sets 38115 passed 0 near 0 best -1 sols 0 secs 0.1
+ENUM psi4_t1+1+1+1+1_enum reps 11 sets 2310 passed 0 near 0 best -1 sols 0 secs 0.0
+PSI 5 [u0*beta(g)^-1,beta(x)=x^6,beta(y)=y^43,u0=(0,0)] x [z->0-1*z] order 2 orbits(len<=K): 1x77 2x770
+GAMMA generators 69
+TYPE psi5_t1+2+2 has 1.3e+07 sets > ECAP: tabu
+TABU psi5_t1+2+2 best 56 sols 0 steps 3445 evals 165372 restarts 11 secs 20.0
+TYPE psi5_t1+1+1+2 has 1.61e+07 sets > ECAP: tabu
+TABU psi5_t1+1+1+2 best 904 sols 0 steps 5431 evals 260706 restarts 17 secs 20.0
+TYPE psi5_t1+1+1+1+1 has 2.82e+07 sets > ECAP: tabu
+TABU psi5_t1+1+1+1+1 best 1540 sols 0 steps 43349 evals 2080896 restarts 143 secs 20.0
+PSI 6 [u0*beta(g)^-1,beta(x)=x^1,beta(y)=y^76,u0=(0,0)] x [z->0-1*z] order 2 orbits(len<=K): 1x77 2x770
+GAMMA generators 69
+TYPE psi6_t1+2+2 has 1.37e+07 sets > ECAP: tabu
+TABU psi6_t1+2+2 best 942 sols 0 steps 5239 evals 251490 restarts 17 secs 20.0
+TYPE psi6_t1+1+1+2 has 1.69e+07 sets > ECAP: tabu
+TABU psi6_t1+1+1+2 best 1170 sols 0 steps 22331 evals 1071954 restarts 65 secs 20.0
+TYPE psi6_t1+1+1+1+1 has 9.88e+07 sets > ECAP: tabu
+TABU psi6_t1+1+1+1+1 best 1540 sols 0 steps 69838 evals 3352456 restarts 231 secs 20.0
+PSI 7 [u0*beta(g)^-1,beta(x)=x^6,beta(y)=y^76,u0=(0,0)] x [z->0-1*z] order 2 orbits(len<=K): 1x539 2x539
+GAMMA generators 69
+TYPE psi7_t1+2+2 has 4.47e+07 sets > ECAP: tabu
+TABU psi7_t1+2+2 best 958 sols 0 steps 12074 evals 579593 restarts 40 secs 20.0
+TYPE psi7_t1+1+1+2 has 4e+09 sets > ECAP: tabu
+TABU psi7_t1+1+1+2 best 92 sols 0 steps 4846 evals 232620 restarts 11 secs 20.0
+TYPE psi7_t1+1+1+1+1 has 5.32e+11 sets > ECAP: tabu
+TABU psi7_t1+1+1+1+1 best 1168 sols 0 steps 21936 evals 1052979 restarts 50 secs 20.0
+DONE sols 0

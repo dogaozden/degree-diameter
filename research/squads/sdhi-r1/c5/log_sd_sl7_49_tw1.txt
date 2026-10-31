@@ -1,0 +1,9 @@
+group sl 7 x Z_49, N=16464, identity 2058, H order 56, rows 294, threads 1, setup 0.00s
+wide rows: HW order 196, rows 84, setup 0.01s
+SDUAL psi: Q-part tw, z -> 0 - 1 z (u0 index 6860)
+ORBIT k=2 m=3 f=0: |Fix(alpha)| = 0 (+e); mu = 43.70, mu/k = 21.85, fixed-point misses ~ 0.05
+start cost=1000
+t=30 steps=127420 evals=1019361 cost=42 best=40 T=0.53
+t=60 steps=250076 evals=2000609 cost=40 best=40 T=0.19
+t=90 steps=359585 evals=2876681 cost=40 best=40 T=0.15
+RESULT d=6 D=8 group=sl 7 x Z_49 N=16464 best=40 evals=3215201 time=100.0 orbit k=2 m=3 f=0 fix=0 sdual psi: Q-part tw, z -> 0 - 1 z

@@ -1,0 +1,25 @@
+GROUP C993:C5(r=64) x Z1 N 4965 (Haar graph on 9930 vertices) K 5 D 8
+PSI 0 [u0*beta(g)^-1,beta(x)=x^1,beta(y)=y^1,u0=(0,0)] x [z->0-1*z] order 2 orbits(len<=K): 1x1 2x2482
+GAMMA generators 576
+ENUM psi0_t1+2+2_enum reps 7 sets 17367 passed 0 near 7 best 2650 sols 0 secs 0.5
+PSI 1 [u0*beta(g)^-1,beta(x)=x^332,beta(y)=y^1,u0=(0,0)] x [z->0-1*z] order 2 orbits(len<=K): 1x3 2x2481
+GAMMA generators 576
+ENUM psi1_t1+2+2_enum reps 6 sets 44640 passed 0 near 17 best 1746 sols 0 secs 0.9
+ENUM psi1_t1+1+1+2_enum reps 6 sets 6 passed 0 near 0 best -1 sols 0 secs 0.0
+PSI 2 [u0*beta(g)^-1,beta(x)=x^661,beta(y)=y^1,u0=(0,0)] x [z->0-1*z] order 2 orbits(len<=K): 1x331 2x2317
+GAMMA generators 528
+TYPE psi2_t1+2+2 has 7.67e+06 sets > ECAP: tabu
+TABU psi2_t1+2+2 best 15 sols 0 steps 89 evals 4273 restarts 0 secs 5.0
+TYPE psi2_t1+1+1+2 has 5.99e+07 sets > ECAP: tabu
+TABU psi2_t1+1+1+2 best 1651 sols 0 steps 148 evals 7105 restarts 0 secs 5.0
+TYPE psi2_t1+1+1+1+1 has 9.7e+08 sets > ECAP: tabu
+TABU psi2_t1+1+1+1+1 best 4634 sols 0 steps 652 evals 31299 restarts 2 secs 5.0
+PSI 3 [u0*beta(g)^-1,beta(x)=x^992,beta(y)=y^1,u0=(0,0)] x [z->0-1*z] order 2 orbits(len<=K): 1x993 2x1986
+GAMMA generators 528
+TYPE psi3_t1+2+2 has 1.58e+07 sets > ECAP: tabu
+TABU psi3_t1+2+2 best 291 sols 0 steps 108 evals 5185 restarts 0 secs 5.0
+TYPE psi3_t1+1+1+2 has 1.3e+09 sets > ECAP: tabu
+TABU psi3_t1+1+1+2 best 163 sols 0 steps 115 evals 5521 restarts 0 secs 5.0
+TYPE psi3_t1+1+1+1+1 has 1.6e+11 sets > ECAP: tabu
+TABU psi3_t1+1+1+1+1 best 4197 sols 0 steps 553 evals 26545 restarts 0 secs 5.0
+DONE sols 0

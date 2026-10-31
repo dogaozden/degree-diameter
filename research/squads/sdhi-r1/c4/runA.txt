@@ -1,0 +1,30 @@
+### meta 61 84 13 PSI=1
+GROUP C61:C84(r=13) x Z1 N 5124 (Haar graph on 10248 vertices) K 5 D 8
+PSI 1 [u0*beta(g)^-1,beta(x)=x^1,beta(y)=y^1,u0=(0,3)] x [z->0-1*z] order 2 orbits(len<=K): 2x2562
+DONE sols 0
+### meta 61 84 13 PSI=5
+GROUP C61:C84(r=13) x Z1 N 5124 (Haar graph on 10248 vertices) K 5 D 8
+PSI 5 [u0*beta(g)^-1,beta(x)=x^1,beta(y)=y^13,u0=(0,21)] x [z->0-1*z] order 2 orbits(len<=K): 2x2562
+DONE sols 0
+### meta 61 84 13 PSI=9
+GROUP C61:C84(r=13) x Z1 N 5124 (Haar graph on 10248 vertices) K 5 D 8
+PSI 9 [u0*beta(g)^-1,beta(x)=x^1,beta(y)=y^43,u0=(0,6)] x [z->0-1*z] order 2 orbits(len<=K): 2x2562
+DONE sols 0
+### meta 61 84 13 PSI=13
+GROUP C61:C84(r=13) x Z1 N 5124 (Haar graph on 10248 vertices) K 5 D 8
+PSI 13 [u0*beta(g)^-1,beta(x)=x^1,beta(y)=y^55,u0=(0,42)] x [z->0-1*z] order 2 orbits(len<=K): 2x2562
+DONE sols 0
+### meta 61 84 14 PSI=1
+GROUP C61:C84(r=14) x Z1 N 5124 (Haar graph on 10248 vertices) K 5 D 8
+PSI 1 [u0*beta(g)^-1,beta(x)=x^1,beta(y)=y^1,u0=(0,6)] x [z->0-1*z] order 2 orbits(len<=K): 1x122 2x2501
+TABU psi1_t1+2+2 best 578 sols 0 steps 122 evals 5857 restarts 0 secs 8.0
+DONE sols 0
+### meta 61 84 14 PSI=5
+GROUP C61:C84(r=14) x Z1 N 5124 (Haar graph on 10248 vertices) K 5 D 8
+PSI 5 [u0*beta(g)^-1,beta(x)=x^1,beta(y)=y^43,u0=(0,6)] x [z->0-1*z] order 2 orbits(len<=K): 2x2562
+DONE sols 0
+### meta 41 120 2 PSI=1
+GROUP C41:C120(r=2) x Z1 N 4920 (Haar graph on 9840 vertices) K 5 D 8
+PSI 1 [u0*beta(g)^-1,beta(x)=x^1,beta(y)=y^1,u0=(0,20)] x [z->0-1*z] order 2 orbits(len<=K): 1x82 2x2419
+TABU psi1_t1+2+2 best 1271 sols 0 steps 134 evals 6433 restarts 0 secs 8.0
+DONE sols 0

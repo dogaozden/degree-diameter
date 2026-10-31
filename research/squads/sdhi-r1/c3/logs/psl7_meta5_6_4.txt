@@ -1,0 +1,14 @@
+GROUP PSL(2,7) x C5:C6(r=4) N 5040 (Haar graph on 10080 vertices) K 5 D 8
+PSI 0 [x->x^-1] x [u0*beta(g)^-1,beta(x)=x^1,beta(y)=y^1,u0=(0,0)] order 2 orbits(len<=K): 1x132 2x2454
+TABU psi0_t1+2+2 best 31 sols 0 steps 194 evals 9313 restarts 0 secs 3.0
+TABU psi0_t1+1+1+2 best 43 sols 0 steps 182 evals 8737 restarts 0 secs 3.0
+PSI 1 [x->x^-1] x [u0*beta(g)^-1,beta(x)=x^1,beta(y)=y^5,u0=(0,0)] order 2 orbits(len<=K): 1x396 2x2322
+TABU psi1_t1+2+2 best 43 sols 0 steps 243 evals 11665 restarts 0 secs 3.0
+TABU psi1_t1+1+1+2 best 33 sols 0 steps 205 evals 9841 restarts 0 secs 3.0
+PSI 2 [x->(hxh)^-1,h=diag(1,3)] x [u0*beta(g)^-1,beta(x)=x^1,beta(y)=y^1,u0=(0,0)] order 2 orbits(len<=K): 1x168 2x2436
+TABU psi2_t1+2+2 best 26 sols 0 steps 233 evals 11185 restarts 0 secs 3.0
+TABU psi2_t1+1+1+2 best 20 sols 0 steps 221 evals 10609 restarts 0 secs 3.0
+PSI 3 [x->(hxh)^-1,h=diag(1,3)] x [u0*beta(g)^-1,beta(x)=x^1,beta(y)=y^5,u0=(0,0)] order 2 orbits(len<=K): 1x504 2x2268
+TABU psi3_t1+2+2 best 37 sols 0 steps 232 evals 11137 restarts 0 secs 3.0
+TABU psi3_t1+1+1+2 best 36 sols 0 steps 196 evals 9409 restarts 0 secs 3.0
+DONE sols 0

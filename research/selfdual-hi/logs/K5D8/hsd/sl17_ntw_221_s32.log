@@ -1,0 +1,13 @@
+group sl 17 x Z_1, N=4896, identity 272, H order 34, rows 144, threads 1, setup 0.00s
+wide rows: no cyclic subgroup of order >= 64 found (best 34); using haar_gen3's evaluation
+SDUAL psi: Q-part ntw, z -> 0 - 1 z (u0 index 4029)
+psi(e) != e: the f fixed generators are psi-fixed elements (e not in S); S is normalised to s_0 = e when written
+ORBIT k=2 m=2 f=1: |Fix(alpha)| = 272 (+e); mu = 56.51, mu/k = 28.25, fixed-point misses ~ 29.33
+start cost=461
+t=30 steps=206935 evals=1655481 cost=7 best=7 T=0.53
+t=60 steps=377867 evals=3022937 cost=7 best=7 T=0.19
+t=90 steps=535499 evals=4283993 cost=7 best=7 T=0.15
+t=120 steps=679725 evals=5437801 cost=7 best=7 T=0.15
+t=150 steps=844595 evals=6756761 cost=7 best=7 T=0.15
+t=180 steps=1017660 evals=8141281 cost=7 best=7 T=0.55
+t=210 steps=1192350 evals=9538801 cost=7 best=7 T=0.19

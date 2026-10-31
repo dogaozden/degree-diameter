@@ -1,0 +1,41 @@
+GROUP SL(2,7) x Z15 N 5040 (Haar graph on 10080 vertices) K 5 D 8
+PSI 0 [x->x^-1] x [z->0-1*z] order 2 orbits(len<=K): 1x2 2x2519
+TABU psi0_t1+2+2 best 1769 sols 0 steps 376 evals 18050 restarts 1 secs 2.0
+PSI 1 [x->x^-1] x [z->0-4*z] order 2 orbits(len<=K): 1x10 2x2515
+TABU psi1_t1+2+2 best 428 sols 0 steps 173 evals 8305 restarts 0 secs 2.0
+TABU psi1_t1+1+1+2 best 4916 sols 0 steps 2639 evals 126681 restarts 8 secs 2.0
+PSI 2 [x->x^-1] x [z->0-11*z] order 2 orbits(len<=K): 1x6 2x2517
+TABU psi2_t1+2+2 best 802 sols 0 steps 185 evals 8881 restarts 0 secs 2.0
+TABU psi2_t1+1+1+2 best 4962 sols 0 steps 4883 evals 234401 restarts 16 secs 2.0
+PSI 3 [x->x^-1] x [z->0-14*z] order 2 orbits(len<=K): 1x30 2x2505
+TABU psi3_t1+2+2 best 177 sols 0 steps 153 evals 7345 restarts 0 secs 2.0
+TABU psi3_t1+1+1+2 best 4830 sols 0 steps 1273 evals 61109 restarts 4 secs 2.0
+PSI 4 [x->-x^-1] x [z->0-1*z] order 2 orbits(len<=K): 1x42 2x2499
+TABU psi4_t1+2+2 best 46 sols 0 steps 117 evals 5617 restarts 0 secs 2.0
+TABU psi4_t1+1+1+2 best 1766 sols 0 steps 168 evals 8065 restarts 0 secs 2.0
+PSI 5 [x->-x^-1] x [z->0-4*z] order 2 orbits(len<=K): 1x210 2x2415
+TABU psi5_t1+2+2 best 31 sols 0 steps 111 evals 5329 restarts 0 secs 2.0
+TABU psi5_t1+1+1+2 best 19 sols 0 steps 107 evals 5137 restarts 0 secs 2.0
+PSI 6 [x->-x^-1] x [z->0-11*z] order 2 orbits(len<=K): 1x126 2x2457
+TABU psi6_t1+2+2 best 20 sols 0 steps 122 evals 5857 restarts 0 secs 2.0
+TABU psi6_t1+1+1+2 best 33 sols 0 steps 114 evals 5473 restarts 0 secs 2.0
+PSI 7 [x->-x^-1] x [z->0-14*z] order 2 orbits(len<=K): 1x630 2x2205
+TABU psi7_t1+2+2 best 49 sols 0 steps 116 evals 5569 restarts 0 secs 2.0
+TABU psi7_t1+1+1+2 best 41 sols 0 steps 99 evals 4753 restarts 0 secs 2.0
+PSI 8 [x->(hxh)^-1,h=diag(1,3)] x [z->0-1*z] order 2 orbits(len<=K): 2x2520
+PSI 9 [x->(hxh)^-1,h=diag(1,3)] x [z->0-4*z] order 2 orbits(len<=K): 2x2520
+PSI 10 [x->(hxh)^-1,h=diag(1,3)] x [z->0-11*z] order 2 orbits(len<=K): 2x2520
+PSI 11 [x->(hxh)^-1,h=diag(1,3)] x [z->0-14*z] order 2 orbits(len<=K): 2x2520
+PSI 12 [x->-(hxh)^-1,h=diag(1,3)] x [z->0-1*z] order 2 orbits(len<=K): 1x56 2x2492
+TABU psi12_t1+2+2 best 23 sols 0 steps 103 evals 4945 restarts 0 secs 2.0
+TABU psi12_t1+1+1+2 best 1722 sols 0 steps 145 evals 6961 restarts 0 secs 2.0
+PSI 13 [x->-(hxh)^-1,h=diag(1,3)] x [z->0-4*z] order 2 orbits(len<=K): 1x280 2x2380
+TABU psi13_t1+2+2 best 29 sols 0 steps 109 evals 5233 restarts 0 secs 2.0
+TABU psi13_t1+1+1+2 best 20 sols 0 steps 108 evals 5185 restarts 0 secs 2.0
+PSI 14 [x->-(hxh)^-1,h=diag(1,3)] x [z->0-11*z] order 2 orbits(len<=K): 1x168 2x2436
+TABU psi14_t1+2+2 best 16 sols 0 steps 104 evals 4993 restarts 0 secs 2.0
+TABU psi14_t1+1+1+2 best 21 sols 0 steps 95 evals 4561 restarts 0 secs 2.0
+PSI 15 [x->-(hxh)^-1,h=diag(1,3)] x [z->0-14*z] order 2 orbits(len<=K): 1x840 2x2100
+TABU psi15_t1+2+2 best 102 sols 0 steps 130 evals 6241 restarts 0 secs 2.0
+TABU psi15_t1+1+1+2 best 64 sols 0 steps 92 evals 4417 restarts 0 secs 2.0
+DONE sols 0

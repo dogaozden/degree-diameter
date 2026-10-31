@@ -24,3 +24,11 @@ PSI 5 [x->(hxh)^-1,h=diag(1,3)] x [z->1-1*z] order 2 orbits(len<=K): 2x840
 GAMMA generators 31
 PSI 6 [x->(hxh)^-1,h=diag(1,3)] x [z->0-9*z] order 2 orbits(len<=K): 1x280 2x700
 GAMMA generators 34
+ENUM psi6_t1+2+2_enum reps 56 sets 10960320 passed 0 near 616 best 43 sols 0 secs 30.1
+TYPE psi6_t1+1+1+2 has 2.03e+08 sets > ECAP: tabu
+TABU psi6_t1+1+1+2 best 20 sols 0 steps 13252 evals 636129 restarts 32 secs 30.0
+TYPE psi6_t1+1+1+1+1 has 5.93e+09 sets > ECAP: tabu
+TABU psi6_t1+1+1+1+1 best 5 sols 0 steps 12381 evals 594311 restarts 22 secs 30.0
+PSI 7 [x->(hxh)^-1,h=diag(1,3)] x [z->5-9*z] order 2 orbits(len<=K): 2x840
+GAMMA generators 34
+DONE sols 0

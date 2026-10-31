@@ -1,0 +1,7 @@
+group psl 19 x Z_14, N=47880, identity 2394, H order 63, rows 760, threads 1, setup 0.00s
+wide rows: HW order 133, rows 360, setup 0.00s
+alpha: conj by mat(3,16,16,16) (index 1213), z -> 13 z on Z_14
+ORBIT k=2 m=3 f=1: |Fix(alpha)| = 39 (+e); mu = 42.97, mu/k = 21.49, fixed-point misses ~ 1.20
+start cost=24578
+t=30 steps=41091 evals=328729 cost=20 best=20 T=0.53
+RESULT d=7 D=8 group=psl 19 x Z_14 N=47880 best=20 evals=451305 time=40.0 orbit k=2 m=3 f=1 fix=39

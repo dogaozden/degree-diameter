@@ -1,0 +1,18 @@
+GROUP PGL(2,5) x Z42 N 5040 (Haar graph on 10080 vertices) K 5 D 8
+PSI 0 [x->x^-1] x [z->0-1*z] order 2 orbits(len<=K): 1x52 2x2494
+TABU psi0_t1+2+2 best 706 sols 0 steps 257 evals 12337 restarts 0 secs 3.0
+TABU psi0_t1+1+1+2 best 2601 sols 0 steps 296 evals 14209 restarts 0 secs 3.0
+PSI 1 [x->x^-1] x [z->1-1*z] order 2 orbits(len<=K): 2x2520
+PSI 2 [x->x^-1] x [z->0-13*z] order 2 orbits(len<=K): 1x364 2x2338
+TABU psi2_t1+2+2 best 171 sols 0 steps 254 evals 12193 restarts 0 secs 3.0
+TABU psi2_t1+1+1+2 best 32 sols 0 steps 199 evals 9553 restarts 0 secs 3.0
+PSI 3 [x->x^-1] x [z->7-13*z] order 2 orbits(len<=K): 2x2520
+PSI 4 [x->x^-1] x [z->0-29*z] order 2 orbits(len<=K): 1x156 2x2442
+TABU psi4_t1+2+2 best 49 sols 0 steps 202 evals 9697 restarts 0 secs 3.0
+TABU psi4_t1+1+1+2 best 45 sols 0 steps 193 evals 9265 restarts 0 secs 3.0
+PSI 5 [x->x^-1] x [z->3-29*z] order 2 orbits(len<=K): 2x2520
+PSI 6 [x->x^-1] x [z->0-41*z] order 2 orbits(len<=K): 1x1092 2x1974
+TABU psi6_t1+2+2 best 2584 sols 0 steps 350 evals 16802 restarts 1 secs 3.0
+TABU psi6_t1+1+1+2 best 142 sols 0 steps 189 evals 9073 restarts 0 secs 3.0
+PSI 7 [x->x^-1] x [z->21-41*z] order 2 orbits(len<=K): 2x2520
+DONE sols 0

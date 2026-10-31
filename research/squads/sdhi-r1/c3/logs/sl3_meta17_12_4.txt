@@ -1,0 +1,22 @@
+GROUP SL(2,3) x C17:C12(r=4) N 4896 (Haar graph on 9792 vertices) K 5 D 8
+PSI 0 [x->x^-1] x [u0*beta(g)^-1,beta(x)=x^1,beta(y)=y^1,u0=(0,0)] order 2 orbits(len<=K): 1x36 2x2430
+TABU psi0_t1+2+2 best 178 sols 0 steps 167 evals 8017 restarts 0 secs 2.0
+TABU psi0_t1+1+1+2 best 4488 sols 0 steps 1097 evals 52660 restarts 3 secs 2.0
+PSI 1 [x->x^-1] x [u0*beta(g)^-1,beta(x)=x^1,beta(y)=y^5,u0=(0,0)] order 2 orbits(len<=K): 1x108 2x2394
+TABU psi1_t1+2+2 best 33 sols 0 steps 148 evals 7105 restarts 0 secs 2.0
+TABU psi1_t1+1+1+2 best 3672 sols 0 steps 393 evals 18866 restarts 1 secs 2.0
+PSI 2 [x->-x^-1] x [u0*beta(g)^-1,beta(x)=x^1,beta(y)=y^1,u0=(0,0)] order 2 orbits(len<=K): 1x108 2x2394
+TABU psi2_t1+2+2 best 60 sols 0 steps 136 evals 6529 restarts 0 secs 2.0
+TABU psi2_t1+1+1+2 best 3264 sols 0 steps 267 evals 12817 restarts 0 secs 2.0
+PSI 3 [x->-x^-1] x [u0*beta(g)^-1,beta(x)=x^1,beta(y)=y^5,u0=(0,0)] order 2 orbits(len<=K): 1x324 2x2286
+TABU psi3_t1+2+2 best 38 sols 0 steps 117 evals 5617 restarts 0 secs 2.0
+TABU psi3_t1+1+1+2 best 36 sols 0 steps 141 evals 6769 restarts 0 secs 2.0
+PSI 4 [x->(hxh)^-1,h=diag(1,2)] x [u0*beta(g)^-1,beta(x)=x^1,beta(y)=y^1,u0=(0,0)] order 2 orbits(len<=K): 2x2448
+PSI 5 [x->(hxh)^-1,h=diag(1,2)] x [u0*beta(g)^-1,beta(x)=x^1,beta(y)=y^5,u0=(0,0)] order 2 orbits(len<=K): 2x2448
+PSI 6 [x->-(hxh)^-1,h=diag(1,2)] x [u0*beta(g)^-1,beta(x)=x^1,beta(y)=y^1,u0=(0,0)] order 2 orbits(len<=K): 1x216 2x2340
+TABU psi6_t1+2+2 best 25 sols 0 steps 154 evals 7393 restarts 0 secs 2.0
+TABU psi6_t1+1+1+2 best 42 sols 0 steps 127 evals 6097 restarts 0 secs 2.0
+PSI 7 [x->-(hxh)^-1,h=diag(1,2)] x [u0*beta(g)^-1,beta(x)=x^1,beta(y)=y^5,u0=(0,0)] order 2 orbits(len<=K): 1x648 2x2124
+TABU psi7_t1+2+2 best 182 sols 0 steps 166 evals 7969 restarts 0 secs 2.0
+TABU psi7_t1+1+1+2 best 40 sols 0 steps 134 evals 6433 restarts 0 secs 2.0
+DONE sols 0

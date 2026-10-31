@@ -1,0 +1,14 @@
+GROUP PGL(2,3) x C13:C16(r=5) N 4992 (Haar graph on 9984 vertices) K 5 D 8
+PSI 0 [x->x^-1] x [u0*beta(g)^-1,beta(x)=x^1,beta(y)=y^1,u0=(0,0)] order 2 orbits(len<=K): 1x20 2x2486
+TABU psi0_t1+2+2 best 538 sols 0 steps 211 evals 10129 restarts 0 secs 2.0
+TABU psi0_t1+1+1+2 best 4460 sols 0 steps 861 evals 41331 restarts 2 secs 2.0
+PSI 1 [x->x^-1] x [u0*beta(g)^-1,beta(x)=x^1,beta(y)=y^1,u0=(0,4)] order 2 orbits(len<=K): 1x260 2x2366
+TABU psi1_t1+2+2 best 63 sols 0 steps 172 evals 8257 restarts 0 secs 2.0
+TABU psi1_t1+1+1+2 best 71 sols 0 steps 142 evals 6817 restarts 0 secs 2.0
+PSI 2 [x->x^-1] x [u0*beta(g)^-1,beta(x)=x^1,beta(y)=y^9,u0=(0,0)] order 2 orbits(len<=K): 1x20 2x2486
+TABU psi2_t1+2+2 best 474 sols 0 steps 154 evals 7393 restarts 0 secs 2.0
+TABU psi2_t1+1+1+2 best 4460 sols 0 steps 773 evals 37107 restarts 2 secs 2.0
+PSI 3 [x->x^-1] x [u0*beta(g)^-1,beta(x)=x^1,beta(y)=y^9,u0=(0,4)] order 2 orbits(len<=K): 1x260 2x2366
+TABU psi3_t1+2+2 best 46 sols 0 steps 181 evals 8689 restarts 0 secs 2.0
+TABU psi3_t1+1+1+2 best 66 sols 0 steps 144 evals 6913 restarts 0 secs 2.0
+DONE sols 0

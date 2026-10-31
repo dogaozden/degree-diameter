@@ -1,0 +1,24 @@
+GROUP C7:C225(r=2) x Z1 N 1575 (Haar graph on 3150 vertices) K 5 D 7
+PSI 0 [u0*beta(g)^-1,beta(x)=x^1,beta(y)=y^1,u0=(0,0)] x [z->0-1*z] order 2 orbits(len<=K): 1x1 2x787
+GAMMA generators 69
+ENUM psi0_t1+2+2_enum reps 225 sets 176850 passed 0 near 6 best 1490 sols 0 secs 1.4
+PSI 1 [u0*beta(g)^-1,beta(x)=x^6,beta(y)=y^1,u0=(0,0)] x [z->0-1*z] order 2 orbits(len<=K): 1x7 2x784
+GAMMA generators 69
+ENUM psi1_t1+2+2_enum reps 224 sets 1227744 passed 0 near 0 best -1 sols 0 secs 11.6
+ENUM psi1_t1+1+1+2_enum reps 224 sets 7840 passed 0 near 0 best -1 sols 0 secs 0.0
+ENUM psi1_t1+1+1+1+1_enum reps 2 sets 30 passed 0 near 0 best -1 sols 0 secs 0.0
+PSI 2 [u0*beta(g)^-1,beta(x)=x^1,beta(y)=y^199,u0=(0,0)] x [z->0-1*z] order 2 orbits(len<=K): 1x25 2x775
+GAMMA generators 69
+TYPE psi2_t1+2+2 has 4.35e+06 sets > ECAP: tabu
+TABU psi2_t1+2+2 best 134 sols 0 steps 3984 evals 191246 restarts 13 secs 20.0
+ENUM psi2_t1+1+1+2_enum reps 225 sets 517500 passed 0 near 218 best 1354 sols 0 secs 2.6
+ENUM psi2_t1+1+1+1+1_enum reps 25 sets 265650 passed 0 near 0 best -1 sols 0 secs 0.9
+PSI 3 [u0*beta(g)^-1,beta(x)=x^6,beta(y)=y^199,u0=(0,0)] x [z->0-1*z] order 2 orbits(len<=K): 1x175 2x700
+GAMMA generators 69
+TYPE psi3_t1+2+2 has 2.45e+07 sets > ECAP: tabu
+TABU psi3_t1+2+2 best 144 sols 0 steps 4211 evals 202142 restarts 13 secs 20.0
+TYPE psi3_t1+1+1+2 has 1.76e+08 sets > ECAP: tabu
+TABU psi3_t1+1+1+2 best 170 sols 0 steps 3042 evals 146025 restarts 8 secs 20.0
+TYPE psi3_t1+1+1+1+1 has 1.84e+09 sets > ECAP: tabu
+TABU psi3_t1+1+1+1+1 best 1400 sols 0 steps 21433 evals 1028856 restarts 71 secs 20.0
+DONE sols 0

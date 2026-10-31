@@ -1,0 +1,32 @@
+GROUP C13:C376(r=5) x Z1 N 4888 (Haar graph on 9776 vertices) K 5 D 8
+PSI 0 [u0*beta(g)^-1,beta(x)=x^1,beta(y)=y^1,u0=(0,0)] x [z->0-1*z] order 2 orbits(len<=K): 1x2 2x2443
+GAMMA generators 75
+ENUM psi0_t1+2+2_enum reps 376 sets 1836384 passed 0 near 15 best 4775 sols 0 secs 25.8
+PSI 1 [u0*beta(g)^-1,beta(x)=x^1,beta(y)=y^1,u0=(0,4)] x [z->0-1*z] order 2 orbits(len<=K): 1x26 2x2431
+GAMMA generators 75
+TYPE psi1_t1+2+2 has 2.36e+07 sets > ECAP: tabu
+TABU psi1_t1+2+2 best 3585 sols 0 steps 982 evals 47140 restarts 3 secs 20.0
+PSI 2 [u0*beta(g)^-1,beta(x)=x^1,beta(y)=y^93,u0=(0,0)] x [z->0-1*z] order 2 orbits(len<=K): 1x94 2x2397
+GAMMA generators 75
+TYPE psi2_t1+2+2 has 8.47e+07 sets > ECAP: tabu
+TABU psi2_t1+2+2 best 3205 sols 0 steps 1104 evals 52996 restarts 3 secs 20.0
+PSI 3 [u0*beta(g)^-1,beta(x)=x^1,beta(y)=y^93,u0=(0,188)] x [z->0-1*z] order 2 orbits(len<=K): 1x1222 2x1833
+GAMMA generators 75
+TYPE psi3_t1+2+2 has 6.31e+08 sets > ECAP: tabu
+TABU psi3_t1+2+2 best 2846 sols 0 steps 965 evals 46324 restarts 3 secs 20.0
+PSI 4 [u0*beta(g)^-1,beta(x)=x^1,beta(y)=y^189,u0=(0,0)] x [z->0-1*z] order 2 orbits(len<=K): 1x2 2x2443
+GAMMA generators 75
+ENUM psi4_t1+2+2_enum reps 376 sets 1836384 passed 0 near 0 best -1 sols 0 secs 24.0
+PSI 5 [u0*beta(g)^-1,beta(x)=x^1,beta(y)=y^189,u0=(0,4)] x [z->0-1*z] order 2 orbits(len<=K): 1x26 2x2431
+GAMMA generators 75
+TYPE psi5_t1+2+2 has 2.36e+07 sets > ECAP: tabu
+TABU psi5_t1+2+2 best 2530 sols 0 steps 1016 evals 48772 restarts 3 secs 20.0
+PSI 6 [u0*beta(g)^-1,beta(x)=x^1,beta(y)=y^281,u0=(0,0)] x [z->0-1*z] order 2 orbits(len<=K): 1x94 2x2397
+GAMMA generators 75
+TYPE psi6_t1+2+2 has 8.47e+07 sets > ECAP: tabu
+TABU psi6_t1+2+2 best 3205 sols 0 steps 1412 evals 67781 restarts 4 secs 20.0
+PSI 7 [u0*beta(g)^-1,beta(x)=x^1,beta(y)=y^281,u0=(0,188)] x [z->0-1*z] order 2 orbits(len<=K): 1x1222 2x1833
+GAMMA generators 75
+TYPE psi7_t1+2+2 has 6.31e+08 sets > ECAP: tabu
+TABU psi7_t1+2+2 best 2846 sols 0 steps 1173 evals 56308 restarts 3 secs 20.0
+DONE sols 0

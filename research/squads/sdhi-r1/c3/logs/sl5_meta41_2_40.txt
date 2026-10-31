@@ -1,0 +1,12 @@
+GROUP SL(2,5) x C41:C2(r=40) N 9840 (Haar graph on 19680 vertices) K 5 D 8
+PSI 0 [x->x^-1] x [u0*beta(g)^-1,beta(x)=x^1,beta(y)=y^1,u0=(0,0)] order 2 orbits(len<=K): 1x84 2x4878
+TABU psi0_t1+2+2 best 2808 sols 0 steps 238 evals 11425 restarts 0 secs 3.0
+TABU psi0_t1+1+1+2 best 9101 sols 0 steps 1313 evals 63029 restarts 4 secs 3.0
+PSI 1 [x->-x^-1] x [u0*beta(g)^-1,beta(x)=x^1,beta(y)=y^1,u0=(0,0)] order 2 orbits(len<=K): 1x1260 2x4290
+TABU psi1_t1+2+2 best 2802 sols 0 steps 253 evals 12145 restarts 0 secs 3.0
+TABU psi1_t1+1+1+2 best 1264 sols 0 steps 206 evals 9889 restarts 0 secs 3.0
+PSI 2 [x->(hxh)^-1,h=diag(1,2)] x [u0*beta(g)^-1,beta(x)=x^1,beta(y)=y^1,u0=(0,0)] order 2 orbits(len<=K): 2x4920
+PSI 3 [x->-(hxh)^-1,h=diag(1,2)] x [u0*beta(g)^-1,beta(x)=x^1,beta(y)=y^1,u0=(0,0)] order 2 orbits(len<=K): 1x840 2x4500
+TABU psi3_t1+2+2 best 2541 sols 0 steps 232 evals 11137 restarts 0 secs 3.0
+TABU psi3_t1+1+1+2 best 1121 sols 0 steps 190 evals 9121 restarts 0 secs 3.0
+DONE sols 0

@@ -1,0 +1,23 @@
+GROUP C31:C51(r=5) x Z1 N 1581 (Haar graph on 3162 vertices) K 5 D 7
+PSI 0 [u0*beta(g)^-1,beta(x)=x^1,beta(y)=y^1,u0=(0,0)] x [z->0-1*z] order 2 orbits(len<=K): 1x1 2x790
+GAMMA generators 93
+ENUM psi0_t1+2+2_enum reps 34 sets 26826 passed 0 near 1 best 1530 sols 0 secs 0.1
+PSI 1 [u0*beta(g)^-1,beta(x)=x^30,beta(y)=y^1,u0=(0,0)] x [z->0-1*z] order 2 orbits(len<=K): 1x31 2x775
+GAMMA generators 80
+ENUM psi1_t1+2+2_enum reps 50 sets 1199700 passed 0 near 3056 best 54 sols 0 secs 11.5
+ENUM psi1_t1+1+1+2_enum reps 50 sets 224750 passed 0 near 0 best -1 sols 0 secs 1.5
+ENUM psi1_t1+1+1+1+1_enum reps 2 sets 54810 passed 0 near 0 best -1 sols 0 secs 0.2
+PSI 2 [u0*beta(g)^-1,beta(x)=x^1,beta(y)=y^16,u0=(0,0)] x [z->0-1*z] order 2 orbits(len<=K): 1x17 2x782
+GAMMA generators 93
+ENUM psi2_t1+2+2_enum reps 34 sets 451418 passed 0 near 2 best 300 sols 0 secs 1.9
+ENUM psi2_t1+1+1+2_enum reps 34 sets 23120 passed 0 near 0 best -1 sols 0 secs 0.1
+ENUM psi2_t1+1+1+1+1_enum reps 17 sets 30940 passed 0 near 0 best -1 sols 0 secs 0.1
+PSI 3 [u0*beta(g)^-1,beta(x)=x^30,beta(y)=y^16,u0=(0,0)] x [z->0-1*z] order 2 orbits(len<=K): 1x527 2x527
+GAMMA generators 80
+TYPE psi3_t1+2+2 has 9.42e+06 sets > ECAP: tabu
+TABU psi3_t1+2+2 best 460 sols 0 steps 3834 evals 184045 restarts 12 secs 20.0
+TYPE psi3_t1+1+1+2 has 8.25e+08 sets > ECAP: tabu
+TABU psi3_t1+1+1+2 best 48 sols 0 steps 2524 evals 121157 restarts 4 secs 20.0
+TYPE psi3_t1+1+1+1+1 has 1.07e+11 sets > ECAP: tabu
+TABU psi3_t1+1+1+1+1 best 1128 sols 0 steps 10815 evals 519141 restarts 20 secs 20.0
+DONE sols 0

@@ -1,0 +1,50 @@
+GROUP PSL(2,3) x C17:C24(r=4) N 4896 (Haar graph on 9792 vertices) K 5 D 8
+PSI 0 [x->x^-1] x [u0*beta(g)^-1,beta(x)=x^1,beta(y)=y^1,u0=(0,0)] order 2 orbits(len<=K): 1x8 2x2444
+TABU psi0_t1+2+2 best 1603 sols 0 steps 170 evals 8161 restarts 0 secs 2.0
+TABU psi0_t1+1+1+2 best 4792 sols 0 steps 3785 evals 181693 restarts 12 secs 2.0
+PSI 1 [x->x^-1] x [u0*beta(g)^-1,beta(x)=x^1,beta(y)=y^1,u0=(0,4)] order 2 orbits(len<=K): 1x136 2x2380
+TABU psi1_t1+2+2 best 230 sols 0 steps 119 evals 5713 restarts 0 secs 2.0
+TABU psi1_t1+1+1+2 best 3402 sols 0 steps 232 evals 11137 restarts 0 secs 2.0
+PSI 2 [x->x^-1] x [u0*beta(g)^-1,beta(x)=x^1,beta(y)=y^5,u0=(0,0)] order 2 orbits(len<=K): 1x24 2x2436
+TABU psi2_t1+2+2 best 98 sols 0 steps 137 evals 6577 restarts 0 secs 2.0
+TABU psi2_t1+1+1+2 best 4600 sols 0 steps 845 evals 40563 restarts 2 secs 2.0
+PSI 3 [x->x^-1] x [u0*beta(g)^-1,beta(x)=x^1,beta(y)=y^5,u0=(0,12)] order 2 orbits(len<=K): 1x408 2x2244
+TABU psi3_t1+2+2 best 19 sols 0 steps 107 evals 5137 restarts 0 secs 2.0
+TABU psi3_t1+1+1+2 best 936 sols 0 steps 109 evals 5233 restarts 0 secs 2.0
+PSI 4 [x->x^-1] x [u0*beta(g)^-1,beta(x)=x^1,beta(y)=y^13,u0=(0,0)] order 2 orbits(len<=K): 1x8 2x2444
+TABU psi4_t1+2+2 best 698 sols 0 steps 137 evals 6577 restarts 0 secs 2.0
+TABU psi4_t1+1+1+2 best 4792 sols 0 steps 3733 evals 179197 restarts 12 secs 2.0
+PSI 5 [x->x^-1] x [u0*beta(g)^-1,beta(x)=x^1,beta(y)=y^13,u0=(0,4)] order 2 orbits(len<=K): 1x136 2x2380
+TABU psi5_t1+2+2 best 42 sols 0 steps 121 evals 5809 restarts 0 secs 2.0
+TABU psi5_t1+1+1+2 best 3402 sols 0 steps 241 evals 11569 restarts 0 secs 2.0
+PSI 6 [x->x^-1] x [u0*beta(g)^-1,beta(x)=x^1,beta(y)=y^17,u0=(0,0)] order 2 orbits(len<=K): 1x24 2x2436
+TABU psi6_t1+2+2 best 168 sols 0 steps 123 evals 5905 restarts 0 secs 2.0
+TABU psi6_t1+1+1+2 best 4600 sols 0 steps 888 evals 42627 restarts 2 secs 2.0
+PSI 7 [x->x^-1] x [u0*beta(g)^-1,beta(x)=x^1,beta(y)=y^17,u0=(0,12)] order 2 orbits(len<=K): 1x408 2x2244
+TABU psi7_t1+2+2 best 42 sols 0 steps 105 evals 5041 restarts 0 secs 2.0
+TABU psi7_t1+1+1+2 best 937 sols 0 steps 115 evals 5521 restarts 0 secs 2.0
+PSI 8 [x->(hxh)^-1,h=diag(1,2)] x [u0*beta(g)^-1,beta(x)=x^1,beta(y)=y^1,u0=(0,0)] order 2 orbits(len<=K): 1x12 2x2442
+TABU psi8_t1+2+2 best 230 sols 0 steps 117 evals 5617 restarts 0 secs 2.0
+TABU psi8_t1+1+1+2 best 4612 sols 0 steps 803 evals 38547 restarts 2 secs 2.0
+PSI 9 [x->(hxh)^-1,h=diag(1,2)] x [u0*beta(g)^-1,beta(x)=x^1,beta(y)=y^1,u0=(0,4)] order 2 orbits(len<=K): 1x204 2x2346
+TABU psi9_t1+2+2 best 27 sols 0 steps 90 evals 4321 restarts 0 secs 2.0
+TABU psi9_t1+1+1+2 best 1082 sols 0 steps 133 evals 6385 restarts 0 secs 2.0
+PSI 10 [x->(hxh)^-1,h=diag(1,2)] x [u0*beta(g)^-1,beta(x)=x^1,beta(y)=y^5,u0=(0,0)] order 2 orbits(len<=K): 1x36 2x2430
+TABU psi10_t1+2+2 best 276 sols 0 steps 169 evals 8113 restarts 0 secs 2.0
+TABU psi10_t1+1+1+2 best 4108 sols 0 steps 433 evals 20786 restarts 1 secs 2.0
+PSI 11 [x->(hxh)^-1,h=diag(1,2)] x [u0*beta(g)^-1,beta(x)=x^1,beta(y)=y^5,u0=(0,12)] order 2 orbits(len<=K): 1x612 2x2142
+TABU psi11_t1+2+2 best 148 sols 0 steps 146 evals 7009 restarts 0 secs 2.0
+TABU psi11_t1+1+1+2 best 35 sols 0 steps 128 evals 6145 restarts 0 secs 2.0
+PSI 12 [x->(hxh)^-1,h=diag(1,2)] x [u0*beta(g)^-1,beta(x)=x^1,beta(y)=y^13,u0=(0,0)] order 2 orbits(len<=K): 1x12 2x2442
+TABU psi12_t1+2+2 best 156 sols 0 steps 128 evals 6145 restarts 0 secs 2.0
+TABU psi12_t1+1+1+2 best 4612 sols 0 steps 1029 evals 49396 restarts 3 secs 2.0
+PSI 13 [x->(hxh)^-1,h=diag(1,2)] x [u0*beta(g)^-1,beta(x)=x^1,beta(y)=y^13,u0=(0,4)] order 2 orbits(len<=K): 1x204 2x2346
+TABU psi13_t1+2+2 best 29 sols 0 steps 138 evals 6625 restarts 0 secs 2.0
+TABU psi13_t1+1+1+2 best 1064 sols 0 steps 140 evals 6721 restarts 0 secs 2.0
+PSI 14 [x->(hxh)^-1,h=diag(1,2)] x [u0*beta(g)^-1,beta(x)=x^1,beta(y)=y^17,u0=(0,0)] order 2 orbits(len<=K): 1x36 2x2430
+TABU psi14_t1+2+2 best 304 sols 0 steps 155 evals 7441 restarts 0 secs 2.0
+TABU psi14_t1+1+1+2 best 4108 sols 0 steps 501 evals 24050 restarts 1 secs 2.0
+PSI 15 [x->(hxh)^-1,h=diag(1,2)] x [u0*beta(g)^-1,beta(x)=x^1,beta(y)=y^17,u0=(0,12)] order 2 orbits(len<=K): 1x612 2x2142
+TABU psi15_t1+2+2 best 155 sols 0 steps 153 evals 7345 restarts 0 secs 2.0
+TABU psi15_t1+1+1+2 best 45 sols 0 steps 108 evals 5185 restarts 0 secs 2.0
+DONE sols 0
