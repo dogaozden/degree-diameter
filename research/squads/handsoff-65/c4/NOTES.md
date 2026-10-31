@@ -21,3 +21,12 @@ even-order groups of 722..766 in random order (driver2.sh), 6 s per pair, as far
 - 2|2 SA sweep started 15:56 (driver2.sh, tasks2.txt = 705 even-order groups in random order, 6 s per pair, one seed).
   results.txt lines "sa h2 ...". Expect ~300 groups by 17:30.
 - No cost-0 graph yet. Best 2|2 cost so far: see results.txt (grep 'sa h2').
+
+## Status 16:15
+- Switched the 2|2 sweep to diagonal class pairs only (H = K as conjugacy classes, sweep_diag.sh; driver2e.sh over
+  tasks2e.txt). Mixed pairs were much worse in every case seen (720/439: 635, 38 vs 8; 760/18: 250, 344 vs 128).
+- Each group: GAP export (~2 s) + SA 6 s per diagonal pair. Groups with NOPAIRS: no core-free involution subgroups.
+- Best so far: SmallGroup(756,74) pair (1,1): dcenum cost 12 (bad = 2268 far pairs by shared/check.sh), saved as
+  best/g756_74_p1_s1.edges. A 60 s anneal gave the same 12 (converged). Next: 756,69 cost 52; 726,6 cost 38.
+- deepen.sh ORDER ID PAIR SECS SEED re-exports the group and anneals the diagonal pair (edges to best/).
+- Costs are noisy: most groups 90..600 with 6 s SA. No cost-0 graph; no HIT so far.

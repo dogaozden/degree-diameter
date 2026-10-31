@@ -31,3 +31,8 @@ Same-side pairs need distance <= 4 in the quotient, so it is a covering conditio
   double covers cannot find the known 684 solution, so SA results at 686 from that family are not meaningful.
 - Compound graphs: base/copy counting (Moore bounds for each factor) rules out copies of degree <=3 needed for 686.
 - Summary: no graph with n > 684 and bad <= ~9500 was found; GH(5,5)-based families are far from diameter 5.
+- Broader sweep (run_cyc2.py seed 17, 600 random elements): order 10 best far 21325 (n=796), n=800 far 22219, n=824/872 far 28576/44740;
+  order 8 best far 46329 (n=996). Same classes as before; no new small-far class.
+- FINAL (16:20 UTC): all card variants tried (cyclic/Z3xZ3/dihedral GH quotients + SA, GQ covers (dead, proof above),
+  induced GH subsets, compound counting, double covers (calibration fails)). No graph with n>684 and far pairs below 9520.
+  Best n>684 entry: n=686 far 9520 (sa_gh12_686.edges). Ended early by choice: no remaining variant with a real chance.

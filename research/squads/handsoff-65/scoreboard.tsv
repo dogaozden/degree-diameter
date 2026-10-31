@@ -4,3 +4,9 @@ c3	bi-coset PGammaL(2,8) H=C2xC2 exhaustive (all pairs, degree 6)	756	bad=4536	r
 c3	bi-coset PGL(2,13) H order 6 exhaustive	728	bad=8008	research/squads/handsoff-65/c3/out/PGL213_h6_1_3.edges	16:05
 c8	GH(5,5) cyclic order-12 quotient (orbit graph of H(5)), no SA	686	far=13844	research/squads/handsoff-65/c8/gh12_n686_far13844.edges	16:08
 c8	GH(5,5) order-12 quotient n=686, degree-preserving SA (sa.c)	686	far=9520	research/squads/handsoff-65/c8/sa_gh12_686.edges	16:10
+c4	bi-coset 2|2 SA, H=K class, SmallGroup(756,74) (dcenum SA 60 s)	756	bad=2268 (dcenum cost 12)	research/squads/handsoff-65/c4/best/g756_74_p1_s1.edges	16:15
+c5	mcos 1|2,2 SmallGroup(348,6) C3:(C29:C4) anneal screen	696	bad=2088 (mcos cost 18)	research/squads/handsoff-65/c5/scan/1_2-2.sg_348_6.best.edges	16:15
+c3	bi-coset (A6 x C4) H order 4 exhaustive, degree 6	720	bad=4320	research/squads/handsoff-65/c3/out/P_A6x4_h4_6_6.edges	16:16
+c7	guided SA from 684 Haar + one vertex pair (5 edges moved), 2-switches toward far pairs	686	bad=178	research/squads/handsoff-65/c7/best686_bad178.edges	16:17
+c2	3+3 lift C29:C4 (p=3 full base, tabu 9 min)	696	bad=1160 (liftcost 20)	research/squads/handsoff-65/c2/best696.edges	16:25
+c6	Haar SmallGroup(360,53) mcos floor (twist scan: no automorphism twist beats it)	720	bad=360	research/squads/handsoff-65/c6/h360_53.edges	16:30

@@ -26,3 +26,17 @@
   176 id26 C11xQ16 a1: 12; 176 id39 C22xQ8 a1: 12; 176 id40 C11x((C4xC2):C2?) a1: 12; 180 id32 C3xC6 a1: 12.
 - 172 id1 C43:C4 a2: 14. 171 (calibration): C19:C9 a1: 6.
 - Nothing reached cost 0 in 5 s. Queue q1.txt (60 s runs on the top 9 pairs) started 16:12 -> deep.tsv.
+
+### Deep runs (60 s, deep.tsv). Best floor so far = cost 4 (= the near704 level: 176 id17 C11:Q16, base a2).
+- 176/17 a2 seeds 1..3: 10, 4, 14. 176/25 a1: 6, 11. 176/1 a1: 8. 176/26 a1: 12. 176/39 a1: 8. 176/40 a1: 8. 180/32 a1: 22. 172/1 a2: 18.
+- 171/1 C19:C9 a1 (calibration, n=684): 6 in 60 s, so 684 by a 2+2 lift not found (not a yes/no answer).
+- Tabu does only ~1500 steps per minute (each step scans 9 x m moves, each a full DFS of non-backtracking walks).
+- Next: q2 = 176/17 a2 seeds 11..15 x 100 s (deep2.sh keeps solutions of cost <= 6), then kdesc (exact 2-change descent) on kept solutions.
+
+### Floor analysis (16:30-16:36)
+- q2 (176/17 a2, 100 s x 5 seeds): costs 10, 10, 4, 4, 8. Solutions of cost 4 kept in sols/.
+- Cost-4 solution: far pairs are only same-side pairs: (A1, fibre 60), (A1, fibre 125), (B2, fibre 45), (B2, fibre 140)
+  (uncov.py). Base a2 has the side-swap symmetry A1<->B2, A2<->B1, and the misses sit on that pair.
+- kdesc (exact 2-change descent) from cost 4: no improving 2-change (1.07M candidates, 37 s): a true 2-opt local minimum.
+- vl (simulated annealing, T0=3 T1=0.2) on the same group: 18 after 60 s. Tabu is much better than SA here.
+- param.sh: tabu parameter sweep on 176/17 a2 (default, TMIN/TMAX long and short, TABUEDGE, STALL/KICK), 3 seeds x 40 s each -> param.tsv.

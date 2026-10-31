@@ -69,3 +69,14 @@ glued, extended or rewired; level graphs; compound graphs (replace each vertex o
 diameter-2/3 graph); Cayley graphs of groups that are not Haar (for example G with an index-2 subgroup and S in the
 other coset); cyclic or dihedral lifts with partly fixed structure. Pick the idea you think most promising, then go
 deep.
+
+## c9 (small, replaces c8 at 16:25): re-lift quotients of the record graph
+The 684 table graph is a Haar graph H(G, S) with G = C6 x (C19:C3) (order 342). For every normal subgroup N of G
+(orders 2, 3, 6, 19, 57, 114, ...), the quotient is a base multigraph on 2|G/N| vertices with voltages in N, and the
+684 graph is its lift by N. Keep the base (it has the record's local structure) and lift it instead by OTHER groups M
+of slightly larger order (|M| > |N|, vertex count 2|G/N||M| in 686..800): for example base 6+6 (N of order 57) lifted
+by every group of order 58..66; base 18+18 (N = C19) by groups of order 20, 21, 22; base 2+2 or 3+3 likewise. Do the
+same with the base of the 704-vertex near miss (shared/near704_c11q16.edges: a 2+2 lift by SmallGroup(176,17)).
+Steps: find S (GAP: search 6-subsets of SmallGroup(342, i) for the diameter-5 Haar graph with mcos "1|1" or haarex3,
+or ask GAP for the group and anneal), write the quotient base in vl format, calibrate (tabu on the base by N itself
+must re-find cost 0), then run tabu over M. Base size limit: tabu.c MAXB 64.
