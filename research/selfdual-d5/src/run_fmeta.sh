@@ -1,6 +1,6 @@
 #!/bin/bash
 # run_fmeta.sh N M KK R: G = C_M : C_KK (y x y^-1 = x^R), GAP-free export (meta_export.py, EXT records for even
-# valency), sdtabu over every record and type (SECS each, TYPES filter); one line in logs/K$K/fmeta.txt.
+# valency), sdtabu2 (env TABU) over every record and type (SECS each, TYPES filter); one line in logs/K$K/fmeta.txt.
 R0="$(cd "$(dirname "$0")/.." && pwd)"
 KV=${K:-10}; L=${LOGDIR:-$R0/logs/K$KV}; C=${CANDDIR:-$R0/cand}; mkdir -p $L/fmeta $C
 N=$1; M=$2; Q=$3; RR=$4; T=${TMPDIR:-/tmp}/sdf; mkdir -p $T
@@ -10,7 +10,7 @@ EXT=""; [ $((KV % 2)) -eq 0 ] && EXT=EXT
 python3 $R0/src/meta_export.py $M $Q $RR $F $EXT > $L/fmeta/$tag.exp 2>&1
 if [ ! -s $F ]; then echo "$N $tag EXPFAIL" >> $L/fmeta.txt; exit 0; fi
 t1=$(date +%s)
-K=$KV SECS=${SECS:-4} MAXSOL=${MAXSOL:-2} EDGES=$C/sdf${KV}_${tag}.edges timeout ${SDKT:-3600} nice -n 5 $R0/src/sdtabu $F all > $L/fmeta/$tag.out 2>&1
+K=$KV SECS=${SECS:-4} MAXSOL=${MAXSOL:-2} EDGES=$C/sdf${KV}_${tag}.edges timeout ${SDKT:-3600} nice -n 5 $R0/src/${TABU:-sdtabu2} $F all > $L/fmeta/$tag.out 2>&1
 rc=$?
 O=$L/fmeta/$tag.out
 nty=$(grep -c "^TABU" $O); sols=$(grep -c "^SOL" $O)
