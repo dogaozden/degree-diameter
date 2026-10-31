@@ -1,0 +1,6 @@
+machine: vm; nproc=4; free -g: total 15G used 6G free 9G avail 9G (at start 0G used); Linux 6.18.44-fc-v185; gcc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0; job gencheck-i, BFS from (e,B) only
+sha256: 166929de2a622916881c41ec32ca1931e990ddf241521139b4a43cf89e06ec3c  research/frontier/sols/d20D10_psl_421_409_orb3_s1.txt  (copied from branch claude/new-cells-beyond-etos3t, file research/frontier/sols/d20D10_psl_421_409_orb3_s1.txt; 742 bytes; header "20 10 psl 421 n 409 N 15259389180")
+checker: haarcheck_psl from research/structured/tools/haarcheck_psl.c on master f816dbc7c0558c806133e0ffb8d7bd4d835fafc2 (build: gcc -O3 -o haarcheck_psl haarcheck_psl.c -lm)
+note: /usr/bin/time was not installed on this VM; installed with apt (time 1.9-0.2build1) before the run.
+
+progress 2026-10-31T22:41:07Z: started haarcheck_psl research/frontier/sols/d20D10_psl_421_409_orb3_s1.txt B (single-threaded). Elapsed 0:19, RSS 4.4 GB. Checker prints only at the end. Still running.
