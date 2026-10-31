@@ -137,30 +137,40 @@ def write_folder(folder, theorem, n, m, k, K, d, D, edges_path, adj, col, levels
     lev.append("")
     (fdir / "Levels.lean").write_text("\n".join(lev))
 
-    # Local.lean: checkLocal on two halves
-    half = n // 2
+    # Local.lean: checkLocal, from four quarters (each quarter is one kernel check; the two halves
+    # in one check peaked at 12.9 GB here), combined by Orbit.checkLocalRange_append
+    q = n // 4
+    assert n == 4 * q
     local = [
         gen,
-        "import BipartiteDD.StagedLocal",
+        "import BipartiteDD.Orbit",
         f"import {ns}.Graph",
         "",
         f"namespace {ns}",
         "",
-        "open BipartiteDD.Staged",
+        "open BipartiteDD.Staged BipartiteDD.Orbit",
         "",
-        "set_option maxRecDepth 100000 in",
-        f"/-- The local test (degrees, symmetry, colouring) of vertices `0 … {half - 1}`. -/",
-        f"theorem local_lo : checkLocalRange {K} {d} adjL colL 0 {half} = true := by",
-        "  decide +kernel",
+    ]
+    for i in range(4):
+        local += [
+            "set_option maxRecDepth 100000 in",
+            f"/-- The local test of vertices `{i * q} … {(i + 1) * q - 1}`. -/",
+            f"theorem local_q{i} : checkLocalRange {K} {d} adjL colL {i * q} {q} = true := by",
+            "  decide +kernel",
+            "",
+        ]
+    local += [
+        f"/-- The local test of vertices `0 … {2 * q - 1}`. -/",
+        f"theorem local_lo : checkLocalRange {K} {d} adjL colL 0 {2 * q} = true :=",
+        "  checkLocalRange_append local_q0 local_q1",
         "",
-        "set_option maxRecDepth 100000 in",
-        f"/-- The local test of vertices `{half} … {n - 1}`. -/",
-        f"theorem local_hi : checkLocalRange {K} {d} adjL colL {half} ({n} - {half}) = true := by",
-        "  decide +kernel",
+        f"/-- The local test of vertices `{2 * q} … {n - 1}`. -/",
+        f"theorem local_hi : checkLocalRange {K} {d} adjL colL {2 * q} ({n} - {2 * q}) = true :=",
+        "  checkLocalRange_append local_q2 local_q3",
         "",
         f"/-- The local test of the {n}-vertex graph, from its two halves. -/",
         f"theorem local_ok : checkLocal {K} {d} adjL colL = true :=",
-        f"  checkLocal_of_split {half} (by norm_num) local_lo local_hi",
+        f"  checkLocal_of_split (n := {n}) {2 * q} (by decide) local_lo local_hi",
         "",
         f"end {ns}",
         "",

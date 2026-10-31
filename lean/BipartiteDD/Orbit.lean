@@ -148,6 +148,16 @@ theorem local_spec {n K d : ℕ} (adj : List (List (Fin n))) (col : List Bool) (
   subst hwu'
   exact ⟨hw, hc⟩
 
+/-- Two adjacent vertex ranges with the local test give their union. -/
+theorem checkLocalRange_append {K d n : ℕ} {adj : List (List (Fin n))} {col : List Bool}
+    {lo m cnt : ℕ} (h1 : checkLocalRange K d adj col lo m = true)
+    (h2 : checkLocalRange K d adj col (lo + m) cnt = true) :
+    checkLocalRange K d adj col lo (m + cnt) = true := by
+  unfold checkLocalRange at h1 h2 ⊢
+  rw [← List.range'_append, List.all_append]
+  rw [h1, Bool.true_and]
+  simpa [Nat.one_mul] using h2
+
 /-- A neighbour-list table with the per-vertex local test is a bipartite graph of degree at most `d`
 whose diameter is at most `D` as soon as `ediam ≤ D`. -/
 theorem isBipartiteDegDiam_of_local {n : ℕ} (adj : List (List (Fin n))) (color : Fin n → Bool)
