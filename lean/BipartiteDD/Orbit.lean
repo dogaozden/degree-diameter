@@ -273,17 +273,33 @@ theorem tauF_inj {n m k : ℕ} (hm : 0 < m) (hn : n = m * k) (x y : Fin n)
 /-! ## 5. The automorphism check -/
 
 /-- The Bool check that the shift maps each neighbour list into the list of the image. -/
-def homOK (m K : ℕ) {n : ℕ} (adj : List (List (Fin n))) : Bool :=
-  (List.range n).all fun v =>
+def homOKRange (m K : ℕ) {n : ℕ} (adj : List (List (Fin n))) (lo cnt : ℕ) : Bool :=
+  (List.range' lo cnt).all fun v =>
     (Tree.get [] K (Tree.build [] K adj) v).all fun u =>
       (Tree.get [] K (Tree.build [] K adj) (shiftN m v)).any fun w => w.val == shiftN m u.val
+
+/-- The shift check on all `n` vertices. -/
+def homOK (m K : ℕ) {n : ℕ} (adj : List (List (Fin n))) : Bool :=
+  homOKRange m K adj 0 n
+
+/-- Two adjacent ranges of the shift check give their union (offsets as equations, as `checkLocalRange_join`). -/
+theorem homOKRange_join {m K n : ℕ} {adj : List (List (Fin n))}
+    {lo m' cnt lo2 tot : ℕ} (hl : lo + m' = lo2) (hc : m' + cnt = tot)
+    (h1 : homOKRange m K adj lo m' = true) (h2 : homOKRange m K adj lo2 cnt = true) :
+    homOKRange m K adj lo tot = true := by
+  subst hl
+  subst hc
+  unfold homOKRange at h1 h2 ⊢
+  rw [← List.range'_append, List.all_append]
+  rw [h1, Bool.true_and]
+  simpa [Nat.one_mul] using h2
 
 theorem homOK_spec {m K n : ℕ} (hK : n ≤ 2 ^ K) (adj : List (List (Fin n)))
     (hsh : ∀ v < n, shiftN m v < n) (h : homOK m K adj = true) (v u : Fin n)
     (hu : u ∈ adj.getD v.val []) :
     ∃ w ∈ adj.getD (shiftN m v.val) [], w.val = shiftN m u.val := by
-  unfold homOK at h
-  have hv := (List.all_eq_true.mp h) v.val (List.mem_range.mpr v.isLt)
+  unfold homOK homOKRange at h
+  have hv := (List.all_eq_true.mp h) v.val (List.mem_range'_1.mpr ⟨Nat.zero_le _, by rw [Nat.zero_add]; exact v.isLt⟩)
   have hu' : u ∈ Tree.get [] K (Tree.build [] K adj) v.val := by
     rw [get_build_fin hK]
     exact hu

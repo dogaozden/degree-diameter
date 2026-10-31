@@ -7,8 +7,76 @@ namespace BipartiteDD.Haar.D12D5GQ9Z6
 open BipartiteDD.Orbit
 
 set_option maxRecDepth 100000 in
+/-- The shift check on the vertices `0 … 1229`. -/
+theorem hom_q0 : homOKRange 6 14 adjL 0 1230 = true := by
+  decide +kernel
+
+set_option maxRecDepth 100000 in
+/-- The shift check on the vertices `1230 … 2459`. -/
+theorem hom_q1 : homOKRange 6 14 adjL 1230 1230 = true := by
+  decide +kernel
+
+set_option maxRecDepth 100000 in
+/-- The shift check on the vertices `2460 … 3689`. -/
+theorem hom_q2 : homOKRange 6 14 adjL 2460 1230 = true := by
+  decide +kernel
+
+set_option maxRecDepth 100000 in
+/-- The shift check on the vertices `3690 … 4919`. -/
+theorem hom_q3 : homOKRange 6 14 adjL 3690 1230 = true := by
+  decide +kernel
+
+set_option maxRecDepth 100000 in
+/-- The shift check on the vertices `4920 … 6149`. -/
+theorem hom_q4 : homOKRange 6 14 adjL 4920 1230 = true := by
+  decide +kernel
+
+set_option maxRecDepth 100000 in
+/-- The shift check on the vertices `6150 … 7379`. -/
+theorem hom_q5 : homOKRange 6 14 adjL 6150 1230 = true := by
+  decide +kernel
+
+set_option maxRecDepth 100000 in
+/-- The shift check on the vertices `7380 … 8609`. -/
+theorem hom_q6 : homOKRange 6 14 adjL 7380 1230 = true := by
+  decide +kernel
+
+set_option maxRecDepth 100000 in
+/-- The shift check on the vertices `8610 … 9839`. -/
+theorem hom_q7 : homOKRange 6 14 adjL 8610 1230 = true := by
+  decide +kernel
+
+/-- The shift check on the vertices `0 … 2459`. -/
+theorem hom_p1 : homOKRange 6 14 adjL 0 2460 = true :=
+  homOKRange_join (lo2 := 1230) (tot := 2460) (by decide) (by decide) hom_q0 hom_q1
+
+/-- The shift check on the vertices `0 … 3689`. -/
+theorem hom_p2 : homOKRange 6 14 adjL 0 3690 = true :=
+  homOKRange_join (lo2 := 2460) (tot := 3690) (by decide) (by decide) hom_p1 hom_q2
+
+/-- The shift check on the vertices `0 … 4919`. -/
+theorem hom_p3 : homOKRange 6 14 adjL 0 4920 = true :=
+  homOKRange_join (lo2 := 3690) (tot := 4920) (by decide) (by decide) hom_p2 hom_q3
+
+/-- The shift check on the vertices `0 … 6149`. -/
+theorem hom_p4 : homOKRange 6 14 adjL 0 6150 = true :=
+  homOKRange_join (lo2 := 4920) (tot := 6150) (by decide) (by decide) hom_p3 hom_q4
+
+/-- The shift check on the vertices `0 … 7379`. -/
+theorem hom_p5 : homOKRange 6 14 adjL 0 7380 = true :=
+  homOKRange_join (lo2 := 6150) (tot := 7380) (by decide) (by decide) hom_p4 hom_q5
+
+/-- The shift check on the vertices `0 … 8609`. -/
+theorem hom_p6 : homOKRange 6 14 adjL 0 8610 = true :=
+  homOKRange_join (lo2 := 7380) (tot := 8610) (by decide) (by decide) hom_p5 hom_q6
+
+/-- The shift check on the vertices `0 … 9839`. -/
+theorem hom_p7 : homOKRange 6 14 adjL 0 9840 = true :=
+  homOKRange_join (lo2 := 8610) (tot := 9840) (by decide) (by decide) hom_p6 hom_q7
+
 /-- The cyclic shift `h ↦ h + 1 (mod 6)` in each fibre is an automorphism of the graph. -/
 theorem hom_ok : homOK 6 14 adjL = true := by
-  decide +kernel
+  unfold homOK
+  exact hom_p7
 
 end BipartiteDD.Haar.D12D5GQ9Z6
