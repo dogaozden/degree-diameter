@@ -21,7 +21,7 @@ theorem hs : ∀ r < 5, BipartiteDD.Fast.step 14 (BipartiteDD.Fast.Tree.build []
 
 /-- The 9840-vertex graph (`k = 1640` representatives, `m = 6`): bipartite, degree at most 12, diameter at most 5. -/
 theorem nb_12_5_n9840 : ∃ G : SimpleGraph (Fin 9840), BipartiteDD.IsBipartiteDegDiam G 12 5 :=
-  lift_sound (n := 9840) (m := 6) (k := 1640) (K := 14) (d := 12) (D := 5) (by norm_num) (by norm_num)
-    (by norm_num) (by norm_num) adjL colL local_ok hom_ok L rfl hs rfl
+  lift_sound (n := 9840) (m := 6) (k := 1640) (K := 14) (d := 12) (D := 5) (by decide) (by decide)
+    (by decide) (by decide) adjL colL local_ok hom_ok L rfl hs rfl
 
 end BipartiteDD.Haar.D12D5GQ9Z6
