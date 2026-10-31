@@ -1,0 +1,8 @@
+machine: vm; nproc=4; free -g: total 15G used 2G free 12G avail 12G; Linux 6.18.44-fc-v185; gcc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0
+date: 2026-10-31T22:41:19Z
+file: research/frontier/sols/d20D10_psl_421_409_orb3_s1.txt  (from branch claude/new-cells-beyond-etos3t @ 74dc341); sha256 166929de2a622916881c41ec32ca1931e990ddf241521139b4a43cf89e06ec3c
+header: 20 10 psl 421 n 409 N 15259389180 (vertices 2N = 30518778360)
+job: BFS from (e,A) only (haarcheck_psl <file> A, checker from master f816dbc); the (e,B) BFS and haarcheck_gen run in other jobs
+timer: /usr/bin/time -v (GNU time installed via apt in this VM)
+
+progress 2026-10-31T22:41:35Z: elapsed 0m; still running (PID 710)
