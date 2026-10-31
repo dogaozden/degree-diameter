@@ -3,6 +3,15 @@
 Job "selfdual-hi" (Opus cloud session, Oct 31 2026). Method of `../selfdual-d5/README.md` and `../d75-raise/README.md`,
 taken from D = 5 to D = 7 and 8 with formula-only groups (no GAP).
 
+## Result
+
+**No record.** No self-dual Haar graph beats any of the six targets ((5,7) 3,120, (6,7) 8,880, (8,7) 43,344,
+(5,8) 9,760, (6,8) 31,680, (7,8) 95,760). The method does not transfer from D = 5 to D = 7, 8 in the groups that
+hold these cells. The reason is measured below (`Status`): a self-dual S has more coinciding words than a random S,
+at a rate set by the commuting probability of G, and at D = 7, 8 that loss outweighs the halved test. Closest:
+(5,8) on SL(2,17) (N = 4,896, 9,792 vertices, just above the record): self-dual families best 6 uncovered (3 missed
+psi-pairs) after 3.2e7 evaluations, plain annealing best 3 after 2.9e7. Every claim below has its log under `logs/`.
+
 ## The test at diameter D
 
 H(G,S): vertices (g,A), (g,B); (g,A) ~ (s g, B). X = S^-1 S. If psi(S) = S for psi(x) = u0 beta(x)^-1 (beta in
@@ -23,8 +32,11 @@ automorphism-like map, so j > 1 combines self-duality with orbit-symmetric S (re
 |---|---|---|
 | `sdhi.c` | groups Q1 x Q2 from formulas (SL/PSL/PGL(2,q), q = p^e <= 64; metacyclic C_m : C_k; Z_n); psi options per factor (involutions modulo inner automorphisms; ORDS for higher orders); types = partitions of K into orbit lengths; tabu inside the family (energy = uncovered vertices of the side of parity D-1 within distance D-1 of (e,A)), ENUM=1 exhaustive enumeration with fast rejection and normalisation by the automorphisms commuting with psi; every hit gets a full BFS from (e,A) and (e,B). Header comment has every option. | D = 5, K = 7 on C41 : C16 (the 1,312 group): the tabu finds valid self-dual sets in 1.8 s; ENUM gives the same 202,625,280 sets / 320 solutions as the first version. D = 7, K = 5: PGL(2,5) x Z11 (2,640 vertices) and SL(2,5) x Z10 have self-dual solutions; builder and apsp agree. |
 | `build_sdhi.py` | independent builder from the printed formula (own field, matrix and metacyclic arithmetic), same vertex numbering as sdhi's EDGES; BFS from (e,A) and (e,B); compares edge lists | identical edge lists on the probe solutions |
+| `haar_sd.c` | research/structured/haar_sym.c plus SDUAL="QOPT U Z0": the same annealer and bitset BFS with S a union of psi-orbits (QOPT inv, ninv, tw, ntw, cinv, meta:A:V:I0:J0; z -> Z0 - U z), one-sided cost at odd D, fixed generators other than e when psi(e) != e or SDNOE=1; the two-sided full check before a solution is written is unchanged. 30-50x faster than sdhi's tabu at N ~ 5,000-20,000 | C61:C80 psi3 type 1+2+2: best 6, the same as sdhi's exhaustive enumeration of that family |
+| `hsd_queue.py` | queue of haar_sd jobs, P at a time | |
 | `meta_list.py` | metacyclic groups of an order range, one r per cyclic subgroup <r>, with involution counts | |
 | `sweep.py` | parallel driver: one sdhi run per group, `summary.txt`, `SOLS.txt` | |
+| `sdhi` RANDS=n | energy and mean ball sizes \|X^j\| of n random sets per psi/type (with PLAIN=1 also of plain random S): the distinctness diagnostic below | |
 
 Checks of every hit: research/lifts/coordinator_check/apsp.c (`src/apsp`), VALID at D and INVALID at D-1.
 
@@ -73,6 +85,31 @@ Checks of every hit: research/lifts/coordinator_check/apsp.c (`src/apsp`), VALID
   SL(2,5) x Z37 up to 50 %.
 - (5,7) in SL(2,7) x Z4 (N = 1,344): 1,903 self-dual solutions, all with u0 = -I (psi(x) = -x^-1 or
   -(hxh)^-1 on SL(2,7)), mostly type 1+1+1+2 (`logs/K5D7/lowcomm/`); PGL(2,7) x Z4: none (best 3), PSL(2,7) x Z9
-  (1,512): none (best 2). SL(2,7) x Z5 (1,680, above the record) with those psi is running (`logs/K5D7/sl7x5/`).
+  (1,512): none (best 2). Above the record, N = 1,680: SL(2,7) x Z5 with those psi, types 1+2+2 and (psi3) 1+1+1+2
+  enumerated exhaustively, the rest tabu 120 s: no solution, best 8 (`logs/K5D7/sl7x5/`); PSL(2,7) x Z10 best 5.
+  (5,7) is closed for this method: the self-dual frontier in every family tried lies at or below N = 1,344.
+- (6,8): calibration on the record group PSL(2,11) x Z24 with the twisted psi (haar_sd, three psi-pairs): best 7
+  after 1.6e7 evaluations, so the family does not even reach the record order (`logs/K6D8/cal_psl11_24_tw.log`).
+  Distinctness: PSL(2,11) x Z25 best self-dual family |X^3| 8,983 against 10,873 plain. Closed.
+- (5,8) on SL(2,17), PGL(2,17), PSL(2,17) x Z2 (order 4,896, 9,792 vertices; commuting probability 0.4 % for
+  SL(2,17)). The best family, psi(x) = -(hxh)^-1 (outer, u0 = -I), keeps 98 % of the distinct words at distance 6.
+  haar_sd (`logs/K5D8/hsd/`), 600-1,200 s per run: types 1+1+1+2 and 1+2+2 with psi = -x^-1 and -(hxh)^-1, 3.2-4.5e7
+  evaluations each: best 6 (three missed psi-pairs); sdhi tabu (`logs/K5D8/tabu_*.txt`): best 6 (PSL(2,17) x Z2:
+  13+, PGL(2,17): 16+). Control, plain annealing (haar_sym without symmetry) on the same groups: SL(2,17) best 3
+  after 2.9e7 evaluations (3 seeds: 3, 3, 4), PGL(2,17) best 14, PSL(2,17) x Z2 best 13. So SL(2,17) is the closest
+  group found to a (5,8) graph above the record, for self-dual and plain sets alike, and neither closes it.
+
 - Squad round sdhi-r1 (8 Haiku cards, `../squads/sdhi-r1/cards.md`): (5,8) metacyclic and product groups, deep tabu
   near the record shape, haar_sd at (6,8) and (7,8), (5,7) metacyclic, a wildcard.
+
+## What is left open
+
+- (5,8) on SL(2,17): best 3 (plain) and 6 = 3 pairs (self-dual) after a few 1e7 evaluations. Longer annealing or
+  exhaustive enumeration of the self-dual type 1+2+2 (about 2.3e7 sets after the normalisation, like C61:C80;
+  sdhi ENUM=1 PSI=3 TYPES=1+2+2, a few hours with D = 8 fast rejection) would settle the self-dual family there.
+- The diagnosis says where self-duality can still pay at D = 7, 8: groups with a very low commuting probability
+  (a large simple factor, no cyclic factor) and small valency K (5), where orbit-symmetric S do not fit. Groups
+  of the right orders are scarce near the targets (SL(2,17) for (5,8); none for (5,7) between 1,561 and 1,680).
+- At K >= 12 the combination with orbit symmetry (psi of order 6, ORDS=6) gets families with two or more free
+  6-orbits; at even D its misses come in clumps of 6. None of our targets has K that large.
+
