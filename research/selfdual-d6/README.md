@@ -117,8 +117,10 @@ Every method stops at 0.55-0.7 of mu, about 9 % of G uncovered; nothing is close
 
 **(11,6)** (haar_sd only; sdhi's tables stop at 8,192 elements per factor). Calibration: valid graphs at N = 12,144
 (SL(2,23), self-dual psi = -x^-1), 12,180 (PSL(2,29), plain and self-dual tw) and 14,880 (PSL(2,31), plain, in
-0.1 s); all checked with build_haar2.py + apsp (VALID at 6, INVALID at 5), the PSL(2,31) graph saved under
-`records/`. Target order (600 s each): PSL(2,11) x Z113 (N = 74,580, mu 16,811): best 15,058 uncovered (plain);
+0.1 s) and **17,136** (PSL(2,17) x Z7, self-dual tw, 34,272 vertices; plain best 1 after 400 s); all checked with
+build_haar2.py + apsp (VALID at 6, INVALID at 5), the PSL(2,31) graph saved under `records/`. Above that (400 s
+each): PSL(2,13) x Z17 (18,564, mu 47) plain 5, PGL(2,27) (19,656, mu 69) plain 18, SL(2,29) (24,360, mu 254) plain
+113, self-dual 165. So the K = 11 frontier is at N ~ 17,000-18,500, again at the ceiling (N_h = 21,117). Target order (600 s each): PSL(2,11) x Z113 (N = 74,580, mu 16,811): best 15,058 uncovered (plain);
 SL(2,43) (79,464, mu 19,630): plain 17,563, self-dual (-x^-1) 17,961; PSL(2,43) x Z2 self-dual (tw) 18,312. About 0.9
 of mu: the (11,6) target is 3.5 times the ceiling N_h = 21,117 and no search can see it.
 
@@ -130,3 +132,22 @@ any D: at even D = 2k the energy is the number of side-B elements outside S X^(k
 Read their header comments. sdhi handles factors of at most 8,192 elements (multiplication tables), so the (11,6)
 runs use haar_sd only. New here: `count_model.py` (counting model at D = 6), `runq.py` (run a file of shell lines,
 P at a time). `apsp` = research/lifts/coordinator_check/apsp.c.
+
+## What is left open
+
+- The D = 6 targets need N_target / N_h = 1.96 ((7,6)), 3.5 ((11,6)), 4.2 ((13,6)), 4.7 ((15,6)), 3.8 ((16,6)) times
+  the first-moment ceiling of Haar graphs. A Haar or bipartite Cayley graph there would need S S^-1 S S^-1 S to cover
+  G with every element hit about twice (W/N = 1.95 at (7,6), 1.49 at (11,6)) and no gaps: an algebraic object in the
+  spirit of a generalized hexagon (W/N = 1), not something a search over random-like or symmetric S finds. We know no
+  such family; none of the structured families tried (self-dual involutions, psi of order 6, orbits of order 3,
+  Heisenberg groups, AGL(1,q) with polynomial S, metacyclic groups) beats random by more than the usual 0.6 factor.
+- (13,6), (15,6), (16,6) were not run: the model puts them further above the ceiling than (11,6), whose target-order
+  runs already sit at 0.9 mu.
+- The non-Haar constructions (Delorme's doubling, our Theorem D lifts of hexagons, `../p4/d6/REPORT.md`) remain the
+  right family for D = 6.
+
+## Timeline (UTC)
+
+08:30 start; 08:35-08:45 calibration ladder (valid graphs up to N = 2,352); 08:40-08:55 squad round sd6-r1; 09:13-09:57
+frontier runs at N = 2,448-2,688, long runs at SL(2,17) (best 412), (11,6) calibration (up to 17,136) and target runs
+(15,058+ uncovered). Pushed at 08:38, 08:55, 09:10, 09:25, 09:45 and at the end.
