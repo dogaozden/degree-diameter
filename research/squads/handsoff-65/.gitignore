@@ -1,0 +1,4 @@
+# Worker scratch (group tables, scans, binaries, about 2 GB) stays out of git; code, notes, scoreboards and the
+# edge lists named in REPORT.md and scoreboard.tsv are committed explicitly.
+*
+!.gitignore

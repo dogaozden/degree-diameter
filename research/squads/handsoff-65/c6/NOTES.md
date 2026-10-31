@@ -27,3 +27,9 @@ Tool: tw.c (SA over sigma swaps and S changes, full bit-parallel BFS cost = unor
   * General sigma (tw gen): ~3000 at n=686 and n=720 (random sigma ~11000).
   * Pool restriction to elements of order 3,6 gives non-simple (multi-edge) graphs; not useful.
 - pipe.sh ORDER IDX SECS: mcos Haar floor, then exhaustive automorphism-twist scan for each 5-subset of the floor S6.
+- Final sweep (pipe.sh): floors (mcos Haar, 30-40 s) and exhaustive automorphism-twist scans (fixed 5-subsets of the floor S6):
+  352_50 floor bad 2112, scan best 2112 (identity); 372_1 floor 1488, scan best 1488 (identity);
+  351 groups (n=702): floors 702 (351_6, 351_10), 1053 (351_3,4,5,7,12), 1404 (351_1,8), 1755 (351_11,13), 30537 and 35100 (abelian);
+  every scan's best was the identity (Haar) or worse (2340-10179). No twist beats the Haar floor. No zero anywhere.
+- Best personal result: n=720 (SmallGroup(360,53)), bad 360 (h360_53.edges, Haar). Logged in scoreboard.tsv.
+- Stopped at 21:08 UTC (clock was past the 17:45 deadline); no processes of mine left running.
