@@ -11,6 +11,7 @@ here is new; no existing file is changed.
 | 1 | (8,5) | 2,048 | route-chart lift (affine fibre maps), 8-regular | `D8D5N2048` | `nb_8_5_n2048` | staged (`gen_d8D5_n2048.py` → `gen_staged_lift.py`) | propext, Classical.choice, Quot.sound |
 | 2 | (5,8) | 9,760 | Haar graph of `Z61 ⋊ Z80` (`meta 61 80 8`), S of size 5 | `D5D8N9760` | `nb_5_8_n9760` | Haar, `Eight.lean` lemma, chunked word certificates (`gen_d5D8_n9760.py`) | propext, Classical.choice, Quot.sound |
 | 3 | (5,9) | 29,756 | Haar graph of `Z346 ⋊ Z43` (`meta 346 43 29`), S of size 5 | `D5D9N29756` | `nb_5_9_n29756` | Haar, `Diam9.lean` lemma (8-letter covers), 12 chunks per pattern (`gen_d5D9_n29756.py`) | propext, Classical.choice, Quot.sound |
+| 4 | (6,8) | 31,680 | Haar graph of `PSL(2,11) × Z24` (order 15840), S of size 6 | `D6D8PSL11Z24` | `nb_6_8_n31680` | Haar, `Eight.lean` lemma, chunked word certificates, PSL(2,11) derived from the D7D8 PSL(2,19) file (`gen_d6D8_n31680.py`) | propext, Classical.choice, Quot.sound |
 
 Edge lists used:
 - (8,5): `research/theorems/chartlift/graphs/d8D5_n2048.edges.gz` (copy in the folder). The construction is not a plain
@@ -88,6 +89,26 @@ largest child's peak RSS (`getrusage`); `/usr/bin/time` is not installed in this
 | `Cover` | 3.9 s | 1.83 GB |
 | `Record29756` | 4.8 s | 1.87 GB |
 | `Axioms` (`lake env lean`) | 2.7 s | 1.84 GB |
+
+### (6,8) 31,680, module folder `D6D8PSL11Z24`
+
+| Module | Wall time | Peak RSS |
+|---|---:|---:|
+| `PSL11` (group, derived from `D7D8/PSL19.lean`) | 11.0 s | 1.98 GB |
+| `Base`, `Gens` | 5.1 s, 5.0 s | 1.82 GB each |
+| `CertA0` … `CertA10` | 38–62 s each | 4.41–4.53 GB each |
+| `CertB0` … `CertB10` | 38–63 s each | 4.41–4.54 GB each |
+| `CertC0` … `CertC10` | 39–50 s each | 4.17–4.18 GB each |
+| `Cover` | 4.0 s | 1.87 GB |
+| `Record31680` | 4.3 s | 1.89 GB |
+| `Axioms` (`lake env lean`) | 3.6 s | 1.87 GB |
+
+Two things that failed first, for (6,8):
+- The record with `G` as the product `PSL11.Grp × Multiplicative (ZMod 24)` timed out in elaboration (`whnf`, then
+  `isDefEq` at each cover argument, also with 1,000,000 heartbeats). With `sorry` in place of the covers the application
+  elaborated in 3.6 s, so the covers' types and the lemma's expected types were not unifying. The fix that worked: `G`
+  is a structure `(p : PSL11.Grp, z : ZMod 24)` with its own group instance, as the `Grp` of the (5,8) record. The
+  chunks were then rebuilt.
 
 Failed attempt for the record (not kept): the monolithic `CertA` (one `decide +kernel` over 4880 entries) was killed
 at 13.02 GB after 123 s.
