@@ -19,13 +19,13 @@
 18 exhaustive-haarex4 pairs=1126 prefixes=893036 Acovered=0 valid=0
 19 open -
 20 open -
-21 open -
-22 open -
-23 open -
+21 exhaustive-haarex6 pairs=1063 prefixes=1396284 Acovered=0 valid=0
+22 exhaustive-haarex6 pairs=1063 prefixes=1382268 Acovered=0 valid=0
+23 exhaustive-haarex6 pairs=1063 prefixes=1253980 Acovered=0 valid=0
 24 open -
-25 open -
-26 open -
-27 open -
+25 exhaustive-haarex6 pairs=1063 prefixes=1223209 Acovered=0 valid=0
+26 exhaustive-haarex6 pairs=1063 prefixes=1225583 Acovered=0 valid=0
+27 exhaustive-haarex6 pairs=1063 prefixes=1223209 Acovered=0 valid=0
 28 exhaustive-haarex5 pairs=1063 prefixes=1393962 Acovered=0 valid=0
 29 exhaustive-haarex5 pairs=1063 prefixes=1393962 Acovered=0 valid=0
 30 open -
@@ -64,9 +64,9 @@
 63 open -
 64 exhaustive-haarex5 pairs=1195 prefixes=1387876 Acovered=0 valid=0
 65 open -
-66 open -
-67 open -
-68 open -
+66 exhaustive-haarex6 pairs=1063 prefixes=1376839 Acovered=0 valid=0
+67 exhaustive-haarex6 pairs=1063 prefixes=1379524 Acovered=0 valid=0
+68 exhaustive-haarex6 pairs=1063 prefixes=1376839 Acovered=0 valid=0
 69 open -
 70 exhaustive-haarex5 pairs=1063 prefixes=1389955 Acovered=0 valid=0
 71 exhaustive-haarex5 pairs=1063 prefixes=1392644 Acovered=0 valid=0
@@ -168,16 +168,16 @@
 167 exhaustive-haarex4 pairs=1399 prefixes=784062 Acovered=0 valid=0
 168 exhaustive-haarex4 pairs=1045 prefixes=715690 Acovered=0 valid=0
 169 exhaustive-haarex4 pairs=1405 prefixes=1059488 Acovered=0 valid=0
-170 open -
-171 open -
+170 exhaustive-haarex6 pairs=1969 prefixes=2864845 Acovered=0 valid=0
+171 exhaustive-haarex6 pairs=1639 prefixes=2670985 Acovered=0 valid=0
 172 open -
 173 exhaustive-haarex4 pairs=1462 prefixes=1178109 Acovered=0 valid=0
 174 open -
 175 exhaustive-haarex4 pairs=1567 prefixes=2647243 Acovered=0 valid=0
 176 exhaustive-haarex4 pairs=1633 prefixes=2007795 Acovered=0 valid=0
 177 exhaustive-haarex4 pairs=1177 prefixes=973042 Acovered=0 valid=0
-178 open -
-179 open -
+178 exhaustive-haarex6 pairs=1567 prefixes=2570015 Acovered=0 valid=0
+179 exhaustive-haarex6 pairs=1567 prefixes=2076487 Acovered=0 valid=0
 180 open -
 181 exhaustive-haarex4 pairs=1102 prefixes=1048864 Acovered=0 valid=0
 182 open -
@@ -186,31 +186,31 @@
 185 open -
 186 exhaustive-haarex4 pairs=754 prefixes=791148 Acovered=0 valid=0
 187 exhaustive-haarex5 pairs=781 prefixes=740079 Acovered=0 valid=0
-188 open -
-189 open -
+188 exhaustive-haarex6 pairs=1564 prefixes=1225535 Acovered=0 valid=0
+189 exhaustive-haarex6 pairs=1021 prefixes=770981 Acovered=0 valid=0
 190 exhaustive-haarex5 pairs=751 prefixes=722298 Acovered=0 valid=0
 191 exhaustive-haarex5 pairs=1066 prefixes=1082286 Acovered=0 valid=0
-192 open -
-193 open -
-194 open -
+192 exhaustive-haarex6 pairs=1054 prefixes=1034961 Acovered=0 valid=0
+193 exhaustive-haarex6 pairs=1222 prefixes=1262098 Acovered=0 valid=0
+194 exhaustive-haarex6 pairs=1066 prefixes=1083044 Acovered=0 valid=0
 195 exhaustive-haarex5 pairs=1834 prefixes=1471591 Acovered=0 valid=0
 196 exhaustive-haarex5 pairs=1564 prefixes=1334132 Acovered=0 valid=0
 197 exhaustive-haarex5 pairs=1222 prefixes=1112422 Acovered=0 valid=0
 198 open -
 199 open -
-200 open -
-201 open -
-202 open -
-203 open -
-204 open -
-205 open -
+200 exhaustive-haarex6 pairs=1546 prefixes=1208000 Acovered=0 valid=0
+201 exhaustive-haarex6 pairs=1534 prefixes=1134717 Acovered=0 valid=0
+202 exhaustive-haarex6 pairs=1192 prefixes=1079971 Acovered=0 valid=0
+203 exhaustive-haarex6 pairs=742 prefixes=900641 Acovered=0 valid=0
+204 exhaustive-haarex6 pairs=1036 prefixes=1025005 Acovered=0 valid=0
+205 exhaustive-haarex6 pairs=610 prefixes=647110 Acovered=0 valid=0
 206 exhaustive-haarex5 pairs=763 prefixes=709947 Acovered=0 valid=0
 207 exhaustive-haarex5 pairs=1534 prefixes=1136230 Acovered=0 valid=0
 208 exhaustive-haarex5 pairs=871 prefixes=922352 Acovered=0 valid=0
 209 exhaustive-haarex5 pairs=1036 prefixes=1029143 Acovered=0 valid=0
 210 exhaustive-haarex5 pairs=1351 prefixes=832125 Acovered=0 valid=0
 211 exhaustive-haarex5 pairs=871 prefixes=922352 Acovered=0 valid=0
-212 open -
+212 exhaustive-haarex6 pairs=1150 prefixes=1323869 Acovered=0 valid=0
 213 open -
 214 exhaustive-haarex5 pairs=1912 prefixes=1683782 Acovered=0 valid=0
 215 open -
@@ -220,12 +220,12 @@
 219 exhaustive-haarex5 pairs=871 prefixes=907573 Acovered=0 valid=0
 220 exhaustive-haarex5 pairs=1015 prefixes=984424 Acovered=0 valid=0
 221 open -
-222 open -
+222 exhaustive-haarex6 pairs=1150 prefixes=1305703 Acovered=0 valid=0
 223 open -
 224 exhaustive-haarex5 pairs=1150 prefixes=1334182 Acovered=0 valid=0
-225 open -
+225 exhaustive-haarex6 pairs=1150 prefixes=1307759 Acovered=0 valid=0
 226 exhaustive-haarex5 pairs=1150 prefixes=1336242 Acovered=0 valid=0
-227 open -
+227 exhaustive-haarex6 pairs=1150 prefixes=1305703 Acovered=0 valid=0
 228 exhaustive-haarex5 pairs=1150 prefixes=1334182 Acovered=0 valid=0
 229 exhaustive-haarex5 pairs=949 prefixes=791755 Acovered=0 valid=0
 230 exhaustive-haarex5 pairs=1285 prefixes=880363 Acovered=0 valid=0
@@ -247,35 +247,35 @@
 246 exhaustive-haarex5 pairs=1084 prefixes=1075167 Acovered=0 valid=0
 247 exhaustive-haarex5 pairs=1654 prefixes=1629654 Acovered=0 valid=0
 248 exhaustive-haarex5 pairs=1630 prefixes=1577826 Acovered=0 valid=0
-249 open -
-250 open -
-251 open -
-252 open -
-253 open -
-254 open -
-255 open -
-256 open -
-257 open -
-258 open -
-259 open -
-260 open -
-261 open -
-262 open -
-263 open -
-264 open -
-265 open -
-266 open -
-267 open -
-268 open -
-269 open -
+249 exhaustive-haarex6 pairs=1309 prefixes=1326011 Acovered=0 valid=0
+250 exhaustive-haarex6 pairs=1438 prefixes=1206987 Acovered=0 valid=0
+251 exhaustive-haarex6 pairs=1582 prefixes=1364913 Acovered=0 valid=0
+252 exhaustive-haarex6 pairs=1039 prefixes=763021 Acovered=0 valid=0
+253 exhaustive-haarex6 pairs=1222 prefixes=1153964 Acovered=0 valid=0
+254 exhaustive-haarex6 pairs=1222 prefixes=1134675 Acovered=0 valid=0
+255 exhaustive-haarex6 pairs=769 prefixes=696533 Acovered=0 valid=0
+256 exhaustive-haarex6 pairs=1066 prefixes=1089665 Acovered=0 valid=0
+257 exhaustive-haarex6 pairs=913 prefixes=1139216 Acovered=0 valid=0
+258 exhaustive-haarex6 pairs=1036 prefixes=1106446 Acovered=0 valid=0
+259 exhaustive-haarex6 pairs=622 prefixes=664477 Acovered=0 valid=0
+260 exhaustive-haarex6 pairs=1210 prefixes=1073876 Acovered=0 valid=0
+261 exhaustive-haarex6 pairs=1210 prefixes=1203699 Acovered=0 valid=0
+262 exhaustive-haarex6 pairs=1024 prefixes=1013154 Acovered=0 valid=0
+263 exhaustive-haarex6 pairs=1066 prefixes=1044854 Acovered=0 valid=0
+264 exhaustive-haarex6 pairs=622 prefixes=667744 Acovered=0 valid=0
+265 exhaustive-haarex6 pairs=961 prefixes=1220675 Acovered=0 valid=0
+266 exhaustive-haarex6 pairs=913 prefixes=1130653 Acovered=0 valid=0
+267 exhaustive-haarex6 pairs=889 prefixes=955424 Acovered=0 valid=0
+268 exhaustive-haarex6 pairs=1270 prefixes=1403722 Acovered=0 valid=0
+269 exhaustive-haarex6 pairs=889 prefixes=983067 Acovered=0 valid=0
 270 open -
 271 open -
-272 open -
-273 open -
+272 exhaustive-haarex6 pairs=1129 prefixes=1431962 Acovered=0 valid=0
+273 exhaustive-haarex6 pairs=1129 prefixes=1431074 Acovered=0 valid=0
 274 open -
 275 exhaustive-haarex5 pairs=1315 prefixes=1448907 Acovered=0 valid=0
-276 open -
-277 open -
+276 exhaustive-haarex6 pairs=1129 prefixes=1445175 Acovered=0 valid=0
+277 exhaustive-haarex6 pairs=1129 prefixes=1317837 Acovered=0 valid=0
 278 exhaustive-haarex5 pairs=2506 prefixes=1421918 Acovered=0 valid=0
 279 exhaustive-haarex5 pairs=1834 prefixes=1279490 Acovered=0 valid=0
 280 exhaustive-haarex5 pairs=1834 prefixes=1282653 Acovered=0 valid=0
@@ -414,33 +414,33 @@
 413 exhaustive-haarex5 pairs=1453 prefixes=1341913 Acovered=0 valid=0
 414 exhaustive-haarex5 pairs=1582 prefixes=2135855 Acovered=0 valid=0
 415 exhaustive-haarex5 pairs=2224 prefixes=2370380 Acovered=0 valid=0
-416 open -
+416 exhaustive-haarex6 pairs=1189 prefixes=1248996 Acovered=0 valid=0
 417 exhaustive-haarex5 pairs=901 prefixes=1188963 Acovered=0 valid=0
-418 open -
+418 exhaustive-haarex6 pairs=1522 prefixes=2099773 Acovered=0 valid=0
 419 exhaustive-haarex5 pairs=1756 prefixes=2230728 Acovered=0 valid=0
-420 open -
+420 exhaustive-haarex6 pairs=1318 prefixes=1912844 Acovered=0 valid=0
 421 exhaustive-haarex5 pairs=1522 prefixes=2056017 Acovered=0 valid=0
 422 exhaustive-haarex5 pairs=1870 prefixes=2113594 Acovered=0 valid=0
 423 exhaustive-haarex5 pairs=1348 prefixes=1956554 Acovered=0 valid=0
 424 exhaustive-haarex5 pairs=1318 prefixes=1922098 Acovered=0 valid=0
-425 open -
+425 exhaustive-haarex6 pairs=1189 prefixes=1193316 Acovered=0 valid=0
 426 exhaustive-haarex5 pairs=1015 prefixes=1175545 Acovered=0 valid=0
 427 exhaustive-haarex5 pairs=1348 prefixes=1978979 Acovered=0 valid=0
 428 exhaustive-haarex5 pairs=1393 prefixes=1285962 Acovered=0 valid=0
-429 open -
-430 open -
+429 exhaustive-haarex6 pairs=901 prefixes=1128239 Acovered=0 valid=0
+430 exhaustive-haarex6 pairs=1900 prefixes=2220260 Acovered=0 valid=0
 431 exhaustive-haarex5 pairs=931 prefixes=1230931 Acovered=0 valid=0
 432 exhaustive-haarex5 pairs=1573 prefixes=1402353 Acovered=0 valid=0
-433 open -
-434 open -
+433 exhaustive-haarex6 pairs=772 prefixes=1174118 Acovered=0 valid=0
+434 exhaustive-haarex6 pairs=772 prefixes=1181958 Acovered=0 valid=0
 435 exhaustive-haarex5 pairs=1612 prefixes=2161296 Acovered=0 valid=0
 436 exhaustive-haarex5 pairs=1348 prefixes=1978532 Acovered=0 valid=0
 437 exhaustive-haarex5 pairs=1900 prefixes=2193482 Acovered=0 valid=0
 438 exhaustive-haarex5 pairs=1348 prefixes=1988096 Acovered=0 valid=0
 439 exhaustive-haarex5 pairs=1900 prefixes=2193239 Acovered=0 valid=0
 440 open -
-441 open -
-442 open -
+441 exhaustive-haarex6 pairs=1492 prefixes=2022533 Acovered=0 valid=0
+442 exhaustive-haarex6 pairs=742 prefixes=1121175 Acovered=0 valid=0
 443 exhaustive-haarex5 pairs=871 prefixes=1170435 Acovered=0 valid=0
 444 exhaustive-haarex5 pairs=446 prefixes=704862 Acovered=0 valid=0
 445 exhaustive-haarex5 pairs=465 prefixes=701498 Acovered=0 valid=0
@@ -448,19 +448,19 @@
 447 exhaustive-haarex4 pairs=619 prefixes=951238 Acovered=0 valid=0
 448 exhaustive-haarex4 pairs=1036 prefixes=1549839 Acovered=0 valid=0
 449 exhaustive-haarex4 pairs=1444 prefixes=1670868 Acovered=0 valid=0
-450 open -
-451 open -
+450 exhaustive-haarex6 pairs=1558 prefixes=2075899 Acovered=0 valid=0
+451 exhaustive-haarex6 pairs=1210 prefixes=2032363 Acovered=0 valid=0
 452 open -
-453 open -
+453 exhaustive-haarex6 pairs=901 prefixes=1439565 Acovered=0 valid=0
 454 open -
 455 exhaustive-haarex5 pairs=1030 prefixes=1436294 Acovered=0 valid=0
-456 open -
-457 open -
+456 exhaustive-haarex6 pairs=1090 prefixes=1807085 Acovered=0 valid=0
+457 exhaustive-haarex6 pairs=1090 prefixes=1796617 Acovered=0 valid=0
 458 exhaustive-haarex5 pairs=1558 prefixes=2075899 Acovered=0 valid=0
 459 exhaustive-haarex5 pairs=1156 prefixes=1713003 Acovered=0 valid=0
 460 exhaustive-haarex5 pairs=1030 prefixes=1457734 Acovered=0 valid=0
 461 exhaustive-haarex5 pairs=1030 prefixes=1457734 Acovered=0 valid=0
-462 open -
+462 exhaustive-haarex6 pairs=1468 prefixes=2424382 Acovered=0 valid=0
 463 exhaustive-haarex5 pairs=1150 prefixes=1817141 Acovered=0 valid=0
 464 exhaustive-haarex5 pairs=1096 prefixes=1532323 Acovered=0 valid=0
 465 exhaustive-haarex6 pairs=2590 prefixes=3790140 Acovered=0 valid=0
@@ -478,15 +478,15 @@
 477 open -
 478 exhaustive-haarex5 pairs=1324 prefixes=2299793 Acovered=0 valid=0
 479 open -
-480 open -
+480 exhaustive-haarex6 pairs=1468 prefixes=2418584 Acovered=0 valid=0
 481 open -
 482 exhaustive-haarex5 pairs=1468 prefixes=2459302 Acovered=0 valid=0
 483 open -
 484 exhaustive-haarex5 pairs=1792 prefixes=2473889 Acovered=0 valid=0
 485 open -
 486 exhaustive-haarex5 pairs=1618 prefixes=2456218 Acovered=0 valid=0
-487 open -
-488 open -
+487 exhaustive-haarex6 pairs=1468 prefixes=2421220 Acovered=0 valid=0
+488 exhaustive-haarex6 pairs=1468 prefixes=2421220 Acovered=0 valid=0
 489 exhaustive-haarex5 pairs=1468 prefixes=2461968 Acovered=0 valid=0
 490 exhaustive-haarex5 pairs=1468 prefixes=2461968 Acovered=0 valid=0
 491 open -
@@ -525,11 +525,11 @@
 524 exhaustive-haarex5 pairs=1696 prefixes=2071599 Acovered=0 valid=0
 525 exhaustive-haarex5 pairs=1696 prefixes=2070276 Acovered=0 valid=0
 526 open -
-527 open -
-528 open -
+527 exhaustive-haarex6 pairs=1030 prefixes=1471087 Acovered=0 valid=0
+528 exhaustive-haarex6 pairs=1030 prefixes=1511286 Acovered=0 valid=0
 529 open -
 530 exhaustive-haarex5 pairs=1174 prefixes=1516978 Acovered=0 valid=0
-531 open -
+531 exhaustive-haarex6 pairs=1552 prefixes=2509265 Acovered=0 valid=0
 532 exhaustive-haarex4 pairs=1330 prefixes=1968633 Acovered=0 valid=0
 533 exhaustive-haarex4 pairs=1330 prefixes=1968633 Acovered=0 valid=0
 534 exhaustive-haarex4 pairs=1678 prefixes=1974917 Acovered=0 valid=0
@@ -570,22 +570,22 @@
 569 exhaustive-haarex5 pairs=562 prefixes=943335 Acovered=0 valid=0
 570 open -
 571 exhaustive-haarex5 pairs=826 prefixes=1644833 Acovered=0 valid=0
-572 open -
+572 exhaustive-haarex6 pairs=793 prefixes=1409329 Acovered=0 valid=0
 573 exhaustive-haarex5 pairs=640 prefixes=1333712 Acovered=0 valid=0
 574 open -
 575 exhaustive-haarex5 pairs=497 prefixes=1026903 Acovered=0 valid=0
 576 open -
-577 open -
+577 exhaustive-haarex6 pairs=524 prefixes=879524 Acovered=0 valid=0
 578 exhaustive-haarex5 pairs=485 prefixes=901132 Acovered=0 valid=0
-579 open -
+579 exhaustive-haarex6 pairs=524 prefixes=899763 Acovered=0 valid=0
 580 exhaustive-haarex4 pairs=1290 prefixes=1767614 Acovered=0 valid=0
 581 exhaustive-haarex5 pairs=1029 prefixes=1713428 Acovered=0 valid=0
 582 exhaustive-haarex5 pairs=888 prefixes=1489364 Acovered=0 valid=0
-583 open -
+583 exhaustive-haarex6 pairs=608 prefixes=1286226 Acovered=0 valid=0
 584 open -
-585 open -
-586 open -
-587 open -
+585 exhaustive-haarex6 pairs=952 prefixes=1344656 Acovered=0 valid=0
+586 exhaustive-haarex6 pairs=539 prefixes=1107188 Acovered=0 valid=0
+587 exhaustive-haarex6 pairs=539 prefixes=1274877 Acovered=0 valid=0
 588 exhaustive-haarex5 pairs=292 prefixes=352370 Acovered=0 valid=0
 589 exhaustive-haarex5 pairs=329 prefixes=351457 Acovered=0 valid=0
 590 exhaustive-haarex5 pairs=187 prefixes=336123 Acovered=0 valid=0
@@ -596,7 +596,7 @@
 595 open -
 596 exhaustive-haarex5 pairs=614 prefixes=1409030 Acovered=0 valid=0
 597 exhaustive-haarex5 pairs=497 prefixes=1297619 Acovered=0 valid=0
-598 open -
+598 exhaustive-haarex6 pairs=542 prefixes=1272019 Acovered=0 valid=0
 599 exhaustive-haarex5 pairs=461 prefixes=1151852 Acovered=0 valid=0
 600 open -
 601 open -
@@ -608,23 +608,23 @@
 607 exhaustive-haarex5 pairs=428 prefixes=1109569 Acovered=0 valid=0
 608 open -
 609 open -
-610 open -
+610 exhaustive-haarex6 pairs=344 prefixes=970631 Acovered=0 valid=0
 611 open -
-612 open -
+612 exhaustive-haarex6 pairs=583 prefixes=1391230 Acovered=0 valid=0
 613 open -
 614 exhaustive-haarex5 pairs=634 prefixes=860189 Acovered=0 valid=0
-615 open -
+615 exhaustive-haarex6 pairs=488 prefixes=1095648 Acovered=0 valid=0
 616 exhaustive-haarex4 pairs=1431 prefixes=2983132 Acovered=0 valid=0
 617 open -
-618 open -
+618 exhaustive-haarex6 pairs=703 prefixes=1633253 Acovered=0 valid=0
 619 exhaustive-haarex5 pairs=1170 prefixes=2929072 Acovered=0 valid=0
 620 exhaustive-haarex5 pairs=1029 prefixes=2737642 Acovered=0 valid=0
-621 open -
-622 open -
-623 open -
-624 open -
-625 open -
-626 open -
+621 exhaustive-haarex6 pairs=286 prefixes=917051 Acovered=0 valid=0
+622 exhaustive-haarex6 pairs=1219 prefixes=2489868 Acovered=0 valid=0
+623 exhaustive-haarex6 pairs=691 prefixes=1671690 Acovered=0 valid=0
+624 exhaustive-haarex6 pairs=691 prefixes=1485821 Acovered=0 valid=0
+625 exhaustive-haarex6 pairs=409 prefixes=1013566 Acovered=0 valid=0
+626 exhaustive-haarex6 pairs=286 prefixes=917051 Acovered=0 valid=0
 627 open -
 628 open -
 629 open -
@@ -640,16 +640,16 @@
 639 exhaustive-haarex4 pairs=826 prefixes=945132 Acovered=0 valid=0
 640 exhaustive-haarex4 pairs=457 prefixes=494164 Acovered=0 valid=0
 641 exhaustive-haarex4 pairs=439 prefixes=464529 Acovered=0 valid=0
-642 open -
-643 open -
-644 open -
-645 open -
-646 open -
-647 open -
-648 open -
-649 open -
-650 open -
-651 open -
+642 exhaustive-haarex6 pairs=691 prefixes=1671690 Acovered=0 valid=0
+643 exhaustive-haarex6 pairs=1219 prefixes=1921971 Acovered=0 valid=0
+644 exhaustive-haarex6 pairs=691 prefixes=1221133 Acovered=0 valid=0
+645 exhaustive-haarex6 pairs=1219 prefixes=2489868 Acovered=0 valid=0
+646 exhaustive-haarex6 pairs=1219 prefixes=1921971 Acovered=0 valid=0
+647 exhaustive-haarex6 pairs=1219 prefixes=2489868 Acovered=0 valid=0
+648 exhaustive-haarex6 pairs=1219 prefixes=1917733 Acovered=0 valid=0
+649 exhaustive-haarex6 pairs=691 prefixes=1146144 Acovered=0 valid=0
+650 exhaustive-haarex6 pairs=1219 prefixes=1917733 Acovered=0 valid=0
+651 exhaustive-haarex6 pairs=691 prefixes=1133072 Acovered=0 valid=0
 652 open -
 653 open -
 654 open -
@@ -674,12 +674,12 @@
 673 open -
 674 open -
 675 exhaustive-haarex4 pairs=940 prefixes=1475265 Acovered=0 valid=0
-676 open -
+676 exhaustive-haarex6 pairs=1078 prefixes=2099545 Acovered=0 valid=0
 677 open -
-678 open -
+678 exhaustive-haarex6 pairs=1078 prefixes=2099545 Acovered=0 valid=0
 679 open -
 680 open -
-681 open -
+681 exhaustive-haarex6 pairs=1642 prefixes=3336235 Acovered=0 valid=0
 682 open -
 683 open -
 684 open -
@@ -689,9 +689,9 @@
 688 open -
 689 open -
 690 open -
-691 open -
-692 open -
-693 open -
+691 exhaustive-haarex6 pairs=976 prefixes=1436791 Acovered=0 valid=0
+692 exhaustive-haarex6 pairs=976 prefixes=1436791 Acovered=0 valid=0
+693 exhaustive-haarex6 pairs=976 prefixes=1436791 Acovered=0 valid=0
 694 open -
 695 open -
 696 open -
@@ -723,20 +723,20 @@
 722 open -
 723 open -
 724 open -
-725 open -
-726 open -
+725 exhaustive-haarex6 pairs=1861 prefixes=2660071 Acovered=0 valid=0
+726 exhaustive-haarex6 pairs=1861 prefixes=3255559 Acovered=0 valid=0
 727 open -
 728 open -
 729 open -
-730 open -
-731 open -
-732 open -
+730 exhaustive-haarex6 pairs=1861 prefixes=3255559 Acovered=0 valid=0
+731 exhaustive-haarex6 pairs=1861 prefixes=2660071 Acovered=0 valid=0
+732 exhaustive-haarex6 pairs=1861 prefixes=3255559 Acovered=0 valid=0
 733 open -
 734 open -
-735 open -
+735 exhaustive-haarex6 pairs=1861 prefixes=2660071 Acovered=0 valid=0
 736 open -
-737 open -
-738 open -
+737 exhaustive-haarex6 pairs=1861 prefixes=2660071 Acovered=0 valid=0
+738 exhaustive-haarex6 pairs=1861 prefixes=3255559 Acovered=0 valid=0
 739 open -
 740 open -
 741 open -
@@ -763,11 +763,11 @@
 762 open -
 763 open -
 764 open -
-765 open -
+765 exhaustive-haarex6 pairs=1591 prefixes=1964550 Acovered=0 valid=0
 766 open -
-767 open -
-768 open -
-769 open -
+767 exhaustive-haarex6 pairs=1591 prefixes=1964550 Acovered=0 valid=0
+768 exhaustive-haarex6 pairs=1591 prefixes=1964550 Acovered=0 valid=0
+769 exhaustive-haarex6 pairs=1591 prefixes=1964550 Acovered=0 valid=0
 770 open -
 771 open -
 772 open -
@@ -776,15 +776,15 @@
 775 open -
 776 open -
 777 open -
-778 open -
+778 exhaustive-haarex6 pairs=1591 prefixes=1946646 Acovered=0 valid=0
 779 open -
 780 open -
-781 open -
-782 open -
+781 exhaustive-haarex6 pairs=1591 prefixes=1946646 Acovered=0 valid=0
+782 exhaustive-haarex6 pairs=1591 prefixes=1946646 Acovered=0 valid=0
 783 open -
 784 open -
-785 open -
-786 open -
+785 exhaustive-haarex6 pairs=1591 prefixes=1946646 Acovered=0 valid=0
+786 exhaustive-haarex6 pairs=1591 prefixes=1946646 Acovered=0 valid=0
 787 open -
 788 open -
 789 exhaustive-haarex4 pairs=1861 prefixes=3255559 Acovered=0 valid=0
@@ -802,22 +802,22 @@
 801 exhaustive-haarex4 pairs=1861 prefixes=3255559 Acovered=0 valid=0
 802 open -
 803 exhaustive-haarex4 pairs=1861 prefixes=3255559 Acovered=0 valid=0
-804 open -
+804 exhaustive-haarex6 pairs=1906 prefixes=3498767 Acovered=0 valid=0
 805 open -
 806 open -
-807 open -
-808 open -
+807 exhaustive-haarex6 pairs=1906 prefixes=3498767 Acovered=0 valid=0
+808 exhaustive-haarex6 pairs=1906 prefixes=3498767 Acovered=0 valid=0
 809 open -
 810 open -
-811 open -
-812 open -
+811 exhaustive-haarex6 pairs=1906 prefixes=3498767 Acovered=0 valid=0
+812 exhaustive-haarex6 pairs=1906 prefixes=3498767 Acovered=0 valid=0
 813 open -
 814 open -
-815 open -
-816 open -
+815 exhaustive-haarex6 pairs=1906 prefixes=3498767 Acovered=0 valid=0
+816 exhaustive-haarex6 pairs=1906 prefixes=3498767 Acovered=0 valid=0
 817 open -
 818 open -
-819 open -
+819 exhaustive-haarex6 pairs=1906 prefixes=3498767 Acovered=0 valid=0
 820 open -
 821 open -
 822 open -
@@ -850,14 +850,14 @@
 849 open -
 850 open -
 851 exhaustive-haarex4 pairs=1591 prefixes=1946646 Acovered=0 valid=0
-852 open -
+852 exhaustive-haarex6 pairs=1642 prefixes=3322069 Acovered=0 valid=0
 853 open -
 854 open -
-855 open -
-856 open -
+855 exhaustive-haarex6 pairs=1642 prefixes=3322069 Acovered=0 valid=0
+856 exhaustive-haarex6 pairs=1642 prefixes=3322069 Acovered=0 valid=0
 857 open -
 858 open -
-859 open -
+859 exhaustive-haarex6 pairs=1642 prefixes=3322069 Acovered=0 valid=0
 860 open -
 861 open -
 862 open -
@@ -868,11 +868,11 @@
 867 open -
 868 open -
 869 open -
-870 open -
+870 exhaustive-haarex6 pairs=1504 prefixes=2267289 Acovered=0 valid=0
 871 open -
-872 open -
+872 exhaustive-haarex6 pairs=1504 prefixes=2267289 Acovered=0 valid=0
 873 open -
-874 open -
+874 exhaustive-haarex6 pairs=1504 prefixes=2267289 Acovered=0 valid=0
 875 open -
 876 open -
 877 open -
@@ -929,21 +929,21 @@
 928 open -
 929 open -
 930 open -
-931 open -
+931 exhaustive-haarex6 pairs=781 prefixes=1441890 Acovered=0 valid=0
 932 open -
 933 open -
 934 open -
-935 open -
-936 open -
+935 exhaustive-haarex6 pairs=1384 prefixes=2167103 Acovered=0 valid=0
+936 exhaustive-haarex6 pairs=793 prefixes=1809963 Acovered=0 valid=0
 937 open -
-938 open -
-939 open -
+938 exhaustive-haarex6 pairs=793 prefixes=1809963 Acovered=0 valid=0
+939 exhaustive-haarex6 pairs=1522 prefixes=3311128 Acovered=0 valid=0
 940 open -
-941 open -
+941 exhaustive-haarex6 pairs=1522 prefixes=3311128 Acovered=0 valid=0
 942 open -
-943 open -
+943 exhaustive-haarex6 pairs=793 prefixes=1809963 Acovered=0 valid=0
 944 open -
-945 open -
+945 exhaustive-haarex6 pairs=793 prefixes=1809963 Acovered=0 valid=0
 946 open -
 947 open -
 948 open -
@@ -990,22 +990,22 @@
 989 open -
 990 open -
 991 open -
-992 open -
+992 exhaustive-haarex6 pairs=1528 prefixes=2691299 Acovered=0 valid=0
 993 open -
-994 open -
-995 open -
-996 open -
+994 exhaustive-haarex6 pairs=1528 prefixes=2118245 Acovered=0 valid=0
+995 exhaustive-haarex6 pairs=1528 prefixes=2691299 Acovered=0 valid=0
+996 exhaustive-haarex6 pairs=1528 prefixes=2691299 Acovered=0 valid=0
 997 open -
-998 open -
-999 open -
-1000 open -
-1001 open -
+998 exhaustive-haarex6 pairs=1528 prefixes=2691299 Acovered=0 valid=0
+999 exhaustive-haarex6 pairs=1528 prefixes=2118245 Acovered=0 valid=0
+1000 exhaustive-haarex6 pairs=1528 prefixes=2691299 Acovered=0 valid=0
+1001 exhaustive-haarex6 pairs=1528 prefixes=2118245 Acovered=0 valid=0
 1002 open -
-1003 open -
-1004 open -
+1003 exhaustive-haarex6 pairs=1528 prefixes=2691299 Acovered=0 valid=0
+1004 exhaustive-haarex6 pairs=1528 prefixes=2691299 Acovered=0 valid=0
 1005 open -
-1006 open -
-1007 open -
+1006 exhaustive-haarex6 pairs=1528 prefixes=2118245 Acovered=0 valid=0
+1007 exhaustive-haarex6 pairs=1528 prefixes=2691299 Acovered=0 valid=0
 1008 open -
 1009 open -
 1010 open -
@@ -1054,15 +1054,15 @@
 1053 exhaustive-haarex4 pairs=1471 prefixes=2197976 Acovered=0 valid=0
 1054 open -
 1055 exhaustive-haarex4 pairs=1471 prefixes=2274423 Acovered=0 valid=0
-1056 open -
-1057 open -
+1056 exhaustive-haarex6 pairs=835 prefixes=1740068 Acovered=0 valid=0
+1057 exhaustive-haarex6 pairs=1528 prefixes=2691299 Acovered=0 valid=0
 1058 open -
-1059 open -
-1060 open -
+1059 exhaustive-haarex6 pairs=1528 prefixes=2691299 Acovered=0 valid=0
+1060 exhaustive-haarex6 pairs=1528 prefixes=2691299 Acovered=0 valid=0
 1061 open -
-1062 open -
-1063 open -
-1064 open -
+1062 exhaustive-haarex6 pairs=1528 prefixes=2118245 Acovered=0 valid=0
+1063 exhaustive-haarex6 pairs=835 prefixes=1740068 Acovered=0 valid=0
+1064 exhaustive-haarex6 pairs=1528 prefixes=2691299 Acovered=0 valid=0
 1065 open -
 1066 open -
 1067 open -
@@ -1100,16 +1100,16 @@
 1099 open -
 1100 exhaustive-haarex4 pairs=1186 prefixes=1503487 Acovered=0 valid=0
 1101 open -
-1102 open -
-1103 open -
-1104 open -
-1105 open -
-1106 open -
-1107 open -
-1108 open -
-1109 open -
-1110 open -
-1111 open -
+1102 exhaustive-haarex6 pairs=1369 prefixes=2229443 Acovered=0 valid=0
+1103 exhaustive-haarex6 pairs=1369 prefixes=2229443 Acovered=0 valid=0
+1104 exhaustive-haarex6 pairs=1948 prefixes=3518388 Acovered=0 valid=0
+1105 exhaustive-haarex6 pairs=1369 prefixes=2229443 Acovered=0 valid=0
+1106 exhaustive-haarex6 pairs=1369 prefixes=2229443 Acovered=0 valid=0
+1107 exhaustive-haarex6 pairs=1948 prefixes=3518388 Acovered=0 valid=0
+1108 exhaustive-haarex6 pairs=1948 prefixes=3518388 Acovered=0 valid=0
+1109 exhaustive-haarex6 pairs=1948 prefixes=3518388 Acovered=0 valid=0
+1110 exhaustive-haarex6 pairs=1948 prefixes=3518388 Acovered=0 valid=0
+1111 exhaustive-haarex6 pairs=1948 prefixes=3518388 Acovered=0 valid=0
 1112 open -
 1113 open -
 1114 open -
@@ -1140,16 +1140,16 @@
 1139 open -
 1140 exhaustive-haarex4 pairs=1477 prefixes=1715856 Acovered=0 valid=0
 1141 open -
-1142 open -
-1143 open -
-1144 open -
-1145 open -
-1146 open -
-1147 open -
-1148 open -
-1149 open -
-1150 open -
-1151 open -
+1142 exhaustive-haarex6 pairs=1591 prefixes=2277563 Acovered=0 valid=0
+1143 exhaustive-haarex6 pairs=1591 prefixes=1975347 Acovered=0 valid=0
+1144 exhaustive-haarex6 pairs=1948 prefixes=2848543 Acovered=0 valid=0
+1145 exhaustive-haarex6 pairs=1591 prefixes=2277563 Acovered=0 valid=0
+1146 exhaustive-haarex6 pairs=1591 prefixes=1954651 Acovered=0 valid=0
+1147 exhaustive-haarex6 pairs=1948 prefixes=2848543 Acovered=0 valid=0
+1148 exhaustive-haarex6 pairs=1948 prefixes=3518388 Acovered=0 valid=0
+1149 exhaustive-haarex6 pairs=1948 prefixes=2968650 Acovered=0 valid=0
+1150 exhaustive-haarex6 pairs=1948 prefixes=2848543 Acovered=0 valid=0
+1151 exhaustive-haarex6 pairs=1948 prefixes=2848543 Acovered=0 valid=0
 1152 open -
 1153 open -
 1154 open -
@@ -1524,15 +1524,15 @@
 1523 open -
 1524 open -
 1525 open -
-1526 open -
-1527 open -
+1526 exhaustive-haarex6 pairs=1150 prefixes=1620289 Acovered=0 valid=0
+1527 exhaustive-haarex6 pairs=856 prefixes=1645727 Acovered=0 valid=0
 1528 open -
-1529 open -
+1529 exhaustive-haarex6 pairs=787 prefixes=1428778 Acovered=0 valid=0
 1530 open -
-1531 open -
-1532 open -
+1531 exhaustive-haarex6 pairs=1942 prefixes=3090333 Acovered=0 valid=0
+1532 exhaustive-haarex6 pairs=736 prefixes=1030185 Acovered=0 valid=0
 1533 open -
-1534 open -
+1534 exhaustive-haarex6 pairs=1126 prefixes=1661499 Acovered=0 valid=0
 1535 open -
 1536 open -
 1537 open -
@@ -1623,11 +1623,11 @@
 1622 exhaustive-haarex4 pairs=661 prefixes=664258 Acovered=0 valid=0
 1623 exhaustive-haarex4 pairs=1816 prefixes=2078241 Acovered=0 valid=0
 1624 exhaustive-haarex4 pairs=1816 prefixes=2078241 Acovered=0 valid=0
-1625 open -
-1626 open -
-1627 open -
-1628 open -
-1629 open -
+1625 exhaustive-haarex6 pairs=1012 prefixes=2024318 Acovered=0 valid=0
+1626 exhaustive-haarex6 pairs=1012 prefixes=2024318 Acovered=0 valid=0
+1627 exhaustive-haarex6 pairs=1519 prefixes=3171476 Acovered=0 valid=0
+1628 exhaustive-haarex6 pairs=1519 prefixes=2596103 Acovered=0 valid=0
+1629 exhaustive-haarex6 pairs=1234 prefixes=2312183 Acovered=0 valid=0
 1630 open -
 1631 open -
 1632 open -
@@ -1644,11 +1644,11 @@
 1643 open -
 1644 exhaustive-haarex4 pairs=2248 prefixes=3676571 Acovered=0 valid=0
 1645 exhaustive-haarex4 pairs=1117 prefixes=1324168 Acovered=0 valid=0
-1646 open -
-1647 open -
-1648 open -
-1649 open -
-1650 open -
+1646 exhaustive-haarex6 pairs=1012 prefixes=2024318 Acovered=0 valid=0
+1647 exhaustive-haarex6 pairs=1012 prefixes=1693543 Acovered=0 valid=0
+1648 exhaustive-haarex6 pairs=1519 prefixes=2463988 Acovered=0 valid=0
+1649 exhaustive-haarex6 pairs=1519 prefixes=2596003 Acovered=0 valid=0
+1650 exhaustive-haarex6 pairs=1234 prefixes=1705100 Acovered=0 valid=0
 1651 open -
 1652 open -
 1653 open -
@@ -1660,10 +1660,10 @@
 1659 exhaustive-haarex4 pairs=712 prefixes=747231 Acovered=0 valid=0
 1660 open -
 1661 open -
-1662 open -
-1663 open -
-1664 open -
-1665 open -
+1662 exhaustive-haarex6 pairs=1483 prefixes=2303043 Acovered=0 valid=0
+1663 exhaustive-haarex6 pairs=1438 prefixes=2219116 Acovered=0 valid=0
+1664 exhaustive-haarex6 pairs=1300 prefixes=2105467 Acovered=0 valid=0
+1665 exhaustive-haarex6 pairs=1345 prefixes=2111418 Acovered=0 valid=0
 1666 open -
 1667 open -
 1668 exhaustive-haarex5 pairs=1519 prefixes=2670012 Acovered=0 valid=0
@@ -1744,7 +1744,7 @@
 1743 open -
 1744 open -
 1745 open -
-1746 open -
+1746 exhaustive-haarex6 pairs=880 prefixes=2089412 Acovered=0 valid=0
 1747 open -
 1748 open -
 1749 open -
@@ -1788,26 +1788,26 @@
 1787 exhaustive-haarex4 pairs=1384 prefixes=2456886 Acovered=0 valid=0
 1788 exhaustive-haarex4 pairs=1384 prefixes=2456886 Acovered=0 valid=0
 1789 exhaustive-haarex4 pairs=1384 prefixes=2009079 Acovered=0 valid=0
-1790 open -
+1790 exhaustive-haarex6 pairs=1384 prefixes=2048727 Acovered=0 valid=0
 1791 exhaustive-haarex4 pairs=1384 prefixes=1815877 Acovered=0 valid=0
 1792 open -
 1793 open -
 1794 exhaustive-haarex4 pairs=1384 prefixes=1815877 Acovered=0 valid=0
-1795 open -
+1795 exhaustive-haarex6 pairs=1384 prefixes=2436489 Acovered=0 valid=0
 1796 open -
 1797 open -
-1798 open -
+1798 exhaustive-haarex6 pairs=1384 prefixes=2436489 Acovered=0 valid=0
 1799 open -
 1800 open -
-1801 open -
+1801 exhaustive-haarex6 pairs=1384 prefixes=1902274 Acovered=0 valid=0
 1802 open -
-1803 open -
+1803 exhaustive-haarex6 pairs=1384 prefixes=1912696 Acovered=0 valid=0
 1804 open -
-1805 open -
+1805 exhaustive-haarex6 pairs=1384 prefixes=1912696 Acovered=0 valid=0
 1806 open -
-1807 open -
-1808 open -
-1809 open -
+1807 exhaustive-haarex6 pairs=1384 prefixes=2456886 Acovered=0 valid=0
+1808 exhaustive-haarex6 pairs=1384 prefixes=2456886 Acovered=0 valid=0
+1809 exhaustive-haarex6 pairs=1384 prefixes=2456886 Acovered=0 valid=0
 1810 open -
 1811 open -
 1812 exhaustive-haarex4 pairs=1384 prefixes=2048727 Acovered=0 valid=0
@@ -1820,9 +1820,9 @@
 1819 open -
 1820 open -
 1821 open -
-1822 open -
-1823 open -
-1824 open -
+1822 exhaustive-haarex6 pairs=1531 prefixes=2755683 Acovered=0 valid=0
+1823 exhaustive-haarex6 pairs=1531 prefixes=2755683 Acovered=0 valid=0
+1824 exhaustive-haarex6 pairs=1576 prefixes=2442736 Acovered=0 valid=0
 1825 open -
 1826 open -
 1827 open -
@@ -1839,27 +1839,27 @@
 1838 open -
 1839 open -
 1840 open -
-1841 open -
+1841 exhaustive-haarex6 pairs=1396 prefixes=2765615 Acovered=0 valid=0
 1842 open -
-1843 open -
+1843 exhaustive-haarex6 pairs=1531 prefixes=2470117 Acovered=0 valid=0
 1844 open -
 1845 open -
-1846 open -
+1846 exhaustive-haarex6 pairs=1282 prefixes=2341414 Acovered=0 valid=0
 1847 open -
 1848 open -
 1849 open -
-1850 open -
-1851 open -
-1852 open -
+1850 exhaustive-haarex6 pairs=1741 prefixes=2433358 Acovered=0 valid=0
+1851 exhaustive-haarex6 pairs=1741 prefixes=2412984 Acovered=0 valid=0
+1852 exhaustive-haarex6 pairs=2248 prefixes=3599029 Acovered=0 valid=0
 1853 open -
 1854 open -
 1855 open -
 1856 exhaustive-haarex4 pairs=1639 prefixes=2340405 Acovered=0 valid=0
 1857 exhaustive-haarex4 pairs=1639 prefixes=2340405 Acovered=0 valid=0
 1858 exhaustive-haarex4 pairs=2248 prefixes=3074683 Acovered=0 valid=0
-1859 open -
-1860 open -
-1861 open -
+1859 exhaustive-haarex6 pairs=1741 prefixes=2748255 Acovered=0 valid=0
+1860 exhaustive-haarex6 pairs=1741 prefixes=2748255 Acovered=0 valid=0
+1861 exhaustive-haarex6 pairs=2248 prefixes=4207503 Acovered=0 valid=0
 1862 open -
 1863 open -
 1864 open -
@@ -1872,12 +1872,12 @@
 1871 exhaustive-haarex4 pairs=1303 prefixes=1414915 Acovered=0 valid=0
 1872 exhaustive-haarex4 pairs=1303 prefixes=1414915 Acovered=0 valid=0
 1873 exhaustive-haarex4 pairs=1684 prefixes=2073751 Acovered=0 valid=0
-1874 open -
-1875 open -
+1874 exhaustive-haarex6 pairs=1450 prefixes=1885781 Acovered=0 valid=0
+1875 exhaustive-haarex6 pairs=1684 prefixes=1885747 Acovered=0 valid=0
 1876 open -
 1877 open -
-1878 open -
-1879 open -
+1878 exhaustive-haarex6 pairs=1822 prefixes=3101167 Acovered=0 valid=0
+1879 exhaustive-haarex6 pairs=1498 prefixes=2742286 Acovered=0 valid=0
 1880 open -
 1881 open -
 1882 open -
@@ -1885,10 +1885,10 @@
 1884 open -
 1885 open -
 1886 open -
-1887 open -
-1888 open -
+1887 exhaustive-haarex6 pairs=1714 prefixes=2794649 Acovered=0 valid=0
+1888 exhaustive-haarex6 pairs=1714 prefixes=2794649 Acovered=0 valid=0
 1889 open -
-1890 open -
+1890 exhaustive-haarex6 pairs=1531 prefixes=1970532 Acovered=0 valid=0
 1891 open -
 1892 open -
 1893 open -
@@ -1898,15 +1898,15 @@
 1897 exhaustive-haarex4 pairs=1156 prefixes=1635830 Acovered=0 valid=0
 1898 exhaustive-haarex4 pairs=1384 prefixes=2476974 Acovered=0 valid=0
 1899 open -
-1900 open -
-1901 open -
-1902 open -
+1900 exhaustive-haarex6 pairs=1156 prefixes=1609936 Acovered=0 valid=0
+1901 exhaustive-haarex6 pairs=1156 prefixes=1609936 Acovered=0 valid=0
+1902 exhaustive-haarex6 pairs=1384 prefixes=2466279 Acovered=0 valid=0
 1903 open -
-1904 open -
+1904 exhaustive-haarex6 pairs=1156 prefixes=1224683 Acovered=0 valid=0
 1905 open -
 1906 open -
-1907 open -
-1908 open -
+1907 exhaustive-haarex6 pairs=1384 prefixes=2009079 Acovered=0 valid=0
+1908 exhaustive-haarex6 pairs=1384 prefixes=2009079 Acovered=0 valid=0
 1909 open -
 1910 open -
 1911 exhaustive-haarex4 pairs=1384 prefixes=2048727 Acovered=0 valid=0
@@ -1916,37 +1916,37 @@
 1915 open -
 1916 exhaustive-haarex4 pairs=865 prefixes=1465300 Acovered=0 valid=0
 1917 exhaustive-haarex4 pairs=1384 prefixes=2031560 Acovered=0 valid=0
-1918 open -
+1918 exhaustive-haarex6 pairs=1384 prefixes=2006535 Acovered=0 valid=0
 1919 exhaustive-haarex4 pairs=865 prefixes=1227665 Acovered=0 valid=0
-1920 open -
-1921 open -
-1922 open -
+1920 exhaustive-haarex6 pairs=934 prefixes=1602488 Acovered=0 valid=0
+1921 exhaustive-haarex6 pairs=934 prefixes=1240203 Acovered=0 valid=0
+1922 exhaustive-haarex6 pairs=1384 prefixes=1933082 Acovered=0 valid=0
 1923 open -
 1924 open -
-1925 open -
+1925 exhaustive-haarex6 pairs=934 prefixes=1182497 Acovered=0 valid=0
 1926 open -
 1927 open -
-1928 open -
+1928 exhaustive-haarex6 pairs=1384 prefixes=2009079 Acovered=0 valid=0
 1929 open -
 1930 open -
 1931 exhaustive-haarex4 pairs=1384 prefixes=2048727 Acovered=0 valid=0
 1932 exhaustive-haarex4 pairs=1384 prefixes=2006535 Acovered=0 valid=0
 1933 open -
 1934 open -
-1935 open -
-1936 open -
+1935 exhaustive-haarex6 pairs=1525 prefixes=2342390 Acovered=0 valid=0
+1936 exhaustive-haarex6 pairs=1225 prefixes=2083026 Acovered=0 valid=0
 1937 open -
-1938 open -
+1938 exhaustive-haarex6 pairs=1171 prefixes=1454639 Acovered=0 valid=0
 1939 open -
-1940 open -
-1941 open -
-1942 open -
+1940 exhaustive-haarex6 pairs=1519 prefixes=2619169 Acovered=0 valid=0
+1941 exhaustive-haarex6 pairs=1519 prefixes=2619169 Acovered=0 valid=0
+1942 exhaustive-haarex6 pairs=1969 prefixes=3546880 Acovered=0 valid=0
 1943 open -
 1944 open -
 1945 open -
 1946 exhaustive-haarex4 pairs=1039 prefixes=973043 Acovered=0 valid=0
-1947 open -
-1948 open -
+1947 exhaustive-haarex6 pairs=1915 prefixes=3512554 Acovered=0 valid=0
+1948 exhaustive-haarex6 pairs=1756 prefixes=2946271 Acovered=0 valid=0
 1949 open -
 1950 open -
 1951 open -
@@ -1973,32 +1973,32 @@
 1972 exhaustive-haarex5 pairs=820 prefixes=911203 Acovered=0 valid=0
 1973 open -
 1974 open -
-1975 open -
-1976 open -
-1977 open -
-1978 open -
-1979 open -
-1980 open -
-1981 open -
-1982 open -
-1983 open -
+1975 exhaustive-haarex6 pairs=1279 prefixes=1480798 Acovered=0 valid=0
+1976 exhaustive-haarex6 pairs=665 prefixes=776444 Acovered=0 valid=0
+1977 exhaustive-haarex6 pairs=1426 prefixes=1235654 Acovered=0 valid=0
+1978 exhaustive-haarex6 pairs=1426 prefixes=1280533 Acovered=0 valid=0
+1979 exhaustive-haarex6 pairs=1426 prefixes=1145093 Acovered=0 valid=0
+1980 exhaustive-haarex6 pairs=1426 prefixes=1280533 Acovered=0 valid=0
+1981 exhaustive-haarex6 pairs=1264 prefixes=1123111 Acovered=0 valid=0
+1982 exhaustive-haarex6 pairs=2362 prefixes=2013606 Acovered=0 valid=0
+1983 exhaustive-haarex6 pairs=2362 prefixes=1878694 Acovered=0 valid=0
 1984 open -
-1985 open -
-1986 open -
-1987 open -
-1988 open -
-1989 open -
-1990 open -
-1991 open -
-1992 open -
-1993 open -
-1994 open -
-1995 open -
-1996 open -
-1997 open -
-1998 open -
-1999 open -
-2000 open -
+1985 exhaustive-haarex6 pairs=2362 prefixes=1953670 Acovered=0 valid=0
+1986 exhaustive-haarex6 pairs=1426 prefixes=1120813 Acovered=0 valid=0
+1987 exhaustive-haarex6 pairs=2362 prefixes=1857814 Acovered=0 valid=0
+1988 exhaustive-haarex6 pairs=1426 prefixes=1243251 Acovered=0 valid=0
+1989 exhaustive-haarex6 pairs=2362 prefixes=1953670 Acovered=0 valid=0
+1990 exhaustive-haarex6 pairs=2362 prefixes=1899534 Acovered=0 valid=0
+1991 exhaustive-haarex6 pairs=1504 prefixes=1242208 Acovered=0 valid=0
+1992 exhaustive-haarex6 pairs=840 prefixes=502365 Acovered=0 valid=0
+1993 exhaustive-haarex6 pairs=2362 prefixes=1953670 Acovered=0 valid=0
+1994 exhaustive-haarex6 pairs=2362 prefixes=1899534 Acovered=0 valid=0
+1995 exhaustive-haarex6 pairs=665 prefixes=558931 Acovered=0 valid=0
+1996 exhaustive-haarex6 pairs=1504 prefixes=1201338 Acovered=0 valid=0
+1997 exhaustive-haarex6 pairs=2362 prefixes=1953670 Acovered=0 valid=0
+1998 exhaustive-haarex6 pairs=916 prefixes=789421 Acovered=0 valid=0
+1999 exhaustive-haarex6 pairs=916 prefixes=869133 Acovered=0 valid=0
+2000 exhaustive-haarex6 pairs=916 prefixes=767954 Acovered=0 valid=0
 2001 open -
 2002 open -
 2003 open -
@@ -2016,22 +2016,22 @@
 2015 exhaustive-haarex5 pairs=308 prefixes=425498 Acovered=0 valid=0
 2016 open -
 2017 exhaustive-haarex5 pairs=790 prefixes=860437 Acovered=0 valid=0
-2018 open -
+2018 exhaustive-haarex6 pairs=1123 prefixes=1455218 Acovered=0 valid=0
 2019 open -
 2020 open -
-2021 open -
-2022 open -
-2023 open -
-2024 open -
-2025 open -
-2026 open -
-2027 open -
-2028 open -
+2021 exhaustive-haarex6 pairs=1111 prefixes=1351925 Acovered=0 valid=0
+2022 exhaustive-haarex6 pairs=1009 prefixes=1205769 Acovered=0 valid=0
+2023 exhaustive-haarex6 pairs=1009 prefixes=1205931 Acovered=0 valid=0
+2024 exhaustive-haarex6 pairs=1570 prefixes=1861481 Acovered=0 valid=0
+2025 exhaustive-haarex6 pairs=1429 prefixes=1685885 Acovered=0 valid=0
+2026 exhaustive-haarex6 pairs=1429 prefixes=1687900 Acovered=0 valid=0
+2027 exhaustive-haarex6 pairs=2410 prefixes=2660270 Acovered=0 valid=0
+2028 exhaustive-haarex6 pairs=2410 prefixes=2660270 Acovered=0 valid=0
 2029 open -
 2030 open -
 2031 open -
 2032 open -
-2033 open -
+2033 exhaustive-haarex6 pairs=1267 prefixes=1228023 Acovered=0 valid=0
 2034 exhaustive-haarex5 pairs=1906 prefixes=2127567 Acovered=0 valid=0
 2035 exhaustive-haarex5 pairs=1906 prefixes=2127567 Acovered=0 valid=0
 2036 exhaustive-haarex5 pairs=1906 prefixes=2127567 Acovered=0 valid=0
@@ -2075,42 +2075,42 @@
 2074 open -
 2075 open -
 2076 open -
-2077 open -
-2078 open -
-2079 open -
-2080 open -
-2081 open -
-2082 open -
-2083 open -
+2077 exhaustive-haarex6 pairs=892 prefixes=994484 Acovered=0 valid=0
+2078 exhaustive-haarex6 pairs=892 prefixes=994484 Acovered=0 valid=0
+2079 exhaustive-haarex6 pairs=1165 prefixes=1445005 Acovered=0 valid=0
+2080 exhaustive-haarex6 pairs=1348 prefixes=1262548 Acovered=0 valid=0
+2081 exhaustive-haarex6 pairs=1348 prefixes=1262548 Acovered=0 valid=0
+2082 exhaustive-haarex6 pairs=1906 prefixes=2119258 Acovered=0 valid=0
+2083 exhaustive-haarex6 pairs=1906 prefixes=2136790 Acovered=0 valid=0
 2084 open -
 2085 open -
-2086 open -
-2087 open -
-2088 open -
-2089 open -
-2090 open -
+2086 exhaustive-haarex6 pairs=1249 prefixes=1383201 Acovered=0 valid=0
+2087 exhaustive-haarex6 pairs=1177 prefixes=1369492 Acovered=0 valid=0
+2088 exhaustive-haarex6 pairs=1177 prefixes=1369492 Acovered=0 valid=0
+2089 exhaustive-haarex6 pairs=1906 prefixes=2121137 Acovered=0 valid=0
+2090 exhaustive-haarex6 pairs=1165 prefixes=1232732 Acovered=0 valid=0
 2091 open -
-2092 open -
+2092 exhaustive-haarex6 pairs=1165 prefixes=1233092 Acovered=0 valid=0
 2093 open -
-2094 open -
-2095 open -
-2096 open -
+2094 exhaustive-haarex6 pairs=1906 prefixes=2182326 Acovered=0 valid=0
+2095 exhaustive-haarex6 pairs=1906 prefixes=2182326 Acovered=0 valid=0
+2096 exhaustive-haarex6 pairs=1906 prefixes=2182326 Acovered=0 valid=0
 2097 open -
 2098 open -
 2099 open -
 2100 open -
-2101 open -
-2102 open -
-2103 open -
+2101 exhaustive-haarex6 pairs=892 prefixes=894074 Acovered=0 valid=0
+2102 exhaustive-haarex6 pairs=1906 prefixes=2127567 Acovered=0 valid=0
+2103 exhaustive-haarex6 pairs=1906 prefixes=2127567 Acovered=0 valid=0
 2104 open -
-2105 open -
+2105 exhaustive-haarex6 pairs=1249 prefixes=1279886 Acovered=0 valid=0
 2106 open -
 2107 open -
 2108 open -
-2109 open -
-2110 open -
+2109 exhaustive-haarex6 pairs=1081 prefixes=1349983 Acovered=0 valid=0
+2110 exhaustive-haarex6 pairs=661 prefixes=920617 Acovered=0 valid=0
 2111 open -
-2112 open -
+2112 exhaustive-haarex6 pairs=805 prefixes=1102781 Acovered=0 valid=0
 2113 open -
 2114 open -
 2115 open -
@@ -2168,7 +2168,7 @@
 2167 exhaustive-haarex5 pairs=838 prefixes=1042869 Acovered=0 valid=0
 2168 open -
 2169 open -
-2170 open -
+2170 exhaustive-haarex6 pairs=1231 prefixes=1794637 Acovered=0 valid=0
 2171 open -
 2172 open -
 2173 open -
@@ -2275,7 +2275,7 @@
 2274 open -
 2275 open -
 2276 open -
-2277 open -
+2277 exhaustive-haarex6 pairs=1063 prefixes=1626437 Acovered=0 valid=0
 2278 open -
 2279 open -
 2280 open -
@@ -2284,13 +2284,13 @@
 2283 exhaustive-haarex5 pairs=1063 prefixes=1601834 Acovered=0 valid=0
 2284 open -
 2285 open -
-2286 open -
+2286 exhaustive-haarex6 pairs=1063 prefixes=1626437 Acovered=0 valid=0
 2287 open -
 2288 open -
 2289 exhaustive-haarex5 pairs=1063 prefixes=1601834 Acovered=0 valid=0
 2290 open -
 2291 open -
-2292 open -
+2292 exhaustive-haarex6 pairs=1063 prefixes=1626437 Acovered=0 valid=0
 2293 open -
 2294 open -
 2295 exhaustive-haarex5 pairs=1063 prefixes=1601834 Acovered=0 valid=0
@@ -2479,56 +2479,56 @@
 2478 open -
 2479 open -
 2480 exhaustive-haarex5 pairs=1180 prefixes=1229338 Acovered=0 valid=0
-2481 open -
-2482 open -
-2483 open -
-2484 open -
-2485 open -
-2486 open -
-2487 open -
-2488 open -
-2489 open -
-2490 open -
-2491 open -
+2481 exhaustive-haarex6 pairs=1009 prefixes=1173835 Acovered=0 valid=0
+2482 exhaustive-haarex6 pairs=1009 prefixes=1173753 Acovered=0 valid=0
+2483 exhaustive-haarex6 pairs=1570 prefixes=1823646 Acovered=0 valid=0
+2484 exhaustive-haarex6 pairs=1483 prefixes=1925989 Acovered=0 valid=0
+2485 exhaustive-haarex6 pairs=1201 prefixes=1642781 Acovered=0 valid=0
+2486 exhaustive-haarex6 pairs=1009 prefixes=1389029 Acovered=0 valid=0
+2487 exhaustive-haarex6 pairs=901 prefixes=1329707 Acovered=0 valid=0
+2488 exhaustive-haarex6 pairs=2236 prefixes=2938916 Acovered=0 valid=0
+2489 exhaustive-haarex6 pairs=2236 prefixes=2582978 Acovered=0 valid=0
+2490 exhaustive-haarex6 pairs=2236 prefixes=2938916 Acovered=0 valid=0
+2491 exhaustive-haarex6 pairs=2236 prefixes=2582978 Acovered=0 valid=0
 2492 open -
 2493 open -
 2494 open -
 2495 open -
 2496 open -
 2497 open -
-2498 open -
-2499 open -
-2500 open -
-2501 open -
-2502 open -
-2503 open -
-2504 open -
-2505 open -
-2506 open -
-2507 open -
+2498 exhaustive-haarex6 pairs=1279 prefixes=1490839 Acovered=0 valid=0
+2499 exhaustive-haarex6 pairs=1111 prefixes=1394477 Acovered=0 valid=0
+2500 exhaustive-haarex6 pairs=910 prefixes=1035150 Acovered=0 valid=0
+2501 exhaustive-haarex6 pairs=910 prefixes=1035150 Acovered=0 valid=0
+2502 exhaustive-haarex6 pairs=1201 prefixes=1309156 Acovered=0 valid=0
+2503 exhaustive-haarex6 pairs=1297 prefixes=1272185 Acovered=0 valid=0
+2504 exhaustive-haarex6 pairs=1297 prefixes=1272185 Acovered=0 valid=0
+2505 exhaustive-haarex6 pairs=1978 prefixes=2057628 Acovered=0 valid=0
+2506 exhaustive-haarex6 pairs=1297 prefixes=1229076 Acovered=0 valid=0
+2507 exhaustive-haarex6 pairs=1105 prefixes=1221938 Acovered=0 valid=0
 2508 open -
 2509 open -
 2510 open -
 2511 open -
-2512 open -
-2513 open -
-2514 open -
-2515 open -
-2516 open -
+2512 exhaustive-haarex6 pairs=1978 prefixes=2085473 Acovered=0 valid=0
+2513 exhaustive-haarex6 pairs=1978 prefixes=2085473 Acovered=0 valid=0
+2514 exhaustive-haarex6 pairs=1300 prefixes=1415209 Acovered=0 valid=0
+2515 exhaustive-haarex6 pairs=1300 prefixes=1415209 Acovered=0 valid=0
+2516 exhaustive-haarex6 pairs=1978 prefixes=2234471 Acovered=0 valid=0
 2517 open -
 2518 open -
 2519 open -
 2520 open -
-2521 open -
-2522 open -
-2523 open -
-2524 open -
-2525 open -
-2526 open -
-2527 open -
+2521 exhaustive-haarex6 pairs=1279 prefixes=1385723 Acovered=0 valid=0
+2522 exhaustive-haarex6 pairs=1267 prefixes=1328539 Acovered=0 valid=0
+2523 exhaustive-haarex6 pairs=1009 prefixes=1263691 Acovered=0 valid=0
+2524 exhaustive-haarex6 pairs=1009 prefixes=1263760 Acovered=0 valid=0
+2525 exhaustive-haarex6 pairs=1570 prefixes=1937201 Acovered=0 valid=0
+2526 exhaustive-haarex6 pairs=1429 prefixes=1665011 Acovered=0 valid=0
+2527 exhaustive-haarex6 pairs=1429 prefixes=1655849 Acovered=0 valid=0
 2528 open -
 2529 open -
-2530 open -
+2530 exhaustive-haarex6 pairs=1561 prefixes=1876814 Acovered=0 valid=0
 2531 open -
 2532 open -
 2533 open -
@@ -2537,52 +2537,52 @@
 2536 open -
 2537 open -
 2538 open -
-2539 open -
-2540 open -
+2539 exhaustive-haarex6 pairs=910 prefixes=969204 Acovered=0 valid=0
+2540 exhaustive-haarex6 pairs=1300 prefixes=1404209 Acovered=0 valid=0
 2541 open -
 2542 open -
 2543 open -
 2544 open -
 2545 open -
 2546 open -
-2547 open -
-2548 open -
-2549 open -
-2550 open -
-2551 open -
+2547 exhaustive-haarex6 pairs=1093 prefixes=1381307 Acovered=0 valid=0
+2548 exhaustive-haarex6 pairs=1093 prefixes=1295645 Acovered=0 valid=0
+2549 exhaustive-haarex6 pairs=1012 prefixes=1128772 Acovered=0 valid=0
+2550 exhaustive-haarex6 pairs=706 prefixes=927010 Acovered=0 valid=0
+2551 exhaustive-haarex6 pairs=1105 prefixes=1589941 Acovered=0 valid=0
 2552 open -
 2553 open -
 2554 open -
 2555 open -
-2556 open -
-2557 open -
-2558 open -
-2559 open -
-2560 open -
+2556 exhaustive-haarex6 pairs=1093 prefixes=1278810 Acovered=0 valid=0
+2557 exhaustive-haarex6 pairs=1081 prefixes=1243743 Acovered=0 valid=0
+2558 exhaustive-haarex6 pairs=952 prefixes=1661924 Acovered=0 valid=0
+2559 exhaustive-haarex6 pairs=883 prefixes=1423422 Acovered=0 valid=0
+2560 exhaustive-haarex6 pairs=1525 prefixes=1831713 Acovered=0 valid=0
 2561 open -
-2562 open -
-2563 open -
+2562 exhaustive-haarex6 pairs=1279 prefixes=1395392 Acovered=0 valid=0
+2563 exhaustive-haarex6 pairs=976 prefixes=1187171 Acovered=0 valid=0
 2564 open -
 2565 open -
-2566 open -
+2566 exhaustive-haarex6 pairs=643 prefixes=829878 Acovered=0 valid=0
 2567 open -
 2568 open -
 2569 open -
-2570 open -
-2571 open -
-2572 open -
-2573 open -
-2574 open -
+2570 exhaustive-haarex6 pairs=1300 prefixes=1715237 Acovered=0 valid=0
+2571 exhaustive-haarex6 pairs=1012 prefixes=1324351 Acovered=0 valid=0
+2572 exhaustive-haarex6 pairs=2062 prefixes=3251781 Acovered=0 valid=0
+2573 exhaustive-haarex6 pairs=1396 prefixes=1906826 Acovered=0 valid=0
+2574 exhaustive-haarex6 pairs=1396 prefixes=1906826 Acovered=0 valid=0
 2575 open -
 2576 open -
-2577 open -
-2578 open -
+2577 exhaustive-haarex6 pairs=994 prefixes=1395788 Acovered=0 valid=0
+2578 exhaustive-haarex6 pairs=982 prefixes=1365069 Acovered=0 valid=0
 2579 open -
-2580 open -
-2581 open -
+2580 exhaustive-haarex6 pairs=1804 prefixes=2049851 Acovered=0 valid=0
+2581 exhaustive-haarex6 pairs=976 prefixes=1398705 Acovered=0 valid=0
 2582 open -
 2583 open -
-2584 open -
+2584 exhaustive-haarex6 pairs=922 prefixes=1235995 Acovered=0 valid=0
 2585 open -
 2586 open -
 2587 open -
@@ -2612,28 +2612,28 @@
 2611 open -
 2612 open -
 2613 open -
-2614 open -
-2615 open -
-2616 open -
-2617 open -
+2614 exhaustive-haarex6 pairs=1471 prefixes=2244208 Acovered=0 valid=0
+2615 exhaustive-haarex6 pairs=922 prefixes=1450740 Acovered=0 valid=0
+2616 exhaustive-haarex6 pairs=1015 prefixes=1424922 Acovered=0 valid=0
+2617 exhaustive-haarex6 pairs=1015 prefixes=1922952 Acovered=0 valid=0
 2618 open -
 2619 open -
-2620 open -
+2620 exhaustive-haarex6 pairs=877 prefixes=1305422 Acovered=0 valid=0
 2621 open -
-2622 open -
+2622 exhaustive-haarex6 pairs=835 prefixes=1129499 Acovered=0 valid=0
 2623 open -
 2624 open -
 2625 open -
 2626 open -
 2627 open -
-2628 open -
+2628 exhaustive-haarex6 pairs=1324 prefixes=1819510 Acovered=0 valid=0
 2629 open -
 2630 open -
 2631 open -
 2632 open -
 2633 open -
-2634 open -
-2635 open -
+2634 exhaustive-haarex6 pairs=1093 prefixes=1430529 Acovered=0 valid=0
+2635 exhaustive-haarex6 pairs=1093 prefixes=1430523 Acovered=0 valid=0
 2636 open -
 2637 open -
 2638 open -
@@ -2704,27 +2704,27 @@
 2703 open -
 2704 open -
 2705 exhaustive-haarex5 pairs=1099 prefixes=1447309 Acovered=78 valid=0
-2706 open -
-2707 open -
-2708 open -
-2709 open -
-2710 open -
-2711 open -
+2706 exhaustive-haarex6 pairs=1483 prefixes=2155381 Acovered=0 valid=0
+2707 exhaustive-haarex6 pairs=922 prefixes=1210461 Acovered=0 valid=0
+2708 exhaustive-haarex6 pairs=1378 prefixes=2058292 Acovered=0 valid=0
+2709 exhaustive-haarex6 pairs=1015 prefixes=1343312 Acovered=0 valid=0
+2710 exhaustive-haarex6 pairs=1015 prefixes=1995266 Acovered=0 valid=0
+2711 exhaustive-haarex6 pairs=889 prefixes=1327796 Acovered=0 valid=0
 2712 open -
 2713 open -
-2714 open -
+2714 exhaustive-haarex6 pairs=835 prefixes=1154104 Acovered=0 valid=0
 2715 open -
 2716 open -
 2717 open -
-2718 open -
+2718 exhaustive-haarex6 pairs=1324 prefixes=1957714 Acovered=0 valid=0
 2719 open -
 2720 open -
 2721 open -
 2722 open -
-2723 open -
+2723 exhaustive-haarex6 pairs=1093 prefixes=1322430 Acovered=0 valid=0
 2724 open -
 2725 open -
-2726 open -
+2726 exhaustive-haarex6 pairs=1093 prefixes=1444890 Acovered=0 valid=0
 2727 open -
 2728 open -
 2729 open -
@@ -2861,30 +2861,30 @@
 2860 exhaustive-haarex5 pairs=1819 prefixes=1995575 Acovered=0 valid=0
 2861 exhaustive-haarex5 pairs=1819 prefixes=1906234 Acovered=0 valid=0
 2862 open -
-2863 open -
-2864 open -
-2865 open -
-2866 open -
-2867 open -
-2868 open -
+2863 exhaustive-haarex6 pairs=1396 prefixes=1871092 Acovered=0 valid=0
+2864 exhaustive-haarex6 pairs=1396 prefixes=1871092 Acovered=0 valid=0
+2865 exhaustive-haarex6 pairs=1465 prefixes=1999307 Acovered=0 valid=0
+2866 exhaustive-haarex6 pairs=1465 prefixes=1999307 Acovered=0 valid=0
+2867 exhaustive-haarex6 pairs=2131 prefixes=2833789 Acovered=0 valid=0
+2868 exhaustive-haarex6 pairs=2131 prefixes=2504465 Acovered=0 valid=0
 2869 open -
-2870 open -
+2870 exhaustive-haarex6 pairs=1432 prefixes=1925556 Acovered=0 valid=0
 2871 open -
 2872 open -
-2873 open -
-2874 open -
-2875 open -
-2876 open -
-2877 open -
-2878 open -
+2873 exhaustive-haarex6 pairs=1645 prefixes=2546727 Acovered=0 valid=0
+2874 exhaustive-haarex6 pairs=1645 prefixes=2546727 Acovered=0 valid=0
+2875 exhaustive-haarex6 pairs=1645 prefixes=2600485 Acovered=0 valid=0
+2876 exhaustive-haarex6 pairs=1645 prefixes=2600485 Acovered=0 valid=0
+2877 exhaustive-haarex6 pairs=1645 prefixes=2641499 Acovered=0 valid=0
+2878 exhaustive-haarex6 pairs=1645 prefixes=2641499 Acovered=0 valid=0
 2879 open -
-2880 open -
+2880 exhaustive-haarex6 pairs=1645 prefixes=2177927 Acovered=0 valid=0
 2881 open -
 2882 open -
 2883 open -
 2884 open -
-2885 open -
-2886 open -
+2885 exhaustive-haarex6 pairs=1645 prefixes=2425269 Acovered=0 valid=0
+2886 exhaustive-haarex6 pairs=1645 prefixes=2251818 Acovered=0 valid=0
 2887 open -
 2888 open -
 2889 open -
@@ -2927,32 +2927,32 @@
 2926 open -
 2927 open -
 2928 open -
-2929 open -
-2930 open -
-2931 open -
+2929 exhaustive-haarex6 pairs=1465 prefixes=1928723 Acovered=0 valid=0
+2930 exhaustive-haarex6 pairs=1465 prefixes=1928723 Acovered=0 valid=0
+2931 exhaustive-haarex6 pairs=2026 prefixes=3485628 Acovered=0 valid=0
 2932 open -
 2933 open -
 2934 open -
 2935 open -
-2936 open -
+2936 exhaustive-haarex6 pairs=1699 prefixes=2174327 Acovered=0 valid=0
 2937 open -
 2938 open -
-2939 open -
-2940 open -
-2941 open -
+2939 exhaustive-haarex6 pairs=1699 prefixes=2231584 Acovered=0 valid=0
+2940 exhaustive-haarex6 pairs=1699 prefixes=2231584 Acovered=0 valid=0
+2941 exhaustive-haarex6 pairs=1699 prefixes=2552701 Acovered=0 valid=0
 2942 open -
-2943 open -
-2944 open -
-2945 open -
-2946 open -
-2947 open -
-2948 open -
+2943 exhaustive-haarex6 pairs=1957 prefixes=2771816 Acovered=0 valid=0
+2944 exhaustive-haarex6 pairs=1630 prefixes=2378627 Acovered=0 valid=0
+2945 exhaustive-haarex6 pairs=1465 prefixes=1974415 Acovered=0 valid=0
+2946 exhaustive-haarex6 pairs=1465 prefixes=1974415 Acovered=0 valid=0
+2947 exhaustive-haarex6 pairs=1396 prefixes=2068022 Acovered=0 valid=0
+2948 exhaustive-haarex6 pairs=1396 prefixes=2068022 Acovered=0 valid=0
 2949 open -
 2950 open -
-2951 open -
-2952 open -
+2951 exhaustive-haarex6 pairs=1642 prefixes=2110521 Acovered=0 valid=0
+2952 exhaustive-haarex6 pairs=1957 prefixes=2763842 Acovered=0 valid=0
 2953 open -
-2954 open -
+2954 exhaustive-haarex6 pairs=1642 prefixes=2382923 Acovered=0 valid=0
 2955 open -
 2956 open -
 2957 open -
@@ -2963,29 +2963,29 @@
 2962 open -
 2963 open -
 2964 open -
-2965 open -
+2965 exhaustive-haarex6 pairs=1336 prefixes=1820779 Acovered=0 valid=0
 2966 open -
 2967 open -
 2968 open -
 2969 open -
-2970 open -
+2970 exhaustive-haarex6 pairs=1471 prefixes=2634968 Acovered=0 valid=0
 2971 open -
-2972 open -
+2972 exhaustive-haarex6 pairs=1633 prefixes=2987271 Acovered=0 valid=0
 2973 open -
-2974 open -
-2975 open -
+2974 exhaustive-haarex6 pairs=1483 prefixes=2302032 Acovered=0 valid=0
+2975 exhaustive-haarex6 pairs=1336 prefixes=1941642 Acovered=0 valid=0
 2976 open -
-2977 open -
+2977 exhaustive-haarex6 pairs=1483 prefixes=2180792 Acovered=0 valid=0
 2978 open -
-2979 open -
-2980 open -
-2981 open -
+2979 exhaustive-haarex6 pairs=1324 prefixes=1826514 Acovered=0 valid=0
+2980 exhaustive-haarex6 pairs=1378 prefixes=2189026 Acovered=0 valid=0
+2981 exhaustive-haarex6 pairs=1390 prefixes=2072094 Acovered=0 valid=0
 2982 open -
 2983 open -
 2984 open -
 2985 open -
-2986 open -
-2987 open -
+2986 exhaustive-haarex6 pairs=1324 prefixes=1948198 Acovered=0 valid=0
+2987 exhaustive-haarex6 pairs=1324 prefixes=1950120 Acovered=0 valid=0
 2988 open -
 2989 open -
 2990 open -
@@ -3413,44 +3413,44 @@
 3412 exhaustive-haarex5 pairs=1093 prefixes=1288995 Acovered=0 valid=0
 3413 exhaustive-haarex5 pairs=1081 prefixes=1231278 Acovered=0 valid=0
 3414 open -
-3415 open -
+3415 exhaustive-haarex6 pairs=1966 prefixes=2895352 Acovered=0 valid=0
 3416 open -
 3417 open -
-3418 open -
-3419 open -
+3418 exhaustive-haarex6 pairs=1966 prefixes=2895352 Acovered=0 valid=0
+3419 exhaustive-haarex6 pairs=1966 prefixes=2895352 Acovered=0 valid=0
 3420 open -
-3421 open -
+3421 exhaustive-haarex6 pairs=1966 prefixes=3093291 Acovered=0 valid=0
 3422 open -
 3423 open -
 3424 open -
 3425 open -
-3426 open -
-3427 open -
-3428 open -
-3429 open -
-3430 open -
-3431 open -
-3432 open -
-3433 open -
-3434 open -
+3426 exhaustive-haarex6 pairs=1528 prefixes=1574671 Acovered=0 valid=0
+3427 exhaustive-haarex6 pairs=1708 prefixes=2348059 Acovered=0 valid=0
+3428 exhaustive-haarex6 pairs=1528 prefixes=1574671 Acovered=0 valid=0
+3429 exhaustive-haarex6 pairs=1528 prefixes=1574671 Acovered=0 valid=0
+3430 exhaustive-haarex6 pairs=1708 prefixes=2348059 Acovered=0 valid=0
+3431 exhaustive-haarex6 pairs=1708 prefixes=2348059 Acovered=0 valid=0
+3432 exhaustive-haarex6 pairs=1795 prefixes=1912447 Acovered=0 valid=0
+3433 exhaustive-haarex6 pairs=2560 prefixes=3079774 Acovered=0 valid=0
+3434 exhaustive-haarex6 pairs=1795 prefixes=1889253 Acovered=0 valid=0
 3435 open -
-3436 open -
+3436 exhaustive-haarex6 pairs=1966 prefixes=2895352 Acovered=0 valid=0
 3437 open -
 3438 open -
 3439 open -
-3440 open -
-3441 open -
-3442 open -
+3440 exhaustive-haarex6 pairs=1966 prefixes=3093291 Acovered=0 valid=0
+3441 exhaustive-haarex6 pairs=1966 prefixes=3093291 Acovered=0 valid=0
+3442 exhaustive-haarex6 pairs=1966 prefixes=3093291 Acovered=0 valid=0
 3443 open -
 3444 open -
 3445 open -
 3446 open -
-3447 open -
-3448 open -
-3449 open -
-3450 open -
-3451 open -
-3452 open -
+3447 exhaustive-haarex6 pairs=1294 prefixes=1502532 Acovered=0 valid=0
+3448 exhaustive-haarex6 pairs=1708 prefixes=2348059 Acovered=0 valid=0
+3449 exhaustive-haarex6 pairs=1294 prefixes=1502532 Acovered=0 valid=0
+3450 exhaustive-haarex6 pairs=1294 prefixes=1502532 Acovered=0 valid=0
+3451 exhaustive-haarex6 pairs=1708 prefixes=2348059 Acovered=0 valid=0
+3452 exhaustive-haarex6 pairs=1708 prefixes=2348059 Acovered=0 valid=0
 3453 open -
 3454 open -
 3455 open -
@@ -3467,14 +3467,14 @@
 3466 open -
 3467 open -
 3468 open -
-3469 open -
-3470 open -
-3471 open -
-3472 open -
-3473 open -
-3474 open -
-3475 open -
-3476 open -
+3469 exhaustive-haarex6 pairs=2017 prefixes=2720587 Acovered=0 valid=0
+3470 exhaustive-haarex6 pairs=2017 prefixes=2720587 Acovered=0 valid=0
+3471 exhaustive-haarex6 pairs=2017 prefixes=2720587 Acovered=0 valid=0
+3472 exhaustive-haarex6 pairs=2017 prefixes=2720587 Acovered=0 valid=0
+3473 exhaustive-haarex6 pairs=2017 prefixes=2720587 Acovered=0 valid=0
+3474 exhaustive-haarex6 pairs=2017 prefixes=2720587 Acovered=0 valid=0
+3475 exhaustive-haarex6 pairs=2017 prefixes=2720587 Acovered=0 valid=0
+3476 exhaustive-haarex6 pairs=2017 prefixes=2720587 Acovered=0 valid=0
 3477 exhaustive-haarex4 pairs=1546 prefixes=1630156 Acovered=0 valid=0
 3478 exhaustive-haarex4 pairs=1255 prefixes=1462671 Acovered=0 valid=0
 3479 exhaustive-haarex4 pairs=2017 prefixes=2720587 Acovered=0 valid=0
@@ -3493,16 +3493,16 @@
 3492 exhaustive-haarex4 pairs=1318 prefixes=1452477 Acovered=0 valid=0
 3493 open -
 3494 open -
-3495 open -
-3496 open -
+3495 exhaustive-haarex6 pairs=1384 prefixes=1669584 Acovered=0 valid=0
+3496 exhaustive-haarex6 pairs=1708 prefixes=1655624 Acovered=0 valid=0
 3497 open -
 3498 open -
-3499 open -
-3500 open -
+3499 exhaustive-haarex6 pairs=1738 prefixes=1957014 Acovered=0 valid=0
+3500 exhaustive-haarex6 pairs=1597 prefixes=1841898 Acovered=0 valid=0
 3501 open -
 3502 open -
-3503 open -
-3504 open -
+3503 exhaustive-haarex6 pairs=1360 prefixes=1659950 Acovered=0 valid=0
+3504 exhaustive-haarex6 pairs=1996 prefixes=2156774 Acovered=0 valid=0
 3505 open -
 3506 open -
 3507 exhaustive-haarex4 pairs=1966 prefixes=2895352 Acovered=0 valid=0
@@ -3548,7 +3548,7 @@
 3547 open -
 3548 open -
 3549 open -
-3550 open -
+3550 exhaustive-haarex6 pairs=1504 prefixes=2801434 Acovered=0 valid=0
 3551 open -
 3552 open -
 3553 open -
@@ -3569,7 +3569,7 @@
 3568 open -
 3569 open -
 3570 open -
-3571 open -
+3571 exhaustive-haarex6 pairs=973 prefixes=1817525 Acovered=0 valid=0
 3572 open -
 3573 open -
 3574 open -
@@ -3610,21 +3610,21 @@
 3609 open -
 3610 open -
 3611 open -
-3612 open -
-3613 open -
-3614 open -
+3612 exhaustive-haarex6 pairs=1540 prefixes=2540808 Acovered=0 valid=0
+3613 exhaustive-haarex6 pairs=1540 prefixes=2540808 Acovered=0 valid=0
+3614 exhaustive-haarex6 pairs=1540 prefixes=2228670 Acovered=0 valid=0
 3615 open -
-3616 open -
-3617 open -
-3618 open -
+3616 exhaustive-haarex6 pairs=1540 prefixes=2540808 Acovered=0 valid=0
+3617 exhaustive-haarex6 pairs=1540 prefixes=2540808 Acovered=0 valid=0
+3618 exhaustive-haarex6 pairs=1540 prefixes=2228670 Acovered=0 valid=0
 3619 open -
 3620 open -
 3621 open -
-3622 open -
+3622 exhaustive-haarex6 pairs=1528 prefixes=2120308 Acovered=0 valid=0
 3623 open -
 3624 open -
-3625 open -
-3626 open -
+3625 exhaustive-haarex6 pairs=1528 prefixes=2120308 Acovered=0 valid=0
+3626 exhaustive-haarex6 pairs=1528 prefixes=2120308 Acovered=0 valid=0
 3627 open -
 3628 exhaustive-haarex4 pairs=1540 prefixes=2540808 Acovered=0 valid=0
 3629 exhaustive-haarex4 pairs=1540 prefixes=2540808 Acovered=0 valid=0
@@ -3675,21 +3675,21 @@
 3674 open -
 3675 open -
 3676 open -
-3677 open -
-3678 open -
-3679 open -
+3677 exhaustive-haarex6 pairs=1540 prefixes=2540808 Acovered=0 valid=0
+3678 exhaustive-haarex6 pairs=1540 prefixes=2540808 Acovered=0 valid=0
+3679 exhaustive-haarex6 pairs=1540 prefixes=2540808 Acovered=0 valid=0
 3680 open -
-3681 open -
-3682 open -
-3683 open -
+3681 exhaustive-haarex6 pairs=1540 prefixes=2540808 Acovered=0 valid=0
+3682 exhaustive-haarex6 pairs=1540 prefixes=2540808 Acovered=0 valid=0
+3683 exhaustive-haarex6 pairs=1540 prefixes=2540808 Acovered=0 valid=0
 3684 open -
 3685 open -
 3686 open -
 3687 open -
 3688 open -
-3689 open -
-3690 open -
-3691 open -
+3689 exhaustive-haarex6 pairs=1528 prefixes=1930608 Acovered=0 valid=0
+3690 exhaustive-haarex6 pairs=1528 prefixes=1930608 Acovered=0 valid=0
+3691 exhaustive-haarex6 pairs=1528 prefixes=1930608 Acovered=0 valid=0
 3692 open -
 3693 exhaustive-haarex4 pairs=1540 prefixes=2540808 Acovered=0 valid=0
 3694 exhaustive-haarex4 pairs=1540 prefixes=2540808 Acovered=0 valid=0
@@ -3706,22 +3706,22 @@
 3705 exhaustive-haarex4 pairs=1528 prefixes=1930608 Acovered=0 valid=0
 3706 exhaustive-haarex4 pairs=1528 prefixes=1930608 Acovered=0 valid=0
 3707 exhaustive-haarex4 pairs=1528 prefixes=1930608 Acovered=0 valid=0
-3708 open -
-3709 open -
+3708 exhaustive-haarex6 pairs=1540 prefixes=2228670 Acovered=0 valid=0
+3709 exhaustive-haarex6 pairs=1540 prefixes=2540808 Acovered=0 valid=0
 3710 open -
-3711 open -
-3712 open -
-3713 open -
+3711 exhaustive-haarex6 pairs=1540 prefixes=2228670 Acovered=0 valid=0
+3712 exhaustive-haarex6 pairs=1540 prefixes=2228670 Acovered=0 valid=0
+3713 exhaustive-haarex6 pairs=1540 prefixes=2540808 Acovered=0 valid=0
 3714 open -
-3715 open -
+3715 exhaustive-haarex6 pairs=1540 prefixes=2228670 Acovered=0 valid=0
 3716 open -
 3717 open -
-3718 open -
+3718 exhaustive-haarex6 pairs=1528 prefixes=1930608 Acovered=0 valid=0
 3719 open -
-3720 open -
+3720 exhaustive-haarex6 pairs=1528 prefixes=2120308 Acovered=0 valid=0
 3721 open -
 3722 open -
-3723 open -
+3723 exhaustive-haarex6 pairs=1528 prefixes=2120308 Acovered=0 valid=0
 3724 exhaustive-haarex4 pairs=1540 prefixes=2228670 Acovered=0 valid=0
 3725 exhaustive-haarex4 pairs=1540 prefixes=2540808 Acovered=0 valid=0
 3726 open -
@@ -3740,11 +3740,11 @@
 3739 open -
 3740 open -
 3741 open -
-3742 open -
+3742 exhaustive-haarex6 pairs=1504 prefixes=2801434 Acovered=0 valid=0
 3743 open -
 3744 open -
 3745 open -
-3746 open -
+3746 exhaustive-haarex6 pairs=1504 prefixes=2801434 Acovered=0 valid=0
 3747 open -
 3748 open -
 3749 open -
@@ -3821,7 +3821,7 @@
 3820 open -
 3821 open -
 3822 open -
-3823 open -
+3823 exhaustive-haarex6 pairs=1366 prefixes=2320038 Acovered=0 valid=0
 3824 open -
 3825 open -
 3826 open -
@@ -3904,7 +3904,7 @@
 3903 open -
 3904 open -
 3905 open -
-3906 open -
+3906 exhaustive-haarex6 pairs=823 prefixes=1760836 Acovered=0 valid=0
 3907 open -
 3908 open -
 3909 exhaustive-haarex5 pairs=886 prefixes=1525720 Acovered=0 valid=0
@@ -4076,12 +4076,12 @@
 4075 exhaustive-haarex5 pairs=832 prefixes=1350987 Acovered=0 valid=0
 4076 open -
 4077 open -
-4078 open -
+4078 exhaustive-haarex6 pairs=1384 prefixes=2436489 Acovered=0 valid=0
 4079 open -
-4080 open -
-4081 open -
+4080 exhaustive-haarex6 pairs=1156 prefixes=1609936 Acovered=0 valid=0
+4081 exhaustive-haarex6 pairs=934 prefixes=1602488 Acovered=0 valid=0
 4082 open -
-4083 open -
+4083 exhaustive-haarex6 pairs=1162 prefixes=1858360 Acovered=0 valid=0
 4084 open -
 4085 open -
 4086 open -
@@ -4094,23 +4094,23 @@
 4093 open -
 4094 open -
 4095 open -
-4096 open -
-4097 open -
+4096 exhaustive-haarex6 pairs=1327 prefixes=2739433 Acovered=0 valid=0
+4097 exhaustive-haarex6 pairs=1576 prefixes=1986079 Acovered=0 valid=0
 4098 open -
 4099 open -
 4100 open -
-4101 open -
-4102 open -
-4103 open -
-4104 open -
-4105 open -
-4106 open -
-4107 open -
+4101 exhaustive-haarex6 pairs=1312 prefixes=1106960 Acovered=0 valid=0
+4102 exhaustive-haarex6 pairs=823 prefixes=649848 Acovered=0 valid=0
+4103 exhaustive-haarex6 pairs=697 prefixes=631018 Acovered=0 valid=0
+4104 exhaustive-haarex6 pairs=859 prefixes=854580 Acovered=0 valid=0
+4105 exhaustive-haarex6 pairs=859 prefixes=854535 Acovered=0 valid=0
+4106 exhaustive-haarex6 pairs=1615 prefixes=1422117 Acovered=0 valid=0
+4107 exhaustive-haarex6 pairs=859 prefixes=942910 Acovered=0 valid=0
 4108 open -
-4109 open -
-4110 open -
-4111 open -
-4112 open -
+4109 exhaustive-haarex6 pairs=688 prefixes=509562 Acovered=0 valid=0
+4110 exhaustive-haarex6 pairs=1075 prefixes=814825 Acovered=0 valid=0
+4111 exhaustive-haarex6 pairs=847 prefixes=526490 Acovered=0 valid=0
+4112 exhaustive-haarex6 pairs=1264 prefixes=1218735 Acovered=0 valid=0
 4113 open -
 4114 open -
 4115 open -
@@ -4125,50 +4125,50 @@
 4124 open -
 4125 open -
 4126 open -
-4127 open -
-4128 open -
-4129 open -
-4130 open -
-4131 open -
-4132 open -
-4133 open -
-4134 open -
-4135 open -
+4127 exhaustive-haarex6 pairs=955 prefixes=997758 Acovered=0 valid=0
+4128 exhaustive-haarex6 pairs=829 prefixes=945072 Acovered=0 valid=0
+4129 exhaustive-haarex6 pairs=883 prefixes=976339 Acovered=0 valid=0
+4130 exhaustive-haarex6 pairs=883 prefixes=976339 Acovered=0 valid=0
+4131 exhaustive-haarex6 pairs=1261 prefixes=1338736 Acovered=0 valid=0
+4132 exhaustive-haarex6 pairs=1261 prefixes=1338736 Acovered=0 valid=0
+4133 exhaustive-haarex6 pairs=1480 prefixes=947939 Acovered=0 valid=0
+4134 exhaustive-haarex6 pairs=1138 prefixes=929153 Acovered=0 valid=0
+4135 exhaustive-haarex6 pairs=1261 prefixes=1193494 Acovered=0 valid=0
 4136 open -
-4137 open -
-4138 open -
-4139 open -
-4140 open -
-4141 open -
-4142 open -
-4143 open -
-4144 open -
-4145 open -
+4137 exhaustive-haarex6 pairs=964 prefixes=745699 Acovered=0 valid=0
+4138 exhaustive-haarex6 pairs=679 prefixes=797196 Acovered=0 valid=0
+4139 exhaustive-haarex6 pairs=1279 prefixes=789305 Acovered=0 valid=0
+4140 exhaustive-haarex6 pairs=1306 prefixes=1128880 Acovered=0 valid=0
+4141 exhaustive-haarex6 pairs=1504 prefixes=1151167 Acovered=0 valid=0
+4142 exhaustive-haarex6 pairs=1426 prefixes=1275517 Acovered=0 valid=0
+4143 exhaustive-haarex6 pairs=1426 prefixes=1292062 Acovered=0 valid=0
+4144 exhaustive-haarex6 pairs=1426 prefixes=1125179 Acovered=0 valid=0
+4145 exhaustive-haarex6 pairs=898 prefixes=777249 Acovered=0 valid=0
 4146 open -
-4147 open -
-4148 open -
-4149 open -
-4150 open -
-4151 open -
-4152 open -
-4153 open -
-4154 open -
-4155 open -
-4156 open -
-4157 open -
-4158 open -
-4159 open -
-4160 open -
-4161 open -
+4147 exhaustive-haarex6 pairs=1255 prefixes=1409488 Acovered=0 valid=0
+4148 exhaustive-haarex6 pairs=1255 prefixes=1410540 Acovered=0 valid=0
+4149 exhaustive-haarex6 pairs=1294 prefixes=1097606 Acovered=0 valid=0
+4150 exhaustive-haarex6 pairs=1282 prefixes=1087687 Acovered=0 valid=0
+4151 exhaustive-haarex6 pairs=1234 prefixes=1349977 Acovered=0 valid=0
+4152 exhaustive-haarex6 pairs=1906 prefixes=2073654 Acovered=0 valid=0
+4153 exhaustive-haarex6 pairs=1906 prefixes=1295986 Acovered=0 valid=0
+4154 exhaustive-haarex6 pairs=1282 prefixes=1083820 Acovered=0 valid=0
+4155 exhaustive-haarex6 pairs=982 prefixes=934373 Acovered=0 valid=0
+4156 exhaustive-haarex6 pairs=982 prefixes=911821 Acovered=0 valid=0
+4157 exhaustive-haarex6 pairs=1156 prefixes=1033365 Acovered=0 valid=0
+4158 exhaustive-haarex6 pairs=952 prefixes=1143652 Acovered=0 valid=0
+4159 exhaustive-haarex6 pairs=955 prefixes=1021287 Acovered=0 valid=0
+4160 exhaustive-haarex6 pairs=532 prefixes=659878 Acovered=0 valid=0
+4161 exhaustive-haarex6 pairs=1069 prefixes=1186620 Acovered=0 valid=0
 4162 open -
-4163 open -
-4164 open -
-4165 open -
-4166 open -
+4163 exhaustive-haarex6 pairs=823 prefixes=729737 Acovered=0 valid=0
+4164 exhaustive-haarex6 pairs=1906 prefixes=1299506 Acovered=0 valid=0
+4165 exhaustive-haarex6 pairs=517 prefixes=644942 Acovered=0 valid=0
+4166 exhaustive-haarex6 pairs=1192 prefixes=1536874 Acovered=0 valid=0
 4167 open -
-4168 open -
-4169 open -
-4170 open -
+4168 exhaustive-haarex6 pairs=823 prefixes=708970 Acovered=0 valid=0
+4169 exhaustive-haarex6 pairs=1282 prefixes=1085630 Acovered=0 valid=0
+4170 exhaustive-haarex6 pairs=487 prefixes=622853 Acovered=0 valid=0
 4171 open -
 4172 open -
 4173 open -
@@ -4212,15 +4212,15 @@
 4211 exhaustive-haarex5 pairs=1066 prefixes=1204072 Acovered=0 valid=0
 4212 exhaustive-haarex5 pairs=955 prefixes=1008732 Acovered=0 valid=0
 4213 exhaustive-haarex5 pairs=1129 prefixes=1184456 Acovered=0 valid=0
-4214 open -
-4215 open -
-4216 open -
-4217 open -
-4218 open -
-4219 open -
-4220 open -
+4214 exhaustive-haarex6 pairs=1744 prefixes=1985822 Acovered=0 valid=0
+4215 exhaustive-haarex6 pairs=1978 prefixes=2071760 Acovered=0 valid=0
+4216 exhaustive-haarex6 pairs=1744 prefixes=1987074 Acovered=0 valid=0
+4217 exhaustive-haarex6 pairs=1978 prefixes=2078376 Acovered=0 valid=0
+4218 exhaustive-haarex6 pairs=1096 prefixes=1310656 Acovered=0 valid=0
+4219 exhaustive-haarex6 pairs=1096 prefixes=1310656 Acovered=0 valid=0
+4220 exhaustive-haarex6 pairs=1114 prefixes=1342400 Acovered=0 valid=0
 4221 open -
-4222 open -
+4222 exhaustive-haarex6 pairs=2152 prefixes=2200960 Acovered=0 valid=0
 4223 open -
 4224 open -
 4225 open -
@@ -4238,8 +4238,8 @@
 4237 open -
 4238 open -
 4239 open -
-4240 open -
-4241 open -
+4240 exhaustive-haarex6 pairs=1750 prefixes=2359487 Acovered=0 valid=0
+4241 exhaustive-haarex6 pairs=1750 prefixes=2359487 Acovered=0 valid=0
 4242 open -
 4243 open -
 4244 open -
@@ -4261,7 +4261,7 @@
 4260 open -
 4261 open -
 4262 open -
-4263 open -
+4263 exhaustive-haarex6 pairs=1348 prefixes=1413789 Acovered=0 valid=0
 4264 open -
 4265 open -
 4266 open -
@@ -4489,26 +4489,26 @@
 4488 open -
 4489 open -
 4490 open -
-4491 open -
-4492 open -
-4493 open -
+4491 exhaustive-haarex6 pairs=1615 prefixes=2103954 Acovered=0 valid=0
+4492 exhaustive-haarex6 pairs=1615 prefixes=2103954 Acovered=0 valid=0
+4493 exhaustive-haarex6 pairs=1615 prefixes=2103954 Acovered=0 valid=0
 4494 open -
 4495 open -
 4496 open -
 4497 open -
 4498 open -
 4499 open -
-4500 open -
-4501 open -
-4502 open -
+4500 exhaustive-haarex6 pairs=1615 prefixes=2103954 Acovered=0 valid=0
+4501 exhaustive-haarex6 pairs=1615 prefixes=2103954 Acovered=0 valid=0
+4502 exhaustive-haarex6 pairs=1615 prefixes=2103954 Acovered=0 valid=0
 4503 open -
 4504 open -
 4505 open -
 4506 open -
 4507 open -
-4508 open -
-4509 open -
-4510 open -
+4508 exhaustive-haarex6 pairs=1615 prefixes=2103954 Acovered=0 valid=0
+4509 exhaustive-haarex6 pairs=1615 prefixes=2103954 Acovered=0 valid=0
+4510 exhaustive-haarex6 pairs=1615 prefixes=2103954 Acovered=0 valid=0
 4511 open -
 4512 exhaustive-haarex5 pairs=1615 prefixes=2103954 Acovered=0 valid=0
 4513 exhaustive-haarex5 pairs=1615 prefixes=2103954 Acovered=0 valid=0
@@ -4530,8 +4530,8 @@
 4529 open -
 4530 open -
 4531 open -
-4532 open -
-4533 open -
+4532 exhaustive-haarex6 pairs=850 prefixes=1671457 Acovered=0 valid=0
+4533 exhaustive-haarex6 pairs=1522 prefixes=2409433 Acovered=0 valid=0
 4534 open -
 4535 open -
 4536 open -
@@ -4865,23 +4865,23 @@
 4864 exhaustive-haarex5 pairs=2020 prefixes=3334037 Acovered=0 valid=0
 4865 exhaustive-haarex5 pairs=2254 prefixes=3784565 Acovered=0 valid=0
 4866 open -
-4867 open -
+4867 exhaustive-haarex6 pairs=2902 prefixes=5256001 Acovered=0 valid=0
 4868 exhaustive-haarex5 pairs=2200 prefixes=3297143 Acovered=0 valid=0
-4869 open -
+4869 exhaustive-haarex6 pairs=2902 prefixes=5256001 Acovered=0 valid=0
 4870 exhaustive-haarex5 pairs=1732 prefixes=2898634 Acovered=0 valid=0
 4871 open -
 4872 open -
-4873 open -
-4874 open -
+4873 exhaustive-haarex6 pairs=2902 prefixes=5256001 Acovered=0 valid=0
+4874 exhaustive-haarex6 pairs=2902 prefixes=5256001 Acovered=0 valid=0
 4875 exhaustive-haarex5 pairs=2902 prefixes=5256001 Acovered=0 valid=0
-4876 open -
+4876 exhaustive-haarex6 pairs=2902 prefixes=5256001 Acovered=0 valid=0
 4877 open -
 4878 exhaustive-haarex5 pairs=2902 prefixes=5256001 Acovered=0 valid=0
-4879 open -
+4879 exhaustive-haarex6 pairs=2902 prefixes=5256001 Acovered=0 valid=0
 4880 open -
-4881 open -
+4881 exhaustive-haarex6 pairs=2902 prefixes=5256001 Acovered=0 valid=0
 4882 exhaustive-haarex5 pairs=2200 prefixes=3206415 Acovered=0 valid=0
-4883 open -
+4883 exhaustive-haarex6 pairs=2902 prefixes=5256001 Acovered=0 valid=0
 4884 exhaustive-haarex5 pairs=1732 prefixes=2859552 Acovered=0 valid=0
 4885 open -
 4886 open -
@@ -4921,27 +4921,27 @@
 4920 open -
 4921 open -
 4922 open -
-4923 open -
+4923 exhaustive-haarex6 pairs=2224 prefixes=3769014 Acovered=0 valid=0
 4924 exhaustive-haarex5 pairs=1210 prefixes=2599782 Acovered=0 valid=0
 4925 open -
 4926 open -
 4927 exhaustive-haarex5 pairs=2224 prefixes=3769014 Acovered=0 valid=0
-4928 open -
-4929 open -
+4928 exhaustive-haarex6 pairs=2224 prefixes=3769014 Acovered=0 valid=0
+4929 exhaustive-haarex6 pairs=2224 prefixes=3769014 Acovered=0 valid=0
 4930 open -
 4931 open -
 4932 open -
 4933 open -
-4934 open -
-4935 open -
+4934 exhaustive-haarex6 pairs=2224 prefixes=3769014 Acovered=0 valid=0
+4935 exhaustive-haarex6 pairs=2224 prefixes=3769014 Acovered=0 valid=0
 4936 exhaustive-haarex5 pairs=2224 prefixes=3769014 Acovered=0 valid=0
 4937 open -
 4938 open -
 4939 exhaustive-haarex5 pairs=2224 prefixes=3769014 Acovered=0 valid=0
-4940 open -
-4941 open -
-4942 open -
-4943 open -
+4940 exhaustive-haarex6 pairs=2224 prefixes=3769014 Acovered=0 valid=0
+4941 exhaustive-haarex6 pairs=2224 prefixes=3769014 Acovered=0 valid=0
+4942 exhaustive-haarex6 pairs=2224 prefixes=3769014 Acovered=0 valid=0
+4943 exhaustive-haarex6 pairs=2224 prefixes=3769014 Acovered=0 valid=0
 4944 exhaustive-haarex5 pairs=2224 prefixes=3769014 Acovered=0 valid=0
 4945 open -
 4946 open -
@@ -4949,50 +4949,50 @@
 4948 open -
 4949 open -
 4950 open -
-4951 open -
+4951 exhaustive-haarex6 pairs=1210 prefixes=3011082 Acovered=0 valid=0
 4952 open -
 4953 open -
 4954 exhaustive-haarex5 pairs=1126 prefixes=2538427 Acovered=0 valid=0
-4955 open -
+4955 exhaustive-haarex6 pairs=2140 prefixes=4360778 Acovered=0 valid=0
 4956 open -
 4957 open -
 4958 open -
 4959 open -
-4960 open -
+4960 exhaustive-haarex6 pairs=1801 prefixes=2821524 Acovered=0 valid=0
 4961 exhaustive-haarex5 pairs=1801 prefixes=2821524 Acovered=0 valid=0
-4962 open -
+4962 exhaustive-haarex6 pairs=2254 prefixes=4330357 Acovered=0 valid=0
 4963 exhaustive-haarex5 pairs=2254 prefixes=4330357 Acovered=0 valid=0
-4964 open -
+4964 exhaustive-haarex6 pairs=1801 prefixes=2821524 Acovered=0 valid=0
 4965 exhaustive-haarex5 pairs=1801 prefixes=2821524 Acovered=0 valid=0
-4966 open -
+4966 exhaustive-haarex6 pairs=1801 prefixes=2821524 Acovered=0 valid=0
 4967 exhaustive-haarex5 pairs=1801 prefixes=2821524 Acovered=0 valid=0
 4968 open -
 4969 open -
-4970 open -
+4970 exhaustive-haarex6 pairs=2254 prefixes=4330357 Acovered=0 valid=0
 4971 exhaustive-haarex5 pairs=2254 prefixes=4330357 Acovered=0 valid=0
 4972 open -
 4973 open -
-4974 open -
+4974 exhaustive-haarex6 pairs=2254 prefixes=4330357 Acovered=0 valid=0
 4975 exhaustive-haarex5 pairs=2254 prefixes=4330357 Acovered=0 valid=0
 4976 open -
 4977 open -
 4978 open -
 4979 open -
-4980 open -
+4980 exhaustive-haarex6 pairs=1567 prefixes=2739101 Acovered=0 valid=0
 4981 exhaustive-haarex5 pairs=1567 prefixes=2739101 Acovered=0 valid=0
-4982 open -
+4982 exhaustive-haarex6 pairs=2254 prefixes=4330357 Acovered=0 valid=0
 4983 exhaustive-haarex5 pairs=2254 prefixes=4330357 Acovered=0 valid=0
-4984 open -
+4984 exhaustive-haarex6 pairs=1567 prefixes=2739101 Acovered=0 valid=0
 4985 exhaustive-haarex5 pairs=1567 prefixes=2739101 Acovered=0 valid=0
-4986 open -
+4986 exhaustive-haarex6 pairs=1567 prefixes=2739101 Acovered=0 valid=0
 4987 exhaustive-haarex5 pairs=1567 prefixes=2739101 Acovered=0 valid=0
 4988 open -
 4989 open -
-4990 open -
+4990 exhaustive-haarex6 pairs=2254 prefixes=4330357 Acovered=0 valid=0
 4991 exhaustive-haarex5 pairs=2254 prefixes=4330357 Acovered=0 valid=0
 4992 open -
 4993 open -
-4994 open -
+4994 exhaustive-haarex6 pairs=2254 prefixes=4330357 Acovered=0 valid=0
 4995 exhaustive-haarex5 pairs=2254 prefixes=4330357 Acovered=0 valid=0
 4996 open -
 4997 open -
@@ -5456,11 +5456,11 @@
 5455 exhaustive-haarex6 pairs=1972 prefixes=3621538 Acovered=0 valid=0
 5456 exhaustive-haarex6 pairs=1498 prefixes=2192439 Acovered=0 valid=0
 5457 exhaustive-haarex6 pairs=1906 prefixes=2202702 Acovered=0 valid=0
-5458 open -
-5459 open -
-5460 open -
-5461 open -
-5462 open -
+5458 exhaustive-haarex6 pairs=2470 prefixes=3732944 Acovered=0 valid=0
+5459 exhaustive-haarex6 pairs=3556 prefixes=5912252 Acovered=0 valid=0
+5460 exhaustive-haarex6 pairs=2470 prefixes=3680564 Acovered=0 valid=0
+5461 exhaustive-haarex6 pairs=2590 prefixes=4108932 Acovered=0 valid=0
+5462 exhaustive-haarex6 pairs=2236 prefixes=3713048 Acovered=0 valid=0
 5463 open -
 5464 open -
 5465 exhaustive-haarex5 pairs=1762 prefixes=2368683 Acovered=0 valid=0
@@ -5469,7 +5469,7 @@
 5468 open -
 5469 open -
 5470 open -
-5471 open -
+5471 exhaustive-haarex6 pairs=2668 prefixes=3940858 Acovered=0 valid=0
 5472 open -
 5473 exhaustive-haarex5 pairs=1494 prefixes=2175804 Acovered=0 valid=0
 5474 exhaustive-haarex5 pairs=2470 prefixes=3912552 Acovered=0 valid=0
@@ -5494,7 +5494,7 @@
 5493 open -
 5494 open -
 5495 open -
-5496 open -
+5496 exhaustive-haarex6 pairs=673 prefixes=1971063 Acovered=0 valid=0
 5497 open -
 5498 open -
 5499 open -
@@ -5503,7 +5503,7 @@
 5502 open -
 5503 open -
 5504 open -
-5505 open -
+5505 exhaustive-haarex6 pairs=1642 prefixes=2947810 Acovered=0 valid=0
 5506 open -
 5507 exhaustive-haarex6 pairs=1762 prefixes=2455253 Acovered=0 valid=0
 5508 open -
@@ -5519,8 +5519,8 @@
 5518 exhaustive-haarex5 pairs=1627 prefixes=2604966 Acovered=0 valid=0
 5519 open -
 5520 exhaustive-haarex5 pairs=2140 prefixes=3909474 Acovered=0 valid=0
-5521 open -
-5522 open -
+5521 exhaustive-haarex6 pairs=1702 prefixes=2961847 Acovered=0 valid=0
+5522 exhaustive-haarex6 pairs=2026 prefixes=2945608 Acovered=0 valid=0
 5523 open -
 5524 open -
 5525 open -
@@ -5659,9 +5659,9 @@
 5658 open -
 5659 open -
 5660 open -
-5661 open -
-5662 open -
-5663 open -
+5661 exhaustive-haarex6 pairs=990 prefixes=1699425 Acovered=0 valid=0
+5662 exhaustive-haarex6 pairs=990 prefixes=1699425 Acovered=0 valid=0
+5663 exhaustive-haarex6 pairs=990 prefixes=1699425 Acovered=0 valid=0
 5664 open -
 5665 open -
 5666 open -
@@ -5838,11 +5838,11 @@
 5837 open -
 5838 open -
 5839 open -
-5840 open -
+5840 exhaustive-haarex6 pairs=1128 prefixes=2912236 Acovered=0 valid=0
 5841 open -
 5842 exhaustive-haarex5 pairs=1128 prefixes=2848185 Acovered=0 valid=0
 5843 open -
-5844 open -
+5844 exhaustive-haarex6 pairs=1128 prefixes=2909919 Acovered=0 valid=0
 5845 exhaustive-haarex5 pairs=891 prefixes=2240462 Acovered=0 valid=0
 5846 open -
 5847 open -
@@ -11987,13 +11987,13 @@
 11986 open -
 11987 open -
 11988 open -
-11989 open -
+11989 exhaustive-haarex6 pairs=1978 prefixes=2477834 Acovered=0 valid=0
 11990 open -
-11991 open -
+11991 exhaustive-haarex6 pairs=1357 prefixes=1544686 Acovered=0 valid=0
 11992 open -
 11993 open -
 11994 open -
-11995 open -
+11995 exhaustive-haarex6 pairs=1357 prefixes=1544686 Acovered=0 valid=0
 11996 open -
 11997 open -
 11998 open -
@@ -12019,10 +12019,10 @@
 12018 open -
 12019 open -
 12020 open -
-12021 open -
+12021 exhaustive-haarex6 pairs=1357 prefixes=1452223 Acovered=0 valid=0
 12022 open -
 12023 open -
-12024 open -
+12024 exhaustive-haarex6 pairs=1600 prefixes=2325329 Acovered=0 valid=0
 12025 open -
 12026 open -
 12027 open -
@@ -12044,12 +12044,12 @@
 12043 open -
 12044 open -
 12045 open -
-12046 open -
+12046 exhaustive-haarex6 pairs=2350 prefixes=3873096 Acovered=0 valid=0
 12047 open -
 12048 open -
 12049 open -
 12050 open -
-12051 open -
+12051 exhaustive-haarex6 pairs=2350 prefixes=3873096 Acovered=0 valid=0
 12052 open -
 12053 open -
 12054 open -
@@ -12085,7 +12085,7 @@
 12084 open -
 12085 open -
 12086 open -
-12087 open -
+12087 exhaustive-haarex6 pairs=2350 prefixes=3873096 Acovered=0 valid=0
 12088 open -
 12089 open -
 12090 open -
@@ -12104,11 +12104,11 @@
 12103 open -
 12104 open -
 12105 open -
-12106 open -
+12106 exhaustive-haarex6 pairs=1486 prefixes=2069861 Acovered=0 valid=0
 12107 open -
 12108 open -
 12109 open -
-12110 open -
+12110 exhaustive-haarex6 pairs=1600 prefixes=2267423 Acovered=0 valid=0
 12111 open -
 12112 open -
 12113 open -
@@ -12137,7 +12137,7 @@
 12136 open -
 12137 open -
 12138 open -
-12139 open -
+12139 exhaustive-haarex6 pairs=1600 prefixes=2267423 Acovered=0 valid=0
 12140 open -
 12141 open -
 12142 open -
@@ -12193,28 +12193,28 @@
 12192 open -
 12193 open -
 12194 open -
-12195 open -
+12195 exhaustive-haarex6 pairs=1651 prefixes=3032680 Acovered=0 valid=0
 12196 open -
 12197 open -
 12198 open -
-12199 open -
+12199 exhaustive-haarex6 pairs=1651 prefixes=3032680 Acovered=0 valid=0
 12200 open -
 12201 open -
-12202 open -
+12202 exhaustive-haarex6 pairs=1651 prefixes=3032680 Acovered=0 valid=0
 12203 open -
-12204 open -
+12204 exhaustive-haarex6 pairs=1651 prefixes=3032680 Acovered=0 valid=0
 12205 open -
 12206 open -
-12207 open -
-12208 open -
-12209 open -
-12210 open -
-12211 open -
-12212 open -
+12207 exhaustive-haarex6 pairs=1651 prefixes=3032680 Acovered=0 valid=0
+12208 exhaustive-haarex6 pairs=1651 prefixes=3032680 Acovered=0 valid=0
+12209 exhaustive-haarex6 pairs=2104 prefixes=3928167 Acovered=0 valid=0
+12210 exhaustive-haarex6 pairs=1651 prefixes=3032680 Acovered=0 valid=0
+12211 exhaustive-haarex6 pairs=1651 prefixes=3032680 Acovered=0 valid=0
+12212 exhaustive-haarex6 pairs=2104 prefixes=4567220 Acovered=0 valid=0
 12213 open -
 12214 open -
 12215 open -
-12216 open -
+12216 exhaustive-haarex6 pairs=1651 prefixes=3032680 Acovered=0 valid=0
 12217 open -
 12218 open -
 12219 open -
@@ -12329,14 +12329,14 @@
 12328 open -
 12329 open -
 12330 open -
-12331 open -
+12331 exhaustive-haarex6 pairs=2104 prefixes=3928167 Acovered=0 valid=0
 12332 open -
 12333 open -
-12334 open -
-12335 open -
-12336 open -
-12337 open -
-12338 open -
+12334 exhaustive-haarex6 pairs=2104 prefixes=3928167 Acovered=0 valid=0
+12335 exhaustive-haarex6 pairs=2104 prefixes=3928167 Acovered=0 valid=0
+12336 exhaustive-haarex6 pairs=2104 prefixes=3928167 Acovered=0 valid=0
+12337 exhaustive-haarex6 pairs=2104 prefixes=3928167 Acovered=0 valid=0
+12338 exhaustive-haarex6 pairs=2104 prefixes=3839025 Acovered=0 valid=0
 12339 open -
 12340 open -
 12341 open -
@@ -12988,15 +12988,15 @@
 12987 open -
 12988 open -
 12989 open -
-12990 open -
+12990 exhaustive-haarex6 pairs=1459 prefixes=2772986 Acovered=0 valid=0
 12991 open -
 12992 open -
-12993 open -
-12994 open -
+12993 exhaustive-haarex6 pairs=1459 prefixes=2772986 Acovered=0 valid=0
+12994 exhaustive-haarex6 pairs=2104 prefixes=4873633 Acovered=0 valid=0
 12995 open -
 12996 open -
 12997 open -
-12998 open -
+12998 exhaustive-haarex6 pairs=1459 prefixes=2772986 Acovered=0 valid=0
 12999 open -
 13000 open -
 13001 open -
@@ -13154,17 +13154,17 @@
 13153 open -
 13154 open -
 13155 open -
-13156 open -
+13156 exhaustive-haarex6 pairs=2104 prefixes=4873633 Acovered=0 valid=0
 13157 open -
-13158 open -
+13158 exhaustive-haarex6 pairs=2104 prefixes=4873633 Acovered=0 valid=0
 13159 open -
 13160 open -
 13161 open -
-13162 open -
-13163 open -
+13162 exhaustive-haarex6 pairs=2104 prefixes=3909457 Acovered=0 valid=0
+13163 exhaustive-haarex6 pairs=2104 prefixes=4032674 Acovered=0 valid=0
 13164 open -
 13165 open -
-13166 open -
+13166 exhaustive-haarex6 pairs=2104 prefixes=3791194 Acovered=0 valid=0
 13167 open -
 13168 open -
 13169 open -
@@ -13532,10 +13532,10 @@
 13531 open -
 13532 open -
 13533 open -
-13534 open -
+13534 exhaustive-haarex6 pairs=1459 prefixes=2772986 Acovered=0 valid=0
 13535 open -
-13536 open -
-13537 open -
+13536 exhaustive-haarex6 pairs=2104 prefixes=4873633 Acovered=0 valid=0
+13537 exhaustive-haarex6 pairs=1459 prefixes=2772986 Acovered=0 valid=0
 13538 open -
 13539 open -
 13540 open -
@@ -13568,7 +13568,7 @@
 13567 open -
 13568 open -
 13569 open -
-13570 open -
+13570 exhaustive-haarex6 pairs=1459 prefixes=2742886 Acovered=0 valid=0
 13571 open -
 13572 open -
 13573 open -
@@ -13627,11 +13627,11 @@
 13626 open -
 13627 open -
 13628 open -
-13629 open -
+13629 exhaustive-haarex6 pairs=1459 prefixes=2772986 Acovered=0 valid=0
 13630 open -
 13631 open -
-13632 open -
-13633 open -
+13632 exhaustive-haarex6 pairs=1459 prefixes=2772986 Acovered=0 valid=0
+13633 exhaustive-haarex6 pairs=2104 prefixes=4873633 Acovered=0 valid=0
 13634 open -
 13635 open -
 13636 open -
@@ -13665,7 +13665,7 @@
 13664 open -
 13665 open -
 13666 open -
-13667 open -
+13667 exhaustive-haarex6 pairs=1459 prefixes=2742886 Acovered=0 valid=0
 13668 open -
 13669 open -
 13670 open -
@@ -13729,13 +13729,13 @@
 13728 open -
 13729 open -
 13730 open -
-13731 open -
+13731 exhaustive-haarex6 pairs=2104 prefixes=3791194 Acovered=0 valid=0
 13732 open -
-13733 open -
+13733 exhaustive-haarex6 pairs=2104 prefixes=4873633 Acovered=0 valid=0
 13734 open -
-13735 open -
-13736 open -
-13737 open -
+13735 exhaustive-haarex6 pairs=2104 prefixes=4873633 Acovered=0 valid=0
+13736 exhaustive-haarex6 pairs=2104 prefixes=3909457 Acovered=0 valid=0
+13737 exhaustive-haarex6 pairs=2104 prefixes=4032674 Acovered=0 valid=0
 13738 open -
 13739 open -
 13740 open -
@@ -14208,7 +14208,7 @@
 14207 open -
 14208 open -
 14209 open -
-14210 open -
+14210 exhaustive-haarex6 pairs=2104 prefixes=3905600 Acovered=0 valid=0
 14211 open -
 14212 open -
 14213 open -
@@ -14237,7 +14237,7 @@
 14236 open -
 14237 open -
 14238 open -
-14239 open -
+14239 exhaustive-haarex6 pairs=2104 prefixes=3834276 Acovered=0 valid=0
 14240 open -
 14241 open -
 14242 open -
@@ -14245,13 +14245,13 @@
 14244 open -
 14245 open -
 14246 open -
-14247 open -
+14247 exhaustive-haarex6 pairs=2104 prefixes=3905600 Acovered=0 valid=0
 14248 open -
 14249 open -
 14250 open -
 14251 open -
 14252 open -
-14253 open -
+14253 exhaustive-haarex6 pairs=2104 prefixes=3828195 Acovered=0 valid=0
 14254 open -
 14255 open -
 14256 open -
@@ -14438,7 +14438,7 @@
 14437 open -
 14438 open -
 14439 open -
-14440 open -
+14440 exhaustive-haarex6 pairs=2104 prefixes=3905600 Acovered=0 valid=0
 14441 open -
 14442 open -
 14443 open -
@@ -16125,14 +16125,14 @@
 16124 open -
 16125 open -
 16126 open -
-16127 open -
-16128 open -
+16127 exhaustive-haarex6 pairs=1546 prefixes=2402847 Acovered=0 valid=0
+16128 exhaustive-haarex6 pairs=2278 prefixes=4217549 Acovered=0 valid=0
 16129 open -
-16130 open -
+16130 exhaustive-haarex6 pairs=1546 prefixes=2375114 Acovered=0 valid=0
 16131 open -
 16132 open -
-16133 open -
-16134 open -
+16133 exhaustive-haarex6 pairs=900 prefixes=1383191 Acovered=0 valid=0
+16134 exhaustive-haarex6 pairs=1546 prefixes=2979313 Acovered=0 valid=0
 16135 open -
 16136 open -
 16137 open -
@@ -16141,8 +16141,8 @@
 16140 open -
 16141 open -
 16142 open -
-16143 open -
-16144 open -
+16143 exhaustive-haarex6 pairs=1546 prefixes=2545377 Acovered=0 valid=0
+16144 exhaustive-haarex6 pairs=900 prefixes=1383191 Acovered=0 valid=0
 16145 open -
 16146 open -
 16147 open -
@@ -16164,20 +16164,20 @@
 16163 open -
 16164 open -
 16165 open -
-16166 open -
+16166 exhaustive-haarex6 pairs=2278 prefixes=4217549 Acovered=0 valid=0
 16167 open -
 16168 open -
-16169 open -
+16169 exhaustive-haarex6 pairs=2278 prefixes=4217549 Acovered=0 valid=0
 16170 open -
-16171 open -
+16171 exhaustive-haarex6 pairs=2278 prefixes=4217549 Acovered=0 valid=0
 16172 open -
-16173 open -
+16173 exhaustive-haarex6 pairs=2278 prefixes=4217549 Acovered=0 valid=0
 16174 open -
 16175 open -
 16176 open -
 16177 open -
 16178 open -
-16179 open -
+16179 exhaustive-haarex6 pairs=2278 prefixes=4429832 Acovered=0 valid=0
 16180 open -
 16181 open -
 16182 open -
@@ -16197,16 +16197,16 @@
 16196 open -
 16197 open -
 16198 open -
-16199 open -
-16200 open -
+16199 exhaustive-haarex6 pairs=1546 prefixes=2402847 Acovered=0 valid=0
+16200 exhaustive-haarex6 pairs=2278 prefixes=4429832 Acovered=0 valid=0
 16201 open -
-16202 open -
+16202 exhaustive-haarex6 pairs=1546 prefixes=2375114 Acovered=0 valid=0
 16203 open -
 16204 open -
-16205 open -
+16205 exhaustive-haarex6 pairs=1546 prefixes=2979313 Acovered=0 valid=0
 16206 open -
-16207 open -
-16208 open -
+16207 exhaustive-haarex6 pairs=1546 prefixes=2979313 Acovered=0 valid=0
+16208 exhaustive-haarex6 pairs=2278 prefixes=4217549 Acovered=0 valid=0
 16209 open -
 16210 open -
 16211 open -
@@ -16214,11 +16214,11 @@
 16213 open -
 16214 open -
 16215 open -
-16216 open -
+16216 exhaustive-haarex6 pairs=1546 prefixes=2802678 Acovered=0 valid=0
 16217 open -
 16218 open -
 16219 open -
-16220 open -
+16220 exhaustive-haarex6 pairs=1546 prefixes=2979313 Acovered=0 valid=0
 16221 open -
 16222 open -
 16223 open -
@@ -16233,11 +16233,11 @@
 16232 open -
 16233 open -
 16234 open -
-16235 open -
-16236 open -
+16235 exhaustive-haarex6 pairs=1546 prefixes=2402847 Acovered=0 valid=0
+16236 exhaustive-haarex6 pairs=2278 prefixes=4429832 Acovered=0 valid=0
 16237 open -
 16238 open -
-16239 open -
+16239 exhaustive-haarex6 pairs=1546 prefixes=2787020 Acovered=0 valid=0
 16240 open -
 16241 open -
 16242 open -
@@ -16249,12 +16249,12 @@
 16248 open -
 16249 open -
 16250 open -
-16251 open -
-16252 open -
-16253 open -
-16254 open -
+16251 exhaustive-haarex6 pairs=1546 prefixes=2787020 Acovered=0 valid=0
+16252 exhaustive-haarex6 pairs=1546 prefixes=3234578 Acovered=0 valid=0
+16253 exhaustive-haarex6 pairs=1546 prefixes=3234578 Acovered=0 valid=0
+16254 exhaustive-haarex6 pairs=2278 prefixes=4429832 Acovered=0 valid=0
 16255 open -
-16256 open -
+16256 exhaustive-haarex6 pairs=1546 prefixes=2979313 Acovered=0 valid=0
 16257 open -
 16258 exhaustive-haarex5 pairs=1546 prefixes=2979313 Acovered=0 valid=0
 16259 exhaustive-haarex5 pairs=1546 prefixes=2979313 Acovered=0 valid=0
@@ -16990,7 +16990,7 @@
 16989 open -
 16990 exhaustive-haarex6 pairs=2158 prefixes=4004616 Acovered=0 valid=0
 16991 exhaustive-haarex6 pairs=871 prefixes=1707138 Acovered=0 valid=0
-16992 open -
+16992 exhaustive-haarex6 pairs=1561 prefixes=2869737 Acovered=0 valid=0
 16993 open -
 16994 open -
 16995 open -
@@ -17003,13 +17003,13 @@
 17002 open -
 17003 open -
 17004 open -
-17005 open -
+17005 exhaustive-haarex6 pairs=1402 prefixes=3031855 Acovered=0 valid=0
 17006 open -
-17007 open -
-17008 open -
+17007 exhaustive-haarex6 pairs=1054 prefixes=2152221 Acovered=0 valid=0
+17008 exhaustive-haarex6 pairs=1054 prefixes=2152221 Acovered=0 valid=0
 17009 open -
-17010 open -
-17011 open -
+17010 exhaustive-haarex6 pairs=2158 prefixes=4004616 Acovered=0 valid=0
+17011 exhaustive-haarex6 pairs=871 prefixes=1707138 Acovered=0 valid=0
 17012 open -
 17013 open -
 17014 open -
@@ -17019,16 +17019,16 @@
 17018 open -
 17019 open -
 17020 open -
-17021 open -
-17022 open -
+17021 exhaustive-haarex6 pairs=1303 prefixes=2851263 Acovered=0 valid=0
+17022 exhaustive-haarex6 pairs=871 prefixes=1707138 Acovered=0 valid=0
 17023 open -
-17024 open -
-17025 open -
-17026 open -
+17024 exhaustive-haarex6 pairs=1303 prefixes=2451380 Acovered=0 valid=0
+17025 exhaustive-haarex6 pairs=3034 prefixes=5986850 Acovered=0 valid=0
+17026 exhaustive-haarex6 pairs=1642 prefixes=3276887 Acovered=0 valid=0
 17027 open -
-17028 open -
+17028 exhaustive-haarex6 pairs=3034 prefixes=5986850 Acovered=0 valid=0
 17029 open -
-17030 open -
+17030 exhaustive-haarex6 pairs=3034 prefixes=5986850 Acovered=0 valid=0
 17031 open -
 17032 open -
 17033 open -
@@ -17043,14 +17043,14 @@
 17042 open -
 17043 open -
 17044 open -
-17045 open -
-17046 open -
+17045 exhaustive-haarex6 pairs=1642 prefixes=3466491 Acovered=0 valid=0
+17046 exhaustive-haarex6 pairs=1642 prefixes=3466491 Acovered=0 valid=0
 17047 open -
 17048 open -
 17049 open -
 17050 open -
 17051 open -
-17052 open -
+17052 exhaustive-haarex6 pairs=1642 prefixes=3270514 Acovered=0 valid=0
 17053 quotient-filter quot64
 17054 quotient-filter quot64
 17055 quotient-filter quot64
@@ -17072,7 +17072,7 @@
 17071 open -
 17072 open -
 17073 open -
-17074 open -
+17074 exhaustive-haarex6 pairs=1144 prefixes=2976822 Acovered=0 valid=0
 17075 open -
 17076 open -
 17077 open -
@@ -17080,12 +17080,12 @@
 17079 open -
 17080 open -
 17081 open -
-17082 open -
+17082 exhaustive-haarex6 pairs=553 prefixes=1232716 Acovered=0 valid=0
 17083 open -
 17084 open -
-17085 open -
+17085 exhaustive-haarex6 pairs=768 prefixes=1712498 Acovered=0 valid=0
 17086 open -
-17087 open -
+17087 exhaustive-haarex6 pairs=1204 prefixes=2436787 Acovered=0 valid=0
 17088 open -
 17089 open -
 17090 open -
@@ -17093,18 +17093,18 @@
 17092 open -
 17093 open -
 17094 open -
-17095 open -
+17095 exhaustive-haarex6 pairs=3034 prefixes=5986850 Acovered=0 valid=0
 17096 open -
 17097 open -
 17098 open -
 17099 open -
-17100 open -
+17100 exhaustive-haarex6 pairs=925 prefixes=2023543 Acovered=0 valid=0
 17101 open -
 17102 open -
 17103 open -
 17104 open -
 17105 open -
-17106 open -
+17106 exhaustive-haarex6 pairs=3034 prefixes=5986850 Acovered=0 valid=0
 17107 open -
 17108 open -
 17109 open -
@@ -17151,20 +17151,20 @@
 17150 open -
 17151 open -
 17152 open -
-17153 open -
+17153 exhaustive-haarex6 pairs=3034 prefixes=5986850 Acovered=0 valid=0
 17154 open -
 17155 open -
 17156 open -
 17157 open -
 17158 open -
-17159 open -
+17159 exhaustive-haarex6 pairs=3034 prefixes=5986850 Acovered=0 valid=0
 17160 open -
 17161 open -
 17162 open -
 17163 open -
 17164 open -
 17165 open -
-17166 open -
+17166 exhaustive-haarex6 pairs=1840 prefixes=3228838 Acovered=0 valid=0
 17167 open -
 17168 open -
 17169 open -
@@ -17172,7 +17172,7 @@
 17171 open -
 17172 open -
 17173 open -
-17174 open -
+17174 exhaustive-haarex6 pairs=1045 prefixes=1981997 Acovered=0 valid=0
 17175 open -
 17176 open -
 17177 open -
@@ -17193,28 +17193,28 @@
 17192 open -
 17193 open -
 17194 open -
-17195 open -
+17195 exhaustive-haarex6 pairs=3034 prefixes=5986850 Acovered=0 valid=0
 17196 open -
 17197 open -
-17198 open -
+17198 exhaustive-haarex6 pairs=3034 prefixes=5986850 Acovered=0 valid=0
 17199 open -
 17200 open -
 17201 open -
-17202 open -
+17202 exhaustive-haarex6 pairs=3034 prefixes=5986850 Acovered=0 valid=0
 17203 open -
 17204 open -
 17205 open -
-17206 open -
-17207 open -
+17206 exhaustive-haarex6 pairs=3034 prefixes=5986850 Acovered=0 valid=0
+17207 exhaustive-haarex6 pairs=3034 prefixes=5986850 Acovered=0 valid=0
 17208 open -
-17209 open -
+17209 exhaustive-haarex6 pairs=1642 prefixes=2920735 Acovered=0 valid=0
 17210 open -
 17211 open -
 17212 open -
 17213 open -
-17214 open -
+17214 exhaustive-haarex6 pairs=3034 prefixes=5986850 Acovered=0 valid=0
 17215 open -
-17216 open -
+17216 exhaustive-haarex6 pairs=3034 prefixes=5986850 Acovered=0 valid=0
 17217 open -
 17218 open -
 17219 open -
@@ -17227,17 +17227,17 @@
 17226 open -
 17227 open -
 17228 open -
-17229 open -
+17229 exhaustive-haarex6 pairs=1642 prefixes=3033452 Acovered=0 valid=0
 17230 open -
-17231 open -
-17232 open -
+17231 exhaustive-haarex6 pairs=3034 prefixes=5986850 Acovered=0 valid=0
+17232 exhaustive-haarex6 pairs=1642 prefixes=3033452 Acovered=0 valid=0
 17233 open -
-17234 open -
+17234 exhaustive-haarex6 pairs=1642 prefixes=3033452 Acovered=0 valid=0
 17235 open -
 17236 open -
 17237 open -
 17238 open -
-17239 open -
+17239 exhaustive-haarex6 pairs=1642 prefixes=3107823 Acovered=0 valid=0
 17240 open -
 17241 open -
 17242 open -
