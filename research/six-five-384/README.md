@@ -3,7 +3,7 @@
 Goal: a bipartite graph of maximum degree 6 and diameter 5 on more than 684 vertices (table value 684, a Haar graph
 of C6 x (C19:C3) = SmallGroup(342,12)). Earlier jobs (branch claude/squad-6-5-rounds-ts5nxk, research/s65/README.md)
 closed every degree-6 Haar graph on 686-800 vertices except those of order 384 (20,169 groups, 768 vertices). This job
-closes order 384. Squad rounds: research/squads/s384r1, s384r2 (log in research/squads/LOG.md).
+closes order 384. Squad rounds: research/squads/s384r1, s384r2, s384r3 (log in research/squads/LOG.md).
 
 **Result: no Haar graph of degree 6 and diameter 5 on 768 vertices** (all 20,169 groups of order 384 closed: 2,765 by
 exact filters, 17,404 by exhaustive search), **and none on 802-900 vertices** (all 2,742 groups of order 401-450 closed,
@@ -29,7 +29,7 @@ index-2 subgroup) and all vertex-transitive graphs on 768 vertices with such a s
   (full table), `src/hx_export_pc.g` + `src/hxexpand.c` (compact: right multiplication by the pc generators and the
   exponent vectors; hxexpand builds the full table and checks identity, Latin square and that every automorphism
   preserves the table; byte-identical to the full export on 6 groups), `src/hx_export_any.g` (other orders).
-- Pipeline: `src/pipe_export.sh` (GAP exporter, queue) and `src/pipe_worker.sh` (3 workers: hxexpand, haarex, log).
+- Pipeline: `src/pipe_export.sh` (GAP exporter, queue) and `src/pipe_worker.sh` (3-4 workers: hxexpand, haarex, log).
   Logs: `logs/h384_<id>.log` (haarex output without the PAIR lines, plus run time).
 
 ## Exhaustive search programs
