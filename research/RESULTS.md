@@ -278,3 +278,7 @@ by the coordinator with build_haar.py, two BFS from both sides, ecc ≤ D, nothi
 - Oct 31 08:41 PT (harvest): (11,10) 157,835,304 (was 148,729,680), psl 243 poly x^5+2x+1 n 11; claude/cell-11-10-resume-oubzk2.
 - Oct 31 08:41 PT (harvest): (15,9) 208,483,200 (was 208,029,120), prod sl 5 sl 19 n 127; claude/raise-d15d9-record-r3-u6folv.
 - Oct 31 08:41 PT (harvest): (15,10) 2,566,531,440 (was 2,467,618,800), sl 109 n 991; claude/cell-15-10-search-z3q01v.
+
+- Oct 31 09:30 PT (harvest): (10,12) 3,500,976,768 (was 0), psl 193 n 487; claude/new-cells-beyond-etos3t.
+- Oct 31 09:30 PT (harvest): (14,10) 1,350,537,864 (was 1,326,627,120), psl 157 n 349; claude/raise-d14d10-record-2-3vy08n.
+- Oct 31 09:30 PT (harvest): (20,9) 1,823,175,864 (was 0), psl 163 n 421; claude/new-cells-beyond-etos3t.
