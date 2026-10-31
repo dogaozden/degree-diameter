@@ -432,7 +432,7 @@ static void gen_types_rec(int rem, int maxl, int *cnt) {
 static void gen_types(void) { int cnt[MAXL + 1] = {0}; ntypes = 0; gen_types_rec(K, K < MAXL ? K : MAXL, cnt); }
 
 static int nslot, slen[64], it[64], S[64];      /* current set: slot i holds item it[i] of length slen[i] */
-static long long *tabu_until, step;
+static long long *tabu_until, step; static int bestSS[64], bestk = 0;
 static int build(void) {
     int at = 0;
     for (int i = 0; i < nslot; i++) { int t = it[i]; for (int j = 0; j < olen[t]; j++) S[at++] = orbel[ostart[t] + j]; }
@@ -598,11 +598,17 @@ static void run(const char *ptag, int ti, double secs, int NB, int TEN, int STAL
         if (bi < 0) continue;
         tabu_until[it[bi]] = step + TEN; it[bi] = bx; e = be; k = build();
         if (e < runbest) { runbest = e; last_imp = step; }
-        if (e < best) best = e;
+        if (e < best) { best = e; bestk = k; memcpy(bestSS, S, sizeof(int) * k); }
         if (e > 0 && step - last_imp > STALL) { randomize(); k = build(); e = energy(S, k); evals++; runbest = e; last_imp = step; restarts++; }
     }
     printf("TABU %s best %d sols %d steps %lld evals %lld restarts %d secs %.1f%s\n", tag, best, sols, step, evals, restarts,
            now() - c0, extended ? " DEEP" : "");
+    if (getenv("SHOWBEST") && bestk > 0 && best > 0) {   /* the best set and the elements it leaves uncovered (side A, ball of radius D-1 around (e,A)) */
+        int e2 = uncov_side(bestSS, bestk, 1); printf("BEST %s uncovered %d S =", tag, e2);
+        for (int i = 0; i < bestk; i++) { char b[160]; gdesc(bestSS[i], b); printf(" %s", b); } printf("\n  missing:");
+        int shown = 0;
+        for (int z = 0; z < N && shown < 40; z++) { int cov = (D % 2) ? (mk[z] == st1) : (mk2[z] == st2); if (!cov) { char b[160]; gdesc(z, b); printf(" %s", b); shown++; } }
+        printf("\n"); }
     fflush(stdout); free(tabu_until);
 }
 static void rands(const char *ptag, int ti, int cnt) {
