@@ -1,80 +1,49 @@
 # selfdual-d5: self-dual (bipartite Cayley) Haar graphs in other diameter-5 cells
 
-Job "selfdual-d5" (Opus cloud session, Oct 30 2026, from 20:35 UTC). Method from `../d75-raise/README.md` (the (7,5)
-1,312 record): if S is a union of orbits of psi(x) = c^-1 beta(x)^-1 for an extension G^ = G u G t of G
-(t^2 = c, t x t^-1 = beta(x)), then H(G,S) = Cay(G^, tS) is vertex-transitive and only X X = G (X = S^-1 S) has to
-be checked. Work in progress; see the status section at the end.
+Job "selfdual-d5" (Opus cloud session, Oct 30-31 2026, 20:35-01:40 UTC). Method from `../d75-raise/README.md` (the
+(7,5) 1,312 record): if S is a union of orbits of psi(x) = c^-1 beta(x)^-1 for an index-2 extension G^ = G u G t of
+G (t^2 = c, t x t^-1 = beta(x)), then H(G,S) = Cay(G^, tS) is vertex-transitive and only X X = G (X = S^-1 S) has to
+be checked. New here: valency K as a parameter, non-split extensions (c != e, needed when K is even and T has no
+involution), and a tabu search inside the family for the cells where enumeration is out of reach.
 
-**NEW (9,5): 2,976 vertices** (our value was 2,758, the Haar graph of C197 : C7; 2,790, 2,814, 2,928, 2,934 and
-2,970 earlier in this job): the Haar graph of G = C31 : (C3 x Q16) = SmallGroup(1488,11), elements (i,c,k,l) =
-x^i z^c a^k b^l (x of order 31, z of order 3, Q16 = <a, b | a^8 = 1, b^2 = a^4, b a b^-1 = a^-1>, z x z^-1 = x^25,
-a x a^-1 = x, b x b^-1 = x^-1), product (i,c,k,l)(i',c',k',l') = (i + 25^c (-1)^l i', c+c', k + (-1)^l k' + 4[l = l' = 1],
-l+l'), S = {(0,0,0,0), (25,0,2,0), (18,0,6,0), (12,2,1,1), (10,1,7,1), (0,1,1,0), (0,2,5,0), (24,2,0,0), (11,1,0,0)},
-(g,A) ~ (s g, B). 9-regular, bipartite, diameter 5. Self-dual for beta: x -> x^-1, z -> z, a -> a^3, b -> b, so also a
-Cayley graph of G : <tau> with T = S tau. Checks: apsp.c VALID at D = 5, INVALID at D = 4
-(`records/d9D5_n2976_haar_c31_c3q16_apsp.txt`), independent Python checker VALID, GAP-free rebuild from the formula
-identical to the saved edge list, Cayley build and the search's own builds (two seeds): same nauty canonical form
-(`records/d9D5_n2976_haar_c31_c3q16_cayley.txt`). Files: `records/d9D5_n2976_haar_c31_c3q16.edges` (sha256
-a124e06804fc9bd58db1c54a45f2853dd15f3f17b4a524617388a906aa3b5415), builder `records/build_d9D5_n2976.py`, rebuild
-`records/build_d9D5_n2976.sh`, search output `records/d9D5_n2976_haar_c31_c3q16_search.out` (sdtabu K = 9, record 11,
-type (3,3)).
+## Result: (9,5) 3,000 (was 2,758)
 
-Earlier in this job, **2,970 vertices**: the Haar graph of G = Heis(3) x (C11 : C5) = SmallGroup(1485,4) (Heis(3) = upper unitriangular
-3x3 matrices mod 3), elements (a,b,c,i,j) with product (a,b,c,i,j)(a',b',c',i',j') = (a+a', b+b', c+c'+ab', i+3^j i',
-j+j'), S = {(0,0,0,0,0), (1,2,0,5,0), (0,0,1,2,0), (2,1,1,9,4), (2,1,1,3,1), (1,0,2,10,1), (2,0,2,4,4), (1,1,1,5,1),
-(0,1,2,6,4)}, (g,A) ~ (s g, B). 9-regular, bipartite, diameter 5. Self-dual for the involutory automorphism beta with
-(1,0,0,0,0) -> (1,0,0,0,0), (0,1,0,0,0) -> (2,2,2,0,0), (0,0,0,1,0) -> (0,0,0,10,0), (0,0,0,0,1) -> (0,0,0,9,1), so also a
-Cayley graph of G : <tau> with T = S tau (three involutions, three inverse pairs). Checks: apsp.c VALID at D = 5,
-INVALID at D = 4 (`records/d9D5_n2970_haar_heis3_f55_apsp.txt`), independent Python checker VALID, GAP-free rebuild
-from the formula identical to the saved edge list, Cayley build and the search's own build: same nauty canonical
-form (`records/d9D5_n2970_haar_heis3_f55_cayley.txt`). Files: `records/d9D5_n2970_haar_heis3_f55.edges` (sha256
-d51d229ebb737ce955e642776d453413393bca46bea4549e53f3f631821b8827), builder `records/build_d9D5_n2970.py`, rebuild
-`records/build_d9D5_n2970.sh`, search output `records/d9D5_n2970_haar_heis3_f55_search.out` (sdtabu K = 9, record 5,
-type (3,3), 300 s deep run on a near miss of the SmallGroups sweep).
+**(9,5): 3,000 vertices**, the Haar graph of G = (C5 x C5 x C5) : (C3 : C4) = SmallGroup(1500,113) (trivial center,
+5 involutions). Elements (a,b,c,i,j) = v s^i u^j with v = (a,b,c) in F5^3, s of order 3, u of order 4, u s u^-1 = s^-1,
+acting on F5^3 by Rs = [[1,0,0],[0,2,3],[0,1,2]], Ru = [[3,0,0],[0,2,2],[0,1,3]] (mod 5, columns = images of the basis);
+product (v,i,j)(v',i',j') = (v + Rs^i Ru^j v', i + (-1)^j i', j + j'). S = {(0,0,0,0,0), (4,0,0,1,2), (0,2,3,1,2),
+(3,0,0,2,2), (2,0,1,2,2), (3,2,1,2,1), (4,3,1,1,3), (0,0,2,2,1), (0,4,1,1,3)}, (g,A) ~ (s g, B). 9-regular, bipartite,
+diameter 5. S is self-dual for the involutory automorphism beta: (1,0,0) -> (1,0,0), (0,1,0) -> (0,2,1),
+(0,0,1) -> (0,2,3) on F5^3, s -> s^2, u -> u (type (5,2): e, four psi-fixed elements, two psi-pairs), so the graph is also
+a Cayley graph of G : <tau> (order 3,000) with T = S tau (five involutions, two inverse pairs).
+Checks: research/lifts/coordinator_check/apsp.c RESULT VALID at D = 5 and INVALID at D = 4
+(`records/d9D5_n3000_haar_c5cube_dic3_apsp.txt`); independent Python checker (../beyond-haar-d5/records/check_independent.py)
+VALID; GAP-free rebuild from the formula (`records/build_d9D5_n3000.py`, BFS from every vertex) identical to the saved
+edge list; the Cayley build and the search's own build have the same nauty canonical form
+(`records/d9D5_n3000_haar_c5cube_dic3_cayley.txt`). Edge list `records/d9D5_n3000_haar_c5cube_dic3.edges`, sha256
+afec2757d72b73a694fad479306c6f7f762e44a39851241afc204883348f43ca; rebuild: `bash records/build_d9D5_n3000.sh`.
+Found by a 300 s deep tabu run (sdtabu, record 5, type (5,2), seed 23, STALL = 2000) on a near miss (best 2) of the
+sweep of the groups of order 1468-1560 with a cyclic or generalized quaternion Sylow 2-subgroup (see the coverage
+section).
 
-Earlier in this job, **2,934 vertices**: the Haar graph of G = C163 : C9 = <x, y | x^163 = y^9 = 1, y x y^-1 = x^58> = SmallGroup(1467,1) (y acts with
-order 3), elements x^i y^j written (i,j), S = {(0,0), (4,0), (105,0), (143,4), (39,5), (119,8), (56,1), (117,7),
-(106,2)}, (g,A) ~ (s g, B). 9-regular, bipartite, diameter 5. Self-dual for beta(x) = x^-1, beta(y) = y (psi fixes
-(0,0), (4,0), (105,0) and swaps three pairs), so also a Cayley graph of C163 : C18 with T = S tau. Checks: apsp.c VALID
-at D = 5, INVALID at D = 4 (`records/d9D5_n2934_haar_c163c9_apsp.txt`), independent Python checker VALID, GAP-free
-rebuild from the formula identical to the saved edge list, Cayley build and the search's own build: same nauty
-canonical form (`records/d9D5_n2934_haar_c163c9_cayley.txt`). Files: `records/d9D5_n2934_haar_c163c9.edges` (sha256
-f5e6c338c0068e874e3e0f472ac4be620a4391f53488604bedfe8c7cb2c6af18), rebuild `records/build_d9D5_n2934_haar_c163c9.sh`,
-search output `records/d9D5_n2934_haar_c163c9_search.out` (sdtabu K = 9, record 1, type (3,3), 300 s deep run on a
-near miss of the metacyclic sweep).
+The steps of the job (each one checked the same way: apsp VALID at D = 5 and INVALID at D = 4, independent checker,
+formula rebuild identical to the saved edge list, Cayley build isomorphic; rebuild script and search output next to
+each edge list):
 
-Earlier in this job, **2,928 vertices**: the Haar graph of G = C61 : C24 = <x, y | x^61 = y^24 = 1, y x y^-1 = x^14> = SmallGroup(1464,1) (y acts with
-order 6), elements x^i y^j written (i,j), S = {(0,0), (19,0), (42,12), (59,4), (35,20), (54,7), (30,5), (57,14),
-(56,10)}, (g,A) ~ (s g, B). 9-regular, bipartite, diameter 5. Self-dual for beta(x) = x^-1, beta(y) = y^13, so also a
-Cayley graph of G : <tau> (order 2,928) with T = S tau. Checks: apsp.c VALID at D = 5, INVALID at D = 4
-(`records/d9D5_n2928_haar_c61c24_apsp.txt`), independent Python checker VALID, GAP-free rebuild from the formula identical
-to the saved edge list, Cayley build and the search's own build: same nauty canonical form
-(`records/d9D5_n2928_haar_c61c24_cayley.txt`). Files: `records/d9D5_n2928_haar_c61c24.edges` (sha256
-b018047dc73e01113857ca8eb258da2d6ae3f7e693dd64f08466dead75ecd233), rebuild `records/build_d9D5_n2928_haar_c61c24.sh`,
-search output `records/d9D5_n2928_haar_c61c24_search.out` (sdtabu K = 9 on the metacyclic list, record 6, type (3,3)).
+| vertices | group | presentation / formula | S (in those coordinates) | beta | found by | edge list (sha256 prefix) |
+|---:|---|---|---|---|---|---|
+| 2,790 | C31 : C45 = SmallGroup(1395,1) | y x y^-1 = x^28 | (0,0) (28,20) (18,25) (24,26) (22,19) (21,28) (3,17) (10,41) (4,4) | x -> x^-1, y -> y | sdtabu, type (1,4) | `d9D5_n2790_haar_c31c45.edges` (5d63f5bee169b51c) |
+| 2,814 | C7 x (C67 : C3) = C67 : C21 = SmallGroup(1407,2) | y x y^-1 = x^29 | (0,0) (51,0) (4,0) (22,10) (10,11) (44,5) (3,16) (55,19) (25,2) | x -> x^-1, y -> y | sdtabu, (3,3) | `d9D5_n2814_haar_c67c21.edges` (951655670d9d7bed) |
+| 2,928 | C61 : C24 = SmallGroup(1464,1) | y x y^-1 = x^14 | (0,0) (19,0) (42,12) (59,4) (35,20) (54,7) (30,5) (57,14) (56,10) | x -> x^-1, y -> y^13 | sdtabu (metacyclic list), (3,3) | `d9D5_n2928_haar_c61c24.edges` (b018047dc73e0111) |
+| 2,934 | C163 : C9 = SmallGroup(1467,1) | y x y^-1 = x^58 | (0,0) (4,0) (105,0) (143,4) (39,5) (119,8) (56,1) (117,7) (106,2) | x -> x^-1, y -> y | 300 s deep run, (3,3) | `d9D5_n2934_haar_c163c9.edges` (f5e6c338c0068e87) |
+| 2,970 | Heis(3) x (C11 : C5) = SmallGroup(1485,4) | `records/build_d9D5_n2970.py` | there | there | 300 s deep run, (3,3) | `d9D5_n2970_haar_heis3_f55.edges` (d51d229ebb737ce9) |
+| 2,976 | C31 : (C3 x Q16) = SmallGroup(1488,11) | `records/build_d9D5_n2976.py`: x^i z^c a^k b^l, z x z^-1 = x^25, b x b^-1 = x^-1 | (0,0,0,0) (25,0,2,0) (18,0,6,0) (12,2,1,1) (10,1,7,1) (0,1,1,0) (0,2,5,0) (24,2,0,0) (11,1,0,0) | x -> x^-1, z -> z, a -> a^3, b -> b | 300 s deep run, (3,3) | `d9D5_n2976_haar_c31_c3q16.edges` (a124e06804fc9bd5) |
+| **3,000** | (C5 x C5 x C5) : (C3 : C4) = SmallGroup(1500,113) | above | above | above | 300 s deep run, (5,2) | `d9D5_n3000_haar_c5cube_dic3.edges` (afec2757d72b73a6) |
 
-Earlier in this job, **2,814 vertices**: the Haar graph of G = C67 : C21 = <x, y | x^67 = y^21 = 1, y x y^-1 = x^29> = SmallGroup(1407,2) = C7 x (C67 : C3), elements
-x^i y^j written (i,j), S = {(0,0), (51,0), (4,0), (22,10), (10,11), (44,5), (3,16), (55,19), (25,2)}, (g,A) ~ (s g, B).
-9-regular, bipartite, diameter 5. Self-dual for beta(x) = x^-1, beta(y) = y (psi fixes (0,0), (51,0), (4,0) and swaps
-three pairs), so also the Cayley graph of G : <tau> = C67 : C42 with T = S tau (three involutions, three inverse pairs).
-Checks: apsp.c RESULT VALID at D = 5 and INVALID at D = 4 (`records/d9D5_n2814_apsp.txt`), independent Python checker
-VALID (`records/d9D5_n2814_check_independent.txt`), GAP-free rebuild from the formula identical to the saved edge
-list, Cayley build (`records/build_metacyclic_cayley.py`) and the search's own build: same nauty canonical form. Files:
-`records/d9D5_n2814_haar_c67c21.edges` (sha256 951655670d9d7bed30f3568c696814e397a010081bc26827268c58046d7e42d8),
-rebuild `records/build_d9D5_n2814.sh`, search output `records/sg1407_2_tabu.out` (sdtabu K = 9, type (3,3)). A second
-group of the same order also works: C469 : C3 = SmallGroup(1407,4) (`records/sg1407_4_tabu.out`, apsp VALID).
-
-Earlier in this job, **2,790 vertices**: the Haar graph of
-G = C31 : C45 = <x, y | x^31 = y^45 = 1, y x y^-1 = x^28> = SmallGroup(1395,1) (y acts with order 15), elements x^i y^j
-written (i,j), S = {(0,0), (28,20), (18,25), (24,26), (22,19), (21,28), (3,17), (10,41), (4,4)}, (g,A) ~ (s g, B).
-9-regular, bipartite, diameter 5. S is self-dual for beta(x) = x^-1, beta(y) = y (psi fixes (0,0) and swaps the four
-pairs), so the graph is also the Cayley graph of C31 : C90 = G : <t> with T = S t (one involution, four inverse pairs).
-Checks: apsp.c RESULT VALID at D = 5 and INVALID at D = 4 (`records/d9D5_n2790_apsp.txt`), independent Python checker
-VALID (`records/d9D5_n2790_check_independent.txt`), GAP-free rebuild from the formula identical to the saved edge list,
-the Cayley build and the search's own build have the same nauty canonical form. Files:
-`records/d9D5_n2790_haar_c31c45.edges` (sha256 5d63f5bee169b51c1fbe38ab0ca7971c35460b7f73e8cf25884db9cc21b9b6b7),
-rebuild `records/build_d9D5_n2790.sh`, search output `records/sg1395_1_tabu.out` (sdtabu K = 9, type (1,4), found in
-the DEEP phase of record 1 within 27 s).
+Metacyclic ones: x^i y^j written (i,j), <x, y | x^m = y^k = 1, y x y^-1 = x^r>, product (i,j)(a,b) = (i + r^j a, j + b);
+`records/build_metacyclic_haar.py m k r "S"` builds them, `records/build_metacyclic_cayley.py` the Cayley form,
+`records/find_beta_meta.py` finds beta. Other groups with solutions at the same orders: 1395_2, 1395_3, 1395_5
+(2,790), 1407_4 = C469 : C3 (2,814), 1488_21 (2,976); search outputs in `logs/K9/`.
 
 ## Tools (src/)
 

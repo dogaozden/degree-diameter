@@ -6,7 +6,8 @@ K=${K:-6}; L=${LOGDIR:-$R/logs/K$K}; C=${CANDDIR:-$R/cand}; mkdir -p $L/out $C
 N=$1; ID=$2; T=${TMPDIR:-/tmp}/sdk; mkdir -p $T
 F=$T/g${N}_${ID}.ht
 t0=$(date +%s)
-timeout ${GAPT:-900} gap -q -c "N:=$N;; ID:=$ID;; OUT:=\"$F\";;" $R/src/export_sd.g > /dev/null 2>&1
+NOEXT=""; [ $((K % 2)) -eq 1 ] && NOEXT="NOEXT:=1;;"
+timeout ${GAPT:-900} gap -q -c "N:=$N;; ID:=$ID;; OUT:=\"$F\";; $NOEXT" $R/src/export_sd.g > /dev/null 2>&1
 if [ ! -s $F ] || ! grep -q CENT $F; then echo "$N $ID GAPFAIL secs $(( $(date +%s) - t0 ))" >> $L/sweep.txt; rm -f $F; exit 0; fi
 t1=$(date +%s)
 K=$K EDGES=$C/sd${K}_${N}_${ID}.edges timeout ${SDKT:-3600} nice -n 5 $R/src/sdk $F > $L/out/${N}_${ID}.out 2>&1

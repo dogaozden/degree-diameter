@@ -1,0 +1,1 @@
+src/deep_tabu.sh: line 14: 32047 Segmentation fault      K=$K SECS=$SECS SEED=$SEED MAXSOL=2 EDGES=$R/cand/deep${K}_${tag}_r${REC}_s$SEED.edges nice -n 5 $R/src/sdtabu $F $REC $Fx $Mx >> $O 2>&1
