@@ -13,3 +13,5 @@ REC 8 ALPHA order(g) 24 | x->x^18 y->x^0 y^1 z^0 z->z^0; c0 22; t' = (0,1) t0, t
 REC 9 ALPHA order(g) 24 | x->x^18 y->x^0 y^1 z^0 z->z^0; c0 22; t' = (0,13) t0, t'^2 = (0,0)
 REC 10 ALPHA order(g) 24 | x->x^18 y->x^0 y^13 z^0 z->z^0; c0 10; t' = (0,1) t0, t'^2 = (0,0)
 REC 11 ALPHA order(g) 24 | x->x^18 y->x^0 y^13 z^0 z->z^0; c0 22; t' = (0,7) t0, t'^2 = (0,0)
+TABU rec 11 alpha f 3 m 5 best 18 sols 0 steps 296920 restarts 87 secs 600.0
+DONE sols 0

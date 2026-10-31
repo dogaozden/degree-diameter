@@ -5,8 +5,13 @@ Job "selfdual-d5c" (Opus cloud session, Oct 31 2026, from 05:50 UTC). Goal: beat
 Haar graphs, using only groups given by a formula. The sibling job selfdual-d5b does K = 9, 10, 11.
 Method: `../selfdual-d5/README.md` and `../d75-raise/README.md`.
 
-**Status: no record.** Valid self-dual graphs below the targets (calibration, below); the searches above the targets
-are summarized under "Results".
+**Status: no record, and none of the five targets is within reach of this family.** The tool works (it rebuilds the
+(9,5) 3,036 graph bit for bit and finds valid self-dual graphs at K = 12 up to 6,984 vertices and at K = 13 up to
+10,040 vertices, all apsp VALID at D = 5, the ones also checked at D = 4 INVALID there), but above the targets the
+best |G \ X X| is 18 at (13,5) (C245 : C24, order 5,880, after a 600 s deep run; 0 is needed), 57 at (12,5), 104 at
+(14,5), 70 at (15,5), 440 at (16,5). At K = 13 the frontier of this family is near order 5,000-5,250 (solved at
+5,020, best 5 at 5,240, 10 at 5,420, 12 at 5,490); (13,5) needs 5,851. The last section explains the gap with the
+size law: every self-dual solution or record so far sits at mu = N e^(-W/N) <= 70, the targets need 122-682.
 
 ## Method and conventions
 
@@ -60,6 +65,7 @@ Checks: research/lifts/coordinator_check/apsp_mt.c (`src/apsp_mt`), VALID at D =
 | 13 | C41 : C110 (meta 41 110 4 1) | 4,510 | 9,020 | type (1,6), 22 s | apsp VALID |
 | 13 | C251 : C20 (meta 251 20 32 1) | 5,020 | 10,040 | type (3,5), 83 s | apsp VALID |
 
+The two largest (6,984 and 10,040 vertices) are saved with edge lists, sha256 and a rebuild script in `records/`.
 The K = 12 sets: C97 : C36, S = (0,0) (0,15) (53,10) (86,5) (14,2) (68,13) (53,32) (89,19) (26,15) (58,0) (31,16)
 (65,35). The K = 13 sets: C41 : C110, S = (0,0) (21,104) (39,6) (9,92) (39,18) (23,8) (40,102) (12,37) (30,73) (9,93)
 (20,17) (14,69) (15,41); C251 : C20, S = (0,0) (79,10) (4,10) (5,19) (160,11) (68,12) (154,8) (44,13) (124,17) (34,1)
@@ -81,11 +87,16 @@ So at K = 12 the frontier of this family is near 3,500-4,000; (12,5) needs 4,921
 
 Energy = |G \ X X| (0 = valid), lowest over the records and types run.
 
-- (13,5), order >= 5,851: ladder (60 s per record and type): C61 : C96 (5,856) 20, C163 : C36 (5,868) 22; for scale,
-  C61 : C90 (5,490) 12. Screen of every formula group of order 5,851-5,950 with k >= 10, m >= 13 (`logs/wl13_c.txt`:
-  317 metacyclic or metacyclic x C_n3, 3 affine, PSL(2,11) x C9; types f = 1, 3, 8 s per record and type, 240 s per
-  group; one line per group in `logs/K13/runs.txt`, tag `_scr`): see the status section for coverage; best 20
-  (C89 : C66, r = 2), then 22 (C267 : C22, C245 : C24). Groups with k <= 5 are far off (C1951 : C3 246, C1465 : C4 399).
+- (13,5), order >= 5,851 (the closest target): ladder (60 s per record and type): C61 : C96 (5,856) 20, C163 : C36
+  (5,868) 22. Screen (`src/all_list.py 5851 5950`, filtered to k >= 10, m >= 13: `logs/wl13_c.txt`; types f = 1, 3,
+  8 s per record and type, 240 s per group, one line per group in `logs/K13/runs.txt`, tag `_scr`; summary
+  `python3 src/screen_summary.py 13 logs/wl13_c.txt`): all 143 metacyclic C_m : C_k, best 20 (C89 : C66, r = 2), then
+  22 (C267 : C22 r = 2, C245 : C24 r = 68), and 7 more at 24-25; the 3 affine groups F_49 : C12 x C10, F_49 : C24 x C5,
+  F_169 : C7 x C5: 27-36; PSL(2,11) x C9: 35; every 6th metacyclic x C_n3 (29): best 28. Groups with k <= 5 (screened
+  before the filter) are far off (C1951 : C3 246, C1465 : C4 399). Deep runs (600 s on the best record and type of
+  the 4 best groups, `src/deep.sh`): C89 : C66 23, C245 : C24 18, C267 : C22 24, C123 : C48 21.
+  Frontier at K = 13 (same ladder settings): C251 : C20 (5,020) solved, C131 : C40 (5,240) 5, C271 : C20 (5,420) 10,
+  C61 : C90 (5,490) 12.
 - Squad round sd5c-r1 (`../squads/LOG.md`): eight other families and search methods at (13,5): non-split metacyclic
   50, F_p^2 : C_k with a diagonal action 35, metacyclic groups with even m or a large unmoved factor 36, Heis(3) x
   metacyclic 42, products of two metacyclic groups 44; clause-weighted tabu, annealing / late acceptance and targeted
@@ -123,3 +134,15 @@ The targets need mu 2 to 10 times past that wall. At mu = 65 the predicted front
 6,679 (14), 8,491 (15), 10,640 (16), against 4,921, 5,851, 8,785, 10,369, 16,897 needed. The GQ lifts that set the
 targets (`../d10D7/DM_D5.md`: 6 (q+1)(q^2+1) vertices per side at degree q+3) are structured, not random-like, and a
 Haar graph (a lift of the 2-vertex dipole) does not reproduce that structure.
+
+## Not done, and next steps
+
+- Not screened at (13,5): 145 of the 174 groups (C_m : C_k) x C_n3 of order 5,851-5,950 (the sampled 29 gave best 28,
+  worse than the plain metacyclic groups), groups with k < 10 or m < 13 at those orders (the few screened were far
+  off), and orders 5,951-6,300 (`logs/meta13_5851_6300.txt`; larger orders are harder). Resume with
+  `K=13 TYPES=1,3 SECS=8 STOPFIRST=1 MAXSOL=1 TBUDGET=240 TAG=scr src/sweep.sh LIST W I` (done groups are skipped).
+- The numbers say the self-dual Haar family stops about 10-60 % short of every target here, and neither the eight
+  squad directions nor deep runs moved the plateau (18-25 at (13,5)). Beating the GQ lifts at these valencies needs
+  a construction whose words are not random-like, for example lifts of a structured base graph, as the targets are.
+- A self-dual K = 13 graph on 10,100-10,500 vertices (order 5,050-5,250) is probably within reach (5,240 got to 5),
+  but it would not be a record.

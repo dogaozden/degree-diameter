@@ -1,0 +1,91 @@
+GROUP meta m 35 k 42 r 19 n3 4 n 5880 K 13
+FAMILY candidates 96 automorphisms 96 coset_reps 16 outer_gens 4 centre 28
+RECORDS 56 (0.1 s)
+REC 0 ALPHA order(g) 1 central | x->x^1 y->x^0 y^1 z^0 z->z^1; c0 0; t' = (0,0,0) t0, t'^2 = (0,0,0)
+REC 1 ALPHA order(g) 2 central | x->x^1 y->x^0 y^1 z^0 z->z^1; c0 0; t' = (0,0,2) t0, t'^2 = (0,0,0)
+REC 2 ALPHA order(g) 2 | x->x^1 y->x^0 y^1 z^0 z->z^1; c0 0; t' = (0,21,0) t0, t'^2 = (0,0,0)
+REC 3 ALPHA order(g) 2 | x->x^1 y->x^0 y^1 z^0 z->z^1; c0 0; t' = (0,21,2) t0, t'^2 = (0,0,0)
+REC 4 ALPHA order(g) 1 | x->x^1 y->x^0 y^1 z^0 z->z^3; c0 0; t' = (0,0,0) t0, t'^2 = (0,0,0)
+REC 5 ALPHA order(g) 4 | x->x^1 y->x^0 y^1 z^0 z->z^3; c0 0; t' = (0,0,1) t0, t'^2 = (0,0,0)
+REC 6 ALPHA order(g) 2 | x->x^1 y->x^0 y^1 z^0 z->z^3; c0 0; t' = (0,21,0) t0, t'^2 = (0,0,0)
+REC 7 ALPHA order(g) 4 | x->x^1 y->x^0 y^1 z^0 z->z^3; c0 0; t' = (0,21,1) t0, t'^2 = (0,0,0)
+REC 8 ALPHA order(g) 1 | x->x^1 y->x^0 y^1 z^2 z->z^1; c0 0; t' = (0,0,0) t0, t'^2 = (0,0,0)
+REC 9 ALPHA order(g) 4 | x->x^1 y->x^0 y^1 z^2 z->z^1; c0 0; t' = (0,21,1) t0, t'^2 = (0,0,0)
+REC 10 ALPHA order(g) 1 | x->x^1 y->x^0 y^1 z^2 z->z^3; c0 0; t' = (0,0,0) t0, t'^2 = (0,0,0)
+REC 11 ALPHA order(g) 4 | x->x^1 y->x^0 y^1 z^2 z->z^3; c0 0; t' = (0,0,1) t0, t'^2 = (0,0,0)
+REC 12 ALPHA order(g) 2 | x->x^1 y->x^0 y^1 z^2 z->z^3; c0 2; t' = (0,21,0) t0, t'^2 = (0,0,0)
+REC 13 ALPHA order(g) 4 | x->x^1 y->x^0 y^1 z^2 z->z^3; c0 2; t' = (0,21,1) t0, t'^2 = (0,0,0)
+REC 14 ALPHA order(g) 1 | x->x^1 y->x^0 y^13 z^0 z->z^1; c0 0; t' = (0,0,0) t0, t'^2 = (0,0,0)
+REC 15 ALPHA order(g) 2 | x->x^1 y->x^0 y^13 z^0 z->z^1; c0 0; t' = (0,0,2) t0, t'^2 = (0,0,0)
+REC 16 ALPHA order(g) 14 | x->x^1 y->x^0 y^13 z^0 z->z^1; c0 0; t' = (0,3,0) t0, t'^2 = (0,0,0)
+REC 17 ALPHA order(g) 14 | x->x^1 y->x^0 y^13 z^0 z->z^1; c0 0; t' = (0,3,2) t0, t'^2 = (0,0,0)
+REC 18 ALPHA order(g) 1 | x->x^1 y->x^0 y^13 z^0 z->z^3; c0 0; t' = (0,0,0) t0, t'^2 = (0,0,0)
+REC 19 ALPHA order(g) 4 | x->x^1 y->x^0 y^13 z^0 z->z^3; c0 0; t' = (0,0,1) t0, t'^2 = (0,0,0)
+REC 20 ALPHA order(g) 14 | x->x^1 y->x^0 y^13 z^0 z->z^3; c0 0; t' = (0,3,0) t0, t'^2 = (0,0,0)
+REC 21 ALPHA order(g) 28 | x->x^1 y->x^0 y^13 z^0 z->z^3; c0 0; t' = (0,3,1) t0, t'^2 = (0,0,0)
+REC 22 ALPHA order(g) 1 | x->x^1 y->x^0 y^13 z^2 z->z^1; c0 0; t' = (0,0,0) t0, t'^2 = (0,0,0)
+REC 23 ALPHA order(g) 28 | x->x^1 y->x^0 y^13 z^2 z->z^1; c0 0; t' = (0,3,1) t0, t'^2 = (0,0,0)
+REC 24 ALPHA order(g) 1 | x->x^1 y->x^0 y^13 z^2 z->z^3; c0 0; t' = (0,0,0) t0, t'^2 = (0,0,0)
+REC 25 ALPHA order(g) 4 | x->x^1 y->x^0 y^13 z^2 z->z^3; c0 0; t' = (0,0,1) t0, t'^2 = (0,0,0)
+REC 26 ALPHA order(g) 14 | x->x^1 y->x^0 y^13 z^2 z->z^3; c0 2; t' = (0,3,0) t0, t'^2 = (0,0,0)
+REC 27 ALPHA order(g) 28 | x->x^1 y->x^0 y^13 z^2 z->z^3; c0 2; t' = (0,3,1) t0, t'^2 = (0,0,0)
+REC 28 ALPHA order(g) 42 | x->x^4 y->x^0 y^1 z^0 z->z^1; c0 16; t' = (0,19,0) t0, t'^2 = (0,0,0)
+REC 29 ALPHA order(g) 42 | x->x^4 y->x^0 y^1 z^0 z->z^1; c0 16; t' = (0,19,2) t0, t'^2 = (0,0,0)
+REC 30 ALPHA order(g) 21 | x->x^4 y->x^0 y^1 z^0 z->z^1; c0 16; t' = (0,40,0) t0, t'^2 = (0,0,0)
+REC 31 ALPHA order(g) 42 | x->x^4 y->x^0 y^1 z^0 z->z^1; c0 16; t' = (0,40,2) t0, t'^2 = (0,0,0)
+REC 32 ALPHA order(g) 42 | x->x^4 y->x^0 y^1 z^0 z->z^3; c0 16; t' = (0,19,0) t0, t'^2 = (0,0,0)
+REC 33 ALPHA order(g) 84 | x->x^4 y->x^0 y^1 z^0 z->z^3; c0 16; t' = (0,19,1) t0, t'^2 = (0,0,0)
+REC 34 ALPHA order(g) 21 | x->x^4 y->x^0 y^1 z^0 z->z^3; c0 16; t' = (0,40,0) t0, t'^2 = (0,0,0)
+REC 35 ALPHA order(g) 84 | x->x^4 y->x^0 y^1 z^0 z->z^3; c0 16; t' = (0,40,1) t0, t'^2 = (0,0,0)
+REC 36 ALPHA order(g) 84 | x->x^4 y->x^0 y^1 z^2 z->z^1; c0 16; t' = (0,19,1) t0, t'^2 = (0,0,0)
+REC 37 ALPHA order(g) 21 | x->x^4 y->x^0 y^1 z^2 z->z^1; c0 16; t' = (0,40,0) t0, t'^2 = (0,0,0)
+REC 38 ALPHA order(g) 21 | x->x^4 y->x^0 y^1 z^2 z->z^3; c0 16; t' = (0,40,0) t0, t'^2 = (0,0,0)
+REC 39 ALPHA order(g) 84 | x->x^4 y->x^0 y^1 z^2 z->z^3; c0 16; t' = (0,40,1) t0, t'^2 = (0,0,0)
+REC 40 ALPHA order(g) 42 | x->x^4 y->x^0 y^1 z^2 z->z^3; c0 18; t' = (0,19,0) t0, t'^2 = (0,0,0)
+REC 41 ALPHA order(g) 84 | x->x^4 y->x^0 y^1 z^2 z->z^3; c0 18; t' = (0,19,1) t0, t'^2 = (0,0,0)
+REC 42 ALPHA order(g) 42 | x->x^4 y->x^0 y^13 z^0 z->z^1; c0 112; t' = (0,1,0) t0, t'^2 = (0,0,0)
+REC 43 ALPHA order(g) 42 | x->x^4 y->x^0 y^13 z^0 z->z^1; c0 112; t' = (0,1,2) t0, t'^2 = (0,0,0)
+REC 44 ALPHA order(g) 21 | x->x^4 y->x^0 y^13 z^0 z->z^1; c0 112; t' = (0,4,0) t0, t'^2 = (0,0,0)
+REC 45 ALPHA order(g) 42 | x->x^4 y->x^0 y^13 z^0 z->z^1; c0 112; t' = (0,4,2) t0, t'^2 = (0,0,0)
+REC 46 ALPHA order(g) 42 | x->x^4 y->x^0 y^13 z^0 z->z^3; c0 112; t' = (0,1,0) t0, t'^2 = (0,0,0)
+REC 47 ALPHA order(g) 84 | x->x^4 y->x^0 y^13 z^0 z->z^3; c0 112; t' = (0,1,1) t0, t'^2 = (0,0,0)
+REC 48 ALPHA order(g) 21 | x->x^4 y->x^0 y^13 z^0 z->z^3; c0 112; t' = (0,4,0) t0, t'^2 = (0,0,0)
+REC 49 ALPHA order(g) 84 | x->x^4 y->x^0 y^13 z^0 z->z^3; c0 112; t' = (0,4,1) t0, t'^2 = (0,0,0)
+REC 50 ALPHA order(g) 84 | x->x^4 y->x^0 y^13 z^2 z->z^1; c0 112; t' = (0,1,1) t0, t'^2 = (0,0,0)
+REC 51 ALPHA order(g) 21 | x->x^4 y->x^0 y^13 z^2 z->z^1; c0 112; t' = (0,4,0) t0, t'^2 = (0,0,0)
+REC 52 ALPHA order(g) 21 | x->x^4 y->x^0 y^13 z^2 z->z^3; c0 112; t' = (0,4,0) t0, t'^2 = (0,0,0)
+REC 53 ALPHA order(g) 84 | x->x^4 y->x^0 y^13 z^2 z->z^3; c0 112; t' = (0,4,1) t0, t'^2 = (0,0,0)
+REC 54 ALPHA order(g) 42 | x->x^4 y->x^0 y^13 z^2 z->z^3; c0 114; t' = (0,1,0) t0, t'^2 = (0,0,0)
+REC 55 ALPHA order(g) 84 | x->x^4 y->x^0 y^13 z^2 z->z^3; c0 114; t' = (0,1,1) t0, t'^2 = (0,0,0)
+TABU rec 0 alpha f 1 m 6 best 195 sols 0 steps 2921 restarts 0 secs 8.0
+TABU rec 0 alpha f 3 m 5 best 160 sols 0 steps 3566 restarts 1 secs 8.0
+TABU rec 1 alpha f 1 m 6 best 204 sols 0 steps 2931 restarts 0 secs 8.0
+TABU rec 1 alpha f 3 m 5 best 161 sols 0 steps 3562 restarts 1 secs 8.0
+TABU rec 2 alpha f 1 m 6 best 79 sols 0 steps 3195 restarts 0 secs 8.0
+TABU rec 2 alpha f 3 m 5 best 65 sols 0 steps 3530 restarts 1 secs 8.0
+TABU rec 3 alpha f 1 m 6 best 70 sols 0 steps 3162 restarts 0 secs 8.0
+TABU rec 3 alpha f 3 m 5 best 65 sols 0 steps 3187 restarts 0 secs 8.0
+TABU rec 4 alpha f 1 m 6 best 122 sols 0 steps 2923 restarts 1 secs 8.0
+TABU rec 4 alpha f 3 m 5 best 92 sols 0 steps 3408 restarts 1 secs 8.0
+TABU rec 5 alpha f 1 m 6 best 134 sols 0 steps 3013 restarts 1 secs 8.0
+TABU rec 5 alpha f 3 m 5 best 93 sols 0 steps 3211 restarts 1 secs 8.0
+TABU rec 6 alpha f 1 m 6 best 57 sols 0 steps 3138 restarts 0 secs 8.0
+TABU rec 6 alpha f 3 m 5 best 46 sols 0 steps 3601 restarts 1 secs 8.0
+TABU rec 7 alpha f 1 m 6 best 60 sols 0 steps 3086 restarts 0 secs 8.0
+TABU rec 7 alpha f 3 m 5 best 52 sols 0 steps 3726 restarts 1 secs 8.0
+TABU rec 8 alpha f 1 m 6 best 149 sols 0 steps 2681 restarts 0 secs 8.0
+TABU rec 8 alpha f 3 m 5 best 116 sols 0 steps 3300 restarts 1 secs 8.0
+TABU rec 9 alpha f 1 m 6 best 66 sols 0 steps 3233 restarts 0 secs 8.0
+TABU rec 9 alpha f 3 m 5 best 71 sols 0 steps 3151 restarts 0 secs 8.0
+TABU rec 10 alpha f 1 m 6 best 106 sols 0 steps 3029 restarts 0 secs 8.0
+TABU rec 10 alpha f 3 m 5 best 612 sols 0 steps 3152 restarts 0 secs 8.0
+TABU rec 11 alpha f 1 m 6 best 116 sols 0 steps 2774 restarts 0 secs 8.0
+TABU rec 11 alpha f 3 m 5 best 606 sols 0 steps 3345 restarts 1 secs 8.0
+TABU rec 12 alpha f 1 m 6 best 55 sols 0 steps 3424 restarts 0 secs 8.0
+TABU rec 12 alpha f 3 m 5 best 48 sols 0 steps 3659 restarts 1 secs 8.0
+TABU rec 13 alpha f 1 m 6 best 59 sols 0 steps 3375 restarts 1 secs 8.0
+TABU rec 13 alpha f 3 m 5 best 43 sols 0 steps 3528 restarts 0 secs 8.0
+TABU rec 14 alpha f 1 m 6 best 87 sols 0 steps 2979 restarts 0 secs 8.0
+TABU rec 14 alpha f 3 m 5 best 53 sols 0 steps 3362 restarts 0 secs 8.0
+BUDGET reached
+DONE sols 0

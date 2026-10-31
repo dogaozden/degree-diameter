@@ -25,36 +25,36 @@ REC 20 ALPHA order(g) 168 | x->x^3 y->x^0 y^97 z^0 z->z^0; c0 70; t' = (0,13) t0
 REC 21 ALPHA order(g) 168 | x->x^3 y->x^0 y^97 z^0 z->z^0; c0 70; t' = (0,1) t0, t'^2 = (0,0)
 REC 22 ALPHA order(g) 24 | x->x^3 y->x^0 y^97 z^0 z->z^0; c0 154; t' = (0,7) t0, t'^2 = (0,0)
 REC 23 ALPHA order(g) 168 | x->x^3 y->x^0 y^97 z^0 z->z^0; c0 154; t' = (0,19) t0, t'^2 = (0,0)
-TABU rec 0 alpha f 1 m 6 best 144 sols 0 steps 2783 restarts 0 secs 8.0
-TABU rec 1 alpha f 1 m 6 best 161 sols 0 steps 2928 restarts 0 secs 8.0
-TABU rec 2 alpha f 1 m 6 best 59 sols 0 steps 3055 restarts 1 secs 8.0
-TABU rec 2 alpha f 3 m 5 best 166 sols 0 steps 3045 restarts 1 secs 8.0
-TABU rec 3 alpha f 1 m 6 best 62 sols 0 steps 3035 restarts 0 secs 8.0
-TABU rec 3 alpha f 3 m 5 best 160 sols 0 steps 3159 restarts 1 secs 8.0
-TABU rec 4 alpha f 1 m 6 best 30 sols 0 steps 3381 restarts 1 secs 8.0
-TABU rec 4 alpha f 3 m 5 best 86 sols 0 steps 3139 restarts 0 secs 8.0
-TABU rec 5 alpha f 1 m 6 best 40 sols 0 steps 3198 restarts 1 secs 8.0
-TABU rec 5 alpha f 3 m 5 best 32 sols 0 steps 3552 restarts 0 secs 8.0
-TABU rec 6 alpha f 1 m 6 best 90 sols 0 steps 3000 restarts 1 secs 8.0
-TABU rec 7 alpha f 1 m 6 best 46 sols 0 steps 3155 restarts 1 secs 8.0
-TABU rec 7 alpha f 3 m 5 best 140 sols 0 steps 3022 restarts 1 secs 8.0
-TABU rec 8 alpha f 1 m 6 best 40 sols 0 steps 3418 restarts 1 secs 8.0
-TABU rec 8 alpha f 3 m 5 best 100 sols 0 steps 3441 restarts 1 secs 8.0
-TABU rec 9 alpha f 1 m 6 best 41 sols 0 steps 3199 restarts 1 secs 8.0
-TABU rec 9 alpha f 3 m 5 best 120 sols 0 steps 3279 restarts 0 secs 8.0
-TABU rec 10 alpha f 1 m 6 best 33 sols 0 steps 3252 restarts 1 secs 8.0
-TABU rec 10 alpha f 3 m 5 best 36 sols 0 steps 3528 restarts 0 secs 8.0
-TABU rec 11 alpha f 1 m 6 best 39 sols 0 steps 3210 restarts 0 secs 8.0
-TABU rec 11 alpha f 3 m 5 best 36 sols 0 steps 3679 restarts 0 secs 8.0
-TABU rec 12 alpha f 1 m 6 best 48 sols 0 steps 3179 restarts 0 secs 8.0
-TABU rec 12 alpha f 3 m 5 best 38 sols 0 steps 3448 restarts 0 secs 8.0
-TABU rec 13 alpha f 1 m 6 best 40 sols 0 steps 3344 restarts 0 secs 8.0
-TABU rec 13 alpha f 3 m 5 best 44 sols 0 steps 3331 restarts 1 secs 8.0
-TABU rec 14 alpha f 1 m 6 best 49 sols 0 steps 3184 restarts 1 secs 8.0
-TABU rec 14 alpha f 3 m 5 best 128 sols 0 steps 3226 restarts 1 secs 8.0
-TABU rec 15 alpha f 1 m 6 best 56 sols 0 steps 3187 restarts 0 secs 8.0
-TABU rec 15 alpha f 3 m 5 best 136 sols 0 steps 3215 restarts 1 secs 8.0
-TABU rec 16 alpha f 1 m 6 best 46 sols 0 steps 3038 restarts 1 secs 8.0
-TABU rec 16 alpha f 3 m 5 best 45 sols 0 steps 3269 restarts 0 secs 8.0
+TABU rec 0 alpha f 1 m 6 best 169 sols 0 steps 3074 restarts 1 secs 8.0
+TABU rec 1 alpha f 1 m 6 best 151 sols 0 steps 3123 restarts 0 secs 8.0
+TABU rec 2 alpha f 1 m 6 best 66 sols 0 steps 3396 restarts 1 secs 8.0
+TABU rec 2 alpha f 3 m 5 best 180 sols 0 steps 3292 restarts 0 secs 8.0
+TABU rec 3 alpha f 1 m 6 best 57 sols 0 steps 3272 restarts 0 secs 8.0
+TABU rec 3 alpha f 3 m 5 best 164 sols 0 steps 3371 restarts 0 secs 8.0
+TABU rec 4 alpha f 1 m 6 best 38 sols 0 steps 3604 restarts 1 secs 8.0
+TABU rec 4 alpha f 3 m 5 best 90 sols 0 steps 3282 restarts 0 secs 8.0
+TABU rec 5 alpha f 1 m 6 best 30 sols 0 steps 3528 restarts 0 secs 8.0
+TABU rec 5 alpha f 3 m 5 best 32 sols 0 steps 3826 restarts 1 secs 8.0
+TABU rec 6 alpha f 1 m 6 best 98 sols 0 steps 3172 restarts 1 secs 8.0
+TABU rec 7 alpha f 1 m 6 best 50 sols 0 steps 3317 restarts 0 secs 8.0
+TABU rec 7 alpha f 3 m 5 best 140 sols 0 steps 3109 restarts 0 secs 8.0
+TABU rec 8 alpha f 1 m 6 best 42 sols 0 steps 3405 restarts 0 secs 8.0
+TABU rec 8 alpha f 3 m 5 best 116 sols 0 steps 3435 restarts 1 secs 8.0
+TABU rec 9 alpha f 1 m 6 best 43 sols 0 steps 3437 restarts 1 secs 8.0
+TABU rec 9 alpha f 3 m 5 best 106 sols 0 steps 3491 restarts 1 secs 8.0
+TABU rec 10 alpha f 1 m 6 best 31 sols 0 steps 3614 restarts 1 secs 8.0
+TABU rec 10 alpha f 3 m 5 best 34 sols 0 steps 4050 restarts 1 secs 8.0
+TABU rec 11 alpha f 1 m 6 best 39 sols 0 steps 3644 restarts 1 secs 8.0
+TABU rec 11 alpha f 3 m 5 best 32 sols 0 steps 3982 restarts 1 secs 8.0
+TABU rec 12 alpha f 1 m 6 best 49 sols 0 steps 3395 restarts 0 secs 8.0
+TABU rec 12 alpha f 3 m 5 best 43 sols 0 steps 3774 restarts 1 secs 8.0
+TABU rec 13 alpha f 1 m 6 best 46 sols 0 steps 3427 restarts 0 secs 8.0
+TABU rec 13 alpha f 3 m 5 best 38 sols 0 steps 3776 restarts 1 secs 8.0
+TABU rec 14 alpha f 1 m 6 best 53 sols 0 steps 3465 restarts 0 secs 8.0
+TABU rec 14 alpha f 3 m 5 best 130 sols 0 steps 3454 restarts 0 secs 8.0
+TABU rec 15 alpha f 1 m 6 best 52 sols 0 steps 3468 restarts 1 secs 8.0
+TABU rec 15 alpha f 3 m 5 best 120 sols 0 steps 3346 restarts 0 secs 8.0
+TABU rec 16 alpha f 1 m 6 best 58 sols 0 steps 3454 restarts 1 secs 8.0
+TABU rec 16 alpha f 3 m 5 best 38 sols 0 steps 3944 restarts 1 secs 8.0
 BUDGET reached
 DONE sols 0

@@ -25,3 +25,7 @@ one-shot scheduled messages into the director's session, which the director dele
 an interrupt_session call (target not identified). Next cards should say "no scheduled tasks, no session tools".
 What next (director): no second round; the metacyclic screen of 5,851-5,950 continues on 4 cores, then probes at
 (12,5), (14,5), (15,5), (16,5).
+Outcome of the job (director, 09:55 UTC): the screen of all 143 metacyclic groups of order 5,851-5,950 (plus the affine
+groups, PSL(2,11) x C9 and a sample of direct products) ended at best 20; 600 s deep runs on the four best stayed at
+18-24; probes above the (12,5), (14,5), (15,5), (16,5) targets at 57, 104, 70, 440. No record
+(research/selfdual-d5c/README.md).

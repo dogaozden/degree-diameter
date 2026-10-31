@@ -7,7 +7,7 @@ i=0
 while read -r N a b c d e; do
     [ -e $L/STOP ] && break
     if [ $(( i % $2 )) -eq $3 ]; then
-        case "$a" in psl|sl) args="$a $b $c";; meta) args="meta $b $c $d $e";; *) args="meta $a $b $c 1";; esac
+        case "$a" in psl|sl) args="$a $b $c";; meta|aff) args="$a $b $c $d $e";; *) args="meta $a $b $c 1";; esac
         tag=$(echo "$args" | tr ' ' '_')${TAG:+_$TAG}
         grep -q "^$tag " $L/runs.txt 2>/dev/null || $R0/src/run1.sh $args
     fi
