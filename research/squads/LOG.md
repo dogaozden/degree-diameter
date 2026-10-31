@@ -15,7 +15,7 @@ metacyclic bipartite Cayley graphs (tabu on T directly), orders 2n = 600-722.
 Best per card (no card found a graph above 684; every card calibrated on a known valid case, apsp-checked):
 c1 8 (750, SmallGroup(375,5); 186 of 334 groups of order 363-400) · c2 20 (728, 364_1; re-finds cost 1 on 352_50, 0
 on SL(2,7)) · c3 2 (720, SL(2,5) x C3 = 360_51, where an earlier exhaustive search says no Haar graph exists);
-A6 20, A5 x C7 16, order 363-366 groups 10-16 · c4 no union passes X X = G on 686_1/3/5 · c5 11 (704, Z44:Z4) · c6 16
+A6 20, A5 x C7 16, order 363-366 groups 10-16 · c4 no union passes X X = G on 686_1/3/5 · c5 10 (688, Z43:Z4) · c6 16
 (756, 378_41; 97 groups of order 361-400) · c7 27 (728, PSL(2,13)), 49 (880, PGL(2,11)) · c8 6 (686), 98 (722);
 metacyclic bipartite Cayley graphs at K = 6 exist at 400 and 500 vertices (12/104, 15/65 groups) and die out before 600.
 Kept / learned: no family gets near 0 above 700 vertices; the self-dual sweep's closest misses are at 696-704
