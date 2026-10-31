@@ -252,3 +252,20 @@ by the coordinator with build_haar.py, two BFS from both sides, ecc ≤ D, nothi
 - Oct 30 17:30 PT (coordinator): (3,11) 1,344 (raised, was 1,320) and (3,12) 2,368 (raised, was 1,320; above the Foster census's CSS(2304,5)) (lifts, new cells beyond the table): regular voltage lifts of 4+4 cubic bases over Z7 x| Z24 = SmallGroup(168,1) and Z37 x| Z8 = SmallGroup(296,3); job own-small (Oct 26), claude/own-small-cells-dkwo42 (research/squads/own-small/records/, newcells/README.md); rebuilt and checked on the Mac mini (research/coordinator_check/check_2026-10-30.txt).
 - Oct 30 18:45 PT (coordinator): (9,5) 3,000 (raised, was 2,970 earlier today; 2,976 on the way) (Haar graphs): Haar graph of (C5 x C5 x C5) : (C3 : C4) = SmallGroup(1500,113) with a self-dual 9-element connection set; selfdual-d5 (research/selfdual-d5/records/); rebuilt and checked on the Mac mini (research/coordinator_check/check_2026-10-30.txt).
 - Oct 30 19:45 PT (coordinator): (9,5) 3,036 (raised, was 3,000 earlier today; 3,024 on the way) (Haar graphs): Haar graph of C69 : C22 = S3 x (C23 : C11) = SmallGroup(1518,2) with a self-dual 9-element connection set; selfdual-d5 (research/selfdual-d5/records/); rebuilt and checked on the Mac mini (research/coordinator_check/check_2026-10-30.txt).
+
+- Oct 31 06:34 PT (harvest): (9,10) 24,099,600 (was 23,975,280), psl 151 n 7; claude/raise-d9d10-record-7f9el2.
+- Oct 31 06:34 PT (harvest): (9,11) 145,258,344 (was 0), psl 197 n 19; claude/new-cells-beyond-etos3t.
+- Oct 31 06:34 PT (harvest): (9,12) 1,055,973,600 (was 0), sl 199 n 67; claude/new-cells-beyond-etos3t.
+- Oct 31 06:34 PT (harvest): (10,9) 8,418,120 (was 8,003,856), psl 59 n 41; claude/raise-d10d9-round2-153lq9.
+- Oct 31 06:34 PT (harvest): (10,10) 64,294,560 (was 60,141,120), psl 81 poly x^4+x+2 n 121; claude/raise-d10-d10-round-3-eyj21o.
+- Oct 31 06:34 PT (harvest): (11,9) 17,323,152 (was 16,792,080), sl 43 n 109; claude/raise-d11d9-record-round2-k45ls9.
+- Oct 31 06:34 PT (harvest): (12,9) 35,445,648 (was 34,026,720), sl 83 n 31; claude/raise-d12d9-bipartite-round3-fhhyi9.
+- Oct 31 06:34 PT (harvest): (12,10) 332,797,296 (was 325,832,976), sl 157 n 43; claude/raise-d12d10-record-r3-82qxos.
+- Oct 31 06:34 PT (harvest): (14,9) 120,043,728 (was 116,068,656), sl 107 n 49; claude/raise-d14d9-haar-round3-hq51mw.
+- Oct 31 06:34 PT (harvest): (15,8) 18,666,480 (was 18,128,880), psl 41 n 271; claude/raise-d15d8-round3-4sc7rb.
+- Oct 31 06:34 PT (harvest): (16,9) 348,207,600 (was 337,394,400), sl 101 n 169; claude/raise-d16-9-record-gpc9xc.
+- Oct 31 06:34 PT (harvest): (17,8) 41,373,072 (was 0), sl 53 n 139; claude/new-cells-beyond-etos3t.
+- Oct 31 06:34 PT (harvest): (18,8) 57,637,680 (was 0), sl 61 n 127; claude/new-cells-beyond-etos3t.
+- Oct 31 06:34 PT (harvest): (19,8) 86,317,296 (was 0), psl 103 n 79; claude/new-cells-beyond-etos3t.
+- Oct 31 06:34 PT (harvest): (19,9) 1,218,394,320 (was 0), sl 131 n 271; claude/new-cells-beyond-etos3t.
+- Oct 31 06:34 PT (harvest): (20,8) 122,739,120 (was 0), psl 71 n 343; claude/new-cells-beyond-etos3t.

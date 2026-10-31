@@ -1,0 +1,450 @@
+== d9D10_psl_151_7_orb3f0_s1 (origin/claude/raise-d9d10-record-7f9el2, 06:34 PT)
+machine: vm | nproc=4 | free -g (total used free shared buff/cache available): 15 0 14 0 0 15
+sha256: d78ef086c9c0f2ed5a26dc8fb9193208c94557b535ef669eb349d4c50ccac654  d9D10_psl_151_7_orb3f0_s1.txt
+# reference: haarcheck_psl  [rc=0 wall_s=11.0 peak_rss_mb=13]
+from (e,A): reached A 12049800/12049800, B 12049800/12049800 within 10, ecc 10
+from (e,B): reached A 12049800/12049800, B 12049800/12049800 within 10, ecc 10
+VALID d=9 D=10 group=psl 151 x Z_7 N=12049800 vertices=24099600 (distinct generators, 9-regular simple)
+# independent: check_haar_indep.py  [rc=0 wall_s=33.0 peak_rss_mb=787]
+file d9D10_psl_151_7_orb3f0_s1.txt
+header: d=9 D=10 spec=psl 151 NCYC=7 N=12049800
+group order |G|=1721400 (factors [1721400]), x Z_7 -> 12049800; vertices 2N=24099600
+distinct generators (as full group elements): 9 of d=9
+permutations built (14s)
+BFS from A: ecc=10 reached 24099600 of 24099600 (unreached 0); level sizes [1, 9, 72, 576, 4608, 36835, 291026, 2132494, 9287298, 9879886, 2466795]
+BFS from B: ecc=10 reached 24099600 of 24099600 (unreached 0); level sizes [1, 9, 72, 576, 4608, 36835, 291066, 2132494, 9286241, 9879886, 2467812]
+every vertex has exactly 9 distinct neighbours: True
+RESULT VALID d=9 D=10 eccA=10 eccB=10 n=24099600 (33s)
+== d9D11_psl_197_19_orb3_s4 (origin/claude/new-cells-beyond-etos3t, 06:34 PT)
+machine: nproc=4; free -g: total 15G used 0G free 14G avail 15G
+6c4df0e6bfe290fa41029c1fe93da12c1205a1c98d8d4dbfbc3fa55d0dd0d473
+################ reference checker: haarcheck_psl research/frontier/sols/d9D11_psl_197_19_orb3_s4.txt   [exit 0]
+from (e,A): reached A 72629172/72629172, B 72629172/72629172 within 11, ecc 11
+from (e,B): reached A 72629172/72629172, B 72629172/72629172 within 11, ecc 11
+VALID d=9 D=11 group=psl 197 x Z_19 N=72629172 vertices=145258344 (distinct generators, 9-regular simple)
+################ independent checker: check_haar_indep.py research/frontier/sols/d9D11_psl_197_19_orb3_s4.txt   [exit 0]
+file research/frontier/sols/d9D11_psl_197_19_orb3_s4.txt
+header: d=9 D=11 spec=psl 197 NCYC=19 N=72629172
+group order |G|=3822588 (factors [3822588]), x Z_19 -> 72629172; vertices 2N=145258344
+distinct generators (as full group elements): 9 of d=9
+permutations built (37s)
+BFS from A: ecc=11 reached 145258344 of 145258344 (unreached 0); level sizes [1, 9, 72, 573, 4560, 36276, 288066, 2258374, 16063254, 60759022, 56273219, 9574918]
+BFS from B: ecc=11 reached 145258344 of 145258344 (unreached 0); level sizes [1, 9, 72, 573, 4560, 36276, 288072, 2258374, 16063828, 60759022, 56272639, 9574918]
+every vertex has exactly 9 distinct neighbours: True
+RESULT VALID d=9 D=11 eccA=11 eccB=11 n=145258344 (166s)
+== d9D12_sl_199_67_orb3_s1 (origin/claude/new-cells-beyond-etos3t, 06:34 PT)
+machine: vm nproc=4; free -g: total 15G used 0G free 14G avail 15G; kernel 6.18.44-fc-v185
+sha256 e27ef9cbfa3d16baa82e50ef1518b496aee65fa4a6b841ecb9690c6550a1f88f  file research/frontier/sols/d9D12_sl_199_67_orb3_s1.txt (from origin/claude/new-cells-beyond-etos3t:research/frontier/sols/d9D12_sl_199_67_orb3_s1.txt)
+header: 9 12 sl 199 n 67 N 527986800
+
+################ reference checker: haarcheck_sl (research/frontier/haarcheck_sl.c, gcc -O3)
+from (e,A): reached A 527986800/527986800, B 527986800/527986800 within 12, ecc 12
+from (e,B): reached A 527986800/527986800, B 527986800/527986800 within 12, ecc 12
+VALID d=9 D=12 group=sl 199 x Z_67 N=527986800 vertices=1055973600 (distinct generators, 9-regular simple)
+[exit 0; wall 320.1s; cpu 317.2s; peak RSS 379 MB]
+
+################ independent checker: haarcheck2 (research/frontier/haarcheck2.c, gcc -O3)
+file=/home/user/degree-diameter/research/frontier/sols/d9D12_sl_199_67_orb3_s1.txt d=9 D=12 p=199 n=67 |G|=527986800 vertices=1055973600
+selfcheck: SL(2,199) index is a bijection onto det-1 matrices (|SL|=7880400), fastmod ok (0.08s)
+generators: 9 read, all in SL(2,199) x Z_67, all distinct
+selfcheck: generator inverses verified
+BFS from (e,A):
+  from (e,A) level 1: new=9  reached=10 / 1055973600
+  from (e,A) level 2: new=72  reached=82 / 1055973600
+  from (e,A) level 3: new=573  reached=655 / 1055973600
+  from (e,A) level 4: new=4558  reached=5213 / 1055973600
+  from (e,A) level 5: new=36246  reached=41459 / 1055973600
+  from (e,A) level 6: new=288182  reached=329641 / 1055973600
+  from (e,A) level 7: new=2286470  reached=2616111 / 1055973600
+  from (e,A) level 8: new=17892502  reached=20508613 / 1055973600
+  from (e,A) level 9: new=126016367  reached=146524980 / 1055973600
+  from (e,A) level 10: new=451988898  reached=598513878 / 1055973600
+  from (e,A) level 11: new=399647135  reached=998161013 / 1055973600
+  from (e,A) level 12: new=57812587  reached=1055973600 / 1055973600
+  done in 135.07s, eccA=12, reached 1055973600 / 1055973600
+BFS from (e,B):
+  from (e,B) level 1: new=9  reached=10 / 1055973600
+  from (e,B) level 2: new=72  reached=82 / 1055973600
+  from (e,B) level 3: new=573  reached=655 / 1055973600
+  from (e,B) level 4: new=4558  reached=5213 / 1055973600
+  from (e,B) level 5: new=36246  reached=41459 / 1055973600
+  from (e,B) level 6: new=288182  reached=329641 / 1055973600
+  from (e,B) level 7: new=2286470  reached=2616111 / 1055973600
+  from (e,B) level 8: new=17892556  reached=20508667 / 1055973600
+  from (e,B) level 9: new=126016367  reached=146525034 / 1055973600
+  from (e,B) level 10: new=452012326  reached=598537360 / 1055973600
+  from (e,B) level 11: new=399647135  reached=998184495 / 1055973600
+  from (e,B) level 12: new=57789105  reached=1055973600 / 1055973600
+  done in 132.63s, eccB=12, reached 1055973600 / 1055973600
+VALID d=9 D=12 vertices=1055973600 eccA=12 eccB=12
+[exit 0; wall 268.1s; cpu 265.4s; peak RSS 253 MB]
+== d10D9_psl_59_41_orb5f0_ORBW5RESTART1_s12 (origin/claude/raise-d10d9-round2-153lq9, 06:34 PT)
+machine: vm | nproc=4 | free -g (total used free shared buff/cache available): 15 0 14 0 0 15
+sha256: c03a92f06028057cf46555c7c7a2c09fb238f5e49f713dc9a262921c3a15f538  d10D9_psl_59_41_orb5f0_ORBW5RESTART1_s12.txt
+# reference: haarcheck_psl  [rc=0 wall_s=3.8 peak_rss_mb=13]
+from (e,A): reached A 4209060/4209060, B 4209060/4209060 within 9, ecc 9
+from (e,B): reached A 4209060/4209060, B 4209060/4209060 within 9, ecc 9
+VALID d=10 D=9 group=psl 59 x Z_41 N=4209060 vertices=8418120 (distinct generators, 10-regular simple)
+# independent: check_haar_indep.py  [rc=0 wall_s=5.6 peak_rss_mb=288]
+file d10D9_psl_59_41_orb5f0_ORBW5RESTART1_s12.txt
+header: d=10 D=9 spec=psl 59 NCYC=41 N=4209060
+group order |G|=102660 (factors [102660]), x Z_41 -> 4209060; vertices 2N=8418120
+distinct generators (as full group elements): 10 of d=10
+permutations built (1s)
+BFS from A: ecc=9 reached 8418120 of 8418120 (unreached 0); level sizes [1, 10, 90, 810, 7290, 64790, 543795, 2927736, 3657884, 1215714]
+BFS from B: ecc=9 reached 8418120 of 8418120 (unreached 0); level sizes [1, 10, 90, 810, 7290, 64790, 543795, 2927736, 3657884, 1215714]
+every vertex has exactly 10 distinct neighbours: True
+RESULT VALID d=10 D=9 eccA=9 eccB=9 n=8418120 (5s)
+== d10D10_psl_81_121_orb5f0_s3 (origin/claude/raise-d10-d10-round-3-eyj21o, 06:34 PT)
+machine: vm | nproc=4 | free -g (total used free shared buff/cache available): 15 0 14 0 0 15
+sha256: 6cc96de7f38a3d11a31ddb4cdc9956d9b9602be4e247813b9a7a5923124bc07f  d10D10_psl_81_121_orb5f0_s3.txt
+# reference: build_haar2.py  [rc=0 wall_s=215.8 peak_rss_mb=3745]
+ecc from A = 10 unreached 0
+ecc from B = 10 unreached 0
+n = 64294560 edges = 321472800 max degree = 10 min degree = 10 duplicate edges = 0
+edge list sha256 = 5e221cc4cf903f72dc3610b953f4f5ef5ab10b2014f95a51ab3ff38089b7629b
+VALID d=10 D=10 group=psl 81 poly x^4+x+2 x Z_121 N=32147280 vertices=64294560
+# independent: check_haar_indep.py  [rc=0 wall_s=40.6 peak_rss_mb=1670]
+file d10D10_psl_81_121_orb5f0_s3.txt
+header: d=10 D=10 spec=psl 81 poly x^4+x+2 NCYC=121 N=32147280
+group order |G|=265680 (factors [265680]), x Z_121 -> 32147280; vertices 2N=64294560
+distinct generators (as full group elements): 10 of d=10
+permutations built (1s)
+BFS from A: ecc=10 reached 64294560 of 64294560 (unreached 0); level sizes [1, 10, 90, 810, 7290, 65555, 584815, 4884166, 24395757, 27196739, 7159327]
+BFS from B: ecc=10 reached 64294560 of 64294560 (unreached 0); level sizes [1, 10, 90, 810, 7290, 65555, 584835, 4884166, 24402091, 27196739, 7152973]
+every vertex has exactly 10 distinct neighbours: True
+RESULT VALID d=10 D=10 eccA=10 eccB=10 n=64294560 (40s)
+== d11D9_sl_43_109_orbw3_s3 (origin/claude/raise-d11d9-record-round2-k45ls9, 06:34 PT)
+machine: vm | nproc=4 | free -g (total used free shared buff/cache available): 15 0 14 0 0 15
+sha256: 8ba98a828a37d8decfef6356f387c2e287a02197b933d4251763ff8027e24931  d11D9_sl_43_109_orbw3_s3.txt
+# reference: haarcheck_sl  [rc=0 wall_s=5.5 peak_rss_mb=13]
+from (e,A): reached A 8661576/8661576, B 8661576/8661576 within 9, ecc 9
+from (e,B): reached A 8661576/8661576, B 8661576/8661576 within 9, ecc 9
+VALID d=11 D=9 group=sl 43 x Z_109 N=8661576 vertices=17323152 (distinct generators, 11-regular simple)
+# independent: haarcheck2  [rc=0 wall_s=5.2 peak_rss_mb=13]
+file=d11D9_sl_43_109_orbw3_s3.txt d=11 D=9 p=43 n=109 |G|=8661576 vertices=17323152
+selfcheck: SL(2,43) index is a bijection onto det-1 matrices (|SL|=79464), fastmod ok (0.00s)
+generators: 11 read, all in SL(2,43) x Z_109, all distinct
+selfcheck: generator inverses verified
+BFS from (e,A):
+  from (e,A) level 1: new=11  reached=12 / 17323152
+  from (e,A) level 2: new=110  reached=122 / 17323152
+  from (e,A) level 3: new=1100  reached=1222 / 17323152
+  from (e,A) level 4: new=11000  reached=12222 / 17323152
+  from (e,A) level 5: new=109584  reached=121806 / 17323152
+  from (e,A) level 6: new=1033949  reached=1155755 / 17323152
+  from (e,A) level 7: new=6147321  reached=7303076 / 17323152
+  from (e,A) level 8: new=7616516  reached=14919592 / 17323152
+  from (e,A) level 9: new=2403560  reached=17323152 / 17323152
+  done in 2.66s, eccA=9, reached 17323152 / 17323152
+BFS from (e,B):
+  from (e,B) level 1: new=11  reached=12 / 17323152
+  from (e,B) level 2: new=110  reached=122 / 17323152
+  from (e,B) level 3: new=1100  reached=1222 / 17323152
+  from (e,B) level 4: new=11000  reached=12222 / 17323152
+  from (e,B) level 5: new=109584  reached=121806 / 17323152
+  from (e,B) level 6: new=1034087  reached=1155893 / 17323152
+  from (e,B) level 7: new=6147321  reached=7303214 / 17323152
+  from (e,B) level 8: new=7616378  reached=14919592 / 17323152
+  from (e,B) level 9: new=2403560  reached=17323152 / 17323152
+  done in 2.58s, eccB=9, reached 17323152 / 17323152
+VALID d=11 D=9 vertices=17323152 eccA=9 eccB=9
+== d12D9_sl_83_31_orb3f0_orbw3_s3 (origin/claude/raise-d12d9-bipartite-round3-fhhyi9, 06:34 PT)
+machine: vm | nproc=4 | free -g (total used free shared buff/cache available): 15 0 14 0 0 15
+sha256: 3edfdf41223e9f18d14dfea2dff4fcc2bc2c70ce9c9be81e2e509b4bc1826128  d12D9_sl_83_31_orb3f0_orbw3_s3.txt
+# reference: haarcheck_sl  [rc=0 wall_s=12.2 peak_rss_mb=14]
+from (e,A): reached A 17722824/17722824, B 17722824/17722824 within 9, ecc 9
+from (e,B): reached A 17722824/17722824, B 17722824/17722824 within 9, ecc 9
+VALID d=12 D=9 group=sl 83 x Z_31 N=17722824 vertices=35445648 (distinct generators, 12-regular simple)
+# independent: haarcheck2  [rc=0 wall_s=12.3 peak_rss_mb=13]
+file=d12D9_sl_83_31_orb3f0_orbw3_s3.txt d=12 D=9 p=83 n=31 |G|=17722824 vertices=35445648
+selfcheck: SL(2,83) index is a bijection onto det-1 matrices (|SL|=571704), fastmod ok (0.01s)
+generators: 12 read, all in SL(2,83) x Z_31, all distinct
+selfcheck: generator inverses verified
+BFS from (e,A):
+  from (e,A) level 1: new=12  reached=13 / 35445648
+  from (e,A) level 2: new=132  reached=145 / 35445648
+  from (e,A) level 3: new=1452  reached=1597 / 35445648
+  from (e,A) level 4: new=15972  reached=17569 / 35445648
+  from (e,A) level 5: new=174768  reached=192337 / 35445648
+  from (e,A) level 6: new=1827140  reached=2019477 / 35445648
+  from (e,A) level 7: new=12244377  reached=14263854 / 35445648
+  from (e,A) level 8: new=15879579  reached=30143433 / 35445648
+  from (e,A) level 9: new=5302215  reached=35445648 / 35445648
+  done in 6.39s, eccA=9, reached 35445648 / 35445648
+BFS from (e,B):
+  from (e,B) level 1: new=12  reached=13 / 35445648
+  from (e,B) level 2: new=132  reached=145 / 35445648
+  from (e,B) level 3: new=1452  reached=1597 / 35445648
+  from (e,B) level 4: new=15972  reached=17569 / 35445648
+  from (e,B) level 5: new=174768  reached=192337 / 35445648
+  from (e,B) level 6: new=1826960  reached=2019297 / 35445648
+  from (e,B) level 7: new=12244377  reached=14263674 / 35445648
+  from (e,B) level 8: new=15879759  reached=30143433 / 35445648
+  from (e,B) level 9: new=5302215  reached=35445648 / 35445648
+  done in 5.91s, eccB=9, reached 35445648 / 35445648
+VALID d=12 D=9 vertices=35445648 eccA=9 eccB=9
+== d12D10_sl_157_43_orb3f0_s4 (origin/claude/raise-d12d10-record-r3-82qxos, 06:34 PT)
+machine: nproc=4; free -g: total 15G used 0G free 14G avail 14G
+9e06bacec2e19db03f73d95d618798d8ff765cdbe921aaf1f635b855245593d8
+################ reference checker: haarcheck_sl research/frontier/sols/d12D10_sl_157_43_orb3f0_s4.txt   [exit 0]
+from (e,A): reached A 166398648/166398648, B 166398648/166398648 within 10, ecc 10
+from (e,B): reached A 166398648/166398648, B 166398648/166398648 within 10, ecc 10
+VALID d=12 D=10 group=sl 157 x Z_43 N=166398648 vertices=332797296 (distinct generators, 12-regular simple)
+################ independent checker: haarcheck2 research/frontier/sols/d12D10_sl_157_43_orb3f0_s4.txt   [exit 0]
+file=research/frontier/sols/d12D10_sl_157_43_orb3f0_s4.txt d=12 D=10 p=157 n=43 |G|=166398648 vertices=332797296
+selfcheck: SL(2,157) index is a bijection onto det-1 matrices (|SL|=3869736), fastmod ok (0.03s)
+generators: 12 read, all in SL(2,157) x Z_43, all distinct
+selfcheck: generator inverses verified
+BFS from (e,A):
+  from (e,A) level 1: new=12  reached=13 / 332797296
+  from (e,A) level 2: new=132  reached=145 / 332797296
+  from (e,A) level 3: new=1452  reached=1597 / 332797296
+  from (e,A) level 4: new=15972  reached=17569 / 332797296
+  from (e,A) level 5: new=175557  reached=193126 / 332797296
+  from (e,A) level 6: new=1920352  reached=2113478 / 332797296
+  from (e,A) level 7: new=19923049  reached=22036527 / 332797296
+  from (e,A) level 8: new=124048942  reached=146085469 / 332797296
+  from (e,A) level 9: new=146298578  reached=292384047 / 332797296
+  from (e,A) level 10: new=40413249  reached=332797296 / 332797296
+  done in 61.21s, eccA=10, reached 332797296 / 332797296
+BFS from (e,B):
+  from (e,B) level 1: new=12  reached=13 / 332797296
+  from (e,B) level 2: new=132  reached=145 / 332797296
+  from (e,B) level 3: new=1452  reached=1597 / 332797296
+  from (e,B) level 4: new=15972  reached=17569 / 332797296
+  from (e,B) level 5: new=175557  reached=193126 / 332797296
+  from (e,B) level 6: new=1920362  reached=2113488 / 332797296
+  from (e,B) level 7: new=19923049  reached=22036537 / 332797296
+  from (e,B) level 8: new=124052112  reached=146088649 / 332797296
+  from (e,B) level 9: new=146298578  reached=292387227 / 332797296
+  from (e,B) level 10: new=40410069  reached=332797296 / 332797296
+  done in 61.04s, eccB=10, reached 332797296 / 332797296
+VALID d=12 D=10 vertices=332797296 eccA=10 eccB=10
+== d14D9_sl_107_49_orb3_s1 (origin/claude/raise-d14d9-haar-round3-hq51mw, 06:34 PT)
+machine: nproc=4; free -g: total 15G used 0G free 14G avail 15G
+c801569a4a333b1d6411d83dcf286e2d0cf2da3da5ed02d7e6e46c047786dea3
+################ reference checker: haarcheck_sl research/frontier/sols/d14D9_sl_107_49_orb3_s1.txt   [exit 0]
+from (e,A): reached A 60021864/60021864, B 60021864/60021864 within 9, ecc 9
+from (e,B): reached A 60021864/60021864, B 60021864/60021864 within 9, ecc 9
+VALID d=14 D=9 group=sl 107 x Z_49 N=60021864 vertices=120043728 (distinct generators, 14-regular simple)
+################ independent checker: haarcheck2 research/frontier/sols/d14D9_sl_107_49_orb3_s1.txt   [exit 0]
+file=research/frontier/sols/d14D9_sl_107_49_orb3_s1.txt d=14 D=9 p=107 n=49 |G|=60021864 vertices=120043728
+selfcheck: SL(2,107) index is a bijection onto det-1 matrices (|SL|=1224936), fastmod ok (0.01s)
+generators: 14 read, all in SL(2,107) x Z_49, all distinct
+selfcheck: generator inverses verified
+BFS from (e,A):
+  from (e,A) level 1: new=14  reached=15 / 120043728
+  from (e,A) level 2: new=182  reached=197 / 120043728
+  from (e,A) level 3: new=2366  reached=2563 / 120043728
+  from (e,A) level 4: new=30758  reached=33321 / 120043728
+  from (e,A) level 5: new=398474  reached=431795 / 120043728
+  from (e,A) level 6: new=4973799  reached=5405594 / 120043728
+  from (e,A) level 7: new=40251602  reached=45657196 / 120043728
+  from (e,A) level 8: new=55017124  reached=100674320 / 120043728
+  from (e,A) level 9: new=19369408  reached=120043728 / 120043728
+  done in 23.61s, eccA=9, reached 120043728 / 120043728
+BFS from (e,B):
+  from (e,B) level 1: new=14  reached=15 / 120043728
+  from (e,B) level 2: new=182  reached=197 / 120043728
+  from (e,B) level 3: new=2366  reached=2563 / 120043728
+  from (e,B) level 4: new=30758  reached=33321 / 120043728
+  from (e,B) level 5: new=398474  reached=431795 / 120043728
+  from (e,B) level 6: new=4973805  reached=5405600 / 120043728
+  from (e,B) level 7: new=40251602  reached=45657202 / 120043728
+  from (e,B) level 8: new=55017118  reached=100674320 / 120043728
+  from (e,B) level 9: new=19369408  reached=120043728 / 120043728
+  done in 23.95s, eccB=9, reached 120043728 / 120043728
+VALID d=14 D=9 vertices=120043728 eccA=9 eccB=9
+== d15D8_psl_41_271_orb5f0_ORBW5_s1 (origin/claude/raise-d15d8-round3-4sc7rb, 06:34 PT)
+machine: vm | nproc=4 | free -g (total used free shared buff/cache available): 15 0 14 0 0 15
+sha256: 8d9b8fb03f3994ccce31e7f5e079544e55d7bf689ef7096ad5742186f654b0c3  d15D8_psl_41_271_orb5f0_ORBW5_s1.txt
+# reference: haarcheck_psl  [rc=0 wall_s=11.2 peak_rss_mb=13]
+from (e,A): reached A 9333240/9333240, B 9333240/9333240 within 8, ecc 8
+from (e,B): reached A 9333240/9333240, B 9333240/9333240 within 8, ecc 8
+VALID d=15 D=8 group=psl 41 x Z_271 N=9333240 vertices=18666480 (distinct generators, 15-regular simple)
+# independent: check_haar_indep.py  [rc=0 wall_s=18.3 peak_rss_mb=578]
+file d15D8_psl_41_271_orb5f0_ORBW5_s1.txt
+header: d=15 D=8 spec=psl 41 NCYC=271 N=9333240
+group order |G|=34440 (factors [34440]), x Z_271 -> 9333240; vertices 2N=18666480
+distinct generators (as full group elements): 15 of d=15
+permutations built (0s)
+BFS from A: ecc=8 reached 18666480 of 18666480 (unreached 0); level sizes [1, 15, 210, 2940, 41120, 559890, 5380429, 8770395, 3911480]
+BFS from B: ecc=8 reached 18666480 of 18666480 (unreached 0); level sizes [1, 15, 210, 2940, 41120, 559890, 5383478, 8770395, 3908431]
+every vertex has exactly 15 distinct neighbours: True
+RESULT VALID d=15 D=8 eccA=8 eccB=8 n=18666480 (18s)
+== d16D9_sl_101_169_orb3_s1 (origin/claude/raise-d16-9-record-gpc9xc, 06:34 PT)
+machine: nproc=4; free -g: total 15G used 0G free 14G avail 15G
+c76302bdb8d10b0edbdeb2c92a7f53130b67e4ec301b7938ffa038ef4cf1ddf9
+################ reference checker: haarcheck_sl research/frontier/sols/d16D9_sl_101_169_orb3_s1.txt   [exit 0]
+from (e,A): reached A 174103800/174103800, B 174103800/174103800 within 9, ecc 9
+from (e,B): reached A 174103800/174103800, B 174103800/174103800 within 9, ecc 9
+VALID d=16 D=9 group=sl 101 x Z_169 N=174103800 vertices=348207600 (distinct generators, 16-regular simple)
+################ independent checker: haarcheck2 research/frontier/sols/d16D9_sl_101_169_orb3_s1.txt   [exit 0]
+file=research/frontier/sols/d16D9_sl_101_169_orb3_s1.txt d=16 D=9 p=101 n=169 |G|=174103800 vertices=348207600
+selfcheck: SL(2,101) index is a bijection onto det-1 matrices (|SL|=1030200), fastmod ok (0.01s)
+generators: 16 read, all in SL(2,101) x Z_169, all distinct
+selfcheck: generator inverses verified
+BFS from (e,A):
+  from (e,A) level 1: new=16  reached=17 / 348207600
+  from (e,A) level 2: new=240  reached=257 / 348207600
+  from (e,A) level 3: new=3600  reached=3857 / 348207600
+  from (e,A) level 4: new=54000  reached=57857 / 348207600
+  from (e,A) level 5: new=808249  reached=866106 / 348207600
+  from (e,A) level 6: new=11732769  reached=12598875 / 348207600
+  from (e,A) level 7: new=112428221  reached=125027096 / 348207600
+  from (e,A) level 8: new=162316790  reached=287343886 / 348207600
+  from (e,A) level 9: new=60863714  reached=348207600 / 348207600
+  done in 68.79s, eccA=9, reached 348207600 / 348207600
+BFS from (e,B):
+  from (e,B) level 1: new=16  reached=17 / 348207600
+  from (e,B) level 2: new=240  reached=257 / 348207600
+  from (e,B) level 3: new=3600  reached=3857 / 348207600
+  from (e,B) level 4: new=54000  reached=57857 / 348207600
+  from (e,B) level 5: new=808249  reached=866106 / 348207600
+  from (e,B) level 6: new=11732229  reached=12598335 / 348207600
+  from (e,B) level 7: new=112428221  reached=125026556 / 348207600
+  from (e,B) level 8: new=162317330  reached=287343886 / 348207600
+  from (e,B) level 9: new=60863714  reached=348207600 / 348207600
+  done in 67.35s, eccB=9, reached 348207600 / 348207600
+VALID d=16 D=9 vertices=348207600 eccA=9 eccB=9
+== d17D8_sl_53_139_orb3_c15 (origin/claude/new-cells-beyond-etos3t, 06:34 PT)
+machine: vm | nproc=4 | free -g (total used free shared buff/cache available): 15 0 14 0 0 15
+sha256: 8222511cc764e1628c606b0a062200617b2f04989568c3c1d9fc3f9627996bff  d17D8_sl_53_139_orb3_c15.txt
+# reference: haarcheck_sl  [rc=0 wall_s=17.5 peak_rss_mb=16]
+from (e,A): reached A 20686536/20686536, B 20686536/20686536 within 8, ecc 8
+from (e,B): reached A 20686536/20686536, B 20686536/20686536 within 8, ecc 8
+VALID d=17 D=8 group=sl 53 x Z_139 N=20686536 vertices=41373072 (distinct generators, 17-regular simple)
+# independent: haarcheck2  [rc=0 wall_s=19.6 peak_rss_mb=13]
+file=d17D8_sl_53_139_orb3_c15.txt d=17 D=8 p=53 n=139 |G|=20686536 vertices=41373072
+selfcheck: SL(2,53) index is a bijection onto det-1 matrices (|SL|=148824), fastmod ok (0.00s)
+generators: 17 read, all in SL(2,53) x Z_139, all distinct
+selfcheck: generator inverses verified
+BFS from (e,A):
+  from (e,A) level 1: new=17  reached=18 / 41373072
+  from (e,A) level 2: new=272  reached=290 / 41373072
+  from (e,A) level 3: new=4346  reached=4636 / 41373072
+  from (e,A) level 4: new=69320  reached=73956 / 41373072
+  from (e,A) level 5: new=1078478  reached=1152434 / 41373072
+  from (e,A) level 6: new=11835052  reached=12987486 / 41373072
+  from (e,A) level 7: new=19603695  reached=32591181 / 41373072
+  from (e,A) level 8: new=8781891  reached=41373072 / 41373072
+  done in 9.92s, eccA=8, reached 41373072 / 41373072
+BFS from (e,B):
+  from (e,B) level 1: new=17  reached=18 / 41373072
+  from (e,B) level 2: new=272  reached=290 / 41373072
+  from (e,B) level 3: new=4346  reached=4636 / 41373072
+  from (e,B) level 4: new=69320  reached=73956 / 41373072
+  from (e,B) level 5: new=1078478  reached=1152434 / 41373072
+  from (e,B) level 6: new=11835142  reached=12987576 / 41373072
+  from (e,B) level 7: new=19603695  reached=32591271 / 41373072
+  from (e,B) level 8: new=8781801  reached=41373072 / 41373072
+  done in 9.67s, eccB=8, reached 41373072 / 41373072
+VALID d=17 D=8 vertices=41373072 eccA=8 eccB=8
+== d18D8_sl_61_127_orb3_s2 (origin/claude/new-cells-beyond-etos3t, 06:34 PT)
+machine: vm | nproc=4 | free -g (total used free shared buff/cache available): 15 0 14 0 0 15
+sha256: 2799587ea947b6a723fe6eb0db384601ff7fd98743df847906ca8c98af5226dc  d18D8_sl_61_127_orb3_s2.txt
+# reference: haarcheck_sl  [rc=0 wall_s=25.8 peak_rss_mb=22]
+from (e,A): reached A 28818840/28818840, B 28818840/28818840 within 8, ecc 8
+from (e,B): reached A 28818840/28818840, B 28818840/28818840 within 8, ecc 8
+VALID d=18 D=8 group=sl 61 x Z_127 N=28818840 vertices=57637680 (distinct generators, 18-regular simple)
+# independent: haarcheck2  [rc=0 wall_s=32.1 peak_rss_mb=15]
+file=d18D8_sl_61_127_orb3_s2.txt d=18 D=8 p=61 n=127 |G|=28818840 vertices=57637680
+selfcheck: SL(2,61) index is a bijection onto det-1 matrices (|SL|=226920), fastmod ok (0.00s)
+generators: 18 read, all in SL(2,61) x Z_127, all distinct
+selfcheck: generator inverses verified
+BFS from (e,A):
+  from (e,A) level 1: new=18  reached=19 / 57637680
+  from (e,A) level 2: new=304  reached=323 / 57637680
+  from (e,A) level 3: new=5128  reached=5451 / 57637680
+  from (e,A) level 4: new=86356  reached=91807 / 57637680
+  from (e,A) level 5: new=1422478  reached=1514285 / 57637680
+  from (e,A) level 6: new=16488956  reached=18003241 / 57637680
+  from (e,A) level 7: new=27391216  reached=45394457 / 57637680
+  from (e,A) level 8: new=12243223  reached=57637680 / 57637680
+  done in 16.26s, eccA=8, reached 57637680 / 57637680
+BFS from (e,B):
+  from (e,B) level 1: new=18  reached=19 / 57637680
+  from (e,B) level 2: new=304  reached=323 / 57637680
+  from (e,B) level 3: new=5128  reached=5451 / 57637680
+  from (e,B) level 4: new=86356  reached=91807 / 57637680
+  from (e,B) level 5: new=1422478  reached=1514285 / 57637680
+  from (e,B) level 6: new=16490286  reached=18004571 / 57637680
+  from (e,B) level 7: new=27391216  reached=45395787 / 57637680
+  from (e,B) level 8: new=12241893  reached=57637680 / 57637680
+  done in 15.85s, eccB=8, reached 57637680 / 57637680
+VALID d=18 D=8 vertices=57637680 eccA=8 eccB=8
+== d19D8_psl_103_79_orb3_s1 (origin/claude/new-cells-beyond-etos3t, 06:34 PT)
+machine: vm | nproc=4 | free -g (total used free shared buff/cache available): 15 0 14 0 0 15
+sha256: 25addf1b10b293ff1238b43d8cdc97a381e139be2332ca68756f340f4ebdd768  d19D8_psl_103_79_orb3_s1.txt
+# reference: haarcheck_psl  [rc=0 wall_s=65.3 peak_rss_mb=33]
+from (e,A): reached A 43158648/43158648, B 43158648/43158648 within 8, ecc 8
+from (e,B): reached A 43158648/43158648, B 43158648/43158648 within 8, ecc 8
+VALID d=19 D=8 group=psl 103 x Z_79 N=43158648 vertices=86317296 (distinct generators, 19-regular simple)
+# independent: check_haar_indep.py  [rc=0 wall_s=137.1 peak_rss_mb=2520]
+file d19D8_psl_103_79_orb3_s1.txt
+header: d=19 D=8 spec=psl 103 NCYC=79 N=43158648
+group order |G|=546312 (factors [546312]), x Z_79 -> 43158648; vertices 2N=86317296
+distinct generators (as full group elements): 19 of d=19
+permutations built (5s)
+BFS from A: ecc=8 reached 86317296 of 86317296 (unreached 0); level sizes [1, 19, 342, 6156, 110670, 1948518, 24292079, 41203955, 18755556]
+BFS from B: ecc=8 reached 86317296 of 86317296 (unreached 0); level sizes [1, 19, 342, 6156, 110670, 1948518, 24290533, 41203955, 18757102]
+every vertex has exactly 19 distinct neighbours: True
+RESULT VALID d=19 D=8 eccA=8 eccB=8 n=86317296 (137s)
+== d19D9_sl_131_271_orb3_s2 (origin/claude/new-cells-beyond-etos3t, 06:34 PT)
+machine: vm nproc=4; free -g: total 15G used 0G free 14G avail 15G; kernel 6.18.44-fc-v185
+sha256 06d11888f99e1517ffb8d2f479dd9cbd78d6006f3f824c23ffa9c0c076ac117a  file research/frontier/sols/d19D9_sl_131_271_orb3_s2.txt (from origin/claude/new-cells-beyond-etos3t:research/frontier/sols/d19D9_sl_131_271_orb3_s2.txt)
+header: 19 9 sl 131 n 271 N 609197160
+
+################ reference checker: haarcheck_sl (research/frontier/haarcheck_sl.c, gcc -O3)
+from (e,A): reached A 609197160/609197160, B 609197160/609197160 within 9, ecc 9
+from (e,B): reached A 609197160/609197160, B 609197160/609197160 within 9, ecc 9
+VALID d=19 D=9 group=sl 131 x Z_271 N=609197160 vertices=1218394320 (distinct generators, 19-regular simple)
+[exit 0; wall 594.2s; cpu 588.3s; peak RSS 437 MB]
+
+################ independent checker: haarcheck2 (research/frontier/haarcheck2.c, gcc -O3)
+file=/home/user/degree-diameter/research/frontier/sols/d19D9_sl_131_271_orb3_s2.txt d=19 D=9 p=131 n=271 |G|=609197160 vertices=1218394320
+selfcheck: SL(2,131) index is a bijection onto det-1 matrices (|SL|=2247960), fastmod ok (0.02s)
+generators: 19 read, all in SL(2,131) x Z_271, all distinct
+selfcheck: generator inverses verified
+BFS from (e,A):
+  from (e,A) level 1: new=19  reached=20 / 1218394320
+  from (e,A) level 2: new=342  reached=362 / 1218394320
+  from (e,A) level 3: new=6153  reached=6515 / 1218394320
+  from (e,A) level 4: new=110676  reached=117191 / 1218394320
+  from (e,A) level 5: new=1987500  reached=2104691 / 1218394320
+  from (e,A) level 6: new=34761527  reached=36866218 / 1218394320
+  from (e,A) level 7: new=396109752  reached=432975970 / 1218394320
+  from (e,A) level 8: new=574324614  reached=1007300584 / 1218394320
+  from (e,A) level 9: new=211093736  reached=1218394320 / 1218394320
+  done in 292.77s, eccA=9, reached 1218394320 / 1218394320
+BFS from (e,B):
+  from (e,B) level 1: new=19  reached=20 / 1218394320
+  from (e,B) level 2: new=342  reached=362 / 1218394320
+  from (e,B) level 3: new=6153  reached=6515 / 1218394320
+  from (e,B) level 4: new=110676  reached=117191 / 1218394320
+  from (e,B) level 5: new=1987500  reached=2104691 / 1218394320
+  from (e,B) level 6: new=34761515  reached=36866206 / 1218394320
+  from (e,B) level 7: new=396109752  reached=432975958 / 1218394320
+  from (e,B) level 8: new=574324626  reached=1007300584 / 1218394320
+  from (e,B) level 9: new=211093736  reached=1218394320 / 1218394320
+  done in 288.10s, eccB=9, reached 1218394320 / 1218394320
+VALID d=19 D=9 vertices=1218394320 eccA=9 eccB=9
+[exit 0; wall 581.2s; cpu 575.1s; peak RSS 292 MB]
+== d20D8_psl_71_343_orb3_s1 (origin/claude/new-cells-beyond-etos3t, 06:34 PT)
+machine: nproc=4; free -g: total 15G used 0G free 14G avail 15G
+a6232df43acd68424cf903179f60224ac426629c475a92a5bd3f37c64554556d
+################ reference checker: haarcheck_psl research/frontier/sols/d20D8_psl_71_343_orb3_s1.txt   [exit 0]
+from (e,A): reached A 61369560/61369560, B 61369560/61369560 within 8, ecc 8
+from (e,B): reached A 61369560/61369560, B 61369560/61369560 within 8, ecc 8
+VALID d=20 D=8 group=psl 71 x Z_343 N=61369560 vertices=122739120 (distinct generators, 20-regular simple)
+################ independent checker: check_haar_indep.py research/frontier/sols/d20D8_psl_71_343_orb3_s1.txt   [exit 0]
+file research/frontier/sols/d20D8_psl_71_343_orb3_s1.txt
+header: d=20 D=8 spec=psl 71 NCYC=343 N=61369560
+group order |G|=178920 (factors [178920]), x Z_343 -> 61369560; vertices 2N=122739120
+distinct generators (as full group elements): 20 of d=20
+permutations built (2s)
+BFS from A: ecc=8 reached 122739120 of 122739120 (unreached 0); level sizes [1, 20, 380, 7214, 136760, 2541551, 33763592, 58820775, 27468827]
+BFS from B: ecc=8 reached 122739120 of 122739120 (unreached 0); level sizes [1, 20, 380, 7214, 136760, 2541551, 33763402, 58820775, 27469017]
+every vertex has exactly 20 distinct neighbours: True
+RESULT VALID d=20 D=8 eccA=8 eccB=8 n=122739120 (193s)
