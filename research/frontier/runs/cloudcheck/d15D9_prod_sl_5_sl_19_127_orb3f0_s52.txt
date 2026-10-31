@@ -1,0 +1,31 @@
+machine: vm; nproc=4; free -g: total 15G used 0G free 14G avail 15G; Linux 6.18.44-fc-v185; gcc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0
+sha256: 2ec69cb54c41c25367a0c2baa57040cf2ac63cd3f92bbeea9215f7a3dc234fc6  research/frontier/sols/d15D9_prod_sl_5_sl_19_127_orb3f0_s52.txt  (identical to the sha256 on line 2 of the earlier report on branch claude/bigcheck-7b-haar-verify-bfxz02)
+
+################ haarcheck_gen (new low-memory checker, research/frontier/haarcheck_gen.c; two BFS on the group, N-bit bitsets, no edge lists): gcc -O3 -fopenmp -o haarcheck_gen haarcheck_gen.c && ./haarcheck_gen research/frontier/sols/d15D9_prod_sl_5_sl_19_127_orb3f0_s52.txt   (stdout, complete)
+selftest sl 5: |M| = 120, det-1 matrices 120
+selftest sl 19: |M| = 6840, det-1 matrices 6840
+selftest group multiplication: associativity, identity, inverse on 20000 random triples ok
+file research/frontier/sols/d15D9_prod_sl_5_sl_19_127_orb3f0_s52.txt
+header: 15 9 prod sl 5 sl 19 n 127 N 104241600
+group prod sl 5 sl 19 x Z_127, |G| = 104241600 = N, vertices 2N = 208483200; 15 distinct generators
+from (e,A): reached A 104241600/104241600, B 104241600/104241600 within 9; ecc 9; level sizes [1, 15, 210, 2940, 41160, 574284, 7737690, 68322687, 96462539, 35341674]  (13s)
+from (e,B): reached A 104241600/104241600, B 104241600/104241600 within 9; ecc 9; level sizes [1, 15, 210, 2940, 41160, 574284, 7737112, 68322687, 96463117, 35341674]  (26s)
+VALID d=15 D=9 group=prod sl 5 sl 19 x Z_127 N=104241600 vertices=208483200 (distinct generators, 15-regular simple; every vertex within 9 of both (e,A) and (e,B); ecc 9; 26s)
+[exit 0; wall 26s; peak RSS 76 MB; 4 threads]
+
+################ build_haar2.py (reference checker): NOT RUN on this file, does not fit in 15 GB (see the note in the earlier report below). This file's two checkers are haarcheck_gen (above) and check_haar_indep.py (below).
+
+################ comparison (computed mechanically from the two outputs): haarcheck_gen verdict VALID, check_haar_indep.py verdict VALID; BFS level sizes from (e,A) and from (e,B) IDENTICAL between the two checkers.
+
+################ earlier output of check_haar_indep.py, copied unedited from research/frontier/runs/cloudcheck/d15D9_prod_sl_5_sl_19_127_orb3f0_s52.txt on branch claude/bigcheck-7b-haar-verify-bfxz02 (from its '################ independent checker' line to the end):
+################ independent checker: check_haar_indep.py research/frontier/sols/d15D9_prod_sl_5_sl_19_127_orb3f0_s52.txt   [exit 0]
+file research/frontier/sols/d15D9_prod_sl_5_sl_19_127_orb3f0_s52.txt
+header: d=15 D=9 spec=prod sl 5 sl 19 NCYC=127 N=104241600
+group order |G|=820800 (factors [120, 6840]), x Z_127 -> 104241600; vertices 2N=208483200
+distinct generators (as full group elements): 15 of d=15
+permutations built (0s)
+BFS from A: ecc=9 reached 208483200 of 208483200 (unreached 0); level sizes [1, 15, 210, 2940, 41160, 574284, 7737690, 68322687, 96462539, 35341674]
+BFS from B: ecc=9 reached 208483200 of 208483200 (unreached 0); level sizes [1, 15, 210, 2940, 41160, 574284, 7737112, 68322687, 96463117, 35341674]
+every vertex has exactly 15 distinct neighbours: True
+RESULT VALID d=15 D=9 eccA=9 eccB=9 n=208483200 (254s)
+
