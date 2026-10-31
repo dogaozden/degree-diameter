@@ -1,0 +1,14 @@
+machine: vm; nproc=4; free -g: total 15G used 0G free 14G avail 15G; Linux 6.18.44-fc-v185; gcc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0
+sha256: d0959d4ebdd3680173c98af82fb4710d23ea2456b194e746d3f50c92c9c95007  research/frontier/sols/d17D10_psl_313_229_orb3_s1.txt  (copied from branch claude/new-cells-beyond-etos3t, research/frontier/sols/d17D10_psl_313_229_orb3_s1.txt)
+
+################ haarcheck_gen (new low-memory checker, research/frontier/haarcheck_gen.c, master; built: gcc -O3 -fopenmp -o haarcheck_gen research/frontier/haarcheck_gen.c; 4 OpenMP threads): /usr/bin/time -v ./haarcheck_gen research/frontier/sols/d17D10_psl_313_229_orb3_s1.txt   (stdout, complete)
+selftest psl 313: |M| = 15331992, index round trip over all elements ok
+selftest group multiplication: associativity, identity, inverse on 20000 random triples ok
+file research/frontier/sols/d17D10_psl_313_229_orb3_s1.txt
+header: 17 10 psl 313 n 229 N 3511026168
+group psl 313 x Z_229, |G| = 3511026168 = N, vertices 2N = 7022052336; 17 distinct generators
+from (e,A): reached A 3511026168/3511026168, B 3511026168/3511026168 within 10; ecc 10; level sizes [1, 17, 272, 4349, 69536, 1111376, 17719685, 272605621, 2533225836, 3237304805, 960010838]  (642s)
+from (e,B): reached A 3511026168/3511026168, B 3511026168/3511026168 within 10; ecc 10; level sizes [1, 17, 272, 4349, 69536, 1111376, 17719676, 272605621, 2533217050, 3237304805, 960019633]  (1245s)
+VALID d=17 D=10 group=psl 313 x Z_229 N=3511026168 vertices=7022052336 (distinct generators, 17-regular simple; every vertex within 10 of both (e,A) and (e,B); ecc 10; 1245s)
+[exit 0; wall 1245.55s; peak RSS 2514 MB]
+
