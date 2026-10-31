@@ -121,3 +121,11 @@ Start: 2026-10-31T18:17Z (date -u). Stop about 20:17-20:32Z (2h to 2h15).
   disconnected; sigma 3^5 with M=6 (Z18): far 288; D6 = Z6 x| Z5-type order-60 (alpha=5, sigma 5,5,5): far 690.
 - n=180 with M=3 (K=30), same-side cost, 40 s: S3 (alpha=2, sigma 2^14 1^2): far 267; Z6 (alpha=1, sigma 2^15): far 288.
   (exact-far cost gave 399 and 408 for the same two families.)
+
+## 19:24-19:34Z: seed sweeps of the best sigma types (symloc, T 40 -> 4, 40 s)
+- n=170 D5 (alpha=4), (j_A, j_B) = (8,7), seeds 2..5: far 130, 130, 130, 205. (7,8), seeds 2..5: 130, 215, 220, 130.
+  (7,7), seeds 2..5: 135, 115, 115, 150. NEW BEST at n=170: far 115 = sigma 2^7 1^3 on both sides, seed 3
+  (r3a/best/n170_D5_7_7_far115.edges). Seed spread of about 100 at the same settings: the start matters a lot.
+- Restart from the 130 graph (T 10 -> 2, 60 s): no change (130).
+- n=180 D5 (alpha=4), sigma 2^7 1^4 both, seeds 2..4: far 185, 195, 235. Best stays 185 (r3a/best/n180_D5_2to7_1to4_far185).
+- Next (running at 19:34): restart from the 115 graph; (7,7) at n=170 seeds 5..18; (7,7) at n=180 seeds 5..10.

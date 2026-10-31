@@ -40,3 +40,23 @@ pairs are at distance <= 7), so girth-12-preserving local search is rigid and us
   Random completions by the orbit DFS give far 0 in 134 of 200 samples, i.e. the engine recovers C168.1.
   (An earlier version used the same stabiliser class on both sides and missed it; the B-side stabiliser class
   must be chosen separately, which run.py/census.py do.)
+
+## Later results (18:45-19:28Z)
+- H252 census (random compositions, orbit LNS, 400 s): best far 7065 at n=170. Exhaustive K<=3 orbits per side at
+  m=85 (exh3.py, 420 s, 18 of 120 pairs, 931k graphs): best far 10584, most graphs disconnected. Not useful.
+- Z2 census (fixed points allowed, 400 s, 8 pairs): best far 473. A4 census: 2459. PSL(2,7) census at m=85 (420 s,
+  11 pairs): 11564 (disconnected). Random compositions with many fixed points are hopeless; the census needs
+  feasibility-aware sampling, which I did not finish.
+- Z3 (order 3), orbit LNS with exact DFS completions, n=170 (lns.py, class 0 = fixed point, class 1 = free orbit):
+  * 1 fixed point per side: 171 (200 s, seed 3, lns_z3_m85_s3.edges, logged), 201 (330 s, seed 4), 174 (420 s, seed 6).
+  * 4 fixed points per side: 183 (300 s, seed 5, diam 9).
+  c5's quotient SA reached 78 with Z3 + 3 fixed points, so the orbit-LNS engine is weaker there, not better.
+- S3 composition LNS: 223 (seed 1, 150 s), 307 (seed 2, 400 s). Glassy landscape: results depend on the seed.
+
+## Summary (r2g, end 19:30Z)
+Engine validated (C168.1 recovered exactly by the H252 orbit model). Every non-free symmetric family tried at n=170
+has best far >= 171 (Z3 LNS), with the exception of none. Nothing beats the board's 46 at 170 and nothing beats the
+board's 76 at 172, so no record candidate. Negative result: non-free colour-preserving symmetry (groups of order 2 to
+252, fixed points allowed) does not produce diameter-7 or near-46 graphs at n=170 under this search.
+- Z3, 1 fixed point per side, seed 7 (T0 2.5, T1 0.2, KMAX 2, 330 s): far 165 (lns_z3_m85_s7.edges, logged as r2g best at 170).
+  Stopped at 19:34Z (2h elapsed). Best r2g graph at 170: far 165, file r2g/out/lns_z3_m85_s7.edges (verified with bin/score37).

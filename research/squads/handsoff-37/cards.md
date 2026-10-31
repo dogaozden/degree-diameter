@@ -336,3 +336,34 @@ base edge with voltage t must come with its mirror -t, loops and t = 0 edges are
 free parameters; make the search exhaustive where you can (DFS with pruning on uncovered pairs, or SAT), otherwise tabu with
 many restarts. Calibrate at m = 80 (n = 160; must reach 0). A cost below 23 at m = 85 (far below 46) would be the best n = 170
 of the job. Also try m = 85 with Z5 x| Z4 (F20) acting on M, fixing some base vertices. Stop by 21:15Z at the latest.
+
+## Card r3e: breakout weights on the far-46 basin at n = 170 (no symmetry)
+
+Every plain local search from C168.1 + one inserted pair (c1 SA/tabu/ILS, c7 parallel tempering, c8 LNS, r2b exact SAT
+repair of radius-2 regions, r2d depth-2 plateau search) ends in the same far-46 graph (c1/s170_k2_far46.edges). Nobody has
+tried breakout / clause-weighting there: r3c's focused breakout tabu (r3c/NOTES.md; copy its code) took the C5 lift at
+n = 170 from far 110 to 65. Write a breakout tabu over 2-switches for the unsymmetric graph: weights on far pairs (or on
+vertices with excess above delta) that grow while the search is stuck, cost = weighted far, real far tracked separately.
+Start from the far-46 graph and from the other 170 graphs on the board (c2/best170.edges far 70, r3c's best). Also try
+breakout at n = 168 from C168.1 after 20 random switches (c1: plain tabu stalls at 123-163 there) as a calibration of
+escape power. Stop by 21:15Z at the latest.
+
+## Card r3f: breakout weights at the n = 180 and 192 near misses
+
+The closest graphs of the whole cell are the near misses n = 180 far 36 (shared/seeds/nm180_c3xs3_b5_14.edges, a C3 x S3
+lift of a 5+5 base) and n = 180 far 90 (nm180_c30_b31.edges); c2 showed they are strict local minima for plain 2-switch
+moves (best neighbour 3-10 worse). Their free symmetry group is excluded at far 0, so a solution near them must break the
+symmetry. Breakout / clause weighting has not been tried on them: r3c's focused breakout tabu took a C5 lift at 170 from
+far 110 to 65 (r3c/NOTES.md; copy its ideas or code). Write a breakout tabu over 2-switches for the unsymmetric graph
+(weights on far pairs that grow while stuck; real far tracked separately), run it from the 180 near misses and from
+c4's n = 192 far 272 graph (c4/best/n192_C8k12_far272.edges). Also try keeping a subgroup of the symmetry (a C3 or an S3
+inside C3 x S3, or C2) that is NOT excluded, and break the rest. Stop by 21:15Z at the latest.
+
+## Card r3g: Z5-symmetric orbit insertion into n = 160 covers
+
+Diameter-7 graphs at n = 160 are now cheap: polarity double covers with a free Z5 on M (r2c/lift2.c reaches cost 0 at
+m = 80 in about 13 s; read r2c/NOTES.md). Make many of them (different seeds, different base graphs). Then grow each to
+n = 170 while KEEPING the Z5 symmetry: insert one Z5-orbit of new vertices (in M: one new base vertex, i.e. 5 new vertices
+of M and 10 of the cover), wired by deleting base edges and reconnecting (exhaustive over the choices when small), and
+repair with Z5-symmetric moves (lift2's moves). Compare the far at 170 with r2c's direct floor (far 80) and the board
+(46). Also try m = 82 -> 85 and m = 84 (n = 168) seeds if you can make them. Stop by 21:15Z at the latest.

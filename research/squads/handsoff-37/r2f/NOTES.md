@@ -63,3 +63,10 @@ E[a,b,t] <-> E[sigma a, sigma b, alpha t], sources reduced to sigma-orbit reps; 
   with or without girth-6 clauses (2.2M clauses); the pinned-base sanity check returns SAT in 0.0 s, so the encoding is right.
 - Next step if continued: a SAT or DFS on the F21-symmetric class at 168 with sigma-orbit symmetry breaking
   (base relabelling), or a symmetric version of c1's pair insertion using symloc as the repair (not tried).
+
+## Final (19:32Z)
+- Last runs: n = 182 F21 hot seed 12: 210 again (third seed at 210); n = 196 F21 hot seed 13: 224 again.
+  The same floors recur across seeds (170: 155; 182: 210; 196: 224), so they look like class minima for symloc moves.
+- Best logged files: r2f/best170_far155.edges, r2f/best182_far210.edges, r2f/best196_far224.edges (all verified with score37).
+  Calibration: n = 168 F21 symmetric graph (out/cal168s7_verified.edges, apsp VALID, diam 7).
+- Stopped at about 19:36Z (2 h). No record, no far 0 at n >= 170.

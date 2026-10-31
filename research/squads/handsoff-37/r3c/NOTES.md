@@ -24,3 +24,17 @@ Machine load ~6 on 4 cores at 19:07 (shared), so runs are a bit slower than in r
   - fbo FR=1 TEN=8 WCAP=16 DECAY=100 (seed 102): raw 46 (far 115). Decay = not better here.
   - fbo FR=1 TEN=8 WCAP=1e6 (seed 103): raw 42 (far 105).
   - fbo FR=1 TEN=4 WCAP=16 (seed 103): raw 26 -> far 65 (logged, best/n170_C5_far65.edges; score37 far 65 diam 8).
+- 19:20-19:30 more fbo calibration at n=170 (45-50 s runs, seeds 103-106): TEN4 WCAP16 FR1 gave raw 26, 46, 42, 40 (far
+  65, 115, 105, 100); TEN2 raw 46; pure focused tabu (WCAP=1, no weights) raw 40, 42 (so the breakout weights do not
+  matter much). Single-run noise is about +-10 raw, so small knob changes cannot be resolved with 1-2 runs each.
+  Observation: the global best is reached within ~5-10 s, then 40 s of no improvement (stagnation in one basin).
+- Other n with fbo (50 s, seed 201, TEN4 WCAP16 FR1): 176 C4 22+22 far 190 (raw 95); 176 C2xC2 22+22 far 246 (raw 123);
+  180 C6 15+15 far 156 (raw 52); 180 S3 15+15 far 264 (raw 88); 180 C5 18+18 far 165 (raw 66); 180 C3 30+30 far 273 (raw 182).
+- ELITE POOL (new, lift3.c env POOL=8 PP=60): at each kick, the best state of the excursion since the last kick goes into
+  a pool of P distinct states (replace worst); the next kick restarts from a random pool member with prob PP% (else from
+  the global best). STALL=1500 with the pool (more kicks: ~20 in 45 s).
+  - 170 C5 pool, 45 s, seeds 103 / 104: raw 38 / 30 (far 95 / 75).
+  - 180 C6 15+15, POOL 8 PP 60 STALL 1500, 90 s, seed 301: raw 38 -> far 114 (best/n180_C6_far114.edges; score37 far 114
+    diam 8; logged, first r3c graph at 180).
+  - 180 C5 18+18, same, 90 s, seed 301: raw 56 (far 140).
+  - 176 C4 22+22, same, 90 s, seed 301: raw 78 (far 156).

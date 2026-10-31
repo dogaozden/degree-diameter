@@ -45,3 +45,25 @@ perturbation test from the quotient (PERT0 = 5, 10, 20); then n = 170 (C5 17+17)
   k = 23 (2760 evaluations per step, 7k steps in 150 s). c4 used M = 300 sampled 2-switches and got raw 96 in 150 s, so
   large k needs the sampled neighbourhood (M = 300), not the full one. Lesson recorded; rerun with M = 300.
 - n = 184, C2xC2 k = 23, bo with M = 300 sampled 2-switches (300 s, seed 91): raw 100, far 200 (c4 has 192). Not logged.
+- n = 190, C5 k = 19, bo with M = 300 (520 s, seed 101): raw 114, far 285 (score37 far 285, diam 8). LOGGED (beats c4's 305):
+  r2e/best/n190_C5k19_far285.edges and .state.
+- n = 190 continuation from far 285 (bo M = 300, 480 s, seed 111): raw 88, far 220 (score37 far 220 diam 8). LOGGED
+  (r2e/best/n190_C5k19_far220.edges, .state). Current best of this worker at 190.
+
+## Summary (stop 19:36 UTC)
+- Best far per n (all lifts, score37-checked, all logged): n=182 far 126 (C7 k=13), n=190 far 220 (C5 k=19). No far 0 at n >= 170.
+- Calibration n=168 (C7 k=12, the card's key test): breakout-walk reaches raw 8 in 520 s (far 28), tabu 14-20 at 60-100 s.
+  Still no cost-0 lift from a random start, and the known C168.1 quotient is isolated in the voltage landscape (every voltage
+  change there costs >= 102 raw; only 12 of 630 2-switches keep cost 0).
+- Plateau escape that helped: breakout weights with a tabu walk (BOWALK=1, WCAP 16). Helps at k = 13 and 19 (n = 182, 190),
+  not at k = 12 with N = 8 (n = 192: far 296 vs c4's 272), and not at k = 23 (n = 184: far 200-368 vs c4's 192). Weight bumps
+  dominate the steps for k >= 17 (BUMPGAP did not fix it at k = 23). Path relinking / elite pool not tried (no time).
+- Most promising next step: plateau escape on the sampled neighbourhood for k = 12 (M = 300 instead of all 2-switches), and
+  a 2-switch-only pass after each voltage pass (voltage moves are catastrophic in the rugged landscape), with 520 s runs
+  from the n = 182 far-126 state (r2e/best/n182_C7k13_far126.state).
+
+## How to rebuild / rerun
+- Build: gcc -O3 -march=native -o lift2 lift2.c -lm (r2e/). Run: MODE=bo BOWALK=1 WCAP=16 TEN=8 [M=300] [INIT=state] ./lift2 groups/GROUP.txt k seed secs OUTPREFIX.
+- Files: r2e/best/n182_C7k13_far126.edges (score37 far 126), r2e/best/n190_C5k19_far220.edges (far 220); the .state files are
+  "N k" then "u v a" per base edge (same format as c4, usable with INIT=).
+- Z7 quotient of C168.1: python3 r2e/quot7.py r2e/out/c168_C7k12_state.txt (checks the lift reproduces conder168).

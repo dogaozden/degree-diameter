@@ -72,3 +72,14 @@ note that the run is time-limited, so the trajectory depends on the speed of the
 - Monitor-based waiting: a `pgrep -f` loop matches its own command line and never exits; I stopped those and waited with
   `tail --pid` or `kill -0` instead.
 - Each run was a foreground command with an explicit Bash timeout of 600000 ms (300-500 s runs completed normally).
+
+## 19:30Z: last runs
+- tabu169s MASK 1 from scratch, 200 s: seed 8 far 169, seed 9 far 169; 250 s: seed 10 far 178 (stalled after 22 s),
+  seed 11 far 162. So over seeds 1-11 for MASK 1: 144, 175, 157, 191, 159, 186 (tenure variants), 169, 169, 178, 162.
+- tabu169c (continuation from the far-144 state, symmetric moves): 2-switch kicks (300 s, seed 7): 144, no gain;
+  8-switch kicks every 500 iterations (250 s, seed 12, 19 restarts): 144, no gain.
+- Conclusion: best n = 169 far is 144 (out/sym_m1_s1.edges = best169_far144.edges). Far 0 is not reached: the wiring
+  search is rugged (large seed variance, early stalls) and the best symmetric local minimum is still far from 0.
+  Next steps if continued: (1) population / path relinking between the 144 and other good symmetric states;
+  (2) an exact or SAT completion of the leaf wiring for the last ~50 bad pairs; (3) the order-3 encoding of card step 2.
+- tabu169s MASK 1 seed 13, 200 s: far 168 (out/sym_m1_s13.edges). Best stays 144 (best169_far144.edges). Stopped 19:37Z (2 h 0 min of work).

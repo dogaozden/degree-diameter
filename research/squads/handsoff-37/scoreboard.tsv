@@ -72,3 +72,10 @@ r3a	symmetric SA, D5 (alpha=4, sigma 2^8 1 on A and 2^7 1^3 on B), same-side cos
 r3c	focused breakout tabu FR=1 TEN=4 WCAP=16 (C5 17+17)	170	65	r3c/best/n170_C5_far65.edges	2026-10-31T19:18:06Z	lift C5 k17, raw 26, 45 s seed 103
 r3b	symbo breakout+voltage moves, F20 = Z5 x| Z4 (alpha 2, sigma 4,4,2,2,2,2,1 both sides), 70 s	170	160	r3b/best/n170_F20_far160.edges	2026-10-31T19:21:21Z	first r3b graph at 170; same-side raw 190; diam 8
 r3b	correction of the row above (note only)	170	160	r3b/best/n170_F20_far160.edges	2026-10-31T19:21:25Z	the "raw 190" in that note was the final current state of the run; the file itself scores far 160 (diam 8)
+r2e	lift C5 k19 breakout-tabu, M=300 sampled 2-switches, 520 s	190	285	r2e/best/n190_C5k19_far285.edges	2026-10-31T19:26:29Z	beats c4 far 305 (200 s); score37 far 285
+r3a	symmetric SA, D5 (alpha=4, sigma 2^7 1^3 on both sides), same-side cost	170	115	r3a/best/n170_D5_7_7_far115.edges	2026-10-31T19:26:56Z	n=170 improvement over 130 (r3a); diam 8; 40 s, seed 3
+r3c	focused breakout tabu + elite pool (C6 15+15)	180	114	r3c/best/n180_C6_far114.edges	2026-10-31T19:32:00Z	lift C6 k15, raw 38, 90 s seed 301; first r3c graph at 180
+r2g	orbit-level LNS on Z3 (1 fixed point per side), T0 2.5, KMAX 2, seed 7, 330 s	170	165	r2g/out/lns_z3_m85_s7.edges	2026-10-31T19:34:10Z	best r2g at 170 (improves 171); still far above 46
+r2e	lift C5 k19 breakout-tabu, continued from far 285 (480 s)	190	220	r2e/best/n190_C5k19_far220.edges	2026-10-31T19:34:37Z	score37 far 220 (raw 88)
+r3a	symmetric SA, D5 (alpha=4, sigma 2^7 1^3 on both sides), same-side cost	170	90	r3a/best/n170_D5_7_7_far90.edges	2026-10-31T19:35:40Z	n=170 improvement over 115 (r3a); diam 8; 40 s, seed 6
+r3a	symmetric SA, D5 (alpha=4, sigma 2^7 1^3 on both sides), same-side cost	170	60	r3a/best/n170_D5_7_7_far60.edges	2026-10-31T19:37:27Z	n=170 improvement over 90 (r3a); diam 8; 40 s, seed 7

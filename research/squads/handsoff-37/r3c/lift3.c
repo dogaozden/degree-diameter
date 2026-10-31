@@ -158,6 +158,10 @@ int main(int argc, char **argv) {
     if (getenv("D")) D = atoi(getenv("D"));
     long BUMPGAP = getenv("BUMPGAP") ? atol(getenv("BUMPGAP")) : 0;
     long lastbump = -1000000000L;
+    int P = getenv("POOL") ? atoi(getenv("POOL")) : 0;          /* elite pool size (0 = restart from gbest only) */
+    int PP = getenv("PP") ? atoi(getenv("PP")) : 50;            /* % of kicks that restart from a random pool member */
+    static int pu[64][MAXE], pv[64][MAXE], pa[64][MAXE]; static long praw[64]; int np_ = 0;
+    static int xu[MAXE], xv[MAXE], xa[MAXE]; long xraw = 1L << 60;
     for (int s = 0; s < 2 * k; s++) for (int t = 0; t < 2 * k; t++) W[s][t] = 1;
     init_random();
     if (getenv("INIT")) {
@@ -253,6 +257,9 @@ int main(int argc, char **argv) {
         else { tabu_until[bestm.e] = it + TEN + ri(TEN + 1); tabu_until[bestm.f] = it + TEN + ri(TEN + 1); }
         cur = eval(); curraw = raw_last; nsteps++;
         since++;
+        if (dup_last == 0 && raw_last < xraw) {
+            xraw = raw_last; memcpy(xu, eu, sizeof eu); memcpy(xv, ev, sizeof ev); memcpy(xa, ea, sizeof ea);
+        }
         if (dup_last == 0 && raw_last < gbest_raw) {
             gbest_raw = raw_last; since = 0;
             memcpy(bu, eu, sizeof eu); memcpy(bv, ev, sizeof ev); memcpy(ba2, ea, sizeof ea);
@@ -263,7 +270,24 @@ int main(int argc, char **argv) {
             break;
         }
         if (since > STALL) {
-            memcpy(eu, bu, sizeof eu); memcpy(ev, bv, sizeof ev); memcpy(ea, ba2, sizeof ea);
+            if (P > 0 && xraw < (1L << 60)) {
+                /* insert the excursion best into the elite pool (replace worst if full, skip duplicates) */
+                int dupl = 0;
+                for (int q = 0; q < np_; q++) if (praw[q] == xraw && !memcmp(pu[q], xu, sizeof xu) && !memcmp(pv[q], xv, sizeof xv) && !memcmp(pa[q], xa, sizeof xa)) dupl = 1;
+                if (!dupl) {
+                    int slot = -1;
+                    if (np_ < P) slot = np_++;
+                    else { long wr = -1; for (int q = 0; q < np_; q++) if (praw[q] > wr) { wr = praw[q]; slot = q; } if (xraw >= wr) slot = -1; }
+                    if (slot >= 0) { praw[slot] = xraw; memcpy(pu[slot], xu, sizeof xu); memcpy(pv[slot], xv, sizeof xv); memcpy(pa[slot], xa, sizeof xa); }
+                }
+            }
+            xraw = 1L << 60;
+            if (P > 0 && np_ > 0 && (long)(xr() % 100) < PP) {
+                int q = ri(np_);
+                memcpy(eu, pu[q], sizeof eu); memcpy(ev, pv[q], sizeof ev); memcpy(ea, pa[q], sizeof ea);
+            } else {
+                memcpy(eu, bu, sizeof eu); memcpy(ev, bv, sizeof ev); memcpy(ea, ba2, sizeof ea);
+            }
             for (int p = 0; p < PERT; p++) { Move m; random_move(&m); apply(&m); }
             cur = eval(); curraw = raw_last;
             since = 0; nkick++; memset(tabu_until, 0, sizeof tabu_until);

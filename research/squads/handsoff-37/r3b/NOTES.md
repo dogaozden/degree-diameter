@@ -51,3 +51,27 @@ Start: 2026-10-31T19:06:11Z (date -u). Keep going until at least 21:06Z; stop ab
 - Batch1 summary (70 s each, symbo, K 40, TEN 10, PF 0.7, PV 0.5): F21 182 (4 fixed per side) 609; F21 182 (10 fixed)
   dead; D5 170 185 (seeds 1 and 2); F20 170 160 (logged). Breakout walk drifts; F20 reaches 160 at ~24 s then stalls.
 - symbo3.c = symbo2 + MARG option (restore the best graph when raw > best + MARG). Built, not yet run.
+- Batch2 (symbo2, elite restart after 400 steps without a raw improvement, 80 s each): F21 196 from the r2f 224 start:
+  no change (224; 102 restarts). F21 182 from the r2f 210 start: no change (210; 134 restarts). Restarts alone do not move
+  these basins; the 210 and 224 graphs are local minima for orbit 2-switch + voltage moves with breakout.
+- Violated pairs of the F20 170 graph (out/badpat.py): concentrated on orbits with nontrivial stabilizer (size-5 orbit with
+  stabilizer 4 has 6 bad partners per vertex; size-10 orbits with stabilizer 2 have 1-6). Generic orbits are almost fine.
+- Batch2 D5 170 with elite restart (seed 7, 80 s): far 175 (raw 175; 1.7M evals). Better than the 185 of the no-restart
+  runs with seeds 1, 2 but still above r3a's D5 155 and our F20 160.
+- Batch3 (running at 19:27Z): F20 170 with elite restarts (STALL 400 / 150), seeds 3 and 5 from a fresh SAT start, and
+  sigma 4,4,4,4,1 (seed 4). Early numbers: seed 3 best 290 at 11 s (the seed-1 run reached 160 at 24 s; the spread across
+  seeds is large, so several seeds are needed).
+- Batch3: F20 seed 3 (elite restarts, 80 s) stuck at 290 (restarts keep returning to the same bad best); a sigma 4,4,4,4,1
+  setup for F20 failed in mkgroup (the degree-only SAT is UNSAT for alpha 2). Seed 3 is a bad basin, so several seeds per
+  config are needed. Batch5 = seed sweep of the seed-1 F20 config (seeds 21-26, 70 s each, symbo) to see the spread.
+- Batch4 (symbo3, raw margin restart): F20 170 with MARG 30 (seed 11, 80 s): far 190 (score37 200). Worse than the plain
+  symbo seed-1 run (160). MARG restarts keep the walk near the best but do not help; not pursued.
+- Z15 = Z5 x Z3 at n=170 (alpha 1, sigma 3,3,3,3,3,1,1 both sides): degree-only start is disconnected (far 13600, as r2f
+  found). Batch6 runs it with symbo (2 seeds, 70 s) to see whether breakout connects and descends.
+- Batch5 (F20 170, seed sweep, symbo, 70 s, same start as seed 1): seeds 21 and 22 both reach far 160 (diam 8), but the
+  graphs differ (md5 of sorted edge lists differ from seed 1). So 160 is a plateau reached by several distinct graphs,
+  not one lucky graph.
+- Batch6: Z15 at 170 (2 seeds). Batch7: other F20 sigma cycle types at 170 (4,4,4,2,2,1 / 4,4,4,1,1,1,1,1 / 4,4,2,2,2,1,1,1).
+- Batch5 final: F20 170 seeds 21-26 all end at far 160 (six runs, 70 s each). Strong plateau for this group/sigma.
+- Batch6 Z15 at 170 (2 seeds, 70 s): dead. Final far 1500 (score37 far 3000, disconnected). The breakout cannot connect the
+  degree-only start under the Z3 part with fixed points. Matches r2f's Z15 result. Dropped.
