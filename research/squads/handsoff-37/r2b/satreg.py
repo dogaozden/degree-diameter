@@ -14,6 +14,7 @@ Usage: satreg.py IN.edges RAD T SOLVER OUT.edges centre1 [centre2 ...]
   prints SAT/UNSAT, timings and the encoding size. On SAT writes OUT.edges.
 """
 import sys
+import threading
 import time
 from collections import deque
 
@@ -104,7 +105,9 @@ def region_of(n, adj, centres, rad):
     return sorted(S)
 
 
-def build_and_solve(n, adj, col, S, T, solver_name, verbose=True):
+def build_and_solve(n, adj, col, S, T, solver_name, verbose=True, tlim=None, forbid=None):
+    """forbid: list of (a, b) region pairs (a on side 0) whose new-edge variable is assumed false
+    (diversifies plateau moves: the solution must avoid these pairs)."""
     t0 = time.time()
     Sset = set(S)
     Rset = set()
@@ -191,8 +194,19 @@ def build_and_solve(n, adj, col, S, T, solver_name, verbose=True):
         enc.nv = max(enc.nv, card.nv)
         enc.clauses.extend(card.clauses)
     t1 = time.time()
+    assum = [-x[p] for p in (forbid or []) if p in x]
     with Solver(name=solver_name, bootstrap_with=enc.clauses) as s:
-        ok = s.solve()
+        if tlim:
+            timer = threading.Timer(tlim, s.interrupt)
+            timer.start()
+            ok = s.solve_limited(assumptions=assum, expect_interrupt=True)
+            timer.cancel()
+            if ok is None:
+                if verbose:
+                    print(f"solver {solver_name}: TIMEOUT after {tlim}s", flush=True)
+                return None, None
+        else:
+            ok = s.solve(assumptions=assum)
         t_solve = time.time() - t1
         if verbose:
             print(f"solver {solver_name}: {'SAT' if ok else 'UNSAT'} in {t_solve:.1f}s", flush=True)

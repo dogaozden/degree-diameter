@@ -24,3 +24,8 @@ Start graph: start46.edges (= c1/s170_k2_far46.edges, far 46). All 46 far pairs 
 2. SAT calibration on the radius-2 ball at centre 0: T = 45 -> UNSAT (0.1 s), T = 46 -> SAT with far 46 (score37
    agrees). So the encoding is consistent with the exhaustive enumeration.
 3. Radius 3 and 4 balls at centre 0, T = 45: running (see below).
+- 18:06Z: radius 3 at centre 0, T = 45: NO ANSWER in 500 s (|S| = 22, K = 21, 105 x-vars, 1070 violation
+  literals, 278k clauses; encoding 0.4 s). Radius 4 (|S| = 45, K = 45, 450 x-vars, 2169 violation literals,
+  1.6M clauses): NO ANSWER in 500 s. The cardinality bound "<= 45 violations" is the hard part: the solver
+  does not prove UNSAT, so exact SAT region solves beyond radius 2 are too slow in this form.
+  Next: plateau walk (reg walk, equal-far moves accepted) in the foreground, and SAT with a per-call time limit.

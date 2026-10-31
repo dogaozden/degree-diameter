@@ -283,3 +283,26 @@ ended at 530 bad ordered pairs.
 3) Calibrate the method on the analogous smaller case (D = 5: |A| = 21 = 1 + 4 + 16, |B| = 20, n = 41; is there such a
    graph of diameter 5? the (3,5) table value is 56, so 41 should be easy) before the real run.
 Log best far for n = 169 (note "n169").
+
+---
+
+# Round 3 cards (from 18:20Z)
+
+Lead (r2f, 18:10Z): a symmetric local search over graphs invariant under a NON-free group finds diameter 7 at n = 168 in
+3 s from scratch: G = F21 = Z7 x| Z3, Z7 acting freely, the order-3 element s with 3 fixed vertices (r2f/symloc.c; moves =
+orbit 2-switches, cost = far from one representative per G-orbit; see r2f/NOTES.md). No other method in this job rebuilt a
+168 graph without being given it. r2f itself runs n = 182 (Z7, 13 + 13 base, F21).
+Practical rule for all new workers: the Bash tool moves foreground commands longer than about 120 s to the background, and
+then you go idle. Keep each command under 110 s (`timeout 100 nice -n 10 ...`) and chain many short runs (save the state
+to a file and restart from it), or poll your background job every 2 minutes; never just wait.
+
+## Card r3a: non-free symmetric search at n = 170 and 180
+
+Copy r2f/symloc.c and its group-file format (read r2f/NOTES.md first). A free colour-preserving subgroup must have at
+least 12 orbits per side, so the free part z has order m <= n/24, but the extra element s may fix vertices. Cases:
+- n = 170 (85 per side = 5 x 17): z of order 5 (17 orbits per side), s of order 2, 3 or 4 normalising <z> and fixing some
+  vertices (Z5 x| Z4 = F20, D5 = Z5 x| Z2, Z15 = Z5 x Z3 with the Z3 part non-free; 17 = 3 x 5 + 2 or 4 x 4 + 1 or
+  2 x 8 + 1 base orbits).
+- n = 180 (90 = 5 x 18 = 6 x 15 = 3 x 30): z of order 5 or 6 with s of order 2, 3 or 4 non-free.
+Calibrate each group type first at a smaller n where a solution should exist (n = 160 = 2 x 80 with Z5; n = 150; n = 168
+with Z6 or Z4 free parts), then run the open n. Many restarts, log best far per (n, group).

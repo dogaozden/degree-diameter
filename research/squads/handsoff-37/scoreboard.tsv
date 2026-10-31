@@ -39,3 +39,9 @@ c7	PT continued from c7 n=172 state (400 s)	172	80	c7/out/pt172b.edges	2026-10-3
 c4	lift C7 k14 joint tabu	196	350	c4/best/n196_C7k14_far350.edges	2026-10-31T17:25:52Z	first graph at n=196; base 14+14 over C7, tabu 200 s, cost 100
 c4	lift C5 k20 joint tabu	200	440	c4/best/n200_C5k20_far440.edges	2026-10-31T17:25:52Z	first graph at n=200; base 20+20 over C5, tabu 200 s, cost 176
 c2	perturbed restart (1 random switch on c30 seed) + beam width 10, SA 20k	170	70	c2/best170.edges	2026-10-31T17:31:08Z	batch 4 (c30 seed, seed ); beats 76
+r2h	leaf-wiring tabu, fixed radius-6 tree at a degree-2 vertex (60 s, seed 7)	169	168	r2h/best169.edges	2026-10-31T17:51:24Z	n=169 (note n169): tree from x fixed, 126 leaf-outer edges tabu
+r2h	involution-symmetric tabu (MASK 1: root branches swapped, sigma pairs outer), 500 s, seed 1	169	144	r2h/best169.edges	2026-10-31T17:59:55Z	n=169 (note n169): orbit moves, 22984 iters
+r2f	F21 (Z7 x| Z3, s has 3 fixed pts) symmetric SA over orbit 2-switches	168	0	r2f/out/cal168s7_best.edges	2026-10-31T18:02:34Z	calib: F21-invariant SA hits diameter 7 in 3 s (SAT of same class: no answer in 9 min)
+r2e	lift C7 k13 breakout-tabu (weights on violated pairs + walk), 240 s	182	140	r2e/best/n182_C7k13_far140.edges	2026-10-31T18:03:09Z	beats c4 far 168 (500 s tabu); cost 40 = raw walks
+r2d	Z2 fixed-edge invol SA from random (f=1, calib)	150	29	r2d/out/c150f1_best.edges	2026-10-31T18:06:35Z	calib: equivariant SA 120 s, T 8->0.5; score37 far 29
+r2d	free Z2 invol SA from random (f=0, calib)	168	106	r2d/out/c168f0_best.edges	2026-10-31T18:06:35Z	calib: 150 s, T 8->0.5; stalled at 106 after 46 s (C168.1 lies in this family)
