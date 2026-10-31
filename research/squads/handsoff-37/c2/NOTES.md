@@ -82,3 +82,24 @@ a perfect matching of their neighbourhoods), repeated down to n = 170.
   80 (1 run, seed 135, k=2), 83 (2), 86 (8), 89 (2), 94, 97, 101, 102 (2), ...; many runs reach the same 83 or 86.
   The far-80 graph: out/pt135_n170_far80.edges, copied to c2/best170.edges, verified by bin/score37 (far 80, diam 8).
 - Batch 2 (seeds 200..279, both seeds alternating, k = 1..3): running, out/pt2_results.txt.
+
+## 17:07Z: batch 2 gave far 76 at n=170 (src = c30 seed, seed 261, k = 1; out/pb261_n170_far76.edges), now c2/best170.edges,
+verified by bin/score37 (far 76, diam 8), logged to the scoreboard. Batch 2 distribution: 76 (1), 80 (1), 82 (1), 83 (7), 86 (...).
+Batch 3 (seeds 300..359, k = 1 or 2, both seeds): running, out/pt3_results.txt.
+
+## 17:24Z: final state (card c2 stops about 17:44Z)
+- Best per n (all verified with bin/score37; all logged to scoreboard.tsv):
+  n=170 far 76 (c2/best170.edges; found twice, seeds 261 and 308, from the c30 seed with one random switch first),
+  n=172 far 106, n=174 far 97, n=176 far 86, n=178 far 98 (c2/best17x.edges: pair-reduction beams from the c3xs3 seed).
+  n=180 far 36 and n=192 far 384 (no improvement; the seeds are exact local minima for 2- and 3-edge reconnections).
+- No far 0 at any n >= 170, so nothing to copy to records/.
+- Recipe for the far-76 graph: shrink beam IN=nm180_c30_b31.edges target 170 width 10 SA 20000 T 2->0.3 seed 261,
+  PERTURB=1 (one random switch on the seed first, then pair reductions to n=170 with SA after each level).
+- What did not work (numbers in the sections above): SA / tabu / ILS / sampled compound moves / k-edge heat-bath LNS on
+  the 180 seeds (far stays 36 or climbs to 300+), equivariant reductions (C5: 115, C3: 102 and 123, C2: 142 and 178),
+  ball deletion with rematching (156), wide beams (94..106).
+- Diagnosis: the far landscape is rugged. Every reduced graph here is a strict local minimum for exhaustive 2-switches
+  (the best 2-switch neighbour is 3 to 10 worse), so local moves cannot descend; restarts with one perturbation and a
+  fresh pair-reduction beam are the only thing that moved the best (83 -> 80 -> 76).
+- Next step (not done here): restarts are cheap (~15 s each), so many more restarts (k=1, both seeds, width 10) might
+  push 170 below 76; a real improvement needs a different structure (grow from the 168 graph, as c8 does with 46).

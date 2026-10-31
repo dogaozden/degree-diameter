@@ -54,3 +54,20 @@ Start: 2026-10-31T15:44:41Z (date -u). Stop about 17:44Z.
 ## Status at 16:40Z
 - Best logged at n=170 by c7: far 46 (out/pt170.edges), ties c1 and c8. No record candidate (far > 0).
 - Calibration rows logged: n=140 (far 5/6), n=150 (far 19), n=160 (far 53).
+
+## Later runs (16:53-17:21)
+- Girth-start (girth_start.py: random cubic bipartite n=170 with 4-cycles removed by 2-switches, 0 four-cycles, score37
+  far 1194) then PT 400 s: cost 232, far 116 (out/pt170_girth.log). Much worse than the C168.1 insertion basin (cost 92).
+- n=170 insertion starts i2 and i3 (PT 380 s each): both cost 92, far 46 (out/pt170_i2.log, out/pt170_i3.log).
+- n=170 from cost 92 with R=8, T 2..5, 470 s: no move below 92 (out/pt170c.log).
+- n=172 from C168.1 + 2 pairs (out/ins172.edges, start cost ~?): PT 400 s gives cost 184, far 92 (out/pt172.edges).
+  Continued from there (400 s): cost 160, score37 far 80 (out/pt172b.edges). Logged as improvement at 172.
+  Another 400 s continuation: no move below 160 (out/pt172c.log).
+
+## Summary
+- Best far with my engine: n=170 far 46 (cost 92; same value as c1 and c8). n=172 far 80 (cost 160).
+- No far = 0 candidate at n >= 170 from c7. Calibration (random starts, PT): cost 10 at n=140, 38 at n=150, 106 at n=160.
+- Engine is limited by the basin: unstructured moves from random starts never get near C168-derived structure; the insertion
+  basin is the best source, with floor cost 92 at n=170.
+- Next step if continued: insert pairs into the n=172 cost-160 state's sibling or try a second insertion at n=170 along the
+  c1 surgery graphs; a structured method (card c1 or c2) is more likely to beat 46 than local search.

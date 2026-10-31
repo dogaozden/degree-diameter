@@ -50,3 +50,42 @@ Tabu / ILS (from the far-80 state at n=170):
 - ILS (kick 4 random moves, SA at T = 1, 20k steps, accept if not worse): 1309 iterations, never accepted a worse-or-equal
   state except one; best stays 80.
 - focused moves (PFOCUS: edges touching the orbit of a witness far pair): no measurable gain at n=168 (105-129 either way).
+
+## Later results (16:45Z - 17:10Z)
+
+- Two-edge surgery (surg2.py: delete quotient edges i, j, add fixed A on bo1, fixed B on ao2 and one new quotient
+  edge (ao1, bo2, t), or the mirror variant), all 19128 choices from the 3-fixed conder quotient to n=170: best 80
+  already without repair (about 6 of them), next 83. Repairs of the 80 and 83 starts all end at exactly 80.
+  Free quotient, same two-edge surgery to n=170 (16145 of 20580 evaluated before a timeout): best 105.
+- Every one of the 112 order-3 elements of conder168 with 3 fixed vertices gives the same best single surgery (92),
+  so there is essentially one seed in this family.
+- Orbit insertion (py/orbit_ins.py): from the 3-fixed quotient (FA=3, FB=0), remove two fixed A-vertices, add a new
+  regular A-orbit joined to their two B-orbits (voltages 9 choices), keep one fixed A-vertex and add one fixed
+  B-vertex: n = 170 with FA = FB = 1, 27 candidates, direct costs 81; SA repair (55 s) gives 78 from both tried.
+  File: c5/best170_far78.edges (verified by score37: far 78, diam 8). Best n = 170 of c5.
+- Orbit insertion to n = 174 (py/orbit3.py, free quotient, delete 3 quotient edges, add a new A-orbit and a new B-orbit
+  wired to the freed slots): 400 random candidates, best 183 direct; SA repair (60 s) gives 117 (c2 has 97 at 174).
+- ILS from the far-78 state (821 iterations, kick 6, T 1.5): no improvement. Full tabu from the far-80 state: plateau.
+- Far-80 graphs from different starts have identical far-count histograms (56 vertices with 0, 80 with 1, 24 with 2, 9 with
+  3, 1 with 5) and no 4-cycles: all the repaired 80-graphs seem to be one structure.
+
+## Where it stands (17:10Z)
+
+Best in c5 family: n = 170, far 78 (c5/best170_far78.edges). Far below the board's 46 at n = 170 is not reached.
+Order-3 fixed-point structures do not beat the non-symmetric surgery (c1 gives 46 from one 2-edge surgery + exhaustive
+search). The 168 quotient calibration and the cost check are right, so the representation is usable for other seeds.
+Plain SA on quotients cannot find 168 (random starts: 105-129), so this family needs a seed. Only conder168 is available
+as a seed; its order-3 quotients give 80 (FA = 4, FB = 1) and 78 (FA = 1, FB = 1) at n = 170 after repair.
+
+## Final (17:17Z)
+
+- Repairs of 4 more orbit-insertion starts (o10_101, o18_200, o25_221, o12_110; direct cost 81) all end at 78; the 18
+  direct-81 starts all look alike. Full tabu from the far-78 state: 600 steps at 78 (plateau). ILS from 78: no gain.
+- Summary: conder168 seed in this family gives far 78 (FA=1, FB=1) and 80 (FA=4, FB=1) at n = 170. Best file:
+  c5/best170_far78.edges (score37: n=170, far=78, diam=8). Not an improvement on the board's 46 at 170.
+- Not done / next steps: a 168 seed other than conder168 (none found; plain SA fails at 168), or a larger-group
+  (Z3 x Z3 / S3) structure around the fixed vertices; 174 via orbit insertion gave only 117.
+- Scoreboard rows by c5: 170/80 (first c5 graph at 170), 170/78 (own improvement), plus one correction row (the
+  correction row text is superseded by the clarification row).
+- 17:24Z: last run, 7 min SA (13 runs, 50M moves, T 2 -> 0.4, PFOCUS 0.5) from the far-78 state: still 78.
+  Stopping here. Best in c5: far 78 at n = 170 (c5/best170_far78.edges).

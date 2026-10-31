@@ -23,3 +23,16 @@ c8	LNS s=3 T 1->0.4 after 2 exhaustive best insertions from conder168	172	80	c8/
 c1	beam: pair insertion into the n=172 far-80 graph	174	125	c1/s174_ins_far125.edges	2026-10-31T16:48:48Z	first n=174; exhaustive pair insertion, no repair
 c1	pair insertion into n=172 far-80 graph + tabu 60s (TT 40)	174	109	c1/s174_tabu_far109.edges	2026-10-31T16:50:50Z	improved from 125 (insertion) by full 2-switch tabu
 c4	lift C7 k13 joint tabu (2-switch+volt)	182	168	c4/best/n182_C7k13_far168.edges	2026-10-31T16:52:47Z	first graph at n=182; lift C7 base 13+13, tabu 500 s, cost 48
+c4	lift C5 k19 joint tabu	190	305	c4/best/n190_C5k19_far305.edges	2026-10-31T16:59:36Z	first graph at n=190; base 19+19 over C5, tabu 200 s, cost 122
+c4	lift C3 k31 joint tabu	186	345	c4/best/n186_C3k31_far345.edges	2026-10-31T16:59:36Z	first graph at n=186; base 31+31 over C3, tabu 200 s, cost 230 (diam 9)
+c1	tabu 300s continued from the n=174 far-109 graph (TT 40)	174	107	c1/s174_tabu_far107.edges	2026-10-31T17:00:19Z	slow descent (109 -> 107 in 300 s)
+c1	beam: pair insertion into the n=174 far-107 graph	176	143	c1/s176_ins_far143.edges	2026-10-31T17:00:22Z	first n=176; exhaustive pair insertion, no repair
+c4	lift C2xC2 k23 joint tabu	184	192	c4/best/n184_C2C2k23_far192.edges	2026-10-31T17:02:09Z	first graph at n=184; base 23+23 over C2xC2, tabu 150 s, cost 96
+c1	tabu 150s (TT 40) from the n=176 pair-insertion graph (far 143)	176	122	c1/s176_tabu_far122.edges	2026-10-31T17:05:18Z	repair 143 -> 122
+c5	three-fixed conder quotient, orbit insertion (FA=1,FB=1) + SA repair	170	78	c5/best170_far78.edges	2026-10-31T17:06:18Z	lower than c5 far-80 row (own best); not better than the board best 46
+c5	clarification of the correction row	170	78	c5/best170_far78.edges	2026-10-31T17:06:18Z	the c5 far-80 row was a valid first-at-170 entry for c5 by the card rule (own previous best); the correction above is superseded; c5 best at 170 is now 78
+c2	perturbed restart (k=1..3 random switches on 180 seed) + beam width 10, SA 20k	170	76	c2/best170.edges	2026-10-31T17:07:12Z	batch 2 (src=pb: nm180_c30 seed), beats 80
+c7	PT local 2-switch from C168.1+2 pairs (n=172), 400 s, R=6	172	92	c7/out/pt172.edges	2026-10-31T17:07:26Z	first c7 graph at 172; score37 far 92 diam 8; cost 184
+c6	polarity cover, Z5 lift of 17+17 base, SA on M (no zero)	170	80	c6/best170_polarity_z5.edges	2026-10-31T17:12:31Z	first graph at n=170; cost 40 orbit-floor, not diameter 7
+c6	polarity cover, Z2 lift of 43+43 base, lifttabu (no zero)	172	76	c6/best172_polarity_z2.edges	2026-10-31T17:12:31Z	first graph at n=172; cost 38, not diameter 7
+c7	PT continued from c7 n=172 state (400 s)	172	80	c7/out/pt172b.edges	2026-10-31T17:14:10Z	c7 improvement at 172; score37 far 80 diam 8; cost 160

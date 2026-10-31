@@ -169,3 +169,60 @@ nearly a tree, and search only for the matching of its leaves, perhaps with a sy
 SAT/ILP with a symmetry assumption (check whether a SAT solver can be pip-installed, e.g. python-sat); generalized hexagon
 GH(2) incidence graph (126 vertices, girth 12, diameter 6) extended by new vertices; involutions with fixed edges; lifts
 where the group acts with some fixed points of order 2. Pick one, say which in NOTES.md, and give it the full 2 hours.
+
+---
+
+# Round 2 cards (written 17:30Z from the round-1 reports)
+
+Round-1 facts to build on (details in each worker's NOTES.md):
+- Surgery on C168.1 at n = 170: exhaustive 2-edge + ab insertion gives far 46; SA, tabu, PT, LNS, ILS all funnel back to
+  the SAME far-46 graph (c1/s170_k2_far46.edges). Growing by pair insertion + tabu: 172 far 80, 174 far 107, 176 far 122.
+- Reducing the n = 180 near misses gives far 76 at 170 (c2). Order-3 quotients with fixed points: 78 at 170 (c5).
+  C168.1 has 11 free Z3 subgroups and 56 order-3 subgroups with 3 fixed vertices (all on one side) (c5/py/auts.py).
+- Polarity double covers with a free Z5 on M (c6/lift.c, c6/lifttabu.c): diameter 7 found EASILY at n = 140, 150, 160
+  (c6/best160_polarity_z5.edges), but n = 170 (Z5, 17+17) floors at far 80, n = 172 (Z2, 43+43) far 76.
+- Lift tabu (c4/lift3 etc.): calibration C7 12+12 (n = 168) best cost 14 (not 0).
+- Unstructured PT (c7): calibration n = 150 far 19, n = 160 far 53. Not competitive.
+Round-2 mandate: keep working until at least 2 hours have passed since your start (check `date -u`), stop at about 2h15.
+Same common rules as round 1. Your folder: research/squads/handsoff-37/<worker>/ (create it).
+
+## Card r2a: many seeds, then insertion (small structure)
+
+Every round-1 worker that started from C168.1 ended in one basin. Hypothesis: a DIFFERENT diameter-7 graph on
+160-168 vertices has a better insertion floor. 1) Generate many diameter-7 graphs on 160-168 vertices: polarity covers
+with Z5 / Z7 / Z4 / Z6 symmetry (c6/lift.c makes n = 160 in about a minute: try m = 80, 82, 84 and different t, k, seeds),
+lifts over other groups with small bases (shared/prior/d3D7_salift.c finds 168 over C7 x| C3 in < 1 s and over C14 in
+45 s; try C12, C21, C24, C28, C6 x C2, dihedral groups, ...). 2) Tell graphs apart with a cheap invariant (sorted
+distance-distribution and girth / number of shortest cycles per vertex) and keep the non-isomorphic ones (note which are
+not C168.1). 3) For each seed, run exhaustive pair insertion up to n = 170 (reuse c1/surgery.c and c1/insert.c; a 160 seed
+needs 5 insertions with repair in between, c1/tabu3.c) and log the best far per seed in NOTES.md. Goal: far < 46 at 170.
+
+## Card r2b: exact repair of a region (LNS with an exact inner solver; small structure)
+
+Start graphs: c1/s170_k2_far46.edges (far 46), c2's best 170 (far 76; see c2/NOTES.md), c6/best170_polarity_z5.edges.
+Destroy a region and re-solve it exactly: remove all edges inside a set S of 8-24 vertices chosen around the far pairs
+or around the inserted pair, leaving vertices of S with free degree; then enumerate (DFS with pruning on far, or SAT /
+ILP: check whether `pip install python-sat` or `pip install ortools` works) all ways to re-add edges so the graph is cubic,
+simple, bipartite again, and keep the rewiring with the smallest far. Grow |S| as far as the solver allows. Record per
+start graph: |S|, number of completions tried, best far. Goal: far below 46 at n = 170.
+
+## Card r2c: polarity covers, deeper (large structure; continues c6)
+
+Read c6/NOTES.md and reuse c6/lift.c and c6/lifttabu.c (canonical double covers of a cubic graph-with-loops M, with a
+free Z_t on M; far = 2 x cost). At m = 85 (n = 170) the only free Z_t with >= 12 orbits is Z5 (17 base vertices), floor
+cost 40. Try: 1) much longer runs and many restarts at m = 85, keeping a population and recombining bases (GA over base
+graphs + voltages); 2) a second symmetry, e.g. Z5 x| Z4 or Z5 x| Z2 acting on M with some fixed base vertices (17 = 4*4 + 1
+or 2*8 + 1), which shrinks the search; 3) non-free Z_t on M (fixed points of M), e.g. Z3 with 1 fixed vertex (85 = 3*28 + 1)
+or Z7 with 1 fixed vertex (85 = 7*12 + 1); 4) m = 86, 87, 88 with Z2, Z3, Z4 (k >= 12). Calibrate each new symmetry
+type at m = 80 or 84 first (does it reach cost 0?). Log best far per n.
+
+## Card r2d: Moore-tree completion (new approach; small structure)
+
+Not tried by anyone yet. In a (3,7) graph on n = 2m vertices, the radius-6 ball around a root edge or root vertex is
+almost a tree (each vertex has excess at most 127 - m). Fix the Moore tree around a root edge {r, s}: depth 0..6 from
+the edge, and search only for how the leaves (and a few extra vertices) are joined, with a symmetry around the root to
+cut the search: Z3 rotating the three branches of a root vertex, or Z2 swapping r and s, or Z7 / Z3 acting freely on the
+leaves. Steps: 1) for n = 168, 170 decide the tree (vertex count per level, with as few repeats as possible) and the
+number of extra vertices; 2) search the leaf matching under the symmetry with tabu or SA (cost = far of the full graph),
+or exactly with DFS + pruning for small cases; 3) calibrate: can it rebuild a diameter-7 graph at n = 150-168? Log best far
+per n.

@@ -101,3 +101,33 @@ The 46 graph is the only far < 48 found by LNS from the 168 family, and it equal
   (T 1 -> 0.4): no progress at all (80 stays 80, 2.6 M moves). Logged as c8 172 far 80 (c8/best172_far80.edges).
 - Medium kicks (3 random 2-switches on the 46 graph, then 60 s LNS at T 0.8 -> 0.3): far after descent 46, 174, 156, 127
   (seeds 11..14). Most descents end in high-far basins, so the 46 well is only one of many, and LNS does not climb down.
+
+### 16:52-17:00 structured reductions and multi-insertions (all end at the same 46 graph)
+- red2ins.py: all 504 choices of a reduction of conder168 by one vertex pair (remove adjacent a-b, reconnect the four outer
+  neighbours in the 2 possible ways: n = 166), then two exhaustive best insertions (n = 170). 292 valid options: far 46
+  for ALL of them.
+- red3.py: 120 random sequences of two reductions (n = 164) then three greedy insertions (n = 170): far 46 in 120 of 120,
+  and the invariant hash (93596860) is the same as for the 46 graph found by LNS. So from the 168 family the greedy
+  and LNS chains all land on one graph of far 46.
+- networkx VF2 could not count automorphisms of the 46 graph within 40 s (not pursued).
+
+### 17:02-17:06 conder168 with 2 random 2-switches, then insertion, then 30 s LNS (kick168.sh, 8 seeds)
+After the insertion: far 85..198. After LNS: 48, 48, 48, 46, 48, 48, 48, 46. The 46 runs have the 46 invariant
+(hash 93596860); the 48 runs have the 48 invariant (hash 56193482). So the search funnels into exactly two graphs.
+
+### 17:07 campaign red3lns.py (60 trials: random two reductions, three greedy insertions, 20 s LNS) (out/rl2.log)
+Running at the time of writing; each trial starts from the 46 family and stays at 46 (see out/rl2.log).
+
+## Summary (for the coordinator)
+- Best n = 170: far 46 (c8/best170_far46.edges, score37 verified). c1 (exhaustive insertion) gets the same 46, and c7 too.
+- LNS (exact stub re-matching, s = 3, heat bath T about 1) is a sound engine but it does not beat 46.
+  Calibration: n = 150, 26 far in 30 s from random; n = 170 random start: 132 after 4 min (flat).
+- The 46 graph is a strong attractor: from 3 insertion seeds, 2 reductions + 3 insertions, kicked conder168, and
+  the 292 single-reduction options, LNS and greedy chains end at 46 or 48. Two basins, no others below 80 seen.
+- Walls: at the 46 graph (and near 48) every re-matching of 3..6 removed edges either keeps far or adds at least 10.
+  Cooling does not help (the 540 s continuation run made 0 accepted moves in 8.1 M).
+- GH(2,2) (Tutte 12-cage, built from Q(6,2) with the Tits equations, gh2.py) grown by pair insertions with repair: far
+  stays 0 to n = 136 and then climbs to 170 at n = 170. Dead end.
+- n = 172: far 80 (c8/best172_far80.edges; two exhaustive insertions from conder168; LNS made no progress).
+- Reformulation for whoever uses it: for a cubic bipartite graph, the condition for one side is that the hypergraph with
+  B-vertices as 3-edges on A-vertices has primal (2-section) diameter <= 3. Both sides are needed.

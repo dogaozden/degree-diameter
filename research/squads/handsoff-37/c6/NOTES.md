@@ -67,3 +67,17 @@ n >= 170 (the only entry is the n = 160 calibration).
 Next step if continued: start the Z_5 lift at m=85 from the cost-40 floor with a repair step that changes a whole
 base vertex (all three of its stubs) at once; or try a second symmetry (order 4 automorphism acting on Z_5 by
 multiplication by 2) to shrink the space to an exhaustive search.
+
+## 17:14Z final state
+
+- Logged to the scoreboard as first graphs at new n (not diameter 7, so not records):
+  n=170: c6/best170_polarity_z5.edges (Z5 lift, 17+17 base, far 80, cost 40, tabu and SA both floor at 40).
+  n=172: c6/best172_polarity_z2.edges (Z2 lift, 43+43 base, far 76, cost 38 from one tabu run, 70 from another).
+  Both verified with bin/score37 (far as stated, diam 8). n=160 zero-cost cover: c6/best160_polarity_z5.edges.
+- Extra runs at 16:57-17:12: m=86 Z2 SA (480 s): floor 83; m=86 tabu, tenure 25 / 800 samples (420 s): 70.
+  So at m=86 the tabu result depends strongly on the seed (38 vs 70), and SA is much worse for the big t=2 base.
+- Summary of the polarity model (far = 2 * cost): zero cost reached at n = 140, 150, 160; floor about 40 orbit-pairs
+  (far about 80) at n = 170; no run reached 0 at n >= 168. No record found by this card.
+
+17:20Z: last tabu at m=85 (tenure 5, 200 samples, 420 s, 411k steps): floor 50. Best at m=85 stays 40 (far 80).
+Stopping here (two-hour window). Files: dc.c, dct.c, lift.c, lifttabu.c and their binaries in this folder.

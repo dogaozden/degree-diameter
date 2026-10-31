@@ -11,13 +11,14 @@ Since the lift is vertex-transitive under Z_p, the sources (u,0) for all base ve
 
 Usage: sat_lift.py p k D [solver] [seed-unused] [outfile]   -- writes the lifted edge list (vertex (w,g) = w*p+g) if found.
 """
-import sys, time
+import sys, time, os
 from pysat.formula import IDPool
 from pysat.card import CardEnc, EncType
 from pysat.solvers import Solver
 
 
 SYM = True
+SLACK = int(os.environ.get('SLACK', '0'))
 
 
 def build(p, k, D, pool=None):
@@ -49,8 +50,17 @@ def build(p, k, D, pool=None):
         for b in range(k):
             for t in range(p):
                 clauses.append([E[(0, b, t)]] if (b < 3 and t == 0) else [-E[(0, b, t)]])
+    if os.environ.get('G4', '0') == '1':
+        # lift girth >= 6: no base 4-cycle a1-b1-a2-b2 whose voltage sum t1 - t2 + t3 - t4 is 0
+        import itertools
+        for a1, a2 in itertools.combinations(range(k), 2):
+            for b1, b2 in itertools.combinations(range(k), 2):
+                for t1, t2, t3, t4 in itertools.product(range(p), repeat=4):
+                    if (t1 - t2 + t3 - t4) % p == 0:
+                        clauses.append([-E[(a1, b1, t1)], -E[(a2, b1, t2)], -E[(a2, b2, t3)], -E[(a1, b2, t4)]])
     L = D - 1
     nsrc_vars = 0
+    cov_lits = {}
     for src in range(2 * k):
         s_side = 0 if src < k else 1
         R = [dict() for _ in range(L + 1)]
@@ -84,10 +94,18 @@ def build(p, k, D, pool=None):
                 for j in range(2, L + 1, 2):
                     if (w, h) in R[j]:
                         lits.append(R[j][(w, h)])
-                if not lits:
-                    clauses.append([])  # unreachable target: unsatisfiable
+                if SLACK == 0:
+                    if not lits:
+                        clauses.append([])  # unreachable target: unsatisfiable
+                    else:
+                        clauses.append(lits)
                 else:
-                    clauses.append(lits)
+                    cv = pool.id(('C', src, w, h))
+                    cov_lits.setdefault(src, []).append(cv)
+                    clauses.append([-cv] + lits)  # cv true only with a real walk
+        if SLACK > 0:
+            need = len(cov_lits[src]) - SLACK
+            clauses += CardEnc.atleast(lits=cov_lits[src], bound=need, vpool=pool, encoding=EncType.seqcounter).clauses
     return clauses, E, pool
 
 

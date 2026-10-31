@@ -32,3 +32,21 @@ Start (UTC): 2026-10-31T15:44:58Z. Planned stop: about 2 hours later (about 17:4
   same-side lift vertices by even walks <= 6. Validated: solutions for (3,4,5), (5,3,5), (3,5,5) verify with score37.
   p=7 k=12 D=7: 874k vars, 1.73M clauses, built in 5-7 s; cadical195 found NO solution in 500 s (16:29-16:37). With
   symmetry breaking (SYM=1: N(base 0) = {0,1,2}, voltages at base 0 zero, valid gauge): NO solution in 500 s (16:38-16:46).
+- 16:55 kissat404 (same SAT encoding, p=7 k=12, SYM=1): no solution in 500 s.
+- 17:04 SAT with extra lift girth >= 6 (G4=1: no base 4-cycle with zero voltage sum; 3.2M clauses): no solution in 500 s.
+- 17:12 SAT p=7 k=13 (n=182, SYM=1, cadical195, 1.1M vars): no solution in 500 s (open).
+- 17:20 SAT p=5 k=17 (n=170, SYM=1, cadical195, 1.27M vars): no solution in 500 s (open).
+
+## Summary (end of run, 17:21 UTC)
+- No graph with n >= 170 found; no scoreboard line appended (no far = 0 and no near miss at n >= 170 was recorded).
+- Calibration failed: none of the methods found the known p = 7, k = 12 solution (C168.1 quotient) within the budget:
+  shared canonical DFS (12.6M nodes), randomized restarts (rsolve.c / rsolve2.c, about 30M nodes in total, with and
+  without collision ordering), SAT (cadical195 and kissat404, with and without symmetry breaking and the girth-6 clauses,
+  8 min each).
+- Why: the canonical tree has at least 1e11 nodes (Knuth probes with 400k dives, 0 solutions hit), and the walk-based
+  SAT encoding is about 1M variables. Solutions are rare in every formulation tried here.
+- Validated tools (usable by others): c3/rsolve2 (exhaustive counts agree with exact_jsearch; slack mode logs the far
+  histogram of complete bases), c3/sat_lift.py (finds lifts for small cases, verified by score37).
+- Most promising next step (not tried): fix an extra symmetry of the base (for example an involution or an order-3
+  automorphism of a 12+12 base, taken from the residual group of C168.1 after quotienting by Z_7) to shrink the SAT
+  instance by 2-3x and test whether the k = 12 calibration then solves in minutes; only then run k = 13 (n = 182).
