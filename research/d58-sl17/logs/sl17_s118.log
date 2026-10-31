@@ -1,0 +1,23 @@
+group sl 17 x Z_1, N=4896, identity 272, H order 34, rows 144, threads 1, setup 0.00s
+wide rows: no cyclic subgroup of order >= 64 found (best 34); using haar_gen3's evaluation
+start cost=79
+t=30 steps=335302 evals=2682417 cost=5 best=2 T=0.53
+t=60 steps=663159 evals=5305273 cost=4 best=2 T=0.19
+t=90 steps=947819 evals=7582553 cost=5 best=2 T=0.15
+t=120 steps=1201221 evals=9609769 cost=5 best=2 T=0.15
+t=150 steps=1459847 evals=11678777 cost=5 best=2 T=0.15
+t=180 steps=1714194 evals=13713553 cost=5 best=2 T=0.55
+t=210 steps=1955394 evals=15643153 cost=6 best=2 T=0.19
+t=240 steps=2204902 evals=17639217 cost=6 best=2 T=0.15
+t=270 steps=2450638 evals=19605105 cost=6 best=2 T=0.15
+t=300 steps=2704192 evals=21633537 cost=6 best=2 T=0.15
+t=330 steps=2941598 evals=23532785 cost=4 best=2 T=0.55
+t=360 steps=3185379 evals=25483033 cost=4 best=2 T=0.19
+t=390 steps=3427115 evals=27416921 cost=4 best=2 T=0.15
+t=420 steps=3663138 evals=29305105 cost=4 best=2 T=0.15
+t=450 steps=3890419 evals=31123353 cost=4 best=2 T=0.15
+t=480 steps=4138324 evals=33106593 cost=5 best=2 T=0.55
+t=510 steps=4375107 evals=35000857 cost=5 best=2 T=0.19
+t=540 steps=4608365 evals=36866921 cost=5 best=2 T=0.15
+t=570 steps=4844954 evals=38759633 cost=5 best=2 T=0.15
+RESULT d=5 D=8 group=sl 17 x Z_1 N=4896 best=2 evals=40601665 time=600.0

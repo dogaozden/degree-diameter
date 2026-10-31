@@ -990,7 +990,7 @@ static int endgame(ctx *c, int order, const char *out) {
                 if (x == ident || used(x, i)) continue;
                 set_pos(i, x, c); double sc; long long v = cost_eval(c, TF, TI, &sc, NULL); tested++;
                 if (v < 8) hist[v]++;
-                if (v <= DUMPMAX) { char tag[64]; sprintf(tag, "END1 pos%d", i); dump_state(v, tag); }
+                if (v <= DUMPMAX) { char tag[64]; sprintf(tag, "END1 pos%d x%d S%d", i, x, S[i]); dump_state(v, tag); }
                 if (v == 0) { hit = 1; memcpy(hitS, S, sizeof(int) * d); printf("ENDG hit: 1 move pos %d x %d\n", i, x); }
             }
             set_pos(i, base[i], c);
