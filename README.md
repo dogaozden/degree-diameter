@@ -95,7 +95,7 @@ record, with dates and checks, is in [`research/RESULTS.md`](research/RESULTS.md
 | (12, 9) | 30,001,152 | **35,445,648** | +18.1% | orbit search (Haar) | — |
 | (13, 9) | 50,990,610 | **67,742,688** | +32.9% | orbit search (Haar) | — |
 | (14, 9) | 95,087,738 | **120,043,728** | +26.2% | orbit search (Haar) | — |
-| (15, 9) | 168,016,334 | **208,029,120** | +23.8% | orbit search (Haar) | — |
+| (15, 9) | 168,016,334 | **208,483,200** | +24.1% | orbit search (Haar) | — |
 | (16, 9) | 288,939,118 | **348,207,600** | +20.5% | orbit search (Haar) | — |
 | (3, 10) | 800 | **810** | +1.3% | voltage lift (squad search) | — |
 | (4, 10) | 11,748 | **12,416** | +5.7% | voltage lift / metacyclic Haar | ✓ |
@@ -105,11 +105,11 @@ record, with dates and checks, is in [`research/RESULTS.md`](research/RESULTS.md
 | (8, 10) | 6,927,210 | **7,818,096** | +12.9% | finite geometry ¹ | — |
 | (9, 10) | 20,017,260 | **24,099,600** | +20.4% | orbit search (Haar) | — |
 | (10, 10) | 50,331,156 | **64,294,560** | +27.7% | orbit search (Haar) | — |
-| (11, 10) | 130,592,354 | **148,729,680** | +13.9% | Haar graph of PSL(2,89) × Z₂₁₁ | — |
+| (11, 10) | 130,592,354 | **157,835,304** | +20.9% | Haar graph of PSL(2,243) × Z₁₁ | — |
 | (12, 10) | 300,383,050 | **332,797,296** | +10.8% | orbit search (Haar) | — |
 | (13, 10) | 617,330,936 | **683,943,456** | +10.8% | orbit search (Haar) | — |
 | (14, 10) | 1,213,477,190 | **1,326,627,120** | +9.3% | orbit search (Haar) | — |
-| (15, 10) | 2,300,326,510 | **2,467,618,800** | +7.3% | finite geometry ¹ | — |
+| (15, 10) | 2,300,326,510 | **2,566,531,440** | +11.6% | orbit search (Haar) | — |
 | (16, 10) | 4,119,507,330 | **4,220,872,800** | +2.5% | finite geometry ¹ | — |
 
 ¹ Found in a session that could call squads of Claude Haiku helpers (see [Opus with Haiku squads](#opus-with-haiku-squads)).

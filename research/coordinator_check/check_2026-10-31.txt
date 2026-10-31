@@ -1,0 +1,14 @@
+Coordinator re-checks on the Mac mini, 2026-10-31 (haarcheck_gen.c from master, clang -O3, single thread, nice 10).
+
+== 11 10 psl 243 poly x^5+2x+1 n 11 N 78917652  sha256 ffdc15c632d5b9dd1d79150388ef8959640c8f991bc381678504efd0a70cabf1
+
+== 15 9 prod sl 5 sl 19 n 127 N 104241600  sha256 2ec69cb54c41c25367a0c2baa57040cf2ac63cd3f92bbeea9215f7a3dc234fc6
+
+== 15 10 sl 109 n 991 N 1283265720  sha256 012039491e533b980747b2e176f25cc2c4b1981e61613217eaaca57b5a7ef74f
+
+(11,10) 157,835,304: VALID, 39 s, 61 MB; (15,9) 208,483,200: VALID, 58 s, 80 MB; level sizes identical to check_haar_indep.py in both.
+(15,10) 2,566,531,440:
+from (e,A): reached A 1283265720/1283265720, B 1283265720/1283265720 within 10; ecc 10; level sizes [1, 15, 210, 2940, 41160, 575990, 8033450, 107806446, 900989192, 1174880329, 374201707]  (229s)
+from (e,B): reached A 1283265720/1283265720, B 1283265720/1283265720 within 10; ecc 10; level sizes [1, 15, 210, 2940, 41160, 575990, 8033450, 107806446, 900947536, 1174880329, 374243363]  (459s)
+VALID d=15 D=10 group=sl 109 x Z_991 N=1283265720 vertices=2566531440 (distinct generators, 15-regular simple; every vertex within 10 of both (e,A) and (e,B); ecc 10; 459s)
+level sizes identical to haarcheck2 in the cloud report (bigcheck-7c); peak RSS 964 MB.
