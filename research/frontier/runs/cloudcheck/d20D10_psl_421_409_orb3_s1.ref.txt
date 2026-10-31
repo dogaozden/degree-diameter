@@ -16,3 +16,11 @@ progress: 2026-10-31T19:49Z elapsed 254 min, still running (single-threaded, 99.
 progress: 2026-10-31T20:17Z elapsed 282 min, still running (single-threaded, 99.0% CPU, RSS 11.2 GB).
 progress: 2026-10-31T20:46Z elapsed 310 min, still running (single-threaded, 99.0% CPU, RSS 11.2 GB).
 progress: 2026-10-31T21:14Z elapsed 338 min (5.6 h), still running past the 4.5 h estimate (single-threaded, 99.0% CPU, RSS 11.2 GB). Will stop at the 6 h mark if not finished.
+
+################ haarcheck_psl (reference checker, research/structured/tools/haarcheck_psl.c from origin/master; gcc -O3 -o haarcheck_psl haarcheck_psl.c): run as ./haarcheck_psl research/frontier/sols/d20D10_psl_421_409_orb3_s1.txt   (stdout as captured: EMPTY, no verdict line)
+STOPPED, NOT FINISHED. Started 2026-10-31T15:35:50Z; stopped by SIGTERM at 2026-10-31T21:37:2xZ after 6 h 01 min (passed the 6 h limit in the job brief, which says not to stop earlier). The checker printed nothing before the stop; its stderr is empty.
+Because the stop used pkill -f, the python3 timing wrapper was also signalled, so no exit code or ru_maxrss was recorded and no summary file was written. The last ps sample before the stop (at 06 min 01 s elapsed) showed RSS 11178072 KB (about 11.2 GB), 99.0% CPU, single thread.
+[exit: killed by SIGTERM (no exit code recorded); wall ~6 h 01 min (21,690 s approx.); peak RSS not recorded by getrusage, last sampled RSS 11178072 KB (~11.2 GB)]
+
+Result for this file: NO VERDICT from haarcheck_psl. No VALID or INVALID line was produced. This file is NOT verified by this job.
+Note for the coordinator: the run's wall time (over 6 h) is well above the ~4.5 h estimate in the brief. The per-vertex rate was slower than the 1,855 s on 3.5e9 vertices scaled up linearly, so either the larger bitsets cost more per vertex (cache misses) or the machine slowed down. Not investigated.
