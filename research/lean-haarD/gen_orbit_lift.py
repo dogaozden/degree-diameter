@@ -274,7 +274,7 @@ def write_folder(folder, theorem, n, m, k, K, d, D, edges_path, adj, col, levels
     ]
     (fdir / "Record.lean").write_text("\n".join(rec))
     # the axioms file
-    (fdir / "Axioms.lean").write_text(f"import {ns}.Record\n\n#print axioms {theorem}\n")
+    (fdir / "Axioms.lean").write_text(f"import {ns}.Record\n\n#print axioms {ns}.{theorem}\n")
     shutil.copy(edges_path, fdir / Path(edges_path).name)
 
 

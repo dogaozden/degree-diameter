@@ -39,8 +39,50 @@ Python checks (`gen_orbit_lift.py`, run 2026-10-31):
 Data size: `Levels.lean` is 13 MB (four levels of 9,840 hex literals of 1,640 bits). The staged method's data for
 this record was about 97 MB (`n²` bits per radius, see `STATUS-lean-gaps2.md`).
 
-Build measurements: see the table below (filled in as each module builds).
+Build measurements (each module built with its own `lake build`, one at a time; wall time and the peak RSS of the
+largest child, from `scratchpad/memrun.py`, since `/usr/bin/time` is not installed here; 4 cores, 15 GB):
 
 | Module | Wall time | Peak RSS | Result |
 |---|---:|---:|---|
-| `Orbit` (generic, reusable) | 20 s (incremental) | — | builds, no sorry |
+| `Orbit` (generic, reusable; incremental rebuilds after each change) | ~20 s | — | builds, no `sorry` |
+| `Graph` (adjacency and colour literals, 9,840 vertices) | 482 s | 4.23 GB | ok |
+| `Levels` (4 levels, 13 MB; final build) | 236 s | 3.10 GB | ok |
+| `Local` (checkLocal in 4 quarters + 2 joins; final build) | 514 s | 10.20 GB | ok |
+| `Hom` (shift check, 8 pieces + 7 joins) | 210 s | 3.83 GB | ok |
+| `Stage0` | 191 s | 12.56 GB | ok (its wrapper also rebuilt `Levels`, 215 s, after the `Orbit` change) |
+| `Stage1` | 254 s | 12.45 GB | ok |
+| `Stage2` | 188 s | 12.46 GB | ok |
+| `Stage3` | 161 s | 12.47 GB | ok |
+| `Stage4` | 176 s | 12.51 GB | ok |
+| `Record` (elaboration only) | 5 s | 1.74 GB | ok |
+| `Axioms` (`lake env lean`) | — | — | `propext, Classical.choice, Quot.sound` |
+
+The stage modules peak near 12.5 GB, close to the 15 GB of this sandbox. That is the kernel's cost of one `decide`
+step over 9,840 vertices with 1,640-bit masks; it is the limit to watch for the larger records.
+
+### Failures on the way (kept here, not in the code)
+
+* `Levels`: the first build failed on the default heartbeat budget and recursion depth in the big list literals
+  (`maximum recursion depth`, `isDefEq` timeouts). Fixed by `maxHeartbeats 0` and `maxRecDepth 1000000` before each
+  level definition.
+* `Local`: the two-half check (one `decide +kernel` per half) peaked at 12.85 GB. Quarters peaked at 10.20 GB. The
+  join was first written with literal ranges, `checkLocalRange … 0 4920`, and the defeq check of `2460 + 2460 =?= 4920`
+  inside `checkLocalRange` hit the recursion limit. Fixed by `checkLocalRange_join`, which takes the offsets and
+  totals as equations proved by `decide`, and the chain was first tested in a scratch file.
+* `Hom`: the one-shot `homOK` over 9,840 vertices was killed at 13.13 GB (exit −9). Fixed by the range form
+  `homOKRange` and eight pieces with `homOKRange_join`.
+* `Local`, `Record`: `by norm_num` is not available in these modules (`unknown tactic`); replaced by `by decide`.
+* `Record`: the generator's loop variable overwrote `k` (it set `k = 7`) in the new `Hom` section. Caught by the diff
+  before any build, fixed, and regenerated.
+* `Axioms`: `#print axioms` needs the qualified name `BipartiteDD.Haar.D12D5GQ9Z6.nb_12_5_n9840`.
+
+### Status
+
+* (12,5) 9,840: **proved**. `BipartiteDD.Haar.D12D5GQ9Z6.nb_12_5_n9840 : ∃ G : SimpleGraph (Fin 9840), IsBipartiteDegDiam G 12 5`,
+  axioms `propext, Classical.choice, Quot.sound` (`D12D5GQ9Z6/Axioms.out.txt`).
+* Data: `Levels.lean` is 13 MB (four levels of 9,840 hex literals of 1,640 bits), against about 97 MB for the staged
+  method on the same record.
+* Not done: (13,5), (14,5), (15,5), (16,5), (18,5). Each needs its own generator run and builds. The same method
+  applies to the fibre-transitive ones; (15,5) and (16,5) are route-chart lifts and may need a different
+  numbering. The data is about n²/m bits per radius, so the larger records are heavier in data and in the
+  stage memory (which grows with n).
