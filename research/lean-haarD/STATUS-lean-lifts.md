@@ -100,6 +100,24 @@ Axioms (`D13D5W8Z10/Axioms.out.txt`): `propext, Classical.choice, Quot.sound`.
 The stage peak is 13.08 GB, up from 12.5 GB at n = 9,840. It grows with n, so the next record (n = 17,568) needs the
 stage step split into vertex ranges before it can be checked in this sandbox.
 
+### (14,5) 17,568, folder `D14D5GQ11Z6` (attempted, NOT proved)
+
+Edge file `research/d10D7/graphs/d14D5_n17568_gqdm_q11.edges.gz`. The lift is Z6 (`lift vertex (x, h) = 6x + h`, from its
+CHECK note), not Z12: `m = 6`, `k = 2928`, `K = 15`, `d = 14`, `D = 5`. The generator's checks pass (shift automorphism,
+radius-5 masks full, Lean lists equal the edge file). `Levels.lean` is 42 MB.
+
+| Module | Wall time | Peak RSS | Result |
+|---|---:|---:|---|
+| `Graph` | 1,766 s | 8.37 GB | ok |
+| `Levels` | 1,098 s | 4.07 GB | ok |
+| `Stage0` | 210 s | 13.05 GB | **killed by the kernel (exit 137, out of memory)** |
+
+The stage check on the whole vertex set does not fit in this sandbox at n = 17,568 with 2,928-bit masks. Next step:
+split each radius step by vertex ranges (`step` restricted to `lo ≤ v < lo + cnt`, with an append lemma, as `checkLocalRange`
+and `homOKRange` already do for the local and shift checks), so that each kernel check holds a fraction of the list.
+The `Graph`, `Levels`, `Local` and `Hom` parts are not affected by this. The generated `Stage*.lean` files and `Record.lean`
+in this folder are not verified and must not be cited.
+
 ### Status
 
 * (12,5) 9,840: **proved**. `BipartiteDD.Haar.D12D5GQ9Z6.nb_12_5_n9840 : ∃ G : SimpleGraph (Fin 9840), IsBipartiteDegDiam G 12 5`,
@@ -107,7 +125,8 @@ stage step split into vertex ranges before it can be checked in this sandbox.
 * Data: `Levels.lean` is 13 MB (four levels of 9,840 hex literals of 1,640 bits), against about 97 MB for the staged
   method on the same record.
 * (13,5) 11,700: **proved** (`BipartiteDD.Haar.D13D5W8Z10.nb_13_5_n11700`, same axioms).
-* Not done: (14,5), (15,5), (16,5), (18,5). Each needs its own generator run and builds. The same method
+* (14,5) 17,568: attempted; `Stage0` ran out of memory (see above). Not proved.
+* Not done: (15,5), (16,5), (18,5). Each needs its own generator run and builds. The same method
   applies to the fibre-transitive ones; (15,5) and (16,5) are route-chart lifts and may need a different
   numbering. The data is about n²/m bits per radius, so the larger records are heavier in data and in the
   stage memory (which grows with n).
