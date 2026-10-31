@@ -358,7 +358,7 @@ static void anneal(double seconds, uint64_t seed, double COOL, double REHEAT, in
     while (now() < deadline) {
         double tn = now();
         double T = TMAX * pow(0.5, (tn - lastheat) / COOL); if (T < TMIN) T = TMIN;
-        int slot = (int)(rnd64() & 1); int other = slot ? i : j;
+        int slot = (int)(rnd64() & 1); int other = slot ? j : i;   /* the DC that is kept (slot = the one replaced) */
         long long bestC = LLONG_MAX; int bestn = -1;
         for (int k = 0; k < K; k++) {
             int nw = rand_dc(); if (nw == other) continue;
@@ -388,6 +388,8 @@ static void anneal(double seconds, uint64_t seed, double COOL, double REHEAT, in
             fflush(fl); lastprint = now();
         }
     }
+    { long long chk_i = cost_pair(i, j, LLONG_MAX, NULL), chk_b = cost_pair(gi, gj, LLONG_MAX, NULL);
+      fprintf(fl, "CHECK current pair %d %d cost %lld (tracked %lld); best pair %d %d recomputed %lld (tracked %lld)\n", i, j, chk_i, Cc, gi, gj, chk_b, gbest); }
     fprintf(fl, "END steps %lld evals %lld best %lld units %.1f pair %d %d chains %d\n", steps, EVALS, gbest, gbest / 5.0, gi, gj, nchains);
     fclose(fl); fclose(fb);
     printf("anneal done: evals %lld best %lld\n", EVALS, gbest);
@@ -418,6 +420,12 @@ int main(int argc, char **argv) {
     }
     if (!strcmp(argv[1], "anneal")) {
         anneal(atof(argv[2]), (uint64_t)atoll(argv[3]), atof(argv[4]), atof(argv[5]), atoi(argv[6]), argv[7]);
+        return 0;
+    }
+    if (!strcmp(argv[1], "pairparts")) {   /* fastc pairparts i j: full cost and its three parts for double coset ids i, j */
+        int i = atoi(argv[2]), j = atoi(argv[3]);
+        long long c = cost_pair(i, j, LLONG_MAX, NULL);
+        printf("pair %d %d C %lld uncB_A %lld uncA_A %lld uncB_B %lld\n", i, j, c, LASTP[0], LASTP[1], LASTP[2]);
         return 0;
     }
     if (!strcmp(argv[1], "symtest")) {   /* B-root code path check: symmetric D must give nun_B(B-root) = uncA_A and nun_A(B-root) = uncB_A */

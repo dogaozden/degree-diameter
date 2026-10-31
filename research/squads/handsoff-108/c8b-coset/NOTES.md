@@ -38,3 +38,19 @@ Files: fastc.c (the code: setup, labels, BFS, validate, bench, anneal, symtest, 
 Running: `REHEATSTEPS=60 nice -n 10 fastc anneal 3000 108951 15 30 8 psl181_s108951` (COOL=15 s, REHEAT=30 s, K=8 candidates
 per step, Metropolis with TMAX 1.5 and TMIN 0.15 in units of 5 vertices, as haar_sym2's schedule; fresh random chain on stall).
 Energy = C/5 (units of H-orbits of size 5). Log: runs/psl181_s108951_chains.log (CHAIN lines = descent minima).
+
+
+### Run 1 (INVALID, bug): psl181_s108951, 22:18-23:08 UTC
+
+- Bug: in anneal() the candidate pair was evaluated as (replaced DC, new DC) instead of (kept DC, new DC), so the
+  tracked cost belonged to a different pair than the stored state. Found when recomputing the recorded best pair
+  (76843, 880): tracked C 39, true C 166 (`fastc pairparts 76843 880`). The chain minima of run 1 are NOT valid
+  and the scoreboard lines of 22:19 and 23:08 are wrong (a correction line is on the scoreboard).
+- Fixed in fastc.c (`other = slot ? j : i`); the anneal now ends with a CHECK line that recomputes the current and
+  the best pair.
+- The symmetric scan (symscan) used cost_pair directly, so its values are not affected (it was stopped after
+  a few minutes to free the core for the fixed anneal).
+
+### Run 2 (fixed): psl181_fix_s108952, 2400 s from 23:09 UTC
+
+Command: `REHEATSTEPS=60 nice -n 10 fastc_fix anneal 2400 108952 15 30 8 psl181_fix_s108952`. Results: see below.
