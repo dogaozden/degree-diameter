@@ -1,0 +1,4 @@
+Syntax warning: Unbound global variable in export_bc.g:37
+      for K in Filtered(NormalSubgroups(G), N -> Index(G, N) = 2) do
+                                                       ^
+done
