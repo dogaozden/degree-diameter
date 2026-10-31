@@ -1,4 +1,6 @@
 #!/bin/bash
-# killsweep.sh: stop every sweep worker (bash running src/sweep.sh) and every fsd process
-for pid in $(pgrep -x bash); do args=$(tr '\0' ' ' < /proc/$pid/cmdline 2>/dev/null); case "$args" in *"/swe""ep.sh "*) kill $pid && echo "killed worker $pid";; esac; done
-for pid in $(pgrep -x fsd); do kill $pid && echo "killed fsd $pid"; done
+# killsweep.sh: stop all drivers and searches. Scripts run through their shebang carry their own process names
+# (sweep.sh, run1.sh, probes.sh), so match names exactly (pkill -x); fsd runs under timeout/nice wrappers.
+pkill -x sweep.sh; pkill -x probes.sh; pkill -x run1.sh
+for t in $(ps -eo pid,args | awk '$2=="timeout" && /src\/fsd/ {print $1}'); do kill $t; done
+pkill -x fsd
