@@ -131,3 +131,48 @@ orbits, Heisenberg groups, k = 5 on groups with large cyclic factors, z-only pol
 a non-Haar graph with a big automorphism group and a cheap exact check, a different cost function or move set),
 write it down in NOTES.md with the reason it could work, build a fast exact scorer for it, and test it. If it dies
 within 40 minutes, write why and try a second idea. Seeds: 108901-108999.
+
+---
+
+## Relaunches (round 1b)
+
+### c3b-sl23x49: descents on SL(2,23) × Z49, the group c3 found (relaunch of slot c3, 21:56 UTC)
+
+c3-twist found (c3-twist/NOTES.md, read it first): tpgl is worse; csl q with n ≡ 2 mod 4 is just SL(2,q) × Z_{n/2};
+and `sl 23 49` (N = 595,056, 2N = 1,190,112, μ ≈ 70.5) has RANDORB min 47, p1 58, median 132, i.e. as good as
+psl 23 97 (min 36, median 135) although its μ is 11 % larger. Only 6 F15W3 descents were run (minima 18-27).
+Job: (1) run F15W3 descents on `sl 23 49` (one process, nice -n 10) for at least 60 minutes and compare the chain-minimum
+distribution with psl 23 97 (median 18-21, 1 in 15 ≤ 9; c1-grind's g1.log is a live reference); (2) try ORBW=2 and
+ORBW=4 for 20 minutes each; (3) RANDORB=1000 on other SL(2,q) × Z_n in the window that c4 is not covering
+(check c4-groups/NOTES.md first; e.g. sl 13 271, sl 19 ... with every prime of n ≡ 1 mod 3). Report each group's
+numbers in NOTES.md and a scoreboard line per new best. Seeds: 108451-108499.
+
+### c8b-coset: anneal bipartite coset graphs over PSL(2,181) with stabilizer C5 (relaunch of slot c8, 22:06 UTC)
+
+c8-wild (read c8-wild/NOTES.md and its coset.c / coset2.c first) built bipartite coset graphs X(G, H, HgH) with
+G = PSL(2,181), |H| = 5, N = |G|/5 = 592,956 per side (2N = 1,185,912 > 1,176,480), degree 10 from two double
+cosets of size 5 (the "h = 5, two double cosets" family, about 7e9 members). Uncovered vertices from a root come in
+H-orbits of size 5, like k = 5 orbits, without a big cyclic factor. 60 random members: min 57, median 238 (about 11-48
+units of 5; Haar k = 3 random sets on psl 23 97: 12-45 units of 3). Its cost takes 0.9 s per BFS, too slow to search.
+Job: (1) make the exact cost at least 20× faster (ideas: bitset BFS over cosets of a cyclic subgroup like
+haar_sym2 does, precomputed neighbour tables as uint32 arrays, early exit when the cost exceeds the current best,
+BFS from the root to depth 7 only on the opposite side); check the fast cost against coset.c on 20 members; (2)
+anneal on the family (move = replace one of the two double-coset representatives; F15W3-style restarts) and compare
+the distribution of descent minima in units with Haar k = 3 descents (median 6-7 units, best 1 unit); (3) report.
+A cost-0 member is a 1,185,912-vertex graph of diameter 8: save its definition in records/ and say so on the
+scoreboard (CLAIM); the coordinator checks it with two independent BFS codes. Seeds: 108951-108999.
+
+### c5b-cosetscreen: which coset-graph family is best? (relaunch of slot c5, 22:17 UTC)
+
+Context: c8-wild/NOTES.md. Bipartite coset graphs X(G, H, D1 ∪ D2 ∪ ...) (vertices = left cosets of H on two
+sides, adjacency by double cosets D_i = H g_i H; degree = Σ |D_i|/|H|) have the group G acting on each side with
+stabilizer H, so a root's uncovered set is a union of H-orbits: with |H| = h it behaves like h-fold orbit symmetry
+(μ_A ≈ μ/h, μ = N·exp(−5,380,840/N), N = |G|/h ≥ 588,241). c8 measured PSL(2,181), h = 5, two double cosets of size 5:
+60 random members, min 57, median 238 (tax about 3.5× over μ). c8b-coset is building a fast evaluator and annealer
+for that family; do NOT duplicate it. Your job is the SCREEN, to give c8b better targets: list (G, H, double-coset
+type) with N in 588,241-610,000, e.g. PSL(2,181) h = 5 (N 592,956), PSL(2,193) h = 6 (C6 or S3, N 599,072),
+PSL(2,229) h = 10 (C10 or D5, N 600,438), PGL(2,181) h = 10 (N 592,956), SL(2,q)/PGL(2,q) options, h = 4, 8, 12
+(check orders yourself; a family needs at least about 10^8 members to be worth annealing). For each, sample 50-100
+random members with c8's code (copy it; about 1 s per member is fine for a screen) and record μ, μ/h, family size, min /
+median uncovered in units of h, and tax = median/μ. Also check connectedness (the D_i must generate G). Write a ranked
+table in NOTES.md and one scoreboard line per family (cost = best uncovered, plain units). Seeds: 108651-108699.

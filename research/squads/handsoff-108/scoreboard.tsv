@@ -1,1 +1,9 @@
 time_utc	worker	strategy	vertices_2N	cost	file	note
+2026-10-31T21:50:30Z	c1-grind	F15W3 psl 23 97 (g1, seed 108101)	1177968	15	research/squads/handsoff-108/c1-grind/g1.log	first result, chain min; ORBW=3 units
+2026-10-31T21:52:02Z	c3-twist	F15W3 descents on sl 23 x Z49 (= csl 23 98, n = 2 mod 4)	1190112	18	research/squads/handsoff-108/c3-twist/sl23_49.log	first chain min 18 (ORBW=3 units); RANDORB median 132 (psl 23 97: 136)
+2026-10-31T21:57:38Z	c3b-sl23x49	F15W3 descents on sl 23 x Z49 (seed 108451); first chain min	1190112	27	c3b-sl23x49/d1.log	first result; ORBW=3 units (energy)
+2026-10-31T22:01:23Z	c8-wild	coset graph PGL(2,181) H=D5 (h=10), one double coset	1185912	150	research/squads/handsoff-108/c8-wild/s181_D_40.tsv	plain units; first 40 random candidates; not a record
+2026-10-31T22:01:23Z	c8-wild	coset graph PSL(2,181) H=C5 (h=5), two double cosets (R=2), degree 10	1185912	57	research/squads/handsoff-108/c8-wild/psl181_h5R2_60.tsv	plain units (uncovered B vertices, one A root); best of 60 random; not a record
+2026-10-31T22:09	c6-hexagon	annealed Z22 lift of H(3)+2 matchings (Delta=6, D=8, not the Delta=10 cell)	16016	0	research/squads/handsoff-108/c6-hexagon/runs/q3_cyc22_a.sol	cost 0 = diameter 8; checked by lift3 full check; plain units
+2026-10-31T22:11Z	c5-selfdual	iota-pairing psl23 x Z97 inner beta, RANDORB	1177968	125257	research/squads/handsoff-108/c5-selfdual/rand_psl2397_twist_3000.out	plain uncovered, min of 3000 (median 141318); dead, Z-tax
+2026-10-31T22:11Z	c5-selfdual	iota-pairing prod psl5 x psl27 beta inverting alpha, RANDORB	1179360	113	research/squads/handsoff-108/c5-selfdual/rand_prod_inv_3000.out	plain uncovered, min of 3000 (median 1226); best of c5, far from 0

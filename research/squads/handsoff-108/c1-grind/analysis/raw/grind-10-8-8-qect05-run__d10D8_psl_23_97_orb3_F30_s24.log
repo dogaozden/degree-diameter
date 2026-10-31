@@ -1,0 +1,51 @@
+group psl 23 x Z_97, N=588984, identity 24541, H order 23, rows 25608, threads 1, setup 0.03s
+wide rows: HW order 194, rows 3036, setup 0.04s
+alpha: conj by mat(1,3,15,0) (index 337), z -> 35 z on Z_97
+ORBIT k=3 m=3 f=1: |Fix(alpha)| = 11 (+e); mu = 63.46, mu/k = 21.15, fixed-point misses ~ 0.57
+start cost=201
+t=30 steps=7891 evals=63129 cost=15 best=15 T=0.75
+t=60 steps=15102 evals=120817 cost=18 best=15 T=0.37
+CHAIN 1 min 15 secs 65 evals 131329
+chain 2: fresh start (global best 15)
+t=90 steps=22493 evals=179945 cost=22 best=15 T=0.85
+t=120 steps=30735 evals=245881 cost=22 best=15 T=0.42
+CHAIN 2 min 21 secs 66 evals 139312
+chain 3: fresh start (global best 15)
+t=150 steps=38163 evals=305305 cost=10 best=10 T=0.98
+t=180 steps=45697 evals=365577 cost=10 best=10 T=0.49
+CHAIN 3 min 10 secs 55 evals 108488
+chain 4: fresh start (global best 10)
+t=210 steps=53505 evals=428041 cost=33 best=10 T=0.87
+CHAIN 4 min 15 secs 51 evals 102280
+chain 5: fresh start (global best 10)
+t=240 steps=60813 evals=486505 cost=33 best=10 T=1.41
+t=270 steps=68861 evals=550889 cost=18 best=10 T=0.70
+CHAIN 5 min 18 secs 62 evals 127352
+chain 6: fresh start (global best 10)
+t=300 steps=76179 evals=609433 cost=45 best=10 T=1.49
+t=330 steps=83790 evals=670321 cost=18 best=10 T=0.74
+t=360 steps=91158 evals=729265 cost=18 best=10 T=0.37
+CHAIN 6 min 18 secs 71 evals 143312
+chain 7: fresh start (global best 10)
+t=390 steps=98845 evals=790761 cost=27 best=10 T=0.97
+t=420 steps=106686 evals=853489 cost=21 best=10 T=0.48
+CHAIN 7 min 21 secs 54 evals 113336
+chain 8: fresh start (global best 10)
+t=450 steps=115110 evals=920881 cost=25 best=10 T=0.84
+t=480 steps=122756 evals=982049 cost=18 best=10 T=0.42
+t=510 steps=130928 evals=1047425 cost=18 best=10 T=0.21
+CHAIN 8 min 18 secs 89 evals 190792
+chain 9: fresh start (global best 10)
+t=540 steps=138602 evals=1108817 cost=19 best=10 T=0.82
+t=570 steps=144737 evals=1157897 cost=19 best=10 T=0.41
+CHAIN 9 min 19 secs 68 evals 123672
+chain 10: fresh start (global best 10)
+t=600 steps=151425 evals=1211401 cost=18 best=10 T=0.99
+t=630 steps=157491 evals=1259929 cost=15 best=10 T=0.49
+t=660 steps=163596 evals=1308769 cost=15 best=10 T=0.25
+CHAIN 10 min 15 secs 86 evals 141712
+chain 11: fresh start (global best 10)
+t=690 steps=169647 evals=1357177 cost=34 best=10 T=0.91
+t=720 steps=175667 evals=1405337 cost=21 best=10 T=0.45
+t=750 steps=181834 evals=1454673 cost=18 best=10 T=0.23
+t=780 steps=187570 evals=1500561 cost=18 best=10 T=0.15

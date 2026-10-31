@@ -1,0 +1,286 @@
+group prod psl 7 sl 8 poly x^3+x+1 x Z_7, N=592704, identity 74480, H order 63, rows 9408, threads 1, setup 0.02s
+wide rows: HW order 252, rows 2352, setup 0.03s
+alpha: conj by prod[mat(3,3,5,3);mat(6,4,6,7)] (index 73494), z -> 2 z on Z_7
+ORBIT k=3 m=3 f=1: |Fix(alpha)| = 26 (+e); mu = 67.63, mu/k = 22.54, fixed-point misses ~ 1.31
+ORBW=3: an uncovered fixed element weighs 3; start energy 93
+start cost=89
+t=30 steps=7115 evals=56921 cost=22 best=24 T=0.37 energy=24 bestE=24
+CHAIN 1 min 24 secs 40 evals 75313 S 74480 423156 192610 156327 115035 543425 441170 196666 198655 500938
+chain 2: fresh start (global best 24)
+t=60 steps=13988 evals=111905 cost=36 best=24 T=0.60 energy=36 bestE=24
+t=90 steps=20891 evals=167129 cost=19 best=19 T=0.15 energy=21 bestE=21
+CHAIN 2 min 21 secs 51 evals 93784 S 74480 548196 238157 70048 323264 521907 483884 154670 541054 123682
+chain 3: fresh start (global best 19)
+t=120 steps=27869 evals=222953 cost=24 best=18 T=0.39 energy=24 bestE=18
+CHAIN 3 min 18 secs 45 evals 83720 S 74480 323566 520208 483762 424492 470473 235171 582484 329532 318115
+chain 4: fresh start (global best 18)
+t=150 steps=34556 evals=276449 cost=21 best=18 T=0.80 energy=21 bestE=18
+CHAIN 4 min 21 secs 38 evals 67744 S 74480 377145 365811 455570 388746 444593 23048 485595 321520 520750
+chain 5: fresh start (global best 18)
+t=180 steps=41414 evals=331313 cost=40 best=18 T=1.15 energy=42 bestE=18
+t=210 steps=48296 evals=386369 cost=27 best=18 T=0.29 energy=27 bestE=18
+CHAIN 5 min 21 secs 48 evals 88592 S 74480 178397 258122 136844 3354 517330 522785 235660 423790 471162
+chain 6: fresh start (global best 18)
+t=240 steps=55050 evals=440401 cost=21 best=18 T=0.67 energy=21 bestE=18
+CHAIN 6 min 21 secs 45 evals 82384 S 74480 479032 564370 26604 365788 455419 374050 386122 44881 224953
+chain 7: fresh start (global best 18)
+t=270 steps=62045 evals=496361 cost=31 best=18 T=1.34 energy=33 bestE=18
+t=300 steps=68997 evals=551977 cost=19 best=18 T=0.33 energy=21 bestE=18
+t=330 steps=75979 evals=607833 cost=16 best=18 T=0.15 energy=18 bestE=18
+CHAIN 7 min 18 secs 89 evals 164552 S 74480 417499 382182 566173 407134 252854 296800 359731 530140 83031
+chain 8: fresh start (global best 18)
+t=360 steps=82821 evals=662569 cost=30 best=18 T=1.28 energy=30 bestE=18
+t=390 steps=89827 evals=718617 cost=18 best=18 T=0.32 energy=18 bestE=18
+CHAIN 8 min 18 secs 41 evals 75528 S 74480 238417 70218 548543 539736 283229 64705 157471 421706 192867
+chain 9: fresh start (global best 18)
+t=420 steps=97006 evals=776049 cost=18 best=18 T=0.52 energy=18 bestE=18
+CHAIN 9 min 18 secs 34 evals 65864 S 74480 464561 150337 292519 547134 238959 67102 244922 220848 209548
+chain 10: fresh start (global best 18)
+t=450 steps=104023 evals=832185 cost=30 best=18 T=0.63 energy=30 bestE=18
+t=480 steps=111186 evals=889489 cost=19 best=18 T=0.16 energy=21 bestE=18
+t=510 steps=118340 evals=946721 cost=18 best=18 T=0.15 energy=18 bestE=18
+CHAIN 10 min 18 secs 85 evals 161696 S 74480 328133 318299 583489 591633 256669 438697 264311 171517 214703
+chain 11: fresh start (global best 18)
+t=540 steps=125359 evals=1002873 cost=19 best=18 T=0.51 energy=21 bestE=18
+CHAIN 11 min 21 secs 38 evals 71488 S 74480 591895 254792 438128 486078 323242 519476 68196 547677 239737
+chain 12: fresh start (global best 18)
+t=570 steps=132477 evals=1059817 cost=24 best=18 T=0.74 energy=24 bestE=18
+t=600 steps=139687 evals=1117497 cost=18 best=18 T=0.18 energy=18 bestE=18
+CHAIN 12 min 18 secs 62 evals 117984 S 74480 252141 297733 408937 538975 283016 64160 192645 157489 420307
+chain 13: fresh start (global best 18)
+t=630 steps=146625 evals=1173001 cost=16 best=18 T=0.81 energy=18 bestE=18
+CHAIN 13 min 18 secs 41 evals 76328 S 74480 552584 144411 78164 334269 413577 459325 314703 453125 106717
+chain 14: fresh start (global best 18)
+t=660 steps=153586 evals=1228689 cost=25 best=18 T=1.37 energy=27 bestE=18
+t=690 steps=160320 evals=1282561 cost=21 best=18 T=0.34 energy=21 bestE=18
+CHAIN 14 min 21 secs 45 evals 81032 S 74480 319317 583334 329874 314697 454086 105972 139873 127538 104863
+chain 15: fresh start (global best 18)
+t=720 steps=167279 evals=1338233 cost=22 best=18 T=0.69 energy=24 bestE=18
+t=750 steps=174508 evals=1396065 cost=19 best=18 T=0.17 energy=21 bestE=18
+CHAIN 15 min 21 secs 49 evals 93312 S 74480 387587 44402 224184 536682 284758 65096 264626 451181 429456
+chain 16: fresh start (global best 18)
+t=780 steps=181499 evals=1451993 cost=24 best=18 T=0.41 energy=24 bestE=18
+CHAIN 16 min 24 secs 51 evals 95496 S 74480 100799 32926 309998 127966 102422 140738 94488 508547 337541
+chain 17: fresh start (global best 18)
+t=810 steps=188616 evals=1508929 cost=36 best=18 T=1.07 energy=36 bestE=18
+CHAIN 17 min 24 secs 32 evals 60536 S 74480 352558 431822 46016 287755 372335 271134 160078 367007 507151
+chain 18: fresh start (global best 18)
+t=840 steps=195588 evals=1564705 cost=39 best=18 T=1.19 energy=39 bestE=18
+t=870 steps=202838 evals=1622705 cost=21 best=18 T=0.30 energy=21 bestE=18
+t=900 steps=209841 evals=1678729 cost=18 best=18 T=0.15 energy=18 bestE=18
+CHAIN 18 min 18 secs 65 evals 123552 S 74480 265679 451152 427459 344487 28923 434467 350503 432878 48520
+chain 19: fresh start (global best 18)
+t=930 steps=216891 evals=1735129 cost=18 best=18 T=0.38 energy=18 bestE=18
+CHAIN 19 min 18 secs 58 evals 110912 S 74480 142960 80603 552891 403302 176023 578454 102728 138529 129295
+chain 20: fresh start (global best 18)
+t=960 steps=224101 evals=1792809 cost=34 best=18 T=1.39 energy=36 bestE=18
+t=990 steps=231069 evals=1848553 cost=24 best=18 T=0.35 energy=24 bestE=18
+CHAIN 20 min 24 secs 33 evals 61440 S 74480 523599 1482 517541 414507 460107 334398 44204 223676 387831
+chain 21: fresh start (global best 18)
+t=1020 steps=238103 evals=1904825 cost=24 best=18 T=0.40 energy=24 bestE=18
+CHAIN 21 min 21 secs 30 evals 56472 S 74480 13379 166051 41630 7775 294108 86694 497463 195176 197922
+chain 22: fresh start (global best 18)
+t=1050 steps=245143 evals=1961145 cost=24 best=18 T=0.40 energy=24 bestE=18
+CHAIN 22 min 24 secs 35 evals 65024 S 74480 50536 148168 202431 322622 521162 486027 439336 590587 257293
+chain 23: fresh start (global best 18)
+t=1080 steps=252338 evals=2018705 cost=22 best=18 T=0.50 energy=24 bestE=18
+CHAIN 23 min 24 secs 39 evals 74064 S 74480 256329 437954 591666 205676 488464 98652 571314 303769 5972
+chain 24: fresh start (global best 18)
+t=1110 steps=259659 evals=2077273 cost=36 best=18 T=0.74 energy=36 bestE=18
+t=1140 steps=266795 evals=2134361 cost=13 best=13 T=0.18 energy=15 bestE=15
+CHAIN 24 min 15 secs 56 evals 108952 S 74480 333826 413636 461382 562733 27712 477636 507020 160355 367337
+chain 25: fresh start (global best 13)
+t=1170 steps=274076 evals=2192609 cost=21 best=13 T=0.62 energy=21 bestE=15
+CHAIN 25 min 21 secs 31 evals 60176 S 74480 340702 466868 560489 255665 438908 592027 320965 582934 330614
+chain 26: fresh start (global best 13)
+t=1200 steps=281257 evals=2250057 cost=24 best=13 T=0.66 energy=24 bestE=15
+CHAIN 26 min 21 secs 32 evals 60568 S 74480 291184 465573 149120 467501 559998 341848 40056 12905 166944
+chain 27: fresh start (global best 13)
+t=1230 steps=288372 evals=2306977 cost=24 best=13 T=0.71 energy=24 bestE=15
+t=1260 steps=295509 evals=2364073 cost=18 best=13 T=0.18 energy=18 bestE=15
+CHAIN 27 min 18 secs 68 evals 129056 S 74480 243393 588279 378586 141597 80103 552682 278889 360399 580917
+chain 28: fresh start (global best 13)
+t=1290 steps=302781 evals=2422249 cost=33 best=13 T=1.01 energy=33 bestE=15
+CHAIN 28 min 21 secs 34 evals 64552 S 74480 287475 372482 271316 326578 189952 535395 89232 402163 18261
+chain 29: fresh start (global best 13)
+t=1320 steps=309946 evals=2479569 cost=30 best=13 T=1.20 energy=30 bestE=15
+t=1350 steps=317287 evals=2538297 cost=21 best=13 T=0.30 energy=21 bestE=15
+CHAIN 29 min 21 secs 54 evals 105136 S 74480 560024 341823 467472 469240 233986 423711 210586 245374 221605
+chain 30: fresh start (global best 13)
+t=1380 steps=324439 evals=2595513 cost=25 best=13 T=0.92 energy=27 bestE=15
+t=1410 steps=331625 evals=2653001 cost=16 best=13 T=0.23 energy=18 bestE=15
+CHAIN 30 min 18 secs 45 evals 84920 S 74480 279232 362128 579286 370760 269475 288686 123831 151720 540922
+chain 31: fresh start (global best 13)
+t=1440 steps=338710 evals=2709681 cost=22 best=13 T=0.45 energy=24 bestE=15
+t=1470 steps=345730 evals=2765841 cost=18 best=13 T=0.15 energy=18 bestE=15
+CHAIN 31 min 18 secs 58 evals 109712 S 74480 518729 483506 323187 411323 504230 62284 517791 523063 3476
+chain 32: fresh start (global best 13)
+t=1500 steps=352875 evals=2823001 cost=16 best=13 T=0.42 energy=18 bestE=15
+CHAIN 32 min 18 secs 44 evals 83912 S 74480 341457 467426 558889 388623 446853 21345 54771 72323 248547
+chain 33: fresh start (global best 13)
+t=1530 steps=359951 evals=2879609 cost=28 best=13 T=0.80 energy=30 bestE=15
+CHAIN 33 min 21 secs 32 evals 59712 S 74480 23642 390991 445177 226904 398291 133927 453208 107163 314650
+chain 34: fresh start (global best 13)
+t=1560 steps=367095 evals=2936761 cost=33 best=13 T=0.86 energy=33 bestE=15
+t=1590 steps=374230 evals=2993841 cost=24 best=13 T=0.21 energy=24 bestE=15
+t=1620 steps=381243 evals=3049945 cost=16 best=13 T=0.15 energy=18 bestE=15
+t=1650 steps=388236 evals=3105889 cost=15 best=13 T=0.15 energy=15 bestE=15
+CHAIN 34 min 15 secs 117 evals 220528 S 74480 585967 378841 242818 340458 467493 558638 31515 434492 344432
+chain 35: fresh start (global best 13)
+t=1680 steps=395234 evals=3161873 cost=30 best=13 T=0.75 energy=30 bestE=15
+t=1710 steps=402431 evals=3219449 cost=15 best=13 T=0.19 energy=15 bestE=15
+CHAIN 35 min 15 secs 60 evals 113208 S 74480 245592 221957 210541 245843 219015 210383 80513 552333 142831
+chain 36: fresh start (global best 13)
+t=1740 steps=409385 evals=3275081 cost=30 best=13 T=0.74 energy=30 bestE=15
+t=1770 steps=416352 evals=3330817 cost=21 best=13 T=0.18 energy=21 bestE=15
+CHAIN 36 min 21 secs 48 evals 88960 S 74480 110275 490631 57710 92324 508398 336592 318050 584671 330385
+chain 37: fresh start (global best 13)
+t=1800 steps=423243 evals=3385945 cost=18 best=13 T=0.43 energy=18 bestE=15
+CHAIN 37 min 18 secs 45 evals 82192 S 74480 545081 442795 114113 245577 220765 209445 325284 188526 533607
+chain 38: fresh start (global best 13)
+t=1830 steps=430136 evals=3441089 cost=26 best=13 T=0.85 energy=30 bestE=15
+t=1860 steps=436990 evals=3495921 cost=24 best=13 T=0.21 energy=24 bestE=15
+CHAIN 38 min 21 secs 45 evals 81904 S 74480 554391 496765 348340 273757 120213 217039 435946 345184 30891
+chain 39: fresh start (global best 13)
+t=1890 steps=444052 evals=3552417 cost=16 best=13 T=0.42 energy=18 bestE=15
+CHAIN 39 min 18 secs 38 evals 70424 S 74480 483774 324248 519619 197923 497465 195180 404531 175940 577189
+chain 40: fresh start (global best 13)
+t=1920 steps=450705 evals=3605641 cost=22 best=13 T=0.59 energy=24 bestE=15
+CHAIN 40 min 24 secs 42 evals 74544 S 74480 310779 276528 475664 497541 196690 198885 224092 386654 42599
+chain 41: fresh start (global best 13)
+t=1950 steps=457622 evals=3660977 cost=33 best=13 T=1.01 energy=33 bestE=15
+t=1980 steps=464382 evals=3715057 cost=19 best=13 T=0.25 energy=21 bestE=15
+CHAIN 41 min 21 secs 41 evals 74456 S 74480 322568 519290 483340 284688 66811 536619 229496 183997 302208
+chain 42: fresh start (global best 13)
+t=2010 steps=471124 evals=3768993 cost=20 best=13 T=0.43 energy=24 bestE=15
+CHAIN 42 min 24 secs 39 evals 70928 S 74480 228456 397468 131840 420405 191595 158329 535533 327743 189671
+chain 43: fresh start (global best 13)
+t=2040 steps=478037 evals=3824297 cost=15 best=13 T=0.64 energy=15 bestE=15
+CHAIN 43 min 15 secs 48 evals 90984 S 74480 381808 566531 416360 183957 300728 231520 489502 96059 205306
+chain 44: fresh start (global best 13)
+t=2070 steps=485253 evals=3882025 cost=24 best=13 T=1.49 energy=30 bestE=15
+t=2100 steps=492214 evals=3937713 cost=30 best=13 T=0.37 energy=30 bestE=15
+CHAIN 44 min 24 secs 38 evals 71000 S 74480 402286 175524 576385 101173 33912 310157 262740 170895 213501
+chain 45: fresh start (global best 13)
+t=2130 steps=499254 evals=3994033 cost=25 best=13 T=0.55 energy=27 bestE=15
+CHAIN 45 min 21 secs 31 evals 59008 S 74480 93774 509289 338668 547936 239695 69127 104230 140623 129073
+chain 46: fresh start (global best 13)
+t=2160 steps=506361 evals=4050889 cost=10 best=10 T=0.58 energy=12 bestE=12
+CHAIN 46 min 12 secs 45 evals 85472 S 74480 359991 580332 278902 587527 378167 239972 42419 224670 384856
+chain 47: fresh start (global best 10)
+t=2190 steps=513488 evals=4107905 cost=28 best=10 T=1.15 energy=30 bestE=12
+t=2220 steps=520588 evals=4164705 cost=24 best=10 T=0.29 energy=24 bestE=12
+t=2250 steps=527789 evals=4222313 cost=19 best=10 T=0.15 energy=21 bestE=12
+CHAIN 47 min 21 secs 75 evals 143712 S 74480 489238 96812 206973 369330 507128 160795 138213 128040 105811
+chain 48: fresh start (global best 10)
+t=2280 steps=534860 evals=4278881 cost=21 best=10 T=0.58 energy=21 bestE=12
+CHAIN 48 min 21 secs 45 evals 83224 S 74480 548826 238269 70041 109723 490409 57588 235118 424057 469743
+chain 49: fresh start (global best 10)
+t=2310 steps=541757 evals=4334057 cost=24 best=10 T=1.18 energy=24 bestE=12
+t=2340 steps=548839 evals=4390713 cost=13 best=10 T=0.29 energy=15 bestE=12
+CHAIN 49 min 15 secs 44 evals 83568 S 74480 38195 180249 15461 80210 550859 143964 419133 382146 567060
+chain 50: fresh start (global best 10)
+t=2370 steps=556189 evals=4449513 cost=21 best=10 T=0.55 energy=21 bestE=12
+CHAIN 50 min 21 secs 40 evals 76936 S 74480 499309 194955 198306 379970 242815 586297 210818 245768 220041
+chain 51: fresh start (global best 10)
+t=2400 steps=563272 evals=4506177 cost=27 best=10 T=0.88 energy=27 bestE=12
+t=2430 steps=570531 evals=4564249 cost=21 best=10 T=0.22 energy=21 bestE=12
+CHAIN 51 min 18 secs 46 evals 88056 S 74480 363071 580248 280092 110078 491938 57328 192549 158417 421533
+chain 52: fresh start (global best 10)
+t=2460 steps=577648 evals=4621185 cost=16 best=10 T=0.46 energy=18 bestE=12
+CHAIN 52 min 18 secs 37 evals 69496 S 74480 55652 70648 248571 60232 409872 501804 441426 115414 544904
+chain 53: fresh start (global best 10)
+t=2490 steps=584798 evals=4678385 cost=36 best=10 T=0.62 energy=36 bestE=12
+CHAIN 53 min 21 secs 37 evals 70272 S 74480 535125 325625 189733 103759 139506 129933 35366 181542 16843
+chain 54: fresh start (global best 10)
+t=2520 steps=591852 evals=4734817 cost=36 best=10 T=0.87 energy=42 bestE=12
+t=2550 steps=598999 evals=4791993 cost=21 best=10 T=0.22 energy=21 bestE=12
+CHAIN 54 min 21 secs 56 evals 105552 S 74480 263960 170871 211990 246452 221976 210327 326589 188154 535789
+chain 55: fresh start (global best 10)
+t=2580 steps=605822 evals=4846577 cost=28 best=10 T=0.73 energy=30 bestE=12
+t=2610 steps=613071 evals=4904569 cost=12 best=10 T=0.18 energy=12 bestE=12
+CHAIN 55 min 12 secs 73 evals 139808 S 74480 369693 506503 159335 127172 105104 138465 55617 73616 248914
+chain 56: fresh start (global best 10)
+t=2640 steps=620316 evals=4962529 cost=20 best=10 T=1.34 energy=24 bestE=12
+t=2670 steps=627471 evals=5019769 cost=21 best=10 T=0.33 energy=21 bestE=12
+CHAIN 56 min 21 secs 42 evals 79088 S 74480 440969 589793 255047 41938 12357 168417 405750 251269 297718
+chain 57: fresh start (global best 10)
+t=2700 steps=634408 evals=5075265 cost=18 best=10 T=0.57 energy=18 bestE=12
+CHAIN 57 min 18 secs 35 evals 65376 S 74480 107941 314253 453415 223492 387015 44994 171203 212591 261809
+chain 58: fresh start (global best 10)
+t=2730 steps=641554 evals=5132433 cost=31 best=10 T=0.73 energy=33 bestE=12
+t=2760 steps=648792 evals=5190337 cost=19 best=10 T=0.18 energy=21 bestE=12
+t=2790 steps=655948 evals=5247585 cost=15 best=10 T=0.15 energy=15 bestE=12
+CHAIN 58 min 15 secs 77 evals 148672 S 74480 89525 399326 19265 336847 92918 509187 104990 140974 128284
+chain 59: fresh start (global best 10)
+t=2820 steps=662844 evals=5302753 cost=21 best=10 T=0.41 energy=21 bestE=12
+CHAIN 59 min 21 secs 58 evals 108456 S 74480 564572 418952 382344 24720 479408 563519 87247 10218 294626
+chain 60: fresh start (global best 10)
+t=2850 steps=669981 evals=5359849 cost=38 best=10 T=1.48 energy=42 bestE=12
+t=2880 steps=677443 evals=5419545 cost=21 best=10 T=0.37 energy=21 bestE=12
+CHAIN 60 min 18 secs 43 evals 84848 S 74480 564051 25266 477364 237313 69319 547256 227279 397249 131934
+chain 61: fresh start (global best 10)
+t=2910 steps=684884 evals=5479073 cost=21 best=10 T=0.67 energy=21 bestE=12
+CHAIN 61 min 18 secs 39 evals 78400 S 74480 140395 130178 104998 339674 468641 560514 452132 108056 317283
+chain 62: fresh start (global best 10)
+t=2940 steps=692319 evals=5538553 cost=21 best=10 T=1.02 energy=21 bestE=12
+CHAIN 62 min 21 secs 34 evals 64600 S 74480 330567 320178 583348 207443 487007 96445 533753 326528 189964
+chain 63: fresh start (global best 10)
+t=2970 steps=699562 evals=5596497 cost=27 best=10 T=1.20 energy=27 bestE=12
+t=3000 steps=706771 evals=5654169 cost=21 best=10 T=0.30 energy=21 bestE=12
+CHAIN 63 min 21 secs 47 evals 90928 S 74480 576388 402852 174500 147160 204545 50207 541999 126776 152255
+chain 64: fresh start (global best 10)
+t=3030 steps=713970 evals=5711761 cost=24 best=10 T=0.67 energy=24 bestE=12
+CHAIN 64 min 24 secs 33 evals 62456 S 74480 469594 234281 423958 241240 586794 381013 591077 254388 440498
+chain 65: fresh start (global best 10)
+t=3060 steps=721097 evals=5768777 cost=21 best=10 T=0.77 energy=21 bestE=12
+CHAIN 65 min 21 secs 43 evals 81384 S 74480 228046 395605 132664 209566 245798 219184 158332 420404 191593
+chain 66: fresh start (global best 10)
+t=3090 steps=728207 evals=5825657 cost=40 best=10 T=1.38 energy=42 bestE=12
+t=3120 steps=735210 evals=5881681 cost=27 best=10 T=0.34 energy=27 bestE=12
+CHAIN 66 min 24 secs 49 evals 91488 S 74480 418144 384011 567003 60725 409367 503237 294218 86158 9167
+chain 67: fresh start (global best 10)
+t=3150 steps=742308 evals=5938465 cost=22 best=10 T=0.81 energy=24 bestE=12
+t=3180 steps=749303 evals=5994425 cost=19 best=10 T=0.20 energy=21 bestE=12
+CHAIN 67 min 21 secs 47 evals 87408 S 74480 252136 297793 408574 354060 480711 571774 379304 243331 586608
+chain 68: fresh start (global best 10)
+t=3210 steps=756395 evals=6051161 cost=24 best=10 T=0.44 energy=24 bestE=12
+t=3240 steps=763272 evals=6106177 cost=16 best=10 T=0.15 energy=18 bestE=12
+CHAIN 68 min 18 secs 80 evals 149744 S 74480 125080 155100 540836 71924 248078 56353 149082 289540 463433
+chain 69: fresh start (global best 10)
+t=3270 steps=770419 evals=6163353 cost=18 best=10 T=1.10 energy=18 bestE=12
+CHAIN 69 min 18 secs 31 evals 56688 S 74480 94211 508518 335922 121274 215304 274305 151787 542190 123784
+chain 70: fresh start (global best 10)
+t=3300 steps=777211 evals=6217689 cost=25 best=10 T=1.15 energy=27 bestE=12
+t=3330 steps=784195 evals=6273561 cost=24 best=10 T=0.29 energy=24 bestE=12
+t=3360 steps=791392 evals=6331137 cost=15 best=10 T=0.15 energy=15 bestE=12
+CHAIN 70 min 15 secs 77 evals 144752 S 74480 64226 538372 285233 197943 500473 195939 163304 117056 393362
+chain 71: fresh start (global best 10)
+t=3390 steps=798379 evals=6387033 cost=30 best=10 T=0.63 energy=30 bestE=12
+CHAIN 71 min 24 secs 37 evals 67720 S 74480 160901 367029 504675 482037 573950 353078 239709 68609 547054
+chain 72: fresh start (global best 10)
+t=3420 steps=805425 evals=6443401 cost=42 best=10 T=0.85 energy=42 bestE=12
+CHAIN 72 min 24 secs 31 evals 58360 S 74480 498952 197125 199132 103247 139875 127423 422668 192481 158561
+chain 73: fresh start (global best 10)
+t=3450 steps=812492 evals=6499937 cost=25 best=10 T=0.89 energy=27 bestE=12
+CHAIN 73 min 21 secs 35 evals 67032 S 74480 23351 389618 447569 123868 155147 541994 299022 407728 253461
+chain 74: fresh start (global best 10)
+t=3480 steps=819618 evals=6556945 cost=31 best=10 T=1.13 energy=33 bestE=12
+t=3510 steps=826674 evals=6613393 cost=27 best=10 T=0.28 energy=27 bestE=12
+CHAIN 74 min 24 secs 43 evals 80304 S 74480 400579 20560 89644 508617 336456 93977 439304 591279 254281
+chain 75: fresh start (global best 10)
+t=3540 steps=833691 evals=6669529 cost=24 best=10 T=0.51 energy=24 bestE=12
+CHAIN 75 min 24 secs 39 evals 72760 S 74480 316594 454716 107617 521563 485324 323267 523287 3518 516419
+chain 76: fresh start (global best 10)
+t=3570 steps=840660 evals=6725281 cost=12 best=10 T=0.76 energy=12 bestE=12
+CHAIN 76 min 12 secs 36 evals 66160 S 74480 313121 276410 475211 205847 487189 98671 314535 453909 106017
+chain 77: fresh start (global best 10)
+t=3600 steps=847650 evals=6781201 cost=41 best=10 T=0.99 energy=45 bestE=12
+CHAIN 77 min 21 secs 30 evals 56232 S 74480 253427 298646 406528 144546 78581 552179 383832 564909 418240
+chain 78: fresh start (global best 10)
+t=3630 steps=854657 evals=6837257 cost=35 best=10 T=0.99 energy=39 bestE=12
+t=3660 steps=861723 evals=6893785 cost=15 best=10 T=0.25 energy=15 bestE=12
+t=3690 steps=868828 evals=6950625 cost=12 best=10 T=0.15 energy=12 bestE=12
+CHAIN 78 min 12 secs 88 evals 166456 S 74480 313501 277254 474673 344573 30460 435819 502806 62082 409512
+chain 79: fresh start (global best 10)
+t=3720 steps=875797 evals=7006377 cost=19 best=10 T=0.92 energy=21 bestE=12
