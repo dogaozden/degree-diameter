@@ -75,6 +75,12 @@ s_b^-1 s_a, s_a^-1 s_b s_c^-1 s_d with a != b, b != c, c != d; side B: e, s_a s_
    Squad card s384r1-c6 wrote an exact test for |Q| = 128, T = 3 (research/squads/s384r1/c6/qf128.c): 138 of the 150
    most frequent order-128 quotients pass, 128_2046 fails (16 groups); not used here (those groups are in the sweep).
 3. Abelian quotients do not help much: in C2^4 (T = 24) 89% of the image 6-tuples with distinct images pass.
+4. **Inverse pairs** (`src/invcoset.g`, `src/invcoset.py`; idea from squad card s384r3-c8). The side-A words come in
+   pairs (w, reversed inverse of w) with values x and x^-1, and no word except e is its own partner. In a coset yN with
+   y = y^-1 a pair covers at most one inverse class, so c(y) >= |N| + v_y, where v_y is the number of involutions in
+   the coset. Applied to Q = G/G'G^2 for all 18,327 groups with r2 <= 4 (`data/invcoset384.txt`,
+   `data/invcoset384_result.txt`), with every image tuple (no automorphism reduction, since v is not Aut(Q)-invariant):
+   it excludes none. The smallest margin is 2 (9,501 of the 12,030 groups with r2 = 4), so it is close but not binding.
 
 `data/excluded.txt` lists the 2,765 excluded ids with the reason.
 
