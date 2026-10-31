@@ -1,6 +1,8 @@
 # selfdual-d5: self-dual (bipartite Cayley) Haar graphs in other diameter-5 cells
 
-Job "selfdual-d5" (Opus cloud session, Oct 30-31 2026, 20:35-03:00 UTC). Method from `../d75-raise/README.md` (the
+(Master holds the records, tools and this README; the search logs under logs/ are on branch claude/selfdual-d5-haar-sweep-w8uhtf.)
+
+Job "selfdual-d5" (Opus cloud session, Oct 30-31 2026, 20:35-01:40 UTC). Method from `../d75-raise/README.md` (the
 (7,5) 1,312 record): if S is a union of orbits of psi(x) = c^-1 beta(x)^-1 for an index-2 extension G^ = G u G t of
 G (t^2 = c, t x t^-1 = beta(x)), then H(G,S) = Cay(G^, tS) is vertex-transitive and only X X = G (X = S^-1 S) has to
 be checked. New here: valency K as a parameter, non-split extensions (c != e, needed when K is even and T has no

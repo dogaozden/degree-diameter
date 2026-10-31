@@ -4,3 +4,34 @@ rebuilt on the Mac mini from the formula alone with the coordinator's own code (
 finder's records/d7D5_n1312_haar_c41c16.edges (sha256 95642aa9962145b817de0b66dacb7fa17e994e9e16c219db0ce22ab351653b73) rebuilt identically by records/build_metacyclic_haar.py
 apsp (research/lifts/coordinator_check/apsp.c, all pairs, no symmetry) on the finder's edge list -> RESULT VALID d=7 D=5 n=1312; at D = 4 -> RESULT INVALID
 records/build_d7D5_n1312_cayley.py (the same graph as a Cayley graph of a group of order 1,312) -> apsp RESULT VALID d=7 D=5 n=1312
+
+== (9,5) 2,928 — job selfdual-d5, branch claude/selfdual-d5-haar-sweep-w8uhtf (research/selfdual-d5/records/)
+rebuilt on the Mac mini from the formula alone with the coordinator's own code (G = C61 : C24, y x y^-1 = x^14, S = {(0,0), (19,0), (42,12), (59,4), (35,20), (54,7), (30,5), (57,14), (56,10)},
+(g,A) ~ (s g, B); BFS from every vertex): n = 2928, simple, 9-regular, bipartite, diameter 5
+apsp (research/lifts/coordinator_check/apsp.c, all pairs, no symmetry) on the finder's records/d9D5_n2928_haar_c61c24.edges
+(sha256 b018047dc73e01113857ca8eb258da2d6ae3f7e693dd64f08466dead75ecd233) -> RESULT VALID d=9 D=5 n=2928; at D = 4 -> RESULT INVALID
+
+== (9,5) 2,970 — job selfdual-d5, same branch (research/selfdual-d5/records/)
+rebuilt on the Mac mini from the formula alone with the coordinator's own code (G = Heis(3) x (C11 : C5), (a,b,c,i,j)(a',b',c',i',j') = (a+a', b+b', c+c'+ab', i+3^j i', j+j'),
+associativity spot-checked; S = {(0,0,0,0,0), (1,2,0,5,0), (0,0,1,2,0), (2,1,1,9,4), (2,1,1,3,1), (1,0,2,10,1), (2,0,2,4,4), (1,1,1,5,1), (0,1,2,6,4)}; BFS from every vertex):
+n = 2970, simple, 9-regular, bipartite, diameter 5
+apsp on the finder's records/d9D5_n2970_haar_heis3_f55.edges (sha256 d51d229ebb737ce955e642776d453413393bca46bea4549e53f3f631821b8827) -> RESULT VALID d=9 D=5 n=2970; at D = 4 -> RESULT INVALID
+
+== (3,11) 1,344 and (3,12) 2,368 (new cells beyond the table) — job own-small (Oct 26), branch claude/own-small-cells-dkwo42 (research/squads/own-small/records/)
+found by the coordinator's harvest on Oct 30 (they had not been recorded). Rebuilt on the Mac mini with the coordinator's own lift code from the
+metacyclic voltage files (records/d3D11_n1344_meta7_24.txt: Z7 x| Z24, b a b^-1 = a^5; records/d3D12_n2368_meta37_8.txt: Z37 x| Z8, b a b^-1 = a^6;
+BFS from every vertex): n = 1344, cubic, bipartite, diameter 11; n = 2368, cubic, bipartite, diameter 12
+apsp on the finder's four edge lists (meta and SmallGroup-lift versions of each): d3D11_n1344_* RESULT VALID d=3 D=11 (INVALID at D=10);
+d3D12_n2368_* RESULT VALID d=3 D=12 (INVALID at D=11)
+
+== (9,5) 3,000 — job selfdual-d5 (research/selfdual-d5/records/)
+rebuilt on the Mac mini from the formula with the coordinator's own code (G = F5^3 : (C3 : C4), product (v,i,j)(v',i',j') = (v + Rs^i Ru^j v', i + (-1)^j i', j + j'),
+relations Rs^3 = Ru^4 = I and Ru Rs Ru^-1 = Rs^-1 checked, associativity spot-checked; S as in the README; BFS from every vertex): n = 3000, simple, 9-regular,
+bipartite, diameter 5 when Rs, Ru are read row by row (as the finder's builder does). Read as columns (as the README first said) the graph has diameter 6;
+README and builder docstring corrected on master.
+apsp on the finder's records/d9D5_n3000_haar_c5cube_dic3.edges (sha256 afec2757d72b73a694fad479306c6f7f762e44a39851241afc204883348f43ca) -> RESULT VALID d=9 D=5 n=3000; at D = 4 -> RESULT INVALID
+
+== (9,5) 3,036 — job selfdual-d5 (research/selfdual-d5/records/)
+rebuilt on the Mac mini from the formula with the coordinator's own code (G = C69 : C22, y x y^-1 = x^8, S = {(0,0), (66,11), (56,11), (28,13), (22,9), (13,15), (64,7), (25,14), (8,8)};
+BFS from every vertex): n = 3036, simple, 9-regular, bipartite, diameter 5
+apsp on the finder's records/d9D5_n3036_haar_c69c22.edges (sha256 05305fe907f354997948eb0a8b98061dd5ecc1492c837716a531c03f99051ea9) -> RESULT VALID d=9 D=5 n=3036; at D = 4 -> RESULT INVALID

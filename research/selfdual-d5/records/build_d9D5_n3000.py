@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """The (9,5) graph on 3,000 vertices from its formula alone (no GAP): Haar graph H(G,S) of
 G = (C5 x C5 x C5) : (C3 : C4) = SmallGroup(1500,113), elements (a,b,c,i,j) = v s^i u^j with v = (a,b,c) in F5^3,
-s of order 3, u of order 4, u s u^-1 = s^-1, and s, u acting on F5^3 by the matrices (columns = images of the basis)
+s of order 3, u of order 4, u s u^-1 = s^-1, and s, u acting on F5^3 by the matrices (rows of the matrix M, v -> M v; corrected by the coordinator: the transposed reading gives diameter 6)
   Rs = [[1,0,0],[0,2,3],[0,1,2]],  Ru = [[3,0,0],[0,2,2],[0,1,3]]   (mod 5),
 so the product is (v, i, j)(v', i', j') = (v + Rs^i Ru^j v', i + (-1)^j i', j + j').
 S = {(0,0,0,0,0), (4,0,0,1,2), (0,2,3,1,2), (3,0,0,2,2), (2,0,1,2,2), (3,2,1,2,1), (4,3,1,1,3), (0,0,2,2,1),
