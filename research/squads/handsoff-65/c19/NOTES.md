@@ -16,3 +16,6 @@ Calibration (done 18:20):
 
 Tool note. The harness backgrounds any Bash call longer than 120 s unless timeout is passed; drive.sh was
 backgrounded once, then ran to its own budget (no second copy was started).
+
+Progress 18:46 UTC: 402:2/5 404:1/3 405:11/11 406:1/5 408:14/43 410:1/5 412:1/2 414:1/8 416:5/228 417:1/1 418:0/3 420:11/39 
+Per-group times 4-65 s so far (orders 402-420). Groups killed by timeout 300 would be resumed (none so far).

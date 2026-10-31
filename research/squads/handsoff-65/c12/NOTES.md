@@ -61,3 +61,27 @@ Goal: bipartite max degree 6, diameter 5, n > 684. Card: research/squads/handsof
   combos and both annealers; a 2-move exhaustive check does not break the floor.
 - Types with stabiliser orders 6 (1|6^6, 1|3,6^4, 1|2,6,6,6, 2,2|6^4, 2,2|2,6,6,6) and 3,3,3|3,3,3 are far worse
   (costs 300 to 2300), so the mcos family looks exhausted for c=1, |G| in 343..400 apart from 1|3,3,3 and 1|2,2.
+
+## Later (18:40-19:05)
+- K2 (exhaustive two-move polish, 518k pairs, ~60 s) on the cost-7 state of 1|3,3,3 366_2: no improvement.
+- 1|3,3,3 scan completed on order 360 (about 150 non-abelian groups, 6 s each): best 360_118 cost 44 (deep 80 s: 44),
+  360_119 95, 360_51 110. So order 360 is not competitive either.
+- Iterated tabu on 366_2 (combo 1,1,1) with STAG 300, KICK 8, TT 8, 120 s: cost 11, bad 915 (the cost is not the
+  same as the far-pair count: cost 11 and cost 7 graphs both have 915 far pairs; the far pairs come in whole G-orbits,
+  so the count takes a few discrete values).
+- Scanned 1|3,3,3 over all orders 345-399 that have tables (c12/groups12 for the odd orders; 363_2 and 399_4 deep: 10 and 18).
+
+## Final state (19:14 UTC)
+- Best for c12: n = 732, bad = 915 (SmallGroup(366,2), type 1|3,3,3, combo (0,1,1) or (1,1,1), mcos cost 7).
+  File: deep/t366_2_rc.edges (also deep/t366_2_011.edges). Scoreboard line at 18:20. Same as c5's best, no record.
+- Verified infeasible in the mcos model: 1|4,4,2 and 1|4,4,4,4 (degree 4 per B vertex, the program returns 1<<28).
+- Also run: 2,2|2,2 tabu on 348,350,364,366,370,372,374,376 (50 groups): best 348_5 21, 366_1 38.
+  1|2,2 tabu on 378 and 380: best 378_14 29. 1|2,2 on 348_5 K2 polish: no gain (cost 8, bad 957 at n=696).
+- Next ideas if continued: (1) a 2-step Cayley covering search for the A side of the 1|3,3,3 family (T^2 must cover
+  G; 366_2 floor = 2 difference classes); (2) combine the 348_5 (n=696) and 366_2 (n=732) structures in a
+  surgery run (c7/c13 territory); (3) tabu on the far-pair count directly (score65) instead of the mcos cost.
+- 19:20 deep tabu (20-40 s x 2-3 random combos) on the odd-order and 372/378 candidates for 1|3,3,3:
+  381_1 (n=762) cost 12, bad 1270 (deep/L_381_1.edges); 372_1 (n=744) cost 17, bad 2046; 378_17 (n=756) cost 26, bad 3402;
+  372_2 cost 24; 399_4 cost 18, bad 2527; 363_2 (n=726) cost 10, bad 1089.
+- 2,2|3,3,3 and 2,3,6|2,3,6 tabu: 366_2 856 / none, 372_11 320 / none, 378_17 93 / 130. Not competitive.
+- 1|2,2 348_5 (n=696) seeds 71-75 (20 s): 13,16,16,13,13; the cost-8 run is the only 8 in ~15 tries.

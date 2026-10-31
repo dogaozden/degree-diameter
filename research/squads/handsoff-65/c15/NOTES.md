@@ -29,3 +29,4 @@ then rerun the best ones with long anneals.
 - Note: groups with many diagonal classes (736 family) take ~5 pairs x SA; equal costs across pairs (728,38: four
   pairs all 302) suggest automorphic duplicates; not deduplicated.
 - 18:42 deep15.sh 750,6 pair 1, 120 s SA: 12 (same plateau). EXHAUSTIVE dcenum on the same pair (2,898,115 unions, 2m40 real, 68 s user): min cost 12, no solution. So 750,6 p(1,1) is closed at >= 12. Exhaustive is feasible for ~3M unions (195 double cosets, 180 of contribution 2).
+- 19:01 exhaustive 750,10 pair 1: min 16 (2,898,115 unions, no solution). SA at 2 s found the exact optimum on both pairs, so the screen values are likely pair optima.

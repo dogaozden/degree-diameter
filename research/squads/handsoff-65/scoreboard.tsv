@@ -34,3 +34,12 @@ c10	Quotient C2 (Z2-lift of 684 Haar, one base pair, 6 base edges of lowest dele
 c15	bi-coset 2|2 diagonal SmallGroup(750,10) SA 2 s screen (also 750,11 cost 16)	750	bad=3000 (cost 16)	research/squads/handsoff-65/c15/best/g750_10_p_1_1_c16.edges	18:30
 c10	Quotient C2 (Z2-lift of 684 Haar; 2 base edges to the new a-b pair, 4 removed from lowest-damage edges), low-T SA 200 s	688	bad=324 (vl cost 324)	research/squads/handsoff-65/c10/a688_bad324.edges	18:30
 c10	Quotient C2 (Z2-lift of 684 Haar; damage-guided removal from 3000 samples, nab=2), low-T SA 200 s	688	bad=314 (vl cost 314)	research/squads/handsoff-65/c10/a688_bad314.edges	18:46
+c11	swap-symmetric 2+2 lift (sigma A1<->B2, A2<->B1; f = inv o theta, theta class 5 of SmallGroup(176,12)) tabu 5 s	704	bad=4224 (cost 48)	research/squads/handsoff-65/c11/s704.edges	18:49
+c13	Z3-symmetric SA continued (restarts from best, T 1.5->0.2)	690	bad=417	research/squads/handsoff-65/c13/k3_b.edges	18:55
+c18	mcos 1,6|1,6 N=5,1,1,0 SmallGroup(294,11) CLS 1,0 60s	686	bad=735 (mcos cost 5)	research/squads/handsoff-65/c18/deep_294_11_s4.edges	18:56
+c17	mcos-tabu 3,3|3,3 (c=2/3, n=4|G|/3) SmallGroup(546,15) C2x(C7:(C13:C3)) combo 0,1,0,1 N=1,1,1,1	728	bad=546 (cost 6)	research/squads/handsoff-65/c17/t728_546_15.edges	19:02
+c11	swap-symmetric 2+2 lift (sigma A1<->B2, A2<->B1; f = inv o theta, class 7 of abelian SmallGroup(176,19) = C44xC4) tabu 5 s	704	bad=2112 (cost 24)	research/squads/handsoff-65/c11/s704.edges	19:15
+c19	haarex3 orders 401-406 all non-abelian groups closed	812	none VALID	research/squads/handsoff-65/c19/STATUS.md	19:17
+c18	t18 tabu 1,6|1,6 N=5,1,1,0 SmallGroup(294,11) H=14 K=5 seed 8	686	bad=294 (cost 2)	research/squads/handsoff-65/c18/t294_11.edges	19:19
+c20	downward/unbalanced: 684 Haar + 2 B-vertices (sides 342+344, max degree 6, 12 deficits), deficit+2-switch SA 200 s	686	bad=393	research/squads/handsoff-65/c20/ub686_s5.edges	19:21
+c10	Quotient C2 (Z2-lift of 684 Haar; damage-guided removal, 1200+3000 samples, nab=2), low-T SA 170 s	688	bad=312 (vl cost 312)	research/squads/handsoff-65/c10/a688_bad312.edges	19:24

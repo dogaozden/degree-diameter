@@ -64,3 +64,26 @@ near misses (704 cost 4, 720 cost 2-4, 732) as a strict local minimum. Random st
 cost 16-44 in a minute, so the good starts are rare structured points and the search cannot move between them.
 Tools for the coordinator: c14/subquot.py (any voltage lift -> N-lift), c14/subgroups.py (conjugacy classes of subgroups),
 c14/c5quot.py (quotient of a coset graph by a semiregular subgroup), c14/test_haar360.py (recovering a Haar set S).
+
+## ILS round (18:40-19:05), all with built-in kicks (tabu STALL/KICK), 240 s each
+| start | params | steps / restarts | best (start) |
+|---|---|---|---|
+| 704 2+2/176 base704.sol | STALL 200 KICK 8 TMIN 5 TMAX 20 | 2753 / 13 | 4 (4) |
+| 704 4+4/88 n88_2 (second sub-class) | STALL 150 KICK 6 | 1548 / 10 | 8 (8) |
+| 720 Haar 2+2/180 hn_180_14 | STALL 200 KICK 8 | 2508 / 12 | 4 (4) |
+| 732 C61 quotient c5n61 | STALL 100 KICK 5 | 763 / 7 | 30 (30) |
+| 704 finest 22+22/16 n16_1 | STALL 60 KICK 4 | 286 / 4 | 44 (44) |
+| 720 Haar 3+3/120 hn_120_12 | STALL 100 KICK 3 | 1925 / 19 | 6 (6) |
+| 704 4+4/88 of the 176/40 graph m40n_1 | STALL 150 KICK 4 | 1624 / 10 | 8 (8) |
+
+No run found a cost below its start. Conclusion for c14: the bigger-base re-coordinatisation gives the same graphs with
+finer moves, but the cost-4 (704, 720) and cost-8 points are strict local minima for every move set tried (exact
+1-change and 2-change neighbourhoods at all base sizes, tabu, ILS with kicks up to 8 voltages, SA with base 2-switches).
+No graph with n > 684 and bad < 352 was found by c14; the best stays the 704 graph (bad 352, scoreboard line written).
+No candidate with bad = 0 was found, so no CLAIM.
+
+## Calibration from random starts (19:08-19:17)
+- 704 2+2/176 (base704 structure), tabu ILS from RANDOM voltages, 240 s: seed 141 -> best 8; seed 151 (STALL 200 KICK 3) -> best 4
+  (rils704b.sol, 3282 steps, 16 restarts). So cost 4 is reachable from random starts in this family, consistent with c1.
+  Its far-pair count: bad=352 (same as the start).
+- 720 Haar 2+2/180 from random voltages, ILS 240 s: best 12 (the Haar start gave 4).

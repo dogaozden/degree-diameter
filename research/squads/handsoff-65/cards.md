@@ -153,3 +153,49 @@ for every non-abelian group, run shared/haarex3 exhaustively (read its header an
 research/s65/haar/STATUS.md for how it was run: `git show origin/claude/squad-6-5-rounds-ts5nxk:research/s65/haar/STATUS.md`).
 Groups with few involutions first. Keep a per-group log (VALID / side-A covers / closed) in c19/STATUS.md. Any VALID
 set is a record: export the Haar graph and run apsp_ref.
+
+## c20 (small, added 19:08, replaces c16): surgery downward from near misses
+c7/c13 go up from the 684 graph (686: bad 177; every edge of the 684 graph is critical, 44-83 pairs each). Go down
+instead: start from graphs ABOVE 686 with few far pairs and delete vertex pairs, then use the freed degree to add
+edges, and local-search (copy c7's sa.c / gsa.c / ft.c). Starts: the 720 Haar near miss of SmallGroup(360,53)
+(bad 360, c6 has it or rebuild with mcos "1|1"), the 704 lift (c1/best704.edges, bad 352: two missed fibres), the
+732 graph (c5/deep/1_3-3-3.sg_366_2.best.edges, bad 915). Delete the vertices that lie on the most far pairs, or a
+whole fibre / orbit, so that n stays >= 686; target bad 0. Prior: naive deletion + rewiring gave 1428 at 686 (s65), so
+use guided moves and exact rescoring.
+
+# Round 3 (from 19:30). New lead: c18's type "1,6|1,6" (a degree-5 Haar graph plus hub orbits G/C6 on each side) on
+# SmallGroup(294,11), 686 vertices: mcos/tabu cost 2, bad 294 (verified). c18 continues deep runs on order 294.
+
+## c21 (large): 1,6|1,6 on orders 300..312
+Same type as c18 (read c18/NOTES.md and use its screen.sh and t18 tabu), on every group of order 300, 306, 312 with
+an element of order 6 (n = 7|G|/3 = 700, 714, 728). Screen 10-30 s per (group, choice of hub subgroup class), then
+tabu deep runs on the best 5. Skip order 294 (c18 has it).
+
+## c22 (large): hub types with k = 3: "1,3|1,3", "1,3,3|1,3,3"
+mcos degree rule (a double coset between orbits a, b adds |H_a| to every a-vertex and |H_b| to every b-vertex) with a
+hub orbit of stabiliser C3: a regular vertex has n_rr + n_rh = 6 edges, a hub 3(n_hr + n_hh) = 6, so (n_rr, n_rh,
+n_hh) = (4, 2, 0) or (5, 1, 1). "1,3|1,3": n = 8|G|/3, |G| in 258..285 divisible by 3 (n 688..760);
+"1,3,3|1,3,3": n = 10|G|/3, |G| in 207..228. Screen 10-30 s per (group, N split), tabu deep runs on the best (use
+c18's t18 tabu and screen.sh; read c18/NOTES.md).
+
+## c23 (large): hub types with k = 2 and 4: "1,2|1,2", "1,4|1,4", "1,2,2|1,2,2"
+As c22 with stabilisers C2 (hub: 2(n_hr + n_hh) = 6, so n_hr + n_hh = 3) and C4 (4 does not divide 6: a C4 hub needs
+edges to a hub orbit of another size, check what mcos allows). "1,2|1,2": n = 3|G|, |G| in 229..253;
+"1,2,2|1,2,2": n = 4|G|, |G| in 172..190. Screen, then tabu deep runs on the best.
+
+## c24 (small): free local search from the best structured graph
+Take c18's 686-vertex 1,6|1,6 graph (c18/t294_11.edges, bad 294, mcos cost 2) and c17's 728-vertex 3,3|3,3 graph
+(cost 6) and run unstructured local search on the whole graph with c7's tools (copy c7/sa.c, gsa.c, ft.c): guided
+2-switches toward far pairs, exhaustive 2-opt scans, kicks. Also try symmetric moves that keep the subgroup of G that
+fixes the far pairs. Target bad 0 at 686.
+
+## c25 (large): 1,6|1,6 on orders 318..342
+As c21 (read c18/NOTES.md, copy its tools), on groups of order 318, 324, 330, 336, 342 with an element of order 6
+(n = 742, 756, 770, 784, 798). Screen, then tabu deep runs on the best 5.
+
+## c26 (large): hub orbits with non-cyclic stabilisers
+mcos only allows cyclic point stabilisers. Write a builder for coset graphs where G acts regularly on part of each
+side and on G/H with H non-cyclic (S3 of order 6, C2 x C2 of order 4) on the hub orbits: use GAP (shared/bicoset.g
+has ExportBicoset for coset action tables) to export the actions, then a C tabu/annealer over unions of double cosets
+with the degree rule. Groups of order 294..312 with S3 subgroups (n = 7|G|/3 for |H| = 6). Calibrate by rebuilding a
+cyclic case that mcos also does (c18's 294_11).

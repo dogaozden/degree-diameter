@@ -62,3 +62,28 @@ Compared with the squad's best at 686 (c7, 177), none of the new families is clo
 Ideas not tried: exhaustive bi-coset with H != K at stabilizer 3 on the other 1029-groups (SmallGroup library lacks
 1029; only 26 pairs from 10 sampled order-3 automorphism classes were built), S3 stabilizers of order 6, and vl
 with the Z49 lifts restarted from many random bases (cost 64-90 each).
+
+## 8. Why the abelian lifts stall (argument, 18:50)
+For a lift by an abelian group, a walk of length <= 4 from (s,0) to a same-side base vertex u gets its voltage as a sum of
+<= 4 signed voltages, and commutativity makes many of the ~750 walks give the same sum. With a 7+7 base, each target u
+needs all 49 voltages covered by about 107 walk sums; random sums miss about e^(-107/49) = 11% of the residues, so
+the cost floor sits near 7 x 49 x 0.11 = 38 per source, and the SA plateaus at 64-90 (observed: 64, 66, 82, 86, 86).
+Groups of order 49 are all abelian, so the (7,49) lift family is commutativity-limited. At 686 the only
+non-abelian group of order 343 is the Haar case (closed), so no lift with a non-abelian group exists at exactly 686
+except bi-cosets with stabilizers (sections 2, 3, 5: best costs 30, 304, 56). The round-1 2+2 lift by C11:Q16 (cost 4) is
+the non-abelian case that works best, which fits this picture.
+S3 stabilizer (|G| = 2058): mk_h.g found no S3 action by random sampling. Built by hand instead (mk_s3aff.g):
+G = F_7^3 x| S3, S3 = <diag(1,2,4), swap of coordinates 2,3> as affine permutations on 343 points. Exhaustive dcenum
+(x2058/S3aff_1_1.dc2, 2373 unions): best cost 414 (bad 71001 by check.sh on that cost-414 graph). Poor.
+Tabu (shared/tabu) needs a gauge-normalised input: gauge_cyc.py (cyclic groups). Tabu from the cost-64 lift: no gain in 200 s.
+
+## 9. Final runs (18:50-18:56)
+More 7+7 Z49 bases: seed 21 (simple, SWAP 0.05, 230 s): cost 86, bad 2107. Multi-edge base seed 31 (SWAP 0.05, 230 s):
+cost 78, bad 1911. The floor over 7 bases is cost 64-90 (bad 1568-2254). No cost-0 lift found in this family.
+Processes: none of this worker's left running at 18:56.
+
+## Next ideas (not done)
+- S3 stabilizer at |G| = 2058 with a hand-built action (inverting automorphism) and the same exhaustive dcenum.
+- Bi-coset stabilizer 3 on the other nonabelian groups of order 1029 (more automorphism classes than the 10 sampled).
+- A non-abelian base for the lift family at 686 does not exist (only Haar), so new 686 searches should be bi-cosets with
+  non-abelian G (done for 3, 4, 6 with poor costs) or non-symmetric surgery from the 684 Haar graph (c7/c13).

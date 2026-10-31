@@ -52,3 +52,42 @@
 - Z_2 symmetric 688 continued from 384 (restarts from best, T 1.5 -> 0.2): 384 -> 320 (k2_c.edges). The next restart stays at
   320 (k2_d.edges). New 688 best 320 on the scoreboard.
 - Plain 686 from a fresh insertion with PG=0.9 (mostly guided moves): 242 (g686_pg9.edges). Guided-heavy is not better.
+
+## Runs 18:36-19:00 (all single runs, 230 s each, one process at a time)
+Plain 686 from fresh random pair insertions (mksym.py K=1 seeds 2,3,4; ins1_s*.edges):
+  T 0.8->0.15 (cold, 1.5M moves): 207 (cold686.edges)
+  T 1.2->0.25: 182 (mid686_s3.edges)
+  T 1.0->0.2: 231 (mid686_s4.edges)
+  PG=0.9 (mostly guided): 242 (g686_pg9.edges)
+  Fresh insertion, earlier seed 1, T 2.0->0.3: 237 at 90 s; c7 guided SA: 177 (best686_bad177.edges)
+Plain 686 from the 177 graph:
+  T 1.0->0.1, PG=0.2: 177 (no change, low686_177.edges)
+  ILS (KICK=3 random switches per restart, T 0.6->0.15): best stays 177, the kicked state drifts to cost ~440
+  (ils686.edges is the current state, not the best). Random switches are very damaging here.
+Z_2 688 (k2_b -> k2_c -> k2_d/k2_e): 384 -> 320, then flat at 320 (k2_c.edges is the best 688 Z_2 graph).
+Z_3 690 (k3_a -> k3_b -> k3_c): 447 -> 417, then flat at 417 (k3_b.edges is the best 690 Z_3 graph).
+
+## Summary of the card (c13)
+- Symmetric insertion (688 with Z_2, 690 with Z_3): done. Best 688 bad 320 (Z_2), best 690 bad 417 (Z_3).
+- Plain 686 surgery and ILS: best 177 (the c7 basin). Reheats, kicks, cold/hot schedules, guided fractions: no gain.
+- Covering search for new vertices: subsumed by c7's exhaustive 2-opt scan (all 2.05M 2-switches of the 178 graph, min
+  increase +6). A depth-2 covering search was not run: its first-level set alone is about 2052 x 12 switches followed by a
+  full second level, roughly 2 hours per first move at 0.15 ms per evaluation.
+- Remove-a-pair + K22 insertion (pair686_a.edges): 223 at best.
+- Verdict: no bad-0 graph with n > 684 in this card. Surgery on H684 floors at about 177 for 686.
+
+## Next ideas (not run)
+- Structural: replace H684 by a 686-vertex base that has less critical edges (edge deletion damage of H684 is 44..83).
+- Exact covering with 3-switch lookahead restricted to the far-pair vertices (needs a faster BFS: bitset per level is already
+  used; incremental update of only the changed balls would be the speedup).
+
+## Stacked 688 (19:00-19:08)
+- stack.py: one more vertex pair inserted into the 177 graph (5 matching edges removed): start 469, SA 230 s -> 344
+  (stack688_a.edges), restarts -> 327 (stack688_b.edges). Similar to the Z_2 688 (320), not better.
+
+## Final tally (19:23)
+- Plain 686 fresh insertions (seeds 1-7, 230 s each, schedules 1.0-2.5 -> 0.15-0.4): best 182, others 189, 191, 207, 218,
+  223 (pair start), 231, 237, 242. The c7 177 graph is still the best 686 found. Reheats of 182 and 177: no gain.
+- 688: Z_2 symmetric 320 (k2_c.edges), stacked 327 (stack688_b.edges), plain 403, Z_2 384 (k2_b.edges).
+- 690: Z_3 symmetric 417 (k3_b.edges), first 447 (k3_a.edges).
+- Nothing with bad 0 and n > 684; no CLAIM.

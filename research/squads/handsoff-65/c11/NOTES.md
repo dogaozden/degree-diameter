@@ -42,3 +42,22 @@
 ## Next ideas (not done)
 - Long (5 min) runs of the best nonabelian swap candidates (176/1 k6, 176/2) with polishing by shared/tabu from them.
 - Other symmetric types: sigma of order 2 that fixes a vertex pair and swaps the others (needs a = 3); 3+3 bases with swap.
+
+## Final results (19:20 UTC)
+- Order-176 batch complete (cls_screen.tsv, 693 rows, 5 s per run, one run per Aut-class of involutory theta, option a2 all pairs,
+  5 groups failed to start). Best cost per group (min over classes): 176/19 (C44xC4, abelian) 24; 176/25 40; 176/20 42;
+  176/26 42; 176/23 44; 176/39 (C22 family) 54; 176/1 58; 176/12, 176/7, 176/9, 176/40 48; 176/2 (C176) 64; 176/3 89; 176/4 84.
+  Cost 24 = bad 2112 at n = 704 (c11/s704.edges, scoreboard line 19:15).
+- Caution: the 5 s numbers are noisy. Re-runs of the best map of 176/19 (60 s, seeds 101, 102): 68 and 72; 20 s: 48.
+  So 24 is a lucky draw; the true floor for these families is around 40-70 at 704 vertices, far above the unsymmetric floor 4.
+- Full list of costs: cls_screen.tsv (columns: order, id, name(first word), class k, fixed points of f, cost).
+- No process of c11 left running at the end.
+
+## Conclusion
+- The swap symmetry with theta in Aut(G) does not reach cost 0 (or anything near the unsymmetric floor) at n about 700,
+  except that the abelian family with f = identity (theta = inversion) gives diameter-5 lifts up to n = 560 (cyclic 140).
+- No graph above 684 vertices with diameter 5 was found by c11.
+- 85 s polishes (19:21): 176/19 k7 -> 56; 176/25 k3 -> 52; 176/20 k2 -> 40. Nothing below the 5 s best of 24. Stopped at 19:22.
+- Personal-best scoreboard lines (c11): 18:19 bad 5104 (cost 58), 18:49 bad 4224 (cost 48), 19:15 bad 2112 (cost 24); file c11/s704.edges.
+- Other bases on 176/19 (5 s, maps k7, k3, k2, k8): a=3 (pB=pC=1): 52, 40, 40, 72; a=1 (pB=pC=2): 148, 132, 144, 331. a=2 is the best base.
+- Ending state (19:23 UTC): no c11 processes running; scoreboard has 3 c11 lines (best bad 2112, n=704, c11/s704.edges).

@@ -52,3 +52,36 @@ nab parallel a-b edges), and lift by N: n = 684 + 2 j |N|. Every move stays N-eq
   T0=6 wanders up to 385, best stays 324. Guided SA (c7 gsa.c as gsa7.c, K=100, T0=2, T1=0.3, 150 s): 324 -> 320
   (runs/gsa_688.edges). Acceptance is 4 of 280000 at T=0.3: the 688 point is a deep 2-switch local minimum.
 - Sampling 3000 damage-guided nab=2 starts (samp/bestdg_L2_n2.base) is running in the background.
+
+## Best so far (18:30-19:05)
+- Damage-guided start (3000 EVAL samples, nab=2, 6-2=4 removed base edges from the 20 lowest-damage edges, C2 688):
+  best start cost 318. Low-T vl SA 200 s: 314. File a688_bad314.edges (score65: n=688, bad=314, simple, bipartite).
+  Scoreboard lines added for 688 bad 454, 356, 324, 314 (each a personal best in this folder).
+- Guided SA (c7 gsa, 150 s) from 314: no change (278706 steps). Reheat vl SA (T0=3, 270 s): 314 again.
+- Exhaustive 2-switch scan (c7 scan3, copied as scan3c; 240 s, 800930 valid switches over the first 447 of 2064 edges):
+  no improving 2-switch; 38 switches with +1..+19, 1116 with +20..39. So 314 is a 2-switch local minimum (on the scanned part).
+- Other families with the same method (damage-guided start, low-T SA):
+  C3 (690): start 306, SA 300 -> bad 450 (a single vl cost unit = 1.5 bad pairs).
+  C6 (696): start 312, SA 281 -> bad 843 (3 bad pairs per unit).
+  C19 (722), C57/C19:C3 (798): not repeated with damage guidance; random-start costs were 354-372 (bad ~3300) and 200+ (bad ~6000).
+- Ranking by far pairs at n > 684: C2 688: 314, C3 690: 450, C6 696: 843, C19 722: ~3300, C57/C19:C3 798: ~5000+.
+
+## Verdict on the card
+- The C19 family (722) gives far more pairs than C2 (688) because each base-edge deletion removes |N| lift edges.
+- No N-equivariant augmentation reached bad 0 or below c7's 177 at 686. The best candidate is a688_bad314.edges (not a
+  record). The lesson: an equivariant insertion removes 6|N| lift edges at about 44 far pairs each, while unconstrained
+  surgery (c7) removes 5 lift edges for one pair at n=686.
+
+## Next ideas (not done)
+- Damage-guided removal with the non-symmetric 2-switch SA (c7-style) starting from the 688 symmetric solutions.
+- Larger samples (10^4) of damage-guided removal with nab=2 for C2; probably gains of 5-10 pairs only.
+
+## Final checks (19:00-19:20)
+- Low-damage pool of 10 (K=10 lowest damage): start 324, SA 320 (runs/L2_k10.sol).
+- Base 2-switch moves (SWAP=0.05) from the 314 graph: still 314.
+- Cooler SA (T0=1.5) from the 3000-sample start: 314 again (same local minimum).
+- Exhaustive over the 2^10 voltage patterns of the 10 new edges (enumv.py) for the 318 removal set: best 314, so the SA
+  had already reached the best voltages for that removal set.
+- Exhaustive 2-switch scan (scan3c, 240 s, first 447 of 2064 edges): no improving switch.
+- Final candidate: research/squads/handsoff-65/c10/a688_bad314.edges (n=688, bad=314). Not a record.
+- 19:24: 1200 more damage-guided samples (seed 7000, KT=15): start 314; SA 170 s -> 312 (a688_bad312.edges, scoreboard line added).
