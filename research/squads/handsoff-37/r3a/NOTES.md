@@ -129,3 +129,38 @@ Start: 2026-10-31T18:17Z (date -u). Stop about 20:17-20:32Z (2h to 2h15).
 - Restart from the 130 graph (T 10 -> 2, 60 s): no change (130).
 - n=180 D5 (alpha=4), sigma 2^7 1^4 both, seeds 2..4: far 185, 195, 235. Best stays 185 (r3a/best/n180_D5_2to7_1to4_far185).
 - Next (running at 19:34): restart from the 115 graph; (7,7) at n=170 seeds 5..18; (7,7) at n=180 seeds 5..10.
+
+## 19:35-19:47Z: n=170 (7,7) D5 seed sweep (40 s each)
+- Seeds 5..8: far 150, 90, 60 (seed 7), 115. Seeds 9..18: 90, 145, 60, 60, 90, 135, 135, 60, 125, 60.
+- NEW BEST at n=170: far 60 = D5 (alpha=4) with sigma 2^7 1^3 on both sides (r3a/best/n170_D5_7_7_far60.edges). It
+  appeared at 4 of 13 seeds (7, 11, 12, 16, 18 ... ; 60 is a floor for this family, like 180 for Z30 at n=180).
+- Restart from the 115 graph (T 10 -> 2, 60 s): no change.
+- Scoreboard lines for r3a so far: n=170 far 155 -> 130 -> 115 -> 90 -> 60; n=180 far 335 -> 330 -> 290/250 -> 185 -> 180.
+
+## 19:57-20:02Z: final checks
+- n=170 (7,7) D5 seeds 19..26 (40 s): 90, 90, 115, 60, 160, 90, 60, 60. Seeds 27..29 (80 s, three T schedules):
+  135, 60, 120. The floor for D5 with sigma 2^7 1^3 on both sides is 60 (reached by about 1 seed in 4); nothing below it.
+- Restarts from the far-60 graph (T 10 -> 2 and 6 -> 1.5, 60 s): stay at 60.
+
+## Summary (r3a, 18:17Z -> 20:05Z)
+- n = 170: best far 60 (D5 = Z5 x| Z2, alpha = 4, sigma 2^7 1^3 on both sides; r3a/best/n170_D5_7_7_far60.edges).
+  Not a diameter-7 graph. Floor 60 across ~30 seeds.
+- n = 180: best far 180 (Z30 = Z6 x Z5, alpha = 1, sigma 5,5,5 on both sides, M = 6, or M = 5 with sigma 6,6,6);
+  r3a/best/n180_Z30_M6_555_oldcost_far180.edges. Floor 180 across 6 seeds.
+- Calibration (no zero reached except F21 at 168, by r2f's method): D5 at 150 far 85-110; Z20 at 160 far 80.
+- No record and no diameter-7 graph at n >= 170 from r3a. Nothing to copy to records/ (no far 0 found).
+
+## 20:03-20:08Z: last checks
+- Tabu (symtabu, same n=170 (7,7) config, seed 7, 70 s): far 195 with S=40, TT=15; far 90 with S=150, TT=30. Worse than
+  the SA on the same start (SA seed 7: far 60). Tabu is not better here.
+- SA seeds 30, 31, 32: far 60, 60, 60; seed 33: far 125. The floor 60 recurs (about 12 of 36 seeds at this setting).
+- Stop: 20:08Z. Files: r3a/best/*.edges (all verified with score37 above); scoreboard rows for r3a: n = 170 (155, 130,
+  115, 90, 60) and n = 180 (335, 330, 250, 185, 180); calibration n = 160 (80).
+- Method notes for the next worker: (1) the same-side cost (symloc) is the better SA target; (2) seed spread is large
+  (60..160 at the same settings), so run many seeds and keep the best; (3) the sigma types matter: mixed fixed-point
+  counts on A and B and the balanced 2^7 1^3 type gave the best n = 170 results; (4) alpha = 1 with a fixed base point
+  on a side closes a component, so use alpha = 4 (D5) or sigma without fixed points.
+- 20:09Z: Z30 (M=6, sigma 5,5,5) SA seeds 6, 7: far 180 both (seeds 2..7 now all end at 180 or higher).
+- 20:12Z: Z30 seeds 8, 9, 10: far 180 each (so 180 is the floor for Z30 over 9 seeds). Last D5 n=170 seed 34 run below.
+- 20:17Z: final D5 n=170 seeds 34..38 (40 s): far 110, 60, 110, and two more (see out/results.tsv). Stopped at 20:17Z.
+- Correction to the 20:17Z line: seeds 34..39 gave far 110, 60, 110, 60, 60, 60 (the scoreboard floor is still 60).

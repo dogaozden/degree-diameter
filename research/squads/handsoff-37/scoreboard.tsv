@@ -79,3 +79,16 @@ r2g	orbit-level LNS on Z3 (1 fixed point per side), T0 2.5, KMAX 2, seed 7, 330 
 r2e	lift C5 k19 breakout-tabu, continued from far 285 (480 s)	190	220	r2e/best/n190_C5k19_far220.edges	2026-10-31T19:34:37Z	score37 far 220 (raw 88)
 r3a	symmetric SA, D5 (alpha=4, sigma 2^7 1^3 on both sides), same-side cost	170	90	r3a/best/n170_D5_7_7_far90.edges	2026-10-31T19:35:40Z	n=170 improvement over 115 (r3a); diam 8; 40 s, seed 6
 r3a	symmetric SA, D5 (alpha=4, sigma 2^7 1^3 on both sides), same-side cost	170	60	r3a/best/n170_D5_7_7_far60.edges	2026-10-31T19:37:27Z	n=170 improvement over 90 (r3a); diam 8; 40 s, seed 7
+r3b	symbo breakout+voltage, F20 (alpha 2, sigma 4,4,4,4,2 both), n=180 (M=5, K=18), 80 s	180	270	r3b/best/n180_F20_far270.edges	2026-10-31T19:51:54Z	first r3b graph at 180; diam 8; D5 at 180 gave 280-330
+r3g	Z5 polarity cover m=80 (lift2 seed 31) calib	160	0	r3g/calib160_z5_seed31.edges	2026-10-31T19:56:43Z	calib (n<=168): zero cost; apsp RESULT VALID; base reused for insertion
+r3g	Z5 m=80 zero base + one orbit insertion (grow B option), exact	170	90	r3g/best170_grow_far90.edges	2026-10-31T19:56:43Z	first r3g graph at 170; insertion floor 45 (cost), score37 far 90 (worse than direct Z5 floor far 80)
+r3f	lift C2xC4 k12 breakout-tabu (lift3 fbo, POOL 8, 22 s, seed 401)	192	256	r3f/best/n192_C2xC4k12_far256.edges	2026-10-31T19:58:33Z	beats c4 far 272 (C8 k12); score37 far 256 diam 9
+r3b	symbo breakout+voltage moves PV 0.8, D5 = Z5 x| Z2 (alpha 4, sigma 2^8 1 both sides), n=170, seed 9, 90 s	170	155	r3b/best/n170_D5_PV08_far155.edges	2026-10-31T20:04:06Z	beats my F20 160 at 170; ties r3a D5 155 (symloc); PV 0.5 gave 185
+r3d	D5 polarity cover, sigma fixes base (A=10 type-a vertices, lift3d SA)	170	130	r3d/best170_D5_far130.edges	2026-10-31T20:05:12Z	first r3d graph at 170; S=26 (far=5S), 4 seeds all stop at S=26; not below 46
+r3d	calib: D5 polarity cover, A=10, m=80 (ILS 45-90 s)	160	20	r3d/calib160_D5_far20.edges	2026-10-31T20:05:12Z	calib (n<=168): must be 0; D5 floor S=4 here, not zero
+r3c	focused breakout tabu + elite pool, C6 15+15, 90 s seed 401	180	108	r3c/best/n180_C6_far108.edges	2026-10-31T20:06:02Z	lift C6 k15, raw 36; improves r3c 114 at 180
+r3b	symbo breakout+voltage PV 0.8, D5 (alpha 4, sigma 2^9 both sides), n=180 (M 5, K 18), seed 14, 90 s	180	185	r3b/best/n180_D5_PV08_far185.edges	2026-10-31T20:14:43Z	first r3b graph at 180 with PV 0.8 (PV 0.5 gave 330); equals r3a D5 185 at 180
+r3c	focused breakout tabu + elite pool, S3 15+15 lift, 90 s seed 401	180	36	r3c/best/n180_S3_far36.edges	2026-10-31T20:15:44Z	lift S3 k15, raw 12; ties the best seed 180 near miss (far 36); r3c first 180 S3 graph
+r3g	Z5 polarity cover m=85 from random start, breakout repair (grow2 BREAK=30, 90 s)	170	80	r3g/best170_z5_breakout_far80.edges	2026-10-31T20:22:12Z	first r3g cost-40 floor (equals r2c floor; far 80 > board 46; not a record)
+r3b	symbo breakout+voltage PV 0.8, D5 (alpha 4, sigma 2^7 1^3 both sides: 3 fixed base vertices per side), n=170, seed 19, 90 s	170	110	r3b/best/n170_D5_2to7_1to3_far110.edges	2026-10-31T20:22:28Z	beats my 155 (sigma 2^8 1); more fixed base vertices help
+r3e	breakout 2-switch full nbhd, pair weights base 4 (start c2 far70)	170	61	r3e/best/n170_c2brk_far61.edges	2026-10-31T20:22:37Z	first r3e graph at 170 (note: own engine; c2 start far 70 -> 61 in 4 s, then drift)

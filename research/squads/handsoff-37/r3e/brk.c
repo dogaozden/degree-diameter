@@ -16,7 +16,13 @@ static long TA[MAXN][MAXN], TD[MAXN][MAXN];
 static int ES[MAXN][MAXN];
 static int estamp = 0;
 static int bmark[MAXN], bstamp = 0;
-static int FR1 = 1, FR2 = 1, TEN = 4, WCAP = 16, BOWALK = 1, NRAND = 0, FULL = 0;
+static int FR1 = 1, FR2 = 1, TEN = 4, WCAP = 16, BOWALK = 1, NRAND = 0, FULL = 0, VW = 0;
+static int VWt[MAXN];
+static int SAMPLE = 0;
+static int BASEW = 1;   /* pair cost = BASEW + (W - 1): BASEW > 1 makes the breakout weights less influential */
+#define PW(x,y) (BASEW + W[x][y] - 1)
+static int RESET = 0;   /* >0: when real far exceeds best + RESET, reload the best graph (weights kept) */  /* >0: FULL mode evaluates SAMPLE random 2-switches per step instead of all */
+static int DECAY = 0;   /* every DECAY bumps, all weights above 1 drop by 1 (PAWS-style smoothing) */
 static G g;
 static u64 wmask[WMAX];
 static int FLX[40000], FLY[40000];
@@ -54,7 +60,7 @@ static long evalg(long long *cwout, int want_list) {
         if (x >= lo) u &= ~((2ULL << (x - lo)) - 1);
         while (u) {
             int b = __builtin_ctzll(u); u &= u - 1; int y = lo + b;
-            far++; cw += W[x][y];
+            far++; cw += VW ? (VWt[x] + VWt[y]) : PW(x,y);
             if (want_list) { FLX[nfl] = x; FLY[nfl] = y; nfl++; }
         }
     }
@@ -99,6 +105,11 @@ int main(int argc, char **argv) {
     if (getenv("BOWALK")) BOWALK = atoi(getenv("BOWALK"));
     if (getenv("NRAND")) NRAND = atoi(getenv("NRAND"));
     if (getenv("FULL")) FULL = atoi(getenv("FULL"));
+    if (getenv("VW")) VW = atoi(getenv("VW"));
+    if (getenv("DECAY")) DECAY = atoi(getenv("DECAY"));
+    if (getenv("SAMPLE")) SAMPLE = atoi(getenv("SAMPLE"));
+    if (getenv("RESET")) RESET = atoi(getenv("RESET"));
+    if (getenv("BASEW")) BASEW = atoi(getenv("BASEW"));
     double printgap = getenv("PRINT") ? atof(getenv("PRINT")) : 10.0;
     if (g_load(&g, argv[1]) < 0) { fprintf(stderr, "load failed\n"); return 2; }
     n = g.n;
@@ -109,6 +120,7 @@ int main(int argc, char **argv) {
     int Wn = (n + 63) / 64;
     for (int w = 0; w < Wn; w++) wmask[w] = (64 * (w + 1) <= n) ? ~0ULL : ((1ULL << (n - 64 * w)) - 1);
     for (int x = 0; x < n; x++) for (int y = 0; y < n; y++) W[x][y] = 1;
+    for (int x = 0; x < n; x++) VWt[x] = 1;
     for (int x = 0; x < n; x++) for (int y = 0; y < n; y++) { TA[x][y] = 0; TD[x][y] = 0; }
     rng_seed(seed);
     /* perturbation: random valid 2-switches */
@@ -128,11 +140,15 @@ int main(int argc, char **argv) {
     long bestF = F; char fn[512];
     snprintf(fn, sizeof fn, "out/%s_best.edges", tag); save(fn);
     fprintf(stderr, "start n=%d far=%ld (pert %d) seed %d FR1 %d FR2 %d TEN %d WCAP %d BOWALK %d NRAND %d\n", n, F, pert, seed, FR1, FR2, TEN, WCAP, BOWALK, NRAND);
-    double t0 = now(), tlast = t0; long step = 0, bumps = 0, impr = 0;
+    double t0 = now(), tlast = t0; long step = 0, bumps = 0, impr = 0, nresets = 0;
     static int EAa[400], EAb[400], EBa[400], EBb[400];
     static Mv cand[40000];
     while (now() - t0 < secs) {
         if (F == 0) { snprintf(fn, sizeof fn, "out/%s_far0.edges", tag); save(fn); fprintf(stderr, "FAR 0 at step %ld\n", step); break; }
+        if (RESET && F > bestF + RESET) {   /* drift control: back to the best graph, keep the weights */
+            snprintf(fn, sizeof fn, "out/%s_best.edges", tag); g_load(&g, fn);
+            F = evalg(&cw, 1); nresets++;
+        }
         step++;
         int r = rng_int(nfl); int fx = FLX[r], fy = FLY[r];
         int c1, c2;
@@ -145,6 +161,18 @@ int main(int argc, char **argv) {
             c2 = near_edges(fy, FR2, EBa, EBb);
         }
         int nc = 0;
+        if (FULL && SAMPLE > 0) {
+            for (int k = 0; k < SAMPLE; k++) {
+                int i = rng_int(c1), j = rng_int(c1); if (i == j) continue;
+                int a1 = EAa[i], b1 = EAb[i], a2 = EAa[j], b2 = EAb[j];
+                if (!mv_ok(a1, b1, a2, b2)) continue;
+                cand[nc].a1 = a1; cand[nc].b1 = b1; cand[nc].a2 = a2; cand[nc].b2 = b2; nc++;
+            }
+            /* plus the focus set around the chosen far pair */
+            int d1 = near_edges(fx, 1, EBa, EBb);
+            for (int i = 0; i < d1; i++) for (int j = 0; j < d1; j++) { if (i == j) continue; }
+            (void)d1;
+        } else
         for (int i = 0; i < c1; i++) for (int j = FULL ? i + 1 : 0; j < c2; j++) {
             int a1 = EAa[i], b1 = EAb[i], a2 = EBa[j], b2 = EBb[j];
             if ((a1 == a2 && b1 == b2)) continue;
@@ -160,14 +188,14 @@ int main(int argc, char **argv) {
             cand[nc].a1 = a1; cand[nc].b1 = b1; cand[nc].a2 = a2; cand[nc].b2 = b2; nc++;
         }
         /* evaluate */
-        long long bestcw = -1; int bi = -1, nties = 0;
+        long long bestcw = -1; int bi = -1, nties = 0; long bestFk = -1; long long cwcur_dbg = 0;
         for (int k = 0; k < nc; k++) {
             Mv m = cand[k];
             int tabu = (TD[m.a1][m.b1] > step) || (TD[m.a2][m.b2] > step) || (TA[m.a1][m.b2] > step) || (TA[m.a2][m.b1] > step);
             mv_apply(m); long long c2w; long Fk = evalg(&c2w, 0); mv_revert(m);
             if (tabu && !(Fk < bestF)) continue;
-            if (bi < 0 || c2w < bestcw) { bestcw = c2w; bi = k; nties = 1; }
-            else if (c2w == bestcw) { nties++; if (rng_int(nties) == 0) { bi = k; } }
+            if (bi < 0 || c2w < bestcw) { bestcw = c2w; bi = k; nties = 1; bestFk = Fk; }
+            else if (c2w == bestcw) { nties++; if (rng_int(nties) == 0) { bi = k; bestFk = Fk; } }
         }
         if (bi < 0) continue;
         if (getenv("DBG") && step <= atol(getenv("DBG"))) {
@@ -176,11 +204,16 @@ int main(int argc, char **argv) {
             fprintf(stderr, "DBG step %ld cur far %ld nfl %d focus (%d,%d) nc %d bestcand_cw %lld cur_cw_w %lld minfar_cand %ld chosen far %ld\n", step, F, nfl, fx, fy, nc, bestcw, (long long)0, mnf, bestF_c_dbg(bi));
         }
         /* current weighted cost (weights as now) */
-        long long cwcur = 0; for (int k = 0; k < nfl; k++) cwcur += W[FLX[k]][FLY[k]];
+        long long cwcur = 0; for (int k = 0; k < nfl; k++) cwcur += VW ? (VWt[FLX[k]] + VWt[FLY[k]]) : PW(FLX[k],FLY[k]);
+        cwcur_dbg = cwcur;
         if (bestcw >= cwcur) {
             /* local minimum of the weighted cost: breakout bump on every far pair */
+            if (VW) { static int mk[MAXN]; static int ms = 0; ms++;
+                for (int k = 0; k < nfl; k++) { int x = FLX[k], y = FLY[k]; if (mk[x] != ms) { mk[x] = ms; if (VWt[x] < WCAP) VWt[x]++; } if (mk[y] != ms) { mk[y] = ms; if (VWt[y] < WCAP) VWt[y]++; } }
+            } else
             for (int k = 0; k < nfl; k++) { int x = FLX[k], y = FLY[k]; if (W[x][y] < WCAP) W[x][y]++; }
             bumps++;
+            if (DECAY && bumps % DECAY == 0) { for (int x = 0; x < n; x++) for (int y = x + 1; y < n; y++) if (W[x][y] > 1) W[x][y]--; }
             if (!BOWALK) { /* stay */ goto progress; }
         }
         {
@@ -189,6 +222,7 @@ int main(int argc, char **argv) {
             TA[m.a1][m.b1] = step + TEN; TA[m.a2][m.b2] = step + TEN;
             TD[m.a1][m.b2] = step + TEN; TD[m.a2][m.b1] = step + TEN;
             F = evalg(&cw, 1);
+            if (getenv("CHK")) fprintf(stderr, "CHK step %ld pred %ld real %ld cw %lld predcw %lld cwcur_before %lld bump %d\n", step, bestFk, F, cw, bestcw, cwcur_dbg, bumps);
             if (F < bestF) {
                 bestF = F; impr++;
                 snprintf(fn, sizeof fn, "out/%s_best.edges", tag); save(fn);
@@ -198,13 +232,13 @@ int main(int argc, char **argv) {
     progress:
         if (now() - tlast >= printgap) {
             tlast = now();
-            long long cwc = 0; for (int k = 0; k < nfl; k++) cwc += W[FLX[k]][FLY[k]];
+            long long cwc = 0; for (int k = 0; k < nfl; k++) cwc += VW ? (VWt[FLX[k]] + VWt[FLY[k]]) : PW(FLX[k],FLY[k]);
             fprintf(stderr, "t=%.0f step=%ld far=%ld cw=%lld best=%ld bumps=%ld cand=%d\n", now() - t0, step, F, cwc, bestF, bumps, nc);
         }
     }
     snprintf(fn, sizeof fn, "out/%s_cur.edges", tag); save(fn);
     { snprintf(fn, sizeof fn, "out/%s_w.txt", tag); FILE *wf = fopen(fn, "w");
       if (wf) { for (int x = 0; x < n; x++) for (int y = x + 1; y < n; y++) if (W[x][y] != 1) fprintf(wf, "%d %d %d\n", x, y, W[x][y]); fclose(wf); } }
-    printf("RESULT tag=%s n=%d best_far=%ld final_far=%ld steps=%ld bumps=%ld improvements=%ld\n", tag, n, bestF, F, step, bumps, impr);
+    printf("RESULT tag=%s n=%d best_far=%ld final_far=%ld steps=%ld bumps=%ld improvements=%ld resets=%ld\n", tag, n, bestF, F, step, bumps, impr, nresets);
     return 0;
 }

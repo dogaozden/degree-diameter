@@ -75,3 +75,31 @@ Start: 2026-10-31T19:06:11Z (date -u). Keep going until at least 21:06Z; stop ab
 - Batch5 final: F20 170 seeds 21-26 all end at far 160 (six runs, 70 s each). Strong plateau for this group/sigma.
 - Batch6 Z15 at 170 (2 seeds, 70 s): dead. Final far 1500 (score37 far 3000, disconnected). The breakout cannot connect the
   degree-only start under the Z3 part with fixed points. Matches r2f's Z15 result. Dropped.
+- Batch7 (F20 170, other sigma cycle types, seed 1, 70 s): sigma 4,4,4,2,2,1 -> far 175 (connected). sigma 4,4,4,1,1,1,1,1
+  -> disconnected, far 7030 (dead: five fixed base points per side). Sigma 4,4,2,2,2,2,1 (the 160 config) stays the best F20 type.
+- Batch7 third type 4,4,2,2,2,1,1,1: far 380 (connected). So among F20 sigma types tried at 170, 4,4,2,2,2,2,1 (far 160)
+  is best, 4,4,4,2,2,1 gives 175, 4,4,2,2,2,1,1,1 gives 380.
+- Batch8 n = 180 (M = 5, K = 18): D5 (alpha 4, sigma 2^9 both): far 330 (seed 1). F20 (alpha 2, sigma 4,4,4,4,2 both): far 270
+  (seed 1). Both worse than r3a's symloc results at 180 (D5 185, F20 250). The breakout walk is not better than SA here.
+- Batch9 (F20 170, 90 s each, parameter variants): PV 0.8 (seed 31) -> 160; PV 0.2 (seed 32) -> 160. Other variants below.
+- Batch9 (F20 170, parameter variants, 90 s each): PV 0.8, PV 0.2, PF 0.3, TEN 30: all 160. The F20 floor does not move.
+- Batch10 (fresh SAT starts): F21 196 (sigma 1,1,3,3,3,3): 224 twice (same as the r2f start). F21 182 (K 80, PV 0.8): 210.
+  D5 170 (alpha 4, sigma 2^8 1 both sides, K 40, PV 0.8, seed 9): FAR 155 (diam 8). This is the first D5 result close to
+  r3a's 155 and it beats my F20 160. The PV 0.5 runs of D5 gave 175-185, so the voltage moves matter a lot for D5.
+  Logged: r3b/best/n170_D5_PV08_far155.edges (score37 far 155; not a diameter-7 graph, so apsp is not expected to pass).
+- Batch13 (queued): D5 170 with PV 0.8 (seeds 10, 11, 13) and PV 0.95 (seed 12), 90 s each, to see whether the 155 falls.
+- Batch13 (D5 170, PV 0.8): seeds 9, 10, 11 all end at far 155 (90 s each). The 155 is a plateau for D5 under PV 0.8, as the
+  160 was for F20. (Seed 12 with PV 0.95 and seed 13 still running at the time of writing.)
+- Batch11 mixAB (F20 170 with sigma A 4,4,2,2,2,2,1 and sigma B 4,4,4,2,2,1): far 190. Worse than the same sigma on both sides (160).
+- Stopped the queued batch11 mixBA / batch12 (plain SA comparison) to free the CPU for the D5 runs.
+- Batch13 final: D5 170 with PV 0.8 (seeds 10, 11, 13) and PV 0.95 (seed 12): all far 155 (five runs in total with seed 9). Plateau.
+- Batch14 (queued 20:12Z): D5 at n=180 (alpha 4, sigma 2^9, PV 0.8, seeds 14, 15), and D5 at 170 with K=80 (120 s, seed 16).
+- Batch14 (20:12-20:17Z): D5 at n = 180, PV 0.8 (seeds 14, 15): far 185 both (the same value as r3a's D5 185 at 180; logged
+  r3b/best/n180_D5_PV08_far185.edges). D5 at 170 with K = 80 (seed 16): 155 again.
+- Batch15: F20 at 180 with PV 0.8, seed 17: 270 (same as PV 0.5). Seed 18 running.
+- Batch16 (queued): other D5 involution types with PV 0.8: 170 with sigma 2^7 1^3 (seed 19), 2^6 1^5 (seed 20); 180 with 2^8 1^2 (seed 21).
+- Batch16 (D5, PV 0.8, 90 s): sigma 2^7 1^3 at n = 170 (3 fixed base vertices per side, seed 19): FAR 110 (diam 8). New best
+  for r3b at 170 (logged: r3b/best/n170_D5_2to7_1to3_far110.edges). Sigma 2^6 1^5 (seed 20): 140. Sigma 2^8 1 gave 155
+  (seeds 9-16). So the number of fixed base vertices matters; 3 was best of the three tried.
+- Batch18 (queued): D5 at 170 with 2^5 1^7 (seed 31), 2^4 1^9 (seed 32), 2^7 1^3 with seed 34 (variance), and D5 at 180 with
+  2^7 1^4 (seed 33).

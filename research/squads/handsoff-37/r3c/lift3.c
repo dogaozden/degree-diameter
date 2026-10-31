@@ -145,7 +145,8 @@ int main(int argc, char **argv) {
     const char *mode = getenv("MODE") ? getenv("MODE") : "fbo";
     int isbo = !strcmp(mode, "bo") || !strcmp(mode, "fbo");
     int FOCUS = !strcmp(mode, "fbo");
-    int FR = getenv("FR") ? atoi(getenv("FR")) : 1;          /* focus radius (base distance) around the violated pair */
+    int FR = getenv("FR") ? atoi(getenv("FR")) : 1;
+    int COMP = getenv("COMP") ? atoi(getenv("COMP")) : 0;   /* sampled compound (two-move) candidates per step */          /* focus radius (base distance) around the violated pair */
     int TEN = getenv("TEN") ? atoi(getenv("TEN")) : 8;
     long STALL = getenv("STALL") ? atol(getenv("STALL")) : 3000;
     int PERT = getenv("PERT") ? atoi(getenv("PERT")) : 8;
@@ -185,7 +186,7 @@ int main(int argc, char **argv) {
         if ((it & 15) == 0) { el = now() - t0; if (el > secs) break; }
         it++;
         eval();  /* refresh cnt/raw for the current state */
-        Move bestm; long bestc = 1L << 60; int have = 0;
+        Move bestm, bestm2; long bestc = 1L << 60; int have = 0, have2 = 0; int fe_glob[MAXE], nf_glob = 0;
         if (FOCUS) {
             /* pick a violated (s,t) pair uniformly, focus on base edges near s and t */
             int ps[2 * MAXK * 2 * MAXK], pt[2 * MAXK * 2 * MAXK], np = 0;
@@ -202,6 +203,7 @@ int main(int argc, char **argv) {
                 for (int e = 0; e < E; e++) if (inball[eu[e]] || inball[k + ev[e]]) fe[nf++] = e;
             }
             if (nf == 0) { for (int e = 0; e < E; e++) fe[nf++] = e; }
+            memcpy(fe_glob, fe, sizeof(int) * nf); nf_glob = nf;
             for (int ii = 0; ii < nf; ii++) {
                 int e = fe[ii];
                 for (int a = 0; a < N; a++) {
@@ -240,6 +242,25 @@ int main(int argc, char **argv) {
                 if (c < bestc || (c == bestc && ri(2))) { bestc = c; bestm = m; have = 1; }
             }
         }
+        if (FOCUS && COMP > 0 && nf_glob >= 2) {
+            for (int q = 0; q < COMP; q++) {
+                Move A, B; int ea_ = fe_glob[ri(nf_glob)];
+                if (ri(2)) { A.type = 0; A.e = ea_; A.a = (ea[ea_] + 1 + ri(N - 1)) % N; A.f = 0; A.olda = 0; }
+                else { int f_ = fe_glob[ri(nf_glob)]; if (f_ == ea_ || ev[f_] == ev[ea_]) continue; A.type = 1; A.e = ea_; A.f = f_; A.a = 0; A.olda = 0; }
+                apply(&A);
+                int ok = 0;
+                if (ri(2)) { B.type = 0; B.e = fe_glob[ri(nf_glob)]; B.a = (ea[B.e] + 1 + ri(N - 1)) % N; B.f = 0; B.olda = 0; ok = 1; }
+                else { int e2 = fe_glob[ri(nf_glob)], f2 = fe_glob[ri(nf_glob)]; if (e2 != f2 && ev[e2] != ev[f2]) { B.type = 1; B.e = e2; B.f = f2; B.a = 0; B.olda = 0; ok = 1; } }
+                if (ok) {
+                    apply(&B); long c = eval(); evals++; long r = raw_last; long dp = dup_last; undo(&B);
+                    int tabu = tabu_until[A.e] > it || (A.type && tabu_until[A.f] > it) || tabu_until[B.e] > it || (B.type && tabu_until[B.f] > it);
+                    if (!(tabu && !(r < gbest_raw && dp == 0))) {
+                        if (c < bestc || (c == bestc && ri(2))) { bestc = c; bestm = A; bestm2 = B; have2 = 1; have = 1; }
+                    }
+                }
+                undo(&A);
+            }
+        }
         if (!have) continue;
         cur = eval();  /* weighted cost of the current state (cnt is for current state) */
         if (isbo && bestc >= cur && it - lastbump >= BUMPGAP) {
@@ -255,6 +276,7 @@ int main(int argc, char **argv) {
         apply(&bestm);
         if (bestm.type == 0) tabu_until[bestm.e] = it + TEN + ri(TEN + 1);
         else { tabu_until[bestm.e] = it + TEN + ri(TEN + 1); tabu_until[bestm.f] = it + TEN + ri(TEN + 1); }
+        if (have2) { apply(&bestm2); if (bestm2.type == 0) tabu_until[bestm2.e] = it + TEN + ri(TEN + 1); else { tabu_until[bestm2.e] = it + TEN + ri(TEN + 1); tabu_until[bestm2.f] = it + TEN + ri(TEN + 1); } }
         cur = eval(); curraw = raw_last; nsteps++;
         since++;
         if (dup_last == 0 && raw_last < xraw) {

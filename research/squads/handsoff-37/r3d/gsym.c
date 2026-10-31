@@ -22,6 +22,10 @@
 
 typedef struct { uint64_t w[2]; } BS;
 static int m, NG;
+static double pvolt = 0.3;
+static int useX = 1;
+static double ploop = 0.05;
+static long nsinv, nsval;
 static int G[MAXG][MAXM];   /* group elements */
 static int nG;
 static uint64_t rs = 88172645463325252ULL;
@@ -80,7 +84,7 @@ static int cost(const BS *N) {
         orset(&O7, &O5, R2);
         BS Od = N[src]; bor(&Od, &O3); bor(&Od, &O5); bor(&Od, &O7);
         int x = m - pc(&Od);
-        far += c + x;
+        far += c + (useX ? x : 0);
     }
     return (int)far;
 }
@@ -131,6 +135,63 @@ static int init_random(St *s, BS *N) {
 }
 
 
+
+/* sampled best-improvement tabu (env TABU=K samples per step, TTEN=tenure in steps) */
+static int run_tabu(St *cur0, BS *N0, int K, int tten, double secs, double t0, int *bestS_io, St *best_io, BS *Nb_io, const char *outp) {
+    static long tabu_until[MAXR];
+    static St cs, cand, bestc;
+    static BS cN[MAXM], candN[MAXM], bestN[MAXM];
+    cs = *cur0; memcpy(cN, N0, sizeof(BS) * m);
+    int curS = cost(cN);
+    bestc = cs; memcpy(bestN, cN, sizeof(BS) * m);
+    int bestS = curS;
+    char fn[512];
+    long step = 0;
+    for (int r = 0; r < MAXR; r++) tabu_until[r] = 0;
+    while (now() - t0 < secs && bestS > 0) {
+        step++;
+        int bi = -1; St bestMove; int bestMoveS = INT_MAX; BS bestMoveN[MAXM];
+        for (int s = 0; s < K; s++) {
+            cand = cs;
+            int idx;
+            double r = rndu();
+            if (r < 0.5 || cs.n < 2) {   /* 2-switch on two reps */
+                int i = rndi(cs.n), j = rndi(cs.n);
+                if (i == j) continue;
+                if (tabu_until[i] > step || tabu_until[j] > step) continue;
+                int a = cand.r[i].p, b = cand.r[i].q, c = cand.r[j].p, d = cand.r[j].q;
+                if (rnd() & 1) { int tt = c; c = d; d = tt; }
+                cand.r[i].p = a; cand.r[i].q = G[rndi(nG)][c]; cand.r[j].p = b; cand.r[j].q = G[rndi(nG)][d];
+                idx = i;
+                if (!valid(&cand, candN)) continue;
+            } else {                      /* voltage move on one rep */
+                int i = rndi(cs.n);
+                if (tabu_until[i] > step) continue;
+                int g = rndi(nG);
+                if (rnd() & 1) cand.r[i].q = G[g][cs.r[i].q]; else cand.r[i].p = G[g][cs.r[i].p];
+                idx = i;
+                if (!valid(&cand, candN)) continue;
+            }
+            int Sc = cost(candN);
+            if (Sc < bestMoveS) {
+                bestMoveS = Sc; bi = idx; bestMove = cand; memcpy(bestMoveN, candN, sizeof(BS) * m);
+            }
+        }
+        if (bi < 0) continue;
+        cs = bestMove; memcpy(cN, bestMoveN, sizeof(BS) * m); curS = bestMoveS;
+        tabu_until[bi] = step + tten;
+        if (curS < bestS) {
+            bestS = curS; bestc = cs; memcpy(bestN, cN, sizeof(BS) * m);
+            printf("tabu improve far=%d (step %ld, %.1fs)\n", bestS, step, now() - t0); fflush(stdout);
+            snprintf(fn, sizeof fn, "%s_best.reps", outp); write_reps(&bestc, fn);
+            snprintf(fn, sizeof fn, "%s_best.edges", outp); write_cover(bestN, fn);
+        }
+    }
+    *bestS_io = bestS; *best_io = bestc; memcpy(Nb_io, bestN, sizeof(BS) * m);
+    printf("tabu steps %ld\n", step);
+    return bestS;
+}
+
 int main(int argc, char **argv) {
     if (argc < 9) { fprintf(stderr, "usage: gsym GENFILE m seed seconds T0 T1 sweeps outprefix [init.reps|-] [pert]\n"); return 1; }
     m = atoi(argv[2]);
@@ -160,6 +221,9 @@ int main(int argc, char **argv) {
             }
         }
     }
+    if (getenv("PVOLT")) pvolt = atof(getenv("PVOLT"));
+    if (getenv("NOX")) useX = 0;
+    if (getenv("PLOOP")) ploop = atof(getenv("PLOOP"));
     printf("group order %d\n", nG);
     rs ^= seed * 0x9E3779B97F4A7C15ULL; if (!rs) rs = 1;
     for (int i = 0; i < 20; i++) rnd();
@@ -177,6 +241,15 @@ int main(int argc, char **argv) {
         if (!valid(&cur, N)) { fprintf(stderr, "init reps not valid\n"); return 1; }
     } else {
         if (!init_random(&cur, N)) { fprintf(stderr, "init failed\n"); return 1; }
+    }
+    if (getenv("TABU")) {
+        int K = atoi(getenv("TABU")), tten = getenv("TTEN") ? atoi(getenv("TTEN")) : 8;
+        static St bst; static BS Nbb[MAXM]; int bS = INT_MAX;
+        int s0 = cost(N);
+        printf("start far=%d\n", s0);
+        run_tabu(&cur, N, K, tten, secs, now(), &bS, &bst, Nbb, outp);
+        printf("done tabu best far=%d\n", bS);
+        return 0;
     }
     double t0 = now();
     int restarts = 0, firstRound = 1;
@@ -208,11 +281,63 @@ int main(int argc, char **argv) {
             totalIt++;
             if (cur.n < 2) break;
             int i = rndi(cur.n), j = rndi(cur.n);
+            if (rndu() < pvolt) {   /* voltage move: re-choose one endpoint of a rep inside its base-orbit pair */
+                nxt = cur;
+                int g = rndi(nG);
+                if (rnd() & 1) nxt.r[i].q = G[g][cur.r[i].q]; else nxt.r[i].p = G[g][cur.r[i].p];
+                tried++;
+                if (!valid(&nxt, Nn)) continue;
+                int S2 = cost(Nn);
+                int dd = S2 - S;
+                if (dd <= 0 || rndu() < exp(-dd / T)) {
+                    cur = nxt; S = S2; memcpy(N, Nn, sizeof(BS) * m); accepted++;
+                    if (S < bestS) {
+                        bestS = S; best = cur; memcpy(Nb, N, sizeof(BS) * m);
+                        snprintf(fn, sizeof fn, "%s_best.reps", outp); write_reps(&best, fn);
+                        snprintf(fn, sizeof fn, "%s_best.edges", outp); write_cover(Nb, fn);
+                        printf("improve far=%d (restart %d, it %ld, %.1fs)\n", bestS, restarts, it, now() - t0);
+                        fflush(stdout);
+                        if (bestS == 0) goto done;
+                    }
+                }
+                continue;
+            }
             if (i == j) continue;
+            if (rndu() < ploop) {   /* loop moves: (p,p)+(q,q) <-> edge (p,q) (loops carry one stub each) */
+                nxt = cur;
+                if (cur.r[i].p == cur.r[i].q && cur.r[j].p == cur.r[j].q) {
+                    int p = cur.r[i].p, q = G[rndi(nG)][cur.r[j].p];
+                    nxt.r[i].p = p; nxt.r[i].q = q;
+                    nxt.r[j] = nxt.r[nxt.n - 1]; nxt.n--;
+                } else if (cur.r[i].p != cur.r[i].q && cur.n < MAXR - 1) {
+                    int p = cur.r[i].p, q = cur.r[i].q;
+                    nxt.r[i].p = p; nxt.r[i].q = p;
+                    nxt.r[nxt.n].p = q; nxt.r[nxt.n].q = q; nxt.n++;
+                } else continue;
+                tried++;
+                if (!valid(&nxt, Nn)) { nsinv++; continue; }
+                nsval++;
+                int S2 = cost(Nn);
+                int dd = S2 - S;
+                if (dd <= 0 || rndu() < exp(-dd / T)) {
+                    cur = nxt; S = S2; memcpy(N, Nn, sizeof(BS) * m); accepted++;
+                    if (S < bestS) {
+                        bestS = S; best = cur; memcpy(Nb, N, sizeof(BS) * m);
+                        snprintf(fn, sizeof fn, "%s_best.reps", outp); write_reps(&best, fn);
+                        snprintf(fn, sizeof fn, "%s_best.edges", outp); write_cover(Nb, fn);
+                        printf("improve far=%d (restart %d, it %ld, %.1fs)\n", bestS, restarts, it, now() - t0);
+                        fflush(stdout);
+                        if (bestS == 0) goto done;
+                    }
+                }
+                continue;
+            }
             nxt = cur;
             int a = nxt.r[i].p, b = nxt.r[i].q, c = nxt.r[j].p, d = nxt.r[j].q;
             if (rnd() & 1) { int tt = c; c = d; d = tt; }
-            nxt.r[i].p = a; nxt.r[i].q = c; nxt.r[j].p = b; nxt.r[j].q = d;
+            /* orbit-level 2-switch with random group elements on the new endpoints (keeps stub balance) */
+            int g1 = rndi(nG), g2 = rndi(nG);
+            nxt.r[i].p = a; nxt.r[i].q = G[g1][c]; nxt.r[j].p = b; nxt.r[j].q = G[g2][d];
             tried++;
             if (!valid(&nxt, Nn)) continue;
             int S2 = cost(Nn);
