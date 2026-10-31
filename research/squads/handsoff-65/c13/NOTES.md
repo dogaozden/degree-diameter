@@ -91,3 +91,5 @@ Z_3 690 (k3_a -> k3_b -> k3_c): 447 -> 417, then flat at 417 (k3_b.edges is the 
 - 688: Z_2 symmetric 320 (k2_c.edges), stacked 327 (stack688_b.edges), plain 403, Z_2 384 (k2_b.edges).
 - 690: Z_3 symmetric 417 (k3_b.edges), first 447 (k3_a.edges).
 - Nothing with bad 0 and n > 684; no CLAIM.
+- Last runs (19:27-19:31): 177 graph restarts (T 0.8 -> 0.1): 177 (final686.edges). Z_2 688 restarts (T 1.0 -> 0.15): 320
+  (k2_f.edges). No new bests. Stopped at 19:31 because all variants of the card had plateaued; no processes left.

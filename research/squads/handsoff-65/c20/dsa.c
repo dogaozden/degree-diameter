@@ -293,6 +293,7 @@ int main(void) {
         if (a1 == a2 || b1 == b2 || has_edge(a1, b2) || has_edge(a2, b1)) continue;
         swap_edges(i, j);
         long c = cost();
+        if (getenv("DBG") && iter < 40) fprintf(stderr, "dbg iter %ld cur %ld cand %ld T %.3f\n", iter, cur, c, T);
         if (c <= cur || urand() < exp(-(c - cur) / T)) {
             cur = c;
             if (cur < best) {

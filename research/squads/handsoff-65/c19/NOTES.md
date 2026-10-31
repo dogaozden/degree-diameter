@@ -19,3 +19,7 @@ backgrounded once, then ran to its own budget (no second copy was started).
 
 Progress 18:46 UTC: 402:2/5 404:1/3 405:11/11 406:1/5 408:14/43 410:1/5 412:1/2 414:1/8 416:5/228 417:1/1 418:0/3 420:11/39 
 Per-group times 4-65 s so far (orders 402-420). Groups killed by timeout 300 would be resumed (none so far).
+
+Progress 19:30 UTC: 402:5/5 404:3/3 405:11/11 406:5/5 408:43/43 410:5/5 412:2/2 414:2/8 416:54/228 417:1/1 418:0/3 420:17/39 
+Queue reordered by order at 19:17 (remaining groups of 402-412 first), so that whole ranges close early.
+Closed ranges: 401-406 (scoreboard line written 19:17), 401-412 (scoreboard line written 19:30).

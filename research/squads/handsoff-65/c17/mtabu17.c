@@ -281,6 +281,74 @@ int main(int argc, char **argv) {
                     }
                 }
                 }
+                if (getenv("P2") && best > 0 && best < (1 << 28)) {   /* exhaustive two-move polish of the best state */
+                    static int mk_[40000], mc_[40000], md_[40000]; int nm = 0, bestv2 = best; long p2evals = 0;
+                    for (int k = 0; k < nblk; k++) for (int c = 0; c < nab[k]; c++) for (int j = 0; j < nfull[k]; j++) {
+                        int d = fulllist[k][j], in = 0;
+                        for (int e = 0; e < nab[k]; e++) if (bestch[k][e] == d) in = 1;
+                        if (!in && nm < 40000) { mk_[nm] = k; mc_[nm] = c; md_[nm] = d; nm++; } }
+                    int bi = -1, bj = -1;
+                    for (int i = 0; i < nm; i++) {
+                        memcpy(chosen, bestch, sizeof chosen);
+                        int k1 = mk_[i], c1 = mc_[i];
+                        chosen[k1][c1] = md_[i];
+                        for (int j = i + 1; j < nm; j++) {
+                            int k2 = mk_[j], c2 = mc_[j], d2 = md_[j];
+                            if (k2 == k1 && c2 == c1) continue;
+                            int in = 0; for (int e = 0; e < nab[k2]; e++) if (chosen[k2][e] == d2) in = 1;
+                            if (in) continue;
+                            int o2 = chosen[k2][c2]; chosen[k2][c2] = d2;
+                            int v = cost_eval(); p2evals++;
+                            chosen[k2][c2] = o2;
+                            if (v < bestv2) { bestv2 = v; bi = i; bj = j; }
+                        }
+                    }
+                    fprintf(stderr, "P2 moves %d pairs %ld best_before %d best_after %d\n", nm, p2evals, best, bestv2);
+                    if (bi >= 0) {
+                        memcpy(chosen, bestch, sizeof chosen);
+                        chosen[mk_[bi]][mc_[bi]] = md_[bi];
+                        chosen[mk_[bj]][mc_[bj]] = md_[bj];
+                        best = bestv2; memcpy(bestch, chosen, sizeof bestch);
+                        if (best < gbest) { gbest = best; if (EDGES) write_edges(EDGES); }
+                    }
+                }
+                if (getenv("P2B") && best > 0 && best < (1 << 28)) {   /* exhaustive two-BLOCK polish of the best state */
+                    static int cmb[64][4000][8]; int ncmb[64];
+                    int okb = 1;
+                    for (int k = 0; k < nblk; k++) {
+                        int s = nab[k], F = nfull[k]; ncmb[k] = 0;
+                        if (s == 0) { ncmb[k] = 1; continue; }
+                        int idx[8]; for (int c = 0; c < s; c++) idx[c] = c;
+                        if (F < s) { okb = 0; break; }
+                        while (1) {
+                            if (ncmb[k] >= 4000) { okb = 0; break; }
+                            for (int c = 0; c < s; c++) cmb[k][ncmb[k]][c] = fulllist[k][idx[c]];
+                            ncmb[k]++;
+                            int i = s - 1; while (i >= 0 && idx[i] == F - s + i) i--;
+                            if (i < 0) break;
+                            idx[i]++; for (int j = i + 1; j < s; j++) idx[j] = idx[j - 1] + 1;
+                        }
+                        if (!okb) break;
+                    }
+                    int bestv2 = best, bp = -1, bq = -1, bxi = -1, bxj = -1; long p2b = 0;
+                    if (okb) for (int p = 0; p < nblk; p++) for (int q = p + 1; q < nblk; q++) {
+                        for (int xi = 0; xi < ncmb[p]; xi++) for (int xj = 0; xj < ncmb[q]; xj++) {
+                            memcpy(chosen, bestch, sizeof chosen);
+                            for (int c = 0; c < nab[p]; c++) chosen[p][c] = cmb[p][xi][c];
+                            for (int c = 0; c < nab[q]; c++) chosen[q][c] = cmb[q][xj][c];
+                            int v = cost_eval(); p2b++;
+                            if (v < bestv2) { bestv2 = v; bp = p; bq = q; bxi = xi; bxj = xj; }
+                        }
+                    }
+                    fprintf(stderr, "P2B blocks %d combos %d,%d pairs %ld best_before %d best_after %d\n", nblk, ncmb[0], ncmb[1], p2b, best, bestv2);
+                    if (bp >= 0) {
+                        memcpy(chosen, bestch, sizeof chosen);
+                        for (int c = 0; c < nab[bp]; c++) chosen[bp][c] = cmb[bp][bxi][c];
+                        for (int c = 0; c < nab[bq]; c++) chosen[bq][c] = cmb[bq][bxj][c];
+                        best = bestv2; memcpy(bestch, chosen, sizeof bestch);
+                        if (best < gbest) { gbest = best; if (EDGES) write_edges(EDGES); }
+                    }
+                }
                 if (best == 0) { printf("SOL type %s cls", type); for (int i = 0; i < nt; i++) printf(" %d", comb[i]);
                     printf(" stabgens"); for (int o = 0; o < no; o++) printf(" %d", sord[o] > 1 ? stab[o][1] : 0);
                     for (int k = 0; k < nblk; k++) { printf(" | blk %d-%d:", ba[k], bb[k]); for (int c = 0; c < nab[k]; c++) printf(" %d", dcrep[k][bestch[k][c]]); }

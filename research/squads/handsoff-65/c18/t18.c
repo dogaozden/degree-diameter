@@ -125,7 +125,7 @@ static void write_edges(const char *fn) {
     fclose(f);
 }
 int main(int argc, char **argv) {
-    if (argc < 9) { fprintf(stderr, "usage: t18 TABLE K N00,N01,N10,N11 SEED ITERS TENURE OUT [HGEN KGEN]\n"); return 1; }
+    if (argc < 8) { fprintf(stderr, "usage: t18 TABLE K N00,N01,N10,N11 SEED ITERS TENURE OUT [HGEN KGEN]\n"); return 1; }
     FILE *f = fopen(argv[1], "r"); if (!f) return 1;
     if (fscanf(f, "%d", &m) != 1) return 1;
     T = malloc(sizeof(int) * m * m);
@@ -147,8 +147,17 @@ int main(int argc, char **argv) {
     hs = rnd() % nsub; ks = rnd() % nsub;
     if (argc >= 10) { int g = atoi(argv[9]); for (int s = 0; s < nsub; s++) for (int i = 0; i < k; i++) if (subel[s][i] == g) hs = s; }
     if (argc >= 11) { int g = atoi(argv[10]); for (int s = 0; s < nsub; s++) for (int i = 0; i < k; i++) if (subel[s][i] == g) ks = s; }
-    /* random initial parameters */
+    /* random initial parameters, or from file INIT (4 lines of block values, then "hgen kgen") */
     for (int b = 0; b < 4; b++) for (int i = 0; i < nS[b]; i++) par[b][i] = rnd() % m;
+    if (getenv("INIT")) {
+        FILE *fi = fopen(getenv("INIT"), "r");
+        if (fi) {
+            for (int b = 0; b < 4; b++) for (int i = 0; i < nS[b]; i++) if (fscanf(fi, "%d", &par[b][i]) != 1) return 2;
+            int hg, kg; if (fscanf(fi, "%*s %d %*s %d", &hg, &kg) == 2) {
+                for (int s2 = 0; s2 < nsub; s2++) for (int i = 0; i < k; i++) { if (subel[s2][i] == hg) hs = s2; if (subel[s2][i] == kg) ks = s2; } }
+            fclose(fi);
+        }
+    }
     int cur = cost_now(), best = cur;
     int bestpar[4][8]; int bh = hs, bk = ks; memcpy(bestpar, par, sizeof par);
     static long tabu_until[4][8];
@@ -200,6 +209,9 @@ int main(int argc, char **argv) {
             best = cur; memcpy(bestpar, par, sizeof par); bh = hs; bk = ks; stall = 0;
             printf("best %d step %ld t=%.1f\n", best, it, now() - t0); fflush(stdout);
             write_edges(out);
+            { char fn[512]; snprintf(fn, sizeof fn, "%s.par", out); FILE *pf = fopen(fn, "w");
+              if (pf) { for (int b = 0; b < 4; b++) { for (int i = 0; i < nS[b]; i++) fprintf(pf, "%d ", par[b][i]); fprintf(pf, "\n"); }
+                        fprintf(pf, "H %d K %d cost %d\n", subel[hs][1], subel[ks][1], best); fclose(pf); } }
         } else stall++;
         /* perturbation after long stall */
         if (stall > 400) {

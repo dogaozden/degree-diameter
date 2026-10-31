@@ -85,3 +85,14 @@ nab parallel a-b edges), and lift by N: n = 684 + 2 j |N|. Every move stays N-eq
 - Exhaustive 2-switch scan (scan3c, 240 s, first 447 of 2064 edges): no improving switch.
 - Final candidate: research/squads/handsoff-65/c10/a688_bad314.edges (n=688, bad=314). Not a record.
 - 19:24: 1200 more damage-guided samples (seed 7000, KT=15): start 314; SA 170 s -> 312 (a688_bad312.edges, scoreboard line added).
+
+## Final state (19:31)
+- Best: a688_bad312.edges (n=688, bad=312, simple, bipartite, maxdeg 6), from the C2 family (Z2-lift of the 684 graph, one
+  base pair, 4 base edges removed from the 15-20 lowest-damage edges, 2 parallel a-b edges). Not a record.
+- Other seeds of the same method: 314, 320, 324, 326. A second SA from 312 (new seed): 312.
+- Families at n > 684 by far pairs: C2 688: 312; C3 690: 450; C6 696: 843; C19 722: about 3300; C57 and C19:C3 798: over 5000.
+- No N-equivariant route reached bad 0. Equivariant insertion costs about 44 far pairs per deleted lift edge and removes
+  6|N| lift edges, so these families are dominated by unconstrained surgery (c7: 5 lift edges, 178 at 686).
+- Scoreboard: c10 lines for 688 with bad 454, 356, 324, 314 and 312 (added in this order).
+- No background processes of mine remain (the tabu processes in the list belong to another worker).
+- 19:37: three more anneals from the 312 graph (SWAP=0.1 T0=3; T0=1 cool; 170 s each): 312. Stopped; no processes of mine remain.

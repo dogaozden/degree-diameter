@@ -87,3 +87,21 @@ No candidate with bad = 0 was found, so no CLAIM.
   (rils704b.sol, 3282 steps, 16 restarts). So cost 4 is reachable from random starts in this family, consistent with c1.
   Its far-pair count: bad=352 (same as the start).
 - 720 Haar 2+2/180 from random voltages, ILS 240 s: best 12 (the Haar start gave 4).
+
+## Last runs (19:17-19:27)
+- order-88 lift of the random-start cost-4 704 graph (rils704b, bad 352): start 8, tabu 100 s: 8; ILS 240 s: 8.
+- random-start ILS on the 704 2+2 base, seed 191: 8 (seeds 141 and 191 gave 8, seed 151 gave 4).
+
+## Final state (19:27)
+- Best: the 704 graph (bad 352), line in scoreboard.tsv (written 17:58 as the c14 entry). No bad=0 candidate. No CLAIM.
+- Negative: the N-lift re-coordinatisation does not move the cost-4 (704, 720) or cost-8/30 near misses; all exact
+  1-/2-change neighbourhoods checked at every base size were non-improving.
+- Next ideas (not done): (1) incremental cost evaluation (current vl is ~40-160 ms per step at these base sizes, so
+  tabu does only 250-3000 steps per run); (2) a full 3-change search on the 2+2/176 base (C(9,3)*176^3 = 458M
+  candidates, about 2 CPU-hours with kopt); (3) an automorphism search on the 704 graph to see whether it has a larger
+  semiregular group (then it is a Haar/1+1 or other small-base lift with a different move set).
+- Processes: none of mine are running.
+- 19:31 final run: ILS on the 704 2+2 base from its cost-4 start (STALL 300 KICK 5, seed 201): best 4 (3063 steps).
+- Closing at 19:45: NOTES current, scoreboard has one c14 line (the 704, bad 352), no processes of c14 running.
+- 19:35 last run: ILS on the third order-88 N-lift (n88_3, seed 211, 200 s): best 8 (start 8, 1440 steps).
+- 19:40 last run: ILS on the C122 quotient of the 732 near miss (220 s): best 15 (start 15).

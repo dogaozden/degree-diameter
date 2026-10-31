@@ -85,3 +85,21 @@ Goal: bipartite max degree 6, diameter 5, n > 684. Card: research/squads/handsof
   372_2 cost 24; 399_4 cost 18, bad 2527; 363_2 (n=726) cost 10, bad 1089.
 - 2,2|3,3,3 and 2,3,6|2,3,6 tabu: 366_2 856 / none, 372_11 320 / none, 378_17 93 / 130. Not competitive.
 - 1|2,2 348_5 (n=696) seeds 71-75 (20 s): 13,16,16,13,13; the cost-8 run is the only 8 in ~15 tries.
+
+## NEW BEST by far-pair count (19:27): n = 762, bad = 889
+- File: deep/best762_bad889.edges (copy of deep/L3_381_1.edges): SmallGroup(381,1), type 1|3,3,3, tabu (mtabu), SECS 60
+  x 2 random class combos, seed 12. The run's mcos cost was 14, but the far-pair count is 889 (score65 verified).
+  Far pairs by orbit (analyze_bad.py, orbits A=381, B1,B2,B3 = 127 each): B1-B1 381, B1-B3 508, nothing on A.
+  Scoreboard line added (19:26). It is NOT a record (bad > 0), but it beats 915 on far pairs.
+- Cost and far-pair count are not monotone: a second seed with cost 18 gave bad 2413, cost 12 gave bad 1270.
+  Tabu on the far-pair objective itself (mtabu3.c, OBJ=bad, cost = 2 x far pairs) gave 2032 on the same group:
+  worse than the cost objective here. So the lucky 889 is a basin effect. More seeds on 381_1 (and on 372_1,
+  363_2, 399_4) with the cost objective and a bad check on every run's file are the cheap next step.
+- mtabu3.c = mtabu.c plus OBJ=bad switch (cost_eval counts unreached vertices weighted by orbit size, both sides).
+- 19:30 more cost-objective seeds on 381_1 (60 s x 2 combos): seed 14 cost 12 bad 1270; seed 15 cost 20 bad 1524.
+  Far pairs vary 889-2413 across seeds, so the 889 is the best of about 6 runs on this group.
+## Final (19:31 UTC)
+- Best far-pair count for c12: 889 at n = 762 (deep/best762_bad889.edges). Best at n = 732: 915 (cost 7, c5 ties).
+- No graph with bad = 0 above 684 found; no record. Nothing from c12 left running.
+- 19:32-19:37 four more seeds on 381_1 (60 s x 2 combos): seed 16 cost 20 bad 1524; seed 17 cost 12 bad 1270;
+  seed 18 cost 22 bad 2159. Best stays 889 (seed 12). Far-pair counts over 6 seeds: 889, 1270, 1270, 1524, 1524, 2159, 2413.
