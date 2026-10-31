@@ -1,0 +1,17 @@
+machine: vm | nproc=4 | free -g (total used free shared buff/cache available): 15 0 14 0 0 15
+sha256: d78ef086c9c0f2ed5a26dc8fb9193208c94557b535ef669eb349d4c50ccac654  d9D10_psl_151_7_orb3f0_s1.txt
+# reference: haarcheck_psl  [rc=0 wall_s=11.0 peak_rss_mb=13]
+from (e,A): reached A 12049800/12049800, B 12049800/12049800 within 10, ecc 10
+from (e,B): reached A 12049800/12049800, B 12049800/12049800 within 10, ecc 10
+VALID d=9 D=10 group=psl 151 x Z_7 N=12049800 vertices=24099600 (distinct generators, 9-regular simple)
+# independent: check_haar_indep.py  [rc=0 wall_s=33.0 peak_rss_mb=787]
+file d9D10_psl_151_7_orb3f0_s1.txt
+header: d=9 D=10 spec=psl 151 NCYC=7 N=12049800
+group order |G|=1721400 (factors [1721400]), x Z_7 -> 12049800; vertices 2N=24099600
+distinct generators (as full group elements): 9 of d=9
+permutations built (14s)
+BFS from A: ecc=10 reached 24099600 of 24099600 (unreached 0); level sizes [1, 9, 72, 576, 4608, 36835, 291026, 2132494, 9287298, 9879886, 2466795]
+BFS from B: ecc=10 reached 24099600 of 24099600 (unreached 0); level sizes [1, 9, 72, 576, 4608, 36835, 291066, 2132494, 9286241, 9879886, 2467812]
+every vertex has exactly 9 distinct neighbours: True
+RESULT VALID d=9 D=10 eccA=10 eccB=10 n=24099600 (33s)
+
