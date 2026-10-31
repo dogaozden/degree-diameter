@@ -1,0 +1,10 @@
+group psl 17 x Z_7, N=17136, identity 952, H order 63, rows 272, threads 1, setup 0.00s
+wide rows: HW order 119, rows 144, setup 0.00s
+SDUAL psi: Q-part tw, z -> 0 - 1 z (u0 index 4998)
+psi(e) != e: the f fixed generators are psi-fixed elements (e not in S); S is normalised to s_0 = e when written
+ORBIT k=2 m=5 f=1: |Fix(alpha)| = 136 (+e); mu = 26.18, mu/k = 13.09, fixed-point misses ~ 5.35
+start cost=113
+RESULT d=11 D=6 group=psl 17 x Z_7 N=17136 best=0 evals=32049 time=0.7 orbit k=2 m=5 f=1 fix=136 sdual psi: Q-part tw, z -> 0 - 1 z
+full diameter check: OK
+full diameter check after normalising s_0 = e: OK
+wrote logs/k11/sdtw_psl17_7.sol

@@ -1,0 +1,26 @@
+group psl 17 x Z_1, N=2448, identity 136, H order 17, rows 144, threads 1, setup 0.00s
+wide rows: no cyclic subgroup of order >= 64 found (best 17); using haar_gen3's evaluation
+SDUAL psi: Q-part tw, z -> 0 - 1 z (u0 index 714)
+psi(e) != e: the f fixed generators are psi-fixed elements (e not in S); S is normalised to s_0 = e when written
+ORBIT k=2 m=3 f=1: |Fix(alpha)| = 136 (+e); mu = 54.13, mu/k = 27.06, fixed-point misses ~ 20.37
+start cost=157
+t=30 steps=462780 evals=3702241 cost=7 best=7 T=0.53
+t=60 steps=901319 evals=7210553 cost=7 best=7 T=0.19
+t=90 steps=1395968 evals=11167745 cost=7 best=7 T=0.15
+t=120 steps=1846186 evals=14769489 cost=7 best=7 T=0.15
+t=150 steps=2314123 evals=18512985 cost=7 best=7 T=0.15
+t=180 steps=2792276 evals=22338209 cost=7 best=7 T=0.76
+t=210 steps=3299423 evals=26395385 cost=7 best=7 T=0.27
+t=240 steps=3787353 evals=30298825 cost=15 best=7 T=0.15
+t=270 steps=4293306 evals=34346449 cost=15 best=7 T=0.15
+t=300 steps=4761027 evals=38088217 cost=15 best=7 T=0.15
+t=330 steps=5190841 evals=41526729 cost=13 best=7 T=0.76
+t=360 steps=5689180 evals=45513441 cost=10 best=7 T=0.27
+t=390 steps=6166492 evals=49331937 cost=15 best=7 T=0.15
+t=420 steps=6616819 evals=52934553 cost=15 best=7 T=0.15
+t=450 steps=7091117 evals=56728937 cost=15 best=7 T=0.15
+t=480 steps=7517850 evals=60142801 cost=7 best=7 T=0.76
+t=510 steps=7986952 evals=63895617 cost=13 best=7 T=0.27
+t=540 steps=8456152 evals=67649217 cost=13 best=7 T=0.15
+t=570 steps=8917663 evals=71341305 cost=21 best=7 T=0.15
+RESULT d=7 D=6 group=psl 17 x Z_1 N=2448 best=7 evals=74775353 time=600.0 orbit k=2 m=3 f=1 fix=136 sdual psi: Q-part tw, z -> 0 - 1 z

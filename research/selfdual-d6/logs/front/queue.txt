@@ -1,0 +1,12 @@
+SECS=40 DEEP=4,200 MAXSOL=1 TYPES=1+2+2+2,1+1+1+2+2 timeout 1500 src/sdhi 7 6 psl 17 > logs/front/sd_psl17.txt 2>&1
+SECS=40 DEEP=4,200 MAXSOL=1 TYPES=1+2+2+2,1+1+1+2+2 timeout 1500 src/sdhi 7 6 psl 7 cyc 15 > logs/front/sd_psl7_15.txt 2>&1
+SECS=40 DEEP=4,200 MAXSOL=1 TYPES=1+2+2+2,1+1+1+2+2 timeout 1500 src/sdhi 7 6 meta 43 57 6 > logs/front/sd_meta43_57_6.txt 2>&1
+THREADS=1 ORBIT="3 2 1" timeout 700 src/haar_sd 7 6 600 1 8 logs/front/o3_psl7_15.sol psl 7 15 > logs/front/o3_psl7_15.log 2>&1
+THREADS=1 ORBIT="3 2 1" timeout 700 src/haar_sd 7 6 600 1 8 logs/front/o3_psl17.sol psl 17 1 > logs/front/o3_psl17.log 2>&1
+THREADS=1 timeout 700 src/haar_sd 7 6 600 1 8 logs/front/pl_psl17.sol psl 17 1 > logs/front/pl_psl17.log 2>&1
+THREADS=1 timeout 700 src/haar_sd 7 6 600 1 8 logs/front/pl_psl7_15.sol psl 7 15 > logs/front/pl_psl7_15.log 2>&1
+THREADS=1 ORBIT="2 3 1" SDUAL="tw 1 0" timeout 700 src/haar_sd 7 6 600 1 8 logs/front/sdtw_psl17.sol psl 17 1 > logs/front/sdtw_psl17.log 2>&1
+THREADS=1 ORBIT="3 2 1" timeout 700 src/haar_sd 7 6 600 1 8 logs/front/o3_psl7_16.sol psl 7 16 > logs/front/o3_psl7_16.log 2>&1
+THREADS=1 ORBIT="2 3 1" SDUAL="ninv 1 0" timeout 700 src/haar_sd 7 6 600 1 8 logs/front/sdninv_sl7_8.sol sl 7 8 > logs/front/sdninv_sl7_8.log 2>&1
+THREADS=1 timeout 400 src/haar_sd 7 6 300 2 8 logs/front/pl_sl7_7.sol sl 7 7 > logs/front/pl_sl7_7.log 2>&1
+THREADS=1 ORBIT="2 3 1" SDUAL="ninv 1 0" timeout 400 src/haar_sd 7 6 300 2 8 logs/front/sdninv_sl7_7.sol sl 7 7 > logs/front/sdninv_sl7_7.log 2>&1

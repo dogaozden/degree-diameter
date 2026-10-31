@@ -1,0 +1,13 @@
+group sl 7 x Z_7, N=2352, identity 294, H order 56, rows 42, threads 1, setup 0.00s
+wide rows: no cyclic subgroup of order >= 64 found (best 56); using haar_gen3's evaluation
+start cost=18
+t=30 steps=1524097 evals=12192777 cost=5 best=2 T=0.53
+t=60 steps=3055776 evals=24446209 cost=3 best=2 T=0.19
+t=90 steps=4610251 evals=36882009 cost=3 best=2 T=0.15
+t=120 steps=6092897 evals=48743177 cost=5 best=2 T=0.15
+t=150 steps=7598613 evals=60788905 cost=7 best=2 T=0.15
+t=180 steps=9104019 evals=72832153 cost=3 best=2 T=0.60
+t=210 steps=10565968 evals=84527745 cost=3 best=2 T=0.21
+t=240 steps=11962986 evals=95703889 cost=7 best=2 T=0.15
+t=270 steps=13451177 evals=107609417 cost=4 best=2 T=0.15
+RESULT d=7 D=6 group=sl 7 x Z_7 N=2352 best=2 evals=120165073 time=300.0

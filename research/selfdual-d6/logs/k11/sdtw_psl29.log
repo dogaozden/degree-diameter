@@ -1,0 +1,10 @@
+group psl 29 x Z_1, N=12180, identity 406, H order 29, rows 420, threads 1, setup 0.00s
+wide rows: no cyclic subgroup of order >= 64 found (best 29); using haar_gen3's evaluation
+SDUAL psi: Q-part tw, z -> 0 - 1 z (u0 index 1247)
+psi(e) != e: the f fixed generators are psi-fixed elements (e not in S); S is normalised to s_0 = e when written
+ORBIT k=2 m=5 f=1: |Fix(alpha)| = 406 (+e); mu = 1.33, mu/k = 0.66, fixed-point misses ~ 4.25
+start cost=12
+RESULT d=11 D=6 group=psl 29 x Z_1 N=12180 best=0 evals=57 time=0.0 orbit k=2 m=5 f=1 fix=406 sdual psi: Q-part tw, z -> 0 - 1 z
+full diameter check: OK
+full diameter check after normalising s_0 = e: OK
+wrote logs/k11/sdtw_psl29.sol

@@ -1,0 +1,17 @@
+group psl 13 x Z_17, N=18564, identity 1326, H order 51, rows 364, threads 1, setup 0.00s
+wide rows: HW order 221, rows 84, setup 0.00s
+start cost=47
+t=30 steps=289690 evals=2317521 cost=6 best=6 T=0.53
+t=60 steps=598664 evals=4789313 cost=6 best=6 T=0.19
+t=90 steps=905447 evals=7243577 cost=6 best=6 T=0.15
+t=120 steps=1203243 evals=9625945 cost=6 best=6 T=0.15
+t=150 steps=1476107 evals=11808857 cost=6 best=6 T=0.15
+t=180 steps=1774922 evals=14199377 cost=19 best=6 T=1.25
+t=210 steps=2077982 evals=16623857 cost=5 best=5 T=0.44
+t=240 steps=2366603 evals=18932825 cost=8 best=5 T=0.16
+t=270 steps=2673546 evals=21388369 cost=8 best=5 T=0.15
+t=300 steps=2981555 evals=23852441 cost=8 best=5 T=0.15
+t=330 steps=3284379 evals=26275033 cost=8 best=5 T=0.15
+t=360 steps=3586775 evals=28694201 cost=8 best=5 T=0.67
+t=390 steps=3863331 evals=30906649 cost=7 best=5 T=0.24
+RESULT d=11 D=6 group=psl 13 x Z_17 N=18564 best=5 evals=31715169 time=400.0

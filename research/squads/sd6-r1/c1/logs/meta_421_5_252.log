@@ -1,0 +1,7 @@
+GROUP C421:C5(r=252) x Z1 N 2105 (Haar graph on 4210 vertices) K 7 D 6
+PSI 0 [u0*beta(g)^-1,beta(x)=x^1,beta(y)=y^1,u0=(0,0)] x [z->0-1*z] order 2 orbits(len<=K): 1x1 2x1052
+TABU psi0_t1+2+2+2 best 158 sols 0 steps 3882 evals 139654 restarts 11 secs 15.0
+PSI 1 [u0*beta(g)^-1,beta(x)=x^420,beta(y)=y^1,u0=(0,0)] x [z->0-1*z] order 2 orbits(len<=K): 1x421 2x842
+TABU psi1_t1+2+2+2 best 19 sols 0 steps 1815 evals 87124 restarts 3 secs 15.0
+TABU psi1_t1+1+1+2+2 best 9 sols 0 steps 1754 evals 84196 restarts 3 secs 15.0
+DONE sols 0

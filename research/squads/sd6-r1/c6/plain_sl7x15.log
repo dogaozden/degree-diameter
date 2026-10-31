@@ -1,0 +1,6 @@
+group sl 7 x Z_15, N=5040, identity 630, H order 60, rows 84, threads 1, setup 0.00s
+wide rows: HW order 210, rows 24, setup 0.00s
+start cost=976
+t=30 steps=357536 evals=2860289 cost=510 best=510 T=0.53
+t=60 steps=810627 evals=6485017 cost=508 best=508 T=0.19
+RESULT d=7 D=6 group=sl 7 x Z_15 N=5040 best=508 evals=7846145 time=70.0

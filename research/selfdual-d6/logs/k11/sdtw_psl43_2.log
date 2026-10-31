@@ -1,0 +1,26 @@
+group psl 43 x Z_2, N=79464, identity 1806, H order 43, rows 1848, threads 1, setup 0.00s
+wide rows: HW order 86, rows 924, setup 0.00s
+SDUAL psi: Q-part tw, z -> 0 - 1 z (u0 index 5504)
+psi(e) != e: the f fixed generators are psi-fixed elements (e not in S); S is normalised to s_0 = e when written
+ORBIT k=2 m=5 f=1: |Fix(alpha)| = 1892 (+e); mu = 19629.79, mu/k = 9814.89, fixed-point misses ~ 940.86
+start cost=29304
+t=30 steps=31019 evals=248153 cost=18645 best=18645 T=0.53
+t=60 steps=62717 evals=501737 cost=18312 best=18312 T=0.19
+t=90 steps=96165 evals=769321 cost=18312 best=18312 T=0.15
+t=120 steps=127406 evals=1019249 cost=18312 best=18312 T=0.15
+t=150 steps=160593 evals=1284745 cost=18312 best=18312 T=0.15
+t=180 steps=191654 evals=1533233 cost=18312 best=18312 T=0.15
+t=210 steps=222909 evals=1783273 cost=18312 best=18312 T=0.81
+t=240 steps=252334 evals=2018673 cost=18312 best=18312 T=0.28
+t=270 steps=285288 evals=2282305 cost=18312 best=18312 T=0.15
+t=300 steps=316855 evals=2534841 cost=18312 best=18312 T=0.15
+t=330 steps=347913 evals=2783305 cost=18312 best=18312 T=0.15
+t=360 steps=380858 evals=3046865 cost=18312 best=18312 T=0.81
+t=390 steps=414123 evals=3312985 cost=18312 best=18312 T=0.28
+t=420 steps=443161 evals=3545289 cost=18312 best=18312 T=0.15
+t=450 steps=473236 evals=3785889 cost=18312 best=18312 T=0.15
+t=480 steps=505680 evals=4045441 cost=18312 best=18312 T=0.15
+t=510 steps=537494 evals=4299953 cost=18312 best=18312 T=0.81
+t=540 steps=571560 evals=4572481 cost=18312 best=18312 T=0.28
+t=570 steps=605730 evals=4845841 cost=18312 best=18312 T=0.15
+RESULT d=11 D=6 group=psl 43 x Z_2 N=79464 best=18312 evals=5115265 time=600.0 orbit k=2 m=5 f=1 fix=1892 sdual psi: Q-part tw, z -> 0 - 1 z

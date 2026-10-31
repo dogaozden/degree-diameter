@@ -1,0 +1,17 @@
+group pgl 27 poly x^3+2x+1 x Z_1, N=19656, identity 0, H order 28, rows 702, threads 1, setup 0.00s
+wide rows: no cyclic subgroup of order >= 64 found (best 28); using haar_gen3's evaluation
+start cost=162
+t=30 steps=89959 evals=719673 cost=20 best=20 T=0.53
+t=60 steps=180060 evals=1440481 cost=20 best=20 T=0.19
+t=90 steps=269107 evals=2152857 cost=20 best=20 T=0.15
+t=120 steps=357467 evals=2859737 cost=20 best=20 T=0.15
+t=150 steps=445405 evals=3563241 cost=20 best=20 T=0.15
+t=180 steps=537453 evals=4299625 cost=23 best=20 T=0.74
+t=210 steps=627504 evals=5020033 cost=22 best=20 T=0.26
+t=240 steps=717669 evals=5741353 cost=22 best=20 T=0.15
+t=270 steps=810567 evals=6484537 cost=22 best=20 T=0.15
+t=300 steps=902006 evals=7216049 cost=22 best=20 T=0.15
+t=330 steps=991984 evals=7935873 cost=24 best=20 T=0.74
+t=360 steps=1080196 evals=8641569 cost=18 best=18 T=0.26
+t=390 steps=1165414 evals=9323313 cost=18 best=18 T=0.15
+RESULT d=11 D=6 group=pgl 27 poly x^3+2x+1 x Z_1 N=19656 best=18 evals=9565729 time=400.0

@@ -1,0 +1,10 @@
+group psl 13 x Z_2, N=2184, identity 156, H order 26, rows 84, threads 1, setup 0.00s
+wide rows: no cyclic subgroup of order >= 64 found (best 26); using haar_gen3's evaluation
+SDUAL psi: Q-part tw, z -> 0 - 1 z (u0 index 494)
+psi(e) != e: the f fixed generators are psi-fixed elements (e not in S); S is normalised to s_0 = e when written
+ORBIT k=2 m=3 f=1: |Fix(alpha)| = 156 (+e); mu = 30.46, mu/k = 15.23, fixed-point misses ~ 18.54
+start cost=90
+t=30 steps=261790 evals=2094321 cost=8 best=6 T=0.53
+t=60 steps=532123 evals=4256985 cost=8 best=6 T=0.19
+t=90 steps=846547 evals=6772377 cost=8 best=6 T=0.15
+RESULT d=7 D=6 group=psl 13 x Z_2 N=2184 best=6 evals=9498233 time=120.0 orbit k=2 m=3 f=1 fix=156 sdual psi: Q-part tw, z -> 0 - 1 z

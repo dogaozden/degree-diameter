@@ -1,0 +1,6 @@
+THREADS=1 timeout 500 src/haar_sd 11 6 400 1 8 logs/k11/pl_psl17_7.sol psl 17 7 > logs/k11/pl_psl17_7.log 2>&1
+THREADS=1 ORBIT="2 5 1" SDUAL="tw 1 0" timeout 500 src/haar_sd 11 6 400 1 8 logs/k11/sdtw_psl17_7.sol psl 17 7 > logs/k11/sdtw_psl17_7.log 2>&1
+THREADS=1 timeout 500 src/haar_sd 11 6 400 1 8 logs/k11/pl_psl13_17.sol psl 13 17 > logs/k11/pl_psl13_17.log 2>&1
+THREADS=1 timeout 500 src/haar_sd 11 6 400 1 8 logs/k11/pl_pgl27.sol pgl 27 1 > logs/k11/pl_pgl27.log 2>&1
+THREADS=1 ORBIT="2 5 1" SDUAL="ninv 1 0" timeout 500 src/haar_sd 11 6 400 1 8 logs/k11/sdninv_sl29.sol sl 29 1 > logs/k11/sdninv_sl29.log 2>&1
+THREADS=1 timeout 500 src/haar_sd 11 6 400 1 8 logs/k11/pl_sl29.sol sl 29 1 > logs/k11/pl_sl29.log 2>&1

@@ -1,0 +1,52 @@
+psi1: GROUP SL(2,7) x Z7 N 2352 (Haar graph on 4704 vertices) K 7 D 6
+psi1: PSI 1 [x->x^-1] x [z->0-2*z] order 6 orbits(len<=K): 1x2 2x167 6x336
+psi1: TABU psi1_t1+6 best 2275 sols 0 steps 11268 evals 540902 restarts 37 secs 3.0
+psi1: TABU psi1_t1+2+2+2 best 2016 sols 0 steps 2338 evals 112232 restarts 7 secs 3.0
+psi1: DONE sols 0
+psi2: GROUP SL(2,7) x Z7 N 2352 (Haar graph on 4704 vertices) K 7 D 6
+psi2: PSI 2 [x->x^-1] x [z->0-3*z] order 6 orbits(len<=K): 1x2 2x167 3x4 6x334
+psi2: TABU psi2_t1+6 best 2275 sols 0 steps 7608 evals 365210 restarts 25 secs 3.0
+psi2: TABU psi2_t1+3+3 best 2338 sols 0 steps 33435 evals 1604991 restarts 110 secs 3.0
+psi2: TABU psi2_t2+2+3 best 1119 sols 0 steps 1836 evals 88135 restarts 6 secs 3.0
+psi2: TABU psi2_t1+2+2+2 best 2016 sols 0 steps 1802 evals 86502 restarts 5 secs 3.0
+psi2: DONE sols 0
+psi3: GROUP SL(2,7) x Z7 N 2352 (Haar graph on 4704 vertices) K 7 D 6
+psi3: PSI 3 [x->x^-1] x [z->0-4*z] order 6 orbits(len<=K): 1x2 2x167 6x336
+psi3: TABU psi3_t1+6 best 2275 sols 0 steps 9711 evals 466161 restarts 32 secs 3.0
+psi3: TABU psi3_t1+2+2+2 best 2016 sols 0 steps 1857 evals 89143 restarts 6 secs 3.0
+psi3: DONE sols 0
+psi4: GROUP SL(2,7) x Z7 N 2352 (Haar graph on 4704 vertices) K 7 D 6
+psi4: PSI 4 [x->x^-1] x [z->0-5*z] order 6 orbits(len<=K): 1x2 2x167 3x4 6x334
+psi4: TABU psi4_t1+6 best 2275 sols 0 steps 5829 evals 279812 restarts 19 secs 3.0
+psi4: TABU psi4_t1+3+3 best 2338 sols 0 steps 24580 evals 1179922 restarts 81 secs 3.0
+psi4: TABU psi4_t2+2+3 best 1119 sols 0 steps 1660 evals 79686 restarts 5 secs 3.0
+psi4: TABU psi4_t1+2+2+2 best 2016 sols 0 steps 1643 evals 78870 restarts 5 secs 3.0
+psi4: DONE sols 0
+psi7: GROUP SL(2,7) x Z7 N 2352 (Haar graph on 4704 vertices) K 7 D 6
+psi7: PSI 7 [x->-x^-1] x [z->0-2*z] order 6 orbits(len<=K): 1x42 2x147 6x336
+psi7: TABU psi7_t1+6 best 1913 sols 0 steps 3657 evals 175549 restarts 12 secs 3.0
+psi7: TABU psi7_t1+2+2+2 best 2016 sols 0 steps 1188 evals 57028 restarts 3 secs 3.0
+psi7: TABU psi7_t1+1+1+2+2 best 2016 sols 0 steps 1166 evals 55972 restarts 3 secs 3.0
+psi7: DONE sols 0
+psi8: GROUP SL(2,7) x Z7 N 2352 (Haar graph on 4704 vertices) K 7 D 6
+psi8: PSI 8 [x->-x^-1] x [z->0-3*z] order 6 orbits(len<=K): 1x42 2x147 3x84 6x294
+psi8: TABU psi8_t1+6 best 1915 sols 0 steps 3315 evals 159131 restarts 10 secs 3.0
+psi8: TABU psi8_t1+3+3 best 1913 sols 0 steps 3211 evals 154139 restarts 10 secs 3.0
+psi8: TABU psi8_t2+2+3 best 152 sols 0 steps 582 evals 27938 restarts 1 secs 3.0
+psi8: TABU psi8_t1+2+2+2 best 2016 sols 0 steps 1028 evals 49348 restarts 3 secs 3.0
+psi8: TABU psi8_t1+1+1+2+2 best 2016 sols 0 steps 1245 evals 59765 restarts 4 secs 3.0
+psi8: DONE sols 0
+psi9: GROUP SL(2,7) x Z7 N 2352 (Haar graph on 4704 vertices) K 7 D 6
+psi9: PSI 9 [x->-x^-1] x [z->0-4*z] order 6 orbits(len<=K): 1x42 2x147 6x336
+psi9: TABU psi9_t1+6 best 1913 sols 0 steps 2992 evals 143626 restarts 9 secs 3.0
+psi9: TABU psi9_t1+2+2+2 best 2016 sols 0 steps 1142 evals 54820 restarts 3 secs 3.0
+psi9: TABU psi9_t1+1+1+2+2 best 2016 sols 0 steps 924 evals 44356 restarts 3 secs 3.0
+psi9: DONE sols 0
+psi10: GROUP SL(2,7) x Z7 N 2352 (Haar graph on 4704 vertices) K 7 D 6
+psi10: PSI 10 [x->-x^-1] x [z->0-5*z] order 6 orbits(len<=K): 1x42 2x147 3x84 6x294
+psi10: TABU psi10_t1+6 best 1915 sols 0 steps 2686 evals 128937 restarts 8 secs 3.0
+psi10: TABU psi10_t1+3+3 best 1913 sols 0 steps 3114 evals 149483 restarts 10 secs 3.0
+psi10: TABU psi10_t2+2+3 best 152 sols 0 steps 466 evals 22370 restarts 1 secs 3.0
+psi10: TABU psi10_t1+2+2+2 best 2016 sols 0 steps 924 evals 44356 restarts 3 secs 3.0
+psi10: TABU psi10_t1+1+1+2+2 best 2016 sols 0 steps 1087 evals 52180 restarts 3 secs 3.0
+psi10: DONE sols 0

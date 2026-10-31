@@ -1,0 +1,33 @@
+group sl 17 x Z_1, N=4896, identity 272, H order 34, rows 144, threads 1, setup 0.00s
+wide rows: no cyclic subgroup of order >= 64 found (best 34); using haar_gen3's evaluation
+SDUAL psi: Q-part ninv, z -> 0 - 1 z (u0 index 4607)
+psi(e) != e: the f fixed generators are psi-fixed elements (e not in S); S is normalised to s_0 = e when written
+ORBIT k=2 m=3 f=1: |Fix(alpha)| = 306 (+e); mu = 728.02, mu/k = 364.01, fixed-point misses ~ 118.38
+start cost=948
+t=30 steps=530024 evals=4240193 cost=508 best=508 T=0.53
+t=60 steps=1001122 evals=8008977 cost=523 best=508 T=0.19
+t=90 steps=1535179 evals=12281433 cost=523 best=508 T=0.15
+t=120 steps=2067854 evals=16542833 cost=523 best=508 T=0.15
+t=150 steps=2599886 evals=20799089 cost=498 best=498 T=0.15
+t=180 steps=3086756 evals=24694049 cost=498 best=498 T=0.15
+t=210 steps=3588730 evals=28709841 cost=531 best=498 T=0.15
+t=240 steps=4062989 evals=32503913 cost=503 best=498 T=0.15
+t=270 steps=4613793 evals=36910345 cost=503 best=498 T=0.15
+t=300 steps=5163075 evals=41304601 cost=496 best=496 T=0.92
+t=330 steps=5650197 evals=45201577 cost=496 best=496 T=0.33
+t=360 steps=6194860 evals=49558881 cost=496 best=496 T=0.15
+t=390 steps=6717280 evals=53738241 cost=496 best=496 T=0.15
+t=420 steps=7213382 evals=57707057 cost=496 best=496 T=0.15
+t=450 steps=7671168 evals=61369345 cost=496 best=496 T=1.14
+t=480 steps=8189016 evals=65512129 cost=496 best=496 T=0.40
+t=510 steps=8702232 evals=69617857 cost=513 best=496 T=0.15
+t=540 steps=9236958 evals=73895665 cost=513 best=496 T=0.15
+t=570 steps=9769840 evals=78158721 cost=513 best=496 T=0.15
+t=600 steps=10313643 evals=82509145 cost=496 best=496 T=1.14
+t=630 steps=10878575 evals=87028601 cost=496 best=496 T=0.40
+t=660 steps=11435892 evals=91487137 cost=551 best=496 T=0.15
+t=690 steps=11955932 evals=95647457 cost=551 best=496 T=0.15
+t=720 steps=12510809 evals=100086473 cost=551 best=496 T=0.15
+t=750 steps=13037755 evals=104302041 cost=496 best=496 T=1.14
+t=780 steps=13566050 evals=108528401 cost=496 best=496 T=0.40
+RESULT d=7 D=6 group=sl 17 x Z_1 N=4896 best=496 evals=111303801 time=800.0 orbit k=2 m=3 f=1 fix=306 sdual psi: Q-part ninv, z -> 0 - 1 z

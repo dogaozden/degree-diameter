@@ -1,0 +1,26 @@
+GROUP PSL(2,11) x Z4 N 2640 (Haar graph on 5280 vertices) K 7 D 6
+PSI 0 [x->x^-1] x [z->0-1*z] order 2 orbits(len<=K): 1x112 2x1264
+TABU psi0_t1+2+2+2 best 17 sols 0 steps 4457 evals 213944 restarts 7 secs 15.0
+TABU psi0_t1+1+1+2+2 best 17 sols 0 steps 4754 evals 228202 restarts 9 secs 15.0
+TABU psi0_t1+1+1+1+1+2 best 19 sols 0 steps 4422 evals 212263 restarts 6 secs 15.0
+TABU psi0_t1+1+1+1+1+1+1 best 1320 sols 0 steps 6453 evals 309766 restarts 21 secs 15.0
+PSI 1 [x->x^-1] x [z->1-1*z] order 2 orbits(len<=K): 2x1320
+PSI 2 [x->x^-1] x [z->0-3*z] order 2 orbits(len<=K): 1x224 2x1208
+TABU psi2_t1+2+2+2 best 27 sols 0 steps 4346 evals 208617 restarts 8 secs 15.0
+TABU psi2_t1+1+1+2+2 best 22 sols 0 steps 4333 evals 207992 restarts 7 secs 15.0
+TABU psi2_t1+1+1+1+1+2 best 17 sols 0 steps 4201 evals 201655 restarts 6 secs 15.0
+TABU psi2_t1+1+1+1+1+1+1 best 24 sols 0 steps 4218 evals 202472 restarts 7 secs 15.0
+PSI 3 [x->x^-1] x [z->2-3*z] order 2 orbits(len<=K): 2x1320
+PSI 4 [x->(hxh)^-1,h=diag(1,2)] x [z->0-1*z] order 2 orbits(len<=K): 1x132 2x1254
+TABU psi4_t1+2+2+2 best 14 sols 0 steps 3891 evals 186775 restarts 6 secs 15.0
+TABU psi4_t1+1+1+2+2 best 18 sols 0 steps 1590 evals 76323 restarts 2 secs 15.0
+TABU psi4_t1+1+1+1+1+2 best 13 sols 0 steps 2225 evals 106806 restarts 5 secs 15.0
+TABU psi4_t1+1+1+1+1+1+1 best 1320 sols 0 steps 1736 evals 83334 restarts 5 secs 15.0
+PSI 5 [x->(hxh)^-1,h=diag(1,2)] x [z->1-1*z] order 2 orbits(len<=K): 2x1320
+PSI 6 [x->(hxh)^-1,h=diag(1,2)] x [z->0-3*z] order 2 orbits(len<=K): 1x264 2x1188
+TABU psi6_t1+2+2+2 best 32 sols 0 steps 912 evals 43778 restarts 1 secs 15.0
+TABU psi6_t1+1+1+2+2 best 27 sols 0 steps 867 evals 41619 restarts 2 secs 15.0
+TABU psi6_t1+1+1+1+1+2 best 20 sols 0 steps 687 evals 32977 restarts 0 secs 15.0
+TABU psi6_t1+1+1+1+1+1+1 best 25 sols 0 steps 906 evals 43491 restarts 2 secs 15.0
+PSI 7 [x->(hxh)^-1,h=diag(1,2)] x [z->2-3*z] order 2 orbits(len<=K): 2x1320
+DONE sols 0

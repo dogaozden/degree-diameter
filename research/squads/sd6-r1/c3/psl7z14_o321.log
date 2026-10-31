@@ -1,0 +1,8 @@
+group psl 7 x Z_14, N=2352, identity 294, H order 42, rows 56, threads 1, setup 0.00s
+wide rows: no cyclic subgroup of order >= 64 found (best 42); using haar_gen3's evaluation
+alpha: conj by mat(0,3,2,1) (index 15), z -> 9 z on Z_14
+ORBIT k=3 m=2 f=1: |Fix(alpha)| = 5 (+e); mu = 44.51, mu/k = 14.84, fixed-point misses ~ 1.60
+start cost=1179
+RESULT d=7 D=6 group=psl 7 x Z_14 N=2352 best=0 evals=5505 time=0.1 orbit k=3 m=2 f=1 fix=5
+full diameter check: OK
+wrote psl7z14_o321.sol
