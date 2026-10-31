@@ -1,0 +1,10 @@
+group sl 7 x Z_7, N=2352, identity 294, H order 56, rows 42, threads 1, setup 0.00s
+wide rows: no cyclic subgroup of order >= 64 found (best 56); using haar_gen3's evaluation
+SDUAL psi: Q-part ninv, z -> 0 - 1 z (u0 index 2009)
+psi(e) != e: the f fixed generators are psi-fixed elements (e not in S); S is normalised to s_0 = e when written
+ORBIT k=2 m=3 f=1: |Fix(alpha)| = 42 (+e); mu = 44.51, mu/k = 22.26, fixed-point misses ~ 5.92
+start cost=97
+RESULT d=7 D=6 group=sl 7 x Z_7 N=2352 best=0 evals=249945 time=0.9 orbit k=2 m=3 f=1 fix=42 sdual psi: Q-part ninv, z -> 0 - 1 z
+full diameter check: OK
+full diameter check after normalising s_0 = e: OK
+wrote logs/front/sdninv_sl7_7.sol

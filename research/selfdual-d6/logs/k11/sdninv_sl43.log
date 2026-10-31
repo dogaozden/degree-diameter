@@ -1,0 +1,9 @@
+group sl 43 x Z_1, N=79464, identity 1806, H order 44, rows 1806, threads 1, setup 0.00s
+wide rows: HW order 86, rows 924, setup 0.01s
+SDUAL psi: Q-part ninv, z -> 0 - 1 z (u0 index 77615)
+psi(e) != e: the f fixed generators are psi-fixed elements (e not in S); S is normalised to s_0 = e when written
+ORBIT k=2 m=5 f=1: |Fix(alpha)| = 1806 (+e); mu = 19629.79, mu/k = 9814.89, fixed-point misses ~ 898.11
+start cost=20830
+t=30 steps=29284 evals=234273 cost=17961 best=17961 T=0.53
+t=60 steps=57215 evals=457721 cost=17961 best=17961 T=0.19
+t=90 steps=86367 evals=690937 cost=17961 best=17961 T=0.15
