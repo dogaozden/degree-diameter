@@ -1,0 +1,14 @@
+machine: nproc=4; free -g: total 15G used 0G free 14G avail 15G
+2ec69cb54c41c25367a0c2baa57040cf2ac63cd3f92bbeea9215f7a3dc234fc6
+################ reference checker: build_haar2.py — NOT RUN: does not fit in 15 GB (~108 B/vertex measured on a 21.4M-vertex prod calibration, ~22 GB at 208M vertices). haarcheck_sl/haarcheck2 do not accept prod headers. Only the independent checker below was run, so this file has NO two-checker result.
+################ independent checker: check_haar_indep.py research/frontier/sols/d15D9_prod_sl_5_sl_19_127_orb3f0_s52.txt   [exit 0]
+file research/frontier/sols/d15D9_prod_sl_5_sl_19_127_orb3f0_s52.txt
+header: d=15 D=9 spec=prod sl 5 sl 19 NCYC=127 N=104241600
+group order |G|=820800 (factors [120, 6840]), x Z_127 -> 104241600; vertices 2N=208483200
+distinct generators (as full group elements): 15 of d=15
+permutations built (0s)
+BFS from A: ecc=9 reached 208483200 of 208483200 (unreached 0); level sizes [1, 15, 210, 2940, 41160, 574284, 7737690, 68322687, 96462539, 35341674]
+BFS from B: ecc=9 reached 208483200 of 208483200 (unreached 0); level sizes [1, 15, 210, 2940, 41160, 574284, 7737112, 68322687, 96463117, 35341674]
+every vertex has exactly 15 distinct neighbours: True
+RESULT VALID d=15 D=9 eccA=9 eccB=9 n=208483200 (254s)
+
