@@ -27,3 +27,8 @@ VALID d=20 D=9 group=psl 163 x Z_421 N=911587932 vertices=1823175864 (distinct g
 from (e,A): reached A 1750488384/1750488384, B 1750488384/1750488384 within 12; ecc 12; level sizes [1, 10, 90, 810, 7290, 65610, 590373, 5305170, 47143770, 380116466, 1515820576, 1365000318, 186926284]  (303s)
 from (e,B): reached A 1750488384/1750488384, B 1750488384/1750488384 within 12; ecc 12; level sizes [1, 10, 90, 810, 7290, 65610, 590373, 5305170, 47143586, 380116466, 1515841863, 1365000318, 186905181]  (606s)
 VALID d=10 D=12 group=psl 193 x Z_487 N=1750488384 vertices=3500976768 (distinct generators, 10-regular simple; every vertex within 12 of both (e,A) and (e,B); ecc 12; 606s)
+
+== 18 10 psl 223 n 1063 N 5893986336  sha256 d436b287bc674f75c58d45971bdc772b6e65d72b3a386e37a30f56aa5b59082b  (haarcheck_psl, reference checker, Mac mini; 2805 s, peak RSS 4.4 GB)
+from (e,A): reached A 5893986336/5893986336, B 5893986336/5893986336 within 10, ecc 10
+from (e,B): reached A 5893986336/5893986336, B 5893986336/5893986336 within 10, ecc 10
+VALID d=18 D=10 group=psl 223 x Z_1063 N=5893986336 vertices=11787972672 (distinct generators, 18-regular simple)
