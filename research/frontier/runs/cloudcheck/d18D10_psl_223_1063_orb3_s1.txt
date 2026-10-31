@@ -12,3 +12,5 @@ from (e,A): reached A 5893986336/5893986336, B 5893986336/5893986336 within 10; 
 from (e,B): reached A 5893986336/5893986336, B 5893986336/5893986336 within 10; ecc 10; level sizes [1, 18, 306, 5196, 88230, 1497957, 25381080, 416272252, 4176036620, 5476210913, 1692480099]  (1391s)
 VALID d=18 D=10 group=psl 223 x Z_1063 N=5893986336 vertices=11787972672 (distinct generators, 18-regular simple; every vertex within 10 of both (e,A) and (e,B); ecc 10; 1391s)
 [exit 0; wall 1391s (23:11.25 under /usr/bin/time -v); peak RSS 4218 MB (4319148 KB)]
+
+progress 2026-10-31T18:00:05Z: haarcheck_psl (reference, single-threaded) started 2026-10-31T17:31:12Z on the same sol file (sha256 d436b287...), still running, RSS 4.3 GB at 28 min; exit not yet known.
