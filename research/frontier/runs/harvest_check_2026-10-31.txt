@@ -814,3 +814,56 @@ from (e,A): reached A 3511026168/3511026168, B 3511026168/3511026168 within 10; 
 from (e,B): reached A 3511026168/3511026168, B 3511026168/3511026168 within 10; ecc 10; level sizes [1, 17, 272, 4349, 69536, 1111376, 17719676, 272605621, 2533217050, 3237304805, 960019633]  (1245s)
 VALID d=17 D=10 group=psl 313 x Z_229 N=3511026168 vertices=7022052336 (distinct generators, 17-regular simple; every vertex within 10 of both (e,A) and (e,B); ecc 10; 1245s)
 [exit 0; wall 1245.55s; peak RSS 2514 MB]
+== d18D10_psl_223_1063_orb3_s1 (origin/claude/new-cells-beyond-etos3t, 12:30 PT)
+machine: vm; nproc=4; free -g: total 15G used 0G free 14G avail 15G; Linux 6.18.44-fc-v185; gcc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0
+sha256: d436b287bc674f75c58d45971bdc772b6e65d72b3a386e37a30f56aa5b59082b  research/frontier/sols/d18D10_psl_223_1063_orb3_s1.txt
+
+################ haarcheck_gen (new low-memory checker, research/frontier/haarcheck_gen.c; built with gcc -O3 -fopenmp -o haarcheck_gen haarcheck_gen.c, binary built from origin/master source in scratchpad; run under /usr/bin/time -v): /usr/bin/time -v ./haarcheck_gen research/frontier/sols/d18D10_psl_223_1063_orb3_s1.txt   (stdout, complete)
+selftest psl 223: |M| = 5544672, index round trip over all elements ok
+selftest group multiplication: associativity, identity, inverse on 20000 random triples ok
+file research/frontier/sols/d18D10_psl_223_1063_orb3_s1.txt
+header: 18 10 psl 223 n 1063 N 5893986336
+group psl 223 x Z_1063, |G| = 5893986336 = N, vertices 2N = 11787972672; 18 distinct generators
+from (e,A): reached A 5893986336/5893986336, B 5893986336/5893986336 within 10; ecc 10; level sizes [1, 18, 306, 5196, 88230, 1497957, 25381044, 416272252, 4176060372, 5476210913, 1692456383]  (705s)
+from (e,B): reached A 5893986336/5893986336, B 5893986336/5893986336 within 10; ecc 10; level sizes [1, 18, 306, 5196, 88230, 1497957, 25381080, 416272252, 4176036620, 5476210913, 1692480099]  (1391s)
+VALID d=18 D=10 group=psl 223 x Z_1063 N=5893986336 vertices=11787972672 (distinct generators, 18-regular simple; every vertex within 10 of both (e,A) and (e,B); ecc 10; 1391s)
+[exit 0; wall 1391s (23:11.25 under /usr/bin/time -v); peak RSS 4218 MB (4319148 KB)]
+
+################ haarcheck_psl (reference checker, research/structured/tools/haarcheck_psl.c; built with gcc -O3 -o haarcheck_psl haarcheck_psl.c from the origin/master source in scratchpad; run under /usr/bin/time -v): /usr/bin/time -v ./haarcheck_psl research/frontier/sols/d18D10_psl_223_1063_orb3_s1.txt   (stdout, complete)
+from (e,A): reached A 5893986336/5893986336, B 5893986336/5893986336 within 10, ecc 10
+from (e,B): reached A 5893986336/5893986336, B 5893986336/5893986336 within 10, ecc 10
+VALID d=18 D=10 group=psl 223 x Z_1063 N=5893986336 vertices=11787972672 (distinct generators, 18-regular simple)
+[exit 0; wall 9292s (2:34:52 under /usr/bin/time -v); peak RSS 4218 MB (4318684 KB)]
+
+################ comparison (computed from the two checker outputs above; no checker code was edited)
+haarcheck_gen verdict: VALID (exit 0, wall 1391s, peak RSS 4218 MB)
+haarcheck_psl verdict: VALID (exit 0, wall 9292s, peak RSS 4218 MB)
+Both checkers: from (e,A) and from (e,B) every group element of the N=5893986336 side is reached within 10 steps, ecc 10, 18 distinct generators, 18-regular simple; the two VALID lines state the same d, D, N and vertex count.
+BFS level sizes: haarcheck_gen prints level sizes (from (e,A) and from (e,B)); haarcheck_psl does not print level sizes, so level-size agreement cannot be checked from these outputs. The quantities both print (reach and eccentricity) agree.
+== d19D10_sl_607_43_orb3_s1 (origin/claude/new-cells-beyond-etos3t, 12:30 PT)
+machine: vm; nproc=4; free -g: total 15G used 0G free 14G avail 15G; Linux 6.18.44-fc-v185; gcc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0 (/usr/bin/time not installed; peak RSS measured as getrusage RUSAGE_CHILDREN ru_maxrss of a python3 wrapper, wall clock by time.time)
+sha256: 6502d81e8238e6ddf1c22651426bd20b5dc1b65aa46c19d4edba02c20229a450  research/frontier/sols/d19D10_sl_607_43_orb3_s1.txt  (from branch claude/new-cells-beyond-etos3t; 697 bytes, 20 lines)
+
+################ haarcheck_gen (research/frontier/haarcheck_gen.c from master, built gcc -O3 -fopenmp -o haarcheck_gen haarcheck_gen.c): ./haarcheck_gen research/frontier/sols/d19D10_sl_607_43_orb3_s1.txt   (stdout, complete)
+selftest sl 607: |M| = 223647936, index round trip over all elements ok
+selftest group multiplication: associativity, identity, inverse on 20000 random triples ok
+file /home/user/degree-diameter/research/frontier/sols/d19D10_sl_607_43_orb3_s1.txt
+header: 19 10 sl 607 n 43 N 9616861248
+group sl 607 x Z_43, |G| = 9616861248 = N, vertices 2N = 19233722496; 19 distinct generators
+from (e,A): reached A 9616861248/9616861248, B 9616861248/9616861248 within 10; ecc 10; level sizes [1, 19, 342, 6150, 110592, 1988508, 35695272, 621910268, 6702287960, 8992956303, 2878767081]  (1424s)
+from (e,B): reached A 9616861248/9616861248, B 9616861248/9616861248 within 10; ecc 10; level sizes [1, 19, 342, 6150, 110592, 1988508, 35695284, 621910268, 6702259766, 8992956303, 2878795263]  (2847s)
+VALID d=19 D=10 group=sl 607 x Z_43 N=9616861248 vertices=19233722496 (distinct generators, 19-regular simple; every vertex within 10 of both (e,A) and (e,B); ecc 10; 2847s)
+[exit 0; wall 2848s; peak RSS 6882 MB]
+
+
+################ haarcheck_sl (reference checker, research/frontier/haarcheck_sl.c from master, built gcc -O3 haarcheck_sl.c -o haarcheck_sl; single-threaded): ./haarcheck_sl research/frontier/sols/d19D10_sl_607_43_orb3_s1.txt   (stdout, complete)
+from (e,A): reached A 9616861248/9616861248, B 9616861248/9616861248 within 10, ecc 10
+from (e,B): reached A 9616861248/9616861248, B 9616861248/9616861248 within 10, ecc 10
+VALID d=19 D=10 group=sl 607 x Z_43 N=9616861248 vertices=19233722496 (distinct generators, 19-regular simple)
+[exit 0; wall 9356s; peak RSS 6880 MB]
+
+################ comparison (computed mechanically from the two outputs above)
+haarcheck_gen verdict: VALID (exit 0, 2848 s wall, 6882 MB peak RSS, 4 threads)
+haarcheck_sl verdict:  VALID (exit 0, 9356 s wall, 6880 MB peak RSS, 1 thread)
+Both verdicts VALID for d=19 D=10, N=9616861248, vertices=19233722496. Both report every vertex reached from (e,A) and (e,B) within 10 steps, ecc 10 for both starts.
+BFS level sizes: haarcheck_sl does not print them (it prints only reach and ecc), so a level-by-level comparison is not possible from its output. haarcheck_gen level sizes from (e,A) and (e,B) are in the haarcheck_gen block above; Level-size agreement is therefore NOT checked; only the reach and ecc agree.
