@@ -158,6 +158,17 @@ theorem checkLocalRange_append {K d n : ℕ} {adj : List (List (Fin n))} {col : 
   rw [h1, Bool.true_and]
   simpa [Nat.one_mul] using h2
 
+/-- `checkLocalRange_append` with the offsets and totals given as equations, so that the arguments unify
+syntactically (Nat literal arithmetic inside `checkLocalRange` otherwise hits the recursion limit). -/
+theorem checkLocalRange_join {K d n : ℕ} {adj : List (List (Fin n))} {col : List Bool}
+    {lo m cnt lo2 tot : ℕ} (hl : lo + m = lo2) (hc : m + cnt = tot)
+    (h1 : checkLocalRange K d adj col lo m = true)
+    (h2 : checkLocalRange K d adj col lo2 cnt = true) :
+    checkLocalRange K d adj col lo tot = true := by
+  subst hl
+  subst hc
+  exact checkLocalRange_append h1 h2
+
 /-- A neighbour-list table with the per-vertex local test is a bipartite graph of degree at most `d`
 whose diameter is at most `D` as soon as `ediam ≤ D`. -/
 theorem isBipartiteDegDiam_of_local {n : ℕ} (adj : List (List (Fin n))) (color : Fin n → Bool)

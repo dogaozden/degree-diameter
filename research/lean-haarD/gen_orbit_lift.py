@@ -162,11 +162,11 @@ def write_folder(folder, theorem, n, m, k, K, d, D, edges_path, adj, col, levels
     local += [
         f"/-- The local test of vertices `0 … {2 * q - 1}`. -/",
         f"theorem local_lo : checkLocalRange {K} {d} adjL colL 0 {2 * q} = true :=",
-        "  checkLocalRange_append local_q0 local_q1",
+        f"  checkLocalRange_join (lo2 := {q}) (tot := {2 * q}) (by decide) (by decide) local_q0 local_q1",
         "",
         f"/-- The local test of vertices `{2 * q} … {n - 1}`. -/",
         f"theorem local_hi : checkLocalRange {K} {d} adjL colL {2 * q} ({n} - {2 * q}) = true :=",
-        "  checkLocalRange_append local_q2 local_q3",
+        f"  checkLocalRange_join (lo2 := {3 * q}) (tot := {n} - {2 * q}) (by decide) (by decide) local_q2 local_q3",
         "",
         f"/-- The local test of the {n}-vertex graph, from its two halves. -/",
         f"theorem local_ok : checkLocal {K} {d} adjL colL = true :=",

@@ -28,11 +28,11 @@ theorem local_q3 : checkLocalRange 14 12 adjL colL 7380 2460 = true := by
 
 /-- The local test of vertices `0 … 4919`. -/
 theorem local_lo : checkLocalRange 14 12 adjL colL 0 4920 = true :=
-  checkLocalRange_append local_q0 local_q1
+  checkLocalRange_join (lo2 := 2460) (tot := 4920) (by decide) (by decide) local_q0 local_q1
 
 /-- The local test of vertices `4920 … 9839`. -/
 theorem local_hi : checkLocalRange 14 12 adjL colL 4920 (9840 - 4920) = true :=
-  checkLocalRange_append local_q2 local_q3
+  checkLocalRange_join (lo2 := 7380) (tot := 9840 - 4920) (by decide) (by decide) local_q2 local_q3
 
 /-- The local test of the 9840-vertex graph, from its two halves. -/
 theorem local_ok : checkLocal 14 12 adjL colL = true :=
