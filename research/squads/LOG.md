@@ -26,3 +26,23 @@ new tabu (src/sdtabu.c) finds valid self-dual 9-sets on C197 : C7 (order 1379, t
 Outcome of the job (director, 03:00 UTC): no further squad round. The two (6,5) cores went on with the sdk sweep
 (nothing above 684; closest still 352_50 at 1); (9,5) went from 2,758 to 3,036 in nine verified steps (1395 ... 1518),
 five of them from 300 s deep tabu runs on near misses (research/selfdual-d5/README.md).
+
+## 2026-10-31, job selfdual-d5b, round sd5b-r1 (04:33-05:40 UTC), goal (9,5) > 3,036
+
+Context: the director's self-dual tabu (research/selfdual-d5/src/sdtabu2, K = 9) was sweeping metacyclic groups of
+order 1519-1650, affine F_p^d : C_k and SmallGroups of order 1520-1560 with a normal C_p (best 4 so far); near misses
+above 1518 were SmallGroup(1539,31) and (1539,45) at 2. Rules `sd5b-r1/COMMON.md`, cards `sd5b-r1/CARDS.md`,
+scoreboard `sd5b-r1/scoreboard.jsonl`. Cards: c1 SmallGroups 1561-1640 with a normal C_p acting with order >= 3 ·
+c2 non-metacyclic direct products · c3 C_m : H, m composite, H non-cyclic · c4 affine F_p^2 : H, H non-cyclic ·
+c5 simulated annealing in place of tabu · c6 two-item moves / elite restarts · c7 non-solvable groups · c8 wildcard
+(it chose plain, not self-dual, Haar tabu with a BFS energy).
+Best per card (energy |G \ X X|, 0 = valid; nothing valid, no card claimed one): c1 12 (SmallGroup(1596,3), 11 of 54
+candidates screened) · c2 19 ((C7:C3 x C13:C3) x C2, 1638) · c3 23 (C195 : Q8, 1560) · c4 **2** (F13^2 : (C3 x C3)
+diagonal = (C13 : C3) x (C13 : C3), order 1521, record 3 type (3,3); 100 s stayed at 2) · c5 2 on the 1539 near misses
+(calibration: annealing finds 5-6 solutions per 45 s on C197 : C7 where tabu finds 15, so weaker) · c6 no run at
+>= 1519 (calibration on C197 : C7, 30 s: tabu 10, elite restarts 12, two-item moves 7) · c7 14 (C3 x C9 x A5, 1620;
+non-solvable groups 14-31) · c8 26 (plain Haar, C73 : C21, 1533; not comparable).
+Kept / learned: (C13 : C3)^2 is a new near miss (2) outside the director's lists; the other families are far (12+);
+annealing and compound moves do not beat the tabu. What next (director): deep tabu (900 s, endgame scan) on
+(C13 : C3)^2 stayed at 2, so the near misses (1539_31, 1539_45, 1525_1, (C13 : C3)^2, ...) go to EXHAUSTIVE sdk
+enumeration of their types (about 1e9 sets per record and type at these orders, minutes each).
