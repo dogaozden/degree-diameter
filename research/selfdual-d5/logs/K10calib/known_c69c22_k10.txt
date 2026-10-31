@@ -1,0 +1,10 @@
+# K = 10 calibration on a known valid graph: C69 : C22 (order 1518, the (9,5) record group), formula export (src/meta_export.py 69 22 8), record 1 = beta (22,0,1), type (4,3).
+# Any 9-set of the record plus one psi-fixed element is valid, so the K = 10 path must find sets at once.
+# K=10 SECS=60 SEED=1 MAXSOL=2 src/sdtabu c69_22.ht 1 4 3:
+SOL r1_alpha2_f4_m3_tabu 0 979 1023 231 141 871 388 492 554 1052
+SOL r1_alpha2_f4_m3_tabu 0 1155 253 33 262 816 760 1242 1136 1460
+TABU rec 1 alpha 2 f 4 m 3 best 0 sols 2 steps 11 restarts 2 secs 0.0
+# apsp (research/lifts/coordinator_check/apsp.c) on the first one (3036 vertices, degree 10):
+n=3036 edges=15180 degree min=10 max=10 bipartite=yes diameter=5
+RESULT VALID d=10 D=5 n=3036
+# at D = 4: RESULT INVALID

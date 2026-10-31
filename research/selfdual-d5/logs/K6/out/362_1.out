@@ -1,0 +1,16 @@
+record 0 ALPHA: fixed 181 (non-identity) orbits 90 reps 1
+GROUP /tmp/claude-0/sc/sdk/g362_1.ht n 362 ninv 181 K 6 records 5 (ext 3)
+TYPE rec 0 alpha 1 f 2 m 2 best 300 sols 0 evals 16109 size 1.61e+04 passXX 0 secs 0.0
+TYPE rec 0 alpha 1 f 4 m 1 best 278 sols 0 evals 971970 size 9.72e+05 passXX 0 secs 0.1
+TYPE rec 0 alpha 1 f 6 m 0 best 208 sols 0 evals 10000000 size 4.23e+07 passXX 0 secs 1.7 SAMPLED
+record 1 EXT: fixed 182 (non-identity) orbits 90 reps 90
+TYPE rec 1 ext 212 f 0 m 3 best 1099511627776 sols 0 evals 7832 size 7.83e+03 passXX 0 secs 0.0
+record 2 ALPHA: fixed 181 (non-identity) orbits 90 reps 1
+TYPE rec 2 alpha 2 f 2 m 2 best 1099511627776 sols 0 evals 16109 size 1.61e+04 passXX 0 secs 0.0
+TYPE rec 2 alpha 2 f 4 m 1 best 224 sols 0 evals 971970 size 9.72e+05 passXX 0 secs 0.1
+TYPE rec 2 alpha 2 f 6 m 0 best 220 sols 0 evals 10000000 size 8.46e+07 passXX 0 secs 2.0 SAMPLED
+record 3 EXT: fixed 0 (non-identity) orbits 181 reps 2
+TYPE rec 3 ext 1 f 0 m 3 best 1099511627776 sols 0 evals 179 size 179 passXX 0 secs 0.0
+record 4 EXT: fixed 0 (non-identity) orbits 181 reps 2
+TYPE rec 4 ext 1 f 0 m 3 best 1099511627776 sols 0 evals 179 size 179 passXX 0 secs 0.0
+DONE evals 21984348 sols 0

@@ -1,0 +1,11 @@
+Read("/home/user/degree-diameter/research/squads/sd5b-r1/c4/mk.g");
+F := GF(13); a := Z(13)^4; z := Zero(F); o := One(F);
+Print("orderA ", Size(Group(GeneratorsOfGroup(SylowSubgroup(GL(2,7),2)))), "\n");
+Print("A ", Size(mkaff(7, GeneratorsOfGroup(SylowSubgroup(GL(2,7),2)))), " ", Order(a), "\n");
+Print("B ", Size(mkaff(13, [[[a,z],[z,o]],[[o,z],[z,a]]])), "\n");
+Print("C ", Size(DirectProduct(mkaff(13, [[[a,z],[z,a]]]), CyclicGroup(3))), "\n");
+Print("D ", Size(DirectProduct(mkaff(13, [[[a,z],[z,o]]]), CyclicGroup(3))), "\n");
+N := DirectProduct(CyclicGroup(5), CyclicGroup(5), CyclicGroup(31));
+Print("gensN orders ", List(GeneratorsOfGroup(N), Order), "\n");
+Print("E ", Size(semi_N(gN -> List(gN, g -> g^-1))), "\n");
+QUIT;

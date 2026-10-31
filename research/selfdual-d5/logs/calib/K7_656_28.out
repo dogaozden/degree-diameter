@@ -1,0 +1,25 @@
+record 0 ALPHA: fixed 1 (non-identity) orbits 327 reps 7
+GROUP /tmp/claude-0/sc/g656_28.ht n 656 ninv 1 K 7 records 36 (ext 32)
+TYPE rec 0 alpha 1 f 1 m 3 best 1099511627776 sols 0 evals 370825 passXX 0 secs 0.1
+record 4 ALPHA: fixed 1 (non-identity) orbits 327 reps 7
+TYPE rec 4 alpha 2 f 1 m 3 best 1099511627776 sols 0 evals 370825 passXX 0 secs 0.1
+record 8 ALPHA: fixed 81 (non-identity) orbits 287 reps 10
+TYPE rec 8 alpha 2 f 1 m 3 best 1099511627776 sols 0 evals 407550 passXX 0 secs 0.1
+TYPE rec 8 alpha 2 f 3 m 2 best 1099511627776 sols 0 evals 9266400 passXX 0 secs 1.8
+TYPE rec 8 alpha 2 f 5 m 1 best 1099511627776 sols 0 evals 16637400 passXX 0 secs 2.3
+TYPE rec 8 alpha 2 f 7 m 0 best 1099511627776 sols 0 evals 72120048 passXX 0 secs 13.5
+record 10 ALPHA: fixed 81 (non-identity) orbits 287 reps 10
+TYPE rec 10 alpha 2 f 1 m 3 best 1099511627776 sols 0 evals 407550 passXX 0 secs 0.1
+SOL r10_alpha2_f3_m2 0 12 168 53 147 430 622
+SOL r10_alpha2_f3_m2 0 12 168 68 162 430 622
+SOL r10_alpha2_f3_m2 0 19 229 40 507 46 286
+SOL r10_alpha2_f3_m2 0 19 229 185 394 270 591
+SOL r10_alpha2_f3_m2 0 19 229 506 537 271 606
+SOL r10_alpha2_f3_m2 0 25 522 83 469 111 414
+SOL r10_alpha2_f3_m2 0 25 522 85 243 142 575
+SOL r10_alpha2_f3_m2 0 25 522 98 484 111 414
+SOL r10_alpha2_f3_m2 0 25 522 100 258 142 575
+TYPE rec 10 alpha 2 f 3 m 2 best 0 sols 9 evals 9266400 passXX 9 secs 1.8
+TYPE rec 10 alpha 2 f 5 m 1 best 1099511627776 sols 0 evals 16637400 passXX 0 secs 2.5
+TYPE rec 10 alpha 2 f 7 m 0 best 1099511627776 sols 0 evals 72120048 passXX 0 secs 13.7
+DONE evals 197604446 sols 9

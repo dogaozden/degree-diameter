@@ -14,5 +14,5 @@ else N=$2; P=$3; Q=$4; D=$5; shift 5; tag=${P}_${Q}_${D}; F=$T/m$tag.ht
 fi
 REC=$1; Fx=$2; Mx=$3; SECS=$4; SEED=$5
 O=$R/logs/K$K/deep/${tag}_r${REC}_f${Fx}.out
-K=$K SECS=$SECS SEED=$SEED MAXSOL=2 EDGES=$R/cand/deep${K}_${tag}_r${REC}_s$SEED.edges nice -n 5 $R/src/sdtabu $F $REC $Fx $Mx >> $O 2>&1
+K=$K SECS=$SECS SEED=$SEED MAXSOL=2 EDGES=$R/cand/deep${K}_${tag}_r${REC}_s$SEED.edges nice -n 5 $R/src/${TABU:-sdtabu} $F $REC $Fx $Mx >> $O 2>&1
 if grep -q "^SOL" $O; then echo "HIT deep $N $tag rec $REC f $Fx" >> $R/logs/K$K/HITS.txt; fi
