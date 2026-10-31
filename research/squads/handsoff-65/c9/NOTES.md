@@ -51,3 +51,20 @@
 - Queue (chain4): tabu 300 s on the C174 2+2 best (runs/tabu_174_4_s1.*), then 3+3 scan E_L14 (12 s each).
 - 17:37: multi-seed 2+2 (src/ms.py, 6 seeds x 15 s on 8 groups): best cost 12 for C11xQ16 (176,26) and C174 (12 earlier).
   n=704 lift of the C11xQ16 cost-12 solution: bad=1056 (best_n704_C11Q16.edges); scoreboard line appended (first n=704 entry).
+
+## 18:01 summary of the 2+2 and 3+3 stage
+- E_L14 (3+3 base, C114 quotient, orders 115-120, 60 groups, 12 s): best C29:C4 (116,1) cost 25, C13:C9 (117,1) 28, C115 30.
+- Tabu (src/tabu, INIT=sol, 300 s): C174 (696, base F_L15 vl best 12) -> best 6 (no 0; tool writes OUT only at cost 0, so no edge list kept).
+  C11xQ16 (704, 176_26) -> best 10 from 12.
+- Queue: tabu 300 s on C4x(C11:C4) (176_10) and 240 s on the 3+3 C29:C4 solution (n=696).
+- Calibration reminder: quotient bases do reproduce the 684 graph (bad=0), but random-start search does not find it on the 6+6 C57 base.
+- Nothing with bad=0 at n > 684 found. Best n>684 bad counts (check.sh style): n=704 bad 1056 (C11xQ16, cost 12); n=696 bad 1044 (C174, cost 12).
+
+## Final (18:10)
+- Last runs: tabu 300 s on C4x(C11:C4) (176,10): best 12; tabu 240 s on the 3+3 C29:C4 base (n=696): best 18. No cost 0.
+- Best records from c9 (all bad > 0, none above 684 with bad 0):
+  n=704 C11xQ16 (176,26) 2+2 lift: vl cost 12, tabu 10, bad=1056 (best_n704_C11Q16.edges).
+  n=696 C174 (174,4) 2+2 lift: vl cost 12, tabu 6, bad=1044 (best_n696_F174_C174.edges).
+- All my background processes finished; none left running.
+- 18:16: 400 s tabu continuation of the 704 candidate (C11xQ16) from its tabu state: best vl-cost 8 (no cost 0; tool saves only at 0,
+  so no edge list for cost 8). Stopped; no c9 processes running at 18:17.

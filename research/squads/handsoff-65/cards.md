@@ -129,3 +129,27 @@ Tried so far (this job and before): Haar graphs (closed 686-800 except 768), 2+2
 and almost simple, multi-orbit mcos types, bi-Cayley, tri-Cayley, Haar + twist, surgery on the 684 graph, GH(5,5) and
 GQ(5,5) pieces, quotient re-lifts (c9). Find a different construction you think can reach 686+ with diameter 5,
 argue it in NOTES.md, implement it, score it.
+
+## c17 (large, added 18:20): tabu search for coset graphs
+mcos is an annealer; on lifts, tabu beat annealing (cost 4 vs 8 at 704). Write a tabu search for mcos-type coset
+graphs (copy shared/mcos.c into your folder: same cost function, but each step scans all single changes of one double
+coset and takes the best non-tabu move, with aspiration and restarts as in shared/tabu.c). Calibrate on "1|1" with
+SmallGroup(342,12) (the 684 graph). Then run it on the best (type, group) pairs of c5 and c12: first
+1|3,3,3 on SmallGroup(366,2) (c5: cost 7, 732 vertices), then c5/scan and c12 tables for the next ones.
+
+## c18 (large, added 18:20): Haar graphs with hub orbits, types "1,k|1,k"
+A Haar graph of degree 5 leaves one free degree at every vertex; hubs fill it. In mcos terms: each side is a regular
+orbit plus an orbit G/H with |H| = k, type "1,k|1,k": a regular vertex has 5 edges to the other regular orbit and 1
+into the other side's hub orbit; a hub has k... (mcos's degree rule: a double coset between orbits a and b adds
+|H_a| to every a-vertex and |H_b| to every b-vertex). n = 2|G|(1 + 1/k): "1,6|1,6" needs |G| >= 294 (n 686..);
+"1,3|1,3": |G| >= 258; "1,2|1,2": |G| >= 229; "1,4|1,4": |G| >= 275. Also "1,1|2,2,2,2" (n = 4|G|, |G| >= 172) and
+other mixes with regular orbits on both sides. Check mcos accepts the type, calibrate with "1|1" on SmallGroup(342,12),
+then screen groups (non-abelian first, elements of order k needed) at 30-60 s per (type, group), deep runs on the best.
+
+## c19 (large, added 18:20): close the Haar graphs on 802-840 vertices
+Haar graphs H(G,S), |S| = 6, are closed for 686-800 vertices except 768 (another job does 768). Extend the closure to
+orders 401..420 (802..840 vertices; abelian groups are out by the counting bound 542, generalized dihedral by 524):
+for every non-abelian group, run shared/haarex3 exhaustively (read its header and branch claude/squad-6-5-rounds-ts5nxk
+research/s65/haar/STATUS.md for how it was run: `git show origin/claude/squad-6-5-rounds-ts5nxk:research/s65/haar/STATUS.md`).
+Groups with few involutions first. Keep a per-group log (VALID / side-A covers / closed) in c19/STATUS.md. Any VALID
+set is a record: export the Haar graph and run apsp_ref.

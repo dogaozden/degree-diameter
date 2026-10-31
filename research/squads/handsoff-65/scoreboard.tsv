@@ -20,3 +20,9 @@ c9	quotient base 2+2 (C3x(C19:C3) quotient of the 684 Haar graph) lifted by Smal
 c9	quotient base 2+2 (C3x(C19:C3) quotient of the 684 Haar graph) lifted by SmallGroup(174,4)=C174, vl SA 12 s (liftcost 12)	696	bad=1044 (liftcost 12)	research/squads/handsoff-65/c9/best_n696_F174_C174.edges	17:18
 c7	guided SA from 684 Haar + one vertex pair (insertion seed 15), 2-switches toward far pairs	686	bad=177	research/squads/handsoff-65/c7/best686_bad177.edges	17:37
 c9	quotient base 2+2 (C3x(C19:C3) quotient of the 684 Haar graph) lifted by SmallGroup(176,26)=C11xQ16, vl SA 15 s x 6 seeds (liftcost 12)	704	bad=1056 (liftcost 12)	research/squads/handsoff-65/c9/best_n704_C11Q16.edges	17:39
+c13	Z2-symmetric SA (orbit 2-switches) on 684 Haar + 2 pi-invariant pairs, pi = left mult by central involution	688	bad=384	research/squads/handsoff-65/c13/k2_b.edges	17:55
+c14	704 C11:Q16 lift re-coordinatised as 4+4 lift by order-88 subgroup (no descent: 2-opt, tabu, SA with SWAP)	704	bad=352	research/squads/handsoff-65/c14/r704.edges	18:01
+c16	vl lift 7+7 base (random 6-reg, Z49) SA 60 s, export_lift (family: lifts with b=7, m=49)	686	bad=2107 (vl cost 86)	research/squads/handsoff-65/c16/b7_s2_z49.edges	18:07
+c15	bi-coset 2|2 diagonal SmallGroup(732,10) SA 3 s, sweep of c4-remaining groups	732	bad=3660 (cost 20)	research/squads/handsoff-65/c15/best/g732_10_p_1_1_c20.edges	18:08
+c16	vl lift 7+7 base, Z49, SA 240 s with base 2-switches (SWAP 0.05), export_lift	686	bad=1568 (vl cost 64)	research/squads/handsoff-65/c16/b7_s5_z49.edges	18:12
+c13	Z3-symmetric SA on 684 Haar + 3 pi-invariant pairs (pi = left mult by order-3 element), 230 s	690	bad=447	research/squads/handsoff-65/c13/k3_a.edges	18:12
