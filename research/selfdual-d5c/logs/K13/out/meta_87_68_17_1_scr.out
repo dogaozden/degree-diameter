@@ -1,0 +1,28 @@
+GROUP meta m 87 k 68 r 17 n3 1 n 5916 K 13
+FAMILY candidates 16 automorphisms 16 coset_reps 4 outer_gens 2 centre 17
+RECORDS 8 (0.0 s)
+REC 0 ALPHA order(g) 1 central | x->x^1 y->x^0 y^1 z^0 z->z^0; c0 0; t' = (0,0) t0, t'^2 = (0,0)
+REC 1 ALPHA order(g) 2 | x->x^1 y->x^0 y^1 z^0 z->z^0; c0 0; t' = (0,34) t0, t'^2 = (0,0)
+REC 2 ALPHA order(g) 1 | x->x^1 y->x^0 y^33 z^0 z->z^0; c0 0; t' = (0,0) t0, t'^2 = (0,0)
+REC 3 ALPHA order(g) 34 | x->x^1 y->x^0 y^33 z^0 z->z^0; c0 0; t' = (0,2) t0, t'^2 = (0,0)
+REC 4 ALPHA order(g) 68 | x->x^46 y->x^0 y^1 z^0 z->z^0; c0 2; t' = (0,67) t0, t'^2 = (0,0)
+REC 5 ALPHA order(g) 68 | x->x^46 y->x^0 y^1 z^0 z->z^0; c0 2; t' = (0,33) t0, t'^2 = (0,0)
+REC 6 ALPHA order(g) 68 | x->x^46 y->x^0 y^33 z^0 z->z^0; c0 34; t' = (0,3) t0, t'^2 = (0,0)
+REC 7 ALPHA order(g) 68 | x->x^46 y->x^0 y^33 z^0 z->z^0; c0 34; t' = (0,1) t0, t'^2 = (0,0)
+TABU rec 0 alpha f 1 m 6 best 177 sols 0 steps 2774 restarts 0 secs 8.0
+TABU rec 0 alpha f 3 m 5 best 195 sols 0 steps 3229 restarts 1 secs 8.0
+TABU rec 1 alpha f 1 m 6 best 69 sols 0 steps 2989 restarts 0 secs 8.0
+TABU rec 1 alpha f 3 m 5 best 82 sols 0 steps 3355 restarts 1 secs 8.0
+TABU rec 2 alpha f 1 m 6 best 118 sols 0 steps 3038 restarts 0 secs 8.0
+TABU rec 2 alpha f 3 m 5 best 73 sols 0 steps 3715 restarts 0 secs 8.0
+TABU rec 3 alpha f 1 m 6 best 92 sols 0 steps 3149 restarts 0 secs 8.0
+TABU rec 3 alpha f 3 m 5 best 71 sols 0 steps 3608 restarts 1 secs 8.0
+TABU rec 4 alpha f 1 m 6 best 107 sols 0 steps 2979 restarts 1 secs 8.0
+TABU rec 4 alpha f 3 m 5 best 68 sols 0 steps 3494 restarts 0 secs 8.0
+TABU rec 5 alpha f 1 m 6 best 59 sols 0 steps 3355 restarts 1 secs 8.0
+TABU rec 5 alpha f 3 m 5 best 47 sols 0 steps 3492 restarts 0 secs 8.0
+TABU rec 6 alpha f 1 m 6 best 192 sols 0 steps 2712 restarts 0 secs 8.0
+TABU rec 6 alpha f 3 m 5 best 141 sols 0 steps 3335 restarts 0 secs 8.0
+TABU rec 7 alpha f 1 m 6 best 178 sols 0 steps 2812 restarts 1 secs 8.0
+TABU rec 7 alpha f 3 m 5 best 115 sols 0 steps 3263 restarts 1 secs 8.0
+DONE sols 0

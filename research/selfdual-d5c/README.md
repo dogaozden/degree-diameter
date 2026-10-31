@@ -76,3 +76,49 @@ The K = 12 sets: C97 : C36, S = (0,0) (0,15) (53,10) (86,5) (14,2) (68,13) (53,3
 | 4,944 | C103 : C48 | 57 | 21 types (above the 4,921 needed) |
 
 So at K = 12 the frontier of this family is near 3,500-4,000; (12,5) needs 4,921.
+
+## Results above the targets (all: no valid graph)
+
+Energy = |G \ X X| (0 = valid), lowest over the records and types run.
+
+- (13,5), order >= 5,851: ladder (60 s per record and type): C61 : C96 (5,856) 20, C163 : C36 (5,868) 22; for scale,
+  C61 : C90 (5,490) 12. Screen of every formula group of order 5,851-5,950 with k >= 10, m >= 13 (`logs/wl13_c.txt`:
+  317 metacyclic or metacyclic x C_n3, 3 affine, PSL(2,11) x C9; types f = 1, 3, 8 s per record and type, 240 s per
+  group; one line per group in `logs/K13/runs.txt`, tag `_scr`): see the status section for coverage; best 20
+  (C89 : C66, r = 2), then 22 (C267 : C22, C245 : C24). Groups with k <= 5 are far off (C1951 : C3 246, C1465 : C4 399).
+- Squad round sd5c-r1 (`../squads/LOG.md`): eight other families and search methods at (13,5): non-split metacyclic
+  50, F_p^2 : C_k with a diagonal action 35, metacyclic groups with even m or a large unmoved factor 36, Heis(3) x
+  metacyclic 42, products of two metacyclic groups 44; clause-weighted tabu, annealing / late acceptance and targeted
+  moves no better than the plain tabu (targeted moves worse). None beats plain metacyclic C_p : C_k.
+- (12,5), order >= 4,921: C103 : C48 (4,944) 57 after 21 types; at 4,520 already 33.
+- (14,5), order >= 8,785: C163 : C54 (8,802), 81 records, 20 types at 60 s: 104.
+- (15,5), order >= 10,369: C433 : C24 (10,392), 9 types at 60 s: 70.
+- sigma-invariant self-dual sets (`SIGMA=q`, S a union of <psi, sigma>-orbits, exhaustive): on C37 : C81 at K = 12,
+  where plain self-dual sets solve at once, q = 3 gave best 182 (360,126 sets, all) and q = 2 best 34 (3e6 sets,
+  capped). Extra symmetry costs more than the conditions it saves.
+
+## Why the targets are out of reach for this family
+
+A self-dual Haar graph has diameter <= 5 iff the W = 1 + K(K-1) + K(K-1)^3 non-backtracking words of length <= 4 in
+X X cover G. If they were random, the expected number of misses would be mu = N e^(-W/N) (N = |G|; the size law of
+`../frontier/SIZE_LAW.md`). Every solved point and record of the self-dual searches sits at mu <= 70:
+
+| point | K | N | W/N | mu |
+|---|---:|---:|---:|---:|
+| (7,5) record, d75-raise | 7 | 656 | 2.37 | 61 |
+| (9,5) record, selfdual-d5 | 9 | 1,518 | 3.08 | 70 |
+| (10,5) d5b best | 10 | 2,054 | 3.59 | 57 |
+| solved here, C97 : C36 | 12 | 3,492 | 4.61 | 35 |
+| best 4 here, C37 : C108 | 12 | 3,996 | 4.03 | 71 |
+| solved here, C251 : C20 | 13 | 5,020 | 4.51 | 55 |
+| best 12 here, C61 : C90 | 13 | 5,490 | 4.12 | 89 |
+| (12,5) target | 12 | 4,921 | 3.27 | 187 |
+| (13,5) target | 13 | 5,851 | 3.87 | 122 |
+| (14,5) target | 14 | 8,785 | 3.52 | 260 |
+| (15,5) target | 15 | 10,369 | 3.99 | 192 |
+| (16,5) target | 16 | 16,897 | 3.21 | 682 |
+
+The targets need mu 2 to 10 times past that wall. At mu = 65 the predicted frontier is N = 3,927 (K = 12), 5,169 (13),
+6,679 (14), 8,491 (15), 10,640 (16), against 4,921, 5,851, 8,785, 10,369, 16,897 needed. The GQ lifts that set the
+targets (`../d10D7/DM_D5.md`: 6 (q+1)(q^2+1) vertices per side at degree q+3) are structured, not random-like, and a
+Haar graph (a lift of the 2-vertex dipole) does not reproduce that structure.
