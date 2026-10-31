@@ -1,0 +1,14 @@
+machine: nproc=4; free -g: total 15G used 0G free 14G avail 15G
+ffdc15c632d5b9dd1d79150388ef8959640c8f991bc381678504efd0a70cabf1
+################ reference checker: build_haar2.py — NOT RUN: does not fit in 15 GB. Poly-field PSL(2,243) has no prime-field reference; build_haar2.py measured 2.32 GB peak on a 21.4M-vertex prod calibration (~108 B/vertex), which would be ~17 GB at 157.8M vertices.
+################ independent checker: check_haar_indep.py research/frontier/sols/d11D10_psl_243_11_orb10_frob1d_ar3_s201.txt   [exit 0]
+file research/frontier/sols/d11D10_psl_243_11_orb10_frob1d_ar3_s201.txt
+header: d=11 D=10 spec=psl 243 poly x^5+2x+1 NCYC=11 N=78917652
+group order |G|=7174332 (factors [7174332]), x Z_11 -> 78917652; vertices 2N=157835304
+distinct generators (as full group elements): 11 of d=11
+permutations built (95s)
+BFS from A: ecc=10 reached 157835304 of 157835304 (unreached 0); level sizes [1, 11, 110, 1100, 11000, 109930, 1092050, 10241260, 58411824, 68565351, 19402667]
+BFS from B: ecc=10 reached 157835304 of 157835304 (unreached 0); level sizes [1, 11, 110, 1100, 11000, 109930, 1092095, 10241260, 58412342, 68565351, 19402104]
+every vertex has exactly 11 distinct neighbours: True
+RESULT VALID d=11 D=10 eccA=10 eccB=10 n=157835304 (259s)
+

@@ -1,0 +1,34 @@
+machine: nproc=4; free -g: total 15G used 0G free 14G avail 15G
+c801569a4a333b1d6411d83dcf286e2d0cf2da3da5ed02d7e6e46c047786dea3
+################ reference checker: haarcheck_sl research/frontier/sols/d14D9_sl_107_49_orb3_s1.txt   [exit 0]
+from (e,A): reached A 60021864/60021864, B 60021864/60021864 within 9, ecc 9
+from (e,B): reached A 60021864/60021864, B 60021864/60021864 within 9, ecc 9
+VALID d=14 D=9 group=sl 107 x Z_49 N=60021864 vertices=120043728 (distinct generators, 14-regular simple)
+################ independent checker: haarcheck2 research/frontier/sols/d14D9_sl_107_49_orb3_s1.txt   [exit 0]
+file=research/frontier/sols/d14D9_sl_107_49_orb3_s1.txt d=14 D=9 p=107 n=49 |G|=60021864 vertices=120043728
+selfcheck: SL(2,107) index is a bijection onto det-1 matrices (|SL|=1224936), fastmod ok (0.01s)
+generators: 14 read, all in SL(2,107) x Z_49, all distinct
+selfcheck: generator inverses verified
+BFS from (e,A):
+  from (e,A) level 1: new=14  reached=15 / 120043728
+  from (e,A) level 2: new=182  reached=197 / 120043728
+  from (e,A) level 3: new=2366  reached=2563 / 120043728
+  from (e,A) level 4: new=30758  reached=33321 / 120043728
+  from (e,A) level 5: new=398474  reached=431795 / 120043728
+  from (e,A) level 6: new=4973799  reached=5405594 / 120043728
+  from (e,A) level 7: new=40251602  reached=45657196 / 120043728
+  from (e,A) level 8: new=55017124  reached=100674320 / 120043728
+  from (e,A) level 9: new=19369408  reached=120043728 / 120043728
+  done in 23.61s, eccA=9, reached 120043728 / 120043728
+BFS from (e,B):
+  from (e,B) level 1: new=14  reached=15 / 120043728
+  from (e,B) level 2: new=182  reached=197 / 120043728
+  from (e,B) level 3: new=2366  reached=2563 / 120043728
+  from (e,B) level 4: new=30758  reached=33321 / 120043728
+  from (e,B) level 5: new=398474  reached=431795 / 120043728
+  from (e,B) level 6: new=4973805  reached=5405600 / 120043728
+  from (e,B) level 7: new=40251602  reached=45657202 / 120043728
+  from (e,B) level 8: new=55017118  reached=100674320 / 120043728
+  from (e,B) level 9: new=19369408  reached=120043728 / 120043728
+  done in 23.95s, eccB=9, reached 120043728 / 120043728
+VALID d=14 D=9 vertices=120043728 eccA=9 eccB=9
