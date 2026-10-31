@@ -1,1 +1,25 @@
 worker	strategy	n	far	file	time	note
+c1	surgery 2-edge+ab exhaustive from C168.1	170	46	c1/s170_k2_far46.edges	2026-10-31T15:48:25Z	first n=170; fixed edge 0-x, all 247 second edges; far hist min 46 (2 graphs), 3-edge best 48
+c8	LNS s=3 heat-bath T=1, from conder168 + 1 inserted pair	170	46	c8/best170_far46.edges	2026-10-31T15:59:50Z	120 s run, start far 66
+c2	beam reduce 180 greedy + SA 30k (non-adj)	170	83	c2/best170.edges	2026-10-31T16:04:15Z	first graph at 170 (beam of pair reductions from seed far36, SA after each level)
+c2	beam reduce from 180 seed (non-adj, no SA)	172	106	c2/best172.edges	2026-10-31T16:04:15Z	first graph at 172
+c2	beam reduce from 180 seed (non-adj, no SA)	174	97	c2/best174.edges	2026-10-31T16:04:15Z	first graph at 174
+c2	beam reduce from 180 seed (non-adj, no SA)	176	86	c2/best176.edges	2026-10-31T16:04:15Z	first graph at 176
+c2	beam reduce from 180 seed (non-adj, no SA)	178	98	c2/best178.edges	2026-10-31T16:04:15Z	first graph at 178
+c6	polarity cover, Z5 lift of 16+16 base, SA on M	160	0	c6/best160_polarity_z5.edges	2026-10-31T16:05:26Z	calib (n<=168): zero cost, apsp valid; m=80, t=5, k=16
+c7	local 2-switch SA from C168.1+1 pair (T 3->0.3, 60 s)	170	48	c7/out/ins170_best_3.edges	2026-10-31T16:07:33Z	first n=170 graph of c7; score37 far 48 diam 8
+c7	local 2-switch SA random start (calib, 30 s, T 5->1.5)	140	5	c7/out/loc140_long.edges	2026-10-31T16:07:33Z	calib: n=140 best cost 12 (score37 far 6)
+c7	parallel tempering local moves (calib, 300 s, R=6)	140	5	c7/out/pt140.edges	2026-10-31T16:07:33Z	calib: n=140 cost 10, score37 far 5
+c7	correction of the previous c7 n=140 row (typo)	140	6	c7/out/loc140_long.edges	2026-10-31T16:07:40Z	calib: score37 far is 6 for this file, not 5 (cost 12)
+c7	PT local 2-switch (R=6, T 1.5..6, 400 s) from C168.1+1 pair	170	46	c7/out/pt170.edges	2026-10-31T16:14:29Z	c7 improvement over 48; ties c1 far 46; cost 92
+c4	lift C8 k12 joint tabu (2-switch+volt)	192	272	c4/best/n192_C8k12_far272.edges	2026-10-31T16:16:34Z	lift C8 base 12+12, tabu 520 s, cost 68; far=N*cost/2
+c5	fixed-point Z3 quotient: conder168 3-fixed quotient + surgery + SA repair	170	80	c5/best170_far80.edges	2026-10-31T16:18:39Z	FA=4 FB=1 quotient; surgery of conder168 Z3 (3 fixed) quotient then SA 60s
+c5	correction (c5 row above)	170	80	c5/best170_far80.edges	2026-10-31T16:18:52Z	not an improvement: c1 already holds 46 at n=170; ignore the c5 row above for the board
+c1	pair insertion into n=170 far-46 graph (exhaustive)	172	80	c1/s172_ins_far80.edges	2026-10-31T16:22:37Z	first n=172; no repair yet; tabu from it stalls at 80-94
+c7	PT local 2-switch random start (calib, 400 s, R=6)	150	19	c7/out/pt150.edges	2026-10-31T16:34:49Z	calib: n=150 cost 38, score37 far 19
+c7	PT local 2-switch random start (calib, 400 s, R=6)	160	53	c7/out/pt160.edges	2026-10-31T16:34:49Z	calib: n=160 cost 106, score37 far 53
+c2	perturbed restart (2 random switches) + beam width 10 non-adj? no, adjacent, SA 20k	170	80	c2/best170.edges	2026-10-31T16:42:40Z	seed 135, k=2 perturbation; beats 83
+c8	LNS s=3 T 1->0.4 after 2 exhaustive best insertions from conder168	172	80	c8/best172_far80.edges	2026-10-31T16:45:13Z	first n=172; LNS 240 s made no progress (wall)
+c1	beam: pair insertion into the n=172 far-80 graph	174	125	c1/s174_ins_far125.edges	2026-10-31T16:48:48Z	first n=174; exhaustive pair insertion, no repair
+c1	pair insertion into n=172 far-80 graph + tabu 60s (TT 40)	174	109	c1/s174_tabu_far109.edges	2026-10-31T16:50:50Z	improved from 125 (insertion) by full 2-switch tabu
+c4	lift C7 k13 joint tabu (2-switch+volt)	182	168	c4/best/n182_C7k13_far168.edges	2026-10-31T16:52:47Z	first graph at n=182; lift C7 base 13+13, tabu 500 s, cost 48
