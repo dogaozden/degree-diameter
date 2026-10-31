@@ -9,34 +9,75 @@ here is new; no existing file is changed.
 | # | Cell | Vertices | Construction | Module folder (`lean/BipartiteDD/Haar/`) | Theorem | Method | Axioms |
 |---|---|---:|---|---|---|---|---|
 | 1 | (8,5) | 2,048 | route-chart lift (affine fibre maps), 8-regular | `D8D5N2048` | `nb_8_5_n2048` | staged (`gen_d8D5_n2048.py` → `gen_staged_lift.py`) | propext, Classical.choice, Quot.sound |
+| 2 | (5,8) | 9,760 | Haar graph of `Z61 ⋊ Z80` (`meta 61 80 8`), S of size 5 | `D5D8N9760` | `nb_5_8_n9760` | Haar, `Eight.lean` lemma, chunked word certificates (`gen_d5D8_n9760.py`) | propext, Classical.choice, Quot.sound |
 
-Edge list used: `research/theorems/chartlift/graphs/d8D5_n2048.edges.gz` (copy in the folder). The construction is
-not a plain regular voltage lift as built, which GAPS.md notes; the Lean statement needs only the graph, so the
-staged pipeline applies unchanged.
+Edge lists used:
+- (8,5): `research/theorems/chartlift/graphs/d8D5_n2048.edges.gz` (copy in the folder). The construction is not a plain
+  regular voltage lift as built, which GAPS.md notes; the Lean statement needs only the graph, so the staged pipeline
+  applies unchanged.
+- (5,8): no edge list on master, only the solution file `research/frontier/sols/d5D8_n9760_haar_meta61_80_8_s1.txt`.
+  The master builder `research/frontier/build_haar2.py` regenerates the graph from it (all-pairs BFS, prints VALID,
+  eccentricity 8 from both sides). Its output is copied into the folder as `d5D8_n9760_haar_meta61_80_8.edges.txt`.
 
-## How the link to the edge file is checked
+## How the link to the graph is checked
 
-`research/lean-haarD/gen_d8D5_n2048.py` reads the edge file, checks it (simple, 8-regular, bipartite, every pair within
-5 steps by a bitset check), writes `Graph.lean` with the neighbour and colour lists, reads `Graph.lean` back and asserts
-that its lists equal the edge file. The staged check then runs as for the other staged records.
+- (8,5): `research/lean-haarD/gen_d8D5_n2048.py` reads the edge file, checks it (simple, 8-regular, bipartite, every
+  pair within 5 steps by a bitset check), writes `Graph.lean` with the neighbour and colour lists, reads it back and
+  asserts that its lists equal the edge file. The staged check then runs as for the other staged records.
+- (5,8): `research/lean-haarD/gen_d5D8_n9760.py` reads S from the solution file and checks its header, runs the master
+  builder, checks that the Haar graph of S under the numbering `enc(i, j) = 80 i + j` (side A `enc g`, side B
+  `4880 + enc g`, `(g, A) ~ (s g, B)`) equals the builder's 24,400 edges, and checks the group law on all elements.
+  It then finds one word code per element for each covering pattern of `Eight.lean` (A and B: eight letters, C: seven
+  letters), and re-evaluates every code in Python. Lean re-checks each code list by `chkList` (`decide +kernel`) and
+  derives the three covering hypotheses (`Cover.lean`).
+
+## Things that did not work first, and what changed
+
+- (5,8), one-module cover check (`(List.range 4880).all okA` with `List.getD` into the code list): killed by the
+  kernel's memory at 13.0 GB after 123 s (exit 137). The list is walked once per element, so the cost is quadratic.
+- The same check with `rpow` written as `(8 : ZMod 61) ^ j.val` (kernel `Monoid.npow`): still killed at 13.0 GB. The
+  power was not the cause, so `rpow` is now `((8 ^ j.val : ℕ) : ZMod 61)` (kernel `Nat.pow`); this change is kept,
+  it does not change any statement.
+- Final layout: the codes of each pattern are split into four chunks of 1,220 (`CertA0 … CertC3`), each a linear
+  check `chkList` by `decide +kernel`, as in `D7D8`. Each chunk module peaks at about 2.6 GB.
+- The first `CertA0` attempt failed only on the default `maxRecDepth` of the length lemma (`by rfl` on a 1,220-element
+  list); `set_option maxRecDepth 100000` on it fixed it.
 
 ## Build measurements
 
 Each module was built with its own `lake build <module>`, one at a time, under a Python wrapper that reads the
 largest child's peak RSS (`getrusage`); `/usr/bin/time` is not installed in this sandbox. Machine: 4 cores, 15 GB.
 
+### (8,5) 2,048, module folder `D8D5N2048`
+
 | Module | Wall time | Peak RSS |
 |---|---:|---:|
-| `D8D5N2048.Graph` | 28.8 s | 1.00 GB |
-| `D8D5N2048.Level01` | 19.1 s | 1.89 GB |
-| `D8D5N2048.Level02` | 10.4 s | 1.89 GB |
-| `D8D5N2048.Level03` | 8.9 s | 1.89 GB |
-| `D8D5N2048.Level04` | 9.7 s | 1.90 GB |
-| `D8D5N2048.Levels` | 3.8 s | 1.81 GB |
-| `D8D5N2048.Check` (local test, one module) | 46.2 s | 4.67 GB |
-| `D8D5N2048.Stage00` … `Stage04` | 24–30 s each | 3.56–3.58 GB |
-| `D8D5N2048.Record` | 3.5 s | 1.82 GB |
-| `Axioms.lean` (`lake env lean`) | 2.1 s | 1.80 GB |
+| `Graph` | 28.8 s | 1.00 GB |
+| `Level01` | 19.1 s | 1.89 GB |
+| `Level02` | 10.4 s | 1.89 GB |
+| `Level03` | 8.9 s | 1.89 GB |
+| `Level04` | 9.7 s | 1.90 GB |
+| `Levels` | 3.8 s | 1.81 GB |
+| `Check` (local test, one module) | 46.2 s | 4.67 GB |
+| `Stage00` … `Stage04` | 24–30 s each | 3.56–3.58 GB |
+| `Record` | 3.5 s | 1.82 GB |
+| `Axioms` (`lake env lean`) | 2.1 s | 1.80 GB |
+
+### (5,8) 9,760, module folder `D5D8N9760`
+
+| Module | Wall time | Peak RSS |
+|---|---:|---:|
+| `Grp` (group axioms, `rpow_add` by `decide +kernel`) | 16.5 s | 2.16 GB |
+| `Gens` (S, digits, word functions, `chkList`) | 21.1 s | 2.16 GB |
+| `CertA0` … `CertA3` | 19.1–22.0 s each | 2.66 GB each |
+| `CertB0` … `CertB3` | 16.5–19.9 s each | 2.66 GB each |
+| `CertC0` … `CertC3` | 15.3–18.2 s each | 2.56–2.69 GB each |
+| `Cover` | 2.7 s | 1.81 GB |
+| `Record9760` | 13.0 s | 1.85 GB |
+| `Axioms` (`lake env lean`) | 3.0 s | 1.82 GB |
+
+Failed attempt for the record (not kept): the monolithic `CertA` (one `decide +kernel` over 4880 entries) was killed
+at 13.02 GB after 123 s.
 
 Toolchain: `leanprover/lean4:v4.34.1` installed with elan in this sandbox, Mathlib from the cache
 (`lake exe cache get`, 8,908 files, about one minute).
