@@ -26,3 +26,9 @@ what I changed.
   S_7, A_8, PSL(2,q) with larger stabilizers, permutation representations), w10 (Haar of centreless small-abelianization
   groups not yet tried: A_5 x AGL(1,7), S_5 x F_21, Z_17^2 x| Z_9, Z_3^5 x| Z_11, ASL(2,5), ...), w11 (exhaustive
   certification of the best metacyclic groups from w2's screen). Fewer, quieter polls from now on to cut Opus spend.
+- 23:55 check-in 4. Opus/Haiku 0.281/0.205 (Haiku 42%). No record. w11 certified exhaustively (aut-reduced, all
+  triples) 13 metacyclic groups: minima 2 (101 25 5), 4 (104 24 7, 208 12 3), 6, 8, 9: no cost 0. Round 1 closed (w2,
+  w4, w5, w6, w8 finished; LOG.md entry). w10 and w11 sat idle 25-30 min "waiting on background work" with nothing
+  running: nudged both. Launched w12 (small bases over simple groups, tabu), w13 (the cost-4 wall at 4,992), w14
+  (bi-coset, larger simple groups, |H| 4-24), w15 (order 2,500 = P x| Z_4 fixed-point-free, centreless), w16 (quotients
+  of the 4,970 graph: 5+5 over 497, 7+7 over 355, 35+35 over Z_71; calibrate, then re-lift over larger groups).

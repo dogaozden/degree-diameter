@@ -49,3 +49,24 @@ nice 0, equal to the director's whole pipeline); the director raised the pipelin
 `echo -10 > /proc/<pid>/autogroup` and lowered the cards' groups to 15.
 Kept: haarex6 for the sweep; no family lead worth more CPU (the 704 lift is an isolated local minimum, the new
 families are far). The order-384 sweep continues; orders 401-450 started on the spare core.
+
+## 2026-10-31, handsoff-49, round 1 (goal: bipartite (4,9) > 4,970; hands-off Opus coordinator, Haikus do the work)
+
+Session session_01QYEEyHVSftkeoMe7ftkrav, branch claude/handsoff-49-bipartite-search-hy5axz. 8 Haiku workers, 21:42 to
+about 23:55 UTC, each owning one card for up to 2 hours (research/squads/handsoff-49/cards.md, scoreboard.tsv, w1..w8/).
+Cards (best n / cost; cost = the worker's own count, far pairs in brackets where known):
+- w1 Haar, non-metacyclic groups: 5,040 / 6 (A_7; exhaustive over all Haar sets of A_7: minimum 6, ruled out). Others
+  floor 7-10. Low cost tracks a small centre and a small abelianization. 82 min.
+- w2 Haar, all metacyclic groups of order 2,486..2,600 (1,779 split + 686 non-split): 5,050 / 2 (known), 4,992 / 4
+  (104 24 7 known; 208 12 3 new), then 6. 107 min.
+- w3 lifts of W(3) (80 vertices) over groups of order 63-80: 5,040 / 906; valid only up to 3,200 (Z_40). 85 min.
+- w4 lifts of H(3) (728 vertices): dead by w4's own proof (girth 12 puts fibre-mates at distance >= 12); redirected at
+  22:45; best 6+6 random base over meta 13 32 5: 4,992 / 76. 129 min.
+- w5 lifts of 5+5..8+8 bases: these floor at 100+; 2+2 base [[2,2],[2,2]] over meta 13 96 5: 4,992 / 4 [2,496]. 109 min.
+- w6 surgery on the valid 4,970 graph: 4,972 with 160 far pairs; every edge is critical for 168-179 pairs, 2-switches
+  cost ~350. Handed back early twice, resumed. 
+- w7 bi-coset graphs: PSL(2,25), |H| = 3: 5,200 / 30 (exact minimum); PSL(3,3) 5,616 / 64. Perfect groups best. 74 min.
+- w8 wildcard: 2+2 lift over AGL(1,13) x Z_8: 4,992 / 15 [9,360]; lifts of the (4,5) 162 graph stall at ~2,150. 99 min.
+No valid graph above 4,970. Kept: small centre + small abelianization (round-2 cards w10, w15, w12), bi-coset graphs of
+perfect groups (w9, w14), exhaustive certification (w11), the cost-4 wall at 4,992 (w13), quotients of the 4,970 graph
+(w16). Round 2 runs as a rolling queue: each finished worker is replaced at once by a new card.

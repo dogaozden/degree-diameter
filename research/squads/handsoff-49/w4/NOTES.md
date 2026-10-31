@@ -106,3 +106,18 @@ rb12 over meta13-32-5 and rb14 over meta7-51-2 (60 s each). Results in runq2.log
   heis 3 x Z8 (216): 609; agl1 7 x Z5 (210): 540. Cyclic/meta 8 24 3 were about 250 as well.
 - d4D5_162 over dih16 (n = 5184), 240 s: 3229.
 - Queue run4.sh (480 s refinement of the order-416 candidate) and run5.sh (360 s refinement of the order-420 one).
+- 23:30: 480 s refinement of the order-416 candidate: cost 76 (r12m13_76.edges, far 15,808; scoreboard 23:30).
+- 23:36: 360 s refinement of the order-420 candidate (meta 7 60 3): no change (91). Its file: r12m7_91.sol.
+- 23:37: last refinement queued (run6.sh, 300 s, order 416 from cost 76), result in run6.log.
+Filter status for the coordinator's card: all bases tried pass the walk-count filter for their group orders; the filter
+does not discriminate, and the real limit is the walk-voltage coverage (about 2% of (root, target, voltage) triples are
+uncovered at random; ILS brings the 6+6 base down to 76 at n = 4,992).
+- 23:43: SA (T 3 -> 0.5, 400 s) from the cost-76 state started, output r7_sa.* (r7_sa.log).
+- 23:50: final SA refinement (T 3 -> 0.5, 1.24M moves) from cost 76: no accepted move, still 76.
+
+## Final state at 23:50 UTC
+Best near miss: rb12 (6+6 base) over meta 13 32 5 (order 416), n = 4,992, cost 76 (far 15,808), INVALID at D=9.
+File: /home/user/degree-diameter/research/squads/handsoff-49/w4/r12m13_76.edges (solution r12m13_76.sol; rebuild with
+hgw rb12.txt g66/meta_13_32_5.bin 0 1 1 OUT r12m13_76.sol and WRITE_EDGES=1). No record found (no cost 0).
+Next idea: an order-416 or order-420 symmetric ansatz on the 6+6 base (base automorphisms as in hxs), and more
+6+6 random bases (girth 4-6) over meta groups of order 416-420, since the 6+6 family beat K44 and PG(2,3).

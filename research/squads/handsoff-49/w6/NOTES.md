@@ -30,3 +30,35 @@ Started: 2026-10-31 21:41 UTC. Deadline: about 23:41 UTC. Updated: 21:55 UTC.
 - Longer surgsa runs with several seeds, mode 3 (3 removed edges + edge ab), and a 2-switch polish at T near 0.
 - Look at the far pairs of the best state: if they all involve the new vertices, try different attachments
   (a joined to only some of the freed B ends, the rest rewired).
+
+## Final results (23:55 UTC)
+
+Best near miss: n = 4,972, far pairs = 160 (diameter 10, not valid). File: w6/tmp/surgsa4_best160.edges. Rebuild:
+`surgsa2 seeds/valid4970.edges OUT 240 11 4 6 0.5` (mode 4: 4 removed edges, a and b added). Scoreboard line appended
+(valid_claim "no"). Mode 3 (3 removed edges + edge ab) also floors at 160 (seed 21, stopped at 160).
+
+Edge criticality (edgecrit, far pairs created by deleting one edge; the 4 edges of vertex 0 are the 4 orbit representatives):
+- valid4970 (meta 71 35 49, seeds/valid4970.edges): 179 for all 4 orbits.
+- near4992 (meta 104 24 7): 270 for all 4 orbits.
+- other cost-0 solutions of meta 71 35 49 (bases/mv_11..14.sol, verified RESULT VALID n=4970 by score48):
+  mv_11: 174, mv_12: 168, mv_13: 176, mv_14: 176. mv_12 has the most slack, but it is still close to 170.
+  Those four are not checked for automorphism equivalence to the seed (solutions were found with different seeds).
+  Surgery was NOT run on them (the coordinator asked for no new searches).
+
+Other groups of order 2,485 (groups/): meta 71 5 5 x Z_7 best cost 14, meta 71 7 20 x Z_5 best cost 8, cyclic Z_2485
+best cost 4,352 (40 s, 2 seeds each). No cost-0 base there.
+
+Order-2,484 bases (n = 4,968, for the 4-vertex surgery to 4,972; bases/summary.txt, 45 s, 1 seed each, none cost 0):
+meta 207 12 22 best 90 (closest); meta 23 108 22: 1,496; meta 69 36 22: 1,508; meta 27 92 26: 1,516; meta 46 54 45:
+1,752; meta 36 69 13: 3,162; meta 69 36 47 and 138 18 47: 3,226. So the 4-vertex route (surgsaK.c, process_base.sh MODE 8)
+was never run: no valid order-2,484 base was found.
+
+Did not work:
+- 2-switch annealing (sa.c) and best-of-K tabu (tabu.c) from surgery graphs: every move is uphill by hundreds
+  (441 -> 3,000+ in 60 s). A 2-switch removes two edges that each carry about 170 to 180 critical pairs.
+- Annealing over random 2-switches on the valid graph itself: the same problem.
+
+Conclusion: local surgery on these Haar graphs is blocked by edge criticality (about 170 far pairs per deleted
+edge). The best surgery floor is 160 far pairs at n = 4,972. A new record needs a new global structure, not local
+repair. Next idea (not run): search valid bases of order 2,484 or lower with more seeds and longer runs, then run
+surgsaK on the one with the lowest criticality.

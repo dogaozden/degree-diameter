@@ -7,3 +7,26 @@ A7x2	h=2	K=0	n=5040	RESULT_EXH M=2520 h=2 n=5040 evals=610626 best_cost=64 L=299
 A7x2	h=2	K=1	n=5040	RESULT_EXH M=2520 h=2 n=5040 evals=610626 best_cost=50 L=1773,2280,2500,2045 time=59.7s	{"1": 1, "2": 1}
 A7x2	h=2	K=2	n=5040	RESULT_EXH M=2520 h=2 n=5040 evals=300000 best_cost=6 L=900,1187,1467,2443 time=47.0s	{"1": 1, "2": 1}
 PSL2_29	h=4	K=0	n=6090	RESULT_EXH M=3045 h=4 n=6090 evals=1179 best_cost=124 L=67,1805,989,982 time=0.2s	{"1": 1, "2": 3}
+PSLs2_5^2	h=6	K=0	n=5200	RESULT_EXH M=2600 h=6 n=5200 evals=62 best_cost=10240 L=133,1752,1955,87 time=0.0s	{"1": 1, "2": 1, "3": 2, "6": 2}
+PSLs2_5^2	h=6	K=1	n=5200	RESULT_EXH M=2600 h=6 n=5200 evals=62 best_cost=10240 L=36,2261,2458,2347 time=0.0s	{"1": 1, "6": 2, "2": 1, "3": 2}
+PSLs2_5^2	h=6	K=2	n=5200	RESULT_EXH M=2600 h=6 n=5200 evals=94 best_cost=382 L=595,1066,2200,307 time=0.0s	{"1": 1, "2": 3, "3": 2}
+PSLs2_5^2	h=6	K=3	n=5200	RESULT_EXH M=2600 h=6 n=5200 evals=70 best_cost=10368 L=0,75,414,1553 time=0.0s	{"1": 1, "2": 1, "3": 2, "6": 2}
+PSLs2_5^2	h=6	K=4	n=5200	RESULT_EXH M=2600 h=6 n=5200 evals=94 best_cost=382 L=333,1210,482,640 time=0.0s	{"1": 1, "2": 3, "3": 2}
+PSLs2_5^2	h=6	K=5	n=5200	RESULT_EXH M=2600 h=6 n=5200 evals=966 best_cost=1080 L=7,471,1738,278 time=0.1s	{"1": 1, "3": 2, "2": 3}
+PSLs2_5^2	h=6	K=6	n=5200	RESULT_EXH M=2600 h=6 n=5200 evals=966 best_cost=1080 L=7,523,249,670 time=0.1s	{"1": 1, "2": 3, "3": 2}
+A8	h=8	K=0	n=5040	RESULT_EXH M=2520 h=8 n=5040 evals=234 best_cost=168 L=214,666,252,1859 time=0.0s	{"1": 1, "2": 5, "4": 2}
+A8	h=8	K=1	n=5040	RESULT_EXH M=2520 h=8 n=5040 evals=26 best_cost=10032 L=46,765,132,2337 time=0.0s	{"1": 1, "2": 3, "4": 4}
+A8	h=8	K=2	n=5040	RESULT_EXH M=2520 h=8 n=5040 evals=426 best_cost=598 L=90,1377,822,2382 time=0.0s	{"1": 1, "4": 2, "2": 5}
+A8	h=8	K=3	n=5040	RESULT_EXH M=2520 h=8 n=5040 evals=82 best_cost=10048 L=0,968,985,1076 time=0.0s	{"1": 1, "2": 3, "4": 4}
+A8	h=8	K=4	n=5040	RESULT_EXH M=2520 h=8 n=5040 evals=498 best_cost=10032 L=0,336,558,608 time=0.0s	{"1": 1, "4": 6, "2": 1}
+A8	h=8	K=5	n=5040	RESULT_EXH M=2520 h=8 n=5040 evals=182 best_cost=9416 L=25,315,469,1434 time=0.0s	{"1": 1, "2": 5, "4": 2}
+A8	h=8	K=6	n=5040	RESULT_EXH M=2520 h=8 n=5040 evals=182 best_cost=9416 L=182,783,1111,2437 time=0.0s	{"1": 1, "2": 5, "4": 2}
+A8	h=8	K=7	n=5040	RESULT_EXH M=2520 h=8 n=5040 evals=358 best_cost=9984 L=343,1220,0,185 time=0.0s	{"1": 1, "4": 4, "2": 3}
+A8	h=8	K=8	n=5040	RESULT_EXH M=2520 h=8 n=5040 evals=358 best_cost=9984 L=569,2146,0,18 time=0.0s	{"1": 1, "2": 3, "4": 4}
+A8	h=8	K=9	n=5040	RESULT_EXH M=2520 h=8 n=5040 evals=50 best_cost=2344 L=7,1332,1720,521 time=0.0s	{"1": 1, "4": 2, "2": 5}
+A8	h=8	K=10	n=5040	RESULT_EXH M=2520 h=8 n=5040 evals=2946 best_cost=9792 L=4,651,0,20 time=0.0s	{"1": 1, "2": 7}
+A8	h=8	K=11	n=5040	RESULT_EXH M=2520 h=8 n=5040 evals=1562 best_cost=9792 L=59,2291,0,630 time=0.0s	{"1": 1, "2": 7}
+PGL2_5^2	h=6	K=0	n=5200	RESULT_EXH M=2600 h=6 n=5200 evals=70 best_cost=10368 L=0,121,731,843 time=0.0s	{"1": 1, "3": 2, "2": 1, "6": 2}
+PGL2_5^2	h=6	K=1	n=5200	RESULT_EXH M=2600 h=6 n=5200 evals=50 best_cost=424 L=407,2258,1296,0 time=0.0s	{"1": 1, "3": 2, "2": 3}
+PGL2_5^2	h=6	K=2	n=5200	RESULT_EXH M=2600 h=6 n=5200 evals=54 best_cost=30 L=92,683,793,101 time=0.0s	{"1": 1, "2": 3, "3": 2}
+PSL2_3^3	h=3	K=0	n=6552	RESULT_EXH M=3276 h=3 n=6552 evals=9927 best_cost=176 L=6,171,1663,1634 time=1.6s	{"1": 1, "3": 2}

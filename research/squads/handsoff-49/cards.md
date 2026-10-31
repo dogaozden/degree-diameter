@@ -226,3 +226,38 @@ with |H| = 7 (n = 5,760) or 8 (5,040), Sz(8) (29,120) with |H| = 10 (5,824) or 8
 (4,900: too small) or 20 (5,880). Work with permutation representations (PSL(3,4) on the 21 points of PG(2,4); Sz(8) on
 65 points; build the group from matrix or permutation generators and check its order), index cosets by a canonical
 form, and count degree per double coset. Exhaustive over small sets of double cosets first, then annealing.
+
+## w15: Haar graphs of order 2,500 = 4 x 5^4: P x| Z_4 with a fixed-point-free action (n = 5,000)
+
+Lesson so far (w1, w7, w10): low cost goes with a small centre and a small abelianization. Order 2,500 is just above
+2,485 and has many groups P x| Z_4 (P of order 625) that are centreless with abelianization Z_4 (when the generator
+t of Z_4 acts on P with no non-trivial fixed points for t, t^2, t^3). Only the metacyclic ones (P = Z_625, and Z_m x| Z_k
+shapes) were screened before. Build and screen the others with haar_tab (`tab FILE.bin`, 60 s, 3 seeds each):
+- P abelian: Z_5^4, Z_25 x Z_5^2, Z_25^2, Z_125 x Z_5, with t acting as an automorphism of order 4 without fixed
+  points: scalar x -> 2x on Z_5^4 (2 has order 4 mod 5), x -> 7x on Z_25 parts (7^2 = -1 mod 25), x -> 57x mod 125
+  (57^2 = -1 mod 125), and non-scalar 4x4 matrices A over Z_5 with A^2 = -I (e.g. block diagonal [[0,-1],[1,0]] twice,
+  or [[0,-1],[1,0]] with [[2,0],[0,2]] blocks); different A give different groups. Elements (v, a), product
+  (v, a)(w, b) = (v + A^a w, a + b). Check the order, the centre (should be trivial) and closure.
+- P non-abelian of order 625 (e.g. Heisenberg group mod 5 times Z_5, or mod 25 variants) with an order-4 automorphism
+  acting without fixed points (e.g. (x, y, z) -> (2x, 2y, 4z) on the Heisenberg group, z the central coordinate).
+- Also the same idea at order 2,496 = 2^6 x 3 x 13 and 2,508 = 4 x 3 x 11 x 19 if time allows (centreless,
+  abelianization small).
+Deepen the best 3 (5 min runs, several seeds), and write an exhaustive search up to automorphism (like w1's exh.c,
+`$H/w1/`) for any group at cost <= 4.
+
+## w16: grow the 4,970 graph through its quotients (follows w6)
+
+The table graph `$H/seeds/valid4970.edges` is the Haar graph H(G,S) of G = Z_71 x|_49 Z_35 with S = {(0,0), (6,18),
+(30,19), (30,22)} (pairs (a,j), product (a,j)(b,l) = (a + 49^j b, j + l); solution file `seeds/valid4970_meta71_35_49.sol`).
+G has normal subgroups N = Z_71 (index 35), Z_71 x| Z_5 (index 7) and Z_71 x| Z_7 (index 5). So the same graph is a
+voltage lift of the quotient H(G,S)/N: a 35+35 base (70 vertices) with voltages in Z_71, a 7+7 base with voltages in a
+group of order 355, and a 5+5 base with voltages in a group of order 497. Plan:
+1. Build the three quotient bases with their voltages (vertices (gN, side), edges (gN, A) ~ (s g N, B) with the voltage
+   read off from coset representatives) and check that the lift rebuilds a VALID 4,970 graph (apsp).
+2. Calibration: start flift / w5's tabu (`$H/w5/tabu.c`) / w8's wt.c from random voltages on these bases over the same
+   groups. Do they find cost 0 again? If not, the optimizer is the bottleneck for bases this size (record how close).
+3. Re-lift the same bases (and small modifications: change one or two base edges) over slightly larger groups: the
+   5+5 base over groups of order 498..530, the 7+7 base over 356..380, the 35+35 base over groups of order 72..80.
+   Prefer groups of the same shape (Z_p x| Z_k Frobenius, centreless, small abelianization). Start each search from the
+   known voltages mapped into the new group where that makes sense.
+A cost-0 lift with n > 4,970 is a record.
