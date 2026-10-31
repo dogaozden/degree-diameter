@@ -576,3 +576,106 @@ BFS from (e,B):
   from (e,B) level 9: new=131985889  reached=790626816 / 790626816
   done in 163.62s, eccB=9, reached 790626816 / 790626816
 VALID d=18 D=9 vertices=790626816 eccA=9 eccB=9
+== d11D10_psl_243_11_orb10_frob1d_ar3_s201 (origin/claude/cell-11-10-resume-oubzk2, 08:41 PT)
+machine: vm; nproc=4; free -g: total 15G used 0G free 14G avail 15G; Linux 6.18.44-fc-v185; gcc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0
+sha256: ffdc15c632d5b9dd1d79150388ef8959640c8f991bc381678504efd0a70cabf1  research/frontier/sols/d11D10_psl_243_11_orb10_frob1d_ar3_s201.txt  (identical to the sha256 on line 2 of the earlier report on branch claude/bigcheck-7b-haar-verify-bfxz02)
+
+################ haarcheck_gen (new low-memory checker, research/frontier/haarcheck_gen.c; two BFS on the group, N-bit bitsets, no edge lists): gcc -O3 -fopenmp -o haarcheck_gen haarcheck_gen.c && ./haarcheck_gen research/frontier/sols/d11D10_psl_243_11_orb10_frob1d_ar3_s201.txt   (stdout, complete)
+selftest psl 243 poly x^5+2x+1: |M| = 7174332, index round trip over all elements ok
+selftest group multiplication: associativity, identity, inverse on 20000 random triples ok
+file research/frontier/sols/d11D10_psl_243_11_orb10_frob1d_ar3_s201.txt
+header: 11 10 psl 243 poly x^5+2x+1 n 11 N 78917652
+group psl 243 poly x^5+2x+1 x Z_11, |G| = 78917652 = N, vertices 2N = 157835304; 11 distinct generators
+from (e,A): reached A 78917652/78917652, B 78917652/78917652 within 10; ecc 10; level sizes [1, 11, 110, 1100, 11000, 109930, 1092050, 10241260, 58411824, 68565351, 19402667]  (10s)
+from (e,B): reached A 78917652/78917652, B 78917652/78917652 within 10; ecc 10; level sizes [1, 11, 110, 1100, 11000, 109930, 1092095, 10241260, 58412342, 68565351, 19402104]  (19s)
+VALID d=11 D=10 group=psl 243 poly x^5+2x+1 x Z_11 N=78917652 vertices=157835304 (distinct generators, 11-regular simple; every vertex within 10 of both (e,A) and (e,B); ecc 10; 19s)
+[exit 0; wall 20s; peak RSS 58 MB; 4 threads]
+
+################ build_haar2.py (reference checker): NOT RUN on this file, does not fit in 15 GB (see the note in the earlier report below). This file's two checkers are haarcheck_gen (above) and check_haar_indep.py (below).
+
+################ comparison (computed mechanically from the two outputs): haarcheck_gen verdict VALID, check_haar_indep.py verdict VALID; BFS level sizes from (e,A) and from (e,B) IDENTICAL between the two checkers.
+
+################ earlier output of check_haar_indep.py, copied unedited from research/frontier/runs/cloudcheck/d11D10_psl_243_11_orb10_frob1d_ar3_s201.txt on branch claude/bigcheck-7b-haar-verify-bfxz02 (from its '################ independent checker' line to the end):
+################ independent checker: check_haar_indep.py research/frontier/sols/d11D10_psl_243_11_orb10_frob1d_ar3_s201.txt   [exit 0]
+file research/frontier/sols/d11D10_psl_243_11_orb10_frob1d_ar3_s201.txt
+header: d=11 D=10 spec=psl 243 poly x^5+2x+1 NCYC=11 N=78917652
+group order |G|=7174332 (factors [7174332]), x Z_11 -> 78917652; vertices 2N=157835304
+distinct generators (as full group elements): 11 of d=11
+permutations built (95s)
+BFS from A: ecc=10 reached 157835304 of 157835304 (unreached 0); level sizes [1, 11, 110, 1100, 11000, 109930, 1092050, 10241260, 58411824, 68565351, 19402667]
+BFS from B: ecc=10 reached 157835304 of 157835304 (unreached 0); level sizes [1, 11, 110, 1100, 11000, 109930, 1092095, 10241260, 58412342, 68565351, 19402104]
+every vertex has exactly 11 distinct neighbours: True
+RESULT VALID d=11 D=10 eccA=10 eccB=10 n=157835304 (259s)
+== d15D9_prod_sl_5_sl_19_127_orb3f0_s52 (origin/claude/raise-d15d9-record-r3-u6folv, 08:41 PT)
+machine: vm; nproc=4; free -g: total 15G used 0G free 14G avail 15G; Linux 6.18.44-fc-v185; gcc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0
+sha256: 2ec69cb54c41c25367a0c2baa57040cf2ac63cd3f92bbeea9215f7a3dc234fc6  research/frontier/sols/d15D9_prod_sl_5_sl_19_127_orb3f0_s52.txt  (identical to the sha256 on line 2 of the earlier report on branch claude/bigcheck-7b-haar-verify-bfxz02)
+
+################ haarcheck_gen (new low-memory checker, research/frontier/haarcheck_gen.c; two BFS on the group, N-bit bitsets, no edge lists): gcc -O3 -fopenmp -o haarcheck_gen haarcheck_gen.c && ./haarcheck_gen research/frontier/sols/d15D9_prod_sl_5_sl_19_127_orb3f0_s52.txt   (stdout, complete)
+selftest sl 5: |M| = 120, det-1 matrices 120
+selftest sl 19: |M| = 6840, det-1 matrices 6840
+selftest group multiplication: associativity, identity, inverse on 20000 random triples ok
+file research/frontier/sols/d15D9_prod_sl_5_sl_19_127_orb3f0_s52.txt
+header: 15 9 prod sl 5 sl 19 n 127 N 104241600
+group prod sl 5 sl 19 x Z_127, |G| = 104241600 = N, vertices 2N = 208483200; 15 distinct generators
+from (e,A): reached A 104241600/104241600, B 104241600/104241600 within 9; ecc 9; level sizes [1, 15, 210, 2940, 41160, 574284, 7737690, 68322687, 96462539, 35341674]  (13s)
+from (e,B): reached A 104241600/104241600, B 104241600/104241600 within 9; ecc 9; level sizes [1, 15, 210, 2940, 41160, 574284, 7737112, 68322687, 96463117, 35341674]  (26s)
+VALID d=15 D=9 group=prod sl 5 sl 19 x Z_127 N=104241600 vertices=208483200 (distinct generators, 15-regular simple; every vertex within 9 of both (e,A) and (e,B); ecc 9; 26s)
+[exit 0; wall 26s; peak RSS 76 MB; 4 threads]
+
+################ build_haar2.py (reference checker): NOT RUN on this file, does not fit in 15 GB (see the note in the earlier report below). This file's two checkers are haarcheck_gen (above) and check_haar_indep.py (below).
+
+################ comparison (computed mechanically from the two outputs): haarcheck_gen verdict VALID, check_haar_indep.py verdict VALID; BFS level sizes from (e,A) and from (e,B) IDENTICAL between the two checkers.
+
+################ earlier output of check_haar_indep.py, copied unedited from research/frontier/runs/cloudcheck/d15D9_prod_sl_5_sl_19_127_orb3f0_s52.txt on branch claude/bigcheck-7b-haar-verify-bfxz02 (from its '################ independent checker' line to the end):
+################ independent checker: check_haar_indep.py research/frontier/sols/d15D9_prod_sl_5_sl_19_127_orb3f0_s52.txt   [exit 0]
+file research/frontier/sols/d15D9_prod_sl_5_sl_19_127_orb3f0_s52.txt
+header: d=15 D=9 spec=prod sl 5 sl 19 NCYC=127 N=104241600
+group order |G|=820800 (factors [120, 6840]), x Z_127 -> 104241600; vertices 2N=208483200
+distinct generators (as full group elements): 15 of d=15
+permutations built (0s)
+BFS from A: ecc=9 reached 208483200 of 208483200 (unreached 0); level sizes [1, 15, 210, 2940, 41160, 574284, 7737690, 68322687, 96462539, 35341674]
+BFS from B: ecc=9 reached 208483200 of 208483200 (unreached 0); level sizes [1, 15, 210, 2940, 41160, 574284, 7737112, 68322687, 96463117, 35341674]
+every vertex has exactly 15 distinct neighbours: True
+RESULT VALID d=15 D=9 eccA=9 eccB=9 n=208483200 (254s)
+== d15D10_sl_109_991_orb5f0_s1_FIXPRE100_EARLYB1 (origin/claude/cell-15-10-search-z3q01v, 08:41 PT)
+machine: vm nproc=4; free -g: total 15G used 0G free 14G avail 15G; kernel 6.18.44-fc-v185
+sha256 012039491e533b980747b2e176f25cc2c4b1981e61613217eaaca57b5a7ef74f  file research/frontier/sols/d15D10_sl_109_991_orb5f0_s1_FIXPRE100_EARLYB1.txt (from origin/claude/cell-15-10-search-z3q01v:research/frontier/sols/d15D10_sl_109_991_orb5f0_s1_FIXPRE100_EARLYB1.txt)
+header: 15 10 sl 109 n 991 N 1283265720
+
+################ reference checker: haarcheck_sl (research/frontier/haarcheck_sl.c, gcc -O3)
+from (e,A): reached A 1283265720/1283265720, B 1283265720/1283265720 within 10, ecc 10
+from (e,B): reached A 1283265720/1283265720, B 1283265720/1283265720 within 10, ecc 10
+VALID d=15 D=10 group=sl 109 x Z_991 N=1283265720 vertices=2566531440 (distinct generators, 15-regular simple)
+[exit 0; wall 1073.3s; cpu 1064.4s; peak RSS 919 MB]
+
+################ independent checker: haarcheck2 (research/frontier/haarcheck2.c, gcc -O3)
+file=/home/user/degree-diameter/research/frontier/sols/d15D10_sl_109_991_orb5f0_s1_FIXPRE100_EARLYB1.txt d=15 D=10 p=109 n=991 |G|=1283265720 vertices=2566531440
+selfcheck: SL(2,109) index is a bijection onto det-1 matrices (|SL|=1294920), fastmod ok (0.01s)
+generators: 15 read, all in SL(2,109) x Z_991, all distinct
+selfcheck: generator inverses verified
+BFS from (e,A):
+  from (e,A) level 1: new=15  reached=16 / 2566531440
+  from (e,A) level 2: new=210  reached=226 / 2566531440
+  from (e,A) level 3: new=2940  reached=3166 / 2566531440
+  from (e,A) level 4: new=41160  reached=44326 / 2566531440
+  from (e,A) level 5: new=575990  reached=620316 / 2566531440
+  from (e,A) level 6: new=8033450  reached=8653766 / 2566531440
+  from (e,A) level 7: new=107806446  reached=116460212 / 2566531440
+  from (e,A) level 8: new=900989192  reached=1017449404 / 2566531440
+  from (e,A) level 9: new=1174880329  reached=2192329733 / 2566531440
+  from (e,A) level 10: new=374201707  reached=2566531440 / 2566531440
+  done in 469.75s, eccA=10, reached 2566531440 / 2566531440
+BFS from (e,B):
+  from (e,B) level 1: new=15  reached=16 / 2566531440
+  from (e,B) level 2: new=210  reached=226 / 2566531440
+  from (e,B) level 3: new=2940  reached=3166 / 2566531440
+  from (e,B) level 4: new=41160  reached=44326 / 2566531440
+  from (e,B) level 5: new=575990  reached=620316 / 2566531440
+  from (e,B) level 6: new=8033450  reached=8653766 / 2566531440
+  from (e,B) level 7: new=107806446  reached=116460212 / 2566531440
+  from (e,B) level 8: new=900947536  reached=1017407748 / 2566531440
+  from (e,B) level 9: new=1174880329  reached=2192288077 / 2566531440
+  from (e,B) level 10: new=374243363  reached=2566531440 / 2566531440
+  done in 466.87s, eccB=10, reached 2566531440 / 2566531440
+VALID d=15 D=10 vertices=2566531440 eccA=10 eccB=10
+[exit 0; wall 937.4s; cpu 927.4s; peak RSS 614 MB]
