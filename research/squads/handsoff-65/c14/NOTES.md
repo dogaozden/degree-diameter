@@ -37,3 +37,30 @@ N-lift, so the graph is the same and only the move set changes.
 Random-start 4+4/88 lifts reach 44 (c2 reports 35 for p=4 N=704 sg_88_1 after 9 min), so the cost-4/8 start is an
 exceptional point, but every move set I tried leaves it as a strict local minimum (exact 2-opt at the 4+4 and 22+22
 levels, tabu/ILS/SA with base 2-switches).
+
+## Results (18:00-18:36)
+More N-lift starts, all verified (bad count of the N-lift graph equals the original):
+- 720 Haar, index 3 (3+3, group 120, 2 classes), index 4 (4+4, group 90), index 5 (5+5, group 72), index 6 (6+6, group 60):
+  start costs 6, 8, 10, 12. tabu 40 s each: no descent (best = start).
+- 720 Haar, 2+2 by 180: ILS (tabu with STALL 200 KICK 4, 240 s, 2732 steps, 13 restarts): best 4.
+  Exact 2-change descent (kdesc, 1.12M candidates): no improvement. Random-start tabu 60 s: best 16.
+- 704 (2+2 by 176, the cost-4 start): ILS (STALL 300 KICK 4, 240 s, 2990 steps, 9 restarts): best 4.
+- 704 cost-4 solutions s176_17_a2_14 and r_s176_17_a2_13_51 (order-88 N-lifts): tabu 40 s each: best 8 (start).
+- 704 cost-4 from order-176 group #40 (c1 s176_40_a1_82): all 7 order-88 classes give cost 8; tabu 40 s x2: 8.
+- 704 2+2 kopt K=2 (exact, cost-0 search, 1.07M candidates): none.
+- 704 4+4/88 exact 2-change descent: none. 8+8/44 exact 2-change descent: none (67 s). 22+22/16 exact 2-change: none (878k).
+
+## c5's 732 mcos near miss (bad 915), now as an N-lift
+- c5/deep/1_3-3-3.sg_366_2.best.edges is G-invariant under left multiplication when B orbit j is labelled by the mcos
+  coset convention (right cosets g<2>, index = rank of the minimal element), so the labelling is recovered (c14/c5check.py).
+- c14/c5quot.py ORDER: quotient by the unique subgroup N of that order (coprime to 3 so N acts freely on all 732
+  vertices). N = C61: base 6+6 (36 edges), vl cost 30, tabu 60 s: 30 (no descent). N = C122: base 3+3 (18 edges),
+  vl cost 15, tabu 60 s: 15 (no descent); random-start tabu on the same base: 40. kopt K=2 on both: no cost-0 neighbour
+  (1.1M candidates each). The bad count of each quotient-lift is still 915.
+
+## Status at 18:36
+Every move set I tried (1-change, 2-change exact, tabu, ILS with kicks, SA with base 2-switches) leaves each of the
+near misses (704 cost 4, 720 cost 2-4, 732) as a strict local minimum. Random starts in the same families reach only
+cost 16-44 in a minute, so the good starts are rare structured points and the search cannot move between them.
+Tools for the coordinator: c14/subquot.py (any voltage lift -> N-lift), c14/subgroups.py (conjugacy classes of subgroups),
+c14/c5quot.py (quotient of a coset graph by a semiregular subgroup), c14/test_haar360.py (recovering a Haar set S).

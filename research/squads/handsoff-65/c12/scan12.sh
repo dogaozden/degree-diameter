@@ -5,7 +5,7 @@
 # Appends "order<TAB>group<TAB>name<TAB>type<TAB>best" to scan/<TAG>.tsv. Cost-0 hits are marked HIT.
 T=$1; S=$2; RC=$3; DL=$4; shift 4
 D=/home/user/degree-diameter/research/squads/handsoff-65
-G=$D/c5/groups
+G=${GDIR:-$D/c5/groups}
 W=$D/c12
 cd "$W/scan" || exit 1
 TAG=$(echo "$T" | tr '|,' '_-')

@@ -32,3 +32,33 @@ grp_tab.py (cyclic and Z7xZ7 tables), mkbase_z7.py (random 6-regular base, volta
   Z49, base seeds 2,3: vl cost 86 and 92 -> check.sh bad 2107 and 2254 (export_lift.py).
   Z7 on a 49+49 base (294 edges, 150 s): vl cost 1042 (random-like). Large base + small group = poor, as expected.
 Round 1 c2 (kminus base, p=7 m=49..51): best cost 90. Same regime, same answer.
+
+## 5. Stabilizer-6 bi-coset (|G| = 2058 = 6 x 343, n = 686): poor
+mk_h.g QN=C6 (C6 and S3 actions, 18 pairs). Exhaustive dcenum (x2058/res_d5.txt, tiny unions ~60 each): best cost 56
+(C6_g3_1), bad 9604 by check.sh. S3 stabilizers not run (time).
+
+## 6. Haar + free matching (hfree.c): DEAD for random S
+K Haar matchings from Z_7^3 plus one free permutation sigma, 2-switch SA on sigma with exact bitset ball growth
+(12k cost evaluations/s). Start bad ~12000-20000 (5-regular part is far from Moore-tight: bipartite Moore for degree 5,
+diameter 5 is 682 < 686, so five matchings cannot reach diameter 5 at 686). Random Haar-6 on Z_7^3 (haarmin.c, 20000
+random 6-sets): best bad 37044 (abelian Haar sets are very collision-heavy). Not a useful start.
+(HAAR6=1 variant, sigma started as the 6th Haar matching): no progress in 150 s.
+
+## 7. Lifts b=7, m=49 (7+7 base), longer runs
+  Z49, base seed 5, SWAP 0.05, 240 s: cost 64 -> bad 1568 (b7_s5_z49.edges, the best of this round; scoreboard line added).
+  Continuation of that run (240 s more): no change (64).
+  Z7xZ7, same base, 240 s: cost 66 -> bad 1617.
+  Z49, base seed 11, SWAP 0.1, 240 s: cost 82 -> bad 2009.
+  Z7 on 49+49 base (294 edges), 240 s: cost 866 (very slow SA, 72k steps).
+
+## Verdict (c16, 17:45-18:45)
+No graph above 684. Families and best numbers (bad = pairs at distance > 5, check.sh):
+  D(3,7) Lazebnik-Ustimenko: deg 7, diam 6, bad 3087 at D=5 (every subgraph is worse): closed.
+  bi-coset |H|=|K|=3, |G|=1029: best bad 5145 (exhaustive). |H|=4 (|G|=1372): best cost 304. |H|=6: bad 9604.
+  lifts 7+7 by Z49 or Z7^2: best bad 1568. lifts 49+49 by Z7: cost ~900+ (bad large).
+  Haar + free matching: thousands.
+Compared with the squad's best at 686 (c7, 177), none of the new families is close. The bi-coset stabilizer-2 class
+(best cost 8) and the 2+2 lifts (cost 4) remain the structured near misses; the 686 Haar family is closed.
+Ideas not tried: exhaustive bi-coset with H != K at stabilizer 3 on the other 1029-groups (SmallGroup library lacks
+1029; only 26 pairs from 10 sampled order-3 automorphism classes were built), S3 stabilizers of order 6, and vl
+with the Z49 lifts restarted from many random bases (cost 64-90 each).

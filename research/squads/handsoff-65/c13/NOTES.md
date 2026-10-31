@@ -45,3 +45,10 @@
 - So surgery on H684 is structurally stuck near 170+. Bad 0 at 686 would need a starting graph whose edges are much less
   critical than H684's (its edges are critical because the 4-balls are almost exactly tight).
 - Group automorphisms of G preserving S: identity only (autg.py). No fixed-point involution gives a symmetric 686 insertion.
+
+## Runs 18:12-18:30
+- Remove-a-pair start (mkpair.py: delete a vertex pair of H684 + 2 extra edges, insert 2 pairs as K22, 686 vertices): start 290,
+  plain SA 230 s -> 223 (pair686_a.edges). Not better than the 177 basin.
+- Z_2 symmetric 688 continued from 384 (restarts from best, T 1.5 -> 0.2): 384 -> 320 (k2_c.edges). The next restart stays at
+  320 (k2_d.edges). New 688 best 320 on the scoreboard.
+- Plain 686 from a fresh insertion with PG=0.9 (mostly guided moves): 242 (g686_pg9.edges). Guided-heavy is not better.

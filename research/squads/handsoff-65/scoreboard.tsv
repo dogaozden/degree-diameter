@@ -26,3 +26,11 @@ c16	vl lift 7+7 base (random 6-reg, Z49) SA 60 s, export_lift (family: lifts wit
 c15	bi-coset 2|2 diagonal SmallGroup(732,10) SA 3 s, sweep of c4-remaining groups	732	bad=3660 (cost 20)	research/squads/handsoff-65/c15/best/g732_10_p_1_1_c20.edges	18:08
 c16	vl lift 7+7 base, Z49, SA 240 s with base 2-switches (SWAP 0.05), export_lift	686	bad=1568 (vl cost 64)	research/squads/handsoff-65/c16/b7_s5_z49.edges	18:12
 c13	Z3-symmetric SA on 684 Haar + 3 pi-invariant pairs (pi = left mult by order-3 element), 230 s	690	bad=447	research/squads/handsoff-65/c13/k3_a.edges	18:12
+c11	swap-symmetric 2+2 lift (sigma A1<->B2, A2<->B1; f = inv o theta, theta class 6 of SmallGroup(176,1)) tabu 60 s	704	bad=5104 (cost 58)	research/squads/handsoff-65/c11/s704.edges	18:19
+c13	Z2-symmetric SA continued from 384 (restarts from best, T 1.5->0.2)	688	bad=320	research/squads/handsoff-65/c13/k2_c.edges	18:20
+c12	mcos tabu 1|3,3,3 SmallGroup(366,2) full-neighbourhood tabu 40 s/combo (cost 7 again, same floor as c5)	732	bad=915 (mcos cost 7)	research/squads/handsoff-65/c12/deep/t366_2_rc.edges	18:20
+c10	Quotient C2 (Z2-lift of the 684 Haar graph, one base pair added, 6 base edges rewired), low-T SA 200 s	688	bad=454 (vl cost 454)	research/squads/handsoff-65/c10/a688_bad454.edges	18:21
+c10	Quotient C2 (Z2-lift of 684 Haar, one base pair, 6 base edges of lowest deletion damage removed), low-T SA 200 s	688	bad=356 (vl cost 356)	research/squads/handsoff-65/c10/a688_bad356.edges	18:26
+c15	bi-coset 2|2 diagonal SmallGroup(750,10) SA 2 s screen (also 750,11 cost 16)	750	bad=3000 (cost 16)	research/squads/handsoff-65/c15/best/g750_10_p_1_1_c16.edges	18:30
+c10	Quotient C2 (Z2-lift of 684 Haar; 2 base edges to the new a-b pair, 4 removed from lowest-damage edges), low-T SA 200 s	688	bad=324 (vl cost 324)	research/squads/handsoff-65/c10/a688_bad324.edges	18:30
+c10	Quotient C2 (Z2-lift of 684 Haar; damage-guided removal from 3000 samples, nab=2), low-T SA 200 s	688	bad=314 (vl cost 314)	research/squads/handsoff-65/c10/a688_bad314.edges	18:46
