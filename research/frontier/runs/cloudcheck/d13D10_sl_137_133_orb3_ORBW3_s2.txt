@@ -1,0 +1,36 @@
+machine: nproc=4; free -g: total 15G used 0G free 14G avail 15G
+e8e386e1d5594bac367ae139f973d9e8716c7b475dcec737412b0d3cb5aa4f6f
+################ reference checker: haarcheck_sl research/frontier/sols/d13D10_sl_137_133_orb3_ORBW3_s2.txt   [exit 0]
+from (e,A): reached A 341971728/341971728, B 341971728/341971728 within 10, ecc 10
+from (e,B): reached A 341971728/341971728, B 341971728/341971728 within 10, ecc 10
+VALID d=13 D=10 group=sl 137 x Z_133 N=341971728 vertices=683943456 (distinct generators, 13-regular simple)
+################ independent checker: haarcheck2 research/frontier/sols/d13D10_sl_137_133_orb3_ORBW3_s2.txt   [exit 0]
+file=research/frontier/sols/d13D10_sl_137_133_orb3_ORBW3_s2.txt d=13 D=10 p=137 n=133 |G|=341971728 vertices=683943456
+selfcheck: SL(2,137) index is a bijection onto det-1 matrices (|SL|=2571216), fastmod ok (0.03s)
+generators: 13 read, all in SL(2,137) x Z_133, all distinct
+selfcheck: generator inverses verified
+BFS from (e,A):
+  from (e,A) level 1: new=13  reached=14 / 683943456
+  from (e,A) level 2: new=156  reached=170 / 683943456
+  from (e,A) level 3: new=1872  reached=2042 / 683943456
+  from (e,A) level 4: new=22464  reached=24506 / 683943456
+  from (e,A) level 5: new=269418  reached=293924 / 683943456
+  from (e,A) level 6: new=3217861  reached=3511785 / 683943456
+  from (e,A) level 7: new=36623091  reached=40134876 / 683943456
+  from (e,A) level 8: new=251670748  reached=291805624 / 683943456
+  from (e,A) level 9: new=305077334  reached=596882958 / 683943456
+  from (e,A) level 10: new=87060498  reached=683943456 / 683943456
+  done in 125.84s, eccA=10, reached 683943456 / 683943456
+BFS from (e,B):
+  from (e,B) level 1: new=13  reached=14 / 683943456
+  from (e,B) level 2: new=156  reached=170 / 683943456
+  from (e,B) level 3: new=1872  reached=2042 / 683943456
+  from (e,B) level 4: new=22464  reached=24506 / 683943456
+  from (e,B) level 5: new=269418  reached=293924 / 683943456
+  from (e,B) level 6: new=3217843  reached=3511767 / 683943456
+  from (e,B) level 7: new=36623091  reached=40134858 / 683943456
+  from (e,B) level 8: new=251674954  reached=291809812 / 683943456
+  from (e,B) level 9: new=305077334  reached=596887146 / 683943456
+  from (e,B) level 10: new=87056310  reached=683943456 / 683943456
+  done in 124.99s, eccB=10, reached 683943456 / 683943456
+VALID d=13 D=10 vertices=683943456 eccA=10 eccB=10
