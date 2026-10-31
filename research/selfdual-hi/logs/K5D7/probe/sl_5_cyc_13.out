@@ -1,0 +1,38 @@
+GROUP SL(2,5) x Z13 N 1560 (Haar graph on 3120 vertices) K 5 D 7
+PSI 0 [x->x^-1] x [z->0-1*z] order 2 orbits(len<=K): 1x2 2x779
+GAMMA generators 76
+ENUM psi0_t1+2+2_enum reps 12 sets 18672 passed 0 near 0 best -1 sols 0 secs 0.0
+PSI 1 [x->x^-1] x [z->0-12*z] order 2 orbits(len<=K): 1x26 2x767
+GAMMA generators 76
+ENUM psi1_t1+2+2_enum reps 10 sets 199160 passed 0 near 68 best 53 sols 0 secs 0.3
+ENUM psi1_t1+1+1+2_enum reps 10 sets 26000 passed 0 near 0 best -1 sols 0 secs 0.0
+ENUM psi1_t1+1+1+1+1_enum reps 4 sets 50600 passed 0 near 0 best -1 sols 0 secs 0.1
+PSI 2 [x->-x^-1] x [z->0-1*z] order 2 orbits(len<=K): 1x30 2x765
+GAMMA generators 76
+ENUM psi2_t1+2+2_enum reps 7 sets 160440 passed 0 near 8 best 72 sols 0 secs 0.3
+ENUM psi2_t1+1+1+2_enum reps 7 sets 28420 passed 0 near 0 best -1 sols 0 secs 0.1
+ENUM psi2_t1+1+1+1+1_enum reps 1 sets 23751 passed 0 near 0 best -1 sols 0 secs 0.1
+PSI 3 [x->-x^-1] x [z->0-12*z] order 2 orbits(len<=K): 1x390 2x585
+GAMMA generators 76
+ENUM psi3_t1+2+2_enum reps 6 sets 1366560 passed 0 near 6 best 282 sols 0 secs 2.4
+TYPE psi3_t1+1+1+2 has 5.89e+07 sets > ECAP: tabu
+TABU psi3_t1+1+1+2 best 10 sols 0 steps 6429 evals 308606 restarts 13 secs 10.0
+TYPE psi3_t1+1+1+1+1 has 1.88e+09 sets > ECAP: tabu
+TABU psi3_t1+1+1+1+1 best 4 sols 0 steps 6250 evals 300013 restarts 12 secs 10.0
+PSI 4 [x->(hxh)^-1,h=diag(1,2)] x [z->0-1*z] order 2 orbits(len<=K): 2x780
+GAMMA generators 64
+PSI 5 [x->(hxh)^-1,h=diag(1,2)] x [z->0-12*z] order 2 orbits(len<=K): 2x780
+GAMMA generators 64
+PSI 6 [x->-(hxh)^-1,h=diag(1,2)] x [z->0-1*z] order 2 orbits(len<=K): 1x20 2x770
+GAMMA generators 64
+ENUM psi6_t1+2+2_enum reps 33 sets 507540 passed 0 near 964 best 18 sols 0 secs 1.2
+ENUM psi6_t1+1+1+2_enum reps 33 sets 37620 passed 0 near 0 best -1 sols 0 secs 0.1
+ENUM psi6_t1+1+1+1+1_enum reps 5 sets 19380 passed 0 near 0 best -1 sols 0 secs 0.0
+PSI 7 [x->-(hxh)^-1,h=diag(1,2)] x [z->0-12*z] order 2 orbits(len<=K): 1x260 2x650
+GAMMA generators 64
+ENUM psi7_t1+2+2_enum reps 28 sets 4724720 passed 0 near 27 best 60 sols 0 secs 9.3
+TYPE psi7_t1+1+1+2 has 8.11e+07 sets > ECAP: tabu
+TABU psi7_t1+1+1+2 best 14 sols 0 steps 6436 evals 308945 restarts 16 secs 10.0
+TYPE psi7_t1+1+1+1+1 has 1.83e+09 sets > ECAP: tabu
+TABU psi7_t1+1+1+1+1 best 5 sols 0 steps 6726 evals 322864 restarts 15 secs 10.0
+DONE sols 0

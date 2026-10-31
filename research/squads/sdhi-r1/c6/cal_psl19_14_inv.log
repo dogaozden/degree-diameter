@@ -1,0 +1,13 @@
+group psl 19 x Z_14, N=47880, identity 2394, H order 63, rows 760, threads 1, setup 0.02s
+wide rows: HW order 133, rows 360, setup 0.02s
+SDUAL psi: Q-part inv, z -> 0 - 1 z (u0 index 2394)
+ORBIT k=2 m=3 f=1: |Fix(alpha)| = 343 (+e); mu = 42.97, mu/k = 21.49, fixed-point misses ~ 10.31
+start cost=9149
+t=30 steps=35793 evals=286345 cost=3161 best=3161 T=0.53
+t=60 steps=66636 evals=533089 cost=3161 best=3161 T=0.19
+t=90 steps=103249 evals=825993 cost=3161 best=3161 T=0.15
+t=120 steps=134807 evals=1078457 cost=3161 best=3161 T=0.15
+t=150 steps=167084 evals=1336673 cost=3161 best=3161 T=0.15
+t=180 steps=200356 evals=1602849 cost=3161 best=3161 T=0.60
+t=210 steps=226910 evals=1815281 cost=3161 best=3161 T=0.21
+RESULT d=7 D=8 group=psl 19 x Z_14 N=47880 best=3161 evals=2046761 time=240.0 orbit k=2 m=3 f=1 fix=343 sdual psi: Q-part inv, z -> 0 - 1 z

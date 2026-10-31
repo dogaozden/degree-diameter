@@ -1,0 +1,7 @@
+group psl 11 x Z_73, N=48180, identity 4015, H order 11, rows 4380, threads 1, setup 0.01s
+wide rows: HW order 219, rows 220, setup 0.03s
+SDUAL psi: Q-part inv, z -> 0 - 1 z (u0 index 4015)
+ORBIT k=2 m=3 f=1: |Fix(alpha)| = 55 (+e); mu = 45.17, mu/k = 22.59, fixed-point misses ~ 1.71
+start cost=6289
+t=30 steps=55001 evals=440009 cost=3268 best=3268 T=0.53
+RESULT d=7 D=8 group=psl 11 x Z_73 N=48180 best=3268 evals=601529 time=40.0 orbit k=2 m=3 f=1 fix=55 sdual psi: Q-part inv, z -> 0 - 1 z

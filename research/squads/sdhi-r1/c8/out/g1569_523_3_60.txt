@@ -1,0 +1,12 @@
+GROUP C523:C3(r=60) x Z1 N 1569 (Haar graph on 3138 vertices) K 5 D 7
+PSI 0 [u0*beta(g)^-1,beta(x)=x^1,beta(y)=y^1,u0=(0,0)] x [z->0-1*z] order 2 orbits(len<=K): 1x1 2x784
+GAMMA generators 576
+ENUM psi0_t1+2+2_enum reps 2 sets 1566 passed 0 near 0 best -1 sols 0 secs 0.0
+PSI 1 [u0*beta(g)^-1,beta(x)=x^522,beta(y)=y^1,u0=(0,0)] x [z->0-1*z] order 2 orbits(len<=K): 1x523 2x523
+GAMMA generators 528
+ENUM psi1_t1+2+2_enum reps 2 sets 546012 passed 0 near 0 best -1 sols 0 secs 1.2
+TYPE psi1_t1+1+1+2 has 4.74e+07 sets > ECAP: tabu
+TABU psi1_t1+1+1+2 best 120 sols 0 steps 6830 evals 327854 restarts 13 secs 20.0
+TYPE psi1_t1+1+1+1+1 has 6.12e+09 sets > ECAP: tabu
+TABU psi1_t1+1+1+1+1 best 1122 sols 0 steps 13999 evals 671981 restarts 28 secs 20.0
+DONE sols 0

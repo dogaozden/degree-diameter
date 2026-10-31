@@ -1,0 +1,9 @@
+GROUP SL(2,7) x Z5 N 1680 (Haar graph on 3360 vertices) K 5 D 7
+PSI 7 [x->-(hxh)^-1,h=diag(1,3)] x [z->0-4*z] order 2 orbits(len<=K): 1x280 2x700
+GAMMA generators 34
+ENUM psi7_t1+2+2_enum reps 50 sets 9786000 passed 0 near 79503 best 26 sols 0 secs 61.8
+TYPE psi7_t1+1+1+2 has 1.81e+08 sets > ECAP: tabu
+TABU psi7_t1+1+1+2 best 9 sols 0 steps 28104 evals 1349011 restarts 18 secs 120.0
+TYPE psi7_t1+1+1+1+1 has 5.44e+09 sets > ECAP: tabu
+TABU psi7_t1+1+1+1+1 best 8 sols 0 steps 40770 evals 1956988 restarts 27 secs 120.0
+DONE sols 0

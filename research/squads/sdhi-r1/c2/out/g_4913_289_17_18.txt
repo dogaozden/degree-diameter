@@ -1,0 +1,13 @@
+GROUP C289:C17(r=18) x Z1 N 4913 (Haar graph on 9826 vertices) K 5 D 8
+PSI 0 [u0*beta(g)^-1,beta(x)=x^1,beta(y)=y^1,u0=(0,0)] x [z->0-1*z] order 2 orbits(len<=K): 1x1 2x2456
+GAMMA generators 335
+ENUM psi0_t1+2+2_enum reps 18 sets 44190 passed 0 near 0 best -1 sols 0 secs 1.2
+PSI 1 [u0*beta(g)^-1,beta(x)=x^288,beta(y)=y^1,u0=(0,0)] x [z->0-1*z] order 2 orbits(len<=K): 1x289 2x2312
+GAMMA generators 335
+TYPE psi1_t1+2+2 has 1.6e+07 sets > ECAP: tabu
+TABU psi1_t1+2+2 best 111 sols 0 steps 120 evals 5761 restarts 0 secs 5.0
+TYPE psi1_t1+1+1+2 has 9.56e+07 sets > ECAP: tabu
+TABU psi1_t1+1+1+2 best 1986 sols 0 steps 147 evals 7057 restarts 0 secs 5.0
+TYPE psi1_t1+1+1+1+1 has 8.42e+08 sets > ECAP: tabu
+TABU psi1_t1+1+1+1+1 best 4624 sols 0 steps 955 evals 45844 restarts 3 secs 5.0
+DONE sols 0

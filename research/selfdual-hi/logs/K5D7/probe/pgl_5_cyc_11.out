@@ -1,0 +1,19 @@
+GROUP PGL(2,5) x Z11 N 1320 (Haar graph on 2640 vertices) K 5 D 7
+PSI 0 [x->x^-1] x [z->0-1*z] order 2 orbits(len<=K): 1x26 2x647
+GAMMA generators 73
+ENUM psi0_t1+2+2_enum reps 13 sets 218348 passed 0 near 374 best 3 sols 0 secs 0.6
+ENUM psi0_t1+1+1+2_enum reps 13 sets 33800 passed 0 near 0 best -1 sols 0 secs 0.1
+ENUM psi0_t1+1+1+1+1_enum reps 3 sets 37950 passed 0 near 0 best -1 sols 0 secs 0.1
+PSI 1 [x->x^-1] x [z->0-10*z] order 2 orbits(len<=K): 1x286 2x517
+GAMMA generators 73
+ENUM psi1_t1+2+2_enum reps 10 sets 1475760 passed 0 near 12 best 66 sols 0 secs 4.1
+TYPE psi1_t1+1+1+2 has 3.86e+07 sets > ECAP: tabu
+TABU psi1_t1+1+1+2 best 2 sols 0 steps 4869 evals 233725 restarts 12 secs 10.0
+TYPE psi1_t1+1+1+1+1 has 1.61e+09 sets > ECAP: tabu
+SOL psi1_t1+1+1+1+1 diam 7 S 300 607 571 176 128 = [1 0 1 4]|3 [1 1 3 4]|2 [1 1 2 4]|10 [0 1 4 0]|0 [0 1 3 0]|7
+SOL psi1_t1+1+1+1+1 diam 7 S 304 874 1099 1271 1137 = [1 0 1 4]|7 [1 2 4 4]|5 [1 3 4 4]|10 [1 4 3 4]|6 [1 4 0 4]|4
+SOL psi1_t1+1+1+1+1 diam 7 S 437 832 1315 393 14 = [1 0 4 4]|8 [1 2 3 4]|7 [1 4 4 4]|6 [1 0 3 4]|8 [0 1 1 0]|3
+SOL psi1_t1+1+1+1+1 diam 7 S 1319 429 255 827 700 = [1 4 4 4]|10 [1 0 4 4]|0 [1 0 0 4]|2 [1 2 3 4]|2 [1 2 0 4]|7
+SOL psi1_t1+1+1+1+1 diam 7 S 743 694 607 1139 564 = [1 2 1 4]|6 [1 2 0 4]|1 [1 1 3 4]|2 [1 4 0 4]|6 [1 1 2 4]|3
+TABU psi1_t1+1+1+1+1 best 0 sols 5 steps 3912 evals 187789 restarts 12 secs 8.0
+DONE sols 5

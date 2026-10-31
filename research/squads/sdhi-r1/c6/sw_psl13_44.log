@@ -1,0 +1,7 @@
+group psl 13 x Z_44, N=48048, identity 3432, H order 52, rows 924, threads 1, setup 0.00s
+wide rows: HW order 154, rows 312, setup 0.01s
+SDUAL psi: Q-part inv, z -> 0 - 1 z (u0 index 3432)
+ORBIT k=2 m=3 f=1: |Fix(alpha)| = 183 (+e); mu = 44.19, mu/k = 22.10, fixed-point misses ~ 5.58
+start cost=9500
+t=30 steps=36944 evals=295553 cost=3396 best=3396 T=0.53
+RESULT d=7 D=8 group=psl 13 x Z_44 N=48048 best=3396 evals=397993 time=40.0 orbit k=2 m=3 f=1 fix=183 sdual psi: Q-part inv, z -> 0 - 1 z

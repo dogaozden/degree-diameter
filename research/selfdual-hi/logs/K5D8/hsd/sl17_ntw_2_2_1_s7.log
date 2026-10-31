@@ -1,0 +1,36 @@
+group sl 17 x Z_1, N=4896, identity 272, H order 34, rows 144, threads 1, setup 0.00s
+wide rows: no cyclic subgroup of order >= 64 found (best 34); using haar_gen3's evaluation
+SDUAL psi: Q-part ntw, z -> 0 - 1 z (u0 index 4029)
+psi(e) != e: the f fixed generators are psi-fixed elements (e not in S); S is normalised to s_0 = e when written
+ORBIT k=2 m=2 f=1: |Fix(alpha)| = 272 (+e); mu = 56.51, mu/k = 28.25, fixed-point misses ~ 29.33
+start cost=656
+t=30 steps=88901 evals=711209 cost=7 best=7 T=0.53
+t=60 steps=182208 evals=1457665 cost=7 best=7 T=0.19
+t=90 steps=295266 evals=2362129 cost=7 best=7 T=0.15
+t=120 steps=408537 evals=3268297 cost=7 best=7 T=0.15
+t=150 steps=529014 evals=4232113 cost=7 best=7 T=0.15
+t=180 steps=693559 evals=5548473 cost=15 best=7 T=0.59
+t=210 steps=865261 evals=6922089 cost=15 best=7 T=0.21
+t=240 steps=1013803 evals=8110425 cost=11 best=7 T=0.15
+t=270 steps=1187871 evals=9502969 cost=11 best=7 T=0.15
+t=300 steps=1374894 evals=10999153 cost=11 best=7 T=0.15
+t=330 steps=1561212 evals=12489697 cost=7 best=7 T=0.59
+t=360 steps=1766129 evals=14129033 cost=7 best=7 T=0.21
+t=390 steps=1960138 evals=15681105 cost=7 best=7 T=0.15
+t=420 steps=2139553 evals=17116425 cost=7 best=7 T=0.15
+t=450 steps=2323377 evals=18587017 cost=7 best=7 T=0.15
+t=480 steps=2519680 evals=20157441 cost=7 best=7 T=0.59
+t=510 steps=2695739 evals=21565913 cost=7 best=7 T=0.21
+t=540 steps=2968122 evals=23744977 cost=7 best=7 T=0.15
+t=570 steps=3163554 evals=25308433 cost=7 best=7 T=0.15
+t=600 steps=3345130 evals=26761041 cost=7 best=7 T=0.15
+t=630 steps=3500676 evals=28005409 cost=7 best=7 T=0.59
+t=660 steps=3657829 evals=29262633 cost=7 best=7 T=0.21
+t=690 steps=3856465 evals=30851721 cost=7 best=7 T=0.15
+t=720 steps=4051027 evals=32408217 cost=7 best=7 T=0.15
+t=750 steps=4244199 evals=33953593 cost=7 best=7 T=0.15
+t=780 steps=4440502 evals=35524017 cost=7 best=7 T=0.59
+t=810 steps=4635518 evals=37084145 cost=7 best=7 T=0.21
+t=840 steps=4831721 evals=38653769 cost=7 best=7 T=0.15
+t=870 steps=5024951 evals=40199609 cost=7 best=7 T=0.15
+RESULT d=5 D=8 group=sl 17 x Z_1 N=4896 best=7 evals=41752033 time=900.0 orbit k=2 m=2 f=1 fix=272 sdual psi: Q-part ntw, z -> 0 - 1 z

@@ -1,0 +1,10 @@
+GROUP PGL(2,5) x C7:C6(r=2) N 5040 (Haar graph on 10080 vertices) K 5 D 8
+PSI 0 [x->x^-1] x [u0*beta(g)^-1,beta(x)=x^1,beta(y)=y^1,u0=(0,0)] order 2 orbits(len<=K): 1x52 2x2494
+TABU psi0_t1+2+2 best 38 sols 0 steps 253 evals 12145 restarts 0 secs 3.0
+TABU psi0_t1+1+1+2 best 3360 sols 0 steps 528 evals 25346 restarts 1 secs 3.0
+PSI 1 [x->x^-1] x [u0*beta(g)^-1,beta(x)=x^1,beta(y)=y^1,u0=(0,3)] order 2 orbits(len<=K): 2x2520
+PSI 2 [x->x^-1] x [u0*beta(g)^-1,beta(x)=x^6,beta(y)=y^1,u0=(0,0)] order 2 orbits(len<=K): 1x364 2x2338
+TABU psi2_t1+2+2 best 25 sols 0 steps 226 evals 10849 restarts 0 secs 3.0
+TABU psi2_t1+1+1+2 best 22 sols 0 steps 166 evals 7969 restarts 0 secs 3.0
+PSI 3 [x->x^-1] x [u0*beta(g)^-1,beta(x)=x^6,beta(y)=y^1,u0=(0,3)] order 2 orbits(len<=K): 2x2520
+DONE sols 0

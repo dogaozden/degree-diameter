@@ -1,0 +1,19 @@
+GROUP PGL(2,7) x Z4 N 1344 (Haar graph on 2688 vertices) K 5 D 7
+PSI 0 [x->x^-1] x [z->0-1*z] order 2 orbits(len<=K): 1x100 2x622
+GAMMA generators 65
+ENUM psi0_t1+2+2_enum reps 21 sets 1304100 passed 0 near 1522 best 10 sols 0 secs 7.0
+ENUM psi0_t1+1+1+2_enum reps 21 sets 3395700 passed 0 near 2243 best 5 sols 0 secs 18.4
+TYPE psi0_t1+1+1+1+1 has 2.26e+07 sets > ECAP: tabu
+TABU psi0_t1+1+1+1+1 best 672 sols 0 steps 11462 evals 550214 restarts 37 secs 30.0
+PSI 1 [x->x^-1] x [z->1-1*z] order 2 orbits(len<=K): 2x672
+GAMMA generators 64
+PSI 2 [x->x^-1] x [z->0-3*z] order 2 orbits(len<=K): 1x200 2x572
+GAMMA generators 65
+ENUM psi2_t1+2+2_enum reps 18 sets 2055600 passed 0 near 181 best 15 sols 0 secs 11.6
+TYPE psi2_t1+1+1+2 has 2.36e+07 sets > ECAP: tabu
+TABU psi2_t1+1+1+2 best 5 sols 0 steps 7828 evals 375762 restarts 17 secs 30.0
+TYPE psi2_t1+1+1+1+1 has 5.71e+08 sets > ECAP: tabu
+TABU psi2_t1+1+1+1+1 best 3 sols 0 steps 8753 evals 420163 restarts 18 secs 30.0
+PSI 3 [x->x^-1] x [z->2-3*z] order 2 orbits(len<=K): 2x672
+GAMMA generators 65
+DONE sols 0

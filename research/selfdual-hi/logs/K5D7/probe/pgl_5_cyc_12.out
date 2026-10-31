@@ -1,0 +1,35 @@
+GROUP PGL(2,5) x Z12 N 1440 (Haar graph on 2880 vertices) K 5 D 7
+PSI 0 [x->x^-1] x [z->0-1*z] order 2 orbits(len<=K): 1x52 2x694
+GAMMA generators 67
+ENUM psi0_t1+2+2_enum reps 42 sets 1513512 passed 0 near 92 best 32 sols 0 secs 4.5
+ENUM psi0_t1+1+1+2_enum reps 42 sets 928200 passed 0 near 10 best 34 sols 0 secs 2.3
+ENUM psi0_t1+1+1+1+1_enum reps 6 sets 1499400 passed 0 near 0 best -1 sols 0 secs 3.8
+PSI 1 [x->x^-1] x [z->1-1*z] order 2 orbits(len<=K): 2x720
+GAMMA generators 64
+PSI 2 [x->x^-1] x [z->0-5*z] order 2 orbits(len<=K): 1x156 2x642
+GAMMA generators 67
+ENUM psi2_t1+2+2_enum reps 36 sets 3599856 passed 0 near 139 best 31 sols 0 secs 8.8
+TYPE psi2_t1+1+1+2 has 2.23e+07 sets > ECAP: tabu
+TABU psi2_t1+1+1+2 best 7 sols 0 steps 7171 evals 344228 restarts 19 secs 10.0
+TYPE psi2_t1+1+1+1+1 has 2.78e+08 sets > ECAP: tabu
+TABU psi2_t1+1+1+1+1 best 720 sols 0 steps 9634 evals 462464 restarts 31 secs 10.0
+PSI 3 [x->x^-1] x [z->3-5*z] order 2 orbits(len<=K): 2x720
+GAMMA generators 65
+PSI 4 [x->x^-1] x [z->0-7*z] order 2 orbits(len<=K): 1x104 2x668
+GAMMA generators 67
+ENUM psi4_t1+2+2_enum reps 39 sets 2705352 passed 0 near 148 best 20 sols 0 secs 5.1
+ENUM psi4_t1+1+1+2_enum reps 39 sets 7102056 passed 0 near 1899 best 11 sols 0 secs 14.3
+TYPE psi4_t1+1+1+1+1 has 3.98e+07 sets > ECAP: tabu
+TABU psi4_t1+1+1+1+1 best 960 sols 0 steps 12052 evals 578536 restarts 39 secs 10.0
+PSI 5 [x->x^-1] x [z->2-7*z] order 2 orbits(len<=K): 2x720
+GAMMA generators 65
+PSI 6 [x->x^-1] x [z->0-11*z] order 2 orbits(len<=K): 1x312 2x564
+GAMMA generators 67
+ENUM psi6_t1+2+2_enum reps 30 sets 5269680 passed 0 near 0 best -1 sols 0 secs 10.2
+TYPE psi6_t1+1+1+2 has 1.5e+08 sets > ECAP: tabu
+TABU psi6_t1+1+1+2 best 8 sols 0 steps 7214 evals 346289 restarts 16 secs 10.0
+TYPE psi6_t1+1+1+1+1 has 6.88e+09 sets > ECAP: tabu
+TABU psi6_t1+1+1+1+1 best 4 sols 0 steps 6774 evals 325164 restarts 11 secs 10.0
+PSI 7 [x->x^-1] x [z->6-11*z] order 2 orbits(len<=K): 2x720
+GAMMA generators 67
+DONE sols 0

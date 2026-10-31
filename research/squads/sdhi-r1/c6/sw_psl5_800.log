@@ -1,0 +1,7 @@
+group psl 5 x Z_800, N=48000, identity 8000, H order 60, rows 800, threads 1, setup 0.14s
+wide rows: HW order 240, rows 200, setup 0.18s
+SDUAL psi: Q-part inv, z -> 0 - 1 z (u0 index 8000)
+ORBIT k=2 m=3 f=1: |Fix(alpha)| = 31 (+e); mu = 43.84, mu/k = 21.92, fixed-point misses ~ 0.97
+start cost=37941
+t=30 steps=45858 evals=366865 cost=26476 best=26476 T=0.53
+RESULT d=7 D=8 group=psl 5 x Z_800 N=48000 best=26476 evals=500329 time=40.0 orbit k=2 m=3 f=1 fix=31 sdual psi: Q-part inv, z -> 0 - 1 z

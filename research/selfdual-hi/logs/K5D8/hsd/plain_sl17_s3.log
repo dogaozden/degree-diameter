@@ -1,0 +1,43 @@
+group sl 17 x Z_1, N=4896, identity 272, H order 34, rows 144, threads 1, setup 0.00s
+wide rows: no cyclic subgroup of order >= 64 found (best 34); using haar_gen3's evaluation
+start cost=123
+t=30 steps=116847 evals=934777 cost=5 best=3 T=0.53
+t=60 steps=235791 evals=1886329 cost=5 best=3 T=0.19
+t=90 steps=375130 evals=3001041 cost=5 best=3 T=0.15
+t=120 steps=515188 evals=4121505 cost=7 best=3 T=0.15
+t=150 steps=653439 evals=5227513 cost=7 best=3 T=0.15
+t=180 steps=793694 evals=6349553 cost=5 best=3 T=0.55
+t=210 steps=932271 evals=7458169 cost=5 best=3 T=0.19
+t=240 steps=1077271 evals=8618169 cost=8 best=3 T=0.15
+t=270 steps=1215060 evals=9720481 cost=8 best=3 T=0.15
+t=300 steps=1357961 evals=10863689 cost=8 best=3 T=0.15
+t=330 steps=1546075 evals=12368601 cost=6 best=3 T=0.55
+t=360 steps=1724728 evals=13797825 cost=6 best=3 T=0.19
+t=390 steps=1872296 evals=14978369 cost=4 best=3 T=0.15
+t=420 steps=2010141 evals=16081129 cost=4 best=3 T=0.15
+t=450 steps=2262361 evals=18098889 cost=5 best=3 T=0.15
+t=480 steps=2657653 evals=21261225 cost=3 best=3 T=0.55
+t=510 steps=3059826 evals=24478609 cost=3 best=3 T=0.19
+t=540 steps=3367069 evals=26936553 cost=6 best=3 T=0.15
+t=570 steps=3729060 evals=29832481 cost=6 best=3 T=0.15
+t=600 steps=4004607 evals=32036857 cost=6 best=3 T=0.15
+t=630 steps=4294483 evals=34355865 cost=2 best=2 T=0.54
+t=660 steps=4577345 evals=36618761 cost=2 best=2 T=0.19
+t=690 steps=4797378 evals=38379025 cost=2 best=2 T=0.15
+t=720 steps=5008255 evals=40066041 cost=7 best=2 T=0.15
+t=750 steps=5218408 evals=41747265 cost=7 best=2 T=0.15
+t=780 steps=5435571 evals=43484569 cost=6 best=2 T=0.78
+t=810 steps=5648670 evals=45189361 cost=3 best=2 T=0.28
+t=840 steps=5919084 evals=47352673 cost=6 best=2 T=0.15
+t=870 steps=6201568 evals=49612545 cost=6 best=2 T=0.15
+t=900 steps=6482574 evals=51860593 cost=6 best=2 T=0.15
+t=930 steps=6749106 evals=53992849 cost=4 best=2 T=0.78
+t=960 steps=7025444 evals=56203553 cost=6 best=2 T=0.28
+t=990 steps=7303823 evals=58430585 cost=6 best=2 T=0.15
+t=1020 steps=7588580 evals=60708641 cost=6 best=2 T=0.15
+t=1050 steps=7869177 evals=62953417 cost=6 best=2 T=0.15
+t=1080 steps=8145052 evals=65160417 cost=3 best=2 T=0.78
+t=1110 steps=8410304 evals=67282433 cost=3 best=2 T=0.28
+t=1140 steps=8700101 evals=69600809 cost=3 best=2 T=0.15
+t=1170 steps=8968314 evals=71746513 cost=3 best=2 T=0.15
+RESULT d=5 D=8 group=sl 17 x Z_1 N=4896 best=2 evals=73832777 time=1200.0

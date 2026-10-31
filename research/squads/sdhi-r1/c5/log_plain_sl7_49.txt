@@ -1,0 +1,9 @@
+group sl 7 x Z_49, N=16464, identity 2058, H order 56, rows 294, threads 1, setup 0.00s
+wide rows: HW order 196, rows 84, setup 0.09s
+alpha: conj by mat(4,0,1,2) (index 190), z -> 18 z on Z_49
+ORBIT k=3 m=2 f=0: |Fix(alpha)| = 5 (+e); mu = 43.70, mu/k = 14.57, fixed-point misses ~ 0.83
+start cost=377
+t=30 steps=117308 evals=938465 cost=3 best=3 T=0.53
+t=60 steps=244840 evals=1958721 cost=3 best=3 T=0.19
+t=90 steps=367091 evals=2936729 cost=3 best=3 T=0.15
+RESULT d=6 D=8 group=sl 7 x Z_49 N=16464 best=3 evals=3262105 time=100.0 orbit k=3 m=2 f=0 fix=5

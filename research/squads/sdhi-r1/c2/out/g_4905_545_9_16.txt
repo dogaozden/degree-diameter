@@ -1,0 +1,26 @@
+GROUP C545:C9(r=16) x Z1 N 4905 (Haar graph on 9810 vertices) K 5 D 8
+PSI 0 [u0*beta(g)^-1,beta(x)=x^1,beta(y)=y^1,u0=(0,0)] x [z->0-1*z] order 2 orbits(len<=K): 1x1 2x2452
+GAMMA generators 495
+ENUM psi0_t1+2+2_enum reps 11 sets 26961 passed 0 near 22 best 1870 sols 0 secs 0.4
+PSI 1 [u0*beta(g)^-1,beta(x)=x^219,beta(y)=y^1,u0=(0,0)] x [z->0-1*z] order 2 orbits(len<=K): 1x5 2x2450
+GAMMA generators 495
+ENUM psi1_t1+2+2_enum reps 10 sets 122450 passed 0 near 304 best 532 sols 0 secs 3.4
+ENUM psi1_t1+1+1+2_enum reps 10 sets 100 passed 0 near 0 best -1 sols 0 secs 0.0
+ENUM psi1_t1+1+1+1+1_enum reps 2 sets 2 passed 0 near 0 best -1 sols 0 secs 0.0
+PSI 2 [u0*beta(g)^-1,beta(x)=x^326,beta(y)=y^1,u0=(0,0)] x [z->0-1*z] order 2 orbits(len<=K): 1x109 2x2398
+GAMMA generators 476
+TYPE psi2_t1+2+2 has 4.7e+06 sets > ECAP: tabu
+TABU psi2_t1+2+2 best 18 sols 0 steps 111 evals 5329 restarts 0 secs 5.0
+TYPE psi2_t1+1+1+2 has 3.78e+06 sets > ECAP: tabu
+TABU psi2_t1+1+1+2 best 3668 sols 0 steps 213 evals 10225 restarts 0 secs 5.0
+TYPE psi2_t1+1+1+1+1 has 1.07e+07 sets > ECAP: tabu
+TABU psi2_t1+1+1+1+1 best 4796 sols 0 steps 3575 evals 171612 restarts 11 secs 5.0
+PSI 3 [u0*beta(g)^-1,beta(x)=x^544,beta(y)=y^1,u0=(0,0)] x [z->0-1*z] order 2 orbits(len<=K): 1x545 2x2180
+GAMMA generators 476
+TYPE psi3_t1+2+2 has 1.9e+07 sets > ECAP: tabu
+TABU psi3_t1+2+2 best 33 sols 0 steps 114 evals 5473 restarts 0 secs 5.0
+TYPE psi3_t1+1+1+2 has 4.29e+08 sets > ECAP: tabu
+TABU psi3_t1+1+1+2 best 146 sols 0 steps 122 evals 5857 restarts 0 secs 5.0
+TYPE psi3_t1+1+1+1+1 has 1.44e+10 sets > ECAP: tabu
+TABU psi3_t1+1+1+1+1 best 4364 sols 0 steps 555 evals 26642 restarts 1 secs 5.0
+DONE sols 0

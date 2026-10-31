@@ -1,0 +1,10 @@
+GROUP C37:C132(r=8) x Z1 N 4884 (Haar graph on 9768 vertices) K 5 D 8
+PSI 0 [u0*beta(g)^-1,beta(x)=x^1,beta(y)=y^1,u0=(0,0)] x [z->0-1*z] order 2 orbits(len<=K): 1x38 2x2423
+GAMMA generators 99
+TYPE psi0_t1+2+2 has 1.21e+07 sets > ECAP: tabu
+TABU psi0_t1+2+2 best 1533 sols 0 steps 583 evals 27986 restarts 1 secs 20.0
+PSI 1 [u0*beta(g)^-1,beta(x)=x^1,beta(y)=y^109,u0=(0,0)] x [z->0-1*z] order 2 orbits(len<=K): 1x418 2x2233
+GAMMA generators 99
+TYPE psi1_t1+2+2 has 1.13e+08 sets > ECAP: tabu
+TABU psi1_t1+2+2 best 59 sols 0 steps 499 evals 23954 restarts 1 secs 20.0
+DONE sols 0

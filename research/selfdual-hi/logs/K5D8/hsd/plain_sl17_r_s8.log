@@ -1,0 +1,114 @@
+group sl 17 x Z_1, N=4896, identity 272, H order 34, rows 144, threads 1, setup 0.00s
+wide rows: no cyclic subgroup of order >= 64 found (best 34); using haar_gen3's evaluation
+start cost=160
+t=30 steps=242805 evals=1942441 cost=3 best=3 T=0.53 (restarts)
+  restarts=0
+t=60 steps=497227 evals=3977817 cost=3 best=3 T=0.19 (restarts)
+  restarts=0
+t=90 steps=762050 evals=6096401 cost=3 best=3 T=0.15 (restarts)
+  restarts=0
+t=120 steps=1020424 evals=8163393 cost=3 best=3 T=0.15 (restarts)
+  restarts=0
+t=150 steps=1292071 evals=10336569 cost=5 best=3 T=0.15 (restarts)
+  restarts=0
+t=180 steps=1563858 evals=12510865 cost=6 best=3 T=0.66 (restarts)
+  restarts=1
+t=210 steps=1836504 evals=14692033 cost=3 best=3 T=0.23 (restarts)
+  restarts=1
+t=240 steps=2098748 evals=16789985 cost=3 best=3 T=0.15 (restarts)
+  restarts=1
+t=270 steps=2361958 evals=18895665 cost=6 best=3 T=0.15 (restarts)
+  restarts=1
+t=300 steps=2635009 evals=21080073 cost=6 best=3 T=0.15 (restarts)
+  restarts=1
+t=330 steps=2872521 evals=22980169 cost=6 best=3 T=0.15 (restarts)
+  restarts=1
+t=360 steps=3131469 evals=25051753 cost=12 best=3 T=0.96 (restarts)
+  restarts=2
+t=390 steps=3381382 evals=27051057 cost=5 best=3 T=0.34 (restarts)
+  restarts=2
+t=420 steps=3638996 evals=29111969 cost=5 best=3 T=0.15 (restarts)
+  restarts=2
+t=450 steps=3903974 evals=31231793 cost=5 best=3 T=0.15 (restarts)
+  restarts=2
+t=480 steps=4173441 evals=33387529 cost=6 best=3 T=0.15 (restarts)
+  restarts=2
+t=510 steps=4433642 evals=35469137 cost=3 best=3 T=1.07 (restarts)
+  restarts=3
+t=540 steps=4702124 evals=37616993 cost=3 best=3 T=0.38 (restarts)
+  restarts=3
+t=570 steps=4956608 evals=39652865 cost=3 best=3 T=0.15 (restarts)
+  restarts=3
+t=600 steps=5223002 evals=41784017 cost=6 best=3 T=0.15 (restarts)
+  restarts=3
+t=630 steps=5479804 evals=43838433 cost=6 best=3 T=0.15 (restarts)
+  restarts=3
+t=660 steps=5753165 evals=46025321 cost=3 best=3 T=1.25 (restarts)
+  restarts=4
+t=690 steps=6020747 evals=48165977 cost=3 best=3 T=0.44 (restarts)
+  restarts=4
+t=720 steps=6288304 evals=50306433 cost=3 best=3 T=0.16 (restarts)
+  restarts=4
+t=750 steps=6553074 evals=52424593 cost=4 best=3 T=0.15 (restarts)
+  restarts=4
+t=780 steps=6810628 evals=54485025 cost=4 best=3 T=0.15 (restarts)
+  restarts=4
+t=810 steps=7076263 evals=56610105 cost=14 best=3 T=1.47 (restarts)
+  restarts=5
+t=840 steps=7337119 evals=58696953 cost=6 best=3 T=0.52 (restarts)
+  restarts=5
+t=870 steps=7594685 evals=60757481 cost=5 best=3 T=0.18 (restarts)
+  restarts=5
+t=900 steps=7861930 evals=62895441 cost=5 best=3 T=0.15 (restarts)
+  restarts=5
+t=930 steps=8118710 evals=64949681 cost=5 best=3 T=0.15 (restarts)
+  restarts=5
+t=960 steps=8373837 evals=66990697 cost=6 best=3 T=0.15 (restarts)
+  restarts=5
+t=990 steps=8668725 evals=69349801 cost=6 best=3 T=0.95 (restarts)
+  restarts=6
+t=1020 steps=8987992 evals=71903937 cost=4 best=3 T=0.34 (restarts)
+  restarts=6
+t=1050 steps=9229709 evals=73837673 cost=4 best=3 T=0.15 (restarts)
+  restarts=6
+t=1080 steps=9482606 evals=75860849 cost=4 best=3 T=0.15 (restarts)
+  restarts=6
+t=1110 steps=9741616 evals=77932929 cost=4 best=3 T=0.15 (restarts)
+  restarts=6
+t=1140 steps=10004330 evals=80034641 cost=5 best=3 T=1.04 (restarts)
+  restarts=7
+t=1170 steps=10343788 evals=82750305 cost=5 best=3 T=0.37 (restarts)
+  restarts=7
+t=1200 steps=10717382 evals=85739057 cost=7 best=3 T=0.15 (restarts)
+  restarts=7
+t=1230 steps=11105852 evals=88846817 cost=6 best=3 T=0.15 (restarts)
+  restarts=7
+t=1260 steps=11497475 evals=91979801 cost=6 best=3 T=0.15 (restarts)
+  restarts=7
+t=1290 steps=11878320 evals=95026561 cost=4 best=3 T=1.29 (restarts)
+  restarts=8
+t=1320 steps=12251528 evals=98012225 cost=5 best=3 T=0.46 (restarts)
+  restarts=8
+t=1350 steps=12616394 evals=100931153 cost=4 best=3 T=0.16 (restarts)
+  restarts=8
+t=1380 steps=12991019 evals=103928153 cost=5 best=3 T=0.15 (restarts)
+  restarts=8
+t=1410 steps=13360945 evals=106887561 cost=5 best=3 T=0.15 (restarts)
+  restarts=8
+t=1440 steps=13727323 evals=109818585 cost=5 best=3 T=0.15 (restarts)
+  restarts=8
+t=1470 steps=14111969 evals=112895753 cost=5 best=3 T=0.63 (restarts)
+  restarts=9
+t=1500 steps=14486098 evals=115888785 cost=5 best=3 T=0.22 (restarts)
+  restarts=9
+t=1530 steps=14863892 evals=118911137 cost=5 best=3 T=0.15 (restarts)
+  restarts=9
+t=1560 steps=15233302 evals=121866417 cost=5 best=3 T=0.15 (restarts)
+  restarts=9
+t=1590 steps=15615553 evals=124924425 cost=3 best=3 T=0.15 (restarts)
+  restarts=9
+t=1620 steps=15973500 evals=127788001 cost=3 best=3 T=0.15 (restarts)
+  restarts=9
+t=1650 steps=16326447 evals=130611577 cost=3 best=3 T=0.15 (restarts)
+  restarts=9
+RESULT d=5 D=8 group=sl 17 x Z_1 N=4896 best=3 evals=133437977 time=1680.0

@@ -1,0 +1,7 @@
+group psl 7 x Z_288, N=48384, identity 6048, H order 63, rows 768, threads 1, setup 0.01s
+wide rows: HW order 252, rows 192, setup 0.01s
+SDUAL psi: Q-part inv, z -> 0 - 1 z (u0 index 6048)
+ORBIT k=2 m=3 f=1: |Fix(alpha)| = 43 (+e); mu = 46.72, mu/k = 23.36, fixed-point misses ~ 1.37
+start cost=24814
+t=30 steps=71196 evals=569569 cost=10454 best=10454 T=0.53
+RESULT d=7 D=8 group=psl 7 x Z_288 N=48384 best=10454 evals=768953 time=40.0 orbit k=2 m=3 f=1 fix=43 sdual psi: Q-part inv, z -> 0 - 1 z
