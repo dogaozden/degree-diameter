@@ -1,0 +1,10 @@
+# best-1 states of the (5,8) search on SL(2,17) (N=4896): S as 2x2 matrices mod 17 (row by row), s_0 = e.
+# cost = uncovered B-side elements (C annealer), cost_py = independent BFS, diam = apsp diameter of the rebuilt graph (9 at D=8 means RESULT INVALID).
+# canon = minimal sorted element-index tuple under conjugation (distinct canon = not conjugate).
+s111: cost 1, cost_py 1, diam 9, canon (2, 30, 71, 272, 1574), S = 1 0 0 1 | 16 15 2 3 | 3 16 5 10 | 2 3 0 9 | 16 3 4 4
+s115: cost 1, cost_py 1, diam 9, canon (8, 113, 272, 683, 4008), S = 1 0 0 1 | 5 3 13 8 | 9 13 8 6 | 5 3 4 6 | 6 8 12 2
+s206: cost 1, cost_py 1, diam 9, canon (3, 70, 183, 272, 1457), S = 1 0 0 1 | 3 14 13 10 | 12 16 7 8 | 7 14 12 12 | 9 1 0 2
+s208: cost 1, cost_py 1, diam 9, canon (4, 76, 185, 272, 2177), S = 1 0 0 1 | 8 4 4 0 | 10 10 10 5 | 9 0 12 2 | 8 8 15 13
+s305: cost 1, cost_py 1, diam 9, canon (2, 180, 272, 1287, 2873), S = 1 0 0 1 | 7 13 9 12 | 3 5 9 4 | 0 6 14 5 | 7 2 10 3
+s310: cost 1, cost_py 1, diam 9, canon (4, 272, 316, 2536, 4651), S = 1 0 0 1 | 16 11 1 5 | 5 14 6 0 | 15 4 14 14 | 5 6 10 2
+s315: cost 1, cost_py 1, diam 9, canon (3, 185, 272, 3451, 4177), S = 1 0 0 1 | 16 12 15 6 | 16 0 3 16 | 1 7 6 9 | 1 2 9 2
