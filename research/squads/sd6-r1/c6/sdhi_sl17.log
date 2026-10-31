@@ -1,0 +1,11 @@
+GROUP SL(2,17) x Z1 N 4896 (Haar graph on 9792 vertices) K 7 D 6
+PSI 0 [x->x^-1] x [z->0-1*z] order 2 orbits(len<=K): 1x2 2x2447
+TABU psi0_t1+2+2+2 best 1435 sols 0 steps 596 evals 28610 restarts 1 secs 8.0
+PSI 1 [x->-x^-1] x [z->0-1*z] order 2 orbits(len<=K): 1x306 2x2295
+TABU psi1_t1+2+2+2 best 486 sols 0 steps 414 evals 19873 restarts 0 secs 8.0
+TABU psi1_t1+1+1+2+2 best 448 sols 0 steps 501 evals 24049 restarts 0 secs 8.0
+PSI 2 [x->(hxh)^-1,h=diag(1,3)] x [z->0-1*z] order 2 orbits(len<=K): 2x2448
+PSI 3 [x->-(hxh)^-1,h=diag(1,3)] x [z->0-1*z] order 2 orbits(len<=K): 1x272 2x2312
+TABU psi3_t1+2+2+2 best 448 sols 0 steps 351 evals 16850 restarts 1 secs 8.0
+TABU psi3_t1+1+1+2+2 best 482 sols 0 steps 318 evals 15265 restarts 0 secs 8.0
+DONE sols 0

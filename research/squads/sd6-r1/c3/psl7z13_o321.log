@@ -1,0 +1,8 @@
+group psl 7 x Z_13, N=2184, identity 273, H order 52, rows 42, threads 1, setup 0.00s
+wide rows: HW order 91, rows 24, setup 0.00s
+alpha: conj by mat(0,3,2,1) (index 15), z -> 3 z on Z_13
+ORBIT k=3 m=2 f=1: |Fix(alpha)| = 2 (+e); mu = 30.46, mu/k = 10.15, fixed-point misses ~ 0.72
+start cost=39
+RESULT d=7 D=6 group=psl 7 x Z_13 N=2184 best=0 evals=1969 time=0.0 orbit k=3 m=2 f=1 fix=2
+full diameter check: OK
+wrote psl7z13_o321.sol

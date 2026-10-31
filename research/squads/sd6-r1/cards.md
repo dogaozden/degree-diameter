@@ -16,8 +16,9 @@ is a bipartite Cayley graph and the uncovered set comes in psi-pairs.
   than chance and cover G almost evenly (each element about twice). Search over random-like or orbit-symmetric S
   cannot get there; only structure can.
 - Calibration (sdhi tabu, 15 s per psi/type): valid self-dual (7,6) graphs at N = 1,512 (PSL(2,7) x Z9), 1,848
-  (PSL(2,7) x Z11), 1,980 (PSL(2,11) x Z3; apsp VALID at D = 6). Not yet at 2,184 (PSL(2,13) x Z2 best 2,
-  PSL(2,7) x Z13 best 2), 2,352 (PGL(2,7) x Z7 best 4; SL(2,7) x Z7 best 141), 2,640 (PSL(2,11) x Z4 best 17).
+  (PSL(2,7) x Z11), 1,980 (PSL(2,11) x Z3; apsp VALID at D = 6), **2,352 (SL(2,7) x Z7, psi(x) = -x^-1, z -> -z,
+  type 1+2+2+2; apsp VALID)**. Not yet at 2,184 (PSL(2,13) x Z2 best 2, PSL(2,7) x Z13 best 2), 2,352 for
+  PGL(2,7) x Z7 (best 4), 2,640 (PSL(2,11) x Z4 best 17).
 - psi = inversion with e in S is a structural trap (the graph is a double cover of a degree-6 Cayley graph). Big cyclic
   factors and small non-abelian parts create word collisions (research/selfdual-hi/README.md: self-dual sets lose
   words at the commuting probability of G).

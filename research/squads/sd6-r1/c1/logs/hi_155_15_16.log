@@ -1,0 +1,18 @@
+GROUP C155:C15(r=16) x Z1 N 2325 (Haar graph on 4650 vertices) K 7 D 6
+PSI 0 [u0*beta(g)^-1,beta(x)=x^1,beta(y)=y^1,u0=(0,0)] x [z->0-1*z] order 2 orbits(len<=K): 1x1 2x1162
+TABU psi0_t1+2+2+2 best 224 sols 0 steps 2221 evals 80068 restarts 6 secs 8.0
+PSI 1 [u0*beta(g)^-1,beta(x)=x^61,beta(y)=y^1,u0=(0,0)] x [z->0-1*z] order 2 orbits(len<=K): 1x31 2x1147
+TABU psi1_t1+2+2+2 best 3 sols 0 steps 1228 evals 58948 restarts 3 secs 8.0
+PSI 2 [u0*beta(g)^-1,beta(x)=x^94,beta(y)=y^1,u0=(0,0)] x [z->0-1*z] order 2 orbits(len<=K): 1x5 2x1160
+TABU psi2_t1+2+2+2 best 12 sols 0 steps 1111 evals 53331 restarts 2 secs 8.0
+PSI 3 [u0*beta(g)^-1,beta(x)=x^154,beta(y)=y^1,u0=(0,0)] x [z->0-1*z] order 2 orbits(len<=K): 1x155 2x1085
+TABU psi3_t1+2+2+2 best 5 sols 0 steps 1378 evals 66147 restarts 2 secs 8.0
+PSI 4 [u0*beta(g)^-1,beta(x)=x^1,beta(y)=y^11,u0=(0,0)] x [z->0-1*z] order 2 orbits(len<=K): 1x3 2x1161
+TABU psi4_t1+2+2+2 best 12 sols 0 steps 1762 evals 84581 restarts 4 secs 8.0
+PSI 5 [u0*beta(g)^-1,beta(x)=x^61,beta(y)=y^11,u0=(0,0)] x [z->0-1*z] order 2 orbits(len<=K): 1x93 2x1116
+TABU psi5_t1+2+2+2 best 3 sols 0 steps 1442 evals 69219 restarts 2 secs 8.0
+PSI 6 [u0*beta(g)^-1,beta(x)=x^94,beta(y)=y^11,u0=(0,0)] x [z->0-1*z] order 2 orbits(len<=K): 1x15 2x1155
+TABU psi6_t1+2+2+2 best 5 sols 0 steps 1478 evals 70949 restarts 4 secs 8.0
+PSI 7 [u0*beta(g)^-1,beta(x)=x^154,beta(y)=y^11,u0=(0,0)] x [z->0-1*z] order 2 orbits(len<=K): 1x465 2x930
+TABU psi7_t1+2+2+2 best 44 sols 0 steps 1424 evals 68355 restarts 2 secs 8.0
+DONE sols 0

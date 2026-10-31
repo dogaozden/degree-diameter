@@ -1,0 +1,6 @@
+group pgl 17 x Z_1, N=4896, identity 0, H order 18, rows 272, threads 1, setup 0.00s
+wide rows: no cyclic subgroup of order >= 64 found (best 18); using haar_gen3's evaluation
+start cost=785
+t=30 steps=76924 evals=615393 cost=505 best=505 T=0.53
+t=60 steps=174747 evals=1397977 cost=505 best=505 T=0.19
+RESULT d=7 D=6 group=pgl 17 x Z_1 N=4896 best=505 evals=1668761 time=70.0

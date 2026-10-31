@@ -1,0 +1,6 @@
+group psl 17 x Z_2, N=4896, identity 272, H order 34, rows 144, threads 1, setup 0.00s
+wide rows: no cyclic subgroup of order >= 64 found (best 34); using haar_gen3's evaluation
+start cost=984
+t=30 steps=143534 evals=1148273 cost=527 best=527 T=0.53
+t=60 steps=304124 evals=2432993 cost=527 best=527 T=0.19
+RESULT d=7 D=6 group=psl 17 x Z_2 N=4896 best=527 evals=2832905 time=70.0

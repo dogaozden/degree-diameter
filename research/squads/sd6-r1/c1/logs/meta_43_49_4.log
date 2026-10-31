@@ -1,0 +1,8 @@
+GROUP C43:C49(r=4) x Z1 N 2107 (Haar graph on 4214 vertices) K 7 D 6
+PSI 0 [u0*beta(g)^-1,beta(x)=x^1,beta(y)=y^1,u0=(0,0)] x [z->0-1*z] order 2 orbits(len<=K): 1x1 2x1053
+TABU psi0_t1+2+2+2 best 78 sols 0 steps 2799 evals 100589 restarts 6 secs 15.0
+PSI 1 [u0*beta(g)^-1,beta(x)=x^42,beta(y)=y^1,u0=(0,0)] x [z->0-1*z] order 2 orbits(len<=K): 1x43 2x1032
+SOL psi1_t1+2+2+2 diam 6 S 881 1226 1180 1564 554 1749 1519 = (17,48)|0 (25,1)|0 (24,4)|0 (31,45)|0 (11,15)|0 (35,34)|0 (31,0)|0
+TABU psi1_t1+2+2+2 best 0 sols 1 steps 9 evals 434 restarts 1 secs 0.1
+TABU psi1_t1+1+1+2+2 best 416 sols 0 steps 2107 evals 101142 restarts 5 secs 15.0
+DONE sols 1

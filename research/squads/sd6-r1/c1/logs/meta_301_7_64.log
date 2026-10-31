@@ -1,0 +1,13 @@
+GROUP C301:C7(r=64) x Z1 N 2107 (Haar graph on 4214 vertices) K 7 D 6
+PSI 0 [u0*beta(g)^-1,beta(x)=x^1,beta(y)=y^1,u0=(0,0)] x [z->0-1*z] order 2 orbits(len<=K): 1x1 2x1053
+TABU psi0_t1+2+2+2 best 90 sols 0 steps 2392 evals 86155 restarts 5 secs 15.0
+PSI 1 [u0*beta(g)^-1,beta(x)=x^85,beta(y)=y^1,u0=(0,0)] x [z->0-1*z] order 2 orbits(len<=K): 1x43 2x1032
+SOL psi1_t1+2+2+2 diam 6 S 653 1706 131 1689 313 380 2009 = (93,2)|0 (243,5)|0 (18,5)|0 (241,2)|0 (44,5)|0 (54,2)|0 (287,0)|0
+TABU psi1_t1+2+2+2 best 0 sols 1 steps 44 evals 2114 restarts 1 secs 0.4
+TABU psi1_t1+1+1+2+2 best 464 sols 0 steps 1808 evals 86789 restarts 4 secs 15.0
+PSI 2 [u0*beta(g)^-1,beta(x)=x^216,beta(y)=y^1,u0=(0,0)] x [z->0-1*z] order 2 orbits(len<=K): 1x7 2x1050
+SOL psi2_t1+2+2+2 diam 6 S 294 1813 206 1628 313 1731 1505 = (42,0)|0 (259,0)|0 (29,3)|0 (232,4)|0 (44,5)|0 (247,2)|0 (215,0)|0
+TABU psi2_t1+2+2+2 best 0 sols 1 steps 52 evals 2498 restarts 1 secs 0.6
+TABU psi2_t1+1+1+2+2 best 844 sols 0 steps 3684 evals 176845 restarts 12 secs 15.0
+PSI 3 [u0*beta(g)^-1,beta(x)=x^300,beta(y)=y^1,u0=(0,0)] x [z->0-1*z] order 2 orbits(len<=K): 1x301 2x903
+TABU psi3_t1+2+2+2 best 9 sols 0 steps 1632 evals 78339 restarts 2 secs 15.0

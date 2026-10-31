@@ -1,0 +1,10 @@
+GROUP C31:C75(r=2) x Z1 N 2325 (Haar graph on 4650 vertices) K 7 D 6
+PSI 0 [u0*beta(g)^-1,beta(x)=x^1,beta(y)=y^1,u0=(0,0)] x [z->0-1*z] order 2 orbits(len<=K): 1x1 2x1162
+TABU psi0_t1+2+2+2 best 182 sols 0 steps 1941 evals 69945 restarts 4 secs 8.0
+PSI 1 [u0*beta(g)^-1,beta(x)=x^30,beta(y)=y^1,u0=(0,0)] x [z->0-1*z] order 2 orbits(len<=K): 1x31 2x1147
+TABU psi1_t1+2+2+2 best 2 sols 0 steps 976 evals 46850 restarts 1 secs 8.0
+PSI 2 [u0*beta(g)^-1,beta(x)=x^1,beta(y)=y^26,u0=(0,0)] x [z->0-1*z] order 2 orbits(len<=K): 1x3 2x1161
+TABU psi2_t1+2+2+2 best 28 sols 0 steps 1218 evals 58468 restarts 3 secs 8.0
+PSI 3 [u0*beta(g)^-1,beta(x)=x^30,beta(y)=y^26,u0=(0,0)] x [z->0-1*z] order 2 orbits(len<=K): 1x93 2x1116
+TABU psi3_t1+2+2+2 best 4 sols 0 steps 912 evals 43778 restarts 1 secs 8.0
+DONE sols 0

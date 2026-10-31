@@ -1,0 +1,9 @@
+group pgl 7 x Z_7, N=2352, identity 0, H order 56, rows 42, threads 1, setup 0.00s
+wide rows: no cyclic subgroup of order >= 64 found (best 56); using haar_gen3's evaluation
+SDUAL psi: Q-part inv, z -> 0 - 1 z (u0 index 0)
+ORBIT k=2 m=2 f=3: |Fix(alpha)| = 49 (+e); mu = 44.51, mu/k = 22.26, fixed-point misses ~ 6.88
+start cost=564
+t=30 steps=1312702 evals=10501617 cost=148 best=138 T=0.53
+t=60 steps=2610407 evals=20883257 cost=148 best=138 T=0.19
+t=90 steps=4137297 evals=33098377 cost=148 best=138 T=0.15
+RESULT d=7 D=6 group=pgl 7 x Z_7 N=2352 best=138 evals=44523449 time=120.0 orbit k=2 m=2 f=3 fix=49 sdual psi: Q-part inv, z -> 0 - 1 z
