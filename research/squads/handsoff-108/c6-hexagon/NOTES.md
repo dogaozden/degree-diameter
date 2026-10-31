@@ -21,3 +21,13 @@ Check of the evaluator: the cost sums, over all base sources and all base target
   sides). Its cost unit = uncovered (point p at copy 0, line y, sheet g) triples = far point-line pairs from copy-0
   points. One q=5 full evaluation at m=14: 0.6 s (lift3: 5.7 s).
 - Random Z14 at q=5 (hexeval): initial cost 4-5 (units above), i.e. random lifts are close to valid already.
+- **q=5, Z14 (Delta = 8, 2N*m = 109,368 vertices): diameter 8, verified.** Annealed with hexeval (full cost, random
+  start, 491 iterations to far-cost 0). The first solution had ONE parallel edge (a matching edge p-sigma(p) lying on a
+  hexagon line with the same voltage, giving 14 double edges per side in the lift). Fixed by `FIXDUP=1` (try all
+  voltages of that matching edge; cost 0, no parallel edges). Saved as runs/q5_m14_fix.sol. Independent BFS check
+  (src/indep.c: explicit lift graph, BFS from all 2N base vertices in copy 0): simple, 8-regular, diameter 8,
+  far pairs 0: DIAMETER_OK. 13 was the previous formula-based best at q=5 (Plücker pencil, D8_COMPOUND 4.7).
+- q=5, Z16 annealed from random (full cost, about 1 s per evaluation): 208 iterations, cost 30; too slow, stopped
+  (runs/q5_m16_hx.log). The Z14 start was at cost 4 and reached 0 in 491 steps: the difficulty rises fast from m=14 to 16.
+- Structure check of the verified Z14 lift: every hexagon and matching voltage is spread uniformly over Z14 (no visible
+  pattern). The annealed lifts are unstructured. No formula was found.

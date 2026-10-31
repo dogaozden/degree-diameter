@@ -59,6 +59,21 @@ static void build(void) {       /* in-arcs of all vertices from the current stat
     free(cntp);
 }
 static uint64_t *Wa, *Wb;
+static long dup;
+/* parallel edges of the lift: two arcs p->l with the same voltage (a matching edge on a hexagon line, or two
+   matchings with the same line and voltage). Each one is a double edge in the lift; penalised, not allowed. */
+static long count_dup(void) {
+    long d = 0;
+    for (int p = 0; p < N; p++) {
+        const int *a = inn; (void)a;
+    }
+    for (int p = 0; p < N; p++) {
+        int ls[64], vs[64], n = 0;
+        for (int i = 0; i < Dg; i++) { ls[n] = inn[p * Dg + i]; vs[n] = inw[p * Dg + i]; n++; }
+        for (int i = 0; i < n; i++) for (int j = i + 1; j < n; j++) if (ls[i] == ls[j] && vs[i] == vs[j]) d++;
+    }
+    return d;
+}
 static long cost_points(void) {   /* cost over all point sources */
     long c = 0;
     for (int p0 = 0; p0 < N; p0 += LANES) {
@@ -130,9 +145,27 @@ int main(int argc, char **argv) {
     if (hzero) for (int i = 0; i < N * Q1; i++) hv[i] = 0;
     if (getenv("IN") && !load(getenv("IN"))) { fprintf(stderr, "cannot load\n"); return 1; }
     /* check matchings are not on the point's own lines (simple graph) */
-    build();
-    long cur = cost_points(), best = cur;
-    fprintf(stderr, "q=%d m=%d J=%d lift vertices %ld initial cost %ld\n", q, m, J, (long)V * m, cur);
+    build(); dup = count_dup();
+    long cur = cost_points() + 100 * dup, best = cur;
+    if (getenv("FIXDUP")) {   /* targeted repair: for each matching edge in a parallel pair, try all voltages */
+        for (int p = 0; p < N; p++) {
+            build(); int hasd = 0;
+            for (int i = 0; i < Dg && !hasd; i++) for (int j = i + 1; j < Dg; j++) if (inn[p*Dg+i] == inn[p*Dg+j] && inw[p*Dg+i] == inw[p*Dg+j]) hasd = 1;
+            if (!hasd) continue;
+            for (int t = 0; t < J; t++) {
+            int old = mv[t * N + p]; long bestc = -1; int bestv = old;
+            for (int v = 0; v < m; v++) {
+                mv[t * N + p] = v; build(); dup = count_dup();
+                long c = cost_points() + 100 * dup;
+                if (bestc < 0 || c < bestc) { bestc = c; bestv = v; }
+            }
+            mv[t * N + p] = bestv; build(); dup = count_dup(); cur = cost_points() + 100 * dup;
+            if (bestc >= 0) fprintf(stderr, "FIXDUP t %d p %d: v %d -> %d cost %ld dup %ld\n", t, p, old, bestv, cur, dup);
+            }
+        }
+    }
+
+    fprintf(stderr, "q=%d m=%d J=%d lift vertices %ld initial cost %ld dup %ld\n", q, m, J, (long)V * m, cur, dup);
     long iters = getenv("ITERS") ? atol(getenv("ITERS")) : 0;
     double T0 = getenv("TEMP0") ? atof(getenv("TEMP0")) : 3.0, T1 = getenv("TEMP1") ? atof(getenv("TEMP1")) : 0.2;
     char *out = getenv("OUT");
@@ -147,8 +180,8 @@ int main(int argc, char **argv) {
         else { kind = 2; r -= nvar_h + nvar_m; t = r / N; a1 = r % N; a2 = rnd() % N; if (a1 == a2) continue;
             int l1 = sig[t * N + a1], l2 = sig[t * N + a2]; sig[t * N + a1] = l2; sig[t * N + a2] = l1; sinv[t * N + l2] = a1; sinv[t * N + l1] = a2;
             int v1 = mv[t * N + a1]; mv[t * N + a1] = mv[t * N + a2]; mv[t * N + a2] = v1; }
-        build();
-        long nc = cost_points();
+        build(); dup = count_dup();
+        long nc = cost_points() + 100 * dup;
         double u = (rnd() >> 11) * (1.0 / 9007199254740992.0);
         long cap = cur + (long)(-temp * log(u + 1e-300));
         if (nc <= cap) {
@@ -159,10 +192,10 @@ int main(int argc, char **argv) {
             else if (kind == 1) mv[t * N + a1] = old;
             else { int l1 = sig[t * N + a1], l2 = sig[t * N + a2]; sig[t * N + a1] = l2; sig[t * N + a2] = l1; sinv[t * N + l2] = a1; sinv[t * N + l1] = a2;
                 int v1 = mv[t * N + a1]; mv[t * N + a1] = mv[t * N + a2]; mv[t * N + a2] = v1; }
-            build();
+            build(); dup = count_dup();
         }
     }
-    if (out && best == cur && iters == 0) save(out, cur);
-    printf("RESULT q %d m %d J %d vertices %ld cost %ld\n", q, m, J, (long)V * m, cur);
+    if (out && iters == 0) save(out, cur);
+    printf("RESULT q %d m %d J %d vertices %ld cost %ld dup %ld\n", q, m, J, (long)V * m, cur, dup);
     return 0;
 }

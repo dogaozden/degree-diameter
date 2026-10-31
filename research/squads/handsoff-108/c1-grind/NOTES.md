@@ -15,10 +15,10 @@ Launch note: the first launch line was backgrounded as one chain, so g2 failed o
 
 ## Live chain-minimum histogram (this worker, ORBW=3 units; energy is always a multiple of 3)
 
-(refreshed 22:09 UTC by update_live.py)
+(refreshed 22:45 UTC by update_live.py)
 
-- g1: chains 30, best 15, median 21, 15:6 18:7 21:11 24:5 30:1
-- g2: chains 31, best 12, median 21, 12:1 15:1 18:4 21:12 24:12 27:1
+- g1: chains 81, best 12, median 21, 12:2 15:11 18:14 21:27 24:23 27:3 30:1
+- g2: chains 78, best 12, median 21, 12:2 15:1 18:18 21:28 24:25 27:4
 
 
 ## Pooled reference data (grind branches, read-only via git show)

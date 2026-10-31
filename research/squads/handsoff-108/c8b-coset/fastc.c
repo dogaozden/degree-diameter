@@ -32,7 +32,7 @@
 
 #define MAXQ 256
 static int Q, HO, KC, NCL, NN;
-static uint8_t MUL[MAXQ][MAXQ];
+static uint8_t MUL[181][181];   /* q = 181 (PSL(2,181)); row stride 181 */
 static int DLK[MAXQ], DLOG[MAXQ], EXPT[MAXQ], INVF[MAXQ];
 static uint16_t CL[MAXQ * MAXQ], C0[MAXQ * MAXQ];
 #define KCC 18
@@ -153,7 +153,6 @@ static void enum_dc(void) {
 
 /* ---------- BFS ---------- */
 static int DLs[10][4], ELs[10][4];   /* d-list (B->A steps) and e-list (A->B steps), one element per coset */
-static uint8_t *DIST;
 static uint32_t *UN[2], *FR, *NX;
 static long nun[2];
 
@@ -166,37 +165,43 @@ static inline uint32_t nbx(const int *x, int side, int j) {   /* neighbour j of 
     return LAB(r0, r1, r2, r3);
 }
 
-/* BFS from root (side rs, label IDL) up to level 8. Afterwards nun[1-rs]... : nun[s] = unvisited on side s (root excluded). */
+/* BFS from root (side rs, label IDL) up to level 8 (bitset version: visited sets and the current frontier are bitsets). */
+static uint64_t *VIS[2], *CURB;
+static inline int getb(const uint64_t *B, uint32_t i) { return (int)((B[i >> 6] >> (i & 63)) & 1); }
+static inline void setb(uint64_t *B, uint32_t i) { B[i >> 6] |= 1ULL << (i & 63); }
+static inline void clrb(uint64_t *B, uint32_t i) { B[i >> 6] &= ~(1ULL << (i & 63)); }
 static void bfs8(int rs) {
-    memset(DIST, 255, 2 * (size_t)NN);
+    size_t nw = ((size_t)NN + 63) / 64;
+    memset(VIS[0], 0, nw * 8); memset(VIS[1], 0, nw * 8); memset(CURB, 0, nw * 8);
     for (int s = 0; s < 2; s++) {
         uint32_t k = 0;
         for (uint32_t l = 0; l < (uint32_t)NN; l++) if (!(s == rs && l == IDL)) UN[s][k++] = l;
         nun[s] = k;
     }
-    DIST[rs * (size_t)NN + IDL] = 0;
+    setb(VIS[rs], IDL); setb(CURB, IDL);
     uint32_t nf = 1; FR[0] = IDL; int sL = rs;
     for (int L = 0; L < 8 && nf; L++) {
         int o = 1 - sL;
-        uint8_t *Do = DIST + (size_t)o * NN, *Ds = DIST + (size_t)sL * NN;
         uint32_t nn = 0;
         if ((long)nf * 3 < nun[o] * 2) {               /* top-down */
             for (uint32_t i = 0; i < nf; i++) {
                 uint32_t v = FR[i]; int x[4]; repof(v, x);
-                for (int j = 0; j < 10; j++) { uint32_t w = nbx(x, sL, j); if (Do[w] == 255) { Do[w] = (uint8_t)(L + 1); NX[nn++] = w; } }
+                for (int j = 0; j < 10; j++) { uint32_t w = nbx(x, sL, j); if (!getb(VIS[o], w)) { setb(VIS[o], w); NX[nn++] = w; } }
             }
             uint32_t k = 0;
-            for (long i = 0; i < nun[o]; i++) { uint32_t u = UN[o][i]; if (Do[u] == 255) UN[o][k++] = u; }
+            for (long i = 0; i < nun[o]; i++) { uint32_t u = UN[o][i]; if (!getb(VIS[o], u)) UN[o][k++] = u; }
             nun[o] = k;
         } else {                                       /* bottom-up */
             uint32_t k = 0;
             for (long i = 0; i < nun[o]; i++) {
                 uint32_t u = UN[o][i]; int found = 0; int x[4]; repof(u, x);
-                for (int j = 0; j < 10 && !found; j++) { uint32_t w = nbx(x, o, j); if (Ds[w] == L) found = 1; }
-                if (found) { Do[u] = (uint8_t)(L + 1); NX[nn++] = u; } else UN[o][k++] = u;
+                for (int j = 0; j < 10 && !found; j++) { uint32_t w = nbx(x, o, j); if (getb(CURB, w)) found = 1; }
+                if (found) { setb(VIS[o], u); NX[nn++] = u; } else UN[o][k++] = u;
             }
             nun[o] = k;
         }
+        for (uint32_t i = 0; i < nf; i++) clrb(CURB, FR[i]);
+        for (uint32_t i = 0; i < nn; i++) setb(CURB, NX[i]);
         uint32_t *t = FR; FR = NX; NX = t; nf = nn; sL = o;
     }
 }
@@ -214,6 +219,7 @@ static void set_lists(int i, int j) {
 }
 
 static long long EVALS = 0;
+static long long LASTP[3];   /* uncB_A, uncA_A, uncB_B of the last full evaluation */
 /* exact full cost of the pair (i,j) of double cosets. Returns LLONG_MAX if the A-part already reaches bound. */
 static long long cost_pair(int i, int j, long long bound, int *symout) {
     set_lists(i, j);
@@ -223,8 +229,10 @@ static long long cost_pair(int i, int j, long long bound, int *symout) {
     bfs8(0);
     long long uB = nun[1], uA = nun[0];
     if (uB + uA >= bound) return LLONG_MAX;
-    if (sym) return uB + 2 * uA;
+    LASTP[0] = uB; LASTP[1] = uA;
+    if (sym) { LASTP[2] = uA; return uB + 2 * uA; }
     bfs8(1);
+    LASTP[2] = nun[1];
     return uB + uA + nun[1];
 }
 
@@ -335,7 +343,7 @@ static void write_pair(FILE *f, int i, int j, long long C) {
 }
 
 static void anneal(double seconds, uint64_t seed, double COOL, double REHEAT, int K, const char *tag) {
-    const double TMAX = 1.5, TMIN = 0.15; const long long REHEATSTEPS = 400;
+    const double TMAX = 1.5, TMIN = 0.15; const long long REHEATSTEPS = getenv("REHEATSTEPS") ? atoll(getenv("REHEATSTEPS")) : 400;
     rstate ^= seed * 0x9E3779B97F4A7C15ULL; for (int t = 0; t < 10; t++) rnd64();
     char fn[256]; snprintf(fn, sizeof fn, "%s_best.txt", tag); FILE *fb = fopen(fn, "w");
     snprintf(fn, sizeof fn, "%s_chains.log", tag); FILE *fl = fopen(fn, "w");
@@ -388,7 +396,7 @@ static void anneal(double seconds, uint64_t seed, double COOL, double REHEAT, in
 int main(int argc, char **argv) {
     if (argc < 2) { fprintf(stderr, "usage: fastc validate|bench|anneal|symscan ...\n"); return 2; }
     setup(181, 5);
-    DIST = malloc(2 * (size_t)NN);
+    VIS[0] = calloc(((size_t)NN + 63) / 64, 8); VIS[1] = calloc(((size_t)NN + 63) / 64, 8); CURB = calloc(((size_t)NN + 63) / 64, 8);
     UN[0] = malloc(4 * (size_t)NN); UN[1] = malloc(4 * (size_t)NN); FR = malloc(4 * (size_t)NN); NX = malloc(4 * (size_t)NN);
     if (!strcmp(argv[1], "validate")) {
         enum_dc();   /* not needed for validation, but gives the double coset count */
@@ -403,7 +411,7 @@ int main(int argc, char **argv) {
             int i = rand_dc(), j; do { j = rand_dc(); } while (j == i);
             int sym; long long c = cost_pair(i, j, LLONG_MAX, &sym);
             if (c < mn) mn = c; sum += c; nsym += sym;
-            printf("bench %d %d C %lld sym %d\n", i, j, c, sym); fflush(stdout);
+            printf("bench %d %d C %lld sym %d parts %lld %lld %lld\n", i, j, c, sym, LASTP[0], LASTP[1], LASTP[2]); fflush(stdout);
         }
         fprintf(stderr, "bench: %d pairs, %.2f ms per pair, min %lld mean %.1f sym %d\n", n, (now() - t0) * 1e3 / n, mn, (double)sum / n, nsym);
         return 0;
@@ -412,16 +420,31 @@ int main(int argc, char **argv) {
         anneal(atof(argv[2]), (uint64_t)atoll(argv[3]), atof(argv[4]), atof(argv[5]), atoi(argv[6]), argv[7]);
         return 0;
     }
+    if (!strcmp(argv[1], "symtest")) {   /* B-root code path check: symmetric D must give nun_B(B-root) = uncA_A and nun_A(B-root) = uncB_A */
+        int n = atoi(argv[2]), ok = 0, bad = 0; rstate ^= 12345ULL;
+        for (int t = 0; t < n; t++) {
+            int i = rand_dc(); int j = dc_inv[i]; if (j < 0 || j == i) continue;
+            set_lists(i, j); bfs8(0); long uBa = nun[1], uAa = nun[0];
+            bfs8(1); long uBb = nun[1], uAb = nun[0];
+            if (uBb == uAa && uAb == uBa) ok++; else bad++;
+            printf("symtest %d %d A-root uncB %ld uncA %ld | B-root: B-unvisited %ld A-unvisited %ld\n", i, j, uBa, uAa, uBb, uAb);
+        }
+        printf("symtest: %d consistent, %d inconsistent\n", ok, bad);
+        return 0;
+    }
     if (!strcmp(argv[1], "symscan")) {
         FILE *f = fopen(argv[2], "w"); double t0 = now(); long n = 0;
         int nself = 0; for (int i = 0; i < nDC; i++) if (dc_inv[i] == i) nself++;
         fprintf(stderr, "self-inverse double cosets: %d\n", nself);
-        for (int i = 0; i < nDC; i++) {
+        int *perm = malloc(sizeof(int) * nDC); for (int i = 0; i < nDC; i++) perm[i] = i;
+        rstate ^= 4242ULL; for (int i = nDC - 1; i > 0; i--) { int r = (int)(rnd64() % (uint64_t)(i + 1)); int t = perm[i]; perm[i] = perm[r]; perm[r] = t; }
+        for (int pi = 0; pi < nDC; pi++) {
+            int i = perm[pi];
             int j = dc_inv[i]; if (j < 0 || j <= i) continue;
             if (j == i) continue;
             int sym; long long c = cost_pair(i, j, LLONG_MAX, &sym);
             fprintf(f, "%d %d C %lld sym %d\n", i, j, c, sym); n++;
-            if (n % 5000 == 0) { fprintf(stderr, "symscan %ld pairs, %.0f s\n", n, now() - t0); fflush(f); }
+            if (n % 1000 == 0) { fprintf(stderr, "symscan %ld pairs (random order, visited %d of %d DCs), %.0f s\n", n, pi, nDC, now() - t0); fflush(f); }
         }
         fclose(f);
         fprintf(stderr, "symscan done: %ld pairs in %.0f s\n", n, now() - t0);
