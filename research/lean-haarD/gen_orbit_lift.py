@@ -200,14 +200,14 @@ def write_folder(folder, theorem, n, m, k, K, d, D, edges_path, adj, col, levels
             "",
         ]
     prev = "hom_q0"
-    for k in range(1, 8):
+    for j in range(1, 8):
         hom += [
-            f"/-- The shift check on the vertices `0 … {(k + 1) * c - 1}`. -/",
-            f"theorem hom_p{k} : homOKRange {m} {K} adjL 0 {(k + 1) * c} = true :=",
-            f"  homOKRange_join (lo2 := {k * c}) (tot := {(k + 1) * c}) (by decide) (by decide) {prev} hom_q{k}",
+            f"/-- The shift check on the vertices `0 … {(j + 1) * c - 1}`. -/",
+            f"theorem hom_p{j} : homOKRange {m} {K} adjL 0 {(j + 1) * c} = true :=",
+            f"  homOKRange_join (lo2 := {j * c}) (tot := {(j + 1) * c}) (by decide) (by decide) {prev} hom_q{j}",
             "",
         ]
-        prev = f"hom_p{k}"
+        prev = f"hom_p{j}"
     hom += [
         f"/-- The cyclic shift `h ↦ h + 1 (mod {m})` in each fibre is an automorphism of the graph. -/",
         f"theorem hom_ok : homOK {m} {K} adjL = true := by",
