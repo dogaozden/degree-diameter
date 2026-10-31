@@ -1,0 +1,6 @@
+machine: cloud VM (job gencheck-f); nproc=4; free -g: total 15G used 0G free 15G avail 15G; Linux 6.18.44-fc-v185; gcc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0
+sha256: 166929de2a622916881c41ec32ca1931e990ddf241521139b4a43cf89e06ec3c  research/frontier/sols/d20D10_psl_421_409_orb3_s1.txt  (copied with git show from origin/claude/new-cells-beyond-etos3t; header "20 10 psl 421 n 409 N 15259389180", N = p(p^2-1)/2 * n checked by the checker)
+tooling note: /usr/bin/time is not installed on this machine and apt has no "time" package; the run is wrapped by a python3 -I script that calls getrusage(RUSAGE_CHILDREN) for peak RSS (ru_maxrss, KB) and time.time() for wall clock. Same fields as /usr/bin/time -v where it matters.
+checker: research/structured/tools/haarcheck_psl.c from origin/master, built with gcc -O3 -o haarcheck_psl haarcheck_psl.c (single-threaded)
+
+progress: 2026-10-31T15:35:50Z started haarcheck_psl (single-threaded, expected ~4.5 h, ~8 GB bitsets); running at the time of this note.
