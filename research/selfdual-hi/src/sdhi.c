@@ -338,6 +338,7 @@ static void gdesc(int g, char *buf) { char b1[64], b2[64]; fdesc(Q1, E1[g], b1);
 
 /* ---------------- energy ---------------- */
 static uint32_t *mk, *mk2, st1 = 0, st2 = 0; static int *buf;
+static long long levcnt[16];
 static int sd = 1;   /* 1: self-dual family (one side), 0: plain (both sides at odd D) */
 /* number of vertices of the target side outside the ball of radius D-1 around (e,A) (left = 1) or (e,B) (left = 0) */
 static int uncov_side(const int *S, int k, int left) {
@@ -347,12 +348,12 @@ static int uncov_side(const int *S, int k, int left) {
         if (mk[x] != st1) { mk[x] = st1; X[nx++] = x; } }
     int half = (D - 1) / 2;   /* odd D: X^half; even D: S X^(half) with D-1 = 2 half + 1 */
     int nb = 0; for (int i = 0; i < nx; i++) buf[nb++] = X[i];
-    int lo = 0, hi = nb;
+    int lo = 0, hi = nb; levcnt[1] = nb;
     for (int lev = 2; lev <= half; lev++) {
         for (int t = lo; t < hi; t++) { int b = buf[t];
             for (int i = 0; i < nx; i++) { int z = gm(b, X[i]); if (mk[z] != st1) { mk[z] = st1; buf[nb++] = z; } } }
-        lo = hi; hi = nb;
-        if (nb == N) break;
+        lo = hi; hi = nb; levcnt[lev] = nb;
+        if (nb == N) { for (int l2 = lev + 1; l2 <= half; l2++) levcnt[l2] = N; break; }
     }
     if (D % 2) return N - nb;
     st2++; int cov = 0;
@@ -607,9 +608,12 @@ static void run(const char *ptag, int ti, double secs, int NB, int TEN, int STAL
 static void rands(const char *ptag, int ti, int cnt) {
     set_type(ti);
     long long sum = 0; int mn = 1 << 30; double c0 = now();
+    double lv[16] = {0};
     for (int t = 0; t < cnt; t++) { randomize(); int k = build(); int e = energy(S, k); sum += e; if (e < mn) mn = e;
+        for (int l = 1; l <= (D - 1) / 2; l++) lv[l] += levcnt[l];
         if (e == 0) { char tag[160]; snprintf(tag, sizeof tag, "%s_t%s_rand", ptag, tname[ti]); report(tag, S, k); } }
-    printf("RANDS %s_t%s n %d min %d mean %.1f secs %.2f\n", ptag, tname[ti], cnt, mn, (double)sum / cnt, now() - c0); fflush(stdout);
+    printf("RANDS %s_t%s n %d min %d mean %.1f secs %.2f |X^j| (side A, mean):", ptag, tname[ti], cnt, mn, (double)sum / cnt, now() - c0);
+    for (int l = 1; l <= (D - 1) / 2; l++) printf(" %.1f", lv[l] / cnt); printf("\n"); fflush(stdout);
 }
 static int type_wanted(const char *types, const char *name) {
     if (!types) return 1;

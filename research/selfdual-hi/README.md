@@ -54,7 +54,25 @@ Checks of every hit: research/lifts/coordinator_check/apsp.c (`src/apsp`), VALID
   So psi = inversion with e in S is hopeless (haar_sd: best 921-1,990). Families with e not in S or an outer beta
   are the meaningful ones.
 - (5,8), K = 5, record group C61:C80 (r = 8, 9,760): the record S is not self-dual. Best self-dual family: PSI 3
-  (beta(x) = x, beta(y) = y^41, u0 = y^20, e not in S), type 1+2+2, best 6 after 30 s of tabu; its full
-  enumeration (2.26e7 sets) is running.
+  (beta(x) = x, beta(y) = y^41, u0 = y^20, e not in S), type 1+2+2: exhaustive enumeration of all 22,629,048 sets
+  (up to the automorphisms commuting with psi), best 6, no solution (`logs/K5D8/enum_meta61_80_8_psi3.txt`); PSI 1
+  (u0 = y^20, beta = id) best 320 (`..._psi1.txt`).
+- Why self-dual sets lose: they have fewer distinct words. Mean ball sizes of random sets (`sdhi RANDS`, side A):
+  | group, (K,D) | plain \|X^2\| / \|X^3\| | best self-dual family \|X^2\| / \|X^3\| |
+  |---|---|---|
+  | C41:C16, (7,5) (where the method worked) | 577 / - | 538 / - |
+  | SL(2,5) x Z37, (6,7) | 660 / 4,110 | 576 / 3,397 (other psi down to 434 / 2,062) |
+  | C61:C80, (5,8) | 324 / 2,948 | 308 / 2,451 |
+  | SL(2,17), (5,8) | 317 / 3,011 | 307 / 2,855 |
+  Counting colliding length-4 words in SL(2,5) x Z37 (30 random sets, `psi(x) = x^-1`): plain 114, self-dual 264
+  of 750. The extra collisions are commutation patterns: for S = {s, psi(s), t, psi(t), ..} words such as
+  s^-1 psi(s) t^-1 psi(t) and t^-1 psi(t) s^-1 psi(s) are both reduced words of the same length, and they coincide
+  whenever two short products commute, which happens with the commuting probability of G (9/120 = 7.5 % for
+  SL(2,5), any cyclic factor commutes). So self-dual families want groups with a low commuting probability:
+  SL(2,17) (20/4,896 = 0.4 %) loses only 5 % of the words at distance 6, C61:C80 (92/4,880 = 1.9 %) 17 %,
+  SL(2,5) x Z37 up to 50 %.
+- (5,7) in SL(2,7) x Z4 (N = 1,344): 1,903 self-dual solutions, all with u0 = -I (psi(x) = -x^-1 or
+  -(hxh)^-1 on SL(2,7)), mostly type 1+1+1+2 (`logs/K5D7/lowcomm/`); PGL(2,7) x Z4: none (best 3), PSL(2,7) x Z9
+  (1,512): none (best 2). SL(2,7) x Z5 (1,680, above the record) with those psi is running (`logs/K5D7/sl7x5/`).
 - Squad round sdhi-r1 (8 Haiku cards, `../squads/sdhi-r1/cards.md`): (5,8) metacyclic and product groups, deep tabu
   near the record shape, haar_sd at (6,8) and (7,8), (5,7) metacyclic, a wildcard.

@@ -6,7 +6,8 @@
  *     u0 = x^I0 y^J0).  psi(x) = u0 beta(x)^-1 for an automorphism beta, so psi(S) = S gives a side-swapping
  *     automorphism (g,A) -> (u0 beta(g),B), (h,B) -> (beta(h),A) of H(G,S): at odd D only side A is scored
  *     (#A not within D-1 of (e,A)); at even D the cost is unchanged (it is one-sided anyway).  S = {e} + (f-1)
- *     psi-fixed generators + m psi-orbits of size k (psi(e) = e needed when f >= 1).  The full diameter check before a
+ *     psi-fixed generators + m psi-orbits of size k; when psi(e) != e, or with SDNOE=1, the f fixed generators are any
+ *     psi-fixed elements other than e (S is normalised to s_0 = e when the solution is written).  The full diameter check before a
  *     solution is written is the unchanged two-sided one.
  * Everything else is haar_sym (description below).
  */
@@ -800,7 +801,7 @@ static void desc_elem(int x, char *buf) {
 static int cmpll(const void *a, const void *b) { long long x = *(const long long *)a, y = *(const long long *)b; return (x > y) - (x < y); }
 
 /* ---------------- ORBIT mode: S = {e} + fixed generators + alpha-orbits ---------------- */
-static int SDUAL = 0, *PSIA = NULL; static char SDDESC[200];
+static int SDUAL = 0, *PSIA = NULL, FIX0MOVE = 0; static char SDDESC[200];
 static int OK_ = 0, OM = 0, OF = 0;                 /* orbit size k, number of orbits m, fixed generators f (incl. e) */
 static int AQ = -1, AQI = -1, AR = 1, AHA = 0, AHB = 0, AMU = 0, AFROB = 0;   /* AFROB = j: entries x -> x^(p^j) */
 static uint16_t *FROBT;   /* AMU: meta scaling (a,j) -> (u a, j) */
@@ -1002,7 +1003,8 @@ static int orbit_main(ctx **C, int nth, int K, double secs, const char *out) {
         fprintf(stderr, "ORBIT=\"k m f\" needs k >= 2, m >= 1, f >= 0 (e counts when f >= 1), f + k m = d\n"); return 2; }
     if (TWIST || CSL) { fprintf(stderr, "ORBIT: plain groups only\n"); return 2; }
     if (getenv("SDUAL")) { if (!build_psi()) return 2; SDUAL = 1; SDUAL_ON = 1;
-        if (OF >= 1 && PSIA[ident] != ident) { fprintf(stderr, "psi(e) != e: use f = 0\n"); return 2; }
+        if (OF >= 1 && getenv("SDNOE")) { FIX0MOVE = 1; fprintf(stderr, "SDNOE: e is kept out of S (fixed generators are psi-fixed elements other than e)\n"); }
+        else if (OF >= 1 && PSIA[ident] != ident) { FIX0MOVE = 1; fprintf(stderr, "psi(e) != e: the f fixed generators are psi-fixed elements (e not in S); S is normalised to s_0 = e when written\n"); }
         for (int u = 0; u < 200; u++) { int x = rnd() % N, y = x; for (int i = 0; i < OK_; i++) y = PSIA[y]; if (y != x) { fprintf(stderr, "psi^k != 1\n"); return 2; } } }
     else if (!choose_alpha()) return 2;
     if (!SDUAL) { int t[6]; for (int u = 0; u < 6; u++) t[u] = rnd() % N;   /* alpha must be a homomorphism of order dividing k */
@@ -1015,8 +1017,8 @@ static int orbit_main(ctx **C, int nth, int K, double secs, const char *out) {
             OK_, OM, OF, NFIX, mu, mu / OK_, nb * (NFIX + 1) * exp(-lam / OK_));
     int nth_ = nth; (void)nth_;
     /* initial S */
-    if (OF) S[0] = ident;
-    for (int u = 1; u < OF; u++) { if (NFIX < OF) { fprintf(stderr, "not enough fixed elements\n"); return 2; } int x; do x = FIXL[rnd() % NFIX]; while (used(x, u)); S[u] = x; }
+    if (OF && !FIX0MOVE) S[0] = ident;
+    for (int u = FIX0MOVE ? 0 : 1; u < OF; u++) { if (NFIX < OF) { fprintf(stderr, "not enough fixed elements\n"); return 2; } int x; do x = FIXL[rnd() % NFIX]; while (used(x, u)); S[u] = x; }
     for (int u = OF; u < d; u++) S[u] = -1 - u;
     for (int j = 0; j < OM; j++) { int o[MAXD]; if (!random_orbit(j, o)) { fprintf(stderr, "no orbit found\n"); return 2; } for (int i = 0; i < OK_; i++) S[ostart(j) + i] = o[i]; }
     for (int i = 0; i < d; i++) { SI[i] = ginv(S[i]); mktab(S[i], TF[i], TI[i]); }
@@ -1024,7 +1026,7 @@ static int orbit_main(ctx **C, int nth, int K, double secs, const char *out) {
     if (getenv("RANDORB")) {   /* screening: random symmetric S */
         int m = atoi(getenv("RANDORB")), saved = 0; long long *v = malloc(sizeof(long long) * m), hist[32] = {0}; double sm = 0, sq = 0, t0 = now();
         for (int t = 0; t < m; t++) {
-            for (int u = 1; u < OF; u++) { int x; do x = FIXL[rnd() % NFIX]; while (used(x, u)); S[u] = x; mktab(S[u], TF[u], TI[u]); }
+            for (int u = FIX0MOVE ? 0 : 1; u < OF; u++) { int x; do x = FIXL[rnd() % NFIX]; while (used(x, u)); S[u] = x; mktab(S[u], TF[u], TI[u]); }
             for (int j = 0; j < OM; j++) for (int i = 0; i < OK_; i++) S[ostart(j) + i] = -1 - ostart(j) - i;
             for (int j = 0; j < OM; j++) { int o[MAXD]; random_orbit(j, o); for (int i = 0; i < OK_; i++) { S[ostart(j) + i] = o[i]; mktab(o[i], TF[ostart(j) + i], TI[ostart(j) + i]); } }
             v[t] = cost_any(C[0], TF, TI, &sc0, NULL, &NOBOUND, 0);
@@ -1058,10 +1060,10 @@ static int orbit_main(ctx **C, int nth, int K, double secs, const char *out) {
     long long OMAXSTEPS = getenv("MAXSTEPS") ? atoll(getenv("MAXSTEPS")) : 0, ohash = 1469598103934665603ULL;
 #define ONOW (OVCLOCK > 0 ? t0 + steps * OVCLOCK : now())
     fprintf(stderr, "start cost=%lld\n", c);
-    int nslots = OM + (OF > 1 ? OF - 1 : 0);
+    int nslots = OM + (FIX0MOVE ? OF : (OF > 1 ? OF - 1 : 0));
     char obuf[96]; int OABORT = getenv("ABORT") ? atoi(getenv("ABORT")) : 1;
     while (!stop_flag && ONOW - t0 < secs && best > 0 && (!OMAXSTEPS || steps < OMAXSTEPS)) {
-        int slot = rnd() % nslots, isorb = slot < OM, j = slot, fs = isorb ? -1 : 1 + (slot - OM);
+        int slot = rnd() % nslots, isorb = slot < OM, j = slot, fs = isorb ? -1 : (FIX0MOVE ? 0 : 1) + (slot - OM);
         for (int t = 0; t < K; t++) {
             if (isorb) {
                 int x = -1, o[MAXD]; AVOIDMASK = 0; for (int i = 0; i < OK_; i++) AVOIDMASK |= 1u << (ostart(j) + i);

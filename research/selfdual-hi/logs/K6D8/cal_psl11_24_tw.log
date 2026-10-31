@@ -1,0 +1,12 @@
+group psl 11 x Z_24, N=15840, identity 1320, H order 60, rows 264, threads 1, setup 0.02s
+wide rows: HW order 132, rows 120, setup 0.04s
+SDUAL psi: Q-part tw, z -> 0 - 1 z (u0 index 4224)
+ORBIT k=2 m=3 f=0: |Fix(alpha)| = 132 (+e); mu = 33.29, mu/k = 16.64, fixed-point misses ~ 6.10
+start cost=8000
+t=30 steps=166324 evals=1330593 cost=9 best=8 T=0.53
+t=60 steps=365545 evals=2924361 cost=9 best=8 T=0.19
+t=90 steps=571710 evals=4573681 cost=9 best=8 T=0.15
+t=120 steps=771351 evals=6170809 cost=18 best=8 T=0.15
+t=150 steps=991601 evals=7932809 cost=13 best=8 T=0.15
+t=180 steps=1195150 evals=9561201 cost=7 best=7 T=0.54
+t=210 steps=1406369 evals=11250953 cost=7 best=7 T=0.19
