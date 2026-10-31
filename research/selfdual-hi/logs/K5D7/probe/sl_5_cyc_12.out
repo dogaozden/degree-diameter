@@ -1,0 +1,31 @@
+GROUP SL(2,5) x Z12 N 1440 (Haar graph on 2880 vertices) K 5 D 7
+PSI 0 [x->x^-1] x [z->0-1*z] order 2 orbits(len<=K): 1x4 2x718
+GAMMA generators 68
+ENUM psi0_t1+2+2_enum reps 38 sets 108984 passed 0 near 0 best -1 sols 0 secs 0.1
+ENUM psi0_t1+1+1+2_enum reps 38 sets 152 passed 0 near 0 best -1 sols 0 secs 0.0
+PSI 1 [x->x^-1] x [z->1-1*z] order 2 orbits(len<=K): 2x720
+GAMMA generators 65
+PSI 2 [x->x^-1] x [z->0-5*z] order 2 orbits(len<=K): 1x12 2x714
+GAMMA generators 68
+ENUM psi2_t1+2+2_enum reps 34 sets 290904 passed 0 near 5 best 249 sols 0 secs 0.4
+ENUM psi2_t1+1+1+2_enum reps 34 sets 7480 passed 0 near 0 best -1 sols 0 secs 0.0
+ENUM psi2_t1+1+1+1+1_enum reps 8 sets 2640 passed 0 near 0 best -1 sols 0 secs 0.0
+PSI 3 [x->x^-1] x [z->3-5*z] order 2 orbits(len<=K): 2x720
+GAMMA generators 66
+PSI 4 [x->x^-1] x [z->0-7*z] order 2 orbits(len<=K): 1x8 2x716
+GAMMA generators 68
+ENUM psi4_t1+2+2_enum reps 36 sets 205920 passed 0 near 0 best -1 sols 0 secs 0.3
+ENUM psi4_t1+1+1+2_enum reps 36 sets 2016 passed 0 near 0 best -1 sols 0 secs 0.0
+ENUM psi4_t1+1+1+1+1_enum reps 6 sets 210 passed 0 near 0 best -1 sols 0 secs 0.0
+PSI 5 [x->x^-1] x [z->2-7*z] order 2 orbits(len<=K): 2x720
+GAMMA generators 66
+PSI 6 [x->x^-1] x [z->0-11*z] order 2 orbits(len<=K): 1x24 2x708
+GAMMA generators 68
+ENUM psi6_t1+2+2_enum reps 30 sets 509040 passed 0 near 3 best 73 sols 0 secs 0.7
+ENUM psi6_t1+1+1+2_enum reps 30 sets 60720 passed 0 near 0 best -1 sols 0 secs 0.1
+ENUM psi6_t1+1+1+1+1_enum reps 12 sets 106260 passed 0 near 0 best -1 sols 0 secs 0.1
+PSI 7 [x->x^-1] x [z->6-11*z] order 2 orbits(len<=K): 2x720
+GAMMA generators 68
+PSI 8 [x->-x^-1] x [z->0-1*z] order 2 orbits(len<=K): 1x60 2x690
+GAMMA generators 68
+ENUM psi8_t1+2+2_enum reps 22 sets 909480 passed 0 near 17 best 52 sols 0 secs 1.5

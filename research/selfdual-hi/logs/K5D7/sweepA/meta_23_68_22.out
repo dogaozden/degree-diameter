@@ -1,0 +1,38 @@
+GROUP C23:C68(r=22) x Z1 N 1564 (Haar graph on 3128 vertices) K 5 D 7
+PSI 0 [u0*beta(g)^-1,beta(x)=x^1,beta(y)=y^1,u0=(0,0)] x [z->0-1*z] order 2 orbits(len<=K): 1x2 2x781
+GAMMA generators 85
+ENUM psi0_t1+2+2_enum reps 68 sets 106080 passed 0 best -1 sols 0 secs 0.1
+PSI 1 [u0*beta(g)^-1,beta(x)=x^1,beta(y)=y^1,u0=(0,2)] x [z->0-1*z] order 2 orbits(len<=K): 1x46 2x759
+GAMMA generators 85
+ENUM psi1_t1+2+2_enum reps 66 sets 2301288 passed 0 best -1 sols 0 secs 3.4
+ENUM psi1_t1+1+1+2_enum reps 66 sets 1001880 passed 0 best -1 sols 0 secs 1.3
+ENUM psi1_t1+1+1+1+1_enum reps 4 sets 595980 passed 0 best -1 sols 0 secs 1.0
+PSI 2 [u0*beta(g)^-1,beta(x)=x^1,beta(y)=y^33,u0=(0,0)] x [z->0-1*z] order 2 orbits(len<=K): 1x34 2x765
+GAMMA generators 85
+ENUM psi2_t1+2+2_enum reps 68 sets 1766368 passed 0 best -1 sols 0 secs 2.1
+ENUM psi2_t1+1+1+2_enum reps 68 sets 406912 passed 0 best -1 sols 0 secs 0.6
+ENUM psi2_t1+1+1+1+1_enum reps 34 sets 1391280 passed 0 best -1 sols 0 secs 1.7
+PSI 3 [u0*beta(g)^-1,beta(x)=x^1,beta(y)=y^33,u0=(0,34)] x [z->0-1*z] order 2 orbits(len<=K): 1x782 2x391
+GAMMA generators 85
+ENUM psi3_t1+2+2_enum reps 34 sets 10369320 passed 0 best -1 sols 0 secs 15.9
+TYPE psi3_t1+1+1+2 has 2.7e+09 sets > ECAP: tabu
+TABU psi3_t1+1+1+2 best 291 sols 0 steps 10825 evals 519623 restarts 22 secs 15.0
+TYPE psi3_t1+1+1+1+1 has 1.05e+12 sets > ECAP: tabu
+TABU psi3_t1+1+1+1+1 best 1093 sols 0 steps 26527 evals 1273379 restarts 82 secs 15.0
+PSI 4 [u0*beta(g)^-1,beta(x)=x^1,beta(y)=y^35,u0=(0,0)] x [z->0-1*z] order 2 orbits(len<=K): 1x48 2x758
+GAMMA generators 85
+ENUM psi4_t1+2+2_enum reps 66 sets 2398176 passed 0 best -1 sols 0 secs 4.0
+ENUM psi4_t1+1+1+2_enum reps 66 sets 1141536 passed 0 best -1 sols 0 secs 1.7
+ENUM psi4_t1+1+1+1+1_enum reps 6 sets 1070190 passed 0 best -1 sols 0 secs 1.7
+PSI 5 [u0*beta(g)^-1,beta(x)=x^1,beta(y)=y^35,u0=(0,2)] x [z->0-1*z] order 2 orbits(len<=K): 2x782
+GAMMA generators 85
+PSI 6 [u0*beta(g)^-1,beta(x)=x^1,beta(y)=y^67,u0=(0,0)] x [z->0-1*z] order 2 orbits(len<=K): 1x816 2x374
+GAMMA generators 85
+ENUM psi6_t1+2+2_enum reps 34 sets 10348512 passed 0 best -1 sols 0 secs 17.2
+TYPE psi6_t1+1+1+2 has 3.07e+09 sets > ECAP: tabu
+TABU psi6_t1+1+1+2 best 315 sols 0 steps 10112 evals 485397 restarts 20 secs 15.0
+TYPE psi6_t1+1+1+1+1 has 1.86e+12 sets > ECAP: tabu
+TABU psi6_t1+1+1+1+1 best 185 sols 0 steps 6842 evals 328432 restarts 15 secs 15.0
+PSI 7 [u0*beta(g)^-1,beta(x)=x^1,beta(y)=y^67,u0=(0,34)] x [z->0-1*z] order 2 orbits(len<=K): 2x782
+GAMMA generators 85
+DONE sols 0
