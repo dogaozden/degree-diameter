@@ -47,6 +47,90 @@ Metacyclic ones: x^i y^j written (i,j), <x, y | x^m = y^k = 1, y x y^-1 = x^r>, 
 `records/find_beta_meta.py` finds beta. Other groups with solutions at the same orders: 1395_2, 1395_3, 1395_5
 (2,790), 1407_4 = C469 : C3 (2,814), 1488_21 (2,976); search outputs in `logs/K9/`.
 
+## Job selfdual-d5b (Oct 31 2026, 03:50-08:10 UTC): (10,5), (11,5), (9,5) and (7,5) above our values
+
+Brief: run the same self-dual family at K = 10 (beat 4,800: |G| >= 2,401) and K = 11 (beat 7,020: |G| >= 3,511),
+then (9,5) above 3,036 (|G| >= 1,519), then (7,5) above 1,312 (|G| >= 657). Logs are under `logs/` on this branch
+(claude/selfdual-haar-10-11-targets-wkz47s), squad round `../squads/sd5b-r1/`.
+
+**Outcome: no new record.** The K = 10 search works (valid self-dual 10-sets up to order 2,054 = 4,108 vertices, above the table's 4,000 but below our 4,800) and runs out of steam near 2,100; K = 11 is far off; (9,5) and (7,5) gave near misses only, and the five (9,5) near misses at 2 were settled by exhaustive enumeration: no solution in their types.
+
+### (10,5): the K = 10 search works, but only up to order about 2,050
+
+- Calibration on a known valid graph: S of the 3,036 record (C69 : C22) plus one psi-fixed element is a valid 10-set;
+  the K = 10 path (formula export, record (22,0,1), type (4,3)) finds such sets at once, apsp VALID at D = 5 on 3,036
+  vertices, INVALID at D = 4 (`logs/K10calib/known_c69c22_k10.txt`).
+- Search calibration below the target: valid self-dual 10-sets found by sdtabu2 in metacyclic groups of order
+  1,968-2,054 (`logs/K10calib/k10_hits_apsp.txt`, all apsp VALID at D = 5, INVALID at D = 4):
+  C41 : C48 (y x y^-1 = x^3, y acting with order 8; 14 sets, some in 2 s), C73 : C27 (r = 2), C71 : C28 (r = 23 and
+  20), C37 : C54 (r = 7), C79 : C26 (r = 8; 4,108 vertices). 4,108 is above the table's 4,000 but below our 4,800.
+  The sets are the SOL lines of `logs/K10calib/fmeta/41_48_3.out` and `logs/K10d8/fmeta/*.out` (edge lists not kept);
+  `python3 src/sol_to_meta.py OUT EXP` writes one in (i,j) coordinates with its beta, and
+  `records/build_metacyclic_haar.py m k r "S"` rebuilds it (byte-identical to the search's edge list for 41_48_3 and 79_26_8).
+- The action order matters: on C41 : C48, y acting with order 8 gives 14 solutions, order 4 stops at 1, order 2 at 20.
+  The beta(x) = x records (a = 1 in the formula family) are always poor (200-660), so later runs skip them (SKIPA1).
+- Above that the best energy |G \ X X| per group climbs steadily (10 s per record and type plus 40 s more below 10,
+  `logs/K10d8/fmeta.txt`): 2,107: 4; 2,136: 10; 2,196: 7; 2,296: 12; 2,336: 15; and 15-25 for every group tried
+  above 2,400 (C43 : C56, C67 : C36, C29 : C84, C61 : C40, C41 : C60; earlier lists 2,404-2,439 with other action
+  orders: 15-330). The order-4 family (C_p : C_k, y of order 4, `logs/K10d4/`) reaches 1-2 at 1,968-2,072 and 6-26 from
+  2,088 up.
+- Rough model that fits K = 7, 9 and 10: the frontier is where n exp(-L/n) is about 70, L = K(K-1)^3 + K(K-1) + 1 the
+  number of generic products in X X (K = 7: order 656, the 1,312 record, at 61; K = 9: order 1,518 at 70; K = 10: hits up to 2,054 at
+  57, about 2,150 would be 70). The target 2,401 is at 110, i.e. like order 1,700 at K = 9.
+
+### (11,5): out of reach
+
+K = 11 on C41 : C72 (order 2,952, y of order 8; below the target, as a check): best 8. Above 3,510 (C89 : C40,
+C41 : C88, C71 : C50, C37 : C96, y acting with order 8-12): best 36-49 (`logs/K11/fmeta.txt`). The model puts the
+K = 11 frontier near 3,000.
+
+### (9,5) above 1,518
+
+No valid graph. Screens with sdtabu2 (3 s per record and type (1,4), (3,3), (5,2), 30 s more for a type at <= 10),
+then deep runs and exhaustive sdk on the near misses:
+- metacyclic C_m : C_k of order 1519-1650 that the last job had not run: all 130 (`logs/wl9_fmeta_todo.txt`,
+  formula export, `logs/K9f/`): best 4 (C169 : C9 at 1521, C129 : C12 at 1548, C13 : C120 at 1560, C29 : C56 at 1624).
+- affine F_p^d : C_k with y acting by a Singer-cycle power (`logs/wl9_affine.txt`, `logs/K9a/`): 7^2 : C32 (1568) 4,
+  5^2 : C64 (1600) 13, 3^4 : C20 (1620) 10-18.
+- SmallGroups of order 1520-1560 (`logs/K9s/`, 61 groups: 25 of order 1520, 12 of 1560, 24 others): first those with a normal Sylow p-subgroup of prime order
+  acting with order >= 3 (`src/sg_filter.g`, `logs/wl9_sg_b.txt`, `_c`, `_d`), then the rest of 1520-1540 with at
+  most 15 involutions: best 2 at SmallGroup(1525,1) = C61 : C25, then 2 at SmallGroup(1560,16), 3 at 1560_18, 4 (1548_18, 1550_8, 1552_52). SmallGroup(1550,8) record 2
+  type (3,3) (tabu 4) has 5.5e10 sets; the first 6e9 have minimum 16.
+- squad round sd5b-r1 (`../squads/LOG.md`): 8 other families and methods, best 2 at (C13 : C3) x (C13 : C3) (order
+  1521, F13^2 with the diagonal action of C3 x C3, card c4); the others 12-26.
+- The near misses at 2, settled by exhaustive enumeration (`src/exh_queue.sh`, `src/exh_one.sh`: sdk over every set of
+  the type, first orbit up to the centralizer of beta; `logs/K9/exh/`):
+
+  | group | record, type | sets | minimum of \|G \ X X\| |
+  |---|---|---:|---:|
+  | SmallGroup(1539,31) = C19 : ((C9 x C3) : C3) | 1, (1,4) | 8.9e8 (all) | 2 |
+  | SmallGroup(1539,45) = C3 x (C19 : (C9 : C3)) | 3, (3,3) | 5.05e9 (all) | 2 |
+  | (C13 : C3) x (C13 : C3) (`src/group_c13c3_sq.g`) | 3, (3,3) | 2.3e9 (all) | 2 |
+  | SmallGroup(1525,1) = C61 : C25 | 1, (1,4) | 5.2e8 (all) | 2 |
+  | SmallGroup(1560,16) = C5 : (C13 : C24) | 3, (1,4) | 1.5e9 (all) | 2 |
+  So none of them has a solution of that type, and in each case the tabu had stopped at exactly the true minimum,
+  which makes the screens a fair guide. The other records and types of 1539_31 and 1539_45 have minima 4-268 (types
+  over 4e9 sets cut, marked CAPPED in the .out files). Deep tabu runs (600-900 s, endgame scan) on 1539_31, 1539_45, (C13 : C3)^2 and 1525_1: 2.
+
+### (7,5) above 1,312
+
+No valid graph. The SmallGroups of order 674-700 with 8 or more involutions, the list the last job had not
+reached (`logs/wl7_b_673_700.txt`): 88 of 136 screened with sdtabu2 at K = 7 (`logs/K7t/`), best 9 (680_37), most
+20-100. Orders 657-672 with more than 31 involutions (mostly 672) and 701-800 with 3+ involutions were not run.
+
+### Tools added (src/)
+
+| file | what it does | calibration |
+|---|---|---|
+| `meta_export.py` | GAP-free export of C_m : C_k (y x y^-1 = x^r) in the .ht format: table, inverses, involution classes of the formula automorphisms x -> x^a, y -> x^b y^c (classes under that family, which contains Inn(G)), EXT records for even K, `SKIPA1=1` drops the a = 1 involutions. 1-2 s at order 3,600 (GAP: about 10 s at 2,400 with full Aut(G)). | C41 : C16 at K = 7: sets of the 1,312 record in 0.5 s; C69 : C22: the record's beta (22,0,1) is one of the 3 classes; C43 : C56: the same 7 involution classes as export_sd.g |
+| `sdtabu2.c` | sdtabu with X X = {x y^-1} over unordered pairs (half the products, same energies), FAST evaluation (coverage of the kept part once per item and step; same trajectory as without), `NOID`, `TYPES` as a list (`x` = EXT records), `ENDG=t` full single-move scan at energy <= t | energies equal to sdtabu's on 20,000 random sets (K = 7, 10); FAST on/off: identical solutions and step counts; 1.6x (pairs) and 1.3x (FAST) faster |
+| `exh_queue.sh`, `exh_one.sh` | exhaustive sdk (GAP export with centralizer generators, full enumeration of types (1,4), (3,3), (5,2)) on a list of near-miss groups, or on one record and type | SmallGroup(1539,31) record 1 type (1,4): sdk's minimum over all 8.9e8 sets is 2, the value tabu stalled at |
+| `meta_list.py`, `meta_prio.py`, `run_fmeta.sh`, `sweep_fmeta.sh`, `deep_fmeta.sh`, `sol_to_meta.py` | metacyclic lists (one per subgroup <r>), drivers for meta_export + sdtabu2, a SOL line in (i,j) coordinates with its beta | the 1,968 K = 10 set rebuilt by records/build_metacyclic_haar.py is byte-identical to the search's edge list |
+| `affine_group.g`, `affine_list.py`, `run_gapf.sh`, `sweep_affine.sh`, `deep_gapf.sh`, `group_c13c3_sq.g` | F_p^d : C_k (y acting by a power of a Singer cycle) as a GAP permutation group for export_sd.g; driver for any GAP-built group; (C13 : C3)^2 | 11^2 : C20 exported in 9 s |
+| `sg_filter.g` | SmallGroups with a normal Sylow p-subgroup of prime order: action order, center, involutions | |
+| `deep_loop2.py`, `fbest.py` | deep runs on the near misses of any sweep folder; best energies over sweep folders | |
+| `sdtabu3.c`, `sdtabu4.c` | tried and dropped: targeted moves (build the new element to cover a missed z), element weights (breakout); no gain on C197 : C7 (`logs/calib/tune_c197c7.txt`, solutions per 100 s: plain 26-28, targeted 10-26, weights 22-27) | |
+
 ## Tools (src/)
 
 | file | what it does | calibration |
@@ -130,6 +214,18 @@ metacyclic probe at 1025 (C41 : C25, `logs/K8/meta.txt`) reached only 4 in 13 mi
 probe was stopped. Not searched further.
 
 ## Next steps
+
+(Updated by job selfdual-d5b; the first job's list is kept below.)
+- (9,5): the SmallGroups of order 1520-1560 not screened yet (`logs/wl9_sg_e.txt` remainder, the 1520-1540 groups with
+  more than 15 involutions, order 1536 is out of reach); every near miss at 2 can be settled by `src/exh_one.sh` in
+  10-30 minutes, which beats more tabu seeds. Order 1560 (normal C13 with an action of order 6-12: 1560_16 at 2,
+  1560_18 at 3) and the normal-C_p groups of 1541-1560 are where this job's screens came closest.
+- (10,5): the self-dual Haar family at K = 10 stops near order 2,100 (4,200 vertices) for the metacyclic groups tried;
+  beating 4,800 needs groups about 15% better than any seen. (11,5): no.
+- (7,5): orders 657-672 with more than 31 involutions, 673-700 with 8+ involutions (88 of 136 screened, best 9),
+  701-800 with 3+ involutions.
+
+First job's list:
 
 - (9,5): the rest of the lists above (resume with `src/sweep_tabu.sh` / `src/sweep_meta2.sh` on the remaining lines
   and `src/deep_loop.py` with RECORD_N = 1518); the near miss 1539 (2) with more seeds; groups of order 1519-1600 with

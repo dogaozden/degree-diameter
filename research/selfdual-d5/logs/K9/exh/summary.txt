@@ -1,3 +1,7 @@
 sg 1539 45 tag 1539_45 types 9 capped 1 best 2 sols 0 (rec 3 f 3 capped at 4e9 of 5.05e9; full rerun in 1539_45_rec3_f3_full.out)
 one aff13_c3c3 rec 3 f 3 tag aff13_c3c3_r3_f3 TYPE rec 0 alpha 2 f 3 m 3 best 2 sols 0 evals 2306655480 size 2.31e+09 passXX 0 secs 1378.3 secs 1751
 one 1525_1 rec 1 f 1 tag 1525_1_r1_f1 TYPE rec 0 alpha 2 f 1 m 4 best 2 sols 0 evals 518688360 size 5.19e+08 passXX 0 secs 523.0 secs 630
+one 1539_45 rec 3 f 3 tag 1539_45_rec3_f3_full TYPE rec 0 alpha 2 f 3 m 3 best 2 sols 0 evals 5052986400 size 5.05e+09 passXX 0 secs 1559.2
+one 1550_8 rec 2 f 3 tag 1550_8_r2_f3 TYPE rec 0 alpha 2 f 3 m 3 best 16 sols 0 evals 6000000000 size 5.52e+10 passXX 0 secs 1260.3 CAPPED secs 1602
+QUEUE DONE targeted 07:35
+one 1560_16 rec 3 f 1 tag 1560_16_r3_f1 TYPE rec 0 alpha 2 f 1 m 4 best 2 sols 0 evals 1539630480 size 1.54e+09 passXX 0 secs 1713.7 secs 1784
