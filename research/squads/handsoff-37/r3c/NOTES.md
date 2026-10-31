@@ -84,3 +84,41 @@ Machine load ~6 on 4 cores at 19:07 (shared), so runs are a bit slower than in r
 - Logged records so far (scoreboard, worker r3c): 170 C5 far 65; 176 C2xC2 far 120; 180 C6 far 108; 180 S3 far 36; 192
   S3 far 378. No far 0 (no diameter-7 graph found at n >= 170).
 - batch4 (20:38-20:45, queued): more seeds at 180: S3 seeds 404-407, C6 seeds 404-405.
+- batch4/5 (20:38-20:52): 180 S3 seeds 404-411 (8 more runs, 90 s each): raw 76, 66, 70, 76, 70, 62, 79, 70 (far 198-237).
+  So the raw-12 / far-36 basin (seed 401) was hit once in 12 S3 runs; typical S3 runs at 180 end at far ~190-230.
+  180 C6 seeds 404 (raw 38, far 114) and 405 (raw 54, far 162): the C6 best stays the far-108 graph (seed 401).
+  Engine verdict on 180: the pool/focused search reproduces the far-36 seed only by luck (1 in 12), so restarts matter.
+- batch6 (20:53-21:00): 180 S3 with TEN=8, seeds 412, 413 (running in background at 20:55; output in out/runs.tsv).
+- batch6 result: 180 S3 TEN=8 seeds 412 / 413: raw 66 (far 198) / 102 (far 306). TEN=4 stays the default.
+
+## Final state (21:00 UTC)
+
+Engine (r3c/lift3.c; build: gcc -O3 -march=native -o lift3 lift3.c -lm). Default MODE=fbo with env
+MODE=fbo BOWALK=1 WCAP=16 TEN=4 FR=1 STALL=1500 POOL=8 PP=60 (COMP=0). Usage: ./lift3 groups/G.txt k SEED SECS OUTPREFIX;
+INIT=state file continues a run; output OUTPREFIX_best.edges / _best.state. run.sh LABEL GROUP K SEED SECS wraps it.
+
+What worked (in order of effect):
+1. Focused moves (FR=1): one violated (source, target) pair per step, moves only on base edges within base distance 1 of it.
+   About 10x more steps than the full-neighbourhood tabu of lift2 and clearly better at equal time (170 C5: far 90-105 in 45 s vs
+   lift2's 140 in 90 s).
+2. Tabu tenure 4 (TEN=4) instead of 8 (small, noisy gain; TEN=2 and TEN=6 no better).
+3. Elite pool (POOL=8, PP=60, STALL=1500): restarts from excursion bests. Modest gain (180 C6: 114 -> 108 with other seeds).
+4. Lost ideas (no gain): SA on lifts (much worse), weight decay (DECAY), FR=0 (too narrow, far 95) and FR=2 (5x slower, worse),
+   sampled compound moves (COMP=100: no clear gain), larger kicks (PERT=25: no escape from a deep basin), TEN=8 for S3.
+
+Results (best lift per n, all logged in scoreboard.tsv as r3c):
+- n=170 C5 17+17: far 65 (raw 26), best/n170_C5_far65.edges. The 26 floor was hit 3 times in ~12 runs.
+- n=176 C2xC2 22+22: far 120, best/n176_C2xC2_far120.edges. C4 22+22 best far 140 (not logged; worse than the C2xC2 row).
+- n=180 S3 15+15: far 36 (raw 12), best/n180_S3_far36.edges. Same girth 10 and sorted distance profile as the seed
+  shared/seeds/nm180_c3xs3_b5_14.edges (probably the same graph; no isomorphism test). Hit once in ~12 S3 runs.
+- n=180 C6 15+15: far 108, best/n180_C6_far108.edges. C5 18+18: best far 140-170. C3 30+30: far 225-249 (too slow at 80k evals/s).
+- n=192 S3 16+16: far 378 (diam 9), best/n192_S3_far378.edges (one 90 s run).
+- Calibration: n=168 C7 12+12 (known solution exists): raw 8 (far 28). n=168 S3 14+14: raw 28. No zero found at any n here.
+- No far 0 at n >= 170. Nothing here is a record candidate.
+
+Next steps worth trying: many restarts of S3 at 180 (the far-36 basin is hit about once per 12 runs; the coordinator could
+use it as a seed for a 2-vertex insertion at 182 or a reduction); a canonical check (isomorphism) of best/n180_S3_far36 against
+the seed; run the focused engine with lifts over other k at 192 (S3 16+16 is the only 192 group of order 6 with k=16).
+- batch7 (21:57-21:05): 180 S3 seeds 414-418 (90 s each): raw 66, 76, 70, 66, 66. Still no return of the raw-12 basin.
+  Totals for 180 S3: 15 runs, one hit at raw 12 (seed 401), median raw 70.
+- Stopped 21:05 UTC (two hours done). No background jobs of mine remain.

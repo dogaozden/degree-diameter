@@ -112,3 +112,13 @@ Start: 2026-10-31T19:06:11Z (date -u). Keep going until at least 21:06Z; stop ab
 - Batch19 summary (fresh SAT starts 53..60, same group and settings): far 90, 120, 110, 60, 90, 90, 110, 90. Only seed 56 reached
   60; no run went below 60. So on this group the breakout engine reaches the 60 floor about once in eight fresh starts, and
   it does not descend below it from the far-60 states (PV 0.8 / 0.5 from 60: no change).
+- Batch21 (fresh SAT starts 61..68 on the D5 2^7 1^3 group, PV 0.5, K 80, 90 s): far 60, 90, 60, 60, 60, 60, 60, 90.
+  Six of eight reach 60; none below 60. Batch20 (K 200 / PV 0.95 / STALL 300 from the far-60 graph): all 60.
+
+## Final summary (r3b, 19:06Z -> 20:57Z)
+- n = 170, best far 60: D5 = Z5 x| Z2 (alpha 4), sigma 2^7 1^3 on both sides (the r3a group). Breakout symmetric search
+  (symbo) reaches 60 from fresh starts in about 1 of 3 seeds and never goes below 60 from the 60 states (PV 0.2-0.95, K 40-200,
+  elite restarts). Files: r3b/best/n170_D5_2to7_1to3_far60_fresh56.edges (fresh) and r3a's r3a/best/n170_D5_7_7_far60.edges.
+- Other logged bests: n = 170 D5 sigma 2^8 1 far 155 (PV 0.8); F20 (Z5 x| Z4, alpha 2, sigma 4,4,2,2,2,2,1) far 160;
+  n = 180 D5 sigma 2^8 1 far 185 (PV 0.8), F20 (sigma 4^4 2) far 270; n = 182 F21 far 210; n = 196 F21 far 224.
+- Verdict: no graph below 46 at n = 170 from this search; the 60 floor is robust across seeds, PV, K and restarts.

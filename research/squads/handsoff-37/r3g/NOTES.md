@@ -80,3 +80,45 @@ Start: 2026-10-31T19:45Z (date -u). Stop by 21:15Z, final notes then.
   (score37 verified: n 170, far 70, diam 8; saved r3g/best170_z5_breakout_far70.edges, items alongside). The first
   Z5 polarity cover below the cost-40 floor in this job. Still above the board (46). Logged to scoreboard (far 70).
 - Insertion candidate (seed 31) with breakout K = 30, 85 s: 45 (no change).
+
+## 20:57Z: breakout from random Z5 starts at m = 85 (n = 170): the cost-35 class
+Runs: grow2 (= grow.c built with RANDINIT), `RANDINIT=1 SAONLY=1 BREAK=K ./grow2 out/r2c_t85a.items 17 5 SEED 1 0 SECS 0 0 1000 OUT`
+(the base file only supplies the stub check; the start is a random configuration with k = 17, t = 5).
+| K (non-improving proposals before a weight bump) | seeds: final cost (secs) |
+| 25 | 42: 50 |
+| 30 | 22: 40, 23: 40, 24: 40, 31: 45, 32: 40 (90-95 s) |
+| 35 | 45: 40 |
+| 40 | 33: 35, 34: 40, 35: 35, 36: 40, 38: 50, 43: 35, 44: 40 (90 s), 46: 40, 47: 35, 48: 35, 49: 40 (90 s) |
+| 50 | 25: 40 |
+| 60 | 37: 50 |
+| 100 | 7: 40, 8: 45 (60 s) |
+| 300 | 21: 60 (90 s, only 24 bumps) |
+Continuation from the cost-35 cover (K = 40, 95 s): stays 35.
+Distance-profile invariant (inv.py): the cost-35 covers from seeds 33, 35, 43, 47, 48 are one class (hash ab21f6da87);
+cost-40 covers form several classes (seeds 7/25, 23/24, 22, 8, r2c floor). Best cover: r3g/best170_z5_breakout_far70.edges
+(score37: n 170, far 70, diam 8; apsp INVALID as expected). Not a record: the board is 46 at n = 170.
+Improving the 35 class to 30 (cost 6 x 5 pairs = far 60) would need another basin; none seen in ~15 runs.
+
+## FINAL (21:00Z), r3g
+Best n = 170 cover of this card: far 70 (cost 35), r3g/best170_z5_breakout_far70.edges (Z5 polarity cover, k = 17, t = 5,
+found by breakout repair K = 40 from a random start). Logged to scoreboard (far 70, first of its kind for r3g).
+Verdicts:
+1. Zero-cost m = 80 (n = 160) Z5 covers exist (calib, apsp VALID: r3g/calib160_z5_seed31.edges), but are rare: 4 of ~35
+   lift2 runs of 25-75 s; breakout from random m = 80 starts reached only cost 5.
+2. Orbit insertion (grow.c, options A-D, exhaustive voltages) into those zero covers: best floor 45 (far 90) from seed 31/40,
+   65 from seed 53/55, 50 from cost-5 parents. Exact 4- and 5-subset re-solve and breakout do not move the 45 candidate.
+   Two-stage insertion (grow2s.c) is worse (75 from an m = 75 cost-5 parent). So orbit insertion loses to direct search.
+3. Direct breakout at m = 85 from random starts: floors 40 (most runs), 35 (about 1 run in 3 at K = 40), never below 35.
+4. m = 82 and m = 84 cannot carry a Z5 on M (fixed M-vertices force a closed component); only m = 80, 85, 90.
+Next steps if continued: (a) a second symmetry for the cost-35 class (r3d's D5 involution); (b) more K = 40 breakout
+samples with weight decay; (c) exact re-solve of the cost-35 cover (lns.c, 5-subsets) to see whether it is 5-local-optimal.
+
+Files: grow.c (insertion A-D + SA/breakout repair; env DUMP, BREAK, SAONLY, NOC), grow2s.c (two-stage), grow2 (= grow.c
+built for RANDINIT), repair.h (SA + breakout), lift2.c (copy of r2c engine), inv.py (invariant), pipe.sh, batch_parents.sh,
+best170_grow_far90.edges, best170_z5_breakout_far80.edges, best170_z5_breakout_far70.edges, calib160_z5_seed31.edges.
+- 21:00Z: exact 5-subset re-solve (all 6188 subsets, 45.4M completions, r2c/lns.c) of the cost-35 cover: best 35. It is 5-subset locally optimal (its 'IMPROVED' lines are just cost-35 completions; lns prints any <= 40).
+- 21:01-21:05Z: K = 40 samples seeds 50 (40), 51 (50), 52 (45): no cost-35 class in these three. Overall K = 40 from
+  random starts (16 fresh runs): 35 in 6 runs (one class, hash ab21f6da87), 40 in 6, 45 in 1, 50 in 3.
+- Final state: 21:05Z. Board row logged: far 70 at n = 170 (r3g/best170_z5_breakout_far70.edges). No record at 170
+  (board 46); no n >= 170 cover with far 0; no candidate for records/.
+- 21:06Z: seed 53 (K = 40): 35, the same class (ab21f6da87) again. Fresh K = 40 runs (15): 35 in 6 (seeds 33, 35, 43, 47, 48, 53), 40 in 6, 45 in 0, 50 in 3 (seeds 38, 51 and one more; see table).

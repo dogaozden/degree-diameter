@@ -100,3 +100,11 @@ Start: 2026-10-31T19:45:34Z (date -u). Stop by 21:15Z (final notes then).
 - 20:42 C2 lift of the 180 near miss (free involution, base 45+45, mk_c2base.py, base/nm180_C2_k45.state; start raw 36 = far 36,
   checked by score37), lift3w breakout 40 s x 2 seeds (831, 832, POOL 8): best stays 36. No improvement.
 - Final state at 20:42: best far at n = 192 is 256 (r3f/best/n192_C2xC4k12_far256.edges). Nothing at n = 180 below 36.
+- 20:52-20:57 last batches: Q8 k12 16 seeds (far 272..344, best 272), C8 k12 16 seeds (far 272..360, best 272), C2xC4 k12
+  WCAP 64 12 seeds (best 256, five hits). Nothing below 256 anywhere. Stopped here (21:00).
+
+## Final (21:00Z)
+- Best n = 192: far 256 (was 272): r3f/best/n192_C2xC4k12_far256.edges (score37: far 256, diam 9; not a candidate).
+- Best n = 180: still the board's far 36 (no r3f improvement). n = 170-192 other: nothing new logged.
+- Next step worth trying: a different attractor needs a different group or a non-lift search; the subgroup breakouts (C4, C2,
+  C2xC2, C3 of the near miss) do not leave their start.

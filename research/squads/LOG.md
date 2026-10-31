@@ -18,3 +18,18 @@ each, cards in research/squads/handsoff-37/cards.md, scoreboard research/squads/
 Best: n = 170 far 46 (one basin reached by c1, c7, c8). No candidate. Kept: other seeds (r2a), exact region repair
 (r2b), polarity covers (r2c), lift tabu with plateau escape (r2e); new: Moore-tree completion (r2d), mixed free / non-free
 symmetry + exact search (r2f), wildcard (r2g), n = 169 (r2h).
+
+## 2026-10-31, handsoff-37 rounds 2 and 3 (hands-off coordinator)
+
+Round 2 (17:25-19:40Z, 8 Haikus; r2a, r2b, r2d stopped early): r2a other 160-168 seeds (stopped, no notes); r2b exact SAT
+region repair (radius 2: far 46 is a local optimum; radius 3-4 too slow); r2c polarity covers deeper (Z5 floor far 80 at
+170, exact 5-/6-subset re-solves find nothing lower); r2d Moore-tree / involution (nothing below 46); r2e breakout lift tabu
+(182 far 126, 190 far 220); r2f non-free F21 symmetry (168 rebuilt in 3 s from scratch; 182 far 210, 196 far 224); r2g
+non-free colour-preserving orbit search (170 far 165); r2h n = 169 with a fixed radius-6 tree (far 144).
+Kept: the F21 lead (r3a, r3b), breakout (r3c, r3e, r3f), polarity (r3d, r3g).
+Round 3 (18:20-21:15Z, 7 Haikus): r3a non-free symmetric SA (170 D5 far 60; 180 far 180); r3b breakout in the symmetric
+search (D5 floor 60); r3c breakout lift tabu (170 C5 far 65; rediscovered the 180 far-36 near miss as an S3 15+15 lift);
+r3d D5 polarity (170 far 130); r3e breakout on the far-46 basin (cannot escape; own best 59); r3f breakout at the near
+misses (192 far 256, old 384); r3g Z5 orbit insertion into 160 covers (170 far 70).
+Result: no record; best 170 far 46. Spend: Opus 0.478 / Haiku 0.927 units (66% Haiku). REPORT:
+research/squads/handsoff-37/REPORT.md.

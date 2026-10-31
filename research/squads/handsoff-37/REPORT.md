@@ -23,11 +23,21 @@ re-scored by the coordinator with `bin/score37`):
 | 192 | 256 | r3f, C2 x C4 lift of a 12+12 base (old best 384) | r3f/best/n192_C2xC4k12_far256.edges |
 | 196 | 224 | r2f, F21 = Z7 x| Z3 with a non-free order-3 part | r2f/best196_far224.edges |
 
-Full board: `scoreboard.tsv` (FINAL_ROWS rows). Check-ins: `checkins.md`. Cards: `cards.md`.
+Full board: `scoreboard.tsv` (98 rows). Check-ins: `checkins.md`. Cards: `cards.md`.
 
 ## Spend (tools/session_usage.py, price-weighted "budget units")
 
-FINAL_SPEND
+At 21:12Z, after the last worker stopped (`python3 tools/session_usage.py --since 2026-10-31T15:39:40Z`; log in
+`research/squads/usage/handsoff-37.jsonl`; writing this report and the last commits add about 0.02 Opus):
+
+| model | messages | output tokens | cache-read tokens | budget units | share |
+|---|---|---|---|---|---|
+| Opus (coordinator) | 82 | 103,931 | 16.5 M | 0.478 | 34% |
+| Haiku (23 workers) | 4,104 | 2,773,608 | 1,493.6 M | 0.927 | 66% |
+| total | | | | 1.405 | |
+
+So the split ended at about **34% Opus / 66% Haiku**, against a target of 50/50 and the earlier Opus-led squad's
+97% / 3% (research/squads/exp2/exp2-squad.md). The Haikus processed about 90 times as many tokens as the coordinator.
 
 Over time (from `checkins.md`):
 
@@ -54,7 +64,7 @@ coordinator.
 
 ## Haiku runs
 
-HAIKU_RUNS Haiku runs in three overlapping rounds (8 + 8 + 7), each with its own card, about 1h40-2h each, plus 3
+23 Haiku runs in three overlapping rounds (8 + 8 + 7), each with its own card, about 1h40-2h each, plus 3
 resumes (nudges) and 1 redirect. Four were stopped or ended early: r2a (stopped by me while mid-run; it had written no
 notes), r2b and r2d (idle for about an hour after their background runs ended; stopped), r3d (handed back early).
 
@@ -86,7 +96,8 @@ Round 2 (17:25-19:40Z):
   vertices (64.6M completions) and 210 6-subsets (404M) find nothing lower.
 - r2d, Moore-tree / involution families: depth-2 plateau search from the far-46 graph (51M evaluations) finds nothing
   below 46; free-involution family at 168: far 106.
-- r2e, lift tabu with breakout weights: best 182 (C7, 13+13) far 126 and 190 (C5) far 220.
+- r2e, lift tabu with breakout weights: best 182 (C7, 13+13) far 126 and 190 (C5) far 220. (It never sent a final reply;
+  I stopped it at 21:12 after its time was up. Its NOTES.md is complete.)
 - r2f, mixed free / non-free symmetry: C168.1 contains F21 = Z7 x| Z3 whose order-3 elements fix 3 vertices; a
   symmetric SA over F21-invariant graphs rebuilds a diameter-7 graph at n = 168 **in 3 s from scratch**, the only method in
   the job that did so without being given the graph. It does not carry over: 182 far 210, 196 far 224, 170 (D5) 155.
@@ -98,13 +109,22 @@ Round 2 (17:25-19:40Z):
 
 Round 3 (18:20-21:15Z):
 - r3a, non-free symmetric SA at 170 and 180: D5 (Z5 x| Z2, sigma 2^7 1^3) gives 170 far 60 (in 12 of 40 seeds); 180 far 180.
-- r3b, breakout weights inside the symmetric search: R3B_RESULT
+- r3b, breakout weights inside the symmetric search: on r3a's D5 group (after my redirect) it reaches far 60
+  from fresh starts in 7 of 16 seeds and never lower; from r3a's far-60 graph nothing moves. Other groups: F20 at 170 far 160,
+  182 F21 far 210, 196 F21 far 224. The number of fixed base points matters (2^7 1^3 best). 2,317 tool calls in under 2 hours.
 - r3c, breakout lift tabu at 170-180: C5 17+17 at 170 far 65; rediscovered the n = 180 far-36 near miss as an S3 lift
-  (15+15) from scratch. R3C_EXTRA
+  (15+15) from scratch. Also 176 (C2 x C2, 22+22) far 120, 180 (C6) far 108. Calibration: C7 12+12 at 168 gets
+  to far 28, not 0.
 - r3d, polarity covers with D5 symmetry: 170 far 130; the D5 restriction does not reach 0 even at m = 80.
-- r3e, breakout weights with no symmetry from the n = 170 graphs: R3E_RESULT
-- r3f, breakout at the 180 / 192 near misses: 192 far 256 (C2 x C4, 12+12; old best 384). R3F_EXTRA
-- r3g, Z5-symmetric orbit insertion into n = 160 polarity covers: R3G_RESULT
+- r3e, breakout weights with no symmetry from the n = 170 graphs: the far-46 graph cannot be escaped: weighted walks stay at 46-72, and weight drift
+  pushes the real far up to 170-200; best own graph 170 far 59 (from c2's far-70 graph). All 46 far pairs of the far-46 graph
+  are same-side pairs at distance exactly 8. Calibration: from C168.1 + 20 random switches it stalls at 116-127.
+- r3f, breakout at the 180 / 192 near misses: 192 far 256 (C2 x C4, 12+12; old best 384). Breakout from the unsymmetric 180 / 192 near misses: no improvement (every 2-switch costs >= 41);
+  keeping a subgroup of their symmetry does not help either. Found and fixed a bitset-width bug in lift3 (needs 2k <= 64;
+  no logged result affected, and all bests were re-scored by me with score37).
+- r3g, Z5-symmetric orbit insertion into n = 160 polarity covers: insertion of a Z5-orbit into zero-cost n = 160 covers floors at far 90; direct breakout
+  from random Z5 starts at m = 85 reaches far 70 (cost 35, one class in 6 of 15 runs), locally optimal under exact 5-subset
+  re-solves. m = 82, 84 cannot carry a Z5 on M.
 
 ## Small-structure versus large-structure cards
 
@@ -122,4 +142,48 @@ r3d). "Large" = big search spaces explored by local search (c4, c6, c7, c8, r2c,
 
 ## My view: hands-off versus an Opus-led squad
 
-VIEW
+**On the record: no difference.** Two earlier Opus-led jobs on this cell (Oct 26, squads; Oct 27, exact) also ended
+at 168, and nothing here came close: the best at 170 is far 46, and the nearest structure of all (n = 180, far 36) was
+already known.
+
+**On what was learned: the hands-off squad was broader and shallower.** For about 0.48 Opus units it ran 23 Haiku
+strategies and produced facts the earlier jobs did not have:
+- a non-free symmetry (F21, the order-3 part fixing 3 vertices) makes the 168 graph easy to find from scratch;
+- polarity double covers with a free Z5 make diameter 7 easy at 160 but floor at far 70-80 at 170;
+- the far-46 insertion basin at 170 is robust against about ten different methods;
+- breakout lift tabu rediscovers the 180 near miss from scratch;
+- better near misses at 182, 192 and 196.
+
+What it did not produce is what the Opus-led exact job produced: proofs and complete negative results (no automorphism
+of prime order >= 11; no free group with <= 11 orbits). Every exact or SAT card here (c3, r2b, r2f's SAT) failed even
+its n = 168 calibration. The Haikus did not find the reformulations (symmetry breaking, better encodings, a different
+decomposition) that an Opus session would look for when a solver stalls.
+
+**Why.**
+- The Haikus are good at a well-specified loop: write an engine, run it, tune it, log honestly. Every best file I
+  re-scored matched the board, and they added correction rows when they mis-logged.
+- They are weak at deciding when a direction is dead. c1, c7, c8, r2b, r2d and r3e each spent much of their time
+  re-proving that the far-46 basin is a basin. They also tend to report "next step" ideas that are small variations.
+- Coordination mattered at three points:
+  - the operational rule about short commands, which changed both their activity and the spend split;
+  - turning r2f's lead into r3a and r3b, which gave the second-best family at 170 (D5, far 60);
+  - stopping idle workers.
+  Otherwise the coordinator mostly waited, as the experiment asked.
+- Operational losses were real. Three workers sat idle for about an hour after their runs were moved to the
+  background, one handed back early, and one never sent a final reply.
+
+**Would an Opus-led squad have done better here?** Probably not on the record. On depth it would likely have:
+- checked the far-36 rediscovery for isomorphism properly (I only compared distance profiles);
+- analysed why 46 is a floor;
+- turned the F21 observation into an exact search with real symmetry breaking.
+At this split, the hands-off structure buys breadth cheaply. It is a good fit for "try many directions on a hard cell"
+and a poor fit for "close a case exactly".
+
+**Small versus large cards** (see the section above): the Haikus did better on the large, local-search cards. The best
+single number (170 far 46) came from the simplest small card, an exhaustive enumeration that needed no cleverness.
+
+**For the next hands-off run:**
+- put the "commands < 110 s" rule in the first cards, so spend and activity are steady from the start;
+- write fewer cards about the same basin;
+- give each exact card a known-solvable calibration with a time limit and a fallback;
+- budget the split by capping Haiku tool calls rather than by the number of workers.
