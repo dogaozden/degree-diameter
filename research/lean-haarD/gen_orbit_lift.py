@@ -120,8 +120,9 @@ def write_folder(folder, theorem, n, m, k, K, d, D, edges_path, adj, col, levels
 
     # Levels.lean: radii 1 .. D-1 as data, L 0 from the code, L D = replicate
     lev = [gen, "import BipartiteDD.Orbit", f"namespace {ns}", ""]
-    lev.append("set_option maxRecDepth 100000 in")
     for r in range(1, D):
+        lev.append("set_option maxHeartbeats 0 in")
+        lev.append("set_option maxRecDepth 1000000 in")
         lev.append(f"/-- The masks of radius {r} over the {k} representatives. -/")
         lev.append(f"def lev{r} : List ℕ := {lean_nat_list(levels[r])}")
         lev.append("")
