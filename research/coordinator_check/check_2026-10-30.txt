@@ -23,3 +23,10 @@ metacyclic voltage files (records/d3D11_n1344_meta7_24.txt: Z7 x| Z24, b a b^-1 
 BFS from every vertex): n = 1344, cubic, bipartite, diameter 11; n = 2368, cubic, bipartite, diameter 12
 apsp on the finder's four edge lists (meta and SmallGroup-lift versions of each): d3D11_n1344_* RESULT VALID d=3 D=11 (INVALID at D=10);
 d3D12_n2368_* RESULT VALID d=3 D=12 (INVALID at D=11)
+
+== (9,5) 3,000 — job selfdual-d5 (research/selfdual-d5/records/)
+rebuilt on the Mac mini from the formula with the coordinator's own code (G = F5^3 : (C3 : C4), product (v,i,j)(v',i',j') = (v + Rs^i Ru^j v', i + (-1)^j i', j + j'),
+relations Rs^3 = Ru^4 = I and Ru Rs Ru^-1 = Rs^-1 checked, associativity spot-checked; S as in the README; BFS from every vertex): n = 3000, simple, 9-regular,
+bipartite, diameter 5 when Rs, Ru are read row by row (as the finder's builder does). Read as columns (as the README first said) the graph has diameter 6;
+README and builder docstring corrected on master.
+apsp on the finder's records/d9D5_n3000_haar_c5cube_dic3.edges (sha256 afec2757d72b73a694fad479306c6f7f762e44a39851241afc204883348f43ca) -> RESULT VALID d=9 D=5 n=3000; at D = 4 -> RESULT INVALID
