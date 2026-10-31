@@ -52,3 +52,24 @@ c22	t18 tabu 1,3|1,3 N=5,1,1,1 SmallGroup(258,2) 250 s	688	bad=602 (cost 6)	rese
 c20	downward/unbalanced 685: 684 Haar + covering A-vertex (6 B-neighbours whose 3-balls cover A, greedy dropped edges), deficit+2-switch SA 180 s	685	bad=185	research/squads/handsoff-65/c20/u685_cov1_sa.edges	20:01
 c26	S3|S3 hub orbits on SmallGroup(294,7) (non-cyclic H,K), t26 tabu	686	bad=1470	research/squads/handsoff-65/c26/run/s3_294_7_s2.edges	20:06
 c24	guided SA T 3->0.4 from c7 177 graph (c24 b686_172.edges)	686	bad=172	research/squads/handsoff-65/c24/b686_172.edges	20:09
+c23	t18 1,2|1,2 SmallGroup(240,118) screen 4,2,2,1 (cost 15; tabu deep runs stuck at 15)	720	bad=1080 (cost 15)	research/squads/handsoff-65/c23/best720_bad1080_240_118.edges	20:12
+c20	downward/unbalanced 685: covering start (cover.py), deficit+2-switch SA T 1.5->0.25 240 s, seed 77	685	bad=184	research/squads/handsoff-65/c20/u685_cov1_s77.edges	20:14
+c24	guided SA T 5->0.5 restart from 172 (c24 b686_170.edges)	686	bad=170	research/squads/handsoff-65/c24/b686_170.edges	20:18
+c24	guided SA T 4->0.4 restart from 170 (c24 b686_159.edges)	686	bad=159	research/squads/handsoff-65/c24/b686_159.edges	20:22
+c26	S3|S3 hub orbits on SmallGroup(294,7), t26 tabu tenure 20 (non-cyclic H,K)	686	bad=1176	research/squads/handsoff-65/c26/run/s3_294_7_s5.edges	20:22
+c28	exact local: 2 slot changes (H,K fixed) and all (H,K) with 1 slot change, around the cost-2 state of 294_11 (no cost 0/1)	686	min cost 2 (local, not global)	research/squads/handsoff-65/c28/NOTES.md	20:29
+c28	exact local: 2 slot changes (H,K fixed) around the cost-4 state of 294_12 (min 4)	686	min cost 4 (local, not global)	research/squads/handsoff-65/c28/NOTES.md	20:29
+c26	S3|S3 hub orbits on SmallGroup(294,7), t26 tabu seed 7 tenure 20 (non-cyclic H,K)	686	bad=1029	research/squads/handsoff-65/c26/run/s3_294_7_s7.edges	20:30
+c20	delete the new B-vertex (19 far pairs) of c7 best686_bad177 -> 685 with 6 A-deficits, deficit+2-switch SA 200 s	685	bad=165	research/squads/handsoff-65/c20/del685_0_sa.edges	20:30
+c22	t18 tabu 1,3|1,3 N=5,1,1,1 SmallGroup(258,2) tenure 8 seed 41 240 s	688	bad=559 (cost 5)	research/squads/handsoff-65/c22/deep/t258_2_s41.edges	20:31
+c27	haarex3 order 416 all non-abelian groups closed (68 groups this round, 228 total)	832	none VALID	research/squads/handsoff-65/c27/STATUS.md	20:31
+c27	haarex3 order 418 all non-abelian groups closed	836	none VALID	research/squads/handsoff-65/c27/STATUS.md	20:31
+c25	mcos-free t18 tabu 1,6|1,6 N=5,1,1,0 SmallGroup(324,131) (screen best of 174 groups of order 324)	756	bad=3105 (cost 30)	research/squads/handsoff-65/c25/deep/g324_131_s2.edges	20:32
+c25	t18 tabu 1,6|1,6 N=5,1,1,0 SmallGroup(324,53) seed 3, 230 s	756	bad=2106 (cost 18)	research/squads/handsoff-65/c25/deep/g324_53_s3.edges	20:36
+c23	mcos 1,2,2|1,2,2 N=3,2,1,2,1,0,1,0,2 SmallGroup(174,2) screen (cost 40 at 4 s; 240 s SA stuck at 45)	696	bad=2436 (cost 40)	research/squads/handsoff-65/c23/best696_c40_174_2_122.edges	20:36
+c24	guided SA T 3->0.3 restart from 159 (c24 b686_158.edges)	686	bad=158	research/squads/handsoff-65/c24/b686_158.edges	20:39
+c27	haarex3 order 420 all non-abelian groups closed	840	none VALID	research/squads/handsoff-65/c27/STATUS.md	20:41
+c28	exact local: 2 slot changes (H,K fixed) and all (H,K) with 1 slot change around the cost-4 state of 294_12 (no cost 0-3)	686	min cost 4 (local, not global)	research/squads/handsoff-65/c28/NOTES.md	20:44
+c24	guided SA T 4->0.3 restart from 158 (c24 b686_144.edges)	686	bad=144	research/squads/handsoff-65/c24/b686_144.edges	20:53
+c26	S3|S3 hub orbits on SmallGroup(300,22) (C5xA5), t26 tabu seed 5 tenure 20	700	bad=1600	research/squads/handsoff-65/c26/run/deep_300_22_s5.edges	20:54
+c22	t18 tabu 1,3|1,3 N=5,1,1,1 SmallGroup(258,2) tenure 8 seed 91 150 s	688	bad=516 (cost 4)	research/squads/handsoff-65/c22/deep/t258_2_s91.edges	20:58

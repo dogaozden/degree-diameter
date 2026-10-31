@@ -53,3 +53,34 @@ Findings:
 Next ideas if time: exhaustive 2-switch scan on u685_cov1_sa.edges (scan3-style) to test strict local minimality;
 covering starts with 2 new vertices at 686 (A and B), each with its own covering set chosen so the two cover sets overlap
 the removed edges least.
+
+## Later runs (20:00-20:20)
+- 686 regular with two covering new vertices (cover2.py: u in A adjacent to 6 B-vertices whose 3-balls cover A, v in B
+  adjacent to 6 A-vertices whose 3-balls cover B; 6 removed edges, no uv edge): start 348, SA 180 s -> 314 (u686_cov2_sa.edges).
+- c7-style 686 (cover3.py: 5 removed edges, u adjacent to 5 w's and v, v adjacent to 5 z's and u; covering search reached
+  336/342 and 334/342): start 253, SA 150 s -> 221 (u686_cov3_sa.edges). Both worse than c7's 177 insertion.
+- 685 unbalanced, covering start (u685_cov1.edges): T 1.5 -> 0.25, DEFP 0.3, 240 s, seed 77 -> 184 (u685_cov1_s77.edges,
+  verified bad 184). Best of the 685 family so far. Same start, T 1.0 -> 0.2, seed 1 -> 185.
+- 685 from greedy-z start (u685_gz1.edges), T 1.5 -> 0.25, seed 88 -> 191.
+Summary of the 685 family (6 deficits on the 343 side): 184..195 over 7 runs; floor not broken.
+
+## Best so far at n = 685 (20:30-20:41): delete a vertex from c7's 686 graphs
+- c7/best686_bad177.edges has 19 far pairs at its new B-vertex (id 685). Deleting it gives a 685-vertex graph with 6 A-side
+  deficits and start cost 214. dsa SA (DEFP 0.3, T 1.0 -> 0.2, 200 s, seed 121) -> 165 (del685_0_sa.edges, verified
+  bad 165). Seed 131 (T 1.5 -> 0.25, 240 s) also 165. Scoreboard line written at 20:30.
+- Deleting the worst B-vertex (22 far pairs) of c7/best686_bad178.edges: start 217 -> 165 (del685_178_sa.edges).
+- Deleting the worst A-vertex (684, 20 far pairs) of the 177 graph: start 219 -> 183.
+- Reading of the 165 graph (farstat.py): all 165 far pairs are same-side at distance 6, 40 of them touch the new A-vertex
+  684 (degree 4 after the deficit moves), 89 touch a degree-5 vertex, 498 vertices lie on no far pair.
+- Two different starts reach the same 165 value: this looks like a basin floor for the 685 family built from c7's graph.
+- Final runs (20:42-20:49): del686_0 with DEFP 0.5, T 0.8 -> 0.12, seed 161 -> 194; del686_178 with T 1.2 -> 0.2, seed 171 -> 191.
+  Best stays 165 (del685_0_sa.edges).
+
+## Final state (20:50 UTC)
+- Best n > 684: 685 vertices, bad 165 (del685_0_sa.edges; verified with shared/score65). Not a record: bad must be 0.
+- Best n = 686 is not in this folder: the 686 graphs are the squad's c7 ones (177). My 686 starts gave 221-314.
+- Scoreboard lines from c20: 393 (686), 185 (685), 184 (685), 165 (685); 392 was a 686 run (not logged separately).
+- Mechanisms that were confirmed: the 720 and 704 near misses cannot be pushed down; from the 684-based 686/685 family
+  the SA floor is 165-195 depending on start.
+- Ideas not run: a 2-switch exhaustive scan on del685_0_sa.edges (strict local minimum test); deletion of two vertices
+  from a 688 graph (c10/c13 graphs) to test whether 686 can be reached from a different basin.

@@ -24,3 +24,11 @@ c13 688, 320 / 690, 417 (686 floor 177 stays); c14 no descent (all near misses s
 cost 2, verified); c19 Haar orders 401-406 closed. No graph above 684.
 Kept: the 1,6|1,6 hub family (new; c18 deep, c21/c25 other orders, c22/c23 other hub sizes, c26 non-cyclic hubs,
 c24 free local search from it). Dropped: surgery upward, lifts, |H|=2 bi-coset, 1|3,3,3.
+
+## 2026-10-31 19:30-21:05 UTC, job handsoff-65, round 3 (final)
+Cards: c21 1,6|1,6 on orders 300-312; c22 hub type k=3; c23 hub type k=2; c24 free local search from the best graphs;
+c25 1,6|1,6 on 318-342; c26 non-cyclic hub stabilisers; c27 finish Haar 416-420; c28 exact search of 1,6|1,6 on 294.
+Best per card (n, far pairs): c21 no result (stalled); c22 688, 516 (1,3|1,3 on 258_2, cost 4); c23 720, 1080 (cost 15);
+c24 686, 144 (best of the job, from c7's graph); c25 756, 2106 (cost 18); c26 686, 1029 (S3 hubs, cost 7); c27 Haar
+orders 416, 418, 420 closed (with c19: Haar 802-840 closed); c28 cost-2 states of 294_11 are exact 2-change minima.
+No graph above 684. Final split 37% Haiku / 63% Opus (session_usage). Report: research/squads/handsoff-65/REPORT.md.
