@@ -1,0 +1,12 @@
+machine: vm; nproc=4; free -g: total 15G used 0G free 14G avail 15G; Linux 6.18.44-fc-v185; gcc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0 (/usr/bin/time not installed; peak RSS measured as getrusage RUSAGE_CHILDREN ru_maxrss of a python3 wrapper, wall clock by time.time)
+sha256: 6502d81e8238e6ddf1c22651426bd20b5dc1b65aa46c19d4edba02c20229a450  research/frontier/sols/d19D10_sl_607_43_orb3_s1.txt  (from branch claude/new-cells-beyond-etos3t; 697 bytes, 20 lines)
+
+################ haarcheck_gen (research/frontier/haarcheck_gen.c from master, built gcc -O3 -fopenmp -o haarcheck_gen haarcheck_gen.c): ./haarcheck_gen research/frontier/sols/d19D10_sl_607_43_orb3_s1.txt   (stdout, complete)
+# STATUS: PARTIAL. Run started; still running at the time of this commit (about 21 min elapsed), output below is what it had printed so far.
+selftest sl 607: |M| = 223647936, index round trip over all elements ok
+selftest group multiplication: associativity, identity, inverse on 20000 random triples ok
+file /home/user/degree-diameter/research/frontier/sols/d19D10_sl_607_43_orb3_s1.txt
+header: 19 10 sl 607 n 43 N 9616861248
+group sl 607 x Z_43, |G| = 9616861248 = N, vertices 2N = 19233722496; 19 distinct generators
+
+[run in progress; no exit line yet]
