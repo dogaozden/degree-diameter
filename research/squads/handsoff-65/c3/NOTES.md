@@ -38,3 +38,11 @@ affine V:H0 with V=F_7^3 (n=686) or F_19^2 (n=722) and small H0.
   (8,4), (12,6), (9,6), (10,5). Not in the card; not run.
 - Capped unions (tested = 300000) were only partially searched; sa_capped.sh runs dcenum SA mode on them.
 - SmallGroup-library sweeps of orders 343*h..400*h (h >= 4) were not done: GAP smallgrp is too slow here.
+
+## final (stopped at the 17:45 UTC deadline; the clock read 21:08 when the sweep finished)
+- Product sweep T x C_k (k <= 10; T = A5, S5, PSL(2,7), PGL(2,7), A6, PSL(2,8), S6, PSL(2,11), PSL(2,13), PSL(2,17), S4, PSL(2,19), A4): 24 groups exported, no solution.
+  Best bad: A6 x C4 (n=720) bad=4320 (cost 24); PSL(2,8) x C3 (n=756) bad=4536; S6 x C3 (n=720) bad=5760.
+- Overall best with n > 684: bad = 4320 at n = 720 (A6 x C4, H order 4, exhaustive union search). No bad = 0 found.
+- Capped union searches (8 files, tested = 300000) were NOT run through the SA mode (sa_capped.sh is ready but unused).
+- The biregular idea (|H| != |K|, degrees (6, d_B)) was not run.
+- Calibration: A3(2) Borel graph n=630, bad=0, verified by check.sh (apsp_ref OK).

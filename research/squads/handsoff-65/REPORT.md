@@ -37,16 +37,17 @@ Negative results worth keeping (worker claims with logs; I did not rerun them):
   bigger bases by subgroups (c14), and deleting vertex pairs from them gives 680-1300 (c20).
 - GH(5,5) quotients (c8: built the generalized hexagon from G2(5)) and GQ(5,5) covers are far (9,520 at 686).
 
-## Spend (tools/session_usage.py, price-weighted units, 15:38:45 to 21:06:45 UTC)
+## Spend (tools/session_usage.py, price-weighted units, 15:38:45 to 21:09:12 UTC)
 
-| model | messages | output tokens | cache read | units | share |
-|---|---|---|---|---|---|
-| Opus (coordinator) | 89 | 109,606 | 15.2M | 0.461 | 63% |
-| Haiku (28 runs) | 2,281 | 2,436,065 | 322.6M | 0.275 | 37% |
+| model | messages | output tokens | units | share |
+|---|---|---|---|---|
+| Opus (coordinator) | 100 | 122,714 | 0.542 | 66% |
+| Haiku (28 runs) | 2,291 | 2,443,900 | 0.280 | 34% |
 
-So the target of about 50/50 was **not** reached: 37% Haiku. Check-in values: 35% (16:15), 44% (16:46), 43% (17:15),
-40% (17:48), 41% (18:16, 18:47), 39% (19:47), 37% (21:06). The Haikus produced 22x my output tokens and 21x my cache
-reads, but Opus costs much more per token, and each of my turns re-reads the whole coordinator context (about 170k
+So the target of about 50/50 was **not** reached: 34% Haiku. Check-in values: 35% (16:15), 44% (16:46), 43% (17:15),
+40% (17:48), 41% (18:16, 18:47), 39% (19:47), 37% (21:06, before the wrap-up), 34% (21:09, after writing this report:
+the wrap-up alone cost 0.08 Opus units, more than an hour of polling). The Haikus produced 20x my output tokens and
+about 20x my cache reads, but Opus costs much more per token, and each of my turns re-reads the whole coordinator context (about 170k
 tokens on average). Most of my spend was waiting: a cloud session must not end its turn while workers run, and a Bash
 call can block for at most 10 minutes, so each hour cost about 6-8 polling turns plus the turns that read the 28 final
 reports and launched replacements. What I did about it: 10 workers instead of 8 from 18:20, 5-minute runs (more Haiku
@@ -57,15 +58,16 @@ more about writing code than about waiting for runs.
 ## Haiku runs: 28
 
 Round 1 (15:45-17:45): c1-c8, c9 replaced c8 at 16:25. Round 2 (17:45-19:45): c10-c16, plus c17-c19 (18:20) and c20
-(19:08, replaced c16). Round 3 (19:30-21:05): c21-c28. Three runs ended in a "waiting on its own background work" state
-and never sent a final report (c3, c6 in round 1 with useful notes; c21 with only a first screen). Two wildcard runs
+(19:08, replaced c16). Round 3 (19:30-21:05): c21-c28. Three runs went into a "waiting on its own background work"
+state: c3 and c6 (round 1) kept working past their 17:45 deadline and only reported at 21:08; c21 stalled after its
+first screen and never reported. Two wildcard runs
 stopped early by choice (c8 at 16:18, c16 at 18:57) despite the instruction not to.
 
 | card | size | best (n, bad) | what it found |
 |---|---|---|---|
 | c1 2+2 lifts, orders 172-180 | small | 704, 352 | only order 176 is good; cost 4 always misses the same 2 fibres; = prior best |
 | c2 bigger-base lifts | small | 696, 812 | doubled-K33 3+3 base by C29:C4, cost 14 (= prior); bigger bases worse |
-| c3 almost simple bi-coset | large | 720, 4320 | PGL(2,13), PGammaL(2,8), A6 x C4: all far |
+| c3 almost simple bi-coset | large | 720, 4320 | exhaustive unions closed with no solution for A7-A9, S7-S9, M11, M12, PSL(3,3), PSU(3,3), PSp(4,3), PSL/PGL(2,q) q <= 81 and more (c3/NOTES.md); best A6 x C4 |
 | c4 \|H\|=2,3 bi-coset 722-766 | large | 756, 2268 | cost 12; 3\|3 poor (182 at 722) |
 | c5 multi-orbit mcos | large | 732, 915 | 1\|3,3,3 on C2 x (C61:C3), cost 7; 1\|2,2 cost 17 |
 | c6 Haar + twisted matching | small | 720, 360 | no automorphism twist beats the Haar floor |
