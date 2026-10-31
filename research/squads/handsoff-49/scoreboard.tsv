@@ -3,17 +3,34 @@ time_utc	worker	strategy	n	cost_or_far	valid_claim	file
 22:01	w6	surgery: remove 4 disjoint edges of valid4970, a and b added, anneal over removed edges	4972	160	no	/home/user/degree-diameter/research/squads/handsoff-49/w6/tmp/surgsa4_best160.edges
 22:17	w8	lift of 2+2 base (4 vertices, mult. [[1,3],[3,1]]) over agl1 13 x cyc 8, SA; cost 24 = far 14976	4992	24	no	/home/user/degree-diameter/research/squads/handsoff-49/w8/runs/w8_best_n4992.edges
 22:18	w1	A7 (perm 7 table, simple group) Haar, annealing 90 s seed 4, near miss	5040	6	no	/home/user/degree-diameter/research/squads/handsoff-49/w1/t/A7_near_cost6.edges
-22:19	w5	h3 base mh3_3 (doubled C6) x meta:13:64:8, tabu 190 s	4992	22	no	out/t_mh3_3_832_s21.edges
+22:19	w5	h3 base mh3_3 (doubled C6) x meta:13:64:8, tabu 190 s	4992	22	no	w5/out/t_mh3_3_832_s21.edges
 22:24	w3	W(3) lift, cyclic Z_63, walk-directed repair + anneal (near miss, not valid)	5040	906	no	/home/user/degree-diameter/research/squads/handsoff-49/w3/runs/rep63_best.volt
 22:24	w3	W(3) lift over cyclic Z_40 (valid, below record size; apsp checked)	3200	0	VALID	/home/user/degree-diameter/research/squads/handsoff-49/w3/runs/rep40b_c0.edges
 22:25	w8	tabu (300-1000 sampled moves, tenure 20) from SA solution, base 2+2 mult [[1,3],[3,1]] over agl1 13 x cyc 8	4992	18	no	/home/user/degree-diameter/research/squads/handsoff-49/w8/runs/w8_best_n4992.edges
 22:25	w4	K44 base (8 vertices) lift over Z_622, ILS (cost = 2*far/k)	4976	156	no	/home/user/degree-diameter/research/squads/handsoff-49/w4/k44_z622_156.edges
 22:26	w1	A7 Haar (simple group, 60 s annealing seed 11); correction of the 22:18 line whose file did not exist	5040	6	no	/home/user/degree-diameter/research/squads/handsoff-49/w1/t/A7_cost6.edges
-22:31	w5	h3 base mh3_3 x meta:104:8:31, tabu 150 s	4992	19	no	out/t_mh3_3_104_8_31_s41.edges
-22:43	w5	h2 base mh2_1 ([[2,2],[2,2]], 4+4 doubled K22) x meta:13:96:5, tabu 50 s seed 31	4992	4	no	out/t_mh2_1_1248_s31.edges
+22:31	w5	h3 base mh3_3 x meta:104:8:31, tabu 150 s	4992	19	no	w5/out/t_mh3_3_104_8_31_s41.edges
+22:43	w5	h2 base mh2_1 ([[2,2],[2,2]], 4+4 doubled K22) x meta:13:96:5, tabu 50 s seed 31	4992	4	no	w5/out/t_mh2_1_1248_s31.edges
 22:47	w2	meta sweep (1.5 s screen + 8 s deepen): Z_208 x|_3 Z_12, 4 floor	4992	4	no	/home/user/degree-diameter/research/squads/handsoff-49/w2/deep.tsv
 22:47	w2	meta sweep (1.5 s screen + 8/60 s deepen): Z_101 x|_5 Z_25 (proven floor 2 per card)	5050	2	no	/home/user/degree-diameter/research/squads/handsoff-49/w2/deep.tsv
 22:57	w8	tabu (2000 sampled moves, tenure 40) from previous tabu solution, base 2+2 [[1,3],[3,1]] over agl1 13 x cyc 8	4992	16	no	/home/user/degree-diameter/research/squads/handsoff-49/w8/runs/w8_best_n4992.edges
 23:02	w1	A7 exhaustive over all Haar graphs (8 class reps, all S with e): min cost 6, no zero (exh.c)	5040	6	no	/home/user/degree-diameter/research/squads/handsoff-49/w1/res/exh_A7_class19.out
 23:05	w8	tabu (2000 moves, tenure 40), second round from cost-16 solution, base 2+2 [[1,3],[3,1]] over agl1 13 x cyc 8	4992	15	no	/home/user/degree-diameter/research/squads/handsoff-49/w8/runs/w8_best_n4992.edges
 23:12	w4	rb12 (6+6 random 4-regular bipartite) lift over meta 13 32 5 (order 416), ILS, cost = 2*far/k	4992	97	no	/home/user/degree-diameter/research/squads/handsoff-49/w4/r12m13.edges
+23:13	w9	bi-coset M11 (order 7920), H order 3 (only class), exhaustive over all S; cost = far(A0)+far(B0), far pairs = M*cost/2, apsp diam 10	5280	38	no	/home/user/degree-diameter/research/squads/handsoff-49/w9/runs/M11_h3_K0.edges
+23:17	w4	rb12 lift over meta 13 32 5 (order 416), ILS refined from cost 97, cost = 2*far/k	4992	80	no	/home/user/degree-diameter/research/squads/handsoff-49/w4/r12m13_80.edges
+23:20	w11	exhaustive meta 101 25 5 (aut-reduced, all triples, bound 2)	5050	2	no	/home/user/degree-diameter/research/squads/handsoff-49/w11/out/m101_k25_r5_c2.edges
+23:21	w11	exhaustive meta 104 24 7 (aut-reduced, all triples, bound 4)	4992	4	no	/home/user/degree-diameter/research/squads/handsoff-49/w11/out/m104_k24_r7_c4.edges
+23:21	w11	exhaustive meta 208 12 3 (aut-reduced, all triples, bound 4)	4992	4	no	/home/user/degree-diameter/research/squads/handsoff-49/w11/out/m208_k12_r3_c4.edges
+23:22	w9	bi-coset S7 (order 5040), H = involution class K2 (of 3), exhaustive {2,2},{2,1,1}; cost = far(A0)+far(B0)	5040	15	no	/home/user/degree-diameter/research/squads/handsoff-49/w9/runs/S7_h2_K2.edges
+23:23	w11	exhaustive meta 35 72 4 (aut-reduced, all triples, bound 6)	5040	6	no	none
+23:23	w11	exhaustive meta 105 24 17 (aut-reduced, all triples, bound 6)	5040	6	no	none
+23:24	w11	exhaustive meta 208 12 141 (aut-reduced, all triples, bound 6)	4992	6	no	none
+23:24	w11	exhaustive meta 420 6 109 (aut-reduced, all triples, bound 6)	5040	6	no	none
+23:26	w11	exhaustive meta 70 36 9 (aut-reduced, all triples, bound 8)	5040	8	no	none
+23:26	w11	exhaustive meta 208 12 29 (aut-reduced, all triples, bound 8)	4992	8	no	none
+23:27	w11	exhaustive meta 208 12 37 (aut-reduced, all triples, bound 8)	4992	8	no	none
+23:27	w5	h2 base mh2_1 x meta:39:32:31 tabu 60 s seed 72 (floor 4 on several groups)	4992	4	no	w5/out/f_39_32_31_s72.edges
+23:27	w11	exhaustive meta 208 12 43 (aut-reduced, all triples, bound 8)	4992	8	no	none
+23:27	w11	exhaustive meta 208 12 11 (aut-reduced, all triples, bound 9)	4992	9	no	none
+23:30	w4	rb12 lift over meta 13 32 5 (order 416), ILS refined from cost 80, cost = 2*far/k	4992	76	no	/home/user/degree-diameter/research/squads/handsoff-49/w4/r12m13_76.edges

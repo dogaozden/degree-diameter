@@ -1,2 +1,9 @@
 PSL2_5^2	h=3	K=0	n=5200	RESULT_EXH M=2600 h=3 n=5200 evals=6982 best_cost=30 L=4,2242,1635,2093 time=1.0s	{"1": 1, "3": 2}
 M11	h=3	K=0	n=5280	RESULT_EXH M=2640 h=3 n=5280 evals=11007 best_cost=38 L=3,912,1603,0 time=1.8s	{"1": 1, "3": 2}
+S7	h=2	K=0	n=5040	RESULT_EXH M=2520 h=2 n=5040 evals=600000 best_cost=140 L=458,467,1025,1986 time=57.0s	{"1": 1, "2": 1}
+S7	h=2	K=1	n=5040	RESULT_EXH M=2520 h=2 n=5040 evals=600000 best_cost=86 L=325,2300,886,984 time=76.3s	{"1": 1, "2": 1}
+S7	h=2	K=2	n=5040	RESULT_EXH M=2520 h=2 n=5040 evals=600000 best_cost=15 L=759,1539,154,406 time=116.9s	{"1": 1, "2": 1}
+A7x2	h=2	K=0	n=5040	RESULT_EXH M=2520 h=2 n=5040 evals=610626 best_cost=64 L=299,1878,1819,2030 time=74.8s	{"1": 1, "2": 1}
+A7x2	h=2	K=1	n=5040	RESULT_EXH M=2520 h=2 n=5040 evals=610626 best_cost=50 L=1773,2280,2500,2045 time=59.7s	{"1": 1, "2": 1}
+A7x2	h=2	K=2	n=5040	RESULT_EXH M=2520 h=2 n=5040 evals=300000 best_cost=6 L=900,1187,1467,2443 time=47.0s	{"1": 1, "2": 1}
+PSL2_29	h=4	K=0	n=6090	RESULT_EXH M=3045 h=4 n=6090 evals=1179 best_cost=124 L=67,1805,989,982 time=0.2s	{"1": 1, "2": 3}

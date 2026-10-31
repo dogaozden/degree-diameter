@@ -94,3 +94,15 @@ agl1 5 x Z2 (6480) 11857. Cost grows fast with |G|; 60 s is far too short for 16
 hgws.c = hgw.c plus SA=1 mode (single random moves, T from argv[5] down to env T1). About 0.55 ms per move on d4D5.
 Queue runq2.sh (started 22:56): dih16 for 240 s, then PG(2,3) over sl2_3xZ8, meta14-14-13, heis3xZ8, agl1 7x5 (60 s each),
 rb12 over meta13-32-5 and rb14 over meta7-51-2 (60 s each). Results in runq2.log.
+
+## 23:21 UTC: new best (replaces the K44 cost 156)
+- rb12.txt (6+6 random 4-regular bipartite, 12 vertices, 24 edges, girth? see closedcount) over meta 13 32 5
+  (order 416): n = 4,992. ILS 60 s: cost 97; refined 240 s from that state: cost 80 (r12m13_80.edges,
+  far = 16,640, apsp INVALID at D=9). Scoreboard lines appended at 23:12 and 23:17.
+  Rebuild: ./hgw rb12.txt g66/meta_13_32_5.bin 0 1 1 OUT r12m13_80.sol (edges with WRITE_EDGES=1).
+- Other 6+6 groups at 60 s: meta 7 60 3 (order 420, n = 5040): 91; meta 19 22 18 (order 418): 123.
+- 7+7 random base rb14 over meta 7 51 2 (order 357, n = 4998): 120 at 60 s.
+- PG(2,3) over non-abelian groups at 60 s: sl2 3 x Z8 (192): 248; meta 14 14 13 (196): 311;
+  heis 3 x Z8 (216): 609; agl1 7 x Z5 (210): 540. Cyclic/meta 8 24 3 were about 250 as well.
+- d4D5_162 over dih16 (n = 5184), 240 s: 3229.
+- Queue run4.sh (480 s refinement of the order-416 candidate) and run5.sh (360 s refinement of the order-420 one).

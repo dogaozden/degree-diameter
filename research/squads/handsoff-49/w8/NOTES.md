@@ -37,3 +37,9 @@ Start: 2026-10-31 21:41 UTC. Stop (2 hours): about 23:41 UTC.
 - 3+3 bases screened only on SL(2,5) x Z7 (screen6.txt); other groups untested.
 - Tabu with larger NS, restarts from several SA solutions, or a symmetry restriction (voltages invariant under a
   base automorphism of order 2) to shrink the search.
+
+## Final (23:20 UTC)
+- Last tabu round (4000 moves, tenure 40, 440 s) did not improve on cost 15. Best stays n = 4992, cost 15,
+  far pairs 9,360, file w8/runs/w8_best_n4992.edges (checked: score48 far = 9360, apsp INVALID at D = 9).
+- Next idea: the same tabu search on the b = 2 Haar family (w1/w2 territory) at orders 2,486..2,520, where tabu
+  should beat the plain annealing used by the dipole calibration; and restarts from several SA solutions.

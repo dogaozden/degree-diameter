@@ -46,3 +46,23 @@ Start: 2026-10-31 21:41 UTC. Planned end: 23:41 UTC (2 hours).
 ## Haar-family note for the coordinator
 - A base with a semiregular automorphism group Z_h and voltages constant on its orbits is a Haar graph of G x Z_h
   (bi-circulant base K44 -> Haar over G x Z_4). Those lifts are inside the w1/w2 domain.
+
+## Final state 23:28 UTC (end of the 2-hour slot)
+- Best result: n = 4992 (h=2 base mh2_1 = K22 with doubled edges, 4 base vertices), group meta:13:96:5 or meta:39:32:31,
+  tabu cost 4 (50-60 s runs; seeds 31, 61, 72). Not valid: far pairs = 2496 (score48). Files:
+  out/t_mh2_1_1248_s31.edges (cost 4), out/t_mh2_1_meta_39_32_31_s61.edges (cost 4), out/f_39_32_31_s72.edges (cost 4 if written).
+- Batch screen over 60 metacyclic groups of order 1248 (14 s tabu, results_h2_1248_screen.tsv): best 6 (meta:104:12:23,
+  checked 60 s: 6 again), next 10 (meta:13:96:4, meta:52:24:7), most 14-90.
+- Pattern of the floor: the unreached triples are same-side pairs, and the unreached group elements have j = 0 mod 4 in
+  meta:39:32:31 (index-4 normal subgroup, quotient Z_4). Suspected Z_4-parity obstruction from the base.
+- Scoreboard lines: cost 22 (h=3, n=4992), cost 19 (h=3, n=4992), cost 4 (h=2, n=4992). None VALID.
+
+## What I would try next
+1. Groups of order 1248 whose abelianisation has 2-part of exponent 2 (no Z_4 quotient), e.g. meta:208:6:r with r = 3 mod 4
+   (checked only one, 68 at 30 s), or non-metacyclic ones with the same property; if the floor disappears, cost 0 is possible.
+2. Longer tabu (10 min) on the 4-cost states with kicks that move the two unreached-relevant edges.
+3. Drop the card's 5+5..8+8 bases: they floor at 100+. h=2 and h=3 with a Z_2/Z_4 structure are the only families
+   that got below 20 at n ~ 5000 here.
+
+## Last runs 23:30 UTC
+- meta:39:32:31 seeds 111, 112 (100 s): cost 10. Floor 4 stays the best for h=2 base mh2_1 at n=4992.

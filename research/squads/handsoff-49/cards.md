@@ -190,3 +190,39 @@ groups, e.g. using automorphisms (a, j) -> (u a, j) only). Time one group first 
 `--slice i/n` into foreground chunks of at most 540 s. Keep a table certified.tsv (m k r, minimum or "no cost 0",
 seconds). Any cost-0 set is a record: build the edge list (sol2edges.py or flift OUT.edges) and run apsp at once.
 Do not run haar_tab screens yourself (w2 does that); talk to no one, just read w2's files.
+
+## w12: lifts of small bases over simple and centreless groups, with tabu (follows w8)
+
+Read `$H/w8/NOTES.md` (w8's tools: wl2.c annealing and wt.c tabu for any base and group tables up to 4,096 elements;
+tabu beat annealing by ~30% on a 2+2 base) and the shared lesson from w1 and w7: groups with a small centre and a small
+abelianization do best. Earlier lifts in this squad used solvable groups (best: 3+3 base, n = 4,992, cost 4; 2+2 base
+over AGL(1,13) x Z_8, cost 15). Lift k+k bipartite 4-regular bases (multigraphs allowed; enumerate them as w5 did in
+`$H/w5/gen_matrix_bases.py`) over simple or centreless groups with b |G| > 4,970: PGL(2,11) (1,320) with 2+2 bases
+(n = 5,280); PSL(2,11) (660) with 4+4 bases (5,280); PSL(2,8) (504) with 5+5 bases (5,040); A_6 (360) with 7+7 bases
+(5,040); PGL(2,7) (336) or S_6 / PGL(2,9) / M_10 (720) with 8+8 or 4+4 bases (5,376 / 5,760); PSL(2,13) (1,092) with
+3+3 bases (6,552). Build tables with groups.py (psl2, pgl2, perm). Screen many (base, group) pairs briefly, then run
+tabu with restarts on the best 3. Report cost and far pairs.
+
+## w13: the cost-4 wall at n = 4,992 (follows w5)
+
+Several families stop at exactly n = 4,992 with cost 4: Haar graphs of meta 104 24 7 and meta 208 12 3 (w2; earlier
+squad: the central involution (52, 0) is far in every optimum), and 2+2 lifts with base [[2,2],[2,2]] over meta 13 96 5
+and meta 39 32 31 (w5: `$H/w5/out/t_mh2_1_1248_s31.edges`; w5 says the far pairs are only same-side pairs with
+j = 0 mod 4). Read `$H/w5/NOTES.md`. Step 1 (analysis, at most 30 minutes): with farlist on two or three of these
+graphs, find the exact obstruction: which group elements separate the far pairs, whether they lie in the centre, in a
+characteristic subgroup, or in the kernel of a small abelian quotient. Step 2 (search): choose groups of order 1,248
+(2+2 lifts), 832 (3+3), 624 (4+4) and 2,496 (Haar) that avoid the obstruction (e.g. no central involution, a 2-part that
+is not cyclic, a different abelianization), and also orders a little higher (1,250..1,300 for 2+2), build them with
+groups.py (products, semi, perm) or your own generator, and run w5's tabu (`$H/w5/tabu.c`, TABU=1) or flift on them.
+A cost below 4 at n >= 4,972 is progress; cost 0 is a record.
+
+## w14: bi-coset graphs of larger simple groups with bigger stabilizers (next to w9)
+
+w7 and w9 work on bi-coset graphs (both sides = cosets of a subgroup H, edges by a union of double cosets; read
+`$H/w7/NOTES.md`). w9 takes M_11, S_7, A_8 and PSL(2,q). You take other simple groups with |H| between 4 and 24, so
+that a single double coset can give 2 or 4 neighbours and the graph is close to edge-transitive: PSL(3,4) (20,160)
+with |H| = 7 (n = 5,760) or 8 (5,040), Sz(8) (29,120) with |H| = 10 (5,824) or 8 (7,280), PSU(3,4) (62,400) with
+|H| = 24 (5,200), PSL(2,16) x| Z_4 = PSigmaL(2,16) (16,320) with |H| = 6 (5,440), PSL(2,49) (58,800) with |H| = 24
+(4,900: too small) or 20 (5,880). Work with permutation representations (PSL(3,4) on the 21 points of PG(2,4); Sz(8) on
+65 points; build the group from matrix or permutation generators and check its order), index cosets by a canonical
+form, and count degree per double coset. Exhaustive over small sets of double cosets first, then annealing.

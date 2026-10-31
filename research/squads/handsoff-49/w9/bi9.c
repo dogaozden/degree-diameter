@@ -161,6 +161,21 @@ static void rec_part(int p, int start) {
     }
 }
 
+static long long LIMIT_PART = 300000;
+static double combn(int n, int k) { if (k < 0 || n < k) return 0; double r = 1; for (int i = 0; i < k; i++) r = r * (n - i) / (i + 1); return r; }
+/* random distinct orbits for the current parts; sets cur[] and ncur (ncur != 4 on failure) */
+static void sample_part(void) {
+    int ncc = 0;
+    for (int p = 0; p < npart; p++) {
+        int s = partsize[p];
+        for (int tt = 0; tt < 1000; tt++) {
+            int o = lst[s][xr() % nlst[s]], dup = 0;
+            for (int v = 0; v < ncc; v++) if (ob[cur[v]] == o) dup = 1;
+            if (!dup) { for (int v = 0; v < s; v++) cur[ncc + v] = omem[o][v]; ncc += s; break; }
+        }
+    }
+    ncur = ncc;
+}
 static void enumerate_partitions(void) {
     /* partitions of 4 into orbit sizes, each realised by available orbits */
     int parts[5][4] = { {4}, {3, 1}, {2, 2}, {2, 1, 1}, {1, 1, 1, 1} };
@@ -177,7 +192,26 @@ static void enumerate_partitions(void) {
         bestpartidx = pi;
         int before = bestcost;
         ncur = 0;
-        rec_part(0, 0);
+        double cnt = 1;
+        for (int s = 1; s <= 4; s++) cnt *= combn(nlst[s], need[s]);
+        if (cnt <= (double)LIMIT_PART) {
+            rec_part(0, 0);
+            fprintf(stderr, "partition exhaustive, count %.0f\n", cnt);
+        } else {
+            fprintf(stderr, "partition sampled %lld of %.3g\n", LIMIT_PART, cnt);
+            for (long long it = 0; it < LIMIT_PART && !stopflag; it++) {
+                sample_part();
+                if (ncur != 4) continue;
+                int Lp[4];
+                int c = evalL(cur, Lp);
+                if (c < 0) continue;
+                if (c < minpart[bestpartidx]) minpart[bestpartidx] = c;
+                if (c < bestcost) {
+                    bestcost = c; memcpy(bestL, cur, sizeof(cur));
+                    fprintf(stderr, "  new best cost %d  L={%d,%d,%d,%d} t=%.1fs nev=%lld\n", c, cur[0], cur[1], cur[2], cur[3], now() - t0, nev);
+                }
+            }
+        }
         fprintf(stderr, "partition {");
         for (int u = 0; u < npart; u++) fprintf(stderr, "%d%s", partsize[u], u + 1 < npart ? "," : "");
         fprintf(stderr, "}: count of orbit choices %s, minimum cost %d (overall best %d)\n",
@@ -203,6 +237,7 @@ int main(int argc, char **argv) {
     }
     if (!strcmp(mode, "exh")) {
         if (argc > 3) limit = atoll(argv[3]);
+        if (getenv("CAP")) LIMIT_PART = atoll(getenv("CAP"));
         out_path = argc > 4 ? argv[4] : NULL;
         for (int p = 0; p < 16; p++) minpart[p] = 1 << 30;
         enumerate_partitions();
