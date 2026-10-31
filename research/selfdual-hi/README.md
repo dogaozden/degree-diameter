@@ -100,8 +100,8 @@ Checks of every hit: research/lifts/coordinator_check/apsp.c (`src/apsp`), VALID
   95,545,984 sets, best 7, no solution (`logs/K5D8/enum_sl17_psi3_t122.txt`); psi(x) = -x^-1, type 1+2+2:
   6,317,676 sets, best 10; type 1+1+1+2: 42,558,480 sets, best 9; no solution (`enum_sl17_psi1_*.txt`). So the
   best self-dual families of SL(2,17) have no (5,8) graph. Control, plain annealing (haar_sym without symmetry) on
-  the same groups: SL(2,17) best 1 (seeds of 600-1,800 s, 7e7 evaluations each: 2, 1, 2, and 1-3 for the later
-  seeds), PGL(2,17) best 13, PSL(2,17) x Z2 best 12. A plain near miss leaves generic elements uncovered (sdhi
+  the same groups: SL(2,17) best 1 (10 seeds of 600-1,800 s, 7e7 to 2.4e8 evaluations each; final bests
+  2, 1, 2, 1, 1, 1, 3, 2, 1, 3; none reached 0), PGL(2,17) best 13, PSL(2,17) x Z2 best 12. A plain near miss leaves generic elements uncovered (sdhi
   SHOWBEST: 5 elements, none central). So SL(2,17) is the closest group found to a (5,8) graph above the record;
   plain sets get within one element, self-dual sets are exhausted without a solution.
 
@@ -110,7 +110,7 @@ Checks of every hit: research/lifts/coordinator_check/apsp.c (`src/apsp`), VALID
 
 ## What is left open
 
-- (5,8) on SL(2,17) with plain sets: best 1 uncovered after 7e7 evaluations in several seeds. Longer plain
+- (5,8) on SL(2,17) with plain sets: best 1 uncovered in 5 of 10 seeds (up to 2.4e8 evaluations), never 0. Longer plain
   annealing there is the most direct chance at a (5,8) graph above 9,760 (not a self-dual one: those are exhausted
   in the main types; the self-dual types 1+1+1+1+1 and psi3 1+1+1+2 (5e8 sets) were only sampled).
 - The diagnosis says where self-duality can still pay at D = 7, 8: groups with a very low commuting probability
