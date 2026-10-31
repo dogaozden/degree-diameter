@@ -1,0 +1,14 @@
+Provenance: the haarcheck_gen section below is copied unedited from branch claude/haar-graph-verification-gllj47, file research/frontier/runs/cloudcheck/d18D10_psl_223_1063_orb3_s1.txt (blob 8cdd1b7595aa6397e07b3b585d96b23550544fb3). Sol file copied from branch claude/new-cells-beyond-etos3t (blob d88a10bbd4b27035321f0c34b76ee8abf2ae1263), sha256 verified equal to the sha256 on its line 2.
+machine: vm; nproc=4; free -g: total 15G used 0G free 14G avail 15G; Linux 6.18.44-fc-v185; gcc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0
+sha256: d436b287bc674f75c58d45971bdc772b6e65d72b3a386e37a30f56aa5b59082b  research/frontier/sols/d18D10_psl_223_1063_orb3_s1.txt
+
+################ haarcheck_gen (new low-memory checker, research/frontier/haarcheck_gen.c; built with gcc -O3 -fopenmp -o haarcheck_gen haarcheck_gen.c, binary built from origin/master source in scratchpad; run under /usr/bin/time -v): /usr/bin/time -v ./haarcheck_gen research/frontier/sols/d18D10_psl_223_1063_orb3_s1.txt   (stdout, complete)
+selftest psl 223: |M| = 5544672, index round trip over all elements ok
+selftest group multiplication: associativity, identity, inverse on 20000 random triples ok
+file research/frontier/sols/d18D10_psl_223_1063_orb3_s1.txt
+header: 18 10 psl 223 n 1063 N 5893986336
+group psl 223 x Z_1063, |G| = 5893986336 = N, vertices 2N = 11787972672; 18 distinct generators
+from (e,A): reached A 5893986336/5893986336, B 5893986336/5893986336 within 10; ecc 10; level sizes [1, 18, 306, 5196, 88230, 1497957, 25381044, 416272252, 4176060372, 5476210913, 1692456383]  (705s)
+from (e,B): reached A 5893986336/5893986336, B 5893986336/5893986336 within 10; ecc 10; level sizes [1, 18, 306, 5196, 88230, 1497957, 25381080, 416272252, 4176036620, 5476210913, 1692480099]  (1391s)
+VALID d=18 D=10 group=psl 223 x Z_1063 N=5893986336 vertices=11787972672 (distinct generators, 18-regular simple; every vertex within 10 of both (e,A) and (e,B); ecc 10; 1391s)
+[exit 0; wall 1391s (23:11.25 under /usr/bin/time -v); peak RSS 4218 MB (4319148 KB)]
