@@ -90,7 +90,37 @@ maximization of |S S^-1 S S^-1 S| (best 91.1 % = 437 uncovered on SL(2,17), rand
 
 ## Frontier and target runs (`logs/front/`, `logs/target/`, `logs/k11/`)
 
-(Filled in at the end of the job.)
+**(7,6) frontier** (best uncovered; 0 = valid graph; sdhi = self-dual tabu, 40 s per psi/type for types 1+2+2+2 and
+1+1+1+2+2, DEEP 200 s for types at <= 4; haar_sd = annealing, 300-600 s, one seed):
+
+| group | N | mu | sdhi self-dual | haar_sd plain | haar_sd self-dual | haar_sd orbit k = 3 |
+|---|---:|---:|---:|---:|---:|---:|
+| SL(2,7) x Z7 | 2,352 | 45 | **0** (calibration, 15 s) | 2 | **0** (psi = -x^-1) | |
+| PSL(2,7) x Z14 | 2,352 | 45 | | | | **0** (squad c3) |
+| PSL(2,17) | 2,448 | 54 | 4 | 7 | 7 (tw) | 6 |
+| C43 : C57, r = 6 | 2,451 | 54 | 14 | | | |
+| PSL(2,7) x Z15 | 2,520 | 62 | 4 | 5 | | 149 (no unit of order 3 in Z15) |
+| PSL(2,11) x Z4 | 2,640 | 77 | 13 (15 s) | | | |
+| SL(2,7) x Z8 | 2,688 | 84 | | | 20 (psi = -x^-1) | |
+| PSL(2,7) x Z16 | 2,688 | 84 | | | | 188 |
+
+So the frontier is at N ~ 2,350-2,450 (mu ~ 45-55), right at the first-moment ceiling N_h = 2,453. At D = 6 the
+self-dual family is as good as or a little better than plain annealing in the same group (SL(2,7) x Z7: self-dual
+solved by both tools, plain best 2 after 1.2e8 evaluations; PSL(2,17): self-dual tabu 4, plain 7), which fits the
+paired misses; it does not move the frontier past the ceiling.
+
+**(7,6) at the target order** (N >= 4,797, model mu about 700): SL(2,17) (N = 4,896, mu 728): sdhi psi(x) =
+-(hxh)^-1, h = diag(1,3), type 1+2+2+2, one 600 s tabu run: best **412** uncovered (`logs/target/sd_sl17_psi3_long.txt`);
+haar_sd self-dual (psi = -x^-1) 800 s: 496; squad: 437 (maximize distinct words), 448 (sdhi, 8 s per type), 450
+(plain), PSL(2,7) x Z29 450-462, SL(2,7) x Z15 463, AGL(1,71) 485, Heis(17) 481, PSL(2,7) x Z31 (orbit k = 3) 505.
+Every method stops at 0.55-0.7 of mu, about 9 % of G uncovered; nothing is close to 0.
+
+**(11,6)** (haar_sd only; sdhi's tables stop at 8,192 elements per factor). Calibration: valid graphs at N = 12,144
+(SL(2,23), self-dual psi = -x^-1), 12,180 (PSL(2,29), plain and self-dual tw) and 14,880 (PSL(2,31), plain, in
+0.1 s); all checked with build_haar2.py + apsp (VALID at 6, INVALID at 5), the PSL(2,31) graph saved under
+`records/`. Target order (600 s each): PSL(2,11) x Z113 (N = 74,580, mu 16,811): best 15,058 uncovered (plain);
+SL(2,43) (79,464, mu 19,630): plain 17,563, self-dual (-x^-1) 17,961; PSL(2,43) x Z2 self-dual (tw) 18,312. About 0.9
+of mu: the (11,6) target is 3.5 times the ceiling N_h = 21,117 and no search can see it.
 
 ## Tools (src/)
 
