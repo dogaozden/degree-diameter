@@ -5,8 +5,21 @@ Job "selfdual-d5" (Opus cloud session, Oct 30 2026, from 20:35 UTC). Method from
 (t^2 = c, t x t^-1 = beta(x)), then H(G,S) = Cay(G^, tS) is vertex-transitive and only X X = G (X = S^-1 S) has to
 be checked. Work in progress; see the status section at the end.
 
-**NEW (9,5): 2,970 vertices** (our value was 2,758, the Haar graph of C197 : C7; 2,790, 2,814, 2,928 and 2,934
-earlier in this job): the Haar graph of G = Heis(3) x (C11 : C5) = SmallGroup(1485,4) (Heis(3) = upper unitriangular
+**NEW (9,5): 2,976 vertices** (our value was 2,758, the Haar graph of C197 : C7; 2,790, 2,814, 2,928, 2,934 and
+2,970 earlier in this job): the Haar graph of G = C31 : (C3 x Q16) = SmallGroup(1488,11), elements (i,c,k,l) =
+x^i z^c a^k b^l (x of order 31, z of order 3, Q16 = <a, b | a^8 = 1, b^2 = a^4, b a b^-1 = a^-1>, z x z^-1 = x^25,
+a x a^-1 = x, b x b^-1 = x^-1), product (i,c,k,l)(i',c',k',l') = (i + 25^c (-1)^l i', c+c', k + (-1)^l k' + 4[l = l' = 1],
+l+l'), S = {(0,0,0,0), (25,0,2,0), (18,0,6,0), (12,2,1,1), (10,1,7,1), (0,1,1,0), (0,2,5,0), (24,2,0,0), (11,1,0,0)},
+(g,A) ~ (s g, B). 9-regular, bipartite, diameter 5. Self-dual for beta: x -> x^-1, z -> z, a -> a^3, b -> b, so also a
+Cayley graph of G : <tau> with T = S tau. Checks: apsp.c VALID at D = 5, INVALID at D = 4
+(`records/d9D5_n2976_haar_c31_c3q16_apsp.txt`), independent Python checker VALID, GAP-free rebuild from the formula
+identical to the saved edge list, Cayley build and the search's own builds (two seeds): same nauty canonical form
+(`records/d9D5_n2976_haar_c31_c3q16_cayley.txt`). Files: `records/d9D5_n2976_haar_c31_c3q16.edges` (sha256
+a124e06804fc9bd58db1c54a45f2853dd15f3f17b4a524617388a906aa3b5415), builder `records/build_d9D5_n2976.py`, rebuild
+`records/build_d9D5_n2976.sh`, search output `records/d9D5_n2976_haar_c31_c3q16_search.out` (sdtabu K = 9, record 11,
+type (3,3)).
+
+Earlier in this job, **2,970 vertices**: the Haar graph of G = Heis(3) x (C11 : C5) = SmallGroup(1485,4) (Heis(3) = upper unitriangular
 3x3 matrices mod 3), elements (a,b,c,i,j) with product (a,b,c,i,j)(a',b',c',i',j') = (a+a', b+b', c+c'+ab', i+3^j i',
 j+j'), S = {(0,0,0,0,0), (1,2,0,5,0), (0,0,1,2,0), (2,1,1,9,4), (2,1,1,3,1), (1,0,2,10,1), (2,0,2,4,4), (1,1,1,5,1),
 (0,1,2,6,4)}, (g,A) ~ (s g, B). 9-regular, bipartite, diameter 5. Self-dual for the involutory automorphism beta with
