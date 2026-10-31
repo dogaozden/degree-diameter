@@ -49,7 +49,9 @@ static EM *E;                      /* per element (meta): i, j, l, j*m */
 static uint8_t (*MAT)[4]; static int *IDX4, *RED; static int *EH, *EL;
 static int *inv;
 
+static uint16_t *HT;               /* full H table when nh <= HTMAX (env, default 2600) */
 static inline int hmat(int h1, int h2) {
+    if (HT) return HT[(size_t)h1 * nh + h2];
     const uint8_t *A = MAT[h1], *B = MAT[h2]; int p = p_;
     int a = RED[A[0] * B[0] + A[1] * B[2]], b = RED[A[0] * B[1] + A[1] * B[3]];
     int c = RED[A[2] * B[0] + A[3] * B[2]], d = RED[A[2] * B[1] + A[3] * B[3]];
@@ -104,6 +106,10 @@ static void build_group(int argc, char **argv) {
         for (int e = 0; e < n; e++) { const uint8_t *A = MAT[EH[e]];
             int hi = IDX4[((A[3] * p + (p - A[1]) % p) * p + (p - A[2]) % p) * p + A[0]];
             inv[e] = hi * n3 + (n3 - EL[e]) % n3; }
+        int htmax = getenv("HTMAX") ? atoi(getenv("HTMAX")) : 2600;
+        if (nh <= htmax) { uint16_t *T = malloc(sizeof(uint16_t) * (size_t)nh * nh);
+            for (int a = 0; a < nh; a++) for (int b = 0; b < nh; b++) T[(size_t)a * nh + b] = hmat(a, b);
+            HT = T; }
         int s = IDX4[((1 * p + 1) * p + 0) * p + 1], t = IDX4[((0 * p + 1) * p + (p - 1)) * p + 0];
         ngen = 0; gens[ngen++] = s * n3; gens[ngen++] = t * n3; if (n3 > 1) gens[ngen++] = 1;
     } else { fprintf(stderr, "unknown group kind %s\n", argv[1]); exit(2); }
@@ -191,7 +197,7 @@ static void family(void) {
 
 /* ---------- records ---------- */
 #define MAXRECS 4096
-static int nrec, rkind[MAXRECS], rc[MAXRECS], *rbeta[MAXRECS], rorder[MAXRECS]; static char rdesc[MAXRECS][200];
+static int nrec, rkind[MAXRECS], rc[MAXRECS], *rbeta[MAXRECS], rorder[MAXRECS], rcentral[MAXRECS]; static char rdesc[MAXRECS][200];
 static int MAXREC_ = 400;
 static int *par; static int findp(int x) { while (par[x] != x) { par[x] = par[par[x]]; x = par[x]; } return x; }
 static int elorder(int g) { int o = 1, x = g; while (x != 0) { x = gmul(x, g); o++; if (o > n) return -1; } return o; }
@@ -250,7 +256,8 @@ static void make_records(void) {
                 /* psi(x) = c'^-1 beta'(x)^-1 must be an involution */
                 int invo = 1, cpi = inv[cp]; for (int u = 0; u < n && invo; u++) { int pu = gmul(cpi, inv[bb[u]]); if (gmul(cpi, inv[bb[pu]]) != u) invo = 0; }
                 if (!invo) { fprintf(stderr, "internal: psi not an involution (rec skipped)\n"); free(bb); continue; }
-                rkind[nrec] = cp != 0; rc[nrec] = cp; rbeta[nrec] = bb; rorder[nrec] = elorder(g) ;
+                rkind[nrec] = cp != 0; rc[nrec] = cp; rbeta[nrec] = bb; rorder[nrec] = elorder(g);
+                rcentral[nrec] = 1; for (int s = 0; s < ngen; s++) if (bb[gens[s]] != gens[s]) rcentral[nrec] = 0;   /* t' central in G^ */
                 char cg[48], cc2[48]; coords(g, cg); coords(cp, cc2);
                 snprintf(rdesc[nrec], 200, "%s; c0 %d; t' = (%s) t0, t'^2 = (%s)", cand[c].desc, cc, cg, cc2);
                 nrec++; }
@@ -391,6 +398,144 @@ static void run(int r, int f, int mm, double secs, int NB, int TEN, int STALL, i
            best, sols, step, restarts, (double)(clock() - c0) / CLOCKS_PER_SEC, extended ? " DEEP" : "");
     fflush(stdout); free(tabu_until);
 }
+/* ---------- SIGMA=q: every S that is a union of <psi, sigma>-orbits, sigma an automorphism of order q of the family
+ * with sigma beta' = beta' sigma and sigma(c') = c' (then sigma extends to G^ fixing t', and X X is sigma-invariant,
+ * so only sigma-orbit representatives of G are targets).  Exhaustive DFS over orbit sets of total size K (DMAX
+ * orbits at most besides the orbit of e), fast rejection with move-to-front targets, exact energy for sets that pass
+ * NEAR targets, full check for energy 0.  Caps: MAXSETS per (record, sigma). ---------- */
+static int sig_meta_apply(const int *pr, const int *Sc, int e) {   /* pr = (a,b,c,d,w), Sc[j] = sum_{t<j} r^(c t) */
+    long long i = E[e].i, j = E[e].j, l = E[e].l;
+    int i2 = (int)((pr[0] * i + (long long)pr[1] * Sc[j]) % m_), j2 = (int)(pr[2] * j % k_), l2 = (int)((pr[3] * j + pr[4] * l) % n3);
+    return (i2 * k_ + j2) * n3 + l2;
+}
+static int sig_mat_apply(const int *A, const int *Ai, int w, int e) {   /* h -> A h A^-1, l -> w l */
+    const uint8_t *M = MAT[EH[e]]; int p = p_;
+    long long t0 = (A[0] * M[0] + A[1] * M[2]) % p, t1 = (A[0] * M[1] + A[1] * M[3]) % p;
+    long long t2 = (A[2] * M[0] + A[3] * M[2]) % p, t3 = (A[2] * M[1] + A[3] * M[3]) % p;
+    int a = (int)((t0 * Ai[0] + t1 * Ai[2]) % p), b = (int)((t0 * Ai[1] + t1 * Ai[3]) % p);
+    int c = (int)((t2 * Ai[0] + t3 * Ai[2]) % p), d = (int)((t2 * Ai[1] + t3 * Ai[3]) % p);
+    return IDX4[((a * p + b) * p + c) * p + d] * n3 + (int)((long long)w * EL[e] % n3);
+}
+#define MAXSIG 64
+static int nsig; static int *sigperm[MAXSIG]; static char sigdesc[MAXSIG][96];
+static void find_sigmas(int r, int q) {               /* sigma of order q commuting with beta'_r, fixing c'_r */
+    int *bb = rbeta[r], cp = rc[r], img[3], *perm = malloc(sizeof(int) * n), *tmp = malloc(sizeof(int) * n);
+    uint64_t keys[MAXSIG]; nsig = 0;
+    #define TRY_SIG(APPLY, DESC) do { \
+        int good = 1; \
+        for (int s = 0; s < ngen && good; s++) if (APPLY(bb[gens[s]]) != bb[APPLY(gens[s])]) good = 0; \
+        if (good && APPLY(cp) != cp) good = 0; \
+        if (good) { for (int s = 0; s < ngen; s++) img[s] = APPLY(gens[s]); \
+            int isid = 1; for (int s = 0; s < ngen; s++) if (img[s] != gens[s]) isid = 0; \
+            if (!isid && make_aut(img, perm)) { \
+                for (int u = 0; u < n; u++) tmp[u] = u; \
+                for (int t = 0; t < q; t++) for (int u = 0; u < n; u++) tmp[u] = perm[tmp[u]]; \
+                int ordok = 1; for (int u = 0; u < n; u++) if (tmp[u] != u) { ordok = 0; break; } \
+                if (ordok) { /* key: orbit partition of <sigma> (min of each orbit), FNV hash */ \
+                    uint64_t hsh = 1469598103934665603ULL; \
+                    for (int u = 0; u < n; u++) { int mn = u, v = perm[u]; while (v != u) { if (v < mn) mn = v; v = perm[v]; } hsh = (hsh ^ (uint64_t)mn) * 1099511628211ULL; } \
+                    int dup = 0; for (int y = 0; y < nsig; y++) if (keys[y] == hsh) dup = 1; \
+                    if (!dup && nsig < MAXSIG) { keys[nsig] = hsh; sigperm[nsig] = malloc(sizeof(int) * n); memcpy(sigperm[nsig], perm, sizeof(int) * n); \
+                        snprintf(sigdesc[nsig], 96, "%s", DESC); nsig++; } } } } } while (0)
+    char d[96];
+    if (hkind == 0) {
+        int *Sc = malloc(sizeof(int) * (k_ + 1)), pr[5];
+        for (int c = 1; c <= k_; c++) { int cc = c % k_; if (k_ > 1 && (gcd(c, k_) != 1 || ipow(c, q, k_) != 1 % k_ || ipow(r_, c, m_) != r_ % m_)) continue;
+            if (k_ == 1 && c > 1) break;
+            { long long rc_ = ipow(r_, cc ? cc : (k_ == 1 ? 0 : k_), m_), sacc = 0, pw = 1; for (int j = 0; j <= k_; j++) { if (j < k_ + 1) Sc[j] = (int)sacc; sacc = (sacc + pw) % m_; pw = pw * rc_ % m_; } }
+            for (int a = 1; a < m_ || (m_ == 1 && a == 1); a++) { if (gcd(a, m_) != 1 || ipow(a, q, m_) != 1 % m_) continue;
+                for (int b = 0; b < m_; b++) for (int dd = 0; dd < n3; dd++) { if ((long long)dd * k_ % n3) continue;
+                    for (int w = 1; w <= n3; w++) { if (n3 > 1 && (gcd(w, n3) != 1 || ipow(w, q, n3) != 1 % n3)) continue; if (n3 == 1 && w > 1) break;
+                        pr[0] = a; pr[1] = b; pr[2] = cc; pr[3] = dd; pr[4] = w % n3;
+                        snprintf(d, 96, "sigma: x->x^%d y->x^%d y^%d z^%d z->z^%d", a, b, cc, dd, w % n3);
+                        #define MAPPLY(E_) sig_meta_apply(pr, Sc, (E_))
+                        TRY_SIG(MAPPLY, d);
+                        #undef MAPPLY
+                        if (nsig >= MAXSIG) goto done; } } } }
+        free(Sc);
+    } else {
+        int p = p_, A[4], Ai[4];
+        for (int a0 = 0; a0 < p; a0++) for (int a1 = 0; a1 < p; a1++) for (int a2 = 0; a2 < p; a2++) for (int a3 = 0; a3 < p; a3++) {
+            int det = ((a0 * a3 - a1 * a2) % p + p) % p; if (!det) continue;
+            int fst = a0 ? a0 : a1; if (fst != 1) continue;              /* A up to scalars */
+            int di = ipow(det, p - 2, p); A[0] = a0; A[1] = a1; A[2] = a2; A[3] = a3;
+            Ai[0] = a3 * di % p; Ai[1] = (p - a1) * di % p; Ai[2] = (p - a2) * di % p; Ai[3] = a0 * di % p;
+            for (int w = 1; w <= n3; w++) { if (n3 > 1 && (gcd(w, n3) != 1 || ipow(w, q, n3) != 1 % n3)) continue; if (n3 == 1 && w > 1) break;
+                snprintf(d, 96, "sigma: h->A h A^-1, A = %d.%d.%d.%d; z->z^%d", a0, a1, a2, a3, w % n3);
+                #define PAPPLY(E_) sig_mat_apply(A, Ai, w % n3, (E_))
+                TRY_SIG(PAPPLY, d);
+                #undef PAPPLY
+                if (nsig >= MAXSIG) goto done; } }
+    }
+done:
+    free(perm); free(tmp);
+}
+static long long sig_sets, sig_pass; static int sig_best;
+static int *sorb_start, *sorb_el, nsorb, *sorbsz;       /* <psi,sigma>-orbits (orbit of e excluded), elements listed */
+static int *tgt, ntgt;                                    /* sigma-orbit representatives (move-to-front list) */
+static int SX[64], nsx, sig_rec, sig_q, sig_maxsol = 2, sig_nsol, NEAR_ = 25; static long long MAXSETS_ = 2000000000LL;
+static uint32_t *xmark; static uint32_t xst = 0;
+static void sig_leaf(void) {
+    sig_sets++;
+    int X[512], nx = 0; xst++;
+    for (int i = 0; i < nsx; i++) for (int j = 0; j < nsx; j++) { int x = gmul(inv[SX[i]], SX[j]); if (xmark[x] != xst) { xmark[x] = xst; X[nx++] = x; } }
+    for (int t = 0; t < ntgt; t++) { int z = tgt[t], hit = 0;
+        for (int i = 0; i < nx; i++) if (xmark[gmul(inv[X[i]], z)] == xst) { hit = 1; break; }
+        if (!hit) { for (int u = t; u > 0; u--) tgt[u] = tgt[u - 1]; tgt[0] = z; return; }
+        if (t + 1 == NEAR_ && ntgt > NEAR_) { int e = pp_uncov2(SX, nsx); sig_pass++; if (e < sig_best) sig_best = e;
+            if (e == 0) break; else return; } }
+    if (fullcheck(SX, nsx)) { sig_nsol++; nsol++; sig_best = 0;
+        char tag[128]; snprintf(tag, sizeof tag, "rec %d sigma %d q %d", sig_rec, sig_q, sig_q); print_sol(tag, SX, nsx);
+        if (edges_out && nsol == 1) { FILE *o = fopen(edges_out, "w"); fprintf(o, "%d\n", 2 * n);
+            for (int g = 0; g < n; g++) for (int i = 0; i < nsx; i++) fprintf(o, "%d %d\n", g, n + gmul(SX[i], g)); fclose(o); } }
+    else if (pp_uncov2(SX, nsx) == 0) fprintf(stderr, "WARNING: energy 0 but the full check fails\n");
+}
+static void sig_dfs(int from, int rem, int depth, int dmax) {
+    if (sig_nsol >= sig_maxsol || sig_sets >= MAXSETS_) return;
+    if (rem == 0) { sig_leaf(); return; }
+    if (depth == dmax) return;
+    for (int o = from; o < nsorb; o++) { int sz = sorbsz[o]; if (sz > rem) continue;
+        for (int u = 0; u < sz; u++) SX[nsx++] = sorb_el[sorb_start[o] + u];
+        sig_dfs(o + 1, rem - sz, depth + 1, dmax);
+        nsx -= sz;
+        if (sig_nsol >= sig_maxsol || sig_sets >= MAXSETS_) return; }
+}
+static void sigma_run(int r, int q, int dmax) {
+    setup(r);                                           /* psi */
+    find_sigmas(r, q);
+    printf("SIGMA rec %d q %d found %d\n", r, q, nsig); fflush(stdout);
+    int *orb = malloc(sizeof(int) * n), *stk = malloc(sizeof(int) * n);
+    for (int si = 0; si < nsig; si++) { int *sg = sigperm[si];
+        clock_t c0 = clock();
+        /* orbits of <psi, sigma> */
+        for (int u = 0; u < n; u++) orb[u] = -1;
+        int no = 0, at = 0, eorb = -1;
+        sorb_start = realloc(sorb_start, sizeof(int) * (n + 1)); sorb_el = realloc(sorb_el, sizeof(int) * n); sorbsz = realloc(sorbsz, sizeof(int) * n);
+        for (int u = 0; u < n; u++) if (orb[u] < 0) { int sp = 0; stk[sp++] = u; orb[u] = no; sorb_start[no] = at;
+            while (sp) { int v = stk[--sp]; sorb_el[at++] = v; int w1 = psi[v], w2 = sg[v];
+                if (orb[w1] < 0) { orb[w1] = no; stk[sp++] = w1; } if (orb[w2] < 0) { orb[w2] = no; stk[sp++] = w2; } }
+            sorbsz[no] = at - sorb_start[no]; if (u == 0) eorb = no; no++; }
+        /* move the orbit of e to the front of SX, drop it from the list */
+        nsx = 0; for (int u = 0; u < sorbsz[eorb]; u++) SX[nsx++] = sorb_el[sorb_start[eorb] + u];
+        int esz = nsx;
+        /* compact the orbit list without eorb, sorted by size then index (stable) */
+        int *ostart = malloc(sizeof(int) * no), *osz = malloc(sizeof(int) * no), nn = 0, cnt[64] = {0};
+        for (int sz = 1; sz <= K; sz++) for (int o = 0; o < no; o++) if (o != eorb && sorbsz[o] == sz) { ostart[nn] = sorb_start[o]; osz[nn] = sz; nn++; cnt[sz < 64 ? sz : 63]++; }
+        memcpy(sorb_start, ostart, sizeof(int) * nn); memcpy(sorbsz, osz, sizeof(int) * nn); nsorb = nn; free(ostart); free(osz);
+        /* sigma-orbit representatives as targets */
+        tgt = realloc(tgt, sizeof(int) * n); ntgt = 0; char *seen = calloc(n, 1);
+        for (int u = 0; u < n; u++) if (!seen[u]) { tgt[ntgt++] = u; int v = u; do { seen[v] = 1; v = sg[v]; } while (v != u); }
+        free(seen);
+        sig_sets = sig_pass = 0; sig_best = 1 << 30; sig_nsol = 0; sig_rec = r; sig_q = si;
+        if (esz <= K) sig_dfs(0, K - esz, 0, dmax);
+        printf("SIGRUN rec %d %s sigma %d (%s) e-orbit %d orbits %d (size1 %d size2 %d size3 %d size4 %d size6 %d) targets %d sets %lld passNEAR %lld best %d sols %d%s secs %.1f\n",
+               r, rkind[r] ? "ext" : "alpha", si, sigdesc[si], esz, nsorb, cnt[1], cnt[2], cnt[3], cnt[4], cnt[6], ntgt, sig_sets, sig_pass,
+               sig_best, sig_nsol, sig_sets >= MAXSETS_ ? " CAPPED" : "", (double)(clock() - c0) / CLOCKS_PER_SEC);
+        fflush(stdout);
+        free(sigperm[si]); }
+    free(orb); free(stk);
+}
+
 static int intype(const char *types, int f) {
     const char *p = types;
     while (*p) { if (*p >= '0' && *p <= '9') { int v = atoi(p); if (v == f) return 1; while (*p >= '0' && *p <= '9') p++; } else p++; }
@@ -417,16 +562,42 @@ int main(int argc, char **argv) {
         if (edges_out) { FILE *o = fopen(edges_out, "w"); fprintf(o, "%d\n", 2 * n);
             for (int g = 0; g < n; g++) for (int i = 0; i < k; i++) fprintf(o, "%d %d\n", g, n + gmul(Sv[i], g)); fclose(o); }
         return 0; }
+    if (getenv("BENCH")) { int N = atoi(getenv("BENCH")), Sv[64]; long long tot = 0; clock_t b0 = clock();
+        for (int t = 0; t < N; t++) { for (int i = 0; i < K; i++) Sv[i] = (int)(rnd() % n); tot += pp_uncov2(Sv, K); }
+        printf("BENCH %d sets, %.2f us per energy, mean energy %.1f\n", N, 1e6 * (double)(clock() - b0) / CLOCKS_PER_SEC / N, (double)tot / N);
+        return 0; }
     clock_t t0 = clock(); make_records();
     printf("RECORDS %d (%.1f s)\n", nrec, (double)(clock() - t0) / CLOCKS_PER_SEC);
-    for (int r = 0; r < nrec; r++) printf("REC %d %s order(g) %d | %s\n", r, rkind[r] ? "EXT" : "ALPHA", rorder[r], rdesc[r]);
+    for (int r = 0; r < nrec; r++) printf("REC %d %s order(g) %d%s | %s\n", r, rkind[r] ? "EXT" : "ALPHA", rorder[r], rcentral[r] ? " central" : "", rdesc[r]);
     fflush(stdout);
     if (getenv("RECS")) return 0;
     psi = malloc(sizeof(int) * n); fl = malloc(sizeof(int) * n); ol = malloc(sizeof(int) * 2 * n); orbof = malloc(sizeof(int) * n);
+    /* SHUFFLE=1: records in random order; EXT records with t' central in G^ are skipped unless KEEPCENTRAL=1 (on
+       C37 : C81 at K = 12 they were the only EXT records that failed); STOPFIRST=1: stop at the first solution;
+       TBUDGET=secs: start no new (record, type) after that much CPU time */
     const char *types = getenv("TYPES"); int only = getenv("REC") ? atoi(getenv("REC")) : -1;
-    for (int r = 0; r < nrec; r++) { if (only >= 0 && r != only) continue;
+    int shuffle = getenv("SHUFFLE") && atoi(getenv("SHUFFLE")), keepc = getenv("KEEPCENTRAL") && atoi(getenv("KEEPCENTRAL"));
+    int stopfirst = getenv("STOPFIRST") && atoi(getenv("STOPFIRST")); double tbudget = getenv("TBUDGET") ? atof(getenv("TBUDGET")) : 1e18;
+    int *ord = malloc(sizeof(int) * (nrec + 1)); for (int r = 0; r < nrec; r++) ord[r] = r;
+    if (shuffle) for (int r = nrec - 1; r > 0; r--) { int q = (int)(rnd() % (r + 1)), t = ord[r]; ord[r] = ord[q]; ord[q] = t; }
+    clock_t tg = clock();
+    if (getenv("SIGMA")) { int qq = atoi(getenv("SIGMA")), dmax = getenv("DMAX") ? atoi(getenv("DMAX")) : 4;
+        if (getenv("MAXSETS")) MAXSETS_ = atoll(getenv("MAXSETS")); if (getenv("NEAR")) NEAR_ = atoi(getenv("NEAR"));
+        sig_maxsol = MAXSOL; xmark = calloc(n, 4);
+        for (int q = 0; q < nrec; q++) { int r = ord[q]; if (only >= 0 && r != only) continue;
+            if (rkind[r] && rcentral[r] && !keepc) continue;
+            if (rkind[r] && K % 2) continue;
+            if (stopfirst && nsol > 0) break;
+            if ((double)(clock() - tg) / CLOCKS_PER_SEC > tbudget) { printf("BUDGET reached\n"); break; }
+            sigma_run(r, qq, dmax); }
+        printf("DONE sols %d\n", nsol); return 0; }
+    for (int q = 0; q < nrec; q++) { int r = ord[q]; if (only >= 0 && r != only) continue;
+        if (rkind[r] && rcentral[r] && !keepc) continue;
+        if (stopfirst && nsol > 0) break;
+        if ((double)(clock() - tg) / CLOCKS_PER_SEC > tbudget) { printf("BUDGET reached\n"); break; }
         if (rkind[r]) { if (K % 2 == 0 && (!types || strchr(types, 'x'))) run(r, 0, K / 2, secs, NB, TEN, STALL, MAXSOL); continue; }
-        for (int f = (K % 2 ? 1 : 2); f <= K; f += 2) { if (types && !intype(types, f)) continue; run(r, f, (K - f) / 2, secs, NB, TEN, STALL, MAXSOL); } }
+        for (int f = (K % 2 ? 1 : 2); f <= K; f += 2) { if (types && !intype(types, f)) continue; if (stopfirst && nsol > 0) break;
+            run(r, f, (K - f) / 2, secs, NB, TEN, STALL, MAXSOL); } }
     printf("DONE sols %d\n", nsol);
     return 0;
 }
