@@ -24,3 +24,7 @@ haarcheck_gen verdict: VALID (exit 0, 2848 s wall, 6882 MB peak RSS, 4 threads)
 haarcheck_sl verdict:  VALID (exit 0, 9356 s wall, 6880 MB peak RSS, 1 thread)
 Both verdicts VALID for d=19 D=10, N=9616861248, vertices=19233722496. Both report every vertex reached from (e,A) and (e,B) within 10 steps, ecc 10 for both starts.
 BFS level sizes: haarcheck_sl does not print them (it prints only reach and ecc), so a level-by-level comparison is not possible from its output. haarcheck_gen level sizes from (e,A) and (e,B) are in the haarcheck_gen block above; Level-size agreement is therefore NOT checked; only the reach and ecc agree.
+
+################ haarcheck2 (research/frontier/haarcheck2.c from master, built gcc -O3 -fopenmp haarcheck2.c -o haarcheck2; optional third checker): ./haarcheck2 research/frontier/sols/d19D10_sl_607_43_orb3_s1.txt   (stdout, complete)
+# NOT COMPLETED: stopped by hand after about 1 h 40 min of wall time, to stay inside the 6-hour limit. No verdict from haarcheck2. No output had been printed when it was stopped; no exit line was written by the wrapper.
+[killed; no exit line]
