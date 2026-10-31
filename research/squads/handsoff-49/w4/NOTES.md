@@ -56,3 +56,22 @@ Start: 2026-10-31 21:41 UTC (note: PG(2,3) entries below are 22:01 UTC) (2 h bud
 - Queue run_ils2.sh (started 22:11): ILS on the 2+2 multigraph bases b22t1 (multiplicities 1,3;3,1) and b22t2
   (2,2;2,2) over Z_1243, Z_1245, Z_1250 (n = 4972, 4980, 5000), then K44 and PG(2,3) baselines. Output: run_ils2.log.
   Reason: an earlier card reported 2+2 lifts at n=5,020 with cost 24 in its own unit; I need to compare units.
+- CORRECTION (22:14): closedcount.py used vertex-level backtracking, which is wrong for multigraphs. The edge-level
+  count (closedcount_edge.py) gives b22t1: 4956 closed walks of length <= 9 at a root, b22t2: 4960 (K44 2520,
+  PG(2,3) 756). The fiber bound needs >= k-1 closed walks, so the 2+2 bases are NOT ruled out (k = 1243..1250 is fine).
+  The run_ils2 queue stays as planned.
+
+## Status 22:15 UTC
+- Best near miss so far: K44 (8 vertices) over Z_622, n = 4,976, cost 192 (hgi ILS, 40 s). Not valid.
+- Long ILS runs queued in run_long.sh: K44 Z_622 for 420 CPU-s (seed 41), then PG(2,3) Z_192 for 420 CPU-s (seed 42).
+  Results go to run_long.log (DONE_LONG marks the end). The ILS stalls at a basin after ~3 sweeps; a better move
+  set (joint moves or accepting worse states) is the next thing to try.
+- Cost floor reminder: a lift of a girth-12 base (H(3) incidence graph) has diameter >= 12 for any group, so the
+  card's hexagon family cannot give n > 4,970 with diameter 9. The same applies to any base of girth >= 10.
+
+## 22:26 UTC: best so far
+- K44 (8 vertices, the complete bipartite graph K_{4,4}) lift over Z_622, n = 4,976: ILS cost 156 (far = 48,516 unordered
+  far pairs, checked by score48 and apsp: INVALID at D=9). Rebuild: WRITE_EDGES=1 ./hgi k44.txt cyc:622 0 1 1 1 OUT
+  long_k44_z622_s41.best (the .best holds the voltages "e g" per edge of k44.txt). Edge list: k44_z622_156.edges.
+  Scoreboard line appended (22:25).
+- Multi-start ILS (run_ms.sh, 45 s per seed, seeds 100..., until 23:15) is running; results in ms.log.

@@ -220,6 +220,7 @@ static void rp_walks(int x, int depth, int lastE) {
 
 static long repair_run(double secs, const char *outp, long cur, int *bestv) {
     double T = getenv("RT") ? atof(getenv("RT")) : 1.0;
+    double RBF = getenv("RBF") ? atof(getenv("RBF")) : 6.0;
     int K = getenv("RK") ? atoi(getenv("RK")) : 60;
     long best = cur;
     memcpy(bestv, volt, sizeof(int) * MAXE);
@@ -244,7 +245,7 @@ static long repair_run(double secs, const char *outp, long cur, int *bestv) {
         for (int i = 0; i < ncand; i++) perm[i] = i;
         int nsample = ncand < K ? ncand : K;
         for (int i = 0; i < nsample; i++) { int j = i + rnd() % (ncand - i); int tmp = perm[i]; perm[i] = perm[j]; perm[j] = tmp; }
-        long bc = cur * 2 + 16; int bi = -1;
+        long bc = cur + (long)(RBF * T) + 1; int bi = -1;
         for (int s = 0; s < nsample; s++) {
             int c_i = perm[s], e = cand_e[c_i], g = cand_g[c_i];
             if (g == volt[e]) continue;
@@ -252,7 +253,7 @@ static long repair_run(double secs, const char *outp, long cur, int *bestv) {
             set_var(k, g);
             long c = cost_eval(bc);
             set_var(k, oldv);
-            if (c < bc || (c == bc && bi < 0 && c <= cur + 16)) { bc = c; bi = c_i; }
+            if (c < bc) { bc = c; bi = c_i; }
         }
         if (bi < 0) continue;
         double thr = -T * log(rnd01() + 1e-300);
