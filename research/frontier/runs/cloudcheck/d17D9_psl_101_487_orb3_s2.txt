@@ -4,5 +4,14 @@ machine: nproc=4; free -g: total 15G used 0G free 14G avail 15G
 from (e,A): reached A 250853700/250853700, B 250853700/250853700 within 9, ecc 9
 from (e,B): reached A 250853700/250853700, B 250853700/250853700 within 9, ecc 9
 VALID d=17 D=9 group=psl 101 x Z_487 N=250853700 vertices=501707400 (distinct generators, 17-regular simple)
+################ independent checker: check_haar_indep.py research/frontier/sols/d17D9_psl_101_487_orb3_s2.txt   [exit 0]
+file research/frontier/sols/d17D9_psl_101_487_orb3_s2.txt
+header: d=17 D=9 spec=psl 101 NCYC=487 N=250853700
+group order |G|=515100 (factors [515100]), x Z_487 -> 250853700; vertices 2N=501707400
+distinct generators (as full group elements): 17 of d=17
+permutations built (4s)
+BFS from A: ecc=9 reached 501707400 of 501707400 (unreached 0); level sizes [1, 17, 272, 4343, 69320, 1104155, 17043280, 168428909, 233740827, 81316276]
+BFS from B: ecc=9 reached 501707400 of 501707400 (unreached 0); level sizes [1, 17, 272, 4343, 69320, 1104155, 17042825, 168428909, 233741282, 81316276]
+every vertex has exactly 17 distinct neighbours: True
+RESULT VALID d=17 D=9 eccA=9 eccB=9 n=501707400 (855s)
 
-################ independent checker: check_haar_indep.py — NOT RUN: does not fit in 15 GB. Measured peak 1.35 GB on a 21.3M-vertex psl calibration (~64 B/vertex); this file has 501.7M vertices, ~32 GB. haarcheck2 does not accept psl headers. Reference only; NO two-checker result.
