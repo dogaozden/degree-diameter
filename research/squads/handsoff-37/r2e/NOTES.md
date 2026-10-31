@@ -31,3 +31,12 @@ perturbation test from the quotient (PERT0 = 5, 10, 20); then n = 170 (C5 17+17)
   Plain tabu: raw 46 -> far 161. c4 had far 168 after 500 s. LOGGED to the scoreboard (improvement at 182:
   r2e/best/n182_C7k13_far140.edges, state r2e/best/n182_C7k13_far140.state).
 
+- n = 168 calibration, breakout-walk (WCAP 16, TEN 8), 520 s, seed 21 (random start): best raw 8 (far 28; out/cal168_bo_s21_best.edges).
+  No cost-0 lift found; the best raw in the last 400 s stayed at 8. (Raw 14 at 100 s on other seeds.) Improvement over tabu (18-20 at 60-100 s).
+- n = 192, C8 k = 12, bo (520 s, seed 31): raw 74, far 296 (score37 agrees). WORSE than c4's far 272 (raw 68) and not logged.
+  Breakout bumps are 75% of iterations here (a sign the weights grow fast for k = 12 and N = 8).
+- n = 182 continued from the far-140 state, bo 520 s (seed 41): raw 36 -> far 126 (score37 far 126 diam 8). LOGGED
+  (r2e/best/n182_C7k13_far126.edges, state .state).
+- n = 182 continuation 2 (from far 126, bo WCAP 16, 520 s, seed 51): no change (raw 36). Continuation 3 (PERT 16, STALL 1500,
+  WCAP 8, 520 s, seed 61): no change (raw 36, 65 kicks). The raw-36 basin is deep; kicks from its best do not leave it.
+- n = 170, C5 k = 17, bo (520 s, seed 71): raw 44, far 110 (score37 far 110). Same as c4's 60 s tabu (far 110); no gain. Not logged.

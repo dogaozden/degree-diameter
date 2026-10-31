@@ -33,3 +33,10 @@ exactly 127 - m = 42 coincidences among its 127 even NB walks of length <= 6 (th
 card's "excess <= delta" is the covering condition R = delta). With girth 12, coincidences at depth 6 are exactly the
 12-cycles through the vertex. A 2-switch in a diameter-7 graph always creates a cycle of length <= 8 (opposite-side
 pairs are at distance <= 7), so girth-12-preserving local search is rigid and useless for this problem.
+
+## Calibration that passed (18:27Z): conder168 colour-preserving automorphisms
+- c5/out/aut168.txt has the 504 automorphisms of C168.1; the colour-preserving subgroup H has order 252 (calib168.py).
+- Orbit model with composition [84 orbit, stab order 3] | [84 orbit, other stab class]: 28 edge orbits.
+  Random completions by the orbit DFS give far 0 in 134 of 200 samples, i.e. the engine recovers C168.1.
+  (An earlier version used the same stabiliser class on both sides and missed it; the B-side stabiliser class
+  must be chosen separately, which run.py/census.py do.)

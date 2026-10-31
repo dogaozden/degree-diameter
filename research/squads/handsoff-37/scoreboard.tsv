@@ -45,3 +45,18 @@ r2f	F21 (Z7 x| Z3, s has 3 fixed pts) symmetric SA over orbit 2-switches	168	0	r
 r2e	lift C7 k13 breakout-tabu (weights on violated pairs + walk), 240 s	182	140	r2e/best/n182_C7k13_far140.edges	2026-10-31T18:03:09Z	beats c4 far 168 (500 s tabu); cost 40 = raw walks
 r2d	Z2 fixed-edge invol SA from random (f=1, calib)	150	29	r2d/out/c150f1_best.edges	2026-10-31T18:06:35Z	calib: equivariant SA 120 s, T 8->0.5; score37 far 29
 r2d	free Z2 invol SA from random (f=0, calib)	168	106	r2d/out/c168f0_best.edges	2026-10-31T18:06:35Z	calib: 150 s, T 8->0.5; stalled at 106 after 46 s (C168.1 lies in this family)
+r2e	lift C7 k13 breakout-tabu, continued from far 140 (520 s)	182	126	r2e/best/n182_C7k13_far126.edges	2026-10-31T18:29:44Z	score37 far 126 (raw 36)
+r3a	symmetric SA, Z5 x| <s>: D5 (s: alpha=4, sigma 2^8 1 on both sides), old cost	170	155	r3a/best/n170_D5_2to8_1_far155.edges	2026-10-31T18:39:10Z	first n=170 graph of r3a; symloc cost (same-side only), score37 far 155 diam 8
+r3a	symmetric SA, Z10 = Z5 x Z2 (alpha=1, sigma 2^9 on both sides), exact far cost	180	335	r3a/best/n180_Z10_far335.edges	2026-10-31T18:39:10Z	first n=180 graph of r3a; 40 s from a disconnected SAT start, diam 8
+r3a	calib: symmetric SA, Z20 = Z5 x Z4 (alpha=1, sigma 4^4 on both sides), exact far cost	160	80	r3a/best/calib_n160_Z20_far80.edges	2026-10-31T18:39:10Z	calib (n<=168); far 80 diam 8 after 40 s
+r2f	Z5 x| Z2 (involution s, 1 fixed + 8 2-cycles per side, k=17), symmetric SA (orbit switches)	170	155	r2f/best170_far155.edges	2026-10-31T18:41:41Z	first r2f graph at 170; symmetric SA hot schedule 120 s; far 155 (board 46 stays)
+r2f	F21 (Z7 x| Z3, alpha 2), 1+4 3-cycles per side, k=13; symmetric SA from random start	182	231	r2f/best182_far231.edges	2026-10-31T18:41:41Z	first r2f graph at 182; 240 s SA; board 168 (c4) stays
+r2f	F21 (Z7 x| Z3, alpha 2), 2+4 3-cycles per side, k=14; symmetric SA from random start	196	273	r2f/best196_far273.edges	2026-10-31T18:41:41Z	beats board 350 (c4) at 196; symmetric SA 240 s
+r3a	symmetric SA, Z30 = Z6 x Z5 (M=6 shift, alpha=1, sigma 5,5,5 on both sides), exact far cost	180	330	r3a/best/n180_Z30_M6_555_far330.edges	2026-10-31T18:51:32Z	n=180 improvement over far 335 (r3a Z10); diam 9, 40 s
+r2f	F21 (Z7 x| Z3, alpha 2), 1+4 3-cycles per side, k=13; symmetric SA hot (T 60 -> 4, 300 s)	182	210	r2f/best182_far210.edges	2026-10-31T18:51:32Z	lower than my 231; board 168 (c4) still stands
+r2c	polarity Z5 lift2 (2-stub loops), SA, n=170 floor	170	80	r2c/best170_lift2_far80.edges	2026-10-31T18:54:05Z	first r2c graph at 170; cost 40 floor, 5-base-vertex locally optimal (lns)
+r2c	polarity Z2 lift2 ILS (43+43 base)	172	150	r2c/best172_lift2_far150.edges	2026-10-31T18:54:05Z	first r2c graph at 172; cross pairs add 2 to far (far != 2*cost here)
+r2c	polarity Z3 lift2 SA (29+29 base)	174	138	r2c/best174_lift2_far138.edges	2026-10-31T18:54:05Z	first r2c graph at 174; cost 69
+r2c	polarity Z4 lift2 SA (22+22 base)	176	180	r2c/best176_lift2_far180.edges	2026-10-31T18:54:05Z	first r2c graph at 176; cost 90 (Z4 weak)
+r2c	polarity Z5 lift2 SA, m=80 (16+16 base)	160	0	r2c/calib160_lift2_zero.edges	2026-10-31T18:54:05Z	calib (n<=168): zero cost, apsp VALID
+r2f	F21 (Z7 x| Z3, alpha 2), 2+4 3-cycles per side, k=14; symmetric SA hot (T 60 -> 4, 300 s)	196	224	r2f/best196_far224.edges	2026-10-31T18:55:06Z	lower than my 273; board 350 (c4) beaten

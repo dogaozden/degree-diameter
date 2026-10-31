@@ -26,3 +26,17 @@ E[a,b,t] <-> E[sigma a, sigma b, alpha t], sources reduced to sigma-orbit reps; 
   (r2f/symloc.c): G-invariant cubic graph, moves = orbit 2-switches (a switch and all its G-images), cost = far from one
   representative per G-orbit (weighted by orbit size). G = <z, s> with z the Z_m shift and s = (sigma, alpha), so this
   searches the same symmetric classes as the SAT. Start states from a degree-only SAT (no reachability clauses).
+
+## 18:00-18:37Z: symmetric local search (symloc.c, symtabu.c) and results
+- Calibration n=168 (F21, symloc SA, T 3 -> 0.3, random SAT start): far 0 (diam 7, apsp VALID) in 3 s. Logged as calib row.
+  Z7-only (no s) on the same start: far 175 after 120 s (no calibration success). So the F21 class is much easier.
+- n=170, Z5 with involution s (alpha = -1, sigma 1 fixed + 8 2-cycles per side): SA 350 (T 3, 240 s); 195 (T 20, 240 s);
+  155 (T 60 -> 4, 120 s, seed 2). Not competitive with 46.
+- n=170, Z15 (alpha = 1, sigma 2 fixed + 5 3-cycles): far 1500, lift disconnected; not useful (start is degenerate).
+- n=182, F21 (alpha 2, sigma 1 fixed + 4 3-cycles per side, k = 13): SA from random start 231 (T 20 -> 1, 156 s).
+- Orbit insertion from the verified n=168 F21 solution (r2f/surg182.py): one sigma-orbit of 3 base edges removed,
+  fixed A and fixed B base vertices added (voltages alpha^i c0, alpha^i d0): best of 9 x 49 insertions far 434 (all pairs).
+  SA repair (T 6 -> 0.5, 158 s): 301. Full-neighbourhood tabu (symtabu, 15-step tenure, 480 s, ~360 steps): 238.
+- Z7-only SA at n = 182 from the same insertion start: stuck at 322 (acceptance almost zero at T 6).
+- Verdict so far: no n >= 170 graph below the board (182 board 168 from c4; 170 board 46). Symmetric SA works at 168 but
+  the orbit moves (21 switches for F21) are coarse: far jumps by 100+ per move, so SA/tabu stall above 150 for n >= 170.
