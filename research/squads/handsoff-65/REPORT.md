@@ -59,8 +59,8 @@ more about writing code than about waiting for runs.
 
 Round 1 (15:45-17:45): c1-c8, c9 replaced c8 at 16:25. Round 2 (17:45-19:45): c10-c16, plus c17-c19 (18:20) and c20
 (19:08, replaced c16). Round 3 (19:30-21:05): c21-c28. Three runs went into a "waiting on its own background work"
-state: c3 and c6 (round 1) kept working past their 17:45 deadline and only reported at 21:08; c21 stalled after its
-first screen and never reported. Two wildcard runs
+state: c3 and c6 (round 1) kept working past their 17:45 deadline and only reported at 21:08; c21 ran past its 21:00
+deadline and reported at 21:16 after I told it to stop. Two wildcard runs
 stopped early by choice (c8 at 16:18, c16 at 18:57) despite the instruction not to.
 
 | card | size | best (n, bad) | what it found |
@@ -85,7 +85,7 @@ stopped early by choice (c8 at 16:18, c16 at 18:57) despite the instruction not 
 | c18 Haar + hub orbits (1,k\|1,k) | large | 686, 294 | **new family**, cost 2 on SmallGroup(294,11); wrote t18 tabu |
 | c19 Haar 802-840 | large | - | orders 402-415, 417 closed |
 | c20 surgery downward | small | 685, 165 | deleting from near misses fails; 685 via c7's graph |
-| c21 1,6\|1,6 on 300-312 | large | - | first screen only, then stalled (no report) |
+| c21 1,6\|1,6 on 300-312 | large | 700, cost 13 (no file kept) | 20 s screen of 300_1..25 only; its script deleted the edge files |
 | c22 hub type k=3 | large | 688, 516 | 1,3\|1,3 on 258_2, cost 4 |
 | c23 hub type k=2 | large | 720, 1080 | 1,2\|1,2 cost 15; 1,2,2\|1,2,2 cost 40 |
 | c24 free local search from best | small | 686, 144 | best far-pair count of the job; acceptance rate is the bottleneck |

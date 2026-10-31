@@ -25,3 +25,9 @@ is about cost * |G|.
 ## Screen 1 (t18, SAMPLE=60 SUBS=20, 20 s wall, seed 1, groups 300_1..300_18)
 - 300_13 cost 24, 300_14 cost 45, 300_15 cost 33, 300_16 cost 122 (nsub 1..25). 20 s is too short to rank: 294_11 gave 5-9 at 20 s and 2 at 60 s.
 - Plan: finish order 300, then 306 and 312, then 5-min deep runs on the best 3-5 with several seeds.
+
+## Final state (21:13 UTC, deadline passed; stopped, no runs left)
+- Screen 1 (20 s each, seed 1) covered 300_1..300_25 (scan/screen.tsv). Best n=700 cost 24 (300_13, nsub 25; 300_23 cost 15, 300_22 cost 16, 300_24 cost 13 (nsub 25)).
+- Edge files were deleted for cost > 3 by screen21.sh, so no kept graph: no scoreboard line (rule: keep the file).
+- Not screened: 300_26..300_49, 306 (10 groups), 312 (61 groups). No record; 686 (294) stays at c18's cost 2.
+- Lesson: 20 s runs are too short; 294_11 needed about 60 s to reach cost 2. Next: 60-300 s runs on 300_24, 300_23, 300_22, 300_13.
