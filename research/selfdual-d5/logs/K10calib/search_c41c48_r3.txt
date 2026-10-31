@@ -1,0 +1,8 @@
+# K = 10 search calibration: C41 : C48 = <x, y | x^41 = y^48 = 1, y x y^-1 = x^3> (y acts with order 8), order 1968,
+# formula export (SKIPA1=1 python3 src/meta_export.py 41 48 3), sdtabu2 SECS=15 DEEP=12,60 NB=48 STALL=1000 TYPES=2,4 NOID=1:
+# 14 valid self-dual 10-sets (7 of 8 record/type pairs).  First one, apsp (research/lifts/coordinator_check/apsp.c):
+n=3936 edges=19680 degree min=10 max=10 bipartite=yes diameter=5
+RESULT VALID d=10 D=5 n=3936
+# at D = 4:
+RESULT INVALID
+# 3,936 vertices: below the (10,5) record 4,800, so only a check that the K = 10 search finds valid graphs.
