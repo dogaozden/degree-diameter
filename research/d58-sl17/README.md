@@ -45,7 +45,7 @@ through apsp: diameter 9 in all seven, `RESULT INVALID` at D = 8 (`best1_states.
 ## Reading
 
 Plain annealing on SL(2,17) reaches 1 uncovered element in about 1 run in 6 (7 of 44 random starts), and never
-below 1 (earlier job: 10 runs, best 1; this job: 48 runs, best 1). Restarting from a best-1 state at low temperature
+below 1 (earlier job: 5 of 10 runs reached 1; this job: 7 of 44 random runs reached 1, none below). Restarting from a best-1 state at low temperature
 did not improve it. Two-move exhaustion around seven distinct best-1 states found no cost-0 set. This is
 consistent with the earlier job's finding that SL(2,17) plain sets come within one element of a (5,8) graph and
 self-dual families are exhausted. It is not a proof: the 1.0e9 two-move candidates and 4e9 annealing evaluations
