@@ -1,0 +1,218 @@
+# haarcheck_gen calibration  (date 2026-10-31T14:43Z)
+build: gcc -O3 -fopenmp -Wall -Wextra -o haarcheck_gen haarcheck_gen.c  -> exit 0 (no warnings)
+4
+               total        used        free      shared  buff/cache   available
+Mem:              15           0          14           0           0          15
+gcc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0
+
+==================================================================================================== 
+PART 1: known-good files (same families), N <= 45000000
+[MATCH] d10D10_psl_389_1_orb3_s1  (12s)  earlier-report=VALID  levels-equal=True
+    VALID d=10 D=10 group=psl 389 x Z_1 N=29431740 vertices=58863480 (distinct generators, 10-regular simple; every vertex within 10 of both (e,A) and (e,B); ecc 10; 12s)
+[MATCH] d10D10_sl_307_1_s3  (11s)  earlier-report=VALID  levels-equal=True
+    VALID d=10 D=10 group=sl 307 x Z_1 N=28934136 vertices=57868272 (distinct generators, 10-regular simple; every vertex within 10 of both (e,A) and (e,B); ecc 10; 11s)
+[MATCH] d10D10_sl_79_61_orb3_s1  (4s)  earlier-report=VALID  levels-equal=True
+    VALID d=10 D=10 group=sl 79 x Z_61 N=30070560 vertices=60141120 (distinct generators, 10-regular simple; every vertex within 10 of both (e,A) and (e,B); ecc 10; 4s)
+[MATCH] d10D9_prod_psl_19_sl_5_9_s111  (1s)  earlier-report=VALID  levels-equal=True
+    VALID d=10 D=9 group=prod psl 19 sl 5 x Z_9 N=3693600 vertices=7387200 (distinct generators, 10-regular simple; every vertex within 9 of both (e,A) and (e,B); ecc 9; 1s)
+[MATCH] d10D9_prod_psl_5_sl_25_4_s111  (1s)  earlier-report=VALID  levels-equal=True
+    VALID d=10 D=9 group=prod psl 5 sl 25 poly x^2+2 x Z_4 N=3744000 vertices=7488000 (distinct generators, 10-regular simple; every vertex within 9 of both (e,A) and (e,B); ecc 9; 1s)
+[MATCH] d10D9_sl_81_7_s111  (1s)  earlier-report=VALID  levels-equal=True
+    VALID d=10 D=9 group=sl 81 poly x^4+x+2 x Z_7 N=3719520 vertices=7439040 (distinct generators, 10-regular simple; every vertex within 9 of both (e,A) and (e,B); ecc 9; 1s)
+[MATCH] d10D9_sl_83_7_orb3_s1  (1s)  earlier-report=VALID  levels-equal=True
+    VALID d=10 D=9 group=sl 83 x Z_7 N=4001928 vertices=8003856 (distinct generators, 10-regular simple; every vertex within 9 of both (e,A) and (e,B); ecc 9; 1s)
+[MATCH] d11D8_psl_59_11_orb5_ORBW5_s3  (0s)  earlier-report=VALID  levels-equal=True
+    VALID d=11 D=8 group=psl 59 x Z_11 N=1129260 vertices=2258520 (distinct generators, 11-regular simple; every vertex within 8 of both (e,A) and (e,B); ecc 8; 0s)
+[MATCH] d11D9_prod_sl_7_sl_29_1_s111  (2s)  earlier-report=VALID  levels-equal=True
+    VALID d=11 D=9 group=prod sl 7 sl 29 x Z_1 N=8184960 vertices=16369920 (distinct generators, 11-regular simple; every vertex within 9 of both (e,A) and (e,B); ecc 9; 2s)
+[MATCH] d11D9_sl_125_4_s111  (2s)  earlier-report=VALID  levels-equal=True
+    VALID d=11 D=9 group=sl 125 poly x^3+x+1 x Z_4 N=7812000 vertices=15624000 (distinct generators, 11-regular simple; every vertex within 9 of both (e,A) and (e,B); ecc 9; 2s)
+[MATCH] d11D9_sl_197_1_s111  (2s)  earlier-report=VALID  levels-equal=True
+    VALID d=11 D=9 group=sl 197 x Z_1 N=7645176 vertices=15290352 (distinct generators, 11-regular simple; every vertex within 9 of both (e,A) and (e,B); ecc 9; 2s)
+[MATCH] d11D9_sl_61_37_orb3_s1  (1s)  earlier-report=VALID  levels-equal=True
+    VALID d=11 D=9 group=sl 61 x Z_37 N=8396040 vertices=16792080 (distinct generators, 11-regular simple; every vertex within 9 of both (e,A) and (e,B); ecc 9; 1s)
+[MATCH] d11D9_sl_81_15_s111  (1s)  earlier-report=VALID  levels-equal=True
+    VALID d=11 D=9 group=sl 81 poly x^4+x+2 x Z_15 N=7970400 vertices=15940800 (distinct generators, 11-regular simple; every vertex within 9 of both (e,A) and (e,B); ecc 9; 1s)
+[MATCH] d12D9_sl_127_8_s2  (3s)  earlier-report=VALID  levels-equal=True
+    VALID d=12 D=9 group=sl 127 x Z_8 N=16386048 vertices=32772096 (distinct generators, 12-regular simple; every vertex within 9 of both (e,A) and (e,B); ecc 9; 3s)
+[MATCH] d12D9_sl_257_1_orb3f0_s1  (7s)  earlier-report=VALID  levels-equal=True
+    VALID d=12 D=9 group=sl 257 x Z_1 N=16974336 vertices=33948672 (distinct generators, 12-regular simple; every vertex within 9 of both (e,A) and (e,B); ecc 9; 7s)
+[MATCH] d12D9_sl_41_247_orb3f0_s1  (2s)  earlier-report=VALID  levels-equal=True
+    VALID d=12 D=9 group=sl 41 x Z_247 N=17013360 vertices=34026720 (distinct generators, 12-regular simple; every vertex within 9 of both (e,A) and (e,B); ecc 9; 2s)
+[MATCH] d13D8_prod_psl_11_psl_11_7_s101  (1s)  earlier-report=VALID  levels-equal=True
+    VALID d=13 D=8 group=prod psl 11 psl 11 x Z_7 N=3049200 vertices=6098400 (distinct generators, 13-regular simple; every vertex within 8 of both (e,A) and (e,B); ecc 8; 1s)
+[MATCH] d13D8_prod_psl_5_sl_37_1_s101  (1s)  earlier-report=VALID  levels-equal=True
+    VALID d=13 D=8 group=prod psl 5 sl 37 x Z_1 N=3036960 vertices=6073920 (distinct generators, 13-regular simple; every vertex within 8 of both (e,A) and (e,B); ecc 8; 1s)
+[MATCH] d13D8_prod_psl_9_psl_11_13_s101  (1s)  earlier-report=VALID  levels-equal=True
+    VALID d=13 D=8 group=prod psl 9 poly x^2+1 psl 11 x Z_13 N=3088800 vertices=6177600 (distinct generators, 13-regular simple; every vertex within 8 of both (e,A) and (e,B); ecc 8; 1s)
+[MATCH] d13D8_prod_sl_7_sl_11_7_s101  (1s)  earlier-report=VALID  levels-equal=True
+    VALID d=13 D=8 group=prod sl 7 sl 11 x Z_7 N=3104640 vertices=6209280 (distinct generators, 13-regular simple; every vertex within 8 of both (e,A) and (e,B); ecc 8; 1s)
+[MATCH] d13D8_prod_sl_7_sl_7_31_orb6swc_s2  (1s)  earlier-report=VALID  levels-equal=True
+    VALID d=13 D=8 group=prod sl 7 sl 7 x Z_31 N=3499776 vertices=6999552 (distinct generators, 13-regular simple; every vertex within 8 of both (e,A) and (e,B); ecc 8; 1s)
+[MATCH] d13D8_prod_sl_8_sl_8_13_orb3_s1  (1s)  earlier-report=VALID  levels-equal=True
+    VALID d=13 D=8 group=prod sl 8 poly x^3+x+1 sl 8 poly x^3+x+1 x Z_13 N=3302208 vertices=6604416 (distinct generators, 13-regular simple; every vertex within 8 of both (e,A) and (e,B); ecc 8; 1s)
+[MATCH] d13D8_psl_79_13_s404  (1s)  earlier-report=VALID  levels-equal=True
+    VALID d=13 D=8 group=psl 79 x Z_13 N=3204240 vertices=6408480 (distinct generators, 13-regular simple; every vertex within 8 of both (e,A) and (e,B); ecc 8; 1s)
+[MATCH] d13D8_sl_64_13_orb3_s1  (1s)  earlier-report=VALID  levels-equal=True
+    VALID d=13 D=8 group=sl 64 poly x^6+x+1 x Z_13 N=3407040 vertices=6814080 (distinct generators, 13-regular simple; every vertex within 8 of both (e,A) and (e,B); ecc 8; 1s)
+[MATCH] d13D8_sl_73_8_s301  (1s)  earlier-report=VALID  levels-equal=True
+    VALID d=13 D=8 group=sl 73 x Z_8 N=3111552 vertices=6223104 (distinct generators, 13-regular simple; every vertex within 8 of both (e,A) and (e,B); ecc 8; 1s)
+[MATCH] d13D9_sl_101_31_orb3_s1  (6s)  earlier-report=VALID  levels-equal=True
+    VALID d=13 D=9 group=sl 101 x Z_31 N=31936200 vertices=63872400 (distinct generators, 13-regular simple; every vertex within 9 of both (e,A) and (e,B); ecc 9; 6s)
+[MATCH] d13D9_sl_103_31_orb3_s1  (6s)  earlier-report=VALID  levels-equal=True
+    VALID d=13 D=9 group=sl 103 x Z_31 N=33871344 vertices=67742688 (distinct generators, 13-regular simple; every vertex within 9 of both (e,A) and (e,B); ecc 9; 6s)
+[MATCH] d13D9_sl_109_24_s2  (6s)  earlier-report=VALID  levels-equal=True
+    VALID d=13 D=9 group=sl 109 x Z_24 N=31078080 vertices=62156160 (distinct generators, 13-regular simple; every vertex within 9 of both (e,A) and (e,B); ecc 9; 6s)
+[MATCH] d15D8_psl_137_7_orb3f0_s1  (2s)  earlier-report=VALID  levels-equal=True
+    VALID d=15 D=8 group=psl 137 x Z_7 N=8999256 vertices=17998512 (distinct generators, 15-regular simple; every vertex within 8 of both (e,A) and (e,B); ecc 8; 2s)
+[MATCH] d15D8_sl_101_8_s2  (2s)  earlier-report=VALID  levels-equal=True
+    VALID d=15 D=8 group=sl 101 x Z_8 N=8241600 vertices=16483200 (distinct generators, 15-regular simple; every vertex within 8 of both (e,A) and (e,B); ecc 8; 2s)
+[MATCH] d15D8_sl_109_7_orb3f0_s1  (2s)  earlier-report=VALID  levels-equal=True
+    VALID d=15 D=8 group=sl 109 x Z_7 N=9064440 vertices=18128880 (distinct generators, 15-regular simple; every vertex within 8 of both (e,A) and (e,B); ecc 8; 2s)
+[MATCH] d7D10_prod_psl_5_sl_8_37_orb3_s15  (0s)  earlier-report=VALID  levels-equal=True
+    VALID d=7 D=10 group=prod psl 5 sl 8 poly x^3+x+1 x Z_37 N=1118880 vertices=2237760 (distinct generators, 7-regular simple; every vertex within 10 of both (e,A) and (e,B); ecc 10; 0s)
+[MATCH] d7D10_psl_49_19_orb3_s1  (0s)  earlier-report=VALID  levels-equal=True
+    VALID d=7 D=10 group=psl 49 poly x^2+1 x Z_19 N=1117200 vertices=2234400 (distinct generators, 7-regular simple; every vertex within 10 of both (e,A) and (e,B); ecc 10; 0s)
+[MATCH] d7D10_psl_67_7_s101  (0s)  earlier-report=VALID  levels-equal=True
+    VALID d=7 D=10 group=psl 67 x Z_7 N=1052436 vertices=2104872 (distinct generators, 7-regular simple; every vertex within 10 of both (e,A) and (e,B); ecc 10; 0s)
+[MATCH] d7D10_sl_49_9_s101  (0s)  earlier-report=VALID  levels-equal=True
+    VALID d=7 D=10 group=sl 49 poly x^2+1 x Z_9 N=1058400 vertices=2116800 (distinct generators, 7-regular simple; every vertex within 10 of both (e,A) and (e,B); ecc 10; 0s)
+[MATCH] d7D10_sl_71_3_s602  (0s)  earlier-report=VALID  levels-equal=True
+    VALID d=7 D=10 group=sl 71 x Z_3 N=1073520 vertices=2147040 (distinct generators, 7-regular simple; every vertex within 10 of both (e,A) and (e,B); ecc 10; 0s)
+[MATCH] d7D10_sl_81_2_s601  (0s)  earlier-report=VALID  levels-equal=True
+    VALID d=7 D=10 group=sl 81 poly x^4+x+2 x Z_2 N=1062720 vertices=2125440 (distinct generators, 7-regular simple; every vertex within 10 of both (e,A) and (e,B); ecc 10; 0s)
+[MATCH] d8D10_prod_psl_11_psl_13_5_s111  (1s)  earlier-report=VALID  levels-equal=True
+    VALID d=8 D=10 group=prod psl 11 psl 13 x Z_5 N=3603600 vertices=7207200 (distinct generators, 8-regular simple; every vertex within 10 of both (e,A) and (e,B); ecc 10; 1s)
+[MATCH] d8D10_prod_psl_23_sl_5_5_s111  (1s)  earlier-report=VALID  levels-equal=True
+    VALID d=8 D=10 group=prod psl 23 sl 5 x Z_5 N=3643200 vertices=7286400 (distinct generators, 8-regular simple; every vertex within 10 of both (e,A) and (e,B); ecc 10; 1s)
+[MATCH] d8D10_sl_107_3_s111  (1s)  earlier-report=VALID  levels-equal=True
+    VALID d=8 D=10 group=sl 107 x Z_3 N=3674808 vertices=7349616 (distinct generators, 8-regular simple; every vertex within 10 of both (e,A) and (e,B); ecc 10; 1s)
+[MATCH] d8D10_sl_59_19_orb3_s1  (1s)  earlier-report=VALID  levels-equal=True
+    VALID d=8 D=10 group=sl 59 x Z_19 N=3901080 vertices=7802160 (distinct generators, 8-regular simple; every vertex within 10 of both (e,A) and (e,B); ecc 10; 1s)
+[MATCH] d8D10_sl_67_13_orb3_s12  (1s)  earlier-report=VALID  levels-equal=True
+    VALID d=8 D=10 group=sl 67 x Z_13 N=3909048 vertices=7818096 (distinct generators, 8-regular simple; every vertex within 10 of both (e,A) and (e,B); ecc 10; 1s)
+[MATCH] d9D10_prod_sl_13_sl_17_1_s111  (2s)  earlier-report=VALID  levels-equal=True
+    VALID d=9 D=10 group=prod sl 13 sl 17 x Z_1 N=10692864 vertices=21385728 (distinct generators, 9-regular simple; every vertex within 10 of both (e,A) and (e,B); ecc 10; 2s)
+[MATCH] d9D10_psl_277_1_s111  (4s)  earlier-report=VALID  levels-equal=True
+    VALID d=9 D=10 group=psl 277 x Z_1 N=10626828 vertices=21253656 (distinct generators, 9-regular simple; every vertex within 10 of both (e,A) and (e,B); ecc 10; 4s)
+[MATCH] d9D10_psl_47_223_orb3f0_s1  (1s)  earlier-report=VALID  levels-equal=True
+    VALID d=9 D=10 group=psl 47 x Z_223 N=11571024 vertices=23142048 (distinct generators, 9-regular simple; every vertex within 10 of both (e,A) and (e,B); ecc 10; 1s)
+[MATCH] d9D10_psl_71_67_orb3f0_s1  (2s)  earlier-report=VALID  levels-equal=True
+    VALID d=9 D=10 group=psl 71 x Z_67 N=11987640 vertices=23975280 (distinct generators, 9-regular simple; every vertex within 10 of both (e,A) and (e,B); ecc 10; 2s)
+[MATCH] d9D10_psl_73_61_orb3f0_s1  (2s)  earlier-report=VALID  levels-equal=True
+    VALID d=9 D=10 group=psl 73 x Z_61 N=11862792 vertices=23725584 (distinct generators, 9-regular simple; every vertex within 10 of both (e,A) and (e,B); ecc 10; 2s)
+[MATCH] d9D10_sl_223_1_s111  (3s)  earlier-report=VALID  levels-equal=True
+    VALID d=9 D=10 group=sl 223 x Z_1 N=11089344 vertices=22178688 (distinct generators, 9-regular simple; every vertex within 10 of both (e,A) and (e,B); ecc 10; 3s)
+[MATCH] d9D10_sl_81_19_s111  (2s)  earlier-report=VALID  levels-equal=True
+    VALID d=9 D=10 group=sl 81 poly x^4+x+2 x Z_19 N=10095840 vertices=20191680 (distinct generators, 9-regular simple; every vertex within 10 of both (e,A) and (e,B); ecc 10; 2s)
+[MATCH] d9D9_prod_psl_11_sl_7_7_s111  (0s)  earlier-report=VALID  levels-equal=True
+    VALID d=9 D=9 group=prod psl 11 sl 7 x Z_7 N=1552320 vertices=3104640 (distinct generators, 9-regular simple; every vertex within 9 of both (e,A) and (e,B); ecc 9; 0s)
+[MATCH] d9D9_prod_psl_7_psl_7_61_orb3f0_s1  (0s)  earlier-report=VALID  levels-equal=True
+    VALID d=9 D=9 group=prod psl 7 psl 7 x Z_61 N=1721664 vertices=3443328 (distinct generators, 9-regular simple; every vertex within 9 of both (e,A) and (e,B); ecc 9; 0s)
+[MATCH] d9D9_prod_psl_7_sl_11_7_s111  (0s)  earlier-report=VALID  levels-equal=True
+    VALID d=9 D=9 group=prod psl 7 sl 11 x Z_7 N=1552320 vertices=3104640 (distinct generators, 9-regular simple; every vertex within 9 of both (e,A) and (e,B); ecc 9; 0s)
+[MATCH] d9D9_prod_psl_7_sl_7_31_orb3f0_s1  (0s)  earlier-report=VALID  levels-equal=True
+    VALID d=9 D=9 group=prod psl 7 sl 7 x Z_31 N=1749888 vertices=3499776 (distinct generators, 9-regular simple; every vertex within 9 of both (e,A) and (e,B); ecc 9; 0s)
+[MATCH] d9D9_prod_psl_7_sl_9_13_s111  (0s)  earlier-report=VALID  levels-equal=True
+    VALID d=9 D=9 group=prod psl 7 sl 9 poly x^2+1 x Z_13 N=1572480 vertices=3144960 (distinct generators, 9-regular simple; every vertex within 9 of both (e,A) and (e,B); ecc 9; 0s)
+[MATCH] d9D9_prod_sl_5_psl_13_13_orb3f0_s1  (0s)  earlier-report=VALID  levels-equal=True
+    VALID d=9 D=9 group=prod sl 5 psl 13 x Z_13 N=1703520 vertices=3407040 (distinct generators, 9-regular simple; every vertex within 9 of both (e,A) and (e,B); ecc 9; 0s)
+[MATCH] d9D9_prod_sl_7_sl_17_1_s302  (0s)  earlier-report=VALID  levels-equal=True
+    VALID d=9 D=9 group=prod sl 7 sl 17 x Z_1 N=1645056 vertices=3290112 (distinct generators, 9-regular simple; every vertex within 9 of both (e,A) and (e,B); ecc 9; 0s)
+[MATCH] d9D9_prod_sl_9_sl_13_1_s111  (0s)  earlier-report=VALID  levels-equal=True
+    VALID d=9 D=9 group=prod sl 9 poly x^2+1 sl 13 x Z_1 N=1572480 vertices=3144960 (distinct generators, 9-regular simple; every vertex within 9 of both (e,A) and (e,B); ecc 9; 0s)
+[MATCH] d9D9_prod_sl_9_sl_9_3_s111  (0s)  earlier-report=VALID  levels-equal=True
+    VALID d=9 D=9 group=prod sl 9 poly x^2+1 sl 9 poly x^2+1 x Z_3 N=1555200 vertices=3110400 (distinct generators, 9-regular simple; every vertex within 9 of both (e,A) and (e,B); ecc 9; 0s)
+[MATCH] d9D9_sl_43_19_s111  (0s)  earlier-report=VALID  levels-equal=True
+    VALID d=9 D=9 group=sl 43 x Z_19 N=1509816 vertices=3019632 (distinct generators, 9-regular simple; every vertex within 9 of both (e,A) and (e,B); ecc 9; 0s)
+[MATCH] d9D9_sl_47_15_s111  (0s)  earlier-report=VALID  levels-equal=True
+    VALID d=9 D=9 group=sl 47 x Z_15 N=1556640 vertices=3113280 (distinct generators, 9-regular simple; every vertex within 9 of both (e,A) and (e,B); ecc 9; 0s)
+[MATCH] d9D9_sl_49_13_s111  (0s)  earlier-report=VALID  levels-equal=True
+    VALID d=9 D=9 group=sl 49 poly x^2+1 x Z_13 N=1528800 vertices=3057600 (distinct generators, 9-regular simple; every vertex within 9 of both (e,A) and (e,B); ecc 9; 0s)
+[MATCH] d9D9_sl_67_5_s111  (0s)  earlier-report=VALID  levels-equal=True
+    VALID d=9 D=9 group=sl 67 x Z_5 N=1503480 vertices=3006960 (distinct generators, 9-regular simple; every vertex within 9 of both (e,A) and (e,B); ecc 9; 0s)
+[MATCH] d9D9_sl_73_4_s111  (0s)  earlier-report=VALID  levels-equal=True
+    VALID d=9 D=9 group=sl 73 x Z_4 N=1555776 vertices=3111552 (distinct generators, 9-regular simple; every vertex within 9 of both (e,A) and (e,B); ecc 9; 0s)
+[MATCH] d9D9_sl_81_3_s111  (0s)  earlier-report=VALID  levels-equal=True
+    VALID d=9 D=9 group=sl 81 poly x^4+x+2 x Z_3 N=1594080 vertices=3188160 (distinct generators, 9-regular simple; every vertex within 9 of both (e,A) and (e,B); ecc 9; 0s)
+[MATCH] d10D10_psl_81_121_orb5f0_s3  (5s)  earlier results (build_haar2.py VALID, check_haar_indep.py VALID, runs/harvest_check_2026-10-31.txt)  levels-equal=True
+    VALID d=10 D=10 group=psl 81 poly x^4+x+2 x Z_121 N=32147280 vertices=64294560 (distinct generators, 10-regular simple; every vertex within 10 of both (e,A) and (e,B); ecc 10; 5s)
+PART 1 SUMMARY: 65/65 files: haarcheck_gen VALID, level sizes from both start vertices identical to the earlier report
+==================================================================================================== 
+PART 2: deliberately corrupted files (one generator changed, or D lowered by 1)
+----------------------------------------------------------------------------------------------------
+file: research/frontier/runs/cloudcheck/haarcheck_gen_calib_files/c1_d10D9_prod_psl_5_sl_25_4_swapmat_g3_g5.txt
+header: 10 9 prod psl 5 sl 25 poly x^2+2 n 4 N 3744000
+file research/frontier/runs/cloudcheck/haarcheck_gen_calib_files/c1_d10D9_prod_psl_5_sl_25_4_swapmat_g3_g5.txt
+header: 10 9 prod psl 5 sl 25 poly x^2+2 n 4 N 3744000
+group prod psl 5 sl 25 poly x^2+2 x Z_4, |G| = 3744000 = N, vertices 2N = 7488000; 10 distinct generators
+from (e,A): reached A 3743982/3744000, B 3744000/3744000 within 9; true ecc 10; level sizes [1, 10, 90, 807, 7210, 63790, 529124, 2724858, 3207557, 954535, 18]  (1s)
+from (e,B): reached A 3744000/3744000, B 3743968/3744000 within 9; true ecc 10; level sizes [1, 10, 90, 807, 7208, 63790, 528905, 2724858, 3207764, 954535, 32]  (1s)
+INVALID d=10 D=9 group=prod psl 5 sl 25 poly x^2+2 x Z_4 N=3744000 vertices=7488000 (distinct generators, 10-regular simple; 32 vertices unreached within D from the worse start; true ecc 10; 1s)
+[haarcheck_gen exit 1, 1s]
+check_haar_indep.py: RESULT INVALID d=10 D=9 eccA=10 eccB=10 n=7488000 (4s)   [4s]  levels identical to haarcheck_gen --full: True
+build_haar2.py: ecc from A = 10 unreached 0 | ecc from B = 10 unreached 0 | INVALID d=10 D=9 group=prod psl 5 sl 25 poly x^2+2 x Z_4 N=3744000 vertices=7488000   [24s]
+----------------------------------------------------------------------------------------------------
+file: research/frontier/runs/cloudcheck/haarcheck_gen_calib_files/c2_d11D8_psl_59_11_zshift_g2.txt
+header: 11 8 psl 59 n 11 N 1129260
+file research/frontier/runs/cloudcheck/haarcheck_gen_calib_files/c2_d11D8_psl_59_11_zshift_g2.txt
+header: 11 8 psl 59 n 11 N 1129260
+group psl 59 x Z_11, |G| = 1129260 = N, vertices 2N = 2258520; 11 distinct generators
+from (e,A): reached A 1129260/1129260, B 1129195/1129260 within 8; true ecc 9; level sizes [1, 11, 110, 1100, 10964, 105094, 698284, 1022990, 419901, 65]  (0s)
+from (e,B): reached A 1129195/1129260, B 1129260/1129260 within 8; true ecc 9; level sizes [1, 11, 110, 1100, 10964, 105094, 697830, 1022990, 420355, 65]  (0s)
+INVALID d=11 D=8 group=psl 59 x Z_11 N=1129260 vertices=2258520 (distinct generators, 11-regular simple; 65 vertices unreached within D from the worse start; true ecc 9; 0s)
+[haarcheck_gen exit 1, 0s]
+check_haar_indep.py: RESULT INVALID d=11 D=8 eccA=9 eccB=9 n=2258520 (1s)   [2s]  levels identical to haarcheck_gen --full: True
+build_haar2.py: ecc from A = 9 unreached 0 | ecc from B = 9 unreached 0 | INVALID d=11 D=8 group=psl 59 x Z_11 N=1129260 vertices=2258520   [6s]
+----------------------------------------------------------------------------------------------------
+file: research/frontier/runs/cloudcheck/haarcheck_gen_calib_files/c3_d10D10_psl_81_121_swapmat_g2_g7.txt
+header: 10 10 psl 81 poly x^4+x+2 n 121 N 32147280
+file research/frontier/runs/cloudcheck/haarcheck_gen_calib_files/c3_d10D10_psl_81_121_swapmat_g2_g7.txt
+header: 10 10 psl 81 poly x^4+x+2 n 121 N 32147280
+group psl 81 poly x^4+x+2 x Z_121, |G| = 32147280 = N, vertices 2N = 64294560; 10 distinct generators
+from (e,A): reached A 32147280/32147280, B 32144949/32147280 within 10; true ecc 11; level sizes [1, 10, 90, 786, 6798, 58385, 495476, 3969660, 21286120, 28116108, 10358795, 2331]  (3s)
+from (e,B): reached A 32144949/32147280, B 32147280/32147280 within 10; true ecc 11; level sizes [1, 10, 90, 786, 6798, 58385, 495480, 3969660, 21287745, 28116108, 10357166, 2331]  (5s)
+INVALID d=10 D=10 group=psl 81 poly x^4+x+2 x Z_121 N=32147280 vertices=64294560 (distinct generators, 10-regular simple; 2331 vertices unreached within D from the worse start; true ecc 11; 5s)
+[haarcheck_gen exit 1, 5s]
+check_haar_indep.py: RESULT INVALID d=10 D=10 eccA=11 eccB=11 n=64294560 (52s)   [52s]  levels identical to haarcheck_gen --full: True
+----------------------------------------------------------------------------------------------------
+file: research/frontier/runs/cloudcheck/haarcheck_gen_calib_files/c4_d13D8_prod_sl_8_sl_8_13_zshift_g4.txt
+header: 13 8 prod sl 8 poly x^3+x+1 sl 8 poly x^3+x+1 n 13 N 3302208
+file research/frontier/runs/cloudcheck/haarcheck_gen_calib_files/c4_d13D8_prod_sl_8_sl_8_13_zshift_g4.txt
+header: 13 8 prod sl 8 poly x^3+x+1 sl 8 poly x^3+x+1 n 13 N 3302208
+group prod sl 8 poly x^3+x+1 sl 8 poly x^3+x+1 x Z_13, |G| = 3302208 = N, vertices 2N = 6604416; 13 distinct generators
+from (e,A): reached A 3302208/3302208, B 3302156/3302208 within 8; true ecc 9; level sizes [1, 13, 155, 1848, 21983, 252539, 2006027, 3047756, 1274042, 52]  (0s)
+from (e,B): reached A 3302156/3302208, B 3302208/3302208 within 8; true ecc 9; level sizes [1, 13, 155, 1848, 21983, 252539, 2006969, 3047756, 1273100, 52]  (1s)
+INVALID d=13 D=8 group=prod sl 8 poly x^3+x+1 sl 8 poly x^3+x+1 x Z_13 N=3302208 vertices=6604416 (distinct generators, 13-regular simple; 52 vertices unreached within D from the worse start; true ecc 9; 1s)
+[haarcheck_gen exit 1, 1s]
+check_haar_indep.py: RESULT INVALID d=13 D=8 eccA=9 eccB=9 n=6604416 (3s)   [3s]  levels identical to haarcheck_gen --full: True
+build_haar2.py: ecc from A = 9 unreached 0 | ecc from B = 9 unreached 0 | INVALID d=13 D=8 group=prod sl 8 poly x^3+x+1 sl 8 poly x^3+x+1 x Z_13 N=3302208 vertices=6604416   [19s]
+----------------------------------------------------------------------------------------------------
+file: research/frontier/runs/cloudcheck/haarcheck_gen_calib_files/c5_d9D9_sl_81_3_Dminus1.txt
+header: 9 8 sl 81 poly x^4+x+2 n 3 N 1594080
+file research/frontier/runs/cloudcheck/haarcheck_gen_calib_files/c5_d9D9_sl_81_3_Dminus1.txt
+header: 9 8 sl 81 poly x^4+x+2 n 3 N 1594080
+group sl 81 poly x^4+x+2 x Z_3, |G| = 1594080 = N, vertices 2N = 3188160; 9 distinct generators
+from (e,A): reached A 1594080/1594080, B 1245377/1594080 within 8; true ecc 9; level sizes [1, 9, 72, 576, 4608, 36554, 269977, 1208238, 1319422, 348703]  (0s)
+from (e,B): reached A 1245377/1594080, B 1594080/1594080 within 8; true ecc 9; level sizes [1, 9, 72, 576, 4608, 36554, 269989, 1208238, 1319410, 348703]  (0s)
+INVALID d=9 D=8 group=sl 81 poly x^4+x+2 x Z_3 N=1594080 vertices=3188160 (distinct generators, 9-regular simple; 348703 vertices unreached within D from the worse start; true ecc 9; 0s)
+[haarcheck_gen exit 1, 0s]
+check_haar_indep.py: RESULT INVALID d=9 D=8 eccA=9 eccB=9 n=3188160 (4s)   [4s]  levels identical to haarcheck_gen --full: True
+build_haar2.py: ecc from A = 9 unreached 0 | ecc from B = 9 unreached 0 | INVALID d=9 D=8 group=sl 81 poly x^4+x+2 x Z_3 N=1594080 vertices=3188160   [11s]
+----------------------------------------------------------------------------------------------------
+file: research/frontier/runs/cloudcheck/haarcheck_gen_calib_files/c6_d9D9_prod_sl_9_sl_9_3_swapmat_g1_g6.txt
+header: 9 9 prod sl 9 poly x^2+1 sl 9 poly x^2+1 n 3 N 1555200
+file research/frontier/runs/cloudcheck/haarcheck_gen_calib_files/c6_d9D9_prod_sl_9_sl_9_3_swapmat_g1_g6.txt
+header: 9 9 prod sl 9 poly x^2+1 sl 9 poly x^2+1 n 3 N 1555200
+group prod sl 9 poly x^2+1 sl 9 poly x^2+1 x Z_3, |G| = 1555200 = N, vertices 2N = 3110400; 9 distinct generators
+from (e,A): reached A 1555194/1555200, B 1555200/1555200 within 9; true ecc 10; level sizes [1, 9, 72, 576, 4600, 36454, 268101, 1185022, 1282420, 333139, 6]  (0s)
+from (e,B): reached A 1555200/1555200, B 1555192/1555200 within 9; true ecc 10; level sizes [1, 9, 72, 576, 4600, 36454, 268079, 1185022, 1282440, 333139, 8]  (0s)
+INVALID d=9 D=9 group=prod sl 9 poly x^2+1 sl 9 poly x^2+1 x Z_3 N=1555200 vertices=3110400 (distinct generators, 9-regular simple; 8 vertices unreached within D from the worse start; true ecc 10; 0s)
+[haarcheck_gen exit 1, 0s]
+check_haar_indep.py: RESULT INVALID d=9 D=9 eccA=10 eccB=10 n=3110400 (1s)   [1s]  levels identical to haarcheck_gen --full: True
+build_haar2.py: ecc from A = 10 unreached 0 | ecc from B = 10 unreached 0 | INVALID d=9 D=9 group=prod sl 9 poly x^2+1 sl 9 poly x^2+1 x Z_3 N=1555200 vertices=3110400   [10s]
+==================================================================================================== 
+PART 3: malformed inputs must be rejected (exit 2, no VALID line)
+r1_d9D9_sl_81_3_dupgen.txt: exit 2; stderr: ERROR: repeated generator (as a group element); VALID line printed: False
+r2_d9D9_sl_81_3_baddet.txt: exit 2; stderr: ERROR: matrix does not have det 1: 854078 mat(43,32,58,1) z=2; VALID line printed: False
+r3_d9D9_sl_81_3_badN.txt: exit 2; stderr: ERROR: header N does not match the group order: 9 9 sl 81 poly x^4+x+2 n 3 N 1594081; VALID line printed: False
