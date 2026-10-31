@@ -1,0 +1,15 @@
+GROUP meta m 79 k 75 r 23 n3 1 n 5925 K 13
+FAMILY candidates 12 automorphisms 12 coset_reps 4 outer_gens 2 centre 25
+RECORDS 4 (0.0 s)
+REC 0 ALPHA order(g) 1 central | x->x^1 y->x^0 y^1 z^0 z->z^0; c0 0; t' = (0,0) t0, t'^2 = (0,0)
+REC 1 ALPHA order(g) 1 | x->x^1 y->x^0 y^49 z^0 z->z^0; c0 0; t' = (0,0) t0, t'^2 = (0,0)
+REC 2 ALPHA order(g) 75 | x->x^24 y->x^0 y^1 z^0 z->z^0; c0 1; t' = (0,37) t0, t'^2 = (0,0)
+REC 3 ALPHA order(g) 75 | x->x^24 y->x^0 y^49 z^0 z->z^0; c0 25; t' = (0,1) t0, t'^2 = (0,0)
+TABU rec 0 alpha f 1 m 6 best 350 sols 0 steps 2727 restarts 0 secs 8.0
+TABU rec 1 alpha f 1 m 6 best 54 sols 0 steps 3502 restarts 1 secs 8.0
+TABU rec 1 alpha f 3 m 5 best 82 sols 0 steps 3371 restarts 1 secs 8.0
+TABU rec 2 alpha f 1 m 6 best 66 sols 0 steps 3351 restarts 1 secs 8.0
+TABU rec 2 alpha f 3 m 5 best 58 sols 0 steps 3464 restarts 1 secs 8.0
+TABU rec 3 alpha f 1 m 6 best 390 sols 0 steps 2378 restarts 0 secs 8.0
+TABU rec 3 alpha f 3 m 5 best 220 sols 0 steps 3142 restarts 1 secs 8.0
+DONE sols 0

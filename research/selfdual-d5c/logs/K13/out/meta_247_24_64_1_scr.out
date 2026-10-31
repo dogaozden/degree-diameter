@@ -1,0 +1,52 @@
+GROUP meta m 247 k 24 r 64 n3 1 n 5928 K 13
+FAMILY candidates 96 automorphisms 96 coset_reps 16 outer_gens 3 centre 4
+RECORDS 20 (0.1 s)
+REC 0 ALPHA order(g) 1 central | x->x^1 y->x^0 y^1 z^0 z->z^0; c0 0; t' = (0,0) t0, t'^2 = (0,0)
+REC 1 ALPHA order(g) 2 central | x->x^1 y->x^0 y^1 z^0 z->z^0; c0 0; t' = (0,12) t0, t'^2 = (0,0)
+REC 2 ALPHA order(g) 8 | x->x^1 y->x^0 y^1 z^0 z->z^0; c0 6; t' = (0,9) t0, t'^2 = (0,0)
+REC 3 ALPHA order(g) 8 | x->x^1 y->x^0 y^1 z^0 z->z^0; c0 6; t' = (0,21) t0, t'^2 = (0,0)
+REC 4 ALPHA order(g) 1 | x->x^1 y->x^0 y^7 z^0 z->z^0; c0 0; t' = (0,0) t0, t'^2 = (0,0)
+REC 5 ALPHA order(g) 8 | x->x^1 y->x^0 y^7 z^0 z->z^0; c0 0; t' = (0,3) t0, t'^2 = (0,0)
+REC 6 ALPHA order(g) 1 | x->x^1 y->x^0 y^13 z^0 z->z^0; c0 0; t' = (0,0) t0, t'^2 = (0,0)
+REC 7 ALPHA order(g) 8 | x->x^1 y->x^0 y^13 z^0 z->z^0; c0 6; t' = (0,3) t0, t'^2 = (0,0)
+REC 8 ALPHA order(g) 1 | x->x^1 y->x^0 y^19 z^0 z->z^0; c0 0; t' = (0,0) t0, t'^2 = (0,0)
+REC 9 ALPHA order(g) 8 | x->x^1 y->x^0 y^19 z^0 z->z^0; c0 12; t' = (0,3) t0, t'^2 = (0,0)
+REC 10 ALPHA order(g) 24 | x->x^12 y->x^0 y^1 z^0 z->z^0; c0 2; t' = (0,11) t0, t'^2 = (0,0)
+REC 11 ALPHA order(g) 24 | x->x^12 y->x^0 y^1 z^0 z->z^0; c0 2; t' = (0,23) t0, t'^2 = (0,0)
+REC 12 ALPHA order(g) 3 | x->x^12 y->x^0 y^1 z^0 z->z^0; c0 8; t' = (0,8) t0, t'^2 = (0,0)
+REC 13 ALPHA order(g) 6 | x->x^12 y->x^0 y^1 z^0 z->z^0; c0 8; t' = (0,20) t0, t'^2 = (0,0)
+REC 14 ALPHA order(g) 12 | x->x^12 y->x^0 y^7 z^0 z->z^0; c0 8; t' = (0,2) t0, t'^2 = (0,0)
+REC 15 ALPHA order(g) 24 | x->x^12 y->x^0 y^7 z^0 z->z^0; c0 8; t' = (0,5) t0, t'^2 = (0,0)
+REC 16 ALPHA order(g) 24 | x->x^12 y->x^0 y^13 z^0 z->z^0; c0 2; t' = (0,5) t0, t'^2 = (0,0)
+REC 17 ALPHA order(g) 3 | x->x^12 y->x^0 y^13 z^0 z->z^0; c0 8; t' = (0,8) t0, t'^2 = (0,0)
+REC 18 ALPHA order(g) 12 | x->x^12 y->x^0 y^19 z^0 z->z^0; c0 8; t' = (0,2) t0, t'^2 = (0,0)
+REC 19 ALPHA order(g) 24 | x->x^12 y->x^0 y^19 z^0 z->z^0; c0 20; t' = (0,5) t0, t'^2 = (0,0)
+TABU rec 0 alpha f 1 m 6 best 140 sols 0 steps 3012 restarts 0 secs 8.0
+TABU rec 1 alpha f 1 m 6 best 145 sols 0 steps 2954 restarts 0 secs 8.0
+TABU rec 2 alpha f 1 m 6 best 48 sols 0 steps 3312 restarts 0 secs 8.0
+TABU rec 2 alpha f 3 m 5 best 64 sols 0 steps 3164 restarts 1 secs 8.0
+TABU rec 3 alpha f 1 m 6 best 50 sols 0 steps 2755 restarts 1 secs 8.0
+TABU rec 3 alpha f 3 m 5 best 72 sols 0 steps 3352 restarts 0 secs 8.0
+TABU rec 4 alpha f 1 m 6 best 68 sols 0 steps 3125 restarts 0 secs 8.0
+TABU rec 4 alpha f 3 m 5 best 54 sols 0 steps 3222 restarts 0 secs 8.0
+TABU rec 5 alpha f 1 m 6 best 40 sols 0 steps 3159 restarts 1 secs 8.0
+TABU rec 5 alpha f 3 m 5 best 45 sols 0 steps 3641 restarts 1 secs 8.0
+TABU rec 6 alpha f 1 m 6 best 92 sols 0 steps 3180 restarts 1 secs 8.0
+TABU rec 7 alpha f 1 m 6 best 40 sols 0 steps 3421 restarts 0 secs 8.0
+TABU rec 7 alpha f 3 m 5 best 66 sols 0 steps 3434 restarts 1 secs 8.0
+TABU rec 8 alpha f 1 m 6 best 58 sols 0 steps 3370 restarts 1 secs 8.0
+TABU rec 8 alpha f 3 m 5 best 520 sols 0 steps 3404 restarts 1 secs 8.0
+TABU rec 9 alpha f 1 m 6 best 45 sols 0 steps 3444 restarts 1 secs 8.0
+TABU rec 9 alpha f 3 m 5 best 38 sols 0 steps 3734 restarts 1 secs 8.0
+TABU rec 10 alpha f 1 m 6 best 47 sols 0 steps 3342 restarts 1 secs 8.0
+TABU rec 10 alpha f 3 m 5 best 54 sols 0 steps 3529 restarts 1 secs 8.0
+TABU rec 11 alpha f 1 m 6 best 49 sols 0 steps 3450 restarts 1 secs 8.0
+TABU rec 11 alpha f 3 m 5 best 57 sols 0 steps 3520 restarts 0 secs 8.0
+TABU rec 12 alpha f 1 m 6 best 69 sols 0 steps 3191 restarts 1 secs 8.0
+TABU rec 12 alpha f 3 m 5 best 51 sols 0 steps 3815 restarts 1 secs 8.0
+TABU rec 13 alpha f 1 m 6 best 64 sols 0 steps 3238 restarts 0 secs 8.0
+TABU rec 13 alpha f 3 m 5 best 49 sols 0 steps 3744 restarts 0 secs 8.0
+TABU rec 14 alpha f 1 m 6 best 94 sols 0 steps 3073 restarts 1 secs 8.0
+TABU rec 14 alpha f 3 m 5 best 75 sols 0 steps 3396 restarts 0 secs 8.0
+TABU rec 15 alpha f 1 m 6 best 102 sols 0 steps 3055 restarts 1 secs 8.0
+TABU rec 15 alpha f 3 m 5 best 76 sols 0 steps 3542 restarts 1 secs 8.0

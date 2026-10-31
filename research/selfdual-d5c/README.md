@@ -93,6 +93,7 @@ Energy = |G \ X X| (0 = valid), lowest over the records and types run.
 - (12,5), order >= 4,921: C103 : C48 (4,944) 57 after 21 types; at 4,520 already 33.
 - (14,5), order >= 8,785: C163 : C54 (8,802), 81 records, 20 types at 60 s: 104.
 - (15,5), order >= 10,369: C433 : C24 (10,392), 9 types at 60 s: 70.
+- (16,5), order >= 16,897: C353 : C48 (16,944), 400 records (capped), 20 types at 60 s: 440.
 - sigma-invariant self-dual sets (`SIGMA=q`, S a union of <psi, sigma>-orbits, exhaustive): on C37 : C81 at K = 12,
   where plain self-dual sets solve at once, q = 3 gave best 182 (360,126 sets, all) and q = 2 best 34 (3e6 sets,
   capped). Extra symmetry costs more than the conditions it saves.

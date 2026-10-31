@@ -1,0 +1,28 @@
+GROUP meta m 493 k 12 r 115 n3 1 n 5916 K 13
+FAMILY candidates 32 automorphisms 32 coset_reps 8 outer_gens 2 centre 3
+RECORDS 8 (0.0 s)
+REC 0 ALPHA order(g) 1 central | x->x^1 y->x^0 y^1 z^0 z->z^0; c0 0; t' = (0,0) t0, t'^2 = (0,0)
+REC 1 ALPHA order(g) 2 | x->x^1 y->x^0 y^1 z^0 z->z^0; c0 0; t' = (0,6) t0, t'^2 = (0,0)
+REC 2 ALPHA order(g) 1 | x->x^1 y->x^0 y^5 z^0 z->z^0; c0 0; t' = (0,0) t0, t'^2 = (0,0)
+REC 3 ALPHA order(g) 6 | x->x^1 y->x^0 y^5 z^0 z->z^0; c0 0; t' = (0,2) t0, t'^2 = (0,0)
+REC 4 ALPHA order(g) 12 | x->x^30 y->x^0 y^1 z^0 z->z^0; c0 2; t' = (0,11) t0, t'^2 = (0,0)
+REC 5 ALPHA order(g) 12 | x->x^30 y->x^0 y^1 z^0 z->z^0; c0 2; t' = (0,5) t0, t'^2 = (0,0)
+REC 6 ALPHA order(g) 4 | x->x^30 y->x^0 y^5 z^0 z->z^0; c0 6; t' = (0,3) t0, t'^2 = (0,0)
+REC 7 ALPHA order(g) 12 | x->x^30 y->x^0 y^5 z^0 z->z^0; c0 6; t' = (0,1) t0, t'^2 = (0,0)
+TABU rec 0 alpha f 1 m 6 best 221 sols 0 steps 2845 restarts 0 secs 8.0
+TABU rec 0 alpha f 3 m 5 best 284 sols 0 steps 3132 restarts 1 secs 8.0
+TABU rec 1 alpha f 1 m 6 best 101 sols 0 steps 2965 restarts 0 secs 8.0
+TABU rec 1 alpha f 3 m 5 best 206 sols 0 steps 2792 restarts 0 secs 8.0
+TABU rec 2 alpha f 1 m 6 best 148 sols 0 steps 2725 restarts 0 secs 8.0
+TABU rec 2 alpha f 3 m 5 best 109 sols 0 steps 3041 restarts 0 secs 8.0
+TABU rec 3 alpha f 1 m 6 best 100 sols 0 steps 3056 restarts 0 secs 8.0
+TABU rec 3 alpha f 3 m 5 best 96 sols 0 steps 3243 restarts 1 secs 8.0
+TABU rec 4 alpha f 1 m 6 best 84 sols 0 steps 2979 restarts 1 secs 8.0
+TABU rec 4 alpha f 3 m 5 best 52 sols 0 steps 3735 restarts 1 secs 8.0
+TABU rec 5 alpha f 1 m 6 best 81 sols 0 steps 3145 restarts 1 secs 8.0
+TABU rec 5 alpha f 3 m 5 best 51 sols 0 steps 3653 restarts 1 secs 8.0
+TABU rec 6 alpha f 1 m 6 best 190 sols 0 steps 2632 restarts 0 secs 8.0
+TABU rec 6 alpha f 3 m 5 best 134 sols 0 steps 3154 restarts 0 secs 8.0
+TABU rec 7 alpha f 1 m 6 best 154 sols 0 steps 2816 restarts 1 secs 8.0
+TABU rec 7 alpha f 3 m 5 best 122 sols 0 steps 3432 restarts 0 secs 8.0
+DONE sols 0
