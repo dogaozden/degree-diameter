@@ -1,0 +1,8 @@
+machine: nproc=4; free -g: total 15G used 0G free 14G avail 15G
+0b27e448484d730813a695a2e662226587a6760a358dcf3fec966a609bc525fc
+################ reference checker: haarcheck_psl research/frontier/sols/d17D9_psl_101_487_orb3_s2.txt   [exit 0]
+from (e,A): reached A 250853700/250853700, B 250853700/250853700 within 9, ecc 9
+from (e,B): reached A 250853700/250853700, B 250853700/250853700 within 9, ecc 9
+VALID d=17 D=9 group=psl 101 x Z_487 N=250853700 vertices=501707400 (distinct generators, 17-regular simple)
+
+################ independent checker: check_haar_indep.py — NOT RUN: does not fit in 15 GB. Measured peak 1.35 GB on a 21.3M-vertex psl calibration (~64 B/vertex); this file has 501.7M vertices, ~32 GB. haarcheck2 does not accept psl headers. Reference only; NO two-checker result.
