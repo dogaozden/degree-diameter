@@ -95,18 +95,24 @@ Checks of every hit: research/lifts/coordinator_check/apsp.c (`src/apsp`), VALID
   SL(2,17)). The best family, psi(x) = -(hxh)^-1 (outer, u0 = -I), keeps 98 % of the distinct words at distance 6.
   haar_sd (`logs/K5D8/hsd/`), 600-1,200 s per run: types 1+1+1+2 and 1+2+2 with psi = -x^-1 and -(hxh)^-1, 3.2-4.5e7
   evaluations each: best 6 (three missed psi-pairs); sdhi tabu (`logs/K5D8/tabu_*.txt`): best 6 (PSL(2,17) x Z2:
-  13+, PGL(2,17): 16+). Control, plain annealing (haar_sym without symmetry) on the same groups: SL(2,17) best 3
-  after 2.9e7 evaluations (3 seeds: 3, 3, 4), PGL(2,17) best 14, PSL(2,17) x Z2 best 13. So SL(2,17) is the closest
-  group found to a (5,8) graph above the record, for self-dual and plain sets alike, and neither closes it.
+  13+, PGL(2,17): 16+). Exhaustive enumeration (sdhi ENUM=1, up to the automorphisms commuting with psi, every set
+  checked by fast rejection and the near misses by the exact energy): psi(x) = -(hxh)^-1, type 1+2+2: all
+  95,545,984 sets, best 7, no solution (`logs/K5D8/enum_sl17_psi3_t122.txt`); psi(x) = -x^-1, type 1+2+2:
+  6,317,676 sets, best 10; type 1+1+1+2: 42,558,480 sets, best 9; no solution (`enum_sl17_psi1_*.txt`). So the
+  best self-dual families of SL(2,17) have no (5,8) graph. Control, plain annealing (haar_sym without symmetry) on
+  the same groups: SL(2,17) best 1 (seeds of 600-1,800 s, 7e7 evaluations each: 2, 1, 2, and 1-3 for the later
+  seeds), PGL(2,17) best 13, PSL(2,17) x Z2 best 12. A plain near miss leaves generic elements uncovered (sdhi
+  SHOWBEST: 5 elements, none central). So SL(2,17) is the closest group found to a (5,8) graph above the record;
+  plain sets get within one element, self-dual sets are exhausted without a solution.
 
 - Squad round sdhi-r1 (8 Haiku cards, `../squads/sdhi-r1/cards.md`): (5,8) metacyclic and product groups, deep tabu
   near the record shape, haar_sd at (6,8) and (7,8), (5,7) metacyclic, a wildcard.
 
 ## What is left open
 
-- (5,8) on SL(2,17): best 3 (plain) and 6 = 3 pairs (self-dual) after a few 1e7 evaluations. Longer annealing or
-  exhaustive enumeration of the self-dual type 1+2+2 (about 2.3e7 sets after the normalisation, like C61:C80;
-  sdhi ENUM=1 PSI=3 TYPES=1+2+2, a few hours with D = 8 fast rejection) would settle the self-dual family there.
+- (5,8) on SL(2,17) with plain sets: best 1 uncovered after 7e7 evaluations in several seeds. Longer plain
+  annealing there is the most direct chance at a (5,8) graph above 9,760 (not a self-dual one: those are exhausted
+  in the main types; the self-dual types 1+1+1+1+1 and psi3 1+1+1+2 (5e8 sets) were only sampled).
 - The diagnosis says where self-duality can still pay at D = 7, 8: groups with a very low commuting probability
   (a large simple factor, no cyclic factor) and small valency K (5), where orbit-symmetric S do not fit. Groups
   of the right orders are scarce near the targets (SL(2,17) for (5,8); none for (5,7) between 1,561 and 1,680).
