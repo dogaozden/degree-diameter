@@ -5,7 +5,11 @@ of C6 x (C19:C3) = SmallGroup(342,12)). Earlier jobs (branch claude/squad-6-5-ro
 closed every degree-6 Haar graph on 686-800 vertices except those of order 384 (20,169 groups, 768 vertices). This job
 closes order 384. Squad rounds: research/squads/s384r1, s384r2 (log in research/squads/LOG.md).
 
-**Status: in progress** (see the coverage table below; `python3 src/coverage.py` regenerates it from the logs).
+**Result: no Haar graph of degree 6 and diameter 5 on 768 vertices** (all 20,169 groups of order 384 closed: 2,765 by
+exact filters, 17,404 by exhaustive search), **and none on 802-900 vertices** (all 2,742 groups of order 401-450 closed,
+an extension beyond the brief). With research/s65 this closes every Haar graph of degree 6 and diameter 5 on 686-900
+vertices: the 684 record is the largest such Haar graph up to 900 vertices. `python3 src/coverage.py` and
+`python3 src/coverage_gen.py` regenerate the coverage tables from the logs.
 
 ## What is searched
 
@@ -41,8 +45,8 @@ c solved exactly from the targets missed by the 5-prefix, side B checked for eve
 - `src/haarex5.c` (squad card s384r1-c1): per 4-prefix {e, r, r2, a}, the b-free part A4(x) of each target's solution
   set is cached; per b only the words containing b are added; bad(S,5) checks only the terms with b. About 1.5x.
 - `src/haarex6.c` (squad card s384r2-c1): haarex5 with byte arrays instead of bitsets (store-only marks; squad card
-  s384r1-c2's low-level changes). About 1.2x. The main sweep ran haarex4 for the first ~110 groups, haarex5 for the
-  next ~1,700, then haarex6 (the program is named in the first line of each log).
+  s384r1-c2's low-level changes). About 1.2x. The order-384 sweep ran haarex4 on 320 groups, haarex5 on 1,438 and haarex6
+  on 15,646 (the program is named in the first line of each log); orders 401-450 ran haarex6.
 
 Calibration (identical VALID/ASIDE/PAIR/DONE output, and identical prefix counts, for haarex3, 4, 5, 6):
 SmallGroup(342,12) (the 684 record: 10 VALID sets), 360_53 (41 side-A covers, 12 ASIDE lines), the other groups with
@@ -79,7 +83,44 @@ s_b^-1 s_a, s_a^-1 s_b s_c^-1 s_d with a != b, b != c, c != d; side B: e, s_a s_
 `data/coverage384.txt`: one line per id (method, and for exhaustive runs the number of pair classes, prefixes,
 side-A covers and VALID sets).
 
-(table filled in at the end of the run)
+| method | groups |
+|---|---:|
+| rank filter (r2 = 5, 6, 7) | 1,842 |
+| quotient filter (64_193, 64_194, 64_202) | 923 |
+| exhaustive (haarex4/5/6) | 17,404 |
+| open | 0 |
+| total | 20,169 |
+
+No VALID set and no ASIDE line (side A covered with side B fewer than 4 short) in any log. 45.3 billion 5-prefixes,
+17.2 CPU-hours of search (plus GAP exports). Side A, (S^-1 S)^2 = G, is covered in only 7 groups (side B then at least
+4 elements short), all with 3-15 involutions:
+
+| id | side-A covers | involutions | G/G' | structure (GAP) |
+|---:|---:|---:|---|---|
+| 1098 | 17 | 3 | C2 x C2 x C4 | C3 : ((C4 x C2) . (C2 x D8)) |
+| 2677 | 57 | 7 | C2 x C2 x C4 | C3 : (C2 . ((C4 x C2 x C2) : C4)) |
+| 2705 | 78 | 7 | C2 x C2 x C4 | C2 x (C3 : (C2 . ((C2 x C2 x C2) : C4))) |
+| 5556 | 9 | 7 | C2 x C2 | (C4 x C4) : (C3 : Q8) |
+| 5669 | 8 | 3 | C2 x C2 | (C2 x C2) . ((C2 x C2) : S4) |
+| 5798 | 32 | 7 | C2 x C2 x C3 | (C4 : (C4 : Q8)) : C3 |
+| 18177 | 99 | 15 | C2 x C2 x C2 x C3 | Q8 x (((C4 x C2) : C2) : C3) |
+
+## Orders 401-450 (802-900 vertices)
+
+The brief noted that orders 401-450 were covered only by the self-dual sweep of research/selfdual-d5. Since the
+pipeline had spare capacity, all of them were closed with haarex6 (`src/pipe_export_gen.sh`, `src/pipe_worker_gen.sh`,
+`src/hx_export_gen.g`; full-table export for the non-solvable groups, e.g. 420_13; logs in `o401_450/logs/`, coverage
+in `o401_450/coverage.txt` and `o401_450/coverage_table.md`): 2,742 groups, 105 abelian (at most 542 vertices, job
+fresh-6-5's counting bound), 28 excluded by the rank filter (27 of order 448, 1 of order 416), 2,609 exhaustive.
+No VALID set, and no side-A cover at all.
+
+## Record-check pipeline (ready, not needed)
+
+`src/haar_record.sh ORD ID EXPORT OUTDIR s1..s6` builds the edge list from the export table (`src/haar_table_edges.py`)
+and independently from GAP's group arithmetic (`src/haar_gap_edges.g`), compares the sorted edge sets (sha256) and runs
+research/lifts/coordinator_check/apsp.c at d = 6, D = 5 and D = 4. Calibration on a VALID set of SmallGroup(342,12):
+builders agree, VALID at D = 5, INVALID at D = 4 (`data/record_pipeline_calibration_342_12.txt`). No record was found,
+so `records/` is empty.
 
 ## Other results of this job
 
@@ -92,3 +133,15 @@ side-A covers and VALID sets).
 - Lifts of the GQ(5,5) incidence graph (312 vertices) by a group of order 3 cannot have diameter 5: two collinear
   points are joined by a single walk of length <= 4 up to backtracking (no triangles), so a point reaches only one of
   the three lifts of a collinear point within distance 4.
+- Counting bound for orbit structures (squad card s384r2-c8, checked by hand for 1+2): a graph of maximum degree 6 and
+  diameter 5 with a group acting semiregularly with k_A orbits on one colour class and k_B on the other has at most 249
+  vertices for 1+2 orbits, 650 for 2+3 and 108 for 1+3; above 684 only 2+2, 3+3 and 3+4 remain, and 3+4 would need
+  about 75% of the Moore-type count of a B-vertex (the 684 record uses 44%).
+
+## Notes for the next job
+
+- Haar graphs: closed up to 900 vertices. haarex6 handles N <= 512 (W = 8 words); orders 451-512 (902-1,024 vertices)
+  would take a few hours with the same pipeline (order 480 has 1,213 groups, 500 has 56; 512 has 10,494,213 groups and
+  would need the rank filter plus much more).
+- Machine: the cloud kernel uses autogroup scheduling, so `nice` inside one session does not lower its priority against
+  another session's processes; use `echo N > /proc/<pid>/autogroup` (done here for the squad cards and the pipeline).
