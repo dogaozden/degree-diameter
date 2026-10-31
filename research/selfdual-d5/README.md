@@ -1,6 +1,6 @@
 # selfdual-d5: self-dual (bipartite Cayley) Haar graphs in other diameter-5 cells
 
-Job "selfdual-d5" (Opus cloud session, Oct 30-31 2026, 20:35-01:40 UTC). Method from `../d75-raise/README.md` (the
+Job "selfdual-d5" (Opus cloud session, Oct 30-31 2026, 20:35-03:00 UTC). Method from `../d75-raise/README.md` (the
 (7,5) 1,312 record): if S is a union of orbits of psi(x) = c^-1 beta(x)^-1 for an index-2 extension G^ = G u G t of
 G (t^2 = c, t x t^-1 = beta(x)), then H(G,S) = Cay(G^, tS) is vertex-transitive and only X X = G (X = S^-1 S) has to
 be checked. New here: valency K as a parameter, non-split extensions (c != e, needed when K is even and T has no
@@ -55,36 +55,84 @@ Metacyclic ones: x^i y^j written (i,j), <x, y | x^m = y^k = 1, y x y^-1 = x^r>, 
 | `cover.py` | coverage table of a sweep log | |
 | `run1.sh`, `sweep.sh` | drivers: one group (export + sdk, one line in `logs/K$K/sweep.txt`), a list in parallel | |
 | `list_groups.g` | non-abelian SmallGroups of a range of orders with their numbers of involution classes and involutions | |
-
-Check of every hit: research/lifts/coordinator_check/apsp.c (`src/apsp`), VALID at D = 5 and INVALID at D = 4.
 | `sdtabu.c` | tabu search inside the same family (same records and types as sdk) for types too large to enumerate: replace one fixed element or one 2-orbit, NB random candidates per step, tabu tenure, restarts; energy \|G \ X X\|; `DEEP=thr,secs` gives extra time to types that get within thr | K = 7 on 656_28 (3,2): 3 of the 1,312 sets in 0.4 s; K = 6 SL(2,7): sets in 0.1-1 s; K = 9 on C197 : C7 = SmallGroup(1379,1) (the group of our 2,758 record): valid 9-sets of types (3,3) and (5,2) in 7-40 s (apsp VALID at D = 5, INVALID at D = 4); K = 8 on AGL(1,7) x C21 = 882_40: a (4,2) set in 0.3 s, many types at 1 |
 | `run_tabu.sh`, `sweep_tabu.sh` | drivers for sdtabu (one line per group in `logs/K$K/tabu.txt`) | |
 | `haar_edges.py` | edge list of H(G,S) from an export table and S | |
 | `stop_driver.sh` | stop a sweep driver (running groups finish) | |
+| `meta_group.g`, `meta_group2.g`, `run_meta.sh`, `run_meta2.sh`, `sweep_meta.sh`, `sweep_meta2.sh` | metacyclic C_p : C_k (prime p, action of order d) and C_m : C_k (y x y^-1 = x^r) as permutation groups for export_sd.g, and their sdtabu drivers (`logs/K9/meta.txt`, `meta2.txt`) | C197 : C7 and C69 : C22 re-found |
+| `deep_tabu.sh`, `deep_loop.py` | 300 s sdtabu runs on single (group, record, type) near misses above the record order in `logs/K9/RECORD_N` | gave 5 of the 9 steps |
+| `sweep_tabu2.sh`, `sweep_tabu3.sh`, `prune.py` | second/third sdtabu stream; cut a list to orders above the record | |
+| `cover_tabu.py`, `k6_bands.py` | coverage summaries (`logs/K9/coverage.md`, the K = 6 table below) | |
+| `canon_eq.py`, `make_meta_record.sh`, `meta_coords2.g` | nauty isomorphism test of edge lists; record files for a metacyclic hit; coordinates x^i y^j of a solution | |
 
-## Status (running log)
+Check of every hit: research/lifts/coordinator_check/apsp.c (`src/apsp`), VALID at D = 5 and INVALID at D = 4, plus the
+independent builders and checkers listed with each record.
 
-- 20:35 start. GAP 4.12 + full SmallGroups (gap-smallgrp-extra) installed in the container.
-- (6,5): sdk K = 6 sweep of every non-abelian group of order 343-450 (no 384): first 343-352 (+ the rest of 343-360
-  later), then 361-450 with <= 7 involutions first. Caps: MAXEV 1e8 for every type; types with >= 4 psi-fixed elements:
-  2e7 (first 53 groups, lexicographic cut), then 3e6, from 21:20 UTC types larger than the cap are randomly sampled
-  (SAMPLED) instead of cut. Closest: SmallGroup(352,50) = C11 x (order-32 group), type (6,0): |G \ X X| = 1, the
-  whole type enumerated (`logs/K6/deep/352_50_f46.out`); 372_1 = C31 : C12, (2,2): 2. Squad round sd5-r1: 8 other
-  families, nothing above 684 (`../squads/LOG.md`).
-- (9,5): sdtabu K = 9 sweep of groups of order 1380-1460 (no 1408, 1440, 1456, 1458), odd order first, then by number of
-  involutions; SECS = 2 per (record, type), DEEP = 10,25, types (1,4), (3,3), (5,2) ((7,1), (9,0) are hopeless on
-  C197 : C7: best 362 and 1182). Hits: 1395 (groups 1, 2, 3, 5: C31 : C45, C9 x (C31 : C5), C5 x (C31 : C9),
-  C3 x (C31 : C15)) -> 2,790; 1407 (2: C7 x (C67 : C3), 4: C469 : C3) -> 2,814; then the metacyclic list
-  (`src/meta_group.g`, `src/run_meta.sh`: C_p : C_k with y acting with order d >= 3, p >= 31 prime, orders 1379-1800,
-  `logs/meta9_list.txt`): C61 : C24 (d = 6) -> 2,928. After each hit the lists were cut to larger orders. Near misses
-  (|G \ X X| = 2) at 1467 (C163 : C9), 1474 (C67 : C22), 1485 (SmallGroup(1485,4), (1485,5)); a probe of the metacyclic
-  groups of order 1569-1635 stays at 10 or more, so the frontier of this family is around 1470-1500.
-  Later: 1464 (C61 : C24, metacyclic list) -> 2,928; deep runs (`src/deep_tabu.sh`, `src/deep_loop.py`: 300 s per
-  near-miss record/type, best <= 3, above the current record order) gave 1467 (C163 : C9) -> 2,934 and 1485
-  (Heis(3) x (C11 : C5)) -> 2,970. From 22:57: odd-order groups and groups with one involution (center <= 30, not
-  nilpotent, `logs/wl9_inv1_1468_1560.txt`) of order 1486-1560, two deep workers (seeds 11 and 23).
-- (8,5): self-dual tabu on AGL(1,7) x C21 (order 882, the old Haar record group): a (4,2) set in 0.3 s, many types at 1.
-  Metacyclic probe at 1025 (C41 : C25): best 4 after 13 min; stopped (1025 is 16% above 882).
-- (7,5): SmallGroup(660,16) (the previous job's near miss) with every type uncapped: no solution, best 2
-  (`logs/K7/deep/660_16_all.out`). From 23:00 the 600 uncovered groups of order 657-672 (`logs/wl7_a_657_672.txt`,
-  MAXEVF 3e5 as in the previous job, oversized types sampled) run at low priority.
+
+## How the (9,5) graphs were found
+
+GAP export (`src/export_sd.g`, no non-split records for odd K) and `src/sdtabu` over every involution class of Aut(G)
+and the types (1,4), (3,3), (5,2) (2 s each, 25 s more for a type that gets within 10), then 300 s deep runs with two
+seeds on every near miss (best <= 3, later <= 4) above the current record order (`src/deep_loop.py`). Group lists,
+each cut to orders above the current record after every hit: SmallGroups of order 1380-1460 (no 1408, 1440, 1456,
+1458) by number of involutions; metacyclic C_p : C_k (p >= 31 prime, y acting with order d >= 3, `logs/meta9_list.txt`,
+built by `src/meta_group.g`) of order 1379-1800; odd-order groups of order 1461-1700 that are not of that metacyclic
+form (`logs/wl9_odd_1461_1700.txt`); groups of order 1468-1560 with a cyclic or generalized quaternion Sylow
+2-subgroup, center <= 30, not nilpotent (`logs/wl9_inv1_1468_1560.txt`). Per order: `logs/K9/coverage.md` (groups
+run, smallest |G \ X X| reached, groups with solutions); one line per group in `logs/K9/tabu.txt`, `logs/K9/meta.txt`,
+deep runs in `logs/K9/deep/`. Tabu is a heuristic: a group without a solution here may still have one.
+Calibration: on C197 : C7 (our old 2,758 group) sdtabu finds valid self-dual 9-sets in 7-40 s. A short parameter test
+(`logs/K9/tune/`, one seed, 240 s on C163 : C9) found a solution only with STALL = 2000 (restart after 2,000 steps
+without improvement instead of 300), so the deep runs use STALL = 2000 from 23:55.
+Where it stands (03:00 UTC): hits at 1395, 1407, 1464, 1467, 1485, 1488, 1500, 1512 (783 and 782), 1518; misses of 2 at
+1491, 1505, 1515, 1539 (deep runs with two seeds did not close them); the metacyclic groups of order 1569-1635 stay at
+10 or more. Groups run: 235 SmallGroups, 56 metacyclic with prime kernel, 24 metacyclic with composite kernel
+(`logs/K9/meta2.txt`, from 02:25: C_m : C_k, m squarefree odd composite, an action of order >= 2 on every prime of m and
+>= 3 on one, `logs/wl9_metac.txt`; calibrated on C69 : C22), 56 deep runs.
+Not reached: the rest of the 1513-1560 Sylow-2-cyclic/quaternion list (`logs/wl9_inv1_r5*.txt`, about 120 groups) and of
+the composite list (about 45 groups, orders 1554-1700).
+
+## (6,5): no graph above 684
+
+`sdk` K = 6 over every non-abelian group of order 343-450 (no 384), exhaustive except for types larger than the caps
+(MAXEV 1e8; types with >= 4 psi-fixed elements 2e7 lexicographic for the first 53 groups, then 3e6, from 21:20 UTC
+1e7 random samples instead of a cut). Coverage (searched / non-abelian groups, smallest |G \ X X| among sets that
+passed 25 targets), `src/k6_bands.py`, per order `logs/K6/coverage.md`:
+
+| orders (vertices) | inv <= 1 | inv 3-7 | inv 8-31 | inv > 31 |
+|---|---:|---:|---:|---:|
+| 343-360 (686-720) | 23 / 61 (best 4) | 76 / 93 (best 1) | 39 / 94 (best 5) | 34 / 146 (best 20) |
+| 361-400 (722-800) | 82 / 82 (best 2) | 108 / 108 (best 4) | 35 / 88 (best 4) | 72 / 174 (best 16) |
+| 401-450 (802-900) | 119 / 155 (best 8) | 303 / 718 (best 8) | 0 / 637 | 0 / 1127 |
+
+Order 343-360 was run first as a check (an earlier exhaustive search found no degree-6 Haar graph there at all) and
+then paused for orders above 360. Closest: SmallGroup(352,50) = C11 x (order-32 group), type (6,0): 1 (that type
+fully enumerated, `logs/K6/deep/352_50_f46.out`); 372_1 = C31 : C12, (2,2): 2 (enumerated); 375_2, 375_6, 378_41,
+378_48: 4. C13 x the same order-32 group (416_51), types (4,1) and (6,0) fully: best 30. Squad round sd5-r1 (8 other
+families: order-4 self-duality, self-dual tabu, plain tabu, bi-coset |H| = 2 and 3, 2+2 lifts, order-3/5 symmetric
+sets, formula-only metacyclic Cayley graphs): nothing above 684, best 2 (plain tabu on SL(2,5) x C3 at 720); see
+`../squads/LOG.md`. A valid 672-vertex graph (SL(2,7)) was used for calibration only.
+
+## (7,5): nothing above 1,312
+
+- SmallGroup(660,16), the previous job's near miss, every type uncapped (`logs/K7/deep/660_16_all.out`): best 2.
+- The 600 groups of order 657-672 the previous sweep had not reached (mostly order 672 with more than 31 involutions,
+  `logs/wl7_a_657_672.txt`) ran at low priority from 23:00 (MAXEVF 3e5, oversized types sampled): 28 groups done,
+  best 6, no solution (`logs/K7/sweep.txt`, `logs/K7/coverage.md`). Not reached: the rest of that list, 673-700
+  with 8+ involutions, 701-800 with 3+ involutions, order 729 (lists `logs/wl7_*.txt`).
+
+## (8,5): nothing above 2,048
+
+Self-dual tabu works at 882 (AGL(1,7) x C21, the old Haar record group: a (4,2) set in 0.3 s, many types at 1), but a
+metacyclic probe at 1025 (C41 : C25, `logs/K8/meta.txt`) reached only 4 in 13 minutes; 1025 is 16% above 882, so the
+probe was stopped. Not searched further.
+
+## Next steps
+
+- (9,5): the rest of the lists above (resume with `src/sweep_tabu.sh` / `src/sweep_meta2.sh` on the remaining lines
+  and `src/deep_loop.py` with RECORD_N = 1518); the near miss 1539 (2) with more seeds; groups of order 1519-1600 with
+  more involutions; the same tabu at K = 10, 11 (cells (10,5), (11,5)), where the self-dual family may also beat the
+  table.
+- (6,5): orders 401-450 with 8+ involutions (1,764 groups) and order 384; the sweep shows no group above 360 closer
+  than 2.
+- (7,5): the list above; `src/run1.sh` now skips the non-split export for odd K.

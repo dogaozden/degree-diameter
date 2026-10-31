@@ -46,6 +46,6 @@
 | 428 | 856 | 2 | 1 | 1 | 0 | 178 | - |
 | 429 | 858 | 1 | 1 | 1 | 0 | 30 | - |
 | 430 | 860 | 3 | 1 | 1 | 0 | 56 | - |
-| 432 | 864 | 760 | 122 | 116 | 0 | 10 | - |
+| 432 | 864 | 760 | 268 | 260 | 0 | 10 | - |
 
-total listed (orders touched) 1809, searched 745, with a capped type 665, failed 0
+total listed (orders touched) 1809, searched 891, with a capped type 809, failed 0

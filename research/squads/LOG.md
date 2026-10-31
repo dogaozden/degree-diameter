@@ -23,3 +23,6 @@ Kept / learned: no family gets near 0 above 700 vertices; the self-dual sweep's 
 What next (director): keep the sdk sweep of 361-450 running on 2 cores; move 2 cores to (9,5), where the director's
 new tabu (src/sdtabu.c) finds valid self-dual 9-sets on C197 : C7 (order 1379, the group of our 2,758 record) in
 10-40 s, so orders above 1379 look reachable.
+Outcome of the job (director, 03:00 UTC): no further squad round. The two (6,5) cores went on with the sdk sweep
+(nothing above 684; closest still 352_50 at 1); (9,5) went from 2,758 to 3,036 in nine verified steps (1395 ... 1518),
+five of them from 300 s deep tabu runs on near misses (research/selfdual-d5/README.md).
