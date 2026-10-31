@@ -40,3 +40,8 @@ perturbation test from the quotient (PERT0 = 5, 10, 20); then n = 170 (C5 17+17)
 - n = 182 continuation 2 (from far 126, bo WCAP 16, 520 s, seed 51): no change (raw 36). Continuation 3 (PERT 16, STALL 1500,
   WCAP 8, 520 s, seed 61): no change (raw 36, 65 kicks). The raw-36 basin is deep; kicks from its best do not leave it.
 - n = 170, C5 k = 17, bo (520 s, seed 71): raw 44, far 110 (score37 far 110). Same as c4's 60 s tabu (far 110); no gain. Not logged.
+- n = 184, C2xC2 k = 23: bo (all 2-switches, 520 s, seed 81): raw 184, far 368 (bumps 26754 of 27312 steps: weights dominate).
+  BUMPGAP=10 (300 s): raw 202. Plain tabu with ALL 2-switches (150 s): raw 251, far 502. The neighbourhood is too big at
+  k = 23 (2760 evaluations per step, 7k steps in 150 s). c4 used M = 300 sampled 2-switches and got raw 96 in 150 s, so
+  large k needs the sampled neighbourhood (M = 300), not the full one. Lesson recorded; rerun with M = 300.
+- n = 184, C2xC2 k = 23, bo with M = 300 sampled 2-switches (300 s, seed 91): raw 100, far 200 (c4 has 192). Not logged.

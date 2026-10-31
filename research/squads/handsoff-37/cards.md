@@ -306,3 +306,33 @@ least 12 orbits per side, so the free part z has order m <= n/24, but the extra 
 - n = 180 (90 = 5 x 18 = 6 x 15 = 3 x 30): z of order 5 or 6 with s of order 2, 3 or 4 non-free.
 Calibrate each group type first at a smaller n where a solution should exist (n = 160 = 2 x 80 with Z5; n = 150; n = 168
 with Z6 or Z4 free parts), then run the open n. Many restarts, log best far per (n, group).
+
+Round-2 facts (19:08Z): r2e's breakout tabu for lifts (r2e/NOTES.md: tabu + weights on violated pairs) gives the best
+182 so far: C7 13+13 far 126. r2f / r3a non-free symmetric SA: 168 found in 3 s with F21, but 182 F21 far 231, 196 F21
+far 273, 170 (D5) far 155, 180 (Z10) far 335. r2b: exact SAT repair of radius-2 regions confirms far 46 is a local
+optimum; radius 3-4 SAT too slow. r2d: depth-2 plateau search from far 46 (51M evaluations): nothing below 46.
+
+## Card r3b: breakout weights on the non-free symmetric search
+
+Copy r2f's symmetric search (symloc.c, group files; read r2f/NOTES.md) and r2e's breakout idea (r2e/NOTES.md: weights on
+violated pairs that grow at local minima, so the search leaves plateaus). Put the breakout weights into the symmetric
+search: cost = weighted far over orbit representatives. Calibrate at n = 168 with F21 (must still reach 0 quickly), then run
+n = 182 (F21, 13 + 13 base; current best 126 from plain lifts, 231 from symmetric SA) and n = 196 (F21, 273). Also try
+n = 170 with D5 / F20 / Z15 (current 155). Log best far per (n, group).
+
+## Card r3c: breakout tabu for lifts at n = 170-180
+
+Copy r2e's breakout tabu (read r2e/NOTES.md). r2e worked mostly on 182 and up. Run it on the smallest open cases:
+n = 170 (C5, 17 + 17; best lift so far far 110 from c4), n = 176 (C4 and C2 x C2, 22 + 22), n = 180 (C6 and S3, 15 + 15;
+C5, 18 + 18; C3, 30 + 30). Then improve the engine where it stalls (weight decay, elite restarts, a move that rewires a whole
+base vertex). Log best far per (n, group).
+
+## Card r3d: polarity covers with a D5 symmetry at m = 85 (small structure)
+
+From r2c (read r2c/NOTES.md, copy r2c/lift2.c and r2c/lns.c): polarity double covers of M with a free Z5 on M (m = 85,
+17 base vertices) floor at cost 40 (far 80 at n = 170), and exact re-solves of every 5-subset of base vertices find nothing
+lower. Add the second symmetry r2c proposed: the involution x -> -x on Z5 fixing all 17 base vertices (the D5 family: a
+base edge with voltage t must come with its mirror -t, loops and t = 0 edges are self-mirror). This roughly halves the
+free parameters; make the search exhaustive where you can (DFS with pruning on uncovered pairs, or SAT), otherwise tabu with
+many restarts. Calibrate at m = 80 (n = 160; must reach 0). A cost below 23 at m = 85 (far below 46) would be the best n = 170
+of the job. Also try m = 85 with Z5 x| Z4 (F20) acting on M, fixing some base vertices. Stop by 21:15Z at the latest.

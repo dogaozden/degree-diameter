@@ -28,3 +28,47 @@ Start: 2026-10-31 17:36:32Z (date -u). Stop about 19:36-19:50Z (2 h to 2 h 15).
   best 144 (out/sym_m1_s1.edges, copied to best169.edges, scored far 144, diam 9). 22984 iterations, ~22 ms each.
   Symmetric search beats the unrestricted one at equal time (144 vs 169).
 - Next: other tree involutions (MASK = 3, 5, 9, 17, 33, 63), then tenure / longer runs for the best MASK.
+
+## 19:06Z: full results table (n = 169, far = pairs at distance > 7, all graphs scored by bin/score37)
+Model (fixed by the card's counting argument): root x (A, degree 2) with a full binary tree to depth 6, 64 leaves (A),
+42 outer B vertices (distance 7), wiring H = 126 leaf-outer edges (leaves H-degree 2, two leaves H-degree 1, outer 3).
+Cost evaluated by a bit-parallel 7-step closure (~5 us per graph). Tabu over 2-switches + leaf shifts (full neighbourhood).
+
+| run | search | time | far | file |
+|---|---|---|---|---|
+| tabu169 seed 1 | no symmetry, tenure 10-30 | 60 s | 185 | out/n169_test.edges |
+| tabu169 seed 7 | no symmetry | 60 s | 168 | out/n169_test2.edges (= best169_far168.edges) |
+| tabu169 seed 11 | no symmetry | 500 s | 169 | out/n169_base_s11.edges |
+| tabu169s MASK 1 seed 1 | involution swapping the root branches | 500 s | **144** | best169_far144.edges (also out/sym_m1_s1.edges) |
+| tabu169s MASK 63 seed 1 | complement involution | 500 s | 144 | out/sym_m63_s1.edges (distance profile identical to MASK 1) |
+| tabu169s MASK 1 seed 2 | same | 300 s | 175 | out/sym_m1_s2.edges |
+| tabu169s MASK 1 seed 3, tenure 5-12 | same | 300 s | 159 | out/sym_m1_s3_t5_12.edges (stalled after 85 s) |
+| tabu169s MASK 1 seed 3, tenure 30-60 | same | 300 s | 186 | out/sym_m1_s3_t30_60.edges (stalled after 22 s) |
+| tabu169s MASK 1 seed 4 | same | 150 s | 157 | out/sym_m1_s4.edges |
+| tabu169s MASK 1 seed 5 | same | 150 s | 191 | out/sym_m1_s5.edges |
+| tabu169s MASK 1, restart every 800 | same | 300 s | 161 | out/sym_m1_s1_p800.edges |
+| tabu169s MASK 2 (depth-1 vertices fixed) | fixed B vertices | 300 s | 170 | out/sym_m2_s1.edges |
+| tabu169s MASK 8 | fixed depth <3 | 300 s | 161 | out/sym_m8_s1.edges |
+| tabu169s MASK 16 | fixed depth <4 | 300 s | 162 | out/sym_m16_s1.edges |
+| tabu169w (cost = far7 + far9, tie-break) MASK 1 seed 1 | weighted cost | 300 s | 167 | out/w_m1_s1.edges |
+| tabu169c: from 144 graph, symmetric moves, seed 7 | continuation | 300 s | 144 (no gain) | out/cont144_s7.edges |
+| tabu169i: from 144 graph, full neighbourhood, seed 8 | continuation, unrestricted | 300 s | 144 (no gain) | out/full_from144_s8.edges |
+
+Findings:
+- The involution MASK 1 (root branches swapped; sigma pairs the outer vertices; all leaves in free orbits) is the best
+  symmetry type tried. Masks with bit 0 set are conjugate (identical init fingerprint and the same distance profile);
+  masks that fix depth-1 vertices (2, 8, 16) are worse at 300 s.
+- Tenure 10-30 is best of the three tried; 5-12 stalls, 30-60 stalls early. Far is not a smooth cost: seeds spread
+  144 to 191 at 150-500 s. Runs converge in about 250 s.
+- The 144 graph is a local minimum for both the symmetric and the full 2-switch neighbourhood (300 s each, no gain).
+- Not run (time): order-3 quotient with s permuting {x, y, z} (card's first symmetry option; needs the tree not to be
+  rooted at a fixed vertex, so this is a different encoding), SA instead of tabu, exact completion of the leaf wiring.
+
+Best n = 169 candidate: far 144 (not a candidate; far > 0). Not run through apsp (far > 0 so no claim).
+Reproduce: r2h/tabu169s (source tabu169s.c): `./tabu169s 6 1 500 1 out.edges` (MASK 1, seed 1, tenure 10-30, pert 3000;
+note that the run is time-limited, so the trajectory depends on the speed of the machine).
+
+## Process notes
+- Monitor-based waiting: a `pgrep -f` loop matches its own command line and never exits; I stopped those and waited with
+  `tail --pid` or `kill -0` instead.
+- Each run was a foreground command with an explicit Bash timeout of 600000 ms (300-500 s runs completed normally).

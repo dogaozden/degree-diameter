@@ -80,3 +80,44 @@ Start: 2026-10-31T18:17Z (date -u). Stop about 20:17-20:32Z (2h to 2h15).
 - n=180 F20 (alpha=2, sigma 4^4 2 both): far 410 (diam 8), 60 s.
 - Decision: use the same-side cost (symloc) for SA, and report score37 far of the best file. Batch G tests this at
   n=170 (D5, T=3, 80 s) and at n=150 (D5, T=3, 40 s, same config as cal150_D5a for comparison).
+
+## 18:47-19:00Z: old cost (symloc) vs exact (symloc2), seed sweep, restarts, M = 3 at n = 180
+- Batch G (old cost, same-side objective): n=150 D5 T=3 40 s: far 90 (same as symloc2 at T=3). n=170 D5 T=3 80 s
+  (seed 1): far 265. n=170 D5 T 25 -> 5 80 s (seed 2): far 175. So the 155 earlier came from the T 40 -> 4 schedule.
+- Seed sweep, n=170 D5 (alpha=4, sigma 2^8 1 both), symloc, T 40 -> 4, 30 s, seeds 2..7: far 155, 175, 235, 195, 175,
+  220 (score37 far of the best file; symloc cost 155..215). Spread 155-235 over seeds: the schedule works, the seeds
+  are scattered, 155 is the best seen (out/t170D5/s2).
+- Restarts from the 155 graph (same group, symloc, T 8 -> 2, 60 s, seeds 1 and 2): no change, still 155. The graph is a
+  deep local minimum for this move set.
+- n=180, M=3 (z of order 3, K = 30), 60 s, T=3 (symloc2):
+  alpha=2 with sigma 2^14 1^2 on both sides (group S3, order 6): far 399 (diam 8).
+  alpha=1 with sigma 2^15 on both sides (group Z6): far 408 (diam 8).
+- Calibration summary at n <= 168 (none reached 0 except the r2f F21 family): D5 at 150: 85-110; Z20 at 160: 80;
+  D6 at 168: 378; D4 at 168: 320.
+
+## 19:00-19:12Z: n=170/180 group sweep with same-side cost (symloc, T 40 -> 4, 40 s, seed 2 unless noted)
+- n=170 D5 (alpha=4) sigma 2^6 1^5 both: far 155 (a different file from the 155 of 2^8 1, same value).
+- n=170 F20 (alpha=2) sigma 4,4,4,2,1,1,1 both: far 4590 (disconnected, cost 2310); sigma 4,2^6,1 both: far 860 (diam 10).
+- n=180 D5 (alpha=4) sigma 2^8 1^2 both: far 290. D5 sigma 2^7 1^4 both: far 185 (new n=180 best of this batch).
+- n=180 F20 (alpha=2): sigma 4,4,4,2,2,2 both: far 250 (seed 2), 310 (seed 3), 330 (seed 4). sigma 4^4 2 both: far 270.
+  sigma 4,4,4,2,2,2 | 4,4,2,2,2,2,2 (mixed): far 950.
+- n=180 Z30 = Z6 x Z5 (M=6, alpha=1, sigma 5,5,5 both): far 180 (seed 2, diam 8). Seeds 3 and 4 also end at exactly
+  180. So 180 is a floor for this family and this move set, not a lucky seed.
+- Tabu variant (r3a/symtabu.c: best of S sampled orbit moves, removed edges tabu for TT steps; env SYMTABU_S, SYMTABU_TT):
+  n=180 Z30, 70 s: best 180 (S=40, TT=15); 180 again with S=150, TT=30. The walk drifts to cost 400-600 between
+  improvements, so tabu does not beat the SA floor either.
+- Far-pair structure (r3a/analyze.py): all these best graphs have their far pairs at distance 8 between SAME-side
+  vertices (the F20 file has 10 cross pairs at distance 9). The n = 180 Z30 graph is uniform: EVERY vertex has exactly 2
+  far partners (180 far pairs on 180 vertices). The n = 170 D5 graph has far pairs on all 170 vertices. So the floor is a
+  per-vertex coverage count, not a few isolated bad pairs.
+
+## 19:12-19:24Z: sigma-type sweep (symloc, T 40 -> 4, 40 s, seed 2): mixed D5 types help
+- n=170 D5 (alpha=4), sigma on A and B given as 2^j 1^(17-2j): (j_A, j_B) = (8,7): far 130 (NEW r3a best at 170);
+  (7,8): far 130; (7,7): 135; (6,6): 165; (8,8): 210; (5,5): 220. (6,8) and (8,6): start SAT UNSAT (no start).
+- n=180 D5 (alpha=4), (j_A, j_B): (7,7): far 185 (same as before); (9,9): 260; (8,8): 290; (9,8), (8,9), (9,7): start
+  UNSAT (no start). So for n = 180 the balanced 2^7 1^4 type is best.
+- n=180 Z30 variants (alpha=1, cyclic of order 30 or 36): sigma 6,6,6 with M=5: far 180 (same floor); sigma 6,6,3,3 and
+  6,6,2,2,2 with M=5: disconnected (far 7200, the start never reconnects); sigma 6,6,3 with M=6: group order 36,
+  disconnected; sigma 3^5 with M=6 (Z18): far 288; D6 = Z6 x| Z5-type order-60 (alpha=5, sigma 5,5,5): far 690.
+- n=180 with M=3 (K=30), same-side cost, 40 s: S3 (alpha=2, sigma 2^14 1^2): far 267; Z6 (alpha=1, sigma 2^15): far 288.
+  (exact-far cost gave 399 and 408 for the same two families.)

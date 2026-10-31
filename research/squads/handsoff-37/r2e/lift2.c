@@ -127,6 +127,8 @@ int main(int argc, char **argv) {
     int PERT0 = getenv("PERT0") ? atoi(getenv("PERT0")) : 0;
     int BOWALK = getenv("BOWALK") ? atoi(getenv("BOWALK")) : 0;
     int NOVOLT = getenv("NOVOLT") ? atoi(getenv("NOVOLT")) : 0;
+    long BUMPGAP = getenv("BUMPGAP") ? atol(getenv("BUMPGAP")) : 0;
+    long lastbump = -1000000000L;
     if (getenv("DUPW")) DUPW = atof(getenv("DUPW"));
     if (getenv("WCAP")) WCAP = atol(getenv("WCAP"));
     if (getenv("D")) D = atoi(getenv("D"));
@@ -182,7 +184,8 @@ int main(int argc, char **argv) {
             }
         }
         if (!have) continue;
-        if (isbo && bestc >= cur) {
+        if (isbo && bestc >= cur && it - lastbump >= BUMPGAP) {
+            lastbump = it;
             /* local minimum of the weighted cost: bump the weights of the violated (source, target) pairs */
             eval();
             for (int s = 0; s < 2 * k; s++) for (int t = 0; t < 2 * k; t++)

@@ -1,0 +1,53 @@
+# r3b NOTES (Haiku worker r3b, squad handsoff-37, card r3b: breakout weights on the non-free symmetric search)
+
+Start: 2026-10-31T19:06:11Z (date -u). Keep going until at least 21:06Z; stop about 21:21Z.
+
+## Files
+- symbo.c / symbo (binary): focused breakout local search over G-invariant cubic bipartite graphs. Same group-file format
+  and orbit 2-switch moves as r2f/symloc.c, plus VOLTAGE moves (see below), a breakout weight W[rep][vertex] on violated
+  pairs (bumped at local minima of the weighted cost), tabu on re-adding removed edges.
+  usage: symbo GROUP GRAPH SECONDS SEED OUTPREFIX [K=40] [TEN=10] [PF=0.7] [BUMP=1] [WCAP] [PV=0.5]
+  writes OUTPREFIX_best.edges at every new best raw far (unordered same-side pairs at distance > 6, orbit-weighted).
+- mkgroup.py (copy of r2f): group + SAT degree-only start for (M, K, ALPHA, sigma_A, sigma_B).
+- grp168_f21.txt, grp182_f21.txt (copy of r2f n182_f21hot), grp182_f21b.txt (fresh F21, 1 fixed per side), grp196_f21.txt.
+- start182_f21_far210.edges, start196_f21_far224.edges (r2f's best, used as starts).
+
+## Engine (what changed from symloc / symtabu)
+1. Breakout cost: wc = sum over reps r, violated same-side v of wrep[r] * W[r][v]. Every step: pick a random violated
+   pair (r, v); sample K candidate moves whose removed edges lie within radius 3 of r or v (prob PF), else anywhere; take
+   the best non-tabu candidate. If no candidate lowers wc, bump W of all violated pairs (breakout) and still apply the best
+   candidate (walk, as r2e BOWALK).
+2. Voltage moves (new, not in symloc): remove the G-orbit of an edge (x,p) and add the G-orbit of (x, G[h] p), i.e. the
+   matching between two orbits gets a new G-equivariant voltage. symloc's orbit 2-switches never change a voltage without
+   changing the base, so this neighbourhood was missing. (PV = probability of a voltage move per candidate.)
+
+## 19:06-19:17Z: calibration and first runs
+- Calibration n = 168, F21 (grp168_f21.txt, sigma A 3 fixed + three 3-cycles, B four 3-cycles, alpha 4), from a SAT start
+  (far 13104): 2-switches only: far 0 in 3 s (out/cal168_s1). With voltage moves: far 0 in 2 s (out/cal168v_s1). Verified
+  by score37 (far 0 diam 7, connected).
+- n = 182 F21 (grp182_f21b.txt, sigma A 1 fixed + four 3-cycles, B same, alpha 2), SAT start, 90 s, K 40, PV 0.5:
+  far 210 (diam 8). The same 210 appears with K 200 (90 s), and with the old 2-switch-only moves at PV 0 from the r2f
+  start (r2f: 210). Violated pairs at the 210 graph: 8 size-21 orbits with 2-3 bad ordered partners each, the size-7
+  orbits (fixed points of s) have none (out/badpat.py). Breakout walk: bumps on ~60% of steps; raw drifts up to ~500
+  between bests (the weights grow fast), so the best is only kept by the logged file.
+- n = 182 plain Z7 (no s), SAT start, 80 s: far 245. Slower than r2e lift2 (126 after 1500 s with voltages + bo).
+  Speed: about 14-30k candidate evaluations per second (full cost from 10-26 orbit reps each).
+
+## 19:17-19:19Z: sigma variants and the elite-restart engine
+- F21 n=182 with sigma A = B = 1,1,1,1,3,3,3 (4 fixed + three 3-cycles per side), SAT start, 70 s: raw 567 (score37 far 609).
+  Much worse than 1 fixed point per side (210). Fixed points of s do not help here.
+- symbo2.c: symbo plus an elite restart (STALL steps without raw improvement: restore the best graph, reset W and tabu).
+  Batch 1 (out/batch1.sh log in out/batch1.log) runs D5, F20 at n=170 and F21 10-fixed at 182 with symbo.
+- F21 n=182 with sigma A = B = 1 x10, 3 (10 fixed + one 3-cycle): dead. The SAT start is disconnected (far 13328) and the
+  breakout never finds a valid improving move (bump on every step, raw 6664 for 70 s). Discarded.
+- 19:19Z: D5 n=170 (alpha 4, sigma 2^8 1 both, symbo, 70 s, seed 1): far 185 (raw 185, 1.4M evals). The breakout walk
+  drifts (raw 400-600 between bests). r3a's SA reached 155 with the same group (T 40 -> 4). So the breakout walk is worse
+  than SA for D5 at 170.
+- Plan (19:20Z): batch2 = symbo2 with elite restart (STALL 400: restore the best graph, reset weights) on F21 196 (from the
+  r2f 224 start), F21 182 (from the 210 start) and D5 170 (80 s each).
+- 19:21Z: F20 = Z5 x| Z4 at n=170 (alpha 2, sigma 4,4,2,2,2,2,1 both sides), symbo 70 s, seed 1: far 160 (diam 8; the file is the best state, final current raw was 190), best
+  reached at ~24 s, then flat. Logged to scoreboard (r3b/best/n170_F20_far160.edges). Better than D5 (185 in the same
+  setup) but not better than r3a's D5 155 (symloc, T schedule). Batch1 D5 seed 2 still running.
+- Batch1 summary (70 s each, symbo, K 40, TEN 10, PF 0.7, PV 0.5): F21 182 (4 fixed per side) 609; F21 182 (10 fixed)
+  dead; D5 170 185 (seeds 1 and 2); F20 170 160 (logged). Breakout walk drifts; F20 reaches 160 at ~24 s then stalls.
+- symbo3.c = symbo2 + MARG option (restore the best graph when raw > best + MARG). Built, not yet run.

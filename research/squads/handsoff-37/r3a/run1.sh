@@ -19,7 +19,7 @@ for try in $(seq 0 7); do
 done
 if [ $ok -ne 1 ]; then
   echo "NOCONN $name seed=$seed (start graph never connected; running on last start)"
-  if [ ! -s $d/grp.txt ]; then echo -e "$name\t$m\t$k\t$al\t$sa\t$sb\t$seed\tMKFAIL" >> out/results.tsv; echo "MKFAIL $name $seed"; exit 0; fi
+  if [ ! -s $d/grp.txt ] || [ ! -s $d/start.txt ]; then echo -e "$name\t$m\t$k\t$al\t$sa\t$sb\t$seed\tMKFAIL" >> out/results.tsv; echo "MKFAIL $name $seed"; exit 0; fi
 fi
 go=$(head -1 $d/mk.log | awk '{print $3}')
 n=$((2*k*m))

@@ -60,3 +60,15 @@ r2c	polarity Z3 lift2 SA (29+29 base)	174	138	r2c/best174_lift2_far138.edges	202
 r2c	polarity Z4 lift2 SA (22+22 base)	176	180	r2c/best176_lift2_far180.edges	2026-10-31T18:54:05Z	first r2c graph at 176; cost 90 (Z4 weak)
 r2c	polarity Z5 lift2 SA, m=80 (16+16 base)	160	0	r2c/calib160_lift2_zero.edges	2026-10-31T18:54:05Z	calib (n<=168): zero cost, apsp VALID
 r2f	F21 (Z7 x| Z3, alpha 2), 2+4 3-cycles per side, k=14; symmetric SA hot (T 60 -> 4, 300 s)	196	224	r2f/best196_far224.edges	2026-10-31T18:55:06Z	lower than my 273; board 350 (c4) beaten
+r3a	symmetric SA, F20 = Z5 x| Z4 (alpha=2, sigma 4,4,4,2,2,2 both sides), old same-side cost	180	250	r3a/best/n180_F20_alpha2_4_4_4_2_2_2_far250.edges	2026-10-31T19:02:05Z	n=180 improvement over far 330; diam 9, 40 s, seed 2
+r2h	correction of the far-168 row above: that graph is now r2h/best169_far168.edges (r2h/best169.edges was overwritten by the far-144 graph)	169	168	r2h/best169_far168.edges	2026-10-31T19:05:56Z	n=169 (note n169), same graph as r2h/out/n169_test2.edges
+r2h	correction: far-144 graph is r2h/best169_far144.edges (best169.edges is a copy of it)	169	144	r2h/best169_far144.edges	2026-10-31T19:05:56Z	n=169 (note n169): symmetric MASK 1 tabu, seed 1, 500 s
+r3a	symmetric SA, Z30 = Z6 x Z5 (M=6, alpha=1, sigma 5,5,5 both sides), same-side cost	180	180	r3a/best/n180_Z30_M6_555_oldcost_far180.edges	2026-10-31T19:06:00Z	n=180 improvement; diam 8; 40 s, seed 2 (exact-far cost gave 330)
+r3a	symmetric SA, D5 (alpha=4, sigma 2^7 1^4 both sides), same-side cost	180	185	r3a/best/n180_D5_2to7_1to4_far185.edges	2026-10-31T19:06:00Z	n=180; diam 8; 40 s, seed 2
+r3c	focused breakout tabu (FR=1 base-ball focus, C5 17+17, 45 s, seed 102)	170	90	r3c/best/n170_C5_fbo_far90.edges	2026-10-31T19:15:51Z	lift C5 k17, raw 36; was 110 (c4/r2e 520 s); score37 far 90 diam 8
+r2g	calib: orbit DFS over H252 (colour-preserving Aut of C168.1), sides <=3 orbits, exhaustive	168	0	r2g/out/exh3_h252_m84_K3.edges	2026-10-31T19:16:23Z	calib: recovers C168.1 (far 0); validates the r2g orbit engine
+r2g	orbit-level LNS on Z3 (order 3, free + 1 fixed point per side, exact DFS completions)	170	171	r2g/out/lns_z3_m85_s3.edges	2026-10-31T19:16:23Z	first n=170 graph of r2g; 200 s LNS from random completion; S3 (order 6) LNS gave 223; a 330 s rerun gave 201
+r3a	symmetric SA, D5 (alpha=4, sigma 2^8 1 on A and 2^7 1^3 on B), same-side cost	170	130	r3a/best/n170_D5_mixed_8_7_far130.edges	2026-10-31T19:16:26Z	n=170 improvement over far 155 (r3a); diam 8; 40 s, seed 2
+r3c	focused breakout tabu FR=1 TEN=4 WCAP=16 (C5 17+17)	170	65	r3c/best/n170_C5_far65.edges	2026-10-31T19:18:06Z	lift C5 k17, raw 26, 45 s seed 103
+r3b	symbo breakout+voltage moves, F20 = Z5 x| Z4 (alpha 2, sigma 4,4,2,2,2,2,1 both sides), 70 s	170	160	r3b/best/n170_F20_far160.edges	2026-10-31T19:21:21Z	first r3b graph at 170; same-side raw 190; diam 8
+r3b	correction of the row above (note only)	170	160	r3b/best/n170_F20_far160.edges	2026-10-31T19:21:25Z	the "raw 190" in that note was the final current state of the run; the file itself scores far 160 (diam 8)

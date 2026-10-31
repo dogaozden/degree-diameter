@@ -40,3 +40,26 @@ E[a,b,t] <-> E[sigma a, sigma b, alpha t], sources reduced to sigma-orbit reps; 
 - Z7-only SA at n = 182 from the same insertion start: stuck at 322 (acceptance almost zero at T 6).
 - Verdict so far: no n >= 170 graph below the board (182 board 168 from c4; 170 board 46). Symmetric SA works at 168 but
   the orbit moves (21 switches for F21) are coarse: far jumps by 100+ per move, so SA/tabu stall above 150 for n >= 170.
+
+## 18:37-19:25Z: more symmetric SA runs (all with symloc.c, run_cfg.sh; logs in out/<name>/)
+- n = 182, F21 (k=13, alpha 2, sigma 1 fixed + 4 3-cycles per side): cold SA 315 (T 3 -> 0.3, stuck from the first
+  improvement); hot SA 231 (T 20 -> 1), 210 (T 60 -> 4, seed 3) and 210 again (seed 7): best/logged best182_far210.edges.
+  Tabu polish of the 210 graph (300 s): no change. Insertion start (surg182.py) + hot SA (T 60 -> 4): 224.
+- n = 196, F21 (k=14, sigma 2 fixed + 4 3-cycles per side, alpha 2): SA 273 (T 20 -> 1), 224 (T 60 -> 4, seed 3;
+  logged best196_far224.edges), 224 again at constant T 40 (seed 4). Board had 350 at 196 (c4).
+- n = 170, Z5 involution (sigma 1 fixed + 8 2-cycles per side): 155 with 3 seeds (T 60 -> 4 and T 40 -> 4, 500 s);
+  logged best170_far155.edges. Other seed 175. Board 46 stands.
+- n = 170, Z5 with order-4 normaliser (alpha 2): degree-only start infeasible for sigma = 1 + 4^4 per side; with
+  5 fixed + 4^3 per side the lift is disconnected (far 3530), useless.
+- n = 176, Z8 involution (alpha 3, sigma 1 fixed + 5 2-cycles per side, k = 11): SA 280 (T 20 -> 1). Board 86 (c2) stands.
+- n = 180, Z5 involution (alpha 4, sigma 2 fixed + 8 2-cycles per side, k = 18): SA 230 (T 20 -> 1). No board entry.
+- Summary of logged rows (scoreboard, worker r2f): 168 calib far 0 (F21 symmetric SA, 3 s); 170 far 155; 182 far 210
+  (and 231); 196 far 224 (and 273). No candidate with far 0 at n >= 170; nothing beats the board (46 at 170, 168 at 182,
+  86 at 176, 350 at 196 is beaten by my 224 and is logged).
+- Interpretation: the F21 class contains 168 solutions that SA finds in seconds, but at n >= 170 SA stalls at 150-230 in
+  every symmetric class tried, with the same floor values from different seeds (155 at 170, 210 at 182, 224 at 196).
+  Orbit moves are coarse (14-21 switches), so the landscape near the floor has no small moves.
+- Exact route (card step 2): symsat.py (SAT with the F21 symmetry, 371k vars) did not solve the calibration in 9 min,
+  with or without girth-6 clauses (2.2M clauses); the pinned-base sanity check returns SAT in 0.0 s, so the encoding is right.
+- Next step if continued: a SAT or DFS on the F21-symmetric class at 168 with sigma-orbit symmetry breaking
+  (base relabelling), or a symmetric version of c1's pair insertion using symloc as the repair (not tried).

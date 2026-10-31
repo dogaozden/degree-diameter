@@ -299,7 +299,8 @@ int main(int argc, char **argv) {
         if (iter - lastImp > pert) {
             load_best();
             recompute_deficits();
-            for (int kk = 0; kk < 2; kk++) {
+            int KICK = getenv("KICK") ? atoi(getenv("KICK")) : 2;
+            for (int kk = 0; kk < KICK; kk++) {
                 collect_reps();
                 int i = rndint(NR), j = rndint(NR);
                 int l1 = ORl[i], o1 = ORo[i], l2 = ORl[j], o2 = ORo[j];

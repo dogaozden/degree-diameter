@@ -78,3 +78,14 @@ Cost as in c6: unordered pairs {i,j} of M with no even walk of length <= 6; far 
 - Z4 (m=88) and Z3 (m=87) and Z2 (m=86) are weak in this SA; the Z5 family is the only one with zeros at m >= 80.
 - Next step if continued: a second symmetry for Z5 (the involution x -> -x fixing the 17 base vertices, i.e. a D5 family),
   which halves the space; the Z5 m=85 floor is the target (needs cost <= 22 to beat far 46 at n=170).
+
+## 19:14Z final
+- Exact 6-subset re-solve of the cost-40 Z5 floor over the 10 base vertices carrying its 40 uncovered pairs (210 subsets,
+  404M completions, log out/lns6_pool10.log): nothing below 40. The floor is 6-base-vertex locally optimal on that core.
+- Stopped at 19:14Z (about 1h50 of work; the 2 h mark is 19:25Z). No record. Best n=170 is far 80 (cost 40), so this card
+  did not beat the board (46 at n=170).
+- Files: lift2.c (engine, usage in its header), lns.c (exact local re-solve; usage: lns ITEMS SIZE [POOL]), NOTES.md,
+  best170_lift2_far80.edges, best172_lift2_far150.edges, best174_lift2_far138.edges, best176_lift2_far180.edges,
+  calib160_lift2_zero.edges (all verified with bin/score37 and logged to scoreboard.tsv), out/*.items (base descriptions).
+- 19:19Z: exact 5-subset re-solve of the second Z5 basin (cost 45 ILS result, out/t85b_best.items; log out/lns5_t85b.log):
+  49.6M completions, best 45. No improvement in that basin either.
