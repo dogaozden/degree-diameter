@@ -1,0 +1,21 @@
+Syntax warning: Unbound global variable in check_cand2.g:8
+    idx2 := Filtered(NormalSubgroups(G), N -> Index(G, N) = 2);
+                                                    ^
+Syntax warning: Unbound global variable in check_cand2.g:12
+      if Size(Core(G, H)) = 1 and ForAll(idx2, N -> Size(Intersection(N, H)) >\
+ 1) then cnt := cnt + 1; fi;
+                                                                         ^
+ORDER 738 groups_with_candidates [  ]
+ORDER 742 groups_with_candidates [  ]
+ORDER 746 groups_with_candidates [  ]
+ORDER 750 groups_with_candidates [  ]
+ORDER 754 groups_with_candidates [  ]
+ORDER 758 groups_with_candidates [  ]
+ORDER 762 groups_with_candidates [  ]
+ORDER 766 groups_with_candidates [  ]
+ORDER 756 groups_with_candidates [ [ 10, 1 ], [ 11, 1 ], [ 61, 1 ], 
+  [ 62, 1 ], [ 63, 1 ], [ 64, 1 ], [ 65, 1 ], [ 66, 1 ], [ 67, 1 ], 
+  [ 68, 1 ], [ 69, 1 ], [ 86, 1 ], [ 87, 1 ], [ 107, 1 ], [ 108, 1 ], 
+  [ 109, 1 ], [ 110, 1 ], [ 111, 1 ], [ 112, 1 ], [ 113, 1 ], [ 114, 1 ], 
+  [ 115, 1 ], [ 116, 1 ], [ 117, 1 ], [ 150, 1 ], [ 151, 1 ], [ 157, 1 ], 
+  [ 163, 1 ], [ 164, 1 ], [ 165, 1 ], [ 166, 1 ], [ 180, 1 ], [ 181, 1 ] ]

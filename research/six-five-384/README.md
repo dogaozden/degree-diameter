@@ -141,8 +141,15 @@ so `records/` is empty.
   the three lifts of a collinear point within distance 4.
 - Counting bound for orbit structures (squad card s384r2-c8, checked by hand for 1+2): a graph of maximum degree 6 and
   diameter 5 with a group acting semiregularly with k_A orbits on one colour class and k_B on the other has at most 249
-  vertices for 1+2 orbits, 650 for 2+3 and 108 for 1+3; above 684 only 2+2, 3+3 and 3+4 remain, and 3+4 would need
-  about 75% of the Moore-type count of a B-vertex (the 684 record uses 44%).
+  vertices for 1+2 orbits, 650 for 2+3 and 108 for 1+3, so these splits cannot beat 684; 3+4 is allowed up to 910
+  but would need about 75% of the Moore-type count of a B-vertex (the 684 record uses 44%). Only the splits 1+1, 1+2,
+  1+3, 2+2, 2+3, 3+3, 3+4 were evaluated (research/squads/s384r2/c8/orbit_bound.py); 4+4, 6+6 and other splits were
+  not (balanced splits k+k are k-vertex-per-side voltage lifts, which counting alone does not exclude).
+
+- Round s384r3 (all families at full CPU, research/squads/LOG.md): non-Haar bi-coset graphs B(G;H,K), |H| = |K| = 2,
+  on all groups of order 722-766 (705 groups; squad-6-5 had done 686-720): best 20 (SmallGroup(732,10)); bi-Cayley tabu
+  5 at 704; 2+2 lifts from random starts 8 at 696; 3+3 lifts 20 at 702; inserting 2 vertices into the 684 graph 150
+  bad pairs; K_{6,6} cyclic lifts far above 500 vertices. None closer than squad-6-5's cost 4 at 704.
 
 ## Notes for the next job
 

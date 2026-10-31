@@ -1,0 +1,101 @@
+Syntax warning: Unbound global variable in dc2_lib.g:42
+  if IsBound(SKIPHAAR) and SKIPHAAR then
+                           ^^^^^^^^
+Syntax warning: Unbound global variable in count_pairs.g:10
+    Hs := Filtered(Hs, H -> Size(Core(G, H)) = 1);
+                                      ^
+Syntax warning: Unbound global variable in count_pairs.g:11
+    Hs := Filtered(Hs, H -> ForAll(NormalSubgroups(G), N -> Index(G, N) <> 2 o\
+r Size(Intersection(N, H)) > 1));
+                                                   ^
+Syntax warning: Unbound global variable in count_pairs.g:11
+    Hs := Filtered(Hs, H -> ForAll(NormalSubgroups(G), N -> Index(G, N) <> 2 o\
+r Size(Intersection(N, H)) > 1));
+                                                                  ^
+722 1 classes_after_filter 0 pairs 0
+722 2 classes_after_filter 0 pairs 0
+722 3 classes_after_filter 0 pairs 0
+722 4 classes_after_filter 0 pairs 0
+722 5 classes_after_filter 0 pairs 0
+724 1 classes_after_filter 0 pairs 0
+724 2 classes_after_filter 0 pairs 0
+724 3 classes_after_filter 1 pairs 1
+724 4 classes_after_filter 0 pairs 0
+724 5 classes_after_filter 0 pairs 0
+726 1 classes_after_filter 0 pairs 0
+726 2 classes_after_filter 0 pairs 0
+726 3 classes_after_filter 0 pairs 0
+726 4 classes_after_filter 0 pairs 0
+726 5 classes_after_filter 0 pairs 0
+726 6 classes_after_filter 0 pairs 0
+726 7 classes_after_filter 0 pairs 0
+726 8 classes_after_filter 0 pairs 0
+726 9 classes_after_filter 0 pairs 0
+726 10 classes_after_filter 0 pairs 0
+726 11 classes_after_filter 0 pairs 0
+726 12 classes_after_filter 0 pairs 0
+726 13 classes_after_filter 0 pairs 0
+728 1 classes_after_filter 0 pairs 0
+728 2 classes_after_filter 0 pairs 0
+728 3 classes_after_filter 0 pairs 0
+728 4 classes_after_filter 0 pairs 0
+728 5 classes_after_filter 0 pairs 0
+728 6 classes_after_filter 0 pairs 0
+728 7 classes_after_filter 0 pairs 0
+728 8 classes_after_filter 0 pairs 0
+728 9 classes_after_filter 0 pairs 0
+728 10 classes_after_filter 0 pairs 0
+728 11 classes_after_filter 0 pairs 0
+728 12 classes_after_filter 0 pairs 0
+728 13 classes_after_filter 0 pairs 0
+728 14 classes_after_filter 0 pairs 0
+728 15 classes_after_filter 0 pairs 0
+728 16 classes_after_filter 0 pairs 0
+728 17 classes_after_filter 0 pairs 0
+728 18 classes_after_filter 0 pairs 0
+728 19 classes_after_filter 0 pairs 0
+728 20 classes_after_filter 0 pairs 0
+728 21 classes_after_filter 0 pairs 0
+728 22 classes_after_filter 0 pairs 0
+728 23 classes_after_filter 0 pairs 0
+728 24 classes_after_filter 0 pairs 0
+728 25 classes_after_filter 0 pairs 0
+728 26 classes_after_filter 0 pairs 0
+728 27 classes_after_filter 0 pairs 0
+728 28 classes_after_filter 0 pairs 0
+728 29 classes_after_filter 0 pairs 0
+728 30 classes_after_filter 0 pairs 0
+728 31 classes_after_filter 0 pairs 0
+728 32 classes_after_filter 1 pairs 1
+728 33 classes_after_filter 1 pairs 1
+728 34 classes_after_filter 1 pairs 1
+728 35 classes_after_filter 1 pairs 1
+728 36 classes_after_filter 0 pairs 0
+728 37 classes_after_filter 0 pairs 0
+728 38 classes_after_filter 0 pairs 0
+728 39 classes_after_filter 0 pairs 0
+728 40 classes_after_filter 0 pairs 0
+730 1 classes_after_filter 0 pairs 0
+730 2 classes_after_filter 0 pairs 0
+730 3 classes_after_filter 0 pairs 0
+730 4 classes_after_filter 0 pairs 0
+732 1 classes_after_filter 0 pairs 0
+732 2 classes_after_filter 0 pairs 0
+732 3 classes_after_filter 0 pairs 0
+732 4 classes_after_filter 0 pairs 0
+732 5 classes_after_filter 0 pairs 0
+732 6 classes_after_filter 0 pairs 0
+732 7 classes_after_filter 1 pairs 1
+732 8 classes_after_filter 0 pairs 0
+732 9 classes_after_filter 1 pairs 1
+732 10 classes_after_filter 1 pairs 1
+732 11 classes_after_filter 0 pairs 0
+732 12 classes_after_filter 0 pairs 0
+732 13 classes_after_filter 1 pairs 1
+732 14 classes_after_filter 1 pairs 1
+732 15 classes_after_filter 0 pairs 0
+732 16 classes_after_filter 0 pairs 0
+732 17 classes_after_filter 0 pairs 0
+732 18 classes_after_filter 0 pairs 0
+734 1 classes_after_filter 0 pairs 0
+734 2 classes_after_filter 0 pairs 0

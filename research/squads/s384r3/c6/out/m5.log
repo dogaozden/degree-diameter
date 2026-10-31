@@ -1,0 +1,12 @@
+S: 74 28 257 198 247 62
+calibration bad(H) = 0
+run 0 k0 0 (S[k0]=74) iters 158637 acc 8451 best 154
+run 1 k0 1 (S[k0]=28) iters 165036 acc 6560 best 176
+run 2 k0 2 (S[k0]=257) iters 195299 acc 9812 best 156
+run 3 k0 3 (S[k0]=198) iters 205164 acc 8599 best 167
+run 4 k0 4 (S[k0]=247) iters 188038 acc 8651 best 154
+run 5 k0 5 (S[k0]=62) iters 185471 acc 9646 best 152
+best insertion cost (bad pairs at 686 vertices) = 152
+matching A: 0 287 329 277 173
+matching B: 404 540 525 639 426
+wrote out/m5_best.edges

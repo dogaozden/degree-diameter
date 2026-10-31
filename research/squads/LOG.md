@@ -49,3 +49,24 @@ nice 0, equal to the director's whole pipeline); the director raised the pipelin
 `echo -10 > /proc/<pid>/autogroup` and lowered the cards' groups to 15.
 Kept: haarex6 for the sweep; no family lead worth more CPU (the 704 lift is an isolated local minimum, the new
 families are far). The order-384 sweep continues; orders 401-450 started on the spare core.
+
+### Round s384r3 (16:24-17:05 UTC, 8 cards, research/squads/s384r3/), after the order-384 and 401-450 sweeps finished
+All 4 cores went to the squad. Goal: the brief's remaining item, bi-coset and lift families at 686-768 vertices.
+Cards: c1/c2 non-Haar |H| = 2 bi-coset graphs at orders 722-736 / 738-766 (never swept; squad-6-5's sweep.sh,
+SKIPHAAR) · c3 bi-Cayley tabu, long runs at 704 · c4 2+2 lift tabu from random starts, orders 172-192 · c5 3+3 lift
+tabu, orders 115-128, all 17 bases · c6 annealed insertion of 2 vertices into the 684 graph · c7 wildcard · c8 wildcard
+(a necessary condition explaining why side A almost never covers).
+Best per card (none valid): c1 20 (SmallGroup(732,10); all 282 groups of order 722-736, only 41 non-Haar pairs exist;
+calibration reproduced 8 on 720_439) · c2 22 (756_86/87, annealing; all 423 groups of order 738-766; candidate pairs
+only at 740, 744, 748, 756, 760) · c3 5 at 704 (g352_102_2, type (3,3), 90 s tabu; annealing's 4 from squad-6-5 still
+best) · c4 8 at 696 (C29 x S3, 120 s; 34 groups screened) · c5 20 at 702 (C13:C9, base m06; squad-6-5's 14 at 696
+stands) · c6 150 bad pairs at 686 (random matching: 318) · c7 K_{6,6} base lifted by cyclic groups (6+6 orbits): 2,320
+bad pairs at 696; diameter 5 reached at 480 (Z40) as calibration, the family falls off above ~500 · c8 global
+inverse-pair count vacuous (needs > 397 involutions); hint for a per-coset version.
+Director: per-coset version made exact (c(y) >= |N| + v_y for y = y^-1, v_y = involutions in the coset; README filter 4)
+and applied to G/G'G^2 for all 18,327 order-384 groups with r2 <= 4: excludes none (smallest margin 2). Correction to
+round s384r2: the orbit-split bound evaluated only the splits 1+1, 1+2, 1+3, 2+2, 2+3, 3+3, 3+4, so "only 2+2, 3+3 and
+3+4 remain" holds among those; 4+4, 6+6 etc. were not evaluated (c7's point).
+Outcome: |H| = 2 non-Haar bi-coset graphs are now swept (one annealing seed per pair) on all orders 686-766; no family
+came closer than squad-6-5's best (2+2 lift and bi-Cayley at cost 4, 704 vertices). Three rounds of families with no
+gain: the (6,5) cell looks exhausted for these families at this size; stop here.
