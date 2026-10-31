@@ -15,5 +15,5 @@ VALID d=19 D=10 group=sl 607 x Z_43 N=9616861248 vertices=19233722496 (distinct 
 
 
 ################ haarcheck_sl (research/frontier/haarcheck_sl.c from master, built gcc -O3 haarcheck_sl.c -o haarcheck_sl; single-threaded): ./haarcheck_sl research/frontier/sols/d19D10_sl_607_43_orb3_s1.txt   (stdout, complete)
-# STATUS: PARTIAL. haarcheck_sl running since about 32 min before this commit (single thread, ~99% CPU, 7.0 GB RSS); it prints only after each BFS, so no output yet.
+# STATUS: PARTIAL. haarcheck_sl still running, about 2 h 0 min elapsed at this commit (single thread); no BFS line printed yet.
 [run in progress; no exit line yet]
