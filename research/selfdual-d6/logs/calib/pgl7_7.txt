@@ -1,0 +1,9 @@
+GROUP PGL(2,7) x Z7 N 2352 (Haar graph on 4704 vertices) K 7 D 6
+PSI 0 [x->x^-1] x [z->0-1*z] order 2 orbits(len<=K): 1x50 2x1151
+TABU psi0_t1+2+2+2 best 4 sols 0 steps 4886 evals 234537 restarts 8 secs 15.0
+TABU psi0_t1+1+1+2+2 best 6 sols 0 steps 4938 evals 237035 restarts 10 secs 15.0
+TABU psi0_t1+1+1+1+1+2 best 277 sols 0 steps 5510 evals 264492 restarts 11 secs 15.0
+TABU psi0_t1+1+1+1+1+1+1 best 2016 sols 0 steps 14722 evals 706705 restarts 48 secs 15.0
+PSI 1 [x->x^-1] x [z->0-6*z] order 2 orbits(len<=K): 1x350 2x1001
+TABU psi1_t1+2+2+2 best 23 sols 0 steps 4896 evals 235017 restarts 8 secs 15.0
+TABU psi1_t1+1+1+2+2 best 17 sols 0 steps 4446 evals 213417 restarts 8 secs 15.0

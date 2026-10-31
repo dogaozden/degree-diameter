@@ -1,0 +1,725 @@
+/* sdhi.c: self-dual (bipartite Cayley) Haar graphs H(G,S) of valency K and diameter D, for groups given by formulas
+ * (no GAP).  G = Q1 x Q2, each factor one of
+ *   sl q | psl q | pgl q     SL(2,q), PSL(2,q), PGL(2,q), q = p^e <= 64 (GF(p^e) from the first irreducible
+ *                            x^e + c_(e-1) x^(e-1) + .. + c_0, c = sum c_i p^i taken in increasing order)
+ *   meta m k r               C_m : C_k = <x, y | x^m = y^k = 1, y x y^-1 = x^r>, elements (i,j) = x^i y^j
+ *   cyc n                    Z_n (= meta n 1 1)
+ * H(G,S): vertices (g,A), (g,B); (g,A) ~ (s g, B) for s in S.  X = S^-1 S.
+ *
+ * Self-duality.  Let psi(x) = u0 beta(x)^-1 with beta in Aut(G), u0 in G.  If psi(S) = S then
+ * (g,A) -> (u0 beta(g), B), (h,B) -> (beta(h), A) is an automorphism of H(G,S) that swaps the sides (an edge
+ * (g,A)(s g,B) goes to (u0 beta(g),B)(beta(s) beta(g),A), and u0 beta(g) = s' beta(s) beta(g) with
+ * s' = u0 beta(s)^-1 = psi(s) in S).  With the right multiplications the graph is vertex-transitive, so it has
+ * diameter <= D iff the ball of radius D-1 around (e,A) contains the whole side of parity D-1:
+ *     D = 2k+1:  X^k = G            (side B, Y^k = G, follows from the side swap)
+ *     D = 2k:    S X^(k-1) = G      (this one condition suffices for every Haar graph; self-duality makes
+ *                                    S X^(k-1) psi-invariant, so the misses come in psi-orbits)
+ * psi need not be an involution: S is a union of <psi>-orbits.  psi has even order 2j and psi^2(x) =
+ * u0 beta^2(x) beta(u0)^-1, so for j > 1 S is also invariant under that order-j map (orbit-symmetric S, as in
+ * research/structured/STRUCTURE.md, combined with self-duality).
+ * The psi are built per factor from the formulas (translating S changes beta by an inner automorphism, so for
+ * involutions only Out(G) matters):
+ *   matrix groups: x -> l (h x h)^-1 for h = I and (q odd, SL/PSL) h = diag(1,nu), nu the first non-square,
+ *     l = +-det h (SL; PSL/PGL modulo scalars); e even: also x -> l sigma(x)^-1, sigma = Frobenius^(e/2);
+ *     for each j >= 2 in HALF: x -> l c x^-1 c^-1 with c the first element of the factor of order j modulo scalars
+ *     (psi of order 2j, psi^2 = conjugation by c^2);
+ *   meta: beta(x) = x^a, beta(y) = y^v with a^j = 1 mod m, v = 1 mod ord(r), v^j = 1 mod k (j in HALF or 1),
+ *     u0 central and beta-fixed (u0 ~ u0 beta(w) w, w central); cyclic: z -> z0 - u z.
+ * psi on G is the product of one option per factor; ORDS (default "2") lists the orders of psi kept, HALF = ORDS/2.
+ * PLAIN=1 adds the trivial "psi" (plain Haar graphs, energy of both sides at odd D).
+ *
+ * Search: tabu inside the family (as research/selfdual-d5/src/sdtabu.c).  A type is a partition of K into psi-orbit
+ * lengths ("1+2+2", "2+6", ..); a move replaces one orbit by an unused one of the same length; NB random moves per
+ * step, best non-tabu taken (aspiration), tenure TEN, restart after STALL steps without improvement.
+ * Energy = number of vertices of the side of parity D-1 outside the ball of radius D-1 around (e,A).
+ * ENUM=1: exhaustive enumeration of every type with at most ECAP sets (others: tabu), fast rejection with
+ * move-to-front targets, first orbit up to the automorphisms that commute with psi.
+ * Every energy-0 set gets a full BFS from (e,A) and (e,B) on the graph itself (no symmetry used) before it is reported.
+ *
+ * usage: sdhi K D FACTOR1 [FACTOR2]
+ * env: ORDS (e.g. "2,6"), PSI=i (only psi option i), TYPES="1+2+2,5" (only these types), SECS (per psi/type,
+ *      default 20), SEED, NB (48), TEN (12), STALL (300), MAXSOL (5), DEEP=thr,secs, EDGES=file (edge list of the
+ *      first solution), PLAIN=1, LIST=1 (print the psi options and exit), CHECK="d1 d2 .." (full check of a set
+ *      given in the printed element format, edge list to EDGES; with SDTEST=1 also: is some b S a^-1 psi-invariant),
+ *      RANDS=n (energy statistics of n random sets per psi/type), ENUM=1, ECAP, NEAR=t (ENUM: exact energy of
+ *      every set that survives the first t targets; "best" then reports near misses).
+ * output: GROUP line, PSI lines, "SOL ..." lines with the elements in readable form, one TABU/ENUM line per psi/type.
+ * element format: factors joined by '|'; a matrix [a b c d] has rows (a b), (c d) (field elements as integers, base p
+ * digits = coefficients of 1, t, t^2, ..); a meta element (i,j) = x^i y^j; a cyclic element is z.
+ */
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <stdint.h>
+#include <time.h>
+
+/* ---------------- finite fields ---------------- */
+typedef struct { int q, p, e, poly; int *add, *mul, *neg, *inv; int nonsq; } fld;
+static int ipow(int b, int e) { int r = 1; while (e--) r *= b; return r; }
+static void pdigits(int x, int p, int e, int *d) { for (int i = 0; i < e; i++) { d[i] = x % p; x /= p; } }
+static int pundigits(const int *d, int p, int e) { int x = 0; for (int i = e - 1; i >= 0; i--) x = x * p + d[i]; return x; }
+/* is x^e + sum c_i x^i irreducible over GF(p)? brute force: no monic divisor of degree 1..e/2 */
+static int irreducible(int c, int p, int e) {
+    int f[16]; pdigits(c, p, e, f); f[e] = 1;
+    for (int dg = 1; dg <= e / 2; dg++) {
+        int ng = ipow(p, dg);
+        for (int g0 = 0; g0 < ng; g0++) {
+            int g[16]; pdigits(g0, p, dg, g); g[dg] = 1;
+            int r[16]; memcpy(r, f, sizeof(int) * (e + 1));
+            for (int i = e; i >= dg; i--) { int t = r[i] % p; if (!t) continue;
+                for (int j = 0; j <= dg; j++) r[i - dg + j] = ((r[i - dg + j] - t * g[j]) % p + p) % p; }
+            int zero = 1; for (int i = 0; i < dg; i++) if (r[i] % p) zero = 0;
+            if (zero) return 0;
+        }
+    }
+    return 1;
+}
+static fld *mkfield(int q) {
+    fld *F = calloc(1, sizeof(fld)); F->q = q;
+    int p = 2; while (q % p) p++;
+    int e = 0, t = q; while (t % p == 0) { t /= p; e++; }
+    if (t != 1) { fprintf(stderr, "q = %d is not a prime power\n", q); exit(2); }
+    F->p = p; F->e = e; F->poly = -1;
+    if (e > 1) { for (int c = 0; c < q; c++) if (irreducible(c, p, e)) { F->poly = c; break; } }
+    F->add = malloc(sizeof(int) * q * q); F->mul = malloc(sizeof(int) * q * q);
+    F->neg = malloc(sizeof(int) * q); F->inv = malloc(sizeof(int) * q);
+    int fc[16]; if (e > 1) pdigits(F->poly, p, e, fc);
+    for (int a = 0; a < q; a++) for (int b = 0; b < q; b++) {
+        int da[16], db[16], ds[16], pr[32] = {0};
+        pdigits(a, p, e, da); pdigits(b, p, e, db);
+        for (int i = 0; i < e; i++) ds[i] = (da[i] + db[i]) % p;
+        F->add[a * q + b] = pundigits(ds, p, e);
+        for (int i = 0; i < e; i++) for (int j = 0; j < e; j++) pr[i + j] = (pr[i + j] + da[i] * db[j]) % p;
+        for (int i = 2 * e - 2; i >= e; i--) { int c = pr[i]; if (!c) continue; pr[i] = 0;
+            for (int j = 0; j < e; j++) pr[i - e + j] = ((pr[i - e + j] - c * fc[j]) % p + p) % p; }
+        F->mul[a * q + b] = pundigits(pr, p, e);
+    }
+    for (int a = 0; a < q; a++) { for (int b = 0; b < q; b++) if (F->add[a * q + b] == 0) F->neg[a] = b;
+        F->inv[a] = 0; for (int b = 1; b < q; b++) if (F->mul[a * q + b] == 1) F->inv[a] = b; }
+    char *sq = calloc(q, 1); for (int a = 1; a < q; a++) sq[F->mul[a * q + a]] = 1;
+    F->nonsq = 0; for (int a = 1; a < q; a++) if (!sq[a]) { F->nonsq = a; break; }
+    free(sq);
+    return F;
+}
+#define FA(F, a, b) ((F)->add[(a) * (F)->q + (b)])
+#define FM(F, a, b) ((F)->mul[(a) * (F)->q + (b)])
+static int fpowf(const fld *F, int a, int e) { int r = 1; while (e--) r = FM(F, r, a); return r; }
+
+/* ---------------- group factors ---------------- */
+enum { T_SL = 1, T_PSL, T_PGL, T_META };
+#define TABMAX 8192
+#define MAXOPT 256
+typedef struct {
+    int type, size;
+    fld *F; int *mat; int *lookup;            /* matrix groups: entries of element i at mat[4i..], lookup over q^4 */
+    int m, k, r, *RP, *EI, *EJ;               /* meta */
+    uint16_t *tab; int *inv;
+    int nopt; int *opt[MAXOPT], optord[MAXOPT]; char optd[MAXOPT][96];
+    char name[64];
+} factor;
+
+static void mmul(const fld *F, const int *A, const int *B, int *C) {
+    C[0] = FA(F, FM(F, A[0], B[0]), FM(F, A[1], B[2])); C[1] = FA(F, FM(F, A[0], B[1]), FM(F, A[1], B[3]));
+    C[2] = FA(F, FM(F, A[2], B[0]), FM(F, A[3], B[2])); C[3] = FA(F, FM(F, A[2], B[1]), FM(F, A[3], B[3]));
+}
+static int mdet(const fld *F, const int *A) { return FA(F, FM(F, A[0], A[3]), F->neg[FM(F, A[1], A[2])]); }
+static void minv(const fld *F, const int *A, int *B) {
+    int di = F->inv[mdet(F, A)];
+    B[0] = FM(F, di, A[3]); B[1] = FM(F, di, F->neg[A[1]]); B[2] = FM(F, di, F->neg[A[2]]); B[3] = FM(F, di, A[0]);
+}
+static void mscal(const fld *F, int l, const int *A, int *B) { for (int i = 0; i < 4; i++) B[i] = FM(F, l, A[i]); }
+static int lexless(const int *A, const int *B) { for (int i = 0; i < 4; i++) if (A[i] != B[i]) return A[i] < B[i]; return 0; }
+/* canonical representative (in place) of the class of A in the factor's group */
+static void mcanon(const factor *Q, int *A) {
+    const fld *F = Q->F;
+    if (Q->type == T_PSL) { int B[4]; mscal(F, F->neg[1], A, B); if (lexless(B, A)) memcpy(A, B, sizeof B); }
+    else if (Q->type == T_PGL) { int s = A[0] ? A[0] : A[1]; int si = F->inv[s]; int B[4]; mscal(F, si, A, B); memcpy(A, B, sizeof B); }
+}
+static int mindex(const factor *Q, const int *A0) {
+    int A[4]; memcpy(A, A0, sizeof A); mcanon(Q, A); int q = Q->F->q;
+    int x = Q->lookup[((A[0] * q + A[1]) * q + A[2]) * q + A[3]];
+    if (x < 0) { fprintf(stderr, "mindex: matrix not in group\n"); exit(3); }
+    return x;
+}
+static inline int fmul(const factor *Q, int a, int b) {
+    if (Q->tab) return Q->tab[(size_t)a * Q->size + b];
+    /* meta formula: (i,j)(i',j') = (i + r^j i', j + j') */
+    int i = Q->EI[a], j = Q->EJ[a], i2 = Q->EI[b], j2 = Q->EJ[b];
+    int ni = (int)((i + (long long)Q->RP[j] * i2) % Q->m), nj = j + j2; if (nj >= Q->k) nj -= Q->k;
+    return ni * Q->k + nj;
+}
+static int fmul_slow(const factor *Q, int a, int b) {
+    if (Q->type == T_META) {
+        int i = Q->EI[a], j = Q->EJ[a], i2 = Q->EI[b], j2 = Q->EJ[b];
+        return (int)((i + (long long)Q->RP[j] * i2) % Q->m) * Q->k + (j + j2) % Q->k;
+    }
+    int C[4]; mmul(Q->F, Q->mat + 4 * a, Q->mat + 4 * b, C); return mindex(Q, C);
+}
+static void build_tab(factor *Q) {
+    if (Q->size > TABMAX) { Q->tab = NULL; return; }
+    Q->tab = malloc(sizeof(uint16_t) * (size_t)Q->size * Q->size);
+    for (int a = 0; a < Q->size; a++) for (int b = 0; b < Q->size; b++) Q->tab[(size_t)a * Q->size + b] = fmul_slow(Q, a, b);
+}
+static int ORDS[16], nords = 0;
+static int gcd(int a, int b) { while (b) { int t = a % b; a = b; b = t; } return a < 0 ? -a : a; }
+static int perm_order(const int *p, int n) {
+    char *seen = calloc(n, 1); long long o = 1;
+    for (int i = 0; i < n; i++) if (!seen[i]) { int l = 0, x = i; while (!seen[x]) { seen[x] = 1; x = p[x]; l++; } o = o / gcd((int)(o % l == 0 ? l : o % l), l) * l; if (o > 1000000) o = 1000000; }
+    free(seen); return (int)o;
+}
+static void add_opt(factor *Q, int *p, const char *d) {
+    char *hit = calloc(Q->size, 1); int bad = 0;
+    for (int i = 0; i < Q->size; i++) { if (p[i] < 0 || p[i] >= Q->size || hit[p[i]]) bad = 1; else hit[p[i]] = 1; }
+    free(hit);
+    if (bad) { fprintf(stderr, "%s: option %s is not a permutation (dropped)\n", Q->name, d); free(p); return; }
+    for (int o = 0; o < Q->nopt; o++) if (!memcmp(Q->opt[o], p, sizeof(int) * Q->size)) { free(p); return; }
+    if (Q->nopt >= MAXOPT) { free(p); return; }
+    Q->opt[Q->nopt] = p; Q->optord[Q->nopt] = perm_order(p, Q->size); snprintf(Q->optd[Q->nopt], 96, "%s", d); Q->nopt++;
+}
+static int is_scalar(const int *A) { return A[1] == 0 && A[2] == 0 && A[0] == A[3]; }
+static int pgl_order(const fld *F, const int *A) {   /* order of A modulo scalars */
+    int P[4]; memcpy(P, A, sizeof P);
+    for (int i = 1; i <= 2 * F->q + 2; i++) { if (is_scalar(P)) return i; int T[4]; mmul(F, P, A, T); memcpy(P, T, sizeof P); }
+    return -1;
+}
+
+static factor *mk_matrix(int type, int q) {
+    factor *Q = calloc(1, sizeof(factor)); Q->type = type; fld *F = Q->F = mkfield(q);
+    snprintf(Q->name, sizeof Q->name, "%s(2,%d)", type == T_SL ? "SL" : type == T_PSL ? "PSL" : "PGL", q);
+    if (type == T_PSL && F->p == 2) Q->type = type = T_SL;      /* PSL = SL in characteristic 2 */
+    if (type == T_PGL && F->p == 2) Q->type = type = T_SL;      /* PGL = SL in characteristic 2 */
+    size_t q4 = (size_t)q * q * q * q; Q->lookup = malloc(sizeof(int) * q4); for (size_t i = 0; i < q4; i++) Q->lookup[i] = -1;
+    int cap = q * (q * q - 1) + 1; Q->mat = malloc(sizeof(int) * 4 * cap); Q->size = 0;
+    int I[4] = {1, 0, 0, 1};
+    memcpy(Q->mat, I, sizeof I); Q->lookup[((1 * q + 0) * q + 0) * q + 1] = 0; Q->size = 1;   /* identity first */
+    for (int a = 0; a < q; a++) for (int b = 0; b < q; b++) for (int c = 0; c < q; c++) for (int d = 0; d < q; d++) {
+        int A[4] = {a, b, c, d}; int dt = mdet(F, A);
+        if (type == T_PGL) { if (!dt) continue; } else if (dt != 1) continue;
+        int B[4]; memcpy(B, A, sizeof B); mcanon(Q, B); if (memcmp(A, B, sizeof A)) continue;
+        if (!memcmp(A, I, sizeof I)) continue;
+        memcpy(Q->mat + 4 * Q->size, A, sizeof A); Q->lookup[((a * q + b) * q + c) * q + d] = Q->size; Q->size++;
+    }
+    build_tab(Q);
+    Q->inv = malloc(sizeof(int) * Q->size);
+    for (int i = 0; i < Q->size; i++) { int B[4]; minv(F, Q->mat + 4 * i, B); Q->inv[i] = mindex(Q, B); }
+    int nl = (type == T_SL && F->p != 2) ? 2 : 1;
+    /* involutions: x -> l h^-1 x^-1 h^-1 */
+    int hs[2][4] = {{1, 0, 0, 1}, {1, 0, 0, F->nonsq}}; int nh = (F->p == 2 || type == T_PGL) ? 1 : 2;
+    for (int hi = 0; hi < nh; hi++) {
+        int *h = hs[hi], hinv[4]; minv(F, h, hinv); int dh = mdet(F, h);
+        for (int li = 0; li < nl; li++) {
+            int l = li ? F->neg[dh] : dh;
+            int *p = malloc(sizeof(int) * Q->size);
+            for (int x = 0; x < Q->size; x++) { int xi[4], t1[4], t2[4]; minv(F, Q->mat + 4 * x, xi);
+                mmul(F, hinv, xi, t1); mmul(F, t1, hinv, t2); mscal(F, l, t2, t1); p[x] = mindex(Q, t1); }
+            char d[96]; snprintf(d, 96, "x->%s(hxh)^-1,h=diag(1,%d)", li ? "-" : "", hi ? F->nonsq : 1);
+            if (hi == 0) snprintf(d, 96, "x->%sx^-1", li ? "-" : "");
+            add_opt(Q, p, d);
+        }
+    }
+    if (F->e % 2 == 0) {   /* field automorphism of order 2 */
+        int fr = ipow(F->p, F->e / 2);
+        for (int li = 0; li < nl; li++) {
+            int l = li ? F->neg[1] : 1;
+            int *p = malloc(sizeof(int) * Q->size);
+            for (int x = 0; x < Q->size; x++) { int sx[4], si[4], t[4];
+                for (int i = 0; i < 4; i++) sx[i] = fpowf(F, Q->mat[4 * x + i], fr);
+                minv(F, sx, si); mscal(F, l, si, t); p[x] = mindex(Q, t); }
+            char d[96]; snprintf(d, 96, "x->%ssigma(x)^-1,sigma=frob^%d", li ? "-" : "", F->e / 2);
+            add_opt(Q, p, d);
+        }
+    }
+    /* higher order: x -> l c x^-1 c^-1, c of order j modulo scalars */
+    for (int hj = 0; hj < 2 * nords; hj++) {   /* psi of order o = 2j': c of order j' (j' odd) or o modulo scalars */
+        int o = ORDS[hj / 2]; if (o < 4) continue;
+        int j = (hj % 2) ? o : o / 2; if (!(hj % 2) && j % 2 == 0) continue;
+        int ci = -1; for (int x = 1; x < Q->size; x++) if (pgl_order(F, Q->mat + 4 * x) == j) { ci = x; break; }
+        if (ci < 0) continue;
+        const int *c = Q->mat + 4 * ci; int cinv[4]; minv(F, c, cinv);
+        for (int li = 0; li < nl; li++) {
+            int l = li ? F->neg[1] : 1;
+            int *p = malloc(sizeof(int) * Q->size);
+            for (int x = 0; x < Q->size; x++) { int xi[4], t1[4], t2[4]; minv(F, Q->mat + 4 * x, xi);
+                mmul(F, c, xi, t1); mmul(F, t1, cinv, t2); mscal(F, l, t2, t1); p[x] = mindex(Q, t1); }
+            char d[96]; snprintf(d, 96, "x->%sc x^-1 c^-1,c=[%d %d %d %d](order %d mod scalars)", li ? "-" : "", c[0], c[1], c[2], c[3], j);
+            add_opt(Q, p, d);
+        }
+    }
+    return Q;
+}
+static long long lpow(long long b, long long e, long long m) { long long r = 1 % m; b %= m; if (b < 0) b += m; while (e) { if (e & 1) r = r * b % m; b = b * b % m; e >>= 1; } return r; }
+static int mord(long long a, int m) { if (m == 1) return 1; long long t = a % m; int d = 1; while (t != 1) { t = t * a % m; d++; if (d > m) return -1; } return d; }
+static int ord_ok(int o) { if (o == 1) return 1; for (int i = 0; i < nords; i++) if (ORDS[i] % o == 0) return 1; return 0; }
+static factor *mk_meta(int m, int k, int r) {
+    factor *Q = calloc(1, sizeof(factor)); Q->type = T_META; Q->m = m; Q->k = k; Q->r = ((r % m) + m) % m; if (k == 1) Q->r = 1 % m;
+    if (k == 1) snprintf(Q->name, sizeof Q->name, "Z%d", m); else snprintf(Q->name, sizeof Q->name, "C%d:C%d(r=%d)", m, k, r);
+    if (m > 1 && lpow(Q->r, k, m) != 1) { fprintf(stderr, "meta: r^k != 1 mod m\n"); exit(2); }
+    if (m > 1 && gcd(Q->r, m) != 1) { fprintf(stderr, "meta: r not a unit\n"); exit(2); }
+    Q->size = m * k; Q->RP = malloc(sizeof(int) * k); for (int j = 0; j < k; j++) Q->RP[j] = (int)lpow(Q->r, j, m);
+    Q->EI = malloc(sizeof(int) * Q->size); Q->EJ = malloc(sizeof(int) * Q->size);
+    for (int i = 0; i < m; i++) for (int j = 0; j < k; j++) { Q->EI[i * k + j] = i; Q->EJ[i * k + j] = j; }
+    build_tab(Q);
+    Q->inv = malloc(sizeof(int) * Q->size);
+    for (int g = 0; g < Q->size; g++) { int i = Q->EI[g], j = Q->EJ[g]; int nj = (k - j) % k;
+        int ni = (int)((m - (long long)Q->RP[nj] * i % m) % m); Q->inv[g] = ni * k + nj; }
+    for (int g = 0; g < Q->size; g++) if (fmul_slow(Q, g, Q->inv[g]) != 0) { fprintf(stderr, "meta inverse bug\n"); exit(3); }
+    /* psi options */
+    int d = mord(Q->r, m);
+    int X = (m > 1) ? 1 * k + 0 : 0, Y = (k > 1) ? 0 * k + 1 : 0;
+    int *cent = malloc(sizeof(int) * Q->size), nc = 0;
+    for (int g = 0; g < Q->size; g++) if (fmul_slow(Q, g, X) == fmul_slow(Q, X, g) && fmul_slow(Q, g, Y) == fmul_slow(Q, Y, g)) cent[nc++] = g;
+    for (int v = 1; v <= k; v++) {
+        if (gcd(v, k) != 1 || (v - 1) % d) continue;
+        int ov = mord(v, k); if (!ord_ok(ov)) continue;
+        for (int a = 1; a <= (m > 1 ? m - 1 : 1); a++) {
+            if (m > 1 && gcd(a, m) != 1) continue;
+            int oa = mord(a, m); if (!ord_ok(oa)) continue;
+            /* a up to a r^i with r^((v+1) i) = 1 (translation by y^-i keeps u0 central) and the same order */
+            int skip = 0;
+            for (int i = 1; i < d && m > 1; i++) if (lpow(Q->r, (long long)(v + 1) * i, m) == 1) { long long a2 = (long long)a * lpow(Q->r, i, m) % m;
+                if (a2 < a && ord_ok(mord(a2, m))) skip = 1; }
+            if (skip) continue;
+            int *be = malloc(sizeof(int) * Q->size);
+            for (int g = 0; g < Q->size; g++) { int i = Q->EI[g], j = Q->EJ[g]; be[g] = (int)((long long)a * i % (m > 1 ? m : 1)) * k + (int)((long long)v * j % k); }
+            int ok = 1;
+            for (int g = 0; g < Q->size && ok; g++) { if (be[fmul_slow(Q, g, X)] != fmul_slow(Q, be[g], be[X])) ok = 0;
+                if (be[fmul_slow(Q, g, Y)] != fmul_slow(Q, be[g], be[Y])) ok = 0; }
+            if (!ok) { free(be); continue; }
+            /* u0: central, beta-fixed, up to u0 ~ u0 beta(w) w (w central) */
+            char *seen = calloc(Q->size, 1);
+            for (int ci = 0; ci < nc; ci++) {
+                int u0 = cent[ci]; if (be[u0] != u0 || seen[u0]) continue;
+                for (int wi = 0; wi < nc; wi++) { int w = cent[wi]; seen[fmul_slow(Q, fmul_slow(Q, u0, be[w]), w)] = 1; }
+                int *p = malloc(sizeof(int) * Q->size);
+                for (int g = 0; g < Q->size; g++) p[g] = fmul_slow(Q, u0, Q->inv[be[g]]);
+                char dd[96];
+                if (k == 1) snprintf(dd, 96, "z->%d-%d*z", Q->EI[u0], a);
+                else snprintf(dd, 96, "u0*beta(g)^-1,beta(x)=x^%d,beta(y)=y^%d,u0=(%d,%d)", a, v, Q->EI[u0], Q->EJ[u0]);
+                add_opt(Q, p, dd);
+            }
+            free(seen); free(be);
+        }
+    }
+    free(cent);
+    return Q;
+}
+static factor *parse_factor(char **argv, int argc, int *ai) {
+    if (*ai >= argc) return mk_meta(1, 1, 0);
+    const char *w = argv[(*ai)++];
+    if (!strcmp(w, "sl") || !strcmp(w, "psl") || !strcmp(w, "pgl")) {
+        int q = atoi(argv[(*ai)++]);
+        return mk_matrix(!strcmp(w, "sl") ? T_SL : !strcmp(w, "psl") ? T_PSL : T_PGL, q);
+    }
+    if (!strcmp(w, "meta")) { int m = atoi(argv[(*ai)++]), k = atoi(argv[(*ai)++]), r = atoi(argv[(*ai)++]); return mk_meta(m, k, r); }
+    if (!strcmp(w, "cyc")) { int n = atoi(argv[(*ai)++]); return mk_meta(n, 1, 1); }
+    fprintf(stderr, "unknown factor %s\n", w); exit(2);
+}
+static void fdesc(const factor *Q, int x, char *buf) {
+    if (Q->type == T_META) { if (Q->k == 1) sprintf(buf, "%d", Q->EI[x]); else sprintf(buf, "(%d,%d)", Q->EI[x], Q->EJ[x]); }
+    else { const int *A = Q->mat + 4 * x; sprintf(buf, "[%d %d %d %d]", A[0], A[1], A[2], A[3]); }
+}
+/* parse one factor element from text; returns pointer after it */
+static const char *fparse(const factor *Q, const char *s, int *x) {
+    while (*s == ' ') s++;
+    if (Q->type == T_META) {
+        if (Q->k == 1) { int z; int nch; sscanf(s, "%d%n", &z, &nch); *x = ((z % Q->m) + Q->m) % Q->m * Q->k; return s + nch; }
+        int i, j, nch; if (sscanf(s, "(%d,%d)%n", &i, &j, &nch) != 2) { fprintf(stderr, "parse error at %s\n", s); exit(2); }
+        *x = (((i % Q->m) + Q->m) % Q->m) * Q->k + ((j % Q->k) + Q->k) % Q->k; return s + nch;
+    }
+    int A[4], nch; if (sscanf(s, "[%d %d %d %d]%n", A, A + 1, A + 2, A + 3, &nch) != 4) { fprintf(stderr, "parse error at %s\n", s); exit(2); }
+    *x = mindex(Q, A); return s + nch;
+}
+
+/* ---------------- the group G = Q1 x Q2 ---------------- */
+static factor *Q1, *Q2; static int N, n2, K = 5, D = 7;
+static int *E1, *E2, *ginvv;
+static inline int gm(int a, int b) { return fmul(Q1, E1[a], E1[b]) * n2 + fmul(Q2, E2[a], E2[b]); }
+static void gdesc(int g, char *buf) { char b1[64], b2[64]; fdesc(Q1, E1[g], b1); fdesc(Q2, E2[g], b2); sprintf(buf, "%s|%s", b1, b2); }
+
+/* ---------------- energy ---------------- */
+static uint32_t *mk, *mk2, st1 = 0, st2 = 0; static int *buf;
+static long long levcnt[16];
+static int sd = 1;   /* 1: self-dual family (one side), 0: plain (both sides at odd D) */
+/* number of vertices of the target side outside the ball of radius D-1 around (e,A) (left = 1) or (e,B) (left = 0) */
+static int uncov_side(const int *S, int k, int left) {
+    int X[4096], nx = 0; st1++;
+    for (int i = 0; i < k; i++) for (int j = 0; j < k; j++) {
+        int x = left ? gm(ginvv[S[i]], S[j]) : gm(S[i], ginvv[S[j]]);
+        if (mk[x] != st1) { mk[x] = st1; X[nx++] = x; } }
+    int half = (D - 1) / 2;   /* odd D: X^half; even D: S X^(half) with D-1 = 2 half + 1 */
+    int nb = 0; for (int i = 0; i < nx; i++) buf[nb++] = X[i];
+    int lo = 0, hi = nb; levcnt[1] = nb;
+    for (int lev = 2; lev <= half; lev++) {
+        for (int t = lo; t < hi; t++) { int b = buf[t];
+            for (int i = 0; i < nx; i++) { int z = gm(b, X[i]); if (mk[z] != st1) { mk[z] = st1; buf[nb++] = z; } } }
+        lo = hi; hi = nb; levcnt[lev] = nb;
+        if (nb == N) { for (int l2 = lev + 1; l2 <= half; l2++) levcnt[l2] = N; break; }
+    }
+    if (D % 2) return N - nb;
+    st2++; int cov = 0;
+    for (int t = 0; t < nb; t++) { int b = buf[t];
+        for (int i = 0; i < k; i++) { int z = left ? gm(S[i], b) : gm(ginvv[S[i]], b); if (mk2[z] != st2) { mk2[z] = st2; cov++; } } }
+    return N - cov;
+}
+static int energy(const int *S, int k) {
+    int e = uncov_side(S, k, 1);
+    if (!sd && D % 2) e += uncov_side(S, k, 0);
+    return e;
+}
+/* full check on the graph: BFS from (e,A) and (e,B), distinct elements; returns 1 iff diameter <= D */
+static int fullcheck(const int *S, int k, int *diam_out) {
+    for (int i = 0; i < k; i++) for (int j = i + 1; j < k; j++) if (S[i] == S[j]) return 0;
+    int *dist = malloc(sizeof(int) * 2 * N), *qq = malloc(sizeof(int) * 2 * N); int ok = 1, diam = 0;
+    for (int side = 0; side < 2; side++) {
+        for (int i = 0; i < 2 * N; i++) dist[i] = -1;
+        int src = side ? N : 0; dist[src] = 0; int h = 0, t = 0; qq[t++] = src;
+        while (h < t) { int v = qq[h++];
+            for (int i = 0; i < k; i++) { int w = v < N ? N + gm(S[i], v) : gm(ginvv[S[i]], v - N);
+                if (dist[w] < 0) { dist[w] = dist[v] + 1; qq[t++] = w; } } }
+        if (t != 2 * N) ok = 0;
+        for (int i = 0; i < 2 * N; i++) if (dist[i] > diam) diam = dist[i];
+    }
+    free(dist); free(qq);
+    if (diam_out) *diam_out = diam;
+    return ok && diam <= D;
+}
+static void write_edges(const char *path, const int *S, int k) {
+    FILE *o = fopen(path, "w"); if (!o) { perror(path); return; }
+    fprintf(o, "%d\n", 2 * N);
+    for (int g = 0; g < N; g++) for (int i = 0; i < k; i++) fprintf(o, "%d %d\n", g, N + gm(S[i], g));
+    fclose(o);
+}
+
+/* ---------------- psi and the family: items = <psi>-orbits of length <= K ---------------- */
+static double now(void) { struct timespec t; clock_gettime(CLOCK_MONOTONIC, &t); return t.tv_sec + 1e-9 * t.tv_nsec; }
+static uint64_t rs = 88172645463325252ULL;
+static inline uint64_t rnd(void) { rs ^= rs << 13; rs ^= rs >> 7; rs ^= rs << 17; return rs; }
+#define MAXL 64
+static int *psi, *orbel, *ostart, *olen, nitem;      /* item t: elements orbel[ostart[t] .. ostart[t]+olen[t]-1] */
+static int *bylen[MAXL + 1], nbylen[MAXL + 1];        /* items of each length */
+static int *itemof;                                    /* element -> item (or -1 if its orbit is longer than K) */
+static void setup_psi(int o1, int o2) {
+    if (o1 < 0) { for (int g = 0; g < N; g++) psi[g] = g; }
+    else for (int g = 0; g < N; g++) psi[g] = Q1->opt[o1][E1[g]] * n2 + Q2->opt[o2][E2[g]];
+    for (int l = 0; l <= MAXL; l++) nbylen[l] = 0;
+    char *seen = calloc(N, 1); int at = 0; nitem = 0;
+    for (int g = 0; g < N; g++) itemof[g] = -1;
+    for (int g = 0; g < N; g++) if (!seen[g]) {
+        int l = 0, x = g; while (!seen[x]) { seen[x] = 1; x = psi[x]; l++; }
+        if (x != g) { fprintf(stderr, "psi is not a permutation\n"); exit(3); }
+        if (l > K || l > MAXL) continue;
+        ostart[nitem] = at; olen[nitem] = l; x = g;
+        for (int i = 0; i < l; i++) { orbel[at++] = x; itemof[x] = nitem; x = psi[x]; }
+        bylen[l][nbylen[l]++] = nitem; nitem++;
+    }
+    free(seen);
+}
+/* types: partitions of K into available orbit lengths */
+static int ntypes, tcnt[256][MAXL + 1]; static char tname[256][64];
+static void gen_types_rec(int rem, int maxl, int *cnt) {
+    if (ntypes >= 256) return;
+    if (rem == 0) {
+        memcpy(tcnt[ntypes], cnt, sizeof(int) * (MAXL + 1));
+        char *p = tname[ntypes]; p[0] = 0; int first = 1;
+        for (int l = 1; l <= MAXL; l++) for (int c = 0; c < cnt[l]; c++) { p += sprintf(p, first ? "%d" : "+%d", l); first = 0; }
+        ntypes++; return;
+    }
+    for (int l = maxl; l >= 1; l--) {
+        if (l > rem || nbylen[l] <= cnt[l]) continue;
+        cnt[l]++; gen_types_rec(rem - l, l, cnt); cnt[l]--;
+    }
+}
+static void gen_types(void) { int cnt[MAXL + 1] = {0}; ntypes = 0; gen_types_rec(K, K < MAXL ? K : MAXL, cnt); }
+
+static int nslot, slen[64], it[64], S[64];      /* current set: slot i holds item it[i] of length slen[i] */
+static long long *tabu_until, step; static int bestSS[64], bestk = 0;
+static int build(void) {
+    int at = 0;
+    for (int i = 0; i < nslot; i++) { int t = it[i]; for (int j = 0; j < olen[t]; j++) S[at++] = orbel[ostart[t] + j]; }
+    return at;
+}
+static int used(int x) { for (int i = 0; i < nslot; i++) if (it[i] == x) return 1; return 0; }
+static int rand_item(int l) {
+    for (int t = 0; t < 1000; t++) { int x = bylen[l][rnd() % nbylen[l]]; if (!used(x)) return x; }
+    return -1;
+}
+static void set_type(int ti) { nslot = 0; for (int l = MAXL; l >= 1; l--) for (int c = 0; c < tcnt[ti][l]; c++) slen[nslot++] = l; }
+static void randomize(void) { int n = nslot; nslot = 0; for (int i = 0; i < n; i++) { it[i] = -1; nslot = i + 1; it[i] = rand_item(slen[i]); } }
+static const char *edges_out; static int nsol = 0;
+static void report(const char *tag, const int *SS, int k) {
+    int diam; if (!fullcheck(SS, k, &diam)) { fprintf(stderr, "WARNING %s: energy 0 but the full check fails (diam %d)\n", tag, diam); return; }
+    nsol++;
+    printf("SOL %s diam %d S", tag, diam); for (int i = 0; i < k; i++) printf(" %d", SS[i]);
+    printf(" ="); for (int i = 0; i < k; i++) { char b[160]; gdesc(SS[i], b); printf(" %s", b); } printf("\n"); fflush(stdout);
+    if (edges_out && nsol == 1) write_edges(edges_out, SS, k);
+}
+
+/* ---------------- exhaustive enumeration ----------------
+ * Fast rejection: the target side is L P with P = X^j precomputed (stamps) and L a short list of left factors
+ * (odd D = 2k+1: L = X, P = X^(k-1); even D = 2k: L = S X, P = X^(k-2)); z is covered iff l^-1 z is in P for some
+ * l in L; targets in move-to-front order.  Every set that passes gets energy() and the full check.
+ * Normalisation: Gamma = the automorphisms commuting with psi among the inner ones (conj(g)) and the factor-level ones
+ * (x -> x^c on meta/cyclic factors, conj by diag(1,nu) and Frobenius on matrix factors); the first slot (longest
+ * orbit length of the type) runs over Gamma-orbit representatives. */
+static int *ordA, qfail, NEAR = 0; static long long n_enum, n_pass, n_near;
+static int quick(const int *SS, int k) {
+    static int X[4096], L[65536], Li[65536]; int nx = 0; st1++;
+    for (int i = 0; i < k; i++) for (int j = 0; j < k; j++) { int x = gm(ginvv[SS[i]], SS[j]); if (mk[x] != st1) { mk[x] = st1; X[nx++] = x; } }
+    int half = (D - 1) / 2, plev = half - 1;   /* odd: P = X^(half-1), L = X; even: P = X^(half-1), L = S X */
+    int nb = 0; for (int i = 0; i < nx; i++) buf[nb++] = X[i];
+    int lo = 0, hi = nb;
+    if (plev == 0) { st1++; nb = 0; mk[0] = st1; buf[nb++] = 0; }
+    for (int lev = 2; lev <= plev; lev++) {
+        for (int t = lo; t < hi; t++) { int b = buf[t];
+            for (int i = 0; i < nx; i++) { int z = gm(b, X[i]); if (mk[z] != st1) { mk[z] = st1; buf[nb++] = z; } } }
+        lo = hi; hi = nb;
+    }
+    int nl = 0;
+    if (D % 2) { for (int i = 0; i < nx; i++) L[nl++] = X[i]; }
+    else { st2++; for (int i = 0; i < k; i++) for (int j = 0; j < nx; j++) { int z = gm(SS[i], X[j]); if (mk2[z] != st2) { mk2[z] = st2; L[nl++] = z; } } }
+    for (int i = 0; i < nl; i++) Li[i] = ginvv[L[i]];
+    for (int t = 0; t < N; t++) { int z = ordA[t], ok = 0;
+        for (int i = 0; i < nl; i++) if (mk[gm(Li[i], z)] == st1) { ok = 1; break; }
+        if (!ok) { if (t) { int u = t / 2; ordA[t] = ordA[u]; ordA[u] = z; } qfail = t; return 0; } }
+    return 1;
+}
+static char etag[160]; static long long ecap = 0; static int ecapped, esols, ebest;
+static int *irep, nirep;     /* Gamma-orbit representatives among the items of the first slot's length */
+static void eval_set(void) {
+    n_enum++;
+    int k = build();
+    if (quick(S, k)) { n_pass++; int e = energy(S, k); if (e < ebest) ebest = e;
+        if (e == 0) { report(etag, S, k); esols++; } }
+    else if (NEAR && qfail >= NEAR) { n_near++; int e = energy(S, k); if (e < ebest) ebest = e; }   /* near-miss statistics */
+}
+static void rec_slot(int s) {     /* slots s.. ; same-length slots take increasing positions in bylen */
+    if (s == nslot) { eval_set(); return; }
+    int l = slen[s]; int from = 0;
+    if (s > 0 && slen[s - 1] == l && s - 1 > 0) {   /* previous slot of the same length (not the first slot): increasing */
+        int prev = it[s - 1]; for (int i = 0; i < nbylen[l]; i++) if (bylen[l][i] == prev) { from = i + 1; break; } }
+    for (int i = from; i < nbylen[l]; i++) { int x = bylen[l][i]; if (x == it[0]) continue; it[s] = x; rec_slot(s + 1); }
+}
+static int ufind(int *uf, int x) { while (uf[x] != x) x = uf[x] = uf[uf[x]]; return x; }
+static void ujoin(int *uf, int a, int b) { a = ufind(uf, a); b = ufind(uf, b); if (a != b) { if (a < b) uf[b] = a; else uf[a] = b; } }
+static int fauts(const factor *Q, int **out, int maxn) {
+    int n = 0;
+    if (Q->type == T_META) {
+        int m = Q->m;
+        for (int c = 2; c < m && n < maxn; c++) { if (gcd(c, m) != 1) continue;
+            int *p = malloc(sizeof(int) * Q->size); for (int g = 0; g < Q->size; g++) p[g] = (int)((long long)c * Q->EI[g] % m) * Q->k + Q->EJ[g];
+            out[n++] = p; }
+    } else {
+        const fld *F = Q->F;
+        if (F->p != 2 && Q->type != T_PGL) { int h[4] = {1, 0, 0, F->nonsq}, hi[4]; minv(F, h, hi);
+            int *p = malloc(sizeof(int) * Q->size);
+            for (int x = 0; x < Q->size; x++) { int t1[4], t2[4]; mmul(F, h, Q->mat + 4 * x, t1); mmul(F, t1, hi, t2); p[x] = mindex(Q, t2); }
+            out[n++] = p; }
+        if (F->e > 1) { int *p = malloc(sizeof(int) * Q->size);
+            for (int x = 0; x < Q->size; x++) { int t[4]; for (int i = 0; i < 4; i++) t[i] = fpowf(F, Q->mat[4 * x + i], F->p); p[x] = mindex(Q, t); }
+            out[n++] = p; }
+    }
+    return n;
+}
+static int *gam_uf;
+static void gamma_build(int o1, int o2) {
+    int *uf = gam_uf; for (int g = 0; g < N; g++) uf[g] = g;
+    int ngen = 0, *img = malloc(sizeof(int) * N), tried = 0;
+    while (ngen < 64 && tried < 20 * N) {      /* inner automorphisms commuting with psi (at most 64) */
+        int g = tried < N ? tried : (int)(rnd() % N); tried++;
+        if (g == 0) continue;
+        int gi = ginvv[g], ok = 1;
+        for (int x = 0; x < N; x++) img[x] = gm(gm(g, x), gi);
+        for (int x = 0; x < N && ok; x++) if (img[psi[x]] != psi[img[x]]) ok = 0;
+        if (!ok) continue;
+        for (int x = 0; x < N; x++) ujoin(uf, x, img[x]);
+        ngen++;
+        if (tried >= N && ngen >= 16) break;
+    }
+    for (int side = 0; side < 2 && o1 >= 0; side++) {
+        const factor *Q = side ? Q2 : Q1; int *P[512]; int na = fauts(Q, P, 512);
+        int *fp = side ? Q2->opt[o2] : Q1->opt[o1];
+        for (int a = 0; a < na; a++) {
+            int ok = 1; for (int x = 0; x < Q->size && ok; x++) if (P[a][fp[x]] != fp[P[a][x]]) ok = 0;
+            if (ok) { for (int g = 0; g < N; g++) { int h = side ? E1[g] * n2 + P[a][E2[g]] : P[a][E1[g]] * n2 + E2[g]; ujoin(uf, g, h); } ngen++; }
+            free(P[a]);
+        }
+    }
+    free(img);
+    printf("GAMMA generators %d\n", ngen); fflush(stdout);
+}
+static void gamma_reps(int l) {   /* representatives among items of length l */
+    char *seen = calloc(N, 1); nirep = 0;
+    for (int i = 0; i < nbylen[l]; i++) { int t = bylen[l][i], r = N;
+        for (int j = 0; j < olen[t]; j++) { int x = ufind(gam_uf, orbel[ostart[t] + j]); if (x < r) r = x; }
+        if (!seen[r]) { seen[r] = 1; irep[nirep++] = t; } }
+    free(seen);
+}
+static double binom(int n, int k) { if (k < 0 || k > n) return 0; double r = 1; for (int i = 0; i < k; i++) r = r * (n - i) / (i + 1); return r; }
+static double enum_count(int ti) {
+    set_type(ti); gamma_reps(slen[0]);
+    double c = nirep;
+    for (int l = 1; l <= MAXL; l++) { int need = tcnt[ti][l] - (l == slen[0]), avail = nbylen[l] - (l == slen[0]); c *= binom(avail, need); }
+    return c;
+}
+static void enumerate(const char *ptag, int ti) {
+    set_type(ti); gamma_reps(slen[0]);
+    snprintf(etag, sizeof etag, "%s_t%s_enum", ptag, tname[ti]);
+    double c0 = now(); n_enum = n_pass = n_near = 0; ecapped = 0; esols = 0; ebest = 1 << 30;
+    for (int r = 0; r < nirep; r++) { it[0] = irep[r]; rec_slot(1); }
+    printf("ENUM %s reps %d sets %lld passed %lld near %lld best %d sols %d secs %.1f\n", etag, nirep, n_enum, n_pass, n_near, ebest == (1 << 30) ? -1 : ebest, esols, now() - c0);
+    fflush(stdout);
+}
+
+static double deep_secs = 0; static int deep_thr = 0;
+static void run(const char *ptag, int ti, double secs, int NB, int TEN, int STALL, int MAXSOL) {
+    set_type(ti);
+    char tag[160]; snprintf(tag, sizeof tag, "%s_t%s", ptag, tname[ti]);
+    tabu_until = calloc(nitem + 1, sizeof(long long)); step = 0;
+    double c0 = now(); int best = 1 << 30, sols = 0, restarts = 0; long long evals = 0;
+    randomize(); int k = build(); int e = energy(S, k), runbest = e; long long last_imp = 0; evals++;
+    if (e < best) best = e;
+    int extended = 0;
+    for (;;) {
+        double el = now() - c0;
+        if (sols >= MAXSOL) break;
+        if (el >= secs) { if (!extended && deep_secs > 0 && best <= deep_thr) { secs += deep_secs; extended = 1; } else break; }
+        if (e == 0) {
+            report(tag, S, k); sols++;
+            randomize(); k = build(); e = energy(S, k); evals++; runbest = e; last_imp = step; restarts++; continue;
+        }
+        step++;
+        int bi = -1, bx = -1, be = 1 << 30;
+        for (int t = 0; t < NB; t++) {
+            int i = (int)(rnd() % nslot); int x = rand_item(slen[i]); if (x < 0) continue;
+            int old = it[i]; it[i] = x; int kk = build(); int e2 = energy(S, kk); evals++; it[i] = old;
+            if (tabu_until[x] > step && e2 >= best) continue;
+            if (e2 < be) { be = e2; bi = i; bx = x; }
+        }
+        if (bi < 0) continue;
+        tabu_until[it[bi]] = step + TEN; it[bi] = bx; e = be; k = build();
+        if (e < runbest) { runbest = e; last_imp = step; }
+        if (e < best) { best = e; bestk = k; memcpy(bestSS, S, sizeof(int) * k); }
+        if (e > 0 && step - last_imp > STALL) { randomize(); k = build(); e = energy(S, k); evals++; runbest = e; last_imp = step; restarts++; }
+    }
+    printf("TABU %s best %d sols %d steps %lld evals %lld restarts %d secs %.1f%s\n", tag, best, sols, step, evals, restarts,
+           now() - c0, extended ? " DEEP" : "");
+    if (getenv("SHOWBEST") && bestk > 0 && best > 0) {   /* the best set and the elements it leaves uncovered (side A, ball of radius D-1 around (e,A)) */
+        int e2 = uncov_side(bestSS, bestk, 1); printf("BEST %s uncovered %d S =", tag, e2);
+        for (int i = 0; i < bestk; i++) { char b[160]; gdesc(bestSS[i], b); printf(" %s", b); } printf("\n  missing:");
+        int shown = 0;
+        for (int z = 0; z < N && shown < 40; z++) { int cov = (D % 2) ? (mk[z] == st1) : (mk2[z] == st2); if (!cov) { char b[160]; gdesc(z, b); printf(" %s", b); shown++; } }
+        printf("\n"); }
+    fflush(stdout); free(tabu_until);
+}
+static void rands(const char *ptag, int ti, int cnt) {
+    set_type(ti);
+    long long sum = 0; int mn = 1 << 30; double c0 = now();
+    double lv[16] = {0};
+    for (int t = 0; t < cnt; t++) { randomize(); int k = build(); int e = energy(S, k); sum += e; if (e < mn) mn = e;
+        for (int l = 1; l <= (D - 1) / 2; l++) lv[l] += levcnt[l];
+        if (e == 0) { char tag[160]; snprintf(tag, sizeof tag, "%s_t%s_rand", ptag, tname[ti]); report(tag, S, k); } }
+    printf("RANDS %s_t%s n %d min %d mean %.1f secs %.2f |X^j| (side A, mean):", ptag, tname[ti], cnt, mn, (double)sum / cnt, now() - c0);
+    for (int l = 1; l <= (D - 1) / 2; l++) printf(" %.1f", lv[l] / cnt); printf("\n"); fflush(stdout);
+}
+static int type_wanted(const char *types, const char *name) {
+    if (!types) return 1;
+    const char *s = types; size_t ln = strlen(name);
+    while (*s) { const char *e = strchr(s, ','); size_t n = e ? (size_t)(e - s) : strlen(s);
+        if (n == ln && !strncmp(s, name, n)) return 1; if (!e) break; s = e + 1; }
+    return 0;
+}
+static void do_psi(const char *ptag, const char *types, int nr, double secs, int NB, int TEN, int STALL, int MAXSOL, int o1, int o2, int en) {
+    gen_types();
+    int need_gamma = en;
+    if (need_gamma) gamma_build(o1, o2);
+    for (int ti = 0; ti < ntypes; ti++) {
+        if (!type_wanted(types, tname[ti])) continue;
+        if (nr) rands(ptag, ti, nr);
+        else if (en) {
+            double cnt = enum_count(ti);
+            if (!ecap || cnt <= (double)ecap) enumerate(ptag, ti);
+            else { printf("TYPE %s_t%s has %.3g sets > ECAP: tabu\n", ptag, tname[ti], cnt); run(ptag, ti, secs, NB, TEN, STALL, MAXSOL); }
+        }
+        else run(ptag, ti, secs, NB, TEN, STALL, MAXSOL);
+    }
+}
+
+static void parse_list(const char *s, int *out, int *n) { *n = 0; while (s && *s) { out[(*n)++] = atoi(s); const char *c = strchr(s, ','); if (!c) break; s = c + 1; } }
+int main(int argc, char **argv) {
+    if (argc < 4) { fprintf(stderr, "usage: sdhi K D FACTOR1 [FACTOR2]\n"); return 2; }
+    K = atoi(argv[1]); D = atoi(argv[2]);
+    parse_list(getenv("ORDS") ? getenv("ORDS") : "2", ORDS, &nords);
+    int ai = 3; Q1 = parse_factor(argv, argc, &ai); Q2 = parse_factor(argv, argc, &ai);
+    N = Q1->size * Q2->size; n2 = Q2->size;
+    E1 = malloc(sizeof(int) * N); E2 = malloc(sizeof(int) * N); ginvv = malloc(sizeof(int) * N);
+    for (int g = 0; g < N; g++) { E1[g] = g / n2; E2[g] = g % n2; }
+    for (int g = 0; g < N; g++) ginvv[g] = Q1->inv[E1[g]] * n2 + Q2->inv[E2[g]];
+    for (int g = 0; g < N; g++) if (gm(g, ginvv[g]) != 0 || gm(0, g) != g) { fprintf(stderr, "group bug\n"); return 3; }
+    mk = calloc(N, sizeof(uint32_t)); mk2 = calloc(N, sizeof(uint32_t)); buf = malloc(sizeof(int) * (N + 16));
+    psi = malloc(sizeof(int) * N); orbel = malloc(sizeof(int) * N); ostart = malloc(sizeof(int) * N); olen = malloc(sizeof(int) * N);
+    itemof = malloc(sizeof(int) * N); for (int l = 0; l <= MAXL; l++) bylen[l] = malloc(sizeof(int) * N);
+    irep = malloc(sizeof(int) * N); ordA = malloc(sizeof(int) * N); gam_uf = malloc(sizeof(int) * N);
+    for (int g = 0; g < N; g++) ordA[g] = g;
+    if (getenv("ECAP")) ecap = atoll(getenv("ECAP"));
+    if (getenv("NEAR")) NEAR = atoi(getenv("NEAR"));
+    printf("GROUP %s x %s N %d (Haar graph on %d vertices) K %d D %d", Q1->name, Q2->name, N, 2 * N, K, D);
+    if (Q1->F && Q1->F->e > 1) printf(" field poly %d (base %d coefficients of x^0..x^%d, monic)", Q1->F->poly, Q1->F->p, Q1->F->e - 1);
+    printf("\n");
+    double secs = getenv("SECS") ? atof(getenv("SECS")) : 20;
+    int NB = getenv("NB") ? atoi(getenv("NB")) : 48, TEN = getenv("TEN") ? atoi(getenv("TEN")) : 12;
+    int STALL = getenv("STALL") ? atoi(getenv("STALL")) : 300, MAXSOL = getenv("MAXSOL") ? atoi(getenv("MAXSOL")) : 5;
+    if (getenv("SEED")) { rs ^= (uint64_t)atoll(getenv("SEED")) * 0x9E3779B97F4A7C15ULL; for (int i = 0; i < 10; i++) rnd(); }
+    edges_out = getenv("EDGES");
+    if (getenv("DEEP")) sscanf(getenv("DEEP"), "%d,%lf", &deep_thr, &deep_secs);
+    if (getenv("CHECK")) {
+        const char *s = getenv("CHECK"); int SS[64], k = 0;
+        while (*s) { while (*s == ' ') s++; if (!*s) break;
+            int x1, x2; s = fparse(Q1, s, &x1); if (*s != '|') { fprintf(stderr, "expected |\n"); return 2; } s++;
+            s = fparse(Q2, s, &x2); SS[k++] = x1 * n2 + x2; }
+        int diam; int ok = fullcheck(SS, k, &diam);
+        printf("CHECK k %d diam %d %s energy(sd side A) %d\n", k, diam, ok ? "VALID" : "INVALID", uncov_side(SS, k, 1));
+        if (edges_out) write_edges(edges_out, SS, k);
+        if (getenv("SDTEST")) {   /* is some b S a^-1 a union of psi-orbits, for one of the psi options? */
+            int idx = 0;
+            for (int o1 = 0; o1 < Q1->nopt; o1++) for (int o2 = 0; o2 < Q2->nopt; o2++, idx++) {
+                setup_psi(o1, o2); long long hits = 0; int fa = -1, fb = -1;
+                for (int a = 0; a < N; a++) { int ain = ginvv[a];
+                    for (int b = 0; b < N; b++) { int T[64]; st1++;
+                        for (int i = 0; i < k; i++) { T[i] = gm(gm(b, SS[i]), ain); mk[T[i]] = st1; }
+                        int good = 1; for (int i = 0; i < k && good; i++) if (mk[psi[T[i]]] != st1) good = 0;
+                        if (good) { hits++; if (fa < 0) { fa = a; fb = b; } } } }
+                printf("SDTEST psi%d [%s] x [%s]: %lld pairs (a,b) with b S a^-1 psi-invariant", idx, Q1->optd[o1], Q2->optd[o2], hits);
+                if (fa >= 0) { char b1[160], b2[160]; gdesc(fa, b1); gdesc(fb, b2); printf(", e.g. a = %s, b = %s", b1, b2); }
+                printf("\n"); fflush(stdout);
+            }
+        }
+        return ok ? 0 : 1;
+    }
+    int only = getenv("PSI") ? atoi(getenv("PSI")) : -1, idx = 0, same = getenv("SAMEORD") ? atoi(getenv("SAMEORD")) : 0;
+    const char *types = getenv("TYPES"); int nr = getenv("RANDS") ? atoi(getenv("RANDS")) : 0;
+    if (getenv("PLAIN")) {
+        sd = 0; setup_psi(-1, -1);
+        printf("PSI plain\n"); fflush(stdout);
+        if (!getenv("LIST")) do_psi("plain", NULL, nr, secs, NB, TEN, STALL, MAXSOL, -1, -1, 0);
+        sd = 1;
+        if (getenv("PLAINONLY")) { printf("DONE sols %d\n", nsol); return 0; }
+    }
+    for (int o1 = 0; o1 < Q1->nopt; o1++) for (int o2 = 0; o2 < Q2->nopt; o2++) {
+        int a = Q1->optord[o1], b = Q2->optord[o2], o = a / gcd(a, b) * b;
+        int keep = 0; for (int i = 0; i < nords; i++) if (ORDS[i] == o) keep = 1;
+        if (same && Q1->size > 2 && Q2->size > 2 && a != b) keep = 0;
+        if (!keep) continue;
+        int my = idx++;
+        if (only >= 0 && my != only) continue;
+        setup_psi(o1, o2);
+        int cnt[MAXL + 1] = {0}; for (int t = 0; t < nitem; t++) cnt[olen[t]]++;
+        printf("PSI %d [%s] x [%s] order %d orbits(len<=K):", my, Q1->optd[o1], Q2->optd[o2], o);
+        for (int l = 1; l <= K && l <= MAXL; l++) if (cnt[l]) printf(" %dx%d", l, cnt[l]);
+        printf("\n"); fflush(stdout);
+        if (getenv("LIST")) continue;
+        char ptag[64]; snprintf(ptag, sizeof ptag, "psi%d", my);
+        do_psi(ptag, types, nr, secs, NB, TEN, STALL, MAXSOL, o1, o2, getenv("ENUM") != NULL);
+    }
+    printf("DONE sols %d\n", nsol);
+    return 0;
+}

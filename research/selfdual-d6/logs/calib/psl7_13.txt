@@ -1,0 +1,9 @@
+GROUP PSL(2,7) x Z13 N 2184 (Haar graph on 4368 vertices) K 7 D 6
+PSI 0 [x->x^-1] x [z->0-1*z] order 2 orbits(len<=K): 1x22 2x1081
+TABU psi0_t1+2+2+2 best 2 sols 0 steps 4987 evals 239387 restarts 10 secs 15.0
+TABU psi0_t1+1+1+2+2 best 17 sols 0 steps 5517 evals 264830 restarts 13 secs 15.0
+TABU psi0_t1+1+1+1+1+2 best 1078 sols 0 steps 8414 evals 403898 restarts 25 secs 15.0
+TABU psi0_t1+1+1+1+1+1+1 best 2016 sols 0 steps 25659 evals 1231718 restarts 85 secs 15.0
+PSI 1 [x->x^-1] x [z->0-12*z] order 2 orbits(len<=K): 1x286 2x949
+TABU psi1_t1+2+2+2 best 14 sols 0 steps 4835 evals 232090 restarts 9 secs 15.0
+TABU psi1_t1+1+1+2+2 best 7 sols 0 steps 4631 evals 222297 restarts 8 secs 15.0
