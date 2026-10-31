@@ -30,8 +30,31 @@ Checks of every hit: research/lifts/coordinator_check/apsp.c (`src/apsp`), VALID
 
 ## Status (running log)
 
-- (5,7), K = 5: the record S (PGL(2,5) x Z13, 3,120) is not self-dual for any psi of that group (SDTEST: no
-  b S a^-1 is psi-invariant). Exhaustive enumeration of the self-dual family of PGL(2,5) x Z13: no solution in the
-  types finished so far (best 2 by tabu in type 1+1+1+1+1). Self-dual solutions exist at 2,640 (PGL(2,5) x Z11) and
-  2,400 (SL(2,5) x Z10): probe of orders 1,150-1,560 running to locate the frontier. Metacyclic groups at order
-  1,564 are far off (180-300 uncovered).
+- (5,7), K = 5. The record S (PGL(2,5) x Z13, 3,120) is not self-dual for any psi of that group (SDTEST: no
+  b S a^-1 is psi-invariant). The self-dual family of PGL(2,5) x Z13 has no solution: every type enumerated
+  exhaustively (`logs/K5D7/enum_pgl5_13.txt`) except psi1 type 1+1+1+1+1 (3e8 of its 3.2e9 sets). Frontier probe
+  (`logs/K5D7/probe/summary.txt`): self-dual solutions at N = 1,200 (PGL(2,5) x Z10, SL(2,5) x Z10, A5 x Z20) and
+  N = 1,320 (PGL(2,5) x Z11, SL(2,5) x Z11), none at 1,440 (best 2-4) or 1,560 (best 4). So in these groups the
+  self-dual frontier lies below the plain record. Counting explains it: at K = 5 the self-dual family has about
+  N^2 sets with a one-sided success probability p, the plain one about N^4 sets with p^2, so the expected numbers of
+  solutions are comparable and plain annealing already searches the plain family well. Metacyclic groups of order
+  1,564 with inner psi: 180-300 uncovered.
+- (8,7) and (6,7): head-to-head on the record groups against orbit-symmetric S (research/structured/haar_sym, k = 3):
+  | group | orbit k = 3 (haar_sym) | self-dual involution families |
+  |---|---|---|
+  | SL(2,8) x Z43, K = 8 | solved, 11,961 evals (0.4 s) | sdhi tabu 2+2+2+2: best 30 after 211k evals; haar_sd (f = 0, 4 pairs): best 23 after 3.0M evals; f = 2: best 921 |
+  | SL(2,5) x Z37, K = 6 | solved, 2,801 evals | haar_sd, 3 pairs, after 9.5M evals each: inv best 84, inv with z -> z best 622, -x^-1 best 80, twisted best 39 |
+  | SL(2,8) x Z43, psi of order 6 (self-dual + order-3 symmetry) | | the whole family is 240 sets up to symmetry; best 168 |
+  At D = 7 in SL/PGL(2,q) x Z_n the self-dual involution families are far worse than k = 3 orbits. Exponent
+  bookkeeping: a self-dual set removes one of the two odd-D conditions (about mu/2), k = 3 orbits divide the misses
+  of each side by 3; psi of order 6 would give mu/3 on one side but the family is tiny for K <= 8.
+- Structural trap: when beta is inner, H(G,S) is a double cover of a Cayley graph of G; if moreover e is in S the
+  central involution in the connection set only adds a perfect matching, and the ball grows like a degree-(K-1)
+  Cayley graph (for K = 5, D = 8: at most 4,373 vertices of the target side within distance 7, fewer than 4,880).
+  So psi = inversion with e in S is hopeless (haar_sd: best 921-1,990). Families with e not in S or an outer beta
+  are the meaningful ones.
+- (5,8), K = 5, record group C61:C80 (r = 8, 9,760): the record S is not self-dual. Best self-dual family: PSI 3
+  (beta(x) = x, beta(y) = y^41, u0 = y^20, e not in S), type 1+2+2, best 6 after 30 s of tabu; its full
+  enumeration (2.26e7 sets) is running.
+- Squad round sdhi-r1 (8 Haiku cards, `../squads/sdhi-r1/cards.md`): (5,8) metacyclic and product groups, deep tabu
+  near the record shape, haar_sd at (6,8) and (7,8), (5,7) metacyclic, a wildcard.

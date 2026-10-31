@@ -26,3 +26,10 @@ GAMMA generators 65
 PSI 6 [x->x^-1] x [z->0-11*z] order 2 orbits(len<=K): 1x312 2x564
 GAMMA generators 67
 ENUM psi6_t1+2+2_enum reps 30 sets 5269680 passed 0 near 0 best -1 sols 0 secs 10.2
+TYPE psi6_t1+1+1+2 has 1.5e+08 sets > ECAP: tabu
+TABU psi6_t1+1+1+2 best 8 sols 0 steps 7214 evals 346289 restarts 16 secs 10.0
+TYPE psi6_t1+1+1+1+1 has 6.88e+09 sets > ECAP: tabu
+TABU psi6_t1+1+1+1+1 best 4 sols 0 steps 6774 evals 325164 restarts 11 secs 10.0
+PSI 7 [x->x^-1] x [z->6-11*z] order 2 orbits(len<=K): 2x720
+GAMMA generators 67
+DONE sols 0

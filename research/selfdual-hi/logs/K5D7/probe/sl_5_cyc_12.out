@@ -29,3 +29,82 @@ GAMMA generators 68
 PSI 8 [x->-x^-1] x [z->0-1*z] order 2 orbits(len<=K): 1x60 2x690
 GAMMA generators 68
 ENUM psi8_t1+2+2_enum reps 22 sets 909480 passed 0 near 17 best 52 sols 0 secs 1.5
+ENUM psi8_t1+1+1+2_enum reps 22 sets 752840 passed 0 near 0 best -1 sols 0 secs 1.5
+ENUM psi8_t1+1+1+1+1_enum reps 2 sets 910252 passed 0 near 0 best -1 sols 0 secs 2.2
+PSI 9 [x->-x^-1] x [z->1-1*z] order 2 orbits(len<=K): 2x720
+GAMMA generators 65
+PSI 10 [x->-x^-1] x [z->0-5*z] order 2 orbits(len<=K): 1x180 2x630
+GAMMA generators 68
+ENUM psi10_t1+2+2_enum reps 20 sets 2264400 passed 0 near 185 best 52 sols 0 secs 3.7
+ENUM psi10_t1+1+1+2_enum reps 20 sets 19117200 passed 0 near 8818 best 7 sols 0 secs 38.5
+TYPE psi10_t1+1+1+1+1 has 1.65e+08 sets > ECAP: tabu
+TABU psi10_t1+1+1+1+1 best 720 sols 0 steps 9717 evals 466449 restarts 32 secs 10.0
+PSI 11 [x->-x^-1] x [z->3-5*z] order 2 orbits(len<=K): 2x720
+GAMMA generators 66
+PSI 12 [x->-x^-1] x [z->0-7*z] order 2 orbits(len<=K): 1x120 2x660
+GAMMA generators 68
+ENUM psi12_t1+2+2_enum reps 21 sets 1660680 passed 0 near 206 best 13 sols 0 secs 2.8
+ENUM psi12_t1+1+1+2_enum reps 21 sets 5897640 passed 0 near 2331 best 8 sols 0 secs 12.0
+TYPE psi12_t1+1+1+1+1 has 2.38e+07 sets > ECAP: tabu
+TABU psi12_t1+1+1+1+1 best 960 sols 0 steps 12301 evals 590489 restarts 40 secs 10.0
+PSI 13 [x->-x^-1] x [z->2-7*z] order 2 orbits(len<=K): 2x720
+GAMMA generators 66
+PSI 14 [x->-x^-1] x [z->0-11*z] order 2 orbits(len<=K): 1x360 2x540
+GAMMA generators 68
+ENUM psi14_t1+2+2_enum reps 18 sets 3492720 passed 0 near 7 best 30 sols 0 secs 6.1
+TYPE psi14_t1+1+1+2 has 1.39e+08 sets > ECAP: tabu
+TABU psi14_t1+1+1+2 best 11 sols 0 steps 6873 evals 329919 restarts 14 secs 10.0
+TYPE psi14_t1+1+1+1+1 has 4.08e+09 sets > ECAP: tabu
+TABU psi14_t1+1+1+1+1 best 2 sols 0 steps 6725 evals 322814 restarts 13 secs 10.0
+PSI 15 [x->-x^-1] x [z->6-11*z] order 2 orbits(len<=K): 2x720
+GAMMA generators 68
+PSI 16 [x->(hxh)^-1,h=diag(1,2)] x [z->0-1*z] order 2 orbits(len<=K): 2x720
+GAMMA generators 52
+PSI 17 [x->(hxh)^-1,h=diag(1,2)] x [z->1-1*z] order 2 orbits(len<=K): 2x720
+GAMMA generators 49
+PSI 18 [x->(hxh)^-1,h=diag(1,2)] x [z->0-5*z] order 2 orbits(len<=K): 2x720
+GAMMA generators 52
+PSI 19 [x->(hxh)^-1,h=diag(1,2)] x [z->3-5*z] order 2 orbits(len<=K): 2x720
+GAMMA generators 50
+PSI 20 [x->(hxh)^-1,h=diag(1,2)] x [z->0-7*z] order 2 orbits(len<=K): 2x720
+GAMMA generators 52
+PSI 21 [x->(hxh)^-1,h=diag(1,2)] x [z->2-7*z] order 2 orbits(len<=K): 2x720
+GAMMA generators 50
+PSI 22 [x->(hxh)^-1,h=diag(1,2)] x [z->0-11*z] order 2 orbits(len<=K): 2x720
+GAMMA generators 52
+PSI 23 [x->(hxh)^-1,h=diag(1,2)] x [z->6-11*z] order 2 orbits(len<=K): 2x720
+GAMMA generators 52
+PSI 24 [x->-(hxh)^-1,h=diag(1,2)] x [z->0-1*z] order 2 orbits(len<=K): 1x40 2x700
+GAMMA generators 52
+ENUM psi24_t1+2+2_enum reps 104 sets 2907840 passed 0 near 1633 best 15 sols 0 secs 6.1
+ENUM psi24_t1+1+1+2_enum reps 104 sets 1027520 passed 0 near 0 best -1 sols 0 secs 2.3
+ENUM psi24_t1+1+1+1+1_enum reps 10 sets 822510 passed 0 near 0 best -1 sols 0 secs 1.8
+PSI 25 [x->-(hxh)^-1,h=diag(1,2)] x [z->1-1*z] order 2 orbits(len<=K): 2x720
+GAMMA generators 49
+PSI 26 [x->-(hxh)^-1,h=diag(1,2)] x [z->0-5*z] order 2 orbits(len<=K): 1x120 2x660
+GAMMA generators 52
+ENUM psi26_t1+2+2_enum reps 94 sets 7433520 passed 0 near 4575 best 11 sols 0 secs 14.6
+TYPE psi26_t1+1+1+2 has 2.64e+07 sets > ECAP: tabu
+TABU psi26_t1+1+1+2 best 2 sols 0 steps 7662 evals 367799 restarts 22 secs 10.0
+TYPE psi26_t1+1+1+1+1 has 1.59e+08 sets > ECAP: tabu
+TABU psi26_t1+1+1+1+1 best 720 sols 0 steps 10971 evals 526645 restarts 36 secs 10.0
+PSI 27 [x->-(hxh)^-1,h=diag(1,2)] x [z->3-5*z] order 2 orbits(len<=K): 2x720
+GAMMA generators 50
+PSI 28 [x->-(hxh)^-1,h=diag(1,2)] x [z->0-7*z] order 2 orbits(len<=K): 1x80 2x680
+GAMMA generators 52
+ENUM psi28_t1+2+2_enum reps 99 sets 5377680 passed 0 near 12036 best 9 sols 0 secs 11.1
+ENUM psi28_t1+1+1+2_enum reps 99 sets 8133840 passed 0 near 12790 best 7 sols 0 secs 18.7
+TYPE psi28_t1+1+1+1+1 has 2.25e+07 sets > ECAP: tabu
+TABU psi28_t1+1+1+1+1 best 960 sols 0 steps 14297 evals 686304 restarts 47 secs 10.0
+PSI 29 [x->-(hxh)^-1,h=diag(1,2)] x [z->2-7*z] order 2 orbits(len<=K): 2x720
+GAMMA generators 50
+PSI 30 [x->-(hxh)^-1,h=diag(1,2)] x [z->0-11*z] order 2 orbits(len<=K): 1x240 2x600
+GAMMA generators 52
+ENUM psi30_t1+2+2_enum reps 84 sets 12075840 passed 0 near 189 best 25 sols 0 secs 23.0
+TYPE psi30_t1+1+1+2 has 1.91e+08 sets > ECAP: tabu
+TABU psi30_t1+1+1+2 best 10 sols 0 steps 7061 evals 338945 restarts 16 secs 10.0
+TYPE psi30_t1+1+1+1+1 has 3.98e+09 sets > ECAP: tabu
+TABU psi30_t1+1+1+1+1 best 7 sols 0 steps 7669 evals 368129 restarts 16 secs 10.0
+PSI 31 [x->-(hxh)^-1,h=diag(1,2)] x [z->6-11*z] order 2 orbits(len<=K): 2x720
+GAMMA generators 52
+DONE sols 0
