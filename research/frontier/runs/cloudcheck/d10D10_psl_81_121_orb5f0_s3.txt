@@ -1,0 +1,19 @@
+machine: vm | nproc=4 | free -g (total used free shared buff/cache available): 15 0 14 0 0 15
+sha256: 6cc96de7f38a3d11a31ddb4cdc9956d9b9602be4e247813b9a7a5923124bc07f  d10D10_psl_81_121_orb5f0_s3.txt
+# reference: build_haar2.py  [rc=0 wall_s=215.8 peak_rss_mb=3745]
+ecc from A = 10 unreached 0
+ecc from B = 10 unreached 0
+n = 64294560 edges = 321472800 max degree = 10 min degree = 10 duplicate edges = 0
+edge list sha256 = 5e221cc4cf903f72dc3610b953f4f5ef5ab10b2014f95a51ab3ff38089b7629b
+VALID d=10 D=10 group=psl 81 poly x^4+x+2 x Z_121 N=32147280 vertices=64294560
+# independent: check_haar_indep.py  [rc=0 wall_s=40.6 peak_rss_mb=1670]
+file d10D10_psl_81_121_orb5f0_s3.txt
+header: d=10 D=10 spec=psl 81 poly x^4+x+2 NCYC=121 N=32147280
+group order |G|=265680 (factors [265680]), x Z_121 -> 32147280; vertices 2N=64294560
+distinct generators (as full group elements): 10 of d=10
+permutations built (1s)
+BFS from A: ecc=10 reached 64294560 of 64294560 (unreached 0); level sizes [1, 10, 90, 810, 7290, 65555, 584815, 4884166, 24395757, 27196739, 7159327]
+BFS from B: ecc=10 reached 64294560 of 64294560 (unreached 0); level sizes [1, 10, 90, 810, 7290, 65555, 584835, 4884166, 24402091, 27196739, 7152973]
+every vertex has exactly 10 distinct neighbours: True
+RESULT VALID d=10 D=10 eccA=10 eccB=10 n=64294560 (40s)
+

@@ -1,0 +1,17 @@
+machine: vm | nproc=4 | free -g (total used free shared buff/cache available): 15 0 14 0 0 15
+sha256: 25addf1b10b293ff1238b43d8cdc97a381e139be2332ca68756f340f4ebdd768  d19D8_psl_103_79_orb3_s1.txt
+# reference: haarcheck_psl  [rc=0 wall_s=65.3 peak_rss_mb=33]
+from (e,A): reached A 43158648/43158648, B 43158648/43158648 within 8, ecc 8
+from (e,B): reached A 43158648/43158648, B 43158648/43158648 within 8, ecc 8
+VALID d=19 D=8 group=psl 103 x Z_79 N=43158648 vertices=86317296 (distinct generators, 19-regular simple)
+# independent: check_haar_indep.py  [rc=0 wall_s=137.1 peak_rss_mb=2520]
+file d19D8_psl_103_79_orb3_s1.txt
+header: d=19 D=8 spec=psl 103 NCYC=79 N=43158648
+group order |G|=546312 (factors [546312]), x Z_79 -> 43158648; vertices 2N=86317296
+distinct generators (as full group elements): 19 of d=19
+permutations built (5s)
+BFS from A: ecc=8 reached 86317296 of 86317296 (unreached 0); level sizes [1, 19, 342, 6156, 110670, 1948518, 24292079, 41203955, 18755556]
+BFS from B: ecc=8 reached 86317296 of 86317296 (unreached 0); level sizes [1, 19, 342, 6156, 110670, 1948518, 24290533, 41203955, 18757102]
+every vertex has exactly 19 distinct neighbours: True
+RESULT VALID d=19 D=8 eccA=8 eccB=8 n=86317296 (137s)
+

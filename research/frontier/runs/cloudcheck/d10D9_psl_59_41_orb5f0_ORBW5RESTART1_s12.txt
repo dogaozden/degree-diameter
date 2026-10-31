@@ -1,0 +1,17 @@
+machine: vm | nproc=4 | free -g (total used free shared buff/cache available): 15 0 14 0 0 15
+sha256: c03a92f06028057cf46555c7c7a2c09fb238f5e49f713dc9a262921c3a15f538  d10D9_psl_59_41_orb5f0_ORBW5RESTART1_s12.txt
+# reference: haarcheck_psl  [rc=0 wall_s=3.8 peak_rss_mb=13]
+from (e,A): reached A 4209060/4209060, B 4209060/4209060 within 9, ecc 9
+from (e,B): reached A 4209060/4209060, B 4209060/4209060 within 9, ecc 9
+VALID d=10 D=9 group=psl 59 x Z_41 N=4209060 vertices=8418120 (distinct generators, 10-regular simple)
+# independent: check_haar_indep.py  [rc=0 wall_s=5.6 peak_rss_mb=288]
+file d10D9_psl_59_41_orb5f0_ORBW5RESTART1_s12.txt
+header: d=10 D=9 spec=psl 59 NCYC=41 N=4209060
+group order |G|=102660 (factors [102660]), x Z_41 -> 4209060; vertices 2N=8418120
+distinct generators (as full group elements): 10 of d=10
+permutations built (1s)
+BFS from A: ecc=9 reached 8418120 of 8418120 (unreached 0); level sizes [1, 10, 90, 810, 7290, 64790, 543795, 2927736, 3657884, 1215714]
+BFS from B: ecc=9 reached 8418120 of 8418120 (unreached 0); level sizes [1, 10, 90, 810, 7290, 64790, 543795, 2927736, 3657884, 1215714]
+every vertex has exactly 10 distinct neighbours: True
+RESULT VALID d=10 D=9 eccA=9 eccB=9 n=8418120 (5s)
+
