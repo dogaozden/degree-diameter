@@ -1,0 +1,26 @@
+GROUP nsmeta m 302 k 20 r 59 s 151 n 6040 K 13
+FAMILY candidates 40 automorphisms 40 coset_reps 8 outer_gens 2 centre 8
+RECORDS 12 (0.0 s)
+REC 0 ALPHA order(g) 1 central | x->x^1 y->x^0 y^1 z^0 z->z^0; c0 0; t' = (0,0) t0, t'^2 = (0,0)
+REC 1 ALPHA order(g) 2 central | x->x^1 y->x^0 y^1 z^0 z->z^0; c0 0; t' = (151,0) t0, t'^2 = (0,0)
+REC 2 ALPHA order(g) 151 | x->x^1 y->x^1 y^1 z^0 z->z^0; c0 520; t' = (138,0) t0, t'^2 = (0,0)
+REC 3 ALPHA order(g) 1 | x->x^1 y->x^0 y^11 z^0 z->z^0; c0 0; t' = (0,0) t0, t'^2 = (0,0)
+REC 4 ALPHA order(g) 1208 | x->x^1 y->x^1 y^11 z^0 z->z^0; c0 520; t' = (138,5) t0, t'^2 = (0,0)
+REC 5 ALPHA order(g) 151 | x->x^1 y->x^1 y^11 z^0 z->z^0; c0 520; t' = (138,0) t0, t'^2 = (0,0)
+REC 6 ALPHA order(g) 10 | x->x^87 y->x^0 y^1 z^0 z->z^0; c0 8; t' = (1,16) t0, t'^2 = (0,0)
+REC 7 ALPHA order(g) 5 | x->x^87 y->x^0 y^1 z^0 z->z^0; c0 8; t' = (0,16) t0, t'^2 = (0,0)
+REC 8 ALPHA order(g) 20 | x->x^87 y->x^1 y^1 z^0 z->z^0; c0 1748; t' = (0,6) t0, t'^2 = (0,0)
+REC 9 ALPHA order(g) 20 | x->x^87 y->x^0 y^11 z^0 z->z^0; c0 8; t' = (0,6) t0, t'^2 = (0,0)
+REC 10 ALPHA order(g) 20 | x->x^87 y->x^1 y^11 z^0 z->z^0; c0 4768; t' = (0,6) t0, t'^2 = (0,0)
+REC 11 ALPHA order(g) 40 | x->x^87 y->x^1 y^11 z^0 z->z^0; c0 4768; t' = (0,1) t0, t'^2 = (0,0)
+TABU rec 0 alpha f 1 m 6 best 153 sols 0 steps 6072 restarts 1 secs 20.0
+TABU rec 1 alpha f 1 m 6 best 135 sols 0 steps 5935 restarts 2 secs 20.0
+TABU rec 2 alpha f 1 m 6 best 90 sols 0 steps 5968 restarts 1 secs 20.0
+TABU rec 3 alpha f 1 m 6 best 56 sols 0 steps 6211 restarts 1 secs 20.0
+TABU rec 3 alpha f 3 m 5 best 534 sols 0 steps 6805 restarts 2 secs 20.0
+TABU rec 4 alpha f 1 m 6 best 50 sols 0 steps 5875 restarts 2 secs 20.0
+TABU rec 4 alpha f 3 m 5 best 244 sols 0 steps 5796 restarts 1 secs 20.0
+TABU rec 5 alpha f 1 m 6 best 52 sols 0 steps 6070 restarts 2 secs 20.0
+TABU rec 5 alpha f 3 m 5 best 248 sols 0 steps 6167 restarts 1 secs 20.0
+BUDGET reached
+DONE sols 0

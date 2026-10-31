@@ -1,0 +1,9 @@
+GROUP mat p 11 k 50 M 2.0.0.10 n 6050 K 13 (F_11^2 : C_50)
+FAMILY candidates 100 automorphisms 100 coset_reps 10 outer_gens 8 centre 5
+RECORDS 4 (0.1 s)
+REC 0 ALPHA order(g) 1 central | A=[1 0;0 1] y->y^1; c0 0; t' = (0,0) t0, t'^2 = (0,0)
+REC 1 ALPHA order(g) 2 | A=[1 0;0 1] y->y^1; c0 0; t' = (0,25) t0, t'^2 = (0,0)
+REC 2 ALPHA order(g) 2 | A=[1 0;0 10] y->y^1; c0 0; t' = (0,25) t0, t'^2 = (0,0)
+REC 3 ALPHA order(g) 1 | A=[1 0;0 10] y->y^1; c0 0; t' = (0,0) t0, t'^2 = (0,0)
+TABU rec 0 alpha f 1 m 6 best 188 sols 0 steps 6492 restarts 2 secs 20.0
+STOPPED_EARLY_BY_CARD (partial: only rec 0 done)
