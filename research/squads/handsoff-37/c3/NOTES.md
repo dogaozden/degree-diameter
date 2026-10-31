@@ -50,3 +50,5 @@ Start (UTC): 2026-10-31T15:44:58Z. Planned stop: about 2 hours later (about 17:4
 - Most promising next step (not tried): fix an extra symmetry of the base (for example an involution or an order-3
   automorphism of a 12+12 base, taken from the residual group of C168.1 after quotienting by Z_7) to shrink the SAT
   instance by 2-3x and test whether the k = 12 calibration then solves in minutes; only then run k = 13 (n = 182).
+- 17:29 SAT p=7 k=13 with slack 1 (SLACK=1: each of the 26 sources may leave one same-side lift vertex unreached; far is
+  then 7/2 times the total number of unreached targets): no solution in 480 s. Stop time 17:30 UTC.

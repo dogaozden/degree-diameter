@@ -36,3 +36,6 @@ c7	PT local 2-switch from C168.1+2 pairs (n=172), 400 s, R=6	172	92	c7/out/pt172
 c6	polarity cover, Z5 lift of 17+17 base, SA on M (no zero)	170	80	c6/best170_polarity_z5.edges	2026-10-31T17:12:31Z	first graph at n=170; cost 40 orbit-floor, not diameter 7
 c6	polarity cover, Z2 lift of 43+43 base, lifttabu (no zero)	172	76	c6/best172_polarity_z2.edges	2026-10-31T17:12:31Z	first graph at n=172; cost 38, not diameter 7
 c7	PT continued from c7 n=172 state (400 s)	172	80	c7/out/pt172b.edges	2026-10-31T17:14:10Z	c7 improvement at 172; score37 far 80 diam 8; cost 160
+c4	lift C7 k14 joint tabu	196	350	c4/best/n196_C7k14_far350.edges	2026-10-31T17:25:52Z	first graph at n=196; base 14+14 over C7, tabu 200 s, cost 100
+c4	lift C5 k20 joint tabu	200	440	c4/best/n200_C5k20_far440.edges	2026-10-31T17:25:52Z	first graph at n=200; base 20+20 over C5, tabu 200 s, cost 176
+c2	perturbed restart (1 random switch on c30 seed) + beam width 10, SA 20k	170	70	c2/best170.edges	2026-10-31T17:31:08Z	batch 4 (c30 seed, seed ); beats 76

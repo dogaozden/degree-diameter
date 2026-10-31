@@ -47,3 +47,24 @@ tabu over full voltage-change neighbourhood plus sampled 2-switches; (2) calibra
 ## Next steps (if continued)
 - Better escape from plateaus at k >= 12: population/elite tabu, or parallel tempering over voltages (the card's idea).
 - Use the k = 12 voltage search as a sub-step inside c1/c2 insertion schemes instead of from scratch.
+- n=192 Q8 k=12, 500 s, seed 701: cost 74 -> far 296 (not better than C8's 272).
+- First graphs (200 s each): n=196 C7 k=14 cost 100 -> far 350; n=200 C5 k=20 cost 176 -> far 440. Logged.
+
+## Logged files (all re-scored with bin/score37 at the end; far matches the scoreboard)
+| n | group, k | far | file |
+|---|---|---|---|
+| 182 | C7, 13 | 168 | c4/best/n182_C7k13_far168.edges |
+| 184 | C2xC2, 23 | 192 | c4/best/n184_C2C2k23_far192.edges |
+| 186 | C3, 31 (diam 9) | 345 | c4/best/n186_C3k31_far345.edges |
+| 190 | C5, 19 | 305 | c4/best/n190_C5k19_far305.edges |
+| 192 | C8, 12 | 272 | c4/best/n192_C8k12_far272.edges (state: c4/best/n192_C8k12_far272.state) |
+| 196 | C7, 14 | 350 | c4/best/n196_C7k14_far350.edges |
+| 200 | C5, 20 | 440 | c4/best/n200_C5k20_far440.edges |
+
+Rebuild of the lifted edge list from a state file: vertex (u,g) = u*N+g for whites u < k, (k+v)*N+g for blacks;
+each state line "u v a" is a base edge: (u,g) ~ (k+v, g*a) for every g (N = group order, group table from
+`python3 c4/mkgroups.py`). The .edges files are already the lifted graphs, so no rebuild is needed for scoring.
+Search code: c4/lift.c (build: gcc -O3 -march=native -o lift3 lift.c -lm; run: MODE=tabu M=300 TEN=8 ./lift3 groups/G.txt k seed secs OUTPREFIX).
+- n=192 C8 k=12, second seed 901, 500 s (405k evals/s, 367k iterations): best cost 68 again (far 272). Two seeds at
+  the same level suggest a floor for this base size and method, not a bad seed.
+- Stop at 17:35 UTC (2 hours). No candidate with far 0 at n >= 170 was found.

@@ -226,3 +226,60 @@ leaves. Steps: 1) for n = 168, 170 decide the tree (vertex count per level, with
 number of extra vertices; 2) search the leaf matching under the symmetry with tabu or SA (cost = far of the full graph),
 or exactly with DFS + pruning for small cases; 3) calibrate: can it rebuild a diameter-7 graph at n = 150-168? Log best far
 per n.
+
+More round-1 facts (17:55Z): c3: neither randomized exact DFS (30M nodes; Knuth estimate 2.4e11) nor SAT (c3/sat_lift.py,
+cadical / kissat, 8 min) finds the KNOWN Z7 lift on a 12+12 base (n = 168); nothing at p = 7 k = 13 or p = 5 k = 17.
+c4: full-neighbourhood tabu over voltages + 2-switches (c4/lift.c) finds 168 over C14 (6+6) in 14 s, stalls for k >= 12
+(C8 12+12 at n = 192: far 272, best so far there). c8: every LNS / reduction / insertion chain at 170 ends at far 46 or 48;
+greedy growth of the Tutte 12-cage (c8/gh2.py) is far 0 up to n = 136, far 170 at 170.
+
+## Card r2e: lift tabu with plateau escape (large structure; continues c4)
+
+Read c4/NOTES.md, copy c4/lift.c. Its full-neighbourhood tabu stalls for bases with k >= 12. Add plateau escape: an elite
+pool with path relinking or crossover of voltage assignments, parallel tempering of several tabu walkers, or
+cost-weighted (penalty) restarts. Calibration that matters most: C7 on a 12+12 base must reach cost 0 at n = 168
+(C168.1 is such a lift; you can also build its quotient to check the cost function gives 0 there, and then test how far
+the search gets when started from that solution with 5, 10, 20 random voltage changes). Then n = 170 (C5, 17+17),
+180 (C6 or S3, 15+15), 182 (C7, 13+13), 192 (C8 / Q8 / D4, 12+12; current best far 272). Log best far per n.
+
+## Card r2f: mixed free and non-free symmetry + exact search (small structure)
+
+Free colour-preserving groups of order > n/24 are excluded, but a group can be larger if part of it fixes vertices.
+Example: G = <Z7, s> with Z7 acting freely and s of order 3 fixing some vertices (c5 found that C168.1 has 56 order-3
+subgroups with 3 fixed vertices, all on one side; see c5/py/auts.py and c5/NOTES.md). 1) In C168.1, find such a group
+(an order-7 element g and an order-3 element s with fixed points that normalises <g>); describe the quotient by <g>
+(a 12+12 base with voltages) and how s acts on it (fixed base vertices). 2) Write an exact search (DFS with pruning, or SAT
+with c3/sat_lift.py as a template) for Z7 lifts whose base and voltages are invariant under such an s; check that it finds a
+168 solution quickly. 3) Run the open cases: n = 182 (Z7, 13+13, s fixing 1 base vertex per side), n = 170 (Z5, 17+17,
+s of order 3 commuting with Z5 and fixing 2 base vertices per side; or s of order 2 or 4 normalising Z5), n = 176 (Z4 or
+Z2 x Z2, 22+22). Log best far per n (complete partial solutions greedily for a score).
+
+## Card r2g: wildcard 2
+
+Find an approach nobody has used. Already tried (all stuck well above far 0 at n >= 170): surgery / insertion on C168.1
+(far 46 basin), reduction of the n = 180 near misses (76), order-3 quotients with fixed points (78), polarity double
+covers with Z_t (80 at 170; diameter 7 easy at 160), joint base + voltage tabu for lifts over groups of order <= 10 (k >= 12
+stalls), randomized exact DFS and SAT for Z7 / Z5 lifts, unstructured PT, LNS with exact re-matching, greedy growth of the
+Tutte 12-cage, Moore-tree completion (r2d, running), exact LNS repair (r2b, running), other 160-168 seeds (r2a, running).
+Possible directions: algebraic constructions (incidence graphs of configurations from finite fields: points and lines
+defined by polynomial equations over GF(q), cyclic difference families with several base blocks, i.e. Z_t lifts written
+as difference sets); quotients of large girth-12 or girth-14 graphs by non-free groups; graphs with an automorphism of
+order 4, 6 or 8 that swaps the two sides; combining two diameter-6 pieces. Pick one, say which in NOTES.md, calibrate it at
+n <= 168, then push to n >= 170.
+
+## Card r2h: n = 169, the non-cubic case (small structure)
+
+n = 169 is the only order above 168 where the graph need not be cubic: sides |A| = 85, |B| = 84, at least three
+vertices of A have degree 2, and each degree-2 vertex x of A is "perfect": its radius-6 ball is a tree (x, 2 neighbours,
+4, 8, 16, 32, 64 at distances 1..6), every vertex at distance 1..5 from x has degree 3, and the 1 + 4 + 16 + 64 = 85
+vertices of A at even distance <= 6 are ALL of A. So the BFS tree from x is completely fixed and the search is only over
+how its 64 A-leaves at distance 6 are joined to the 42 B-vertices at distance 7 (and the degree-2 vertices of B, which
+have excess <= 1). The degree-2 vertices of A are pairwise at distance exactly 6. An earlier annealer (no fixed tree)
+ended at 530 bad ordered pairs.
+1) Build the fixed tree from x; search the leaf-to-B wiring with tabu / SA (cost = far of the whole graph, bin/score37
+   accepts max degree <= 3 so it scores this graph directly).
+2) Add symmetry: three degree-2 vertices of A permuted by an order-3 automorphism s (85 = 3*28 + 1: s fixes one vertex of
+   A; 84 = 3*28: s acts freely on B), or an involution fixing x that swaps its two branches. Search under the symmetry.
+3) Calibrate the method on the analogous smaller case (D = 5: |A| = 21 = 1 + 4 + 16, |B| = 20, n = 41; is there such a
+   graph of diameter 5? the (3,5) table value is 56, so 41 should be easy) before the real run.
+Log best far for n = 169 (note "n169").

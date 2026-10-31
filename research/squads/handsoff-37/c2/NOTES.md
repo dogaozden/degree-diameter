@@ -103,3 +103,10 @@ Batch 3 (seeds 300..359, k = 1 or 2, both seeds): running, out/pt3_results.txt.
   fresh pair-reduction beam are the only thing that moved the best (83 -> 80 -> 76).
 - Next step (not done here): restarts are cheap (~15 s each), so many more restarts (k=1, both seeds, width 10) might
   push 170 below 76; a real improvement needs a different structure (grow from the 168 graph, as c8 does with 46).
+
+## 17:31Z: batch 4 (seeds 400..439, c30 seed, PERTURB=1) gave far 70 at n=170 (seed 434; out/pe434_n170_far70.edges).
+Copied to c2/best170.edges, verified by bin/score37 (far 70, diam 8), logged to the scoreboard. Batch 4 distribution:
+70 (1), 79 (1), 84 (2), 86 (3). Recipe: shrink beam nm180_c30_b31.edges 170 10 20000 2 0.3 434 pe434 0 50 with PERTURB=1
+(one random 2-switch first). Best n=170 is therefore far 70, not 76 (the 76 entries are superseded).
+
+## 17:36Z: batch 5 (seeds 440..459, c30 seed, PERTURB=1): best 77, no improvement. Final best n=170 far 70 (c2/best170.edges).

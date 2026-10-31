@@ -131,3 +131,10 @@ Running at the time of writing; each trial starts from the 46 family and stays a
 - n = 172: far 80 (c8/best172_far80.edges; two exhaustive insertions from conder168; LNS made no progress).
 - Reformulation for whoever uses it: for a cubic bipartite graph, the condition for one side is that the hypergraph with
   B-vertices as 3-edges on A-vertices has primal (2-section) diameter <= 3. Both sides are needed.
+
+### 17:27 campaign result (red3lns.py, 60 trials, 20 s LNS after 2 reductions + 3 insertions): far 46 in 60 of 60 trials.
+Final: no graph below 46 at n = 170 from this family. Stop time 17:44 UTC (about 2 hours).
+
+Files: lns.c (LNS engine), insbest.c (exhaustive 2-edge insertion), gh2.py (GH(2,2) builder), kick.py, mkins.py,
+red2ins.py, red3.py, red3lns.py, kick168.sh, ggrow.sh, invariant.py (cheap isomorphism invariant), best170_far46.edges,
+best172_far80.edges. Everything else is under out/ (not committed).
