@@ -35,3 +35,29 @@ Cost-2 state (SmallGroup(294,11), H = <155>, K = <80>): S = {69,212,139,165,129}
 Edge list cost2_294_11.edges: n = 686, 2058 edges, simple, bipartite, degree 6, bad = 294 far pairs (check.sh). Verified.
 Results: seed 8 cost 2 (200 s); seed 21 cost 5; seed 9 with tenure 25 cost 7; the mcos annealer with the same group
 stayed at 5 for 200 s. So t18 tabu beats mcos SA on this family.
+
+## Status 20:03 UTC (t18 results, all k=6, N=5,1,1,0, random or fixed H/K)
+- Second cost-2 state (seed 88, random H/K, 131 s): cost2b_294_11.init (S={16,220,4,56,15}, G01={259}, G10={256},
+  H=<158>, K=<118>), edge list s88_294_11.edges; reproduce with
+  `TLIM=170 ./t18 groups/sg_294_11.txt 6 5,1,1,0 88 100000 12 OUT` (writes OUT and OUT.par; OUT is cost 2 at step 731).
+  Edge list verified below in NOTES (check.sh).
+- Restarts from the cost-2 states (INIT=..., seeds 31, 77 with tenure 20, 123): stay at 2 for 150-200 s, never reach 1.
+- Fresh seeds on 294_11: seed 8 -> 2 (144 s), seed 40 -> 5, seed 9 (tenure 25) -> 7, seed 21 -> 5, seed 99 -> 5 (150 s), seed 88 -> 2.
+- Screen of all order-294 groups with elements of order 6 (t18, 55 s, seed 3, random H/K), best cost:
+  294_11 2 (deep), 294_12 8 (170 s deep: 4), 294_8 10, 294_9 14, 294_17 16, 294_1 20, 294_14 22, 294_10 23,
+  294_13 23, 294_2 30, 294_15 27, 294_16 26, 294_18 54, 294_19 158, 294_4 176. (294_0 abelian excluded.)
+- Scoreboard: c18 line for n=686, bad=294 (cost 2) written at 18:5x (t294_11.edges, verified by check.sh).
+- mcos (shared/mcos, SA) on the same family: 294_11 cost 5 at 200 s, so t18 tabu is the better tool here.
+- Calibration: mcos 1|1 on SmallGroup(342,12) reaches cost 0 (684 Haar graph, VALID) with SEED 4 in 22 s.
+- Order 3/2 types ("1,3|1,3" N=4,2,2,0; screened 258/264/270 with mcos 5 s/combo, best SmallGroup(258,2) cost 11 at
+  n=688) were left alone as the coordinator asked (other workers take 1,3 and 1,2).
+- Infeasible in the mcos/full-double-coset model: "1,4|1,4" (4 does not divide 6).
+
+## Next (if continued)
+- More tabu seeds on 294_11 and 294_12 from the two cost-2 states with bigger perturbations (stall limit 400 is in t18.c).
+- Cost-2 solutions have far pairs between same-side vertices (viol.py shows 2 far vertices per A0 representative):
+  a targeted move set that adds a 4-cycle-breaking swap might help; not tried.
+- No bad=0 found; nothing above 684 with cost 0.
+- s88 edge list re-checked at 20:03: n 686, bad=294 (cost 2), simple, bipartite, deg 6.
+- 20:05 INIT restart (seed 200, tenure 30) and 20:08 fresh seed 300 (tenure 15, 200 s, cost 5): no cost 1 found.
+- Final state 20:09: best = cost 2 (bad 294) at n=686, SmallGroup(294,11); no processes of mine running.

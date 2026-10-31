@@ -58,3 +58,19 @@ Screen (4 s x 1 random combo, then deeper runs), group -> best cost:
   2 min at 110 us per evaluation).
 - Deeper runs on 525_5 (cost 8) and the 546 family with other class combinations; c=2/3 on more groups of
   orders 517..600 with central involutions removed.
+
+## Final additions (20:05)
+- CORRECTION: for TYPE 3,3|3,3 with N=1,1,1,1 each block holds ONE double coset (n_ab = 1), and there are 60 full
+  double cosets per block (not 182). The whole mcos space for a fixed class combo is therefore 60^4 = 1.3e7 graphs.
+- EXHAUSTIVE (mtabu17 with FULL=0 FULLB=60, run in 6 chunks of 10 block-0 indices, about 2.7 min each): SmallGroup(546,15),
+  combo CLS=0,1,0,1: the minimum mcos cost over ALL 1.3e7 configurations is 6 (no cost < 6). So for this group and
+  combo the cost-6 floor is exact; t728_546_15.edges (bad 546) is an optimal member of the family for that combo.
+- Also the 2-block exhaustive polish (P2B=1) and the 2-move polish (P2=1) around the cost-6 state: no improvement.
+- Other combos of 546_15 gave 6 in 12-s runs (all 9 combos), so the family floor for this group is 6 in every combo
+  tried; the exhaustive proof covers only combo 0,1,0,1.
+- Scoreboard: no new line after 19:02 (no graph beats 546/728 among my results; 525_5 is 700/700).
+- Processes: none left from c17 at 20:06. Scratch tables in groups17/ were deleted (regenerate with tables17.g).
+- 20:08-20:12 partial exhaustive slices for combo 1,1,0,0 (block-0 index 0..19 of 60, i.e. 4.3e6 of 1.3e7 graphs): min 6.
+- Final state 20:08: no processes from c17; files: NOTES.md, screen17.tsv, mtabu17.c (binary mtabu17), tables17.g,
+  screen17.sh, farkinds.py, rndbip.py, feas17.g, feas_all.txt, edge files t728_546_15.edges (best, bad 546),
+  t688_516_11.edges, d525_5.edges, d546_9.edges, t366_011.edges, cal342.edges (calibration).

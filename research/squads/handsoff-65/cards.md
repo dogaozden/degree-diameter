@@ -199,3 +199,15 @@ side and on G/H with H non-cyclic (S3 of order 6, C2 x C2 of order 4) on the hub
 has ExportBicoset for coset action tables) to export the actions, then a C tabu/annealer over unions of double cosets
 with the degree rule. Groups of order 294..312 with S3 subgroups (n = 7|G|/3 for |H| = 6). Calibrate by rebuilding a
 cyclic case that mcos also does (c18's 294_11).
+
+## c27 (large, added 20:15): finish the Haar sweep 416-420
+c19 closed every non-abelian group of orders 402-415 and 417 with haarex3 (no VALID set). Finish orders 416 (68 groups
+left), 418 (3) and 420 (22 left) with c19's resumable driver (c19/drive.sh, STATUS.md, status_log.txt): copy it into
+c27/ and point it at c19's logs read-only, or rerun only the open groups. Record closures in c27/STATUS.md.
+
+## c28 (large, added 20:15): settle 1,6|1,6 on SmallGroup(294,11) and (294,12) exactly
+Type 1,6|1,6 with N = 5,1,1,0 (c18): 5 single elements S5 for the regular-regular edges (a degree-5 Haar part), one
+double coset 1gK for regular A -> B-hubs and one for A-hubs -> regular B (49 choices each). t18 tabu stalls at cost 2
+on 294_11. Do an exact search: fix the two hub double cosets up to automorphisms of G (GAP), then enumerate S5 with
+branch and bound in C (prune when the partial graph cannot cover; see shared/haarex3.c for how the Haar search
+prunes), or prove no cost-0 choice exists for these groups. Calibrate on the Haar case.

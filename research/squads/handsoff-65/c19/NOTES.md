@@ -23,3 +23,11 @@ Per-group times 4-65 s so far (orders 402-420). Groups killed by timeout 300 wou
 Progress 19:30 UTC: 402:5/5 404:3/3 405:11/11 406:5/5 408:43/43 410:5/5 412:2/2 414:2/8 416:54/228 417:1/1 418:0/3 420:17/39 
 Queue reordered by order at 19:17 (remaining groups of 402-412 first), so that whole ranges close early.
 Closed ranges: 401-406 (scoreboard line written 19:17), 401-412 (scoreboard line written 19:30).
+
+Final 20:07 UTC: 402:5/5 404:3/3 405:11/11 406:5/5 408:43/43 410:5/5 412:2/2 414:8/8 416:149/228 417:1/1 418:0/3 420:17/39 . VALID 0 everywhere. Open: 416 (73 left), 418 (3), 420 (22). Run stopped at 20:09 to keep
+inside the 20:15 deadline. No background processes left. Driver time per group 3-65 s; 416 needs roughly 25 more minutes
+of sweep to close (drive.sh resumes from queue.txt).
+
+Final 20:09 UTC: 402:5/5 404:3/3 405:11/11 406:5/5 408:43/43 410:5/5 412:2/2 414:8/8 416:155/228 417:1/1 418:0/3 420:17/39 . VALID 0 everywhere, ASIDE 0. Open: 416 (73 left), 418 (3), 420 (22). Stopped at 20:09 with no
+processes left. Remaining work: ./drive.sh BUDGET in this folder (about 25-35 min for 416, then 418 and 420).
+Final 20:10 UTC: 402:5/5 404:3/3 405:11/11 406:5/5 408:43/43 410:5/5 412:2/2 414:8/8 416:160/228 417:1/1 418:0/3 420:17/39 . Stopped with no processes left.
