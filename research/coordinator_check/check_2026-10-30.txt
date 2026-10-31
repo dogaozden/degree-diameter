@@ -16,3 +16,10 @@ rebuilt on the Mac mini from the formula alone with the coordinator's own code (
 associativity spot-checked; S = {(0,0,0,0,0), (1,2,0,5,0), (0,0,1,2,0), (2,1,1,9,4), (2,1,1,3,1), (1,0,2,10,1), (2,0,2,4,4), (1,1,1,5,1), (0,1,2,6,4)}; BFS from every vertex):
 n = 2970, simple, 9-regular, bipartite, diameter 5
 apsp on the finder's records/d9D5_n2970_haar_heis3_f55.edges (sha256 d51d229ebb737ce955e642776d453413393bca46bea4549e53f3f631821b8827) -> RESULT VALID d=9 D=5 n=2970; at D = 4 -> RESULT INVALID
+
+== (3,11) 1,344 and (3,12) 2,368 (new cells beyond the table) — job own-small (Oct 26), branch claude/own-small-cells-dkwo42 (research/squads/own-small/records/)
+found by the coordinator's harvest on Oct 30 (they had not been recorded). Rebuilt on the Mac mini with the coordinator's own lift code from the
+metacyclic voltage files (records/d3D11_n1344_meta7_24.txt: Z7 x| Z24, b a b^-1 = a^5; records/d3D12_n2368_meta37_8.txt: Z37 x| Z8, b a b^-1 = a^6;
+BFS from every vertex): n = 1344, cubic, bipartite, diameter 11; n = 2368, cubic, bipartite, diameter 12
+apsp on the finder's four edge lists (meta and SmallGroup-lift versions of each): d3D11_n1344_* RESULT VALID d=3 D=11 (INVALID at D=10);
+d3D12_n2368_* RESULT VALID d=3 D=12 (INVALID at D=11)

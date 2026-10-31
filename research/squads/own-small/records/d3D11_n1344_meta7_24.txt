@@ -1,0 +1,18 @@
+# (3,11) new cell: n = 1,344, cubic bipartite, diameter 11 (census best 1,250, lab 1,080). Job own-small, Oct 26 2026.
+# Regular voltage lift of a 4+4 cubic bipartite base over G = Z7 x| Z24 = SmallGroup(168,1): element (i, j) = a^i b^j
+# with product (i,j)(k,l) = (i + 5^j k mod 7, j + l mod 24) (b a b^-1 = a^5).
+# Lift: vertex (u, g), u = 0..7 (white 0..3, black 4..7); base edge (u, v, x) gives (u, g) ~ (v, g*x) for all g.
+# Found by joint base+voltage annealing (salift_s, D=11), squad round 3 (director tasks). Builder: build_meta_lift.py.
+# u v  i j
+0 6  0 1
+1 4  2 5
+2 5  3 20
+3 7  3 8
+0 4  6 2
+1 5  2 8
+2 6  2 9
+3 6  4 14
+0 7  2 1
+1 7  5 11
+2 4  6 11
+3 5  3 4
