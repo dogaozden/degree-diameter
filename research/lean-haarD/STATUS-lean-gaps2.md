@@ -10,6 +10,7 @@ here is new; no existing file is changed.
 |---|---|---:|---|---|---|---|---|
 | 1 | (8,5) | 2,048 | route-chart lift (affine fibre maps), 8-regular | `D8D5N2048` | `nb_8_5_n2048` | staged (`gen_d8D5_n2048.py` → `gen_staged_lift.py`) | propext, Classical.choice, Quot.sound |
 | 2 | (5,8) | 9,760 | Haar graph of `Z61 ⋊ Z80` (`meta 61 80 8`), S of size 5 | `D5D8N9760` | `nb_5_8_n9760` | Haar, `Eight.lean` lemma, chunked word certificates (`gen_d5D8_n9760.py`) | propext, Classical.choice, Quot.sound |
+| 3 | (5,9) | 29,756 | Haar graph of `Z346 ⋊ Z43` (`meta 346 43 29`), S of size 5 | `D5D9N29756` | `nb_5_9_n29756` | Haar, `Diam9.lean` lemma (8-letter covers), 12 chunks per pattern (`gen_d5D9_n29756.py`) | propext, Classical.choice, Quot.sound |
 
 Edge lists used:
 - (8,5): `research/theorems/chartlift/graphs/d8D5_n2048.edges.gz` (copy in the folder). The construction is not a plain
@@ -75,6 +76,18 @@ largest child's peak RSS (`getrusage`); `/usr/bin/time` is not installed in this
 | `Cover` | 2.7 s | 1.81 GB |
 | `Record9760` | 13.0 s | 1.85 GB |
 | `Axioms` (`lake env lean`) | 3.0 s | 1.82 GB |
+
+### (5,9) 29,756, module folder `D5D9N29756`
+
+| Module | Wall time | Peak RSS |
+|---|---:|---:|
+| `Grp` | 5.3 s | 1.91 GB |
+| `Gens` | 3.1 s | 1.80 GB |
+| `CertA0` … `CertA11` | 14.7–23.5 s each | 2.69–2.70 GB each |
+| `CertB0` … `CertB11` | 13.7–20.6 s each | 2.69–2.70 GB each |
+| `Cover` | 3.9 s | 1.83 GB |
+| `Record29756` | 4.8 s | 1.87 GB |
+| `Axioms` (`lake env lean`) | 2.7 s | 1.84 GB |
 
 Failed attempt for the record (not kept): the monolithic `CertA` (one `decide +kernel` over 4880 entries) was killed
 at 13.02 GB after 123 s.
