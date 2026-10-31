@@ -1,0 +1,88 @@
+Syntax warning: Unbound global variable in /home/user/degree-diameter/research\
+/six-five-384/src/hx_export_batch.g:8
+  elms := Concatenation([e], Filtered(srt, x -> x <> e));
+                                                     ^
+Syntax warning: Unbound global variable in /home/user/degree-diameter/research\
+/six-five-384/src/hx_export_batch.g:10
+  pos := List(srt, x -> Position(elms, x));
+                                 ^^^^
+Syntax warning: Unbound global variable in /home/user/degree-diameter/research\
+/six-five-384/src/hx_export_batch.g:11
+  idx := x -> pos[PositionSorted(srt, x)] - 1;
+              ^^^
+Syntax warning: Unbound global variable in /home/user/degree-diameter/research\
+/six-five-384/src/hx_export_batch.g:11
+  idx := x -> pos[PositionSorted(srt, x)] - 1;
+                                 ^^^
+Syntax warning: Unbound global variable in /home/user/degree-diameter/research\
+/six-five-384/src/hx_export_batch.g:17
+  for a in elms do AppendTo(out, JoinStringsWithSeparator(List(elms, b -> Stri\
+ng(idx(a * b))), " "), "\n"); od;
+                                                                              \
+   ^^^
+Syntax warning: Unbound global variable in /home/user/degree-diameter/research\
+/six-five-384/src/hx_export_batch.g:19
+  for g in gens do AppendTo(out, JoinStringsWithSeparator(List(elms, x -> Stri\
+ng(idx(Image(g, x)))), " "), "\n"); od;
+                                                                              \
+   ^^^
+EXPORTED 1 |Aut|=384
+EXPORTED 2 |Aut|=128
+EXPORTED 11 |Aut|=12288
+EXPORTED 12 |Aut|=12288
+EXPORTED 13 |Aut|=12288
+EXPORTED 14 |Aut|=6144
+EXPORTED 15 |Aut|=3072
+EXPORTED 16 |Aut|=3072
+EXPORTED 18 |Aut|=3072
+EXPORTED 40 |Aut|=1536
+EXPORTED 42 |Aut|=3072
+EXPORTED 44 |Aut|=3072
+EXPORTED 45 |Aut|=3072
+EXPORTED 46 |Aut|=3072
+EXPORTED 48 |Aut|=3072
+EXPORTED 50 |Aut|=6144
+EXPORTED 51 |Aut|=6144
+EXPORTED 52 |Aut|=6144
+EXPORTED 60 |Aut|=3072
+EXPORTED 73 |Aut|=6144
+EXPORTED 74 |Aut|=6144
+EXPORTED 75 |Aut|=3072
+EXPORTED 76 |Aut|=6144
+EXPORTED 77 |Aut|=6144
+EXPORTED 78 |Aut|=3072
+EXPORTED 81 |Aut|=3072
+EXPORTED 82 |Aut|=1536
+EXPORTED 83 |Aut|=3072
+EXPORTED 84 |Aut|=3072
+EXPORTED 85 |Aut|=1536
+EXPORTED 86 |Aut|=1536
+EXPORTED 87 |Aut|=3072
+EXPORTED 88 |Aut|=3072
+EXPORTED 89 |Aut|=3072
+EXPORTED 90 |Aut|=3072
+EXPORTED 93 |Aut|=3072
+EXPORTED 94 |Aut|=1536
+EXPORTED 95 |Aut|=1536
+EXPORTED 97 |Aut|=1536
+EXPORTED 135 |Aut|=1536
+EXPORTED 186 |Aut|=6144
+EXPORTED 377 |Aut|=6144
+EXPORTED 567 |Aut|=4096
+EXPORTED 1372 |Aut|=12288
+EXPORTED 1808 |Aut|=6144
+EXPORTED 5460 |Aut|=1024
+EXPORTED 5513 |Aut|=2048
+EXPORTED 5618 |Aut|=3072
+EXPORTED 6527 |Aut|=98304
+EXPORTED 7613 |Aut|=24576
+EXPORTED 8897 |Aut|=49152
+EXPORTED 9121 |Aut|=49152
+EXPORTED 10651 |Aut|=24576
+EXPORTED 11074 |Aut|=196608
+EXPORTED 13117 |Aut|=6144
+EXPORTED 13340 |Aut|=6144
+EXPORTED 17220 |Aut|=8192
+EXPORTED 17226 |Aut|=8192
+EXPORTED 17714 |Aut|=4096
+EXPORTED 17989 |Aut|=1536

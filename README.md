@@ -108,7 +108,7 @@ record, with dates and checks, is in [`research/RESULTS.md`](research/RESULTS.md
 | (11, 10) | 130,592,354 | **157,835,304** | +20.9% | Haar graph of PSL(2,243) × Z₁₁ | — |
 | (12, 10) | 300,383,050 | **332,797,296** | +10.8% | orbit search (Haar) | — |
 | (13, 10) | 617,330,936 | **683,943,456** | +10.8% | orbit search (Haar) | — |
-| (14, 10) | 1,213,477,190 | **1,326,627,120** | +9.3% | orbit search (Haar) | — |
+| (14, 10) | 1,213,477,190 | **1,350,537,864** | +11.3% | orbit search (Haar) | — |
 | (15, 10) | 2,300,326,510 | **2,566,531,440** | +11.6% | orbit search (Haar) | — |
 | (16, 10) | 4,119,507,330 | **4,220,872,800** | +2.5% | finite geometry ¹ | — |
 
@@ -133,7 +133,7 @@ published table yet.
   of Δ elements. `haar_gen3` anneals S over groups like SL(2,q) × Zₙ, with the diameter checked by a bitset BFS. A measured
   size law (`SIZE_LAW.md`) explains where random S stops working.
 - **Orbit search** ([`research/structured/`](research/structured/)): S closed under a group automorphism. This broke the
-  random-search wall and raised most D = 7–10 cells, up to (14, 10) at 1.33 billion vertices. The theory of why it works is in
+  random-search wall and raised most D = 7–10 cells, up to (14, 10) at 1.35 billion vertices. The theory of why it works is in
   [`research/theory/`](research/theory/).
 - **Voltage lifts and metacyclic Haar graphs** ([`research/lifts/`](research/lifts/)): these gave the small-degree cells
   (Δ = 3–5, D = 7–10).
