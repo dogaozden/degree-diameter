@@ -39,12 +39,15 @@
 #include <time.h>
 #include <stdint.h>
 
-static int hkind;                  /* 0 meta, 1 psl, 2 sl */
+static int hkind;                  /* 0 meta, 1 psl, 2 sl, 3 aff */
 static int m_, k_, r_, p_, nh, n3, n, K = 12;
 /* meta */
 static int *TM;                    /* TM[j*m + a] = r^j a mod m */
 typedef struct { int i, j, l, jm; } EM;
 static EM *E;                      /* per element (meta): i, j, l, j*m */
+/* aff: F_q with q = p^f, elements v = sum c_i alpha^i coded as sum c_i p^i, alpha a root of the primitive polynomial
+   x^f + poly[f-1] x^(f-1) + ... + poly[0]; ADDT[v*q + w] = v + w; TM[j*q + w] = omega^(e j) w with omega = alpha */
+static int fdeg_, *ADDT, *NEGT, *FLOG, *FALOG, fpoly[8], e_aff;
 /* psl/sl */
 static uint8_t (*MAT)[4]; static int *IDX4, *RED; static int *EH, *EL;
 static int *inv;
@@ -58,9 +61,9 @@ static inline int hmat(int h1, int h2) {
     return IDX4[((a * p + b) * p + c) * p + d];
 }
 static inline int gmul(int a, int b) {
-    if (hkind == 0) {
+    if (hkind == 0 || hkind == 3) {
         const EM *A = &E[a], *B = &E[b];
-        int i = A->i + TM[A->jm + B->i]; if (i >= m_) i -= m_;
+        int i; if (hkind == 0) { i = A->i + TM[A->jm + B->i]; if (i >= m_) i -= m_; } else i = ADDT[A->i * m_ + TM[A->jm + B->i]];
         int j = A->j + B->j; if (j >= k_) j -= k_;
         int l = A->l + B->l; if (l >= n3) l -= n3;
         return (i * k_ + j) * n3 + l;
@@ -112,13 +115,48 @@ static void build_group(int argc, char **argv) {
             HT = T; }
         int s = IDX4[((1 * p + 1) * p + 0) * p + 1], t = IDX4[((0 * p + 1) * p + (p - 1)) * p + 0];
         ngen = 0; gens[ngen++] = s * n3; gens[ngen++] = t * n3; if (n3 > 1) gens[ngen++] = 1;
+    } else if (!strcmp(argv[1], "aff")) {
+        /* aff p f k n3: F_q : C_k x C_n3, q = p^f, k | q - 1, y acts by multiplication by omega^((q-1)/k) */
+        hkind = 3; p_ = atoi(argv[2]); fdeg_ = atoi(argv[3]); k_ = atoi(argv[4]); n3 = atoi(argv[5]); int p = p_, f = fdeg_;
+        int q = 1; for (int i = 0; i < f; i++) q *= p; m_ = q;
+        if ((q - 1) % k_) { fprintf(stderr, "need k | q - 1\n"); exit(2); }
+        e_aff = (q - 1) / k_;
+        FLOG = malloc(sizeof(int) * q); FALOG = malloc(sizeof(int) * q); int dig[8], found = 0;
+        for (int code = 0; code < q && !found; code++) {      /* poly coefficients poly[0..f-1] = digits of code */
+            int c = code; for (int i = 0; i < f; i++) { fpoly[i] = c % p; c /= p; }
+            if (fpoly[0] == 0) continue;
+            for (int i = 0; i < f; i++) dig[i] = 0; dig[0] = 1;   /* alpha^0 */
+            int t = 0, ok = 1;
+            for (int i = 0; i < q; i++) FLOG[i] = -1;
+            for (t = 0; t < q - 1; t++) { int v = 0, pw = 1; for (int i = 0; i < f; i++) { v += dig[i] * pw; pw *= p; }
+                if (FLOG[v] >= 0) { ok = 0; break; } FLOG[v] = t; FALOG[t] = v;
+                int top = dig[f - 1]; for (int i = f - 1; i > 0; i--) dig[i] = dig[i - 1]; dig[0] = 0;     /* times alpha */
+                for (int i = 0; i < f; i++) dig[i] = ((dig[i] - top * fpoly[i]) % p + p) % p; }
+            if (ok) found = 1; }
+        if (!found) { fprintf(stderr, "no primitive polynomial\n"); exit(1); }
+        ADDT = malloc(sizeof(int) * q * q); NEGT = malloc(sizeof(int) * q);
+        for (int v = 0; v < q; v++) { int nv = 0, pw = 1, a = v; for (int i = 0; i < f; i++) { nv += ((p - a % p) % p) * pw; a /= p; pw *= p; } NEGT[v] = nv;
+            for (int w = 0; w < q; w++) { int sv = 0, a1 = v, b1 = w; pw = 1; for (int i = 0; i < f; i++) { sv += ((a1 % p + b1 % p) % p) * pw; a1 /= p; b1 /= p; pw *= p; } ADDT[v * q + w] = sv; } }
+        nh = q * k_; n = nh * n3;
+        TM = malloc(sizeof(int) * nh);
+        for (int j = 0; j < k_; j++) for (int w = 0; w < q; w++) TM[j * q + w] = w ? FALOG[(int)(((long long)FLOG[w] + (long long)e_aff * j) % (q - 1))] : 0;
+        E = malloc(sizeof(EM) * n); inv = malloc(sizeof(int) * n);
+        for (int i = 0; i < q; i++) for (int j = 0; j < k_; j++) for (int l = 0; l < n3; l++) {
+            int e = (i * k_ + j) * n3 + l; E[e].i = i; E[e].j = j; E[e].l = l; E[e].jm = j * q; }
+        for (int e = 0; e < n; e++) { int i = E[e].i, j = E[e].j, l = E[e].l, jj = (k_ - j) % k_;
+            int ii = TM[jj * q + NEGT[i]]; inv[e] = (ii * k_ + jj) * n3 + (n3 - l) % n3; }
+        ngen = 0; gens[ngen++] = (1 * k_ + 0) * n3; if (k_ > 1) gens[ngen++] = (0 * k_ + 1) * n3; if (n3 > 1) gens[ngen++] = 1;
+        /* x = (1,0) and y generate G only if the y-orbit of 1 spans F_q over F_p: checked by the BFS below */
+        { char *sn = calloc(n, 1); int *qq = malloc(sizeof(int) * n), qh = 0, qt = 0; qq[qt++] = 0; sn[0] = 1;
+          while (qh < qt) { int u = qq[qh++]; for (int g = 0; g < ngen; g++) { int v = gmul(u, gens[g]); if (!sn[v]) { sn[v] = 1; qq[qt++] = v; } } }
+          if (qt != n) { fprintf(stderr, "x, y (, z) do not generate G (omega^e lies in a proper subfield)\n"); exit(2); } free(sn); free(qq); }
     } else { fprintf(stderr, "unknown group kind %s\n", argv[1]); exit(2); }
     (void)argc;
     for (int e = 0; e < n; e++) if (gmul(e, inv[e]) != 0 || gmul(inv[e], e) != 0) { fprintf(stderr, "inverse check fails at %d\n", e); exit(1); }
     if (n >= 65536) { fprintf(stderr, "n = %d too large\n", n); exit(2); }
 }
 static void coords(int e, char *buf) {
-    if (hkind == 0) { if (n3 > 1) sprintf(buf, "%d,%d,%d", E[e].i, E[e].j, E[e].l); else sprintf(buf, "%d,%d", E[e].i, E[e].j); }
+    if (hkind == 0 || hkind == 3) { if (n3 > 1) sprintf(buf, "%d,%d,%d", E[e].i, E[e].j, E[e].l); else sprintf(buf, "%d,%d", E[e].i, E[e].j); }
     else { const uint8_t *A = MAT[EH[e]]; if (n3 > 1) sprintf(buf, "%d.%d.%d.%d,%d", A[0], A[1], A[2], A[3], EL[e]);
         else sprintf(buf, "%d.%d.%d.%d", A[0], A[1], A[2], A[3]); }
 }
@@ -178,6 +216,20 @@ static void family(void) {
             int *im = malloc(sizeof(int) * 3); im[0] = el_meta(1, 0, 0); im[1] = el_meta(0, 1, dd); im[2] = el_meta(0, 0, 1); outer_img[nouter++] = im; break; }
         if (n3 > 1) for (int w = 2; w < n3 && nouter < 14; w++) if (gcd(w, n3) == 1) {
             int *im = malloc(sizeof(int) * 3); int q = 0; if (m_ > 1) im[q++] = el_meta(1, 0, 0); if (k_ > 1) im[q++] = el_meta(0, 1, 0); im[q++] = el_meta(0, 0, w); outer_img[nouter++] = im; }
+    } else if (hkind == 3) {
+        /* x -> (a,0) for every a in F_q^*, y -> y^c z^dd, z -> z^w (translations in y's image are inner when k > 1) */
+        int q = m_;
+        for (int a = 1; a < q; a++) for (int c = 1; c <= k_; c++) { int cc = c % k_; if (k_ > 1 && (gcd(c, k_) != 1 || (c * c) % k_ != 1 % k_)) continue;
+            if (k_ == 1 && c > 1) break;
+            for (int dd = 0; dd < n3; dd++) { if ((long long)dd * k_ % n3) continue;
+                for (int w = 1; w <= n3; w++) { int ww = w % n3; if (n3 > 1 && (gcd(w, n3) != 1 || (w * w) % n3 != 1 % n3)) continue; if (n3 == 1 && w > 1) break;
+                    int qn = 0; img[qn++] = el_meta(a, 0, 0); if (k_ > 1) img[qn++] = el_meta(0, cc, dd); if (n3 > 1) img[qn++] = el_meta(0, 0, ww);
+                    snprintf(d, 96, "x->(%d,0) y->y^%d z^%d z->z^%d", a, cc, dd, ww); add_cand(img, d); } } }
+        nouter = 0;
+        { int *im = malloc(sizeof(int) * 3); int qn = 0; im[qn++] = el_meta(FALOG[1], 0, 0); if (k_ > 1) im[qn++] = el_meta(0, 1, 0); if (n3 > 1) im[qn++] = el_meta(0, 0, 1); outer_img[nouter++] = im; }
+        if (k_ > 1) { int *im = malloc(sizeof(int) * 3); int qn = 0; im[qn++] = el_meta(1, 0, 0); im[qn++] = el_meta(0, p_ % k_, 0); if (n3 > 1) im[qn++] = el_meta(0, 0, 1); outer_img[nouter++] = im; }
+        if (n3 > 1) for (int w = 2; w < n3 && nouter < 10; w++) if (gcd(w, n3) == 1) {
+            int *im = malloc(sizeof(int) * 3); int qn = 0; im[qn++] = el_meta(1, 0, 0); if (k_ > 1) im[qn++] = el_meta(0, 1, 0); im[qn++] = el_meta(0, 0, w); outer_img[nouter++] = im; }
     } else {
         int p = p_, nsq = 2; while (ipow(nsq, (p - 1) / 2, p) == 1) nsq++;
         for (int A = 0; A < 2; A++) for (int w = 1; w <= n3; w++) { int ww = w % n3;
@@ -438,6 +490,7 @@ static void find_sigmas(int r, int q) {               /* sigma of order q commut
                     if (!dup && nsig < MAXSIG) { keys[nsig] = hsh; sigperm[nsig] = malloc(sizeof(int) * n); memcpy(sigperm[nsig], perm, sizeof(int) * n); \
                         snprintf(sigdesc[nsig], 96, "%s", DESC); nsig++; } } } } } while (0)
     char d[96];
+    if (hkind == 3) { free(perm); free(tmp); return; }
     if (hkind == 0) {
         int *Sc = malloc(sizeof(int) * (k_ + 1)), pr[5];
         for (int c = 1; c <= k_; c++) { int cc = c % k_; if (k_ > 1 && (gcd(c, k_) != 1 || ipow(c, q, k_) != 1 % k_ || ipow(r_, c, m_) != r_ % m_)) continue;
@@ -555,6 +608,7 @@ int main(int argc, char **argv) {
     build_group(argc, argv);
     stA = calloc(n, 4); mk = calloc(n, 4); mkK = calloc(n, 4); bst = calloc(n, 4);
     if (!strcmp(argv[1], "meta")) printf("GROUP meta m %d k %d r %d n3 %d n %d K %d\n", m_, k_, r_, n3, n, K);
+    else if (hkind == 3) { printf("GROUP aff p %d f %d q %d k %d n3 %d n %d K %d poly", p_, fdeg_, m_, k_, n3, n, K); for (int i = 0; i < fdeg_; i++) printf(" %d", fpoly[i]); printf(" (x^%d + sum poly[i] x^i; omega = x, y acts by omega^%d)\n", fdeg_, e_aff); }
     else printf("GROUP %s p %d n3 %d n %d K %d\n", argv[1], p_, n3, n, K);
     if (getenv("CHECK")) { int Sv[64], k = 0; char *s = getenv("CHECK"), *tok = strtok(s, " ");
         while (tok && k < 64) { Sv[k++] = atoi(tok); tok = strtok(NULL, " "); }

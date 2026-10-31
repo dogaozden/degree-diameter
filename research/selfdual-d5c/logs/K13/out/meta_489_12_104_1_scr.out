@@ -1,0 +1,23 @@
+GROUP meta m 489 k 12 r 104 n3 1 n 5868 K 13
+FAMILY candidates 24 automorphisms 24 coset_reps 4 outer_gens 2 centre 2
+RECORDS 12 (0.0 s)
+REC 0 ALPHA order(g) 1 central | x->x^1 y->x^0 y^1 z^0 z->z^0; c0 0; t' = (0,0) t0, t'^2 = (0,0)
+REC 1 ALPHA order(g) 2 central | x->x^1 y->x^0 y^1 z^0 z->z^0; c0 0; t' = (0,6) t0, t'^2 = (0,0)
+REC 2 ALPHA order(g) 4 | x->x^1 y->x^0 y^1 z^0 z->z^0; c0 6; t' = (0,3) t0, t'^2 = (0,0)
+REC 3 ALPHA order(g) 4 | x->x^1 y->x^0 y^1 z^0 z->z^0; c0 6; t' = (0,9) t0, t'^2 = (0,0)
+REC 4 ALPHA order(g) 1 | x->x^1 y->x^0 y^7 z^0 z->z^0; c0 0; t' = (0,0) t0, t'^2 = (0,0)
+REC 5 ALPHA order(g) 4 | x->x^1 y->x^0 y^7 z^0 z->z^0; c0 0; t' = (0,3) t0, t'^2 = (0,0)
+REC 6 ALPHA order(g) 12 | x->x^59 y->x^0 y^1 z^0 z->z^0; c0 2; t' = (0,5) t0, t'^2 = (0,0)
+REC 7 ALPHA order(g) 12 | x->x^59 y->x^0 y^1 z^0 z->z^0; c0 2; t' = (0,11) t0, t'^2 = (0,0)
+REC 8 ALPHA order(g) 6 | x->x^59 y->x^0 y^1 z^0 z->z^0; c0 8; t' = (0,2) t0, t'^2 = (0,0)
+REC 9 ALPHA order(g) 3 | x->x^59 y->x^0 y^1 z^0 z->z^0; c0 8; t' = (0,8) t0, t'^2 = (0,0)
+REC 10 ALPHA order(g) 12 | x->x^59 y->x^0 y^7 z^0 z->z^0; c0 8; t' = (0,5) t0, t'^2 = (0,0)
+REC 11 ALPHA order(g) 6 | x->x^59 y->x^0 y^7 z^0 z->z^0; c0 8; t' = (0,2) t0, t'^2 = (0,0)
+TABU rec 0 alpha f 1 m 6 best 180 sols 0 steps 3037 restarts 1 secs 8.0
+TABU rec 1 alpha f 1 m 6 best 178 sols 0 steps 3200 restarts 1 secs 8.0
+TABU rec 2 alpha f 1 m 6 best 73 sols 0 steps 3158 restarts 0 secs 8.0
+TABU rec 2 alpha f 3 m 5 best 478 sols 0 steps 3143 restarts 0 secs 8.0
+TABU rec 3 alpha f 1 m 6 best 70 sols 0 steps 3103 restarts 0 secs 8.0
+TABU rec 3 alpha f 3 m 5 best 468 sols 0 steps 3156 restarts 0 secs 8.0
+TABU rec 4 alpha f 1 m 6 best 122 sols 0 steps 3007 restarts 0 secs 8.0
+TABU rec 4 alpha f 3 m 5 best 336 sols 0 steps 3141 restarts 0 secs 8.0

@@ -11,6 +11,7 @@ Vertex numbers: H-index h (meta: i*k + j; psl/sl: 0 = identity, then the other m
 (g, B) = |G| + e(g).  Edges (g, A) ~ (s g, B) for s in S.
 
 usage: build_fsd_haar.py meta m k r n3 "S" OUT.edges     or     build_fsd_haar.py psl|sl p n3 "S" OUT.edges
+       build_fsd_haar.py aff p f k n3 "c0,...,c_{f-1}" "S" OUT.edges   (F_q : C_k, see below; elements "v,j" / "v,j,l")
 Prints the vertex count, the degrees, and the eccentricities of (e, A) and (e, B) (BFS; G acts transitively on each
 side, so these are the eccentricities of every vertex).  The all-pairs check is apsp_mt.c.
 """
@@ -34,6 +35,59 @@ def main():
         def parse_h(t):
             v = [int(u) for u in t.split(",")]
             return (v[0] % m, v[1] % k), (v[2] if len(v) > 2 else 0)
+    elif kind == "aff":
+        # aff p f k n3 POLY: F_q : C_k, q = p^f, F_q = F_p[x]/(x^f + POLY[f-1] x^(f-1) + ... + POLY[0]), omega = x
+        # (must be primitive), y acts by multiplication by omega^((q-1)/k); v = sum c_i x^i is coded as sum c_i p^i
+        p, f, k, n3 = (int(t) for t in sys.argv[2:6])
+        poly = [int(t) for t in sys.argv[6].split(",")]
+        Sstr, out = sys.argv[7], sys.argv[8]
+        q = p ** f
+        assert len(poly) == f and (q - 1) % k == 0
+
+        def code(c):
+            return sum(ci * p ** i for i, ci in enumerate(c))
+
+        def uncode(v):
+            return [(v // p ** i) % p for i in range(f)]
+
+        def pmul(a, b):                     # product of coefficient lists mod the polynomial
+            prod = [0] * (2 * f - 1)
+            for i, ai in enumerate(a):
+                for j, bj in enumerate(b):
+                    prod[i + j] = (prod[i + j] + ai * bj) % p
+            for d in range(2 * f - 2, f - 1, -1):     # x^d = x^(d-f) * x^f = -x^(d-f) * sum poly[i] x^i
+                c = prod[d]
+                if c:
+                    prod[d] = 0
+                    for i in range(f):
+                        prod[d - f + i] = (prod[d - f + i] - c * poly[i]) % p
+            return prod[:f]
+
+        x = [0] * f
+        if f > 1:
+            x[1] = 1
+        else:
+            x[0] = (-poly[0]) % p
+        powers, cur = [], [1] + [0] * (f - 1)
+        for t in range(q - 1):
+            powers.append(cur)
+            cur = pmul(cur, x)
+        assert len({code(c) for c in powers}) == q - 1, "polynomial not primitive"
+        w = powers[(q - 1) // k]
+        wpow = [[1] + [0] * (f - 1)]
+        for j in range(1, k):
+            wpow.append(pmul(wpow[-1], w))
+        nh = q * k
+
+        def hmul(g, h):
+            v = [(a + b) % p for a, b in zip(uncode(g[0]), pmul(wpow[g[1]], uncode(h[0])))]
+            return (code(v), (g[1] + h[1]) % k)
+
+        hel = [(i, j) for i in range(q) for j in range(k)]          # index i*k + j
+
+        def parse_h(t):
+            v = [int(u) for u in t.split(",")]
+            return (v[0], v[1] % k), (v[2] if len(v) > 2 else 0)
     else:
         p, n3 = int(sys.argv[2]), int(sys.argv[3])
         Sstr, out = sys.argv[4], sys.argv[5]
