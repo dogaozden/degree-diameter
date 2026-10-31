@@ -8,3 +8,23 @@ from (e,B): reached A 1750488384/1750488384, B 1750488384/1750488384 within 12, 
 VALID d=10 D=12 group=psl 193 x Z_487 N=1750488384 vertices=3500976768 (distinct generators, 10-regular simple)
 [exit 0; wall 1854.6s; cpu 1837.6s; peak RSS 1254 MB]
 
+
+################ haarcheck_gen (new low-memory checker, research/frontier/haarcheck_gen.c, built from origin/master 4cf75a4 in the scratchpad): gcc -O3 -fopenmp -o haarcheck_gen haarcheck_gen.c && ./haarcheck_gen research/frontier/sols/d10D12_psl_193_487_orb3_s1.txt   (stdout, complete)
+selftest psl 193: |M| = 3594432, index round trip over all elements ok
+selftest group multiplication: associativity, identity, inverse on 20000 random triples ok
+file research/frontier/sols/d10D12_psl_193_487_orb3_s1.txt
+header: 10 12 psl 193 n 487 N 1750488384
+group psl 193 x Z_487, |G| = 1750488384 = N, vertices 2N = 3500976768; 10 distinct generators
+from (e,A): reached A 1750488384/1750488384, B 1750488384/1750488384 within 12; ecc 12; level sizes [1, 10, 90, 810, 7290, 65610, 590373, 5305170, 47143770, 380116466, 1515820576, 1365000318, 186926284]  (189s)
+from (e,B): reached A 1750488384/1750488384, B 1750488384/1750488384 within 12; ecc 12; level sizes [1, 10, 90, 810, 7290, 65610, 590373, 5305170, 47143586, 380116466, 1515841863, 1365000318, 186905181]  (369s)
+VALID d=10 D=12 group=psl 193 x Z_487 N=1750488384 vertices=3500976768 (distinct generators, 10-regular simple; every vertex within 12 of both (e,A) and (e,B); ecc 12; 369s)
+[exit 0; wall 368.9s; peak RSS 1254 MB]
+
+################ comparison (computed mechanically from the two sections above; verdict lines and numbers are copied from the checker outputs)
+reference verdict line (verbatim, from the reference section): VALID d=10 D=12 group=psl 193 x Z_487 N=1750488384 vertices=3500976768 (distinct generators, 10-regular simple)
+haarcheck_gen verdict line (verbatim, from its section; exit 0): VALID d=10 D=12 group=psl 193 x Z_487 N=1750488384 vertices=3500976768 (distinct generators, 10-regular simple; every vertex within 12 of both (e,A) and (e,B); ecc 12; 369s)
+same verdict word from both checkers: yes
+BFS from (e,A): reference reached/ecc ('1750488384', '1750488384', '1750488384', '1750488384') ecc 12; haarcheck_gen reached/ecc ('1750488384', '1750488384', '1750488384', '1750488384') ecc 12; reached and ecc agree: yes
+BFS level sizes from (e,A): the reference checker does not print level sizes, so there is no comparison; haarcheck_gen prints [1, 10, 90, 810, 7290, 65610, 590373, 5305170, 47143770, 380116466, 1515820576, 1365000318, 186926284]
+BFS from (e,B): reference reached/ecc ('1750488384', '1750488384', '1750488384', '1750488384') ecc 12; haarcheck_gen reached/ecc ('1750488384', '1750488384', '1750488384', '1750488384') ecc 12; reached and ecc agree: yes
+BFS level sizes from (e,B): the reference checker does not print level sizes, so there is no comparison; haarcheck_gen prints [1, 10, 90, 810, 7290, 65610, 590373, 5305170, 47143586, 380116466, 1515841863, 1365000318, 186905181]
