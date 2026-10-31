@@ -146,3 +146,47 @@ local search); w7 bi-coset graphs. Pick something else and go deep. Options if y
 (26 vertices, the (4,3) Moore graph) over groups of order 192..220; lifts of 2+2 or 3+3 bases over non-abelian groups
 of order 830..1,300 with a smarter optimizer than plain annealing; canonical double covers of non-bipartite 4-regular
 graphs of diameter <= 8 with suitable odd girth.
+
+---
+
+# Round 2 cards (added as round-1 workers finish; same shared rules, 2 hours each)
+
+## w9: bi-coset graphs of simple and perfect groups with larger stabilizers (follows w7)
+
+Read `$H/w7/NOTES.md` first (w7's code `bicos.c`, `bicos2.c` and its table of exact minima). w7's lessons: a central H
+just gives a Haar graph of G/H; connectivity needs <S^-1 S, H> = G; perfect groups without cyclic factors do best
+(PSL(2,25) with |H| = 3: n = 5,200, cost 30, exact minimum; PSL(3,3), H an involution: n = 5,616, cost 64). Now go to
+groups and stabilizers w7 did not try, with n = 2 |G| / |H| in 4,972..6,000:
+M_11 (order 7,920) with |H| = 3 (n = 5,280); S_7 and A_7 x Z_2 (5,040) with H an involution (n = 5,040); A_8 (20,160)
+with |H| = 8 (n = 5,040); PSL(2,q) with |H| = 3..6: q = 27 (|H| = 3: 6,552), q = 29 (|H| = 4: 6,090), q = 31 (|H| = 5:
+5,952); PSigmaL(2,25) or PGL(2,25) (15,600) with |H| = 6 (5,200). With |H| > 2 a single double coset H s H can give
+several neighbours (|H s H| / |H| = |H : H cap s H s^-1|), so the degree count must be done per double coset. Groups this
+big do not fit a full multiplication table (N^2 x 2 bytes): represent elements as permutations (M_11 on 11 points, A_8 on
+8, PSL(2,q) on the q+1 points of the projective line), index cosets by a canonical form (e.g. the image of a base set
+under the element, or the smallest element of the coset), and build the coset graph directly. Then exhaustive search
+(small |H| with few double cosets) or annealing over the choice of double cosets.
+
+## w10: Haar graphs of centreless groups with small abelianization (follows w1)
+
+Read `$H/w1/NOTES.md` first (w1's tables and code; A_7 is exhaustively ruled out, minimum cost 6). w1's lesson: low cost
+goes with a small centre and a small abelianization G/G'. Groups nobody has tried yet, all centreless with |G/G'| <= 11
+(n = 2|G| > 4,970): A_5 x AGL(1,7) (2,520), S_5 x (Z_7 x| Z_3) (2,520), Frobenius Z_17^2 x| Z_9 (2,601; Z_9 acting as
+an element of order 9 in GF(289)*, as a 2x2 companion matrix over Z_17), Z_29^2 x| Z_3 (2,523), Z_3^5 x| Z_11 (2,673;
+Z_11 acting on GF(243) by multiplication with an element of order 11, as a 5x5 matrix over Z_3), Z_19^2 x| Q_8 (2,888;
+Q_8 inside SL(2,19)), Z_11^2 x| SL(2,3) (2,904; SL(2,3) inside SL(2,11)), ASL(2,5) = Z_5^2 x| SL(2,5) (3,000, perfect),
+products of two Frobenius groups (e.g. (Z_7 x| Z_3) x (Z_13 x| Z_12), 3,276). Build tables with groups.py (`semi`,
+`perm`, products) or your own generator (check closure, order and the centre), screen each with haar_tab for 60 s with
+3 seeds, deepen the best. For any group at cost <= 4, write an exhaustive search up to automorphism like w1's exh.c.
+
+## w11: exhaustive certification of the best metacyclic groups (works next to w2)
+
+`$H/w2/` holds a screen of all 1,519 metacyclic groups Z_m x|_r Z_k of order 2,486..2,600 (files screenA.tsv,
+screenB.tsv: N m k r |G/G'| best_cost seconds; deep.tsv: longer runs). Annealing floors were true minima in earlier
+work, but a group whose cost-0 sets are rare could be missed by a 1.5-60 s anneal. Make it certain for the best groups:
+for every group with screen cost <= 10 (start with the lowest), run the exhaustive search `python3 $H/tools/exh_meta.py
+m k r | LIMIT=0 ONLYLOW=1 $H/tools/flift DIPOLE meta:m:k:r 4 9 eval` (DIPOLE = base file "2 4" then four lines "0 1";
+read exh_meta.py's and flift.c's headers; exh_meta needs gcd(r-1, m) = 1: write your own orbit reduction for the other
+groups, e.g. using automorphisms (a, j) -> (u a, j) only). Time one group first and estimate; split the work with
+`--slice i/n` into foreground chunks of at most 540 s. Keep a table certified.tsv (m k r, minimum or "no cost 0",
+seconds). Any cost-0 set is a record: build the edge list (sol2edges.py or flift OUT.edges) and run apsp at once.
+Do not run haar_tab screens yourself (w2 does that); talk to no one, just read w2's files.

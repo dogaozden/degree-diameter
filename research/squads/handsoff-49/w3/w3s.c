@@ -118,7 +118,26 @@ static void build_sym(const char *fn) {
     for (int e = 0; e < m; e++) volt[e] = 0;
 }
 
-static inline void set_var(int k, int val) { for (int i = vst[k]; i < vst[k + 1]; i++) volt[vmem[i]] = val; }
+static int coefE[MAXE], vval[MAXE];
+static inline void set_var(int k, int val) {
+    vval[k] = val;
+    for (int i = vst[k]; i < vst[k + 1]; i++) { int e = vmem[i]; volt[e] = (coefE[e] * val) % N; }
+}
+static void build_symc(const char *fn) {
+    FILE *f = fopen(fn, "r"); int nE, K;
+    if (!f) { fprintf(stderr, "no symc\n"); exit(2); }
+    if (fscanf(f, "%d %d", &nE, &K) != 2 || nE != m) { fprintf(stderr, "symc mismatch\n"); exit(2); }
+    int eorb[MAXE];
+    for (int e = 0; e < m; e++) if (fscanf(f, "%d %d", &eorb[e], &coefE[e]) != 2) exit(2);
+    fclose(f);
+    nvar = K; vmemn = 0;
+    for (int k = 0; k < K; k++) {
+        vst[k] = vmemn;
+        for (int e = 0; e < m; e++) if (eorb[e] == k) { vmem[vmemn++] = e; vof[e] = k; }
+    }
+    vst[K] = vmemn;
+    for (int e = 0; e < m; e++) volt[e] = 0;
+}
 
 static inline int pop64(S64 S) { return __builtin_popcountll(S); }
 
@@ -218,6 +237,8 @@ static void rp_walks(int x, int depth, int lastE) {
     }
 }
 
+static int modinv_(int a) { for (int x = 1; x < N; x++) if ((a * x) % N == 1 % N) return x; return 1; }
+static int cand_val(int e, int g) { return coefE[e] == 1 ? g : (modinv_(coefE[e]) * g) % N; }
 static long repair_run(double secs, const char *outp, long cur, int *bestv) {
     double T = getenv("RT") ? atof(getenv("RT")) : 1.0;
     double RBF = getenv("RBF") ? atof(getenv("RBF")) : 6.0;
@@ -249,8 +270,8 @@ static long repair_run(double secs, const char *outp, long cur, int *bestv) {
         for (int s = 0; s < nsample; s++) {
             int c_i = perm[s], e = cand_e[c_i], g = cand_g[c_i];
             if (g == volt[e]) continue;
-            int k = vof[e], oldv = volt[e];
-            set_var(k, g);
+            int k = vof[e], oldv = vval[k];
+            set_var(k, cand_val(e, g));
             long c = cost_eval(bc);
             set_var(k, oldv);
             if (c < bc) { bc = c; bi = c_i; }
@@ -258,7 +279,7 @@ static long repair_run(double secs, const char *outp, long cur, int *bestv) {
         if (bi < 0) continue;
         double thr = -T * log(rnd01() + 1e-300);
         if ((double)(bc - cur) <= thr) {
-            set_var(vof[cand_e[bi]], cand_g[bi]);
+            set_var(vof[cand_e[bi]], cand_val(cand_e[bi], cand_g[bi]));
             cur = bc; nacc++;
             if (cur < best) {
                 best = cur; memcpy(bestv, volt, sizeof(int) * MAXE);
@@ -284,8 +305,7 @@ static long anneal_run(double secs, long cur, int *bestv) {
         double frac = (double)(it % PERIOD) / (double)PERIOD;
         double T = T0 * pow(T1 / T0, frac);
         int k = rnd() % nvar;
-        int e = vmem[vst[k]];
-        int old = volt[e], nv;
+        int old = vval[k], nv;
         if (cyc && (rnd() & 1)) { int d = 1 + rnd() % 3; if (rnd() & 1) d = N - d; nv = (old + d) % N; }
         else { do { nv = rnd() % N; } while (nv == old); }
         set_var(k, nv);
@@ -307,7 +327,9 @@ int main(int argc, char **argv) {
     read_base(argv[1]);
     load_group(argv[2]);
     build_structure();
+    for (int e = 0; e < m; e++) coefE[e] = 1;
     if (getenv("SYM")) build_sym(getenv("SYM"));
+    if (getenv("SYMC")) build_symc(getenv("SYMC"));
     if (!strcmp(argv[3], "eval")) {
         read_volt(argv[4]);
         printf("COST %ld\n", cost_eval(1L << 60));
@@ -318,7 +340,7 @@ int main(int argc, char **argv) {
     uint64_t seed = (uint64_t)atoll(argv[5]);
     const char *outp = argc > 6 ? argv[6] : "w3s";
     rs ^= seed * 0x2545F4914F6CDD1DULL + 12345; for (int i = 0; i < 20; i++) rnd();
-    if (argc > 7) read_volt(argv[7]);
+    if (argc > 7) { read_volt(argv[7]); for (int k = 0; k < nvar; k++) vval[k] = volt[vmem[vst[k]]] * modinv_(coefE[vmem[vst[k]]]) % N; }
     else for (int k = 0; k < nvar; k++) set_var(k, rnd() % N);
     long cur = cost_eval(1L << 60);
     fprintf(stderr, "N=%d cyc=%d vars=%d reps=%d start cost %ld\n", N, cyc, nvar, nreps, cur);

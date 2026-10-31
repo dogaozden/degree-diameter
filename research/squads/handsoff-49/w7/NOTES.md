@@ -1,6 +1,6 @@
 # w7 NOTES: bi-coset graphs (Haar graphs over cosets of a small subgroup H)
 
-Start: 2026-10-31 21:42 UTC. Deadline: 23:42 UTC (2 hours). Last update: 22:00 UTC.
+Start: 2026-10-31 21:42 UTC. Deadline: 23:42 UTC (2 hours). Last update: 22:56 UTC (final state of this run).
 
 ## Best so far (no valid graph yet; C = cost, 0 = diameter <= 9)
 - BEST n >= 4972: **PSL(2,25), H = <x> of order 3 (non-central), n = 5200, C = 30 (exact minimum of this (G,H) over
@@ -10,7 +10,7 @@ Start: 2026-10-31 21:42 UTC. Deadline: 23:42 UTC (2 hours). Last update: 22:00 U
   (element 6 is an order-3 element; `bicos TABLE classes` lists the class reps).
 - Next best: PSL(3,3), H involution, n = 5616: C = 64 (exact {2,2}; saved as best_psl33_involution_C64_n5616.edges,
   verified: apsp diameter 10, far pairs = M*C/2 = 89856). PSL(2,23), H involution, n = 6072: C = 88 (exact {2,2}, 1.14M S; verified in tabs/psl23_22_best.edges).
-- PSL(3,3), H involution, n = 5616: exh {1,1,2} C = 120 (diameter 10, verified).
+- PSL(3,3), H involution: exh {1,1,2} C = 120 (the {2,2} minimum is 64, above).
 - PSL(2,27), H order 3, n = 6552: exh {1,3} C = 176.  PSL(2,25), H involution, n = 7800: C = 312 (SA), 420 (exh {1,1,2}).
 - S7 (n=5040), transposition H: SA C = 992.  Metacyclic groups with a non-central involution: 11 tried, all DISCONNECTED
   (C 5000-9000): <S^-1 S, H> is a proper subgroup, so the metacyclic family does not help here.
@@ -52,6 +52,7 @@ Connected iff <S^-1 S, H> = G (walks from the root only reach H<S^-1 S>).
 | PSigmaL(2,16) (= PSL(2,16):2, Frobenius) | order 3 | 5440 | 164 | {1,3} exh (18000 S) |
 | PSigmaL(2,16) | involution (2 classes) | 8160 | 445 | {2,2} SA 15 s |
 | PSU(3,3) | involution | 6048 | 122 | {1,1,2} SA 20 s; {2,2} exh 290 |
+| PSL(2,7)xZ30 / PGL(2,7)xZ15 / S5xZ42 / A5xZ84 | involution | 5040 | 92 / 112 / 528 / 1638 | SA 20 s |
 | S7 | transposition | 5040 | 992 | {2,2} SA 20 s |
 | metacyclic, non-central involution (11 groups) | involution | ~5000 | 5000-9000 | disconnected |
 | metacyclic, order 3 (in progress, results_meta_h3.tsv) | order 3 | 5040-5100 | ~10^4 so far | disconnected |
@@ -65,6 +66,10 @@ Not run: PSL(2,8)xZ10 and other small-cyclic products (the cyclic-factor product
 ## Two-subgroup family (bicos2.c): S = K S H with H, K of the same order (K != H allowed; degrees stay 4)
 - PSL(2,25), H = <6> (order 3), all 325 order-3 subgroups K scanned exhaustively ({1,3}): every K gives C = 30.
   So the K-variation does not help here (kscan25.out, kscan25_best.edges, verified far = 39000).
+- PSL(3,3), H = involution: 4 sampled involution subgroups K (of 117), exact {2,2}: all give C = 64 (kscan33.out).
+
+- 2^4:A6 (order 5760, perfect, affine on 16 points, build_2^4A6.py): involution SA best C = 125 ({2,2}), exh {1,1,2} 252
+  (results_2^4A6.tsv). Also worse than PSL(2,25).
 
 ## Conclusion (22:25 UTC)
 - Best (n >= 4972): PSL(2,25) with H = order-3 subgroup, n = 5200, C = 30 (exact over its family). No cost-0 graph found.
@@ -72,7 +77,9 @@ Not run: PSL(2,8)xZ10 and other small-cyclic products (the cyclic-factor product
   PSL(2,25) order 3 is the only outlier with cost < 60. Cyclic-factor products, PSigmaL(2,16), PSU(3,3), A5xPSL(2,7),
   PGL(2,19), metacyclic groups are all clearly worse (or disconnected).
 
-## Status / next
+## Status / next (updated 22:54)
+- Order-5040 products (H involution, results_prod.tsv): PSL(2,7)xZ30 best 112, PGL(2,7)xZ15 92, S5xZ42 528, A5xZ84 1638
+  (all SA 20 s, not exhaustive). Cyclic factors are consistently bad.
 - No valid (cost 0) graph with n > 4970 found. Best: n = 5200, cost 30 (PSL(2,25), H of order 3), exhaustively optimal
   for that (G, H). Stored in w7/best_psl25_h3_C30_n5200.edges; scoreboard line appended.
 - Next idea if continued: other perfect groups of order 7458..8000 with H of order 3 (none known besides PSL(2,25));

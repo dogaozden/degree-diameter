@@ -1,6 +1,6 @@
 # w3 notes: lifts of W(3) (GQ(3,3) incidence graph, 80 vertices) over groups of order 63..80
 
-Start: 2026-10-31 21:42 UTC. Planned end: about 23:42 UTC. Updated 22:35 UTC.
+Start: 2026-10-31 21:42 UTC. Planned end: about 23:42 UTC. Updated 23:07 UTC. Final state: best near miss 906 at n = 5,040; valid 3,200 only.
 
 ## Setup
 - Base: `w3base.txt` (mkbase.py): points of PG(3,3) (0..39), totally isotropic lines (40..79), 160 edges. Checked:
@@ -21,7 +21,8 @@ Start: 2026-10-31 21:42 UTC. Planned end: about 23:42 UTC. Updated 22:35 UTC.
   Repair = walk-directed moves: pick a missing (root, target, element), enumerate non-backtracking walks to the target,
   solve for the voltage each walk needs, evaluate a sample of 60 candidates with the full cost, SA acceptance (RT).
   Cost 0 writes OUT_c0.edges (lift edge list, check with apsp).
-- Older programs w3lift.c / w3rep.c are superseded by w3s.c.
+- Older programs w3lift.c / w3rep.c (same algorithms, before symmetry support) are superseded by w3s.c.
+- mksymc.py: involution with multiplier twist (symc_a*.txt). mksym.py / mksym2.py: base collineations of prime order (sym*.txt).
 
 ## Results (cost = missing triples; lower is better; random start is about 4,000 at N = 63)
 | group | N | method | secs | best cost |
@@ -40,7 +41,16 @@ Start: 2026-10-31 21:42 UTC. Planned end: about 23:42 UTC. Updated 22:35 UTC.
 | Z7 x| Z9 | SA / repair | 80 / 130 | 1092 / 1176 |
 | (Z7 x| Z3) x Z3 | 63 | SA / repair | 80 / 130 | 1066 / 1002 |
 
-Warm-start repair from the 906 state for 200 s did not improve it.
+Warm-start repair from the 906 state for 200 s did not improve it. Iterated local search (ils.py: perturb 6 edge
+voltages, repair 55 s, six rounds from 906): best round 946, no improvement on 906. Another 400 s repair (new seed) gave 1076,
+so run-to-run spread at N = 63 is about 900..1200 and the plateau is real.
+
+Threshold of the cyclic family (repair, RT 1, 90 s): N = 44 -> 42, N = 52 -> 217; N = 40 reaches 0 in 60 s.
+Symmetry variants (cost at N = 63 unless stated):
+- order-2 base collineation with no fixed edges (sym2n.txt, 80 variables): 1254 (repair 150 s); at N = 44: 36 in 60 s.
+- order-3 base collineation (sym3n.txt, 56 variables): 1444 (repair 130 s); at N = 44: 52 in 60 s.
+- order-2 collineation with multiplier twist volt(sigma e) = a volt(e), a = -1 (62): 1714 (150 s); at N = 44: 64.
+  a = 8 at N = 44: 64. (SYMC env; mksymc.py; the twisted repair stores variable values separately, checked.)
 
 ## Conclusion so far
 - The family has a sharp threshold: diameter 9 is reached at N = 40 (n = 3,200) in under a minute, but the best
@@ -49,7 +59,15 @@ Warm-start repair from the 906 state for 200 s did not improve it.
   of independent constraints (80 roots x 40 targets x N), which grows with the base size while the variables do not.
   Two-vertex bases (Haar graphs) hit the same mass ratio with far fewer constraints, which fits the record search.
 
+## Best files
+- Best near miss at n = 5,040: cost 906 (far unordered pairs 28,539, apsp INVALID at D = 9):
+  `runs/rep63_best.volt` (volt file; lift edges `runs/rep63_best.edges`). Made by the earlier program w3rep.c
+  (`RT=1.0 REPAIR=1 ./w3rep w3base.txt cyc:63 150 21 runs/rep63`); `./w3s w3base.txt cyc:63 eval runs/rep63_best.volt`
+  re-checks it at 906. Other seeds and temperatures gave 990-1130 (the 906 is the best of about ten runs).
+- Valid n = 3,200 (apsp VALID at D = 9, INVALID at D = 8): `runs/rep40b_c0.edges` (cyclic Z_40, repair seed 11, 60 s).
+
 ## Next, if I had more time
-- Lifts with more structure than an order-5 collineation (e.g. a Z_3 x Z_3 or a group of order 10-15 of base automorphisms)
-  to cut the constraint count, or base graphs with fewer vertices (a 40-vertex 4-regular bipartite base over order 126).
-- A tabu search with the full 1-move neighbourhood in the 32-variable symmetric space (about 2,000 neighbours per step).
+- Abandon the 80-vertex base for n = 5,040: the constraint count (80 roots x 40 targets x N) grows with the base while the
+  variables do not. Smaller bases (2 to 16 vertices, as in the w5/w8 cards) reach the same walk mass with fewer constraints.
+- If W(3) must be kept: a multiplier twist of the order-5 collineation (needs a unit of order 5 in Aut(G), so not for order 63).
+  Honest expectation: nothing near zero at N = 63 with this base.

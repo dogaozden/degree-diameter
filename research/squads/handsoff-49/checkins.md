@@ -18,3 +18,11 @@ what I changed.
   each): best 2 (101 25 5, known), 4 (104 24 7, known, and 208 12 3, new), then 6. Changed: w4 proved its own card dead
   (H(3) has girth 12, so two vertices of one fibre of any lift are at distance >= 12 > 9); redirected it to a girth/walk-
   count filter plus lifts of the (4,5) 162 graph and PG(2,3) over non-abelian groups. Added .gitignore for group tables.
+- 23:18 check-in 3. Opus/Haiku 0.228/0.155 (Haiku 40.5%). No record. New best near misses: w5 3+3 lift n = 4,992 cost 4
+  (same order and cost as the known Haar floor of meta 104 24 7), w2 confirms 5,050 cost 2 and 4,992 cost 4. Finished:
+  w7 (74 min; bi-coset exact minima, PSL(2,25) |H| = 3 n = 5,200 cost 30, PSL(3,3) cost 64; perfect groups best),
+  w1 (82 min; A_7 Haar exhaustive: minimum 6, ruled out; low cost tracks small centre and abelianization), w3 (85 min;
+  W(3) lifts: cost grows with group order, 906 at Z_63; valid only up to 3,200). Changed: launched w9 (bi-coset of M_11,
+  S_7, A_8, PSL(2,q) with larger stabilizers, permutation representations), w10 (Haar of centreless small-abelianization
+  groups not yet tried: A_5 x AGL(1,7), S_5 x F_21, Z_17^2 x| Z_9, Z_3^5 x| Z_11, ASL(2,5), ...), w11 (exhaustive
+  certification of the best metacyclic groups from w2's screen). Fewer, quieter polls from now on to cut Opus spend.

@@ -27,3 +27,22 @@ Start: 2026-10-31 21:41 UTC. Planned end: 23:41 UTC (2 hours).
 - Dipole/Haar (h=1) is the outlier: cost 0 at n=4970 in ~2 s. The walk-count ratio (~3.94 same-side walks per target)
   is the same for every h at fixed n, so the gap is in the landscape, not the counting.
 - The card's h=5..8 bases over N=311..500: cost 100-150 after 60 s (stuck), worst family tested.
+
+## Update 22:50 UTC: tabu search and the h=2 family
+- `tabu.c` = tools/flift.c plus env TABU=1: full-neighbourhood tabu search (best non-tabu move each step, tenure 12,
+  kick after 300 steps). Use: `TABU=1 ./tabu BASE GROUP 4 9 SECS SEED 8 OUT`. Tabu beats SA on the h=3/h=4 pairs.
+- Cost unit: flift cost = unreached (root, base vertex, group element) triples; far pairs = cost * N / 2 (score48 agrees).
+- BEST NEAR MISS (n = 4992, h=2 base mh2_1 = [[2,2],[2,2]], i.e. K22 with every edge doubled, group meta:13:96:5):
+  cost 4 (seed 31 in 50 s and seed 61 with meta:39:32:31). Files: out/t_mh2_1_1248_s31.edges (verified: far=2496,
+  INVALID). Not a record. In both cost-4 states the unreached triples are same-side pairs only:
+  (root 1, v 1) x2, (root 2, v 3), (root 3, v 2), and the group elements lie in the index-4 normal subgroup
+  {j = 0 mod 4} (quotient Z_4 of the abelianisation). Suspect a Z_4-parity obstruction from the base.
+- h=2 seeds at 50 s: typical 10-14, best 4. Groups of order 1248 screened (25 s): meta:26:48:3 10,
+  meta:39:32:31 4-12, meta:156:8:5 14, agl1 13 x cyc 8 21, sl2 3 x meta 13 4 5 16, S4 x Z52 25. Many others 46-5000.
+- h=3 mh3_3 x meta:104:8:31 (N=832, n=4992): best cost 19 (out/t_mh3_3_104_8_31_s41.edges, INVALID).
+- h=4 mh4_14 x meta:39:16:5 (N=624): cost 32 at 55 s.
+- Scoreboard lines written: cost 22 (h=3, n=4992), cost 19 (h=3), cost 4 (h=2, n=4992).
+
+## Haar-family note for the coordinator
+- A base with a semiregular automorphism group Z_h and voltages constant on its orbits is a Haar graph of G x Z_h
+  (bi-circulant base K44 -> Haar over G x Z_4). Those lifts are inside the w1/w2 domain.

@@ -75,3 +75,22 @@ Start: 2026-10-31 21:41 UTC (note: PG(2,3) entries below are 22:01 UTC) (2 h bud
   long_k44_z622_s41.best (the .best holds the voltages "e g" per edge of k44.txt). Edge list: k44_z622_156.edges.
   Scoreboard line appended (22:25).
 - Multi-start ILS (run_ms.sh, 45 s per seed, seeds 100..., until 23:15) is running; results in ms.log.
+
+## New card from the coordinator (22:45 UTC; reply at 23:55)
+Filter (filter.py, edge-level non-backtracking walks, multigraph safe): for every root u, closed walks of length <= 9 at u
+must number >= |G|-1 and every target v needs >= |G| walks of length <= 9 (parity is forced in bipartite bases).
+Results: d4D5_162 (162 vertices, 4-regular, bipartite): min closed walks 76, min walks per target 76 -> passes for |G| <= 40.
+PG(2,3): 756 -> passes up to 756. K44: 2520. b22t1: 4956 (degenerate in practice). rb12: 1628; rb14: 1426.
+The filter is necessary only; it does not separate the bases: the actual lift costs are what matter (see below).
+hgw.c: generic walk-bitset evaluator (any base <= 256 vertices), ILS with best responses; checked against score48
+on d4d5.txt over Z_31 (cost 9060 = 2*140430/31).
+Queues (started 22:46): run45.sh (d4D5 over dih17, dih18, dih19, meta13-3-3, meta9-4-8, dih16, meta5-8-2, agl1 5 x 2,
+60 CPU-s each) -> run45.log; runpg.sh (PG(2,3) over sl2_3xZ8, meta14-14-13, dih100, semi7-4, meta13-16-5, agl1 7 x 5,
+heis3 x Z8, sl2_3 x Z9, meta7-28-6) -> runpg.log; run66.sh (rb12 over meta13-32-5, meta19-22-18, meta7-60-3; rb14 over
+meta7-51-2, meta9-40-8) -> run66.log.
+(4,5) base d4D5_162 over non-abelian groups, ILS 60 CPU-s each (run45.log): dih16 (n=5184) 3408; dih17 (5508) 4754;
+dih18 (5832) 6708; meta9-4-8 (5832) 6069; dih19 (6156) 9435; meta13-3-3 (6318) 9814; meta5-8-2 (6480) 11488;
+agl1 5 x Z2 (6480) 11857. Cost grows fast with |G|; 60 s is far too short for 163 free voltages (about 20 sweeps).
+hgws.c = hgw.c plus SA=1 mode (single random moves, T from argv[5] down to env T1). About 0.55 ms per move on d4D5.
+Queue runq2.sh (started 22:56): dih16 for 240 s, then PG(2,3) over sl2_3xZ8, meta14-14-13, heis3xZ8, agl1 7x5 (60 s each),
+rb12 over meta13-32-5 and rb14 over meta7-51-2 (60 s each). Results in runq2.log.

@@ -10,3 +10,10 @@ time_utc	worker	strategy	n	cost_or_far	valid_claim	file
 22:25	w4	K44 base (8 vertices) lift over Z_622, ILS (cost = 2*far/k)	4976	156	no	/home/user/degree-diameter/research/squads/handsoff-49/w4/k44_z622_156.edges
 22:26	w1	A7 Haar (simple group, 60 s annealing seed 11); correction of the 22:18 line whose file did not exist	5040	6	no	/home/user/degree-diameter/research/squads/handsoff-49/w1/t/A7_cost6.edges
 22:31	w5	h3 base mh3_3 x meta:104:8:31, tabu 150 s	4992	19	no	out/t_mh3_3_104_8_31_s41.edges
+22:43	w5	h2 base mh2_1 ([[2,2],[2,2]], 4+4 doubled K22) x meta:13:96:5, tabu 50 s seed 31	4992	4	no	out/t_mh2_1_1248_s31.edges
+22:47	w2	meta sweep (1.5 s screen + 8 s deepen): Z_208 x|_3 Z_12, 4 floor	4992	4	no	/home/user/degree-diameter/research/squads/handsoff-49/w2/deep.tsv
+22:47	w2	meta sweep (1.5 s screen + 8/60 s deepen): Z_101 x|_5 Z_25 (proven floor 2 per card)	5050	2	no	/home/user/degree-diameter/research/squads/handsoff-49/w2/deep.tsv
+22:57	w8	tabu (2000 sampled moves, tenure 40) from previous tabu solution, base 2+2 [[1,3],[3,1]] over agl1 13 x cyc 8	4992	16	no	/home/user/degree-diameter/research/squads/handsoff-49/w8/runs/w8_best_n4992.edges
+23:02	w1	A7 exhaustive over all Haar graphs (8 class reps, all S with e): min cost 6, no zero (exh.c)	5040	6	no	/home/user/degree-diameter/research/squads/handsoff-49/w1/res/exh_A7_class19.out
+23:05	w8	tabu (2000 moves, tenure 40), second round from cost-16 solution, base 2+2 [[1,3],[3,1]] over agl1 13 x cyc 8	4992	15	no	/home/user/degree-diameter/research/squads/handsoff-49/w8/runs/w8_best_n4992.edges
+23:12	w4	rb12 (6+6 random 4-regular bipartite) lift over meta 13 32 5 (order 416), ILS, cost = 2*far/k	4992	97	no	/home/user/degree-diameter/research/squads/handsoff-49/w4/r12m13.edges

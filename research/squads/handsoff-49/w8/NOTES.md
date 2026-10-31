@@ -4,9 +4,10 @@ Start: 2026-10-31 21:41 UTC. Stop (2 hours): about 23:41 UTC.
 
 ## Best so far (no valid record)
 - n = 4992 (base 2+2, multigraph [[1,3],[3,1]] = base4p1.txt; group agl1 13 x cyc 8, groups2/h03.bin, order 1248),
-  cost 18 = far pairs 18*1248/2 = 11,232 (score48 counts far pairs; cost = 2*far/K).
+  cost 15 = far pairs 15*1248/2 = 9,360 (score48 counts far pairs; cost = 2*far/K). Final at 23:12 UTC.
   File: w8/runs/w8_best_n4992.edges (voltages w8/runs/w8_best_n4992.sol, format "K m" then one voltage per base edge).
-  Rebuild: `./wt base4p1.txt groups2/h03.bin 9 450 8 runs/T3 1000 20 runs/w8_best_n4992.sol` (tabu, same model).
+  Rebuild: from scratch `./wt base4p1.txt groups2/h03.bin 9 450 8 runs/T3 1000 20` (SA start then tabu chain
+  T2 -> T7 -> T8, each `wt ... 450 SEED OUT 2000 40 <previous .sol>`); latest solution is runs/w8_best_n4992.sol.
   Not valid: `apsp` prints INVALID at D = 9.
 - Calibration: the same tools reproduce the valid 4,970 Haar graph's voltage set (score48 VALID) when given it; random
   search does not find it on the dipole base (cost 2 after 60 s).
@@ -24,13 +25,15 @@ Start: 2026-10-31 21:41 UTC. Stop (2 hours): about 23:41 UTC.
 - Small bases with groups of order 1248..1320 (n = b k >= 4,972): screened in 40 s each (screen2.txt, screen3.txt).
   base 2+2 [[1,3],[3,1]] (base4p1): best groups AGL(1,13) x Z8 (cost 24), Z5^2 x| Z50 (40), dih 625 (9408), others
   48-200. base 2+2 doubled C4 (base4p2): AGL(1,13) x Z8 cost 30, Z5^2 x| Z50 cost 34.
-- Long SA (470 s) on the best pair stalls at cost 26; tabu search (NS = 1000 sampled moves, tenure 20) takes it to 18.
+- Long SA (470 s) on the best pair stalls at cost 26; tabu search (NS = 1000 sampled moves, tenure 20) takes it to 18,
+  then (NS = 2000, tenure 40) to 16 and 15; the last two rounds stall at 15.
+- Doubled-C4 base (base4p2) from random tabu: cost 24 (450 s). 3+3 bases (base6_M1, SL(2,5) x Z7, n = 5040): SA 34,
+  tabu 32 (450 s). So 2+2 with [[1,3],[3,1]] is the best of the small bases I tried.
 - Structural note: the uncovered (root, lift vertex) pairs are almost all same-side pairs (even walks of length <= 8).
   Walks per element are about 3.5 for n about 5000, which is the same for every base; so larger bases have more
   constraints and fewer per variable. The b = 2 Haar family (w1/w2) is the natural home for records.
 
 ## Not done / next ideas
-- 3+3 bases (base6_M1.txt, base6_C6.txt, base6_M4.txt written, groups not screened yet): expected to be worse
-  (more constraints) but untested.
+- 3+3 bases screened only on SL(2,5) x Z7 (screen6.txt); other groups untested.
 - Tabu with larger NS, restarts from several SA solutions, or a symmetry restriction (voltages invariant under a
   base automorphism of order 2) to shrink the search.
