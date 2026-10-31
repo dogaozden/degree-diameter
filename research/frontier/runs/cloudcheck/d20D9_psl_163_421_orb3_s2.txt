@@ -1,0 +1,13 @@
+machine: vm nproc=4; free -g: total 15G used 0G free 14G avail 15G; kernel 6.18.44-fc-v185
+sha256 3a83f008772e1b1d9710ef589533e3925835be75ec66bae2ae669c677320ac46  file research/frontier/sols/d20D9_psl_163_421_orb3_s2.txt (from origin/claude/new-cells-beyond-etos3t:research/frontier/sols/d20D9_psl_163_421_orb3_s2.txt)
+header: 20 9 psl 163 n 421 N 911587932
+
+################ reference checker: haarcheck_psl (research/structured/tools/haarcheck_psl.c, gcc -O3)
+from (e,A): reached A 911587932/911587932, B 911587932/911587932 within 9, ecc 9
+from (e,B): reached A 911587932/911587932, B 911587932/911587932 within 9, ecc 9
+VALID d=20 D=9 group=psl 163 x Z_421 N=911587932 vertices=1823175864 (distinct generators, 20-regular simple)
+[exit 0; wall 1498.4s; cpu 1486.0s; peak RSS 654 MB]
+
+################ independent checker: none runnable for psl
+NOT RUN. haarcheck2.c accepts only 'sl' headers (this file is 'psl'). check_haar_indep.py supports psl but uses about 74 bytes per vertex: this file has 1823175864 vertices, so about 135 GB, above the 15 GB of this machine. No second checker fits.
+[not run; see text]
