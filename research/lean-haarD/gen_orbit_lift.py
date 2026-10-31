@@ -179,8 +179,9 @@ def write_folder(folder, theorem, n, m, k, K, d, D, edges_path, adj, col, levels
 
     # Hom.lean: the shift preserves adjacency, from eight pieces (one kernel check each; the whole
     # check in one kernel run was killed at 13 GB here), joined by Orbit.homOKRange_join
-    c = n // 8
-    assert n == 8 * c
+    P = 8 if n % 8 == 0 else 10
+    c = n // P
+    assert n == P * c
     hom = [
         gen,
         "import BipartiteDD.Orbit",
@@ -191,7 +192,7 @@ def write_folder(folder, theorem, n, m, k, K, d, D, edges_path, adj, col, levels
         "open BipartiteDD.Orbit",
         "",
     ]
-    for i in range(8):
+    for i in range(P):
         hom += [
             "set_option maxRecDepth 100000 in",
             f"/-- The shift check on the vertices `{i * c} … {(i + 1) * c - 1}`. -/",
@@ -200,7 +201,7 @@ def write_folder(folder, theorem, n, m, k, K, d, D, edges_path, adj, col, levels
             "",
         ]
     prev = "hom_q0"
-    for j in range(1, 8):
+    for j in range(1, P):
         hom += [
             f"/-- The shift check on the vertices `0 … {(j + 1) * c - 1}`. -/",
             f"theorem hom_p{j} : homOKRange {m} {K} adjL 0 {(j + 1) * c} = true :=",
@@ -212,7 +213,7 @@ def write_folder(folder, theorem, n, m, k, K, d, D, edges_path, adj, col, levels
         f"/-- The cyclic shift `h ↦ h + 1 (mod {m})` in each fibre is an automorphism of the graph. -/",
         f"theorem hom_ok : homOK {m} {K} adjL = true := by",
         "  unfold homOK",
-        "  exact hom_p7",
+        f"  exact hom_p{P - 1}",
         "",
         f"end {ns}",
         "",
