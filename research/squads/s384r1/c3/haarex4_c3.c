@@ -25,23 +25,85 @@ static inline int mul(int a, int b) { return M[a * N + b]; }
 
 static int find(int *p, int x) { while (p[x] != x) { p[x] = p[p[x]]; x = p[x]; } return x; }
 
-static int bad(const int *P, int np, int cur) {
-    int T[6];
-    for (int ti = 0; ti < np; ti++) {
-        int t = P[ti], ti_inv = INV[t];
-        for (int mode = 0; mode < 4; mode++) {
-            for (int i = 0; i < np; i++) {
-                int x = P[i];
-                switch (mode) {
-                    case 0: T[i] = mul(x, ti_inv); break;
-                    case 1: T[i] = mul(ti_inv, x); break;
-                    case 2: T[i] = mul(INV[x], t); break;
-                    default: T[i] = mul(t, INV[x]); break;
-                }
+/* c3: RB[u*RW + w] has bit v iff u, v >= 1, u != v and CL[u*N+v] < cur (the current pair class minimum). Pairs are
+ * switched on in increasing CL order as cur increases (LST, LPTR), so RB is one 24 KB table instead of CL reads.
+ * bad() returns the same decisions as the CL version: F holds the nonzero-or-zero transformed values of one
+ * (t, mode); the pair test is "some u in F has a row bit hitting F" (no diagonal bit, no zero row or column bit). */
+#define RW 8
+static uint64_t *RB;
+static int *LST; static long NLST, LPTR;
+static int cmpcl(const void *a, const void *b) { int x = CL[*(const int *)a], y = CL[*(const int *)b]; return (x > y) - (x < y); }
+static uint64_t *CB;            /* CB[v*RW + w] has bit u iff RB[u] has bit v (column table) */
+static uint64_t F4S[4][4][RW];  /* F4S[ti][mode]: bitset of the transforms of the 4-prefix for t = P4[ti] */
+static const uint16_t *RA[4], *RBm[4], *RC[4], *RD[4];  /* row pointers for t = P4[ti] (see bad()) */
+/* a-level precomputation for the 4-prefix P (P[0] = 0). Then bad5(b) decides bad(P + b) given bad(P) == 0 */
+static void pre4(const int *P) {
+    for (int ti = 0; ti < 4; ti++) {
+        int t = P[ti], tinv = INV[t];
+        RA[ti] = MT + (size_t)tinv * N; RBm[ti] = M + (size_t)tinv * N; RC[ti] = MT + (size_t)t * N; RD[ti] = M + (size_t)t * N;
+        for (int m = 0; m < 4; m++) {
+            uint64_t *F = F4S[ti][m];
+            memset(F, 0, sizeof(uint64_t) * RW);
+            for (int i = 0; i < 4; i++) {
+                int x = P[i], xi = INV[x];
+                int v = m == 0 ? RA[ti][x] : m == 1 ? RBm[ti][x] : m == 2 ? RC[ti][xi] : RD[ti][xi];
+                F[v >> 6] |= 1ULL << (v & 63);
             }
-            for (int i = 0; i < np; i++) { if (T[i] == 0) continue;
-                for (int j = 0; j < np; j++) { if (j == i || T[j] == 0) continue;
-                    if (CL[T[i] * N + T[j]] < cur) return 1; } }
+        }
+    }
+}
+/* bad(P5) for P5 = P4 + b, given bad(P4) == 0: new pairs come from (t in P4) with the new element v = f(b) against
+ * the old transformed set, and from t = b, whose transformed set is {f_{b,m}(x) : x in P4} (f_{b,m}(b) = e). */
+static int bad5(const int *P, int b) {
+    int ib = INV[b];
+    for (int ti = 0; ti < 4; ti++) {
+        int v[4] = { RA[ti][b], RBm[ti][b], RC[ti][ib], RD[ti][ib] };
+        for (int m = 0; m < 4; m++) {
+            const uint64_t *F = F4S[ti][m], *R = RB + (size_t)v[m] * RW, *Cc = CB + (size_t)v[m] * RW;
+            uint64_t acc = 0;
+            for (int w = 0; w < RW; w++) acc |= (R[w] | Cc[w]) & F[w];
+            if (acc) return 1;
+        }
+    }
+    {
+        int bi = b, bi2 = ib;
+        for (int m = 0; m < 4; m++) {
+            uint64_t F[RW] = {0}; int T[4];
+            for (int i = 0; i < 4; i++) {
+                int x = P[i], xi = INV[x], v;
+                switch (m) {
+                    case 0: v = M[x * N + bi2]; break;      /* x b^-1 */
+                    case 1: v = M[bi2 * N + x]; break;      /* b^-1 x */
+                    case 2: v = M[xi * N + bi]; break;      /* x^-1 b */
+                    default: v = M[bi * N + xi]; break;     /* b x^-1 */
+                }
+                T[i] = v; F[v >> 6] |= 1ULL << (v & 63);
+            }
+            uint64_t acc = 0;
+            for (int i = 0; i < 4; i++) { const uint64_t *R = RB + (size_t)T[i] * RW; for (int w = 0; w < RW; w++) acc |= R[w] & F[w]; }
+            if (acc) return 1;
+        }
+    }
+    return 0;
+}
+
+static int bad(const int *P, int np, int cur) {
+    (void)cur;
+    int xi[6];
+    for (int i = 0; i < np; i++) xi[i] = INV[P[i]];
+    for (int ti = 0; ti < np; ti++) {
+        int t = P[ti], tinv = INV[t];
+        /* mode 0: x tinv = MT[tinv][x]; mode 1: tinv x = M[tinv][x]; mode 2: x^-1 t = MT[t][x^-1]; mode 3: t x^-1 = M[t][x^-1] */
+        const uint16_t *A = MT + (size_t)tinv * N, *B = M + (size_t)tinv * N, *C = MT + (size_t)t * N, *D = M + (size_t)t * N;
+        for (int mode = 0; mode < 4; mode++) {
+            uint64_t F[RW] = {0}; int T[6];
+            for (int i = 0; i < np; i++) {
+                int v = mode == 0 ? A[P[i]] : mode == 1 ? B[P[i]] : mode == 2 ? C[xi[i]] : D[xi[i]];
+                T[i] = v; F[v >> 6] |= 1ULL << (v & 63);
+            }
+            uint64_t acc = 0;
+            for (int i = 0; i < np; i++) { const uint64_t *R = RB + (size_t)T[i] * RW; for (int w = 0; w < RW; w++) acc |= R[w] & F[w]; }
+            if (acc) return 1;
         }
     }
     return 0;
@@ -79,6 +141,11 @@ int main(int argc, char **argv) {
     CL = malloc(sizeof(int) * N * N);
     for (int i = 0; i < N * N; i++) CL[i] = find(par, i);
     free(par);
+    RB = calloc((size_t)N * RW, sizeof(uint64_t));
+    CB = calloc((size_t)N * RW, sizeof(uint64_t));
+    LST = malloc(sizeof(int) * N * N); NLST = 0; LPTR = 0;
+    for (int x = 1; x < N; x++) for (int y = 1; y < N; y++) if (x != y) LST[NLST++] = x * N + y;
+    qsort(LST, NLST, sizeof(int), cmpcl);
     int npairs = 0; int *pr = malloc(sizeof(int) * N * N);
     for (int x = 1; x < N; x++) for (int y = 1; y < N; y++) if (x != y && CL[x * N + y] == x * N + y) pr[npairs++] = x * N + y;
     SQOFF = calloc(N + 1, sizeof(int)); SQ = malloc(sizeof(int) * N);
@@ -94,19 +161,21 @@ int main(int argc, char **argv) {
     int SMALL = getenv("SMALL") ? atoi(getenv("SMALL")) : 6;
     int *ord = malloc(sizeof(int) * N); for (int i = 0; i < N; i++) ord[i] = i;   /* move-to-front target order */
     int p0 = argc > 3 ? atoi(argv[2]) : 0, p1 = argc > 3 ? atoi(argv[3]) : npairs;
-    printf("N=%d automorphism generators=%d pair classes=%d, doing %d..%d (haarex4)\n", N, k, npairs, p0, p1); fflush(stdout);
+    printf("N=%d automorphism generators=%d pair classes=%d, doing %d..%d (haarex4 c3)\n", N, k, npairs, p0, p1); fflush(stdout);
     long total = 0, nvalid = 0, naside = 0, nprefix = 0; int gminA = -1;
     for (int p = p0; p < p1 && p < npairs; p++) {
         int cur = pr[p];
+        while (LPTR < NLST && CL[LST[LPTR]] < cur) { int idx = LST[LPTR++]; int u = idx / N, v = idx % N; RB[(size_t)u * RW + (v >> 6)] |= 1ULL << (v & 63); CB[(size_t)v * RW + (u >> 6)] |= 1ULL << (u & 63); }
         int S[6]; S[0] = 0; S[1] = cur / N; S[2] = cur % N;
         if (bad(S, 3, cur)) continue;
         long pl = 0; int pminA = -1;
         for (int a = 1; a < N; a++) {
             if (a == S[1] || a == S[2]) continue;
             S[3] = a; if (bad(S, 4, cur)) continue;
+            pre4(S);
             for (int b = a + 1; b < N; b++) {
                 if (b == S[1] || b == S[2]) continue;
-                S[4] = b; if (bad(S, 5, cur)) continue;
+                S[4] = b; if (bad5(S, b)) continue;
                 nprefix++;
                 int Q5[32], n5 = 0;
                 for (int i = 0; i < 5; i++) for (int j = 0; j < 5; j++) if (i != j) Q5[n5++] = mul(INV[S[i]], S[j]);

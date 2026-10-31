@@ -20,6 +20,7 @@
 
 #define W 8
 static int N, *INV, *CL;
+static uint8_t *LTC;   /* LTC[u*N+v] = (CL[u*N+v] < cur) for the current pair class */
 static uint16_t *M, *MT;     /* MT[x*N + y] = M[y*N + x] */
 static inline int mul(int a, int b) { return M[a * N + b]; }
 
@@ -41,7 +42,7 @@ static int bad(const int *P, int np, int cur) {
             }
             for (int i = 0; i < np; i++) { if (T[i] == 0) continue;
                 for (int j = 0; j < np; j++) { if (j == i || T[j] == 0) continue;
-                    if (CL[T[i] * N + T[j]] < cur) return 1; } }
+                    if (LTC[T[i] * N + T[j]]) return 1; } }
         }
     }
     return 0;
@@ -55,6 +56,8 @@ static int cover_count(const int *Q, int nq) {
 }
 
 static int *SQOFF, *SQ, *CJOFF, *CJ;
+static long *SCORE;
+static int cmp_score(const void *a, const void *b) { long sa = SCORE[*(const int *)a], sb = SCORE[*(const int *)b]; return sa < sb ? 1 : sa > sb ? -1 : 0; }
 #define SET(b, c) ((b)[(c) >> 6] |= 1ULL << ((c) & 63))
 #define HAS(b, c) ((b)[(c) >> 6] >> ((c) & 63) & 1)
 
@@ -93,11 +96,13 @@ int main(int argc, char **argv) {
       free(fill); }
     int SMALL = getenv("SMALL") ? atoi(getenv("SMALL")) : 6;
     int *ord = malloc(sizeof(int) * N); for (int i = 0; i < N; i++) ord[i] = i;   /* move-to-front target order */
+    SCORE = calloc(N, sizeof(long)); LTC = malloc((size_t)N * N);
     int p0 = argc > 3 ? atoi(argv[2]) : 0, p1 = argc > 3 ? atoi(argv[3]) : npairs;
     printf("N=%d automorphism generators=%d pair classes=%d, doing %d..%d (haarex4)\n", N, k, npairs, p0, p1); fflush(stdout);
     long total = 0, nvalid = 0, naside = 0, nprefix = 0; int gminA = -1;
     for (int p = p0; p < p1 && p < npairs; p++) {
         int cur = pr[p];
+        for (int i = 0; i < N * N; i++) LTC[i] = CL[i] < cur;
         int S[6]; S[0] = 0; S[1] = cur / N; S[2] = cur % N;
         if (bad(S, 3, cur)) continue;
         long pl = 0; int pminA = -1;
@@ -108,6 +113,7 @@ int main(int argc, char **argv) {
                 if (b == S[1] || b == S[2]) continue;
                 S[4] = b; if (bad(S, 5, cur)) continue;
                 nprefix++;
+                if ((nprefix & 4095) == 0) qsort(ord, N, sizeof(int), cmp_score);
                 int Q5[32], n5 = 0;
                 for (int i = 0; i < 5; i++) for (int j = 0; j < 5; j++) if (i != j) Q5[n5++] = mul(INV[S[i]], S[j]);
                 Q5[n5++] = 0;
@@ -143,7 +149,9 @@ int main(int argc, char **argv) {
                                     for (int u = CJOFF[y * N + x]; u < CJOFF[y * N + x + 1]; u++) SET(ax, CJ[u]); }
                             }
                         }
+                        int before = 0; for (int w = 0; w < W; w++) before += __builtin_popcountll(cand[w]);
                         int cnt = 0; for (int w = 0; w < W; w++) { cand[w] &= ax[w]; cnt += __builtin_popcountll(cand[w]); }
+                        if (before) SCORE[x] += (long)(before - cnt) * 100000 / before;
                         if (cnt == 0) empty = 1;
                         else if (cnt <= SMALL) { ncand = 0; for (int w = 0; w < W; w++) { uint64_t m = cand[w]; while (m) { clist[ncand++] = w * 64 + __builtin_ctzll(m); m &= m - 1; } } }
                     } else {
