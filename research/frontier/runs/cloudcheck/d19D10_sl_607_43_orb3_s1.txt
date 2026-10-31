@@ -2,7 +2,6 @@ machine: vm; nproc=4; free -g: total 15G used 0G free 14G avail 15G; Linux 6.18.
 sha256: 6502d81e8238e6ddf1c22651426bd20b5dc1b65aa46c19d4edba02c20229a450  research/frontier/sols/d19D10_sl_607_43_orb3_s1.txt  (from branch claude/new-cells-beyond-etos3t; 697 bytes, 20 lines)
 
 ################ haarcheck_gen (research/frontier/haarcheck_gen.c from master, built gcc -O3 -fopenmp -o haarcheck_gen haarcheck_gen.c): ./haarcheck_gen research/frontier/sols/d19D10_sl_607_43_orb3_s1.txt   (stdout, complete)
-# STATUS: haarcheck_gen finished (below); haarcheck_sl next.
 selftest sl 607: |M| = 223647936, index round trip over all elements ok
 selftest group multiplication: associativity, identity, inverse on 20000 random triples ok
 file /home/user/degree-diameter/research/frontier/sols/d19D10_sl_607_43_orb3_s1.txt
@@ -14,6 +13,14 @@ VALID d=19 D=10 group=sl 607 x Z_43 N=9616861248 vertices=19233722496 (distinct 
 [exit 0; wall 2848s; peak RSS 6882 MB]
 
 
-################ haarcheck_sl (research/frontier/haarcheck_sl.c from master, built gcc -O3 haarcheck_sl.c -o haarcheck_sl; single-threaded): ./haarcheck_sl research/frontier/sols/d19D10_sl_607_43_orb3_s1.txt   (stdout, complete)
-# STATUS: PARTIAL. haarcheck_sl still running, about 2 h 0 min elapsed at this commit (single thread); no BFS line printed yet.
-[run in progress; no exit line yet]
+################ haarcheck_sl (reference checker, research/frontier/haarcheck_sl.c from master, built gcc -O3 haarcheck_sl.c -o haarcheck_sl; single-threaded): ./haarcheck_sl research/frontier/sols/d19D10_sl_607_43_orb3_s1.txt   (stdout, complete)
+from (e,A): reached A 9616861248/9616861248, B 9616861248/9616861248 within 10, ecc 10
+from (e,B): reached A 9616861248/9616861248, B 9616861248/9616861248 within 10, ecc 10
+VALID d=19 D=10 group=sl 607 x Z_43 N=9616861248 vertices=19233722496 (distinct generators, 19-regular simple)
+[exit 0; wall 9356s; peak RSS 6880 MB]
+
+################ comparison (computed mechanically from the two outputs above)
+haarcheck_gen verdict: VALID (exit 0, 2848 s wall, 6882 MB peak RSS, 4 threads)
+haarcheck_sl verdict:  VALID (exit 0, 9356 s wall, 6880 MB peak RSS, 1 thread)
+Both verdicts VALID for d=19 D=10, N=9616861248, vertices=19233722496. Both report every vertex reached from (e,A) and (e,B) within 10 steps, ecc 10 for both starts.
+BFS level sizes: haarcheck_sl does not print them (it prints only reach and ecc), so a level-by-level comparison is not possible from its output. haarcheck_gen level sizes from (e,A) and (e,B) are in the haarcheck_gen block above; both starts give 19 + ... totals equal N in each level-sum, so reach agreement is confirmed but level-size agreement is NOT checked.
