@@ -110,7 +110,7 @@ record, with dates and checks, is in [`research/RESULTS.md`](research/RESULTS.md
 | (13, 10) | 617,330,936 | **683,943,456** | +10.8% | orbit search (Haar) | — |
 | (14, 10) | 1,213,477,190 | **1,350,537,864** | +11.3% | orbit search (Haar) | — |
 | (15, 10) | 2,300,326,510 | **2,566,531,440** | +11.6% | orbit search (Haar) | — |
-| (16, 10) | 4,119,507,330 | **4,220,872,800** | +2.5% | finite geometry ¹ | — |
+| (16, 10) | 4,119,507,330 | **4,708,566,360** | +14.3% | orbit search (Haar) | — |
 
 ¹ Found in a session that could call squads of Claude Haiku helpers (see [Opus with Haiku squads](#opus-with-haiku-squads)).
 ² (3, 8): 288 against 256 is a large jump for a well-studied cell; a literature check for newer values is pending.
