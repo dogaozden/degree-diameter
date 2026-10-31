@@ -1,12 +1,14 @@
 machine: vm; nproc=4; free -g (at start): total 15G used 0G free 15G avail 15G; Linux 6.18.44-fc-v185; gcc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0
-sha256: 166929de2a622916881c41ec32ca1931e990ddf241521139b4a43cf89e06ec3c  research/frontier/sols/d20D10_psl_421_409_orb3_s1.txt  (copied from origin claude/new-cells-beyond-etos3t, research/frontier/sols/d20D10_psl_421_409_orb3_s1.txt)
+sha256: 166929de2a622916881c41ec32ca1931e990ddf241521139b4a43cf89e06ec3c  research/frontier/sols/d20D10_psl_421_409_orb3_s1.txt  (copied from origin claude/new-cells-beyond-etos3t)
+checker sha256: cf153334da9f37dca1bc416594993cd3574e0fd6564ff7851089b8fa5bf0c71f  research/frontier/haarcheck_gen.c (same as origin/master)
 
-STATUS: PARTIAL. haarcheck_gen still running at 2026-10-31T16:34:38Z (elapsed 58 min, RSS about 11.2 GB). Intermediate stdout so far (copied unedited):
------ stdout so far -----
+################ haarcheck_gen (low-memory checker, research/frontier/haarcheck_gen.c): gcc -O3 -fopenmp -o haarcheck_gen research/frontier/haarcheck_gen.c && /usr/bin/time -v ./haarcheck_gen research/frontier/sols/d20D10_psl_421_409_orb3_s1.txt   (stdout, complete; run in the scratchpad with the binary built there)
 selftest psl 421: |M| = 37309020, index round trip over all elements ok
 selftest group multiplication: associativity, identity, inverse on 20000 random triples ok
 file research/frontier/sols/d20D10_psl_421_409_orb3_s1.txt
 header: 20 10 psl 421 n 409 N 15259389180
 group psl 421 x Z_409, |G| = 15259389180 = N, vertices 2N = 30518778360; 20 distinct generators
 from (e,A): reached A 15259389180/15259389180, B 15259389180/15259389180 within 10; ecc 10; level sizes [1, 20, 380, 7220, 137180, 2606061, 49431168, 911951001, 10492687075, 14344824878, 4717133376]  (2232s)
------ end stdout so far -----
+from (e,B): reached A 15259389180/15259389180, B 15259389180/15259389180 within 10; ecc 10; level sizes [1, 20, 380, 7220, 137180, 2606061, 49431204, 911951001, 10492649315, 14344824878, 4717171100]  (4499s)
+VALID d=20 D=10 group=psl 421 x Z_409 N=15259389180 vertices=30518778360 (distinct generators, 20-regular simple; every vertex within 10 of both (e,A) and (e,B); ecc 10; 4499s)
+[exit 0; wall 4499s (1:14:59); peak RSS 10917 MB (11179060 kB, from /usr/bin/time -v); 4 threads]
