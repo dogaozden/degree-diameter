@@ -1,0 +1,39 @@
+BUILT Q8 m=195 groups 2 in 74 ms
+EXPORTED m195_Q8_1 order 1560 id [ 1560, 108 ]
+EXPORTED m195_Q8_2 order 1560 id [ 1560, 113 ]
+BUILT D5 m=153 groups 2 in 45 ms
+EXPORTED m153_D5_1 order 1530 id [ 1530, 3 ]
+EXPORTED m153_D5_2 order 1530 id [ 1530, 6 ]
+BUILT D5 m=155 groups 2 in 106 ms
+EXPORTED m155_D5_1 order 1550 id [ 1550, 13 ]
+EXPORTED m155_D5_2 order 1550 id [ 1550, 14 ]
+BUILT D7 m=111 groups 2 in 26 ms
+EXPORTED m111_D7_1 order 1554 id [ 1554, 19 ]
+EXPORTED m111_D7_2 order 1554 id [ 1554, 22 ]
+BUILT C4C4 m=95 groups 2 in 40 ms
+EXPORTED m95_C4C4_1 order 1520 id [ 1520, 39 ]
+EXPORTED m95_C4C4_2 order 1520 id [ 1520, 55 ]
+BUILT C3C3 m=169 groups 1 in 79 ms
+EXPORTED m169_C3C3_1 order 1521 id [ 1521, 3 ]
+BUILT Dic3 m=135 groups 2 in 76 ms
+EXPORTED m135_Dic3_1 order 1620 id [ 1620, 50 ]
+EXPORTED m135_Dic3_2 order 1620 id [ 1620, 40 ]
+BUILT C3Q8 m=65 groups 2 in 28 ms
+EXPORTED m65_C3Q8_1 order 1560 id [ 1560, 27 ]
+EXPORTED m65_C3Q8_2 order 1560 id [ 1560, 105 ]
+BUILT D9 m=85 groups 2 in 22 ms
+EXPORTED m85_D9_1 order 1530 id [ 1530, 5 ]
+EXPORTED m85_D9_2 order 1530 id [ 1530, 6 ]
+BUILT D5C2 m=77 groups 2 in 66 ms
+EXPORTED m77_D5C2_1 order 1540 id [ 1540, 23 ]
+EXPORTED m77_D5C2_2 order 1540 id [ 1540, 33 ]
+BUILT C3C3b m=171 groups 2 in 88 ms
+EXPORTED m171_C3C3b_1 order 1539 id [ 1539, 38 ]
+EXPORTED m171_C3C3b_2 order 1539 id [ 1539, 13 ]
+SCREENED m195_Q8_1 N=1560 ID=108 92 lines; best: 32
+SCREENED m195_Q8_2 N=1560 ID=113 92 lines; best: 23
+SCREENED m153_D5_1 N=1530 ID=3 21 lines; best: 47
+SCREENED m153_D5_2 N=1530 ID=6 21 lines; best: 39
+SCREENED m155_D5_1 N=1550 ID=13 21 lines; best: 91
+Terminated
+SCREENED m155_D5_2 N=1550 ID=14 3 lines; best: 260
