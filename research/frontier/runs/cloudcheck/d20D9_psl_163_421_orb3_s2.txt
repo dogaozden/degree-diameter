@@ -1,0 +1,10 @@
+machine: vm; nproc=4; free -g: total 15G used 0G free 14G avail 15G; Linux 6.18.44-fc-v185; gcc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0
+sha256: 3a83f008772e1b1d9710ef589533e3925835be75ec66bae2ae669c677320ac46  research/frontier/sols/d20D9_psl_163_421_orb3_s2.txt  (from origin/claude/new-cells-beyond-etos3t:research/frontier/sols/d20D9_psl_163_421_orb3_s2.txt)
+
+# reference section copied unedited from origin/claude/bigcheck-7c-verification-wt5tpg:research/frontier/runs/cloudcheck/d20D9_psl_163_421_orb3_s2.txt (its '################ reference checker' line through its '[exit' line); the reference checker was run on that branch, not in this session.
+################ reference checker: haarcheck_psl (research/structured/tools/haarcheck_psl.c, gcc -O3)
+from (e,A): reached A 911587932/911587932, B 911587932/911587932 within 9, ecc 9
+from (e,B): reached A 911587932/911587932, B 911587932/911587932 within 9, ecc 9
+VALID d=20 D=9 group=psl 163 x Z_421 N=911587932 vertices=1823175864 (distinct generators, 20-regular simple)
+[exit 0; wall 1498.4s; cpu 1486.0s; peak RSS 654 MB]
+
