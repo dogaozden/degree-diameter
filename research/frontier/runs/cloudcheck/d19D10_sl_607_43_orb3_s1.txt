@@ -23,4 +23,4 @@ VALID d=19 D=10 group=sl 607 x Z_43 N=9616861248 vertices=19233722496 (distinct 
 haarcheck_gen verdict: VALID (exit 0, 2848 s wall, 6882 MB peak RSS, 4 threads)
 haarcheck_sl verdict:  VALID (exit 0, 9356 s wall, 6880 MB peak RSS, 1 thread)
 Both verdicts VALID for d=19 D=10, N=9616861248, vertices=19233722496. Both report every vertex reached from (e,A) and (e,B) within 10 steps, ecc 10 for both starts.
-BFS level sizes: haarcheck_sl does not print them (it prints only reach and ecc), so a level-by-level comparison is not possible from its output. haarcheck_gen level sizes from (e,A) and (e,B) are in the haarcheck_gen block above; both starts give 19 + ... totals equal N in each level-sum, so reach agreement is confirmed but level-size agreement is NOT checked.
+BFS level sizes: haarcheck_sl does not print them (it prints only reach and ecc), so a level-by-level comparison is not possible from its output. haarcheck_gen level sizes from (e,A) and (e,B) are in the haarcheck_gen block above; Level-size agreement is therefore NOT checked; only the reach and ecc agree.
