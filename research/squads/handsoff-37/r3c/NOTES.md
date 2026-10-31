@@ -67,3 +67,20 @@ Machine load ~6 on 4 cores at 19:07 (shared), so runs are a bit slower than in r
     base) and is the best 180 graph in the squad so far. S3 lifts look like the right family at 180.
 - batch3 (queued after batch2): S3 k=14 at n=168 (calibration: does the engine reach 0 on an S3 lift?), S3 k=15 at 180
   (seeds 402, 403), S3 k=16 at n=192 (seed 1; the 192 near miss had far 272-384).
+- batch2 (continuations from the best batch1 state per case, seed 501; 170 tests with seeds 501/502), 90 s each:
+  - 176 C4 continued: raw 70 (far 140, from 150). 176 C2xC2 continued: raw 60 (far 120, unchanged).
+  - 180 C6 continued: raw 36 (far 108, unchanged). 180 C5 continued: raw 68 (far 170). 180 C3 continued: raw 150 (far 225).
+  - 180 S3 continued: raw 12 (far 36, unchanged): a plateau.
+  - 170 C5 COMP=100: seed 501 raw 48 (far 120), seed 502 raw 26 (far 65, equal to the best). Plain pool: seed 501 raw
+    38 (far 95), 502 raw 42 (far 105). So COMP shows no clear gain.
+  - Summary of r3c lift bests (all logged): 170 C5 far 65; 176 C2xC2 far 120 (not logged: it is above none of my own
+    earlier 176 values but the card says log the first graph at a new n; see scoreboard); 180 S3 far 36; 180 C6 far 108.
+- batch3 (20:31-20:37): calibration n=168 S3 k=14 (seed 1, 90 s): raw 28 (far 84), NO zero (the engine does not find an S3
+  lift of 168). 180 S3 k=15 seeds 402 / 403: raw 62 (far 186) / 70 (far 210). So the raw-12 result (seed 401) is a lucky
+  basin, not typical. 192 S3 k=16 (seed 1): raw 126, far 378 (diam 9; logged as first 192 graph, best/n192_S3_far378.edges).
+- CHECK: the 180 S3 far-36 graph (best/n180_S3_far36.edges) has girth 10 and the same sorted per-vertex distance profile
+  as the seed shared/seeds/nm180_c3xs3_b5_14.edges (far 36). Very likely the same graph (not an isomorphism test). So the
+  S3 15+15 lift search rediscovers the seed near miss from scratch in 90 s, which is a useful calibration of the engine.
+- Logged records so far (scoreboard, worker r3c): 170 C5 far 65; 176 C2xC2 far 120; 180 C6 far 108; 180 S3 far 36; 192
+  S3 far 378. No far 0 (no diameter-7 graph found at n >= 170).
+- batch4 (20:38-20:45, queued): more seeds at 180: S3 seeds 404-407, C6 seeds 404-405.

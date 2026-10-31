@@ -52,3 +52,51 @@ Start: 2026-10-31T19:45:34Z (date -u). Stop by 21:15Z (final notes then).
 - 20:13 an accident: two D4 batches ran at once (a stale chain from my first queue plus the new one; same output names).
   Killed the duplicate (PIDs 23656, 23734, 23736). The surviving D4 batch's seed 2000 output may be overwritten: its tsv row
   is from the surviving run only.
+- 20:13-20:24 results (lift3 defaults POOL 8 PP 60 STALL 1500 FR 1 TEN 4 WCAP 16, 20 s per run, seeds 2000..2009, k = 12):
+  - D4: far 416..496 (raw 104..124). Q8: far 272..392 (best raw 68 = far 272). C8: far 272..352 (raw 68 twice = far 272).
+    None beats 256. Order-8 groups ranked: C2xC4 256 < Q8 = C8 272 < D4 416 < C2xC2xC2 592.
+  - Subgroup lifts of the far-256 graph (40 s each, from the INIT state): H = C4b (<3>), 128 = far 256 unchanged;
+    H = C2xC2 (<2,4>), 128 = far 256 unchanged. Also the C4 (<1>) run above. No improvement.
+- 20:24 knob variants on C2xC4 k=12 queued (batch3.sh, 8 seeds x 20 s each): STALL 600 POOL 4 PP 40 TEN 6 (out/batch3_stall600.tsv),
+  TEN 8 (batch3_ten8.tsv), POOL 0 (batch3_pool0.tsv).
+- 20:30 C2 subgroups (base 48+48, k = 48) NOT run: lift3 (MAXK 32) rejects k = 48; the copy built with MAXK 64 (lift3_64) reports
+  start raw 0 for N = 2 although score37 of the same state is far 256. So lift3's cost is wrong for N = 2 with this base
+  (cause not found; N = 4 and 8 match far = N*raw/2 exactly). Do not use lift3 for C2 lifts until fixed. Queued sub2 runs cancelled.
+- 20:26-20:29 knob variants on C2xC4 k=12 (8 seeds each, 20 s): STALL 600 POOL 4 PP 40 TEN 6: far 256..408 (best 256 twice);
+  TEN 8: far 396..424 (best 256 once). No variant beats the 256 attractor.
+- 20:33 cause of the lift3 N = 2 failure: eval() keeps the walk sets of base vertices in ONE uint64 per lifted vertex
+  (`full = (1ULL << (2*k)) - 1`), so it needs 2k <= 64, i.e. k <= 32. For k = 48 the high bits are lost and raw is 0 falsely
+  (lift3_64 with MAXK 64 is therefore invalid for k = 48). Fix would be a 2-word bitset (R, R2, cnt, full). Not done (time).
+  Any C2 subgroup lift of the far-256 graph (base 48+48 over C2) is still untested.
+- 20:33-20:35 C2 SUBGROUPS (after fixing the bitset limit: lift3w.c = lift3 with two-word bitsets and MAXK 64; start raw 256 =
+  far 256 for N = 2, matches score37; the C2xC4 start is still raw 64):
+  - C2a = <2> (base/c2c4_C2a_k48.state, 40 s, seed 821): best raw 256 (= start), far 256. No improvement.
+  - C2b = <4> (40 s, seed 821): best raw 256, far 256. No improvement.
+  - C2c = <6> (85 s, seed 823, POOL 8): best raw 256, far 256. No improvement.
+  So the far-256 graph is also a strict local minimum for breakout moves inside the C2, C4 and C2xC2 families.
+- 20:35 background batch3 "last" (16 seeds, default knobs, C2xC4 k=12, out/batch3_last.tsv) started.
+
+## How to rebuild the logged n = 192 graph (far 256)
+
+- Logged file: r3f/best/n192_C2xC4k12_far256.edges (score37: n=192 far=256 diam=9; apsp: not a diameter-7 candidate).
+  State: r3f/best/n192_C2xC4k12_far256.state (lift3 format "N k" then "u v a"; N = 8, k = 12, group groups/C2xC4.txt).
+- Rebuild from scratch: gcc -O3 -march=native -o lift3 lift3.c -lm; then
+  POOL=8 PP=60 STALL=1500 FR=1 TEN=4 WCAP=16 ./lift3 groups/C2xC4.txt 12 401 22 out/x   (the seed-401 run; other seeds give 256
+  too, e.g. 404, 1002, 1006, 1007, 1012: all one attractor by WL hash). Output: out/x_best.edges (far = 8*raw/2 = 256).
+- Groups: groups/C2xC4.txt (table, identity 0; element indices as in the file). C2xC4 k12 is the best order-8 group at 192
+  (C2xC4 256 < Q8 272 = C8 272 < D4 416 < C2xC2xC2 592; order 4 and 6 worse: C4 k24 382, C2xC2 k24 304, C6 k16 330, S3 k16 429).
+
+## Summary (stop 21:15Z)
+
+- Records: n = 192: far 256 (was 272). No far 0 anywhere (no candidate).
+- Breakout weights on the unsymmetric near misses (n = 180 far 36, n = 192 far 256/272): no improvement in any run. All 2-switch
+  neighbours of these graphs are uphill by >= 41 (n = 180) or >= 43 (n = 192); the breakout walk climbs to raw 130-850.
+- Keeping a subgroup of the near miss / the far-256 graph: C3 (free, 30+30) of the 180 near miss: no move below 24 (far 36).
+  C4 (two choices) and C2xC2 (k = 24) and C2 (three choices, k = 48, two-word lift3w): all stay at far 256 (start).
+- lift3 limit found: the original lift3 is limited to 2k <= 64 (single-word bitsets); lift3w.c (two words) fixes it.
+- 20:40 final batch (16 seeds 3300..3315, default knobs, C2xC4 k12, 20 s each): far 256 in 5 runs (raw 64), 304..444 otherwise.
+  Nothing below 256. Total C2xC4 k12 runs this worker: about 60 (all <= 256 at best, 256 is the floor found).
+- Stop 20:41: no background run of mine is left.
+- 20:42 C2 lift of the 180 near miss (free involution, base 45+45, mk_c2base.py, base/nm180_C2_k45.state; start raw 36 = far 36,
+  checked by score37), lift3w breakout 40 s x 2 seeds (831, 832, POOL 8): best stays 36. No improvement.
+- Final state at 20:42: best far at n = 192 is 256 (r3f/best/n192_C2xC4k12_far256.edges). Nothing at n = 180 below 36.

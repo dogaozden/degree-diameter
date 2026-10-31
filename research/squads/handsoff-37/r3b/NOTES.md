@@ -103,3 +103,12 @@ Start: 2026-10-31T19:06:11Z (date -u). Keep going until at least 21:06Z; stop ab
   (seeds 9-16). So the number of fixed base vertices matters; 3 was best of the three tried.
 - Batch18 (queued): D5 at 170 with 2^5 1^7 (seed 31), 2^4 1^9 (seed 32), 2^7 1^3 with seed 34 (variance), and D5 at 180 with
   2^7 1^4 (seed 33).
+- 20:24-20:27Z (coordinator redirect: symbo on r3a's D5 sigma 2^7 1^3 group, n = 170): r3a's far-60 graph
+  (r3a/best/n170_D5_7_7_far60.edges) is G-invariant under my group file (order 10). symbo from it: PV 0.8 seed 51 -> 60;
+  PV 0.5 seed 52 -> 60 (no change). Fresh SAT starts seeds 53..60 (PV 0.8, 90 s each) are running (out/b19).
+- Fresh SAT starts on the D5 2^7 1^3 group (symbo, PV 0.8, 90 s): seed 53 -> 90, 54 -> 120, 55 -> 110, 56 -> 60
+  (out/b19/fs56/best_best.edges, score37 far 60; a different graph from r3a's far-60 file by md5 of the sorted edge list).
+  So the 60 floor is reached from fresh starts by the breakout engine too (1 in 4 seeds so far).
+- Batch19 summary (fresh SAT starts 53..60, same group and settings): far 90, 120, 110, 60, 90, 90, 110, 90. Only seed 56 reached
+  60; no run went below 60. So on this group the breakout engine reaches the 60 floor about once in eight fresh starts, and
+  it does not descend below it from the far-60 states (PV 0.8 / 0.5 from 60: no change).

@@ -72,3 +72,11 @@ Start: 2026-10-31T19:45Z (date -u). Stop by 21:15Z, final notes then.
   So from random starts the breakout repair finds the same cost-40 floor (far 80) as the plain SA of r2c.
 - Random Z5 start at m = 80 (k = 16), breakout K = 100, 60 s: cost 5 (not zero). The m = 80 zero covers are rare for
   every method here; the m = 85 floor (40) is reached more easily than m = 80 zero.
+- Breakout random m = 85 runs (95-90 s each, K = 30 or 50): seeds 22, 23, 24, 25 -> cost 40 each (seed 21, K = 300:
+  60). Distance-profile invariant (inv.py: per-vertex distance histograms, hashed): the cost-40 covers form several
+  classes: seeds 7 and 25 share one, 23 and 24 another, 22 (= best170_z5_breakout_far80) and 8 and the r2c floor are
+  each different. So the cost-40 floor is reached by several inequivalent Z5 bases, all far 80.
+- 20:31-20:36Z: seed 31 breakout K = 30: 45; seed 32 K = 30: 40; seed 33 with K = 40 (95 s): COST 35, far 70
+  (score37 verified: n 170, far 70, diam 8; saved r3g/best170_z5_breakout_far70.edges, items alongside). The first
+  Z5 polarity cover below the cost-40 floor in this job. Still above the board (46). Logged to scoreboard (far 70).
+- Insertion candidate (seed 31) with breakout K = 30, 85 s: 45 (no change).

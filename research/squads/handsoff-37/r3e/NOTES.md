@@ -31,3 +31,28 @@ smaller but useless here (see below).
 - Start r3c n170_C5_far65 (far 65): best 65, walk drifts to 200 in 90 s (same drift).
 - Calibration n = 168: C168.1 + 20 random 2-switches (far 871), FULL breakout 90 s (321 steps): best far 123 (no far 0).
   For comparison c1 plain tabu from C168.1 stalls at 123-163. So breakout is not clearly stronger in this budget.
+
+## 19:56-20:31 more runs (all n = 170 unless said; far values are score37 far)
+
+- Far-46 start, chained full breakout (fb46, WCAP 16, TEN 4), 9 segments of 95 s (about 2,600 steps in total, weights saved
+  and restored): best 46 again and again; the walk stays between 46 and 62. No far < 46.
+- TEN = 10 (tabu tenure): walk drifts to 178-216 (too long a tabu forces the walk away). Keep TEN = 4.
+- WCAP 4 / 16 / 200: walk 46-69 in every case; no change in the far-46 basin.
+- PAWS-style decay (every 20 bumps weights drop by 1): calibration n = 168 from C168.1 + 20 switches: best 133 (vs 116-123
+  without decay). Not used.
+- Sampled candidates (3000 random 2-switches per step, 31 steps/s): walk drifts to 187-234 (missed improving moves look like
+  local minima, so bumps happen far too often). Full neighbourhood is needed.
+- Far-46 start with 10 random 2-switches first (new basin): best 138 in 90 s. The far-46 basin is a strong attractor.
+- Escape test from C168.1 (far 0): with 2, 4 or 6 random 2-switches the search returns to far 0 in 2-10 steps (trivially, by
+  undoing the switches). With 10 switches it stalls at far 125 (45 s, 147 steps). With 20 switches: 116-127 (90 s and chained
+  segments). So the 2-switch basin of C168.1 is narrow, and breakout does not climb back from 10+ switches.
+- All far pairs of the far-46 graph are SAME-SIDE pairs at distance exactly 8 (46 pairs, 76 vertices involved, at most 2 per
+  vertex). The far-70 graph (c2): 70 same-side pairs at distance 8, 90 vertices, at most 5 per vertex. No cross-side far pairs.
+- Start c2/best170 (far 70) with pair weights and BASEW = 4 (pair cost 4 + W - 1 instead of W, so breakout weights matter
+  less): best 61 after 4 s (logged: r3e/best/n170_c2brk_far61.edges). Then the walk drifts to 164-175.
+- Reset-to-best (RESET = 15, reload the best graph when real far > best + 15, weights kept) from the far-61 graph: best 59
+  (logged: r3e/best/n170_c2r_far59.edges, far 59, diam 8, score37 checked). Later segments from the far-59 graph: best 59
+  (c2s runs: 59-65). No further improvement.
+- Breakout from the r3c C5 far-65 graph (90 s): best 65, walk drifts to 200. Vertex weights (VW=1) from far 46: 46-53.
+
+## Summary (stop 21:15 UTC, see final section)
