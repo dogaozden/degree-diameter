@@ -1,0 +1,37 @@
+GROUP prod (5:8 r 2) x (7:21 r 2) x C1 n 5880 K 13
+FAMILY candidates 96 automorphisms 96 coset_reps 8 outer_gens 0 centre 14
+RECORDS 24 (0.0 s)
+REC 0 ALPHA order(g) 1 central | F1 x->(8) y->(1)  F2 x->(21) y->(1)  z->0; c0 0; t' = (0,0,0) t0, t'^2 = (0,0,0)
+REC 1 ALPHA order(g) 2 central | F1 x->(8) y->(1)  F2 x->(21) y->(1)  z->0; c0 0; t' = (4,0,0) t0, t'^2 = (0,0,0)
+REC 2 ALPHA order(g) 4 | F1 x->(8) y->(1)  F2 x->(21) y->(1)  z->0; c0 588; t' = (2,0,0) t0, t'^2 = (0,0,0)
+REC 3 ALPHA order(g) 4 | F1 x->(8) y->(1)  F2 x->(21) y->(1)  z->0; c0 588; t' = (6,0,0) t0, t'^2 = (0,0,0)
+REC 4 ALPHA order(g) 1 | F1 x->(8) y->(1)  F2 x->(21) y->(13)  z->0; c0 0; t' = (0,0,0) t0, t'^2 = (0,0,0)
+REC 5 ALPHA order(g) 2 | F1 x->(8) y->(1)  F2 x->(21) y->(13)  z->0; c0 0; t' = (4,0,0) t0, t'^2 = (0,0,0)
+REC 6 ALPHA order(g) 4 | F1 x->(8) y->(1)  F2 x->(21) y->(13)  z->0; c0 588; t' = (2,0,0) t0, t'^2 = (0,0,0)
+REC 7 ALPHA order(g) 4 | F1 x->(8) y->(1)  F2 x->(21) y->(13)  z->0; c0 588; t' = (6,0,0) t0, t'^2 = (0,0,0)
+REC 8 ALPHA order(g) 21 | F1 x->(8) y->(1)  F2 x->(63) y->(1)  z->0; c0 1; t' = (0,10,0) t0, t'^2 = (0,0,0)
+REC 9 ALPHA order(g) 42 | F1 x->(8) y->(1)  F2 x->(63) y->(1)  z->0; c0 1; t' = (4,10,0) t0, t'^2 = (0,0,0)
+REC 10 ALPHA order(g) 84 | F1 x->(8) y->(1)  F2 x->(63) y->(1)  z->0; c0 589; t' = (2,10,0) t0, t'^2 = (0,0,0)
+REC 11 ALPHA order(g) 84 | F1 x->(8) y->(1)  F2 x->(63) y->(1)  z->0; c0 589; t' = (6,10,0) t0, t'^2 = (0,0,0)
+REC 12 ALPHA order(g) 21 | F1 x->(8) y->(1)  F2 x->(63) y->(13)  z->0; c0 7; t' = (0,1,0) t0, t'^2 = (0,0,0)
+REC 13 ALPHA order(g) 42 | F1 x->(8) y->(1)  F2 x->(63) y->(13)  z->0; c0 7; t' = (4,1,0) t0, t'^2 = (0,0,0)
+REC 14 ALPHA order(g) 84 | F1 x->(8) y->(1)  F2 x->(63) y->(13)  z->0; c0 595; t' = (2,1,0) t0, t'^2 = (0,0,0)
+REC 15 ALPHA order(g) 84 | F1 x->(8) y->(1)  F2 x->(63) y->(13)  z->0; c0 595; t' = (6,1,0) t0, t'^2 = (0,0,0)
+REC 16 ALPHA order(g) 1 | F1 x->(8) y->(5)  F2 x->(21) y->(1)  z->0; c0 0; t' = (0,0,0) t0, t'^2 = (0,0,0)
+REC 17 ALPHA order(g) 4 | F1 x->(8) y->(5)  F2 x->(21) y->(1)  z->0; c0 588; t' = (2,0,0) t0, t'^2 = (0,0,0)
+REC 18 ALPHA order(g) 1 | F1 x->(8) y->(5)  F2 x->(21) y->(13)  z->0; c0 0; t' = (0,0,0) t0, t'^2 = (0,0,0)
+REC 19 ALPHA order(g) 4 | F1 x->(8) y->(5)  F2 x->(21) y->(13)  z->0; c0 588; t' = (2,0,0) t0, t'^2 = (0,0,0)
+REC 20 ALPHA order(g) 21 | F1 x->(8) y->(5)  F2 x->(63) y->(1)  z->0; c0 1; t' = (0,10,0) t0, t'^2 = (0,0,0)
+REC 21 ALPHA order(g) 84 | F1 x->(8) y->(5)  F2 x->(63) y->(1)  z->0; c0 589; t' = (2,10,0) t0, t'^2 = (0,0,0)
+REC 22 ALPHA order(g) 21 | F1 x->(8) y->(5)  F2 x->(63) y->(13)  z->0; c0 7; t' = (0,1,0) t0, t'^2 = (0,0,0)
+REC 23 ALPHA order(g) 84 | F1 x->(8) y->(5)  F2 x->(63) y->(13)  z->0; c0 595; t' = (2,1,0) t0, t'^2 = (0,0,0)
+TABU rec 0 alpha f 1 m 6 best 153 sols 0 steps 7486 restarts 2 secs 20.0
+TABU rec 1 alpha f 1 m 6 best 163 sols 0 steps 7316 restarts 1 secs 20.0
+TABU rec 2 alpha f 1 m 6 best 55 sols 0 steps 7970 restarts 1 secs 20.0
+TABU rec 2 alpha f 3 m 5 best 154 sols 0 steps 8119 restarts 2 secs 20.0
+TABU rec 3 alpha f 1 m 6 best 59 sols 0 steps 7928 restarts 2 secs 20.0
+TABU rec 3 alpha f 3 m 5 best 148 sols 0 steps 7877 restarts 1 secs 20.0
+TABU rec 4 alpha f 1 m 6 best 44 sols 0 steps 8445 restarts 3 secs 20.0
+TABU rec 4 alpha f 3 m 5 best 110 sols 0 steps 8494 restarts 2 secs 20.0
+BUDGET reached
+DONE sols 0

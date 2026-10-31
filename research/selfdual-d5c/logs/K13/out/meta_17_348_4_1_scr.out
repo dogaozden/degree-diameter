@@ -1,0 +1,28 @@
+GROUP meta m 17 k 348 r 4 n3 1 n 5916 K 13
+FAMILY candidates 32 automorphisms 32 coset_reps 8 outer_gens 2 centre 87
+RECORDS 8 (0.0 s)
+REC 0 ALPHA order(g) 1 central | x->x^1 y->x^0 y^1 z^0 z->z^0; c0 0; t' = (0,0) t0, t'^2 = (0,0)
+REC 1 ALPHA order(g) 2 | x->x^1 y->x^0 y^1 z^0 z->z^0; c0 0; t' = (0,174) t0, t'^2 = (0,0)
+REC 2 ALPHA order(g) 1 | x->x^1 y->x^0 y^173 z^0 z->z^0; c0 0; t' = (0,0) t0, t'^2 = (0,0)
+REC 3 ALPHA order(g) 174 | x->x^1 y->x^0 y^173 z^0 z->z^0; c0 0; t' = (0,2) t0, t'^2 = (0,0)
+REC 4 ALPHA order(g) 1 | x->x^1 y->x^0 y^233 z^0 z->z^0; c0 0; t' = (0,0) t0, t'^2 = (0,0)
+REC 5 ALPHA order(g) 6 | x->x^1 y->x^0 y^233 z^0 z->z^0; c0 0; t' = (0,58) t0, t'^2 = (0,0)
+REC 6 ALPHA order(g) 1 | x->x^1 y->x^0 y^289 z^0 z->z^0; c0 0; t' = (0,0) t0, t'^2 = (0,0)
+REC 7 ALPHA order(g) 58 | x->x^1 y->x^0 y^289 z^0 z->z^0; c0 0; t' = (0,6) t0, t'^2 = (0,0)
+TABU rec 0 alpha f 1 m 6 best 311 sols 0 steps 2747 restarts 0 secs 8.0
+TABU rec 0 alpha f 3 m 5 best 434 sols 0 steps 3247 restarts 1 secs 8.0
+TABU rec 1 alpha f 1 m 6 best 134 sols 0 steps 2858 restarts 0 secs 8.0
+TABU rec 1 alpha f 3 m 5 best 462 sols 0 steps 3331 restarts 1 secs 8.0
+TABU rec 2 alpha f 1 m 6 best 360 sols 0 steps 2665 restarts 1 secs 8.0
+TABU rec 2 alpha f 3 m 5 best 220 sols 0 steps 2998 restarts 1 secs 8.0
+TABU rec 3 alpha f 1 m 6 best 340 sols 0 steps 2574 restarts 0 secs 8.0
+TABU rec 3 alpha f 3 m 5 best 192 sols 0 steps 3238 restarts 0 secs 8.0
+TABU rec 4 alpha f 1 m 6 best 114 sols 0 steps 2853 restarts 0 secs 8.0
+TABU rec 4 alpha f 3 m 5 best 82 sols 0 steps 3349 restarts 1 secs 8.0
+TABU rec 5 alpha f 1 m 6 best 59 sols 0 steps 2849 restarts 0 secs 8.0
+TABU rec 5 alpha f 3 m 5 best 74 sols 0 steps 3182 restarts 0 secs 8.0
+TABU rec 6 alpha f 1 m 6 best 105 sols 0 steps 2810 restarts 1 secs 8.0
+TABU rec 6 alpha f 3 m 5 best 70 sols 0 steps 3325 restarts 0 secs 8.0
+TABU rec 7 alpha f 1 m 6 best 88 sols 0 steps 2737 restarts 0 secs 8.0
+TABU rec 7 alpha f 3 m 5 best 62 sols 0 steps 3491 restarts 1 secs 8.0
+DONE sols 0

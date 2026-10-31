@@ -1,0 +1,28 @@
+GROUP meta m 55 k 108 r 32 n3 1 n 5940 K 13
+FAMILY candidates 16 automorphisms 16 coset_reps 4 outer_gens 2 centre 27
+RECORDS 8 (0.0 s)
+REC 0 ALPHA order(g) 1 central | x->x^1 y->x^0 y^1 z^0 z->z^0; c0 0; t' = (0,0) t0, t'^2 = (0,0)
+REC 1 ALPHA order(g) 2 | x->x^1 y->x^0 y^1 z^0 z->z^0; c0 0; t' = (0,54) t0, t'^2 = (0,0)
+REC 2 ALPHA order(g) 1 | x->x^1 y->x^0 y^53 z^0 z->z^0; c0 0; t' = (0,0) t0, t'^2 = (0,0)
+REC 3 ALPHA order(g) 54 | x->x^1 y->x^0 y^53 z^0 z->z^0; c0 0; t' = (0,2) t0, t'^2 = (0,0)
+REC 4 ALPHA order(g) 108 | x->x^12 y->x^0 y^1 z^0 z->z^0; c0 2; t' = (0,107) t0, t'^2 = (0,0)
+REC 5 ALPHA order(g) 108 | x->x^12 y->x^0 y^1 z^0 z->z^0; c0 2; t' = (0,53) t0, t'^2 = (0,0)
+REC 6 ALPHA order(g) 36 | x->x^12 y->x^0 y^53 z^0 z->z^0; c0 54; t' = (0,3) t0, t'^2 = (0,0)
+REC 7 ALPHA order(g) 108 | x->x^12 y->x^0 y^53 z^0 z->z^0; c0 54; t' = (0,1) t0, t'^2 = (0,0)
+TABU rec 0 alpha f 1 m 6 best 283 sols 0 steps 2661 restarts 0 secs 8.0
+TABU rec 0 alpha f 3 m 5 best 576 sols 0 steps 3039 restarts 0 secs 8.0
+TABU rec 1 alpha f 1 m 6 best 139 sols 0 steps 2809 restarts 0 secs 8.0
+TABU rec 1 alpha f 3 m 5 best 548 sols 0 steps 3281 restarts 0 secs 8.0
+TABU rec 2 alpha f 1 m 6 best 132 sols 0 steps 3042 restarts 1 secs 8.0
+TABU rec 2 alpha f 3 m 5 best 92 sols 0 steps 3216 restarts 1 secs 8.0
+TABU rec 3 alpha f 1 m 6 best 124 sols 0 steps 2887 restarts 0 secs 8.0
+TABU rec 3 alpha f 3 m 5 best 98 sols 0 steps 3239 restarts 0 secs 8.0
+TABU rec 4 alpha f 1 m 6 best 98 sols 0 steps 3026 restarts 1 secs 8.0
+TABU rec 4 alpha f 3 m 5 best 69 sols 0 steps 3190 restarts 0 secs 8.0
+TABU rec 5 alpha f 1 m 6 best 86 sols 0 steps 2844 restarts 0 secs 8.0
+TABU rec 5 alpha f 3 m 5 best 83 sols 0 steps 3280 restarts 0 secs 8.0
+TABU rec 6 alpha f 1 m 6 best 256 sols 0 steps 2653 restarts 0 secs 8.0
+TABU rec 6 alpha f 3 m 5 best 170 sols 0 steps 2960 restarts 0 secs 8.0
+TABU rec 7 alpha f 1 m 6 best 260 sols 0 steps 2290 restarts 0 secs 8.0
+TABU rec 7 alpha f 3 m 5 best 143 sols 0 steps 2841 restarts 1 secs 8.0
+DONE sols 0

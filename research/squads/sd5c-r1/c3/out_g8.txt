@@ -1,0 +1,38 @@
+GROUP meta m 92 k 66 r 3 n3 1 n 6072 K 13
+FAMILY candidates 176 automorphisms 176 coset_reps 8 outer_gens 2 centre 6
+RECORDS 24 (0.1 s)
+REC 0 ALPHA order(g) 1 central | x->x^1 y->x^0 y^1 z^0 z->z^0; c0 0; t' = (0,0) t0, t'^2 = (0,0)
+REC 1 ALPHA order(g) 2 central | x->x^1 y->x^0 y^1 z^0 z->z^0; c0 0; t' = (46,0) t0, t'^2 = (0,0)
+REC 2 ALPHA order(g) 2 | x->x^1 y->x^0 y^1 z^0 z->z^0; c0 0; t' = (0,33) t0, t'^2 = (0,0)
+REC 3 ALPHA order(g) 2 | x->x^1 y->x^0 y^1 z^0 z->z^0; c0 0; t' = (23,33) t0, t'^2 = (0,0)
+REC 4 ALPHA order(g) 4 | x->x^1 y->x^0 y^1 z^0 z->z^0; c0 3036; t' = (23,0) t0, t'^2 = (0,0)
+REC 5 ALPHA order(g) 46 | x->x^1 y->x^1 y^1 z^0 z->z^0; c0 2970; t' = (12,33) t0, t'^2 = (0,0)
+REC 6 ALPHA order(g) 1 | x->x^1 y->x^0 y^23 z^0 z->z^0; c0 0; t' = (0,0) t0, t'^2 = (0,0)
+REC 7 ALPHA order(g) 6 | x->x^1 y->x^0 y^23 z^0 z->z^0; c0 0; t' = (23,11) t0, t'^2 = (0,0)
+REC 8 ALPHA order(g) 2 | x->x^1 y->x^0 y^23 z^0 z->z^0; c0 0; t' = (46,0) t0, t'^2 = (0,0)
+REC 9 ALPHA order(g) 6 | x->x^1 y->x^0 y^23 z^0 z->z^0; c0 0; t' = (0,11) t0, t'^2 = (0,0)
+REC 10 ALPHA order(g) 4 | x->x^1 y->x^0 y^23 z^0 z->z^0; c0 3036; t' = (23,0) t0, t'^2 = (0,0)
+REC 11 ALPHA order(g) 138 | x->x^1 y->x^1 y^23 z^0 z->z^0; c0 2970; t' = (12,11) t0, t'^2 = (0,0)
+REC 12 ALPHA order(g) 22 | x->x^5 y->x^0 y^1 z^0 z->z^0; c0 18; t' = (0,57) t0, t'^2 = (0,0)
+REC 13 ALPHA order(g) 22 | x->x^5 y->x^0 y^1 z^0 z->z^0; c0 18; t' = (1,57) t0, t'^2 = (0,0)
+REC 14 ALPHA order(g) 22 | x->x^5 y->x^0 y^1 z^0 z->z^0; c0 18; t' = (2,24) t0, t'^2 = (0,0)
+REC 15 ALPHA order(g) 11 | x->x^5 y->x^0 y^1 z^0 z->z^0; c0 18; t' = (0,24) t0, t'^2 = (0,0)
+REC 16 ALPHA order(g) 44 | x->x^5 y->x^0 y^1 z^0 z->z^0; c0 3054; t' = (1,24) t0, t'^2 = (0,0)
+REC 17 ALPHA order(g) 22 | x->x^5 y->x^1 y^1 z^0 z->z^0; c0 5892; t' = (0,57) t0, t'^2 = (0,0)
+REC 18 ALPHA order(g) 66 | x->x^5 y->x^0 y^23 z^0 z->z^0; c0 18; t' = (2,2) t0, t'^2 = (0,0)
+REC 19 ALPHA order(g) 66 | x->x^5 y->x^0 y^23 z^0 z->z^0; c0 18; t' = (0,13) t0, t'^2 = (0,0)
+REC 20 ALPHA order(g) 66 | x->x^5 y->x^0 y^23 z^0 z->z^0; c0 18; t' = (1,13) t0, t'^2 = (0,0)
+REC 21 ALPHA order(g) 33 | x->x^5 y->x^0 y^23 z^0 z->z^0; c0 18; t' = (0,2) t0, t'^2 = (0,0)
+REC 22 ALPHA order(g) 132 | x->x^5 y->x^0 y^23 z^0 z->z^0; c0 3054; t' = (1,2) t0, t'^2 = (0,0)
+REC 23 ALPHA order(g) 66 | x->x^5 y->x^1 y^23 z^0 z->z^0; c0 5892; t' = (0,13) t0, t'^2 = (0,0)
+TABU rec 0 alpha f 1 m 6 best 163 sols 0 steps 2990 restarts 0 secs 8.0
+TABU rec 0 alpha f 3 m 5 best 462 sols 0 steps 3236 restarts 0 secs 8.0
+TABU rec 12 alpha f 1 m 6 best 47 sols 0 steps 3306 restarts 0 secs 8.0
+TABU rec 12 alpha f 3 m 5 best 45 sols 0 steps 3435 restarts 1 secs 8.0
+TABU rec 19 alpha f 1 m 6 best 54 sols 0 steps 3364 restarts 0 secs 8.0
+TABU rec 19 alpha f 3 m 5 best 51 sols 0 steps 3608 restarts 1 secs 8.0
+TABU rec 1 alpha f 1 m 6 best 157 sols 0 steps 3031 restarts 0 secs 8.0
+TABU rec 1 alpha f 3 m 5 best 444 sols 0 steps 3306 restarts 1 secs 8.0
+BUDGET reached
+DONE sols 0
+exit 0

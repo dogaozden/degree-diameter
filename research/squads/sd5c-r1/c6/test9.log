@@ -1,0 +1,14 @@
+GROUP heis p 3 m 11 k 5 r 3 n 1485 K 9
+FAMILY candidates 140 automorphisms 140 coset_reps 28 outer_gens 4 centre 3
+RECORDS 6 (0.1 s)
+REC 0 ALPHA order(g) 1 central | M=[[1,0],[0,1]] x->x^1 y->x^0 y^1; c0 0; t' = (0.0.0,0,0) t0, t'^2 = (0.0.0,0,0)
+REC 1 ALPHA order(g) 5 | M=[[1,0],[0,1]] x->x^2 y->x^0 y^1; c0 4; t' = (0.0.0,0,3) t0, t'^2 = (0.0.0,0,0)
+REC 2 ALPHA order(g) 3 | M=[[1,0],[1,2]] x->x^1 y->x^0 y^1; c0 990; t' = (0.1.0,0,0) t0, t'^2 = (0.0.0,0,0)
+REC 3 ALPHA order(g) 15 | M=[[1,0],[1,2]] x->x^2 y->x^0 y^1; c0 994; t' = (0.1.0,0,3) t0, t'^2 = (0.0.0,0,0)
+REC 4 ALPHA order(g) 1 | M=[[2,0],[0,2]] x->x^1 y->x^0 y^1; c0 0; t' = (0.0.0,0,0) t0, t'^2 = (0.0.0,0,0)
+REC 5 ALPHA order(g) 5 | M=[[2,0],[0,2]] x->x^2 y->x^0 y^1; c0 4; t' = (0.0.0,0,3) t0, t'^2 = (0.0.0,0,0)
+TABU rec 0 alpha f 1 m 4 best 54 sols 0 steps 16255 restarts 6 secs 20.0
+TABU rec 1 alpha f 1 m 4 best 4 sols 0 steps 15254 restarts 5 secs 20.0
+TABU rec 1 alpha f 3 m 3 best 100 sols 0 steps 22579 restarts 10 secs 20.0
+TABU rec 2 alpha f 1 m 4 best 4 sols 0 steps 15043 restarts 4 secs 20.0
+TABU rec 2 alpha f 3 m 3 best 104 sols 0 steps 22353 restarts 6 secs 20.0

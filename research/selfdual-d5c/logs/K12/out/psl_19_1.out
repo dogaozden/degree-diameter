@@ -1,0 +1,54 @@
+GROUP psl p 19 n3 1 n 3420 K 12
+FAMILY candidates 2 automorphisms 2 coset_reps 2 outer_gens 0 centre 1
+RECORDS 22 (0.0 s)
+REC 0 ALPHA order(g) 1 | h->D h D^-1, D = diag(1,1); z->z^0; c0 0; t' = (1.0.0.1) t0, t'^2 = (1.0.0.1)
+REC 1 EXT order(g) 19 | h->D h D^-1, D = diag(1,1); z->z^0; c0 0; t' = (0.1.18.17) t0, t'^2 = (1.2.17.16)
+REC 2 EXT order(g) 19 | h->D h D^-1, D = diag(1,1); z->z^0; c0 0; t' = (0.1.18.2) t0, t'^2 = (1.17.2.16)
+REC 3 EXT order(g) 9 | h->D h D^-1, D = diag(1,1); z->z^0; c0 0; t' = (0.1.18.7) t0, t'^2 = (1.12.7.9)
+REC 4 EXT order(g) 5 | h->D h D^-1, D = diag(1,1); z->z^0; c0 0; t' = (0.1.18.5) t0, t'^2 = (1.14.5.14)
+REC 5 EXT order(g) 10 | h->D h D^-1, D = diag(1,1); z->z^0; c0 0; t' = (0.1.18.8) t0, t'^2 = (1.11.8.13)
+REC 6 EXT order(g) 5 | h->D h D^-1, D = diag(1,1); z->z^0; c0 0; t' = (0.1.18.4) t0, t'^2 = (1.15.4.4)
+REC 7 EXT order(g) 9 | h->D h D^-1, D = diag(1,1); z->z^0; c0 0; t' = (0.1.18.3) t0, t'^2 = (1.16.3.11)
+REC 8 ALPHA order(g) 2 | h->D h D^-1, D = diag(1,1); z->z^0; c0 0; t' = (0.1.18.0) t0, t'^2 = (1.0.0.1)
+REC 9 EXT order(g) 9 | h->D h D^-1, D = diag(1,1); z->z^0; c0 0; t' = (0.1.18.9) t0, t'^2 = (1.10.9.15)
+REC 10 EXT order(g) 10 | h->D h D^-1, D = diag(1,1); z->z^0; c0 0; t' = (0.1.18.6) t0, t'^2 = (1.13.6.3)
+REC 11 EXT order(g) 3 | h->D h D^-1, D = diag(1,1); z->z^0; c0 0; t' = (0.1.18.1) t0, t'^2 = (1.18.1.0)
+REC 12 EXT order(g) 5 | h->D h D^-1, D = diag(1,2); z->z^0; c0 3059; t' = (0.1.18.5) t0, t'^2 = (1.9.5.8)
+REC 13 EXT order(g) 5 | h->D h D^-1, D = diag(1,2); z->z^0; c0 3059; t' = (0.1.18.4) t0, t'^2 = (1.11.4.7)
+REC 14 EXT order(g) 10 | h->D h D^-1, D = diag(1,2); z->z^0; c0 3059; t' = (0.1.18.6) t0, t'^2 = (1.7.6.5)
+REC 15 EXT order(g) 9 | h->D h D^-1, D = diag(1,2); z->z^0; c0 3059; t' = (0.1.18.3) t0, t'^2 = (1.13.3.2)
+REC 16 EXT order(g) 9 | h->D h D^-1, D = diag(1,2); z->z^0; c0 3059; t' = (0.1.18.7) t0, t'^2 = (1.5.7.17)
+REC 17 EXT order(g) 19 | h->D h D^-1, D = diag(1,2); z->z^0; c0 3059; t' = (0.1.18.2) t0, t'^2 = (1.15.2.12)
+REC 18 EXT order(g) 1 | h->D h D^-1, D = diag(1,2); z->z^0; c0 3059; t' = (1.0.0.1) t0, t'^2 = (9.0.0.17)
+REC 19 EXT order(g) 3 | h->D h D^-1, D = diag(1,2); z->z^0; c0 3059; t' = (0.1.18.1) t0, t'^2 = (1.17.1.18)
+REC 20 EXT order(g) 9 | h->D h D^-1, D = diag(1,2); z->z^0; c0 3059; t' = (0.1.18.9) t0, t'^2 = (1.1.9.10)
+REC 21 ALPHA order(g) 2 | h->D h D^-1, D = diag(1,2); z->z^0; c0 3059; t' = (0.1.18.0) t0, t'^2 = (1.0.0.1)
+TABU rec 0 alpha f 2 m 5 best 31 sols 0 steps 3535 restarts 0 secs 10.0
+TABU rec 0 alpha f 4 m 4 best 27 sols 0 steps 4145 restarts 1 secs 10.0
+TABU rec 0 alpha f 6 m 3 best 25 sols 0 steps 4192 restarts 1 secs 10.0
+TABU rec 0 alpha f 8 m 2 best 23 sols 0 steps 4653 restarts 2 secs 10.0
+TABU rec 0 alpha f 10 m 1 best 29 sols 0 steps 5190 restarts 1 secs 10.0
+TABU rec 0 alpha f 12 m 0 best 33 sols 0 steps 5458 restarts 1 secs 10.0
+TABU rec 1 ext f 0 m 6 best 5 sols 0 steps 3338 restarts 0 secs 10.0
+TABU rec 2 ext f 0 m 6 best 7 sols 0 steps 3552 restarts 1 secs 10.0
+TABU rec 3 ext f 0 m 6 best 7 sols 0 steps 3577 restarts 0 secs 10.0
+TABU rec 4 ext f 0 m 6 best 6 sols 0 steps 3581 restarts 0 secs 10.0
+TABU rec 5 ext f 0 m 6 best 6 sols 0 steps 3675 restarts 1 secs 10.0
+TABU rec 6 ext f 0 m 6 best 6 sols 0 steps 3313 restarts 0 secs 10.0
+TABU rec 7 ext f 0 m 6 best 8 sols 0 steps 3260 restarts 0 secs 10.0
+TABU rec 8 alpha f 2 m 5 best 5 sols 0 steps 3588 restarts 1 secs 10.0
+TABU rec 8 alpha f 4 m 4 best 2 sols 0 steps 4109 restarts 1 secs 10.0
+TABU rec 8 alpha f 6 m 3 best 6 sols 0 steps 4554 restarts 2 secs 10.0
+TABU rec 8 alpha f 8 m 2 best 3 sols 0 steps 4435 restarts 1 secs 10.0
+TABU rec 8 alpha f 10 m 1 best 7 sols 0 steps 4310 restarts 1 secs 10.0
+TABU rec 8 alpha f 12 m 0 best 12 sols 0 steps 4259 restarts 0 secs 10.0
+TABU rec 9 ext f 0 m 6 best 5 sols 0 steps 3386 restarts 1 secs 10.0
+TABU rec 10 ext f 0 m 6 best 8 sols 0 steps 3341 restarts 1 secs 10.0
+TABU rec 11 ext f 0 m 6 best 7 sols 0 steps 3135 restarts 0 secs 10.0
+TABU rec 12 ext f 0 m 6 best 1 sols 0 steps 3043 restarts 0 secs 10.0
+TABU rec 13 ext f 0 m 6 best 8 sols 0 steps 3380 restarts 0 secs 10.0
+TABU rec 14 ext f 0 m 6 best 7 sols 0 steps 3020 restarts 0 secs 10.0
+TABU rec 15 ext f 0 m 6 best 7 sols 0 steps 3235 restarts 0 secs 10.0
+TABU rec 16 ext f 0 m 6 best 5 sols 0 steps 3340 restarts 1 secs 10.0
+TABU rec 17 ext f 0 m 6 best 6 sols 0 steps 3262 restarts 0 secs 10.0
+TABU rec 18 ext f 0 m 6 best 7 sols 0 steps 3223 restarts 0 secs 10.0

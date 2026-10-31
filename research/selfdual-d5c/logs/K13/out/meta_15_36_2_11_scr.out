@@ -1,0 +1,51 @@
+GROUP meta m 15 k 36 r 2 n3 11 n 5940 K 13
+FAMILY candidates 32 automorphisms 32 coset_reps 8 outer_gens 11 centre 99
+RECORDS 16 (0.0 s)
+REC 0 ALPHA order(g) 1 central | x->x^1 y->x^0 y^1 z^0 z->z^1; c0 0; t' = (0,0,0) t0, t'^2 = (0,0,0)
+REC 1 ALPHA order(g) 2 | x->x^1 y->x^0 y^1 z^0 z->z^1; c0 0; t' = (0,18,0) t0, t'^2 = (0,0,0)
+REC 2 ALPHA order(g) 1 | x->x^1 y->x^0 y^1 z^0 z->z^10; c0 0; t' = (0,0,0) t0, t'^2 = (0,0,0)
+REC 3 ALPHA order(g) 2 | x->x^1 y->x^0 y^1 z^0 z->z^10; c0 0; t' = (0,18,0) t0, t'^2 = (0,0,0)
+REC 4 ALPHA order(g) 1 | x->x^1 y->x^0 y^17 z^0 z->z^1; c0 0; t' = (0,0,0) t0, t'^2 = (0,0,0)
+REC 5 ALPHA order(g) 18 | x->x^1 y->x^0 y^17 z^0 z->z^1; c0 0; t' = (0,2,0) t0, t'^2 = (0,0,0)
+REC 6 ALPHA order(g) 1 | x->x^1 y->x^0 y^17 z^0 z->z^10; c0 0; t' = (0,0,0) t0, t'^2 = (0,0,0)
+REC 7 ALPHA order(g) 18 | x->x^1 y->x^0 y^17 z^0 z->z^10; c0 0; t' = (0,2,0) t0, t'^2 = (0,0,0)
+REC 8 ALPHA order(g) 36 | x->x^7 y->x^0 y^1 z^0 z->z^1; c0 22; t' = (0,35,0) t0, t'^2 = (0,0,0)
+REC 9 ALPHA order(g) 36 | x->x^7 y->x^0 y^1 z^0 z->z^1; c0 22; t' = (0,17,0) t0, t'^2 = (0,0,0)
+REC 10 ALPHA order(g) 36 | x->x^7 y->x^0 y^1 z^0 z->z^10; c0 22; t' = (0,35,0) t0, t'^2 = (0,0,0)
+REC 11 ALPHA order(g) 36 | x->x^7 y->x^0 y^1 z^0 z->z^10; c0 22; t' = (0,17,0) t0, t'^2 = (0,0,0)
+REC 12 ALPHA order(g) 12 | x->x^7 y->x^0 y^17 z^0 z->z^1; c0 198; t' = (0,3,0) t0, t'^2 = (0,0,0)
+REC 13 ALPHA order(g) 36 | x->x^7 y->x^0 y^17 z^0 z->z^1; c0 198; t' = (0,1,0) t0, t'^2 = (0,0,0)
+REC 14 ALPHA order(g) 12 | x->x^7 y->x^0 y^17 z^0 z->z^10; c0 198; t' = (0,3,0) t0, t'^2 = (0,0,0)
+REC 15 ALPHA order(g) 36 | x->x^7 y->x^0 y^17 z^0 z->z^10; c0 198; t' = (0,1,0) t0, t'^2 = (0,0,0)
+TABU rec 0 alpha f 1 m 6 best 357 sols 0 steps 2821 restarts 0 secs 8.0
+TABU rec 0 alpha f 3 m 5 best 710 sols 0 steps 3479 restarts 1 secs 8.0
+TABU rec 1 alpha f 1 m 6 best 190 sols 0 steps 2807 restarts 0 secs 8.0
+TABU rec 1 alpha f 3 m 5 best 704 sols 0 steps 3300 restarts 1 secs 8.0
+TABU rec 2 alpha f 1 m 6 best 67 sols 0 steps 3055 restarts 1 secs 8.0
+TABU rec 2 alpha f 3 m 5 best 51 sols 0 steps 3516 restarts 0 secs 8.0
+TABU rec 3 alpha f 1 m 6 best 65 sols 0 steps 3374 restarts 1 secs 8.0
+TABU rec 3 alpha f 3 m 5 best 52 sols 0 steps 3615 restarts 1 secs 8.0
+TABU rec 4 alpha f 1 m 6 best 67 sols 0 steps 3057 restarts 0 secs 8.0
+TABU rec 4 alpha f 3 m 5 best 48 sols 0 steps 3517 restarts 1 secs 8.0
+TABU rec 5 alpha f 1 m 6 best 63 sols 0 steps 3261 restarts 0 secs 8.0
+TABU rec 5 alpha f 3 m 5 best 56 sols 0 steps 3585 restarts 1 secs 8.0
+TABU rec 6 alpha f 1 m 6 best 284 sols 0 steps 2752 restarts 1 secs 8.0
+TABU rec 6 alpha f 3 m 5 best 156 sols 0 steps 3298 restarts 1 secs 8.0
+TABU rec 7 alpha f 1 m 6 best 260 sols 0 steps 2918 restarts 0 secs 8.0
+TABU rec 7 alpha f 3 m 5 best 154 sols 0 steps 3421 restarts 0 secs 8.0
+TABU rec 8 alpha f 1 m 6 best 186 sols 0 steps 2638 restarts 0 secs 8.0
+TABU rec 8 alpha f 3 m 5 best 280 sols 0 steps 2995 restarts 1 secs 8.0
+TABU rec 9 alpha f 1 m 6 best 149 sols 0 steps 2711 restarts 0 secs 8.0
+TABU rec 9 alpha f 3 m 5 best 282 sols 0 steps 3051 restarts 0 secs 8.0
+TABU rec 10 alpha f 1 m 6 best 50 sols 0 steps 3330 restarts 1 secs 8.0
+TABU rec 10 alpha f 3 m 5 best 51 sols 0 steps 3472 restarts 1 secs 8.0
+TABU rec 11 alpha f 1 m 6 best 58 sols 0 steps 3123 restarts 1 secs 8.0
+TABU rec 11 alpha f 3 m 5 best 46 sols 0 steps 3779 restarts 0 secs 8.0
+TABU rec 12 alpha f 1 m 6 best 70 sols 0 steps 3245 restarts 0 secs 8.0
+TABU rec 12 alpha f 3 m 5 best 45 sols 0 steps 3726 restarts 0 secs 8.0
+TABU rec 13 alpha f 1 m 6 best 62 sols 0 steps 3338 restarts 1 secs 8.0
+TABU rec 13 alpha f 3 m 5 best 48 sols 0 steps 3761 restarts 0 secs 8.0
+TABU rec 14 alpha f 1 m 6 best 482 sols 0 steps 2735 restarts 0 secs 8.0
+TABU rec 14 alpha f 3 m 5 best 266 sols 0 steps 3125 restarts 1 secs 8.0
+BUDGET reached
+DONE sols 0

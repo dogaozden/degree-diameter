@@ -1,0 +1,28 @@
+GROUP aff p 7 f 2 q 49 k 24 n3 5 n 5880 K 13 poly 3 1 (x^2 + sum poly[i] x^i; omega = x, y acts by omega^2)
+FAMILY candidates 768 automorphisms 192 coset_reps 8 outer_gens 5 centre 5
+RECORDS 8 (0.2 s)
+REC 0 ALPHA order(g) 1 central | x->(1,0) y->y^1 z^0 z->z^1; c0 0; t' = (0,0,0) t0, t'^2 = (0,0,0)
+REC 1 ALPHA order(g) 2 | x->(1,0) y->y^1 z^0 z->z^1; c0 0; t' = (0,12,0) t0, t'^2 = (0,0,0)
+REC 2 ALPHA order(g) 1 | x->(1,0) y->y^1 z^0 z->z^4; c0 0; t' = (0,0,0) t0, t'^2 = (0,0,0)
+REC 3 ALPHA order(g) 2 | x->(1,0) y->y^1 z^0 z->z^4; c0 0; t' = (0,12,0) t0, t'^2 = (0,0,0)
+REC 4 ALPHA order(g) 8 | x->(1,0) y->y^7 z^0 z->z^1; c0 0; t' = (0,3,0) t0, t'^2 = (0,0,0)
+REC 5 ALPHA order(g) 1 | x->(1,0) y->y^7 z^0 z->z^1; c0 0; t' = (0,0,0) t0, t'^2 = (0,0,0)
+REC 6 ALPHA order(g) 1 | x->(1,0) y->y^7 z^0 z->z^4; c0 0; t' = (0,0,0) t0, t'^2 = (0,0,0)
+REC 7 ALPHA order(g) 8 | x->(1,0) y->y^7 z^0 z->z^4; c0 0; t' = (0,3,0) t0, t'^2 = (0,0,0)
+TABU rec 0 alpha f 1 m 6 best 134 sols 0 steps 3109 restarts 0 secs 8.0
+TABU rec 0 alpha f 3 m 5 best 120 sols 0 steps 3464 restarts 0 secs 8.0
+TABU rec 1 alpha f 1 m 6 best 37 sols 0 steps 3353 restarts 0 secs 8.0
+TABU rec 1 alpha f 3 m 5 best 53 sols 0 steps 3339 restarts 1 secs 8.0
+TABU rec 2 alpha f 1 m 6 best 57 sols 0 steps 3185 restarts 0 secs 8.0
+TABU rec 2 alpha f 3 m 5 best 40 sols 0 steps 3251 restarts 0 secs 8.0
+TABU rec 3 alpha f 1 m 6 best 40 sols 0 steps 3290 restarts 1 secs 8.0
+TABU rec 3 alpha f 3 m 5 best 27 sols 0 steps 3679 restarts 0 secs 8.0
+TABU rec 4 alpha f 1 m 6 best 32 sols 0 steps 3274 restarts 1 secs 8.0
+TABU rec 4 alpha f 3 m 5 best 38 sols 0 steps 3788 restarts 1 secs 8.0
+TABU rec 5 alpha f 1 m 6 best 37 sols 0 steps 3424 restarts 1 secs 8.0
+TABU rec 5 alpha f 3 m 5 best 35 sols 0 steps 3883 restarts 1 secs 8.0
+TABU rec 6 alpha f 1 m 6 best 45 sols 0 steps 3273 restarts 1 secs 8.0
+TABU rec 6 alpha f 3 m 5 best 41 sols 0 steps 3464 restarts 0 secs 8.0
+TABU rec 7 alpha f 1 m 6 best 47 sols 0 steps 3188 restarts 0 secs 8.0
+TABU rec 7 alpha f 3 m 5 best 39 sols 0 steps 3386 restarts 0 secs 8.0
+DONE sols 0

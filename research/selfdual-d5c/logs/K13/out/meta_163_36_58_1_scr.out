@@ -1,0 +1,26 @@
+GROUP meta m 163 k 36 r 58 n3 1 n 5868 K 13
+FAMILY candidates 12 automorphisms 12 coset_reps 4 outer_gens 1 centre 12
+RECORDS 8 (0.0 s)
+REC 0 ALPHA order(g) 1 central | x->x^1 y->x^0 y^1 z^0 z->z^0; c0 0; t' = (0,0) t0, t'^2 = (0,0)
+REC 1 ALPHA order(g) 2 central | x->x^1 y->x^0 y^1 z^0 z->z^0; c0 0; t' = (0,18) t0, t'^2 = (0,0)
+REC 2 ALPHA order(g) 1 | x->x^1 y->x^0 y^19 z^0 z->z^0; c0 0; t' = (0,0) t0, t'^2 = (0,0)
+REC 3 ALPHA order(g) 4 | x->x^1 y->x^0 y^19 z^0 z->z^0; c0 0; t' = (0,9) t0, t'^2 = (0,0)
+REC 4 ALPHA order(g) 9 | x->x^59 y->x^0 y^1 z^0 z->z^0; c0 4; t' = (0,16) t0, t'^2 = (0,0)
+REC 5 ALPHA order(g) 18 | x->x^59 y->x^0 y^1 z^0 z->z^0; c0 4; t' = (0,34) t0, t'^2 = (0,0)
+REC 6 ALPHA order(g) 36 | x->x^59 y->x^0 y^19 z^0 z->z^0; c0 4; t' = (0,7) t0, t'^2 = (0,0)
+REC 7 ALPHA order(g) 9 | x->x^59 y->x^0 y^19 z^0 z->z^0; c0 4; t' = (0,16) t0, t'^2 = (0,0)
+TABU rec 0 alpha f 1 m 6 best 357 sols 0 steps 2618 restarts 0 secs 8.0
+TABU rec 1 alpha f 1 m 6 best 349 sols 0 steps 2420 restarts 0 secs 8.0
+TABU rec 2 alpha f 1 m 6 best 132 sols 0 steps 2687 restarts 0 secs 8.0
+TABU rec 2 alpha f 3 m 5 best 636 sols 0 steps 3226 restarts 0 secs 8.0
+TABU rec 3 alpha f 1 m 6 best 140 sols 0 steps 2787 restarts 1 secs 8.0
+TABU rec 3 alpha f 3 m 5 best 682 sols 0 steps 3348 restarts 0 secs 8.0
+TABU rec 4 alpha f 1 m 6 best 73 sols 0 steps 3141 restarts 0 secs 8.0
+TABU rec 4 alpha f 3 m 5 best 45 sols 0 steps 3725 restarts 1 secs 8.0
+TABU rec 5 alpha f 1 m 6 best 73 sols 0 steps 3034 restarts 1 secs 8.0
+TABU rec 5 alpha f 3 m 5 best 47 sols 0 steps 3585 restarts 1 secs 8.0
+TABU rec 6 alpha f 1 m 6 best 106 sols 0 steps 2863 restarts 0 secs 8.0
+TABU rec 6 alpha f 3 m 5 best 65 sols 0 steps 3483 restarts 0 secs 8.0
+TABU rec 7 alpha f 1 m 6 best 113 sols 0 steps 2903 restarts 0 secs 8.0
+TABU rec 7 alpha f 3 m 5 best 67 sols 0 steps 3567 restarts 1 secs 8.0
+DONE sols 0
