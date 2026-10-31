@@ -4,6 +4,10 @@
  * the two energies on N random sets and exits.  NOID=1 skips the beta = identity record in "all" mode.
  * ENDG=t (default 0 = off): at a state with energy <= t (at most once every SCANGAP = 25 steps) scan the whole
  * single-replacement neighbourhood and take its best move if that beats the current energy.
+ * FAST=1 (default): candidates are drawn first (same random sequence) and evaluated grouped by the replaced item: the
+ * coverage of X_keep X_keep (X_keep = S'^-1 S', S' = S without that item) is computed once per item and per step, and
+ * a candidate only multiplies its new X entries (by X_keep and among themselves).  Same energies, same run as FAST=0.
+ * FASTCHECK=1 compares every fast energy with the plain one.
  * Based on sdtabu.c: tabu search inside the self-dual (bipartite Cayley) family of sdk.c, for types too large to enumerate.
  * Same input as sdk (export_sd.g).  For a record r and type (f, m) the set is
  *   ALPHA: S = e + (f-1) psi-fixed elements + m psi-2-orbits;   EXT: S = {e, c^-1} + (m-1) further 2-orbits,
@@ -28,7 +32,7 @@ static int n, ninv, K = 6;
 static uint16_t *mul; static int *inv;
 #define MAXREC 4096
 static int nrec, rkind[MAXREC], rp[MAXREC], rc[MAXREC], *rbeta[MAXREC];
-static uint32_t *stA, *mk; static uint32_t sA = 0, sM = 0;
+static uint32_t *stA, *mk, *bst, *mkK; static uint32_t sA = 0, sM = 0;
 static const char *edges_out; static int nsol = 0;
 #define M(a,b) mul[(size_t)(a) * n + (b)]
 
@@ -50,7 +54,7 @@ static void load(const char *path) {
         nrec++;
     }
     fclose(f);
-    stA = calloc(n, sizeof(uint32_t)); mk = calloc(n, sizeof(uint32_t));
+    stA = calloc(n, sizeof(uint32_t)); mk = calloc(n, sizeof(uint32_t)); bst = calloc(n, sizeof(uint32_t)); mkK = calloc(n, sizeof(uint32_t));
 }
 static int pp_uncov(const int *S, int k, int left) {
     int X[256], nx = 0; sM++;
@@ -122,12 +126,49 @@ static void randomize(void) {
     for (int i = 0; i < nm_; i++) { int x = rand_item(0); it[nit++] = x; }
 }
 
+static uint32_t bS = 0, sK = 0;
+static int XK[256], XKI[256], nxk, covbase, Sk[32], nsk, FAST = 1, FASTCHECK = 0; static long long nfastbad = 0;
+static void base_for(int i) {                     /* coverage of X_keep X_keep, X_keep = S'^-1 S', S' = S minus item i */
+    nsk = 0;
+    if (fixed0 >= 0) { Sk[nsk++] = ol[fixed0][0]; Sk[nsk++] = ol[fixed0][1]; } else Sk[nsk++] = 0;
+    for (int q = 0; q < nit; q++) if (q != i) { int x = it[q];
+        if (x < nfl) Sk[nsk++] = fl[x]; else { Sk[nsk++] = ol[x - nfl][0]; Sk[nsk++] = ol[x - nfl][1]; } }
+    sK++; nxk = 0;
+    for (int a = 0; a < nsk; a++) for (int b = 0; b < nsk; b++) { int x = M(inv[Sk[a]], Sk[b]);
+        if (mkK[x] != sK) { mkK[x] = sK; XK[nxk++] = x; } }
+    for (int t = 0; t < nxk; t++) XKI[t] = inv[XK[t]];
+    bS++; covbase = 1; bst[0] = bS;
+    for (int a = 0; a < nxk; a++) { const uint16_t *row = mul + (size_t)XK[a] * n;
+        for (int t = a + 1; t < nxk; t++) { int z = row[XKI[t]];
+            if (bst[z] != bS) { bst[z] = bS; covbase++; int zi = inv[z]; if (bst[zi] != bS) { bst[zi] = bS; covbase++; } } } }
+}
+static int cand_energy(int x) {                   /* energy of S' + item x (after base_for) */
+    int Nn[2], nn = 0, NX[128], NXI[128], nnx = 0;
+    if (x < nfl) Nn[nn++] = fl[x]; else { Nn[nn++] = ol[x - nfl][0]; Nn[nn++] = ol[x - nfl][1]; }
+    sM++;
+    for (int u = 0; u < nn; u++) { int sv = Nn[u];
+        for (int b = 0; b < nsk + nn; b++) { int bv = b < nsk ? Sk[b] : Nn[b - nsk];
+            int x1 = M(inv[sv], bv), x2 = M(inv[bv], sv);
+            if (mkK[x1] != sK && mk[x1] != sM) { mk[x1] = sM; NX[nnx++] = x1; }
+            if (mkK[x2] != sK && mk[x2] != sM) { mk[x2] = sM; NX[nnx++] = x2; } } }
+    for (int t = 0; t < nnx; t++) NXI[t] = inv[NX[t]];
+    sA++; int cov = covbase;
+    for (int a = 0; a < nnx; a++) { const uint16_t *row = mul + (size_t)NX[a] * n;
+        for (int t = 0; t < nxk; t++) { int z = row[XKI[t]];
+            if (bst[z] != bS && stA[z] != sA) { stA[z] = sA; cov++; int zi = inv[z]; if (bst[zi] != bS && stA[zi] != sA) { stA[zi] = sA; cov++; } } }
+        for (int t = a + 1; t < nnx; t++) { int z = row[NXI[t]];
+            if (bst[z] != bS && stA[z] != sA) { stA[z] = sA; cov++; int zi = inv[z]; if (bst[zi] != bS && stA[zi] != sA) { stA[zi] = sA; cov++; } } } }
+    return n - cov;
+}
 static double deep_secs = 0; static int deep_thr = 0, ENDG = 0, SCANGAP = 25; static long long nscan = 0, nscanimp = 0;
 static int full_scan(int *bi_out, int *bx_out) {   /* best single replacement over the whole neighbourhood */
     int be = 1 << 30;
     for (int i = 0; i < nit; i++) { int isfix = it[i] < nfl, lo = isfix ? 0 : nfl, hi = isfix ? nfl : nfl + nol;
+        if (FAST) base_for(i);
         for (int x = lo; x < hi; x++) { if (used(x)) continue;
-            int old = it[i]; it[i] = x; int kk = build(); int e2 = pp_uncov2(S, kk); it[i] = old;
+            int e2;
+            if (FAST) e2 = cand_energy(x);
+            else { int old = it[i]; it[i] = x; int kk = build(); e2 = pp_uncov2(S, kk); it[i] = old; }
             if (e2 < be) { be = e2; *bi_out = i; *bx_out = x; } } }
     return be;
 }
@@ -146,11 +187,19 @@ static void run(int r, int f, int m, double secs, int NB, int TEN, int STALL, in
         if (el >= secs) { if (!extended && deep_secs > 0 && best <= deep_thr) { secs += deep_secs; extended = 1; } else break; }
         step++;
         int bi = -1, bx = -1, be = 1 << 30;
-        for (int t = 0; t < NB; t++) {
+        int ci[256], cx[256], ce[256], nc = 0;
+        for (int t = 0; t < NB && t < 256; t++) {
             int i = (int)(rnd() % nit), isfix = it[i] < nfl; int x = rand_item(isfix); if (x < 0) continue;
-            int old = it[i]; it[i] = x; int kk = build(); int e2 = pp_uncov2(S, kk); it[i] = old;
-            if (tabu_until[x] > step && e2 >= best) continue;
-            if (e2 < be) { be = e2; bi = i; bx = x; }
+            ci[nc] = i; cx[nc] = x; nc++; }
+        if (FAST) { for (int q = 0; q < nit; q++) { int any = 0;
+                for (int c = 0; c < nc; c++) if (ci[c] == q) { if (!any) { base_for(q); any = 1; } ce[c] = cand_energy(cx[c]); } } }
+        if (!FAST || FASTCHECK) for (int c = 0; c < nc; c++) {
+            int old = it[ci[c]]; it[ci[c]] = cx[c]; int kk = build(); int e2 = pp_uncov2(S, kk); it[ci[c]] = old;
+            if (FAST && e2 != ce[c]) nfastbad++;
+            ce[c] = e2; }
+        for (int c = 0; c < nc; c++) {
+            if (tabu_until[cx[c]] > step && ce[c] >= best) continue;
+            if (ce[c] < be) { be = ce[c]; bi = ci[c]; bx = cx[c]; }
         }
         if (ENDG && e <= ENDG && step - last_scan >= SCANGAP) { int si = -1, sx = -1; last_scan = step; nscan++;
             int se = full_scan(&si, &sx);
@@ -172,6 +221,7 @@ static void run(int r, int f, int m, double secs, int NB, int TEN, int STALL, in
     printf("TABU rec %d %s %d f %d m %d best %d sols %d steps %lld restarts %d secs %.1f%s", r, rkind[r] ? "ext" : "alpha",
            rkind[r] ? rc[r] : rp[r], f, m, best, sols, step, restarts, (double)(clock() - c0) / CLOCKS_PER_SEC, extended ? " DEEP" : "");
     if (ENDG) printf(" scans %lld improving %lld", nscan, nscanimp);
+    if (FASTCHECK) printf(" fastcheck_mismatches %lld", nfastbad);
     printf("\n");
     fflush(stdout); free(tabu_until);
 }
@@ -190,6 +240,8 @@ int main(int argc, char **argv) {
     if (getenv("SEED")) { rs ^= (uint64_t)atoll(getenv("SEED")) * 0x9E3779B97F4A7C15ULL; for (int i = 0; i < 10; i++) rnd(); }
     edges_out = getenv("EDGES");
     if (getenv("ENDG")) ENDG = atoi(getenv("ENDG"));
+    if (getenv("FAST")) FAST = atoi(getenv("FAST"));
+    if (getenv("FASTCHECK")) FASTCHECK = atoi(getenv("FASTCHECK"));
     if (getenv("SCANGAP")) SCANGAP = atoi(getenv("SCANGAP"));
     if (getenv("DEEP")) sscanf(getenv("DEEP"), "%d,%lf", &deep_thr, &deep_secs);   /* DEEP=thr,secs: extend a type whose best <= thr */
     load(argv[1]);

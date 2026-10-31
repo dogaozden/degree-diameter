@@ -10,10 +10,12 @@ beta(x^i y^j) = (a i + b sigma_c(j), c j).  Records written:
   ALPHA 2  one involution of the family per conjugacy class under the family (which contains Inn(G));
   EXT c    (with the EXT argument, for even valency): pairs (beta, c), beta in the family, c <> e, beta(c) = c,
            beta^2 = conjugation x -> c x c^-1, one per class under the family.
+env SKIPA1=1 leaves out the involutions with a = 1 (x fixed); conjugation preserves a, so whole classes go.
 CENT lists are empty (sdtabu ignores them; for sdk this only switches off the first-orbit normalisation).
 Automorphisms outside the family (when <x> is not characteristic) are missed: the search is then less complete,
 never wrong.
 """
+import os
 import sys
 from math import gcd
 import numpy as np
@@ -107,6 +109,8 @@ def main():
                     invols.add(g)
     reps = []
     seen = set()
+    if os.environ.get("SKIPA1"):        # skip involutions fixing x (a = 1): poor in every K = 10 test
+        invols = {g for g in invols if g[0] != 1 % m}
     for g in sorted(invols):
         if g in seen:
             continue

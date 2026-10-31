@@ -20,3 +20,4 @@ echo "$N $tag K $KV types $nty best ${best:-NA} sols $sols rc $rc exp $(( t1 - t
 [ "$sols" -gt 0 ] && cp $F $C/f${KV}_${tag}.ht
 [ -n "$KEEP" ] && cp $F $KEEP/
 rm -f $F
+[ -n "$SKIPA1" ] && touch $L/fmeta/$tag.skipa1

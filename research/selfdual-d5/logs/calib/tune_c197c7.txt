@@ -1,0 +1,12 @@
+# Tuning on C197 : C7 (order 1379, K = 9, record (196,0,1), type (3,3), SEED 5, STALL 2000); solutions found in the given CPU time:
+nb197_24: TABU rec 1 alpha 2 f 3 m 3 best 0 sols 16 steps 369094 restarts 142 secs 100.0
+t197_0: TABU rec 1 alpha 2 f 3 m 3 best 0 sols 31 steps 221856 restarts 103 secs 120.0
+nb197_96: TABU rec 1 alpha 2 f 3 m 3 best 0 sols 28 steps 92270 restarts 58 secs 100.0
+t197_4: TABU rec 1 alpha 2 f 3 m 3 best 0 sols 26 steps 180275 restarts 82 secs 100.0
+t197_16: TABU rec 1 alpha 2 f 3 m 3 best 0 sols 23 steps 216458 restarts 96 secs 120.0
+t197_48: TABU rec 1 alpha 2 f 3 m 3 best 0 sols 10 steps 178205 restarts 68 secs 100.0
+w197_1_2: TABU rec 1 alpha 2 f 3 m 3 best 0 sols 22 steps 88865 restarts 48 secs 100.0
+w197_1_8: TABU rec 1 alpha 2 f 3 m 3 best 0 sols 27 steps 88516 restarts 54 secs 100.0
+eg197_0: TABU rec 1 alpha 2 f 3 m 3 best 0 sols 26 steps 87506 restarts 54 secs 100.0
+eg197_4: TABU rec 1 alpha 2 f 3 m 3 best 0 sols 28 steps 69912 restarts 50 secs 100.0 scans 804 improving 50
+# nb197_N: sdtabu2 NB=N; t197_T: sdtabu3 TARGET=T (NB 48; t197_0 = plain, 120 s); w197_1_S: sdtabu4 WEIGHT=1 SMOOTH=S (NB 96); eg197_E: sdtabu2 ENDG=E (NB 96)

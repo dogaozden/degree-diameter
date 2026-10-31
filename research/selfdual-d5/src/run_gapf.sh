@@ -24,3 +24,4 @@ echo "$N $tag K $KV types $nty best ${best:-NA} sols $sols rc $rc gap $(( t1 - t
 [ "$sols" -gt 0 ] && cp $F $C/g${KV}_${tag}.ht
 [ -n "$KEEP" ] && cp $F $KEEP/
 rm -f $F
+echo "$PRE|$ARGS" > $L/gapf/$tag.args
