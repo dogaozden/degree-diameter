@@ -4,7 +4,7 @@ Branch `claude/lean-gaps2-haar-proofs-9qjlsg`, started from `claude/lean-gaps-pr
 tools of the previous job are there and are not redone). The gap list is `research/lean-haarD/GAPS.md`. Every file
 here is new; no existing file is changed.
 
-## Proved
+## Proved (four records, with the axioms of each `Axioms.out.txt`)
 
 | # | Cell | Vertices | Construction | Module folder (`lean/BipartiteDD/Haar/`) | Theorem | Method | Axioms |
 |---|---|---:|---|---|---|---|---|
@@ -115,3 +115,25 @@ at 13.02 GB after 123 s.
 
 Toolchain: `leanprover/lean4:v4.34.1` installed with elan in this sandbox, Mathlib from the cache
 (`lake exe cache get`, 8,908 files, about one minute).
+
+## Not done in this job, and why
+
+Candidates in GAPS.md with at most 50,000 vertices, Haar or regular voltage lift, and the status of each:
+
+| Cell | Vertices | Construction | Status |
+|---|---:|---|---|
+| (4,11) | 19,152 | Haar graph of SL(2,8) × Z19, `d4D11_sl_8_19_orb3_e03.txt` | Not proved. The builder validates it (VALID, diameter 11). It needs: GF(8) as a computable `CommRing` (a test compiled in about 8 s on `Fin 8` with XOR addition and a 64-entry multiplication table, scratch only), SL(2,8) with a numbering and bijection proofs in the style of `PSL11`, the product with Z19, covers of length 5 pairs on both sides for the odd-diameter lemma `haar_isBipartiteDegDiam_odd` (GraphD.lean), and a conversion from the chunk checks to `IsLeftWord`/`IsRightWord`. Estimated at about three hours, so not started to completion. |
+| (12,5) | 9,840 | regular Z6 lift of the GQ(9) doubled-matching base; `research/d10D7/graphs/d12D5_n9840_gqdm_q9.edges.gz` | Not done. The staged method stores the ball masks of radius 1 … 4 as n-bit hex literals (n² bits): about 97 MB of Lean data for this record, against 46 MB for the (11,5) record already on the branch. Too large for the repository without a change of method. |
+| (13,5) | 11,700 | regular Z10 lift of the GQ(8) doubled-matching base; `research/frontier/beyond/graphs/d13D5_n11700_W8_2dm_Z10.edges.gz` | Not done, same reason (about 130 MB of masks). |
+| (14,5) | 17,568 | regular lift, `research/d10D7/graphs/d14D5_n17568_gqdm_q11.edges.gz` | Not done: masks about 300 MB. |
+| (15,5) | 20,736 | route-chart lift, `research/theorems/chartlift/graphs/d15D5_n20736.edges.gz` | Not done: masks of the same order (n²). |
+| (16,5) | 33,792 | route-chart / doubled-matching, `research/theorems/graphs/d16D5_n33792_k33m_z22.edges.gz` | Not done: n² masks of several GB of hex. |
+| (18,5) | 47,600 | doubled matching over Z10, `research/frontier/beyond/graphs/d18D5_n47600_W13_2dm_Z10.edges.gz` | Not done: n² masks. |
+| (4,12) | 50,160 | orbit search (`d4D12_sl_11_19_orb3_d09.txt`) | Not done: 50,160 is above the job's limit of 50,000 vertices. It is listed as an example in the job, so this is flagged. |
+
+The (5,8), (5,9) and (6,8) Haar records above were the Haar candidates that had a usable solution file and a builder.
+(8,5) is a route-chart lift, which the job named, so it is included even though it is not a plain voltage lift.
+
+For the lift records, the cost is the staged method's ball-mask data, which grows as n². Either the data would have to
+move out of git (for example an artifact store, as GAPS.md suggests) or the method would have to change. Neither was
+done here.
