@@ -1,0 +1,17 @@
+machine: nproc=4; free -g: total 15G used 0G free 14G avail 15G
+6c4df0e6bfe290fa41029c1fe93da12c1205a1c98d8d4dbfbc3fa55d0dd0d473
+################ reference checker: haarcheck_psl research/frontier/sols/d9D11_psl_197_19_orb3_s4.txt   [exit 0]
+from (e,A): reached A 72629172/72629172, B 72629172/72629172 within 11, ecc 11
+from (e,B): reached A 72629172/72629172, B 72629172/72629172 within 11, ecc 11
+VALID d=9 D=11 group=psl 197 x Z_19 N=72629172 vertices=145258344 (distinct generators, 9-regular simple)
+################ independent checker: check_haar_indep.py research/frontier/sols/d9D11_psl_197_19_orb3_s4.txt   [exit 0]
+file research/frontier/sols/d9D11_psl_197_19_orb3_s4.txt
+header: d=9 D=11 spec=psl 197 NCYC=19 N=72629172
+group order |G|=3822588 (factors [3822588]), x Z_19 -> 72629172; vertices 2N=145258344
+distinct generators (as full group elements): 9 of d=9
+permutations built (37s)
+BFS from A: ecc=11 reached 145258344 of 145258344 (unreached 0); level sizes [1, 9, 72, 573, 4560, 36276, 288066, 2258374, 16063254, 60759022, 56273219, 9574918]
+BFS from B: ecc=11 reached 145258344 of 145258344 (unreached 0); level sizes [1, 9, 72, 573, 4560, 36276, 288072, 2258374, 16063828, 60759022, 56272639, 9574918]
+every vertex has exactly 9 distinct neighbours: True
+RESULT VALID d=9 D=11 eccA=11 eccB=11 n=145258344 (166s)
+
