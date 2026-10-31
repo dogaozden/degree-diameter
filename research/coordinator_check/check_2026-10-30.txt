@@ -30,3 +30,8 @@ relations Rs^3 = Ru^4 = I and Ru Rs Ru^-1 = Rs^-1 checked, associativity spot-ch
 bipartite, diameter 5 when Rs, Ru are read row by row (as the finder's builder does). Read as columns (as the README first said) the graph has diameter 6;
 README and builder docstring corrected on master.
 apsp on the finder's records/d9D5_n3000_haar_c5cube_dic3.edges (sha256 afec2757d72b73a694fad479306c6f7f762e44a39851241afc204883348f43ca) -> RESULT VALID d=9 D=5 n=3000; at D = 4 -> RESULT INVALID
+
+== (9,5) 3,036 — job selfdual-d5 (research/selfdual-d5/records/)
+rebuilt on the Mac mini from the formula with the coordinator's own code (G = C69 : C22, y x y^-1 = x^8, S = {(0,0), (66,11), (56,11), (28,13), (22,9), (13,15), (64,7), (25,14), (8,8)};
+BFS from every vertex): n = 3036, simple, 9-regular, bipartite, diameter 5
+apsp on the finder's records/d9D5_n3036_haar_c69c22.edges (sha256 05305fe907f354997948eb0a8b98061dd5ecc1492c837716a531c03f99051ea9) -> RESULT VALID d=9 D=5 n=3036; at D = 4 -> RESULT INVALID

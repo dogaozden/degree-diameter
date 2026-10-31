@@ -50,7 +50,7 @@ record, with dates and checks, is in [`research/RESULTS.md`](research/RESULTS.md
 | (5, 5) | 336 | **384** | +14.3% | voltage lift of a 4-vertex base by a group of order 96 | [354] |
 | (7, 5) | 1,134 | **1,312** | +15.7% | Haar graph of C41 : C16 with a self-dual connection set (a bipartite Cayley graph) | [1,200] |
 | (8, 5) | 1,710 | **2,048** | +19.8% | route-chart lift | (1,764) |
-| (9, 5) | 2,496 | **3,000** | +20.2% | Haar graph of (C5 x C5 x C5) : (C3 : C4) with a self-dual connection set (a bipartite Cayley graph) | (2,758) |
+| (9, 5) | 2,496 | **3,036** | +21.6% | Haar graph of C69 : C22 with a self-dual connection set (a bipartite Cayley graph) | (2,758) |
 | (10, 5) | 4,000 | **4,800** | +20.0% | generalized quadrangle construction ¹ | — |
 | (11, 5) | 5,850 | **7,020** | +20.0% | generalized quadrangle construction ¹ | — |
 | (12, 5) | 8,200 | **9,840** | +20.0% | generalized quadrangle construction ¹ | — |

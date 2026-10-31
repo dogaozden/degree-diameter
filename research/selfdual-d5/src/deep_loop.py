@@ -22,6 +22,13 @@ def cands():
             t = l.split()
             if t and t[0] == "TABU" and int(t[t.index("best") + 1]) <= THR:
                 rows.append((int(t[t.index("best") + 1]), n, ["meta", str(n), p, k, d, t[2], t[t.index("f") + 1], t[t.index("m") + 1]], f"{p}_{k}_{d}_r{t[2]}_f{t[t.index('f') + 1]}"))
+    for f in glob.glob("logs/K9/meta2/*.out"):
+        p, k, d = os.path.basename(f)[:-4].split("_"); n = int(p) * int(k)
+        if n <= rec: continue
+        for l in open(f):
+            t = l.split()
+            if t and t[0] == "TABU" and int(t[t.index("best") + 1]) <= THR:
+                rows.append((int(t[t.index("best") + 1]), n, ["meta2", str(n), p, k, d, t[2], t[t.index("f") + 1], t[t.index("m") + 1]], f"c{p}_{k}_{d}_r{t[2]}_f{t[t.index('f') + 1]}"))
     rows.sort(key=lambda r: (r[0], r[1]))
     return rows
 done = set(l.strip() for l in open("logs/K9/deep/done.txt")) if os.path.exists("logs/K9/deep/done.txt") else set()
