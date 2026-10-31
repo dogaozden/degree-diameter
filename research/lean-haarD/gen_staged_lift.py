@@ -89,22 +89,39 @@ def main(folder, theorem, n, d, D, K, edges):
         ]
         (rec_dir / f"Stage{r:02d}.lean").write_text("\n".join(stage))
 
-    check = [
-        gen,
-        "import BipartiteDD.Staged",
-        f"import {ns}.Graph",
-        "",
-        f"namespace {ns}",
-        "",
-        "open BipartiteDD.Staged",
-        "",
-        f"/-- The local test (degrees, symmetry, colouring) of the {n}-vertex graph. -/",
-        f"theorem local_ok : checkLocal {K} {d} adjL colL = true := by",
-        "  decide +kernel",
-        "",
-        f"end {ns}",
-        "",
-    ]
+    if n >= 5000:
+        # the local test of the largest tables runs out of memory in one piece: two half-ranges, combined by
+        # StagedLocal.checkLocal_of_split (as in Records.lean's G2510 and G3122 stages)
+        m = n // 2
+        for name, lo, cnt, stmt in (("Local0", 0, m, "local_lo"), ("Local1", m, n - m, "local_hi")):
+            mod = [gen, "import BipartiteDD.StagedLocal", f"import {ns}.Graph", "", f"namespace {ns}", "",
+                   "open BipartiteDD.Staged", "", "set_option maxRecDepth 100000 in",
+                   f"/-- The local test of the {n}-vertex graph on the vertices {lo} … {lo + cnt - 1}. -/",
+                   f"theorem {stmt} : checkLocalRange {K} {d} adjL colL {lo} {cnt} = true := by",
+                   "  decide +kernel", "", f"end {ns}", ""]
+            (rec_dir / f"{name}.lean").write_text("\n".join(mod))
+        check = [gen, "import BipartiteDD.StagedLocal", f"import {ns}.Local0", f"import {ns}.Local1", "",
+                 f"namespace {ns}", "", "open BipartiteDD.Staged", "",
+                 f"/-- The local test (degrees, symmetry, colouring) of the {n}-vertex graph, from its two halves. -/",
+                 f"theorem local_ok : checkLocal {K} {d} adjL colL = true :=",
+                 f"  checkLocal_of_split {m} (by decide) local_lo local_hi", "", f"end {ns}", ""]
+    else:
+        check = [
+            gen,
+            "import BipartiteDD.Staged",
+            f"import {ns}.Graph",
+            "",
+            f"namespace {ns}",
+            "",
+            "open BipartiteDD.Staged",
+            "",
+            f"/-- The local test (degrees, symmetry, colouring) of the {n}-vertex graph. -/",
+            f"theorem local_ok : checkLocal {K} {d} adjL colL = true := by",
+            "  decide +kernel",
+            "",
+            f"end {ns}",
+            "",
+        ]
     (rec_dir / "Check.lean").write_text("\n".join(check))
 
     stage_imports = "\n".join(f"import {ns}.Stage{r:02d}" for r in range(D))
