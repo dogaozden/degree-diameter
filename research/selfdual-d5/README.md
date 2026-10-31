@@ -6,25 +6,24 @@ G (t^2 = c, t x t^-1 = beta(x)), then H(G,S) = Cay(G^, tS) is vertex-transitive 
 be checked. New here: valency K as a parameter, non-split extensions (c != e, needed when K is even and T has no
 involution), and a tabu search inside the family for the cells where enumeration is out of reach.
 
-## Result: (9,5) 3,000 (was 2,758)
+## Result: (9,5) 3,024 (was 2,758)
 
-**(9,5): 3,000 vertices**, the Haar graph of G = (C5 x C5 x C5) : (C3 : C4) = SmallGroup(1500,113) (trivial center,
-5 involutions). Elements (a,b,c,i,j) = v s^i u^j with v = (a,b,c) in F5^3, s of order 3, u of order 4, u s u^-1 = s^-1,
-acting on F5^3 by Rs = [[1,0,0],[0,2,3],[0,1,2]], Ru = [[3,0,0],[0,2,2],[0,1,3]] (mod 5, columns = images of the basis);
-product (v,i,j)(v',i',j') = (v + Rs^i Ru^j v', i + (-1)^j i', j + j'). S = {(0,0,0,0,0), (4,0,0,1,2), (0,2,3,1,2),
-(3,0,0,2,2), (2,0,1,2,2), (3,2,1,2,1), (4,3,1,1,3), (0,0,2,2,1), (0,4,1,1,3)}, (g,A) ~ (s g, B). 9-regular, bipartite,
-diameter 5. S is self-dual for the involutory automorphism beta: (1,0,0) -> (1,0,0), (0,1,0) -> (0,2,1),
-(0,0,1) -> (0,2,3) on F5^3, s -> s^2, u -> u (type (5,2): e, four psi-fixed elements, two psi-pairs), so the graph is also
-a Cayley graph of G : <tau> (order 3,000) with T = S tau (five involutions, two inverse pairs).
+**(9,5): 3,024 vertices**, the Haar graph of G = C7 : (C3 x ((C3 x C3) : C8)) = SmallGroup(1512,783) (trivial center,
+9 involutions, cyclic Sylow 2-subgroup). Elements (i,c,a,b,k) = x^i z^c w1^a w2^b u^k: x of order 7, z of order 3
+central in the complement, (a,b) in F3^2, u of order 8 acting on F3^2 by M = [[2,2],[1,2]] (mod 3, columns = images
+of w1, w2), z x z^-1 = x^2, u x u^-1 = x^-1, w x w^-1 = x; product (i,c,a,b,k)(i',c',a',b',k') =
+(i + 2^c (-1)^k i', c+c', (a,b) + M^k (a',b'), k+k'). S = {(0,0,0,0,0), (5,0,1,0,0), (2,0,0,2,2), (0,2,0,1,4),
+(0,1,2,1,4), (0,2,1,2,3), (0,1,0,1,7), (5,2,1,2,0), (3,1,1,1,0)}, (g,A) ~ (s g, B). 9-regular, bipartite, diameter 5.
+S is self-dual for the involutory automorphism beta: x -> x^-1, z -> z, w1 -> w1^2, w2 -> w2, u -> w1^2 w2 u^3
+(type (3,3)), so the graph is also a Cayley graph of G : <tau> (order 3,024) with T = S tau.
 Checks: research/lifts/coordinator_check/apsp.c RESULT VALID at D = 5 and INVALID at D = 4
-(`records/d9D5_n3000_haar_c5cube_dic3_apsp.txt`); independent Python checker (../beyond-haar-d5/records/check_independent.py)
-VALID; GAP-free rebuild from the formula (`records/build_d9D5_n3000.py`, BFS from every vertex) identical to the saved
+(`records/d9D5_n3024_haar_c7_c3xc3sqc8_apsp.txt`); independent Python checker (../beyond-haar-d5/records/check_independent.py)
+VALID; GAP-free rebuild from the formula (`records/build_d9D5_n3024.py`, BFS from every vertex) identical to the saved
 edge list; the Cayley build and the search's own build have the same nauty canonical form
-(`records/d9D5_n3000_haar_c5cube_dic3_cayley.txt`). Edge list `records/d9D5_n3000_haar_c5cube_dic3.edges`, sha256
-afec2757d72b73a694fad479306c6f7f762e44a39851241afc204883348f43ca; rebuild: `bash records/build_d9D5_n3000.sh`.
-Found by a 300 s deep tabu run (sdtabu, record 5, type (5,2), seed 23, STALL = 2000) on a near miss (best 2) of the
-sweep of the groups of order 1468-1560 with a cyclic or generalized quaternion Sylow 2-subgroup (see the coverage
-section).
+(`records/d9D5_n3024_haar_c7_c3xc3sqc8_cayley.txt`). Edge list `records/d9D5_n3024_haar_c7_c3xc3sqc8.edges`, sha256
+150a0027094cd3bc1448c8ac5b6e3097d6e978f677884a3c3285e742a05fbbda; rebuild: `bash records/build_d9D5_n3024.sh`.
+Found by the sweep's own pass (sdtabu, record 5, type (3,3), within its 27 s) over the groups of order 1468-1560 with
+a cyclic or generalized quaternion Sylow 2-subgroup.
 
 The steps of the job (each one checked the same way: apsp VALID at D = 5 and INVALID at D = 4, independent checker,
 formula rebuild identical to the saved edge list, Cayley build isomorphic; rebuild script and search output next to
@@ -38,7 +37,8 @@ each edge list):
 | 2,934 | C163 : C9 = SmallGroup(1467,1) | y x y^-1 = x^58 | (0,0) (4,0) (105,0) (143,4) (39,5) (119,8) (56,1) (117,7) (106,2) | x -> x^-1, y -> y | 300 s deep run, (3,3) | `d9D5_n2934_haar_c163c9.edges` (f5e6c338c0068e87) |
 | 2,970 | Heis(3) x (C11 : C5) = SmallGroup(1485,4) | `records/build_d9D5_n2970.py` | there | there | 300 s deep run, (3,3) | `d9D5_n2970_haar_heis3_f55.edges` (d51d229ebb737ce9) |
 | 2,976 | C31 : (C3 x Q16) = SmallGroup(1488,11) | `records/build_d9D5_n2976.py`: x^i z^c a^k b^l, z x z^-1 = x^25, b x b^-1 = x^-1 | (0,0,0,0) (25,0,2,0) (18,0,6,0) (12,2,1,1) (10,1,7,1) (0,1,1,0) (0,2,5,0) (24,2,0,0) (11,1,0,0) | x -> x^-1, z -> z, a -> a^3, b -> b | 300 s deep run, (3,3) | `d9D5_n2976_haar_c31_c3q16.edges` (a124e06804fc9bd5) |
-| **3,000** | (C5 x C5 x C5) : (C3 : C4) = SmallGroup(1500,113) | above | above | above | 300 s deep run, (5,2) | `d9D5_n3000_haar_c5cube_dic3.edges` (afec2757d72b73a6) |
+| 3,000 | (C5 x C5 x C5) : (C3 : C4) = SmallGroup(1500,113) | `records/build_d9D5_n3000.py`: v s^i u^j, v in F5^3, Rs = [[1,0,0],[0,2,3],[0,1,2]], Ru = [[3,0,0],[0,2,2],[0,1,3]] | (0,0,0,0,0) (4,0,0,1,2) (0,2,3,1,2) (3,0,0,2,2) (2,0,1,2,2) (3,2,1,2,1) (4,3,1,1,3) (0,0,2,2,1) (0,4,1,1,3) | on F5^3 (1,0,0) -> (1,0,0), (0,1,0) -> (0,2,1), (0,0,1) -> (0,2,3); s -> s^2, u -> u | 300 s deep run, (5,2) | `d9D5_n3000_haar_c5cube_dic3.edges` (afec2757d72b73a6) |
+| **3,024** | C7 : (C3 x ((C3 x C3) : C8)) = SmallGroup(1512,783) | above | above | above | sweep pass, (3,3) | `d9D5_n3024_haar_c7_c3xc3sqc8.edges` (150a0027094cd3bc) |
 
 Metacyclic ones: x^i y^j written (i,j), <x, y | x^m = y^k = 1, y x y^-1 = x^r>, product (i,j)(a,b) = (i + r^j a, j + b);
 `records/build_metacyclic_haar.py m k r "S"` builds them, `records/build_metacyclic_cayley.py` the Cayley form,
