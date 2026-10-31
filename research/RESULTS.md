@@ -282,3 +282,6 @@ by the coordinator with build_haar.py, two BFS from both sides, ecc ≤ D, nothi
 - Oct 31 09:30 PT (harvest): (10,12) 3,500,976,768 (was 0), psl 193 n 487; claude/new-cells-beyond-etos3t.
 - Oct 31 09:30 PT (harvest): (14,10) 1,350,537,864 (was 1,326,627,120), psl 157 n 349; claude/raise-d14d10-record-2-3vy08n.
 - Oct 31 09:30 PT (harvest): (20,9) 1,823,175,864 (was 0), psl 163 n 421; claude/new-cells-beyond-etos3t.
+
+- Oct 31 11:30 PT (harvest): (16,10) 4,708,566,360 (was 4,220,872,800), psl 179 n 821; claude/resume-cell-16-10-io255o.
+- Oct 31 11:30 PT (harvest): (17,10) 7,022,052,336 (was 0), psl 313 n 229; claude/new-cells-beyond-etos3t.
