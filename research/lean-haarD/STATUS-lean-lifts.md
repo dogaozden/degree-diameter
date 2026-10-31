@@ -76,13 +76,38 @@ step over 9,840 vertices with 1,640-bit masks; it is the limit to watch for the 
   before any build, fixed, and regenerated.
 * `Axioms`: `#print axioms` needs the qualified name `BipartiteDD.Haar.D12D5GQ9Z6.nb_12_5_n9840`.
 
+### (13,5) 11,700, folder `D13D5W8Z10`, theorem `nb_13_5_n11700`
+
+Edge file `research/frontier/beyond/graphs/d13D5_n11700_W8_2dm_Z10.edges.gz` (Z10 lift of W(8), 13-regular, 76,050 edges).
+`m = 10`, `k = 1170`, `K = 14`, `d = 13`, `D = 5`. The generator checked: shift automorphism, radius-5 masks full at
+all 11,700 vertices, Lean adjacency lists equal to the edge file.
+
+| Module | Wall time | Peak RSS | Result |
+|---|---:|---:|---|
+| `Graph` | 686 s | 5.05 GB | ok |
+| `Levels` | 202 s | 3.27 GB | ok |
+| `Local` (4 quarters) | 634 s | 11.90 GB | ok |
+| `Hom` (10 pieces) | 255 s | 3.88 GB | ok |
+| `Stage0` | 212 s | 13.08 GB | ok |
+| `Stage1` | 267 s | 13.08 GB | ok |
+| `Stage2` | 224 s | 13.08 GB | ok |
+| `Stage3` | 216 s | 13.08 GB | ok |
+| `Stage4` | 225 s | 13.08 GB | ok |
+| `Record` | 8 s | 1.73 GB | ok |
+
+Axioms (`D13D5W8Z10/Axioms.out.txt`): `propext, Classical.choice, Quot.sound`.
+
+The stage peak is 13.08 GB, up from 12.5 GB at n = 9,840. It grows with n, so the next record (n = 17,568) needs the
+stage step split into vertex ranges before it can be checked in this sandbox.
+
 ### Status
 
 * (12,5) 9,840: **proved**. `BipartiteDD.Haar.D12D5GQ9Z6.nb_12_5_n9840 : ∃ G : SimpleGraph (Fin 9840), IsBipartiteDegDiam G 12 5`,
   axioms `propext, Classical.choice, Quot.sound` (`D12D5GQ9Z6/Axioms.out.txt`).
 * Data: `Levels.lean` is 13 MB (four levels of 9,840 hex literals of 1,640 bits), against about 97 MB for the staged
   method on the same record.
-* Not done: (13,5), (14,5), (15,5), (16,5), (18,5). Each needs its own generator run and builds. The same method
+* (13,5) 11,700: **proved** (`BipartiteDD.Haar.D13D5W8Z10.nb_13_5_n11700`, same axioms).
+* Not done: (14,5), (15,5), (16,5), (18,5). Each needs its own generator run and builds. The same method
   applies to the fibre-transitive ones; (15,5) and (16,5) are route-chart lifts and may need a different
   numbering. The data is about n²/m bits per radius, so the larger records are heavier in data and in the
   stage memory (which grows with n).
