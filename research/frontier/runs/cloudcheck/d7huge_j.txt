@@ -1,12 +1,12 @@
 # d7huge job check-d7huge-j (letter j): all-pairs check of two diameter-7 candidates, source ranges a-k
-# generated 2026-10-31T06:41:23Z by build/run_j.sh logs; check output lines below are copied unedited from the checker
+# generated 2026-10-31T10:31:05Z by build/run_j.sh logs; check output lines below are copied unedited from the checker
 
 ## Machine
 ```
 nproc: 4
 free -g:
                total        used        free      shared  buff/cache   available
-Mem:              15           1           9           0           4          13
+Mem:              15           1          10           0           4          14
 Swap:              0           0           0
 ```
 
@@ -134,8 +134,11 @@ RESULT VALID d=20 D=7 n=15795219 (sources in the range only)
 ```
 
 ### range g: d20_n15795219 range 11, sources 6581350..7239485
-status: not run yet
-
+status: finished (exit=0)
+```
+n=15795219 edges=157589798 degree min=18 max=20 bipartite=yes diameter=7 sources=6581350..7239485
+RESULT VALID d=20 D=7 n=15795219 (sources in the range only)
+```
 
 ### range h: d20_n15795219 range 12, sources 7239485..7897620
 status: not run yet
