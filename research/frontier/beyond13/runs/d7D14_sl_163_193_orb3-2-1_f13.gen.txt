@@ -9,3 +9,7 @@ file runs/d7D14_sl_163_193_orb3-2-1_f13.out
 header: 7 14 sl 163 n 193 N 835802712
 group sl 163 x Z_193, |G| = 835802712 = N, vertices 2N = 1671605424; 7 distinct generators
 from (e,A): reached A 835802712/835802712, B 835802712/835802712 within 14; ecc 14; level sizes [1, 7, 42, 252, 1512, 9072, 54414, 326208, 1954086, 11639553, 67215594, 325762438, 728864773, 498065182, 37712290]  (374s)
+from (e,B): reached A 835802712/835802712, B 835802712/835802712 within 14; ecc 14; level sizes [1, 7, 42, 252, 1512, 9072, 54414, 326208, 1954080, 11639553, 67216080, 325762438, 728856941, 498065182, 37719642]  (835s)
+VALID d=7 D=14 group=sl 163 x Z_193 N=835802712 vertices=1671605424 (distinct generators, 7-regular simple; every vertex within 14 of both (e,A) and (e,B); ecc 14; 835s)
+exit: 0
+end: 2026-11-01T13:03:03Z (834 s)
