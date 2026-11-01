@@ -1,10 +1,14 @@
-# Beyond the 2013 table: first values for 48 new cells
+# Beyond the 2013 table: first values for 55 new cells
 
 Job new-cells-beyond (Opus director + Haiku squads, cloud session, 2026-10-26, branch claude/new-cells-beyond-etos3t).
 The 2013 bipartite table (DS14v2, Table 4) stops at Δ = 16 and D = 10. This file gives a checked lower bound for every
 cell in the next band: Δ = 17..20 at D = 3..10 (32 cells) and D = 11, 12 at Δ = 3..10 (16 cells), with an upper bound
 and the comparison with the formula families. As far as we know (literature card r2/d10) no bipartite values have been
 published for these cells, so every value here is a first value, not a record.
+
+Extended 2026-11-01 by job beyond-d11 (branch claude/new-cells-d11-d12-beyond-8sas9r): seven more cells, D = 11 at
+Δ = 11..14 and D = 12 at Δ = 11..13, and new values for (4..10, 11) and (4..10, 12); see the section "D = 11 at
+Δ = 11..14 and D = 12 at Δ = 11..13" below.
 
 ## Summary
 
@@ -18,6 +22,10 @@ published for these cells, so every value here is a first value, not a record.
 - **D = 8 .. 12:** Haar graphs of SL(2,p) × Z_n / PSL(2,p) × Z_n with automorphism-orbit generator sets, up to
   billions of vertices, each checked by an independent low-memory BFS from both sides; the small cells (Δ = 3, 4) by
   exhaustive or annealed Haar searches.
+- **D = 11 at Δ = 11..14, D = 12 at Δ = 11..13 (beyond-d11):** Haar graphs of SL(2,p) x Z_n (odd D) and
+  PSL(2,p) x Z_n (even D) with alpha-orbit generator sets, 1.24 to 20.0 billion vertices; (12,12) and (13,12) sit at the
+  job's 20-billion-vertex size limit. At odd D the hard elements are involutions and central elements (exact lemma and
+  hole counts in research/frontier/beyond11/ODD_D_HOLES.md), which is why SL with small n is used there.
 - Every value is at least the trivial floor from the neighbouring cells (n_b(Δ,D) ≥ n_b(Δ−1,D), n_b(Δ,D−1)).
 
 ## Upper bounds
@@ -27,6 +35,9 @@ M_b − 6: Feria-Purón and Pineda-Villavicencio, "On bipartite graphs of defect
 (2012), Prop. 6.4 (Δ ≥ 3, 5 ≤ D ≤ 187, D ≠ 6; the arXiv version 1010.5651 was read for this). For D = 3, 4, 6 the
 bound is M_b itself: it is attained at Δ = 17, 18, 20 (Δ − 1 a prime power), and at Δ = 19 it would need a projective
 plane, generalized quadrangle or generalized hexagon of order 18, whose existence is open.
+
+(Job beyond-d11, squad card r2/d14, re-read Prop. 6.4 on p. 25 of arXiv 1010.5651 v2: "For natural numbers Δ ≥ 3 and
+5 ≤ D ≤ 187 (D ≠ 6), N_b(Δ, D) ≤ M_b(Δ, D) − 6"; quotes in research/squads/beyond11/r2/d14/BOUNDS.md.)
 
 ## How each kind of value was checked
 
@@ -157,6 +168,10 @@ No other cell of the old table improves this way (MDM.md).
 
 ### D = 11, 12 at small Δ
 
+(Δ = 4..10 at D = 11, 12 were raised on 2026-11-01 by job beyond-d11, squad rounds 2-4: SL(2,p) x Z_n with small n at
+D = 11 and PSL/SL with moderate n at D = 12; see the beyond-d11 section and the table. The text below describes the
+earlier values.)
+
 Δ = 3: cubic Haar graphs H(G, {e, x, y}), with all pairs searched exhaustively per group (x over class
 representatives, y over the group; research/squads/beyond/r3/e02/exh3.c, about 0.1–2 s per group). The director swept
 every metacyclic group Z_m ⋊_r Z_k (one r of each order k per m) of order 541–1,100 at D = 11 (641 groups) and of order
@@ -185,6 +200,48 @@ Order-2 orbits did much worse than order-3 orbits at (9,11) and (5,11) (181 and 
 BFS from (e,A) and (e,B) in 4 bits per element; the largest, (20,10) with 30.5 billion vertices, needs 7.6 GB.
 Values are typical size-law values, not pushed to the limit (the lab's orbit searches gain 5–15 % in comparable cells
 at much higher cost, and each check of a 10¹⁰-element group takes about an hour here).
+
+### D = 11 at Δ = 11..14 and D = 12 at Δ = 11..13 (job beyond-d11, 2026-11-01)
+
+Job beyond-d11 (Opus director + four Haiku squad rounds of 16 cards, cloud session, branch
+claude/new-cells-d11-d12-beyond-8sas9r). Seven new cells, and the D = 11, 12 values at Δ = 4..10 raised. Size limit
+for the job: at most about 20 billion vertices, so that the low-memory checkers finish in a few hours.
+
+**Method.** Haar graphs H(G,S), G = SL(2,p) x Z_n or PSL(2,p) x Z_n, S closed under alpha = (conjugation by a matrix
+of order 3) x (z -> r z, r of order 3 mod n); research/frontier/beyond11/haar_big0.c is haar_big (64-bit, N/2 bytes,
+bit-parallel BFS) plus two changes: f = 0 (S = free 3-orbits without e, evaluated as S s_0^-1; the right choice for
+3 | Δ, so (12,11) and (12,12)), and a fix in the choice of alpha (haar_big took the first g with g^k = +-I, which for
+k = 4, 6, 10 is an element of order 2 or 3; k = 3 and 5 were unaffected, so no earlier result changes). Every value is
+checked by research/frontier/haarcheck_gen.c (own group code, BFS from (e,A) and (e,B)); logs in
+research/frontier/runs/cloudcheck/<stem>.gen.txt, solutions in research/frontier/sols/.
+
+**Even D was easy, odd D was not.** At D = 12 the first S solved at mu ~3 (one to five evaluations) and (11,12) solved
+at mu 13.3 in 17 evaluations; (12,12) and (13,12) are limited by the 20-billion cap (mu ~ 0 there), not by the search.
+At D = 11 the searches stall at cost 1-3 near mu 7-10, and the last holes are special elements. The reason
+(research/frontier/beyond11/ODD_D_HOLES.md): for odd D = 2h+1 the same-side sets (S^-1 S)^h and (S S^-1)^h are closed
+under inversion, so the words reaching an involution pair up, and the words reaching a central element are closed under
+rotation (h rotations), and a central element is a hole on both sides at once. So involutions are missed with
+probability ~exp(-lambda/2), central elements ~exp(-lambda/h), against exp(-lambda) for an ordinary element
+(lambda = W/N ~ 19 here). PSL(2,p) has ~p^2/2 involutions, SL(2,p) only -I; G x Z_n has n or 2n central elements.
+Hole counts of random S (squad card r2/d04) and a 22-group fit (r3/e14) agree with these rates within a factor 1.3-2.
+Consequence used for every D = 11 value: SL(2,p) x Z_n with small n (1-43) and large p; PSL with n = 1 is the worst
+shape at odd D (all ~130 holes per random S are involutions) although it is fine at even D.
+
+**Squad (64 Haiku cards in 4 rounds; research/squads/LOG.md, research/squads/beyond11/r1..r4).** Round 1 mapped
+structures and found the choose_alpha bug (two cards independently), the -I and torus near misses, and the size-law
+calibration (mu ~7 within ~300 evaluations, ~10 within ~1,000). Round 2's hole anatomy (d04) explained the odd-D
+failures; the director redirected seven running cards from PSL to SL mid-round, and four of them then raised cells.
+Rounds 3-4 applied the rule to the cheap cells and raised (4..10, 11) and (4..10, 12) by 1-37 %. Cards that found
+nothing: k = 2, 4, 5, 6 orbits at D = 11, self-dual (transpose-closed) S, annealing knobs, fixed-generator moves, -I as a
+generator, a meet-in-the-middle near-miss finisher, composite n at (7,11).
+
+**What failed or was not tried.**
+- Pushing the odd-D cells past mu ~10: (12,11) SL(2,601) x Z7 (mu 10.7) stopped at cost 6, SL(2,193) x Z211 (mu 10.3) at
+  cost 2 with -I its only hole; (11,11) PSL(2,257) x Z73 (mu 10.1) at 9; (11,12) PSL(2,241) x Z829 (mu 28) at 8.
+- Near misses that stayed at cost 1-3 for thousands of evaluations: (6,11) SL(2,103), (7,11) SL(2,67) x Z19, (9,11)
+  SL(2,137) x Z31, (6,12) PSL(2,211), (9,12) PSL(2,167) x Z241 and PSL(2,331) x Z31.
+- (12,12) and (13,12) sit at the job's cap; larger groups would solve at once but their checks would exceed the
+  checkers' budget (haarcheck_gen is memory-latency bound: the 14.4-billion-vertex (14,11) check took ~X CPU-hours).
 
 ## What failed, and why it matters for the next attempt
 

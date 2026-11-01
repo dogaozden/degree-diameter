@@ -20,6 +20,10 @@ for non-abelian G (r1/c14 gives a D6 example where one holds and the other fails
 1. X_A = X_A^-1: reversing and inverting a word of X_A gives a word of X_A. So the words reaching x are in bijection
    with the words reaching x^-1, and for an **involution** x (x = x^-1) the word set of x is closed under this
    reversal.
+   The pairing is exact: the reversed-inverted word of (s_1, ..., s_2h) is (s_2h, ..., s_1) read with the same
+   alternating pattern, and it is the same letter sequence only if s_(2h+1-i) = s_i for all i; then the two middle
+   letters s_h^(+-1) s_(h+1)^(-+1) cancel, and so on outwards, so the word is e. Hence for an involution x != e the
+   letter sequences reaching x come in disjoint pairs, and their number is even.
 2. For a **central** element c, the words reaching c are closed under rotation by two letters: if w = a b with
    a = s_1^-1 s_2, then b a = a^-1 (a b) a = c. The h rotations act on the word set of c.
 3. For central c, c is in X_A iff c is in X_B: rotating s_1^-1 (s_2 ... s_2h) by one letter gives
