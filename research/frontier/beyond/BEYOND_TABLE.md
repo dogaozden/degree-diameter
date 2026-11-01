@@ -1,4 +1,4 @@
-# Beyond the 2013 table: first values for 69 new cells
+# Beyond the 2013 table: first values for 77 new cells
 
 Job new-cells-beyond (Opus director + Haiku squads, cloud session, 2026-10-26, branch claude/new-cells-beyond-etos3t).
 The 2013 bipartite table (DS14v2, Table 4) stops at Δ = 16 and D = 10. This file gives a checked lower bound for every
@@ -13,6 +13,9 @@ Extended 2026-11-01 by job beyond-d11 (branch claude/new-cells-d11-d12-beyond-8s
 Extended 2026-11-01 by job beyond-d13 (branch claude/beyond-d13-search-z35z61): fourteen more cells, D = 13 at Δ = 3..10
 and D = 14 at Δ = 3..8, and new values for (4,11), (5,11), (4,12), (5,12); see the section "D = 13 at Δ = 3..10 and
 D = 14 at Δ = 3..8" below.
+
+Extended 2026-11-01 by job beyond-d15 (branch claude/new-cells-d15-d16-fpj633): eight more cells, D = 15 and D = 16 at
+Δ = 3..6; see the section "D = 15 and D = 16 at Δ = 3..6" below.
 
 ## Summary
 
@@ -35,6 +38,14 @@ D = 14 at Δ = 3..8" below.
   SL(2,97) x Z7 with random S; Δ = 6..10: SL/PSL(2,p) x Z_n with alpha-orbit S, (10,13) at the 20-billion cap. The
   odd-order groups also raised (4,11), (5,11), (4,12) and (5,12) (research/frontier/beyond13/THEORY.md).
 - Every value is at least the trivial floor from the neighbouring cells (n_b(Δ,D) ≥ n_b(Δ−1,D), n_b(Δ,D−1)).
+<!-- D15 -->
+- **D = 15, 16 at Δ = 3..6 (beyond-d15):** Δ = 3: symmetric voltage lifts (voltages equivariant under a rotation of
+  the base, so a metacyclic group Z_n x| Z_k acts with few orbits; searched exhaustively after gauge fixing) of the
+  Tutte 8-cage and the Gray graph, and an exhaustive sweep of cubic metacyclic Haar graphs; Δ = 4, 5: Haar graphs of
+  odd-order Frobenius groups Z_m x| Z_k with large k (61-307) and random S; Δ = 6: SL(2,p) x Z_n (odd D) and
+  PSL(2,p) x Z_n (even D) with alpha-orbit S. research/frontier/beyond15/THEORY15.md has the two facts behind the
+  symmetric lifts.
+<!-- /D15 -->
 
 ## Upper bounds
 
@@ -129,6 +140,14 @@ plane, generalized quadrangle or generalized hexagon of order 18, whose existenc
 | (7,14) | **1,674,490,944** | 5.34 | 31,345,665,632 | Haar graph PSL(2,223) x Z151, S = {e} + 2 orbits of size 3 (squad r5/h14, 9 evaluations from a random start); earlier 1,671,605,424 (SL(2,163) x Z193, r3/f13) and 1,587,571,920 (SL(2,109) x Z613, r1/c12); mu = 6.21 | haarcheck_gen VALID (research/frontier/runs/cloudcheck/d7D14_psl_223_151_orb3-2-1_h14.gen.txt) | Haar size law at mu = 5: 2N = 1.66e+09 |
 | (10,13) | **19,980,294,768** | 3.14 | 635,466,457,076 | Haar graph PSL(2,503) x Z157, S = {e} + 3 orbits of size 3 (director, first S solved; at the job's 20-billion-vertex cap, λ = W/N = 31.8); mu = 0.00 | haarcheck_gen VALID (research/frontier/runs/cloudcheck/d10D13_psl_503_157_orb3-3-1_s1.gen.txt) | Haar size law at mu = 5: 2N = 2.92e+10 |
 | (8,14) | **11,325,238,056** | 5.01 | 226,074,357,610 | Haar graph PSL(2,397) x Z181, S = {e} + 1 fixed + 2 orbits of size 3 (director, 146 evaluations, mu 12.1); earlier 11,041,108,728 (PSL(2,443) x Z127, mu 7.1, unchecked) and 10,741,550,640 (PSL(2,409) x Z157, mu 3.9, unchecked); mu = 12.12 | haarcheck_gen VALID (research/frontier/runs/cloudcheck/d8D14_psl_397_181_orb3-2-2_s4.gen.txt) | Haar size law at mu = 5: 2N = 1.09e+10 |
+| (3,15) | **11,790** | 17.99 | 65,528 | symmetric Z393 voltage lift of the Tutte 8-cage (30 vertices, girth 8): voltages equivariant under the order-5 LCF rotation with multiplier lambda = 58 (393 = 3 x 131 composite; Z393 x\|_58 Z5 acts with 6 vertex orbits); squad r2/e06 (liftsym anneal, 1.8 s), apsp by the card and the director; not a Haar graph; earlier 11,026 (Haar graph of Z149 x| Z37, director's sweep); mu = 22.72 | research/frontier/beyond/checks/d3D15_n11790_symlift_tutte8_Z393_l58.apsp.txt (graph research/frontier/beyond/graphs/d3D15_n11790_symlift_tutte8_Z393_l58.edges.gz) | Haar size law at mu = 5: 2N = 9.55e+03 |
+| (4,15) | **1,343,054** | 9.36 | 14,348,900 | Haar graph of the odd-order Frobenius group Z9199 x\|_8708 Z73 (order 671,527), S random (hmeta, 21 s, squad r1/b01; solution research/frontier/sols/d4D15_meta_9199_73_8708_b01.txt; also metacheck.py VALID by the card); earlier 1,324,798 (Z10859 x\|_2950 Z61, director); mu = 15.39 | research/frontier/beyond15/checks/d4D15_meta_9199_73_8708_b01.metacheck.txt | Haar size law at mu = 5: 2N = 1.22e+06 |
+| (5,15) | **47,370,766** | 6.62 | 715,827,876 | Haar graph of the odd-order Frobenius group Z112253 x\|_76172 Z211 (order 23,685,383), S random (hmeta: squad r1/c01 reached cost 2, card r2/g01 closed it in one 90-s link; solution research/frontier/sols/d5D15_meta_112253_211_76172_g01.txt); earlier 46,787,954 (Z154927 x\|_147000 Z151, director); mu = 6.48 | research/frontier/beyond15/checks/d5D15_meta_112253_211_76172_g01.metacheck.txt | Haar size law at mu = 5: 2N = 4.66e+07 |
+| (6,15) | **867,831,360** | 5.69 | 15,258,789,056 | Haar graph SL(2,241) x Z31, S = 2 free alpha-orbits of size 3 (haar_big0 f = 0, director, 650 evaluations); earlier 843,134,880 (SL(2,281) x Z19, mu 5.8); mu = 10.03 | haarcheck_gen VALID (research/frontier/beyond15/runs/d6D15_sl_241_31_orb3-2-0_s3.gen.txt) | Haar size law at mu = 5: 2N = 8.36e+08 |
+| (3,16) | **20,466** | 15.61 | 131,064 | symmetric Z379 voltage lift of the Gray graph (54 vertices, girth 8): voltages equivariant under the order-9 LCF rotation with multiplier lambda = 84 (Z379 x\|_84 Z9 acts with 6 vertex orbits); director, liftsym.c exhaustive over all gauge classes (2 solutions among 144,021; n = 397 has min cost 2); not a Haar graph; earlier 19,670 (Haar graph of Z281 x\|_211 Z35, director's cubic metacyclic sweep), 17,602 (Z677 x\|_362 Z13, squad r1/a04); mu = 16.93 | research/frontier/beyond/checks/d3D16_n20466_symlift_gray_Z379_l84.apsp.txt (graph research/frontier/beyond/graphs/d3D16_n20466_symlift_gray_Z379_l84.edges.gz) | Haar size law at mu = 5: 2N = 1.75e+04 |
+| (4,16) | **3,623,866** | 8.42 | 43,046,714 | Haar graph of the odd-order Frobenius group Z24821 x\|_16022 Z73 (order 1,811,933), S random (hmeta: squad r1/b02 reached cost 2, card r2/f02 closed it with a 30-s link; also metacheck.py VALID by the card; solution research/frontier/sols/d4D16_meta_24821_73_16022_f02.txt); earlier 3,517,286 (Z24091 x\|_1680 Z73, director); mu = 12.57 | research/frontier/beyond15/checks/d4D16_meta_24821_73_16022_f02.metacheck.txt | Haar size law at mu = 5: 2N = 3.38e+06 |
+| (5,16) | **167,009,842** | 5.83 | 2,863,311,524 | Haar graph of the odd-order Frobenius group Z272003 x\|_231904 Z307 (order 83,504,921), S random (hmeta, squad r1/c02; solution research/frontier/sols/d5D16_meta_272003_307_231904_c02.txt); mu = 2.99 | research/frontier/beyond15/checks/d5D16_meta_272003_307_231904_c02.metacheck.txt | Haar size law at mu = 5: 2N = 1.72e+08 |
+| (6,16) | **4,021,844,904** | 5.27 | 76,293,945,306 | Haar graph PSL(2,307) x Z139, S = 2 free alpha-orbits of size 3 (haar_big0 f = 0, director, 49 evaluations); earlier 3,738,328,152 (PSL(2,443) x Z43, mu 2.6); mu = 11.61 | haarcheck_gen VALID (research/frontier/beyond15/runs/d6D16_psl_307_139_orb3-2-0_s2.gen.txt) | Haar size law at mu = 5: 2N = 3.86e+09 |
 <!-- /TABLE -->
 
 ## Notes by diameter
@@ -354,6 +373,43 @@ part way. (4,8) and (4,9) near misses above the 2013 values (2,184, 4,970): Z55 
 Z101 x|_5 Z25 (5,050, cost 2) (r7/j04, j05); (4,10) Z215 x|_2 Z28 (12,040) at cost 1 (r7/j03). An exhaustive 2-opt from the
 (4,8) and (4,9) states (hmeta OPT2: every pair of generators replaced by every pair of group elements, 3.6e6 and 1.9e7
 evaluations) found no cost 0: no generator set within two changes of those states has the required diameter.
+
+### D = 15 and D = 16 at Δ = 3..6 (job beyond-d15, 2026-11-01)
+
+Job beyond-d15 (Opus director + Haiku squad rounds of 16 cards, cloud session, branch claude/new-cells-d15-d16-fpj633).
+Eight new cells; nothing was recorded at D = 15, 16 before. Files: research/frontier/beyond15/ (cells.txt and
+cells_other.txt list every value with its check; rows15.py makes the rows, splice15.py puts them here; sols/, runs/
+(haarcheck_gen logs), checks/ (metacheck logs), lsym/ (symmetric-lift bases, sweeps and logs), THEORY15.md); edge lists
+of the cubic graphs in research/frontier/beyond/graphs/ with apsp logs in research/frontier/beyond/checks/; squad cards
+and scoreboards research/squads/beyond15/r1..r3; log research/squads/LOG.md.
+
+**What won where.**
+- Δ = 3: symmetric voltage lifts (THEORY15.md). The voltages of a Z_n lift are made equivariant under a rotation ρ of the
+  base with a multiplier λ (λ^k = 1 mod n), so the metacyclic group Z_n x|_λ Z_k acts on the lift with few vertex
+  orbits; after gauge fixing only t/2 - 1 voltages are free (t = number of orbits), so each (base, n, λ) is searched
+  exhaustively in seconds (prime n) or annealed in seconds (composite n). The cubic metacyclic Haar graphs are the case
+  t = 2 (one graph per (k, pattern, n, λ)). Values: (3,15) Tutte 8-cage over Z393 (squad card r2/e06, composite n),
+  above the Haar graph of Z149 x| Z37 (11,026, director's exhaustive sweep k = 7..40) and the Gray graph over Z199
+  (10,746); (3,16) Gray graph over Z379 (20,466, exhaustive), above the Haar graph of Z281 x| Z35 (19,670). Girth 8 bases
+  (Tutte 8-cage, Gray) beat girth 6 (Desargues: 9,220 and 15,020; Pappus plain lift 14,940 at D = 16). Plain Z_n lifts
+  annealed as at D = 13, 14 stayed below (GP(10,3) cost 6 at 10,000; Tutte 8-cage 9,900; Pappus 14,940).
+- Δ = 4, 5: Haar graphs of odd-order Frobenius groups Z_m x|_r Z_k with random S (hmeta). k must be large at these
+  diameters: k = 13 is nearly abelian at D = 15 (cost 1,738 at (5,15) where k = 151 solved in 35 s); squad card r1/c05
+  measured random-like behaviour from k ~ 31 (D = 15) and ~43 (D = 16) at Δ = 4; the values use k = 73 (Δ = 4) and
+  k = 211, 307 (Δ = 5). Two of the values came from closing a saved cost-2 state with a new seed (r2/f02, r2/g01).
+- Δ = 6: SL(2,p) x Z_n with small n at odd D and PSL(2,p) x Z_n at even D, S = two free alpha-orbits (haar_big0 f = 0),
+  solved at mu 10 and 11.6 in tens to hundreds of evaluations (0.6 s each at 2e9 elements); both checked by haarcheck_gen.
+
+**What failed.** Orbit S at Δ = 4, 5 in SL/PSL x Z_n (floors 192 and 65; "5 1 0" 52); products of Frobenius groups and
+AGL(1,q) at (4,15), (5,15) (cost 4); even-order and composite-m metacyclic groups (not fixed-point-free); larger
+symmetric-lift families (order-3 Gray, order-5 Foster: costs 6-78) — the small exhaustive families did better than
+annealing in the large ones; Foster (girth 10) came within cost 2 at (3,16) n = 211 but not at n >= 228; Dyck, Nauru,
+Pappus symmetric lifts; quartic symmetric lifts of GQ(3,3) (cost 184). See research/squads/LOG.md for every card.
+
+**Machine.** 4 cores shared by 16 cards and the director. The scheduler gives every process group an equal share
+(autogroups), so `nice` inside a command does nothing; the director raised the priority of the long checks by writing to
+/proc/<pid>/autogroup. A container restart at 23:29 UTC killed seven round-2 cards and the first (6,16) check, which was
+rerun.
 
 ## What failed, and why it matters for the next attempt
 

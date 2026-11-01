@@ -17,7 +17,7 @@ for r in rows:
     else: lines.append(r); new += 1
 txt = head + '<!-- TABLE -->\n' + '\n'.join(lines) + '\n<!-- /TABLE -->' + tail
 # title count
-ncells = sum(1 for l in lines if l.startswith('| ('))
+ncells = 69 + len(rows)   # beyond-d13's title said 69 new cells (its table also has one row that is not a new cell)
 txt = re.sub(r'^# Beyond the 2013 table: first values for \d+ new cells', f'# Beyond the 2013 table: first values for {ncells} new cells', txt, count=1, flags=re.M)
 ext = ('Extended 2026-11-01 by job beyond-d15 (branch claude/new-cells-d15-d16-fpj633): eight more cells, D = 15 and D = 16 at\n'
        'Δ = 3..6; see the section "D = 15 and D = 16 at Δ = 3..6" below.\n')
