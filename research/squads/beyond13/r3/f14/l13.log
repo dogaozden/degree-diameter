@@ -3,3 +3,5 @@ alpha: conj by mat(0,540,1,540), z -> 0 z on Z_1 (fixed z: 1); ORBIT k=3 m=2 f=1
 setup 0.0s
 start cost=4 (20.8s per eval)
 t=66 step=1 evals=5 slot=1 cand=6 cost=6 best=4 T=1.26
+t=112 step=2 evals=8 slot=0 cand=18 cost=6 best=4 T=1.06
+RESULT d=7 D=13 group=sl 541 x Z_1 N=158339880 vertices=316679760 best=4 evals=8 steps=2 time=111.9 orbit k=3 m=2 f=1 mu=10.84

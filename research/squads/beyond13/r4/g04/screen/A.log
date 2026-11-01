@@ -1,2 +1,6 @@
 group prod meta 61 5 9 meta 163 3 58 x Z_1, N=149145, identity 0, H order 61, rows 2445, threads 1, setup 0.43s
 start cost=84
+t=30 steps=679 evals=5433 cost=6 best=6 T=0.53
+t=60 steps=1274 evals=10193 cost=6 best=6 T=0.19
+t=90 steps=1913 evals=15305 cost=6 best=6 T=0.15
+RESULT d=5 D=11 group=prod meta 61 5 9 meta 163 3 58 x Z_1 N=149145 best=6 evals=15305 time=90.0

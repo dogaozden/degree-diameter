@@ -1,0 +1,6 @@
+group prod meta 43 7 4 meta 71 7 20 x Z_1, N=149597, identity 0, H order 43, rows 3479, threads 1, setup 0.27s
+start cost=172
+t=30 steps=475 evals=3801 cost=4 best=4 T=0.53
+t=60 steps=1021 evals=8169 cost=4 best=4 T=0.19
+t=90 steps=1597 evals=12777 cost=2 best=2 T=0.15
+RESULT d=5 D=11 group=prod meta 43 7 4 meta 71 7 20 x Z_1 N=149597 best=2 evals=13361 time=95.1

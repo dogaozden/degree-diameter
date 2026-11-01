@@ -1,0 +1,8 @@
+selftest sl 127: |M| = 2048256, index round trip over all elements ok
+selftest group multiplication: associativity, identity, inverse on 20000 random triples ok
+file sol_sl_127_3.txt
+header: 5 14 sl 127 n 3 N 6144768
+group sl 127 x Z_3, |G| = 6144768 = N, vertices 2N = 12289536; 5 distinct generators
+from (e,A): reached A 6144768/6144768, B 6144768/6144768 within 14; ecc 14; level sizes [1, 5, 20, 80, 320, 1280, 5114, 20425, 81049, 315683, 1150808, 3291979, 4730192, 2515316, 177264]  (9s)
+from (e,B): reached A 6144768/6144768, B 6144768/6144768 within 14; ecc 14; level sizes [1, 5, 20, 80, 320, 1280, 5114, 20425, 81055, 315683, 1150804, 3291979, 4729902, 2515316, 177552]  (17s)
+VALID d=5 D=14 group=sl 127 x Z_3 N=6144768 vertices=12289536 (distinct generators, 5-regular simple; every vertex within 14 of both (e,A) and (e,B); ecc 14; 17s)
