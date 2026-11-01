@@ -1,0 +1,6 @@
+machine: vm; nproc=4; free -g: total 15G used 10G free 4G avail 4G; Linux 6.18.44-fc-v185; gcc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0
+sha256: 95577f6c539c1e534722cb2dbf49baa66b7c37f786aef905390a85e2c6623d50  research/frontier/sols/d14D12_psl_241_2143_orb3-4-2_s1.txt
+################ haarcheck_psl (reference checker, research/structured/tools/haarcheck_psl.c, gcc -O3, single-threaded; ONE BFS from (e,A) only, the other side runs in another job): /usr/bin/time -v haarcheck_psl research/frontier/sols/d14D12_psl_241_2143_orb3-4-2_s1.txt A   (stdout, complete)
+from (e,A): reached A 14998085520/14998085520, B 14998085520/14998085520 within 12, ecc 12
+HALF-VALID from (e,A) d=14 D=12 group=psl 241 x Z_2143 N=14998085520 vertices=29996171040
+[exit 0; wall 10515s; peak RSS 10728 MB]  (/usr/bin/time -v: wall 2:55:15, user 10392.78 s, max RSS 10986580 KB, started 2026-11-01T15:32:18Z, ended 2026-11-01T18:27:34Z)
