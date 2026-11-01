@@ -170,3 +170,15 @@ Director in parallel: destroy-and-repair loops (A 38 → 42 from e03's annealed 
 state (no gain at T ≤ 0.6), region destroy on side A. Combinations recorded: 35,618 (bfs_all-checked), 35,640, 35,684,
 35,706, **35,728 = 43 (f03) + 45 (f08)**.
 Kept: all four destroy styles; next round runs them as a portfolio from 43/45.
+
+## 2026-11-01, beyond-small, round 5 (12 cards: portfolio of the four destroy styles + annealing, 06:55 UTC)
+
+Files: research/squads/beyond-small/r5/. Start 43 A-orbits (r4/f03), 45 B-orbits (r4/f08) = 35,728. Six cards per side
+(region, big, conflict-directed, random destroy, annealing, adaptive mix), 45–50 min each, plus the director's loops.
+Result: **no gain**; every card ended at 43 / 45 (many equal-count moves accepted, no 44th A-orbit or 46th B-orbit). At
+45 B-orbits only line swaps remain possible for the annealer (no free keys for inserts). Final (17,5): **35,728**
+(88 orbits of 22 hubs; cap 96). Squad totals for the job: 72 cards in five rounds. What the squad added: the line-hub
+observation (r1/c03), Z22 orbits (r2/d06), adaptive orbit growth (r3/e01, e02), orbit annealing (r3/e03) and the region /
+big destroys (r4/f03, f08); the director added the hub proposition (sides independent), the packers and combinations, the
+destroy-and-repair loop that broke the growth plateau, and every check. Lone directions that failed are listed in
+research/frontier/beyond/BEYOND_SMALL.md.

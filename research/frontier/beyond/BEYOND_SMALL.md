@@ -14,7 +14,7 @@ diameter, D = 3 and 4 at Δ = 17, 18, 20, D = 5 at Δ = 17, and D = 6 at Δ = 17
 | (17,4) | **8,738** | 100 | 8,738 | W(16) (Moore) | apsp (moore/check_d17D4_w16.apsp.txt) |
 | (18,4) | **10,440** | 100 | 10,440 | W(17) (Moore) | apsp (moore/check_d18D4_w17.apsp.txt) |
 | (20,4) | **14,480** | 100 | 14,480 | W(19) (Moore) | apsp (moore/check_d20D4_w19.apsp.txt) |
-| (17,5) | **35,310** | 25.3 | 139,804 | **new**: the (16,5) route-chart graph + 1,518 hubs in 69 Z22-orbits (below) | apsp (research/squads/beyond-small/graphs/d17D5_n35310.check.txt) |
+| (17,5) | **35,728** | 25.6 | 139,804 | **new**: the (16,5) route-chart graph + 1,936 hubs in 88 Z22-orbits (below) | apsp (research/squads/beyond-small/graphs/d17D5_n35728.check.txt) |
 | (17,6) | **2,236,962** | 100 | 2,236,962 | H(16) (Moore) | exact, orbit BFS (hex6/check_d17D6_H16.auto.txt) |
 | (18,6) | **3,017,196** | 100 | 3,017,196 | H(17) (Moore) | exact, orbit BFS (hex6/check_d18D6_H17.auto.txt) |
 | (19,6) | **3,203,968** | 80.1 | 4,001,438 | Theorem D, q = 17, m = 2 (lab theorem, Lean) | exact, orbit BFS (thmd19/check_d19D6_thmD_q17.auto.txt) |
@@ -63,13 +63,13 @@ graph, vertex v ↦ v ± 16,896), an annealer over orbit packings (r3/e03 anneal
 with conflicts as a soft penalty), and region destroys (r4/f07: drop every orbit whose keys meet a random affine set of
 keys, then regrow). Side A went 27 → 32 → 36 → 38 → 42 orbits, side B 21 → 37 → 39 → 41 → 44.
 
-**Best graph: BEST_N = 33,792 + 22·(BEST_A + BEST_B) hubs (BEST_A orbits on side A, BEST_B on side B).** Files in
-research/squads/beyond-small/graphs/: d17D5_nBEST_N_orbit_bases.txt (orbit bases, global ids; bases with ids ≥ 16,896
-are A-hub orbits), d17D5_nBEST_N_orbits.edges.gz, d17D5_nBEST_N.check.txt (apsp.c RESULT VALID d=17 D=5 and the sha256),
+**Best graph: 35,728 = 33,792 + 1,936 hubs, in 43 Z22-orbits on side A and 45 on side B (22·88 = 1,936).** Files in
+research/squads/beyond-small/graphs/: d17D5_n35728_orbit_bases.txt (orbit bases, global ids; bases with ids ≥ 16,896
+are A-hub orbits), d17D5_n35728_orbits.edges.gz, d17D5_n35728.check.txt (apsp.c RESULT VALID d=17 D=5 and the sha256),
 and the builder build_d17D5_hubs.py, which rebuilds G from research/theorems/graphs/build_d16D5_n33792.py, expands the
 orbits, checks conditions (1) and (2) of the proposition directly, and writes the edge list.
 Rebuild: `python3 research/squads/beyond-small/graphs/build_d17D5_hubs.py OUT.edges --orbits
-research/squads/beyond-small/graphs/d17D5_nBEST_N_orbit_bases.txt && apsp OUT.edges 17 5`.
+research/squads/beyond-small/graphs/d17D5_n35728_orbit_bases.txt && apsp OUT.edges 17 5`.
 Independent checks: apsp.c for every recorded value; bfs_all.c (plain BFS from every vertex) on 35,618 as well
 (max eccentricity 5, distance histogram sums to n²: graphs/d17D5_n35618.bfs_all.txt).
 
@@ -77,8 +77,10 @@ Steps on the way (all apsp VALID, director-checked): 33,794 (2 SA hubs, r1/c16),
 (57 line hubs, r1/c03), 33,983 (191 hubs, director's hubpack clique packing), 34,290 / 34,401 (adaptive growth and
 annealing of single hubs, r2/d01, r2/d15), 34,848 (48 orbits, r2/d06; apsp and bfs_all), 34,863 / 34,885 / 34,980
 (director's combinations of the best A- and B-packings), 35,310 (e01 + e02), 35,420 / 35,442 / 35,486 / 35,618 / 35,640
-(director's destroy-and-repair loops, with e03's 38 A-orbits), 35,684 (42 A + f07's 44 B).
-The method's cap is 48 orbits per side (35,904); 35,684 is 25.5 % of the Moore bound 139,804 (the (16,5) graph is 31.2 %
+(director's destroy-and-repair loops, with e03's 38 A-orbits), 35,684 (42 A + f07's 44 B), 35,706 (42 A + f08's 45 B),
+35,728 (f03's 43 A + f08's 45 B). Round 5 (12 cards, four destroy styles and annealing, 45–50 min each) found no 44th A-orbit
+or 46th B-orbit: the packings sit on a plateau of equal-count moves.
+The method's cap is 48 orbits per side (35,904); 35,728 is 25.6 % of the Moore bound 139,804 (the (16,5) graph is 31.2 %
 of its own bound).
 
 ## (17,5): what failed and why

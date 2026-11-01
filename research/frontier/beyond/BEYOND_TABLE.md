@@ -13,7 +13,8 @@ published for these cells, so every value here is a first value, not a record.
 - **Theorems of the lab, Δ = 19:** (19,3) 624 (fourth hat), (19,4) 10,982 (Theorem A), (19,6) 3,203,968 (Theorem D).
 - **D = 5, new construction:** multi-doubled-matching lifts of W(q) (MDM.md): (18,5) 47,600 and, inside the old
   table, a record (13,5) 11,700 (was 11,486). (19,5) 52,428 is the k = 1 case (DM on W(16)); (20,5) 75,000 is a
-  route-chart lift over F5 from squad round 1. (17,5) has only the floor 33,792 (the (16,5) graph).
+  route-chart lift over F5 from squad round 1. (17,5) had only the floor 33,792 (the (16,5) graph); job beyond-small raised it to 35,728 by adding 1,936 hubs to the
+  (16,5) graph (BEYOND_SMALL.md).
 - **D = 7:** level graphs (polygon covers) of H(13) and H(16), 5.6M–15.7M vertices (classical theorem).
 - **D = 8 .. 12:** Haar graphs of SL(2,p) × Z_n / PSL(2,p) × Z_n with automorphism-orbit generator sets, up to
   billions of vertices, each checked by an independent low-memory BFS from both sides; the small cells (Δ = 3, 4) by
@@ -43,7 +44,7 @@ plane, generalized quadrangle or generalized hexagon of order 18, whose existenc
 |---|---:|---:|---:|---|---|---|
 | (17,3) | **546** | 100.00 | 546 | PG(2,16) incidence graph (Moore graph) | apsp: checks/d17D3_n546_pg2_16.apsp.txt; independent rebuild moore/build_moore_d34.py (identical sha256), moore/check_d17D3_pg16.apsp.txt | 546 (PG(2,16) incidence graph (Moore)) |
 | (17,4) | **8,738** | 100.00 | 8,738 | W(16) incidence graph (Moore graph) | apsp: checks/d17D4_n8738_W16.apsp.txt; rebuild moore/check_d17D4_w16.apsp.txt | 8,738 (W(16) incidence graph (Moore)) |
-| (17,5) | **35,310** | 25.26 | 139,804 | (16,5) route-chart graph + 1,518 hubs (new vertices joined to 4 affine fibre lines of old vertices) in 69 Z22-orbits: 32 on side A, 37 on side B (job beyond-small, BEYOND_SMALL.md) | apsp: research/squads/beyond-small/graphs/d17D5_n35310.check.txt | 33,320 (polygon cover 7xW(13) (j=3)) |
+| (17,5) | **35,728** | 25.55 | 139,804 | (16,5) route-chart graph + 1,936 hubs (new vertices joined to 4 affine fibre lines of old vertices) in 88 Z22-orbits: 43 on side A, 45 on side B (job beyond-small, BEYOND_SMALL.md) | apsp: research/squads/beyond-small/graphs/d17D5_n35728.check.txt | 33,320 (polygon cover 7xW(13) (j=3)) |
 | (17,6) | **2,236,962** | 100.00 | 2,236,962 | H(16) incidence graph (split Cayley hexagon; Moore graph) | exact: BFS from 10,026 orbit representatives of 2 verified torus automorphisms (hex6/check_d17D6_H16.auto.txt) | 2,236,962 (H(16) incidence graph (Moore)) |
 | (17,7) | **5,631,276** | 15.73 | 35,791,388 | level graph of H(13): 7 copies joined by 3 matchings, voltages 1, 2, 3 in Z7 (polygon cover; D7_HEXAGON.md Thm A) | theorem (any matchings); builder all-pairs at q = 3, 4, r = 1..3 (r1/c09 small/); this instance: BFS from 64 random vertices, max ecc 7 (checks/d7_levelgraphs_sampled.txt) | 5,631,276 (polygon cover 7xH(13) (j=3)) |
 | (17,8) | **41,373,072** | 7.22 | 572,662,300 | Haar graph SL(2,53) x Z139, S = {e} + 1 fixed + 5 orbits of size 3 | haarcheck_sl (r1/c15/check_17_8_sl53_139.txt) and hcheck5 (director: checks/d17D8_sl_53_139_orb3_c15.hcheck5.txt): VALID | 2013-table D=8 pattern (no construction known): 67,575,312 (q=13, j=3); Haar size law at mu = 5: 2N = 3.78e+07 |
@@ -188,7 +189,8 @@ at much higher cost, and each check of a 10¹⁰-element group takes about an ho
 
 ## What failed, and why it matters for the next attempt
 
-- (17,5) has no construction of its own (see D = 5). It is the one cell where the formula families leave a gap:
+- (17,5) had no construction of its own (see D = 5); job beyond-small (2026-11-01) gave one: the (16,5) graph plus hubs on its
+  spare degrees, 35,728 (BEYOND_SMALL.md). The note below is the state before that. It is the one cell where the formula families leave a gap:
   MDM and polygon covers want q + 1 + (even) = Δ, route charts want Δ = letters × field size, and 17 is neither for any
   usable q. A degree-17 idea that adds a sheet with one extra edge per vertex is the open problem.
 - Route charts over F3 (6 letters) and F2 (9 letters) were far from competitive in 25-minute boxes (best 29,160 at
