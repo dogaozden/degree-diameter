@@ -1,0 +1,7 @@
+group psl 397 x Z_181, N=5662619028 (2N=11325238056), rows 78804 x 71857 bits (doubled row 2264 words), memory 3.00 GB, threads 1
+alpha: conj by mat(0,396,1,396), z -> 48 z on Z_181 (fixed z: 1); ORBIT k=3 m=2 f=2; W=1.13037e+11 lambda=19.962 mu=12.12
+setup 0.0s
+start cost=0 (8.6s per eval)
+RESULT d=8 D=14 group=psl 397 x Z_181 N=5662619028 vertices=11325238056 best=0 evals=1 steps=0 time=8.6 orbit k=3 m=2 f=2 mu=12.12
+re-evaluation of the best S: cost 0
+wrote runs/d8D14_psl_397_181_orb3-2-2_s8.out
