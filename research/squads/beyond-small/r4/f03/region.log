@@ -22,3 +22,12 @@
 22 line j=0 drop=4 keep=38 regrow=42 best=42 ACC t=1324
 23 line j=0 drop=4 keep=38 regrow=42 best=42 ACC t=1384
 24 line j=0 drop=4 keep=38 regrow=42 best=42 ACC t=1444
+25 line j=2 drop=4 keep=38 regrow=42 best=42 ACC t=1505
+26 line j=2 drop=3 keep=39 regrow=42 best=42 ACC t=1565
+27 line j=1 drop=3 keep=39 regrow=42 best=42 ACC t=1625
+28 plane j=1 drop=11 keep=31 regrow=41 best=42 rej t=1685
+29 line j=0 drop=4 keep=38 regrow=42 best=42 ACC t=1745
+30 line j=0 drop=4 keep=38 regrow=42 best=42 ACC t=1805
+31 plane j=2 drop=16 keep=26 regrow=40 best=42 rej t=1866
+32 line j=2 drop=4 keep=38 regrow=41 best=42 rej t=1926
+33 line j=0 drop=3 keep=39 regrow=42 best=42 ACC t=1986

@@ -1,0 +1,12 @@
+it 1 t=45s mode=one_j2 c=93 |R|=8 dropped=8 fixed=34 new_total=42 ok=True accepted=True cur=42 dt=45s
+it 2 t=90s mode=one_j1 c=109 |R|=8 dropped=8 fixed=34 new_total=42 ok=True accepted=True cur=42 dt=45s
+it 3 t=136s mode=all_j c=241 |R|=12 dropped=9 fixed=33 new_total=42 ok=True accepted=True cur=42 dt=45s
+it 4 t=181s mode=all_j c=189 |R|=12 dropped=9 fixed=33 new_total=42 ok=True accepted=True cur=42 dt=45s
+it 5 t=226s mode=all_j c=145 |R|=12 dropped=9 fixed=33 new_total=42 ok=True accepted=True cur=42 dt=45s
+it 6 t=271s mode=all_j c=45 |R|=12 dropped=9 fixed=33 new_total=42 ok=True accepted=True cur=42 dt=45s
+it 7 t=316s mode=all_j c=180 |R|=12 dropped=9 fixed=33 new_total=42 ok=True accepted=True cur=42 dt=45s
+it 8 t=362s mode=one_j1 c=212 |R|=8 dropped=6 fixed=36 new_total=42 ok=True accepted=True cur=42 dt=45s
+it 9 t=407s mode=one_j1 c=217 |R|=8 dropped=8 fixed=34 new_total=42 ok=True accepted=True cur=42 dt=45s
+it 10 t=452s mode=all_j c=241 |R|=12 dropped=9 fixed=33 new_total=42 ok=True accepted=True cur=42 dt=45s
+it 11 t=497s mode=one_j1 c=20 |R|=8 dropped=7 fixed=35 new_total=42 ok=True accepted=True cur=42 dt=45s
+it 12 t=542s mode=one_j1 c=180 |R|=8 dropped=8 fixed=34 new_total=42 ok=True accepted=True cur=42 dt=45s

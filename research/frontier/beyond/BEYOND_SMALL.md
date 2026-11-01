@@ -55,20 +55,31 @@ keys (j, y) of N's vertices are distinct, and the orbit satisfies (2) internally
 u ≠ 0. Packing orbits instead of single hubs multiplies every good choice by 22 (768 keys per side: at most 48 orbits of
 16 per side).
 
-**Best graph: 35,310 = 33,792 + 704 A-hubs (32 orbits, r3/e01, adaptive growth from d06's 27) + 814 B-hubs (37 orbits,
-r3/e02, adaptive growth from d06's 21).** Adaptive growth: a new orbit base is a joint greedy choice of 4 lines with unused
-keys that covers the side and meets the distance-2 set of every existing hub. Files:
-research/squads/beyond-small/graphs/d17D5_n35310_orbit_bases.txt (69 orbit bases, global ids), builder
-research/squads/beyond-small/graphs/build_d17D5_hubs.py (rebuilds G, expands the orbits, checks (1) and (2) directly,
-writes the edge list), edge list d17D5_n35310_orbitsA32_B37.edges.gz, check d17D5_n35310.check.txt (apsp.c:
-RESULT VALID d=17 D=5 n=35310, sha256 edf61775...).
+**Searching orbit packings.** Adaptive growth (r3/e02 growb.c, and e01 on side A): a new orbit base is a joint greedy
+choice of 4 lines with unused keys that covers the side and meets the distance-2 set of every existing hub; it saturates
+(32 A-orbits, 37 B-orbits). Escaping the saturation was the director's step: a destroy-and-repair loop around growb (drop
+2–5 random orbits, regrow for 60 s, keep the result if it has at least as many orbits; side A runs on the side-swapped
+graph, vertex v ↦ v ± 16,896), an annealer over orbit packings (r3/e03 anneal3.c, moves insert/delete/replace/line-swap
+with conflicts as a soft penalty), and region destroys (r4/f07: drop every orbit whose keys meet a random affine set of
+keys, then regrow). Side A went 27 → 32 → 36 → 38 → 42 orbits, side B 21 → 37 → 39 → 41 → 44.
+
+**Best graph: BEST_N = 33,792 + 22·(BEST_A + BEST_B) hubs (BEST_A orbits on side A, BEST_B on side B).** Files in
+research/squads/beyond-small/graphs/: d17D5_nBEST_N_orbit_bases.txt (orbit bases, global ids; bases with ids ≥ 16,896
+are A-hub orbits), d17D5_nBEST_N_orbits.edges.gz, d17D5_nBEST_N.check.txt (apsp.c RESULT VALID d=17 D=5 and the sha256),
+and the builder build_d17D5_hubs.py, which rebuilds G from research/theorems/graphs/build_d16D5_n33792.py, expands the
+orbits, checks conditions (1) and (2) of the proposition directly, and writes the edge list.
 Rebuild: `python3 research/squads/beyond-small/graphs/build_d17D5_hubs.py OUT.edges --orbits
-research/squads/beyond-small/graphs/d17D5_n35310_orbit_bases.txt && apsp OUT.edges 17 5`.
+research/squads/beyond-small/graphs/d17D5_nBEST_N_orbit_bases.txt && apsp OUT.edges 17 5`.
+Independent checks: apsp.c for every recorded value; bfs_all.c (plain BFS from every vertex) on 35,618 as well
+(max eccentricity 5, distance histogram sums to n²: graphs/d17D5_n35618.bfs_all.txt).
 
 Steps on the way (all apsp VALID, director-checked): 33,794 (2 SA hubs, r1/c16), 33,814 (one Z22 orbit, r1/c02), 33,849
 (57 line hubs, r1/c03), 33,983 (191 hubs, director's hubpack clique packing), 34,290 / 34,401 (adaptive growth and
 annealing of single hubs, r2/d01, r2/d15), 34,848 (48 orbits, r2/d06; apsp and bfs_all), 34,863 / 34,885 / 34,980
-(director's combinations of the best A- and B-packings), 35,310.
+(director's combinations of the best A- and B-packings), 35,310 (e01 + e02), 35,420 / 35,442 / 35,486 / 35,618 / 35,640
+(director's destroy-and-repair loops, with e03's 38 A-orbits), 35,684 (42 A + f07's 44 B).
+The method's cap is 48 orbits per side (35,904); 35,684 is 25.5 % of the Moore bound 139,804 (the (16,5) graph is 31.2 %
+of its own bound).
 
 ## (17,5): what failed and why
 
