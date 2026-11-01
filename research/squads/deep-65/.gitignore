@@ -1,0 +1,12 @@
+# worker scratch: group tables (regenerate with tools/gap_tables.g) and compiled binaries stay out of git
+groups/
+bin/
+round*/h*/apsp
+round*/h*/score65
+round*/h*/mcos
+round*/h*/tabu
+round*/h*/tabu3
+round*/h*/twoch
+round*/h*/hubtabu
+round*/h*/hubk
+round*/h*/h1
