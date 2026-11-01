@@ -4,7 +4,10 @@
  * transitive on each side, so BFS from (e,A) and from (e,B) give the exact diameter.
  * Own element indexing (keyed on c, unlike haar_gen3's a-keyed one): c != 0: (c,a,d) -> b = (ad-1)/c;
  * c = 0: a != 0, d = 1/a, b free.  Neighbours are computed by explicit 2x2 matrix products mod p.
- * Memory: 4 bitsets of N bits per BFS.  Usage: haarcheck_sl SOL.txt */
+ * Memory: 4 bitsets of N bits per BFS.  Usage: haarcheck_sl SOL.txt [A|B]
+ * With A or B only that one BFS runs (to split a long check into two jobs, as in research/structured/tools/haarcheck_psl.c;
+ * added by job beyond-d11b); the last line then reads HALF-VALID/HALF-INVALID from (e,A) or (e,B), and the graph is
+ * VALID only when both halves are HALF-VALID. */
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdint.h>
@@ -26,7 +29,7 @@ static void dec(long long g, long long *a, long long *b, long long *c, long long
 }
 typedef struct { long long a, b, c, d, z; } el;
 int main(int argc, char **argv) {
-    if (argc < 2) { fprintf(stderr, "usage: haarcheck_sl SOL.txt\n"); return 2; }
+    if (argc < 2) { fprintf(stderr, "usage: haarcheck_sl SOL.txt [A|B]\n"); return 2; }
     FILE *f = fopen(argv[1], "r"); if (!f) { perror(argv[1]); return 2; }
     char line[4096]; if (!fgets(line, sizeof line, f)) return 2;
     int dg, D; char fam[64]; long long NN;
@@ -54,8 +57,9 @@ int main(int argc, char **argv) {
     long long W = (N + 63) / 64;
     uint64_t *vis[2], *cur[2], *nxt[2];
     for (int s = 0; s < 2; s++) { vis[s] = calloc(W, 8); cur[s] = calloc(W, 8); nxt[s] = calloc(W, 8); }
-    int bad = 0;
+    int bad = 0, only = argc > 2 ? (argv[2][0] == 'B') : -1;
     for (int start = 0; start < 2; start++) {
+        if (only >= 0 && start != only) continue;
         for (int s = 0; s < 2; s++) { memset(vis[s], 0, W * 8); memset(cur[s], 0, W * 8); }
         long long e = enc(1, 0, 0, 1, 0); vis[start][e >> 6] |= 1ULL << (e & 63); cur[start][e >> 6] |= 1ULL << (e & 63);
         long long reached[2] = {0, 0}; reached[start] = 1; int side = start, ecc = 0;
@@ -75,6 +79,8 @@ int main(int argc, char **argv) {
         printf("from (e,%c): reached A %lld/%lld, B %lld/%lld within %d, ecc %d\n", start ? 'B' : 'A', reached[0], N, reached[1], N, D, ecc);
         if (reached[0] != N || reached[1] != N) bad = 1;
     }
+    if (only >= 0) { printf("%s from (e,%c) d=%d D=%d group=sl %lld x Z_%lld N=%lld vertices=%lld\n", bad ? "HALF-INVALID" : "HALF-VALID",
+                            only ? 'B' : 'A', dg, D, p, n, N, 2 * N); return bad; }
     printf("%s d=%d D=%d group=sl %lld x Z_%lld N=%lld vertices=%lld (distinct generators, %d-regular simple)\n", bad ? "INVALID" : "VALID", dg, D, p, n, N, 2 * N, dg);
     return bad;
 }
