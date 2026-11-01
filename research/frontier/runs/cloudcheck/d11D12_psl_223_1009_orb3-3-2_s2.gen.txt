@@ -1,0 +1,15 @@
+checker: haarcheck_gen
+command: ./bin/haarcheck_gen runs/d11D12_psl_223_1009_orb3-3-2_s2.out
+start: 2026-11-01T06:01:03Z
+sha256 e52e247f4a92a474f49ff0d5d438660ba0b557bbdfd4a8e24311ca881ff3f17c  ./bin/haarcheck_gen
+sha256 be361b31cb6d8ab0cf9d36e550ece81e8e5dfd2e4fe9807f6a0c53ab0ee4798d  runs/d11D12_psl_223_1009_orb3-3-2_s2.out
+selftest psl 223: |M| = 5544672, index round trip over all elements ok
+selftest group multiplication: associativity, identity, inverse on 20000 random triples ok
+file runs/d11D12_psl_223_1009_orb3-3-2_s2.out
+header: 11 12 psl 223 n 1009 N 5594574048
+group psl 223 x Z_1009, |G| = 5594574048 = N, vertices 2N = 11189148096; 11 distinct generators
+from (e,A): reached A 5594574048/5594574048, B 5594574048/5594574048 within 12; ecc 12; level sizes [1, 11, 110, 1100, 11000, 110000, 1099802, 10985619, 108826227, 994988658, 4708486632, 4588488660, 776150276]  (1226s)
+from (e,B): reached A 5594574048/5594574048, B 5594574048/5594574048 within 12; ecc 12; level sizes [1, 11, 110, 1100, 11000, 110000, 1099802, 10985619, 108826434, 994988658, 4708459567, 4588488660, 776177134]  (2070s)
+VALID d=11 D=12 group=psl 223 x Z_1009 N=5594574048 vertices=11189148096 (distinct generators, 11-regular simple; every vertex within 12 of both (e,A) and (e,B); ecc 12; 2070s)
+exit: 0
+end: 2026-11-01T06:35:33Z (2070 s)

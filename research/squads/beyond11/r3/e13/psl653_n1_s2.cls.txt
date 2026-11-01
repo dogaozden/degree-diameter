@@ -1,0 +1,19 @@
+EVAL /home/user/degree-diameter/research/squads/beyond11/r3/e13/psl653_n1_s2.sol.start cost=14 time=2.651 mu=8.86
+HOLE side=A class=alpha z=0 mat(49,600,53,649) trace=45 order=327 index=20502733
+HOLE side=A class=other z=0 mat(64,461,128,218) trace=282 order=109 index=26948001
+HOLE side=A class=other z=0 mat(85,462,300,194) trace=279 order=326 index=36014538
+HOLE side=A class=other z=0 mat(87,513,412,613) trace=47 order=327 index=36940351
+HOLE side=A class=other z=0 mat(100,228,140,600) trace=47 order=327 index=42306070
+HOLE side=A class=other z=0 mat(128,416,135,250) trace=378 order=326 index=54242591
+HOLE side=A class=other z=0 mat(159,300,53,215) trace=374 order=326 index=67407775
+HOLE side=A class=other z=0 mat(166,494,416,109) trace=275 order=326 index=70629372
+HOLE side=A class=other z=0 mat(243,474,461,128) trace=371 order=109 index=103492150
+HOLE side=A class=alpha z=0 mat(248,132,521,380) trace=628 order=327 index=105663879
+HOLE side=A class=other z=0 mat(268,135,159,7) trace=275 order=326 index=113955530
+HOLE side=A class=other z=0 mat(268,600,462,106) trace=374 order=326 index=114153515
+HOLE side=A class=other z=0 mat(281,412,228,325) trace=606 order=327 index=119543438
+HOLE side=A class=other z=0 mat(307,128,179,64) trace=371 order=109 index=130598520
+CLASS side A: central 0 alpha 2 other 12 | side B: central 0 alpha 0 other 0 | total 14
+ORDER (projective order: count): 109:3 326:6 327:5
+TRACE (a+d mod p: count): 45:1 47:2 275:2 279:1 282:1 371:2 374:2 378:1 606:1 628:1
+Z (z: count): 0:14

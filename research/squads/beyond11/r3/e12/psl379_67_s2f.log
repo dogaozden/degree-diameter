@@ -1,0 +1,8 @@
+group psl 379 x Z_67, N=1823725260 (2N=3647450520), rows 71820 x 25393 bits (doubled row 816 words), memory 1.09 GB, threads 1
+alpha: conj by mat(0,378,1,378), z -> 29 z on Z_67 (fixed z: 1); ORBIT k=3 m=3 f=1; W=3.53037e+10 lambda=19.358 mu=7.14
+setup 0.0s
+start cost=3 (17.1s per eval)
+t=84 step=1 evals=5 slot=1 cand=0 cost=0 best=0 T=1.26
+RESULT d=10 D=12 group=psl 379 x Z_67 N=1823725260 vertices=3647450520 best=0 evals=5 steps=1 time=84.0 orbit k=3 m=3 f=1 mu=7.14
+re-evaluation of the best S: cost 0
+wrote /home/user/degree-diameter/research/squads/beyond11/r3/e12/psl379_67_s2f

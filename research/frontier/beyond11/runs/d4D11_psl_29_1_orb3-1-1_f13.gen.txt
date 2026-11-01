@@ -1,0 +1,15 @@
+checker: haarcheck_gen
+command: ./bin/haarcheck_gen runs/d4D11_psl_29_1_orb3-1-1_f13.out
+start: 2026-11-01T07:19:45Z
+sha256 e52e247f4a92a474f49ff0d5d438660ba0b557bbdfd4a8e24311ca881ff3f17c  ./bin/haarcheck_gen
+sha256 13d0d22ea458a6019153812999fb8131c048731c4d523fd5352b24b5b61e1d8e  runs/d4D11_psl_29_1_orb3-1-1_f13.out
+selftest psl 29: |M| = 12180, det-1 matrices 24360
+selftest group multiplication: associativity, identity, inverse on 20000 random triples ok
+file runs/d4D11_psl_29_1_orb3-1-1_f13.out
+header: 4 11 psl 29 n 1 N 12180
+group psl 29 x Z_1, |G| = 12180 = N, vertices 2N = 24360; 4 distinct generators
+from (e,A): reached A 12180/12180, B 12180/12180 within 11; ecc 11; level sizes [1, 4, 12, 36, 108, 324, 972, 2742, 6450, 8534, 4637, 540]  (0s)
+from (e,B): reached A 12180/12180, B 12180/12180 within 11; ecc 11; level sizes [1, 4, 12, 36, 108, 324, 972, 2742, 6450, 8534, 4637, 540]  (0s)
+VALID d=4 D=11 group=psl 29 x Z_1 N=12180 vertices=24360 (distinct generators, 4-regular simple; every vertex within 11 of both (e,A) and (e,B); ecc 11; 0s)
+exit: 0
+end: 2026-11-01T07:19:45Z (0 s)

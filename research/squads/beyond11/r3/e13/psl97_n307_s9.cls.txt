@@ -1,0 +1,14 @@
+EVAL /home/user/degree-diameter/research/squads/beyond11/r3/e13/psl97_n307_s9.sol.start cost=9 time=1.715 mu=9.87
+HOLE side=A class=other z=144 mat(4,66,9,76) trace=80 order=16 index=8960246
+HOLE side=A class=other z=171 mat(10,82,31,70) trace=80 order=16 index=26940342
+HOLE side=A class=other z=299 mat(12,9,82,5) trace=17 order=16 index=34244614
+HOLE side=A class=other z=221 mat(14,39,16,10) trace=24 order=49 index=38051336
+HOLE side=A class=other z=137 mat(25,10,56,69) trace=94 order=49 index=71012614
+HOLE side=A class=other z=73 mat(26,81,70,95) trace=24 order=49 index=74326615
+HOLE side=A class=other z=180 mat(28,41,90,66) trace=94 order=49 index=80679166
+HOLE side=A class=other z=13 mat(29,70,39,44) trace=73 order=49 index=82044228
+HOLE side=A class=other z=297 mat(38,90,10,62) trace=3 order=49 index=107184742
+CLASS side A: central 0 alpha 0 other 9 | side B: central 0 alpha 0 other 0 | total 9
+ORDER (projective order: count): 16:3 49:6
+TRACE (a+d mod p: count): 3:1 17:1 24:2 73:1 80:2 94:2
+Z (z: count): 13:1 73:1 137:1 144:1 171:1 180:1 221:1 297:1 299:1

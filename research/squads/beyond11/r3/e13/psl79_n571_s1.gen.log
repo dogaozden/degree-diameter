@@ -1,0 +1,6 @@
+group psl 79 x Z_571, N=140740080 (2N=281480160), rows 3120 x 45109 bits (doubled row 1432 words), memory 0.07 GB, threads 1
+alpha: conj by mat(0,78,1,78), z -> 109 z on Z_571 (fixed z: 1); ORBIT k=3 m=2 f=2; W=2.30688e+09 lambda=16.391 mu=10.71
+setup 0.0s
+fixed generators: 1 chosen among 38 alpha-fixed elements
+start cost=54 (1.2s per eval)
+RESULT d=8 D=12 group=psl 79 x Z_571 N=140740080 vertices=281480160 best=54 evals=1 steps=0 time=1.2 orbit k=3 m=2 f=2 mu=10.71

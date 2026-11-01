@@ -1,0 +1,21 @@
+group sl 53 x Z_1, N=148824 (2N=297648), rows 2808 x 53 bits (doubled row 24 words), memory 0.00 GB, threads 1
+alpha: conj by mat(0,52,1,52), z -> 0 z on Z_1 (fixed z: 1); ORBIT k=3 m=1 f=2; W=1.3981e+06 lambda=9.394 mu=12.38
+setup 0.0s
+start cost=6 (0.0s per eval)
+t=0 step=1 evals=5 slot=0 cand=128 cost=6 best=6 T=1.26
+t=0 step=2 evals=9 slot=0 cand=102 cost=6 best=6 T=1.06
+t=0 step=3 evals=13 slot=0 cand=160 cost=6 best=6 T=0.89
+t=0 step=4 evals=17 slot=0 cand=58 cost=6 best=6 T=0.75
+t=0 step=5 evals=21 slot=0 cand=80 cost=6 best=6 T=0.63
+t=0 step=6 evals=25 slot=0 cand=144 cost=6 best=6 T=0.53
+t=0 step=7 evals=29 slot=0 cand=224 cost=6 best=6 T=0.45
+t=0 step=8 evals=33 slot=0 cand=252 cost=6 best=6 T=0.38
+t=1 step=9 evals=37 slot=0 cand=120 cost=6 best=6 T=0.32
+t=1 step=10 evals=41 slot=0 cand=120 cost=6 best=6 T=0.27
+t=1 step=11 evals=45 slot=0 cand=72 cost=6 best=6 T=0.22
+t=1 step=12 evals=49 slot=0 cand=108 cost=6 best=6 T=0.19
+t=1 step=13 evals=53 slot=0 cand=116 cost=6 best=6 T=0.16
+t=1 step=14 evals=57 slot=0 cand=0 cost=0 best=0 T=0.15
+RESULT d=5 D=11 group=sl 53 x Z_1 N=148824 vertices=297648 best=0 evals=57 steps=14 time=0.9 orbit k=3 m=1 f=2 mu=12.38
+re-evaluation of the best S: cost 0
+wrote /home/user/degree-diameter/research/squads/beyond11/r3/e01/sl53_s16c.sol

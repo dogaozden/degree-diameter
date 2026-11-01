@@ -1,0 +1,6 @@
+group psl 1447 x Z_1, N=1514870088 (2N=3029740176), rows 1046904 x 1447 bits (doubled row 64 words), memory 1.51 GB, threads 1
+alpha: conj by mat(0,1446,1,1446), z -> 0 z on Z_1 (fixed z: 1); ORBIT k=3 m=4 f=0; W=2.85312e+10 lambda=18.834 mu=10.02
+setup 0.0s
+start cost=209 (21.8s per eval)
+t=112 step=1 evals=5 slot=0 cand=171 cost=171 best=171 T=1.26
+RESULT d=12 D=11 group=psl 1447 x Z_1 N=1514870088 vertices=3029740176 best=171 evals=5 steps=1 time=112.1 orbit k=3 m=4 f=0 mu=10.02

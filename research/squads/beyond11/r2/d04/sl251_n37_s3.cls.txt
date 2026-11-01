@@ -1,0 +1,27 @@
+EVAL /home/user/degree-diameter/research/squads/beyond11/r2/d04/sl251_n37_s3.sol.start cost=22 time=13.588 mu=3.31
+HOLE side=A class=other z=34 mat(5,128,158,29) trace=34 order=21 index=13120900
+HOLE side=A class=other z=3 mat(29,123,93,5) trace=34 order=21 index=68456922
+HOLE side=A class=other z=16 mat(89,1,243,234) trace=72 order=21 index=209715128
+HOLE side=A class=other z=28 mat(90,136,1,233) trace=72 order=21 index=209798279
+HOLE side=A class=other z=25 mat(97,243,115,226) trace=72 order=21 index=227172218
+HOLE side=A class=other z=30 mat(98,158,197,187) trace=34 order=21 index=230267125
+HOLE side=A class=alpha z=0 mat(127,23,228,150) trace=26 order=63 index=298154214
+HOLE side=A class=other z=4 mat(133,54,128,152) trace=34 order=21 index=311209335
+HOLE side=A class=alpha z=0 mat(150,228,23,127) trace=26 order=63 index=349861492
+HOLE side=A class=other z=33 mat(152,197,123,133) trace=34 order=21 index=355456480
+HOLE side=A class=other z=7 mat(187,93,54,98) trace=34 order=21 index=436397913
+HOLE side=A class=other z=12 mat(226,8,136,97) trace=72 order=21 index=528074964
+HOLE side=A class=other z=9 mat(233,115,250,90) trace=72 order=21 index=545446239
+HOLE side=A class=other z=21 mat(234,250,8,89) trace=72 order=21 index=545534385
+HOLE side=B class=other z=26 mat(6,177,207,250) trace=5 order=125 index=15907029
+HOLE side=B class=other z=36 mat(50,207,228,206) trace=5 order=125 index=118665992
+HOLE side=B class=other z=10 mat(73,228,74,183) trace=5 order=125 index=170843662
+HOLE side=B class=alpha z=0 mat(143,37,214,180) trace=72 order=21 index=335322527
+HOLE side=B class=alpha z=0 mat(180,214,37,143) trace=72 order=21 index=419924655
+HOLE side=B class=other z=27 mat(183,23,177,73) trace=5 order=125 index=428222968
+HOLE side=B class=other z=1 mat(206,44,23,50) trace=5 order=125 index=480401304
+HOLE side=B class=other z=11 mat(250,74,44,6) trace=5 order=125 index=583166298
+CLASS side A: central 0 alpha 2 other 12 | side B: central 0 alpha 2 other 6 | total 22
+ORDER (projective order: count): 21:14 63:2 125:6
+TRACE (a+d mod p: count): 5:6 26:2 34:6 72:8
+Z (z: count): 0:4 1:1 3:1 4:1 7:1 9:1 10:1 11:1 12:1 16:1 21:1 25:1 26:1 27:1 28:1 30:1 33:1 34:1 36:1

@@ -1,0 +1,15 @@
+group sl 37 x Z_2659, N=134587944 (2N=269175888), rows 1368 x 98383 bits (doubled row 3096 words), memory 0.08 GB, threads 1
+alpha: conj by mat(0,36,1,36), z -> 903 z on Z_2659 (fixed z: 1); ORBIT k=3 m=2 f=2; W=2.30688e+09 lambda=17.140 mu=4.84
+setup 0.0s
+fixed generators: 1 chosen among 35 alpha-fixed elements
+start cost=12722841 (3.3s per eval)
+t=7 step=1 evals=5 slot=0 cand=3559644 cost=3559644 best=3559644 T=1.26
+t=14 step=2 evals=9 slot=1 cand=4403010 cost=3559644 best=3559644 T=1.06
+t=16 step=3 evals=13 slot=1 cand=3891660 cost=3559644 best=3559644 T=0.89
+t=18 step=4 evals=17 slot=0 cand=4794900 cost=3559644 best=3559644 T=0.75
+t=21 step=5 evals=21 slot=1 cand=5234847 cost=3559644 best=3559644 T=0.63
+t=25 step=6 evals=25 slot=1 cand=3642345 cost=3559644 best=3559644 T=0.53
+t=31 step=7 evals=29 slot=0 cand=4255611 cost=3559644 best=3559644 T=0.45
+t=38 step=8 evals=33 slot=0 cand=6630243 cost=3559644 best=3559644 T=0.38
+t=47 step=9 evals=37 slot=1 cand=7139472 cost=3559644 best=3559644 T=0.32
+RESULT d=8 D=12 group=sl 37 x Z_2659 N=134587944 vertices=269175888 best=3559644 evals=37 steps=9 time=46.7 orbit k=3 m=2 f=2 mu=4.84

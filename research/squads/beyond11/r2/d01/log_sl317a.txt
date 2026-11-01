@@ -1,0 +1,8 @@
+group sl 317 x Z_19, N=605239224 (2N=1210478448), rows 100488 x 6023 bits (doubled row 208 words), memory 0.46 GB, threads 1
+alpha: conj by mat(0,316,1,316), z -> 7 z on Z_19 (fixed z: 1); ORBIT k=3 m=3 f=2; W=1.11111e+10 lambda=18.358 mu=6.44
+setup 0.0s
+fixed generators: 1 chosen among 317 alpha-fixed elements
+start cost=60 (12.5s per eval)
+t=40 step=1 evals=5 slot=1 cand=8 cost=8 best=8 T=1.26
+t=79 step=2 evals=9 slot=2 cand=30 cost=8 best=8 T=1.06
+RESULT d=11 D=11 group=sl 317 x Z_19 N=605239224 vertices=1210478448 best=8 evals=9 steps=2 time=78.7 orbit k=3 m=3 f=2 mu=6.44

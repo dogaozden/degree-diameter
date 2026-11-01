@@ -1,0 +1,39 @@
+group psl 53 x Z_433, N=32220396 (2N=64440792), rows 1404 x 22949 bits (doubled row 736 words), memory 0.02 GB, threads 1
+alpha: conj by mat(0,52,1,52), z -> 198 z on Z_433 (fixed z: 1); ORBIT k=3 m=4 f=1; W=4.69071e+08 lambda=14.558 mu=15.33
+setup 0.0s
+start cost=128 (0.6s per eval)
+t=2 step=1 evals=5 slot=1 cand=39 cost=39 best=39 T=1.26
+t=4 step=2 evals=9 slot=1 cand=12 cost=12 best=12 T=1.06
+t=6 step=3 evals=13 slot=2 cand=48 cost=12 best=12 T=0.89
+t=7 step=4 evals=17 slot=1 cand=30 cost=12 best=12 T=0.75
+t=9 step=5 evals=21 slot=2 cand=30 cost=12 best=12 T=0.63
+t=11 step=6 evals=25 slot=0 cand=54 cost=12 best=12 T=0.53
+t=13 step=7 evals=29 slot=2 cand=24 cost=12 best=12 T=0.45
+t=15 step=8 evals=33 slot=3 cand=56 cost=12 best=12 T=0.38
+t=16 step=9 evals=37 slot=3 cand=36 cost=12 best=12 T=0.32
+t=19 step=10 evals=41 slot=3 cand=36 cost=12 best=12 T=0.27
+t=21 step=11 evals=45 slot=0 cand=26 cost=12 best=12 T=0.22
+t=24 step=12 evals=49 slot=1 cand=63 cost=12 best=12 T=0.19
+t=26 step=13 evals=53 slot=0 cand=60 cost=12 best=12 T=0.16
+t=28 step=14 evals=57 slot=2 cand=66 cost=12 best=12 T=0.15
+t=29 step=15 evals=61 slot=1 cand=57 cost=12 best=12 T=0.15
+t=30 step=16 evals=65 slot=1 cand=32 cost=12 best=12 T=0.15
+t=31 step=17 evals=69 slot=3 cand=48 cost=12 best=12 T=0.15
+t=34 step=18 evals=73 slot=0 cand=21 cost=12 best=12 T=0.15
+t=35 step=19 evals=77 slot=1 cand=42 cost=12 best=12 T=0.15
+t=37 step=20 evals=81 slot=1 cand=45 cost=12 best=12 T=0.15
+t=38 step=21 evals=85 slot=0 cand=53 cost=12 best=12 T=0.15
+t=40 step=22 evals=89 slot=3 cand=69 cost=12 best=12 T=0.15
+t=41 step=23 evals=93 slot=0 cand=57 cost=12 best=12 T=0.15
+t=43 step=24 evals=97 slot=3 cand=30 cost=12 best=12 T=0.15
+t=45 step=25 evals=101 slot=2 cand=72 cost=12 best=12 T=0.15
+t=47 step=26 evals=105 slot=3 cand=54 cost=12 best=12 T=0.15
+t=49 step=27 evals=109 slot=0 cand=42 cost=12 best=12 T=0.15
+t=51 step=28 evals=113 slot=3 cand=54 cost=12 best=12 T=0.15
+t=53 step=29 evals=117 slot=2 cand=72 cost=12 best=12 T=0.15
+t=54 step=30 evals=121 slot=2 cand=60 cost=12 best=12 T=0.15
+t=56 step=31 evals=125 slot=0 cand=60 cost=12 best=12 T=0.15
+t=58 step=32 evals=129 slot=2 cand=57 cost=12 best=12 T=0.15
+t=60 step=33 evals=133 slot=3 cand=30 cost=12 best=12 T=0.15
+t=61 step=34 evals=137 slot=1 cand=35 cost=12 best=12 T=0.15
+RESULT d=13 D=9 group=psl 53 x Z_433 N=32220396 vertices=64440792 best=12 evals=137 steps=34 time=61.1 orbit k=3 m=4 f=1 mu=15.33

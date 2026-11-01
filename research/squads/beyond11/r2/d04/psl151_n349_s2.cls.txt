@@ -1,0 +1,29 @@
+EVAL /home/user/degree-diameter/research/squads/beyond11/r2/d04/psl151_n349_s2.sol.start cost=24 time=9.573 mu=5.58
+HOLE side=A class=central z=33 mat(1,0,0,1) trace=2 order=1 index=8758
+HOLE side=A class=central z=187 mat(1,0,0,1) trace=2 order=1 index=14496
+HOLE side=A class=central z=220 mat(1,0,0,1) trace=2 order=1 index=23254
+HOLE side=A class=central z=129 mat(1,0,0,1) trace=2 order=1 index=29445
+HOLE side=A class=central z=162 mat(1,0,0,1) trace=2 order=1 index=38203
+HOLE side=A class=central z=316 mat(1,0,0,1) trace=2 order=1 index=43941
+HOLE side=A class=other z=229 mat(5,77,67,126) trace=131 order=25 index=35379406
+HOLE side=A class=other z=120 mat(25,77,67,146) trace=20 order=25 index=194541445
+HOLE side=A class=other z=18 mat(42,84,111,89) trace=131 order=25 index=332121331
+HOLE side=A class=other z=102 mat(49,40,74,82) trace=131 order=25 index=385897080
+HOLE side=A class=other z=331 mat(62,84,111,109) trace=20 order=25 index=491286933
+HOLE side=A class=other z=247 mat(69,40,74,102) trace=20 order=25 index=545022379
+HOLE side=B class=central z=33 mat(1,0,0,1) trace=2 order=1 index=8758
+HOLE side=B class=central z=187 mat(1,0,0,1) trace=2 order=1 index=14496
+HOLE side=B class=central z=220 mat(1,0,0,1) trace=2 order=1 index=23254
+HOLE side=B class=central z=129 mat(1,0,0,1) trace=2 order=1 index=29445
+HOLE side=B class=central z=162 mat(1,0,0,1) trace=2 order=1 index=38203
+HOLE side=B class=central z=316 mat(1,0,0,1) trace=2 order=1 index=43941
+HOLE side=B class=other z=285 mat(3,130,47,74) trace=77 order=75 index=18443888
+HOLE side=B class=other z=155 mat(18,12,21,56) trace=74 order=75 index=136385516
+HOLE side=B class=other z=219 mat(30,47,12,44) trace=74 order=75 index=231438522
+HOLE side=B class=other z=130 mat(44,104,139,30) trace=74 order=75 index=349521885
+HOLE side=B class=other z=194 mat(56,139,130,18) trace=74 order=75 index=444564072
+HOLE side=B class=other z=64 mat(74,21,104,3) trace=77 order=75 index=586421623
+CLASS side A: central 6 alpha 0 other 6 | side B: central 6 alpha 0 other 6 | total 24
+ORDER (projective order: count): 1:12 25:6 75:6
+TRACE (a+d mod p: count): 2:12 20:3 74:4 77:2 131:3
+Z (z: count): 18:1 33:2 64:1 102:1 120:1 129:2 130:1 155:1 162:2 187:2 194:1 219:1 220:2 229:1 247:1 285:1 316:2 331:1

@@ -1,0 +1,6 @@
+group psl 379 x Z_67, N=1823725260 (2N=3647450520), rows 71820 x 25393 bits (doubled row 816 words), memory 1.09 GB, threads 1
+alpha: conj by mat(0,378,1,378), z -> 29 z on Z_67 (fixed z: 1); ORBIT k=3 m=3 f=1; W=3.53037e+10 lambda=19.358 mu=7.14
+setup 0.0s
+start cost=3 (21.3s per eval)
+t=85 step=1 evals=5 slot=2 cand=6 cost=6 best=3 T=1.26
+RESULT d=10 D=12 group=psl 379 x Z_67 N=1823725260 vertices=3647450520 best=3 evals=5 steps=1 time=84.6 orbit k=3 m=3 f=1 mu=7.14

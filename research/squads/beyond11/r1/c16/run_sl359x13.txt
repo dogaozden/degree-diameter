@@ -1,0 +1,9 @@
+group sl 359 x Z_13, N=601482960 (2N=1202965920), rows 128880 x 4667 bits (doubled row 168 words), memory 0.48 GB, threads 1
+alpha: conj by mat(0,358,1,358), z -> 3 z on Z_13 (fixed z: 1); ORBIT k=3 m=3 f=2; W=1.11111e+10 lambda=18.473 mu=5.71
+setup 0.0s
+fixed generators: 1 chosen among 359 alpha-fixed elements
+RANDORB sample 0 cost 6 (5.2s) zq 1.000
+RANDORB sample 1 cost 22 (10.8s) zq 1.000
+RANDORB sample 2 cost 4 (16.1s) zq 1.000
+RANDORB sample 3 cost 10 (21.1s) zq 1.000
+RANDORB d=11 D=11 group=sl 359 x Z_13 N=601482960 samples=4 min=4 p10=4 median=10 mean=10.50 mu=5.71 time=21.1

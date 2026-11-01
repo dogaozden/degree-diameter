@@ -1,0 +1,53 @@
+EVAL /home/user/degree-diameter/research/squads/beyond11/r2/d04/psl151_n349_s1.sol.start cost=48 time=10.643 mu=5.58
+HOLE side=A class=central z=275 mat(1,0,0,1) trace=2 order=1 index=2718
+HOLE side=A class=central z=181 mat(1,0,0,1) trace=2 order=1 index=3322
+HOLE side=A class=central z=73 mat(1,0,0,1) trace=2 order=1 index=12986
+HOLE side=A class=central z=46 mat(1,0,0,1) trace=2 order=1 index=15402
+HOLE side=A class=central z=254 mat(1,0,0,1) trace=2 order=1 index=16308
+HOLE side=A class=central z=321 mat(1,0,0,1) trace=2 order=1 index=18120
+HOLE side=A class=central z=28 mat(1,0,0,1) trace=2 order=1 index=34579
+HOLE side=A class=central z=95 mat(1,0,0,1) trace=2 order=1 index=36391
+HOLE side=A class=central z=303 mat(1,0,0,1) trace=2 order=1 index=37297
+HOLE side=A class=central z=276 mat(1,0,0,1) trace=2 order=1 index=39713
+HOLE side=A class=central z=168 mat(1,0,0,1) trace=2 order=1 index=49377
+HOLE side=A class=central z=74 mat(1,0,0,1) trace=2 order=1 index=49981
+HOLE side=A class=other z=320 mat(2,21,55,125) trace=127 order=76 index=10870274
+HOLE side=A class=other z=342 mat(4,42,48,89) trace=93 order=25 index=26439884
+HOLE side=A class=other z=272 mat(8,123,73,141) trace=149 order=151 index=59571082
+HOLE side=A class=other z=77 mat(10,123,73,143) trace=2 order=151 index=75476562
+HOLE side=A class=other z=193 mat(14,48,60,44) trace=58 order=25 index=106659479
+HOLE side=A class=other z=48 mat(18,68,28,131) trace=149 order=151 index=136797229
+HOLE side=A class=other z=301 mat(20,68,28,133) trace=2 order=151 index=152685707
+HOLE side=A class=other z=272 mat(23,6,21,104) trace=127 order=76 index=176183150
+HOLE side=A class=other z=29 mat(26,21,55,149) trace=24 order=76 index=201882918
+HOLE side=A class=other z=301 mat(29,96,6,98) trace=127 order=76 index=223151948
+HOLE side=A class=other z=156 mat(44,103,91,14) trace=58 order=25 index=347013648
+HOLE side=A class=other z=186 mat(46,91,42,47) trace=93 order=25 index=360319652
+HOLE side=A class=other z=77 mat(47,6,21,128) trace=24 order=76 index=367181232
+HOLE side=A class=other z=163 mat(47,60,109,46) trace=93 order=25 index=371794749
+HOLE side=A class=other z=48 mat(53,96,6,122) trace=24 order=76 index=414131126
+HOLE side=A class=other z=7 mat(62,42,48,147) trace=58 order=25 index=487992049
+HOLE side=A class=other z=29 mat(63,78,83,86) trace=149 order=151 index=497757789
+HOLE side=A class=other z=320 mat(65,78,83,88) trace=2 order=151 index=513709823
+HOLE side=B class=central z=275 mat(1,0,0,1) trace=2 order=1 index=2718
+HOLE side=B class=central z=181 mat(1,0,0,1) trace=2 order=1 index=3322
+HOLE side=B class=central z=73 mat(1,0,0,1) trace=2 order=1 index=12986
+HOLE side=B class=central z=46 mat(1,0,0,1) trace=2 order=1 index=15402
+HOLE side=B class=central z=254 mat(1,0,0,1) trace=2 order=1 index=16308
+HOLE side=B class=central z=321 mat(1,0,0,1) trace=2 order=1 index=18120
+HOLE side=B class=central z=28 mat(1,0,0,1) trace=2 order=1 index=34579
+HOLE side=B class=central z=95 mat(1,0,0,1) trace=2 order=1 index=36391
+HOLE side=B class=central z=303 mat(1,0,0,1) trace=2 order=1 index=37297
+HOLE side=B class=central z=276 mat(1,0,0,1) trace=2 order=1 index=39713
+HOLE side=B class=central z=168 mat(1,0,0,1) trace=2 order=1 index=49377
+HOLE side=B class=central z=74 mat(1,0,0,1) trace=2 order=1 index=49981
+HOLE side=B class=other z=42 mat(21,95,43,22) trace=43 order=19 index=161453375
+HOLE side=B class=other z=111 mat(22,108,100,86) trace=108 order=19 index=172379587
+HOLE side=B class=other z=307 mat(22,56,108,21) trace=43 order=19 index=172824060
+HOLE side=B class=other z=280 mat(35,51,56,73) trace=108 order=19 index=273552762
+HOLE side=B class=other z=238 mat(65,108,100,129) trace=43 order=19 index=514591315
+HOLE side=B class=other z=69 mat(73,100,95,35) trace=108 order=19 index=577977224
+CLASS side A: central 12 alpha 0 other 18 | side B: central 12 alpha 0 other 6 | total 48
+ORDER (projective order: count): 1:24 19:6 25:6 76:6 151:6
+TRACE (a+d mod p: count): 2:27 24:3 43:3 58:3 93:3 108:3 127:3 149:3
+Z (z: count): 7:1 28:2 29:2 42:1 46:2 48:2 69:1 73:2 74:2 77:2 95:2 111:1 156:1 163:1 168:2 181:2 186:1 193:1 238:1 254:2 272:2 275:2 276:2 280:1 301:2 303:2 307:1 320:2 321:2 342:1
