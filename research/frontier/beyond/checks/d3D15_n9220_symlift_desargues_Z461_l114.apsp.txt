@@ -1,0 +1,9 @@
+checker: apsp
+command: ./bin/apsp lsym/out/desargues_D15_n461_l114.edges 3 15
+start: 2026-11-01T23:01:46Z
+sha256 8bce5713d2a2b5ab0019ae5209fe3a6acce43005bc4bd9cc932ae966ec1afdf2  ./bin/apsp
+sha256 116c615bbe52396aef38051477fca34b5bec350ef6f99f6d3fc63cd995ab24bd  lsym/out/desargues_D15_n461_l114.edges
+n=9220 edges=13830 degree min=3 max=3 bipartite=yes diameter=15
+RESULT VALID d=3 D=15 n=9220
+exit: 0
+end: 2026-11-01T23:01:46Z (0 s)
