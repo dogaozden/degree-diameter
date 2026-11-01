@@ -1,0 +1,13 @@
+checker: metacheck
+command: ./bin/metacheck sols/d4D16_meta_24091_73_1680_dir.txt
+start: 2026-11-01T23:11:20Z
+sha256 b896147c93ee6271f74ea274ea8a47fcb894acf2d5fbdf3a90a1ee96366eb24b  ./bin/metacheck
+sha256 ed7626656d11864bb47491a748a04b38153a48ca67232cff81af1d0985c83e3e  sols/d4D16_meta_24091_73_1680_dir.txt
+file sols/d4D16_meta_24091_73_1680_dir.txt
+header: d=4 D=16 factors=1 [Z24091 x|_1680 Z73] x Z1  N=1758643 (file says 1758643)
+selftest: r^k = 1, associativity/identity/inverse on 20000 random triples, index round trip ok; 4 distinct generators
+from (e,A): reached A 1758643/1758643, B 1758643/1758643 within 16; eccentricity 16; levels 1 4 12 36 108 324 972 2916 8740 26052 76586 216932 553374 1059999 1089012 452380 29838 (1.2 s)
+from (e,B): reached A 1758643/1758643, B 1758643/1758643 within 16; eccentricity 16; levels 1 4 12 36 108 324 972 2916 8740 26052 76590 216932 553606 1059999 1088856 452380 29758 (1.1 s)
+VALID d=4 D=16 N=1758643 vertices=3517286 diameter=16 (2.3 s, 1 threads)
+exit: 0
+end: 2026-11-01T23:11:22Z (2 s)

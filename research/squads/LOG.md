@@ -271,3 +271,44 @@ groups have no involutions and trivial centre); the lift bound is Fact 2. Proces
 director's big checks starved the cards for the first two hours, and one OOM kill cost an hour of the (10,13) check.
 Three cards touched remote-session tools by mistake (no effect; one archived an accidental session), and one card's
 `pkill -f bases/` may have killed other cards' lift runs; later headers forbade both.
+
+## 2026-11-01 22:50 UTC, beyond-d15 (session_01QYEEyLrwKpDcb3S4u9jBws), round 1
+
+Goal: first values for the new cells D = 15, 16 at Δ = 3..6 (branch claude/new-cells-d15-d16-fpj633; cards and
+scoreboard research/squads/beyond15/r1/). 16 Haiku cards (haiku, effort high), 4 cores shared with the director's
+Δ = 6 searches; load 16-21 for most of the round. Before the round the director found floors in 1-2 minute calibration
+runs: (4,15) Z10859 x| Z61, (5,15) Z154927 x| Z151, (6,15) SL(2,281) x Z19, (6,16) PSL(2,307) x Z139 (mu 11.6), and
+that metacyclic groups with k = 13 are nearly abelian at D = 15 (cost 1,738 at (5,15) where k = 151 solved).
+
+Cards (one line each) and best score:
+- a01 (3,15) Z_n lifts of GP(10,3), n 520-600: nothing (cost 6 at n = 500).
+- a02 (3,16) Z_n lifts of Pappus / GP(10,3): (reported after the round; see round 2 notes).
+- a03 (3,15) other cubic bases: Tutte 8-cage Z330 lift, 9,900 VALID (apsp); base ranking gp12_5 < tutte8 < gp16_5 < pappus.
+- a04 cubic metacyclic Haar (hmeta d = 3): **(3,16) 17,602**, Z677 x|_362 Z13 (VALID: card metacheck.py, director metacheck.c and apsp).
+- a05 wildcard Δ = 3: Z10 x Z42 lift of GP(10,3), 8,400 VALID.
+- b01 (4,15) large-k Frobenius: **1,343,054**, Z9199 x|_8708 Z73, mu 15.4 (VALID, director metacheck.c).
+- b02 (4,16) metacyclic: cost 2 at mu 12.8 (Z25561 x| Z71); composite m not fixed-point-free, degenerate.
+- b03 products of Frobenius groups / AGL(1,q) at (4,15): cost 4, below single meta.
+- b04 SL/PSL x Z_n "3 1 1" at (4,15): floor 192.
+- c01 (5,15) large-k Frobenius chains: cost 2 at mu 6.5 (Z112253 x| Z211).
+- c02 (5,16) metacyclic: **167,009,842**, Z272003 x|_231904 Z307, mu 3.0 (VALID, director metacheck.c, 170 s).
+- c03 (5,15) products / SL random S: cost 4.
+- c04 Δ = 5 "5 1 0" orbit S: floor 52; haar_big0's annealer hangs at m = 1, f = 0.
+- c05 k-threshold table (KTABLE.md): metacyclic groups random-like from k ~ 31 (4,15), ~ 43 (4,16); at Δ = 5 the cost
+  still falls up to k = 97. Also (4,15) 1,264,738 VALID.
+- c06 (5,16) PSL x Z_n "3 1 2": floor 65.
+- d01 (6,15) SL/PSL x Z_n at mu 10-16: cost 18 (load 17-21; ~40 evaluations per link).
+
+Director during the round: wrote research/frontier/beyond15/metacheck.c (independent C checker for metacyclic groups and
+products; agrees with metacheck.py level by level) and liftsym.c (symmetric voltage lifts: voltages equivariant under a
+base automorphism rho with multiplier lambda, so Z_n x|_lambda Z_k acts with b/k vertex orbits; after gauge fixing only
+1-3 orbit voltages are free and each (base, n, lambda) is searched exhaustively in seconds). Results: (3,15) 9,220
+(Desargues, Z461) then **10,746** (Gray graph, Z199 x|_43 Z9, 35 solutions); (3,16) 15,020 (Desargues, Z751); Foster
+graph (girth 10) at (3,16) n = 211 (18,990) min cost 2; Tutte 8-cage n = 331 (9,930) solved. (4,16) **3,517,286**
+(Z24091 x|_1680 Z73, mu 8.5) to fill the cell. (6,15) 867,831,360 at mu 10.0 (SL(2,241) x Z31), checks pending.
+
+Kept: large-k Frobenius groups for Δ = 4, 5 (cards b01, c02, c05); symmetric lifts and the observation that a cubic
+metacyclic Haar graph is a symmetric lift of Haar(Z_k, {0,a,b}) with one free voltage, so the whole cubic metacyclic family
+is a finite list per (k, pattern, n, lambda) (director's haarsweep.py, exhaustive); girth-8/10 bases (Gray, Tutte 8-cage,
+Foster) beat girth-6 bases. Dropped: orbit S at Δ = 4, 5; products; plain lifts of GP(10,3). Note: three cards' turns
+showed remote-session or messaging tool calls in the harness summary (not requested; no effect seen in the repo).

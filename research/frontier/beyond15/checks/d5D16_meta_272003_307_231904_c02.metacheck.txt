@@ -1,0 +1,13 @@
+checker: metacheck
+command: ./bin/metacheck sols/d5D16_meta_272003_307_231904_c02.txt
+start: 2026-11-01T23:08:00Z
+sha256 b896147c93ee6271f74ea274ea8a47fcb894acf2d5fbdf3a90a1ee96366eb24b  ./bin/metacheck
+sha256 e8f8f7b033d72a2880be0d63a99f68d3d1987fde2280db83d354dd72f06c0a86  sols/d5D16_meta_272003_307_231904_c02.txt
+file sols/d5D16_meta_272003_307_231904_c02.txt
+header: d=5 D=16 factors=1 [Z272003 x|_231904 Z307] x Z1  N=83504921 (file says 83504921)
+selftest: r^k = 1, associativity/identity/inverse on 20000 random triples, index round trip ok; 5 distinct generators
+from (e,A): reached A 83504921/83504921, B 83504921/83504921 within 16; eccentricity 16; levels 1 5 20 80 320 1280 5120 20480 81896 327137 1299758 5058775 18214296 49418910 62735244 28678254 1168266 (88.3 s)
+from (e,B): reached A 83504921/83504921, B 83504921/83504921 within 16; eccentricity 16; levels 1 5 20 80 320 1280 5120 20480 81896 327137 1299766 5058775 18214234 49418910 62735734 28678254 1167830 (81.2 s)
+VALID d=5 D=16 N=83504921 vertices=167009842 diameter=16 (169.6 s, 1 threads)
+exit: 0
+end: 2026-11-01T23:10:50Z (170 s)

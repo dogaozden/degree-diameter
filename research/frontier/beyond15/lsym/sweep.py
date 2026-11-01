@@ -22,7 +22,7 @@ for n in range(lo, hi + 1):
         res = line[0] if line else 'TIMEOUT/FAIL'
         print(tag, b * n, res, flush=True)
         if 'solutions=' in res and 'solutions=0' not in res: print('FOUND', tag, b * n, flush=True)
-        else:
+        elif 'min_cost=' in res and int(res.split('min_cost=')[1].split()[0]) > 4:
             for ext in ('.best', '.edges'):
                 try: os.remove(f'{here}/out/{tag}{ext}')
                 except FileNotFoundError: pass
