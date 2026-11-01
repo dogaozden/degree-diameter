@@ -1,0 +1,8 @@
+group meta 8969 59 205 x Z_1, N=529171, identity 0, H order 59, rows 8969, threads 1, setup 0.65s
+START loaded from s_t03.txt (5 generators)
+start cost=1
+t=30 steps=171 evals=1369 cost=1 best=1 T=0.21
+t=60 steps=348 evals=2785 cost=1 best=1 T=0.15
+moves accepted/proposed: plain 0/523 pair 0/0 local 0/0
+  move 0: mean candidate cost 299.5 min 2, candidates within +1 of final cost: 2
+RESULT d=5 D=12 group=meta 8969 59 205 x Z_1 N=529171 best=1 evals=4185 time=90.2

@@ -1,0 +1,7 @@
+group meta 463 33 179 x Z_1, N=15279, identity 0, H order 33, rows 463, threads 1, setup 0.01s
+start cost=214
+t=30 steps=5598 evals=22393 cost=4 best=4 T=0.53
+t=60 steps=11200 evals=44801 cost=4 best=4 T=0.19
+moves accepted/proposed: plain 10/16538 pair 0/0 local 0/0
+  move 0: mean candidate cost 618.2 min 4, candidates within +1 of final cost: 11
+RESULT d=4 D=11 group=meta 463 33 179 x Z_1 N=15279 best=4 evals=66153 time=90.0

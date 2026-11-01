@@ -1,0 +1,9 @@
+group meta 1171 13 86 x Z_1, N=15223, identity 0, H order 13, rows 1171, threads 1, setup 0.07s
+START loaded from /home/user/degree-diameter/research/squads/beyond11b/r6/l10/b1171_a.txt (4 generators)
+start cost=6
+t=30 steps=2725 evals=10901 cost=6 best=6 T=0.21
+t=60 steps=4955 evals=19821 cost=6 best=6 T=0.15
+t=90 steps=7510 evals=30041 cost=6 best=6 T=0.15
+moves accepted/proposed: plain 0/7510 pair 0/0 local 0/0
+  move 0: mean candidate cost 208.0 min 8, candidates within +1 of final cost: 0
+RESULT d=4 D=11 group=meta 1171 13 86 x Z_1 N=15223 best=6 evals=30041 time=90.1

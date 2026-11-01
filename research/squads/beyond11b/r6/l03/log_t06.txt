@@ -1,0 +1,7 @@
+group meta 8969 59 205 x Z_1, N=529171, identity 0, H order 59, rows 8969, threads 1, setup 0.72s
+start cost=14
+t=30 steps=171 evals=1369 cost=3 best=3 T=0.53
+t=60 steps=328 evals=2625 cost=2 best=2 T=0.18
+moves accepted/proposed: plain 16/503 pair 0/0 local 0/0
+  move 0: mean candidate cost 725.8 min 2, candidates within +1 of final cost: 29
+RESULT d=5 D=12 group=meta 8969 59 205 x Z_1 N=529171 best=2 evals=4025 time=90.2

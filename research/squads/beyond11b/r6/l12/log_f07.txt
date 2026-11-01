@@ -1,0 +1,7 @@
+group meta 11971 45 4823 x Z_1, N=538695, identity 0, H order 45, rows 11971, threads 1, setup 0.51s
+start cost=22
+t=30 steps=235 evals=941 cost=5 best=5 T=0.53
+t=60 steps=485 evals=1941 cost=5 best=5 T=0.19
+moves accepted/proposed: plain 9/727 pair 0/0 local 0/0
+  move 0: mean candidate cost 134.5 min 5, candidates within +1 of final cost: 16
+RESULT d=5 D=12 group=meta 11971 45 4823 x Z_1 N=538695 best=5 evals=2909 time=90.1

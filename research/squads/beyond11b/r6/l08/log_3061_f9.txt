@@ -1,0 +1,8 @@
+group meta 3061 51 16 x Z_1, N=156111, identity 0, H order 51, rows 3061, threads 1, setup 0.07s
+START loaded from b_3061_f8.txt (5 generators)
+start cost=6
+t=30 steps=684 evals=2737 cost=6 best=6 T=0.21
+t=60 steps=1370 evals=5481 cost=6 best=6 T=0.15
+moves accepted/proposed: plain 1/2051 pair 0/0 local 0/0
+  move 0: mean candidate cost 371.3 min 6, candidates within +1 of final cost: 1
+RESULT d=5 D=11 group=meta 3061 51 16 x Z_1 N=156111 best=6 evals=8205 time=90.0

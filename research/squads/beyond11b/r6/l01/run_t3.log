@@ -1,0 +1,8 @@
+group meta 677 52 12 x Z_1, N=35204, identity 0, H order 52, rows 677, threads 1, setup 0.00s
+START loaded from start1.txt (4 generators)
+start cost=1
+t=30 steps=3028 evals=24225 cost=1 best=1 T=0.53
+t=60 steps=5999 evals=47993 cost=1 best=1 T=0.19
+moves accepted/proposed: plain 1/9136 pair 0/0 local 0/0
+  move 0: mean candidate cost 1086.6 min 1, candidates within +1 of final cost: 1
+RESULT d=4 D=12 group=meta 677 52 12 x Z_1 N=35204 best=1 evals=73089 time=90.1

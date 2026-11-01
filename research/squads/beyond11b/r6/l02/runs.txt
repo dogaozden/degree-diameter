@@ -1,0 +1,14 @@
+c1a bin=haar_gen3t seed=301 K=8 start=f74_s213c.best env=[TFULL=1 TARGP=100] secs=90 | RESULT d=6 D=12 group=meta 74719 63 37726 x Z_1 N=4707297 best=1 evals=297 time=92.2 | nosol
+c1b bin=haar_gen3t seed=302 K=8 start=c1a.best env=[TFULL=1 TARGP=100 TMAX=0.6] secs=90 | RESULT d=6 D=12 group=meta 74719 63 37726 x Z_1 N=4707297 best=1 evals=281 time=91.9 | nosol
+c1c bin=haar_gen3s seed=303 K=8 start=c1b.best env=[] secs=90 | RESULT d=6 D=12 group=meta 74719 63 37726 x Z_1 N=4707297 best=1 evals=281 time=91.0 | nosol
+c1d bin=haar_gen3t seed=304 K=4 start=c1c.best env=[TFULL=1 TARGP=100 TMAX=0.4 TMIN=0.1] secs=90 | RESULT d=6 D=12 group=meta 74719 63 37726 x Z_1 N=4707297 best=1 evals=273 time=91.2 | nosol
+c1e bin=haar_gen3t seed=305 K=8 start=c1d.best env=[TFULL=1 TARGP=100 TMAX=1.0] secs=90 | RESULT d=6 D=12 group=meta 74719 63 37726 x Z_1 N=4707297 best=1 evals=297 time=92.0 | nosol
+c1f bin=haar_gen3t seed=306 K=8 start=f74_s212c.best env=[TFULL=1 TARGP=100] secs=90 | RESULT d=6 D=12 group=meta 74719 63 37726 x Z_1 N=4707297 best=1 evals=273 time=90.6 | nosol
+c1g bin=haar_gen3t seed=307 K=4 start=c1f.best env=[TFULL=1 TARGP=100 TMAX=0.6] secs=90 | RESULT d=6 D=12 group=meta 74719 63 37726 x Z_1 N=4707297 best=1 evals=281 time=90.9 | nosol
+c1h bin=haar_gen3t seed=308 K=8 start=c1g.best env=[TFULL=1 TARGP=100 TMAX=1.5] secs=90 | RESULT d=6 D=12 group=meta 74719 63 37726 x Z_1 N=4707297 best=1 evals=289 time=93.4 | nosol
+c1i bin=haar_gen3s seed=309 K=4 start=c1h.best env=[] secs=90 | RESULT d=6 D=12 group=meta 74719 63 37726 x Z_1 N=4707297 best=1 evals=305 time=91.1 | nosol
+c1j bin=haar_gen3t seed=310 K=8 start=c1i.best env=[TFULL=1 TARGP=100 TMAX=0.4 TMIN=0.1] secs=90 | RESULT d=6 D=12 group=meta 74719 63 37726 x Z_1 N=4707297 best=1 evals=289 time=91.3 | nosol
+c1k bin=haar_gen3t seed=311 K=8 start=c1j.best env=[TFULL=1 TARGP=100] secs=90 | RESULT d=6 D=12 group=meta 74719 63 37726 x Z_1 N=4707297 best=1 evals=289 time=92.3 | nosol
+c1l bin=haar_gen3t seed=312 K=8 start=c1k.best env=[TFULL=1 TARGP=100 TMAX=0.8] secs=90 | RESULT d=6 D=12 group=meta 74719 63 37726 x Z_1 N=4707297 best=1 evals=297 time=93.1 | nosol
+c1m bin=haar_gen3s seed=313 K=8 start=c1l.best env=[] secs=90 | RESULT d=6 D=12 group=meta 74719 63 37726 x Z_1 N=4707297 best=1 evals=321 time=91.2 | nosol
+c1n bin=haar_gen3t seed=314 K=8 start=c1m.best env=[TFULL=1 TARGP=100] secs=85 | RESULT d=6 D=12 group=meta 74719 63 37726 x Z_1 N=4707297 best=1 evals=297 time=87.5 | nosol

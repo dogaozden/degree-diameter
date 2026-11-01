@@ -1,0 +1,15 @@
+lineage log: cp of r5/k06 states; runs follow
+402 TMAX0.6 TARGP100 from start_3061 -> see log_3061_t2
+403 TMAX0.6 TARGP100 chain from b_3061_t2 -> log_3061_t3
+404 TFULL TARGP100 chain from b_3061_t3 -> log_3061_t4
+405 2861 TMAX0.6 TFULL TARGP100 from start_2861 -> log_2861_t1
+406 TMAX0.4 TARGP100 chain from b_3061_t4 -> log_3061_t5
+407 TMAX0.8 TFULL TARGP100 chain from b_3061_t5 -> log_3061_t6
+408 fresh K8 TARGP100 TFULL0 -> log_3061_f8
+409 TMAX0.6 TFULL chain from b_3061_f8 -> log_3061_f9
+410 2861 TMAX0.4 TARGP100 plain from start_2861 -> log_2861_t2
+411 TMAX1.0 TARGP100 plain from b_3061_t5 -> log_3061_t7
+412 TMAX0.5 TFULL chain from b_3061_t7 -> log_3061_t8
+413 TMAX0.6 TARGP100 plain chain from b_3061_t8 -> log_3061_t9
+414 2861 TMAX0.6 TFULL chain from b_2861_t2 -> log_2861_t3
+415 TMAX0.6 TFULL chain from b_3061_t9 -> log_3061_t10

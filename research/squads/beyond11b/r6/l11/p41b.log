@@ -1,0 +1,8 @@
+group prod psl 41 meta 17 8 2 x Z_1, N=4683840, identity 111520, H order 56, rows 83640, threads 1, setup 5.87s
+START loaded from /home/user/degree-diameter/research/squads/beyond11b/r6/l11/p41a.best (6 generators)
+start cost=6
+t=33 steps=9 evals=73 cost=5 best=5 T=0.49
+t=65 steps=18 evals=145 cost=5 best=5 T=0.16
+moves accepted/proposed: plain 2/25 pair 0/0 local 0/0
+  move 0: mean candidate cost 35153.6 min 5, candidates within +1 of final cost: 3
+RESULT d=6 D=12 group=prod psl 41 meta 17 8 2 x Z_1 N=4683840 best=5 evals=201 time=91.5

@@ -1,0 +1,8 @@
+group meta 100981 55 1490 x Z_1, N=5553955, identity 0, H order 55, rows 100981, threads 1, setup 12.14s
+START loaded from /home/user/degree-diameter/research/squads/beyond11b/r6/l04/t2.best.txt (7 generators)
+start cost=2
+t=31 steps=9 evals=37 cost=2 best=2 T=0.15
+t=62 steps=18 evals=73 cost=2 best=2 T=0.15
+moves accepted/proposed: plain 0/27 pair 0/0 local 0/0
+  move 0: mean candidate cost 27.5 min 8, candidates within +1 of final cost: 0
+RESULT d=7 D=11 group=meta 100981 55 1490 x Z_1 N=5553955 best=2 evals=109 time=91.3

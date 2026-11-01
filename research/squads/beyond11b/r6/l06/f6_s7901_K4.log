@@ -1,0 +1,7 @@
+group meta 29009 37 14049 x Z_1, N=1073333, identity 0, H order 37, rows 29009, threads 1, setup 2.31s
+start cost=22
+t=31 steps=52 evals=209 cost=8 best=8 T=0.52
+t=61 steps=104 evals=417 cost=8 best=8 T=0.18
+moves accepted/proposed: plain 4/157 pair 0/0 local 0/0
+  move 0: mean candidate cost 33.3 min 8, candidates within +1 of final cost: 6
+RESULT d=6 D=11 group=meta 29009 37 14049 x Z_1 N=1073333 best=8 evals=629 time=90.4

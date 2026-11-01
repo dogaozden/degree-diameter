@@ -1,0 +1,7 @@
+group meta 24683 43 7562 x Z_1, N=1061369, identity 0, H order 43, rows 24683, threads 1, setup 1.75s
+start cost=20
+t=30 steps=60 evals=241 cost=8 best=8 T=0.52
+t=61 steps=124 evals=497 cost=4 best=4 T=0.18
+moves accepted/proposed: plain 7/189 pair 0/0 local 0/0
+  move 0: mean candidate cost 29.2 min 4, candidates within +1 of final cost: 8
+RESULT d=6 D=11 group=meta 24683 43 7562 x Z_1 N=1061369 best=4 evals=757 time=90.3

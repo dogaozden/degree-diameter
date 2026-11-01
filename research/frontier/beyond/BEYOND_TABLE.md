@@ -10,6 +10,10 @@ Extended 2026-11-01 by job beyond-d11 (branch claude/new-cells-d11-d12-beyond-8s
 Δ = 11..14 and D = 12 at Δ = 11..13, and new values for (4..10, 11) and (4..10, 12); see the section "D = 11 at
 Δ = 11..14 and D = 12 at Δ = 11..13" below.
 
+Extended 2026-11-01 by job beyond-d11b (branch claude/beyond-d11-d12-new-cells-3t3djx): new cells (15,11), (16,11) and
+(14,12) with Haar graphs of 28.7-30.0 billion vertices, (12,12) and (13,12) raised to ~30 billion, and (4..6, 11), (4,12),
+(5,12) raised with Frobenius groups Z_p x| Z_k; see the section "D = 11 at Δ = 15, 16, D = 12 at Δ = 14, and raises".
+
 ## Summary
 
 - **Optimal (Moore graphs), 9 cells:** (17|18|20, 3), (17|18|20, 4), (17|18|20, 6) — incidence graphs of PG(2,q),
@@ -26,6 +30,10 @@ Extended 2026-11-01 by job beyond-d11 (branch claude/new-cells-d11-d12-beyond-8s
   PSL(2,p) x Z_n (even D) with alpha-orbit generator sets, 1.24 to 20.0 billion vertices; (12,12) and (13,12) sit at the
   job's 20-billion-vertex size limit. At odd D the hard elements are involutions and central elements (exact lemma and
   hole counts in research/frontier/beyond11/ODD_D_HOLES.md), which is why SL with small n is used there.
+- **Beyond-d11b:** (15,11), (16,11), (14,12) at 28.7-30.0 billion vertices (SL(2,617) x Z61, PSL(2,449) x Z331,
+  PSL(2,241) x Z2143), (12,12) and (13,12) raised to ~30 billion at the job's 30-billion cap; the small cells (4..6, 11),
+  (4,12), (5,12) raised with odd-order Frobenius groups Z_p x| Z_k, which at Δ = 4 beat the size law by far
+  (research/frontier/beyond11/FROBENIUS.md).
 - Every value is at least the trivial floor from the neighbouring cells (n_b(Δ,D) ≥ n_b(Δ−1,D), n_b(Δ,D−1)).
 
 ## Upper bounds
@@ -99,7 +107,7 @@ plane, generalized quadrangle or generalized hexagon of order 18, whose existenc
 | (16,11) | **29,961,590,400** | 2.42 | 1,235,679,408,476 | Haar graph PSL(2,449) x Z331, S = {e} + 5 orbits of size 3; at the job's 30-billion cap (first S solved); new cell (job beyond-d11b); mu = 0.00 | haarcheck_gen VALID (research/frontier/runs/cloudcheck/d16D11_psl_449_331_orb3-5-1_s1.gen.txt) | Haar size law at mu = 5: 2N = 5.51e+10 |
 | (3,12) | **2,176** | 26.57 | 8,184 | metacyclic Haar graph Z68 x|_3 Z16, S = {e, 68, 205} (director sweep of metacyclic groups, exhaustive pairs; best of 7 hits at orders 979-1,088); earlier 1,860 (AGL(1,31), r3/e02) | apsp VALID, diameter exactly 12 (checks/d3D12_n2176_meta68_16_3.apsp.txt) | Haar size law at mu = 5: 2N = 1.61e+03 |
 | (4,12) | **70,176** | 13.20 | 531,434 | Haar graph of the metacyclic group Z731 x\|_7 Z48 (731 = 17 x 43; order 35,088), random S annealed with save/resume chains (haar_gen3s; job beyond-d11b squad r5/k02); was 68,544 (SL(2,17) x Z7); also 70,038 (Frobenius Z1297 x\| Z27, r3/i10), 68,906 (Z263 x\| Z131, r2/h12); mu = 18.04 | build_haar2.py VALID and all-pairs apsp VALID (research/frontier/runs/cloudcheck/d4D12_meta_731_48_7_b5k02.check.txt) | Haar size law at mu = 5: 2N = 6.1e+04 |
-| (5,12) | **1,056,886** | 9.45 | 11,184,804 | Haar graph of the Frobenius group Z8663 x\|_43 Z61 (order 528,443), random S annealed with a save/resume chain (haar_gen3s; job beyond-d11b squad r5/k03); was 1,041,768 (PSL(2,53) x Z7); also 1,050,906 (Z10303 x\| Z51, r4/j10), 1,045,054 (Z9859 x\| Z53, r3/i11); mu = 13.40 | build_haar2.py VALID (research/frontier/runs/cloudcheck/d5D12_meta_8663_61_43_b5k03.check.txt) | Haar size law at mu = 5: 2N = 9.74e+05 |
+| (5,12) | **1,058,342** | 9.46 | 11,184,804 | Haar graph of the Frobenius group Z8969 x\|_205 Z59 (order 529,171), random S finished with save/resume chains (haar_gen3t; job beyond-d11b squad r6/l03); was 1,041,768 (PSL(2,53) x Z7); also 1,056,886 (Z8663 x\| Z61, r5/k03), 1,050,906 (Z10303 x\| Z51, r4/j10); mu = 13.61 | build_haar2.py VALID (research/frontier/runs/cloudcheck/d5D12_meta_8969_59_205_b6l03.check.txt) | Haar size law at mu = 5: 2N = 9.74e+05 |
 | (6,12) | **9,366,240** | 7.67 | 122,070,306 | Haar graph PSL(2,79) x Z19, S = 2 free orbits of size 3 (squad r3/e08); was 9,303,840; mu = 10.24 | haarcheck_gen VALID (research/frontier/runs/cloudcheck/d6D12_psl_79_19_orb3-2-0_e08.gen.txt) | Haar size law at mu = 5: 2N = 8.91e+06 |
 | (7,12) | **59,838,504** | 6.87 | 870,712,928 | Haar graph PSL(2,67) x Z199, S = {e} + 2 orbits of size 3 (squad r3/e09); was 56,297,592; mu = 14.34 | haarcheck_gen VALID (research/frontier/runs/cloudcheck/d7D12_psl_67_199_orb3-2-1_e09.gen.txt) | Haar size law at mu = 5: 2N = 5.6e+07 |
 | (8,12) | **284,095,056** | 6.16 | 4,613,762,394 | Haar graph PSL(2,167) x Z61, S = {e} + 1 fixed + 2 orbits of size 3 (squad r4/f10); was 268,496,208; mu = 12.57 | haarcheck_gen VALID (research/frontier/runs/cloudcheck/d8D12_psl_167_61_orb3-2-2_f10.gen.txt) | Haar size law at mu = 5: 2N = 2.7e+08 |
@@ -257,6 +265,47 @@ generator, a meet-in-the-middle near-miss finisher, composite n at (7,11).
   4.4 CPU-hours (10,919 s wall on 2 threads, partly shared with squad jobs), and the 1.24-billion (11,11) check of
   SL(2,853) about 40 CPU-minutes, against 7 CPU-minutes for the 1.17-billion SL(2,251) x Z37. For the coordinator's
   second check, the PSL/SL-specific checkers should be much faster for p > 600.
+
+### D = 11 at Δ = 15, 16, D = 12 at Δ = 14, and raises (job beyond-d11b, 2026-11-01)
+
+Job beyond-d11b (Opus director + six Haiku squad rounds of 12-17 cards, cloud session, branch
+claude/beyond-d11-d12-new-cells-3t3djx). Size limit for the job: about 30 billion vertices (N <= 1.5e10).
+
+**The 30-billion cells (director).** haar_big0 with the beyond-d11 parameters; groups chosen just under the cap with p
+small enough that haarcheck_gen's p^2 field tables stay in cache (p <= ~620), n prime = 1 mod 3.
+- (16,11) PSL(2,449) x Z331, "3 5 1": lambda = W/N = 41.2, so even PSL (whose involutions are missed with probability
+  ~exp(-lambda/2)) and n = 331 central elements (~exp(-lambda/5) each) are harmless; first S solved (37 s per evaluation
+  at 4 threads, 7.7 GB). haarcheck_gen VALID, 5,281 s.
+- (15,11) SL(2,617) x Z61, "3 5 0" (f = 0, 3 | Δ): the only odd-D cell here that is not cap-limited (mu = 14 at the cap);
+  ODD_D_HOLES.md's rule (SL, small n) with p kept <= ~620 for the checker gives n = 61 and mu 5.2 at 28.66 billion; solved
+  in 13 evaluations (132 s). A push to SL(2,571) x Z79 (29.4 billion, mu 9.3) was planned and dropped: the checks needed
+  the machine.
+- (14,12) PSL(2,241) x Z2143 "3 4 2" and (13,12) PSL(2,181) x Z5059 "3 4 1": lambda = 129 and 54, first S solved.
+- (12,12) PSL(2,241) x Z2143 "3 4 0": mu 12.25 at the cap, solved in 45 evaluations (178 s); raises 19,980,294,768.
+- Checks: haarcheck_gen from (e,A) and (e,B), one at a time (0.75 N bytes = 11.2 GB each, 4 threads), logs
+  research/frontier/runs/cloudcheck/<stem>.gen.txt. All five are above 20 billion vertices, so the coordinator's
+  reference check needs the split runs: research/structured/tools/haarcheck_psl.c SOL A and SOL B for the four PSL
+  graphs, and research/frontier/haarcheck_sl.c SOL A / SOL B for (15,11) (this job added the same A|B option to
+  haarcheck_sl.c; tested on a small VALID and a D-1 INVALID case).
+
+**Small cells: odd-order Frobenius groups (squads).** Round 1 card g02 tried odd-order metacyclic groups at (4,11) (the
+(3,11) value Z67 x| Z11 is one) and g16 tried SL(2,p) x (centre-free odd Frobenius group); both beat (4,11) at once,
+far above the size law. Rounds 2-3 followed the lead: Frobenius groups Z_p x|_r Z_k (p prime, k | p - 1, r of order k;
+odd order and trivial centre for odd k) with random S raised (4,11) 24,360 -> 30,334, (5,11) 297,648 -> 311,426,
+(6,11) 2,094,960 -> 2,122,518, (4,12) 68,544 -> 70,176 (a metacyclic Z731 x| Z48) and (5,12) 1,041,768 -> 1,056,886
+(rounds 1-5; from round 4 on with a save/resume version of haar_gen3, haar_gen3s, and in round 6 a targeted finisher). Card r2/h13 measured why: at Δ = 4 random S on Z761 x| Z19 leave 1.1x the size-law mu
+uncovered, SL(2,23) and SL(2,13) x Z7 4-5x, and the difference is middle-level collisions (short relations in small
+SL(2,p)), not involutions. The gain shrinks with N: mu 44 at (4,11), 19 at (5,11), ~10 at (6,11) and the D = 12 cells.
+k matters (k = 3 collapses, k = 7 is bad, k = 13-63 behave like random groups). Details, proofs (r2/h17) and the list
+of what failed: research/frontier/beyond11/FROBENIUS.md. These graphs were checked by build_haar2.py (all) and the
+all-pairs apsp (2N <= 310k); haarcheck_gen does not know metacyclic groups.
+
+**What failed or was not reached.** Raises of (11..14, 11) and (11,12) were not attempted (each needs mu above where
+odd-D searches stall, for gains of 1-3 %, and the machine was busy with the five ~11 GB checks). Frobenius groups at
+(7,11) and (8,11) stopped at cost 2 and 12 (evaluation too slow for squad cards at N >= 5.5M). Cubic cells: no gain
+(exhaustive Frobenius and product groups, lifts of cubic multigraphs to cost 2 at 2,184 vertices for (3,12)). Negatives
+from round 1: Sz(8), F_{p^3} x| C_k, bipartite Cayley graphs of PGL(2,p), PSL(2,p^e) with a Frobenius automorphism,
+agl1 products, voltage lifts of PG(2,3) (19,500 at (4,11)). Squad log: research/squads/LOG.md (job beyond-d11b).
 
 ## What failed, and why it matters for the next attempt
 

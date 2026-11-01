@@ -1,0 +1,7 @@
+group meta 17011 63 6675 x Z_1, N=1071693, identity 0, H order 63, rows 17011, threads 1, setup 1.78s
+start cost=28
+t=30 steps=51 evals=409 cost=8 best=8 T=0.53
+t=61 steps=102 evals=817 cost=8 best=8 T=0.18
+moves accepted/proposed: plain 10/152 pair 0/0 local 0/0
+  move 0: mean candidate cost 50.5 min 8, candidates within +1 of final cost: 16
+RESULT d=6 D=11 group=meta 17011 63 6675 x Z_1 N=1071693 best=8 evals=1217 time=90.2

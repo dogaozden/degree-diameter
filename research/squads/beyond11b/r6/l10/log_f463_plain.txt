@@ -1,0 +1,8 @@
+group meta 463 33 179 x Z_1, N=15279, identity 0, H order 33, rows 463, threads 1, setup 0.00s
+START loaded from /home/user/degree-diameter/research/squads/beyond11b/r6/l10/b463_d.txt (4 generators)
+start cost=4
+t=30 steps=10442 evals=20885 cost=4 best=4 T=0.53
+t=60 steps=20310 evals=40621 cost=4 best=4 T=0.19
+moves accepted/proposed: plain 1/31071 pair 0/0 local 0/0
+  move 0: mean candidate cost 253.2 min 4, candidates within +1 of final cost: 1
+RESULT d=4 D=11 group=meta 463 33 179 x Z_1 N=15279 best=4 evals=62143 time=90.0

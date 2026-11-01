@@ -1,1 +1,15 @@
 run log: 14:03:21 start from r5/k07/k43o_s6027_K8.best (cost 2, meta 24683 43 7562, N 1061369)
+14:06:46 t1p_s7102_K4 mode=t start=t1.best group=meta 24683 43 7562 N=1061369 best=2 sol=no
+14:08:22 t2lo_s7103_K4 mode=lo start=start_c2.txt group=meta 24683 43 7562 N=1061369 best=2 sol=no
+14:09:58 f1_s7201_K4 mode=p start=- group=meta 23671 45 13612 N=1065195 best=6 sol=no
+14:11:33 f2_s7202_K8 mode=p start=- group=meta 17011 63 6675 N=1071693 best=8 sol=no
+14:13:16 h3_s7301_K8 mode=hot start=start_c2.txt group=meta 24683 43 7562 N=1061369 best=2 sol=no
+14:14:53 f3_s7401_K4 mode=t start=- group=meta 24683 43 7562 N=1061369 best=4 sol=no
+14:16:29 f3c_s7402_K8 mode=t start=f3_s7401_K4.best group=meta 24683 43 7562 N=1061369 best=2 sol=no
+14:18:04 f4_s7501_K4 mode=t start=- group=meta 19471 55 17381 N=1070905 best=6 sol=no
+14:19:39 f5_s7601_K4 mode=t start=- group=meta 25913 41 6526 N=1062433 best=6 sol=no
+14:21:16 f3d_s7701_K4 mode=lo start=f3c_s7402_K8.best group=meta 24683 43 7562 N=1061369 best=2 sol=no
+14:22:53 f3e_s7801_K8 mode=hot start=t1.best group=meta 24683 43 7562 N=1061369 best=2 sol=no
+14:24:29 f6_s7901_K4 mode=p start=- group=meta 29009 37 14049 N=1073333 best=8 sol=no
+14:26:04 f3f_s8001_K4 mode=t start=f3_s7401_K4.best group=meta 24683 43 7562 N=1061369 best=2 sol=no
+14:27:40 f7_s8101_K8 mode=p start=t1.best group=meta 24683 43 7562 N=1061369 best=2 sol=no

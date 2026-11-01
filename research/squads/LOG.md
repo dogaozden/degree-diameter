@@ -151,3 +151,16 @@ Seed farms and save/resume chains (haar_gen3s from r4/j14) on the near misses, a
   (7,11) Z100981 x| Z55 low-temperature chain 8 -> 2.
 Director-verified with build_haar2.py (plus apsp for (4,12) and (5,11)). Round 6 applies the TFULL finisher to the cost-1/2
 states. Process: three more stray session-tool calls (rejected) and some multi-line scoreboard records.
+
+### Round 6 (12 cards, 14:04-14:28 UTC, research/squads/beyond11b/r6/) - last round
+
+Finisher round: the TFULL targeted move (haar_gen3t, r5/k13), low-temperature and plain resumes on the cost-1/2 states.
+- **l03 (5,12) Z8969 x| Z59, N = 529,171: 1,058,342** (cost 1 frozen for 6 runs, then 0 in 11 s on the 7th; build_haar2 VALID).
+- l01 (4,12) Z677 x| Z52 cost-1 state: an exhaustive scan of all 105,609 single-generator swaps finds no cost 0 (only the
+  state itself at cost 1; 3 neighbours at cost 3; their full 1-swap scans also bottom out at 1). An isolated local minimum.
+- l07 (5,11) product cost-2 state: the 2 holes are an inverse pair on the B side (A side complete), as predicted.
+- No raise: l02/l11 (6,12) Z74719 x| Z63 cost 1 (14 + 7 runs); l04/l05 (7,11) cost-2 states, 0 accepted targeted moves
+  (one replacement costs +6 or more); l06 (6,11) Z24683 x| Z43 cost 2; l08 (5,11) Z3061 x| Z51 4 -> 2; l09 (8,11) cost 8
+  (setup 45-50 s of each 90 s run); l10 (4,11) Z463 x| Z33 cost 4; l12 (5,12) fresh groups cost 2.
+Reading: near the limit the annealer's local minima are real (exhaustive 1-swap check at (4,12)); solves come from many
+fresh lineages, not from deeper finishing. The squad stopped here so the last three ~11 GB checks run on an idle machine.

@@ -1,0 +1,8 @@
+group meta 9791 55 1073 x Z_1, N=538505, identity 0, H order 55, rows 9791, threads 1, setup 0.74s
+START loaded from b_c05.txt (5 generators)
+start cost=2
+t=30 steps=169 evals=1353 cost=2 best=2 T=0.53
+t=60 steps=326 evals=2609 cost=2 best=2 T=0.19
+moves accepted/proposed: plain 0/495 pair 0/0 local 0/0
+  move 0: mean candidate cost 23.8 min 5, candidates within +1 of final cost: 0
+RESULT d=5 D=12 group=meta 9791 55 1073 x Z_1 N=538505 best=2 evals=3961 time=90.1

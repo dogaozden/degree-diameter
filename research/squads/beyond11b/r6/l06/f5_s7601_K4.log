@@ -1,0 +1,7 @@
+group meta 25913 41 6526 x Z_1, N=1062433, identity 0, H order 41, rows 25913, threads 1, setup 2.13s
+start cost=36
+t=30 steps=59 evals=237 cost=10 best=10 T=0.53
+t=61 steps=122 evals=489 cost=8 best=8 T=0.18
+moves accepted/proposed: plain 10/181 pair 0/0 local 0/0
+  move 0: mean candidate cost 30.8 min 6, candidates within +1 of final cost: 13
+RESULT d=6 D=11 group=meta 25913 41 6526 x Z_1 N=1062433 best=6 evals=725 time=90.4

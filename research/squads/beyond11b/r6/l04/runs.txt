@@ -1,0 +1,13 @@
+t1 mode=t seed=101 K=4 start=start0.txt TMAX=default rc=124 best=2 :: RESULT d=7 D=11 group=meta 100981 55 1490 x Z_1 N=5553955 best=2 evals=125 time=91.3
+t2 mode=t seed=102 K=4 start=t1.best.txt TMAX=0.6 rc=124 best=2 :: RESULT d=7 D=11 group=meta 100981 55 1490 x Z_1 N=5553955 best=2 evals=125 time=91.7
+p3 mode=p seed=103 K=8 start=t2.best.txt TMAX=1.5 rc=124 best=2 :: RESULT d=7 D=11 group=meta 100981 55 1490 x Z_1 N=5553955 best=2 evals=129 time=96.3
+t4 mode=t seed=104 K=4 start=start0.txt TMAX=0.6 rc=124 best=2 :: RESULT d=7 D=11 group=meta 100981 55 1490 x Z_1 N=5553955 best=2 evals=121 time=91.3
+r5 mode=p seed=105 K=4 start=t2.best.txt TMAX=default rc=124 best=2 :: RESULT d=7 D=11 group=meta 100981 55 1490 x Z_1 N=5553955 best=2 evals=121 time=92.2
+t6 mode=t seed=106 K=4 start=t2.best.txt TMAX=0.3 rc=124 best=2 :: RESULT d=7 D=11 group=meta 100981 55 1490 x Z_1 N=5553955 best=2 evals=109 time=91.3
+p7 mode=p seed=107 K=4 start=start0.txt TMAX=0.6 rc=124 best=2 :: RESULT d=7 D=11 group=meta 100981 55 1490 x Z_1 N=5553955 best=2 evals=125 time=92.6
+t8 mode=t seed=108 K=4 start=start0.txt TMAX=1.0 rc=124 best=2 :: RESULT d=7 D=11 group=meta 100981 55 1490 x Z_1 N=5553955 best=2 evals=133 time=91.6
+t9 mode=t seed=109 K=6 start=t8.best.txt TMAX=0.6 rc=124 best=2 :: RESULT d=7 D=11 group=meta 100981 55 1490 x Z_1 N=5553955 best=2 evals=121 time=93.2
+t10 mode=t seed=110 K=4 start=start0.txt TMAX=0.6 rc=124 best=2 :: RESULT d=7 D=11 group=meta 100981 55 1490 x Z_1 N=5553955 best=2 evals=125 time=93.3
+t11 mode=t seed=111 K=4 start=start0.txt TMAX=0.6 rc=124 best=2 :: RESULT d=7 D=11 group=meta 100981 55 1490 x Z_1 N=5553955 best=2 evals=121 time=91.7
+p12 mode=p seed=112 K=4 start=start0.txt TMAX=0.6 rc=124 best=2 :: RESULT d=7 D=11 group=meta 100981 55 1490 x Z_1 N=5553955 best=2 evals=129 time=91.7
+t13 mode=t seed=113 K=4 start=start0.txt TMAX=0.6 rc=1 best=2 :: RESULT d=7 D=11 group=meta 100981 55 1490 x Z_1 N=5553955 best=2 evals=133 time=91.1

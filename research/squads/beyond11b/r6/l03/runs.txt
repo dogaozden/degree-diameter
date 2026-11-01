@@ -1,0 +1,12 @@
+14:04:35 tag=t01 seed=401 K=4 start=start_c308c.txt mode=T tmax=1.5 rc=1 :: RESULT d=5 D=12 group=meta 8969 59 205 x Z_1 N=529171 best=1 evals=4265 time=90.1
+14:06:10 tag=t02 seed=402 K=4 start=s_t01.txt mode=P tmax=0.6 rc=1 :: RESULT d=5 D=12 group=meta 8969 59 205 x Z_1 N=529171 best=1 evals=4197 time=90.1
+14:07:43 tag=t03 seed=403 K=8 start=s_t02.txt mode=T tmax=1.5 rc=1 :: RESULT d=5 D=12 group=meta 8969 59 205 x Z_1 N=529171 best=1 evals=4089 time=90.2
+14:09:18 tag=t04 seed=404 K=8 start=s_t03.txt mode=T tmax=0.6 rc=1 :: RESULT d=5 D=12 group=meta 8969 59 205 x Z_1 N=529171 best=1 evals=4185 time=90.2
+14:12:34 tag=f601 seed=501 K=4 start=- spec=meta 27817 19 222 n1 rc=1 :: RESULT d=5 D=12 group=meta 27817 19 222 x Z_1 N=528523 best=7 evals=1029 time=90.2
+14:14:10 tag=f602 seed=502 K=4 start=s_f601.txt spec=meta 27817 19 222 n1 rc=1 :: RESULT d=5 D=12 group=meta 27817 19 222 x Z_1 N=528523 best=5 evals=981 time=90.2
+14:15:46 tag=f603 seed=503 K=4 start=s_f602.txt tmax=0.6 spec=meta 27817 19 222 n1 rc=1 :: RESULT d=5 D=12 group=meta 27817 19 222 x Z_1 N=528523 best=5 evals=1009 time=90.2
+14:17:21 tag=f604 seed=504 K=4 start=- spec=meta 20333 26 20164 n1 rc=1 :: RESULT d=5 D=12 group=meta 20333 26 20164 x Z_1 N=528658 best=156 evals=1645 time=90.1
+14:18:55 tag=t05 seed=405 K=4 start=s_t04.txt mode=P tmax=3.0 rc=1 :: RESULT d=5 D=12 group=meta 8969 59 205 x Z_1 N=529171 best=1 evals=4369 time=90.1
+14:20:30 tag=t06 seed=406 K=8 start=- mode=T tmax=1.5 rc=1 :: RESULT d=5 D=12 group=meta 8969 59 205 x Z_1 N=529171 best=2 evals=4025 time=90.2
+14:22:04 tag=t07 seed=407 K=8 start=s_t04.txt mode=T tmax=0.6 rc=1 :: RESULT d=5 D=12 group=meta 8969 59 205 x Z_1 N=529171 best=1 evals=4121 time=90.1
+14:22:19 tag=t08 seed=408 K=4 start=s_t07.txt mode=T tmax=1.5 rc=0 :: RESULT d=5 D=12 group=meta 8969 59 205 x Z_1 N=529171 best=0 evals=529 time=11.4

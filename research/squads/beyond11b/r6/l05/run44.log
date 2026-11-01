@@ -1,0 +1,8 @@
+group meta 90281 61 60307 x Z_1, N=5507141, identity 0, H order 61, rows 90281, threads 1, setup 12.88s
+START loaded from /home/user/degree-diameter/research/squads/beyond11b/r5/k11/s21.txt (7 generators)
+start cost=2
+t=31 steps=11 evals=45 cost=2 best=2 T=0.51
+t=62 steps=23 evals=93 cost=2 best=2 T=0.18
+moves accepted/proposed: plain 0/30 pair 0/0 local 0/0
+  move 0: mean candidate cost 24.1 min 8, candidates within +1 of final cost: 0
+RESULT d=7 D=11 group=meta 90281 61 60307 x Z_1 N=5507141 best=2 evals=121 time=80.0

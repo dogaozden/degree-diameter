@@ -1,0 +1,8 @@
+group meta 24683 43 7562 x Z_1, N=1061369, identity 0, H order 43, rows 24683, threads 1, setup 3.13s
+START loaded from /home/user/degree-diameter/research/squads/beyond11b/r6/l06/start_c2.txt (6 generators)
+start cost=2
+t=31 steps=33 evals=265 cost=6 best=2 T=1.04
+t=61 steps=68 evals=545 cost=4 best=2 T=0.36
+moves accepted/proposed: plain 6/97 pair 0/0 local 0/0
+  move 0: mean candidate cost 61.8 min 4, candidates within +1 of final cost: 4
+RESULT d=6 D=11 group=meta 24683 43 7562 x Z_1 N=1061369 best=2 evals=777 time=91.0
