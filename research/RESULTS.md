@@ -300,3 +300,13 @@ by the coordinator with build_haar.py, two BFS from both sides, ecc ≤ D, nothi
 - Nov 01 00:31 PT (harvest): (4,12) 68,544 (was 50,160), sl 17 n 7; claude/new-cells-d11-d12-beyond-8sas9r.
 - Nov 01 00:31 PT (harvest): (5,11) 297,648 (was 253,080), sl 53 n 1; claude/new-cells-d11-d12-beyond-8sas9r.
 - Nov 01 00:31 PT (harvest): (5,12) 1,041,768 (was 912,576), psl 53 n 7; claude/new-cells-d11-d12-beyond-8sas9r.
+
+- Nov 01 01:31 PT (harvest): (6,11) 2,094,960 (was 1,971,744), sl 29 n 43; claude/new-cells-d11-d12-beyond-8sas9r.
+- Nov 01 01:31 PT (harvest): (6,12) 9,366,240 (was 9,303,840), psl 79 n 19; claude/new-cells-d11-d12-beyond-8sas9r.
+- Nov 01 01:31 PT (harvest): (7,12) 59,838,504 (was 56,297,592), psl 67 n 199; claude/new-cells-d11-d12-beyond-8sas9r.
+- Nov 01 01:31 PT (harvest): (8,11) 45,329,808 (was 43,702,560), sl 283 n 1; claude/new-cells-d11-d12-beyond-8sas9r.
+- Nov 01 01:31 PT (harvest): (8,12) 284,095,056 (was 268,496,208), psl 167 n 61; claude/new-cells-d11-d12-beyond-8sas9r.
+- Nov 01 01:31 PT (harvest): (9,12) 1,105,785,120 (was 1,055,973,600), psl 241 n 79; claude/new-cells-d11-d12-beyond-8sas9r.
+- Nov 01 01:31 PT (harvest): (10,12) 3,712,424,352 (was 3,500,976,768), psl 337 n 97; claude/new-cells-d11-d12-beyond-8sas9r.
+- Nov 01 01:31 PT (harvest): (11,12) 11,189,148,096 (was 0), psl 223 n 1009; claude/new-cells-d11-d12-beyond-8sas9r.
+- Nov 01 01:31 PT (harvest): (12,11) 2,976,066,240 (was 2,874,207,072), sl 239 n 109; claude/new-cells-d11-d12-beyond-8sas9r.
