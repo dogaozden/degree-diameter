@@ -48,13 +48,18 @@ def key(l):
     m = re.match(r'\| \((\d+),(\d+)\) \|', l)
     return (int(m.group(1)), int(m.group(2))) if m else None
 out, done = [], set()
+present = {key(l) for l in lines}
 for i, l in enumerate(lines):
     k = key(l)
+    if k and k[1] in (11, 12):         # new cells of this D with a smaller Δ than this row go right before it
+        for d in range(3, k[0]):
+            if (d, k[1]) in rows and (d, k[1]) not in present and (d, k[1]) not in done:
+                out.append(rows[(d, k[1])]); done.add((d, k[1]))
     out.append(rows[k] if k in rows else l)
     if k in rows: done.add(k)
     if k and k[1] in (11, 12):
         nxt = key(lines[i + 1]) if i + 1 < len(lines) else None
-        if not nxt or nxt[1] != k[1]:
+        if not nxt or nxt[1] != k[1]:  # last row of this D: append the remaining new cells of this D
             for d in range(k[0] + 1, 40):
                 if (d, k[1]) in rows and (d, k[1]) not in done: out.append(rows[(d, k[1])]); done.add((d, k[1]))
 open(TAB, 'w').write('\n'.join(out))
