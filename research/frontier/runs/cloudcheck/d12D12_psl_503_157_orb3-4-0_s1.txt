@@ -1,0 +1,23 @@
+Coordinator report (Mac mini coordinator, 2026-11-01T11:29:34Z): d12D12_psl_503_157_orb3-4-0_s1.txt from origin/claude/new-cells-d11-d12-beyond-8sas9r, sha256 92e61c97e14fe4b43801b5807d66881453947a8b243d6d5d6794e2c6d32b8f16.
+
+======== cloud haarcheck_gen report from origin/claude/new-cells-d11-d12-beyond-8sas9r (unedited) ========
+checker: haarcheck_gen
+command: ./bin/haarcheck_gen runs/d12D12_psl_503_157_orb3-4-0_s1.out
+start: 2026-11-01T08:07:56Z
+sha256 e52e247f4a92a474f49ff0d5d438660ba0b557bbdfd4a8e24311ca881ff3f17c  ./bin/haarcheck_gen
+sha256 92e61c97e14fe4b43801b5807d66881453947a8b243d6d5d6794e2c6d32b8f16  runs/d12D12_psl_503_157_orb3-4-0_s1.out
+selftest psl 503: |M| = 63631512, index round trip over all elements ok
+selftest group multiplication: associativity, identity, inverse on 20000 random triples ok
+file runs/d12D12_psl_503_157_orb3-4-0_s1.out
+header: 12 12 psl 503 n 157 N 9990147384
+group psl 503 x Z_157, |G| = 9990147384 = N, vertices 2N = 19980294768; 12 distinct generators
+from (e,A): reached A 9990147384/9990147384, B 9990147384/9990147384 within 12; ecc 12; level sizes [1, 12, 132, 1452, 15972, 175692, 1932330, 21231933, 231013250, 2261935751, 9181445940, 7706802544, 575739759]  (1530s)
+from (e,B): reached A 9990147384/9990147384, B 9990147384/9990147384 within 12; ecc 12; level sizes [1, 12, 132, 1452, 15972, 175692, 1932330, 21231933, 231013247, 2261935751, 9181334956, 7706802544, 575850746]  (2482s)
+VALID d=12 D=12 group=psl 503 x Z_157 N=9990147384 vertices=19980294768 (distinct generators, 12-regular simple; every vertex within 12 of both (e,A) and (e,B); ecc 12; 2482s)
+exit: 0
+end: 2026-11-01T08:49:18Z (2482 s)
+
+======== Mac mini: reference checker (research/structured/tools/haarcheck_psl.c, master; clang -O3), 3556 s, 6680 MB ========
+from (e,A): reached A 9990147384/9990147384, B 9990147384/9990147384 within 12, ecc 12
+from (e,B): reached A 9990147384/9990147384, B 9990147384/9990147384 within 12, ecc 12
+VALID d=12 D=12 group=psl 503 x Z_157 N=9990147384 vertices=19980294768 (distinct generators, 12-regular simple)
