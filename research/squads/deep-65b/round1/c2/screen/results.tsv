@@ -60,3 +60,93 @@
 176	34	C11 : ((C4 x C2) : C2) 	a=3	best=296	t=none/0.00	iters=204
 176	35	C2 x C2 x (C11 : C4) 	a=2	best=476	t=none/0.00	iters=96
 176	35	C2 x C2 x (C11 : C4) 	a=3	best=476	t=none/0.00	iters=72
+176	36	C2 x ((C22 x C2) : C2) 	a=2	best=492	t=none/0.00	iters=72
+176	36	C2 x ((C22 x C2) : C2) 	a=3	best=492	t=none/0.00	iters=72
+176	38	C22 x D8 	a=2	best=100	t=none/0.00	iters=76
+176	38	C22 x D8 	a=3	best=96	t=none/0.00	iters=76
+176	39	C22 x Q8 	a=2	best=120	t=none/0.00	iters=72
+176	39	C22 x Q8 	a=3	best=120	t=none/0.00	iters=72
+176	4	C11 : (C8 : C2) 	a=2	best=108	t=none/0.00	iters=72
+176	4	C11 : (C8 : C2) 	a=3	best=108	t=none/0.00	iters=64
+176	40	C11 x ((C4 x C2) : C2) 	a=2	best=92	t=none/0.00	iters=72
+176	40	C11 x ((C4 x C2) : C2) 	a=3	best=92	t=none/0.00	iters=76
+176	41	C2 x C2 x C2 x D22 	a=2	best=988	t=none/0.00	iters=72
+176	41	C2 x C2 x C2 x D22 	a=3	best=988	t=none/0.00	iters=72
+176	5	C11 : QD16 	a=2	best=404	t=none/0.00	iters=68
+176	5	C11 : QD16 	a=3	best=420	t=none/0.00	iters=72
+176	6	D176 	a=2	best=880	t=none/0.00	iters=52
+176	6	D176 	a=3	best=884	t=none/0.00	iters=72
+176	7	C11 : Q16 	a=2	best=396	t=none/0.00	iters=68
+176	7	C11 : Q16 	a=3	best=396	t=none/0.00	iters=76
+176	8	C2 x (C11 : C8) 	a=2	best=112	t=none/0.00	iters=72
+176	8	C2 x (C11 : C8) 	a=3	best=100	t=none/0.00	iters=80
+176	9	C11 : (C8 : C2) 	a=2	best=92	t=none/0.00	iters=72
+176	9	C11 : (C8 : C2) 	a=3	best=92	t=none/0.00	iters=72
+178	1	D178 	a=2	best=868	t=none/0.00	iters=72
+178	1	D178 	a=3	best=900	t=none/0.00	iters=72
+180	1	C5 x (C9 : C4) 	a=2	best=40	t=none/0.00	iters=68
+180	1	C5 x (C9 : C4) 	a=3	best=44	t=none/0.00	iters=72
+180	10	C10 x D18 	a=2	best=72	t=none/0.00	iters=68
+180	10	C10 x D18 	a=3	best=66	t=none/0.00	iters=76
+180	11	D180 	a=2	best=936	t=none/0.00	iters=76
+180	11	D180 	a=3	best=904	t=none/0.00	iters=52
+180	13	C3 x C3 x (C5 : C4) 	a=2	best=44	t=none/0.00	iters=76
+180	13	C3 x C3 x (C5 : C4) 	a=3	best=44	t=none/0.00	iters=80
+180	14	C15 x (C3 : C4) 	a=2	best=48	t=none/0.00	iters=80
+180	14	C15 x (C3 : C4) 	a=3	best=52	t=none/0.00	iters=84
+180	15	C3 x (C15 : C4) 	a=2	best=44	t=none/0.00	iters=72
+180	15	C3 x (C15 : C4) 	a=3	best=52	t=none/0.00	iters=72
+180	16	C5 x ((C3 x C3) : C4) 	a=2	best=44	t=none/0.00	iters=72
+180	16	C5 x ((C3 x C3) : C4) 	a=3	best=32	t=none/0.00	iters=76
+180	17	(C3 x C3) : (C5 : C4) 	a=2	best=468	t=none/0.00	iters=76
+180	17	(C3 x C3) : (C5 : C4) 	a=3	best=448	t=none/0.00	iters=72
+180	19	GL(2,4) 	a=2	best=42	t=none/0.00	iters=68
+180	19	GL(2,4) 	a=3	best=38	t=none/0.00	iters=80
+180	2	C9 x (C5 : C4) 	a=2	best=36	t=none/0.00	iters=64
+180	2	C9 x (C5 : C4) 	a=3	best=48	t=none/0.00	iters=80
+180	20	C3 x C3 x (C5 : C4) 	a=2	best=22	t=none/0.00	iters=76
+180	20	C3 x C3 x (C5 : C4) 	a=3	best=34	t=none/0.00	iters=80
+180	21	C3 x (C15 : C4) 	a=2	best=24	t=none/0.00	iters=68
+180	21	C3 x (C15 : C4) 	a=3	best=14	t=none/0.00	iters=76
+180	22	(C3 x C3) : (C5 : C4) 	a=2	best=32	t=none/0.00	iters=80
+180	22	(C3 x C3) : (C5 : C4) 	a=3	best=54	t=none/0.00	iters=80
+180	23	C5 x ((C3 x C3) : C4) 	a=2	best=26	t=none/0.00	iters=80
+180	23	C5 x ((C3 x C3) : C4) 	a=3	best=22	t=none/0.00	iters=72
+180	24	(C3 x C3) : (C5 : C4) 	a=2	best=34	t=none/0.00	iters=64
+180	24	(C3 x C3) : (C5 : C4) 	a=3	best=34	t=none/0.00	iters=64
+180	25	(C3 x C3) : (C5 : C4) 	a=2	best=128	t=none/0.00	iters=68
+180	25	(C3 x C3) : (C5 : C4) 	a=3	best=136	t=none/0.00	iters=72
+180	26	C3 x S3 x D10 	a=2	best=58	t=none/0.00	iters=72
+180	26	C3 x S3 x D10 	a=3	best=58	t=none/0.00	iters=60
+180	27	((C3 x C3) : C2) x D10 	a=2	best=156	t=none/0.00	iters=72
+180	27	((C3 x C3) : C2) x D10 	a=3	best=156	t=none/0.00	iters=64
+180	28	C5 x S3 x S3 	a=2	best=34	t=none/0.00	iters=72
+180	28	C5 x S3 x S3 	a=3	best=50	t=none/0.00	iters=64
+180	29	S3 x D30 	a=2	best=228	t=none/0.00	iters=64
+180	29	S3 x D30 	a=3	best=204	t=none/0.00	iters=76
+180	3	C9 : (C5 : C4) 	a=2	best=460	t=none/0.00	iters=68
+180	3	C9 : (C5 : C4) 	a=3	best=432	t=none/0.00	iters=60
+180	30	(C3 x C3) : D20 	a=2	best=108	t=none/0.00	iters=72
+180	30	(C3 x C3) : D20 	a=3	best=106	t=none/0.00	iters=68
+180	31	C15 x A4 	a=2	best=32	t=none/0.00	iters=68
+180	31	C15 x A4 	a=3	best=36	t=none/0.00	iters=76
+180	32	C3 x C6 x D10 	a=2	best=42	t=none/0.00	iters=48
+180	32	C3 x C6 x D10 	a=3	best=42	t=none/0.00	iters=56
+180	33	C30 x S3 	a=2	best=56	t=none/0.00	iters=72
+180	33	C30 x S3 	a=3	best=60	t=none/0.00	iters=72
+180	34	C6 x D30 	a=2	best=214	t=none/0.00	iters=68
+180	34	C6 x D30 	a=3	best=222	t=none/0.00	iters=76
+180	35	C10 x ((C3 x C3) : C2) 	a=2	best=64	t=none/0.00	iters=72
+180	35	C10 x ((C3 x C3) : C2) 	a=3	best=64	t=none/0.00	iters=64
+180	36	C2 x ((C15 x C3) : C2) 	a=2	best=936	t=none/0.00	iters=72
+180	36	C2 x ((C15 x C3) : C2) 	a=3	best=952	t=none/0.00	iters=68
+180	5	C9 x (C5 : C4) 	a=2	best=26	t=none/0.00	iters=68
+180	5	C9 x (C5 : C4) 	a=3	best=36	t=none/0.00	iters=68
+180	6	C9 : (C5 : C4) 	a=2	best=40	t=none/0.00	iters=68
+180	6	C9 : (C5 : C4) 	a=3	best=36	t=none/0.00	iters=68
+180	7	D10 x D18 	a=2	best=160	t=none/0.00	iters=76
+180	7	D10 x D18 	a=3	best=172	t=none/0.00	iters=64
+180	8	C5 x ((C2 x C2) : C9) 	a=2	best=34	t=none/0.00	iters=64
+180	8	C5 x ((C2 x C2) : C9) 	a=3	best=28	t=none/0.00	iters=68
+180	9	C18 x D10 	a=2	best=52	t=none/0.00	iters=68
+180	9	C18 x D10 	a=3	best=52	t=none/0.00	iters=64

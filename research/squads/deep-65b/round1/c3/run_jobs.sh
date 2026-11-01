@@ -8,7 +8,7 @@ for g in "$@"; do
     out=out/ex_300_${g}_p${p}of${N}.txt
     if [ -f "$out" ] && grep -q TOTAL "$out"; then continue; fi
     if [ $(( $(date +%s) - start )) -ge $BUD ]; then echo "budget stop before $g p$p"; exit 0; fi
-    timeout 45 nice -n 15 ./hubk tabs/sg_300_$g.txt 5 ex $N $p > "$out" 2>&1
+    timeout 38 nice -n 15 ./hubk tabs/sg_300_$g.txt 5 ex $N $p > "$out" 2>&1
   done
   echo "group $g: all $N chunks done"
 done

@@ -158,7 +158,7 @@ static bs linA[256], linB[256], F5, F6;   /* F5 = F6 = E1 u E1E1^-1E1 */
 static int32_t cls1; static int q1cur;
 static long long nleaf, ndup, nswap, ncheck, nsol;
 static int bestcost = 1 << 30; static int bestE1[5], bestE2[5];
-static int quiet = 0;
+static int quiet = 0; static long long solprint = 1000000000LL;
 static int noswap = 0, noprune = 0; static long long npruned = 0;
 /* dedup hash */
 #define HB 22
@@ -229,7 +229,7 @@ static void check_pair(const int *E2) {
     cost += bmissing(&c); if (cost > bestcost) return;
     if (cost < bestcost) { bestcost = cost; memcpy(bestE1, E1, sizeof E1); memcpy(bestE2, E2, sizeof(int) * 5);
         if (!quiet) { printf("BEST %d E1 %d %d %d %d %d E2 %d %d %d %d %d\n", cost, E1[0], E1[1], E1[2], E1[3], E1[4], E2[0], E2[1], E2[2], E2[3], E2[4]); fflush(stdout); } }
-    if (cost == 0) { nsol++; printf("SOL E1 %d %d %d %d %d E2 %d %d %d %d %d\n", E1[0], E1[1], E1[2], E1[3], E1[4], E2[0], E2[1], E2[2], E2[3], E2[4]); fflush(stdout); }
+    if (cost == 0) { nsol++; if (nsol <= solprint) { printf("SOL E1 %d %d %d %d %d E2 %d %d %d %d %d cls %d %d\n", E1[0], E1[1], E1[2], E1[3], E1[4], E2[0], E2[1], E2[2], E2[3], E2[4], cls1, class5(E2)); fflush(stdout); } }
 }
 
 static int inY(const int *Y, int k, int y) { for (int i = 0; i < k; i++) if (Y[i] == y) return 1; return 0; }
@@ -433,6 +433,29 @@ int main(int argc, char **argv) {
             }
         }
         printf("brute force: %lld E2 with C1 and C4 (%.1f s); dfs distinct %lld -> %s\n", nbf, now() - t1, ndfs, nbf == ndfs ? "AGREE" : "DISAGREE");
+        return 0;
+    }
+    if (!strcmp(argv[2], "classes")) {   /* stdin: lines of 10 ints (E1, E2); prints the two class ids, sorted, and q */
+        int e[10];
+        while (1) { int ok = 1; for (int i = 0; i < 10; i++) if (scanf("%d", &e[i]) != 1) { ok = 0; break; } if (!ok) break;
+            int32_t a = class5(e), b = class5(e + 5); if (a > b) { int32_t t = a; a = b; b = t; }
+            printf("%d %d q %d %d\n", a, b, qv[class5(e)], qv[class5(e + 5)]); }
+        return 0;
+    }
+    if (!strcmp(argv[2], "hill")) {   /* independent check: random-restart hill climbing on the six-condition cost */
+        int N = atoi(argv[3]); rs += atoll(argv[4]); int found = 0;
+        for (int it = 0; it < N; it++) {
+            int e[10]; rand_set(e, 0); rand_set(e + 5, 0); int miss[6], cost; conds(e, e + 5, miss); cost = 0; for (int i = 0; i < 6; i++) cost += miss[i];
+            for (int step = 0; step < 4000 && cost > 0; step++) {
+                int pos = rnd() % 10, old = e[pos], nw = rnd() % m, dupl = 0;
+                for (int i = 0; i < 5; i++) if (e[(pos / 5) * 5 + i] == nw) dupl = 1;
+                if (dupl) continue;
+                e[pos] = nw; conds(e, e + 5, miss); int c2 = 0; for (int i = 0; i < 6; i++) c2 += miss[i];
+                if (c2 <= cost) cost = c2; else e[pos] = old;
+            }
+            if (cost == 0) { found++; printf("HILL"); for (int i = 0; i < 10; i++) printf(" %d", e[i]); printf("\n"); fflush(stdout); }
+        }
+        fprintf(stderr, "hill: %d restarts, %d solutions\n", N, found);
         return 0;
     }
     /* ex */

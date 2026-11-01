@@ -15,5 +15,5 @@ while read ord id; do
   best=$(echo "$line" | sed 's/.* best=\([0-9]*\) .*/\1/')
   tb=$(echo "$line" | sed 's/.* t_best=\([0-9.]*\) .*/\1/')
   echo "$ord $id $SEED $best $tb $name" >> $D/raw.txt
-done < $D/todo.txt
+done < ${TODO:-$D/todo.txt}
 echo "done-call: $(wc -l < $D/raw.txt) raw lines; pending: $(awk -v s=$SEED '{print}' $D/todo.txt | wc -l) total"

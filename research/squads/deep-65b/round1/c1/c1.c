@@ -14,7 +14,9 @@
 #define MAXM 256
 #define INF 1000000
 #define TENURE 10
+#ifndef RESTART
 #define RESTART 1500
+#endif
 
 typedef struct { uint64_t w[4]; } bs;
 static int m, NW;
