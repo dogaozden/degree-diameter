@@ -30,7 +30,7 @@
 #define MAXK 160
 #define MAXPOOL 90000
 #define MAXLINES 400000
-#define MS 8
+static int MS = 8;   /* best-of samples, env ANNEAL_MS */
 #define MTRY 3000
 
 static int ad[2][H][16];               /* ad[s][t]: S-side neighbours of t, for t in T_s (T_0 = B, T_1 = A) */
@@ -363,6 +363,7 @@ int main(int argc, char **argv) {
     double SECS = atof(argv[5]); unsigned long long seed = strtoull(argv[6], 0, 10);
     double T0 = atof(argv[7]), T1 = atof(argv[8]); LAM = atof(argv[9]);
     rs ^= seed * 0x9E3779B97F4A7C15ULL; for (int i = 0; i < 10; i++) rnd();
+    if (getenv("ANNEAL_MS")) MS = atoi(getenv("ANNEAL_MS"));
     double t0 = now();
     if (!load_edges(argv[1])) { fprintf(stderr, "bad edges\n"); return 3; }
     compute_balls();

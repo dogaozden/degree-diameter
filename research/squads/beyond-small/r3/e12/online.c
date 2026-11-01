@@ -104,7 +104,7 @@ int main(int argc, char **argv) {
     if (ip) fclose(ip);
     int nInit = npk; fprintf(stderr, "init packing %d covers\n", nInit);
     uint64_t full[W]; for (int w = 0; w < W; w++) full[w] = ~0ULL;
-    long gen = 0, selfok = 0, added = 0, tried_compat = 0;
+    long gen = 0, selfok = 0, added = 0, tried_compat = 0, badcov = 0;
     static uint64_t unc[W], o_[W];
     while (now() < T0 + secs && np_ < MAXN - 1) {
         gen++;
@@ -149,6 +149,14 @@ int main(int argc, char **argv) {
         int good = 1; for (int uu = 1; uu < 22 && good; uu++) { int hit = 0;
             for (int k = 0; k < 16 && !hit; k++) if (bit(Sx, shT[uu][cand[np_][k]])) hit = 1; if (!hit) good = 0; }
         if (!good) continue;
+        { /* direct check (independent of ball tables): every vertex of the other side within distance 3 of the cover */
+          static char seenS[H], seenM[H], lay2[H]; memset(seenS, 0, H); memset(seenM, 0, H); memset(lay2, 0, H);
+          for (int k = 0; k < 16; k++) { int a = cand[np_][k];
+            for (int i = 0; i < 16; i++) { int b = adjT[a][i]; seenS[b] = 1;
+              for (int j = 0; j < 16; j++) lay2[adjS[b][j]] = 1; } }
+          for (int x = 0; x < H; x++) if (lay2[x]) for (int i = 0; i < 16; i++) seenS[adjT[x][i]] = 1;
+          int full_ = 1; for (int x = 0; x < H; x++) if (!seenS[x]) { full_ = 0; break; }
+          if (!full_) { badcov++; continue; } }
         selfok++;
         /* compatible with every packed cover (key-disjoint already) */
         int all = 1;
@@ -159,7 +167,7 @@ int main(int argc, char **argv) {
     FILE *g = fopen(argv[6], "w");
     for (int a = 0; a < npk; a++) { int i = pk[a]; for (int k = 0; k < 16; k++) fprintf(g, "%d ", cand[i][k] + (side == 0 ? H : 0)); fprintf(g, "\n"); }
     fclose(g);
-    printf("online side %d: init %d, generated %ld, self-compat %ld, compat tests %ld, final packing %d orbits = %d hubs\n",
-           side, nInit, gen, selfok, tried_compat, npk, 22 * npk);
+    printf("uncovered-rejected %ld; online side %d: init %d, generated %ld, self-compat %ld, compat tests %ld, final packing %d orbits = %d hubs\n",
+           badcov, side, nInit, gen, selfok, tried_compat, npk, 22 * npk);
     return 0;
 }
