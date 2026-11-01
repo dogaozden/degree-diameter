@@ -1,0 +1,12 @@
+m:=104; k:=24; r:=7;
+F := FreeGroup("a","b");
+G := F / [F.1^m, F.2^k, F.2*F.1*F.2^-1*F.1^-r];
+G := Image(IsomorphismPcGroup(G));
+Print("size ", Size(G), " ", AbelianInvariants(G), "\n");
+Read("/home/user/degree-diameter/research/squads/deep-49/tools/export_group.g");
+t:=Runtime();
+A := AutomorphismGroup(G);
+Print("aut size ", Size(A), " time ", Runtime()-t, "\n");
+ExportGroup(G, "/home/user/degree-diameter/research/squads/deep-49/r1/c2/runs/t2496.exp");
+Print("exported ", Runtime()-t, "\n");
+QUIT;
