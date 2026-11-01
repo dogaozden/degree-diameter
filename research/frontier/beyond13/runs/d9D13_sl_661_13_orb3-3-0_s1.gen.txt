@@ -9,3 +9,7 @@ file runs/d9D13_sl_661_13_orb3-3-0_s1.out
 header: 9 13 sl 661 n 13 N 3754453560
 group sl 661 x Z_13, |G| = 3754453560 = N, vertices 2N = 7508907120; 9 distinct generators
 from (e,A): reached A 3754453560/3754453560, B 3754453560/3754453560 within 13; ecc 13; level sizes [1, 9, 72, 576, 4608, 36849, 294648, 2355291, 18789732, 147521850, 1024741398, 3326782635, 2710623101, 277756350]  (3250s)
+from (e,B): reached A 3754453560/3754453560, B 3754453560/3754453560 within 13; ecc 13; level sizes [1, 9, 72, 576, 4608, 36849, 294648, 2355291, 18789718, 147521850, 1024737482, 3326782635, 2710627031, 277756350]  (6623s)
+VALID d=9 D=13 group=sl 661 x Z_13 N=3754453560 vertices=7508907120 (distinct generators, 9-regular simple; every vertex within 13 of both (e,A) and (e,B); ecc 13; 6623s)
+exit: 0
+end: 2026-11-01T13:39:27Z (6623 s)

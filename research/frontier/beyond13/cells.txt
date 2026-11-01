@@ -1,10 +1,11 @@
 # cell | sol stem (in sols/, must have a VALID runs/<stem>.gen.txt) | construction note (squad card or director)
 4,14 | d4D14_psl_41_7_orb3-1-1_c06 | Haar graph PSL(2,41) x Z7, S = {e} + 1 orbit of size 3 (squad r1/c06); earlier 416,640 (SL(2,31) x Z7, director)
 5,13 | d5D13_psl_47_31_orb3-1-2_c07 | Haar graph PSL(2,47) x Z31, S = {e} + 1 fixed + 1 orbit of size 3 (squad r1/c07, 18 s); earlier 3,176,880 (SL(2,61) x Z7, director)
-5,14 | d5D14_psl_53_83_g3_g09 | Haar graph PSL(2,53) x Z83, S random (haar_gen3, squad r4/g09); earlier 12,057,264 (PSL(2,73) x Z31, r3/f10), 11,757,096 and 11,696,856; the orbit form "3 1 2" stalls at Δ = 5
+5,14 | d5D14_sl_97_7_g3_h06 | Haar graph SL(2,97) x Z7, S random (haar_gen3, squad r5/h06, 265 evaluations); earlier 12,352,392 (PSL(2,53) x Z83, r4/g09), 12,057,264, 11,757,096 and 11,696,856; the orbit form "3 1 2" stalls at Δ = 5
 4,13 | d4D13_psl_29_7_orbscan_c05 | Haar graph PSL(2,29) x Z7, S = {e, x, ax, a^2x} (exhaustive orbit scan orbscan.c, squad r1/c05); earlier 117,600 (PSL(2,49), random S, r1/c16) and 78,936 (PSL(2,23) x Z13, r1/c04)
 6,13 | d6D13_psl_83_73_orb3-2-0_f11 | Haar graph PSL(2,83) x Z73, S = 2 free orbits of size 3 (squad r3/f11, first link, mu 9.3); earlier 41,519,712 (SL(2,103) x Z19, r2/e09) and 40,427,088 (PSL(2,103) x Z37, r1/c09)
 6,14 | d6D14_sl_97_103_orb3-2-0_g07 | Haar graph SL(2,97) x Z103, S = 2 free orbits of size 3 (squad r4/g07: RANDORB screen, then two links); earlier 187,698,768 (PSL(2,137) x Z73, r3/f12), 186,910,464 and 186,466,200
 7,13 | d7D13_sl_229_13_orb3-2-1_e10 | Haar graph SL(2,229) x Z13, S = {e} + 2 orbits of size 3 (squad r2/e10, chained links); earlier 310,628,640 (SL(2,281) x Z7, r1/c11) and 299,455,200 (SL(2,199) x Z19)
 7,14 | d7D14_sl_163_193_orb3-2-1_f13 | Haar graph SL(2,163) x Z193, S = {e} + 2 orbits of size 3 (squad r3/f13, three chained links from a random start); earlier 1,587,571,920 (SL(2,109) x Z613, r1/c12)
 8,13 | d8D13_sl_499_7_orb3-2-2_s2 | Haar graph SL(2,499) x Z7, S = {e} + 1 fixed + 2 orbits of size 3 (director, 33 evaluations, mu 7.5); earlier 1,676,500,800 (SL(2,401) x Z13, director) and 1,512,114,240 (SL(2,911), squad r1/c13)
+9,13 | d9D13_sl_661_13_orb3-3-0_s1 | Haar graph SL(2,661) x Z13, S = 3 free orbits of size 3 (director, 5 evaluations, mu 3.1)
