@@ -19,9 +19,9 @@ Closest states:
 ## Spend (tools/session_usage.py, since 21:39:53Z)
 
 At 03:24 UTC: Opus 0.619 budget units (99k output, 23.7M cache-read, 0.19M cache-write tokens, 103 messages); Haiku
-0.286 units (2.17M output, 193M cache-read, 21.7M cache-write tokens, 1,201 messages). **Haiku share 32 %**, short of
-the 50 % goal; the final line in `research/squads/usage/handsoff-108.jsonl` adds my last few turns. The split stayed
-between 27 % and 33 % at every check-in.
+0.286 units (2.17M output, 193M cache-read, 21.7M cache-write tokens, 1,201 messages), Haiku share 32 %. After my
+last turns (writing this report) at 03:30: **Opus 0.663, Haiku 0.286, Haiku share 30 %**, short of the 50 % goal (last line
+of `research/squads/usage/handsoff-108.jsonl`). The split stayed between 27 % and 33 % at every check-in.
 
 Where my spend went: about 0.47 of my 0.62 units are cache reads, i.e. re-reading my own context (which grew to about
 200k tokens) on each of 103 turns; my own output was 0.10. Waiting costs a turn every 10 minutes (the Bash cap), and

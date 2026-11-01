@@ -64,5 +64,5 @@ than Haar) · c5b coset family screen (family K best) · c6b exhaustive K (min 4
 families (min 501) · c1b statistic for good sets (none useful) · c8c smoother objective (no effect) · c7b structure of the
 hexagon lifts (symmetric lifts: 30 copies at q = 3, 21 at q = 5; first-moment thresholds) · c2b running digest ·
 c3c, c8d extra grinds. 5 nudges to stalled workers.
-Kept: nothing for the record; coset families K and C closed exhaustively. Spend: Haiku 32 % of budget units.
+Kept: nothing for the record; coset families K and C closed exhaustively. Spend: Haiku 30 % of budget units (Opus 0.663, Haiku 0.286).
 Report: research/squads/handsoff-108/REPORT.md. No record.
