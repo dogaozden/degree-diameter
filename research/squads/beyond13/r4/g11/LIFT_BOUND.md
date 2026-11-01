@@ -38,13 +38,12 @@ the number of distinct net traversal vectors of walks s -> v of length <= D. Hen
     n <= n_max(B,D) := min over s, v of W_v(s,D),     N = b n <= b * n_max(B,D)   (b = |V(B)|).
 
 Proof. By (a) and (c), phi must map X_v(s,D) onto Z_n. A map from a set onto Z_n has at least n preimage classes, so
-|X_v(s,D)| >= n. (Lifts with repeated net vectors only lose; W counts distinct vectors, not walks.)
+|X_v(s,D)| >= n. Repeated walks are irrelevant: W counts distinct net vectors.
 
 Remarks. W_v(s,D) = W_s(v,D), since reversing a walk negates its net vector. Distinct walks can share a net vector
 (two different walks whose difference is a closed walk with zero net vector, e.g. commuting short cycles); this is why W is
-below the number of walks (first collisions at length 10 for GP(10,3), girth 6). The bound is
-exact as an upper bound on n for a fixed base: any Z_n lift of B with n > n_max cannot have diameter <= D, for any
-choice of voltages.
+below the number of walks (first collisions at length 10 for GP(10,3), girth 6). The bound is a
+valid necessary condition: for a fixed base, no Z_n lift with n > n_max(B,D) has diameter <= D, whatever the voltages.
 
 ## 3. Computation
 
@@ -56,7 +55,13 @@ max 1,356), and a second hash seed gives identical minima.
 
 ## 4. Results (n_max = min over all sources s and endpoints v)
 
-Cubic bipartite bases (N_bound = b * n_max). "Found" is the best valid cyclic lift known from earlier rounds.
+All-source runs: cubic bases (res/, original sort version), PG(2,3) and K4,4 (res2/, all sources), GQ(3,3) at D=13
+(res2/, all 80 sources). GQ(3,3) at D=14: the 80 sources split into the 40 points and 40 lines; the D=13 run shows all
+points have identical (min, max, sum) statistics, and likewise all lines, as expected since PSp(4,3) is transitive on
+points and on lines of W(3) and collineations act on walks. So the all-source minimum is min(W(0), W(40)) = 57,511,
+computed directly from source 0 (point) and source 40 (line). PG(2,3) (point 0, line 13): all sources done at both D.
+
+Cubic bipartite bases (N_bound = b * n_max).
 
 | base | b | girth | D=13 n_max | N_bound(13) | D=14 n_max | N_bound(14) |
 |---|---|---|---|---|---|---|
@@ -82,9 +87,9 @@ Other bases (4-regular, bipartite):
 
 | base | b | girth | D=13 n_max | N_bound(13) | D=14 n_max | N_bound(14) |
 |---|---|---|---|---|---|---|
-| K4,4 | 8 | 4 | 25,116 | 200,928 | see res2/k44.D14.txt | |
+| K4,4 | 8 | 4 | 25,116 | 200,928 | 46,543 | 372,344 |
 | PG(2,3) Levi graph | 26 | 6 | 50,419 | 1,310,894 | 140,275 | 3,647,150 |
-| GQ(3,3) Levi graph (W(3)) | 80 | 8 | 19,441 | 1,555,280 | see res2/gq33_levi.D14.txt | |
+| GQ(3,3) Levi graph (W(3)) | 80 | 8 | 19,441 | 1,555,280 | 57,511 | 4,600,880 |
 
 Quotient found / n_max (how close the known lifts come to the bound):
 - GP(10,3): D=13 valid n=160 (N=3,200, r2/e16): 160/647 = 0.25. D=14 n=280 (N=5,600): 280/1,197 = 0.23.
@@ -94,11 +99,11 @@ Quotient found / n_max (how close the known lifts come to the bound):
 
 ## 5. Reading
 
-- The bound is loose. For GP(10,3) it allows n up to 647 at D=13, while random and searched voltages fail above about
-  160. The gap comes from voltage coincidences (commuting cycles) and the random-covering behaviour the model in
+- The bound is loose. For GP(10,3) it allows n up to 647 at D=13, while searches reach n = 160 (valid) and stall at cost 2 for
+  n = 165 (r3, metacyclic voltages). The gap comes from voltage coincidences (commuting cycles) and the random-covering behaviour the model in
   r3/f03 describes; the bound does not see them. So n_max is a hard ceiling, not a prediction.
-- For K4,4 (Delta = 4) the ceiling is N <= 200,928 at D=13. This does not rule out 190k, but the r3 note already
-  gives K4,4 lifts a model value near 3e4. The bound alone cannot close that gap.
+- For K4,4 (Delta = 4) the ceiling is N <= 200,928 at D=13 (N <= 372,344 at D=14). The D=13 ceiling does not rule out
+  the 190k record, but the r3 note already gives K4,4 lifts a model value near 3e4. The bound alone cannot close that gap.
 - Among cubic bipartite bases, N_bound at D=13 is 9k-15.5k for every base checked. Girth-8 bases (GP(18,5), GP(24,5),
   GP(30,7), Tutte 8-cage) have N_bound 15,000-15,444, above GP(10,3) (12,940). This is a bound, not an estimate, so
   it is only a hint: the quotient for GP(10,3) is 0.25, and no girth-8 base has been searched yet.
