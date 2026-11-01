@@ -447,3 +447,27 @@ end: 2026-11-01T09:17:36Z (1698 s)
 from (e,A): reached A 9996743988/9996743988, B 9996743988/9996743988 within 12, ecc 12
 from (e,B): reached A 9996743988/9996743988, B 9996743988/9996743988 within 12, ecc 12
 VALID d=13 D=12 group=psl 307 x Z_691 N=9996743988 vertices=19993487976 (distinct generators, 13-regular simple)
+== d4D11_meta_523_29_9_b2h01 (origin/claude/beyond-d11-d12-new-cells-3t3djx, 06:30 PT)
+ecc from A = 11 unreached 0
+ecc from B = 11 unreached 0
+n = 30334 edges = 60668 max degree = 4 min degree = 4 duplicate edges = 0
+edge list sha256 = 13ca7af2d26ca444bc6a2bcd1dba030ceaa663269e6ec8c7074d0d71c51e542e
+VALID d=4 D=11 group=meta 523 29 9 x Z_1 N=15167 vertices=30334
+== d4D12_meta_1297_27_48_b3i10 (origin/claude/beyond-d11-d12-new-cells-3t3djx, 06:30 PT)
+ecc from A = 12 unreached 0
+ecc from B = 12 unreached 0
+n = 70038 edges = 140076 max degree = 4 min degree = 4 duplicate edges = 0
+edge list sha256 = c751c696cd3f9f96e9410cb0b9e746ef0fcf2b219dece2b24dfae4dea12eb8b1
+VALID d=4 D=12 group=meta 1297 27 48 x Z_1 N=35019 vertices=70038
+== d5D11_meta_8171_19_8108_b2h17 (origin/claude/beyond-d11-d12-new-cells-3t3djx, 06:30 PT)
+ecc from A = 11 unreached 0
+ecc from B = 11 unreached 0
+n = 310498 edges = 776245 max degree = 5 min degree = 5 duplicate edges = 0
+edge list sha256 = 4d8604a9c6b4c7a8a8938854eb2f6a22bf736fb4fe50f932813dbe234db7effc
+VALID d=5 D=11 group=meta 8171 19 8108 x Z_1 N=155249 vertices=310498
+== d5D12_meta_9859_53_4192_b3i11 (origin/claude/beyond-d11-d12-new-cells-3t3djx, 06:30 PT)
+ecc from A = 12 unreached 0
+ecc from B = 12 unreached 0
+n = 1045054 edges = 2612635 max degree = 5 min degree = 5 duplicate edges = 0
+edge list sha256 = 35f149d73ede4317062694f662002a0d1b4cff658041863c44066ad8a8f4e7e5
+VALID d=5 D=12 group=meta 9859 53 4192 x Z_1 N=522527 vertices=1045054

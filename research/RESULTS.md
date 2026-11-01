@@ -324,3 +324,8 @@ by the coordinator with build_haar.py, two BFS from both sides, ecc ≤ D, nothi
 - Nov 01 05:30 PT (harvest): (4,11) 28,918 (was 24,360), meta 761 19 25 n 1; claude/beyond-d11-d12-new-cells-3t3djx.
 - Nov 01 05:30 PT (harvest): (5,11) 301,200 (was 297,648), prod sl 5 meta 251 5 20 n 1; claude/beyond-d11-d12-new-cells-3t3djx.
 - Nov 01 05:30 PT (harvest): (13,12) 19,993,487,976 (was 0), psl 307 n 691; claude/new-cells-d11-d12-beyond-8sas9r.
+
+- Nov 01 06:30 PT (harvest): (4,11) 30,334 (was 28,918), meta 523 29 9 n 1; claude/beyond-d11-d12-new-cells-3t3djx.
+- Nov 01 06:30 PT (harvest): (4,12) 70,038 (was 68,544), meta 1297 27 48 n 1; claude/beyond-d11-d12-new-cells-3t3djx.
+- Nov 01 06:30 PT (harvest): (5,11) 310,498 (was 301,200), meta 8171 19 8108 n 1; claude/beyond-d11-d12-new-cells-3t3djx.
+- Nov 01 06:30 PT (harvest): (5,12) 1,045,054 (was 1,041,768), meta 9859 53 4192 n 1; claude/beyond-d11-d12-new-cells-3t3djx.
