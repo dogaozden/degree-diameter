@@ -18,7 +18,9 @@ Everything is written here from the definitions, without the lab's search or che
   7. Record structures rebuilt from their solution files (two searches, Lemma 7.2), with alpha-invariance of S
      where the file is an orbit solution with e in S; the Delta = 3 lifts and the (3,11) Haar graph by an
      all-pairs search on their edge lists (no symmetry used).
-  8. The size-law numbers of Table 8 (W, lambda = W/N, mu = N e^-lambda, 2N/M_b) for every value in it.
+  8. The values table and Appendix B: every value agrees with its file, the orbit shapes add up to Delta, every prime
+     factor of n is 1 mod k, the tables in SYNTHETIC.tex are generated from the list here (python3 check_haar.py --tables
+     prints them), and the size-law numbers of Section 7.3 (W, lambda = W/N, mu = N e^-lambda, 2N/M_b).
 
 Run: python3 check_haar.py      (a few minutes)
 """
@@ -35,6 +37,8 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 REPO = os.path.abspath(os.path.join(HERE, '..', '..', '..'))
 SOLS = os.path.join(REPO, 'research', 'frontier', 'sols')
 OWN = os.path.join(HERE, 'haar')
+GRAPHS = os.path.join(REPO, 'research', 'frontier', 'beyond', 'graphs')
+LIFTS = os.path.join(REPO, 'research', 'lifts', 'sols')
 rng = random.Random(20261101)
 
 
@@ -340,72 +344,161 @@ def read_sol(path):
     return head, gens
 
 
-class BigGroup:
-    """G = Z_m x|_r Z_k (head 'meta m k r n 1') or SL(2,p) / PSL(2,p) x Z_n (p prime), elements indexed 0..N-1.
-    left(s) is the permutation g -> s g as a numpy array; e is the index of the identity."""
+class Field:
+    """GF(q), q = p^k, as GF(p)[x]/(f); element code = sum c_i p^i (the lab's file convention).  add, mul, neg as
+    numpy tables."""
 
-    def __init__(self, head):
-        self.D, self.d, fam = int(head[1]), int(head[0]), head[2]
-        self.fam = fam
-        if fam == 'meta':
-            m, k, r = int(head[3]), int(head[4]), int(head[5])
-            ok(int(head[head.index('n') + 1]) == 1, 'meta with a cyclic factor not handled')
+    def __init__(self, q, poly=None):
+        p = next(t for t in range(2, q + 1) if q % t == 0)
+        k = round(math.log(q, p))
+        ok(p ** k == q, 'q not a prime power')
+        self.q, self.p = q, p
+        if k == 1:
+            x = np.arange(q)
+            self.add = (x[:, None] + x[None, :]) % q
+            self.mul = (x[:, None] * x[None, :]) % q
+        else:
+            f = {0: 0}
+            for term in poly.split('+'):          # e.g. x^2+2, x^5+2x+1
+                c, _, e = term.partition('x')
+                coef = int(c) if c else 1
+                expo = (int(e[1:]) if e.startswith('^') else 1) if 'x' in term else 0
+                if 'x' not in term:
+                    coef = int(term)
+                f[expo] = (f.get(expo, 0) + coef) % p
+            fv = [f.get(i, 0) for i in range(k + 1)]
+            ok(fv[k] == 1, 'monic')
+            dig = [[(c // p ** i) % p for i in range(k)] for c in range(q)]
+            enc = lambda v: sum(x * p ** i for i, x in enumerate(v))
+            self.add = np.array([[enc([(x + y) % p for x, y in zip(dig[u], dig[v])]) for v in range(q)] for u in range(q)])
+            mul = np.zeros((q, q), dtype=np.int64)
+            for u in range(q):
+                for v in range(q):
+                    r = [0] * (2 * k - 1)
+                    for i in range(k):
+                        for j in range(k):
+                            r[i + j] = (r[i + j] + dig[u][i] * dig[v][j]) % p
+                    for i in range(2 * k - 2, k - 1, -1):
+                        t = r[i]
+                        if t:
+                            for j in range(k + 1):
+                                r[i - k + j] = (r[i - k + j] - t * fv[j]) % p
+                    mul[u, v] = enc(r[:k])
+            self.mul = mul
+            # a field: every nonzero element invertible
+            ok(all((mul[u] == 1).any() for u in range(1, q)), 'not a field')
+        self.neg = np.array([int(np.where(self.add[u] == 0)[0][0]) for u in range(q)])
+
+
+class Factor:
+    """One factor of G: 'meta m k r' (Z_m x|_r Z_k, (a,j)(b,l) = (a + r^j b, j + l)) or 'sl q' / 'psl q' [poly f]
+    (2x2 matrices over GF(q) with determinant 1, modulo +-I for psl).  Elements are indexed 0..size-1;
+    left(s) is the permutation x -> s x of the indices."""
+
+    def __init__(self, toks):
+        self.kind = toks[0]
+        if self.kind == 'meta':
+            m, k, r = int(toks[1]), int(toks[2]), int(toks[3])
             ok(pow(r, k, m) == 1, 'meta: r^k != 1 mod m')
-            self.m, self.k, self.r = m, k, r
-            self.N = m * k
+            self.m, self.k = m, k
+            self.size = m * k
             self.a = np.repeat(np.arange(m, dtype=np.int64), k)
             self.j = np.tile(np.arange(k, dtype=np.int64), m)
             self.rp = np.array([pow(r, t, m) for t in range(k)], dtype=np.int64)
             self.e = 0
+            self.ntok = 4
         else:
-            ok(fam in ('sl', 'psl') and 'poly' not in head and 'prod' not in head, 'only sl/psl over a prime field')
-            p = int(head[3])
-            n = int(head[head.index('n') + 1])
-            self.p, self.n, self.proj = p, n, fam == 'psl'
-            A, B, C, Dd = (x.ravel() for x in np.meshgrid(*[np.arange(p, dtype=np.int64)] * 4, indexing='ij'))
-            mask = (A * Dd - B * C) % p == 1
-            codes = np.unique(self.code(A[mask], B[mask], C[mask], Dd[mask]))
-            ok(len(codes) == p * (p * p - 1) // (2 if self.proj else 1), 'group order')
-            self.codes = codes
-            self.N = len(codes) * n
-            reps = np.repeat(codes, n)
-            self.aa, self.bb, self.cc, self.dd = reps // p ** 3, reps // p ** 2 % p, reps // p % p, reps % p
-            self.zz = np.tile(np.arange(n, dtype=np.int64), len(codes))
-            self.e = int(np.searchsorted(codes, self.code(np.int64(1), 0, 0, 1))) * n
-        ok(self.N == int(head[head.index('N') + 1]), 'N in the header')
+            q = int(toks[1])
+            poly = toks[3] if len(toks) > 3 and toks[2] == 'poly' else None
+            self.ntok = 4 if poly else 2
+            F = self.F = Field(q, poly)
+            self.q, self.proj = q, self.kind == 'psl'
+            A, B, C, Dd = (x.ravel() for x in np.meshgrid(*[np.arange(q, dtype=np.int64)] * 4, indexing='ij'))
+            det = F.add[F.mul[A, Dd], F.neg[F.mul[B, C]]]
+            A, B, C, Dd = A[det == 1], B[det == 1], C[det == 1], Dd[det == 1]
+            codes = np.unique(self.code(A, B, C, Dd))
+            ok(len(codes) == q * (q * q - 1) // (2 if self.proj and q % 2 else 1), 'group order')
+            self.codes, self.size = codes, len(codes)
+            self.aa, self.bb, self.cc, self.dd = codes // q ** 3, codes // q ** 2 % q, codes // q % q, codes % q
+            self.e = int(np.searchsorted(codes, self.code(np.int64(1), 0, 0, 1)))
 
     def code(self, a, b, c, d):
-        p = self.p
-        c1 = ((a * p + b) * p + c) * p + d
-        if self.proj:
-            c2 = ((((-a) % p) * p + (-b) % p) * p + (-c) % p) * p + (-d) % p
+        q = self.q
+        c1 = ((a * q + b) * q + c) * q + d
+        if self.proj and q % 2:
+            n = self.F.neg
+            c2 = ((n[a] * q + n[b]) * q + n[c]) * q + n[d]
             return np.minimum(c1, c2)
         return c1
 
     def parse(self, desc):
-        if self.fam == 'meta':
+        if self.kind == 'meta':
             return int(desc.split('a=')[1].split(',')[0]), int(desc.split('j=')[1].split(')')[0])
-        m = desc.split('mat(')[1].split(')')[0].split(',')
-        return tuple(int(x) % self.p for x in m), int(desc.split('z=')[1])
+        return tuple(int(x) for x in desc.split('(')[1].split(')')[0].split(','))
 
     def left(self, s):
-        if self.fam == 'meta':      # (sa, sj)(a, j) = (sa + r^sj a, sj + j)
+        if self.kind == 'meta':
             sa, sj = s
             return ((sa + self.rp[sj] * self.a) % self.m) * self.k + (sj + self.j) % self.k
-        (sa, sb, sc, sd), sz = s
-        p = self.p
-        na, nb = (sa * self.aa + sb * self.cc) % p, (sa * self.bb + sb * self.dd) % p
-        nc, nd = (sc * self.aa + sd * self.cc) % p, (sc * self.bb + sd * self.dd) % p
-        return np.searchsorted(self.codes, self.code(na, nb, nc, nd)) * self.n + (sz + self.zz) % self.n
+        F = self.F
+        sa, sb, sc, sd = s
+        na, nb = F.add[F.mul[sa, self.aa], F.mul[sb, self.cc]], F.add[F.mul[sa, self.bb], F.mul[sb, self.dd]]
+        nc, nd = F.add[F.mul[sc, self.aa], F.mul[sd, self.cc]], F.add[F.mul[sc, self.bb], F.mul[sd, self.dd]]
+        return np.searchsorted(self.codes, self.code(na, nb, nc, nd))
 
     def inv(self, s):
-        if self.fam == 'meta':
+        if self.kind == 'meta':
             sa, sj = s
             ij = (-sj) % self.k
             return ((-int(self.rp[ij]) * sa) % self.m, ij)
-        (sa, sb, sc, sd), sz = s
-        p = self.p
-        return (sd, (-sb) % p, (-sc) % p, sa), (-sz) % self.n
+        n = self.F.neg
+        sa, sb, sc, sd = s
+        return (sd, int(n[sb]), int(n[sc]), sa)
+
+
+class BigGroup:
+    """G = F_1 x ... x F_r x Z_n from a solution-file header ('meta ...', 'sl q [poly f]', 'psl q ...', 'prod X Y'),
+    elements indexed ((i_1 |F_2| + i_2) ...) n + z.  left(s) is the permutation g -> s g; e is the identity."""
+
+    def __init__(self, head):
+        self.d, self.D = int(head[0]), int(head[1])
+        toks = head[2:head.index('n')]
+        if toks[0] == 'prod':
+            toks = toks[1:]
+        self.factors = []
+        while toks:
+            f = Factor(toks)
+            self.factors.append(f)
+            toks = toks[f.ntok:]
+        self.n = int(head[head.index('n') + 1])
+        sizes = [f.size for f in self.factors]
+        self.N = int(np.prod(sizes)) * self.n
+        ok(self.N == int(head[head.index('N') + 1]), 'N in the header')
+        # index arrays of each coordinate
+        shape = sizes + [self.n]
+        grids = np.indices(shape, dtype=np.int64).reshape(len(shape), -1) if self.N <= 2 * 10 ** 7 else None
+        ok(grids is not None, 'group too large for this check')
+        self.coord = grids
+        self.shape = shape
+        self.e = int(np.ravel_multi_index([f.e for f in self.factors] + [0], shape))
+        self.fam = 'meta' if all(f.kind == 'meta' for f in self.factors) else 'mat'
+
+    def parse(self, desc):
+        z = int(desc.split('z=')[1])
+        if desc.startswith('prod['):
+            parts = desc[5:desc.index(']')].split(';')
+        else:
+            parts = [desc.split(' z=')[0]]
+        ok(len(parts) == len(self.factors), 'generator format')
+        return tuple(f.parse(x) for f, x in zip(self.factors, parts)) + (z,)
+
+    def left(self, s):
+        cols = [f.left(x)[self.coord[i]] for i, (f, x) in enumerate(zip(self.factors, s[:-1]))]
+        cols.append((self.coord[-1] + s[-1]) % self.n)
+        return np.ravel_multi_index(cols, self.shape)
+
+    def inv(self, s):
+        return tuple(f.inv(x) for f, x in zip(self.factors, s[:-1])) + ((-s[-1]) % self.n,)
 
 
 def eccentricity(fwd, bwd, N, e, start):
@@ -428,8 +521,9 @@ def eccentricity(fwd, bwd, N, e, start):
     return level if pts.all() and lns.all() else None
 
 
-def check_record(path):
-    head, gens = read_sol(path)
+def check_record(path, head=None, gens=None):
+    if head is None:
+        head, gens = read_sol(path)
     G = BigGroup(head)
     S = [G.parse(g) for g in gens]
     ok(len(S) == G.d, 'number of generators')
@@ -443,35 +537,6 @@ def check_record(path):
     ok(eA is not None and eB is not None and max(eA, eB) == G.D,
        f'{os.path.basename(path)}: eccentricities {eA}, {eB}, D = {G.D}')
     return G, S, eA, eB
-
-
-def find_alpha(G, S):
-    """For an SL/PSL(2,p) x Z_n solution with e in S: an automorphism alpha = (conjugation by t of order 3 in the
-    matrix part) x (z -> r z, r of order 3 mod n) with alpha(S) = S, or None."""
-    p, n = G.p, G.n
-
-    def norm(m):
-        m = tuple(x % p for x in m)
-        return min(m, tuple((-x) % p for x in m)) if G.proj else m
-
-    def mm(x, y):
-        return (x[0] * y[0] + x[1] * y[2], x[0] * y[1] + x[1] * y[3], x[2] * y[0] + x[3] * y[2],
-                x[2] * y[1] + x[3] * y[3])
-    Sset = {(norm(m), z) for m, z in S}
-    rs = [r for r in range(1, n) if pow(r, 3, n) == 1 and r != 1] or [1]
-    for t in itertools.product(range(p), repeat=4):
-        if (t[0] * t[3] - t[1] * t[2]) % p != 1:
-            continue
-        t3 = norm(mm(mm(t, t), t))
-        if t3 != norm((1, 0, 0, 1)) or norm(t) == norm((1, 0, 0, 1)):
-            continue
-        ti = (t[3], -t[1], -t[2], t[0])
-        for r in rs:
-            img = {(norm(mm(mm(t, m), ti)), (r * z) % n) for m, z in S}
-            if img == Sset:
-                fixed = sum(1 for m, z in S if (norm(mm(mm(t, m), ti)), (r * z) % n) == (norm(m), z))
-                return t, r, fixed
-    return None
 
 
 def nullspace_mod_p(rows, p):
@@ -575,6 +640,53 @@ def orbit_alpha(path, k=3):
     return None
 
 
+def isomorphic(E1, E2, n):
+    """Backtracking isomorphism test for two small graphs on 0..n-1 given as sets of 2-sets."""
+    A1 = [set() for _ in range(n)]
+    A2 = [set() for _ in range(n)]
+    for e in E1:
+        u, v = tuple(e)
+        A1[u].add(v)
+        A1[v].add(u)
+    for e in E2:
+        u, v = tuple(e)
+        A2[u].add(v)
+        A2[v].add(u)
+    if len(E1) != len(E2) or sorted(map(len, A1)) != sorted(map(len, A2)):
+        return False
+    order = []
+    seen = set()
+    for s in range(n):                     # BFS order so that each new vertex has a mapped neighbour
+        if s in seen:
+            continue
+        q = [s]
+        seen.add(s)
+        while q:
+            u = q.pop(0)
+            order.append(u)
+            for v in sorted(A1[u]):
+                if v not in seen:
+                    seen.add(v)
+                    q.append(v)
+    f = {}
+
+    def ext(i):
+        if i == n:
+            return True
+        u = order[i]
+        used = set(f.values())
+        for w in range(n):
+            if w in used or len(A2[w]) != len(A1[u]):
+                continue
+            if all((f[x] in A2[w]) == (x in A1[u]) for x in f):
+                f[u] = w
+                if ext(i + 1):
+                    return True
+                del f[u]
+        return False
+    return ext(0)
+
+
 def apsp_cubic(path, D):
     """All-pairs check of an edge list (first line n, then 'u v'): bipartite, degrees, every distance <= D,
     exact diameter.  Distances by boolean reachability matrices, no symmetry used."""
@@ -615,18 +727,30 @@ def apsp_cubic(path, D):
 
 def check_records():
     files = [(SOLS, 'd5D9_meta_346_43_29_s613_n29756.txt'), (SOLS, 'd6D9_sl_17_13_orb3f0_s2.txt'),
-             (SOLS, 'd7D9_psl_29_19_orb3_s1.txt'), (SOLS, 'd4D11_meta_523_29_9_b2h01.txt'),
+             (SOLS, 'd7D9_psl_29_19_orb3_s1.txt'), (SOLS, 'd8D9_sl_25_43_orb3_s1.txt'),
+             (SOLS, 'd6D10_prod_sl_5_psl_7_13_orb3f0_s1.txt'), (SOLS, 'd4D11_meta_523_29_9_b2h01.txt'),
              (SOLS, 'd5D11_meta_5023_31_2886_b5k05.txt'), (SOLS, 'd6D11_meta_20809_51_12972_b5k07.txt'),
              (SOLS, 'd4D12_meta_731_48_7_b5k02.txt'), (OWN, 'd4D12_meta_1277_29_964_h08.txt'),
              (SOLS, 'd5D12_meta_8969_59_205_b6l03.txt'), (OWN, 'd4D13_meta_2237_43_1984_h03.txt'),
-             (OWN, 'd4D14_meta_2731_91_i04.txt')]
+             (OWN, 'd4D14_meta_2731_91_i04.txt'), (OWN, 'd5D13_prodmeta_11_5_2971_11_i06.txt'),
+             (OWN, 'd5D14_meta_148781_43_i07.txt'),
+             (LIFTS, 'd4D10_n12416_haar_meta97_64_19.txt'), (LIFTS, 'd5D10_n95472_haar_meta1989_24_461.txt')]
     for d, f in files:
-        G, S, eA, eB = check_record(os.path.join(d, f))
+        head = gens = None
+        if d == LIFTS:     # research/lifts format: 'lift D .. Delta ..', 'group meta m k r', edges 'e 0 1 = a,j'
+            lines = open(os.path.join(d, f)).read().split('\n')
+            hd = next(ln for ln in lines if ln.startswith('lift')).split()
+            gr = next(ln for ln in lines if ln.startswith('group')).split()[1:]
+            gl = [ln.split('=')[1].strip().split(',') for ln in lines if ln.startswith('e 0 1')]
+            gens = [f'meta(a={a},j={j}) z=0' for a, j in gl]
+            m, k = int(gr[1]), int(gr[2])
+            head = [hd[4], hd[2]] + gr + ['n', '1', 'N', str(m * k)]
+        G, S, eA, eB = check_record(os.path.join(d, f), head, gens)
         extra = ''
         # orbit solutions with e in S (f >= 1): S itself is alpha-invariant.  For f = 0 the file stores S s0^-1
-        # (Section 7.2), which is not, so those are only checked for the diameter.
-        if G.fam != 'meta' and 'orb3' in f and 'f0' not in f and not f.split('orb3')[1].startswith('-') :
-            a = find_alpha(G, S)
+        # (Section 7.1), which is not, so those are only checked for the diameter.
+        if f == 'd7D9_psl_29_19_orb3_s1.txt':
+            a = orbit_alpha(os.path.join(d, f))
             ok(a is not None, f + ': no order-3 automorphism of the expected form maps S onto S')
             t, r, fx = a
             extra = f'; S is mapped onto itself by (conjugation by {t}) x (z -> {r} z), fixing {fx} of the generators'
@@ -635,12 +759,32 @@ def check_records():
     lifts = [(os.path.join(REPO, 'research/squads/own-small/records/d3D10_n810_c3xheis27.edges'), 10),
              (os.path.join(OWN, 'd3D11_n1474_meta67_11_9.edges.gz'), 11),
              (os.path.join(REPO, 'research/squads/own-small/records/d3D12_n2368_meta37_8.edges'), 12),
-             (os.path.join(OWN, 'd3D13_n3400_lift_gp10_Z170.edges.gz'), 13),
-             (os.path.join(OWN, 'd3D14_n5706_lift_pappus_Z317.edges.gz'), 14)]
+             (os.path.join(GRAPHS, 'd3D13_n3400_lift_gp10_Z170.edges.gz'), 13),
+             (os.path.join(GRAPHS, 'd3D14_n5706_lift_pappus_Z317.edges.gz'), 14)]
     for path, D in lifts:
         n, degs, diam = apsp_cubic(path, D)
         ok(degs == [3] and diam == D, f'{path}: degrees {degs}, diameter {diam}')
         print(f'7. {os.path.basename(path)}: {n:,} vertices, cubic, bipartite, diameter {diam} (all pairs): checked')
+    # the two cyclic lifts: vertex b*m + i is (base vertex b, i in Z_m); i -> i+1 is an automorphism and the
+    # quotient is the Desargues graph GP(10,3) or the Pappus graph
+    desargues = {frozenset(e) for i in range(10) for e in ((i, (i + 1) % 10), (i, 10 + i), (10 + i, 10 + (i + 3) % 10))}
+    lcf = [5, 7, -7, 7, -7, -5] * 3
+    pappus = {frozenset((i, (i + 1) % 18)) for i in range(18)} | {frozenset((i, (i + lcf[i]) % 18)) for i in range(18)}
+    for path, nb, m, base, name in ((os.path.join(GRAPHS, 'd3D13_n3400_lift_gp10_Z170.edges.gz'), 20, 170, desargues,
+                                     'the Desargues graph GP(10,3)'),
+                                    (os.path.join(GRAPHS, 'd3D14_n5706_lift_pappus_Z317.edges.gz'), 18, 317, pappus,
+                                     'the Pappus graph')):
+        with gzip.open(path, 'rt') as fh:
+            n = int(fh.readline())
+            E = {frozenset(map(int, ln.split())) for ln in fh if ln.strip()}
+        ok(n == nb * m, 'lift size')
+        shift = lambda v: (v // m) * m + (v % m + 1) % m
+        ok({frozenset(shift(v) for v in e) for e in E} == E, 'i -> i+1 is not an automorphism')
+        quot = {frozenset(v // m for v in e) for e in E}
+        ok(len(quot) == 3 * nb // 2 and all(len(e) == 2 for e in quot), 'quotient not simple cubic')
+        ok(isomorphic(quot, base, nb), f'quotient is not {name}')
+        # the base itself: cubic, bipartite, girth 6 (a configuration of points and lines)
+        print(f'7. {os.path.basename(path)}: Z{m} acts by i -> i+1 and the quotient is {name}: checked')
     # (11,10): PSL(2,243) x Z11, alpha = (x -> x^3 on the matrix entries, GF(243) = GF(3)[x]/(x^5+2x+1)) x (z -> 3z)
     f = 'd11D10_psl_243_11_orb10_frob1d_ar3_s201.txt'
     head, gens = read_sol(os.path.join(SOLS, f))
@@ -691,6 +835,212 @@ def check_records():
               f'an automorphism of order 3 fixing {fx} of the generators: checked')
 
 
+# ------------------------------------------------------------------ the values table and Appendix B
+# Delta, D, value, kind, file (relative to the repository root), group (LaTeX), S, checks, 2013 table value
+#   kind: H = Haar structure, S symmetric (orbit search); M = Haar structure of a metacyclic group (or a product of
+#         two), random S; L = lift of a cubic configuration (not a Haar structure)
+#   S: 'f+m.k' = f elements fixed by alpha (e among them when f >= 1) and m orbits of size k
+#   checks: B build_haar2.py, I check_haar_indep.py, S haarcheck_sl.c, P haarcheck_psl.c, G haarcheck_gen.c,
+#           T haarcheck2.c, X bigcheck_indep.c, A all-pairs search (apsp.c), M metacheck.py, L Lean, H check_haar.py;
+#           a trailing ' marks a check run for this note (log in checks/haar/), a trailing ^ a log only on a branch
+F = 'research/frontier/sols/'
+O = 'research/synthetic/checks/haar/'
+GR = 'research/frontier/beyond/graphs/'
+OS = 'research/squads/own-small/records/'
+VALUES = [
+    (5, 9, 29756, 'M', F + 'd5D9_meta_346_43_29_s613_n29756.txt', r'\mathbb{Z}_{346}\rtimes_{29}\mathbb{Z}_{43}', 'random', 'B L H', 27936),
+    (6, 9, 127296, 'H', F + 'd6D9_sl_17_13_orb3f0_s2.txt', r'\mathrm{SL}(2,17)\times\mathbb{Z}_{13}', '0+2.3', 'B L H', 117360),
+    (7, 9, 462840, 'H', F + 'd7D9_psl_29_19_orb3_s1.txt', r'\mathrm{PSL}(2,29)\times\mathbb{Z}_{19}', '1+2.3', 'B L H', 400160),
+    (8, 9, 1341600, 'H', F + 'd8D9_sl_25_43_orb3_s1.txt', r'\mathrm{SL}(2,25)\times\mathbb{Z}_{43}', '2+2.3', 'B H', 1091232),
+    (9, 9, 3499776, 'H', F + 'd9D9_prod_psl_7_sl_7_31_orb3f0_s1.txt', r'\mathrm{PSL}(2,7)\times\mathrm{SL}(2,7)\times\mathbb{Z}_{31}', '0+3.3', 'B X', 2961536),
+    (10, 9, 8418120, 'H', F + 'd10D9_psl_59_41_orb5f0_ORBW5RESTART1_s12.txt', r'\mathrm{PSL}(2,59)\times\mathbb{Z}_{41}', '0+2.5', 'P I', 7057400),
+    (11, 9, 17323152, 'H', F + 'd11D9_sl_43_109_orbw3_s3.txt', r'\mathrm{SL}(2,43)\times\mathbb{Z}_{109}', '2+3.3', 'S T', 15200448),
+    (12, 9, 35445648, 'H', F + 'd12D9_sl_83_31_orb3f0_orbw3_s3.txt', r'\mathrm{SL}(2,83)\times\mathbb{Z}_{31}', '0+4.3', 'S T', 30001152),
+    (13, 9, 67742688, 'H', F + 'd13D9_sl_103_31_orb3_s1.txt', r'\mathrm{SL}(2,103)\times\mathbb{Z}_{31}', '1+4.3', 'S X', 50990610),
+    (14, 9, 120043728, 'H', F + 'd14D9_sl_107_49_orb3_s1.txt', r'\mathrm{SL}(2,107)\times\mathbb{Z}_{49}', '2+4.3', 'S T', 95087738),
+    (15, 9, 208483200, 'H', F + 'd15D9_prod_sl_5_sl_19_127_orb3f0_s52.txt', r'\mathrm{SL}(2,5)\times\mathrm{SL}(2,19)\times\mathbb{Z}_{127}', '0+5.3', 'G I', 168016334),
+    (16, 9, 348207600, 'H', F + 'd16D9_sl_101_169_orb3_s1.txt', r'\mathrm{SL}(2,101)\times\mathbb{Z}_{169}', '1+5.3', 'S T', 288939118),
+    (17, 9, 501707400, 'H', F + 'd17D9_psl_101_487_orb3_s2.txt', r'\mathrm{PSL}(2,101)\times\mathbb{Z}_{487}', '2+5.3', 'P I', None),
+    (18, 9, 790626816, 'H', F + 'd18D9_sl_127_193_orb3_s2.txt', r'\mathrm{SL}(2,127)\times\mathbb{Z}_{193}', '3+5.3', 'S T', None),
+    (19, 9, 1218394320, 'H', F + 'd19D9_sl_131_271_orb3_s2.txt', r'\mathrm{SL}(2,131)\times\mathbb{Z}_{271}', '1+6.3', 'S T', None),
+    (20, 9, 1823175864, 'H', F + 'd20D9_psl_163_421_orb3_s2.txt', r'\mathrm{PSL}(2,163)\times\mathbb{Z}_{421}', '2+6.3', 'P G', None),
+    (3, 10, 810, 'L', OS + 'd3D10_n810_c3xheis27.edges', r'5+5 \text{ base}, \mathbb{Z}_3\times\mathrm{He}_3', 'lift', 'A L H', 800),
+    (4, 10, 12416, 'M', 'research/lifts/sols/d4D10_n12416_haar_meta97_64_19.txt', r'\mathbb{Z}_{97}\rtimes_{19}\mathbb{Z}_{64}', 'random', 'A L H', 11748),
+    (5, 10, 95472, 'M', 'research/lifts/sols/d5D10_n95472_haar_meta1989_24_461.txt', r'\mathbb{Z}_{1989}\rtimes_{461}\mathbb{Z}_{24}', 'random', 'A L H', 90068),
+    (6, 10, 524160, 'H', F + 'd6D10_prod_sl_5_psl_7_13_orb3f0_s1.txt', r'\mathrm{SL}(2,5)\times\mathrm{PSL}(2,7)\times\mathbb{Z}_{13}', '0+2.3', 'B L H', 452032),
+    (7, 10, 2298240, 'H', F + 'd7D10_prod_sl_7_psl_19_1_orb3_s2.txt', r'\mathrm{SL}(2,7)\times\mathrm{PSL}(2,19)', '1+2.3', 'B I', 1987380),
+    (8, 10, 8043840, 'H', F + 'd8D10_prod_psl_7_psl_19_7_orb3_s1.txt', r'\mathrm{PSL}(2,7)\times\mathrm{PSL}(2,19)\times\mathbb{Z}_{7}', '2+2.3', 'B I', 6927210),
+    (9, 10, 24099600, 'H', F + 'd9D10_psl_151_7_orb3f0_s1.txt', r'\mathrm{PSL}(2,151)\times\mathbb{Z}_{7}', '0+3.3', 'P I', 20017260),
+    (10, 10, 64294560, 'H', F + 'd10D10_psl_81_121_orb5f0_s3.txt', r'\mathrm{PSL}(2,81)\times\mathbb{Z}_{121}', '0+2.5', 'B I', 50331156),
+    (11, 10, 157835304, 'H', F + 'd11D10_psl_243_11_orb10_frob1d_ar3_s201.txt', r'\mathrm{PSL}(2,243)\times\mathbb{Z}_{11}', '1+2.5', 'G I', 130592354),
+    (12, 10, 332797296, 'H', F + 'd12D10_sl_157_43_orb3f0_s4.txt', r'\mathrm{SL}(2,157)\times\mathbb{Z}_{43}', '0+4.3', 'S T', 300383050),
+    (13, 10, 683943456, 'H', F + 'd13D10_sl_137_133_orb3_ORBW3_s2.txt', r'\mathrm{SL}(2,137)\times\mathbb{Z}_{133}', '1+4.3', 'S T', 617330936),
+    (14, 10, 1350537864, 'H', F + 'd14D10_psl_157_349_orb3_s2_n1350537864.txt', r'\mathrm{PSL}(2,157)\times\mathbb{Z}_{349}', '2+4.3', 'P G', 1213477190),
+    (15, 10, 2566531440, 'H', F + 'd15D10_sl_109_991_orb5f0_s1_FIXPRE100_EARLYB1.txt', r'\mathrm{SL}(2,109)\times\mathbb{Z}_{991}', '0+3.5', 'S T G', 2300326510),
+    (16, 10, 4708566360, 'H', F + 'd16D10_psl_179_821_orb5g_s41.txt', r'\mathrm{PSL}(2,179)\times\mathbb{Z}_{821}', '1+3.5', 'P G', 4119507330),
+    (17, 10, 7022052336, 'H', F + 'd17D10_psl_313_229_orb3_s1.txt', r'\mathrm{PSL}(2,313)\times\mathbb{Z}_{229}', '2+5.3', 'P G', None),
+    (18, 10, 11787972672, 'H', F + 'd18D10_psl_223_1063_orb3_s1.txt', r'\mathrm{PSL}(2,223)\times\mathbb{Z}_{1063}', '3+5.3', 'G P', None),
+    (19, 10, 19233722496, 'H', F + 'd19D10_sl_607_43_orb3_s1.txt', r'\mathrm{SL}(2,607)\times\mathbb{Z}_{43}', '1+6.3', 'G S', None),
+    (20, 10, 30518778360, 'H', F + 'd20D10_psl_421_409_orb3_s1.txt', r'\mathrm{PSL}(2,421)\times\mathbb{Z}_{409}', '2+6.3', 'G P', None),
+    (3, 11, 1474, 'M', O + 'd3D11_n1474_meta67_11_9.edges.gz', r'\mathbb{Z}_{67}\rtimes_{9}\mathbb{Z}_{11}', 'exhaustive', 'A^ H', None),
+    (4, 11, 30334, 'M', F + 'd4D11_meta_523_29_9_b2h01.txt', r'\mathbb{Z}_{523}\rtimes_{9}\mathbb{Z}_{29}', 'random', 'B A^ H', None),
+    (5, 11, 311426, 'M', F + 'd5D11_meta_5023_31_2886_b5k05.txt', r'\mathbb{Z}_{5023}\rtimes_{2886}\mathbb{Z}_{31}', 'random', 'B A^ H', None),
+    (6, 11, 2122518, 'M', F + 'd6D11_meta_20809_51_12972_b5k07.txt', r'\mathbb{Z}_{20809}\rtimes_{12972}\mathbb{Z}_{51}', 'random', 'B H', None),
+    (7, 11, 11012976, 'H', F + 'd7D11_sl_53_37_orb3-2-1_d09.txt', r'\mathrm{SL}(2,53)\times\mathbb{Z}_{37}', '1+2.3', 'G S', None),
+    (8, 11, 45329808, 'H', F + 'd8D11_sl_283_1_orb3-2-2_e04.txt', r'\mathrm{SL}(2,283)', '2+2.3', 'G S', None),
+    (9, 11, 155250816, 'H', F + 'd9D11_sl_223_7_orb3-3-0_d08.txt', r'\mathrm{SL}(2,223)\times\mathbb{Z}_{7}', '0+3.3', 'G S', None),
+    (10, 11, 460691568, 'H', F + 'd10D11_sl_613_1_orb3-3-1_d13.txt', r'\mathrm{SL}(2,613)', '1+3.3', 'G S', None),
+    (11, 11, 1241299248, 'H', F + 'd11D11_sl_853_1_orb3-3-2_s1.txt', r'\mathrm{SL}(2,853)', '2+3.3', 'G S', None),
+    (12, 11, 2976066240, 'H', F + 'd12D11_sl_239_109_orb3-4-0_c04.txt', r'\mathrm{SL}(2,239)\times\mathbb{Z}_{109}', '0+4.3', 'G S', None),
+    (13, 11, 6781213392, 'H', F + 'd13D11_sl_563_19_orb3-4-1_s1.txt', r'\mathrm{SL}(2,563)\times\mathbb{Z}_{19}', '1+4.3', 'G S', None),
+    (14, 11, 14381398080, 'H', F + 'd14D11_sl_1009_7_orb3-4-2_s1.txt', r'\mathrm{SL}(2,1009)\times\mathbb{Z}_{7}', '2+4.3', 'G S', None),
+    (15, 11, 28655908512, 'H', F + 'd15D11_sl_617_61_orb3-5-0_s1.txt', r'\mathrm{SL}(2,617)\times\mathbb{Z}_{61}', '0+5.3', 'G S', None),
+    (16, 11, 29961590400, 'H', O + 'd16D11_psl_449_331_orb3-5-1_s1.txt', r'\mathrm{PSL}(2,449)\times\mathbb{Z}_{331}', '1+5.3', 'G^ P^', None),
+    (3, 12, 2368, 'L', OS + 'd3D12_n2368_meta37_8.edges', r'4+4 \text{ base}, \mathbb{Z}_{37}\rtimes_{6}\mathbb{Z}_{8}', 'lift', 'A A L H', None),
+    (4, 12, 74066, 'M', O + 'd4D12_meta_1277_29_964_h08.txt', r'\mathbb{Z}_{1277}\rtimes_{964}\mathbb{Z}_{29}', 'random', 'A M^ H', None),
+    (5, 12, 1058342, 'M', F + 'd5D12_meta_8969_59_205_b6l03.txt', r'\mathbb{Z}_{8969}\rtimes_{205}\mathbb{Z}_{59}', 'random', 'B H', None),
+    (6, 12, 9366240, 'H', F + 'd6D12_psl_79_19_orb3-2-0_e08.txt', r'\mathrm{PSL}(2,79)\times\mathbb{Z}_{19}', '0+2.3', 'G P', None),
+    (7, 12, 59838504, 'H', F + 'd7D12_psl_67_199_orb3-2-1_e09.txt', r'\mathrm{PSL}(2,67)\times\mathbb{Z}_{199}', '1+2.3', 'G P', None),
+    (8, 12, 284095056, 'H', F + 'd8D12_psl_167_61_orb3-2-2_f10.txt', r'\mathrm{PSL}(2,167)\times\mathbb{Z}_{61}', '2+2.3', 'G P', None),
+    (9, 12, 1105785120, 'H', F + 'd9D12_psl_241_79_orb3-3-0_e11.txt', r'\mathrm{PSL}(2,241)\times\mathbb{Z}_{79}', '0+3.3', 'G P', None),
+    (10, 12, 3712424352, 'H', F + 'd10D12_psl_337_97_orb3-3-1_f12.txt', r'\mathrm{PSL}(2,337)\times\mathbb{Z}_{97}', '1+3.3', 'G P', None),
+    (11, 12, 11189148096, 'H', F + 'd11D12_psl_223_1009_orb3-3-2_s2.txt', r'\mathrm{PSL}(2,223)\times\mathbb{Z}_{1009}', '2+3.3', 'G P', None),
+    (12, 12, 29996171040, 'H', F + 'd12D12_psl_241_2143_orb3-4-0_s1.txt', r'\mathrm{PSL}(2,241)\times\mathbb{Z}_{2143}', '0+4.3', 'G P', None),
+    (13, 12, 29997644040, 'H', F + 'd13D12_psl_181_5059_orb3-4-1_s1.txt', r'\mathrm{PSL}(2,181)\times\mathbb{Z}_{5059}', '1+4.3', 'G P', None),
+    (14, 12, 29996171040, 'H', F + 'd14D12_psl_241_2143_orb3-4-2_s1.txt', r'\mathrm{PSL}(2,241)\times\mathbb{Z}_{2143}', '2+4.3', 'G P', None),
+    (3, 13, 3400, 'L', GR + 'd3D13_n3400_lift_gp10_Z170.edges.gz', r'\text{Desargues}, \mathbb{Z}_{170}', 'lift', 'A^ A H', None),
+    (4, 13, 192382, 'M', O + 'd4D13_meta_2237_43_1984_h03.txt', r'\mathbb{Z}_{2237}\rtimes_{1984}\mathbb{Z}_{43}', 'random', 'A M^ H', None),
+    (5, 13, 3594910, 'M', O + 'd5D13_prodmeta_11_5_2971_11_i06.txt', r'(\mathbb{Z}_{11}\rtimes_4\mathbb{Z}_5)\times(\mathbb{Z}_{2971}\rtimes_{1764}\mathbb{Z}_{11})', 'random', "M^ H", None),
+    (6, 13, 41734392, 'H', O + 'd6D13_psl_83_73_orb3-2-0_f11.txt', r'\mathrm{PSL}(2,83)\times\mathbb{Z}_{73}', '0+2.3', "G^ P'", None),
+    (7, 13, 312227760, 'H', O + 'd7D13_sl_229_13_orb3-2-1_e10.txt', r'\mathrm{SL}(2,229)\times\mathbb{Z}_{13}', '1+2.3', "G^ S'", None),
+    (8, 13, 1739514000, 'H', O + 'd8D13_sl_499_7_orb3-2-2_s2.txt', r'\mathrm{SL}(2,499)\times\mathbb{Z}_{7}', '2+2.3', "G^ S'", None),
+    (9, 13, 7924036032, 'H', O + 'd9D13_sl_593_19_orb3-3-0_s6.txt', r'\mathrm{SL}(2,593)\times\mathbb{Z}_{19}', '0+3.3', "G^ S'", None),
+    (10, 13, 19980294768, 'H', O + 'd10D13_psl_503_157_orb3-3-1_s1.txt', r'\mathrm{PSL}(2,503)\times\mathbb{Z}_{157}', '1+3.3', "G^ P'", None),
+    (3, 14, 5706, 'L', GR + 'd3D14_n5706_lift_pappus_Z317.edges.gz', r'\text{Pappus}, \mathbb{Z}_{317}', 'lift', 'A^ A H', None),
+    (4, 14, 497042, 'M', O + 'd4D14_meta_2731_91_i04.txt', r'\mathbb{Z}_{2731}\rtimes_{2400}\mathbb{Z}_{91}', 'random', 'A M^ H', None),
+    (5, 14, 12795166, 'M', O + 'd5D14_meta_148781_43_i07.txt', r'\mathbb{Z}_{148781}\rtimes_{85175}\mathbb{Z}_{43}', 'random', 'M^ H', None),
+    (6, 14, 187990656, 'H', O + 'd6D14_sl_97_103_orb3-2-0_g07.txt', r'\mathrm{SL}(2,97)\times\mathbb{Z}_{103}', '0+2.3', "G^ S'", None),
+    (7, 14, 1674490944, 'H', O + 'd7D14_psl_223_151_orb3-2-1_h14.txt', r'\mathrm{PSL}(2,223)\times\mathbb{Z}_{151}', '1+2.3', "G^ P'", None),
+    (8, 14, 11325238056, 'H', O + 'd8D14_psl_397_181_orb3-2-2_s4.txt', r'\mathrm{PSL}(2,397)\times\mathbb{Z}_{181}', '2+2.3', "G^ P'", None),
+]
+# beyond the master ledger (research/RESULTS.md) at the time of writing
+NOT_IN_LEDGER = {(16, 11), (3, 11), (4, 12)} | {(d, 13) for d in range(3, 11)} | {(d, 14) for d in range(3, 9)}
+CAPPED = {(16, 11), (13, 12), (14, 12), (10, 13)}       # first S solved at a size cap of the job (mu about 0)
+
+
+def fmt(v):
+    return '{:,}'.format(v).replace(',', '{,}')
+
+
+def shape_tex(s):
+    if '.' in s:
+        f, mk = s.split('+')
+        m, k = mk.split('.')
+        return f'${f}+{m}\\cdot{k}$'
+    return s
+
+
+def checks_tex(c):
+    out = []
+    for t in c.split():
+        base, mark = t[0], t[1:]
+        out.append(base + ('$^\\prime$' if mark == "'" else '$^\\ast$' if mark == '^' else ''))
+    return ', '.join(out)
+
+
+def grid_rows():
+    best = {(d, D): v for d, D, v, *_ in VALUES}
+    rows = []
+    for d in range(3, 21):
+        cells = []
+        for D in range(9, 15):
+            if (d, D) not in best:
+                cells.append('--')
+                continue
+            row = next(r for r in VALUES if r[0] == d and r[1] == D)
+            v = best[(d, D)]
+            marks = ''
+            if (d, D) == (14, 12):
+                v = best[(13, 12)]        # a structure of degree 13 also has degree at most 14
+                marks += r'\S'
+            marks += {'L': r'\dagger', 'M': r'\ddagger', 'H': ''}[row[3]]
+            if (d, D) in CAPPED:
+                marks += r'\circ'
+            if (d, D) in NOT_IN_LEDGER:
+                marks += r'*'
+            cells.append(f'${fmt(v)}' + (f'^{{{marks}}}$' if marks else '$'))
+        rows.append(f'{d} & ' + ' & '.join(cells) + r'\\')
+    return '\n'.join(rows)
+
+
+def appendix_rows(Ds):
+    rows = []
+    for d, D, v, kind, path, grp, S, chk, table in sorted(VALUES, key=lambda r: (r[1], r[0])):
+        if D not in Ds:
+            continue
+        mu = '--' if kind == 'L' else f'{(v / 2) * math.exp(-W(d, D) / (v / 2)):.3g}'
+        if 'e' in mu:
+            mu = '$0$'
+        tab = fmt(table) if table else '--'
+        rows.append(f'$({d},{D})$ & ${fmt(v)}$ & ${tab}$ & ${grp}$ & {shape_tex(S)} & {mu} & {checks_tex(chk)}'
+                    .replace('$--$', '--') + r'\\')
+    return '\n'.join(rows)
+
+
+def check_values():
+    nm = 0
+    for d, D, v, kind, path, grp, S, chk, table in VALUES:
+        full = os.path.join(REPO, path)
+        ok(os.path.exists(full), f'missing {path}')
+        if path.endswith('.edges') or path.endswith('.edges.gz'):
+            with (gzip.open(full, 'rt') if path.endswith('.gz') else open(full)) as fh:
+                n = int(fh.readline())
+            ok(n == v, f'({d},{D}): {n} vertices in {path}, table says {v}')
+        elif path.startswith('research/lifts/sols/'):
+            lines = open(full).read().split('\n')
+            gr = next(ln for ln in lines if ln.startswith('group')).split()
+            hd = next(ln for ln in lines if ln.startswith('lift')).split()
+            ok(int(hd[2]) == D and int(hd[4]) == d and 2 * int(gr[2]) * int(gr[3]) == v, f'({d},{D}) header')
+        else:
+            head, gens = read_sol(full)
+            ok(int(head[0]) == d and int(head[1]) == D, f'({d},{D}): header {head[:2]}')
+            ok(2 * int(head[head.index('N') + 1]) == v, f'({d},{D}): 2N != {v}')
+            ok(len(gens) == d, f'({d},{D}): {len(gens)} generators')
+        if '.' in S:
+            f, mk = S.split('+')
+            m, k = mk.split('.')
+            ok(int(f) + int(m) * int(k) == d, f'({d},{D}): shape {S} does not add up to Delta')
+            n = int(read_sol(full)[0][read_sol(full)[0].index('n') + 1])
+            ok(all(n % q or q % int(k) == 1 for q in range(2, n + 1) if all(q % t for t in range(2, q))),
+               f'({d},{D}): a prime factor of n = {n} is not 1 mod {k}')
+        nm += 1
+    # the tables in SYNTHETIC.tex are the ones generated here
+    tex = open(os.path.join(HERE, '..', 'SYNTHETIC.tex')).read()
+    ok(grid_rows() in tex, 'the values table in SYNTHETIC.tex differs from the data here (check_haar.py --tables)')
+    for Ds in ((9, 10), (11, 12), (13, 14)):
+        ok(appendix_rows(Ds) in tex, f'the Appendix B table for D = {Ds} differs from the data here')
+    # size-law numbers quoted in Section 7.3
+    lo_hi = {}
+    for d, D, v, kind, *_ in VALUES:
+        if kind == 'L' or (d, D) in CAPPED:
+            continue
+        N = v / 2
+        mu = N * math.exp(-W(d, D) / N)
+        frac = v / moore(d, D)
+        lo_hi.setdefault(D, []).append((d, mu, frac, math.log(N)))
+    mus = [m for D in lo_hi for _, m, _, _ in lo_hi[D]]
+    lns = [ln for D in lo_hi for _, _, _, ln in lo_hi[D]]
+    print(f'8. Values table and Appendix B: {nm} values agree with their files (2N from the headers, n from the edge lists), '
+          'the orbit shapes add up to Delta, and the tables in SYNTHETIC.tex are the ones generated from this data: '
+          'checked')
+    print(f'   size law (Haar values, capped cells excluded): mu from {min(mus):.2f} to {max(mus):.1f}, '
+          f'ln N from {min(lns):.1f} to {max(lns):.1f}; 2N/M_b by D:',
+          ', '.join(f'D={D}: {max(f for _, _, f, _ in r):.3f}..{min(f for _, _, f, _ in r):.3f}'
+                    for D, r in sorted(lo_hi.items())))
+    for D in sorted(lo_hi):
+        print(f'   D={D}: ' + ', '.join(f'({d}) mu={m:.1f} {100 * f:.1f}%' for d, m, f, _ in sorted(lo_hi[D])))
+
+
 def main():
     check_haar_lemmas()
     check_isomorphisms()
@@ -698,8 +1048,14 @@ def main():
     check_counting()
     check_orbits()
     check_records()
+    check_values()
     print('ALL CHECKS PASSED')
 
 
 if __name__ == '__main__':
-    main()
+    if sys.argv[1:] == ['--tables']:
+        print('% values table rows\n' + grid_rows())
+        for Ds in ((9, 10), (11, 12), (13, 14)):
+            print(f'% Appendix B rows, D = {Ds}\n' + appendix_rows(Ds))
+    else:
+        main()

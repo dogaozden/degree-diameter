@@ -139,6 +139,8 @@ for ln in lines:
         title = ln[2:]
         if title.startswith('Coordinates and checks'):
             res.append('# Appendix A. ' + title)
+        elif title.startswith('The values of Section 7'):
+            res.append('# Appendix B. ' + title)
         else:
             res.append(f'# {secno}. {title}')
         continue
@@ -159,6 +161,6 @@ for ln in md.split('\n'):
 md = '\n'.join(out)
 header = ('<!-- Generated from SYNTHETIC.tex by make_md.py; the figures are in SYNTHETIC.pdf. -->\n\n'
           '# Adding points and lines to generalized polygons: the constructions without coordinates\n\n'
-          '*Degree–diameter lab, 30 October 2026. Markdown copy of `SYNTHETIC.tex`; the PDF has the figures.*\n\n')
+          '*Degree–diameter lab, 1 November 2026. Markdown copy of `SYNTHETIC.tex`; the PDF has the figures.*\n\n')
 (HERE / 'SYNTHETIC.md').write_text(header + md)
 print('wrote SYNTHETIC.md,', len(md.split()), 'words')
