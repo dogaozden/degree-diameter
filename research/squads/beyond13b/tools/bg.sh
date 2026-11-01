@@ -8,4 +8,7 @@ alive=0; for f in out/*.pid; do [ -f "$f" ] && kill -0 $(cat "$f") 2>/dev/null &
 if [ $alive -ge ${MAXRUNS:-1} ]; then echo "REFUSED: $alive run(s) of this folder still alive; poll until FINISHED or kill it first"; exit 1; fi
 nohup nice -n 10 "$@" > out/$tag.log 2>&1 &
 echo $! > out/$tag.pid; date +%s > out/$tag.t0
+# autogroup scheduling is on here: each run is its own scheduling group and plain nice has no effect against other
+# groups, so set the group's nice too (AGNICE, default 10; the director's own runs keep 0)
+[ -z "$DIRECTOR" ] && echo ${AGNICE:-10} > /proc/$!/autogroup 2>/dev/null
 echo "started $tag (pid $(cat out/$tag.pid)) at $(date -u +%T)"

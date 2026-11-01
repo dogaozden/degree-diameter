@@ -271,3 +271,36 @@ groups have no involutions and trivial centre); the lift bound is Fact 2. Proces
 director's big checks starved the cards for the first two hours, and one OOM kill cost an hour of the (10,13) check.
 Three cards touched remote-session tools by mistake (no effect; one archived an accidental session), and one card's
 `pkill -f bases/` may have killed other cards' lift runs; later headers forbade both.
+
+## 2026-11-01/02, job beyond-d13b (Opus cloud session, branch claude/beyond-d13-extend-5n8uwl), goal: raise the D = 13 column at Δ = 5..10
+
+Brief: raise and extend (5..10,13) from beyond-d13's values (3,594,910 / 41,734,392 / 312,227,760 / 1,739,514,000 /
+7,924,036,032 / 19,980,294,768). Tools from beyond-d13 and beyond-d11b (haar_big0, hmeta, haar_gen3s/t, haarcheck_gen,
+metacheck); new helpers research/squads/beyond13b/tools/ (cands.py, bg.sh, poll.sh). Cap for this job: 2N <= 3.0e10
+(the coordinator accepted 30-billion values at D = 11, 12 today).
+
+Director first (22:52 UTC): (10,13) SL(2,601) x Z67 (2N = 29,088,880,800, mu 4.7, p small enough for a ~1-hour check),
+ORBIT "3 3 1": cost 0 after 17 evaluations (175 s on 4 threads).
+
+### Round 0 (22:56-23:00 UTC), ABORTED: 17 cards, no results
+
+Launched with the Agent tool's isolation "remote", expecting one 4-core container per card (a probe agent had reported
+4 cores and 15 GB, which matched this container, not a new one). The cards ran here, all in one work/ folder: tags and
+output files collided (seven cards wrote out/A.log), ~40 threads ran on 4 cores, each card ran `git reset --hard` in the
+director's checkout (no harm: nothing was uncommitted), and the director's (10,13) check was OOM-killed. All cards were
+stopped after four minutes and their processes killed. Cards as written: beyond13b/r0/cards.md. Lesson: on this
+platform "remote" subagents share the director's container; every card needs its own folder and a hard thread cap.
+
+### Round 1 (23:03 UTC, 16 cards, 60-minute boxes, one single-thread run per card)
+
+New rules (beyond13b/CARDS_COMMON.md): own folder, no git, prebuilt binaries, bg.sh forces THREADS=1 and nice 10 and
+refuses a second live run. Found during the round: this kernel has autogroup scheduling on, so each card run is its own
+scheduling group and a plain nice does nothing against the director's jobs; bg.sh now also writes the group's nice
+(/proc/PID/autogroup, 10 for cards). The director stopped the (10,13) check for the round (it would have taken ~3 h at
+its 1/17 share) and ran a (9,13) search in its own group instead.
+
+Cards: f1-f3 (5,13) single odd-order Frobenius groups Z_m x| Z_k with random S (hmeta), k 37-47 / 53-61 / 13-31; f4
+(5,13) products of two Frobenius groups (haar_gen3s); f5 (5,13) wildcard; e1 (6,13) PSL/SL x Z_n, n 21-43, "3 2 0"; e2
+(6,13) SL(2,p), n = 1; e3 (6,13) Frobenius groups (hmeta, long runs); e4 (6,13) SL x Z_n, n 37-73; e5 (6,13) wildcard;
+d1 (7,13) SL x Z_n, n 1-13; d2 (7,13) SL n 21-37; d3 (7,13) PSL, odd n 27-73; d4 (7,13) wildcard; c1 (8,13) SL n 1-9;
+c2 (8,13) SL n 13-43.

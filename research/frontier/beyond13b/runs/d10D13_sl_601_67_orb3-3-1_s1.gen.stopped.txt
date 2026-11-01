@@ -8,3 +8,7 @@ selftest group multiplication: associativity, identity, inverse on 20000 random 
 file runs/d10D13_sl_601_67_orb3-3-1_s1.out
 header: 10 13 sl 601 n 67 N 14544440400
 group sl 601 x Z_67, |G| = 14544440400 = N, vertices 2N = 29088880800; 10 distinct generators
+../beyond13/check_one.sh: line 5: 12272 Killed                  "$@"
+exit: 137
+end: 2026-11-01T23:12:48Z (737 s)
+(stopped by the director at 23:12 UTC after ~6 CPU-minutes, to free the CPU and memory for squad round 1; rerun later)
