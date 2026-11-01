@@ -1,0 +1,16 @@
+checker: haarcheck_gen (research/frontier/haarcheck_gen.c, cc -O3 -march=native -fopenmp)
+command: OMP_NUM_THREADS=2 haarcheck_gen research/frontier/sols/d10D12_psl_243_271_orb5-2-0_s11.txt
+start: 2026-11-01T23:39:16Z
+e52e247f4a92a474f49ff0d5d438660ba0b557bbdfd4a8e24311ca881ff3f17c  /home/user/bin/haarcheck_gen
+cf153334da9f37dca1bc416594993cd3574e0fd6564ff7851089b8fa5bf0c71f  research/frontier/haarcheck_gen.c
+ebb6c2cc24d95cc46b2b942f6e8c1133ab322f12f20b5f399a67b65a0b356e21  research/frontier/sols/d10D12_psl_243_271_orb5-2-0_s11.txt
+selftest psl 243 poly x^5+2x+1: |M| = 7174332, index round trip over all elements ok
+selftest group multiplication: associativity, identity, inverse on 20000 random triples ok
+file research/frontier/sols/d10D12_psl_243_271_orb5-2-0_s11.txt
+header: 10 12 psl 243 poly x^5+2x+1 n 271 N 1944243972
+group psl 243 poly x^5+2x+1 x Z_271, |G| = 1944243972 = N, vertices 2N = 3888487944; 10 distinct generators
+from (e,A): reached A 1944243972/1944243972, B 1944243972/1944243972 within 12; ecc 12; level sizes [1, 10, 90, 810, 7290, 65600, 590070, 5301540, 47159170, 384254526, 1636079634, 1554621486, 260407717]  (622s)
+from (e,B): reached A 1944243972/1944243972, B 1944243972/1944243972 within 12; ecc 12; level sizes [1, 10, 90, 810, 7290, 65600, 590070, 5301540, 47159145, 384254526, 1636096042, 1554621486, 260391334]  (1079s)
+VALID d=10 D=12 group=psl 243 poly x^5+2x+1 x Z_271 N=1944243972 vertices=3888487944 (distinct generators, 10-regular simple; every vertex within 12 of both (e,A) and (e,B); ecc 12; 1079s)
+exit: 0
+end: 2026-11-01T23:57:15Z (1079 s)
