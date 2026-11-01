@@ -153,6 +153,29 @@ def main():
         for row in out:
             print("%d %d %d %d" % row)
         return
+    if cmd == "rand":
+        # rand TABLE rand TYPE SEED OUT : random subgroup choice for a type (22, 244, 4444, 1)
+        import random
+        typ, seed, out = sys.argv[3], int(sys.argv[4]), sys.argv[5]
+        rng = random.Random(seed)
+        subs, inv = subgroups(T, {2, 4})
+        ids2 = [i for i, s_ in enumerate(subs) if len(s_) == 2]
+        ids4 = [i for i, s_ in enumerate(subs) if len(s_) == 4]
+        want = {"1": [], "22": [2, 2], "244": [2, 4, 4], "4444": [4, 4, 4, 4]}[typ]
+        pick = []
+        for h in want:
+            pool = ids2 if h == 2 else ids4
+            pick.append(rng.choice(pool))
+        blocks = [subs[i] for i in pick]
+        with open(out, "w") as f:
+            f.write(f"{len(blocks) if blocks else 1}\n")
+            if not blocks:
+                f.write("1 0\n")
+            for b in blocks:
+                b = [0] + [x for x in sorted(b) if x != 0]
+                f.write(f"{len(b)} " + " ".join(map(str, b)) + "\n")
+        print("picked", pick)
+        return
     print("unknown command")
 
 

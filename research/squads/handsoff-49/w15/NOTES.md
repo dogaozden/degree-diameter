@@ -35,3 +35,16 @@ Start: 2026-10-31 23:53 UTC. Planned end: about 01:55 UTC. Last update: about 01
 - Build the remaining nonabelian groups of order 625 (exponent 25 class 2 and class 3 types) as subgroups of Z_5 wr Z_5
   or of U_3(Z/25), run the same automorphism sampler (auto15.py), and screen. The exponent-5 maximal-class group gave
   the best floor (4), so other P with small |G/G'| and an involutory phi are the likely next winners.
+
+## Final checks (01:13 UTC)
+- u4m_7 with haar_tab K = 16, 150 s, seed 21: still 4. Floor 4 holds across seeds and run lengths.
+- Z_5 wr Z_5 subgroups of order 625 (wr5.py, 2 and 3 generators, about 45,000 samples): only the two classes wr5_1 (new,
+  exponent 25) and wr5_2 (exponent 5, equal to u4_1 by invariants). Automorphisms of wr5_1 with phi^4 = id: 22 and 44 floors.
+- Disk: tabs/ now keeps only u4m_7.bin, u4_1.bin, hb_1.bin, mz5_6.bin, wr5_1.bin (the rest are rebuildable with the
+  commands above and screen.tsv records every result).
+- U_3(Z/25) subgroups of order 625 (u3z25.py, 3,000 samples): classes u3z_1 (centre 25, |G/G'| 125, exponent 25),
+  u3z_3 (same invariants as M_125 x Z_5 and Z_5^2 x| Z_25), u3z_2 (abelian Z_25^2). Invariants match known groups, so
+  these are probably not new. Not screened.
+- Finer dedupe (cycle type of phi on P, auto15.py now keys on it too): the same class lists come back for u4_1 (8
+  classes, u4f_7 = u4m_7) and Heis(5) x Z_5 (11 classes, hf_k = hb_k). So the automorphism classes sampled are
+  complete for these two P, and the cost floors above are the floors of all Z_4 actions on them.

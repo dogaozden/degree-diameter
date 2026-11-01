@@ -58,3 +58,12 @@ of this family at n >= 4972.
   exist. If PSU(3,4) has no order-24 subgroup, the card's family is empty there.
 - Degree-4 bi-coset graphs with |H| = 8 on PSL(3,4) are the least bad; a different family (lifts of the PSL(3,4) bi-coset
   graph by a cyclic group, or two-subgroup graphs with |H| != |K|, which give unequal side degrees) may be worth a try.
+
+## Late checks (01:00-01:20 UTC)
+- PSL(2,23), involutions (n = 6072): K-variant with conjugate K (2 random conjugates, 200k evals each, partial since the
+  exhaustive set is large: 12 double cosets of degree 1, 1512 of degree 2) gives 88 again, the same as w7's exact H-variant
+  minimum. No gain from conjugating K.
+- PSp(4,3), |H| = |K| = 8 (9 classes now), with conjugate K: 64 of 162 pairs done, best still 1616 (partial).
+- `kscan.py` takes env KLIMIT (evaluation cap for kbi) and KTIMEOUT (seconds per kbi call); use them for groups with
+  many degree-1 double cosets (the exhaustive kbi enumeration is C(n1,4) and can run for hours).
+- Scoreboard: one line appended (00:54, PSL(3,4), n = 5040, cost 312, no). Nothing valid, nothing at n >= 4972 below 30.

@@ -307,3 +307,37 @@ quotient code: read it, do not edit it), and check that the lift rebuilds the sa
 (2) run tabu (`$H/w5/tabu.c` TABU=1, `$H/w8/wt.c`, or `$H/w12/wtt.c` which aims moves at far pairs) from those voltages,
 with restarts and perturbations; (3) also try the same from several different optimal S. Report the lowest cost per
 (group, k). Cost below the Haar minimum at the same n is progress; cost 0 is a record.
+
+## w20: a complete certificate for metacyclic Haar graphs of order 2,486..2,520 (follows w11)
+
+Goal: the statement "no metacyclic group of order 2,486..2,520 has a Haar graph of degree 4 and diameter 9", proved by
+computation. Read `$H/w11/NOTES.md` and `certified.tsv` (w11's exhaustive tool exh3 and its driver; 33 groups done) and
+w2's group lists (`$H/w2/groups_all.txt`, `groups_ab.txt`, non-split list in w2/NOTES.md). (1) Derive and check a
+D = 9 abelian-quotient bound like the D = 8 one in research/squads/big-squad-4-8.md (on branch
+origin/claude/bipartite-4-8-squad-zmk3qt; the bound: in an abelian Haar graph with S = {0, s1, s2, s3}, count the values
+reachable on each side within the allowed distances; a group with an abelian quotient larger than that count cannot
+work). Verify the count by brute force. (2) List every metacyclic group (split and non-split) of order 2,486..2,520,
+drop the ones the bound excludes, and certify the rest with exh3 (exhaustive up to automorphism), skipping those already
+in w11's certified.tsv. Keep `$H/w20/certificate.tsv` (group, method: bound or exhaustive, minimum, seconds). A cost-0
+set is a record: build the edge list and run apsp at once.
+
+## w21: exhaustive minima for the best non-metacyclic groups (follows w10)
+
+Annealing floors of the best non-metacyclic Haar groups are not yet proven. Make them exact with an exhaustive search
+up to automorphism (w1's `$H/w1/exh.c`, w10's driver in `$H/w10/`; S = {e, r, b, c} with r over class representatives
+under Aut(G), b and c over all elements): S_5 x F_21 (w10: classes 0..11 of 35 done, minimum 8 so far; finish 12..34),
+then the best order-2,500 groups of w15 (read `$H/w15/NOTES.md`; do not edit its files), PGL(2,5) x Z_21 (w1: 7),
+PSL(2,8) x Z_5 (8), A_5 x S_3 x Z_7 (8). Keep `$H/w21/exact.tsv` (group, order, minimum, classes covered, seconds).
+
+## w22: wildcard: a family nobody in this squad has tried
+
+Tried so far (do not repeat): Haar graphs of metacyclic, non-metacyclic, simple, centreless and order-2,500 groups;
+lifts of 2+2 to 8+8 bases, of W(3), H(3) (impossible: girth 12), PG(2,3), the (4,5) 162 graph, random 6+6 bases;
+bi-coset graphs with stabilizers of order 2-24 in PSL(2,q), PSL(3,3), PSL(3,4), M_11, S_7, A_8, Sz(8), PSU(3,3),
+PSU(3,4); mixed-orbit graphs (w17); surgery on the valid 4,970 graph (floor 160 far pairs: every edge is critical for
+~170 pairs); quotients of the 4,970 graph re-lifted over bigger groups (w16); index-k refinements of Haar near misses
+(w19). Best near misses: Haar of Z_101 x| Z_25 at n = 5,050 with exact minimum cost 2; n = 4,992 cost 4 (central
+involution far). Think of a different construction (for example a product-like or compound construction, a graph with
+a non-regular group action not listed, a graph built from a finite geometry other than generalized polygons, or a
+search over non-vertex-transitive graphs guided by the near misses), argue in NOTES.md why it might beat 4,970, then
+build and test it.

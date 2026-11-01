@@ -41,3 +41,10 @@ what I changed.
   w12 (104 min; lifts over simple groups: PGL(2,11) 2+2 n = 5,280 cost 64, others 88-416). Launched w17 (mixed-orbit
   graphs: regular on A, stabilizers 2 or 4 on B), w18 (auditor: re-score every scoreboard file), w19 (refinement ladder:
   Haar near misses as k+k lifts over index-k subgroups, tabu in the larger space).
+- 01:27 check-in 7. Opus/Haiku 0.41/0.30 at 01:15 (Haiku 42%). No record. Finished: w10 (120 min; centreless small-
+  abelianization groups: best S_5 x F_21 cost 8, others 22-2,296), w11 (122 min; 33 metacyclic groups certified
+  exhaustively, minima 2, 4, 6-10; 2,601..2,700 screened, best 10), w14 (104 min; bi-coset graphs of PSL(3,4),
+  PGammaL(2,16), PSU(4,2), Sz(8), PSU(3,4), PSL(2,49) with |H| 6-20: exact floors 312 and up). w11 asked me to delete 13
+  scoreboard lines that were not new lows: kept (they are true results). Launched w20 (certificate for all metacyclic
+  groups of order 2,486..2,520 with a D = 9 quotient bound), w21 (exhaustive minima for S_5 x F_21 and other best
+  non-metacyclic groups), w22 (free wildcard with the full list of tried families).

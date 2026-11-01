@@ -90,6 +90,17 @@ if __name__ == '__main__':
         key = (tuple(sorted(inv['hist'].items())), inv['centre'], inv['ab'], tuple(sorted(np.bincount(np.array([0]), minlength=1).tolist())))
         # stronger key: element-order histogram of G restricted to each coset of P
         key = (tuple(sorted(inv['hist'].items())), inv['centre'], inv['ab'])
+        # finer key: cycle type of phi on P (phi conjugate in Aut(P) implies equal cycle types)
+        cyc = []
+        seenc = np.zeros(N, dtype=bool)
+        for x0 in range(N):
+            if seenc[x0]:
+                continue
+            L = 0; x = x0
+            while not seenc[x]:
+                seenc[x] = True; x = phi[x]; L += 1
+            cyc.append(L)
+        key = key + (tuple(sorted(np.bincount(cyc).nonzero()[0].tolist())), tuple(np.bincount(cyc).tolist()))
         if key in seen:
             continue
         seen[key] = imgs

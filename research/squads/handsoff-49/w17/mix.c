@@ -13,7 +13,8 @@
  * Usage: mix TABLE.bin CFG SECONDS SEED D ITERS T0 T1 [OUT.edges]
  *   TABLE.bin : int32 N, then N*N uint16 (row g: g*h), identity index 0 (tools/groups.py format).
  *   CFG       : first token k (number of B-orbits), then k lines "h e_1 ... e_h" (H_i as element indices, e_1 = 0).
- *   Runs restarts of ITERS annealing steps (geometric cooling T0 -> T1) until SECONDS have passed.
+ *   Runs restarts of ITERS annealing steps (geometric cooling T0 -> T1) until SECONDS have passed. If ITERS = 0, one
+ *   annealing cycle lasts SECONDS and the cooling is driven by the clock.
  *   Prints "BEST cost=<far pairs> c=<coset choices>" and "BESTLINE ..." at each new best; writes OUT.edges when
  *   the best cost is 0 (the file is the edge list of the best graph, n = 2N).
  */
@@ -202,15 +203,21 @@ int main(int argc, char **argv) {
     long long gbest = -1;
     double t0 = now_sec();
     int restarts = 0;
+    double cycle_secs = getenv("CYCLE") ? atof(getenv("CYCLE")) : secs;
     long long evals = 0;
     do {
         /* random start: c_0 pinned to 0 */
         for (int j = 0; j < E; j++) c[j] = (j == 0) ? 0 : (int)(rnd64() % M[oj[j]]);
         long long cur = eval(c, 0);
         evals++;
+        double cyc_t0 = now_sec();
+        double cyc_secs = secs - (cyc_t0 - t0);
+        if (cyc_secs > cycle_secs) cyc_secs = cycle_secs;
         long long rbest = cur; int rbc[DEG]; memcpy(rbc, c, sizeof(c));
-        for (long it = 0; it < iters; it++) {
-            double frac = iters > 1 ? (double)it / (iters - 1) : 1.0;
+        for (long it = 0;; it++) {
+            double frac;
+            if (iters > 0) { if (it >= iters) break; frac = iters > 1 ? (double)it / (iters - 1) : 1.0; }
+            else { frac = (now_sec() - cyc_t0) / cyc_secs; if (frac >= 1.0) break; }
             double T = T0 * pow(T1 / T0, frac);
             int j = 1 + (int)(rnd64() % (E - 1));
             int oldc = c[j];
@@ -227,7 +234,8 @@ int main(int argc, char **argv) {
                 c[j] = oldc;
             }
             if (rbest == 0) break;
-            if ((it & 1023) == 1023 && now_sec() - t0 > secs) break;
+            if (iters > 0 && (it & 1023) == 1023 && now_sec() - t0 > secs) break;
+            if (rbest == 0) break;
         }
         restarts++;
         if (gbest < 0 || rbest < gbest) {
