@@ -1,0 +1,7 @@
+machine: vm; nproc=4; free -g: total 15G used 3G free 12G avail 12G; Linux 6.18.44-fc-v185; gcc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0
+sha256: f06dbe2dec0ad5ede609972b229a716d473af9e321bc22f62d7f7fb28963b3c6  research/frontier/sols/d15D11_sl_617_61_orb3-5-0_s1.txt (copied from branch claude/beyond-d11-d12-new-cells-3t3djx, file 560 bytes; header: 15 11 sl 617 n 61 N 14327954256; cell Δ15·D11; 2N = 28,655,908,512 vertices)
+checker: research/frontier/haarcheck_sl.c on master, commit e93cbf8 (sha256 of built binary 40f72f5b3e5894f7...); built with gcc -O3 -o haarcheck_sl research/frontier/haarcheck_sl.c
+timing: /usr/bin/time is not installed on this machine, so the [exit; wall; peak RSS] line is produced by a python3 os.wait4 wrapper (ru_maxrss of the child).
+
+################ haarcheck_sl (reference checker, one BFS from (e,A) only): haarcheck_sl research/frontier/sols/d15D11_sl_617_61_orb3-5-0_s1.txt A   (stdout, complete)
+STATUS: running since 2026-11-01T15:32:15Z; progress note 1 at 0 min: still running, no output until the BFS ends (the checker prints only at the end).
