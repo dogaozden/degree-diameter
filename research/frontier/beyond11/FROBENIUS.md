@@ -1,6 +1,6 @@
 # Frobenius groups Z_p x| Z_k for the small D = 11, 12 cells
 
-Job beyond-d11b, 2026-11-01 (Opus director, Haiku squad rounds r1-r4, research/squads/beyond11b/). Summary of a lead
+Job beyond-d11b, 2026-11-01 (Opus director, Haiku squad rounds r1-r6, research/squads/beyond11b/). Summary of a lead
 that came out of round 1 and raised five cells in rounds 1-3.
 
 ## Groups
@@ -15,19 +15,22 @@ section 1). Odd products F1 x F2 of two such groups also have trivial centre and
 | cell | group | N = pk | vertices | was | check |
 |---|---|---:|---:|---:|---|
 | (4,11) | Z523 x\|_9 Z29 | 15,167 | **30,334** | 24,360 (PSL(2,29)) | build_haar2 + apsp |
-| (5,11) | Z8171 x\|_8108 Z19 | 155,249 | **310,498** | 297,648 (SL(2,53)) | build_haar2 + apsp |
-| (6,11) | (Z67 x\|_29 Z3) x (Z307 x\|_9 Z17) | 1,049,019 | **2,098,038** | 2,094,960 (SL(2,29) x Z43) | build_haar2 |
-| (4,12) | Z1297 x\|_48 Z27 | 35,019 | **70,038** | 68,544 (SL(2,17) x Z7) | build_haar2 + apsp |
-| (5,12) | Z9859 x\|_4192 Z53 | 522,527 | **1,045,054** | 1,041,768 (PSL(2,53) x Z7) | build_haar2 |
+| (5,11) | Z5023 x\|_2886 Z31 | 155,713 | **311,426** | 297,648 (SL(2,53)) | build_haar2 (+ apsp, see log) |
+| (6,11) | Z20809 x\|_12972 Z51 | 1,061,259 | **2,122,518** | 2,094,960 (SL(2,29) x Z43) | build_haar2 |
+| (4,12) | Z731 x\|_7 Z48 (731 = 17 x 43, not Frobenius) | 35,088 | **70,176** | 68,544 (SL(2,17) x Z7) | build_haar2 + apsp |
+| (5,12) | Z8969 x\|_205 Z59 | 529,171 | **1,058,342** | 1,041,768 (PSL(2,53) x Z7) | build_haar2 |
 
-Also valid (smaller): (4,11) 29,470 (Z421 x| Z35), 28,918 (Z761 x| Z19), 28,938 ((Z7 x| Z3) x (Z53 x| Z13)), 26,640
-(SL(2,5) x (Z37 x| Z3)); (5,11) 306,182 (Z5279 x| Z29), 301,200 (SL(2,5) x (Z251 x| Z5)); (6,11) 2,095,758
-(Z16633 x| Z63); (4,12) 69,254 (Z1117 x| Z31), 69,104 (Z617 x| Z56), 68,906 (Z263 x| Z131). Solutions in
+Also valid (smaller, in the order found): (4,11) 28,918 (Z761 x| Z19), 26,640 (SL(2,5) x (Z37 x| Z3)), 29,470
+(Z421 x| Z35), 28,938 ((Z7 x| Z3) x (Z53 x| Z13)); (5,11) 301,200 (SL(2,5) x (Z251 x| Z5)), 306,182 (Z5279 x| Z29), 310,498
+(Z8171 x| Z19), 310,718 (Z3613 x| Z43); (6,11) 2,095,758 (Z16633 x| Z63), 2,098,038 ((Z67 x| Z3) x (Z307 x| Z17)),
+2,100,126 ((Z7 x| Z3) x (Z1613 x| Z31)), 2,112,114 (Z20707 x| Z51); (4,12) 68,906 (Z263 x| Z131), 69,104 (Z617 x| Z56), 69,254
+(Z1117 x| Z31), 70,038 (Z1297 x| Z27); (5,12) 1,045,054 (Z9859 x| Z53), 1,047,942 (Z8317 x| Z63), 1,050,906 (Z10303 x| Z51),
+1,056,886 (Z8663 x| Z61). Solutions in
 research/frontier/sols/ (names d<Δ>D<D>_meta_* and _prod_*, suffix b<round><card>), check logs in
 research/frontier/runs/cloudcheck/<stem>.check.txt.
 
 In size-law terms (mu = N exp(-W/N), SIZE_LAW.md) the (4,11) graph sits at mu 44 and the 28,918 one at mu 31.6, where
-SL/PSL groups stall near mu 8-15; at (5,11) mu 19; at (6,11) and the D = 12 cells mu 9-12, about where SL/PSL sit. So
+SL/PSL groups stall near mu 8-15; at (5,11) mu 20, (4,12) mu 18, (5,12) mu 14, (6,11) mu 11, about where SL/PSL sit. So
 the advantage is large at Δ = 4 and shrinks as the cells grow.
 
 ## Why (measurements and proofs from the squad)
@@ -59,6 +62,11 @@ slow for cards (r3/i09, i14, i16).
 
 - haar_gen3 needs a cyclic subgroup of order 2..63 for its fast coset layout; for Z_p x| Z_k that means k <= 63 or k
   with a small divisor. k > 63 prime runs ~50 evaluations/s at N ~ 35k.
-- Solve rates near the limit are ~1 in 5 seeds, and haar_gen3 has no save/resume (round 4 card j14 adds one).
+- Solve rates near the limit are ~1 in 5 seeds. haar_gen3s (r4/j14, research/squads/beyond11b/tools/haar_gen3s.c) adds
+  SAVEBEST/START; haar_gen3t (r5/k13, tools/haar_gen3t.c) adds full-length targeted moves (TFULL=1). Several raises came from
+  resumed chains, but the cost-1/2 states are mostly true local minima: at (4,12) an exhaustive scan of all 105,609 single
+  generator swaps of a cost-1 state of Z677 x| Z52 finds no cost 0 (r6/l01).
+- At odd D the holes of an odd-order group come in inverse pairs on one side (n_h(x) = n_h(x^-1), r1/g15 Theorem 1), so
+  the cost is even; measured in r5/k14 and r6/l07.
 - The bigger D = 11 cells (Δ >= 8) use SL(2,p) x Z_n at N >= 2e7. Whether Frobenius groups help there is open: it would
   need haar_big-style 64-bit layouts for meta groups and a low-memory checker that knows them (haarcheck_gen does not).

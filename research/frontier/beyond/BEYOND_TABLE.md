@@ -292,8 +292,8 @@ small enough that haarcheck_gen's p^2 field tables stay in cache (p <= ~620), n 
 (3,11) value Z67 x| Z11 is one) and g16 tried SL(2,p) x (centre-free odd Frobenius group); both beat (4,11) at once,
 far above the size law. Rounds 2-3 followed the lead: Frobenius groups Z_p x|_r Z_k (p prime, k | p - 1, r of order k;
 odd order and trivial centre for odd k) with random S raised (4,11) 24,360 -> 30,334, (5,11) 297,648 -> 311,426,
-(6,11) 2,094,960 -> 2,122,518, (4,12) 68,544 -> 70,176 (a metacyclic Z731 x| Z48) and (5,12) 1,041,768 -> 1,056,886
-(rounds 1-5; from round 4 on with a save/resume version of haar_gen3, haar_gen3s, and in round 6 a targeted finisher). Card r2/h13 measured why: at Δ = 4 random S on Z761 x| Z19 leave 1.1x the size-law mu
+(6,11) 2,094,960 -> 2,122,518, (4,12) 68,544 -> 70,176 (a metacyclic Z731 x| Z48) and (5,12) 1,041,768 -> 1,058,342
+(rounds 1-6; from round 4 on with a save/resume version of haar_gen3, haar_gen3s, and in round 6 a targeted finisher). Card r2/h13 measured why: at Δ = 4 random S on Z761 x| Z19 leave 1.1x the size-law mu
 uncovered, SL(2,23) and SL(2,13) x Z7 4-5x, and the difference is middle-level collisions (short relations in small
 SL(2,p)), not involutions. The gain shrinks with N: mu 44 at (4,11), 19 at (5,11), ~10 at (6,11) and the D = 12 cells.
 k matters (k = 3 collapses, k = 7 is bad, k = 13-63 behave like random groups). Details, proofs (r2/h17) and the list
