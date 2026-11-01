@@ -1,0 +1,6 @@
+k03 exhaustive single-orbit search (haar_all = haar_big0.c + ALLX mode: loops over every alpha-orbit representative x, skips non-minimal orbit members).
+(5,9) PSL(2,31) N=14880 ORBIT "5 1 0": 2973 orbit reps, all evaluated; min cost 240 (mu 41.9). Plain annealing 80 s on same group: best 40.
+(5,9) PSL(2,5)xZ251 N=15060: 3011 reps, min 1084. SL(2,5)xZ131 N=15720: 3142 reps, min 1010.
+(6,9) PSL(2,5)xZ1061 N=63660 ORBIT "5 1 1": 12731 reps, min 1574. Plain annealing 75 s: best 1436.
+(6,9) SL(2,5)xZ541 N=64920 ORBIT "5 1 1": 12982 reps, min 1102.
+(7,9) SL(2,5)xZ1931 N=231720 ORBIT "5 1 2": 9 alpha-fixed generators; only fixed element 1 partly covered (4164 reps of 46344), min 65880.

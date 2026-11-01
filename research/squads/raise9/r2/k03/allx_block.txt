@@ -1,0 +1,39 @@
+    if (getenv("ALLX")) {
+        /* exhaustive over orbit representatives x (k03): S = {e} (OF = 1,2) + [fixed gens, OF = 2: every alpha-fixed element] + orbit of x.
+         * ALLFROM/ALLTO: range of group indices for x; ALLSECS: time limit; each x is skipped unless it has the smallest index in its orbit. */
+        i64 lo = getenv("ALLFROM") ? atoll(getenv("ALLFROM")) : 0, hi = getenv("ALLTO") ? atoll(getenv("ALLTO")) : NG;
+        double tlim = getenv("ALLSECS") ? atof(getenv("ALLSECS")) : 90;
+        if (hi > NG) hi = NG;
+        el *fixl = malloc(sizeof(el) * (size_t)NG); int nfixl = 0;
+        if (OF == 2) for (i64 g = 0; g < NG; g++) { el x = eofidx(g); if (eeq(x, E_ID) || !eeq(alpha(x), x)) continue; fixl[nfixl++] = x; }
+        if (OF == 2) fprintf(stderr, "ALLX: %d alpha-fixed elements other than e\n", nfixl);
+        if (OF == 0 || OF == 1) nfixl = 1;
+        i64 bestc = (i64)1 << 60, nbest = 0, nevals = 0, hist[64] = {0}; double tA = now(); el bestx[MAXD]; el bestfix = E_ID;
+        int stop = 0;
+        for (int fi = 0; fi < nfixl && !stop; fi++) {
+            for (i64 g = lo; g < hi && !stop; g++) {
+                el x = eofidx(g); el o[MAXD];
+                if (!orbit_of(x, o)) continue;
+                int minimal = 1; for (int i = 1; i < OK_ && minimal; i++) if (eidx(o[i]) < eidx(x)) minimal = 0;
+                if (!minimal) continue;
+                if (OF >= 1) S[0] = E_ID;
+                if (OF == 2) S[1] = fixl[fi];
+                for (int i = 0; i < OK_; i++) S[ostart(0) + i] = o[i];
+                if (OF == 0) { /* single orbit: slot 0 holds the orbit, no e */ }
+                for (int j = 0; j < d; j++) make_tables(j);
+                int nu; i64 cc = cost(NOBOUND, ULIST[0], UCAP, &nu); nevals++;
+                hist[cc < 63 ? cc : 63]++;
+                if (cc < bestc) { bestc = cc; nbest = 0; memcpy(bestx, S, sizeof(el) * d); }
+                if (cc == bestc) nbest++;
+                if (cc == 0) { char fn[1100]; snprintf(fn, sizeof fn, "%s.zero%lld", out, (long long)nevals); write_sol(fn, S); }
+                if (now() - tA > tlim) { fprintf(stderr, "ALLX time limit at g=%lld fi=%d\n", (long long)g, fi); stop = 1; }
+            }
+        }
+        printf("ALLX d=%d D=%d group=%s x Z_%lld N=%lld fixed_list=%d range=[%lld,%lld) evals=%lld best=%lld (reached by %lld x) mu=%.2f time=%.1f\n",
+               d, D, SPEC, (long long)NC, (long long)NG, nfixl, (long long)lo, (long long)hi, (long long)nevals, (long long)bestc, (long long)nbest, mu, now() - tA);
+        printf("ALLX hist:"); for (int c = 0; c < 64; c++) if (hist[c]) printf(" %d:%lld", c, (long long)hist[c]); printf("\n");
+        if (bestc == 0) { write_sol(out, bestx); printf("ALLX cost 0 found, wrote %s\n", out); }
+        else { el T2[MAXD]; memcpy(T2, bestx, sizeof(el) * d); for (int j = 0; j < d; j++) make_tables(j); write_sol(out, T2); printf("ALLX best state written to %s (cost %lld)\n", out, (long long)bestc); }
+        free(fixl);
+        return bestc == 0 ? 0 : 1;
+    }

@@ -1,0 +1,8 @@
+group meta 35771 49 921 x Z_1, N=1752779, identity 0, H order 49, rows 35771, threads 1, setup 1.19s
+START loaded from b_k49_s1.txt (9 generators)
+start cost=28
+t=30 steps=49 evals=393 cost=28 best=28 T=0.52
+t=61 steps=96 evals=769 cost=24 best=24 T=0.18
+moves accepted/proposed: plain 1/120 pair 0/0 local 0/0
+  move 0: mean candidate cost 63.4 min 24, candidates within +1 of final cost: 1
+RESULT d=9 D=9 group=meta 35771 49 921 x Z_1 N=1752779 best=24 evals=961 time=75.2
