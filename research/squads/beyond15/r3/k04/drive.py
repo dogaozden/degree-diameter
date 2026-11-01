@@ -112,6 +112,7 @@ def main():
         D, k, js, n, l, secs = job[:6]; seed = job[6] if len(job) > 6 else 1
         key = (str(D), str(k), '_'.join(map(str, js)), f'{n}:{l}')
         if phase == 'screen' and key in dn: continue
+        if phase == 'deep' and any(l_.split('\t')[5] == f'{secs}s{seed}' and l_.split('\t')[3] == f'{n}:{l}' and l_.split('\t')[2] == '_'.join(map(str, js)) for l_ in open(RES) if l_.count('\t') >= 7): continue
         if time.time() - t0 > budget: break
         out = run_job(D, k, js, n, l, secs, seed)
         if out is None: continue
