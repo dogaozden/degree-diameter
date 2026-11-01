@@ -1,0 +1,8 @@
+selftest psl 109: |M| = 647460, index round trip over all elements ok
+selftest group multiplication: associativity, identity, inverse on 20000 random triples ok
+file /home/user/degree-diameter/research/squads/beyond13/r1/c09/psl109_31_s2.out
+header: 6 13 psl 109 n 31 N 20071260
+group psl 109 x Z_31, |G| = 20071260 = N, vertices 2N = 40142520; 6 distinct generators
+from (e,A): reached A 20071260/20071260, B 20071260/20071260 within 13; ecc 13; level sizes [1, 6, 30, 150, 750, 3750, 18750, 93603, 463388, 2206016, 8673963, 16810146, 10914378, 957589]  (26s)
+from (e,B): reached A 20071260/20071260, B 20071260/20071260 within 13; ecc 13; level sizes [1, 6, 30, 150, 750, 3750, 18750, 93603, 463362, 2206016, 8672657, 16810146, 10915710, 957589]  (49s)
+VALID d=6 D=13 group=psl 109 x Z_31 N=20071260 vertices=40142520 (distinct generators, 6-regular simple; every vertex within 13 of both (e,A) and (e,B); ecc 13; 49s)

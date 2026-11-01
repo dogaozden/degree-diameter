@@ -1,0 +1,11 @@
+group sl 83 x Z_31, N=17722824 (2N=35445648), rows 6888 x 2573 bits (doubled row 104 words), memory 0.01 GB, threads 1
+alpha: conj by mat(0,82,1,82), z -> 5 z on Z_31 (fixed z: 1); ORBIT k=3 m=2 f=0; W=3.05176e+08 lambda=17.219 mu=0.59
+setup 0.0s
+start cost=16 (0.1s per eval)
+t=0 step=1 evals=9 slot=1 cand=2 cost=2 best=2 T=1.26
+t=0 step=2 evals=17 slot=0 cand=2 cost=2 best=2 T=1.06
+t=1 step=3 evals=25 slot=0 cand=2 cost=2 best=2 T=0.89
+t=1 step=4 evals=33 slot=1 cand=0 cost=0 best=0 T=0.75
+RESULT d=6 D=13 group=sl 83 x Z_31 N=17722824 vertices=35445648 best=0 evals=33 steps=4 time=0.7 orbit k=3 m=2 f=0 mu=0.59
+re-evaluation of the best S: cost 0
+wrote /home/user/degree-diameter/research/squads/beyond13/r1/c09/sl83_31_s1.out

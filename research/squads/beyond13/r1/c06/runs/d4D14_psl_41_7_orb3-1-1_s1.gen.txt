@@ -1,0 +1,8 @@
+selftest psl 41: |M| = 34440, det-1 matrices 68880
+selftest group multiplication: associativity, identity, inverse on 20000 random triples ok
+file d4D14_psl_41_7_orb3-1-1_s1.out
+header: 4 14 psl 41 n 7 N 241080
+group psl 41 x Z_7, |G| = 241080 = N, vertices 2N = 482160; 4 distinct generators
+from (e,A): reached A 241080/241080, B 241080/241080 within 14; ecc 14; level sizes [1, 4, 12, 36, 108, 324, 972, 2916, 8724, 25443, 67390, 138397, 157030, 73960, 6843]  (1s)
+from (e,B): reached A 241080/241080, B 241080/241080 within 14; ecc 14; level sizes [1, 4, 12, 36, 108, 324, 972, 2916, 8724, 25443, 67421, 138397, 157280, 73960, 6562]  (2s)
+VALID d=4 D=14 group=psl 41 x Z_7 N=241080 vertices=482160 (distinct generators, 4-regular simple; every vertex within 14 of both (e,A) and (e,B); ecc 14; 2s)

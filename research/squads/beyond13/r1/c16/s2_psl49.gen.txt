@@ -1,0 +1,8 @@
+selftest psl 49 poly x^2+1: |M| = 58800, det-1 matrices 117600
+selftest group multiplication: associativity, identity, inverse on 20000 random triples ok
+file s2_psl49.sol
+header: 4 13 psl 49 poly x^2+1 n 1 N 58800
+group psl 49 poly x^2+1 x Z_1, |G| = 58800 = N, vertices 2N = 117600; 4 distinct generators
+from (e,A): reached A 58800/58800, B 58800/58800 within 13; ecc 13; level sizes [1, 4, 12, 36, 108, 324, 969, 2856, 8069, 20293, 36743, 34627, 12898, 660]  (1s)
+from (e,B): reached A 58800/58800, B 58800/58800 within 13; ecc 13; level sizes [1, 4, 12, 36, 108, 324, 969, 2856, 8070, 20293, 36772, 34627, 12868, 660]  (3s)
+VALID d=4 D=13 group=psl 49 poly x^2+1 x Z_1 N=58800 vertices=117600 (distinct generators, 4-regular simple; every vertex within 13 of both (e,A) and (e,B); ecc 13; 3s)

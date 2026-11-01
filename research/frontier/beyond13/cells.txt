@@ -1,0 +1,5 @@
+# cell | sol stem (in sols/, must have a VALID runs/<stem>.gen.txt) | construction note (squad card or director)
+4,14 | d4D14_sl_31_7_orb3-1-1_s1 | Haar graph SL(2,31) x Z7, S = {e} + 1 orbit of size 3 (director, 1 evaluation)
+5,13 | d5D13_sl_61_7_orb3-1-2_s1 | Haar graph SL(2,61) x Z7, S = {e} + 1 fixed + 1 orbit of size 3 (director, 1 evaluation)
+5,14 | d5D14_psl_227_1_g3_c08 | Haar graph PSL(2,227), S random (haar_gen3, no orbit; squad r1/c08); the orbit form "3 1 2" stalls at cost 18 here
+4,13 | d4D13_psl_49_1_g3_c16 | Haar graph PSL(2,49), S random (haar_gen3 "psl 49", seed 11; squad r1/c16)
