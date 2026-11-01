@@ -1,0 +1,8 @@
+group psl 241 x Z_2143, N=14998085520 (2N=29996171040), rows 29040 x 516463 bits (doubled row 16160 words), memory 7.65 GB, threads 4
+alpha: conj by mat(0,240,1,240), z -> 349 z on Z_2143 (fixed z: 1); ORBIT k=3 m=4 f=2; W=1.94151e+12 lambda=129.450 mu=0.00
+setup 0.0s
+fixed generators: 1 chosen among 119 alpha-fixed elements
+start cost=0 (30.6s per eval)
+RESULT d=14 D=12 group=psl 241 x Z_2143 N=14998085520 vertices=29996171040 best=0 evals=1 steps=0 time=30.6 orbit k=3 m=4 f=2 mu=0.00
+re-evaluation of the best S: cost 0
+wrote runs/d14D12_psl_241_2143_orb3-4-2_s1.out
