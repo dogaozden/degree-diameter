@@ -72,13 +72,13 @@ def done_set():
             p = line.split('\t')
             if len(p) >= 8: s.add((p[0], p[1], p[2], p[3]))
     return s
-def run_job(D, k, js, n, l, secs):
+def run_job(D, k, js, n, l, secs, seed=1):
     base = write_base(k, js)
-    tag = f'{QG}/t_D{D}_k{k}_{"_".join(map(str, js))}_n{n}_l{l}'
+    tag = f'{QG}/t_D{D}_k{k}_{"_".join(map(str, js))}_n{n}_l{l}_s{seed}'
     env = dict(os.environ, THREADS='1')
     try:
         r = subprocess.run(['timeout', '105', 'nice', '-n', '10', LIFT, base + '.txt', base + '.perm', str(n), str(l), str(D),
-                            str(secs), '1', tag], env=env, capture_output=True, text=True, timeout=110)
+                            str(secs), str(seed), tag], env=env, capture_output=True, text=True, timeout=110)
         line = [x for x in r.stdout.split('\n') if x.startswith('RESULT')]
     except Exception as e:
         line = []
@@ -106,17 +106,18 @@ def main():
                         for l in ls: jobs.append((D, k, js, n, l, 6))
     else:  # deep: read screen results, take best (lowest cost) per (D,k) and re-anneal longer at larger n
         jobs = json.load(open(f'{HERE}/deep_jobs.json'))
-        jobs = [(j[0], j[1], j[2], j[3], j[4], j[5]) for j in jobs]
+        jobs = [tuple(j) for j in jobs]
     dn = done_set()
-    for (D, k, js, n, l, secs) in jobs:
+    for job in jobs:
+        D, k, js, n, l, secs = job[:6]; seed = job[6] if len(job) > 6 else 1
         key = (str(D), str(k), '_'.join(map(str, js)), f'{n}:{l}')
-        if key in dn: continue
+        if phase == 'screen' and key in dn: continue
         if time.time() - t0 > budget: break
-        out = run_job(D, k, js, n, l, secs)
+        out = run_job(D, k, js, n, l, secs, seed)
         if out is None: continue
         best, N, tag, ed = out
         with open(RES, 'a') as fh:
-            fh.write('\t'.join([str(D), str(k), '_'.join(map(str, js)), f'{n}:{l}', str(N), str(secs), str(best), tag]) + '\n')
+            fh.write('\t'.join([str(D), str(k), '_'.join(map(str, js)), f'{n}:{l}', str(N), f'{secs}s{seed}', str(best), tag]) + '\n')
         if best == 0: print('FOUND', D, k, js, n, l, N, ed, flush=True)
     print('batch done', round(time.time() - t0), 's', flush=True)
 if __name__ == "__main__": main()

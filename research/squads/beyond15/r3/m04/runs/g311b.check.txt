@@ -1,0 +1,6 @@
+file /home/user/degree-diameter/research/squads/beyond15/r3/m04/runs/g311b
+header: d=5 D=15 factors=1 [Z76507 x|_75438 Z311] x Z1  N=23793677 (file says 23793677)
+selftest: r^k = 1, associativity/identity/inverse on 20000 random triples, index round trip ok; 5 distinct generators
+from (e,A): reached A 23793677/23793677, B 23793677/23793677 within 15; eccentricity 15; levels 1 5 20 80 320 1280 5120 20480 81840 325524 1271802 4635104 13113252 18234489 9321322 576715 (37.5 s)
+from (e,B): reached A 23793677/23793677, B 23793677/23793677 within 15; eccentricity 15; levels 1 5 20 80 320 1280 5120 20480 81840 325524 1271786 4635104 13112456 18234489 9322134 576715 (36.4 s)
+VALID d=5 D=15 N=23793677 vertices=47587354 diameter=15 (73.9 s, 1 threads)
