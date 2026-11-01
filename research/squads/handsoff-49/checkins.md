@@ -61,3 +61,6 @@ what I changed.
   workers the rule "every command under 110 s, chain many short runs". w22 (wildcard, 56 min) finished: compound
   graphs (7 copies of H(3)) and mixed left/right bi-Cayley graphs behave like random graphs (81,619 and 34k far pairs);
   launched w26 (size benchmark for the report: checker and search speed at 170, 686, 4,970 vertices).
+- 03:11 final. Opus/Haiku 0.614/0.436 (Haiku 41.5%; 96 Opus vs 2,334 Haiku messages; 26 Haiku workers). No record: no
+  graph valid at n > 4,970 (w25 scanned all 1,408 edge files with n > 4,970: all INVALID). Finished since 02:29: w17,
+  w19, w20, w21, w23, w24, w25, w26. No search processes left. REPORT.md written; LOG.md has rounds 1 and 2.

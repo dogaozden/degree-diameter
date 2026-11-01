@@ -1,0 +1,52 @@
+line	time	worker	claimed_n	claimed_cost_or_far	claimed_valid	file	status	n	edges	deg	bipartite	diameter_score48	far_pairs_score48	score48_result	apsp_result	indep_diameter	indep_far_unordered	verdict
+1	21:59	w7	5200	30	no	/home/user/degree-diameter/research/squads/handsoff-49/w7/best_psl25_h3_C30_n5200.edges	checked	5200	10400	4-4	yes	10	39000	INVALID	INVALID	10	39000	n matches claim; indep check agrees with score48; not valid at d=4 D=9
+2	22:01	w6	4972	160	no	/home/user/degree-diameter/research/squads/handsoff-49/w6/tmp/surgsa4_best160.edges	checked	4972	9944	4-4	yes	10	160	INVALID	INVALID	10	160	n matches claim; indep check agrees with score48; not valid at d=4 D=9
+3	22:17	w8	4992	24	no	/home/user/degree-diameter/research/squads/handsoff-49/w8/runs/w8_best_n4992.edges	checked	4992	9984	4-4	yes	10	9360	INVALID	INVALID	10	9360	n matches claim; indep check agrees with score48; not valid at d=4 D=9
+4	22:18	w1	5040	6	no	/home/user/degree-diameter/research/squads/handsoff-49/w1/t/A7_near_cost6.edges	missing	-	-	-	-	-	-	-	-	-	-	file not found
+5	22:19	w5	4992	22	no	/home/user/degree-diameter/research/squads/handsoff-49/w5/out/t_mh3_3_832_s21.edges	checked	4992	9984	4-4	yes	10	9152	INVALID	INVALID	10	9152	n matches claim; indep check agrees with score48; not valid at d=4 D=9
+6	22:24	w3	5040	906	no	/home/user/degree-diameter/research/squads/handsoff-49/w3/runs/rep63_best.volt	not an edge list	-	-	-	-	-	-	-	-	-	-	needs its own rebuild; not checked here
+7	22:24	w3	3200	0	VALID	/home/user/degree-diameter/research/squads/handsoff-49/w3/runs/rep40b_c0.edges	checked	3200	6400	4-4	yes	9	0	VALID	VALID	9	0	n matches claim; indep check agrees with score48; VALID at d=4 D=9
+8	22:25	w8	4992	18	no	/home/user/degree-diameter/research/squads/handsoff-49/w8/runs/w8_best_n4992.edges	checked	4992	9984	4-4	yes	10	9360	INVALID	INVALID	10	9360	n matches claim; indep check agrees with score48; not valid at d=4 D=9
+9	22:25	w4	4976	156	no	/home/user/degree-diameter/research/squads/handsoff-49/w4/k44_z622_156.edges	checked	4976	9952	4-4	yes	10	48516	INVALID	INVALID	10	48516	n matches claim; indep check agrees with score48; not valid at d=4 D=9
+10	22:26	w1	5040	6	no	/home/user/degree-diameter/research/squads/handsoff-49/w1/t/A7_cost6.edges	checked	5040	10080	4-4	yes	10	7560	INVALID	INVALID	10	7560	n matches claim; indep check agrees with score48; not valid at d=4 D=9
+11	22:31	w5	4992	19	no	/home/user/degree-diameter/research/squads/handsoff-49/w5/out/t_mh3_3_104_8_31_s41.edges	checked	4992	9984	4-4	yes	10	7904	INVALID	INVALID	10	7904	n matches claim; indep check agrees with score48; not valid at d=4 D=9
+12	22:43	w5	4992	4	no	/home/user/degree-diameter/research/squads/handsoff-49/w5/out/t_mh2_1_1248_s31.edges	checked	4992	9984	4-4	yes	10	2496	INVALID	INVALID	10	2496	n matches claim; indep check agrees with score48; not valid at d=4 D=9
+13	22:47	w2	4992	4	no	/home/user/degree-diameter/research/squads/handsoff-49/w2/deep.tsv	not an edge list	-	-	-	-	-	-	-	-	-	-	needs its own rebuild; not checked here
+14	22:47	w2	5050	2	no	/home/user/degree-diameter/research/squads/handsoff-49/w2/deep.tsv	not an edge list	-	-	-	-	-	-	-	-	-	-	needs its own rebuild; not checked here
+15	22:57	w8	4992	16	no	/home/user/degree-diameter/research/squads/handsoff-49/w8/runs/w8_best_n4992.edges	checked	4992	9984	4-4	yes	10	9360	INVALID	INVALID	10	9360	n matches claim; indep check agrees with score48; not valid at d=4 D=9
+16	23:02	w1	5040	6	no	/home/user/degree-diameter/research/squads/handsoff-49/w1/res/exh_A7_class19.out	not an edge list	-	-	-	-	-	-	-	-	-	-	needs its own rebuild; not checked here
+17	23:05	w8	4992	15	no	/home/user/degree-diameter/research/squads/handsoff-49/w8/runs/w8_best_n4992.edges	checked	4992	9984	4-4	yes	10	9360	INVALID	INVALID	10	9360	n matches claim; indep check agrees with score48; not valid at d=4 D=9
+18	23:12	w4	4992	97	no	/home/user/degree-diameter/research/squads/handsoff-49/w4/r12m13.edges	checked	4992	9984	4-4	yes	10	20176	INVALID	INVALID	10	20176	n matches claim; indep check agrees with score48; not valid at d=4 D=9
+19	23:13	w9	5280	38	no	/home/user/degree-diameter/research/squads/handsoff-49/w9/runs/M11_h3_K0.edges	checked	5280	10560	4-4	yes	10	50160	INVALID	INVALID	10	50160	n matches claim; indep check agrees with score48; not valid at d=4 D=9
+20	23:17	w4	4992	80	no	/home/user/degree-diameter/research/squads/handsoff-49/w4/r12m13_80.edges	checked	4992	9984	4-4	yes	10	16640	INVALID	INVALID	10	16640	n matches claim; indep check agrees with score48; not valid at d=4 D=9
+21	23:20	w11	5050	2	no	/home/user/degree-diameter/research/squads/handsoff-49/w11/out/m101_k25_r5_c2.edges	checked	5050	10100	4-4	yes	10	2525	INVALID	INVALID	10	2525	n matches claim; indep check agrees with score48; not valid at d=4 D=9
+22	23:21	w11	4992	4	no	/home/user/degree-diameter/research/squads/handsoff-49/w11/out/m104_k24_r7_c4.edges	checked	4992	9984	4-4	yes	10	4992	INVALID	INVALID	10	4992	n matches claim; indep check agrees with score48; not valid at d=4 D=9
+23	23:21	w11	4992	4	no	/home/user/degree-diameter/research/squads/handsoff-49/w11/out/m208_k12_r3_c4.edges	checked	4992	9984	4-4	yes	10	4992	INVALID	INVALID	10	4992	n matches claim; indep check agrees with score48; not valid at d=4 D=9
+24	23:22	w9	5040	15	no	/home/user/degree-diameter/research/squads/handsoff-49/w9/runs/S7_h2_K2.edges	checked	5040	10080	4-4	yes	10	18900	INVALID	INVALID	10	18900	n matches claim; indep check agrees with score48; not valid at d=4 D=9
+25	23:23	w11	5040	6	no	-	no file	-	-	-	-	-	-	-	-	-	-	no file to check
+26	23:23	w11	5040	6	no	-	no file	-	-	-	-	-	-	-	-	-	-	no file to check
+27	23:24	w11	4992	6	no	-	no file	-	-	-	-	-	-	-	-	-	-	no file to check
+28	23:24	w11	5040	6	no	-	no file	-	-	-	-	-	-	-	-	-	-	no file to check
+29	23:26	w11	5040	8	no	-	no file	-	-	-	-	-	-	-	-	-	-	no file to check
+30	23:26	w11	4992	8	no	-	no file	-	-	-	-	-	-	-	-	-	-	no file to check
+31	23:27	w11	4992	8	no	-	no file	-	-	-	-	-	-	-	-	-	-	no file to check
+32	23:27	w5	4992	4	no	/home/user/degree-diameter/research/squads/handsoff-49/w5/out/f_39_32_31_s72.edges	checked	4992	9984	4-4	yes	10	2496	INVALID	INVALID	10	2496	n matches claim; indep check agrees with score48; not valid at d=4 D=9
+33	23:27	w11	4992	8	no	-	no file	-	-	-	-	-	-	-	-	-	-	no file to check
+34	23:27	w11	4992	9	no	-	no file	-	-	-	-	-	-	-	-	-	-	no file to check
+35	23:30	w4	4992	76	no	/home/user/degree-diameter/research/squads/handsoff-49/w4/r12m13_76.edges	checked	4992	9984	4-4	yes	10	15808	INVALID	INVALID	10	15808	n matches claim; indep check agrees with score48; not valid at d=4 D=9
+36	23:59	w12	5280	82	no	/home/user/degree-diameter/research/squads/handsoff-49/w12/runs/cmp_wtt.best.edges	checked	5280	10560	4-4	yes	10	54120	INVALID	INVALID	10	54120	n matches claim; indep check agrees with score48; not valid at d=4 D=9
+37	00:08	w12	5280	76	no	/home/user/degree-diameter/research/squads/handsoff-49/w12/runs/d1_mh2_1_s11.best.edges	checked	5280	10560	4-4	yes	10	50160	INVALID	INVALID	10	50160	n matches claim; indep check agrees with score48; not valid at d=4 D=9
+38	00:10	w15	2500	10	no	/home/user/degree-diameter/research/squads/handsoff-49/w15/tabs/hb_1.bin	not an edge list	-	-	-	-	-	-	-	-	-	-	needs its own rebuild; not checked here
+39	00:24	w13	4992	4	no	/home/user/degree-diameter/research/squads/handsoff-49/w13/best_haar_104_24_7_c4.edges	checked	4992	9984	4-4	yes	10	4992	INVALID	INVALID	10	4992	n matches claim; indep check agrees with score48; not valid at d=4 D=9
+40	00:25	w10	5040	8	no	/home/user/degree-diameter/research/squads/handsoff-49/w10/runs/S5xF21_cost8.edges	checked	5040	10080	4-4	yes	10	10080	INVALID	INVALID	10	10080	n matches claim; indep check agrees with score48; not valid at d=4 D=9
+41	00:31	w11	5060	10	no	-	no file	-	-	-	-	-	-	-	-	-	-	no file to check
+42	00:31	w11	5160	10	no	-	no file	-	-	-	-	-	-	-	-	-	-	no file to check
+43	00:35	w12	5280	64	no	/home/user/degree-diameter/research/squads/handsoff-49/w12/runs/d2_r21.best.edges	checked	5280	10560	4-4	yes	10	42240	INVALID	INVALID	10	42240	n matches claim; indep check agrees with score48; not valid at d=4 D=9
+44	00:36	w11	5120	12	no	-	no file	-	-	-	-	-	-	-	-	-	-	no file to check
+45	00:36	w11	5124	12	no	-	no file	-	-	-	-	-	-	-	-	-	-	no file to check
+46	00:47	w15	2500	4	no	/home/user/degree-diameter/research/squads/handsoff-49/w15/tabs/u4m_7.bin	not an edge list	-	-	-	-	-	-	-	-	-	-	needs its own rebuild; not checked here
+47	00:54	w14	5040	312	no	/home/user/degree-diameter/research/squads/handsoff-49/w14/runs/K_PSL34_h8_H3_K5_c0.edges	checked	5040	10080	4-4	yes	11	393120	INVALID	INVALID	11	393120	n matches claim; indep check agrees with score48; not valid at d=4 D=9
+48	01:15	w16	4970	0	VALID	/home/user/degree-diameter/research/squads/handsoff-49/w16/out/lift_q5.edges	checked	4970	9940	4-4	yes	9	0	VALID	VALID	9	0	n matches claim; indep check agrees with score48; VALID at d=4 D=9
+49	01:15	w16	5040	82	no	/home/user/degree-diameter/research/squads/handsoff-49/w16/out/wl_q5_meta_14_36_3.best.edges	checked	5040	10080	4-4	yes	10	20664	INVALID	INVALID	10	20664	n matches claim; indep check agrees with score48; not valid at d=4 D=9
+50	01:48	w23	5000	4 (exact floor)	no	/home/user/degree-diameter/research/squads/handsoff-49/w23/runs_reps1_7.txt	not an edge list	-	-	-	-	-	-	-	-	-	-	needs its own rebuild; not checked here
+51	01:50	w17	5040	15120	no	/home/user/degree-diameter/research/squads/handsoff-49/w17/runs/A7_r4444_8_deep.edges	checked	5040	10080	4-4	yes	10	15120	INVALID	INVALID	10	15120	n matches claim; indep check agrees with score48; not valid at d=4 D=9

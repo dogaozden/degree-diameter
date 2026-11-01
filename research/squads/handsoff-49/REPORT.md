@@ -30,7 +30,19 @@ summary written by a Haiku: `w25/summary.md`. Check-ins: `checkins.md`. Cards: `
 
 ## Spend (tools/session_usage.py, price-weighted budget units)
 
-[FINAL USAGE TABLE]
+At 03:11Z, after the last worker stopped (`python3 tools/session_usage.py --since 2026-10-31T21:36:27Z`, log in
+`research/squads/usage/handsoff-49.jsonl`). About 10 minutes of Opus reading before the start stamp are not counted;
+writing this report and the last commits add about 0.02 Opus.
+
+| model | messages | output tokens | cache-read tokens | cache-write tokens | budget units | share |
+|---|---|---|---|---|---|---|
+| Opus (coordinator) | 96 | 147,140 | 20.3 M | 0.24 M | 0.614 | 58.5% |
+| Haiku (26 workers) | 2,334 | 3,218,620 | 403.1 M | 24.6 M | 0.436 | 41.5% |
+| total | | | | | 1.049 | |
+
+So the split ended at about **58% Opus / 42% Haiku**, against the 50/50 target and the Opus-led squads' 97% / 3%
+(research/squads/exp2/exp2-squad.md). The Haikus wrote 22 times as many output tokens as the coordinator and read 20
+times as much context.
 
 Over time (from checkins.md):
 
@@ -44,8 +56,8 @@ Over time (from checkins.md):
 | 00:25 | 0.343 | 0.245 | 42% | |
 | 01:15 | 0.410 | 0.298 | 42% | |
 | 02:03 | 0.472 | 0.362 | 43% | |
-| 02:18 | 0.524 | 0.391 | 43% | |
-| [end] | | | | |
+| 02:18 | 0.524 | 0.391 | 43% | 110 s rule sent at 02:10 |
+| 03:11 | 0.614 | 0.436 | 42% | end; report writing |
 
 The split stayed at about 42% Haiku for the whole run. Two things held it there:
 - **Opus cost per check-in is fixed by context length.** Every Opus tool call re-reads the whole conversation (150-250k
@@ -62,7 +74,7 @@ The split stayed at about 42% Haiku for the whole run. Two things held it there:
 
 26 Haiku workers (w1-w26), each launched with one card and a 2-hour autonomous mandate (later ones until about 02:55Z),
 plus 13 short coordinator messages to running workers (w6 resumed twice, w4 redirected, w10 and w11 nudged, the 110 s rule
-to 8 workers). Median worker length about 95 minutes (range 14 minutes for w6's first hand-back to 129 minutes). Round 1:
+to 8 workers). Median worker length about 95 minutes (range 14 minutes for w26, the benchmark, to 129 minutes for w4). Round 1:
 w1-w8 (21:42Z). Round 2 was a rolling queue: each finished worker was replaced within minutes by a card built from what
 the finished workers had learned (w9-w26).
 
@@ -117,8 +129,8 @@ Round 2 (cards built from round 1):
 - **w20 certificate for metacyclic orders 2,486..2,520 (partial).**
   - Bound: an abelian Haar graph with S = {0, s1, s2, s3} reaches at most 309 values on one side within distance 8
     (brute-force count). So a metacyclic group with |G/G'| = k gcd(r-1, m) > 309 has no Haar graph of diameter 9.
-  - After the bound, 901 classes remain (509 split, 392 non-split). 69 are certified with no cost-0 set (46 by w20,
-    23 from w11), and 832 are left, resumable with w20/run21.sh.
+  - After the bound, 901 classes remain (509 split, 392 non-split). 69 are certified with no cost-0 set: 46 by w20 (no
+    set of cost <= 1, so minimum >= 2) and 23 already exact in w11. 832 are left, resumable with w20/run21.sh.
   - So the full certificate for 2,486..2,520 is not finished.
 - **w21 exhaustive minima for the best non-metacyclic groups.**
   - Exact minimum 8 for S_5 x F_21 (all 34 class representatives) and for PSL(2,8) x Z_5 (all 44); both match their
@@ -136,6 +148,12 @@ Round 2 (cards built from round 1):
   runs (about 3.5 s each). With that ansatz, 113 groups of order 498-530 (5+5) gave best 50 and 41 groups of order 356-380
   (7+7) best 119: no zeros.
 - **w25 final audit and summary table** (w25/summary.md).
+  - Re-checked all 57 scoreboard lines with score48, apsp and its own bitset reach-set code.
+  - Scanned every edge file in the squad: all 1,408 files with n > 4,970 are INVALID (1,140 by diameter, 268
+    disconnected).
+  - Re-ran 26 of w11's certified lower bounds and w23's tallies, which all hold, and listed six bookkeeping slips (none
+    affects a result).
+  - Its Write of summary.md was refused for a subagent, so I saved its reply as that file.
 - **w26 size benchmark** (w26/bench.md), used below.
 
 ## My view: hands-off versus an Opus-led squad
@@ -143,8 +161,8 @@ Round 2 (cards built from round 1):
 **On the result, no difference: neither finds a record here.** The big Opus-led squad on Oct 26 (48 Haikus per round,
 research/squads/big-squad-4-8.md) stopped at the same walls: cost 4 at 4,992 and the proven cost 2 at 5,050. This squad
 added certificates and structure, not a better graph:
-- the exact minima of 79 metacyclic groups (w11, w20), A_7, S_5 x F_21, PSL(2,8) x Z_5, an order-2,500 group and a
-  dozen bi-coset classes;
+- the exact minima of 33 metacyclic groups (w11), A_7, S_5 x F_21, PSL(2,8) x Z_5, an order-2,500 group and a dozen
+  bi-coset classes, plus 46 more metacyclic groups with no Haar set of cost <= 1 (w20);
 - a D = 9 abelian-quotient bound (309);
 - the H(3) impossibility proof;
 - the (S^-1 S)^4 = G description of the cost-4 wall, and a different wall at order 2,500;

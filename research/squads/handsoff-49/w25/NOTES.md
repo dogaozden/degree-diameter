@@ -103,3 +103,19 @@ raw/ (score48 and apsp output per edge file), summary.md (part 2).
 - 02:52 w6 claim re-checked: deleting one edge of seeds/valid4970.edges (edge (0,2485)) gives far unordered 179 (diameter 11), as w6 says.
 - 02:53 meta 25 100 2 with LIMIT 0 (cost-0 existence, N = 2500, 129 reps, resumed in three segments): DONE, no set of cost 0 (no edge file). Consistent with the LIMIT 1 result.
 - 02:54 (aborted, not a result): exh3 meta 105 24 7 failed with 'no inverse' because r=7 is not a unit with r^24 = 1 mod 105; no conclusion drawn.
+- 02:55 meta 35 72 4 LIMIT 3 (143 reps, redundant with LIMIT 5): DONE, no set of cost <= 3.
+- 02:56 LOC recount (.c + .py, wc -l, excluding binaries): w1 1785 (1214 without the 571 lines of verbatim tools copies), w2 103,
+  w3 1266, w4 2386, w5 617 (431 without flift.c copy), w6 772, w7 1128, w8 623, w9 942, w10 344, w11 834, w12 672, w13 554,
+  w14 1170, w15 829, w16 830, w17 837, w18 1804, w19 1103, w20 762, w21 168, w22 385, w23 1116, w24 855, w25 189.
+- 02:57 notes read: w22 NOTES (01:23 to 02:55): no record; compound 5,096 far 81,619; mixed 4,992 far 25,776; semidirect
+  p=17 k=9 (n 5,202) far 36,414 (the file w25 checked); dead ends listed. w24 NOTES (01:31 to 02:55): plain SA lo.c 0 of 3
+  runs reach cost 0 (best 70 to 78); Z_5-symmetric sym.c 13 of 40 reach cost 0 (all VALID n = 4,970). w21 NOTES: A5 x S3 x Z7
+  reps 0..55 done, first cost 8 at rep 55, no cost below 8 in reps 0..55 (partial). w23 NOTES: cap-10 run on mz5_6 planned to decide 9 vs 10.
+  w17 NOTES (to 02:43): A7 (4,4,4,4) floors at 15,120 far pairs; extra seeds 17,955 to 20,160.
+- 02:57 w21 exact.tsv: PSL(2,8) x Z5 (order 2520, centre 5) EXACT minimum 8 over all 44 non-identity class reps (20 sets of cost 8, none below). S5xF21 exact 8. u4m_7 partial (6 of 123 reps, no cost below 4 there). A5xS3xZ7 partial (reps 0..55 of 104; 8 first seen at reps 53..55; not certified).
+- 02:56 full re-run of the independent check on all 57 scoreboard lines (edge files as they are now): no line changed compared with the 02:01 run; VALID lines: 7, 48, 52, 56 (none above 4970).
+- 02:58 part 2 started. m1249 re-run again killed (first rep > 100 s), not verified by w25.
+- 02:59 extra LIMIT-5 segment for 35 72 3 (redundant, stopped; LIMIT 9 result stands).
+- 03:00 part 2 status: scoreboard 57 data lines (no change since 02:55), audit2 covers lines 52-57, scan 1,532 edge files (1,408 checked, all INVALID; 124 skipped n <= 4970). Final report via SubagentHandback at about 03:05 (summary.md write refused by the tool).
+w20 row m1249 reports DONE in 142 s (its own log); w25 re-run did not finish within 100-s calls.
+- 03:03 final state: scoreboard 57 data lines, all re-checked (w25/indep_all.tsv, unchanged since 02:01 for lines 1-51); audit2.tsv lines 52-57 (no VALID above 4970); scan_edges.tsv: 1,532 .edges files, 1,408 INVALID for n 4972..8160, 124 skipped (n <= 4970). Report handed back at 03:04.
