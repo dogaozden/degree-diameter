@@ -84,3 +84,13 @@ n/p >= 40 was bad (central elements). This is why the job's D = 11 values use SL
   with large n). Every random S containing a generator of projective order 2 cost above 1e4.
 - In practice even D was easy at these sizes: (11,12) solved at mu 8.7 in 85 evaluations and at mu 13.3 in 17
   (PSL(2,223) x Z1009), while the odd-D cells stall near mu 7-10.
+
+## Near misses of the director's pushes (examples)
+
+- (12,11) SL(2,193) x Z211, f = 0, mu 10.3: cost 2 = -I on both sides (item 3; n = 211 gives 422 central elements).
+- (11,11) SL(2,443) x Z7, mu 7.2: cost 2 = two torus elements a I + b g (alpha-fixed).
+- (11,11) SL(2,853) x Z1, mu 10.4: cost 2 = mat(406,240,613,646) and its inverse mat(646,613,240,406), both in the
+  torus of g and on side A (items 1 and 4: an inverse pair of alpha-fixed elements; with n = 1 the torus, about p = 853
+  elements, is the main special term: 853 exp(-lambda/3) ~ 2 at lambda = 17.9).
+Balancing the torus term (~p exp(-lambda/3)) against the central term (~2n exp(-lambda/h)) at N = p^3 n fixed gives
+n ~ 7-13 at the D = 11 cells, which is where the solved (11,11), (13,11), (14,11) groups sit (n = 19, 19, 7).
