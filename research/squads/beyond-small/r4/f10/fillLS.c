@@ -70,7 +70,7 @@ static int nfail(const uint64_t *D) {
     return nf;
 }
 /* state: 4 line indices (into L) + one extra vertex (or -1) */
-static int st_ch[4], st_ex;
+static int st_ch[4], st_ex; static double W_UNC = 30.0;
 static double evalst(int *ch, int ex, int *nf_out, int *unc_out) {
     uint64_t c[W]; memset(c, 0, sizeof c);
     int N[17], nn = 0;
@@ -83,13 +83,13 @@ static double evalst(int *ch, int ex, int *nf_out, int *unc_out) {
     for (int a = 0; a < nn; a++) { uint64_t *dd = d2 + (size_t)N[a] * W; for (int w = 0; w < W; w++) dN[w] |= dd[w]; }
     int nf = nfail(dN);
     *nf_out = nf; *unc_out = unc;
-    return nf + unc / 30.0;
+    return nf + unc / W_UNC;
 }
 int main(int argc, char **argv) {
     if (argc < 7) { fprintf(stderr, "usage: fillLS EDGES ORBFILE SINGLES_IN|- SINGLES_OUT SECS SEED [ITERS=3000]\n"); return 2; }
     double secs = atof(argv[5]);
     rs ^= (unsigned long long)atoll(argv[6]) * 0x9E3779B97F4A7C15ULL; for (int i = 0; i < 10; i++) rnd();
-    long ITERS = argc > 7 ? atol(argv[7]) : 3000;
+    long ITERS = argc > 7 ? atol(argv[7]) : 3000; if (argc > 8) W_UNC = atof(argv[8]);
     uint64_t *cov = malloc(8 * W);
     FILE *f = fopen(argv[1], "r"); long n, u, v; if (!f || fscanf(f, "%ld", &n) != 1 || n != 2 * H) return 3;
     int da[H] = {0}, db[H] = {0};
@@ -138,7 +138,7 @@ int main(int argc, char **argv) {
     fprintf(stderr, "setup %.2fs: %d lines, %d orbits, %d singles loaded\n", now() - t0, nL, norb, nsg);
     int nsg0 = nsg;
     uint64_t full[W]; for (int w = 0; w < W; w++) full[w] = ~0ULL;
-    long tries = 0, found = 0, rounds = 0; int bestnf = 1 << 30; long lsi = 0;
+    long tries = 0, found = 0, rounds = 0; int bestnf = 1 << 30; long lsi = 0; int bestcov = 1 << 30;
     build_freelist();
     fprintf(stderr, "free lines: %d\n", nfree);
     while (now() - t0 < secs && nfree >= 4) {
@@ -160,6 +160,7 @@ int main(int argc, char **argv) {
             if (dl <= 0 || (double)(rnd() % 1000000) / 1e6 < exp(-dl / T)) {
                 memcpy(ch, nch, sizeof ch); ex = nex; cur = c2; nf = nnf; unc = nunc;
                 if (nf < bestnf) bestnf = nf;
+                if (unc == 0 && nf < bestcov) { bestcov = nf; }
                 if (nf == 0 && unc == 0) { success = 1; break; }
             }
         }
@@ -187,6 +188,7 @@ int main(int argc, char **argv) {
     FILE *og = fopen(argv[4], "w");
     for (int s = 0; s < nsg; s++) { for (int k = 0; k < sgSz[s]; k++) fprintf(og, "%d ", sgN[s][k]); fprintf(og, "\n"); }
     fclose(og);
+    printf("min nf among covered states %d\n", bestcov);
     printf("singles %d (loaded %d, new %d); cover failures %d; restarts %ld, successes %ld, best nf %d, free lines left %d\n",
            nsg, nsg0, nsg - nsg0, bad, tries, found, bestnf, nfree);
     return 0;
