@@ -6,3 +6,4 @@ build: gcc -O3 -o haarcheck_psl research/structured/tools/haarcheck_psl.c   (mas
 
 ################ haarcheck_psl (reference checker, one BFS from (e,B) only, 6 bitsets of N bits): /usr/bin/time -v ./haarcheck_psl research/frontier/sols/d13D12_psl_181_5059_orb3-4-1_s1.txt B   (stdout and time -v stderr, complete; output is pending)
 # progress: at 18:16:02 UTC, elapsed 43 min; still running (single thread, RSS 10729.6 MB)
+# progress: at 18:51:24 UTC, elapsed 78 min; still running (single thread, RSS 10729.6 MB)
