@@ -49,3 +49,24 @@ nice 0, equal to the director's whole pipeline); the director raised the pipelin
 `echo -10 > /proc/<pid>/autogroup` and lowered the cards' groups to 15.
 Kept: haarex6 for the sweep; no family lead worth more CPU (the 704 lift is an isolated local minimum, the new
 families are far). The order-384 sweep continues; orders 401-450 started on the spare core.
+
+## 2026-11-01/02, job deep-65b (Opus cloud session, branch claude/bipartite-d6-d5-depth-bkg1ku), goal: (6,5) > 684
+
+Opus derived a closed form for lifts of the 2+2 base [[1,5],[5,1]] (the degree-10 Haar graph H(G, E1 u E2) with every
+vertex split into an edge; six covering conditions on two 5-sets) and wrote an exact search (deep-65b/tools/split15.c,
+validated against BFS and brute force). Rounds in research/squads/deep-65b/round1, round2.
+
+### Round 1 (23:08-00:00 UTC, 6 cards, research/squads/deep-65b/round1/)
+Cards: c1 tabu over (E1, E2) to rank the groups of orders 172-200 for the split family · c2 word-based tabu for the
+other 2+2 bases, calibrated on the 684 record · c3 hub family k = 5 exact (hubk.c, deep-65's open case) · c4 hub family
+k = 3 on 258_3..5 exact · c5 wildcard "path-split" Haar graphs (3+3 lifts) · c6 open wildcard.
+Best per card: c1 **cost 0 at 704 vertices: SmallGroup(176,23) = C11 x M16** (seed 3 of 5, 9 s runs; ranking of 160
+groups, next best 174_1 2, 176_17 2) · c2 general 9-voltage tabu does not re-find 684; the mirrored (Haar-type)
+subfamily re-finds it in 6/8 seeds; screen 172-180: best 10 (720) · c3 (pending at the time of writing) · c4 258_3
+0.09%, 258_4 12%, 258_5 6% of the leaves, no state passes the hub-level conditions so far, full runs 2-4 h (258_4/5) and
+~170 h (258_3) · c5 path-split best 1755 bad pairs at 702 (C13:C9) · c6 4+4 lifts best 1505 bad pairs at 688.
+Director's checks: rebuilt c1's graph from an explicit formula of C11 x M16 (no GAP), apsp VALID at D = 5 and
+INVALID at D = 4, score65 bad 0 (research/squads/deep-65b/records/). The exact search split15 on 176_23 re-found the
+same solution class (end-to-end check). The exact search had closed 176_17 (best 2) before the hit.
+Kept for round 2: c1's tabu, spread over orders 178-200 with more seeds (one zero came from 1 of 5 seeds), and a faster
+tabu.
