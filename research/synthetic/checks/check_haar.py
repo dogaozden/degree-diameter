@@ -931,7 +931,7 @@ VALUES = [
     (7, 13, 312227760, 'H', O + 'd7D13_sl_229_13_orb3-2-1_e10.txt', r'\mathrm{SL}(2,229)\times\mathbb{Z}_{13}', '1+2.3', "G^ S'", None),
     (8, 13, 1739514000, 'H', O + 'd8D13_sl_499_7_orb3-2-2_s2.txt', r'\mathrm{SL}(2,499)\times\mathbb{Z}_{7}', '2+2.3', "G^ S'", None),
     (9, 13, 7924036032, 'H', O + 'd9D13_sl_593_19_orb3-3-0_s6.txt', r'\mathrm{SL}(2,593)\times\mathbb{Z}_{19}', '0+3.3', "G^ S'", None),
-    (10, 13, 19980294768, 'H', O + 'd10D13_psl_503_157_orb3-3-1_s1.txt', r'\mathrm{PSL}(2,503)\times\mathbb{Z}_{157}', '1+3.3', "G^ P'", None),
+    (10, 13, 19980294768, 'H', O + 'd10D13_psl_503_157_orb3-3-1_s1.txt', r'\mathrm{PSL}(2,503)\times\mathbb{Z}_{157}', '1+3.3', 'G^', None),
     (3, 14, 5706, 'L', GR + 'd3D14_n5706_lift_pappus_Z317.edges.gz', r'\text{Pappus}, \mathbb{Z}_{317}', 'lift', 'A^ A H', None),
     (4, 14, 497042, 'M', O + 'd4D14_meta_2731_91_i04.txt', r'\mathbb{Z}_{2731}\rtimes_{2400}\mathbb{Z}_{91}', 'random', 'A M^ H', None),
     (5, 14, 12795166, 'M', O + 'd5D14_meta_148781_43_i07.txt', r'\mathbb{Z}_{148781}\rtimes_{85175}\mathbb{Z}_{43}', 'random', 'M^ H', None),

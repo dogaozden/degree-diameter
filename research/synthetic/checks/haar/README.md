@@ -18,9 +18,11 @@ Run on 2026-11-01 in the cloud container of this note's session (4 cores, 15 GB)
 `master` at 9a97f7a5, built with `cc -O3`:
 
 - `*.haarcheck_sl.txt`: `research/frontier/haarcheck_sl.c` (the SL files);
-- `*.haarcheck_psl.txt`: `research/structured/tools/haarcheck_psl.c` (the PSL files);
-- `d10D13_….haarcheck_psl.A.txt` and `.B.txt`: the same PSL checker with the argument `A` or `B`, one search each
-  (from the point e and from the line e); the full run was killed for lack of memory while other checks ran.
+- `*.haarcheck_psl.txt`: `research/structured/tools/haarcheck_psl.c` (the PSL files).
+
+No second check of `d10D13_psl_503_157_orb3-3-1_s1.txt` was run: a full run was killed for lack of memory after
+25 s while the other checks ran (the PSL checker used 4.1 GB at N = 5.7e9, so about 7 GB at N = 1.0e10), and two
+half runs one after the other would have taken about two more hours.
 
 The first line of each log names both possible sources; the file name says which one ran. Each log records the
 sha256 of the solution file it checked, which is the sha256 of the copy in this folder.
