@@ -29,14 +29,14 @@ N in 2,486..2,520 (split or non-split) and S, |S| = 4, with H(G,S) of diameter 9
   only the first few dozen. The rest are a clear list for the coordinator: rows of cand_ordered.tsv not in certificate.tsv.
 - Order: w2 screen cost first (low cost = most dangerous), then dk.
 
-## 4. Results so far (02:46)
-- certificate.tsv: 62 candidate groups certified, no cost-0 set in any of them: 39 by my exhaustive pass
+## 4. Results so far (02:51, final)
+- certificate.tsv: 69 candidate groups certified, no cost-0 set in any of them: 46 by my exhaustive pass
   (DONE, no_cost0 = yes), 23 already exact in w11's certified.tsv (covered_by_w11). Hits (cost 0): none.
 - Calibration: exh4 (exh3 + explicit automorphism list) reproduces cost 0 on meta 71 35 49 (the valid 4,970 graph,
   same 1,560,685 evaluations as w11) and min 4 on 104 24 7.
 - Non-split groups now use the full Aut(G) list (aut_gen.py, capped at 3,000 automorphisms; any subset is a valid
   symmetry reduction). About 15-80 s per group instead of 100-250 s.
-- Remaining: about 840 of the 901 candidate classes are not certified yet (rows of cand_run.tsv not in certificate.tsv).
+- Remaining: about 832 of the 901 candidate classes are not certified yet (rows of cand_run.tsv not in certificate.tsv).
   The next one is found by the first row of cand_run.tsv that has no certificate.tsv row.
 
 ## 4b. Notes on the tools

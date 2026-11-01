@@ -21,7 +21,7 @@ Best verified near misses (n > 4,970):
 | 4,992 | cost 4 (4,992 far pairs) | Haar, Z_104 x\|_7 Z_24 and Z_208 x\|_3 Z_12; 2+2 lift over meta 13 96 5 / 39 32 31 | w2, w5, w11, w13 | yes for the two Haar groups | w13/best_haar_104_24_7_c4.edges, w5/out/t_mh2_1_1248_s31.edges |
 | 5,000 | cost 4 (5,000 far pairs) | Haar, P x\| Z_4 of order 2,500 (P maximal class, exponent 5, order 625) | w15, w23 | yes (14 Aut-orbit reps, all pairs) | w23/NOTES.md (table in w15/tabs/u4m_7.bin) |
 | 5,040 | cost 6 (7,560 far pairs) | Haar, A_7 | w1 | yes (exhaustive) | w1/t/A7_cost6.edges |
-| 5,040 | cost 8 | Haar, S_5 x F_21 (centreless) | w10, w21 | [w21] | w10/runs/S5xF21_cost8.edges |
+| 5,040 | cost 8 | Haar, S_5 x F_21 (centreless) | w10, w21 | yes (all 34 class reps) | w10/runs/S5xF21_cost8.edges |
 | 5,040 | cost 15 (18,900 far pairs) | bi-coset graph of S_7, H an involution | w9 | yes | w9/runs/S7_h2_K2_full.edges |
 | 5,200 | cost 30 | bi-coset graph of PSL(2,25), \|H\| = 3 | w7 | yes | w7/best_psl25_h3_C30_n5200.edges |
 
@@ -114,8 +114,17 @@ Round 2 (cards built from round 1):
 - **w19 refinement ladder.** Viewed the cost-2 and cost-4 Haar optima as 3+3..8+8 lifts over index-k subgroups and searched
   the larger voltage space from them (annealing, tabu, far-pair moves, lookahead; about 40 runs). Every run stayed at its
   Haar start: one voltage change costs +30 to +90, so the Haar optima are isolated.
-- **w20 complete certificate for metacyclic orders 2,486..2,520.** [w20]
-- **w21 exhaustive minima for the best non-metacyclic groups.** [w21]
+- **w20 certificate for metacyclic orders 2,486..2,520 (partial).**
+  - Bound: an abelian Haar graph with S = {0, s1, s2, s3} reaches at most 309 values on one side within distance 8
+    (brute-force count). So a metacyclic group with |G/G'| = k gcd(r-1, m) > 309 has no Haar graph of diameter 9.
+  - After the bound, 901 classes remain (509 split, 392 non-split). 69 are certified with no cost-0 set (46 by w20,
+    23 from w11), and 832 are left, resumable with w20/run21.sh.
+  - So the full certificate for 2,486..2,520 is not finished.
+- **w21 exhaustive minima for the best non-metacyclic groups.**
+  - Exact minimum 8 for S_5 x F_21 (all 34 class representatives) and for PSL(2,8) x Z_5 (all 44); both match their
+    annealing floors.
+  - Not finished: A_5 x S_3 x Z_7 (56 of 104 representatives, minimum 8 so far) and w15's order-2,500 group (6 of 123;
+    w23 finished that one by another reduction: exact 4).
 - **w22 wildcard.** Compound graphs (7 copies of H(3) minus a matching, 5,096: 81,619 far pairs) and mixed left/right
   bi-Cayley graphs behave like random graphs. Counting: same-side pairs get about 3.96 even walks of length <= 8 per
   target at this size, so random-like families miss about 2% of pairs.
@@ -134,7 +143,9 @@ Round 2 (cards built from round 1):
 **On the result, no difference: neither finds a record here.** The big Opus-led squad on Oct 26 (48 Haikus per round,
 research/squads/big-squad-4-8.md) stopped at the same walls: cost 4 at 4,992 and the proven cost 2 at 5,050. This squad
 added certificates and structure, not a better graph:
-- the exact minima of 33 metacyclic groups, A_7, an order-2,500 group and a dozen bi-coset classes;
+- the exact minima of 79 metacyclic groups (w11, w20), A_7, S_5 x F_21, PSL(2,8) x Z_5, an order-2,500 group and a
+  dozen bi-coset classes;
+- a D = 9 abelian-quotient bound (309);
 - the H(3) impossibility proof;
 - the (S^-1 S)^4 = G description of the cost-4 wall, and a different wall at order 2,500;
 - the isolation of the Haar optima in every larger k+k voltage space;

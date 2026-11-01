@@ -1,6 +1,6 @@
 # w21 NOTES (handsoff-49): exhaustive minima for the best non-metacyclic groups
 
-Start: 2026-11-01 01:25 UTC. Stop: 02:55 UTC. Last update: 02:01 UTC.
+Start: 2026-11-01 01:25 UTC. Stop: 02:55 UTC. Last update: 02:51 UTC.
 
 ## Method (exh2.c, in this folder)
 - Same cost as w1's exh.c: cost = uncovered(B4(S^-1 S)) + uncovered(B4(S S^-1)), zero iff diameter <= 9.
@@ -25,10 +25,12 @@ Start: 2026-11-01 01:25 UTC. Stop: 02:55 UTC. Last update: 02:01 UTC.
 ## Final status (02:42 UTC)
 - S5 x F21: exact minimum **8** (all 34 class reps, no zero). 
 - PSL(2,8) x Z5: exact minimum **8** (all 44 class reps, no zero, 20 sets at cost 8). Table: PSL28xZ5.bin (mk_psl28z5.py).
-- A5 x S3 x Z7: 35 of 104 class reps (0..34) done, no cost below 9 there; the annealing 8 is in a later rep. Not finished.
+- A5 x S3 x Z7: 53 of 104 class reps (0..52) done, no cost below 9 there; the annealing 8 is in a later rep. Not finished.
 - u4m_7 (order 2500, centre 10): 6 of 123 reps, no cost below 4 there. Not finished: about 45 s per class, so
   the full scan needs roughly 90 minutes.
 - Why it is slow: central elements act trivially, so the centraliser reduction only divides by |C/Z(G)|. Groups with
   a big centre cost about |Z(G)| times more.
 - Next idea: reduce the r-classes with the full Aut(G) (not only inner), and use right/left translation of S to
   normalise e (factor 4). Both are needed to finish u4m_7 and A5 x S3 x Z7 inside one squad session.
+- A5 x S3 x Z7 (final, 02:52): reps 0..55 done; cost 8 first appears at rep 55 (elem 105, S = {0,105,176,689}); no cost
+  below 8 in reps 0..55. Reps 56..103 not run. Log: a5_*.err / a5_*.out.

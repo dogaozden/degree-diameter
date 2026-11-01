@@ -70,3 +70,30 @@ Cards (best n / cost; cost = the worker's own count, far pairs in brackets where
 No valid graph above 4,970. Kept: small centre + small abelianization (round-2 cards w10, w15, w12), bi-coset graphs of
 perfect groups (w9, w14), exhaustive certification (w11), the cost-4 wall at 4,992 (w13), quotients of the 4,970 graph
 (w16). Round 2 runs as a rolling queue: each finished worker is replaced at once by a new card.
+
+## 2026-10-31/11-01, handsoff-49, round 2 (rolling queue, 23:03 to 03:10 UTC)
+
+Same session. Each finished worker was replaced within minutes by a card built from round-1 results (18 Haikus, w9-w26;
+cards at the bottom of research/squads/handsoff-49/cards.md). Best per card (n / cost; "exact" = exhaustive):
+- w9 bi-coset, larger stabilizers: S_7, H an involution, 5,040 / 15 exact; M_11 38, PSL(2,25) 30, A_8 168.
+- w10 centreless, small abelianization: S_5 x F_21 5,040 / 8 (exact by w21); others 22-2,296.
+- w11 exhaustive certification: 33 metacyclic groups exact (2, 4, 4, 6..10), no cost 0.
+- w12 lifts over simple groups, tabu: PGL(2,11) 2+2 5,280 / 64.
+- w13 the cost-4 wall at 4,992: central involution far in every state with cost <= 6; workarounds 8-72.
+- w14 bi-coset, large simple groups: PSL(3,4) 5,040 / 312 exact; others worse.
+- w15 order 2,500 = P x| Z_4: 5,000 / 4 (exact by w23; wall = an inverse pair of order-20 elements).
+- w16 quotients of the 4,970 graph (5+5 over 497, 7+7 over 355, 35+35 over Z_71): rebuild it, but plain annealing cannot
+  re-find cost 0 on the 5+5 base; re-lifts over bigger groups 82.
+- w17 mixed-orbit graphs (regular on A, stabilizers 2/4 on B): A_7 5,040, 15,120 far pairs (worse than Haar).
+- w18 auditor: 51 lines re-scored, no VALID above 4,970, 3 bookkeeping slips, certified negatives re-run and matched.
+- w19 refinement ladder (Haar optima as k+k lifts over index-k subgroups): every search stays at the Haar start.
+- w20 D = 9 abelian-quotient bound (309) and 46 more metacyclic groups certified (832 classes of 2,486..2,520 left).
+- w21 exact minima: S_5 x F_21 8, PSL(2,8) x Z_5 8.
+- w22 wildcard: compound graphs and mixed bi-Cayley graphs behave like random graphs (34k-82k far pairs).
+- w23 order 2,500 group: exact minimum 4.
+- w24 optimizer benchmark: a Z_5-symmetric ansatz re-finds the known 5+5 cost-0 lift in 13 of 40 runs (plain: 0 of 3);
+  scans of 154 groups with it: best 50, no zeros.
+- w25 final audit and summary table; w26 size benchmark (apsp 39 ms at 4,970 vs 3-4 ms at 170/686; 12.8k vs 0.8M Haar
+  evaluations per second).
+No valid graph above 4,970. Kept for later: the symmetric-ansatz optimizer (w24) on lifts of 5+5 and 7+7 bases, the
+unfinished metacyclic certificate (w20/run21.sh). Report: research/squads/handsoff-49/REPORT.md.
