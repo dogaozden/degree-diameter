@@ -1,0 +1,13 @@
+Coordinator checks on the Mac mini, 2026-11-01 (PST).
+
+== d3D13_n3200_lift_gp10_Z160 (beyond-d13, branch claude/beyond-d13-search-z35z61): edge list sha256 1657d9cee993a91429bd1ff44874c70aa964dce79a0c2a7130ceed6d8cfa92b9
+n=3200 edges=4800 degree min=3 max=3 bipartite=yes diameter=13 RESULT VALID d=3 D=13 n=3200 
+at D = 12: RESULT INVALID
+
+== d3D14_n5600_lift_gp10_Z280 (beyond-d13, branch claude/beyond-d13-search-z35z61): edge list sha256 e94b27ddd157b330f915e6b51eb71acc7a1858e32b5b6ffcf8769f959bbc1ebb
+n=5600 edges=8400 degree min=3 max=3 bipartite=yes diameter=14 RESULT VALID d=3 D=14 n=5600 
+at D = 13: RESULT INVALID
+
+== d4D13_n186314_meta4903_19_230 (beyond-d13, branch claude/beyond-d13-search-z35z61): edge list sha256 95ec2dc4296106acd2a1e4a170ee648f78cc7f0fda09f713d7c508830b6c1c28
+n=186314 edges=372628 degree min=4 max=4 bipartite=yes diameter=13 RESULT VALID d=4 D=13 n=186314 
+at D = 12: RESULT INVALID
