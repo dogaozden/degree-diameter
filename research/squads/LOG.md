@@ -88,3 +88,36 @@ also the first value for (10,14) by monotonicity in Δ.
 Director's reading: cards stop after 6-16 minutes. Round 2 keeps the lift method at Δ = 3 (six cards over base size
 and group family), takes it to Δ = 4 (d08), pushes the round-1 winners at (4,14), (5,14), (6,14), (7,14) to larger N,
 and drops cyclic lifts, larger-girth bases, and the orbit forms "6 1 0", "2 3 0", "3 1 3".
+
+Round 1 late cards (after the entry above was written): **c08 (5,14) Z152393 x|_149882 Z43, 13,105,798 VALID**
+(build_haar2; hmeta, 4 s), near miss Z153511 x| Z43 (6.6M) cost 1; c10 (5,14) (Z337 x| Z7) x (Z307 x| Z9) 13,035,834
+(below c08); c07 (4,14) products of Frobenius groups no better than single metacyclic groups (cost 3 at 502,964);
+c14 (6,14) metacyclic random S cost 1 at 188,005,162 (k = 109); **c15 (7,14) SL(2,233) x Z67, 1,694,979,936 VALID**
+(haarcheck_gen, 559 s); c16 (7,14) "2 3 1" and "6 1 1" worse than "3 2 1", SL(2,947) x Z1 cost 1.
+
+## 2026-11-01, beyond-d14, round 2 (16 cards, 23:09 UTC; stopped at 23:28 by a container restart)
+
+Same session. Files: research/squads/beyond14/r2/. Selection from round 1: the director's lift result (4+4 base over a
+Frobenius group, 6,328) became six cards over base size and group family (d01-d06); (4,14) the prime-m metacyclic
+screen pushed (d07), lifts of 4-regular bases (d08), order-2 orbit forms (d09); (5,14) the "2 2 1" form in PSL, SL and
+metacyclic groups (d10-d12); pushes at (6,14) (d13, d14) and (7,14) (d15, d16). The Agent tool's 30-minute default
+background limit also stopped the director's first (9,14) check; the container restart stopped everything at 23:28.
+
+Cards (best result; VALID = director check):
+- **d04 (3,14): 3+3 base over Z47 x|_2 Z23, 6,486 VALID** (apsp). Then the director: **2+2 base over Z103 x|_8 Z17,
+  7,004 VALID** (apsp, diameter exactly 14); all five Frobenius groups of order 1,629-1,751 solved at p = 2 in 40 CPU-s;
+  1,778-1,884 stalled at 6-74. The six lift cards were redirected to p = 1, 2, 3 windows at 23:17: best states d06
+  Z199 x| Z9 (7,164) cost 6, d04 Z61 x| Z20 (7,320, p = 3) cost 24, d02 (7,104) cost 24, d03 p = 1 (7,164) cost 56,
+  d05 products at p = 2 (8,700+) cost in the thousands.
+- **d07 (4,14): Z5849 x|_5711 Z43, 503,014 VALID** (build_haar2); cost 2 at 252,191 and 252,385.
+- d08 (4,14) lifts of 2+2 4-regular bases over Z_m x| Z7: cost 4 at 397K (k = 7 too small; redirected to k >= 30).
+- d11 (5,14) "2 2 1" in SL(2,q) x Z_n: cost 18-36. d12 "2 2 1"-type pairs in metacyclic groups: cost 3,921 (far worse).
+- **d13 (6,14): PSL(2,107) x Z157, 192,314,952** (cost 0; check restarted after the restart).
+- **d15 (7,14): PSL(2,167) x Z367, 1,709,227,632** and SL(2,241) x Z61, 1,707,668,160, both from RANDORB=8 screens
+  (cost 0 in about 1 of 8 random symmetric S at 853-855M; min 3 above 855M); check running.
+- d09, d10, d14, d16: stopped by the restart without a scoreboard line.
+
+Director's reading: at Δ = 3 the base size matters more than the group: the size-law mu reached grows from 18 (4+4)
+to 21 (3+3) to 33 (2+2). Round 3 keeps p = 2, 3 at (3,14) (five cards), the prime-m metacyclic screens and a 1-opt
+finisher at (4,14), lifts with large-k groups at Δ = 4, 5, metacyclic pushes at (5,14), and random symmetric S screens
+at (6,14) and (7,14).

@@ -7,16 +7,33 @@ to BEAT them. Values to beat (graph order = 2N for Haar graphs):
 | cell | value to beat (after round 2) | how it was made | notes |
 |---|---:|---|---|
 | (3,14) | 7,004 | director: regular lift of a 2+2 cubic base (p = 2) over the Frobenius group Z103 x\|_8 Z17 (order 1,751), salift_s, 40 CPU-s | p = 3: 6,486 (Z47 x\| Z23, r2/d04); p = 4: 6,328; Foster census CSS(6272,7) 6,272 |
-| (4,14) | 498,798 (N = 249,399) | r1/c05: Haar graph of Z3079 x\|_1863 Z81 (prime m), random S, hmeta | |
+| (4,14) | 503,014 (N = 251,507) | r2/d07: Haar graph of Z5849 x\|_5711 Z43 (prime m), random S, hmeta screen + chain | r1/c05: Z3079 x\| Z81 498,798 |
 | (5,14) | 13,105,798 (N = 6,552,899) | r1/c08: Haar graph of Z152393 x\|_149882 Z43, random S, hmeta (4 s) | near miss Z153511 x\| Z43 (N 6,600,973) cost 1 (r1/c08/s6_153511_43.txt.best) |
-| (6,14) | 190,269,984 (N = 95,134,992) | r1/c12: SL(2,137) x Z37, ORBIT="3 2 0" | |
-| (7,14) | 1,694,979,936 (N = 847,489,968) | r1/c15: SL(2,233) x Z67, ORBIT="3 2 1" (haarcheck_gen VALID) | |
+| (6,14) | 192,314,952 (N = 96,157,476), check running | r2/d13: PSL(2,107) x Z157, ORBIT="3 2 0" | r1/c12: SL(2,137) x Z37 190,269,984 VALID |
+| (7,14) | 1,709,227,632 (N = 854,613,816), check running | r2/d15: PSL(2,167) x Z367, ORBIT="3 2 1", found by RANDORB=8 (cost 0 in about 1 of 8 random symmetric S) | also SL(2,241) x Z61 (853.8M); r1/c15 SL(2,233) x Z67 VALID |
 | (8,14) | 11,325,238,056 | director only | |
 
 Size law (research/frontier/SIZE_LAW.md): a random-like S misses about mu = N exp(-W/N) group elements, W = number of
 cross-side words, W(d,14) = sum_{i<7} d (d-1)^(2i). Search reaches cost 0 up to some mu* (larger mu = larger N =
 harder). Evaluations are CHEAP here: one cost evaluation takes ~1 ms at (4,14), ~10 ms at (5,14), ~0.1 s at (6,14),
 ~1 s at (7,14) (single thread, bit-parallel BFS). So thousands of evaluations per card are possible; use them.
+
+## Round 2 (this job; the cards were stopped after ~19 minutes by a container restart) found / ruled out
+
+- (3,14): smaller bases win. p = 2 (2+2 base) over Frobenius groups: orders 1,629-1,751 all solved in 40 CPU-s
+  (7,004 = 4 x 1,751, Z103 x|_8 Z17); 1,778-1,884 stall: Z199 x| Z9 (1,791, 7,164) cost 6 (r2/d06/sols/L22_meta_199_9_43.sol.best),
+  Z61 x| Z30 (1,830) cost 10 (director, research/frontier/beyond14/ownsmall/runs/d14_g1800s_7.sol.best, table g1800s.txt
+  id 7), Z113 x| Z16 (1,808) cost 16, Z157 x| Z12 (1,884) cost 74, F19^2 x| Z5 (1,805) cost 20.
+  p = 3: Z47 x| Z23 (1,081) solved (6,486); Z61 x| Z20 (1,220, 7,320) cost 24, Z97 x| Z12 (1,164, 6,984) cost 24.
+  p = 4: 6,328 (Z113 x| Z7); 819-889 stall at 6-26. p = 1 (cubic Haar) via salift: cost 56-72 at ~7,164. p = 6 and
+  products at p = 2 of order 2,181+: thousands. Tables: research/frontier/beyond14/ownsmall/mktab.py now also builds
+  aff2:p:k = F_(p^2) x| Z_k (Frobenius, k | p^2 - 1).
+- (4,14): d07's recipe (prime-m metacyclic, 20-s hmeta screens, chain the best) gave Z5849 x| Z43 (503,014); cost-2 states
+  at Z6151 x| Z41 (N 252,191) and Z7211 x| Z35 (N 252,385, cost 3) in r2/d07/scr/. Order-2 orbit forms at Δ = 4 (r2/d09)
+  and lifts of 2+2 4-regular bases over Z_m x| Z7 (r2/d08, tool r2/d08/lift4.c: cost 4 at 397K vertices; k = 7 is too
+  small, use k >= 30) unresolved.
+- (5,14): order-2 orbit forms in SL(2,q) x Z_n stall at 18-36 (r2/d11), in metacyclic groups far worse (r2/d12, cost 3,921).
+- (6,14): PSL(2,107) x Z157 (96.16M) solved; (7,14): RANDORB=8 screens solve about 1 S in 8 at 853-855M, min cost 3 above 855M.
 
 ## Round 1 (this job) found / ruled out
 
