@@ -1,0 +1,23 @@
+Coordinator report (Mac mini coordinator, 2026-11-01T08:29:29Z): d9D12_psl_241_79_orb3-3-0_e11.txt from origin/claude/new-cells-d11-d12-beyond-8sas9r, sha256 c96b0a94d77c4e96e6b6bbb8c437dca562aa3e20607d87b573f0bd2eeb3ce431.
+
+======== cloud haarcheck_gen report from origin/claude/new-cells-d11-d12-beyond-8sas9r (unedited) ========
+checker: haarcheck_gen
+command: ./bin/haarcheck_gen runs/d9D12_psl_241_79_orb3-3-0_e11.out
+start: 2026-11-01T07:14:47Z
+sha256 e52e247f4a92a474f49ff0d5d438660ba0b557bbdfd4a8e24311ca881ff3f17c  ./bin/haarcheck_gen
+sha256 c96b0a94d77c4e96e6b6bbb8c437dca562aa3e20607d87b573f0bd2eeb3ce431  runs/d9D12_psl_241_79_orb3-3-0_e11.out
+selftest psl 241: |M| = 6998640, index round trip over all elements ok
+selftest group multiplication: associativity, identity, inverse on 20000 random triples ok
+file runs/d9D12_psl_241_79_orb3-3-0_e11.out
+header: 9 12 psl 241 n 79 N 552892560
+group psl 241 x Z_79, |G| = 552892560 = N, vertices 2N = 1105785120; 9 distinct generators
+from (e,A): reached A 552892560/552892560, B 552892560/552892560 within 12; ecc 12; level sizes [1, 9, 72, 576, 4608, 36864, 294864, 2353452, 18522443, 131206508, 473177559, 419295151, 60893013]  (86s)
+from (e,B): reached A 552892560/552892560, B 552892560/552892560 within 12; ecc 12; level sizes [1, 9, 72, 576, 4608, 36864, 294864, 2353452, 18522634, 131206508, 473184102, 419295151, 60886279]  (173s)
+VALID d=9 D=12 group=psl 241 x Z_79 N=552892560 vertices=1105785120 (distinct generators, 9-regular simple; every vertex within 12 of both (e,A) and (e,B); ecc 12; 173s)
+exit: 0
+end: 2026-11-01T07:17:40Z (173 s)
+
+======== Mac mini: reference checker (research/structured/tools/haarcheck_psl.c, master; clang -O3), 156 s, 396 MB ========
+from (e,A): reached A 552892560/552892560, B 552892560/552892560 within 12, ecc 12
+from (e,B): reached A 552892560/552892560, B 552892560/552892560 within 12, ecc 12
+VALID d=9 D=12 group=psl 241 x Z_79 N=552892560 vertices=1105785120 (distinct generators, 9-regular simple)

@@ -1,0 +1,23 @@
+Coordinator report (Mac mini coordinator, 2026-11-01T08:29:29Z): d10D12_psl_337_97_orb3-3-1_f12.txt from origin/claude/new-cells-d11-d12-beyond-8sas9r, sha256 13d4e0d01b53925ca8b3bfa50313f11d7aa8a80dcfe247884c7e021835d6ce4f.
+
+======== cloud haarcheck_gen report from origin/claude/new-cells-d11-d12-beyond-8sas9r (unedited) ========
+checker: haarcheck_gen
+command: ./bin/haarcheck_gen runs/d10D12_psl_337_97_orb3-3-1_f12.out
+start: 2026-11-01T06:59:46Z
+sha256 e52e247f4a92a474f49ff0d5d438660ba0b557bbdfd4a8e24311ca881ff3f17c  ./bin/haarcheck_gen
+sha256 13d4e0d01b53925ca8b3bfa50313f11d7aa8a80dcfe247884c7e021835d6ce4f  runs/d10D12_psl_337_97_orb3-3-1_f12.out
+selftest psl 337: |M| = 19136208, index round trip over all elements ok
+selftest group multiplication: associativity, identity, inverse on 20000 random triples ok
+file runs/d10D12_psl_337_97_orb3-3-1_f12.out
+header: 10 12 psl 337 n 97 N 1856212176
+group psl 337 x Z_97, |G| = 1856212176 = N, vertices 2N = 3712424352; 10 distinct generators
+from (e,A): reached A 1856212176/1856212176, B 1856212176/1856212176 within 12; ecc 12; level sizes [1, 10, 90, 810, 7290, 65610, 590310, 5304630, 47163556, 382570824, 1582930562, 1468270292, 225520367]  (478s)
+from (e,B): reached A 1856212176/1856212176, B 1856212176/1856212176 within 12; ecc 12; level sizes [1, 10, 90, 810, 7290, 65610, 590310, 5304630, 47163824, 382570824, 1582951425, 1468270292, 225499236]  (900s)
+VALID d=10 D=12 group=psl 337 x Z_97 N=1856212176 vertices=3712424352 (distinct generators, 10-regular simple; every vertex within 12 of both (e,A) and (e,B); ecc 12; 900s)
+exit: 0
+end: 2026-11-01T07:14:47Z (901 s)
+
+======== Mac mini: reference checker (research/structured/tools/haarcheck_psl.c, master; clang -O3), 558 s, 1329 MB ========
+from (e,A): reached A 1856212176/1856212176, B 1856212176/1856212176 within 12, ecc 12
+from (e,B): reached A 1856212176/1856212176, B 1856212176/1856212176 within 12, ecc 12
+VALID d=10 D=12 group=psl 337 x Z_97 N=1856212176 vertices=3712424352 (distinct generators, 10-regular simple)
