@@ -1,0 +1,14 @@
+checker: haarcheck_gen (research/frontier/haarcheck_gen.c)
+file: runs/d17D9_sl_151_79_orb3-5-2_s1.out
+sha256 8bfa952d05103bb1114325f29fd31dbf0fbf40682e862ceda9727c9a68e42882  runs/d17D9_sl_151_79_orb3-5-2_s1.out
+start: 2026-11-01T22:50:43Z
+selftest sl 151: |M| = 3442800, index round trip over all elements ok
+selftest group multiplication: associativity, identity, inverse on 20000 random triples ok
+file runs/d17D9_sl_151_79_orb3-5-2_s1.out
+header: 17 9 sl 151 n 79 N 271981200
+group sl 151 x Z_79, |G| = 271981200 = N, vertices 2N = 543962400; 17 distinct generators
+from (e,A): reached A 271981200/271981200, B 271981200/271981200 within 9; ecc 9; level sizes [1, 17, 272, 4352, 69632, 1112013, 17249271, 175897002, 254662024, 94967816]  (49s)
+from (e,B): reached A 271981200/271981200, B 271981200/271981200 within 9; ecc 9; level sizes [1, 17, 272, 4352, 69632, 1112013, 17249289, 175897002, 254662006, 94967816]  (99s)
+VALID d=17 D=9 group=sl 151 x Z_79 N=271981200 vertices=543962400 (distinct generators, 17-regular simple; every vertex within 9 of both (e,A) and (e,B); ecc 9; 99s)
+exit: 0
+end: 2026-11-01T22:52:22Z (99 s)
