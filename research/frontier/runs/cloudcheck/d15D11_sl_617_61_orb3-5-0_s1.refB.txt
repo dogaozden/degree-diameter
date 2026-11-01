@@ -3,6 +3,6 @@ sha256: f06dbe2dec0ad5ede609972b229a716d473af9e321bc22f62d7f7fb28963b3c6  resear
 checker: research/frontier/haarcheck_sl.c on master e93cbf856c, sha256 d2a212fcf927e2a7b6bb6779c0a774b2a3523c525aa9d84a1b45fdb77557a932; built with gcc -O3 -o haarcheck_sl research/frontier/haarcheck_sl.c (binary kept outside the repo)
 
 ################ PROGRESS NOTE (replaced by the final report when the run ends)
-run started: 2026-11-01T15:32:25Z; progress written: 2026-11-01T16:03:04Z; elapsed ~30 min; STILL RUNNING
+run started: 2026-11-01T15:32:25Z; progress written: 2026-11-01T16:33:16Z; elapsed ~60 min; STILL RUNNING
 command: /usr/bin/time -v haarcheck_sl research/frontier/sols/d15D11_sl_617_61_orb3-5-0_s1.txt B  (only the (e,B) BFS; the checker prints nothing until it finishes)
 resident set at this note: 10495804 KB
