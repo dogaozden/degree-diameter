@@ -1,0 +1,18 @@
+group psl 241 x Z_2143, N=14998085520 (2N=29996171040), rows 29040 x 516463 bits (doubled row 16160 words), memory 7.65 GB, threads 4
+alpha: conj by mat(0,240,1,240), z -> 349 z on Z_2143 (fixed z: 1); ORBIT k=3 m=4 f=0; W=3.13843e+11 lambda=20.926 mu=12.25
+setup 0.0s
+start cost=3484 (6.8s per eval)
+t=22 step=1 evals=5 slot=0 cand=12 cost=12 best=12 T=1.26
+t=38 step=2 evals=9 slot=2 cand=12 cost=12 best=12 T=1.06
+t=55 step=3 evals=13 slot=3 cand=18 cost=12 best=12 T=0.89
+t=70 step=4 evals=17 slot=0 cand=3 cost=3 best=3 T=0.75
+t=85 step=5 evals=21 slot=3 cand=6 cost=3 best=3 T=0.63
+t=101 step=6 evals=25 slot=3 cand=18 cost=3 best=3 T=0.53
+t=117 step=7 evals=29 slot=2 cand=12 cost=3 best=3 T=0.45
+t=132 step=8 evals=33 slot=2 cand=9 cost=3 best=3 T=0.38
+t=147 step=9 evals=37 slot=3 cand=12 cost=3 best=3 T=0.32
+t=163 step=10 evals=41 slot=2 cand=33 cost=3 best=3 T=0.27
+t=178 step=11 evals=45 slot=0 cand=0 cost=0 best=0 T=0.22
+RESULT d=12 D=12 group=psl 241 x Z_2143 N=14998085520 vertices=29996171040 best=0 evals=45 steps=11 time=177.8 orbit k=3 m=4 f=0 mu=12.25
+re-evaluation of the best S: cost 0
+wrote runs/d12D12_psl_241_2143_orb3-4-0_s1.out
