@@ -232,3 +232,19 @@ the near misses ((8,9) PSL(2,47) x Z13, (11,9) PSL(2,97) x Z19, (12,9) SL(2,137)
 the director's queue. Dropped: small n as a rule at D = 9, products, field automorphisms, twisted products, (3,9) Haar.
 Process: cards ran 9-21 minutes of their 25; three called session tools (archive_session, send_message) with empty
 arguments, all rejected (checked in the transcripts); round 2's prompt lists the allowed tools explicitly.
+
+### Round 2 (17 cards, 23:16-23:40 UTC, research/squads/raise9/r2/)
+
+Cards (best result): (6,9) odd Frobenius farms: **f02 Z1559 x|_84 Z41 (N 63,919) cost 2 on 1 of 10 fresh 90 s seeds**
+(costs 2, 6, 6, 6, 6, 8, 8, 8, 10, 10), f01 Z2551 x| Z25 6 (13 seeds), f03 Z2377 x| Z27 8; f04 hole anatomy (inverse pairs,
+one side at ecc 10; 15k sampled single swaps of the cost-6 states: none < 6); w06 other odd families (Frobenius with
+k = 41/25/37 best; centred non-Frobenius 220-1,360 median); f08 Frobenius products worse. (7,9) f05 Z5659 x| Z41 16; (8,9) f06
+Frobenius k = 37/51 18-26, n02 PSL(2,47) x Z13 stuck at 12; (9,9) f07 Z35771 x| Z49 24; (11,9) n04 PSL(2,97) x Z19 12 (round-1
+state), k02 k = 5 groups start at mu 30+; (12,9) n03 SL(2,137) x Z7 12, k04 PSL(2,71) x Z101 "5 2 2" 16 (k = 5 no edge in
+random medians); k03 single-orbit S ("5 1 f", exhaustive) far worse than plain S; x01 (4,9) exhaustive on Z101 x| Z25 did not
+report; w05 (16,9) SL(2,293) x Z7 same random median/mu as the current group, stalled at 36.
+No card solved. Machine load ~20: cards got ~1/10 core (50 ms per evaluation at N = 64k). Kept: the (6,9) Z1559 x| Z41 farm
+(director farm at nice 3 from seed 1001 plus 4 card farms in round 3). Dropped: near-miss resumes/finishers, k = 5 at
+(11,9)/(12,9), single-orbit S, Frobenius at (7,9)-(9,9).
+Process: 5 more stray session-tool calls (archive_session, interrupt_session), all rejected; one card ran two jobs at once.
+Director meanwhile: (18,9) 850,056,960 (SL(2,191) x Z61 "3 5 3", mu 11.35, 81 evals) and (20,9) 1,972,000,272 (VALID).
