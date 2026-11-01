@@ -32,10 +32,11 @@ for line in open(os.path.join(HERE, 'cells.txt')):
                     f'haarcheck_gen VALID (research/frontier/runs/cloudcheck/{stem}.gen.txt) | '
                     f'Haar size law at mu = 5: 2N = {2 * n_at_mu(d, D, 5):.3g} |')
 lines = open(TAB).read().split('\n')
-out = []
 def key(l):
     m = re.match(r'\| \((\d+),(\d+)\) \|', l)
     return (int(m.group(1)), int(m.group(2))) if m else None
+lines = [l for l in lines if not (key(l) in rows and key(l)[0] >= 11)]   # rerun: drop earlier copies of the new cells
+out = []
 done = set()
 for l in lines:
     k = key(l)
