@@ -1,0 +1,45 @@
+group prod psl 7 sl 8 poly x^3+x+1 x Z_7, N=592704, identity 74480, H order 63, rows 9408, threads 1, setup 0.02s
+wide rows: HW order 252, rows 2352, setup 0.04s
+alpha: conj by prod[mat(3,3,5,3);mat(6,4,6,7)] (index 73494), z -> 2 z on Z_7
+ORBIT k=3 m=3 f=1: |Fix(alpha)| = 26 (+e); mu = 67.63, mu/k = 22.54, fixed-point misses ~ 1.31
+start cost=130
+t=30 steps=6611 evals=52889 cost=25 best=21 T=1.06
+t=60 steps=12460 evals=99681 cost=21 best=21 T=0.75
+CHAIN 1 min 21 secs 69 evals 117617
+chain 2: fresh start (global best 21)
+t=90 steps=19073 evals=152585 cost=25 best=18 T=1.18
+t=120 steps=25731 evals=205849 cost=21 best=18 T=0.83
+CHAIN 2 min 18 secs 62 evals 107168
+chain 3: fresh start (global best 18)
+t=150 steps=31615 evals=252921 cost=36 best=18 T=1.21
+t=180 steps=37929 evals=303433 cost=27 best=18 T=0.85
+t=210 steps=44465 evals=355721 cost=19 best=18 T=0.60
+t=240 steps=51193 evals=409545 cost=20 best=18 T=0.43
+CHAIN 3 min 19 secs 118 evals 200800
+chain 4: fresh start (global best 18)
+t=270 steps=57721 evals=461769 cost=39 best=18 T=1.18
+t=300 steps=64419 evals=515353 cost=27 best=18 T=0.84
+t=330 steps=70647 evals=565177 cost=18 best=18 T=0.59
+t=360 steps=77015 evals=616121 cost=18 best=18 T=0.42
+CHAIN 4 min 18 secs 136 evals 235328
+chain 5: fresh start (global best 18)
+t=390 steps=83700 evals=669601 cost=28 best=18 T=1.42
+t=420 steps=90245 evals=721961 cost=24 best=18 T=1.00
+t=450 steps=97338 evals=778705 cost=17 best=17 T=0.71
+t=480 steps=104379 evals=835033 cost=18 best=17 T=0.50
+CHAIN 5 min 17 secs 97 evals 178248
+chain 6: fresh start (global best 17)
+t=510 steps=111414 evals=891313 cost=32 best=17 T=1.09
+t=540 steps=117791 evals=942329 cost=18 best=17 T=0.77
+t=570 steps=122746 evals=981969 cost=18 best=17 T=0.55
+CHAIN 6 min 18 secs 100 evals 159112
+chain 7: fresh start (global best 17)
+t=600 steps=127825 evals=1022601 cost=30 best=17 T=1.23
+t=630 steps=132403 evals=1059225 cost=18 best=17 T=0.87
+t=660 steps=137530 evals=1100241 cost=18 best=17 T=0.61
+CHAIN 7 min 18 secs 96 evals 127176
+chain 8: fresh start (global best 17)
+t=690 steps=142829 evals=1142633 cost=32 best=17 T=1.31
+t=720 steps=147871 evals=1182969 cost=40 best=17 T=0.93
+t=750 steps=152873 evals=1222985 cost=23 best=17 T=0.65
+t=780 steps=157619 evals=1260953 cost=19 best=17 T=0.46
