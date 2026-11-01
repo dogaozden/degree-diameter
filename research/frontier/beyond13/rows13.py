@@ -20,7 +20,9 @@ for line in open('cells.txt'):
     cell, stem, note = [x.strip() for x in line.split('|', 2)]
     d, D = map(int, cell.split(','))
     hdr = open(f'sols/{stem}.txt').readline().split(); N = int(hdr[hdr.index('N') + 1])
-    log = f'runs/{stem}.gen.txt'; assert any(l.startswith('VALID') for l in open(log)), log
+    log = f'runs/{stem}.gen.txt'
+    if not (os.path.exists(log) and any(l.startswith('VALID') for l in open(log))): continue   # check pending
+    if (d, D) in rows and rows[(d, D)][0] >= 2 * N: continue
     rows[(d, D)] = (2 * N, f'{note}; mu = {mu_of(d, D, N):.2f}',
                     f'haarcheck_gen VALID (research/frontier/runs/cloudcheck/{stem}.gen.txt)')
 if os.path.exists('cells_other.txt'):
@@ -29,7 +31,7 @@ if os.path.exists('cells_other.txt'):
         cell, v, edges, chk, note = [x.strip() for x in line.split('|', 4)]
         d, D = map(int, cell.split(',')); v = int(v)
         if (d, D) in rows and rows[(d, D)][0] >= v: continue
-        assert any('VALID' in l for l in open(f'checks/{chk}')), chk
+        if not any(l.startswith('VALID') or 'RESULT VALID' in l for l in open(f'checks/{chk}')): continue   # pending
         rows[(d, D)] = (v, f'{note}; mu = {mu_of(d, D, v // 2):.2f}',
                         f'research/frontier/beyond13/checks/{chk}' + (f' (graph research/frontier/beyond13/graphs/{edges})' if edges != '-' else ''))
 for (d, D) in sorted(rows, key=lambda c: (c[1], c[0])):
