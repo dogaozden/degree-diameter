@@ -1,5 +1,28 @@
 # c5b-cosetscreen (handsoff-108): notes
 
+## FOR c8b-coset (read first): better target than PSL(2,181) h = 5
+
+Family K: G = PSL(2,229), H = D5 (order 10 = h), D = one regular double coset H g H (|D| = 100, so c = 10 left
+cosets, degree 10). N = |G|/10 = 600,438 per side, 2N = 1,200,876 (> 1,176,480). mu = 77.0 (vertex Poisson), mu/h = 7.7.
+- H: r of order 5 in the NONSPLIT torus of PSL(2,229) (5 | (q+1)/2 = 115; C10 does not exist in PSL(2,229)), and an
+  involution s inverting r (in PSL, so square determinant). Generator: `SPLIT=0 ./cscreen 229 1 D 10 10 ...`.
+- Family size: 59,985 regular double cosets, one member each, so the whole family is about 6e4 members (not 1e8).
+  Anneal is the wrong tool; a full scan (about 6e4 x A-root BFS, c8b's fast BFS would take about 1.5 h) is.
+- Measured (A-root + B-root cost C = uncBA + uncAA + uncBB, plain units; 260 random members, seeds 108651, 108665):
+  median 32.5 units of h (95% bootstrap CI 29.1-36.1), p10 16.6, min 6.6 (66 vertices); C = 0 in none of them.
+  Fraction with C/h <= 10: 1.5 %; <= 15: 7.3 %; <= 20: 17 %. All connected; uncBB = 0 for almost all.
+- Comparison (same method, same units): PSL(2,181) C5 two regular dc (family A, the target so far): median 41.8
+  (CI 38.6-46.9, n=300), p10 23.8, fraction <= 15: 0 of 300. PGL(2,181) D5 nonsquare reflection (family C): median
+  44.1 (CI 39.9-48.4, n=300), fraction <= 15: 2 %.
+- Why it is better: the orbit-model mean is about half as big (mu/h = 7.7 against 13.6), and the measured
+  median is also lower in absolute orbit units (32.5 against 41.8), so the tax factor (median/mu = 4.2 against 3.1)
+  is the only place it is worse. The absolute median is what sets P(C = 0). Non-regular double cosets
+  (k = |H cap gHg^-1| >= 2) are 3-10x worse at the median in every group tested (families E, L, I, H, J, M, F below).
+- uncBB > 0 for only 3.5 % of K members (7 of 200), so the A-root BFS alone is close to the full cost.
+- Not a record. No member has C = 0; no solution was written. Next step for the family: scan all 59,985 members
+  (one BFS from an A root first; B-root check only for C = 0), or sample the tail further (see the tail run below).
+
+
 Worker: c5b-cosetscreen (relaunch of slot c5). Seeds 108651-108699 (one seed per family, see families.txt).
 Job (card): screen bipartite coset graphs X(G,H,D) over PSL(2,q) / PGL(2,q) for N = |G|/h in [588,241, 610,000],
 sample random members, rank families by the uncovered counts, give c8b targets. c8b-coset builds the fast evaluator
@@ -43,7 +66,46 @@ Excluded from the screen as too small or degenerate: PSL(2,331) D15, PGL(2,331) 
 normalizer types. Note: PSL(2,229) C10 does not exist (10 divides neither 114 nor 115); PSL(2,229) D5 is in the
 nonsplit torus (SPLIT=0).
 
-## Family screen (in progress)
+## Family screen, round 1 (14 families, K = 40-100 members each, seeds 108651-108664)
 
-Table: see below (filled in from out/*.out with summarize.py). mu = N exp(-5,380,840/N) (vertex Poisson, plain),
-mu/h = orbit-model mean, tax = median C / mu.
+Units: C = uncBA + uncAA + uncBB (plain vertices, diameter cost, 0 = diameter 8). "units" = vertices / h
+(H-orbits of size h). mu = N exp(-5,380,840/N) plain (vertex Poisson); mu/h = orbit model mean.
+tax = median C / mu. Ranking by med/h (absolute median in orbit units, lower is better: P(0) is about exp(-median/h)).
+Connected = all 2N vertices reached from the A root.
+
+| family (out/<name>.out) | n | N | h | mu/h | min/h | med/h | tax | conn |
+|---|---|---|---|---|---|---|---|---|
+| K_psl229_D5_10: PSL(2,229), D5 nonsplit torus, one regular dc | 60 | 600,438 | 10 | 7.70 | 8.7 | 34.0 | 4.41 | 1 |
+| A_psl181_C5_55: PSL(2,181), C5, two regular dc (c8b reference) | 100 | 592,956 | 5 | 13.58 | 17.8 | 40.7 | 3.00 | 1 |
+| C_pgl181_D5_10_nsq: PGL(2,181), D5 (nonsquare reflection), one regular dc | 100 | 592,956 | 10 | 6.79 | 12.7 | 45.7 | 6.72 | 1 |
+| H_psl193_S3_631: PSL(2,193), S3, dc c=6,3,1 | 60 | 599,072 | 6 | 12.55 | 16.8 | 108 | 8.64 | 1 |
+| G_psl193_C6_6_1x4: PSL(2,193), C6, c=6,1,1,1,1 | 60 | 599,072 | 6 | 12.55 | 123 | 333 | 26.5 | 1 |
+| L_psl229_D5_55: PSL(2,229), D5, c=5,5 (k=2) | 60 | 600,438 | 10 | 7.70 | 29.7 | 224 | 29.0 | 1 |
+| M_pgl229_D10_10_nsq: PGL(2,229), D10 (h=20), one c=10 dc (k=2) | 40 | 600,438 | 20 | 3.85 | 35.2 | 123 | 31.9 | 1 |
+| I_psl193_S3_622: PSL(2,193), S3, c=6,2,2 | 60 | 599,072 | 6 | 12.55 | 146 | 386 | 30.8 | 1 |
+| E_pgl181_D5_55_nsq: PGL(2,181), D5, c=5,5 (k=2) | 60 | 592,956 | 10 | 6.79 | 50.5 | 246 | 36.2 | 1 |
+| J_pgl193_D6_622_nsq: PGL(2,193), D6 (h=12), c=6,2,2 | 40 | 599,072 | 12 | 6.27 | 160 | 354 | 56.4 | 1 |
+| B_psl181_C5_5_1x5: PSL(2,181), C5, c=5,1,1,1,1,1 | 100 | 592,956 | 5 | 13.58 | 632 | 1,765 | 130 | 1 |
+| F_pgl181_D5_5221_nsq: PGL(2,181), D5, c=5,2,2,1 | 60 | 592,956 | 10 | 6.79 | 696 | 4,767 | 702 | 1 |
+| D_pgl181_D5_10_sq: PGL(2,181), D5 (square reflection), one regular dc | 60 | 592,956 | 10 | 6.79 | - | - | - | 0 (disconnected) |
+| N_pgl181_C10_10: PGL(2,181), C10, one regular dc | 10 | 592,956 | 10 | 6.79 | - | - | - | 0 (disconnected) |
+
+Family sizes (number of members, from the type counts): A ~ 118,584 choose 2 = 7e9; B ~ 118,584 x C(36,5) = 4e10;
+C 59,202 (a few more with the reflection class); K 59,985 (c10 types); E C(180,2) = 16,110; F 180 x C(17,2) x 2 = 48,960;
+G 99,840 x C(32,4) = 3.6e9; H 99,793 x 94 x 2 = 1.9e7; I 99,793 x C(15,2) = 1.0e7; L C(113,2) = 6,328 (c=5 types);
+M 135 members of c=10 (k=2) type x 1; J 248 x 4 x 2 = small.
+
+Reading (round 1):
+1. Only families with ONE REGULAR double coset per degree block, i.e. |H g H| = h^2 (c = h = 10 for h = 10,
+   or two of them for h = 5), have medians below 50 units. Every family with non-regular double cosets
+   (k = |H ∩ gHg^-1| >= 2) is 3-10x worse at the median (E, L, I, H, J, M, F, B, G).
+2. Square reflection D5 in PGL(2,181): disconnected (H inside the squares: walks keep the determinant class).
+   C10 in PGL(2,181): disconnected for the same reason. Degree 10 with h = 10 needs a nonsquare-det element.
+3. Best by median in units: K (PSL(2,229) D5, med/h 34.0, n=60), then A (PSL(2,181) C5, 40.7, n=100), then
+   C (PGL(2,181) D5, 45.7, n=100). The tax ordering differs (A 3.0 < K 4.4 < C 6.7) because mu/h is half for
+   K and C; the absolute median decides P(0). K vs A is within the sampling error at n = 60-100 (see round 2).
+
+## Round 2 (confirmation, fresh seeds 108665-108667, K = 200)
+
+(see the table at the end of this file once the runs finish)
+

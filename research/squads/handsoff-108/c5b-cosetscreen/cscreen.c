@@ -296,12 +296,13 @@ int main(int argc, char **argv) {
                 reach = qt;
                 ecc = dist[queue[qt - 1]];
             } else {
+                if (getenv("AONLY") && uncBA + uncAA > 0) { uncBB = -1; continue; }   /* partial cost: A-root only */
                 for (int l = 0; l < NL; l++) {
                     if (NL + l != src && (dist[NL + l] == 255 || dist[NL + l] > T)) uncBB++;
                 }
             }
         }
-        long C = uncBA + uncAA + uncBB;
+        long C = uncBA + uncAA + (uncBB < 0 ? 0 : uncBB);   /* AONLY: partial when uncBB = -1 */
         if (C == 0) nzero++;
         printf("cand %d reps", ci);
         for (int t = 0; t < nch; t++) printf(" %d", repkey_s[t]);

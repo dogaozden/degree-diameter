@@ -54,3 +54,27 @@ Energy = C/5 (units of H-orbits of size 5). Log: runs/psl181_s108951_chains.log 
 ### Run 2 (fixed): psl181_fix_s108952, 2400 s from 23:09 UTC
 
 Command: `REHEATSTEPS=60 nice -n 10 fastc_fix anneal 2400 108952 15 30 8 psl181_fix_s108952`. Results: see below.
+
+### Run 2 result (fixed, 2400 s, 23:09-23:49 UTC): psl181_fix_s108952
+
+- 2198 steps, 17,607 full evaluations, 21 chains (CHECK line: tracked = recomputed for both current and best pair).
+- Chain minima (plain vertices, full cost): 45 50 51 52 53 54 55 55 55 60 60 61 64 64 65 69 71 72 75 76
+  (last chain unfinished); median about 57 vertices = 11.5 units of 5; best 45 vertices = 9 units.
+- Best state: runs/psl181_fix_s108952_best.txt (PAIR line; the two double cosets as SL matrices, DC ids 88243, 66418).
+- Haar k = 3 descents (cards): median 6-7 units = 18-21 vertices, best 1 unit = 3 vertices. The coset family is about
+  3x worse in vertices, and no better in the best value. The RANDORB minimum over 60 random pairs was 57 (coset.c, A-root
+  only); the anneal's best 45 is the full cost of one pair, so the anneal gained only about 20 %.
+
+### Symmetric pairs (D = D^-1, one BFS): random sample of 6,164 pairs (runs/symscan_random2.txt, random order)
+
+- Minimum full cost 431 (about 86 units); the file has one truncated last line (run killed by timeout), ignored. Symmetric pairs are much worse than general pairs (random general pairs
+  gave 100-1000 in the bench; the best general pair found is 45). First 163 pairs (runs/symscan_random.txt): min 431 too.
+- Self-inverse double cosets: 3,276; pairs of two self-inverse double cosets also give symmetric D (not sampled).
+
+## Summary for the coordinator
+
+- Fast exact cost: validated (60/60 exact vs coset2). Speed about 10x per BFS (not 20x). Full cost needs two BFS
+  (A-root and B-root), about 170 ms per general pair under load 6-7.
+- B-B distances (B-root BFS) are almost always 0 (11 of 12 random pairs); coset.c's A-root cost is nearly the full cost.
+- Anneal over general pairs: best 45 vertices (9 units of 5), median chain minimum about 57 vertices. No cost 0.
+- No record. No solution file. Nothing in records/. Processes stopped at the end of the session.

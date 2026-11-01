@@ -176,3 +176,46 @@ PSL(2,229) h = 10 (C10 or D5, N 600,438), PGL(2,181) h = 10 (N 592,956), SL(2,q)
 random members with c8's code (copy it; about 1 s per member is fine for a screen) and record μ, μ/h, family size, min /
 median uncovered in units of h, and tax = median/μ. Also check connectedness (the D_i must generate G). Write a ranked
 table in NOTES.md and one scoreboard line per family (cost = best uncovered, plain units). Seeds: 108651-108699.
+
+### c6b-exhaust: scan two whole one-double-coset families (relaunch of slot c6, 23:40 UTC)
+
+Read c5b-cosetscreen/NOTES.md (screen) and c8b-coset/NOTES.md + fastc.c (fast coset BFS, about 85 ms per member).
+Two families with h = 10 and ONE regular double coset (degree 10) are small enough to enumerate completely:
+- C: G = PGL(2,181), H = D5 (non-square reflection), N = 592,956 (2N = 1,185,912); about 59,000 members
+  (c5b: 100 random, min 127, median 456; c8: 260 random, min 84);
+- K: G = PSL(2,229), H = D5 in the non-split torus, N = 600,438 (2N = 1,200,876); about 60,000 members
+  (c5b: 60 random, min 87, median 340).
+Job: copy fastc.c into your folder, adapt it to these groups / subgroups (one double coset H g H with
+|H ∩ g H g⁻¹| = 1), check it against c5b's code on 10 members of each family, reduce the enumeration by the normaliser
+of H if you can (members g and n g n'... that give isomorphic graphs), then scan EVERY member of K and of C (one
+process at a time, nice -n 10, checkpoint progress to a file every few minutes so a restart can resume). Report the
+full distribution (min, p0.1, p1, median) and the 10 best members. A cost-0 member is a diameter-8 graph with more
+than 1,176,480 vertices: save its definition in records/ and add a CLAIM line. Seeds (if any): 108751-108799.
+
+### c1b-structure: what makes a good orbit set? (relaunch of slot c1, 23:48 UTC; light CPU)
+
+c1-grind's two runs (g1, g2 in c1-grind/) stay alive until about 04:25; do not touch them, but read their logs.
+Data: about 120 good states (energy 3-9) in shared/good_states.tsv, the CHAIN lines of c1-grind/g1.log, g2.log,
+c7-throughput/*.log (one new energy-3 state), c3b-sl23x49/*.log, c4-groups/*.log, plus random orbit sets that you
+generate. Question: is there a cheap statistic of S (computable in well under a second) that separates the sets
+whose descents end low from random ones? Candidates: the duplicate-word rate and Z-coefficient structure (cell notes
+§5, haar_zopt ZONLYDUP), the conjugacy classes / element orders of the orbit representatives' Q-parts, the number of
+uncovered α-fixed elements, coverage of short words (|S⁻¹S|, |S S⁻¹ S| distinct counts), the "ball sizes" at radius
+3 and 5. Measure them on the good states vs. random sets vs. the median chain end. If one separates them, test a
+biased start (draw 50 random sets, start the descent from the best by your statistic) against the reference with a
+step-based schedule (VCLOCK/MAXSTEPS in haar_sym2, so machine load does not bias the comparison), ≥ 60 chains each.
+One light process at a time (nice -n 10). Seeds: 108151-108199.
+
+### c8c-smooth: a smoother objective for the k = 3 annealer (relaunch of slot c8, 00:08 UTC)
+
+c8/c8b/c5b: coset graphs are about 3× worse than Haar k = 3 orbits (c8b-coset/NOTES.md), so back to Haar. The
+annealer's energy is the uncovered count only: almost every move changes it by a lot and good states are isolated
+(cell notes §6, §8.3). Idea: add a small secondary term that measures how FRAGILE the coverage is, so the descent can
+tell apart sets with equal uncovered counts. The BFS gives one for free: F = number of B-side elements first reached
+at the last level (radius 7) = N − |B-side ball of radius 5| − uncovered (the more elements depend on the last level,
+the more fragile). Energy' = energy + w·F/1000 with w small (try w = 0.5, 1, 2), or F only as a tie-breaker. Job:
+copy research/d10D8/sym2/haar_sym2.c into your folder, add the term (env SMOOTHW=w; keep the reported "cost" and the
+CHAIN min as the TRUE energy, and keep its own full check before writing a solution), check on 5 sets that the true
+cost is unchanged, then compare on psl 23 97 with a STEP-based schedule (VCLOCK/MAXSTEPS, so machine load does not
+bias it) against the unmodified code: ≥ 60 chains each, distribution of chain minima (≤ 12, ≤ 9, median). One heavy
+process at a time, nice -n 10. Seeds: 108961-108999.

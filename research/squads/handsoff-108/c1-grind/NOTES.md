@@ -15,10 +15,10 @@ Launch note: the first launch line was backgrounded as one chain, so g2 failed o
 
 ## Live chain-minimum histogram (this worker, ORBW=3 units; energy is always a multiple of 3)
 
-(refreshed 23:13 UTC by update_live.py)
+(refreshed 23:41 UTC by update_live.py)
 
-- g1: chains 118, best 12, median 21, 12:3 15:18 18:22 21:44 24:27 27:3 30:1
-- g2: chains 118, best 12, median 21, 12:2 15:2 18:26 21:40 24:40 27:7 30:1
+- g1: chains 155, best 12, median 21, 12:5 15:19 18:31 21:53 24:41 27:5 30:1
+- g2: chains 156, best 12, median 21, 12:3 15:6 18:30 21:49 24:56 27:10 30:2
 
 
 ## Pooled reference data (grind branches, read-only via git show)
@@ -45,6 +45,18 @@ Estimate of P(energy 0) per descent (extrapolating the lower tail one or two ste
 - The card's "P(min <= 9) about 1 in 15" does not match the pooled data: psl gives 62/5372 = 1 in 87, prod 36/5479 = 1 in 152.
   The card's "1 in 15" probably refers to a different bar; flagged here, not changed.
 
+## Finding: the machine is oversubscribed, and the time-based schedule turns that into worse chains
+
+- Load average 8 on 4 cores (23:31). My two runs get about 57 % of a core each (ps %CPU); the pooled runs were on a
+  free core (2,217 evals/s psl, 1,856 prod median). Mine: 1,360 (psl) and 1,141 (prod) evals/s, median per chain.
+- COOL, REHEAT and the stall test are in wall-clock seconds, so a half-speed run gets about 40 % fewer evaluations per
+  chain and the schedule is effectively compressed. Chain length in seconds stays ~46 s, but the work inside is less.
+- Consequence: my chain minima are worse than the pool. Lower tail so far (23:31, 286 chains): <=9: 0, <=12: 5.
+  The pool predicts about 13 at <=12 (psl 5.6 %, prod 3.4 %). Psl median 21 here vs 18-21 in the pool.
+- So these runs are a weaker sample, not the same sample: do not add them to the pooled tail without that caveat.
+- For c7 and for any comparison: a schedule measured in evaluations (VCLOCK / MAXSTEPS in haar_sym2) would remove this
+  confound. I did not change the card's configuration (it says nice 15 and wall-clock COOL/REHEAT).
+
 ## Scoreboard lines written
 
 - 21:50 UTC: first result, g1 chain min 15 (psl, ORBW=3 units).
@@ -59,3 +71,23 @@ Estimate of P(energy 0) per descent (extrapolating the lower tail one or two ste
 
 - 21:45 launched g1 (psl) and g2 (prod), both alive.
 - 21:50 first chain minima 15 (g1) and 15 (g2, chain 6). Scoreboard line written.
+
+## End of session (23:45 UTC): both runs ALIVE, left running on purpose
+
+- g1 (psl 23 97, seed 108101): haar_sym2 pid 2553, nice 15, timeout 25000 s. Log: research/squads/handsoff-108/c1-grind/g1.log
+  (CHAIN lines), out: .../c1-grind/g1.out (RESULT at the end), ckpt: .../c1-grind/g1.ckpt.
+- g2 (prod psl 7 sl 8 7, seed 108201): haar_sym2 pid 3125, nice 15, timeout 25000 s. Log: .../c1-grind/g2.log,
+  out: .../c1-grind/g2.out, ckpt: .../c1-grind/g2.ckpt.
+- Both started 21:45 UTC. The 24000 s budget ends them about 04:25 UTC; the outer timeout (25000 s) at 04:41 UTC.
+- Totals at 23:45: g1 155 chains, g2 156 chains. Best chain minimum 12 (ORBW=3 units) in both. No chain
+  at or below 9, so no EXDESC was run and no CLAIM. Scoreboard: 2 lines (15 at 21:50, 12 at 22:45).
+- Chains per run: about 79 per hour (46 s each at about 57 % of a core); median chain minimum 21 in both runs.
+- Analysis folder: research/squads/handsoff-108/c1-grind/analysis (pool.py, pool2.py, tailfit2.py, update_live.py in c1-grind;
+  chains_orbw3.tsv and raw/ logs from the grind branches).
+
+## Next steps if someone continues this
+
+- The lower tail of the pooled data says P(energy 0) per F15W3 descent is about 3e-5 to 1e-4 (psl best). Expect one hit per
+  ~130-250 CPU-h on psl at full speed. Only a much better schedule or a different family changes this.
+- Run the grind with a step-based schedule (VCLOCK / MAXSTEPS) if the machine is shared; the wall-clock schedule gives
+  worse chains under load (see the finding above).

@@ -80,3 +80,5 @@ q=5 table 25 (we have 15; the formula-based Plucker pencil design had 13).
 - runs/*.sol: solution files in lift3 format (the verified ones: q3_m24_hx.sol, q4_m20_hx2.sol, q5_m14_fix.sol,
   q5_m15_hx2.sol; q3_cyc22_a.sol is the Z22 lift, also verified).
 - Scoreboard lines (scoreboard.tsv): q=3 Z22, q=5 Z14, q=5 Z15, q=4 Z20, q=3 Z24 (all Delta < 10, not the target cell).
+- q=5, Z16 continuation (from the stalled cost-30 state, FIXDUP, 481 further steps at T0 0.5): best 8 when stopped by
+  the time limit (runs/q5_m16_hx2.sol, saved state). Not valid; Z16 at q=5 is not reached in this session.

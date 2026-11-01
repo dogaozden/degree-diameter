@@ -89,8 +89,9 @@ static long long c2_neigh(ctx *c, int K, long long E0, int *bestS, long long *ne
         top[j] = malloc(sizeof(c2cand) * K);
         cnt[j] = c2_scan(c, j, K, top[j], nev);
         long long bj = cnt[j] ? top[j][0].e : (1LL << 60);
-        printf("C2 %s single slot %d: best energy %lld (top %d kept, worst kept %lld)\n", tag, j, bj, cnt[j],
-               cnt[j] ? top[j][cnt[j] - 1].e : -1LL);
+        { long long neq = 0; for (int t = 0; t < cnt[j]; t++) neq += top[j][t].e == E0;
+          printf("C2 %s single slot %d: best energy %lld, top %d kept, worst kept %lld, kept with energy == E0 %lld\n", tag, j, bj, cnt[j],
+                 cnt[j] ? top[j][cnt[j] - 1].e : -1LL, neq); }
         fflush(stdout);
         if (bj < best) { best = bj; memcpy(bS, S, sizeof(int) * d);
             for (int r = 0; r < OK_; r++) bS[ostart(j) + r] = top[j][0].o[r]; }
@@ -117,7 +118,8 @@ static long long c2_neigh(ctx *c, int K, long long E0, int *bestS, long long *ne
             if (e < rbest) { rbest = e; memcpy(rS, s2, sizeof(int) * d); }
         }
     }
-    printf("C2 %s right-mult pairs: %lld tried, best energy %lld, below E0 %lld\n", tag, nr, rbest, nrb);
+    if (rbest >= (1LL << 60)) printf("C2 %s right-mult pairs: %lld tried, none below E0+1 (all abandoned), below E0 %lld\n", tag, nr, nrb);
+    else printf("C2 %s right-mult pairs: %lld tried, best energy %lld, below E0 %lld\n", tag, nr, rbest, nrb);
     fflush(stdout);
     if (rbest < best) { best = rbest; memcpy(bS, rS, sizeof(int) * d); }
     for (int j = 0; j < OM; j++) free(top[j]);
@@ -127,6 +129,7 @@ static long long c2_neigh(ctx *c, int K, long long E0, int *bestS, long long *ne
 
 static int c2_main(ctx *c0, const char *out) {
     (void)out;
+    if (getenv("ORBW")) ORBW = atoi(getenv("ORBW"));   /* read here: orbit_main sets ORBW after this hook */
     const char *st = getenv("TWOSTATE");
     if (!st) { fprintf(stderr, "TWOMOVE needs TWOSTATE=\"10 element indices\"\n"); return 2; }
     { char buf[512]; strncpy(buf, st, sizeof buf - 1); buf[sizeof buf - 1] = 0; char *p = buf; int n = 0;
