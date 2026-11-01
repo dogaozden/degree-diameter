@@ -25,7 +25,17 @@ which is why exhaustive cubic Haar searches stop far lower (5,040 at D = 14). A 
 fixing a spanning tree, in a group half the size, and several base shapes; the 7,004 solution's base is a 4-cycle with
 two opposite edges doubled.
 
-**Δ = 4..7: Haar graphs, pushed further.** ...
+**Δ = 4..7: Haar graphs, pushed further.** Same families as beyond-d13, larger groups, and one new orbit form.
+- (4,14): metacyclic groups Z_m x| Z_k with m prime and random S (hmeta), screened 20 s each over every such group in
+  an order window, then chained: Z3079 x| Z81 (498,798, r1/c05), Z5849 x| Z43 (503,014, r2/d07). Products of two
+  Frobenius groups, PSL/SL/PGL/AGL with random S, and order-2 orbit forms did not do better.
+- (5,14): two routes passed the old 12,795,166: an order-2 orbit form in PSL(2,163) x Z3 (S = {e, x, ax, y, ay}, a an
+  involutive automorphism; 12,991,752, r1/c11) and metacyclic random S, Z152393 x| Z43 (13,105,798, r1/c08, found in 4
+  seconds at mu 7.7). The order-2 form failed in SL(2,q) x Z_n (cost 18-36) and in metacyclic groups (cost ~4,000).
+- (6,14), (7,14): the beyond-d13 forms ("3 2 0", "3 2 1" in SL/PSL(2,p) x Z_n). The new observation is that at D = 14
+  a random symmetric S often has cost 0 outright: SL(2,137) x Z37 at the first random S (mu 10.3), and RANDORB screens
+  (8-30 random symmetric S per group) found cost 0 in about 1 S in 8 at (7,14), N = 854M (mu 9.3). Other orbit forms
+  ("6 1 0", "2 3 0", "3 1 3" at Δ = 6; "2 3 1", "6 1 1" at Δ = 7) were much worse.
 
 **Δ = 9, 10: new cells.** H(PSL(2,241) x Z1429, S) with S three free alpha-orbits of size 3 has 20,002,113,120 vertices
 and diameter 14 ...

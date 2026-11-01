@@ -24,6 +24,7 @@ static int bu[16], bv[16], ba[16];
 static uint8_t *R, *R2;
 static int *nbr, *gA, *gJ, *Rj, *Ri;
 static int dv[16][DG], da[16][DG];
+static int TT[8][DG][4096], SS[8][DG][4096], VV[8][DG];
 static uint64_t rng = 88172645463325252ULL;
 static inline uint64_t xr(void) { rng ^= rng << 13; rng ^= rng >> 7; rng ^= rng << 17; return rng; }
 static inline double ur(void) { return (xr() >> 11) * (1.0 / 9007199254740992.0); }
@@ -44,22 +45,25 @@ static long cost(void) {
         dv[v][dg[v]] = u; da[v][dg[v]++] = ginv(ea[e]);
     }
     /* (u,g) ~ (v, g*c) with c = (b,i): g*c = ((a + r^j b) mod m, (j+i) mod k) for g = (a,j) */
-    static int T[4096], S[4096];
+    /* on-the-fly neighbours: (u,a,j) --edge t--> (v, (a + TT) mod m, (j + i) mod k) with TT = r^j b, S = (j+i) mod k */
     for (int u = 0; u < P2; u++) for (int t = 0; t < DG; t++) {
-        int c = da[u][t], b = gA[c], i = gJ[c], v = dv[u][t];
-        for (int j = 0; j < k; j++) { T[j] = (int)((int64_t)Rj[j] * b % m); S[j] = (j + i) % k; }
-        int *out = nbr + (long)u * N * DG + t;
-        for (int a = 0; a < m; a++) for (int j = 0; j < k; j++) {
-            int x = a + T[j]; if (x >= m) x -= m;
-            *out = v * N + x * k + S[j]; out += DG;
-        }
+        int c = da[u][t], b = gA[c], i = gJ[c];
+        VV[u][t] = dv[u][t];
+        for (int j = 0; j < k; j++) { TT[u][t][j] = (int)((int64_t)Rj[j] * b % m); SS[u][t][j] = (j + i) % k; }
     }
     memset(R, 0, (size_t)n);
     for (int u = 0; u < P2; u++) R[u * N] = (uint8_t)(1u << u);
-    for (int t = 0; t < D; t++) {
-        for (int x = 0; x < n; x++) {
-            const int *q = nbr + DG * (long)x;
-            R2[x] = R[x] | R[q[0]] | R[q[1]] | R[q[2]] | R[q[3]] | R[q[4]];
+    for (int lev = 0; lev < D; lev++) {
+        for (int u = 0; u < P2; u++) {
+            for (int a = 0; a < m; a++) for (int j = 0; j < k; j++) {
+                int x = u * N + a * k + j;
+                uint8_t acc = R[x];
+                for (int t = 0; t < DG; t++) {
+                    int aa = a + TT[u][t][j]; if (aa >= m) aa -= m;
+                    acc |= R[VV[u][t] * N + aa * k + SS[u][t][j]];
+                }
+                R2[x] = acc;
+            }
         }
         uint8_t *tmp = R; R = R2; R2 = tmp;
     }

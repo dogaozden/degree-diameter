@@ -21,13 +21,15 @@ ROWS[(5, 14)] = (13105798,
     '12,795,166',
     f'build_haar2 VALID ({C}d5D14_meta_152393_43_c08.build_haar2.txt)',
     'Haar size law at mu = 5: 2N = 1.27e+07')
-ROWS[(6, 14)] = (192314952,
-    'Haar graph PSL(2,107) x Z157, S = 2 free orbits of size 3 (ORBIT "3 2 0"; squad r2/d13); earlier 190,269,984 '
-    '(SL(2,137) x Z37, first random symmetric S, r1/c12); beyond-d13: 187,990,656',
-    f'haarcheck_gen VALID ({C}d6D14_psl_107_157_orb3-2-0_d13.gen.txt)',
+ROWS[(6, 14)] = (193324560,
+    'Haar graph SL(2,131) x Z43, S = 2 free orbits of size 3 (ORBIT "3 2 0", random symmetric S from a RANDORB screen; '
+    'squad r3/e12); earlier 192,314,952 (PSL(2,107) x Z157, r2/d13) and 190,269,984 (SL(2,137) x Z37, r1/c12); '
+    'beyond-d13: 187,990,656',
+    f'haarcheck_gen VALID ({C}d6D14_sl_131_43_orb3-2-0_e12.gen.txt)',
     'Haar size law at mu = 5: 2N = 1.83e+08')
-ROWS[(7, 14)] = (1709227632,
-    'Haar graph PSL(2,167) x Z367, S = {e} + 2 orbits of size 3 (ORBIT "3 2 1"), a random symmetric S (RANDORB '
-    'screen, squad r2/d15); earlier 1,694,979,936 (SL(2,233) x Z67, r1/c15); beyond-d13: 1,674,490,944',
-    f'haarcheck_gen VALID ({C}d7D14_psl_167_367_orb3-2-1_d15.gen.txt)',
+ROWS[(7, 14)] = (1723572432,
+    'Haar graph SL(2,163) x Z199, S = {e} + 2 orbits of size 3 (ORBIT "3 2 1"; 9 evaluations from a random start, squad '
+    'r3/e15); earlier 1,709,227,632 (PSL(2,167) x Z367, a random symmetric S, r2/d15) and 1,694,979,936 (SL(2,233) x '
+    'Z67, r1/c15); beyond-d13: 1,674,490,944',
+    f'haarcheck_gen VALID ({C}d7D14_sl_163_199_orb3-2-1_e15.gen.txt)',
     'Haar size law at mu = 5: 2N = 1.66e+09')
