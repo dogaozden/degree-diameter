@@ -1,0 +1,6 @@
+check: hcheck5 (THREADS=1), director re-run
+loaded ../sols/d17D8_sl_53_139_orb3_c15.txt: d=17 D=8 p=53 n=139 N=20686536; idx-column mismatches=0
+generators distinct: yes
+from (e,A): all reached within 8, ecc 8 (3.695 s)
+from (e,B): all reached within 8, ecc 8 (4.054 s)
+VALID d=17 D=8 group=sl 53 x Z_139 N=20686536 vertices=41373072 threads=1 time=7.748 bfs_A=3.695 bfs_B=4.054

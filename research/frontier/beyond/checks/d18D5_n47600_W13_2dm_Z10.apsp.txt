@@ -1,0 +1,5 @@
+check: apsp.c (no symmetry assumed), director 2026-10-26T15:39:31Z
+rebuild: cd research/frontier/beyond/mdm && gcc -O3 -o gqgen ../../../d10D7/gqgen.c && ./gqgen 13 && python3 build_mdm.py gq/gq_q13.bin nu_q13_s2.txt 2 1 OUT.edges
+sha256(uncompressed) 509b10d4d94c2c07dd0277dc981240e097afa9e26e4a2f051105bdd522c15744
+n=47600 edges=428400 degree min=18 max=18 bipartite=yes diameter=5
+RESULT VALID d=18 D=5 n=47600

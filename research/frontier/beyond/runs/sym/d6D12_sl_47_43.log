@@ -1,0 +1,9 @@
+group sl 47 x Z_43, N=4462368, identity 92966, H order 48, rows 92966, threads 2, setup 0.50s
+wide rows: HW order 172, rows 25944, setup 0.85s
+alpha: conj by mat(44,18,28,4) (index 98023), z -> 6 z on Z_43
+ORBIT k=3 m=2 f=0: |Fix(alpha)| = 47 (+e); mu = 5.12, mu/k = 1.71, fixed-point misses ~ 0.50
+start cost=19
+RESULT d=6 D=12 group=sl 47 x Z_43 N=4462368 best=0 evals=9 time=0.3 orbit k=3 m=2 f=0 fix=47
+full diameter check: OK
+full diameter check after normalising s_0 = e: OK
+wrote d6D12_sl_47_43_orb3f0_s1.txt

@@ -1,0 +1,7 @@
+group sl 5 x Z_151, N=18120, identity 3020, H order 10, rows 1812, threads 1, setup 0.03s
+wide rows: HW order 151, rows 120, setup 0.05s
+alpha: conj by mat(3,4,2,3) (index 92), z -> 32 z on Z_151
+ORBIT k=3 m=5 f=2: |Fix(alpha)| = 5 (+e); mu = 382.56, mu/k = 127.52, fixed-point misses ~ 3.32
+start cost=2318
+t=30 steps=40120 evals=320961 cost=382 best=382 T=0.53
+RESULT d=17 D=5 group=sl 5 x Z_151 N=18120 best=382 evals=428401 time=40.0 orbit k=3 m=5 f=2 fix=5
