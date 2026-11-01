@@ -9,7 +9,7 @@ SCR = "/tmp/claude-0/-home-user-degree-diameter/8db4a241-a7fc-575b-978c-56a0ebe7
 OUT = "/home/user/degree-diameter/research/squads/beyond13/r6/i16/out/meta_D%d.log" % D
 os.makedirs(SCR, exist_ok=True)
 t0 = time.time(); cands = []
-for K in range(2, hi):
+for K in range(int(os.environ.get("KMIN", "2")), hi):
     for M in range(max(3, -(-lo // K)), hi // K + 1):
         if math.gcd(M, K) != 1 and False: pass
         seen = set()

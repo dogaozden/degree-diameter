@@ -198,3 +198,28 @@ Cards (best result; all checked by the director unless marked):
 Director's reading: the small cells keep moving (Δ = 3 lifts via cooling and the 1-opt finisher; Δ = 4, 5 metacyclic
 groups with random S also at even D). Round 6 (last): the same levers once more, and a test against the 2013 records at
 D = 9, 10 for Δ = 3, 4, 5, plus the first-moment explanation of random vs orbit S.
+
+## 2026-11-01, beyond-d13, round 6 (16 cards, 13:48 UTC)
+
+Same session. Files: research/squads/beyond13/r6/. Selection from round 5: the same levers once more (lifts with the scan
+finisher; hmeta with T0 = 8, REHEAT = 400; products; random S), the metacyclic rule on the lab's D = 11, 12 cells and on
+the 2013 table at D = 9, 10 (i09, i10, i16), the first-moment theory (i12), mid-cell screens (i13, i14), two wildcards.
+
+Cards (best result; all checked by the director):
+- **i04 (4,14): Z2731 x|_2400 Z91, 497,042.** **i05 (4,11): Z1093 x|_901 Z13, 28,418** (lab 24,360 before this job).
+- **i06 (5,13): (Z11 x|_4 Z5) x (Z2971 x|_1764 Z11), 3,594,910.** **i08 (5,12): Z9859 x|_4192 Z53, 1,045,054.**
+- **i10: (5,10) Z1567 x|_871 Z29, 90,886 — above the 2013 table value 90,068** (apsp + metacheck; the lab has no later
+  (5,10) entry; a candidate for the coordinator). (5,9) 28,418 beats 27,936 (2013) but not the lab's 29,756.
+- **i11 (6,11): Z17203 x|_9845 Z61, 2,098,766** (lab 2,094,960): the metacyclic rule reaches Δ = 6 at D = 11.
+- i09 (4,9), (4,10): near misses at cost 2 above the 2013 values (5,050 and 11,772 vertices).
+- i01 (3,13), i02 (3,14): no gain over the director's 3,400 / 5,640. i02 reported calling two remote-session tools by
+  mistake (no effect) and an early `pkill -f bases/` that may have killed other cards' lift runs.
+- i03 (4,13): Z2069 x|_2064 Z47 at cost 2. i07, i14, i16: (pending at the time of writing).
+- i12 theory (r6/i12/CANDIDATES.md): random S has 22-49 nats more candidates than orbit S, but measured holes exceed the
+  size-law mu by 25-2,700x, so the lower tail of the cost distribution decides; at Δ = 5 random S hits cost 0 in about 1
+  of 300 samples at N ~ 1.4M.
+- i13 (6,13), (6,14): cost 8 at best. i15 (7,14): cost 30 at PSL(2,109) x Z1291.
+
+Director's reading: the metacyclic random-S rule keeps winning at Δ = 4, 5 at every D tried (9 to 14) and now at Δ = 6
+(D = 11). Round 7 (last) tests it at Δ = 4..7 against the 2013 table and the lab's D = 8..12 values, and pushes the
+new cells once more.

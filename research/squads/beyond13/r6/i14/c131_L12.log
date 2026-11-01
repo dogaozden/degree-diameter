@@ -3,3 +3,10 @@ alpha: conj by mat(0,130,1,130), z -> 42 z on Z_139 (fixed z: 1); ORBIT k=3 m=2 
 setup 0.0s
 start cost=2 (4.7s per eval)
 t=20 step=1 evals=5 slot=0 cand=36 cost=2 best=2 T=1.26
+t=33 step=2 evals=9 slot=1 cand=48 cost=2 best=2 T=1.06
+t=43 step=3 evals=13 slot=0 cand=25 cost=2 best=2 T=0.89
+t=57 step=4 evals=17 slot=0 cand=18 cost=2 best=2 T=0.75
+t=70 step=5 evals=21 slot=0 cand=20 cost=2 best=2 T=0.63
+t=81 step=6 evals=25 slot=1 cand=15 cost=2 best=2 T=0.53
+t=94 step=7 evals=29 slot=0 cand=33 cost=2 best=2 T=0.45
+RESULT d=7 D=13 group=psl 131 x Z_139 N=156233220 vertices=312466440 best=2 evals=29 steps=7 time=93.9 orbit k=3 m=2 f=1 mu=8.56
