@@ -2,4 +2,15 @@ machine: cloud-sandbox; nproc=4; free -g: total 15G used 2G free 12G avail 13G; 
 sha256: ba8115986b134ccca56f9d2975fa50f50f579e5b322f0f39d328856db236934c  research/frontier/sols/d13D12_psl_181_5059_orb3-4-1_s1.txt  (from branch claude/beyond-d11-d12-new-cells-3t3djx; file 484 bytes)
 
 ################ haarcheck_psl (reference; research/structured/tools/haarcheck_psl.c at master f816dbc7c0, built gcc -O3 -o haarcheck_psl haarcheck_psl.c; single-threaded; BFS from (e,A) ONLY, the other half (e,B) runs in a separate job): /usr/bin/time -v haarcheck_psl research/frontier/sols/d13D12_psl_181_5059_orb3-4-1_s1.txt A   (stdout, complete)
-PROGRESS 2026-11-01T20:02:43Z: still running, elapsed 9041s (~150 min), RSS ~10.98 GB, no output yet.
+from (e,A): reached A 14998822020/14998822020, B 14998822020/14998822020 within 12, ecc 12
+HALF-VALID from (e,A) d=13 D=12 group=psl 181 x Z_5059 N=14998822020 vertices=29997644040
+[exit 0; wall 9523s (2:38:43); peak RSS 10729 MB (10987092 kB)]
+
+/usr/bin/time -v selected fields (GNU time 1.9):
+  Command being timed: "/tmp/claude-0/-home-user-degree-diameter/e41333d7-46ec-56ed-adb6-a45e9ad9f2e3/scratchpad/haarcheck_psl research/frontier/sols/d13D12_psl_181_5059_orb3-4-1_s1.txt A"
+  User time (seconds): 9369.13
+  System time (seconds): 67.44
+  Elapsed (wall clock) time (h:mm:ss or m:ss): 2:38:43
+  Maximum resident set size (kbytes): 10987092
+  Exit status: 0
+Started 2026-11-01T17:32:02Z, ended 2026-11-01T20:10:45Z. Run on this sandbox; only the (e,A) BFS was run. The (e,B) half is not in this report; the coordinator combines the halves.
