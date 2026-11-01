@@ -7,10 +7,12 @@ cosets, degree 10). N = |G|/10 = 600,438 per side, 2N = 1,200,876 (> 1,176,480).
 - H: r of order 5 in the NONSPLIT torus of PSL(2,229) (5 | (q+1)/2 = 115; C10 does not exist in PSL(2,229)), and an
   involution s inverting r (in PSL, so square determinant). Generator: `SPLIT=0 ./cscreen 229 1 D 10 10 ...`.
 - Family size: 59,985 regular double cosets, one member each, so the whole family is about 6e4 members (not 1e8).
-  Anneal is the wrong tool; a full scan (about 6e4 x A-root BFS, c8b's fast BFS would take about 1.5 h) is.
+  Anneal is the wrong tool; a full scan (about 6e4 x A-root BFS, c8b's fast BFS would take about 1.7 h) is.
 - Measured (A-root + B-root cost C = uncBA + uncAA + uncBB, plain units; 260 random members, seeds 108651, 108665):
   median 32.5 units of h (95% bootstrap CI 29.1-36.1), p10 16.6, min 6.6 (66 vertices); C = 0 in none of them.
   Fraction with C/h <= 10: 1.5 %; <= 15: 7.3 %; <= 20: 17 %. All connected; uncBB = 0 for almost all.
+  Pooled over 1,060 members (round 1 + K2 + K3, A-root cost): min 5.5 units (55 vertices), 0.28 % at or below 8
+  units. Best member: rep key 134144, full C = 55 plain. Details in the round-2 section below.
 - Comparison (same method, same units): PSL(2,181) C5 two regular dc (family A, the target so far): median 41.8
   (CI 38.6-46.9, n=300), p10 23.8, fraction <= 15: 0 of 300. PGL(2,181) D5 nonsquare reflection (family C): median
   44.1 (CI 39.9-48.4, n=300), fraction <= 15: 2 %.
@@ -19,8 +21,8 @@ cosets, degree 10). N = |G|/10 = 600,438 per side, 2N = 1,200,876 (> 1,176,480).
   is the only place it is worse. The absolute median is what sets P(C = 0). Non-regular double cosets
   (k = |H cap gHg^-1| >= 2) are 3-10x worse at the median in every group tested (families E, L, I, H, J, M, F below).
 - uncBB > 0 for only 3.5 % of K members (7 of 200), so the A-root BFS alone is close to the full cost.
-- Not a record. No member has C = 0; no solution was written. Next step for the family: scan all 59,985 members
-  (one BFS from an A root first; B-root check only for C = 0), or sample the tail further (see the tail run below).
+- Not a record. No member has C = 0; no solution was written. Next step: scan all 59,985 members (A-root BFS
+  first; B-root check only for cost 0). Sampling cannot settle it: a rough tail extrapolation gives 0.06 to 60 zeros.
 
 
 Worker: c5b-cosetscreen (relaunch of slot c5). Seeds 108651-108699 (one seed per family, see families.txt).
@@ -105,7 +107,44 @@ Reading (round 1):
    C (PGL(2,181) D5, 45.7, n=100). The tax ordering differs (A 3.0 < K 4.4 < C 6.7) because mu/h is half for
    K and C; the absolute median decides P(0). K vs A is within the sampling error at n = 60-100 (see round 2).
 
-## Round 2 (confirmation, fresh seeds 108665-108667, K = 200)
+## Round 2 (confirmation, fresh seeds 108665-108668, K = 200 / 800)
 
-(see the table at the end of this file once the runs finish)
+Runs: K2 (PSL(2,229) D5, seed 108665, 200, full C), C2 (PGL(2,181) D5 nsq, seed 108666, 200, full C),
+A2 (PSL(2,181) C5 two regular dc, seed 108667, 200, full C), K3 (PSL(2,229) D5, seed 108668, 800, A-root cost only:
+AONLY=1, cscreen2; B-root BFS only for A-root cost 0, which never happened).
+Pooled A-root cost uncBA + uncAA (units of h), bootstrap CI for the median by resampling:
+
+| family | n | min | p5 | p10 | median (95% CI) | frac <= 8 | <= 10 | <= 15 | <= 20 |
+|---|---|---|---|---|---|---|---|---|---|
+| K PSL(2,229) D5, one regular dc | 1,060 | 5.5 | 13.7 | 16.7 | 34.0 (29.1-36.1 for 260 full) | 0.0028 | 0.0151 | 0.0698 | 0.189 |
+| A PSL(2,181) C5, two regular dc | 300 | 16.0 | 22.4 | 23.8 | 41.7 (38.6-46.9) | 0 | 0 | 0 | 0.020 |
+| C PGL(2,181) D5 nonsquare, one regular dc | 300 | 12.7 | 18.6 | 22.7 | 44.1 (39.9-48.4) | 0 | 0 | 0.020 | 0.063 |
+
+Round 2 verdicts:
+- K beats A on the median (about 34 against 42 units, CIs do not overlap) and on the lower tail (K: 0.28 % of
+  members at or below 8 units, A: none in 300).
+- K is the best family found. Best member: rep key 134144 (cand 124 of the K3 run, seed 108668), full C = 55 plain
+  (uncBA 55, uncAA 0, uncBB 0), reproduced with `FIXREPS=best_K_rep.txt SPLIT=0 ./cscreen2 229 1 D 10 10 1 1`.
+  Next best (A-root cost, plain): 66, 77, 82, 87, 87 (rep keys 483603, 170791, 170816, 809741, 182225).
+- Tail: the log-linear slope of the K tail is about 0.25 per unit between 10 and 20 units, but about 0.8 per unit
+  between 8 and 10 (0.28 % at 8, 1.5 % at 10), so the tail gets steeper toward 0. A rough extrapolation puts
+  P(C = 0) per member between 1e-6 and 1e-3, i.e. an expected 0.06 to 60 zeros in the 59,985 members of family K.
+  This is a guess from 1,060 samples; a full scan is the only real test.
+
+## Summary of families sampled (whole run)
+
+Families tested: 14 in round 1 (table above), plus K2, C2, A2, K3. Two families are disconnected (square reflection
+D5 and C10 in PGL(2,181), both with H inside the squares). Largest sample sizes: K 1,060; A 300; C 300.
+
+## Next steps (for c8b and the coordinator)
+
+1. Full scan of family K: all 59,985 regular double cosets of PSL(2,229) (one member each), A-root BFS first and
+   the B-root check only for A-root cost 0. With a 0.1 s BFS (c8b's fast code) that is about 1.7 h on one core.
+   This is the only way to settle whether a zero exists in the family; sampling cannot.
+2. Speed: cscreen2 (A-root only, AONLY=1) takes about 2.5 s per member on the loaded machine; a faster coset
+   labelling for PSL(2,229) (c8b's torus trick does not apply to the nonsplit torus) is needed for the full scan.
+3. Do not spend more on the h = 6 families (PSL(2,193) C6, S3): medians 108-386 units. Do not spend more on
+   families with non-regular double cosets (k >= 2): 3-10x worse everywhere they were tested.
+4. Open question: why regular double cosets are better. Non-regular double cosets make words collide
+   (H ∩ gHg^-1 ≠ 1 gives short relations); not checked by counting short cycles.
 

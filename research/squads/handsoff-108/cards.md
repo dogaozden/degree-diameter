@@ -219,3 +219,39 @@ CHAIN min as the TRUE energy, and keep its own full check before writing a solut
 cost is unchanged, then compare on psl 23 97 with a STEP-based schedule (VCLOCK/MAXSTEPS, so machine load does not
 bias it) against the unmodified code: ≥ 60 chains each, distribution of chain minima (≤ 12, ≤ 9, median). One heavy
 process at a time, nice -n 10. Seeds: 108961-108999.
+
+### c5c-scanC: full scan of coset family C (relaunch of slot c5, 00:30 UTC)
+
+c6b-exhaust (read c6b-exhaust/NOTES.md and exh.c, run_all.sh, summ.py) reduced the two one-double-coset families to
+about 16,000 classes each and validated its BFS against c5b. c6b now scans family K only. You scan family C:
+G = PGL(2,181), H = D5 (non-square reflection), N = 592,956 (2N = 1,185,912). Copy exh.c / run_all.sh / summ.py
+into your folder (do not write in c6b's folder), run the A-root pass over every C class (resumable, nohup, nice -n 10,
+one process), then the B-root pass only for classes whose A-root part (uBA + uAA) is at most 50, best first.
+Report the full distribution and the 10 best classes in NOTES.md and the scoreboard. A class with full cost 0 is a
+diameter-8 graph on 1,185,912 vertices: save its definition in records/ and add a CLAIM line. Seeds: 108601-108649.
+
+### c7b-design: read the structure out of the annealed hexagon lifts (relaunch of slot c7, 00:50 UTC; light CPU)
+
+c6-hexagon (read c6-hexagon/NOTES.md and src/) found VALID lifts of H(q) + two perfect matchings over cyclic groups
+by annealing: q = 3 over Z24 (beats the table's 20 copies at Δ6), q = 4 over Z20 (= 20), q = 5 over Z15 and Z14
+(the table has 25 at Δ8; the lab's formula design had 13). The table's (10,8) graph is 30 copies of H(7) (Δ = q+3);
+annealing cannot reach q = 7 (one evaluation about a minute, and random voltages need far too many to line up).
+Job: look for STRUCTURE in the valid voltage assignments (they are in c6's files): voltage distributions on hexagon
+edges vs matching edges, dependence on point/line coordinates of H(q) (hexgen2 builds H(q) from coordinates), whether
+voltages can be normalised (switching at vertices: adding f(v) to every dart out of v keeps the lift isomorphic) to
+something with few distinct values, symmetry under the automorphisms of H(q). Then propose a formula family
+(voltages given by a short rule in the coordinates, with a few parameters), test it at q = 3, 4, 5 with c6's checker
+(src/hexeval.c, 0.6 s per evaluation at q = 5, one process, nice -n 10), and, if it reproduces valid lifts, build it
+at q = 7 with 31 copies (Δ = 10, 1,215,696 vertices) and check. Write what you find in NOTES.md, positive or negative.
+Seeds: 108851-108899.
+
+### c2b-digest: keep a running digest of the squad for the coordinator (relaunch of slot c2, 00:50 UTC; no CPU)
+
+Every 25-30 minutes until about 03:30 UTC, rewrite research/squads/handsoff-108/DIGEST.md: one table row per
+worker folder (c1-grind ... c8c-smooth, including finished ones): card, status (running / done, and whether its
+processes are alive), the key numbers (best cost in its units, sample sizes, comparisons with the reference), the main
+finding in one sentence, and anything that looks like a claim of cost 0 (flag it at the top in bold). Below the table,
+keep a short list "Leads worth more CPU" and "Dead ends", each with the evidence (file + numbers). Sources: each
+folder's NOTES.md, scoreboard.tsv, log tails (tail/grep only, never print big files). Be exact; copy numbers, do not
+round them into new claims. Do not run any search yourself. Poll with sleep loops of under 10 minutes per Bash call;
+do not end your turn until 03:30 UTC.
