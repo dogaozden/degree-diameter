@@ -1,0 +1,8 @@
+selftest psl 47: |M| = 51888, det-1 matrices 103776
+selftest group multiplication: associativity, identity, inverse on 20000 random triples ok
+file psl47_31_s1.sol
+header: 5 13 psl 47 n 31 N 1608528
+group psl 47 x Z_31, |G| = 1608528 = N, vertices 2N = 3217056; 5 distinct generators
+from (e,A): reached A 1608528/1608528, B 1608528/1608528 within 13; ecc 13; level sizes [1, 5, 20, 80, 319, 1272, 5049, 19926, 77471, 281215, 818377, 1240704, 707291, 65326]  (3s)
+from (e,B): reached A 1608528/1608528, B 1608528/1608528 within 13; ecc 13; level sizes [1, 5, 20, 80, 319, 1272, 5049, 19926, 77477, 281215, 818968, 1240704, 706694, 65326]  (6s)
+VALID d=5 D=13 group=psl 47 x Z_31 N=1608528 vertices=3217056 (distinct generators, 5-regular simple; every vertex within 13 of both (e,A) and (e,B); ecc 13; 6s)

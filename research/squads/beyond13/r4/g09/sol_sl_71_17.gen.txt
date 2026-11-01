@@ -1,0 +1,8 @@
+selftest sl 71: |M| = 357840, det-1 matrices 357840
+selftest group multiplication: associativity, identity, inverse on 20000 random triples ok
+file sol_sl_71_17.txt
+header: 5 14 sl 71 n 17 N 6083280
+group sl 71 x Z_17, |G| = 6083280 = N, vertices 2N = 12166560; 5 distinct generators
+from (e,A): reached A 6083280/6083280, B 6083280/6083280 within 14; ecc 14; level sizes [1, 5, 20, 80, 320, 1280, 5120, 20438, 81268, 317397, 1159336, 3304140, 4677550, 2439940, 159665]  (11s)
+from (e,B): reached A 6083280/6083280, B 6083280/6083280 within 14; ecc 14; level sizes [1, 5, 20, 80, 320, 1280, 5120, 20438, 81266, 317397, 1159268, 3304140, 4677988, 2439940, 159297]  (21s)
+VALID d=5 D=14 group=sl 71 x Z_17 N=6083280 vertices=12166560 (distinct generators, 5-regular simple; every vertex within 14 of both (e,A) and (e,B); ecc 14; 21s)

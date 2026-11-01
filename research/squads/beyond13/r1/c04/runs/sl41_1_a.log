@@ -1,0 +1,26 @@
+group sl 41 x Z_1, N=68880 (2N=137760), rows 1680 x 41 bits (doubled row 24 words), memory 0.00 GB, threads 1
+alpha: conj by mat(0,40,1,40), z -> 0 z on Z_1 (fixed z: 1); ORBIT k=3 m=1 f=1; W=797161 lambda=11.573 mu=0.65
+setup 0.0s
+start cost=48 (0.0s per eval)
+t=0 step=1 evals=9 slot=0 cand=113364 cost=48 best=48 T=1.26
+t=0 step=2 evals=17 slot=0 cand=58 cost=48 best=48 T=1.06
+t=0 step=3 evals=25 slot=0 cand=276 cost=48 best=48 T=0.89
+t=0 step=4 evals=33 slot=0 cand=28 cost=28 best=28 T=0.75
+t=0 step=5 evals=41 slot=0 cand=16 cost=16 best=16 T=0.63
+t=0 step=6 evals=49 slot=0 cand=4 cost=4 best=4 T=0.53
+t=0 step=7 evals=57 slot=0 cand=4 cost=4 best=4 T=0.45
+t=0 step=8 evals=65 slot=0 cand=8 cost=4 best=4 T=0.38
+t=0 step=9 evals=73 slot=0 cand=40 cost=4 best=4 T=0.32
+t=0 step=10 evals=81 slot=0 cand=12 cost=4 best=4 T=0.27
+t=0 step=11 evals=89 slot=0 cand=16 cost=4 best=4 T=0.22
+t=0 step=12 evals=97 slot=0 cand=32 cost=4 best=4 T=0.19
+t=0 step=13 evals=105 slot=0 cand=20 cost=4 best=4 T=0.16
+t=0 step=14 evals=113 slot=0 cand=20 cost=4 best=4 T=0.15
+t=0 step=15 evals=121 slot=0 cand=22 cost=4 best=4 T=0.15
+t=0 step=16 evals=129 slot=0 cand=4 cost=4 best=4 T=0.15
+t=0 step=17 evals=137 slot=0 cand=8 cost=4 best=4 T=0.15
+t=0 step=18 evals=145 slot=0 cand=10 cost=4 best=4 T=0.15
+t=0 step=19 evals=153 slot=0 cand=0 cost=0 best=0 T=0.15
+RESULT d=4 D=13 group=sl 41 x Z_1 N=68880 vertices=137760 best=0 evals=153 steps=19 time=0.3 orbit k=3 m=1 f=1 mu=0.65
+re-evaluation of the best S: cost 0
+wrote sols/sl41_1.sol

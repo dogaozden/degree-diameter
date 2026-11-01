@@ -1,0 +1,8 @@
+selftest psl 23: |M| = 6072, det-1 matrices 12144
+selftest group multiplication: associativity, identity, inverse on 20000 random triples ok
+file sols/psl_23_13.sol
+header: 4 13 psl 23 n 13 N 78936
+group psl 23 x Z_13, |G| = 78936 = N, vertices 2N = 157872; 4 distinct generators
+from (e,A): reached A 78936/78936, B 78936/78936 within 13; ecc 13; level sizes [1, 4, 12, 36, 108, 324, 963, 2862, 8286, 21684, 44677, 51830, 24889, 2196]  (1s)
+from (e,B): reached A 78936/78936, B 78936/78936 within 13; ecc 13; level sizes [1, 4, 12, 36, 108, 324, 963, 2862, 8286, 21684, 44583, 51830, 24983, 2196]  (3s)
+VALID d=4 D=13 group=psl 23 x Z_13 N=78936 vertices=157872 (distinct generators, 4-regular simple; every vertex within 13 of both (e,A) and (e,B); ecc 13; 3s)

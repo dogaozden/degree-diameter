@@ -1,0 +1,17 @@
+group sl 67 x Z_313, N=94117848 (2N=188235696), rows 4488 x 20971 bits (doubled row 680 words), memory 0.06 GB, threads 1
+alpha: conj by mat(0,66,1,66), z -> 98 z on Z_313 (fixed z: 1); ORBIT k=3 m=2 f=0; W=1.52588e+09 lambda=16.212 mu=8.56
+setup 0.0s
+start cost=35 (1.3s per eval)
+t=7 step=1 evals=9 slot=0 cand=12 cost=12 best=12 T=1.26
+t=13 step=2 evals=17 slot=0 cand=18 cost=12 best=12 T=1.06
+t=21 step=3 evals=25 slot=0 cand=27 cost=12 best=12 T=0.89
+t=29 step=4 evals=33 slot=0 cand=21 cost=12 best=12 T=0.75
+t=37 step=5 evals=41 slot=1 cand=21 cost=12 best=12 T=0.63
+t=44 step=6 evals=49 slot=1 cand=12 cost=12 best=12 T=0.53
+t=51 step=7 evals=57 slot=1 cand=16 cost=12 best=12 T=0.45
+t=66 step=8 evals=65 slot=1 cand=27 cost=12 best=12 T=0.38
+t=73 step=9 evals=73 slot=0 cand=22 cost=12 best=12 T=0.32
+t=78 step=10 evals=81 slot=1 cand=33 cost=12 best=12 T=0.27
+t=84 step=11 evals=89 slot=0 cand=17 cost=12 best=12 T=0.22
+t=88 step=12 evals=97 slot=1 cand=10 cost=10 best=10 T=0.19
+RESULT d=6 D=14 group=sl 67 x Z_313 N=94117848 vertices=188235696 best=10 evals=97 steps=12 time=87.9 orbit k=3 m=2 f=0 mu=8.56

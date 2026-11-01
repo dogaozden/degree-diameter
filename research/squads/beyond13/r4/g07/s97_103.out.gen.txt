@@ -1,0 +1,8 @@
+selftest sl 97: |M| = 912576, index round trip over all elements ok
+selftest group multiplication: associativity, identity, inverse on 20000 random triples ok
+file s97_103.out
+header: 6 14 sl 97 n 103 N 93995328
+group sl 97 x Z_103, |G| = 93995328 = N, vertices 2N = 187990656; 6 distinct generators
+from (e,A): reached A 93995328/93995328, B 93995328/93995328 within 14; ecc 14; level sizes [1, 6, 30, 150, 750, 3750, 18750, 93687, 467040, 2305246, 10895112, 42156803, 78760505, 49435686, 3853140]  (90s)
+from (e,B): reached A 93995328/93995328, B 93995328/93995328 within 14; ecc 14; level sizes [1, 6, 30, 150, 750, 3750, 18750, 93687, 467040, 2305246, 10895248, 42156803, 78759037, 49435686, 3854472]  (189s)
+VALID d=6 D=14 group=sl 97 x Z_103 N=93995328 vertices=187990656 (distinct generators, 6-regular simple; every vertex within 14 of both (e,A) and (e,B); ecc 14; 189s)

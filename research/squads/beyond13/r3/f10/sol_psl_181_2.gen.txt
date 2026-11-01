@@ -1,0 +1,8 @@
+selftest psl 181: |M| = 2964780, index round trip over all elements ok
+selftest group multiplication: associativity, identity, inverse on 20000 random triples ok
+file ./sol_psl_181_2.txt
+header: 5 14 psl 181 n 2 N 5929560
+group psl 181 x Z_2, |G| = 5929560 = N, vertices 2N = 11859120; 5 distinct generators
+from (e,A): reached A 5929560/5929560, B 5929560/5929560 within 14; ecc 14; level sizes [1, 5, 20, 80, 320, 1280, 5111, 20408, 80958, 315744, 1148209, 3255116, 4545827, 2336927, 149114]  (8s)
+from (e,B): reached A 5929560/5929560, B 5929560/5929560 within 14; ecc 14; level sizes [1, 5, 20, 80, 320, 1280, 5111, 20408, 80959, 315744, 1148437, 3255116, 4545621, 2336927, 149091]  (14s)
+VALID d=5 D=14 group=psl 181 x Z_2 N=5929560 vertices=11859120 (distinct generators, 5-regular simple; every vertex within 14 of both (e,A) and (e,B); ecc 14; 14s)

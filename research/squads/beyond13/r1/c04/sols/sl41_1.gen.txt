@@ -1,0 +1,8 @@
+selftest sl 41: |M| = 68880, det-1 matrices 68880
+selftest group multiplication: associativity, identity, inverse on 20000 random triples ok
+file sols/sl41_1.sol
+header: 4 13 sl 41 n 1 N 68880
+group sl 41 x Z_1, |G| = 68880 = N, vertices 2N = 137760; 4 distinct generators
+from (e,A): reached A 68880/68880, B 68880/68880 within 13; ecc 13; level sizes [1, 4, 12, 36, 108, 310, 890, 2519, 7000, 17934, 37220, 44883, 23649, 3194]  (1s)
+from (e,B): reached A 68880/68880, B 68880/68880 within 13; ecc 13; level sizes [1, 4, 12, 36, 108, 310, 890, 2519, 7000, 17934, 37220, 44883, 23649, 3194]  (3s)
+VALID d=4 D=13 group=sl 41 x Z_1 N=68880 vertices=137760 (distinct generators, 4-regular simple; every vertex within 13 of both (e,A) and (e,B); ecc 13; 3s)

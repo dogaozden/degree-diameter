@@ -1,0 +1,9 @@
+checker: apsp
+command: ./bin/apsp graphs/d5D9_n28418_meta1093_13.edges 5 9
+start: 2026-11-01T14:04:59Z
+sha256 67868fe99e872fa1a10f3e5c1da1afff87989679e8b6e4f2a06d6e9b7265b265  ./bin/apsp
+sha256 bc20d5b5950d9e5d53de7ea38d5b95e3749c914b1e89b8d4a936792132547ef4  graphs/d5D9_n28418_meta1093_13.edges
+n=28418 edges=71045 degree min=5 max=5 bipartite=yes diameter=9
+RESULT VALID d=5 D=9 n=28418
+exit: 0
+end: 2026-11-01T14:05:01Z (2 s)

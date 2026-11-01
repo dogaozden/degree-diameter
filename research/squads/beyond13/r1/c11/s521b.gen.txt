@@ -1,0 +1,5 @@
+selftest sl 521: |M| = 141420240, index round trip over all elements ok
+selftest group multiplication: associativity, identity, inverse on 20000 random triples ok
+file /home/user/degree-diameter/research/squads/beyond13/r1/c11/s521b.sol
+header: 7 13 sl 521 n 1 N 141420240
+group sl 521 x Z_1, |G| = 141420240 = N, vertices 2N = 282840480; 7 distinct generators

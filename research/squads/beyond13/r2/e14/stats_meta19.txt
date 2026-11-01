@@ -1,0 +1,12 @@
+== ORBIT 3 2 0 (10 random symmetric S)
+group meta 1079011 19 305965 x Z_1, N=20501209, identity 0, H order 19, rows 1079011, threads 1, setup 21.66s
+wide rows: no cyclic subgroup of order >= 64 found (best 19); using haar_gen3's evaluation
+alpha: meta scaling a -> 474533 a, z -> 0 z on Z_1
+ORBIT k=3 m=2 f=0: |Fix(alpha)| = 18 (+e); mu = 7.03, mu/k = 2.34, fixed-point misses ~ 0.27
+RANDORB d=6 D=13 group=meta 1079011 19 305965 x Z_1 N=20501209 k=3 m=2 f=0 fix=18 samples=10 min=16493304 p1=16493304 p10=16647110 median=16880690 mean=19398786.40 var=52037858616553.5 mu=7.03 time=224.4
+RANDORB hist (cost/k): 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 10
+== random S haar_sym RANDSAMPLE (10 samples)
+group meta 1079011 19 305965 x Z_1, N=20501209, identity 0, H order 19, rows 1079011, threads 1, setup 18.51s
+wide rows: no cyclic subgroup of order >= 64 found (best 19); using haar_gen3's evaluation
+RANDSAMPLE d=6 D=13 group=meta 1079011 19 305965 x Z_1 N=20501209 samples=10 min=100 p1=100 p10=104 median=260
+DONE

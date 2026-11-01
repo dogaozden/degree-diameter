@@ -1,0 +1,9 @@
+checker: apsp
+command: ./bin/apsp graphs/d4D10_n11988_meta333_18.edges 4 10
+start: 2026-11-01T15:35:24Z
+sha256 67868fe99e872fa1a10f3e5c1da1afff87989679e8b6e4f2a06d6e9b7265b265  ./bin/apsp
+sha256 5b18c2b7a6cd04a54909781bf206275c7a57fcaf28babe45fdfca38f391b958b  graphs/d4D10_n11988_meta333_18.edges
+n=11988 edges=23976 degree min=4 max=4 bipartite=yes diameter=10
+RESULT VALID d=4 D=10 n=11988
+exit: 0
+end: 2026-11-01T15:35:24Z (0 s)

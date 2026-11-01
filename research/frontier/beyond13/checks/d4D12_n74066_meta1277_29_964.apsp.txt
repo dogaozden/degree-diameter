@@ -1,0 +1,9 @@
+checker: apsp
+command: ./bin/apsp graphs/d4D12_n74066_meta1277_29_964.edges 4 12
+start: 2026-11-01T13:36:08Z
+sha256 67868fe99e872fa1a10f3e5c1da1afff87989679e8b6e4f2a06d6e9b7265b265  ./bin/apsp
+sha256 ea095a487bef8e84400fd7443bd9e234703bce0adbe9108dcd17386efe47c071  graphs/d4D12_n74066_meta1277_29_964.edges
+n=74066 edges=148132 degree min=4 max=4 bipartite=yes diameter=12
+RESULT VALID d=4 D=12 n=74066
+exit: 0
+end: 2026-11-01T13:36:17Z (9 s)

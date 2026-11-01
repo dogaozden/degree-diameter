@@ -1,0 +1,8 @@
+selftest psl 53: |M| = 74412, det-1 matrices 148824
+selftest group multiplication: associativity, identity, inverse on 20000 random triples ok
+file sol_psl_53_83.txt
+header: 5 14 psl 53 n 83 N 6176196
+group psl 53 x Z_83, |G| = 6176196 = N, vertices 2N = 12352392; 5 distinct generators
+from (e,A): reached A 6176196/6176196, B 6176196/6176196 within 14; ecc 14; level sizes [1, 5, 20, 80, 320, 1280, 5120, 20438, 81146, 316656, 1156589, 3311535, 4754788, 2526202, 178212]  (6s)
+from (e,B): reached A 6176196/6176196, B 6176196/6176196 within 14; ecc 14; level sizes [1, 5, 20, 80, 320, 1280, 5120, 20438, 81148, 316656, 1156561, 3311535, 4754912, 2526202, 178114]  (12s)
+VALID d=5 D=14 group=psl 53 x Z_83 N=6176196 vertices=12352392 (distinct generators, 5-regular simple; every vertex within 14 of both (e,A) and (e,B); ecc 14; 12s)

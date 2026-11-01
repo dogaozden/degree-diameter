@@ -1,0 +1,8 @@
+group psl 193 x Z_211, N=758425152 (2N=1516850304), rows 18624 x 40723 bits (doubled row 1296 words), memory 0.47 GB, threads 1
+alpha: conj by mat(0,192,1,192), z -> 14 z on Z_211 (fixed z: 1); ORBIT k=3 m=2 f=1; W=1.56728e+10 lambda=20.665 mu=0.80
+setup 0.0s
+start cost=4 (23.2s per eval)
+t=40 step=1 evals=3 slot=1 cand=0 cost=0 best=0 T=1.26
+RESULT d=7 D=14 group=psl 193 x Z_211 N=758425152 vertices=1516850304 best=0 evals=3 steps=1 time=40.1 orbit k=3 m=2 f=1 mu=0.80
+re-evaluation of the best S: cost 0
+wrote /home/user/degree-diameter/research/squads/beyond13/r1/c12/s1_psl193_211.sol

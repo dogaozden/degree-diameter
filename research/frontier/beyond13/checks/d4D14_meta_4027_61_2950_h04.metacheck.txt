@@ -1,0 +1,10 @@
+checker: metacheck
+command: python3 metacheck.py sols/d4D14_meta_4027_61_2950_h04.txt
+start: 2026-11-01T13:43:36Z
+sha256 453f9b3e451f1cda3397e11563a64bca4f5416c4f2c5b6390eb301fbdb6b011a  metacheck.py
+sha256 64b6241ee7fde143f19a0460b013cae42dad31f60198d970f5ef58a230095ba4  sols/d4D14_meta_4027_61_2950_h04.txt
+from (e,A): reached A 245647/245647, B 245647/245647 within 14; level sizes [1, 4, 12, 36, 108, 324, 972, 2916, 8660, 25047, 66238, 137092, 161500, 80228, 8156]
+from (e,B): reached A 245647/245647, B 245647/245647 within 14; level sizes [1, 4, 12, 36, 108, 324, 972, 2916, 8660, 25047, 66224, 137092, 161510, 80228, 8160]
+VALID d=4 D=14 group=meta 4027 61 2950 x Z_1 N=245647 vertices=491294 (3s)
+exit: 0
+end: 2026-11-01T13:43:40Z (3 s)

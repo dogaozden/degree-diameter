@@ -1,0 +1,5 @@
+c16 (4,13), random S (no orbits) via haar_gen3, 60 s budget each unless noted; N = |G|, vertices = 2|G|
+VALID: psl 49 (poly x^2+1) N=58800 -> 117600 vertices, solved in 0.5 s, haarcheck_gen VALID (s2_psl49.sol, s2_psl49.gen.txt)
+VALID: pgl 37 N=50616 -> 101232 vertices, 0.5 s, check_haar.py VALID (t_pgl37.sol)
+not solved in 60 s: pgl 41 best=1 (N=68880); pgl 43 best=10 (N=79464); psl 53 best=2 (N=74412); pgl 49 best=299 (N=117600)
+pgl 32 N=32736 solved (65472 vertices) but smaller than psl 49

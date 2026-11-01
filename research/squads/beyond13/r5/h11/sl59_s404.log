@@ -1,0 +1,19 @@
+group sl 59 x Z_103, N=21147960 (2N=42295920), rows 3480 x 6077 bits (doubled row 208 words), memory 0.01 GB, threads 1
+alpha: conj by mat(0,58,1,58), z -> 46 z on Z_103 (fixed z: 1); ORBIT k=3 m=2 f=0; W=3.05176e+08 lambda=14.431 mu=11.43
+setup 0.0s
+start cost=2 (0.4s per eval)
+t=6 step=1 evals=33 slot=1 cand=30 cost=2 best=2 T=1.26
+t=13 step=2 evals=65 slot=1 cand=24 cost=2 best=2 T=1.06
+t=20 step=3 evals=97 slot=0 cand=30 cost=2 best=2 T=0.89
+t=26 step=4 evals=129 slot=0 cand=30 cost=2 best=2 T=0.75
+t=33 step=5 evals=161 slot=1 cand=42 cost=2 best=2 T=0.63
+t=39 step=6 evals=193 slot=1 cand=30 cost=2 best=2 T=0.53
+t=45 step=7 evals=225 slot=0 cand=42 cost=2 best=2 T=0.45
+t=51 step=8 evals=257 slot=1 cand=42 cost=2 best=2 T=0.38
+t=59 step=9 evals=289 slot=1 cand=16 cost=2 best=2 T=0.32
+t=64 step=10 evals=321 slot=1 cand=30 cost=2 best=2 T=0.27
+t=69 step=11 evals=353 slot=1 cand=46 cost=2 best=2 T=0.22
+t=78 step=12 evals=385 slot=0 cand=30 cost=2 best=2 T=0.19
+t=83 step=13 evals=417 slot=1 cand=54 cost=2 best=2 T=0.16
+t=92 step=14 evals=449 slot=1 cand=40 cost=2 best=2 T=0.15
+RESULT d=6 D=13 group=sl 59 x Z_103 N=21147960 vertices=42295920 best=2 evals=449 steps=14 time=91.8 orbit k=3 m=2 f=0 mu=11.43
