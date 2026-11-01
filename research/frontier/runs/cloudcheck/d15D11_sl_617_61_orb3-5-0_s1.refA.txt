@@ -5,3 +5,4 @@ timing: /usr/bin/time is not installed on this machine, so the [exit; wall; peak
 
 ################ haarcheck_sl (reference checker, one BFS from (e,A) only): haarcheck_sl research/frontier/sols/d15D11_sl_617_61_orb3-5-0_s1.txt A   (stdout, complete)
 STATUS: running since 2026-11-01T15:32:15Z; progress note 1 at 0 min: still running, no output until the BFS ends (the checker prints only at the end).
+PROGRESS 30 min (16:02:44Z): still running, elapsed 30 min 37 s, RSS 10.5 GB of 15 GB; no output yet (the checker prints only when the BFS ends).
