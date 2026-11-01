@@ -1,0 +1,49 @@
+Coordinator report (Mac mini coordinator, 2026-11-01T17:29:39Z): d15D11_sl_617_61_orb3-5-0_s1.txt, sha256 f06dbe2dec0ad5ede609972b229a716d473af9e321bc22f62d7f7fb28963b3c6 (the same in all three reports below).
+Too big for the Mac mini; both checkers ran in the cloud. The reference check (haarcheck_sl) was split by start side (A|B, master e93cbf856c). The three reports are copied below unedited.
+
+======== gen: research/frontier/runs/cloudcheck/d15D11_sl_617_61_orb3-5-0_s1.gen.txt from origin/claude/beyond-d11-d12-new-cells-3t3djx ========
+checker: haarcheck_gen
+command: ./bin/haarcheck_gen runs/d15D11_sl_617_61_orb3-5-0_s1.out
+start: 2026-11-01T13:14:32Z
+sha256 e52e247f4a92a474f49ff0d5d438660ba0b557bbdfd4a8e24311ca881ff3f17c  ./bin/haarcheck_gen
+sha256 f06dbe2dec0ad5ede609972b229a716d473af9e321bc22f62d7f7fb28963b3c6  runs/d15D11_sl_617_61_orb3-5-0_s1.out
+selftest sl 617: |M| = 234884496, index round trip over all elements ok
+selftest group multiplication: associativity, identity, inverse on 20000 random triples ok
+file runs/d15D11_sl_617_61_orb3-5-0_s1.out
+header: 15 11 sl 617 n 61 N 14327954256
+group sl 617 x Z_61, |G| = 14327954256 = N, vertices 2N = 28655908512; 15 distinct generators
+from (e,A): reached A 14327954256/14327954256, B 14327954256/14327954256 within 11; ecc 11; level sizes [1, 15, 210, 2940, 41160, 576240, 8065230, 112490380, 1496053607, 11181388110, 12823794048, 3033496571]  (2353s)
+from (e,B): reached A 14327954256/14327954256, B 14327954256/14327954256 within 11; ecc 11; level sizes [1, 15, 210, 2940, 41160, 576240, 8065230, 112490380, 1496050909, 11181388110, 12823796746, 3033496571]  (4663s)
+VALID d=15 D=11 group=sl 617 x Z_61 N=14327954256 vertices=28655908512 (distinct generators, 15-regular simple; every vertex within 11 of both (e,A) and (e,B); ecc 11; 4663s)
+exit: 0
+end: 2026-11-01T14:32:15Z (4663 s)
+
+======== refA: research/frontier/runs/cloudcheck/d15D11_sl_617_61_orb3-5-0_s1.refA.txt from origin/claude/haar-graph-verification-xv2rkm ========
+machine: vm; nproc=4; free -g: total 15G used 3G free 12G avail 12G; Linux 6.18.44-fc-v185; gcc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0
+sha256: f06dbe2dec0ad5ede609972b229a716d473af9e321bc22f62d7f7fb28963b3c6  research/frontier/sols/d15D11_sl_617_61_orb3-5-0_s1.txt (copied from branch claude/beyond-d11-d12-new-cells-3t3djx, file 560 bytes; header: 15 11 sl 617 n 61 N 14327954256; cell Δ15·D11; 2N = 28,655,908,512 vertices)
+checker: research/frontier/haarcheck_sl.c on master, commit e93cbf8 (sha256 of built binary 40f72f5b3e5894f7...); built with gcc -O3 -o haarcheck_sl research/frontier/haarcheck_sl.c
+timing: /usr/bin/time is not installed on this machine, so the [exit; wall; peak RSS] line is produced by a python3 os.wait4 wrapper (ru_maxrss of the child).
+
+################ haarcheck_sl (reference checker, one BFS from (e,A) only): haarcheck_sl research/frontier/sols/d15D11_sl_617_61_orb3-5-0_s1.txt A   (stdout, complete)
+from (e,A): reached A 14327954256/14327954256, B 14327954256/14327954256 within 11, ecc 11
+HALF-VALID from (e,A) d=15 D=11 group=sl 617 x Z_61 N=14327954256 vertices=28655908512
+[exit 0; wall 5910s; peak RSS 10250 MB]
+
+progress log (appended while running, times UTC): 15:32 started; 16:02 still running at 30 min 37 s, RSS 10.5 GB; 16:27 still running at 55 min; 16:57 still running at 1 h 25 min; 17:02 still running at 1 h 31 min; finished at about 17:10 (wall 5910 s by the wrapper).
+
+======== refB: research/frontier/runs/cloudcheck/d15D11_sl_617_61_orb3-5-0_s1.refB.txt from origin/claude/haar-graph-verification-82amqe ========
+machine: vm; nproc=4; free -g: total 15G used 3G free 11G avail 11G; Linux 6.18.44-fc-v185; gcc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0
+sha256: f06dbe2dec0ad5ede609972b229a716d473af9e321bc22f62d7f7fb28963b3c6  research/frontier/sols/d15D11_sl_617_61_orb3-5-0_s1.txt (copied with git show from branch claude/beyond-d11-d12-new-cells-3t3djx; 560 bytes, 15 generators, N=14327954256)
+checker: research/frontier/haarcheck_sl.c on master e93cbf856c, sha256 d2a212fcf927e2a7b6bb6779c0a774b2a3523c525aa9d84a1b45fdb77557a932; built with gcc -O3 -o haarcheck_sl research/frontier/haarcheck_sl.c (binary kept outside the repo)
+
+################ haarcheck_sl (reference checker, research/frontier/haarcheck_sl.c on master e93cbf856c, built with gcc -O3; only the (e,B) BFS): /usr/bin/time -v -o time.txt haarcheck_sl research/frontier/sols/d15D11_sl_617_61_orb3-5-0_s1.txt B   (stdout, complete; stderr was empty)
+from (e,B): reached A 14327954256/14327954256, B 14327954256/14327954256 within 11, ecc 11
+HALF-VALID from (e,B) d=15 D=11 group=sl 617 x Z_61 N=14327954256 vertices=28655908512
+[exit 0; wall 5553s; peak RSS 10249 MB (10495828 KB); user 5454.93 s, system 45.16 s]
+
+note: this is one half of the two-sided check. The (e,A) BFS is run by another job, and the search session's haarcheck_gen run covers the other side. The coordinator combines the halves; this report does not claim VALID for the whole graph.
+run started 2026-11-01T15:32:25Z, ended 2026-11-01T17:04:58Z; ran to completion, not stopped early.
+
+======== coordinator summary ========
+haarcheck_gen: VALID d=15 D=11 (both starts, ecc 11). haarcheck_sl: HALF-VALID from (e,A) and HALF-VALID from (e,B); both reach all 14327954256 elements of each side within 11. Right multiplication is transitive on each side, so the two halves together are the full reference check.
+RESULT VALID d=15 D=11 group=sl 617 x Z_61 N=14327954256 vertices=28655908512 (two independent checkers: haarcheck_gen, and haarcheck_sl run as two halves)
