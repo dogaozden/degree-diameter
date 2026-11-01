@@ -1,0 +1,7 @@
+i15 (wildcard A), 2026-11-01. Cell (7,14), record 1,671,605,424 vertices (SL(2,163) x Z193, mu 6.00).
+Idea: beat it with a group of order just above 835.8M in the mu band 6.0-6.1 under the 0.5 GB cap.
+Probe: haar_big0 7 14, ORBIT="3 2 1", PSL(2,109) x Z1291 (N=835,870,860, 2N=1,671,741,720, mu 6.01), memory 0.51 GB.
+Results: start cost 36 (14 s per eval), chained links reached cost 30 after 9 evals each. No solution.
+Also measured: PSL(2,223) x Z157 (8,13) RANDORB min 33 of 2 samples, 31-35 s per eval, memory 0.56 GB.
+Finding: the 0.5 GB cap binds. Any group order above the current (7,14) and (8,13) records is at or above 0.51-0.56 GB
+with haar_big0, so beating them needs the cap raised or a lower-memory checker.

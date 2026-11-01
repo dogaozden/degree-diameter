@@ -45,3 +45,13 @@ liftd, THEORY.md.
 - The machine (4 cores, 15 GB) was the limit: the director's checks held 3-5 threads, so cards often ran at 5-10 % of a
   core. The (10,13) check was OOM-killed once after 58 min (a card's numpy checker plus a director search pushed the box
   over 15 GB) and was rerun; cards were then capped at 0.5 GB, which also capped what they could search at (7,14), (8,13).
+
+**Side result inside the 2013 table: (5,10) >= 90,886.** Squad card r6/i10 tested the metacyclic idea on the old table:
+the Haar graph of Z1567 x|_871 Z29 (order 45,443, random S, hmeta, 11 s) has 90,886 vertices, maximum degree 5 and
+diameter 10 (apsp: checks/d5D10_n90886_meta1567_29.apsp.txt; metacheck: checks/d5D10_meta_1567_29_i10.metacheck.txt;
+solution sols/d5D10_meta_1567_29_i10.txt). The 2013 table (DS14v2, as copied in research/frontier/TABLE.md) has 90,068 for
+(5,10), and the lab's harvest history has no (5,10) entry; literature after 2013 was not checked (TABLE.md says the same
+for every D >= 7 cell), so this is a candidate for the coordinator, not a claimed record. The same card's (5,9) graph
+(28,418, Z1093 x|_901 Z13) beats the 2013 value 27,936 but not the lab's 29,756 (harvested earlier, also metacyclic).
+(4,9) and (4,10) near misses: Z101 x|_5 Z25 (5,050 vertices, cost 2) and Z109 x|_12 Z54 (11,772, cost 2) against 4,970
+and 11,748 (r6/i09 and director chains).

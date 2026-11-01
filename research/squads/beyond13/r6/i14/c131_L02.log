@@ -1,0 +1,13 @@
+group psl 131 x Z_139, N=156233220 (2N=312466440), rows 8580 x 18209 bits (doubled row 592 words), memory 0.10 GB, threads 1
+alpha: conj by mat(0,130,1,130), z -> 42 z on Z_139 (fixed z: 1); ORBIT k=3 m=2 f=1; W=2.61214e+09 lambda=16.719 mu=8.56
+setup 0.0s
+start cost=3 (4.3s per eval)
+t=12 step=1 evals=5 slot=0 cand=36 cost=3 best=3 T=1.26
+t=23 step=2 evals=9 slot=1 cand=23 cost=3 best=3 T=1.06
+t=36 step=3 evals=13 slot=0 cand=33 cost=3 best=3 T=0.89
+t=49 step=4 evals=17 slot=0 cand=15 cost=3 best=3 T=0.75
+t=60 step=5 evals=21 slot=0 cand=39 cost=3 best=3 T=0.63
+t=68 step=6 evals=25 slot=1 cand=12 cost=3 best=3 T=0.53
+t=77 step=7 evals=29 slot=0 cand=32 cost=3 best=3 T=0.45
+t=93 step=8 evals=33 slot=0 cand=138786 cost=3 best=3 T=0.38
+RESULT d=7 D=13 group=psl 131 x Z_139 N=156233220 vertices=312466440 best=3 evals=33 steps=8 time=92.8 orbit k=3 m=2 f=1 mu=8.56
