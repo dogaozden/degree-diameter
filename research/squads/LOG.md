@@ -134,3 +134,20 @@ Mostly seed farms on round 3's near misses, plus a tool card. Cards (best result
   j11 (6,12) Z74719 x| Z63 cost 2; j13 even-D products (5,12) cost 1.
 Kept for round 5: chains with haar_gen3s on the cost-1/2 near misses, (6,11) above N = 1,056,057, a move-set card and a
 hole-anatomy card. Process: four more stray calls to messaging/session tools by cards, all rejected for missing arguments.
+
+### Round 5 (14 cards, 13:38-14:03 UTC, research/squads/beyond11b/r5/)
+
+Seed farms and save/resume chains (haar_gen3s from r4/j14) on the near misses, a move-set card and a hole-anatomy card.
+- **k07 (6,11) Z20809 x| Z51, N = 1,061,259: 2,122,518** (44 s); k = 43 at 1,061,369 cost 2.
+- **k03 (5,12) Z8663 x| Z61, N = 528,443: 1,056,886** (cost 2 fresh, then 0 after one resume).
+- **k05 (5,11) Z5023 x| Z31, N = 155,713: 311,426** (cost 4 fresh, 0 after one resume).
+- **k02 (4,12) Z731 x| Z48 (731 = 17 x 43), N = 35,088: 70,176** (cost 1, 1, then 0 on the 4th chain link).
+- k13 TOOL (haar_gen3t): pair moves and s -> s w moves useless; full-length targeted walks (TFULL = 1, TARGP = 100) took
+  (4,12) Z677 x| Z52 from cost 2 to 1 where plain chains stayed at 2-3.
+- k14 hole anatomy: at odd D the holes of a Frobenius group are inverse pairs on one side (cost 4 = one pair per side, as
+  the inversion symmetry predicts); at (4,12) the last hole of a cost-1 state was an involution of Z677 x| Z52 (k = 52 even).
+- No raise: k01 (4,12) Z677 x| Z52 cost 1; k04 (5,11) product lineage stuck at 2 over 9 chains; k06 (5,11) six groups at
+  4-10; k08 (6,11) products cost 4; k09/k10 (6,12) Z74719 x| Z63 cost 1-3; k11 (7,11) Z90281 x| Z61 cost 2 plateau; k12
+  (7,11) Z100981 x| Z55 low-temperature chain 8 -> 2.
+Director-verified with build_haar2.py (plus apsp for (4,12) and (5,11)). Round 6 applies the TFULL finisher to the cost-1/2
+states. Process: three more stray session-tool calls (rejected) and some multi-line scoreboard records.
