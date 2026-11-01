@@ -1,0 +1,10 @@
+Coordinator report (Mac mini coordinator, 2026-11-01T23:36:01Z): d20D8_psl_41_1831_orb5-4-0_r1c11.txt from origin/claude/raise-d8-d7-beyond-table-8mozbm, sha256 da813857ad12362947417fd785323189f819b6587fdda129d0db905995ef3f12.
+
+======== Mac mini: research/structured/tools/haarcheck_psl.c (master; clang -O3), exit 0, 28 s ========
+from (e,A): reached A 63059640/63059640, B 63059640/63059640 within 8, ecc 8
+from (e,B): reached A 63059640/63059640, B 63059640/63059640 within 8, ecc 8
+VALID d=20 D=8 group=psl 41 x Z_1831 N=63059640 vertices=126119280 (distinct generators, 20-regular simple)
+======== Mac mini: research/frontier/haarcheck_gen.c (master; clang -O3), exit 0, 28 s ========
+from (e,A): reached A 63059640/63059640, B 63059640/63059640 within 8; ecc 8; level sizes [1, 20, 380, 7220, 137040, 2549480, 34118667, 60502920, 28803552]  (14s)
+from (e,B): reached A 63059640/63059640, B 63059640/63059640 within 8; ecc 8; level sizes [1, 20, 380, 7220, 137040, 2549480, 34122664, 60502920, 28799555]  (28s)
+VALID d=20 D=8 group=psl 41 x Z_1831 N=63059640 vertices=126119280 (distinct generators, 20-regular simple; every vertex within 8 of both (e,A) and (e,B); ecc 8; 28s)

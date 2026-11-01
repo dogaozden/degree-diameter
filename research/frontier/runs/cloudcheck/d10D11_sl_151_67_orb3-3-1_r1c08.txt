@@ -1,0 +1,23 @@
+Coordinator report (Mac mini coordinator, 2026-11-01T23:37:21Z): d10D11_sl_151_67_orb3-3-1_r1c08.txt from origin/claude/raise-d11-frontier-26r11l, sha256 636f992daa2daaed8334a37abccf3c2b84374a707d86d8c421b9ef297d6dd927.
+
+======== cloud haarcheck_gen report research/frontier/raise11/runs/d10D11_sl_151_67_orb3-3-1_r1c08.gen.txt from origin/claude/raise-d11-frontier-26r11l (unedited) ========
+checker: haarcheck_gen
+command: ./bin/haarcheck_gen runs/d10D11_sl_151_67_orb3-3-1_r1c08.out
+start: 2026-11-01T23:13:16Z
+sha256 0262672f6433fe9806f8319443cd58fb87c68a60277b9dd3beb89559a59e93c9  ./bin/haarcheck_gen
+sha256 636f992daa2daaed8334a37abccf3c2b84374a707d86d8c421b9ef297d6dd927  runs/d10D11_sl_151_67_orb3-3-1_r1c08.out
+selftest sl 151: |M| = 3442800, index round trip over all elements ok
+selftest group multiplication: associativity, identity, inverse on 20000 random triples ok
+file runs/d10D11_sl_151_67_orb3-3-1_r1c08.out
+header: 10 11 sl 151 n 67 N 230667600
+group sl 151 x Z_67, |G| = 230667600 = N, vertices 2N = 461335200; 10 distinct generators
+from (e,A): reached A 230667600/230667600, B 230667600/230667600 within 11; ecc 11; level sizes [1, 10, 90, 810, 7290, 65535, 588462, 5233703, 42875312, 189976990, 187196445, 35390552]  (73s)
+from (e,B): reached A 230667600/230667600, B 230667600/230667600 within 11; ecc 11; level sizes [1, 10, 90, 810, 7290, 65535, 588468, 5233703, 42875662, 189976990, 187196089, 35390552]  (190s)
+VALID d=10 D=11 group=sl 151 x Z_67 N=230667600 vertices=461335200 (distinct generators, 10-regular simple; every vertex within 11 of both (e,A) and (e,B); ecc 11; 190s)
+exit: 0
+end: 2026-11-01T23:16:27Z (191 s)
+
+======== Mac mini: research/frontier/haarcheck_sl.c (master; clang -O3), exit 0, 60 s ========
+from (e,A): reached A 230667600/230667600, B 230667600/230667600 within 11, ecc 11
+from (e,B): reached A 230667600/230667600, B 230667600/230667600 within 11, ecc 11
+VALID d=10 D=11 group=sl 151 x Z_67 N=230667600 vertices=461335200 (distinct generators, 10-regular simple)

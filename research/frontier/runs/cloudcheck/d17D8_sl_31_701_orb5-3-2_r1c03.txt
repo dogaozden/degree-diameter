@@ -1,0 +1,10 @@
+Coordinator report (Mac mini coordinator, 2026-11-01T23:33:51Z): d17D8_sl_31_701_orb5-3-2_r1c03.txt from origin/claude/raise-d8-d7-beyond-table-8mozbm, sha256 df9d9ae851839f619c56ee125160ea0a48d177d79edb51e2178b399ba8973868.
+
+======== Mac mini: research/frontier/haarcheck_sl.c (master; clang -O3), exit 0, 6 s ========
+from (e,A): reached A 20861760/20861760, B 20861760/20861760 within 8, ecc 8
+from (e,B): reached A 20861760/20861760, B 20861760/20861760 within 8, ecc 8
+VALID d=17 D=8 group=sl 31 x Z_701 N=20861760 vertices=41723520 (distinct generators, 17-regular simple)
+======== Mac mini: research/frontier/haarcheck_gen.c (master; clang -O3), exit 0, 7 s ========
+from (e,A): reached A 20861760/20861760, B 20861760/20861760 within 8; ecc 8; level sizes [1, 17, 272, 4352, 69572, 1081623, 11832070, 19775768, 8959845]  (4s)
+from (e,B): reached A 20861760/20861760, B 20861760/20861760 within 8; ecc 8; level sizes [1, 17, 272, 4352, 69572, 1081623, 11833576, 19775768, 8958339]  (8s)
+VALID d=17 D=8 group=sl 31 x Z_701 N=20861760 vertices=41723520 (distinct generators, 17-regular simple; every vertex within 8 of both (e,A) and (e,B); ecc 8; 8s)
