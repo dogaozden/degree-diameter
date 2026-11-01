@@ -6,3 +6,9 @@ progress 20:32:28 UTC: elapsed 60 min, still running (pid 760, RSS 10716 MB); no
 progress 21:02:42 UTC: elapsed 90 min, still running (pid 760, RSS 10973 MB); no output yet
 progress 21:32:23 UTC: elapsed 120 min, still running (pid 760, RSS 10716 MB); no output yet
 progress 22:02:34 UTC: elapsed 150 min, still running (pid 760, RSS 10973 MB); no output yet
+progress 22:31:51 UTC: run finished, exit 0 after 179 min
+
+################ haarcheck_psl (reference checker, research/structured/tools/haarcheck_psl.c from master; built with gcc -O3; split run: BFS from (e,B) only, the other half runs in another job): haarcheck_psl research/frontier/sols/d16D11_psl_449_331_orb3-5-1_s1.txt B   (stdout, complete)
+from (e,B): reached A 14980795200/14980795200, B 14980795200/14980795200 within 11, ecc 11
+HALF-VALID from (e,B) d=16 D=11 group=psl 449 x Z_331 N=14980795200 vertices=29961590400
+[exit 0; wall 10742s (2:59:02); peak RSS 10717 MB (10973916 kB); user 10575.06 s, sys 51.58 s; /usr/bin/time -v]
