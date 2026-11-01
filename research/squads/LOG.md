@@ -198,3 +198,49 @@ left beside the checks); a (15,11) push to SL(2,571) x Z79 (29.4 billion, mu 9.3
 groups at (8,11) and above (need a 64-bit meta layout and a low-memory checker that knows meta groups). For the
 coordinator: the five big graphs are above 20 billion vertices, so the reference check needs the split runs
 (haarcheck_psl.c SOL A / SOL B for the PSL ones; haarcheck_sl.c SOL A / SOL B for (15,11), option added here).
+
+## 2026-11-01, raise-d12, round 1 (16 cards, 23:06 UTC)
+
+Session: Opus director, job raise-d12 (branch claude/d12-frontier-cells-m24ikx). Goal: raise the D = 12 values at
+Δ = 3..14 and add (15,12) under 30 billion vertices. Machine: 4 cores, 15 GB, shared with the director's (15,12) check
+(haarcheck_gen, 11.3 GB). Files: research/squads/raise-d12/r1/ (HEADER.md, a01-a16.md, scoreboard.jsonl, card folders).
+State at the start (master, after jobs beyond-d11 and beyond-d11b): (12,12), (13,12), (14,12) already at the 30-billion
+cap, (4,12) and (5,12) on Frobenius groups, (6..11,12) on k = 3 conjugation orbits; so the director aimed the cards at
+(3..7,12) with structures the earlier jobs had not used, and kept (8..11,12) and (15,12) for his own big runs.
+
+Cards (best result; all negative):
+- a01 (3,12) lifts of the Tutte 12-cage (H(2) incidence graph) over groups of order m: valid only up to m = 11 (1,386
+  vertices); m = 12 stalls at cost 2. Exactly 65 non-backtracking walks of length <= 12 join a vertex to each line, and
+  they are the geodesic plus apartment detours: Moore-graph bases are worse than small bases.
+- a02 (3,12) Tutte 8-cage lifts, a03 Heawood lifts, a04 4+4 base lifts on new groups of order 297-333 (best cost 24-26),
+  a06 (4,12) H(3) lifts over Z97 (full cost ~12,700), a16 (4,12) W(3) lifts (cost 350-450): no cost 0 near the targets.
+- a05 (4,12) SL(2,8) x Z73 with the field automorphism, S = e + one 3-orbit, exhaustive over all 12,262 orbits: min
+  cost 61. Found the abelian-quotient wall: the Z_n coordinate of a word depends only on its signed letter counts, so one
+  3-orbit reaches only ~199 residues; n = 1,063 is impossible.
+- a10 (5,12) SL(2,8) x Z_n, n ~ 1,063: 82 % uncovered (same wall); a14 (7,12) SL(2,8) x Z_59417 with an order-7 orbit:
+  10.9M holes (same wall: 65,226 signed count vectors for 7 letters against 59,417 residues).
+- a13 (4,12) class-2 groups Heis(p) x A with fixed-point-free order-3 automorphisms: the orbit lies in one line of
+  G/Phi, 4-300 vertices reachable. Opened the lead F_512 x| C_73 with the Frobenius x -> x^8 (random S: 17 holes).
+- a08, a11 (6,12) orbit-structure tournament at equal N: k = 3 conjugation best (min cost 1-7); k = 5 conjugation in
+  PSL(2,p) bad (min 184, Fix ~ p/2); k = 5 field on SL(2,32) x Z151 min 15-25. a11's "clump model falsified" used
+  PSL(2,19) x Z1381, i.e. the abelian-quotient wall again.
+- a09 (6,12) Frobenius Z74719 x| Z63 cost-1 state: the last hole is the same order-3 element in every basin; 5 more
+  chain links stayed at 1.
+- a12 (3,12) unstructured cubic graphs by 2-switch annealing: valid up to 1,350 (cost 6 at 1,400).
+- a15 (3,12) exh3 on PSL(2,11) x Z2, PGL(2,11), Heis(11): min cost 54; most families too slow under load.
+- a07 (6,12) SL(2,32) x Z151 sampling: see the director's runs (floor 3 clumps).
+
+Director during the round: (15,12) PSL(2,197) x Z3924 found (first S, 29,999,670,624 vertices; the floor from (13,12)
+is 29,997,644,040); wrote haar_bigq (haar_big0 over GF(p^e) with split-torus rows and Frobenius orbits; validated on
+known solutions and against haar_big0 / haarcheck_gen costs on corrupted files); **(8,12) 297,777,408 (+4.8 %)**:
+SL(2,128) x Z71, S = e + one orbit of the field automorphism x -> x^2 (order 7, Fix = SL(2,2)), 3 of 420 random orbit
+samples had cost 0, haarcheck_gen VALID. (7,12) SL(2,32) x Z941 hits the abelian-quotient wall (min 395); (6,12)
+SL(2,32) x Z151 floors at 3 clumps; (9,12) SL(2,128) x Z281 and (10,12) PSL(2,243) x Z271 started.
+
+Reading: the win is a large odd-order automorphism with a tiny fixed set on a group whose abelian quotient is small
+next to the orbit's letter lattice. Kept for round 2: affine semilinear groups F_q x| C_k with the Frobenius (a13's
+lead, and (5,12), (6,12), (3,12) analogues), SL(2,2^e) x (non-abelian H) with a combined automorphism, wreath groups
+H^k with the shift; one theory card for the two walls. Dropped: Moore-base lifts, class-2 groups, conjugation k = 5.
+Process: cards called session/messaging tools four times by mistake (a05 send_message without arguments, a10
+create_session "noop" then archived it, a16 archive_session with a bad id) and one card (a11) rewrote the scoreboard
+file; the round-2 header names the allowed tools explicitly.
