@@ -1,0 +1,7 @@
+LB on: k=63 LBT=0.700 LBMIN=3
+group meta 16633 63 9643 x Z_1, N=1047879, identity 0, H order 63, rows 16633, threads 1, setup 0.51s
+start cost=14
+t=30 steps=232 evals=929 cost=2 best=2 T=0.53
+t=60 steps=484 evals=1937 cost=2 best=2 T=0.19
+LB: rejected draws 3610, fallbacks 0
+RESULT d=6 D=11 group=meta 16633 63 9643 x Z_1 N=1047879 best=2 evals=1937 time=60.1

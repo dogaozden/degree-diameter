@@ -1,0 +1,16 @@
+Traceback (most recent call last):
+  File "/home/user/degree-diameter/research/frontier/build_haar2.py", line 443, in <module>
+    main()
+    ~~~~^^
+  File "/home/user/degree-diameter/research/frontier/build_haar2.py", line 374, in main
+    assert len(np.unique(qp)) == Q.order, "left multiplication is not a permutation"
+               ~~~~~~~~~^^^^
+  File "/usr/local/lib/python3.13/site-packages/numpy/lib/_arraysetops_impl.py", line 296, in unique
+    ret = _unique1d(ar, return_index, return_inverse, return_counts,
+                    equal_nan=equal_nan, inverse_shape=ar.shape, axis=None,
+                    sorted=sorted)
+  File "/usr/local/lib/python3.13/site-packages/numpy/lib/_arraysetops_impl.py", line 373, in _unique1d
+    if (hash_unique := _unique_hash(ar_, equal_nan=equal_nan)) \
+                       ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+numpy._core._exceptions._ArrayMemoryError: Unable to allocate 3.99 MiB for an array with shape (522527,) and data type int64
+exit=1

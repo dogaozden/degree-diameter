@@ -1,0 +1,7 @@
+LB on: k=19 LBT=0.550 LBMIN=3
+group meta 8209 19 477 x Z_1, N=155971, identity 0, H order 19, rows 8209, threads 1, setup 0.13s
+start cost=36
+t=30 steps=607 evals=2429 cost=4 best=4 T=0.53
+t=60 steps=1303 evals=5213 cost=4 best=4 T=0.19
+LB: rejected draws 28538, fallbacks 0
+RESULT d=5 D=11 group=meta 8209 19 477 x Z_1 N=155971 best=4 evals=5213 time=60.0

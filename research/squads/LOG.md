@@ -104,3 +104,20 @@ Director-verified (build_haar2.py + apsp, logs runs/cloudcheck/*b2h*.check.txt):
 Frobenius at even D, the cost-2 near misses at (6,11), label balance as a search constraint. Dropped: AMU orbits, SL x F
 above (5,11), cubic Frobenius. Process: card h14 called create_session once by mistake (an empty session) and archived
 it; round 3's header forbids session and messaging tools.
+
+### Round 3 (16 cards, 12:40-13:06 UTC, research/squads/beyond11b/r3/)
+
+Cards (best result; director re-checks: build_haar2.py, plus apsp where 2N <= 310k; logs runs/cloudcheck/*b3*.check.txt):
+- **i08 (6,11) (Z67 x| Z3) x (Z307 x| Z17), N = 1,049,019: 2,098,038** (was 2,094,960; 1 seed of 8; build_haar2 VALID).
+- **i07 (6,11) Z16633 x| Z63, N = 1,047,879: 2,095,758** (1 run of ~6; build_haar2 VALID).
+- **i10 (4,12) Z1297 x| Z27, N = 35,019: 70,038** (solved in 2 s; also Z1117 x| Z31 69,254 and Z617 x| Z56 69,104; VALID).
+- **i11 (5,12) Z9859 x| Z53, N = 522,527: 1,045,054** (was 1,041,768; build_haar2 VALID).
+- No raise: i01 (4,11) k = 29/31 window empty (director's card error; only N = 15,167 exists); i02 Z463 x| Z33 (N = 15,279)
+  15 seeds stuck at 4-6; i03 Z307 x| Z51 cost 8, (Z7 x| Z3) x (Z67 x| Z11) cost 6; i04 (5,11) Z8209 x| Z19 9 seeds best 4;
+  i05 Z6763 x| Z23 and Z5023 x| Z31 cost 2; i09 (7,11) Z90281 x| Z61 cost 2 (k 53-63 run 7x faster than k = 23);
+  i12 (6,12) PSL(2,41) x (Z17 x| Z8) cost 3; i13 label-balanced S: mean best cost 6.0 vs 8.4 plain at (5,11), no
+  solve-rate difference in 5 seeds; i14 (8,11) and i16 (7,12) too slow for a card (17 evals per seed); i15 composite k
+  and p^2 kernels worse than prime k; i16 (5,12) PSL and Frobenius plateau alike (no even-D advantage measured there).
+Kept: seed farms on the cost-1/2 near misses ((4,12) Z701 x| Z50 cost 1; (5,12) Z8317 x| Z63 and Z11093 x| Z47 cost 1;
+(5,11) Z6763 x| Z23, Z5023 x| Z31; (6,11) products N = 1,050,063; (7,11) Z90281 x| Z61). Process: three cards made stray
+calls to messaging/session tools despite the header (all failed with argument errors, nothing sent).

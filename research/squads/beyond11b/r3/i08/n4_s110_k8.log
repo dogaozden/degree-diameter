@@ -1,0 +1,6 @@
+group prod meta 11 5 3 meta 1123 17 6 x Z_1, N=1050005, identity 0, H order 17, rows 61765, threads 1, setup 1.08s
+start cost=26
+t=30 steps=23 evals=185 cost=8 best=8 T=0.52
+t=61 steps=47 evals=377 cost=4 best=4 T=0.18
+t=91 steps=75 evals=601 cost=4 best=4 T=0.15
+RESULT d=6 D=11 group=prod meta 11 5 3 meta 1123 17 6 x Z_1 N=1050005 best=4 evals=633 time=95.8

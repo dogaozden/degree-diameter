@@ -1,0 +1,5 @@
+group prod psl 53 meta 63 1 1 x Z_1, N=4687956, identity 86814, H order 63, rows 74412, threads 1, setup 2.10s
+start cost=49
+t=30 steps=40 evals=161 cost=6 best=6 T=0.52
+t=61 steps=86 evals=345 cost=5 best=5 T=0.18
+RESULT d=6 D=12 group=prod psl 53 meta 63 1 1 x Z_1 N=4687956 best=5 evals=509 time=88.9
