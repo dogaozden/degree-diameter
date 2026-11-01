@@ -255,3 +255,18 @@ keep a short list "Leads worth more CPU" and "Dead ends", each with the evidence
 folder's NOTES.md, scoreboard.tsv, log tails (tail/grep only, never print big files). Be exact; copy numbers, do not
 round them into new claims. Do not run any search yourself. Poll with sleep loops of under 10 minutes per Bash call;
 do not end your turn until 03:30 UTC.
+
+### c6c-h12: one-regular-double-coset families with h = 12 in PGL(2,193) (relaunch of slot c6, 01:00 UTC)
+
+c6b-exhaust scanned ALL 16,293 classes of family K (PSL(2,229), H = D5, one regular double coset, h = 10): best exact
+cost 4 (class 4233), p0.1 54, median 338: close, but no cost 0 (c6b-exhaust/NOTES.md). c5c-scanC is scanning family
+C (PGL(2,181), H = D5). The next size up: G = PGL(2,193) (order 7,188,864), |H| = 12, N = 599,072 (2N = 1,198,144),
+μ ≈ 75, μ/h ≈ 6.2 (K: 7.7). Candidate H of order 12: C12 (in the split torus; 193 ≡ 1 mod 12), D6 (both kinds of
+reflections: square and non-square determinant), A4. Degree 10 needs ONE regular double coset (|H ∩ gHg⁻¹| = 1 gives
+12 neighbours, too many) — so check what double-coset sizes exist: |HgH|/|H| = 12/|H ∩ gHg⁻¹| ∈ {12, 6, 4, 3, 2, 1}.
+Degree 10 = e.g. 6 + 4, 6 + 3 + 1, 4 + 4 + 2, ... (c5b found families with non-regular double cosets 3-10× worse, but
+check the smallest-k types here). Job: copy c6b's exh.c (it already does PGL(2,q) for prime q, classes under the
+normaliser and inversion, A-root and B-root passes), adapt to these H and types, check connectivity, sample 100
+members per family (min / median in units of 12, compare with K's 338/10 per unit), then fully scan the best family
+(A-root pass on all classes, B-root on those with A-part ≤ 50). One process at a time, nice -n 10, resumable. A full
+cost 0 is a diameter-8 graph on 1,198,144 vertices: records/ + CLAIM line. Seeds: 108701-108749.

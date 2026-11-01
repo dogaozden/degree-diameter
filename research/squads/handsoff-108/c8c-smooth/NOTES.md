@@ -37,3 +37,11 @@ Started 2026-11-01 00:08 UTC. Card: cards.md "c8c-smooth". Seeds 108961-108999.
 - A/B (ab_run.sh): haar_base seed 108961, then haar_smooth SMOOTHW=1 seed 108962. F15W3 schedule (COOL=15 REHEAT=30
   ORBW=3 RESTARTAFTER=0, K=8), VCLOCK=0.0032 s/step (= 312 steps/s, the free-core rate), MAXSTEPS=420000 (~60+ chains).
   Result tables below when the runs finish.
+
+### Baseline arm (haar_base, seed 108961, 00:15-00:54 UTC): 29 chains, 3.35M evals
+- chain minima (ORBW=3 energy): 9 (x1), 12 (x2), 15 (x6), 18 (x10), 21 (x8), 24 (x2). Median 18, mean 17.9, best 9.
+- Compare with the reference in cards.md (median 18-21, P(min <= 9) about 1 in 15): consistent. So the step clock
+  (VCLOCK 0.0032) reproduces the wall-clock schedule distribution.
+- The run ended by MAXSTEPS = 420000 (about 14.5k steps and 116k evals per chain). Speed: 164 steps/s (1,300 evals/s)
+  at about 50 % of a core: the box is oversubscribed (load 8 on 4 cores).
+- Honest limit: 60 chains per arm was not reachable in the time budget (about 45 min per 29 chains at this load).
