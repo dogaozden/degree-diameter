@@ -44,4 +44,37 @@ Sizes were checked against the c5b cscreen header for the D6 nonsquare family (c
 
 ## Results
 
-(see sections below; filled in as the scans finish)
+Cost units: plain vertices (0 = diameter 8). "min" below is the exact minimum over ALL members of the family
+(for non-self-inverse classes the lower bound P = uBA + uAA is already above the exact minimum found, so the
+minimum is exact). Medians are weighted by class orbit size (= number of member sets).
+
+### A4 (13,797 sets: 6+4 5,922; 4+4+1+1 7,875) - complete
+
+- 6,016 classes, all scanned (A-root). 2,606 self-inverse classes have exact C; the rest have P only.
+- Exact minimum over all members: C = 501 (uBA 501, uAA 0, uBB 0; partition 6+4; class key 382.45928).
+- 5,313 of 13,797 members are disconnected-like (uBA > 100,000): the sets generate a proper subgroup. Only 468 members
+  have uBA + uAA < 1,000. P median over members 49,072 (dominated by the disconnected ones).
+- Verdict: dead. Minimum 501 is 125 times the K family's minimum (4) and far off any cost 0.
+- Scan: out/A4_scanA.tsv (run_all.sh), summary `python3 summ12.py A4`.
+
+### D6 nonsquare reflection (27,408 sets: 6+2+2 20,160; 6+2+1+1 2,880; 2^5 3,003; 2^4+1+1 1,365) - complete
+
+- 15,888 classes, all scanned (A-root). 10,128 self-inverse classes have exact C. Non-self-inverse classes have P only.
+- Exact minimum over all members: C = 1,266 (uBA 1,266, uAA 0, uBB 0; partition 6+2+2).
+- 2^5 and 2^4+1+1 (4,368 sets): disconnected. Root component has 64 vertices (uBA = uAA = N - 32 in the usual
+  cases, 599,040 or 599,056): all-c2 sets stay inside a subgroup of order 384.
+- 6+2+2 median P = 5,020 plain (418 units of 12); 6+2+1+1 median P = 29,818 (2,485 units). Overall P median 6,642 plain
+  (553.5 units of 12). K (h = 10, one regular double coset) has median 340 plain (34 units).
+- Verdict: dead. Minimum 1,266 is far from 0.
+- Cross-check: four 6+2+2 members from c5b's J run (PGL(2,193) D6, spec 6,2,2, same subgroup) reproduced exactly with
+  exh12 (uBA, uAA, uBB): cand 0 7082/0/0, cand 1 4575/0/0, cand 2 4772/4/4, cand 3 3764/0/0 (xval.py).
+- Scan: out/D6nsq_scanA.tsv, summary `python3 summ12.py D6nsq`.
+
+### D6 square reflection (40,480 sets) - partial, see the section below
+
+## Process notes
+
+- The card asked for 100-member samples per family, then a full scan of the best. Full scans were affordable for the
+  two small/medium families (A4, D6 nonsquare), so they replace the samples. They are exact.
+- The D6 square family is about 2x larger; its scan is run partition by partition (small partitions first).
+- C12: dead by structure (see above), not scanned.

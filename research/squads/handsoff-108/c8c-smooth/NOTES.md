@@ -45,3 +45,14 @@ Started 2026-11-01 00:08 UTC. Card: cards.md "c8c-smooth". Seeds 108961-108999.
 - The run ended by MAXSTEPS = 420000 (about 14.5k steps and 116k evals per chain). Speed: 164 steps/s (1,300 evals/s)
   at about 50 % of a core: the box is oversubscribed (load 8 on 4 cores).
 - Honest limit: 60 chains per arm was not reachable in the time budget (about 45 min per 29 chains at this load).
+
+### Smoothing arm, SMOOTHW=1 (haar_smooth seed 108962, 00:54-01:31 UTC): 30 chains, 3.23M evals
+- chain minima: 6 (x1), 12 (x1), 15 (x2), 18 (x14), 21 (x7), 24 (x5). Median 18, mean 18.9, best 6 (baseline best 9).
+- Baseline (29 chains): 9 (x1), 12 (x2), 15 (x6), 18 (x10), 21 (x8), 24 (x2); median 18, mean 17.9.
+- Mann-Whitney (summ.py ab_base.log ab_s1.log): P(base chain min > smooth) = 0.41, two-sided p = 0.25. No detectable
+  difference. Chains <= 9: 1 of 30 (smooth) and 1 of 29 (base); <= 12: 2 of 30 and 3 of 29.
+- Reading: with w = 1 the term is about 0.3-2 units, and the descents end in the same place. The one chain at 6 is
+  one draw; it is not evidence of a better landscape.
+
+### Extra arm, SMOOTHW=2 (ab_extra.sh, seed 108964, started 01:42 UTC, MAXSTEPS 240000 for the time budget)
+- See the end of this file for the numbers when it finishes.

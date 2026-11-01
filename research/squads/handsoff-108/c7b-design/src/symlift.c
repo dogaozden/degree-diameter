@@ -155,23 +155,21 @@ int main(int argc, char **argv) {
     for (int j = 0; j < s; j++) { int x = N + lrep[j]; for (int k = 0; k < P; k++) { Lpow[k * s + j] = x - N; x = kperm[x]; } }
     /* flag orbits: flag f=(l,k) ~ (point pl, line l). K maps (p,l) to (Kp, Kl). */
     fo = malloc(sizeof(int) * N * Q1); for (int f = 0; f < N * Q1; f++) fo[f] = -1;
-    int *flagof = malloc(sizeof(int) * (size_t)N * N); /* (line, point) -> flag, -1 if not incident */
-    for (long i = 0; i < (long)N * N; i++) flagof[i] = -1;
-    for (int l = 0; l < N; l++) for (int k = 0; k < Q1; k++) flagof[(long)l * N + pl[l * Q1 + k]] = l * Q1 + k;
+    /* flag of (line l, point p): search the q+1 points of l (no N x N table: 1.5 GB at q = 7) */
     F = 0;
     for (int f = 0; f < N * Q1; f++) if (fo[f] < 0) {
         int l = f / Q1, p = pl[f];
         int ff = f;
         do { fo[ff] = F; int l2 = ff / Q1, p2 = pl[ff];
              int kp = kperm[p2], kl = kperm[N + l2] - N;
-             ff = flagof[(long)kl * N + kp];
+             ff = -1;
+             for (int kk = 0; kk < Q1; kk++) if (pl[kl * Q1 + kk] == kp) { ff = kl * Q1 + kk; break; }
              if (ff < 0) { fprintf(stderr, "K not an automorphism\n"); return 1; }
         } while (fo[ff] < 0);
         if (fo[ff] != F) { fprintf(stderr, "flag orbit inconsistency\n"); return 1; }
         F++;
         (void)l; (void)p;
     }
-    free(flagof);
     /* variables */
     hvo = malloc(sizeof(int) * F); mvo = malloc(sizeof(int) * J * s); tau = malloc(sizeof(int) * J * s); cof = malloc(sizeof(int) * J * s);
     sig = malloc(sizeof(int) * J * N); mv = malloc(sizeof(int) * J * N); hv = malloc(sizeof(int) * N * Q1);

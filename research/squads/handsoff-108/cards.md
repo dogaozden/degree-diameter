@@ -270,3 +270,13 @@ normaliser and inversion, A-root and B-root passes), adapt to these H and types,
 members per family (min / median in units of 12, compare with K's 338/10 per unit), then fully scan the best family
 (A-root pass on all classes, B-root on those with A-part ≤ 50). One process at a time, nice -n 10, resumable. A full
 cost 0 is a diameter-8 graph on 1,198,144 vertices: records/ + CLAIM line. Seeds: 108701-108749.
+
+### c3c-grind: one more F15W3 grind on psl 23 97 until 03:25 UTC (relaunch of slot c3, 01:40 UTC)
+
+All structural cards so far lost to the plain k = 3 grind on psl 23 × Z97 (DIGEST.md). Run one more fresh-seed F15W3
+process on `psl 23 97` (seed 108471, then 108472... on restart; nice -n 12, THREADS=1, timeout so it ends by 03:25 UTC,
+log in your folder), exactly as c1-grind's g1 (read c1-grind/NOTES.md for the command). Every 10-15 minutes: count
+CHAIN lines and minima, update NOTES.md; any chain at energy ≤ 6 gets a scoreboard line; any chain at energy ≤ 3:
+run EXDESC=1 on its set (CKPT file with that set; see research/d10D8/README.md) in your folder. If the run reaches
+cost 0: copy the solution to records/, run shared/check.sh on it, CLAIM line. At 03:25 UTC stop your process, write
+the final counts (chains, min, median, ≤ 12, ≤ 9) in NOTES.md and reply. Seeds: 108471-108480.
