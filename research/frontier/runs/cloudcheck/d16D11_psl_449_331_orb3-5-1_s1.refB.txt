@@ -1,4 +1,8 @@
 machine: vm; nproc=4; free -g: total 15G used 0G free 14G avail 15G; Linux 6.18.44-fc-v185; gcc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0
 sha256: 1467494757357932d28c0e064db3672226ab99a90815580d6ea0f43b83870d68  research/frontier/sols/d16D11_psl_449_331_orb3-5-1_s1.txt
-progress: 2026-11-01 18:47 UTC; STILL RUNNING, elapsed 18123s (~302 min); current RSS 10716 MB; no checker output yet (it prints at the end)
-################ reference checker haarcheck_psl (research/structured/tools/haarcheck_psl.c, BFS from (e,B) only); cd research/structured/tools && gcc -O3 -o haarcheck_psl haarcheck_psl.c (binary moved out of the repo); /usr/bin/time -v ./haarcheck_psl research/frontier/sols/d16D11_psl_449_331_orb3-5-1_s1.txt B   (stdout: pending)
+STATUS: INCOMPLETE. The BFS from (e,B) did not finish within the 5.5 h job limit. It was stopped with SIGTERM at 5:32:49 wall. No HALF-VALID or HALF-INVALID line was produced, so this report gives no verdict on the file. The other side (BFS from (e,A)) and the haarcheck_gen report are needed as usual, but this half is not complete and must be rerun to finish.
+################ reference checker haarcheck_psl (research/structured/tools/haarcheck_psl.c, BFS from (e,B) only): cd research/structured/tools && gcc -O3 -o haarcheck_psl haarcheck_psl.c (binary moved out of the repo); /usr/bin/time -v ./haarcheck_psl research/frontier/sols/d16D11_psl_449_331_orb3-5-1_s1.txt B   (stdout: none; the checker prints only at the end, and it was killed before finishing)
+(no stdout)
+[exit 143 (SIGTERM at the 5.5 h cap; run did not complete); wall 19969s; peak RSS 10716 MB]
+Time output (/usr/bin/time -v): Command terminated by signal 15; User time 19662.03 s; System time 104.51 s; Maximum resident set size 10973652 kB; Elapsed 5:32:49.
+Progress notes at 30-minute intervals are in the git history of this file (the commits from 13:46 to 18:47 UTC plus the 19:17 final commit).
