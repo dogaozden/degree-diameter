@@ -223,3 +223,26 @@ Cards (best result; all checked by the director):
 Director's reading: the metacyclic random-S rule keeps winning at Δ = 4, 5 at every D tried (9 to 14) and now at Δ = 6
 (D = 11). Round 7 (last) tests it at Δ = 4..7 against the 2013 table and the lab's D = 8..12 values, and pushes the
 new cells once more.
+
+## 2026-11-01, beyond-d13, round 7 (15 cards, 14:11 UTC)
+
+Same session. Files: research/squads/beyond13/r7/. The metacyclic random-S rule tested at Δ = 4..7 against the 2013 table
+and the lab's D = 8..12 values (j01-j09), pushes of (4,12), (4,13), (5,13), (5,14), (6,13) (j10-j12, j15), lifts (j13),
+the rule's data table (j14). (j16 not launched: subagent cap.)
+
+Cards (best result; all checked by the director):
+- **j01 (5,10): Z1489 x|_61 Z31, 92,318** (apsp + metacheck VALID), 2.5 % above the 2013 table value 90,068 (the director
+  had closed r6/i10's near miss Z2687 x|_2416 Z17 at 91,358 just before).
+- **j13 (3,14): Pappus x Z317 lift, 5,706** (lift then four scan links; apsp VALID).
+- j02 (5,9): cost 8 above the lab's 29,756. j03 (4,10): Z215 x|_2 Z28 (12,040) at cost 1 above 11,748. j04 (4,9):
+  Z101 x|_5 Z25 (5,050) stays at 2 above 4,970. j05 (4,8): Z55 x|_2 Z20 (2,200) at 1 above 2,184; (5,8) cost 22+.
+- j06 (6,9): cost 4 at 125,434 (lab 121,440). j07 (7,10), (7,11): cost 14 and 4 — the rule fades at Δ = 7.
+- j09 (7,13): start costs 38-68 (6 % CPU). j10 (5,13) single meta: cost 2. j11 (5,14): cost 1 (four groups).
+- j12 (4,12): Z2861 x|_1385 Z13 (74,386) at cost 1. j15 (6,13): Z354001 x|_194759 Z59 at 6.
+- j14 (r7/j14/RULE.md): metacyclic random S beats SL/PSL orbit S by 13-17 % at Δ = 4 at odd D, 3-8 % at even D,
+  0-4 % at Δ = 5, break-even at Δ = 6; the even-D gain is the orbit form's one free element at Δ = 4.
+- j08 (Δ = 6 even D): pending at the time of writing.
+
+Director's reading: the rule holds where predicted (Δ = 4, 5, odd D best) and gives out at Δ = 6..7. Round 7 produced
+one table-cell raise candidate ((5,10) 92,318) and four near misses at cost 1-2 above 2013 values ((4,8), (4,9), (4,10))
+or lab values ((6,9)). The squad stops here: the remaining time goes to the big checks and the write-up.
