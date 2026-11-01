@@ -244,3 +244,44 @@ H^k with the shift; one theory card for the two walls. Dropped: Moore-base lifts
 Process: cards called session/messaging tools four times by mistake (a05 send_message without arguments, a10
 create_session "noop" then archived it, a16 archive_session with a bad id) and one card (a11) rewrote the scoreboard
 file; the round-2 header names the allowed tools explicitly.
+
+## 2026-11-01, raise-d12, round 2 (11 cards, 23:27 UTC)
+
+Same session. Files: research/squads/raise-d12/r2/. Selection from round 1: the working principle of the director's
+(8,12) find (an automorphism of large odd order with a tiny fixed set, on a group without a large abelian section), applied
+to the small cells with new group families; one theory card. CPU was scarce (the (15,12) check and three director
+searches ran throughout), so the round had 11 cards instead of 16.
+
+Cards (best result; all negative):
+- b01 (4,12) F_512 x| C_73 (round-1 a13 lead), alpha = x -> x^8: all 12,460 orbit sets have 22, 40, 61 or 62 holes (a
+  structural floor); plain random S annealed to 8 (size-law mu ~31).
+- b02 (6,12) F_32768 x| C_151 with an order-5 field orbit: floor of 3 clumps (cost 15), the same as SL(2,32) x Z151;
+  two 3-orbits 18.
+- b03 (5,12) F_2197 x| C_244 (alpha = x -> x^13): best 36; F_729 x| C_728 663 (abelian wall).
+- b04 (3,12) exhaustive cubic Haar search on 54 affine groups F_q x| C_k of order 1,185-4,092: no cost 0; best 27 on
+  F_64 x| C_21.
+- b05 (5,12) D7^5 with the coordinate shift: every Haar graph is disconnected (5 generators cannot span (Z_2)^5; proof).
+- b06 (4,12) D17^3 (no non-abelian group of order 33 exists; the card's first choice was the director's error): Z17^3 is an
+  abelian normal subgroup of index 8, best 49,377.
+- b07 (7,12) SL(2,32) x (Z191 x| Z5) with a combined order-5 automorphism: orbit S 1,121 against 25 for random S; the
+  Z191 part of every word is a signed sum of 5th roots of unity (the abelian wall inside the kernel).
+- b10 (4,12) SL(2,8) x D37 with a combined order-3 automorphism: parity wall (orbit elements share the reflection bit),
+  best 248 over 3,200 orbits (scan unfinished).
+- b12 (4,12) inverse-closed S (double covers of Cayley graphs): holes pair under inversion, but success rates are 3-8x
+  below random S; valid only up to 41,568.
+- b13 (6,12) SL(2,8)^2 x Z19 with the diagonal field automorphism: best 24 in a handful of evaluations (too slow under load).
+- b08 theory note (r2/b08/NOTE.md): exact count of reachable abelian images R(S) for one orbit; k = 3 covers Z_n only up to
+  n = 241, k = 5 up to n = 7,691 (>= 20-fold up to n = 661 at Δ = 6, 2,141 at Δ = 7). So SL(2,8) x Z73 (round-1 a05,
+  min 61) and SL(2,32) x Z941 at (7,12) (min 395) are NOT explained by the abelian image alone; their walls are elsewhere.
+  Moore-base lifts: 65 walks per (vertex, line) pair, rank 64, coverage matches the i.i.d. model.
+
+Director during the round: **(9,12) 1,178,527,488 (+6.6 %)** SL(2,128) x Z281, S = e + an order-3 alpha-fixed generator
++ one 7-orbit (1,444 annealing evaluations; an involution as the fixed generator is much worse: median 357 against 56),
+and **(10,12) 3,888,487,944 (+4.7 %)** PSL(2,243) x Z271, two free 5-orbits of x -> x^3 (626 evaluations); both
+haarcheck_gen VALID from (e,A) and (e,B).
+
+Reading: no round-2 card raised a cell; every new family hit a structural wall (abelian or parity sections, subgroup
+traps, disconnection) that the cards measured and, in four cases, proved. Two rounds of negatives on (3..7,12) suggest
+these cells will not fall to orbit structures at this budget; the field-automorphism groups that work exist only at
+the sizes of (8..11,12) (SL(2,128), PSL(2,243)). Process: two stray session-tool calls again (b08 archive_session without
+arguments, b12 send_message without arguments; both errored), despite the explicit tool list in the header.
