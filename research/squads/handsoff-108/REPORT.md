@@ -21,7 +21,7 @@ Closest states:
 At 03:24 UTC: Opus 0.619 budget units (99k output, 23.7M cache-read, 0.19M cache-write tokens, 103 messages); Haiku
 0.286 units (2.17M output, 193M cache-read, 21.7M cache-write tokens, 1,201 messages), Haiku share 32 %. After my
 last turns (writing this report) at 03:30: **Opus 0.663, Haiku 0.286, Haiku share 30 %**, short of the 50 % goal (last line
-of `research/squads/usage/handsoff-108.jsonl`). The split stayed between 27 % and 33 % at every check-in.
+of `research/squads/usage/handsoff-108.jsonl`). The split stayed between 27 % and 33 % at every check-in. The clean-up after 03:30 (late hand-backs, stopping stragglers, commits) took the final line to Opus 0.799, Haiku 0.293, **Haiku 27 %**: each extra coordinator turn re-reads about 200k tokens of context.
 
 Where my spend went: about 0.47 of my 0.62 units are cache reads, i.e. re-reading my own context (which grew to about
 200k tokens) on each of 103 turns; my own output was 0.10. Waiting costs a turn every 10 minutes (the Bash cap), and
