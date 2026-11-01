@@ -1,0 +1,5 @@
+machine: cloud-sandbox; nproc=4; free -g: total 15G used 2G free 12G avail 13G; Linux 6.18.44-fc-v185; gcc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0
+sha256: ba8115986b134ccca56f9d2975fa50f50f579e5b322f0f39d328856db236934c  research/frontier/sols/d13D12_psl_181_5059_orb3-4-1_s1.txt  (from branch claude/beyond-d11-d12-new-cells-3t3djx; file 484 bytes)
+
+################ haarcheck_psl (reference; research/structured/tools/haarcheck_psl.c at master f816dbc7c0, built gcc -O3 -o haarcheck_psl haarcheck_psl.c; single-threaded; BFS from (e,A) ONLY, the other half (e,B) runs in a separate job): /usr/bin/time -v haarcheck_psl research/frontier/sols/d13D12_psl_181_5059_orb3-4-1_s1.txt A   (stdout, complete)
+PROGRESS: started 2026-11-01T17:32:14Z, still running (BFS from (e,A) in progress).
