@@ -1,0 +1,6 @@
+# Haar graph H(G,S), G = A6 x Z4 (order 1440, table tables/x4_perm_A6_.bin built by gen.py "x4(perm:A6)"), S = {e, g9, g434}
+# (indices of the group table; element 0 = identity). Max degree 3, bipartite, 2880 vertices, diameter 13.
+# Verified by ex verify (explicit 2N-vertex graph, BFS from every vertex): connected, symmetric edges, diameter=13.
+# Command: nice -n 10 ./ex tables/x4_perm_A6_.bin 13 1   -> VALID 9 434   (pairs scanned 11901)
+# Command: nice -n 10 ./ex tables/x4_perm_A6_.bin 13 verify 9 434   -> diameter=13
+d=3 D=13 group=A6xZ4 N=1440 vertices=2880 S=0,9,434 table=tables/x4_perm_A6_.bin

@@ -1,0 +1,3 @@
+# cell | vertices | edge list (graphs/) | check file (checks/) | construction note
+3,13 | 2880 | d3D13_n2880_A6xZ4.edges.gz | d3D13_n2880_A6xZ4.apsp.txt | Haar graph H(A6 x Z4, {e, x, y}), exhaustive pairs over the group table (squad r1/c03, research/squads/beyond13/r1/c03/sols/A6xZ4_D13_9_434.txt); edge list rebuilt by tab2edges.py
+4,13 | 186314 | d4D13_n186314_meta4903_19_230.edges.gz | d4D13_n186314_meta4903_19_230.apsp.txt | Haar graph of the odd-order metacyclic group Z4903 x|_230 Z19, S random (haar_gen3, squad r1/c15); edge list rebuilt by meta2edges.py; beats the Haar SL/PSL values 170,520 (PSL(2,29) x Z7, orbit scan r1/c05) and 117,600 (PSL(2,49), r1/c16)

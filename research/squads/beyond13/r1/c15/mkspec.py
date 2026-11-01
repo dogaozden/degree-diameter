@@ -8,8 +8,8 @@ def isprime(x):
         i+=2
     return True
 k=int(sys.argv[1]); t=int(sys.argv[2])
-best=None
-for m in range(t-400,t+400):
+best=None; c=t//k
+for m in range(c-800,c+800):
     if m%2==0 or not isprime(m) or (m-1)%k: continue
     if best is None or abs(m*k-t)<abs(best*k-t): best=m
 m=best

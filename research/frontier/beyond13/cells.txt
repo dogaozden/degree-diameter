@@ -1,5 +1,8 @@
 # cell | sol stem (in sols/, must have a VALID runs/<stem>.gen.txt) | construction note (squad card or director)
-4,14 | d4D14_sl_31_7_orb3-1-1_s1 | Haar graph SL(2,31) x Z7, S = {e} + 1 orbit of size 3 (director, 1 evaluation)
-5,13 | d5D13_sl_61_7_orb3-1-2_s1 | Haar graph SL(2,61) x Z7, S = {e} + 1 fixed + 1 orbit of size 3 (director, 1 evaluation)
+4,14 | d4D14_psl_41_7_orb3-1-1_c06 | Haar graph PSL(2,41) x Z7, S = {e} + 1 orbit of size 3 (squad r1/c06); earlier 416,640 (SL(2,31) x Z7, director)
+5,13 | d5D13_psl_47_31_orb3-1-2_c07 | Haar graph PSL(2,47) x Z31, S = {e} + 1 fixed + 1 orbit of size 3 (squad r1/c07, 18 s); earlier 3,176,880 (SL(2,61) x Z7, director)
 5,14 | d5D14_psl_227_1_g3_c08 | Haar graph PSL(2,227), S random (haar_gen3, no orbit; squad r1/c08); the orbit form "3 1 2" stalls at cost 18 here
-4,13 | d4D13_psl_49_1_g3_c16 | Haar graph PSL(2,49), S random (haar_gen3 "psl 49", seed 11; squad r1/c16)
+4,13 | d4D13_psl_29_7_orbscan_c05 | Haar graph PSL(2,29) x Z7, S = {e, x, ax, a^2x} (exhaustive orbit scan orbscan.c, squad r1/c05); earlier 117,600 (PSL(2,49), random S, r1/c16) and 78,936 (PSL(2,23) x Z13, r1/c04)
+6,13 | d6D13_psl_103_37_orb3-2-0_c09 | Haar graph PSL(2,103) x Z37, S = 2 free orbits of size 3 (squad r1/c09, 11.5 s); also PSL(2,109) x Z31 40,142,520
+6,14 | d6D14_psl_101_181_orb3-2-0_c10 | Haar graph PSL(2,101) x Z181, S = 2 free orbits of size 3 (squad r1/c10, chained links at mu ~7); also PSL(2,101) x Z163 167,922,600
+7,13 | d7D13_sl_199_19_orb3-2-1_c11 | Haar graph SL(2,199) x Z19, S = {e} + 2 orbits of size 3 (squad r1/c11)

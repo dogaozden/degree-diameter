@@ -3,3 +3,6 @@ selftest group multiplication: associativity, identity, inverse on 20000 random 
 file /home/user/degree-diameter/research/squads/beyond13/r1/c11/s199b.sol
 header: 7 13 sl 199 n 19 N 149727600
 group sl 199 x Z_19, |G| = 149727600 = N, vertices 2N = 299455200; 7 distinct generators
+from (e,A): reached A 149727600/149727600, B 149727600/149727600 within 13; ecc 13; level sizes [1, 7, 42, 252, 1512, 9072, 54432, 326256, 1946124, 11278848, 55463870, 129886543, 92261619, 8226622]  (218s)
+from (e,B): reached A 149727600/149727600, B 149727600/149727600 within 13; ecc 13; level sizes [1, 7, 42, 252, 1512, 9072, 54432, 326256, 1946154, 11278848, 55468370, 129886543, 92257089, 8226622]  (385s)
+VALID d=7 D=13 group=sl 199 x Z_19 N=149727600 vertices=299455200 (distinct generators, 7-regular simple; every vertex within 13 of both (e,A) and (e,B); ecc 13; 385s)
