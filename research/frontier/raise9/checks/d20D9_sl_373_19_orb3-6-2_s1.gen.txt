@@ -1,0 +1,9 @@
+checker: haarcheck_gen (research/frontier/haarcheck_gen.c)
+file: runs/d20D9_sl_373_19_orb3-6-2_s1.out
+sha256 ff2a25af41ff073906111c244b0bf61b9a04f7ab537892bf1fd0659b10ebfda8  runs/d20D9_sl_373_19_orb3-6-2_s1.out
+start: 2026-11-01T23:15:30Z
+selftest sl 373: |M| = 51894744, index round trip over all elements ok
+selftest group multiplication: associativity, identity, inverse on 20000 random triples ok
+file runs/d20D9_sl_373_19_orb3-6-2_s1.out
+header: 20 9 sl 373 n 19 N 986000136
+group sl 373 x Z_19, |G| = 986000136 = N, vertices 2N = 1972000272; 20 distinct generators

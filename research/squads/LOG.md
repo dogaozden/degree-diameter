@@ -198,3 +198,37 @@ left beside the checks); a (15,11) push to SL(2,571) x Z79 (29.4 billion, mu 9.3
 groups at (8,11) and above (need a 64-bit meta layout and a low-memory checker that knows meta groups). For the
 coordinator: the five big graphs are above 20 billion vertices, so the reference check needs the split runs
 (haarcheck_psl.c SOL A / SOL B for the PSL ones; haarcheck_sl.c SOL A / SOL B for (15,11), option added here).
+
+## 2026-11-01/02, job raise-d9 (Opus director, branch claude/raise-d9-orbit-metacyclic-ndvfty)
+
+Goal: raise the D = 9 values at Δ = 3..20 with orbit and metacyclic/Frobenius searches (tools of beyond-d11 and
+beyond-d11b). Machine: 4 cores, 15 GB. At the start the D = 9 values at Δ ≤ 16 sat at size-law mu 23-47 (pushed by
+earlier orbit searches), but (17..20, 9) sat at mu 2.6-2.9 (first S solved by new-cells-beyond). haar_big0 evaluates an
+orbit S at N = 2.7e8 in ~0.2 s with 2 threads, so the director took (17..20, 9) and the squads took Δ ≤ 16 and new ideas.
+Before round 1 the director had (17,9) 543,962,400 (SL(2,151) x Z79, mu 13.2, 791 evaluations) and (19,9) 1,317,726,672
+(SL(2,277) x Z31, mu 13.4, 237 evaluations), both haarcheck_gen VALID. Note: sched_autogroup was on at first, so the
+cards' nice 10 had no effect (each card got the same CPU as a director job); the director switched it off at 23:03 UTC.
+
+### Round 1 (16 cards, 22:58-23:20 UTC, research/squads/raise9/r1/)
+
+Cards (best result):
+- a01 (4,9) odd non-metacyclic groups Z17^2 x| Z9 (cost 28), Z29^2 x| Z3 (disconnected or 3,000+): words collapse on the
+  abelian kernel. a02 (3,9) exhaustive cubic Haar over 2,191 groups of order 254-330 (+690 metacyclic up to 360): none;
+  min cost 8 at N = 272 (Z17 x| Z16); cost 0 only at N = 253 (Z23 x| Z11, the 506 value itself). a03 (6,9) odd Frobenius
+  groups: random-S min/median 16/72 for Z2551 x| Z25 vs 26/140 for SL(2,17) x Z13 (the current group); annealing
+  stalled at cost 6 (Z2551 x| Z25, Z1559 x| Z41).
+- b01-b06 small-n SL(2,p) x Z_n orbit shape (ODD_D_HOLES rule from D = 11): (11,9) best PSL(2,97) x Z19 cost 9 (mu 23.6);
+  (12,9) SL(2,137) x Z7 cost 12 (mu 36.8, current group 30 in the same time); (13,9) small n worse (SL(2,257) x Z2 cost 40
+  vs 20 for SL(2,103) x Z31); (14,9) SL(2,167) x Z13 cost 12; (9,9) PSL(2,73) x Z9 cost 22; (8,9) PSL(2,47) x Z13 cost 12.
+  b07 (6,9)/(7,9) other SL/PSL(2,q) shapes: cost 21-95.
+- m01 (17,9) shape measurement (r1/m01/SHAPES.md): SL(2,p) x Z_n, n in {1, 9, 13} or prime n with few alpha-fixed z;
+  PSL bad for p > 300; f = 5 worse than f = 2. m02 orbit order 5: **(15,9) PSL(2,151) x Z61 "5 3 0" cost 4** at N just
+  above the bar (mu 28.1); k = 5 random median 77 vs 85 for k = 3.
+- w01 products at (12,9) (worse than SL(2,83) x Z31); w02 field-automorphism orbits at (8,9)/(9,9) (cost 20-22); w03
+  twisted product Z173 x| PGL(2,29) (8x worse than the direct product); w04 lifts of a 2+2 base for (4,9) (Z251 x| Z5
+  cost 24; cyclic voltage groups collapse).
+No card solved. Kept for round 2: the (6,9) Frobenius lead (2x better random statistics), k = 5 orbits, and seed farms on
+the near misses ((8,9) PSL(2,47) x Z13, (11,9) PSL(2,97) x Z19, (12,9) SL(2,137) x Z7). The (15,9) cost-4 state went to
+the director's queue. Dropped: small n as a rule at D = 9, products, field automorphisms, twisted products, (3,9) Haar.
+Process: cards ran 9-21 minutes of their 25; three called session tools (archive_session, send_message) with empty
+arguments, all rejected (checked in the transcripts); round 2's prompt lists the allowed tools explicitly.
