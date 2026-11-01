@@ -4,7 +4,8 @@ checker: research/frontier/haarcheck_sl.c on master, commit e93cbf8 (sha256 of b
 timing: /usr/bin/time is not installed on this machine, so the [exit; wall; peak RSS] line is produced by a python3 os.wait4 wrapper (ru_maxrss of the child).
 
 ################ haarcheck_sl (reference checker, one BFS from (e,A) only): haarcheck_sl research/frontier/sols/d15D11_sl_617_61_orb3-5-0_s1.txt A   (stdout, complete)
-STATUS: running since 2026-11-01T15:32:15Z; progress note 1 at 0 min: still running, no output until the BFS ends (the checker prints only at the end).
-PROGRESS 30 min (16:02:44Z): still running, elapsed 30 min 37 s, RSS 10.5 GB of 15 GB; no output yet (the checker prints only when the BFS ends).
-PROGRESS 16:27:53Z: still running, elapsed 55:50 (hh:mm:ss or mm:ss), no output yet.
-PROGRESS 16:57:57Z: still running, elapsed 01:25:54, no output yet.
+from (e,A): reached A 14327954256/14327954256, B 14327954256/14327954256 within 11, ecc 11
+HALF-VALID from (e,A) d=15 D=11 group=sl 617 x Z_61 N=14327954256 vertices=28655908512
+[exit 0; wall 5910s; peak RSS 10250 MB]
+
+progress log (appended while running, times UTC): 15:32 started; 16:02 still running at 30 min 37 s, RSS 10.5 GB; 16:27 still running at 55 min; 16:57 still running at 1 h 25 min; 17:02 still running at 1 h 31 min; finished at about 17:10 (wall 5910 s by the wrapper).
