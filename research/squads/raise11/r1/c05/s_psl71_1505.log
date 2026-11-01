@@ -1,0 +1,19 @@
+group psl 71 x Z_127, N=22722840 (2N=45445680), rows 2520 x 9017 bits (doubled row 304 words), memory 0.02 GB, threads 1
+alpha: conj by mat(0,70,1,70), z -> 19 z on Z_127 (fixed z: 1); ORBIT k=3 m=2 f=2; W=3.29554e+08 lambda=14.503 mu=11.42
+setup 0.0s
+start cost=1 (0.2s per eval)
+t=1 step=1 evals=9 slot=1 cand=24 cost=1 best=1 T=1.26
+t=1 step=2 evals=17 slot=1 cand=54 cost=1 best=1 T=1.06
+t=1 step=3 evals=25 slot=0 cand=27 cost=1 best=1 T=0.89
+t=2 step=4 evals=33 slot=0 cand=173 cost=1 best=1 T=0.75
+t=2 step=5 evals=41 slot=0 cand=81 cost=1 best=1 T=0.63
+t=3 step=6 evals=49 slot=0 cand=20 cost=1 best=1 T=0.53
+t=5 step=7 evals=57 slot=0 cand=45 cost=1 best=1 T=0.45
+t=8 step=8 evals=65 slot=0 cand=36 cost=1 best=1 T=0.38
+t=10 step=9 evals=73 slot=1 cand=24 cost=1 best=1 T=0.32
+t=12 step=10 evals=81 slot=0 cand=18 cost=1 best=1 T=0.27
+t=14 step=11 evals=89 slot=1 cand=33 cost=1 best=1 T=0.22
+t=17 step=12 evals=97 slot=1 cand=0 cost=0 best=0 T=0.19
+RESULT d=8 D=11 group=psl 71 x Z_127 N=22722840 vertices=45445680 best=0 evals=97 steps=12 time=17.5 orbit k=3 m=2 f=2 mu=11.42
+re-evaluation of the best S: cost 0
+wrote s_psl71_1505.out

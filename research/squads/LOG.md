@@ -198,3 +198,36 @@ left beside the checks); a (15,11) push to SL(2,571) x Z79 (29.4 billion, mu 9.3
 groups at (8,11) and above (need a 64-bit meta layout and a low-memory checker that knows meta groups). For the
 coordinator: the five big graphs are above 20 billion vertices, so the reference check needs the split runs
 (haarcheck_psl.c SOL A / SOL B for the PSL ones; haarcheck_sl.c SOL A / SOL B for (15,11), option added here).
+
+## 2026-11-01/02, raise-d11 (Opus director, branch claude/raise-d11-frontier-26r11l)
+
+Goal: raise the D = 11 values at Δ = 3..16, mainly Δ = 6..14. Folders research/squads/raise11/ (HEADER.md, r1/, r2/,
+bin built from the sources named there) and research/frontier/raise11/ (director tools and runs).
+
+Director, before round 1 (22:46-23:05 UTC): tested inverse-closed S (S = S^-1, haar_sd.c: the Haar graph is then the
+bipartite double of a Cayley graph, so one side to cover). With e in S the words collapse (u e u^-1 = e); without e the
+per-side holes double, so no gain (RANDORB at (6,11), (8,11), (12,9); card c12 confirmed 8-10x worse at n = 331). Built
+haar_meta.c (haar_big0's row-rotation BFS for Z_q x| Z_k; 2 ms per evaluation at N = 1e6) and metacheck.c (independent
+meta checker). Found that autogroup scheduling made `nice` inside cards useless; renice_loop.sh fixes it by autogroup.
+
+### Round 1 (16 cards, 23:03-23:20 UTC, research/squads/raise11/r1/)
+Cards: c01/c02 (6,11) Frobenius farms (small/big step); c03/c04 (7,11) orbit farms (small/big); c05/c06 (8,11)
+(small step / SL with small n); c07, c16 (9,11); c08 (10,11); c09 hole anatomy; c10 schedule calibration; c11 orbit
+shape f; c12 inverse-closed S; c13 clump model for group choice; c14 wildcard (chosen alpha-fixed generators); c15
+wildcard (other families at (7,11)).
+Best per card: c01 **(6,11) 2,124,866** (Z25913 x| Z41, +0.11 %); c04 **(7,11) 11,311,584** (PSL(2,47) x Z109, mu 15.2,
++2.71 %); c06 **(8,11) 46,309,200** (SL(2,149) x Z7, mu 15.3, +2.16 %; c13's top-ranked group); c05 (8,11) 45,445,680
+(PSL(2,71) x Z127, superseded); c08 **(10,11) 461,335,200** (SL(2,151) x Z67, +0.14 %); c02 cost 4 at +1.4 %; c07 cost
+6, c16 cost 6, c09 cost 11 at (9,11); c11 cost 32; c12 cost 36 (SYM 279); c14 cost 5,826; c15 cost 4 (Frobenius at
+(7,11), N 5.5M); c13 model (no search). c03, c10 still running when round 2 started.
+Findings: (1) **small n is the lever** (c13 model K = expected independent hole clumps, P(cost 0) ~ e^-K; c09: at
+n >= 229 a quarter of the holes are central (+-I, z)); solves now come at mu ~15 where earlier jobs stalled at mu ~10.
+(2) Fresh seeds beat resumes (c08, c07, c16). (3) Negatives: inverse-closed S, f >= 4 fixed generators (10^6-10^7
+holes, c11/c14), other families at (7,11) (c15). Director-verified: (6,11) metacheck + build_haar2.py VALID; (8,11),
+(10,11) haarcheck_gen VALID; (7,11) check queued.
+Director during round 1: (12,11) **3,039,136,800** with SL(2,601) x Z7 (mu 10.65, +2.12 %; solved in 5 evaluations,
+the group the beyond-d11 job had stopped after 48), check running; (16,11) first random S of PSL(2,449) x Z373 has cost
+0 at **33,763,363,200** (+12.7 %; the old value was the previous job's 30-billion cap), but its 12 GB checks were
+OOM-killed twice by the 14.3 GB bash cgroup; to be checked in a quiet window.
+Kept for round 2: SL/PSL with small n at model-ranked rungs ("ladder" cards that climb on success), haar_meta for the
+Frobenius cells, a random-sampling-vs-annealing test.

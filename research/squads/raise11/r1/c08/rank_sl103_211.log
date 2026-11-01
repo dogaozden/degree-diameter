@@ -1,0 +1,8 @@
+group sl 103 x Z_211, N=230543664 (2N=461087328), rows 10608 x 21733 bits (doubled row 704 words), memory 0.16 GB, threads 1
+alpha: conj by mat(0,102,1,102), z -> 14 z on Z_211 (fixed z: 1); ORBIT k=3 m=3 f=1; W=3.92263e+09 lambda=17.015 mu=9.41
+setup 0.0s
+RANDORB sample 0 cost 72 (3.6s) zq 3.109
+RANDORB sample 1 cost 52 (4.7s) zq 1.000
+RANDORB sample 2 cost 68 (5.8s) zq 1.000
+RANDORB sample 3 cost 68 (7.0s) zq 1.000
+RANDORB d=10 D=11 group=sl 103 x Z_211 N=230543664 samples=4 min=52 p10=52 median=68 mean=65.00 mu=9.41 time=7.0
