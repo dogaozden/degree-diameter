@@ -1,0 +1,7 @@
+machine: vm; nproc=4; free -g: total 15G used 0G free 14G avail 15G; Linux 6.18.44-fc-v185; gcc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0
+sha256: 166929de2a622916881c41ec32ca1931e990ddf241521139b4a43cf89e06ec3c  research/frontier/sols/d20D10_psl_421_409_orb3_s1.txt  (copied from origin/claude/new-cells-beyond-etos3t)
+job: gencheck-j (backup of gencheck-i); side: BFS from (e,B) only; checker from master f816dbc7c0
+started: 2026-11-01T01:30:41Z
+
+################ haarcheck_psl (reference, research/structured/tools/haarcheck_psl.c, master f816dbc7c0), BFS from (e,B) only: gcc -O3 -o haarcheck_psl research/structured/tools/haarcheck_psl.c && timeout 19800 ./haarcheck_psl research/frontier/sols/d20D10_psl_421_409_orb3_s1.txt B   (stdout, complete when the [exit] line appears)
+progress: 2026-11-01T01:30:55Z elapsed 0 min; haarcheck_psl (B side) still running, RSS 2407.62 MB
