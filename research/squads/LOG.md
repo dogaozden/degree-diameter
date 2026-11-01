@@ -173,3 +173,28 @@ Cards (best result):
 Director's reading: four more cells raised, one more D = 11 cell raised by the odd-order rule; the lift near misses at
 Δ = 3 (cost 2 in three bases) may have been cooling-limited. Round 5: the same near misses with proper cooling and
 START chains, the lift and metacyclic ideas tested on the lab's D = 11, 12 cells, RANDORB screening for the mid cells.
+
+## 2026-11-01, beyond-d13, round 5 (16 cards, 13:24 UTC)
+
+Same session. Files: research/squads/beyond13/r5/. Selection from round 4: near misses with proper cooling and START
+chains (h01-h04), products and random S at Δ = 5 (h05-h07), the metacyclic idea on the lab's D = 11, 12 cells (h07-h09),
+lifts at D = 11, 12 (h10), RANDORB screening for the mid cells (h11-h14), two wildcards.
+
+Cards (best result; all checked by the director unless marked):
+- h01 (3,13): Pappus x Z179, 3,222 (the director meanwhile had GP(10,3) x Z163 3,260 and x Z166 **3,320** with L = 1,200).
+- **h02 (3,14): GP(10,3) x Z282, 5,640**, with a new finisher scan.c (exhaustive 1-opt voltage scan + tabu), from the
+  director's cost-2 near miss, in 7 iterations.
+- **h03 (4,13): Z2237 x|_1984 Z43, 192,382** (hmeta, second link with T0 = 8, REHEAT = 400).
+- **h04 (4,14): Z4027 x|_2950 Z61, 491,294.** (The card also started a remote session by mistake and archived it.)
+- **h05 (5,13): (Z11 x|_4 Z5) x (Z1301 x|_667 Z25), 3,577,750.** **h06 (5,14): SL(2,97) x Z7, random S, 12,776,064.**
+- **h07 (5,11): Z5279 x|_1922 Z29, 306,182** (lab value 297,648). **h08: (4,12) Z1277 x|_964 Z29, 74,066** (lab 68,544)
+  and **(5,12) Z17981 x|_15904 Z29, 1,042,898** (lab 1,041,768) — even D, so the gain at Δ = 4, 5 is from random S
+  (three free generators against one orbit), not only from odd order.
+- h09 (6,11): meta at cost 2 (lab 2,094,960 stands). h10: lifts at D = 11, 12 stay below the metacyclic Haar values.
+- h11 (6,13): SL(2,59) x Z103 stays at 2 (the two holes are a transpose pair). h12 (7,13): PSL(2,131) x Z139 at 3.
+- h13 (6,14): PSL(2,83) x Z331 at 3. h14 (7,14): PSL(2,223) x Z151, 1,674,490,944 (+0.03 %; not checked).
+- h15 exh3 over odd-order groups at (3,13): cost 4. h16 orbit S on products: no orbit found; random S cost 68.
+
+Director's reading: the small cells keep moving (Δ = 3 lifts via cooling and the 1-opt finisher; Δ = 4, 5 metacyclic
+groups with random S also at even D). Round 6 (last): the same levers once more, and a test against the 2013 records at
+D = 9, 10 for Δ = 3, 4, 5, plus the first-moment explanation of random vs orbit S.
