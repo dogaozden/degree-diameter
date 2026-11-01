@@ -292,19 +292,24 @@ small enough that haarcheck_gen's p^2 field tables stay in cache (p <= ~620), n 
 
 **Small cells: odd-order Frobenius groups (squads).** Round 1 card g02 tried odd-order metacyclic groups at (4,11) (the
 (3,11) value Z67 x| Z11 is one) and g16 tried SL(2,p) x (centre-free odd Frobenius group); both beat (4,11) at once,
-far above the size law. Rounds 2-3 followed the lead: Frobenius groups Z_p x|_r Z_k (p prime, k | p - 1, r of order k;
+far above the size law. Rounds 2-6 followed the lead: Frobenius groups Z_p x|_r Z_k (p prime, k | p - 1, r of order k;
 odd order and trivial centre for odd k) with random S raised (4,11) 24,360 -> 30,334, (5,11) 297,648 -> 311,426,
 (6,11) 2,094,960 -> 2,122,518, (4,12) 68,544 -> 70,176 (a metacyclic Z731 x| Z48) and (5,12) 1,041,768 -> 1,058,342
-(rounds 1-6; from round 4 on with a save/resume version of haar_gen3, haar_gen3s, and in round 6 a targeted finisher). Card r2/h13 measured why: at Δ = 4 random S on Z761 x| Z19 leave 1.1x the size-law mu
+(from round 4 on with a save/resume version of haar_gen3, haar_gen3s, and in round 6 a targeted finisher, haar_gen3t;
+sources in research/squads/beyond11b/tools/). Card r2/h13 measured why: at Δ = 4 random S on Z761 x| Z19 leave 1.1x the
+size-law mu
 uncovered, SL(2,23) and SL(2,13) x Z7 4-5x, and the difference is middle-level collisions (short relations in small
-SL(2,p)), not involutions. The gain shrinks with N: mu 44 at (4,11), 19 at (5,11), ~10 at (6,11) and the D = 12 cells.
+SL(2,p)), not involutions. The gain shrinks with N: the new values sit at size-law mu 44 at (4,11), 20 at (5,11), 18 at (4,12), 14 at (5,12) and
+11 at (6,11), against 8-15 for the SL/PSL values they replace.
 k matters (k = 3 collapses, k = 7 is bad, k = 13-63 behave like random groups). Details, proofs (r2/h17) and the list
 of what failed: research/frontier/beyond11/FROBENIUS.md. These graphs were checked by build_haar2.py (all) and the
-all-pairs apsp (2N <= 310k); haarcheck_gen does not know metacyclic groups.
+all-pairs apsp (2N <= 311k); haarcheck_gen does not know metacyclic groups. Near the limit the annealer's cost-1/2
+states are real local minima: an exhaustive scan of all 105,609 single-generator swaps of a cost-1 (4,12) state found no
+cost 0 (r6/l01); solves came from many fresh lineages and a few resumed chains.
 
 **What failed or was not reached.** Raises of (11..14, 11) and (11,12) were not attempted (each needs mu above where
 odd-D searches stall, for gains of 1-3 %, and the machine was busy with the five ~11 GB checks). Frobenius groups at
-(7,11) and (8,11) stopped at cost 2 and 12 (evaluation too slow for squad cards at N >= 5.5M). Cubic cells: no gain
+(7,11) and (8,11) stopped at cost 2 and 8 (evaluation too slow for squad cards at N >= 5.5M). Cubic cells: no gain
 (exhaustive Frobenius and product groups, lifts of cubic multigraphs to cost 2 at 2,184 vertices for (3,12)). Negatives
 from round 1: Sz(8), F_{p^3} x| C_k, bipartite Cayley graphs of PGL(2,p), PSL(2,p^e) with a Frobenius automorphism,
 agl1 products, voltage lifts of PG(2,3) (19,500 at (4,11)). Squad log: research/squads/LOG.md (job beyond-d11b).
