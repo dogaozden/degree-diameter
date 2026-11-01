@@ -1,0 +1,34 @@
+self-tests ok: original passes eccOK at 13, fails at 12, real diameter 13 (0.1s)
+{
+ "mutants": 7070,
+ "invalid_arcsOK_or_symOK": 0,
+ "eccOK13_pass": 27,
+ "eccOK_pass_some_radius_le_40": 7069,
+ "counterexamples_eccOK13_and_real_gt_13": 0,
+ "port_inconsistent_eccOK13_vs_mask": 0,
+ "pass_by_family": {
+  "rand": 27
+ },
+ "pass_real_diam_hist": {
+  "13": 27
+ },
+ "fail_sample_checked": 400,
+ "strong_real_gt_mask": 0,
+ "strong_real_ne_mask": 0,
+ "sample_fail_mask_hist": {
+  "15": 109,
+  "14": 277,
+  "16": 11,
+  "17": 3
+ },
+ "mask_diam_hist_all_valid": {
+  "14": 5112,
+  "15": 1758,
+  "13": 27,
+  "16": 154,
+  "17": 15,
+  "18": 3
+ },
+ "fail_mutants_at_13": 7043
+}
+counterexamples: 0  eccOK13 passers: 27  seconds: 94.4
