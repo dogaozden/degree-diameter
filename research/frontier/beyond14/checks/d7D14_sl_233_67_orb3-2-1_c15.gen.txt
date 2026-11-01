@@ -8,3 +8,7 @@ file sols/d7D14_sl_233_67_orb3-2-1_c15.txt
 header: 7 14 sl 233 n 67 N 847489968
 group sl 233 x Z_67, |G| = 847489968 = N, vertices 2N = 1694979936; 7 distinct generators
 from (e,A): reached A 847489968/847489968, B 847489968/847489968 within 14; ecc 14; level sizes [1, 7, 42, 252, 1512, 9057, 54246, 324879, 1944024, 11573737, 66864436, 325310601, 737900829, 510271435, 40724878]  (300s)
+from (e,B): reached A 847489968/847489968, B 847489968/847489968 within 14; ecc 14; level sizes [1, 7, 42, 252, 1512, 9057, 54246, 324879, 1944042, 11573737, 66864542, 325310601, 737900153, 510271435, 40725430]  (559s)
+VALID d=7 D=14 group=sl 233 x Z_67 N=847489968 vertices=1694979936 (distinct generators, 7-regular simple; every vertex within 14 of both (e,A) and (e,B); ecc 14; 559s)
+exit: 0
+end: 2026-11-01T23:16:49Z (559 s)

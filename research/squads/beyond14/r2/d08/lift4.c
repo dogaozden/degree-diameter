@@ -12,6 +12,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdint.h>
+#define P2MAX 8
 #include <string.h>
 #include <math.h>
 #include <time.h>
@@ -19,7 +20,7 @@
 static int p, P2, m, k, r, N, D = 14, IDLE = 4000;
 static int eu[16], ev[16], ea[16], ne;
 static int bu[16], bv[16], ba[16];
-static uint64_t *R, *R2;
+static uint8_t *R, *R2;
 static int *nbr, *gA, *gJ, *Rj, *Ri;
 static int dv[16][4], da[16][4];
 static uint64_t rng = 88172645463325252ULL;
@@ -41,25 +42,28 @@ static long cost(void) {
         dv[u][dg[u]] = v; da[u][dg[u]++] = ea[e];
         dv[v][dg[v]] = u; da[v][dg[v]++] = ginv(ea[e]);
     }
+    /* (u,g) ~ (v, g*c) with c = (b,i): g*c = ((a + r^j b) mod m, (j+i) mod k) for g = (a,j) */
+    static int T[4096], S[4096];
     for (int u = 0; u < P2; u++) for (int t = 0; t < 4; t++) {
         int c = da[u][t], b = gA[c], i = gJ[c], v = dv[u][t];
-        for (int g = 0; g < N; g++) {
-            int a = gA[g], j = gJ[g];
-            int x = (int)(((int64_t)a + (int64_t)Rj[j] * b) % m) * k + (j + i) % k;
-            nbr[(u * N + g) * 4 + t] = v * N + x;
+        for (int j = 0; j < k; j++) { T[j] = (int)((int64_t)Rj[j] * b % m); S[j] = (j + i) % k; }
+        int *out = nbr + (long)u * N * 4 + t;
+        for (int a = 0; a < m; a++) for (int j = 0; j < k; j++) {
+            int x = a + T[j]; if (x >= m) x -= m;
+            *out = v * N + x * k + S[j]; out += 4;
         }
     }
-    memset(R, 0, 8L * n);
-    for (int u = 0; u < P2; u++) R[u * N] = 1ULL << u;
+    memset(R, 0, (size_t)n);
+    for (int u = 0; u < P2; u++) R[u * N] = (uint8_t)(1u << u);
     for (int t = 0; t < D; t++) {
         for (int x = 0; x < n; x++) {
-            int *q = nbr + 4 * (long)x;
+            const int *q = nbr + 4 * (long)x;
             R2[x] = R[x] | R[q[0]] | R[q[1]] | R[q[2]] | R[q[3]];
         }
-        uint64_t *tmp = R; R = R2; R2 = tmp;
+        uint8_t *tmp = R; R = R2; R2 = tmp;
     }
-    uint64_t full = (1ULL << P2) - 1; long c = 0;
-    for (int x = 0; x < n; x++) c += __builtin_popcountll(~R[x] & full);
+    uint8_t full = (uint8_t)((1u << P2) - 1); long c = 0;
+    for (int x = 0; x < n; x++) c += __builtin_popcount((unsigned)(uint8_t)(~R[x] & full));
     return c;
 }
 
@@ -79,14 +83,14 @@ int main(int argc, char **argv) {
     if (getenv("D")) D = atoi(getenv("D"));
     if (getenv("IDLE")) IDLE = atoi(getenv("IDLE"));
     N = m * k; ne = 4 * p;
-    if (P2 > 62 || 1L * m * k > 2000000000L) return 2;
+    if (k > 4096 || P2 > P2MAX || 1L * m * k > 2000000000L) return 2;
     Rj = malloc(sizeof(int) * k); Ri = malloc(sizeof(int) * k);
     { int64_t x = 1 % m; for (int j = 0; j < k; j++) { Rj[j] = (int)x; x = x * r % m; } }
     if (((int64_t)Rj[0] * 1) != 1 % m || (int64_t)Rj[0] != 1 % m) return 2;
     { int64_t x = 1 % m; for (int j = 0; j < k; j++) x = x * r % m; if (x != 1 % m) { fprintf(stderr, "r^k != 1 mod m\n"); return 2; } }
     gA = malloc(sizeof(int) * N); gJ = malloc(sizeof(int) * N);
     for (int g = 0; g < N; g++) { gA[g] = g / k; gJ[g] = g % k; }
-    int n = P2 * N; R = malloc(8L * n); R2 = malloc(8L * n); nbr = malloc(sizeof(int) * 4L * n);
+    int n = P2 * N; R = malloc((size_t)n); R2 = malloc((size_t)n); nbr = malloc(sizeof(int) * 4L * n);
     if (getenv("EVAL")) {
         FILE *fs = fopen(getenv("EVAL"), "r"); int hm, hk, hr, hp; long hc;
         if (!fs || fscanf(fs, "%d %d %d %d %ld", &hm, &hk, &hr, &hp, &hc) != 5 || hm != m || hk != k || hp != p) { fprintf(stderr, "bad EVAL\n"); return 2; }

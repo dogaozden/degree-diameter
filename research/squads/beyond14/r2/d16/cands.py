@@ -16,5 +16,6 @@ for p in range(190,380):
             N=order*n
             if 862_000_000<=N<=880_000_000:
                 out.append((kind,p,n,N))
-for o in out: print(*o)
-print(len(out))
+if __name__=="__main__":
+    for o in out: print(*o)
+    print(len(out))
