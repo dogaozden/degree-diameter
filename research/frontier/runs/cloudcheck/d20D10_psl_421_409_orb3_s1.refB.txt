@@ -11,3 +11,9 @@ progress: 2026-11-01T03:01:47Z elapsed ~91 min; haarcheck_psl (B side) still run
 progress: 2026-11-01T03:31:56Z elapsed ~121 min; haarcheck_psl (B side) still running, RSS 10916 MB (no stdout yet)
 progress: 2026-11-01T04:02:04Z elapsed ~151 min; haarcheck_psl (B side) still running, RSS 10916 MB (no stdout yet)
 progress: 2026-11-01T04:32:12Z elapsed ~181 min; haarcheck_psl (B side) still running, RSS 10916 MB (no stdout yet)
+completed: 2026-11-01T04:52:26Z; checker ran to the end (no timeout, exit 0)
+timing note: /usr/bin/time is not installed on this machine (apt has no 'time' package), so wall time and peak RSS come from a python3 os.wait4 wrapper (ru_maxrss); the checker's own output is unaffected
+stdout (complete, copied unedited):
+from (e,B): reached A 15259389180/15259389180, B 15259389180/15259389180 within 10, ecc 10
+HALF-VALID from (e,B) d=20 D=10 group=psl 421 x Z_409 N=15259389180 vertices=30518778360
+[exit 0; wall 12077s; peak RSS 10916 MB]
