@@ -768,3 +768,27 @@ time -v stderr (complete, from /usr/bin/time -v):
 ======== coordinator summary ========
 haarcheck_gen: VALID d=13 D=12 (both starts). haarcheck_psl: HALF-VALID from (e,A) and HALF-VALID from (e,B); each reaches all 14998822020 elements of each side within 12. Right multiplication is transitive on each side, so the two halves together are the full reference check.
 RESULT VALID d=13 D=12 group=psl 181 x Z_5059 N=14998822020 vertices=29997644040 (two independent checkers: haarcheck_gen, and haarcheck_psl run as two halves)
+== d3D16_meta_677_13_362_a04 (origin/claude/new-cells-d15-d16-fpj633, 16:32 PT)
+ecc from A = 16 unreached 0
+ecc from B = 16 unreached 0
+n = 17602 edges = 26403 max degree = 3 min degree = 3 duplicate edges = 0
+edge list sha256 = eca762a340b0137a68e703d69a306f43fba739ec4ff114fdc433fbaab1b6e6c5
+VALID d=3 D=16 group=meta 677 13 362 x Z_1 N=8801 vertices=17602
+== d4D15_meta_9199_73_8708_b01 (origin/claude/new-cells-d15-d16-fpj633, 16:32 PT)
+ecc from A = 15 unreached 0
+ecc from B = 15 unreached 0
+n = 1343054 edges = 2686108 max degree = 4 min degree = 4 duplicate edges = 0
+edge list sha256 = 87538d57f071f6ea5981d80384d90f48e3998a4fc1c690e93919b412f6b6f8bf
+VALID d=4 D=15 group=meta 9199 73 8708 x Z_1 N=671527 vertices=1343054
+== d4D16_meta_24821_73_16022_f02 (origin/claude/new-cells-d15-d16-fpj633, 16:32 PT)
+ecc from A = 16 unreached 0
+ecc from B = 16 unreached 0
+n = 3623866 edges = 7247732 max degree = 4 min degree = 4 duplicate edges = 0
+edge list sha256 = 7c5e7cd7b6dbafcde3273f264ea7d0ac613a020d1c4d661f1df7701870661f76
+VALID d=4 D=16 group=meta 24821 73 16022 x Z_1 N=1811933 vertices=3623866
+== d6D11_meta_25913_41_8204_r1c01 (origin/claude/raise-d11-frontier-26r11l, 16:32 PT)
+ecc from A = 11 unreached 0
+ecc from B = 11 unreached 0
+n = 2124866 edges = 6374598 max degree = 6 min degree = 6 duplicate edges = 0
+edge list sha256 = 1c99f4386e9d08fd472b1ee6e694f4480ad171cd004008b1d38976e9df693250
+VALID d=6 D=11 group=meta 25913 41 8204 x Z_1 N=1062433 vertices=2124866
