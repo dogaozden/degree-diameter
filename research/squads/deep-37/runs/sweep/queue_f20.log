@@ -1,0 +1,12 @@
+Traceback (most recent call last):
+  File "/home/user/degree-diameter/research/squads/deep-37/src/queue.py", line 5, in <module>
+    from concurrent.futures import ThreadPoolExecutor
+  File "/usr/local/lib/python3.13/concurrent/futures/__init__.py", line 50, in __getattr__
+    from .thread import ThreadPoolExecutor as te
+  File "/usr/local/lib/python3.13/concurrent/futures/thread.py", line 10, in <module>
+    import queue
+  File "/home/user/degree-diameter/research/squads/deep-37/src/queue.py", line 5, in <module>
+    from concurrent.futures import ThreadPoolExecutor
+  File "/usr/local/lib/python3.13/concurrent/futures/__init__.py", line 50, in __getattr__
+    from .thread import ThreadPoolExecutor as te
+ImportError: cannot import name 'ThreadPoolExecutor' from partially initialized module 'concurrent.futures.thread' (most likely due to a circular import) (/usr/local/lib/python3.13/concurrent/futures/thread.py)

@@ -28,9 +28,11 @@ writegset := function(fn, G, K, specs)  # specs: list of [H, colour]
     od;
     off := off + nH;
   od;
-  PrintTo(fn, off, " ", Length(el), "\n");
-  for P in perms do AppendTo(fn, JoinStringsWithSeparator(List(P, String), " "), "\n"); od;
-  AppendTo(fn, JoinStringsWithSeparator(List(colours, String), " "), "\n");
+  x := OutputTextFile(fn, false); SetPrintFormattingStatus(x, false);
+  PrintTo(x, off, " ", Length(el), "\n");
+  for P in perms do AppendTo(x, JoinStringsWithSeparator(List(P, String), " "), "\n"); od;
+  AppendTo(x, JoinStringsWithSeparator(List(colours, String), " "), "\n");
+  CloseStream(x);
 end;
 dosets := function(G, N, OUTDIR, TAG, MAXSETS)
   local Ks, K, cls, adm, H, sizes, half, results, rec2, cnt, kk, combos, cc, specs, i, j, c, fn, side, nA, nB, desc;

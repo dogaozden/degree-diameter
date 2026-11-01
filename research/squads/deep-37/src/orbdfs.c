@@ -42,6 +42,8 @@ static short *P;            /* P[g*n+v] */
 static int col[MAXN], rev_[MAXG], inv_[MAXG];
 static int norb, orb[MAXN], rep[MAXN], orbsz[MAXN], gv[MAXN], typ[MAXN], ntyp;
 static int stabsz[MAXN]; static int *stab[MAXN];
+static int *ovl[MAXN];  /* vertices of each orbit */
+
 static int adj[MAXN][3], deg[MAXN];
 static int disc[MAXN], ndisc, discorder[MAXN];
 static int root;
@@ -110,7 +112,28 @@ static inline uint64_t xr(void) { rng ^= rng << 13; rng ^= rng >> 7; rng ^= rng 
    phase (0: A allowed, 1: after an opening), lastA id, last open key, current extra orbit jx, last extra id */
 static void search(int depth, int fo, int d0, int phase, int lastA, int lastkey, int jx, int lastC);
 
+static int dyn = 0;
+static int count_opts(int fo, int cap) { /* number of options at the start of a fill of rep[fo] (A + openings) */
+    int x = rep[fo], cx = col[x], cnt = 0; static int ids[4096]; int nid = 0;
+    for (int k = 0; k < ndisc; k++) { int o = discorder[k];
+        for (int q = 0; q < orbsz[o]; q++) { int y = ovl[o][q]; if (col[y] == cx || deg[y] >= 3 || isadj(x, y)) continue;
+            int ne, id; if (!edge_orbit(x, y, &ne, &id)) continue;
+            int dup = 0; for (int t = 0; t < nid; t++) if (ids[t] == id) { dup = 1; break; }
+            if (dup) continue; ids[nid++] = id; cnt++; if (cnt >= cap) return cnt; } }
+    for (int t = 0; t < ntyp; t++) {
+        int j = -1; for (int o = 0; o < norb; o++) if (!disc[o] && typ[o] == t) { j = o; break; }
+        if (j < 0) continue;
+        for (int c = 0; c < clsn[fo][j]; c++) { int ne, id; if (edge_orbit(x, clsl[fo][j][c], &ne, &id)) { cnt++; if (cnt >= cap) return cnt; } }
+    }
+    return cnt;
+}
 static void next_fill(int depth) {
+    if (dyn) { /* fail-first: the discovered representative with the fewest options (ties: earliest discovered) */
+        int best = -1, bc = 1 << 30;
+        for (int k = 0; k < ndisc; k++) { int o = discorder[k]; if (deg[rep[o]] >= 3) continue;
+            int c = count_opts(o, bc); if (c < bc) { bc = c; best = o; if (c == 0) break; } }
+        if (best >= 0) { if (bc == 0) return; search(depth, best, ndisc, 0, -1, -1, -1, -1); return; }
+    } else
     /* find earliest discovered orbit with free slot */
     for (int k = 0; k < ndisc; k++) { int o = discorder[k]; if (deg[rep[o]] < 3) { search(depth, o, ndisc, 0, -1, -1, -1, -1); return; } }
     if (ndisc == norb) { if (probe) { probeest += probe_prod; return; } leaf(); if (nsol >= maxsol) stop = 1; }
@@ -123,11 +146,12 @@ static void search(int depth, int fo, int d0, int phase, int lastA, int lastkey,
     if (shard_i >= 0 && depth == sharddepth) { if ((shardctr++ % shard_m) != shard_i) return; }
     int x = rep[fo];
     if (deg[x] == 3) { next_fill(depth); return; }
-    Opt *opt = malloc(sizeof(Opt) * (n * 4 + 16)); int no = 0;
+    static Opt *optbuf[4096]; if (!optbuf[depth]) optbuf[depth] = malloc(sizeof(Opt) * (n * 4 + 16));
+    Opt *opt = optbuf[depth]; int no = 0;
     int cx = col[x];
     if (phase == 0) { /* A options */
         for (int k = 0; k < d0; k++) { int o = discorder[k];
-            for (int y = 0; y < n; y++) if (orb[y] == o && col[y] != cx && deg[y] < 3 && !isadj(x, y)) {
+            for (int q = 0; q < orbsz[o]; q++) { int y = ovl[o][q]; if (col[y] == cx || deg[y] >= 3 || isadj(x, y)) continue;
                 int ne, id; if (!edge_orbit(x, y, &ne, &id)) continue;
                 if (id <= lastA) continue;
                 /* dedupe same id within this list */
@@ -138,7 +162,7 @@ static void search(int depth, int fo, int d0, int phase, int lastA, int lastkey,
     }
     /* C options: extras into jx */
     if (jx >= 0) {
-        for (int y = 0; y < n; y++) if (orb[y] == jx && col[y] != cx && deg[y] < 3 && !isadj(x, y)) {
+        for (int q = 0; q < orbsz[jx]; q++) { int y = ovl[jx][q]; if (col[y] == cx || deg[y] >= 3 || isadj(x, y)) continue;
             int ne, id; if (!edge_orbit(x, y, &ne, &id)) continue;
             if (id <= lastC) continue;
             int dup = 0; for (int t = 0; t < no; t++) if (opt[t].kind == 2 && opt[t].id == id) { dup = 1; break; }
@@ -165,12 +189,13 @@ static void search(int depth, int fo, int d0, int phase, int lastA, int lastkey,
             add_edges(eb, ne); int ok = prune_ok(); del_edges(eb, ne); free(eb);
             if (nd) { disc[opt[t].j] = 0; ndisc--; }
             if (ok) opt[nv++] = opt[t]; }
-        no = nv; if (no == 0) { free(opt); return; }
+        no = nv; if (no == 0) { return; }
         probe_prod *= no; lo = (int)(xr() % no); hi = lo + 1; }
     for (int t = lo; t < hi && !stop; t++) {
         Opt o = opt[t]; int ne, id;
         edge_orbit(x, o.y, &ne, &id);
-        int (*eb)[2] = malloc(sizeof(int) * 2 * ne); memcpy(eb, ebuf, sizeof(int) * 2 * ne);
+        static int (*ebs[4096])[2]; if (!ebs[depth]) ebs[depth] = malloc(sizeof(int) * 2 * MAXN * 3);
+        int (*eb)[2] = ebs[depth]; memcpy(eb, ebuf, sizeof(int) * 2 * ne);
         int newdisc = 0;
         if (o.kind == 1) { disc[o.j] = 1; discorder[ndisc++] = o.j; newdisc = 1; }
         add_edges(eb, ne);
@@ -181,9 +206,7 @@ static void search(int depth, int fo, int d0, int phase, int lastA, int lastkey,
         }
         del_edges(eb, ne);
         if (newdisc) { disc[o.j] = 0; ndisc--; }
-        free(eb);
     }
-    free(opt);
 }
 
 int main(int argc, char **argv) {
@@ -195,6 +218,7 @@ int main(int argc, char **argv) {
     for (int g = 0; g < ng; g++) for (int v = 0; v < n; v++) { int t; if (fscanf(f, "%d", &t) != 1) return 3; PERM(g, v) = t; }
     for (int v = 0; v < n; v++) if (fscanf(f, "%d", &col[v]) != 1) return 4;
     fclose(f);
+    if (getenv("DYN")) dyn = atoi(getenv("DYN"));
     if (getenv("MAXSOL")) maxsol = atoll(getenv("MAXSOL"));
     solprefix = getenv("SOLPREFIX");
     if (getenv("PROBE")) probe = atoi(getenv("PROBE"));
@@ -209,6 +233,20 @@ int main(int argc, char **argv) {
         for (int v = 0; v < n; v++) if ((col[PERM(g, v)] != col[v]) != rev_[g]) { fprintf(stderr, "colour not preserved/reversed by element %d\n", g); return 5; }
     }
     if (idg < 0) { fprintf(stderr, "no identity\n"); return 6; }
+    /* faithfulness and twin lemma: a non-identity element fixing every vertex of one side makes two vertices of the
+       other side twins (same neighbourhood); a cubic bipartite graph of diameter <= D with n/2 vertices per side
+       then has a vertex seeing at most 1 + 3 + 12 + ... + 3*2^(L-2) + 1 same-side vertices (all walks through its
+       twin at step 2 are redundant), which is < n/2 for the target. Skipped when NOTWIN=1. */
+    if (!getenv("NOTWIN")) for (int g = 0; g < ng; g++) {
+        if (g == idg || rev_[g]) continue;
+        int fa = 1, fb = 1, fall = 1;
+        for (int v = 0; v < n; v++) if (PERM(g, v) != v) { fall = 0; if (col[v] == 0) fa = 0; else fb = 0; }
+        if (fall) { printf("DONE nodes=0 sols=0 time=0.0s EXCLUDED_NOT_FAITHFUL\n"); return 0; }
+        if (fa || fb) {
+            long bound = 2; for (int i = 2; i <= L; i += 2) bound += 3L << (i - 2); /* 1 + twin + 3*(1 + 4 + ...) */
+            if (bound < half) { printf("DONE nodes=0 sols=0 time=0.0s EXCLUDED_TWIN (bound %ld < %d)\n", bound, half); return 0; }
+        }
+    }
     /* orbits */
     for (int v = 0; v < n; v++) orb[v] = -1;
     norb = 0;
@@ -216,6 +254,7 @@ int main(int argc, char **argv) {
         int o = norb++; rep[o] = v; orbsz[o] = 0;
         for (int g = 0; g < ng; g++) { int w = PERM(g, v); if (orb[w] < 0) { orb[w] = o; gv[w] = g; orbsz[o]++; } }
     }
+    for (int o = 0; o < norb; o++) { ovl[o] = malloc(sizeof(int) * orbsz[o]); int c = 0; for (int v = 0; v < n; v++) if (orb[v] == o) ovl[o][c++] = v; }
     for (int o = 0; o < norb; o++) { int x = rep[o]; stab[o] = malloc(sizeof(int) * ng); stabsz[o] = 0;
         for (int g = 0; g < ng; g++) if (PERM(g, x) == x) stab[o][stabsz[o]++] = g; }
     /* inverses */
