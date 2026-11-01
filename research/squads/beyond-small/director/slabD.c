@@ -171,12 +171,23 @@ int main(int argc, char **argv) {
             if (ok) { for (int qq = 0; qq < 3; qq++) { Phi[l][qq] = GT[gi][qq]; for (int i = 0; i < 4; i++) capn[Q[GT[gi][qq]][i] / 5]++; }
                 long o2; OBJ(o2);
                 if (o2 <= obj) obj = o2; else { for (int qq = 0; qq < 3; qq++) { for (int i = 0; i < 4; i++) capn[Q[Phi[l][qq]][i] / 5]--; Phi[l][qq] = old[qq]; for (int i = 0; i < 4; i++) capn[Q[old[qq]][i] / 5]++; } } }
-            else for (int qq = 0; qq < 3; qq++) for (int i = 0; i < 4; i++) capn[Q[old[qq]][i]]++;
+            else for (int qq = 0; qq < 3; qq++) for (int i = 0; i < 4; i++) capn[Q[old[qq]][i] / 5]++;
         }
         printf("local search end objective %ld (domination misses %ld, coverage misses %ld)\n", obj, obj / 1000, obj % 1000);
     }
 
     printf("design: worst root dominates %d of 66 (sufficient condition)\n", bestw);
+    if (getenv("DUMP")) {   /* data for scafopt: quadruples, good triples, slab lines for every (fibre, hyperplane, copy, direction), start Phi */
+        FILE *dmp = fopen(getenv("DUMP"), "wb");
+        fwrite(&nq, 4, 1, dmp); fwrite(Q, sizeof(int[4]), nq, dmp); fwrite(&ngt, 4, 1, dmp); fwrite(GT, sizeof(int[3]), ngt, dmp);
+        static int L4[66][4][4][5][4][4];
+        for (int fb = 0; fb < 66; fb++) for (int h = 0; h < 4; h++) for (int j = 0; j < 4; j++) for (int d = 0; d < 5; d++) {
+            int s2 = slab_of_hyp[fb][h][j]; int lids[4], nlid = 0;
+            for (int k = 0; k < 16; k++) { int li = lineid5[fb][d][slabpts[fb][s2][k]]; int seen = 0; for (int t = 0; t < nlid; t++) if (lids[t] == li) seen = 1; if (!seen) lids[nlid++] = li; }
+            for (int a = 0; a < 4; a++) { int m = 0; for (int k = 0; k < 16; k++) if (lineid5[fb][d][slabpts[fb][s2][k]] == lids[a]) L4[fb][h][j][d][a][m++] = fb * 256 + slabpts[fb][s2][k] + (side == 0 ? H : 0); } }
+        fwrite(L4, sizeof L4, 1, dmp); fwrite(Phi, sizeof(int[3]), npts, dmp); fclose(dmp);
+        printf("dumped design data to %s\n", getenv("DUMP"));
+    }
     /* hyperplane assignment per fibre, then hubs */
     int hcnt[66] = {0}, hyp_of[64][12];
     for (int l = 0; l < npts; l++) for (int qq = 0; qq < 3; qq++) for (int i = 0; i < 4; i++) { int fb = Q[Phi[l][qq]][i] / 5; hyp_of[l][qq * 4 + i] = hcnt[fb]++; }

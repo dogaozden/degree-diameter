@@ -105,3 +105,40 @@ builder, (13,5) (the record, with the director's MDM lift) and the (19,5) DM sol
 - Director after the rounds: an exhaustive sweep of all metacyclic groups (one r per (m, k)) for cubic Haar graphs:
   (3,11) 1,474 (Z67 ⋊ Z11) and (3,12) 2,176 (Z68 ⋊ Z16), both apsp VALID (D = 12 sweep stopped at order 1,728) — larger than every squad value
   for these cells. Lesson for cubic cells: a cheap exhaustive sweep over a whole group family beat all the clever cards.
+
+## 2026-11-01, beyond-small, round 1 (goal: (17,5) above the 33,792 floor; 16 cards, 04:40 UTC)
+
+Session: Opus director, cloud, branch claude/beyond-small-cells-fwb6si. Files: research/squads/beyond-small/r1/
+(HEADER.md with the found / ruled-out list, c01..c16.md, scoreboard.jsonl). 16 Haiku cards (effort high) on a 4-core box.
+The job's other ten cells (D = 3, 4, 6 at Δ = 17, 18, 20 and (19,6)) are classical Moore graphs or Theorem D; the
+director rebuilt and checked those himself (research/frontier/beyond/BEYOND_SMALL.md), so every card went to (17,5).
+
+Cards (best checked value; director re-checked every valid graph):
+- c01 hubs on the (16,5) graph, greedy set cover by random 17-sets: 18 sets needed, 240 A-vertices uncovered with 17.
+- c02 hubs as a Z22 orbit of one set: **33,814** (22 hubs).
+- c03 hubs whose neighbourhood is 4 affine fibre lines {(v, y + λc)}: one such set covers a whole side; **33,849** (57 hubs).
+  The decisive observation of the job.
+- c04–c07 route chart with a 5th translation vector on one letter (17 = 5+4+4+4): Haar, multi-orbit and matching variants
+  stay at 70k–300k far pairs; c07 shows an extra vector cannot repair a singular pattern that uses the extended letter once.
+- c08 F5 chart with three letters cut to 4 scalars: 3.9M uncovered; boxes, not affine spaces.
+- c09 Z8 lift of W(8) with a polarity-invariant ν: 2,432 far pairs (174k without invariance); supports the director's
+  obstruction argument but gives no graph.
+- c10, c11, c15 Haar graphs (self-dual, orbit, AGL(1,p)): best valid 20,200.
+- c12 hexagon quotients: free Z7 on H(4) gives diameter 6; c14 lifts of W(16) impossible (girth); c13 Theorem-D hubs at
+  D = 6 need 22 cover sets where 7 are available; c16 2 hubs with SA 17-sets: 33,794.
+Kept: c03's line hubs. Director: hubpack.c (line hubs + compatibility graph + clique), 191 A-hubs → **33,983**.
+
+## 2026-11-01, beyond-small, round 2 (16 cards on hubs, 05:25 UTC)
+
+Files: research/squads/beyond-small/r2/. Every card started from the director's 191-hub packing and hubpack.c.
+- **d06 Z22 orbits of line hubs: 34,848** (48 orbits = 1,056 hubs, 27 on side A, 21 on side B; apsp and bfs_all by the
+  director). An orbit is valid when its base N has distinct keys (j, y) and N is compatible with N+u for all u ≠ 0.
+- d15 annealing over packings 34,401 (609 A-hubs); d11 34,398; d01 adaptive growth (each new hub must meet every old
+  hub's distance-2 set) 34,290 (498 A-hubs); d04 17-neighbour hubs (compatibility 0.937 → 0.957) 34,159; d05 hub–hub
+  edges 34,145; d07 affine hub families 34,000; d09 33,986; d08 type analysis 33,969 (compatibility is fixed by
+  controller vertex and direction; 0.99 unreachable with 4-line hubs).
+- Negative: d10 connectors without a common root are at distance 6; d12 3-line hubs (density 0.82); d13 Z23/Z24
+  controllers repaired by extra matchings (39k far pairs); d14 AGL(1,131) bi-Cayley (cost 125); d16 exact sub-family
+  (no cover in the 4 fibres around one controller vertex).
+Kept: Z22 orbits (d06), adaptive growth (d01) and annealing (d15). Next: round 3 on orbit packing (cap 48 orbits per side
+= 35,904). Director in parallel: a projective-plane scaffold (below, BEYOND_SMALL.md).

@@ -121,7 +121,7 @@ int main(int argc, char **argv) {
     printf("K=%d plane points %d, connectors %d per side, %d hubs per connector, n = %d, start cost %ld\n", K, npts, NC, HPC, n, cur); fflush(stdout);
     int bsel[2][4000], bmatch[4000]; memcpy(bsel, sel, sizeof sel); memcpy(bmatch, matchp, sizeof matchp);
     for (long st = 0; st < steps && best > 0; st++) {
-        int s = rnd() & 1, mv = rnd() % 3; int a = -1, b = -1, oa = 0, ob = 0;
+        int s = rnd() & 1, mv = getenv("MOVES") ? atoi(getenv("MOVES")) : (int)(rnd() % 3); int a = -1, b = -1, oa = 0, ob = 0;
         if (mv == 0) { a = rnd() % (NC * HPC); b = rnd() % (NC * HPC); if (a / HPC == b / HPC) continue; int t = sel[s][a]; sel[s][a] = sel[s][b]; sel[s][b] = t; }
         else if (mv == 1) { a = rnd() % (NC * HPC); b = rnd() % npool[s]; if (inuse[s][b]) continue; oa = sel[s][a]; sel[s][a] = b; inuse[s][b] = 1; inuse[s][oa] = 0; }
         else { a = rnd() % NC; b = rnd() % NC; if (a == b) continue; int t = matchp[a]; matchp[a] = matchp[b]; matchp[b] = t; }
