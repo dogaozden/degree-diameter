@@ -1,3 +1,4 @@
 # cell | vertices | solution in research/frontier/sols | check log under research/frontier/beyond13b | note
 6,13 | 42306096 | d6D13_sl_83_37_orb3-2-0_r1e4.txt | runs/d6D13_sl_83_37_e4.gen.txt | Haar graph SL(2,83) x Z37, S = 2 free alpha-orbits of size 3 (ORBIT "3 2 0"; squad r1/e4, the PSL(2,83) x Z73 shape moved to SL); earlier 41,734,392 (PSL(2,83) x Z73, beyond-d13)
 7,13 | 317308656 | d7D13_sl_283_7_orb3-2-1_r1d1.txt | runs/d7D13_sl_283_7_d1.gen.txt | Haar graph SL(2,283) x Z7, S = {e} + 2 alpha-orbits of size 3 (ORBIT "3 2 1"; squad r1/d1); earlier 312,227,760 (SL(2,229) x Z13, beyond-d13)
+5,13 | 3707986 | d5D13_meta_34981_53_27415_r1f2.txt | checks/d5D13_meta_34981_53_27415_r1f2.metacheck.txt | Haar graph of the odd-order Frobenius group Z34981 x|_27415 Z53 (order 1,853,993), S random (hmeta, squad r1/f2); also build_haar2 VALID (checks/d5D13_meta_34981_53_27415_r1f2.build_haar2.txt); earlier 3,594,910 ((Z11 x|_4 Z5) x (Z2971 x|_1764 Z11), beyond-d13)

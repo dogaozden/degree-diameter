@@ -1,0 +1,12 @@
+checker: build_haar2
+command: python3 ../build_haar2.py runs/d5D13_meta_34981_53_27415_r1f2.txt
+start: 2026-11-01T23:26:15Z
+sha256 5bfc037c7c2d7dffd409a5dbeee2cf1ca8624b2a1a9979af5a1c1508d4f484dd  ../build_haar2.py
+sha256 5d6627356699e8af66c0ca85ee16efc43336de5a812c9c344585c318dbbec2cf  runs/d5D13_meta_34981_53_27415_r1f2.txt
+ecc from A = 13 unreached 0
+ecc from B = 13 unreached 0
+n = 3707986 edges = 9269965 max degree = 5 min degree = 5 duplicate edges = 0
+edge list sha256 = 45461f9ad82818f6ce7113b4f6efa3e13457fb194782352d4d5cd8b2e1190d72
+VALID d=5 D=13 group=meta 34981 53 27415 x Z_1 N=1853993 vertices=3707986
+exit: 0
+end: 2026-11-01T23:26:28Z (13 s)
