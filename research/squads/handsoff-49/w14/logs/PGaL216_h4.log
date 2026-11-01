@@ -1,0 +1,28 @@
+group PSLs2_2^4: order 16320, degree 17  (sampling 0.2s)
+subgroup classes of order 4: 5
+[PSLs2_2^4_h4_K0] H element orders {1: 1, 2: 1, 4: 2}  M=4080 h=4 n=8160 orbits: size1=6 size2=27 size3=0 size4=1005 larger=0
+RESULT_EXH M=4080 h=4 n=8160 evals=1776 best_cost=932 L=1,347,1694,2524 time=0.3s
+partition {2,1,1}: count of orbit choices (see nev), minimum cost 16080 (overall best 932)
+partition exhaustive, count 15
+partition {1,1,1,1}: count of orbit choices (see nev), minimum cost 16296 (overall best 932)
+[PSLs2_2^4_h4_K1] H element orders {1: 1, 4: 2, 2: 1}  M=4080 h=4 n=8160 orbits: size1=8 size2=4 size3=0 size4=1016 larger=0
+RESULT_EXH M=4080 h=4 n=8160 evals=1204 best_cost=8203 L=42,1736,1335,609 time=0.3s
+partition {2,1,1}: count of orbit choices (see nev), minimum cost 16256 (overall best 8203)
+partition exhaustive, count 70
+partition {1,1,1,1}: count of orbit choices (see nev), minimum cost 16288 (overall best 8203)
+[PSLs2_2^4_h4_K2] H element orders {1: 1, 2: 3}  M=4080 h=4 n=8160 orbits: size1=8 size2=60 size3=0 size4=988 larger=0
+RESULT_EXH M=4080 h=4 n=8160 evals=4508 best_cost=12240 L=5,280,4026,110 time=0.4s
+partition {2,1,1}: count of orbit choices (see nev), minimum cost 15840 (overall best 12240)
+partition exhaustive, count 70
+partition {1,1,1,1}: count of orbit choices (see nev), minimum cost 16288 (overall best 12240)
+[PSLs2_2^4_h4_K3] H element orders {1: 1, 2: 3}  M=4080 h=4 n=8160 orbits: size1=8 size2=116 size3=0 size4=960 larger=0
+RESULT_EXH M=4080 h=4 n=8160 evals=10948 best_cost=1012 L=7,589,1032,3003 time=1.8s
+partition {2,1,1}: count of orbit choices (see nev), minimum cost 1012 (overall best 1012)
+partition exhaustive, count 70
+partition {1,1,1,1}: count of orbit choices (see nev), minimum cost 16288 (overall best 1012)
+[PSLs2_2^4_h4_K4] H element orders {1: 1, 2: 3}  M=4080 h=4 n=8160 orbits: size1=48 size2=0 size3=0 size4=1008 larger=0
+RESULT_EXH M=4080 h=4 n=8160 evals=195588 best_cost=12246 L=1,147,158,274 time=6.5s
+partition {4}: count of orbit choices (see nev), minimum cost 12246 (overall best 12246)
+partition exhaustive, count 194580
+partition {1,1,1,1}: count of orbit choices (see nev), minimum cost 16128 (overall best 12246)
+done 33.4s

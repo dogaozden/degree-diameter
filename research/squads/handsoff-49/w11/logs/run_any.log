@@ -1,0 +1,42 @@
+WROTE cost=4 S={0,208,417,895} out/ns_m208_k12_r3_s104_c4.edges
+DONE tag=ns_m208_k12_r3_s104 N=2496 min=4 (exact over all 111 reps, evals=16341495)
+DONE tag=ns_m208_k12_r141_s52 N=2496 min=6 (exact over all 81 reps, evals=14957661)
+PAUSED tag=ns_m70_k36_r9_s35 next_rep=64 best=6 evals=19043712
+00:02 pass ended (list_main.txt)
+PAUSED tag=ns_m70_k36_r9_s35 next_rep=200 best=6 evals=42466128
+00:10 pass ended (list_main.txt)
+DONE tag=ns_m70_k36_r9_s35 N=2520 min=6 (exact over all 239 reps, evals=12237501)
+PAUSED tag=ns_m140_k18_r9_s35 next_rep=104 best=6 evals=30040068
+00:18 pass ended (list_main.txt)
+PAUSED tag=ns_m140_k18_r9_s35 next_rep=238 best=6 evals=43135842
+00:26 pass ended (list_main.txt)
+DONE tag=m104_k24_r11 N=2496 min=10 (exact over all 61 reps, evals=3269125)
+DONE tag=m35_k72_r3 N=2520 min=10 (exact over all 107 reps, evals=5299767)
+DONE tag=m105_k24_r2 N=2520 min=10 (exact over all 63 reps, evals=3588742)
+DONE tag=m210_k12_r23 N=2520 min=10 (exact over all 55 reps, evals=2450006)
+DONE tag=m210_k12_r79 N=2520 min=10 (exact over all 59 reps, evals=3555307)
+DONE tag=m115_k22_r4 N=2530 min=10 (exact over all 35 reps, evals=1360441)
+DONE tag=m215_k12_r92 N=2580 min=10 (exact over all 19 reps, evals=718677)
+IMPROVED rep=14 cost=10 S={0,420,1040,1901}
+DONE tag=m208_k12_r115 N=2496 min=10 (exact over all 43 reps, evals=1685982)
+DONE tag=m52_k48_r7 N=2496 min=12 (exact over all 107 reps, evals=11126789)
+DONE tag=m208_k12_r69 N=2496 min=12 (exact over all 53 reps, evals=2878189)
+DONE tag=m416_k6_r367 N=2496 min=12 (exact over all 31 reps, evals=1053761)
+00:34 pass ended (list_metafirst.txt)
+DONE tag=m105_k24_r52 N=2520 min=12 (exact over all 51 reps, evals=2657306)
+DONE tag=m320_k8_r7 N=2560 min=12 (exact over all 43 reps, evals=1913065)
+DONE tag=m427_k6_r13 N=2562 min=12 (exact over all 11 reps, evals=324771)
+DONE tag=ns_m140_k18_r9_s35 N=2520 min=6 (exact over all 239 reps, evals=571431)
+DONE tag=ns_m210_k12_r17_s105 N=2520 min=6 (exact over all 77 reps, evals=10589526)
+PAUSED tag=ns_m210_k12_r79_s35 next_rep=79 best=6 evals=21623085
+00:42 pass ended (list_metafirst.txt)
+PAUSED tag=ns_m210_k12_r79_s35 next_rep=231 best=6 evals=48015156
+00:50 pass ended (list_metafirst.txt)
+DONE tag=ns_m210_k12_r79_s35 N=2520 min=6 (exact over all 239 reps, evals=4109100)
+PAUSED tag=ns_m420_k6_r109_s35 next_rep=144 best=6 evals=38577684
+01:05 pass ended (list_metafirst.txt)
+DONE tag=ns_m420_k6_r109_s35 N=2520 min=6 (exact over all 239 reps, evals=35169657)
+PAUSED tag=ns_m208_k12_r29_s52 next_rep=60 best=8 evals=9416046
+01:12 pass ended (list_metafirst.txt)
+PAUSED tag=ns_m208_k12_r29_s52 next_rep=147 best=8 evals=16805301
+01:15 pass ended (list_metafirst.txt)

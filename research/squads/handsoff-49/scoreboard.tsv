@@ -1,0 +1,58 @@
+time_utc	worker	strategy	n	cost_or_far	valid_claim	file
+21:59	w7	bi-coset PSL(2,25) x-order-3 H, exhaustive {1,3}	5200	30	no	/home/user/degree-diameter/research/squads/handsoff-49/w7/best_psl25_h3_C30_n5200.edges
+22:01	w6	surgery: remove 4 disjoint edges of valid4970, a and b added, anneal over removed edges	4972	160	no	/home/user/degree-diameter/research/squads/handsoff-49/w6/tmp/surgsa4_best160.edges
+22:17	w8	lift of 2+2 base (4 vertices, mult. [[1,3],[3,1]]) over agl1 13 x cyc 8, SA; cost 24 = far 14976	4992	24	no	/home/user/degree-diameter/research/squads/handsoff-49/w8/runs/w8_best_n4992.edges
+22:18	w1	A7 (perm 7 table, simple group) Haar, annealing 90 s seed 4, near miss	5040	6	no	/home/user/degree-diameter/research/squads/handsoff-49/w1/t/A7_near_cost6.edges
+22:19	w5	h3 base mh3_3 (doubled C6) x meta:13:64:8, tabu 190 s	4992	22	no	w5/out/t_mh3_3_832_s21.edges
+22:24	w3	W(3) lift, cyclic Z_63, walk-directed repair + anneal (near miss, not valid)	5040	906	no	/home/user/degree-diameter/research/squads/handsoff-49/w3/runs/rep63_best.volt
+22:24	w3	W(3) lift over cyclic Z_40 (valid, below record size; apsp checked)	3200	0	VALID	/home/user/degree-diameter/research/squads/handsoff-49/w3/runs/rep40b_c0.edges
+22:25	w8	tabu (300-1000 sampled moves, tenure 20) from SA solution, base 2+2 mult [[1,3],[3,1]] over agl1 13 x cyc 8	4992	18	no	/home/user/degree-diameter/research/squads/handsoff-49/w8/runs/w8_best_n4992.edges
+22:25	w4	K44 base (8 vertices) lift over Z_622, ILS (cost = 2*far/k)	4976	156	no	/home/user/degree-diameter/research/squads/handsoff-49/w4/k44_z622_156.edges
+22:26	w1	A7 Haar (simple group, 60 s annealing seed 11); correction of the 22:18 line whose file did not exist	5040	6	no	/home/user/degree-diameter/research/squads/handsoff-49/w1/t/A7_cost6.edges
+22:31	w5	h3 base mh3_3 x meta:104:8:31, tabu 150 s	4992	19	no	w5/out/t_mh3_3_104_8_31_s41.edges
+22:43	w5	h2 base mh2_1 ([[2,2],[2,2]], 4+4 doubled K22) x meta:13:96:5, tabu 50 s seed 31	4992	4	no	w5/out/t_mh2_1_1248_s31.edges
+22:47	w2	meta sweep (1.5 s screen + 8 s deepen): Z_208 x|_3 Z_12, 4 floor	4992	4	no	/home/user/degree-diameter/research/squads/handsoff-49/w2/deep.tsv
+22:47	w2	meta sweep (1.5 s screen + 8/60 s deepen): Z_101 x|_5 Z_25 (proven floor 2 per card)	5050	2	no	/home/user/degree-diameter/research/squads/handsoff-49/w2/deep.tsv
+22:57	w8	tabu (2000 sampled moves, tenure 40) from previous tabu solution, base 2+2 [[1,3],[3,1]] over agl1 13 x cyc 8	4992	16	no	/home/user/degree-diameter/research/squads/handsoff-49/w8/runs/w8_best_n4992.edges
+23:02	w1	A7 exhaustive over all Haar graphs (8 class reps, all S with e): min cost 6, no zero (exh.c)	5040	6	no	/home/user/degree-diameter/research/squads/handsoff-49/w1/res/exh_A7_class19.out
+23:05	w8	tabu (2000 moves, tenure 40), second round from cost-16 solution, base 2+2 [[1,3],[3,1]] over agl1 13 x cyc 8	4992	15	no	/home/user/degree-diameter/research/squads/handsoff-49/w8/runs/w8_best_n4992.edges
+23:12	w4	rb12 (6+6 random 4-regular bipartite) lift over meta 13 32 5 (order 416), ILS, cost = 2*far/k	4992	97	no	/home/user/degree-diameter/research/squads/handsoff-49/w4/r12m13.edges
+23:13	w9	bi-coset M11 (order 7920), H order 3 (only class), exhaustive over all S; cost = far(A0)+far(B0), far pairs = M*cost/2, apsp diam 10	5280	38	no	/home/user/degree-diameter/research/squads/handsoff-49/w9/runs/M11_h3_K0.edges
+23:17	w4	rb12 lift over meta 13 32 5 (order 416), ILS refined from cost 97, cost = 2*far/k	4992	80	no	/home/user/degree-diameter/research/squads/handsoff-49/w4/r12m13_80.edges
+23:20	w11	exhaustive meta 101 25 5 (aut-reduced, all triples, bound 2)	5050	2	no	/home/user/degree-diameter/research/squads/handsoff-49/w11/out/m101_k25_r5_c2.edges
+23:21	w11	exhaustive meta 104 24 7 (aut-reduced, all triples, bound 4)	4992	4	no	/home/user/degree-diameter/research/squads/handsoff-49/w11/out/m104_k24_r7_c4.edges
+23:21	w11	exhaustive meta 208 12 3 (aut-reduced, all triples, bound 4)	4992	4	no	/home/user/degree-diameter/research/squads/handsoff-49/w11/out/m208_k12_r3_c4.edges
+23:22	w9	bi-coset S7 (order 5040), H = involution class K2 (of 3), exhaustive {2,2},{2,1,1}; cost = far(A0)+far(B0)	5040	15	no	/home/user/degree-diameter/research/squads/handsoff-49/w9/runs/S7_h2_K2.edges
+23:23	w11	exhaustive meta 35 72 4 (aut-reduced, all triples, bound 6)	5040	6	no	none
+23:23	w11	exhaustive meta 105 24 17 (aut-reduced, all triples, bound 6)	5040	6	no	none
+23:24	w11	exhaustive meta 208 12 141 (aut-reduced, all triples, bound 6)	4992	6	no	none
+23:24	w11	exhaustive meta 420 6 109 (aut-reduced, all triples, bound 6)	5040	6	no	none
+23:26	w11	exhaustive meta 70 36 9 (aut-reduced, all triples, bound 8)	5040	8	no	none
+23:26	w11	exhaustive meta 208 12 29 (aut-reduced, all triples, bound 8)	4992	8	no	none
+23:27	w11	exhaustive meta 208 12 37 (aut-reduced, all triples, bound 8)	4992	8	no	none
+23:27	w5	h2 base mh2_1 x meta:39:32:31 tabu 60 s seed 72 (floor 4 on several groups)	4992	4	no	w5/out/f_39_32_31_s72.edges
+23:27	w11	exhaustive meta 208 12 43 (aut-reduced, all triples, bound 8)	4992	8	no	none
+23:27	w11	exhaustive meta 208 12 11 (aut-reduced, all triples, bound 9)	4992	9	no	none
+23:30	w4	rb12 lift over meta 13 32 5 (order 416), ILS refined from cost 80, cost = 2*far/k	4992	76	no	/home/user/degree-diameter/research/squads/handsoff-49/w4/r12m13_76.edges
+23:59	w12	PGL(2,11) x 2+2 base mh2_1 (doubled K22), wtt far-target tabu 60 s; far pairs 54120	5280	82	no	/home/user/degree-diameter/research/squads/handsoff-49/w12/runs/cmp_wtt.best.edges
+00:08	w12	PGL(2,11) x 2+2 base mh2_1, wtt 360 s seed 11 TT 10; far pairs 50160	5280	76	no	/home/user/degree-diameter/research/squads/handsoff-49/w12/runs/d1_mh2_1_s11.best.edges
+00:10	w15	Heis(5)xZ5 semidirect Z4, automorphism diag/random (hb_1 = (Heis(5) x| Z_4) x Z_5), haar_tab 10 s	2500	10	no	/home/user/degree-diameter/research/squads/handsoff-49/w15/tabs/hb_1.bin
+00:24	w13	Haar meta 104 24 7, anneal on S with two-root cost (cost-4 wall; central involution (52,0) missing on both sides)	4992	4	no	/home/user/degree-diameter/research/squads/handsoff-49/w13/best_haar_104_24_7_c4.edges
+00:25	w10	S5 x (Z7 x| Z3) = S5 x F21 centreless, Haar annealing 120 s x3 seeds (floor 8, structural)	5040	8	no	/home/user/degree-diameter/research/squads/handsoff-49/w10/runs/S5xF21_cost8.edges
+00:31	w11	exhaustive m115_k22_r4 (all triples up to Aut, bound 10)	5060	10	no	none
+00:31	w11	exhaustive m215_k12_r92 (all triples up to Aut, bound 10)	5160	10	no	none
+00:35	w12	PGL(2,11) x 2+2 base mh2_1, wtt restart from cost-76 solution, 600 s seed 21; far pairs 42240	5280	64	no	/home/user/degree-diameter/research/squads/handsoff-49/w12/runs/d2_r21.best.edges
+00:36	w11	exhaustive m320_k8_r7 (all triples up to Aut, bound 12)	5120	12	no	none
+00:36	w11	exhaustive m427_k6_r13 (all triples up to Aut, bound 12)	5124	12	no	none
+00:47	w15	maximal-class exponent-5 P of order 625 (subgroup of U_4(F_5)) x| Z_4, automorphism u4m_7, haar_tab 10 s	2500	4	no	/home/user/degree-diameter/research/squads/handsoff-49/w15/tabs/u4m_7.bin
+00:54	w14	bi-coset two-subgroup family (cosets of H and K, |H|=|K|=8), PSL(3,4); exact over 9 classes x 81 pairs, cost = far(A0)+far(B0), diameter 11 (score48 far = M*C/2)	5040	312	no	/home/user/degree-diameter/research/squads/handsoff-49/w14/runs/K_PSL34_h8_H3_K5_c0.edges
+01:15	w16	quotient lift of the 4,970 Haar graph (5+5 base over meta:71:7:45), rebuild only, not a record	4970	0	VALID	/home/user/degree-diameter/research/squads/handsoff-49/w16/out/lift_q5.edges
+01:15	w16	5+5 base (K55 minus matching) over meta:14:36:3, wl2 6 s; far pairs 20664	5040	82	no	/home/user/degree-diameter/research/squads/handsoff-49/w16/out/wl_q5_meta_14_36_3.best.edges
+01:48	w23	exhaustive over S={e,a,b,c}, a = one rep per Aut-orbit (|Aut|=20000, 14 orbits), all b<c: exact min of haar cost for u4m_7	5000	4 (exact floor)	no	/home/user/degree-diameter/research/squads/handsoff-49/w23/runs_reps1_7.txt
+01:50	w17	A7 mixed-orbit (4,4,4,4): 4 order-4 stabilisers K_i (random cosets), anneal 240 s; far pairs 15120 (apsp-equivalent score48)	5040	15120	no	/home/user/degree-diameter/research/squads/handsoff-49/w17/runs/A7_r4444_8_deep.edges
+02:09	w22	calibration: pure Haar SA (|S|=4, my annealer) rediscovers a cost-0 Haar graph of meta 71 35 49 (known family, not a record)	4970	0	VALID	/home/user/degree-diameter/research/squads/handsoff-49/w22/hA4.best.edges
+02:09	w22	compound: 7 copies of H(3) incidence minus a matching, random cross matching, SA 460 s (random-like plateau)	5096	81619	no	/home/user/degree-diameter/research/squads/handsoff-49/w22/cc7.best.edges
+02:09	w22	mixed left+right bi-Cayley (|S|=1,|T|=3), meta 104 24 7, SA 300 s	4992	25776 far	no	/home/user/degree-diameter/research/squads/handsoff-49/w22/mx_m104_a1.best.edges
+02:13	w23	exhaustive over S={e,a,b,c}, a = one rep per Aut-orbit (|Aut|=10000, 34 orbits), all b<c: no set with cost <= 5 (cap 6)	5000	>=6	no	/home/user/degree-diameter/research/squads/handsoff-49/w23/runs_mz5_reps0_6.txt
+02:13	w24	Z_5-symmetric voltage SA (volt(sigma e)=phi(volt e)), 5+5 base over meta:71:7:45, 13/40 runs cost 0 at 20k moves; rebuild, not a record	4970	0	VALID	/home/user/degree-diameter/research/squads/handsoff-49/w24/symk5.edges
+02:45	w23	exhaustive over S={e,a,b,c}, all 34 Aut-orbit reps (|Aut|=10000): no set with cost <= 8; exact min is 9 or 10 (annealing 10)	5000	>=9	no	/home/user/degree-diameter/research/squads/handsoff-49/w23/cap9_mz5_r32.txt

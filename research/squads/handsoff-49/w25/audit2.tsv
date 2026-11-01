@@ -1,0 +1,7 @@
+line	time	worker	claimed_n	claimed_cost_or_far	claimed_valid	file	status	n	edges	deg	bipartite	diameter_score48	far_pairs_score48	score48_result	apsp_result	indep_diameter	indep_far_unordered	verdict
+52	02:09	w22	4970	0	VALID	/home/user/degree-diameter/research/squads/handsoff-49/w22/hA4.best.edges	checked	4970	9940	4-4	yes	9	0	VALID	VALID	9	0	n matches claim; indep check agrees with score48; VALID at d=4 D=9
+53	02:09	w22	5096	81619	no	/home/user/degree-diameter/research/squads/handsoff-49/w22/cc7.best.edges	checked	5096	10192	4-4	yes	11	81619	INVALID	INVALID	11	81619	n matches claim; indep check agrees with score48; not valid at d=4 D=9
+54	02:09	w22	4992	25776 far	no	/home/user/degree-diameter/research/squads/handsoff-49/w22/mx_m104_a1.best.edges	checked	4992	9984	4-4	yes	10	25776	INVALID	INVALID	10	25776	n matches claim; indep check agrees with score48; not valid at d=4 D=9
+55	02:13	w23	5000	>=6	no	/home/user/degree-diameter/research/squads/handsoff-49/w23/runs_mz5_reps0_6.txt	not an edge list	-	-	-	-	-	-	-	-	-	-	needs its own rebuild; not checked here
+56	02:13	w24	4970	0	VALID	/home/user/degree-diameter/research/squads/handsoff-49/w24/symk5.edges	checked	4970	9940	4-4	yes	9	0	VALID	VALID	9	0	n matches claim; indep check agrees with score48; VALID at d=4 D=9
+57	02:45	w23	5000	>=9	no	/home/user/degree-diameter/research/squads/handsoff-49/w23/cap9_mz5_r32.txt	not an edge list	-	-	-	-	-	-	-	-	-	-	needs its own rebuild; not checked here

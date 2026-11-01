@@ -1,0 +1,26 @@
+  new best cost 1285  L={1,2149,2,1269} t=0.0s nev=1
+  new best cost 795  L={1,2149,6,1330} t=0.0s nev=5
+  new best cost 658  L={1,2149,9,1992} t=0.0s nev=8
+  new best cost 483  L={1,2149,36,1622} t=0.0s nev=35
+  new best cost 481  L={1,2149,46,1782} t=0.1s nev=45
+  new best cost 453  L={1,2149,59,760} t=0.1s nev=58
+  new best cost 390  L={2,1269,10,2231} t=0.4s nev=1255
+  new best cost 286  L={2,1269,12,2237} t=0.4s nev=1257
+  new best cost 205  L={2,1269,14,1975} t=0.4s nev=1259
+  new best cost 154  L={2,1269,29,2265} t=0.4s nev=1274
+  new best cost 86  L={2,1269,40,2059} t=0.4s nev=1285
+  new best cost 82  L={2,1269,45,1500} t=0.4s nev=1290
+  new best cost 72  L={2,1269,174,1729} t=0.5s nev=1416
+  new best cost 58  L={3,1770,7,2490} t=0.8s nev=2497
+  new best cost 15  L={3,1770,109,2476} t=0.8s nev=2599
+partition exhaustive, count 778128
+partition {2,2}: count of orbit choices (see nev), minimum cost 15 (overall best 15)
+partition exhaustive, count 344448
+partition {2,1,1}: count of orbit choices (see nev), minimum cost 44 (overall best 15)
+partition exhaustive, count 10626
+partition {1,1,1,1}: count of orbit choices (see nev), minimum cost 9984 (overall best 15)
+RESULT_EXH M=2520 h=2 n=5040 evals=1133202 best_cost=15 L=3,1770,109,2476 time=272.9s
+
+real	4m32.865s
+user	2m21.599s
+sys	0m0.024s
