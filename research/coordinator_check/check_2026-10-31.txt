@@ -32,3 +32,7 @@ VALID d=10 D=12 group=psl 193 x Z_487 N=1750488384 vertices=3500976768 (distinct
 from (e,A): reached A 5893986336/5893986336, B 5893986336/5893986336 within 10, ecc 10
 from (e,B): reached A 5893986336/5893986336, B 5893986336/5893986336 within 10, ecc 10
 VALID d=18 D=10 group=psl 223 x Z_1063 N=5893986336 vertices=11787972672 (distinct generators, 18-regular simple)
+
+== d17D5_n33849_hubs57_c03 (beyond-small, branch claude/beyond-small-cells-fwb6si, card c03: the (16,5) route-chart graph plus 57 algebraic hubs): edge list sha256 07cbc17fbe4446fe9d3421a784264f34511a8ae8961e9889ea0a5c7e1dbd3090
+n=33849 edges=271248 degree min=16 max=17 bipartite=yes diameter=5 RESULT VALID d=17 D=5 n=33849 
+at D = 4: RESULT INVALID
