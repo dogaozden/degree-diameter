@@ -6,3 +6,6 @@ FIXF: 64 alpha-fixed elements other than e (0.2s); FIXTRY 200 FIXMAX 0
 start cost=60 (2.3s per eval)
 t=12 step=1 evals=9 slot=0 cand=35 cost=35 best=35 T=1.26 screened=8 (1s) fh=0,0,0,0,0,0,0,0
 t=32 step=2 evals=17 slot=1 cand=35 cost=35 best=35 T=1.06 screened=16 (2s) fh=0,0,0,0,0,0,0,0
+t=61 step=3 evals=25 slot=1 cand=30 cost=30 best=30 T=0.89 screened=25 (4s) fh=0,0,0,0,0,0,0,0
+t=96 step=4 evals=33 slot=0 cand=20 cost=20 best=20 T=0.75 screened=34 (6s) fh=0,0,0,0,0,0,0,0
+RESULT d=13 D=10 group=psl 131 x Z_311 N=349557780 vertices=699115560 best=20 evals=33 steps=4 time=95.7 orbit k=5 m=2 f=3 mu=35.50

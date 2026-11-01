@@ -1,0 +1,32 @@
+group psl 251 x Z_821, N=6491236500 (2N=12982473000), rows 31500 x 206071 bits (doubled row 6464 words), memory 3.41 GB, threads 1
+alpha: conj by mat(0,250,1,117), z -> 51 z on Z_821 (fixed z: 1); ORBIT k=5 m=3 f=3; W=1.26e+11 lambda=19.411 mu=24.12
+setup 0.0s
+fixed generators: 2 chosen among 124 alpha-fixed elements
+FIXF: 124 alpha-fixed elements other than e (1.7s); FIXTRY 200 FIXMAX 0
+start cost=15 (46.2s per eval)
+t=96 step=1 evals=5 slot=2 cand=30 cost=15 best=15 T=1.26 screened=4 (2s) fh=0,0,0,0
+t=151 step=2 evals=9 slot=2 cand=20 cost=15 best=15 T=1.06 screened=12 (5s) fh=0,0,0,0
+t=211 step=3 evals=13 slot=0 cand=15 cost=15 best=15 T=0.89 screened=23 (9s) fh=0,0,0,0
+t=268 step=4 evals=17 slot=0 cand=20 cost=20 best=15 T=0.75 screened=31 (12s) fh=0,0,0,0
+t=320 step=5 evals=21 slot=0 cand=20 cost=20 best=15 T=0.63 screened=35 (14s) fh=0,0,0,0
+t=371 step=6 evals=25 slot=1 cand=20 cost=20 best=15 T=0.53 screened=53 (20s) fh=0,0,0,0
+t=424 step=7 evals=29 slot=2 cand=10 cost=10 best=10 T=0.45 screened=72 (27s) fh=0,0,0,0
+t=478 step=8 evals=33 slot=1 cand=15 cost=10 best=10 T=0.38 screened=84 (31s) fh=0,0,0,0
+t=531 step=9 evals=37 slot=1 cand=25 cost=10 best=10 T=0.32 screened=104 (37s) fh=0,0,0,0
+t=586 step=10 evals=41 slot=0 cand=20 cost=10 best=10 T=0.27 screened=114 (41s) fh=0,0,0,0
+t=643 step=11 evals=45 slot=0 cand=15 cost=10 best=10 T=0.22 screened=133 (47s) fh=0,0,0,0
+t=698 step=12 evals=49 slot=2 cand=20 cost=10 best=10 T=0.19 screened=149 (53s) fh=0,0,0,0
+t=752 step=13 evals=53 slot=2 cand=10 cost=10 best=10 T=0.16 screened=160 (56s) fh=0,0,0,0
+t=811 step=14 evals=57 slot=0 cand=10 cost=10 best=10 T=0.15 screened=174 (62s) fh=0,0,0,0
+t=865 step=15 evals=61 slot=0 cand=10 cost=10 best=10 T=0.15 screened=184 (66s) fh=0,0,0,0
+t=913 step=16 evals=65 slot=2 cand=>10 cost=10 best=10 T=0.15
+t=969 step=17 evals=69 slot=0 cand=5 cost=5 best=5 T=0.15 screened=203 (73s) fh=0,0,0,0
+t=1017 step=18 evals=73 slot=1 cand=>5 cost=5 best=5 T=0.15
+t=1066 step=19 evals=77 slot=2 cand=>5 cost=5 best=5 T=0.15
+t=1107 step=20 evals=81 slot=2 cand=>5 cost=5 best=5 T=0.15
+t=1143 step=21 evals=85 slot=2 cand=>5 cost=5 best=5 T=0.15
+t=1188 step=22 evals=89 slot=1 cand=>5 cost=5 best=5 T=0.15
+t=1229 step=23 evals=93 slot=2 cand=>5 cost=5 best=5 T=0.15
+t=1268 step=24 evals=97 slot=1 cand=>5 cost=5 best=5 T=0.15
+t=1306 step=25 evals=101 slot=0 cand=5 cost=5 best=5 T=0.15 screened=309 (104s) fh=0,0,0,0
+t=1348 step=26 evals=105 slot=2 cand=>5 cost=5 best=5 T=0.15

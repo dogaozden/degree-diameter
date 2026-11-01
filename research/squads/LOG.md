@@ -49,3 +49,39 @@ nice 0, equal to the director's whole pipeline); the director raised the pipelin
 `echo -10 > /proc/<pid>/autogroup` and lowered the cards' groups to 15.
 Kept: haarex6 for the sweep; no family lead worth more CPU (the 704 lift is an isolated local minimum, the new
 families are far). The order-384 sweep continues; orders 401-450 started on the spare core.
+
+## 2026-11-01/02, job raise-d10 (Opus director, branch claude/raise-d10-beyond-rcdq5p)
+
+Goal: raise the lab's D = 10 values at Δ = 3..20 with the searches of the D = 11..14 jobs (haar_big0, Frobenius groups
+with random S, lifts) and the (16,10) recipe (k = 5 orbits with the FIXF screen of alpha-fixed holes). Before the job the
+D = 10 column sat at size-law mu 22-60 for Δ <= 16 (heavily pushed by dedicated sessions) but at mu ~3 for Δ = 17..20
+(first values of the beyond job, k = 3, first S solved). Machine: 4 cores, 15 GB, autogroup turned off at the start
+(so the cards' nice 10 works). Director tools: research/frontier/raise10/ (haar_big0; haar_big1 = haar_big0 with the
+FIXF screen extended to f = 0, validated against full evaluations on 15 random S, screen = full count every time).
+
+### Round 1 (17 cards, 22:52 UTC, research/squads/raise10/r1/)
+
+Cards: c01/c02 (12,10) k = 5 FIXF (PSL p 90-220 / SL and large-p PSL); c03 (13,10) the old k = 5 cost-1 lead PSL(2,131) x
+Z311 with FIXF; c04 (13,10) the old k = 3 cost-1 leads (SL 103 x 313 ...) with FIXF; c05 (9,10) "3 2 3" FIXF; c06 (11,10)
+k = 5 FIXF above mu 60; c07 (3,10) cyclic lifts + 1-opt finisher; c08 (3,10) exhaustive cubic Haar graphs and non-cyclic
+voltage lifts; c09/c10 (4,10) Frobenius groups / products with random S; c11/c12 (5,10) the same; c13 (6,10) Frobenius
+and products; c14 (7,10) and c15 (8,10) haar_big0 FIXF on the k = 3 wall; c16 wildcard small cells; c17 wildcard mid
+cells. The director ran (17,10) "5 3 2" FIXF on PSL(2,181) x Z1321 (mu 29) and (18,10) "5 3 3" FIXF on PSL(2,251) x Z821
+(mu 24) alongside.
+
+Results (no card beat a value; best cost above the current value):
+- Mid cells (haar_big0 + FIXF, 1 thread at nice 10 beside the director's two big runs): c01 (12,10) PSL(2,149) x Z101 "5 2 2"
+  cost 10; c02 SL(2,109) x Z131 cost 20; c03 (13,10) PSL(2,131) x Z311 "5 2 3" cost 10 (the old cost-1 lead was not
+  reached: ~9 evaluations per 100-s link); c04 (13,10) SL(2,163) x Z79 "3 4 1" cost 9; c05 (9,10) SL(2,73) x Z31 "3 3 0" cost
+  9 ("3 2 3" with FIXF worse: 39); c06 (11,10) SL(2,109) x Z61 cost 53; c17 (10,10) PSL(2,79) x Z131 "5 2 0" cost 10.
+  c14 (7,10) PSL(2,19) x Z337 cost 21 and c15 (8,10) PSL(2,31) x Z271 cost 18 (fast evaluations, but k = 3 with m = 2
+  orbits stalls far above the old haar_sym plateaus of 1-3).
+- Small cells: **c09 (4,10) Frobenius Z251 x| Z25 (N 6,275) cost 2**; c10 (4,10) (Z11 x| Z5) x (Z19 x| Z6) (N 6,270) cost 4;
+  c16 (4,10) 2-dim Frobenius Z13^2 x| Z42 cost 56; **c11 (5,10) Frobenius Z1453 x|_11 Z33 (N 47,949) cost 2**; c12 (5,10)
+  PSL(2,7) x (Z97 x| Z3) (N 48,888) cost 4; **c13 (6,10) Frobenius Z6397 x| Z41 (N 262,277) cost 3**; c07 (3,10) cyclic lifts:
+  Moebius-Kantor x Z51 cost 26 (Pappus x Z46 72, Desargues x Z41 134); c08 (3,10) exhaustive cubic Haar graphs of all 157
+  faithful metacyclic groups of order 406-460: minimum cost 8, no cost-0 pair.
+Reading: on this box the mid cells get ~10-30 evaluations per card link, too few at mu 25-60; those cells stay with the
+director or are dropped. The Frobenius random-S family (D = 11, 12 winners) comes within 2-3 holes at (4,10), (5,10),
+(6,10) above the current values; round 2 farms these. Process: two cards called send_message once with no arguments
+(rejected, nothing sent); several haar_big0 links overran their seconds (the program checks time only between steps).

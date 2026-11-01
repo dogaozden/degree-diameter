@@ -1,0 +1,8 @@
+group meta 6397 41 5330 x Z_1, N=262277, identity 0, H order 41, rows 6397, threads 1, setup 0.29s
+START loaded from /home/user/degree-diameter/research/squads/raise10/r1/c13/g41_best.sol (6 generators)
+start cost=3
+t=30 steps=559 evals=4473 cost=7 best=3 T=0.53
+t=60 steps=1127 evals=9017 cost=4 best=3 T=0.19
+moves accepted/proposed: plain 39/1743 pair 0/0 local 0/0
+  move 0: mean candidate cost 32.5 min 4, candidates within +1 of final cost: 46
+RESULT d=6 D=10 group=meta 6397 41 5330 x Z_1 N=262277 best=3 evals=13945 time=90.0

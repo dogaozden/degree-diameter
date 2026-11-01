@@ -1,0 +1,7 @@
+group sl 101 x Z_181, N=186466200 (2N=372932400), rows 10200 x 18281 bits (doubled row 592 words), memory 0.13 GB, threads 1
+alpha: conj by mat(0,100,1,22), z -> 42 z on Z_181 (fixed z: 1); ORBIT k=5 m=2 f=2; W=2.59374e+09 lambda=13.910 mu=169.66
+setup 0.0s
+fixed generators: 1 chosen among 99 alpha-fixed elements
+FIXF: 99 alpha-fixed elements other than e (1.4s); FIXTRY 200 FIXMAX 0
+start cost=17080 (3.8s per eval)
+t=20 step=1 evals=5 slot=1 cand=16345 cost=16345 best=16345 T=1.26 screened=4 (1s) fh=0,0,0,0

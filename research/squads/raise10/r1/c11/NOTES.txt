@@ -1,0 +1,6 @@
+c11 (5,10): Frobenius metacyclic Z_p x|_r Z_k, hmeta 5 10, 100 s links, THREADS=1. Target N >= 47737.
+Fresh runs (cost after 100 s): Z1993 x|463 Z24 (N 47832) cost 27; Z1453 x|11 Z33 (N 47949) cost 5;
+Z1453 x|63 Z33 cost 4; Z2179 x|61 Z22 (N 47938) cost 38; Z1453 x|11 Z33 seed 7 cost 4; Z1709 x|189 Z28 (N 47852) cost 15.
+Chain on Z1453 x|11 Z33: 5 -> 3 -> 3 -> 2 (a8, state a8_1453_33.sol.best) -> 2 -> 2. No cost 0 reached.
+Best state: research/squads/raise10/r1/c11/a8_1453_33.sol.best (cost 2). Not checked (no cost-0 solution).
+chain a12 (START a8.best, T0=2, seed 12): see RESULT line in terminal, best cost in a12_1453_33.sol.best if any

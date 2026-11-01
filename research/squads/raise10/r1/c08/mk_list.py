@@ -14,7 +14,7 @@ for N in range(lo, hi + 1):
         m = N // k
         if m < 3: continue
         seen = set()
-        for r in range(2, m):
+        for r in range(1, m):
             if math.gcd(r, m) != 1: continue
             if pow(r, k, m) != 1 % m: continue
             if order_mod(r, m) == 0: continue
