@@ -164,3 +164,37 @@ Finisher round: the TFULL targeted move (haar_gen3t, r5/k13), low-temperature an
   (setup 45-50 s of each 90 s run); l10 (4,11) Z463 x| Z33 cost 4; l12 (5,12) fresh groups cost 2.
 Reading: near the limit the annealer's local minima are real (exhaustive 1-swap check at (4,12)); solves come from many
 fresh lineages, not from deeper finishing. The squad stopped here so the last three ~11 GB checks run on an idle machine.
+
+## 2026-11-01, beyond-d11b: wrap-up (director)
+
+New cells (director, haar_big0; all at most ~30 billion vertices), haarcheck_gen from (e,A) and (e,B):
+- (16,11) 29,961,590,400, PSL(2,449) x Z331 (first S solved; VALID, 5,281 s).
+- (15,11) 28,655,908,512, SL(2,617) x Z61, f = 0, mu 5.2 (13 evaluations; VALID, 4,663 s).
+- (14,12) 29,996,171,040, PSL(2,241) x Z2143 (first S solved; VALID, 2,859 s).
+Raises at the 30-billion cap: (12,12) 19,980,294,768 -> 29,996,171,040 (45 evaluations; VALID, 2,406 s), (13,12) 19,993,487,976 ->
+29,997,644,040 (first S solved; VALID, 2,576 s).
+Small cells (squads, odd-order Frobenius groups Z_p x| Z_k and products; build_haar2.py, plus apsp up to 2N = 311k):
+(4,11) 24,360 -> 30,334; (5,11) 297,648 -> 311,426; (6,11) 2,094,960 -> 2,122,518; (4,12) 68,544 -> 70,176;
+(5,12) 1,041,768 -> 1,058,342.
+
+Who found what: the five 30-billion graphs are the director's (parameters carried over from beyond-d11, with p kept
+small enough for haarcheck_gen's tables); every small-cell raise came from squad cards (g02, g16, h01, h02, h04, h12,
+h17, i07, i08, i10, i11, j06, j10, j12, k02, k03, k05, k07, l03), all on the Frobenius lead that two round-1 cards
+(g02 odd-order metacyclic, g16 SL(2,p) x odd Frobenius H) opened from director cards aimed at "groups with no
+involutions and no centre at odd D". The measurement card h13 explained it (middle-level collisions in small SL(2,p),
+none in Frobenius groups with k >= 13), the theory cards g15 and h17 gave the exact clump facts, and the tool cards j14
+(save/resume) and k13 (targeted finisher) produced haar_gen3s / haar_gen3t, which gave four of the later raises.
+Six rounds, 89 cards. Rounds 1-3 found the family and most of the gain; rounds 4-6 added 0.1-1.4 % per cell.
+
+Process lessons: (1) The 30-billion checks (11.2 GB, 1.3-1.5 h each with squads running) were the critical path;
+renicing the checker to -5 kept it at ~3.5 cores while 12-17 cards ran. (2) Cards still often stopped before 25
+minutes and several made stray calls to session/messaging tools (all rejected or harmless; one empty session created by
+h14 was archived by the card itself); a header rule cut but did not stop it. (3) Seed farms near the limit solve about
+1 in 5-15 runs; finishing a cost-1/2 state is rarely possible (exhaustive 1-swap check at (4,12)). (4) Cards on cells
+with N >= 5e6 get too few evaluations to matter on a shared 4-core box.
+
+Not done: raises of (11..14, 11) and (11,12) (gains of 1-3 % at mu above where odd-D searches stall; no machine time
+left beside the checks); a (15,11) push to SL(2,571) x Z79 (29.4 billion, mu 9.3; dropped for the checks); Frobenius
+groups at (8,11) and above (need a 64-bit meta layout and a low-memory checker that knows meta groups). For the
+coordinator: the five big graphs are above 20 billion vertices, so the reference check needs the split runs
+(haarcheck_psl.c SOL A / SOL B for the PSL ones; haarcheck_sl.c SOL A / SOL B for (15,11), option added here).

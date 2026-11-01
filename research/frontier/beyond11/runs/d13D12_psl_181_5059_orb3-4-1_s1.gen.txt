@@ -8,3 +8,8 @@ selftest group multiplication: associativity, identity, inverse on 20000 random 
 file runs/d13D12_psl_181_5059_orb3-4-1_s1.out
 header: 13 12 psl 181 n 5059 N 14998822020
 group psl 181 x Z_5059, |G| = 14998822020 = N, vertices 2N = 29997644040; 13 distinct generators
+from (e,A): reached A 14998822020/14998822020, B 14998822020/14998822020 within 12; ecc 12; level sizes [1, 13, 156, 1863, 22248, 265675, 3171686, 37815220, 444903303, 4507801668, 14338581295, 10452937581, 212143331]  (1298s)
+from (e,B): reached A 14998822020/14998822020, B 14998822020/14998822020 within 12; ecc 12; level sizes [1, 13, 156, 1863, 22248, 265675, 3171686, 37815220, 444903255, 4507801668, 14338567182, 10452937581, 212157492]  (2576s)
+VALID d=13 D=12 group=psl 181 x Z_5059 N=14998822020 vertices=29997644040 (distinct generators, 13-regular simple; every vertex within 12 of both (e,A) and (e,B); ecc 12; 2576s)
+exit: 0
+end: 2026-11-01T16:42:57Z (2576 s)

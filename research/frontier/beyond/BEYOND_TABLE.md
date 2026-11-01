@@ -1,4 +1,4 @@
-# Beyond the 2013 table: first values for 55 new cells
+# Beyond the 2013 table: first values for 58 new cells
 
 Job new-cells-beyond (Opus director + Haiku squads, cloud session, 2026-10-26, branch claude/new-cells-beyond-etos3t).
 The 2013 bipartite table (DS14v2, Table 4) stops at Δ = 16 and D = 10. This file gives a checked lower bound for every
@@ -116,7 +116,7 @@ plane, generalized quadrangle or generalized hexagon of order 18, whose existenc
 | (10,12) | **3,712,424,352** | 5.26 | 70,607,384,114 | Haar graph PSL(2,337) x Z97, S = {e} + 3 orbits of size 3 (squad r4/f12); was 3,500,976,768; mu = 10.20 | haarcheck_gen VALID (research/frontier/runs/cloudcheck/d10D12_psl_337_97_orb3-3-1_f12.gen.txt) | Haar size law at mu = 5: 2N = 3.58e+09 |
 | (11,12) | **11,189,148,096** | 5.04 | 222,222,222,216 | Haar graph PSL(2,223) x Z1009, S = {e} + 1 fixed + 3 orbits of size 3 (director, 17 evals); earlier 10,966,037,544 and 10,474,157,232; mu = 13.26 | haarcheck_gen VALID (research/frontier/runs/cloudcheck/d11D12_psl_223_1009_orb3-3-2_s2.gen.txt) | Haar size law at mu = 5: 2N = 1.07e+10 |
 | (12,12) | **29,996,171,040** | 4.78 | 627,685,675,338 | Haar graph PSL(2,241) x Z2143, S = 4 free orbits of size 3 (director, 45 evals, job beyond-d11b); was 19,980,294,768 (PSL(2,503) x Z157, 20-billion cap); mu = 12.25 | haarcheck_gen VALID (research/frontier/runs/cloudcheck/d12D12_psl_241_2143_orb3-4-0_s1.gen.txt) | Haar size law at mu = 5: 2N = 2.88e+10 |
-| (13,12) | **19,993,487,976** | 1.23 | 1,621,109,172,404 | Haar graph PSL(2,307) x Z691, S = {e} + 4 orbits of size 3; at the job's 20-billion-vertex cap (first S solved); mu = 0.00 | haarcheck_gen VALID (research/frontier/runs/cloudcheck/d13D12_psl_307_691_orb3-4-1_s1.gen.txt) | Haar size law at mu = 5: 2N = 7.14e+10 |
+| (13,12) | **29,997,644,040** | 1.85 | 1,621,109,172,404 | Haar graph PSL(2,181) x Z5059, S = {e} + 4 orbits of size 3; at the job's 30-billion cap (first S solved; job beyond-d11b); was 19,993,487,976 (PSL(2,307) x Z691, 20-billion cap); mu = 0.00 | haarcheck_gen VALID (research/frontier/runs/cloudcheck/d13D12_psl_181_5059_orb3-4-1_s1.gen.txt) | Haar size law at mu = 5: 2N = 7.14e+10 |
 | (14,12) | **29,996,171,040** | 0.77 | 3,883,014,187,074 | Haar graph PSL(2,241) x Z2143, S = {e} + 1 fixed + 4 orbits of size 3; at the job's 30-billion cap (first S solved); new cell (job beyond-d11b); mu = 0.00 | haarcheck_gen VALID (research/frontier/runs/cloudcheck/d14D12_psl_241_2143_orb3-4-2_s1.gen.txt) | Haar size law at mu = 5: 2N = 1.65e+11 |
 <!-- /TABLE -->
 
@@ -285,7 +285,8 @@ small enough that haarcheck_gen's p^2 field tables stay in cache (p <= ~620), n 
 - (14,12) PSL(2,241) x Z2143 "3 4 2" and (13,12) PSL(2,181) x Z5059 "3 4 1": lambda = 129 and 54, first S solved.
 - (12,12) PSL(2,241) x Z2143 "3 4 0": mu 12.25 at the cap, solved in 45 evaluations (178 s); raises 19,980,294,768.
 - Checks: haarcheck_gen from (e,A) and (e,B), one at a time (0.75 N bytes = 11.2 GB each, 4 threads), logs
-  research/frontier/runs/cloudcheck/<stem>.gen.txt. All five are above 20 billion vertices, so the coordinator's
+  research/frontier/runs/cloudcheck/<stem>.gen.txt; all five VALID: (16,11) 5,281 s, (15,11) 4,663 s (both with squad
+  cards running), (14,12) 2,859 s, (12,12) 2,406 s, (13,12) 2,576 s (idle machine). All five are above 20 billion vertices, so the coordinator's
   reference check needs the split runs: research/structured/tools/haarcheck_psl.c SOL A and SOL B for the four PSL
   graphs, and research/frontier/haarcheck_sl.c SOL A / SOL B for (15,11) (this job added the same A|B option to
   haarcheck_sl.c; tested on a small VALID and a D-1 INVALID case).
