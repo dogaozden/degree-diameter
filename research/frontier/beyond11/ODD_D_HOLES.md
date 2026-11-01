@@ -97,4 +97,5 @@ n/p >= 40 was bad (central elements). This is why the job's D = 11 values use SL
   torus of g and on side A (items 1 and 4: an inverse pair of alpha-fixed elements; with n = 1 the torus, about p = 853
   elements, is the main special term: 853 exp(-lambda/3) ~ 2 at lambda = 17.9).
 Balancing the torus term (~p exp(-lambda/3)) against the central term (~2n exp(-lambda/h)) at N = p^3 n fixed gives
-n ~ 7-13 at the D = 11 cells, which is where the solved (11,11), (13,11), (14,11) groups sit (n = 19, 19, 7).
+n ~ 7-13 at the D = 11 cells; the solved D = 11 groups have n = 1-43 ((11,11): n = 37 at mu 3.3, n = 19 at mu 6.4,
+n = 1 at mu 10.4 after 892 evaluations; (13,11) n = 19; (14,11) n = 7), so the balance is a guide, not a sharp rule.

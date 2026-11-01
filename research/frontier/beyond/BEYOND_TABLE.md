@@ -236,12 +236,17 @@ nothing: k = 2, 4, 5, 6 orbits at D = 11, self-dual (transpose-closed) S, anneal
 generator, a meet-in-the-middle near-miss finisher, composite n at (7,11).
 
 **What failed or was not tried.**
-- Pushing the odd-D cells past mu ~10: (12,11) SL(2,601) x Z7 (mu 10.7) stopped at cost 6, SL(2,193) x Z211 (mu 10.3) at
-  cost 2 with -I its only hole; (11,11) PSL(2,257) x Z73 (mu 10.1) at 9; (11,12) PSL(2,241) x Z829 (mu 28) at 8.
+- Pushing the odd-D cells past mu ~10: (12,11) SL(2,601) x Z7 (mu 10.7) stopped at cost 2 after ~230 evaluations,
+  SL(2,193) x Z211 (mu 10.3) at cost 2 with -I its only hole; (11,11) PSL(2,257) x Z73 (mu 10.1) at 9 (SL(2,853) at the
+  same mu solved after 892 evaluations); (11,12) PSL(2,241) x Z829 (mu 28) at 8.
 - Near misses that stayed at cost 1-3 for thousands of evaluations: (6,11) SL(2,103), (7,11) SL(2,67) x Z19, (9,11)
   SL(2,137) x Z31, (6,12) PSL(2,211), (9,12) PSL(2,167) x Z241 and PSL(2,331) x Z31.
 - (12,12) and (13,12) sit at the job's cap; larger groups would solve at once but their checks would exceed the
-  checkers' budget (haarcheck_gen is memory-latency bound: the 14.4-billion-vertex (14,11) check took ~X CPU-hours).
+  checkers' budget.
+- Checking cost depends on p, not only on the size: haarcheck_gen multiplies matrices through p^2-entry field tables,
+  which leave the L2 cache for p ~ 850-1,000. The 14.4-billion-vertex (14,11) check (SL(2,1009) x Z7) took about
+  4 CPU-hours here, and the 1.24-billion (11,11) check of SL(2,853) about 40 CPU-minutes, against 7 CPU-minutes for
+  the 1.17-billion SL(2,251) x Z37. For the coordinator's second check, prefer the PSL/SL-specific checkers for p > 600.
 
 ## What failed, and why it matters for the next attempt
 
