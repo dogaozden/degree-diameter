@@ -202,17 +202,25 @@ int main(int argc, char **argv) {
     /* compatibility graph */
     n = n2; CW = (n + 63) / 64;
     Adj = calloc((size_t)n * CW, 8);
-    long ne = 0; int aborted = 0;
-    for (int a = 0; a < n && !aborted; a++) { int i = map[a];
+    long ne = 0; int aborted = 0; int loaded = 0;
+    const char *adjf = getenv("ADJFILE");
+    if (adjf) { FILE *af = fopen(adjf, "rb"); long nn2 = 0;
+        if (af && fread(&nn2, sizeof nn2, 1, af) == 1 && nn2 == n && fread(Adj, 8, (size_t)n * CW, af) == (size_t)n * CW) {
+            loaded = 1; fprintf(stderr, "adjacency loaded from %s\n", adjf); }
+        if (af) fclose(af); }
+    for (int a = 0; a < n && !aborted && !loaded; a++) { int i = map[a];
         for (int b = a + 1; b < n; b++) { int j = map[b];
             int dis = 1; for (int w = 0; w < KW; w++) if (KS[i][w] & KS[j][w]) { dis = 0; break; }
             if (!dis) continue;
             uint32_t acc; ACC(i, cov[j], csz[j], acc);
             if (acc != FULL22) continue;
             Adj[(size_t)a * CW + (b >> 6)] |= 1ULL << (b & 63); Adj[(size_t)b * CW + (a >> 6)] |= 1ULL << (a & 63); ne++; }
-        if (now() - t0 > secs * 0.8) { aborted = 1; fprintf(stderr, "compat build cut at row %d\n", a); }
+        if (now() - t0 > secs * 0.97) { aborted = 1; fprintf(stderr, "compat build cut at row %d\n", a); }
     }
+    if (adjf && !loaded && !aborted) { FILE *af = fopen(adjf, "wb"); long nn2 = n; fwrite(&nn2, sizeof nn2, 1, af);
+        fwrite(Adj, 8, (size_t)n * CW, af); fclose(af); fprintf(stderr, "adjacency saved to %s\n", adjf); }
     if (aborted) { fprintf(stderr, "compat incomplete, no search\n"); return 4; }
+    if (loaded) { ne = 0; for (int a = 0; a < n; a++) for (int w = 0; w < CW; w++) ne += __builtin_popcountll(Adj[(size_t)a * CW + w]); ne /= 2; }
     double dens = n > 1 ? 2.0 * ne / ((double)n * (n - 1)) : 0;
     fprintf(stderr, "compat: %ld edges, density %.4f (%.1fs)\n", ne, dens, now() - t0);
 

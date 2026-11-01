@@ -167,7 +167,7 @@ int main(int argc, char **argv) {
     uint64_t *pool = malloc((size_t)CW * 8);
     int *chosen = malloc(4 * (n2 + 1)), *bestSet = malloc(4 * (n2 + 1)), nBest = 0, runs = 0;
     int *pdeg = malloc(4 * (n2 + 1));
-    while (now() - t0 < secs && n2 > 0) {
+    while (now() - t0 < secs * 0.5 && n2 > 0) {
         runs++;
         memset(pool, 0, (size_t)CW * 8); for (int x = 0; x < n2; x++) pool[x >> 6] |= 1ULL << (x & 63);
         int nc2 = 0, pc = n2;
@@ -189,6 +189,37 @@ int main(int argc, char **argv) {
         }
         if (nc2 > nBest) { nBest = nc2; memcpy(bestSet, chosen, 4 * nc2);
             fprintf(stderr, "run %d: clique %d (%.1fs)\n", runs, nBest, now() - t0); }
+    }
+    /* ---- e13 stage 5: iterated local search from the best greedy clique: drop 1-3 orbits, refill greedily
+     * (max pool-degree), accept if the size does not drop. */
+    {
+    int *cur = malloc(4 * (n2 + 1)), *tmpS = malloc(4 * (n2 + 1)); int ncur = nBest, ntmp = 0; long its = 0;
+    memcpy(cur, bestSet, 4 * nBest);
+    while (now() - t0 < secs && n2 > 0 && nBest > 0) {
+        its++;
+        memcpy(tmpS, cur, 4 * ncur); ntmp = ncur;
+        int r = 1 + rnd() % 3;
+        for (int q = 0; q < r && ntmp > 0; q++) { int ix = rnd() % ntmp; tmpS[ix] = tmpS[--ntmp]; }
+        memset(pool, 0, (size_t)CW * 8); for (int x = 0; x < n2; x++) pool[x >> 6] |= 1ULL << (x & 63);
+        for (int q = 0; q < ntmp; q++) { int m = tmpS[q]; for (int w = 0; w < CW; w++) pool[w] &= C[(size_t)m * CW + w];
+            pool[m >> 6] &= ~(1ULL << (m & 63)); }
+        int pc = 0; for (int w = 0; w < CW; w++) pc += __builtin_popcountll(pool[w]);
+        while (pc > 0) {
+            int pick = -1; double bs = -1e18;
+            for (int x = 0; x < n2; x++) if ((pool[x >> 6] >> (x & 63)) & 1) {
+                int d = 0; const uint64_t *cx = C + (size_t)x * CW;
+                for (int w = 0; w < CW; w++) d += __builtin_popcountll(cx[w] & pool[w]);
+                double sc = d + (rnd() % 1000) / 1000.0 * 1.5;
+                if (sc > bs) { bs = sc; pick = x; } }
+            tmpS[ntmp++] = pick;
+            pool[pick >> 6] &= ~(1ULL << (pick & 63));
+            for (int w = 0; w < CW; w++) pool[w] &= C[(size_t)pick * CW + w];
+            pc = 0; for (int w = 0; w < CW; w++) pc += __builtin_popcountll(pool[w]);
+        }
+        if (ntmp >= ncur) { memcpy(cur, tmpS, 4 * ntmp); ncur = ntmp; }
+        if (ncur > nBest) { nBest = ncur; memcpy(bestSet, cur, 4 * ncur); fprintf(stderr, "ILS it %ld: clique %d (%.1fs)\n", its, nBest, now() - t0); }
+    }
+    fprintf(stderr, "ILS iterations %ld\n", its);
     }
     FILE *g = fopen(argv[7], "w");
     for (int a = 0; a < nBest; a++) { int i = map[bestSet[a]]; for (int k = 0; k < csz[i]; k++) fprintf(g, "%d ", cand[i][k] + (side == 0 ? H : 0)); fprintf(g, "\n"); }

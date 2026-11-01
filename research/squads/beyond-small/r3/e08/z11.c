@@ -185,7 +185,7 @@ int main(int argc, char **argv){
                 for (int y=0;y<P;y++) if (y!=x && !((C[(size_t)x*CW+(y>>6)]>>(y&63))&1)) cnt[y]++;
             }
         }
-        if (nbest>0 && nbest*11 > bestTotal){ bestTotal=nbest*11; bestSide=hs; bestNs=nbest; for(int i=0;i<nbest;i++) bestSel[i]=idx[best[i]]; }
+        if (nbest>0){ for(int i=0;i<nbest;i++) bestSel[bestNs+i]=idx[best[i]]; bestNs+=nbest; bestTotal+=nbest*11; }
         (void)bestSide;
     }
     /* write output: existing hubs + new Z11 translates of the selected bases of the best side (both sides if both chosen) */

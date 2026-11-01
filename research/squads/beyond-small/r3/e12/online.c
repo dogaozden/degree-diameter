@@ -141,7 +141,7 @@ int main(int argc, char **argv) {
         int m = 0; for (int a = 0; a < nch; a++) for (int y = 0; y < 4; y++) cand[np_][m++] = lines[ch[a]][y];
         if (m != 16) continue;
         for (int w = 0; w < 12; w++) if (KU[w] & ~KS[np_][w] & 0) ;
-        memcpy(KS[np_], KU, sizeof KU);
+        { uint64_t KC[12]; memset(KC, 0, sizeof KC); for (int k = 0; k < 16; k++) { int kk = keyof(cand[np_][k]); KC[kk >> 6] |= 1ULL << (kk & 63); } memcpy(KS[np_], KC, sizeof KC); }
         for (int k = 0; k < 16; k++) { int t = cand[np_][k], blk = t >> 8, j = blk / 22, h = blk % 22;
             JB[np_ * 16 + k] = j * 22 * 256; HH[np_ * 16 + k] = h; YY[np_ * 16 + k] = t & 255; }
         uint64_t *Sx = Sb + (size_t)np_ * W; memset(Sx, 0, W * 8);
@@ -153,7 +153,7 @@ int main(int argc, char **argv) {
         /* compatible with every packed cover (key-disjoint already) */
         int all = 1;
         for (int a = 0; a < npk && all; a++) { tried_compat++; int i = pk[a]; if (!compat(np_, i) || !compat(i, np_)) all = 0; }
-        if (all) { pk[npk++] = np_; for (int w = 0; w < 12; w++) KP[w] |= KU[w]; np_++; added++;
+        if (all) { pk[npk++] = np_; for (int w = 0; w < 12; w++) KP[w] |= KS[np_][w]; np_++; added++;
             fprintf(stderr, "packing %d (%.1fs, gen %ld)\n", npk, now() - T0, gen); }
     }
     FILE *g = fopen(argv[6], "w");
