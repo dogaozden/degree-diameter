@@ -21,8 +21,13 @@ Seeds 108471-108480 (restart = next seed). Start 01:37 UTC.
 
 02:03 UTC: chains 31, best 12 (1 chain), median 21, <=12: 1, <=9: 0, <=6: 0, <=3: 0.
 Histogram (min:count): 12:1 15:3 18:10 21:8 24:9.
+02:12 UTC: chains 44, best 12, median 21, <=12: 1, <=9: 0, <=6: 0, <=3: 0 (hist 12:1 15:3 18:14 21:12 24:13 27:1).
+02:37 UTC: chains 78, best 12, median 21, <=12: 1, <=9: 0, <=6: 0, <=3: 0 (hist 12:1 15:4 18:24 21:24 24:24 27:1).
 
 ## Log
 
 - 01:37 launched g3 (seed 108471). First chain running.
 - 01:54 chains 19, best 12. 02:03 chains 31, best 12. No scoreboard line yet (threshold is <=6).
+- 02:03 scoreboard: first-result line (best 12, ORBW=3).
+- 02:28 chains 66, best 12. 02:37 chains 78, best 12.
+- 02:12 chains 44, best 12. Mean chain about 36-46 s. Process alive (pid 31657, RSS 12 MB, 58 % CPU).

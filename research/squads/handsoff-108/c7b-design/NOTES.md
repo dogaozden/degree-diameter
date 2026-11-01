@@ -12,14 +12,15 @@ One heavy process at a time, nice -n 10, THREADS=1. python-igraph (BLISS) instal
    bilinear, layer-based, index-linear) is at best random-like and most are much worse than random voltages.
 2. The valid annealed lifts are statistically indistinguishable from random lifts (walk sums multinomial, apartment
    holonomies uniform, no dependence on coordinates). A first-moment (Poisson) model predicts random-start costs to
-   1-5 % and P(cost 0) at q = 3 to about 30 % (section 1). It puts the largest m with random lifts expected to exist at
+   1-5 % and P(cost 0) at q = 3 to within about 40 % (section 1). It puts the largest m with random lifts expected to exist at
    m* = 43 (q=3), 34 (q=4), 30 (q=5), 29 (q=7). At q=7 the table's 30 is already above it (E/L = 1.21), so a
    construction of 30 copies, and of the card's 31, must be structured, not random.
 3. NEW, and the useful result: restricting the search to lifts invariant under a semiregular automorphism K of H(q)
    (cyclic of prime order P, acting fixed-point-freely on points and lines) and annealing on orbit variables works far
    better than unrestricted annealing (section 4). Verified valid lifts (explicit BFS, indep.c DIAMETER_OK):
-   q=3 (Delta 6): 28 and 30 copies (21,840 vertices; table 20 copies). q=5 (Delta 8): 20 copies in progress check
-   (table 25). Not reached: q=5 m=22, q=4 m>=24 (table 20 at q=4 not beaten), q=7 (run in progress, see 4.4).
+   q=3 (Delta 6): 30 copies (21,840 vertices; table 20). q=4 (Delta 7): 20 copies (54,600; table 20, equal).
+   q=5 (Delta 8): 20 copies (156,240; table 25; 21 reached cost 4 units, not valid). q=7 (Delta 10): 20 copies not
+   reached in 2,500 steps (best 13 units = cost 559); table 30 is far off with this method (section 4.4).
    None of this is a record: the repo's current (6,8) record is 31,680 vertices (research/RESULTS.md, Oct 23 22:11 PT).
 
 ## 1. Threshold model (src/thr.py)
@@ -106,28 +107,37 @@ Calibration of E against random starts (point cost, full random hexagon voltages
 | 3 | 6 | 20 | Z7 (52) | 28 | 8000 | valid (indep DIAMETER_OK) | runs/sym_q3_p7_m28_s103.sol |
 | 3 | 6 | 20 | Z7 (52) | 30 | 8000 | valid (indep DIAMETER_OK), 21,840 vertices | runs/sym_q3_p7_m30_s104.sol |
 | 3 | 6 | 20 | Z7 (52) | 32 | 8000 | cost 98 (14 units) | runs/sym_q3_p7_m32_s105.* |
+| 4 | 7 | 20 | Z13 (105) | 20 | 8000 | valid (indep DIAMETER_OK), 54,600 vertices | runs/sym_q4_p13_m20_s112.sol |
 | 4 | 7 | 20 | Z13 (105) | 24 | 8000 | cost 130 (10 units) | runs/sym_q4_p13_m24_s106.* |
 | 4 | 7 | 20 | Z13 (105) | 28 | 8000 | cost 2847 (219 units) | runs/sym_q4_p13_m28_s107.* |
 | 4 | 7 | 20 | Z13 (105) | 32 | 8000 | cost 13598 (1046 units) | runs/sym_q4_p13_m32_s108.* |
 | 4 | 7 | 20 | Z7 (195) | 24 | 1190 of 8000 (stopped) | best 61 units | runs/sym_q4_p7_m24_s109.log |
-| 5 | 8 | 25 | Z31 (126) | 20 | 1866 | valid (cost 0; indep check pending) | runs/sym_q5_p31_m20.sol |
+| 5 | 8 | 25 | Z31 (126) | 20 | 1866 | valid (indep DIAMETER_OK), 156,240 vertices | runs/sym_q5_p31_m20.sol |
+| 5 | 8 | 25 | Z31 (126) | 21 | 8000 | best 4 units (124) | runs/sym_q5_p31_m21_s111.* |
 | 5 | 8 | 25 | Z31 (126) | 22 | 8000 | best 17 units (527) | runs/sym_q5_p31_m22.* |
 | 5 | 8 | 25 | Z31 (126) | 25 | 6148 (stopped mid-schedule) | best 294 units (9114) | runs/sym_q5_p31_m25.log |
-| 7 | 10 | 30 | Z43 (456) | 20 | see 4.4 | see 4.4 | runs/sym_q7_p43_m20.* |
+| 7 | 10 | 30 | Z43 (456) | 20 | 2372 of 2500 (time limit 40 min) | best 13 units (559), hexeval full check 559 | runs/sym_q7_p43_m20.* |
 
 Unrestricted annealing for comparison: q=3 Z24 valid (c6, 2133 steps), Z28 stalls at 12 (c6); q=5 Z15 valid, Z16 stalls
-at 30 (c6); q=7 best 17 (c6). So K-symmetry gives +4 copies at q=3 (28 against 24) and +5 at q=5 (20 against 15).
+at 30 (c6); q=7 best 17 (c6). So K-symmetry gives +6 copies at q=3 (30 against 24) and +5 at q=5 (20 against 15); at q=4 it
+gives the same 20 as the unrestricted search.
+
+Unrestricted q=4: c6 Z20 valid; the symmetric Z20 lift above is the same table value found with 105 orbit variables.
 
 ### 4.3 Reading
 - The first-moment ratio E/L is the same for symmetric and unrestricted lifts (both numerator and denominator scale
   with 1/P), so the symmetric gain is in the search, not in the existence threshold.
-- Symmetric annealing at q=4 (K=Z13, Z7) did not reach 24: the gain is not uniform across q. q=3 (small N, many
+- Symmetric annealing at q=4 (K=Z13, Z7) reaches 20 but not 24: the gain is not uniform across q. q=3 (small N, many
   orbits per copy) is the favourable case.
-- q=5 frontier with this annealer: 20 valid, 22 not (best 17 units). Table 25 is not reached.
+- q=5 frontier with this annealer: 20 valid, 21 cost 4 units, 22 cost 17 units. Table 25 is not reached.
+- Frontier by q (this annealer, 8000-step schedules unless noted): q=3 30 (table 20), q=4 20 (table 20), q=5 20
+  (table 25), q=7 not 20 (table 30; 2500 steps). The gap to the table grows with q, consistent with the first-moment
+  picture (section 1).
 
 ### 4.4 q=7, K = Z43 (456 orbits)
-- One symmetric evaluation takes about 0.7-1 s (456 sources, 2 lanes of 20 bits per pass). Run in progress at m=20,
-  2500 iterations (about 40 minutes); final result appended below when it ends.
+- One symmetric evaluation takes about 1.1 s (456 sources, 3 lanes of 20 bits per pass, early abort). Run at m=20,
+  2500 steps, time-limited at 2,400 s (last improvement at step 2,372, temperature 0.06): best 13 units = cost 559
+  (plain), not valid. Start cost 197 units (random symmetric lift). So m=20 needs far more steps than this; no conclusion about 30.
 
 ## 5. What this means for the cell (10,8)
 

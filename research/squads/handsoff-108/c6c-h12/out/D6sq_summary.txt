@@ -1,0 +1,31 @@
+D6sq: classes 20316, members covered 40480 of 40480 (complete), B-root known for 12 classes
+lower bound P = uBA+uAA over members: min 900 p0.1 1134 p1 2133 median 34273 (median per unit of h: 2856.1)
+exact full C known for 11359 classes = 18130 members (self-inverse classes: 11348)
+exact C over known members: min 900 p0.1 984 p1 2103 median 148896
+top 10 exact C (C, members, class key, uBA uAA uBB, partition):
+  C 900  w 4  key 0.37371.49813  uBA 898 uAA 2 uBB 0  6+3+1
+  C 900  w 4  key 23617.38750.45261  uBA 898 uAA 2 uBB 0  6+3+1
+  C 964  w 4  key 0.33399.49813  uBA 964 uAA 0 uBB 0  6+3+1
+  C 964  w 4  key 38750.45261.45417  uBA 964 uAA 0 uBB 0  6+3+1
+  C 984  w 4  key 0.13411.49813  uBA 984 uAA 0 uBB 0  6+3+1
+  C 984  w 4  key 31646.38750.45261  uBA 984 uAA 0 uBB 0  6+3+1
+  C 1090  w 4  key 0.24933.49813  uBA 1090 uAA 0 uBB 0  6+3+1
+  C 1090  w 4  key 17656.38750.45261  uBA 1090 uAA 0 uBB 0  6+3+1
+  C 1129  w 2  key 0.30399.45261  uBA 1127 uAA 1 uBB 1  6+3+1
+  C 1129  w 2  key 35043.38750.49813  uBA 1127 uAA 1 uBB 1  6+3+1
+lowest lower bounds of classes without exact C (P, members, key, partition):
+  P 1320  w 4  key 0.11595.49813  6+3+1
+  P 1320  w 4  key 38750.45261.48372  6+3+1
+  P 1350  w 4  key 0.49813.50013  6+3+1
+  P 1350  w 4  key 30755.38750.45261  6+3+1
+  P 1379  w 2  key 0.24933.45431  6+3+1
+per partition (members, median P, min P) over scanned classes:
+  2+2+2+2+1+1    members   1365 min P 1198080 median P 1198080 (per unit 99840.0)
+  2+2+2+2+2      members   3003 min P 1198080 median P 1198080 (per unit 99840.0)
+  3+2+2+2+1      members   3640 min P  132900 median P  229740 (per unit 19145.0)
+  3+3+2+1+1      members     90 min P  209812 median P  416176 (per unit 34681.3)
+  3+3+2+2        members    630 min P    9000 median P   64188 (per unit 5349.0)
+  3+3+3+1        members      8 min P  963438 median P  963438 (per unit 80286.5)
+  6+2+1+1        members   3720 min P   11724 median P   38287 (per unit 3190.6)
+  6+2+2          members  26040 min P    1500 median P   12834 (per unit 1069.5)
+  6+3+1          members   1984 min P     900 median P  264298 (per unit 22024.8)

@@ -56,3 +56,27 @@ Started 2026-11-01 00:08 UTC. Card: cards.md "c8c-smooth". Seeds 108961-108999.
 
 ### Extra arm, SMOOTHW=2 (ab_extra.sh, seed 108964, started 01:42 UTC, MAXSTEPS 240000 for the time budget)
 - See the end of this file for the numbers when it finishes.
+- Final (16 chains, 1.80M evals, ended 02:05 UTC): chain minima 12 (x2), 15, 18, 21 (median), 24. Median 21, mean 19.1,
+  best 12. Mann-Whitney vs baseline (summ.py ab_base.log ab_s2.log): P(base > w2) = 0.38, two-sided p = 0.19.
+
+## Mechanism check: G of the chain-minimum states (gchain/run_chain_G.sh, G_chain_min.txt)
+- Reload of the CHAIN states works (u equals the logged chain minimum in every case).
+- Mean G of the chain minima: baseline 525,744 (29 states); SMOOTHW=1 525,794 (30); SMOOTHW=2 525,780 (16).
+  Mean raw u: 17.7 / 18.8 / 18.6. So the term did NOT pull the minima to lower G. The baseline descents already end
+  at the low-G end (525.6k vs the random mean 528.4k): low G is a property of low-cost states, not a lever the
+  secondary term adds.
+
+## Verdict (round 1b, this card)
+- Implemented and verified: SMOOTHW term, exact early abort (hash-equal ABORT=0/1 for w = 1 and 2), SMOOTHW=0
+  trajectory identical to the unmodified binary.
+- Measured: no detectable effect of w = 1 or w = 2 on the chain-minimum distribution at 16-30 chains per arm
+  (medians 18 / 18 / 21 with baseline 18; best 9 / 6 / 12). Not the 60 chains per arm the card asked for: the box ran at
+  about 50 % of a core (load 8), so one arm of 30 chains took 37-40 min.
+- The card's scale: F = G - u is about 5.3e5 and varies by sd 2.1e3 across random sets, so w * F / 1000 with F not
+  centred would add about 500 w units (it would also defeat the early abort). The implementation uses the
+  SMREF-centred form (SMREF = 0 is a constant shift and changes no decision). Tested w = 1 and 2 only; w = 0.5 untested.
+
+## Next (if someone continues this)
+- A fragility statistic that is not G: the number of last-level elements covered by exactly one word (needs
+  multiplicities in the last level; costs about 2x the last level). G alone is not it.
+- More chains: 60 per arm needs about 2 h of one core at 300 steps/s, or a shorter schedule with a matched baseline.

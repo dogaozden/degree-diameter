@@ -280,3 +280,7 @@ CHAIN lines and minima, update NOTES.md; any chain at energy ≤ 6 gets a scoreb
 run EXDESC=1 on its set (CKPT file with that set; see research/d10D8/README.md) in your folder. If the run reaches
 cost 0: copy the solution to records/, run shared/check.sh on it, CLAIM line. At 03:25 UTC stop your process, write
 the final counts (chains, min, median, ≤ 12, ≤ 9) in NOTES.md and reply. Seeds: 108471-108480.
+
+### c8d-grind: second extra F15W3 grind on psl 23 97 until 03:25 UTC (relaunch of slot c8, 02:18 UTC)
+
+Same as c3c-grind (read that card), with seeds 108981-108990, your own folder c8d-grind/, nice -n 12, stop at 03:25 UTC.

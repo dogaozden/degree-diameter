@@ -1,80 +1,93 @@
-# c6c-h12 (handsoff-108): one-double-coset-type families with h = 12 in PGL(2,193)
+# c6c-h12 (handsoff-108): double-coset families with h = 12 in PGL(2,193)
 
-Worker c6c-h12 (relaunch of slot c6, card at the end of ../cards.md). Target: a bipartite graph of degree 10 from
-X(G,H,D) with G = PGL(2,193) (|G| = 7,188,864), |H| = 12, N = |G|/12 = 599,072 per side, 2N = 1,198,144 > 1,176,480.
+Worker c6c-h12 (relaunch of slot c6, card at the end of ../cards.md). Target: a bipartite degree-10 graph X(G,H,D),
+G = PGL(2,193) (|G| = 7,188,864), |H| = 12, N = |G|/12 = 599,072 per side, 2N = 1,198,144 > 1,176,480.
+Verdict: no family reaches small cost. Best exact minimum over ALL degree-10 double-coset sets of all three
+order-12 subgroups: C = 501 plain (A4). No cost 0, no record, no CLAIM.
 
 ## Card correction (read first)
 
 The card says "Degree 10 needs ONE regular double coset". That cannot hold with |H| = 12. A double coset H z H has
-c = |HzH|/|H| = 12/k left cosets, k = |H ∩ z H z^-1| in {1,2,3,4,6,12}, so c is in {12, 6, 4, 3, 2, 1}. A single
-double coset gives degree c, never 10 (regular ones give degree 12, too many). Degree 10 needs a set D of several
-double cosets with c-values summing to 10, and most of them are NON-regular (k >= 2). This is what c5b called the
-slow families (3-10x worse medians). The scans below use all such sets exactly (no sampling).
+c = |HzH|/|H| = 12/k left cosets, k = |H ∩ z H z^-1| in {1,2,3,4,6,12}, so c is in {12,6,4,3,2,1}. A regular
+double coset (c = 12) gives degree 12, too many. Degree 10 needs a SET D of double cosets with c-values summing to 10,
+and all of them are non-regular (k >= 2) except one reading of the card. So the families are sets of several
+non-regular double cosets, which c5b found to be 3-10x worse than regular ones. I scanned every such set exactly.
 
-## Groups (H = <g0, g1> in PGL(2,193); all subgroups of order 12 of PGL(2,q) are C12, D12 or A4)
+## Subgroups of order 12 in PGL(2,193) (generators from mkgens.py, closure checked)
 
-- C12 = <(g^16, 0, 0, 1)> (g = 5, primitive root): all its double cosets with c < 12 lie in the normaliser N(T)
-  (order 384, 32 cosets of H), so every degree-10 set generates a subgroup of N(T) and the graph is DISCONNECTED
-  (component of order at most 384/12 = 32 cosets). Dead by structure; the info run shows 32 c1 and 49,920 c12 DCs.
-- D6 square reflection (det square): H = <(85,0,0,1), (0,1,2,0)>. DC counts: c12 49,795; c6 248; c3 4; c2 15; c1 2.
-  Partitions of 10: 6+3+1 (1,984), 6+2+2 (26,040), 6+2+1+1 (3,720), 3+3+3+1 (8), 3+3+2+2 (630), 3+3+2+1+1 (90),
-  3+2+2+2+1 (3,640), 2+2+2+2+2 (3,003), 2+2+2+2+1+1 (1,365). Total 40,480 sets.
-- D6 nonsquare reflection: H = <(85,0,0,1), (0,1,5,0)>. DC counts: c12 49,824; c6 192; c2 15; c1 2.
-  Partitions of 10: 6+2+2 (20,160), 6+2+1+1 (2,880), 2+2+2+2+2 (3,003), 2+2+2+2+1+1 (1,365). Total 27,408 sets.
-- A4 = <(0,1,192,0), (81,1,112,1)> (V4 = <i-matrices>, order-3 element normalising V4; closure checked = 12):
-  DC counts: c12 49,857; c4 126; c6 47; c1 2. Partitions of 10: 6+4 (5,922), 4+4+1+1 (7,875). Total 13,797 sets.
+- C12 = <(49,0,0,1)>: DCs with c < 12 lie in N(T) (order 384, 32 cosets of H). Every degree-10 set generates a subgroup
+  of N(T), so the graph is disconnected. Confirmed: sample of 2 sets, uBA = uAA = uBB = 599,040 (64-vertex component).
+- D6 square reflection: H = <(85,0,0,1), (0,1,2,0)>. DCs: c12 49,795; c6 248; c3 4; c2 15; c1 2.
+- D6 nonsquare reflection: H = <(85,0,0,1), (0,1,5,0)>. DCs: c12 49,824; c6 192; c2 15; c1 2.
+- A4 = <(0,1,192,0), (81,1,112,1)>. DCs: c12 49,857; c6 47; c4 126; c1 2.
+  (Counts from `exh12 ... info`; the D6 nonsquare counts equal the c5b J header.)
 
-Sizes were checked against the c5b cscreen header for the D6 nonsquare family (c1 2, c2 15, c6 192, c12 49,824: same).
+## Code
 
-## Code (exh12.c, built to exh12; run_all.sh; summ12.py)
+- exh12.c (built to exh12): c6b-exhaust/exh.c generalised to any H of order <= 16 and any union D of double cosets with
+  c-sum = DEG = 10. Neighbour lists are de-duplicated per double coset, so every graph is simple of degree 10
+  (`check` mode). Costs: C = uBA + uAA + uBB (plain vertices), as in c6b.
+- Symmetry: D -> D^-1 and D -> nDn^-1 (n in N_PGL(H), order 24 here) act on DC ids (group of order 4). Canonical set =
+  smallest image; class weight = number of distinct images. Sum of weights = number of sets (checked against `info`).
+- exh12v.c / exh12v = exh12.c plus a `dcof` mode (matrix -> DC id), used by xval.py. Same results.
+- run_all.sh (A4, D6 nonsquare, D6 square; the last one stopped and re-run), run_d6sq.sh and run_d6sq622.sh (D6 square
+  by partition, then 6+2+2), summ12.py FAMILY (summaries), xval.py (cross-check), mkgens.py (subgroups).
+- Partition sizes and totals: `exh12 ... info`.
 
-- exh12.c = c6b-exhaust/exh.c generalised: H of any order <= 16, all double cosets (regular and not), sets D = any
-  union of double cosets with c-sum DEG (= 10), neighbour lists de-duplicated per double coset (so degree is exact).
-  Costs as before: C = uBA + uAA + uBB (plain vertices), A-root BFS gives uBA, uAA; B-root BFS gives uBB.
-- Symmetry: the group generated by D -> D^-1 (side swap) and D -> nDn^-1 (n in N_PGL(H), order 24 here) acts on the
-  double-coset ids (group of order 4). Canonical member = smallest image; class weight = number of distinct images.
-  Sum of class weights = number of sets in the partition (checked against `info`).
-- Validation:
-  * K family (PSL(2,229), D5, c6b's H): zcost for the 5 best c6b members reproduces uBA/uAA/uBB exactly
-    (4, 33, 37, 41, 42; uAA = uBB = 0).
-  * K count of DCs: 59,985 regular, 113 c5, 11 c2, 1 c1 (c6b/c5b counts: 59,985, 113 c5 normaliser-free). Same.
-  * Multi-DC sets: `check` mode (symmetric adjacency, no repeated neighbours) on a 5+5 member and on a 2+2+2+2+2
-    member of K: 0 errors, 0 repeated neighbours.
-  * D6 nonsquare: DC counts equal the c5b J-family header (c1 2, c2 15, c6 192, c12 49,824).
+## Validation
 
-## Results
+- K family (PSL(2,229), D5, c6b's H): zcost for the 5 best c6b members gives uBA/uAA/uBB exactly
+  (4/0/0, 33/0/0, 37/0/0, 41/0/0, 42/0/0). DC counts: 59,985 regular, 113 c5, 11 c2, 1 c1.
+- Multi-DC sets: `check` (symmetric adjacency, no repeated neighbours) on a 5+5 and a 2+2+2+2+2 member of K: clean.
+- Independent cross-check of multi-DC members against c5b's cscreen (its J run: PGL(2,193), D6 nonsquare, spec
+  6,2,2): 4 of 4 members reproduce exactly (cand 0 7082/0/0, cand 1 4575/0/0, cand 2 4772/4/4, cand 3 3764/0/0), xval.py.
 
-Cost units: plain vertices (0 = diameter 8). "min" below is the exact minimum over ALL members of the family
-(for non-self-inverse classes the lower bound P = uBA + uAA is already above the exact minimum found, so the
-minimum is exact). Medians are weighted by class orbit size (= number of member sets).
+## Results: exact scans of every degree-10 set (A-root for all classes; B-root where needed)
 
-### A4 (13,797 sets: 6+4 5,922; 4+4+1+1 7,875) - complete
+Card asked for 100-set samples and then a full scan of the best. The full scans were affordable (they are exact), so
+they replace the samples. Medians are over sets (weighted by class size). "P" = uBA + uAA (lower bound of C).
 
-- 6,016 classes, all scanned (A-root). 2,606 self-inverse classes have exact C; the rest have P only.
-- Exact minimum over all members: C = 501 (uBA 501, uAA 0, uBB 0; partition 6+4; class key 382.45928).
-- 5,313 of 13,797 members are disconnected-like (uBA > 100,000): the sets generate a proper subgroup. Only 468 members
-  have uBA + uAA < 1,000. P median over members 49,072 (dominated by the disconnected ones).
-- Verdict: dead. Minimum 501 is 125 times the K family's minimum (4) and far off any cost 0.
-- Scan: out/A4_scanA.tsv (run_all.sh), summary `python3 summ12.py A4`.
+| family | sets | classes | exact min C (plain) | family min | median P (plain) | per unit of 12 |
+|---|---|---|---|---|---|---|
+| A4 | 13,797 (6+4 5,922; 4+4+1+1 7,875) | 6,016 | 501 (6+4) | 501 (exact) | 49,072 | 4,089 |
+| D6 nonsquare | 27,408 (6+2+2 20,160; 6+2+1+1 2,880; 2^5 3,003; 2^4+1+1 1,365) | 15,888 | 1,266 (6+2+2) | 1,266 (exact) | 6,642 | 554 |
+| D6 square | 40,480 (6+3+1 1,984; 6+2+2 26,040; 6+2+1+1 3,720; 3+3+3+1 8; 3+3+2+2 630; 3+3+2+1+1 90; 3+2+2+2+1 3,640; 2^5 3,003; 2^4+1+1 1,365) | 20,316 | 900 (6+3+1) | 900 (exact) | 34,273 | 2,856 |
+| C12 | 64,512,240 (all c1 types) | - | - | disconnected | - | - |
 
-### D6 nonsquare reflection (27,408 sets: 6+2+2 20,160; 6+2+1+1 2,880; 2^5 3,003; 2^4+1+1 1,365) - complete
+Family minima are exact: for every class not known exactly, the lower bound P is above the family minimum found.
+Reference: the K family (h = 10, one regular double coset) has min 4 and median 340 plain (34 per unit of 10).
 
-- 15,888 classes, all scanned (A-root). 10,128 self-inverse classes have exact C. Non-self-inverse classes have P only.
-- Exact minimum over all members: C = 1,266 (uBA 1,266, uAA 0, uBB 0; partition 6+2+2).
-- 2^5 and 2^4+1+1 (4,368 sets): disconnected. Root component has 64 vertices (uBA = uAA = N - 32 in the usual
-  cases, 599,040 or 599,056): all-c2 sets stay inside a subgroup of order 384.
-- 6+2+2 median P = 5,020 plain (418 units of 12); 6+2+1+1 median P = 29,818 (2,485 units). Overall P median 6,642 plain
-  (553.5 units of 12). K (h = 10, one regular double coset) has median 340 plain (34 units).
-- Verdict: dead. Minimum 1,266 is far from 0.
-- Cross-check: four 6+2+2 members from c5b's J run (PGL(2,193) D6, spec 6,2,2, same subgroup) reproduced exactly with
-  exh12 (uBA, uAA, uBB): cand 0 7082/0/0, cand 1 4575/0/0, cand 2 4772/4/4, cand 3 3764/0/0 (xval.py).
-- Scan: out/D6nsq_scanA.tsv, summary `python3 summ12.py D6nsq`.
+Per partition (median P in plain vertices):
+- A4: 6+4 median 599,072 (3,006 of 5,922 sets disconnected-like); 4+4+1+1 median 47,852 (2,307 of 7,875 disconnected-like).
+- D6 nonsquare: 6+2+2 median 5,020 (min P 1,266); 6+2+1+1 median 29,818; 2^5 and 2^4+1+1 disconnected (64-vertex components).
+- D6 square: 6+3+1 median 264,298 (min C 900); 6+2+2 median 12,834 (min P 1,500); 6+2+1+1 median 38,287;
+  3+3+2+2 median 64,188 (min P 9,000); 3+2+2+2+1 median 229,740; 2^5 and 2^4+1+1 disconnected.
 
-### D6 square reflection (40,480 sets) - partial, see the section below
+Details of the minima (plain units):
+- A4: min C 501 for class 382.45928 (self-inverse: uBA 501, uAA 0, uBB 0); also 46305.49590 (non-self-inverse, C 501,
+  B-root checked with scanB).
+- D6 nonsquare: min C 1,266 for class 11305.34046.48016 (self-inverse: uBA 1266, uAA 0, uBB 0).
+- D6 square: min C 900 for classes 0.37371.49813 and 23617.38750.45261 (non-self-inverse; B-root: uBB 0, uBA 898,
+  uAA 2). Next exact: 964, 984, 1090, 1129.
 
-## Process notes
+Verdict: none of the three h = 12 families gets near 0 (best 501 plain, A4, 125 times K's min 4). Non-regular double
+cosets (k >= 2) create short relations that make the orbits collapse; the regular double coset of the h = 10 family
+is the reason K is much better. A cost-0 graph on 1,198,144 vertices was not found in any of these families.
 
-- The card asked for 100-member samples per family, then a full scan of the best. Full scans were affordable for the
-  two small/medium families (A4, D6 nonsquare), so they replace the samples. They are exact.
-- The D6 square family is about 2x larger; its scan is run partition by partition (small partitions first).
-- C12: dead by structure (see above), not scanned.
+## Files
+
+- out/A4_scanA.tsv, out/D6nsq_scanA.tsv, out/D6sq_scanA.tsv (A lines: key, orbit weight, sym, uBA, uAA, partition);
+  out/D6sq_scanB.tsv, out/A4_scanB.tsv (B lines: key, uBB, uBA, uAA); out/*_summary.txt (summ12.py output);
+  out/D6sq_sample622.out (an earlier 500-set random sample of D6 square 6+2+2, superseded by the full scan: min 1,689).
+- out/progress.log, out/*.log (logs of the runs).
+
+## Scoreboard
+
+- One line: A4 full scan, best exact C = 501 plain (not a record). The other families did not beat it.
+
+## Next steps (not done)
+
+- Nothing from this card can reach cost 0 with h = 12 in PGL(2,193): all families are exhausted.
+- If the squad wants more h = 12 candidates, the only other order-12 subgroup types in PGL(2,q) are C12 (dead) and the
+  two D6 classes and A4 (done). Other degrees (for example a degree-10 set with c-values 12-free from |H| = 15, 20, or
+  H in PGL(2,q) with other q) would need a new screen.
