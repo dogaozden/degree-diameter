@@ -1,0 +1,9 @@
+checker: apsp
+command: ./bin/apsp lsym/hs/h35_1_11_n281_l211.edges 3 16
+start: 2026-11-01T23:17:36Z
+sha256 8bce5713d2a2b5ab0019ae5209fe3a6acce43005bc4bd9cc932ae966ec1afdf2  ./bin/apsp
+sha256 85bc0805f511dc8d6ea4d43880ff8fd934c8c13c3a71e83beae5dd8859485966  lsym/hs/h35_1_11_n281_l211.edges
+n=19670 edges=29505 degree min=3 max=3 bipartite=yes diameter=16
+RESULT VALID d=3 D=16 n=19670
+exit: 0
+end: 2026-11-01T23:17:37Z (1 s)
