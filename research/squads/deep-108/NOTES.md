@@ -22,3 +22,25 @@ class 4233 gives uBA 4, uAA 0, uBB 0. cq2 with m = 1 and cq3 with trivial first 
   the number k of neighbours at distance 6 is overdispersed against Binomial(10, f6): k = 0 occurs 31 times against
   4.7 expected, k = 1 178 vs 73, k = 2 987 vs 505 (median member). Coverage of the 10 neighbours of a vertex is
   positively correlated; that is the tax.
+- Tests of the tax mechanism (cq modes fiber, disp, quad; two median members and class 4233):
+  - N(C5) = D230 fibres (23 B-vertices each): apart from the special fibre, uncovered vertices lie 310-340 alone and
+    20-25 in pairs (independent: about 3 pairs). Some clustering, but not the bulk.
+  - Displacement m(v) = min over g in Stab(v), g != e, of d(H, Hg): about 520 regular B-orbits per member have m = 2;
+    they are uncovered at 3.8-5.9 per 1000 against 0.55-0.62 for m = 6 (7-10x), but contribute only 2-3 of ~30
+    uncovered orbits. These are exactly the orbits with 4-cycles in the orbit quotient (4 repeated second neighbours).
+  - 96 % of B-orbits have no repeated second neighbour in the quotient, and most uncovered orbits are among them.
+  - So the remaining 4x excess is not local (tree-like to radius 4 in the graph, radius 2 in the quotient); it is a
+    global correlation that random-graph models do not have. Haar graphs on random S pay about 1.5x.
+- Lead (a), fixed-letter swap (leadA/f0test.sh): the energy-3 state (g4a) with e replaced by each of the 11 other
+  alpha-fixed letters (F0 = 1..11) costs 42-157 (base 3). About half of all words contain the fixed letter, so the
+  swap is close to a random restart. Dead.
+
+## (b) generalised: all h = 10 one-double-coset families near the bound
+- Isomorphism classes (cq `classes`): D -> a D b^-1 for a in N_G(L), b in N_G(R) is an isomorphism (Lx -> Lax,
+  Ry -> Rby), besides conjugation by N_PGL(L) cap N_PGL(R) and D -> D^-1 when L = R. Class counts (upper bounds on
+  distinct graphs): K 16,293 (as exh.c); C = PGL(2,181) (D5n, D5n) 8,226 (handsoff counted 16,407: it missed a != b);
+  PGL(2,181) (C10, D5n) 873; (D5s, D5n) 14,832. (C10,C10), (D5s,D5s), (C10,D5s) are disconnected (L, zRz^-1 in PSL).
+- Exhaustive scans (scans/, 59,292 members each, A-root all, B-root for uBA+uAA <= 200):
+  (C10, D5n): exact min 64 (uBB 0), median 364, best 8 class minima 64 76 88 96 102 102 103 109. E_s = 2.9.
+  (D5s, D5n): exact min 44 (uBB 0), median 350, best 8 class minima 44 44 52 54 54 54 56 56. E_s = 2.9.
+  Both dead. K's 4 (next 33) is an outlier among about 40k distinct h = 10 graphs in PSL/PGL(2,q).

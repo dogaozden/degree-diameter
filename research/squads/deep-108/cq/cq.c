@@ -376,6 +376,121 @@ int main(int argc, char **argv) {
         printf("distinct neighbour orbits:"); for (int i = 0; i <= ND; i++) if (hd[i]) printf(" %d:%ld", i, hd[i]); printf("\n");
         return 0;
     }
+    if (!strcmp(mode, "disp")) {
+        /* displacement test: for every regular B-orbit v = Hy beyond distance 5, m(v) = min over g in y^-1 H y, g != e,
+           of the A-A distance d(H, Hg) (level of the A-orbit of g). Tabulate P(v uncovered) and P(k = 0,1) by m(v). */
+        int k = atoi(argv[ai++]); int z[16][4]; ai += parse_z(argv + ai, k, z);
+        if (set_D(k, z)) fatal("degree too big");
+        bfs(0, &TLL, &TRL, 0);
+        long n[16] = { 0 }, unc[16] = { 0 }, lowk[16] = { 0 };
+        for (uint32_t o = 0; o < TRL.n; o++) {
+            if (TRL.sz[o] != (uint32_t)GL_.n || LEV[1][o] <= 5) continue;
+            int y[4] = { TRL.rep[o][0], TRL.rep[o][1], TRL.rep[o][2], TRL.rep[o][3] }, yi[4]; adjm(y, yi);
+            int m = 15;
+            for (int h = 1; h < GL_.n; h++) { int t1[4], g[4]; mulm(yi, GL_.e[h], t1); mulm(t1, y, g); int lv = LEV[0][TLL.oid[keym(g)]]; if (lv < m) m = lv; }
+            int kk = 0; for (int j = 0; j < ND; j++) if (LEV[0][TLL.oid[nbkey(TRL.rep[o], 1, j)]] <= 6) kk++;
+            n[m]++; if (LEV[1][o] == 255) unc[m]++; if (kk <= 1) lowk[m]++;
+        }
+        printf("m(v) count uncovered(per 1000) k<=1(per 1000)\n");
+        for (int m = 0; m < 16; m++) if (n[m]) printf("%d %ld %ld (%.2f) %ld (%.2f)\n", m, n[m], unc[m], 1000.0 * unc[m] / n[m], lowk[m], 1000.0 * lowk[m] / n[m]);
+        return 0;
+    }
+    if (!strcmp(mode, "quad")) {
+        /* quotient 4-cycles: for each regular B-orbit v beyond distance 5, rep(v) = number of repeated orbits among the
+           second neighbours (B-orbits at distance 2 from v in the orbit quotient, v itself excluded). */
+        int k = atoi(argv[ai++]); int z[16][4]; ai += parse_z(argv + ai, k, z);
+        if (set_D(k, z)) fatal("degree too big");
+        bfs(0, &TLL, &TRL, 0);
+        long n[8] = { 0 }, unc[8] = { 0 };
+        uint32_t sec[MAXDEG * MAXDEG];
+        for (uint32_t o = 0; o < TRL.n; o++) {
+            if (TRL.sz[o] != (uint32_t)GL_.n || LEV[1][o] <= 5) continue;
+            int ns = 0;
+            for (int j = 0; j < ND; j++) { uint64_t ka = nbkey(TRL.rep[o], 1, j); uint32_t a = TLL.oid[ka];
+                for (int i = 0; i < NE; i++) { uint32_t b = TRL.oid[nbkey(TLL.rep[a], 0, i)]; if (b != o) sec[ns++] = b; } }
+            int rep = 0; for (int i = 0; i < ns; i++) for (int j2 = 0; j2 < i; j2++) if (sec[i] == sec[j2]) { rep++; break; }
+            if (rep > 7) rep = 7; n[rep]++; if (LEV[1][o] == 255) unc[rep]++;
+        }
+        printf("repeats count uncovered(per 1000)\n");
+        for (int r = 0; r < 8; r++) if (n[r]) printf("%d %ld %ld (%.2f)\n", r, n[r], unc[r], 1000.0 * unc[r] / n[r]);
+        return 0;
+    }
+    if (!strcmp(mode, "classes")) {
+        /* isomorphism classes of the one-double-coset family {L z R regular}: D -> a D b^-1 (a in N_G(L), b in N_G(R)),
+           D -> n D n^-1 for n in N_PGL(L) cap N_PGL(R), and D -> D^-1 when L = R. Optional file of scan lines
+           ("M id ...") or ("A id ..."): prints the number of classes scanned and the minimum cost per class. */
+        DCT *T = &TLR;
+        Grp NLg, NRg; NLg.e = malloc(sizeof(int[4]) * 4096); NRg.e = malloc(sizeof(int[4]) * 4096); NLg.n = NRg.n = 0;
+        for (uint64_t kk = 0; kk < NKEY; kk++) { int g[4], gi[4]; decode(kk, M2, g); adjm(g, gi);
+            int okL = 1, okR = 1;
+            for (int i = 0; i < GL_.n && okL; i++) { int t1[4], p[4]; mulm(g, GL_.e[i], t1); mulm(t1, gi, p); if (!ingrp(&GL_, p)) okL = 0; }
+            for (int i = 0; i < GR_.n && okR; i++) { int t1[4], p[4]; mulm(g, GR_.e[i], t1); mulm(t1, gi, p); if (!ingrp(&GR_, p)) okR = 0; }
+            /* keep one representative per left coset gL (resp. gR) */
+            if (okL) { int dup = 0; for (int j = 0; j < NLg.n && !dup; j++) { int ji[4], p[4]; adjm(NLg.e[j], ji); mulm(ji, g, p); if (ingrp(&GL_, p)) dup = 1; }
+                if (!dup) { if (NLg.n >= 4096) fatal("N(L) too big"); memcpy(NLg.e[NLg.n++], g, sizeof g); } }
+            if (okR) { int dup = 0; for (int j = 0; j < NRg.n && !dup; j++) { int ji[4], p[4]; adjm(NRg.e[j], ji); mulm(ji, g, p); if (ingrp(&GR_, p)) dup = 1; }
+                if (!dup) { if (NRg.n >= 4096) fatal("N(R) too big"); memcpy(NRg.e[NRg.n++], g, sizeof g); } }
+        }
+        build_normalizer();
+        fprintf(stderr, "|N_G(L)/L| = %d, |N_G(R)/R| = %d, N_PGL(L) cap N_PGL(R) = %d elements\n", NLg.n, NRg.n, NAMB);
+        uint32_t *par = malloc(4 * (size_t)T->n); for (uint32_t i = 0; i < T->n; i++) par[i] = i;
+        #define FP(x) ({ uint32_t _x = (x); while (par[_x] != _x) { par[_x] = par[par[_x]]; _x = par[_x]; } _x; })
+        #define UN(a, b) do { uint32_t _a = FP(a), _b = FP(b); if (_a != _b) { if (_a < _b) par[_b] = _a; else par[_a] = _b; } } while (0)
+        uint32_t nreg = 0;
+        for (uint32_t id = 0; id < T->n; id++) {
+            if (T->sz[id] != (uint32_t)GR_.n) continue; nreg++;
+            int z[4] = { T->rep[id][0], T->rep[id][1], T->rep[id][2], T->rep[id][3] };
+            for (int a = 0; a < NLg.n; a++) for (int b = 0; b < NRg.n; b++) { int bi[4], t1[4], p[4]; adjm(NRg.e[b], bi); mulm(NLg.e[a], z, t1); mulm(t1, bi, p); UN(id, T->oid[keym(p)]); }
+            for (int k2 = 0; k2 < NAMB; k2++) { int na[4], t1[4], p[4]; adjm(AMB[k2], na); mulm(AMB[k2], z, t1); mulm(t1, na, p); int bit = norm_mat(p); if (M2 == 1 && bit) continue; UN(id, T->oid[keyof(p, bit)]); }
+            if (LEQR) { int zi[4]; adjm(z, zi); UN(id, T->oid[keym(zi)]); }
+        }
+        uint32_t ncls = 0; for (uint32_t id = 0; id < T->n; id++) if (T->sz[id] == (uint32_t)GR_.n && FP(id) == id) ncls++;
+        printf("regular double cosets %u, isomorphism classes (at most) %u\n", nreg, ncls);
+        if (argc > ai) {
+            FILE *f = fopen(argv[ai], "r"); if (!f) fatal("cannot open scan file");
+            long *best = malloc(sizeof(long) * T->n); for (uint32_t i = 0; i < T->n; i++) best[i] = -1;
+            char line[512]; long nl2 = 0;
+            while (fgets(line, sizeof line, f)) { unsigned id; long a, b; char tag;
+                int got = 0;
+                if (sscanf(line, "M %u %*u %ld %ld", &id, &a, &b) == 3) got = 1;
+                else if (sscanf(line, "%c %u %*u %*u %ld %ld", &tag, &id, &a, &b) == 4 && tag == 'A') got = 1;
+                if (!got || id >= T->n) continue; nl2++;
+                uint32_t r = FP(id); if (best[r] < 0 || a + b < best[r]) best[r] = a + b; }
+            fclose(f);
+            uint32_t nsc = 0; long mins[8] = { -1, -1, -1, -1, -1, -1, -1, -1 };
+            for (uint32_t id = 0; id < T->n; id++) if (best[id] >= 0) { nsc++; long v = best[id];
+                for (int i = 0; i < 8; i++) { if (mins[i] < 0 || v < mins[i]) { for (int j = 7; j > i; j--) mins[j] = mins[j - 1]; mins[i] = v; break; } } }
+            printf("scan lines %ld, classes covered %u, best 8 class minima (uBA+uAA):", nl2, nsc);
+            for (int i = 0; i < 8; i++) printf(" %ld", mins[i]); printf("\n");
+        }
+        return 0;
+    }
+    if (!strcmp(mode, "fiber")) {
+        /* fibres of the overgroup M = N_G(<r>) (r of order 5 in L): are uncovered B-vertices clustered in M-cosets? */
+        int k = atoi(argv[ai++]); int z[16][4]; ai += parse_z(argv + ai, k, z);
+        if (set_D(k, z)) fatal("degree too big");
+        int ri = -1; for (int i = 0; i < GL_.n; i++) if (order_of(GL_.e[i]) == 5) { ri = i; break; }
+        if (ri < 0) fatal("no element of order 5 in L");
+        Grp C5 = closure(1, &GL_.e[ri]);
+        Grp M; M.e = malloc(sizeof(int[4]) * MAXH); M.n = 0;
+        for (uint64_t kk = 0; kk < NKEY; kk++) { int g[4], gi[4], t1[4], p[4]; decode(kk, M2, g); adjm(g, gi); mulm(g, GL_.e[ri], t1); mulm(t1, gi, p);
+            if (ingrp(&C5, p)) { if (M.n >= MAXH) fatal("M too big"); norm_mat(g); memcpy(M.e[M.n++], g, sizeof g); } }
+        Grp E; E.e = malloc(sizeof(int[4])); E.n = 1; E.e[0][0] = 1; E.e[0][1] = 0; E.e[0][2] = 0; E.e[0][3] = 1;
+        DCT TM = build_dct(&M, &E);
+        fprintf(stderr, "M = N(<r>) has order %d, %u cosets\n", M.n, TM.n);
+        bfs(0, &TLL, &TRL, 0);
+        uint16_t *cnt = calloc(TM.n, 2); long tot = 0;
+        for (long i = 0; i < nunv[1]; i++) { uint32_t o = UNV[1][i]; const uint16_t *y = TRL.rep[o];
+            for (int h = 0; h < GL_.n; h++) { int yy[4] = { y[0], y[1], y[2], y[3] }, p[4]; mulm(yy, GL_.e[h], p);
+                /* distinct cosets only for regular orbits; special orbits repeat cosets, count them once per orbit element */
+                cnt[TM.oid[keym(p)]]++; tot++; } }
+        long hist[64] = { 0 }; for (uint32_t c = 0; c < TM.n; c++) hist[cnt[c] < 63 ? cnt[c] : 63]++;
+        printf("uncovered B-coset incidences %ld (regular orbits contribute 10 each) over %u M-fibres of %d cosets\n", tot, TM.n, M.n / GL_.n);
+        printf("fibres by number of uncovered cosets:"); for (int i = 0; i < 64; i++) if (hist[i]) printf(" %d:%ld", i, hist[i]); printf("\n");
+        double pairs = 0; for (uint32_t c = 0; c < TM.n; c++) pairs += (double)cnt[c] * (cnt[c] - 1) / 2;
+        printf("pairs in the same fibre %.0f, independent expectation %.1f\n", pairs, (double)tot * (tot - 1) / 2 / TM.n);
+        return 0;
+    }
     if (!strcmp(mode, "bench")) {
         int n = atoi(argv[ai++]); double tb = now(); long sum = 0; int done = 0;
         int hreg = GL_.n;
