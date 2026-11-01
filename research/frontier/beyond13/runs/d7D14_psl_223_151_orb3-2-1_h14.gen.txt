@@ -8,3 +8,8 @@ selftest group multiplication: associativity, identity, inverse on 20000 random 
 file runs/d7D14_psl_223_151_orb3-2-1_h14.out
 header: 7 14 psl 223 n 151 N 837245472
 group psl 223 x Z_151, |G| = 837245472 = N, vertices 2N = 1674490944; 7 distinct generators
+from (e,A): reached A 837245472/837245472, B 837245472/837245472 within 14; ecc 14; level sizes [1, 7, 42, 252, 1512, 9072, 54420, 326385, 1955508, 11651644, 67317304, 326455109, 730270981, 498803003, 37645704]  (370s)
+from (e,B): reached A 837245472/837245472, B 837245472/837245472 within 14; ecc 14; level sizes [1, 7, 42, 252, 1512, 9072, 54420, 326385, 1955508, 11651644, 67316870, 326455109, 730258448, 498803003, 37658671]  (732s)
+VALID d=7 D=14 group=psl 223 x Z_151 N=837245472 vertices=1674490944 (distinct generators, 7-regular simple; every vertex within 14 of both (e,A) and (e,B); ecc 14; 732s)
+exit: 0
+end: 2026-11-01T14:50:59Z (732 s)
