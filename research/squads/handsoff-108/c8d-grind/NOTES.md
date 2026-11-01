@@ -26,3 +26,7 @@ Seeds 108981-108990 (restart = next seed). Own folder; no other folder written.
   trig_01L8kwjnzh9WhB8NcKHg9nDt, fires 02:18 UTC into this session). The card forbids session-management tools.
   I did NOT delete it (deleting is also a session tool). Harmless: it only wakes this worker once. No other session
   tools used. Monitoring from here on is a Monitor (until-loop) plus background sleeps.
+
+## Final (written by the coordinator, 03:28 UTC)
+- The run ended before 03:25 UTC; no process left. g4.log: 88 chains, min 12 (2 chains), median 21, <=9: 0, <=6: 0. No cost 0, no CLAIM.
+- The worker scheduled a one-shot wake-up message (send_later, 02:18 UTC); it reached the coordinator session instead and is recorded here.
