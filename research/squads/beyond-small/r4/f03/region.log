@@ -31,3 +31,8 @@
 31 plane j=2 drop=16 keep=26 regrow=40 best=42 rej t=1866
 32 line j=2 drop=4 keep=38 regrow=41 best=42 rej t=1926
 33 line j=0 drop=3 keep=39 regrow=42 best=42 ACC t=1986
+34 plane j=2 drop=15 keep=27 regrow=42 best=42 ACC t=2046
+35 plane j=0 drop=13 keep=29 regrow=43 best=43 ACC t=2106
+36 line j=1 drop=3 keep=40 regrow=43 best=43 ACC t=2166
+37 line j=2 drop=4 keep=39 regrow=43 best=43 ACC t=2227
+38 line j=0 drop=4 keep=39 regrow=43 best=43 ACC t=2287
