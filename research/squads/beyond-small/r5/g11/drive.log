@@ -1,0 +1,222 @@
+=== chunk 1 seed 12001 start 06:56:05 best=45
+setup 1.15s
+pool side 0: 0 covers, 0 lines (rejected: format 0, keys 0, cover 0)
+pool side 1: 39910 covers, 159640 lines (rejected: format 0, keys 0, cover 0)
+start: K0=0 K1=45 conflict-degree-sum=0 (1.78s)
+t=10 T=0.094 K0=0 K1=45 C=0 | acc ins 0/0 del 0/3530 rep 0/0 line 1044/1216
+t=20 T=0.089 K0=0 K1=45 C=0 | acc ins 0/0 del 0/7148 rep 0/0 line 2086/2398
+t=30 T=0.083 K0=0 K1=45 C=0 | acc ins 0/0 del 0/10758 rep 0/0 line 3153/3609
+t=40 T=0.079 K0=0 K1=45 C=0 | acc ins 0/0 del 0/14710 rep 0/0 line 4355/4970
+t=50 T=0.074 K0=0 K1=45 C=0 | acc ins 0/0 del 0/18945 rep 0/0 line 5567/6336
+t=60 T=0.070 K0=0 K1=45 C=0 | acc ins 0/0 del 0/23066 rep 0/0 line 6809/7744
+t=70 T=0.066 K0=0 K1=45 C=0 | acc ins 0/0 del 0/27016 rep 0/0 line 7911/9016
+t=80 T=0.062 K0=0 K1=45 C=0 | acc ins 0/0 del 0/30838 rep 0/0 line 9037/10349
+t=90 T=0.058 K0=0 K1=45 C=0 | acc ins 0/0 del 0/34847 rep 0/0 line 10142/11613
+t=100 T=0.055 K0=0 K1=45 C=0 | acc ins 0/0 del 0/39005 rep 0/0 line 11311/12965
+t=110 T=0.051 K0=0 K1=45 C=0 | acc ins 0/0 del 0/43001 rep 0/0 line 12475/14325
+t=120 T=0.048 K0=0 K1=45 C=0 | acc ins 0/0 del 0/46875 rep 0/0 line 13656/15657
+t=130 T=0.046 K0=0 K1=45 C=0 | acc ins 0/0 del 0/50649 rep 0/0 line 14778/16926
+t=140 T=0.043 K0=0 K1=45 C=0 | acc ins 0/0 del 0/54420 rep 0/0 line 15914/18211
+t=150 T=0.040 K0=0 K1=45 C=0 | acc ins 0/0 del 0/58270 rep 0/0 line 17169/19757
+t=160 T=0.038 K0=0 K1=45 C=0 | acc ins 0/0 del 0/61812 rep 0/0 line 18288/20960
+t=170 T=0.036 K0=0 K1=45 C=0 | acc ins 0/0 del 0/65725 rep 0/0 line 19581/22619
+t=180 T=0.034 K0=0 K1=45 C=0 | acc ins 0/0 del 0/69287 rep 0/0 line 20705/23884
+t=190 T=0.032 K0=0 K1=45 C=0 | acc ins 0/0 del 0/73284 rep 0/0 line 21924/25200
+end: iterations 513920, raw K0=0 K1=45 C=0
+valid orbits 45 (K0=0 K1=45) hubs 990; file had 45 orbits
+=== chunk 1 end 06:59:27 best_now=45
+=== chunk 2 seed 12002 start 06:59:27 best=45
+setup 0.90s
+pool side 0: 0 covers, 0 lines (rejected: format 0, keys 0, cover 0)
+pool side 1: 39910 covers, 159640 lines (rejected: format 0, keys 0, cover 0)
+start: K0=0 K1=45 conflict-degree-sum=0 (1.52s)
+=== chunk 2 seed 12002 T0=0.18 start 06:59:42 best=45
+setup 1.05s
+pool side 0: 0 covers, 0 lines (rejected: format 0, keys 0, cover 0)
+pool side 1: 39910 covers, 159640 lines (rejected: format 0, keys 0, cover 0)
+start: K0=0 K1=45 conflict-degree-sum=0 (1.91s)
+t=10 T=0.169 K0=0 K1=35 C=0 | acc ins 0/1388 del 10/2661 rep 243/1834 line 1520/2510
+t=20 T=0.158 K0=0 K1=34 C=0 | acc ins 3/5129 del 14/4705 rep 1194/6546 line 3140/5034
+t=30 T=0.148 K0=0 K1=35 C=0 | acc ins 8/9216 del 18/6842 rep 2227/11395 line 4835/7501
+t=40 T=0.139 K0=0 K1=36 C=0 | acc ins 13/13069 del 22/9241 rep 3404/16456 line 6761/10284
+t=50 T=0.130 K0=0 K1=36 C=0 | acc ins 15/17147 del 24/11303 rep 4384/21522 line 8481/12776
+t=60 T=0.122 K0=0 K1=36 C=0 | acc ins 15/21478 del 24/13516 rep 5295/26662 line 10273/15415
+t=70 T=0.115 K0=0 K1=36 C=0 | acc ins 16/25951 del 25/15854 rep 6162/32116 line 12187/18117
+t=80 T=0.108 K0=0 K1=36 C=0 | acc ins 17/30390 del 26/18258 rep 7088/37498 line 13944/20822
+t=90 T=0.101 K0=0 K1=38 C=0 | acc ins 19/32697 del 26/21064 rep 8048/41748 line 16067/23896
+t=100 T=0.095 K0=0 K1=40 C=0 | acc ins 21/34260 del 26/24271 rep 8880/45387 line 18567/27482
+t=110 T=0.089 K0=0 K1=40 C=0 | acc ins 21/34931 del 26/27975 rep 9354/47687 line 21405/31579
+t=120 T=0.083 K0=0 K1=40 C=0 | acc ins 21/35788 del 26/31415 rep 9708/50102 line 23878/35207
+t=130 T=0.078 K0=0 K1=40 C=0 | acc ins 21/36608 del 26/34632 rep 10028/52353 line 26321/38724
+t=141 T=0.073 K0=0 K1=40 C=0 | acc ins 21/38031 del 26/38468 rep 10361/55613 line 29210/42846
+t=151 T=0.069 K0=0 K1=40 C=0 | acc ins 21/39329 del 26/42208 rep 10660/58607 line 31868/46767
+t=161 T=0.064 K0=0 K1=40 C=0 | acc ins 21/40459 del 26/45638 rep 10898/61233 line 34378/50443
+t=171 T=0.060 K0=0 K1=40 C=0 | acc ins 21/41458 del 26/49059 rep 11379/63875 line 36975/54241
+t=181 T=0.057 K0=0 K1=40 C=0 | acc ins 21/42845 del 26/52251 rep 11936/66915 line 39402/57830
+t=191 T=0.053 K0=0 K1=40 C=0 | acc ins 21/43852 del 26/55591 rep 12317/69533 line 41716/61355
+end: iterations 389632, raw K0=0 K1=40 C=0
+valid orbits 40 (K0=0 K1=40) hubs 880; file had 45 orbits
+=== chunk 2 end 07:03:04 best_now=45
+=== chunk 3 seed 12003 T0=0.10 start 07:03:04 best=45
+setup 0.85s
+pool side 0: 0 covers, 0 lines (rejected: format 0, keys 0, cover 0)
+pool side 1: 39910 covers, 159640 lines (rejected: format 0, keys 0, cover 0)
+start: K0=0 K1=45 conflict-degree-sum=0 (1.55s)
+t=10 T=0.094 K0=0 K1=45 C=0 | acc ins 0/0 del 0/3678 rep 0/0 line 1104/1296
+t=20 T=0.089 K0=0 K1=45 C=0 | acc ins 0/0 del 0/6963 rep 0/0 line 2093/2488
+t=30 T=0.083 K0=0 K1=45 C=0 | acc ins 0/0 del 0/10505 rep 0/0 line 3209/3740
+t=40 T=0.079 K0=0 K1=45 C=0 | acc ins 0/0 del 0/14015 rep 0/0 line 4244/4925
+t=50 T=0.074 K0=0 K1=45 C=0 | acc ins 0/0 del 0/17596 rep 0/0 line 5379/6198
+t=60 T=0.070 K0=0 K1=45 C=0 | acc ins 0/0 del 0/21958 rep 0/0 line 6625/7577
+t=70 T=0.066 K0=0 K1=45 C=0 | acc ins 0/0 del 0/26163 rep 0/0 line 7830/8933
+t=80 T=0.062 K0=0 K1=45 C=0 | acc ins 0/0 del 0/30405 rep 0/0 line 9046/10306
+t=90 T=0.058 K0=0 K1=45 C=0 | acc ins 0/0 del 0/34437 rep 0/0 line 10255/11657
+t=100 T=0.055 K0=0 K1=45 C=0 | acc ins 0/0 del 0/38483 rep 0/0 line 11403/12979
+t=110 T=0.051 K0=0 K1=45 C=0 | acc ins 0/0 del 0/42855 rep 0/0 line 12712/14460
+t=120 T=0.048 K0=0 K1=45 C=0 | acc ins 0/0 del 0/47273 rep 0/0 line 14000/15984
+t=130 T=0.046 K0=0 K1=45 C=0 | acc ins 0/0 del 0/51145 rep 0/0 line 15172/17367
+t=140 T=0.043 K0=0 K1=45 C=0 | acc ins 0/0 del 0/55026 rep 0/0 line 16345/18803
+t=150 T=0.040 K0=0 K1=45 C=0 | acc ins 0/0 del 0/59295 rep 0/0 line 17626/20263
+t=160 T=0.038 K0=0 K1=45 C=0 | acc ins 0/0 del 0/63568 rep 0/0 line 18915/21939
+t=170 T=0.036 K0=0 K1=45 C=0 | acc ins 0/0 del 0/67747 rep 0/0 line 20150/23334
+t=181 T=0.034 K0=0 K1=45 C=0 | acc ins 0/0 del 0/71654 rep 0/0 line 21257/24641
+t=191 T=0.032 K0=0 K1=45 C=0 | acc ins 0/0 del 0/75339 rep 0/0 line 22329/25847
+end: iterations 528128, raw K0=0 K1=45 C=0
+valid orbits 45 (K0=0 K1=45) hubs 990; file had 45 orbits
+=== chunk 3 end 07:06:25 best_now=45
+=== chunk 4 seed 12004 T0=0.18 start 07:06:25 best=45
+setup 1.15s
+pool side 0: 0 covers, 0 lines (rejected: format 0, keys 0, cover 0)
+pool side 1: 39910 covers, 159640 lines (rejected: format 0, keys 0, cover 0)
+start: K0=0 K1=45 conflict-degree-sum=0 (1.80s)
+t=10 T=0.169 K0=0 K1=33 C=0 | acc ins 2/1300 del 14/3407 rep 508/2193 line 2144/3687
+t=20 T=0.158 K0=0 K1=35 C=0 | acc ins 17/5160 del 27/5419 rep 1808/6827 line 3802/6280
+t=30 T=0.148 K0=0 K1=36 C=2 | acc ins 34/9199 del 43/7802 rep 3376/12055 line 5648/9089
+t=40 T=0.139 K0=0 K1=36 C=0 | acc ins 39/12635 del 48/10355 rep 4744/17188 line 7586/12252
+t=50 T=0.131 K0=0 K1=38 C=0 | acc ins 44/16661 del 51/12919 rep 5589/22574 line 9449/15254
+t=60 T=0.122 K0=0 K1=38 C=0 | acc ins 45/20786 del 52/15383 rep 6544/28042 line 11238/18242
+t=70 T=0.115 K0=0 K1=38 C=0 | acc ins 45/24361 del 52/18287 rep 7582/33548 line 13428/21713
+t=80 T=0.108 K0=0 K1=37 C=0 | acc ins 45/27469 del 53/21039 rep 8509/38604 line 15495/24937
+t=90 T=0.101 K0=0 K1=37 C=0 | acc ins 47/31187 del 55/23645 rep 9713/43839 line 17505/28000
+t=100 T=0.095 K0=0 K1=37 C=0 | acc ins 47/35321 del 55/26282 rep 10974/49310 line 19449/31051
+t=110 T=0.089 K0=0 K1=38 C=0 | acc ins 48/38863 del 55/28844 rep 12176/54785 line 21413/34105
+t=120 T=0.083 K0=0 K1=38 C=0 | acc ins 49/41528 del 56/31987 rep 13127/59624 line 23838/37793
+t=130 T=0.078 K0=0 K1=38 C=0 | acc ins 49/45378 del 56/34870 rep 14153/65346 line 26061/41248
+t=140 T=0.073 K0=0 K1=38 C=0 | acc ins 49/48993 del 56/37706 rep 15577/70993 line 28142/44548
+t=150 T=0.069 K0=0 K1=38 C=0 | acc ins 49/52517 del 56/40556 rep 16353/76285 line 30284/47956
+t=161 T=0.064 K0=0 K1=38 C=0 | acc ins 51/56508 del 58/43317 rep 17454/81827 line 32330/51174
+t=171 T=0.060 K0=0 K1=38 C=0 | acc ins 51/59608 del 58/46241 rep 18489/86595 line 34584/54773
+t=181 T=0.057 K0=0 K1=38 C=0 | acc ins 51/62708 del 58/49174 rep 19453/91783 line 36835/58257
+t=191 T=0.053 K0=0 K1=38 C=0 | acc ins 52/64841 del 59/52281 rep 20504/96194 line 39254/62080
+end: iterations 368640, raw K0=0 K1=38 C=0
+valid orbits 38 (K0=0 K1=38) hubs 836; file had 45 orbits
+=== chunk 4 end 07:09:47 best_now=45
+=== chunk 5 seed 12005 T0=0.10 start 07:09:47 best=45
+setup 1.07s
+pool side 0: 0 covers, 0 lines (rejected: format 0, keys 0, cover 0)
+pool side 1: 39910 covers, 159640 lines (rejected: format 0, keys 0, cover 0)
+start: K0=0 K1=45 conflict-degree-sum=0 (1.71s)
+t=10 T=0.094 K0=0 K1=45 C=0 | acc ins 0/0 del 0/4186 rep 0/0 line 1213/1381
+t=20 T=0.089 K0=0 K1=45 C=0 | acc ins 0/0 del 0/8266 rep 0/0 line 2370/2793
+t=30 T=0.083 K0=0 K1=45 C=0 | acc ins 0/0 del 0/11753 rep 0/0 line 3382/3952
+t=40 T=0.079 K0=0 K1=45 C=0 | acc ins 0/0 del 0/15306 rep 0/0 line 4540/5414
+t=50 T=0.074 K0=0 K1=45 C=0 | acc ins 0/0 del 0/18796 rep 0/0 line 5611/6632
+t=60 T=0.070 K0=0 K1=45 C=0 | acc ins 0/0 del 0/22638 rep 0/0 line 6779/8153
+t=70 T=0.066 K0=0 K1=45 C=0 | acc ins 0/0 del 0/27131 rep 0/0 line 8129/9819
+t=80 T=0.062 K0=0 K1=45 C=0 | acc ins 0/0 del 0/30966 rep 2/2 line 9344/11212
+t=90 T=0.058 K0=0 K1=45 C=0 | acc ins 0/0 del 0/34865 rep 2/2 line 10458/12482
+t=100 T=0.055 K0=0 K1=45 C=0 | acc ins 0/0 del 0/38919 rep 125/125 line 11721/13991
+t=110 T=0.052 K0=0 K1=45 C=0 | acc ins 0/0 del 0/42736 rep 217/217 line 12870/15355
+t=120 T=0.048 K0=0 K1=45 C=0 | acc ins 0/0 del 0/46807 rep 238/238 line 14119/16838
+t=130 T=0.046 K0=0 K1=45 C=0 | acc ins 0/0 del 0/50945 rep 437/437 line 15373/18218
+t=140 T=0.043 K0=0 K1=45 C=0 | acc ins 0/0 del 0/54866 rep 640/640 line 16595/19511
+t=150 T=0.040 K0=0 K1=45 C=0 | acc ins 0/0 del 0/58690 rep 744/744 line 17748/20768
+t=160 T=0.038 K0=0 K1=45 C=0 | acc ins 0/0 del 0/62402 rep 744/744 line 18902/21993
+t=170 T=0.036 K0=0 K1=45 C=0 | acc ins 0/0 del 0/66372 rep 744/744 line 20126/23406
+t=180 T=0.034 K0=0 K1=45 C=0 | acc ins 0/0 del 0/70443 rep 753/753 line 21294/24766
+t=190 T=0.032 K0=0 K1=45 C=0 | acc ins 0/0 del 0/74690 rep 846/846 line 22730/26749
+end: iterations 521088, raw K0=0 K1=45 C=0
+valid orbits 45 (K0=0 K1=45) hubs 990; file had 45 orbits
+=== chunk 5 end 07:13:09 best_now=45
+=== chunk 6 seed 12006 T0=0.18 start 07:13:09 best=45
+setup 0.90s
+pool side 0: 0 covers, 0 lines (rejected: format 0, keys 0, cover 0)
+pool side 1: 39910 covers, 159640 lines (rejected: format 0, keys 0, cover 0)
+start: K0=0 K1=45 conflict-degree-sum=0 (1.64s)
+t=10 T=0.169 K0=0 K1=36 C=0 | acc ins 0/1159 del 9/3264 rep 463/2223 line 1959/3315
+t=20 T=0.158 K0=0 K1=37 C=0 | acc ins 4/4418 del 12/5868 rep 1610/6846 line 3860/6260
+t=30 T=0.148 K0=0 K1=35 C=0 | acc ins 6/7008 del 16/8534 rep 2358/10858 line 5891/9378
+t=40 T=0.139 K0=0 K1=35 C=0 | acc ins 7/10833 del 17/10906 rep 3487/15917 line 7706/12223
+t=50 T=0.130 K0=0 K1=35 C=0 | acc ins 19/14893 del 29/13021 rep 4499/20791 line 9416/14802
+t=60 T=0.122 K0=0 K1=37 C=0 | acc ins 29/18859 del 37/15221 rep 5698/25853 line 11281/17495
+t=70 T=0.115 K0=0 K1=36 C=0 | acc ins 29/23049 del 38/17662 rep 6502/31105 line 13055/20213
+t=80 T=0.108 K0=0 K1=35 C=0 | acc ins 30/27438 del 40/20072 rep 7179/36371 line 14870/22962
+t=90 T=0.101 K0=0 K1=36 C=0 | acc ins 32/31540 del 41/22689 rep 8349/41763 line 16824/25877
+t=100 T=0.095 K0=0 K1=36 C=0 | acc ins 32/35509 del 41/24880 rep 9255/46708 line 18399/28318
+t=111 T=0.089 K0=0 K1=37 C=0 | acc ins 33/39355 del 41/27403 rep 10083/52006 line 20369/31353
+t=121 T=0.083 K0=0 K1=37 C=0 | acc ins 34/43648 del 42/29821 rep 11287/57530 line 22319/34245
+t=131 T=0.078 K0=0 K1=37 C=0 | acc ins 34/47169 del 42/32437 rep 11969/62643 line 24470/37484
+t=141 T=0.073 K0=0 K1=39 C=0 | acc ins 36/51143 del 42/34968 rep 13106/68024 line 26288/40400
+t=151 T=0.069 K0=0 K1=40 C=0 | acc ins 37/52478 del 42/38043 rep 13773/71012 line 28512/43981
+t=161 T=0.064 K0=0 K1=40 C=0 | acc ins 37/54303 del 42/41010 rep 14346/74506 line 30577/47296
+t=171 T=0.060 K0=0 K1=40 C=0 | acc ins 37/56132 del 42/43784 rep 14804/78068 line 32521/50461
+t=181 T=0.057 K0=0 K1=40 C=0 | acc ins 37/57742 del 42/46953 rep 15357/81562 line 34713/54011
+t=191 T=0.053 K0=0 K1=40 C=0 | acc ins 37/59590 del 42/49840 rep 16025/85245 line 36690/57260
+end: iterations 351104, raw K0=0 K1=40 C=0
+valid orbits 40 (K0=0 K1=40) hubs 880; file had 45 orbits
+=== chunk 6 end 07:16:31 best_now=45
+=== chunk 7 seed 12007 T0=0.10 start 07:16:31 best=45
+setup 0.96s
+pool side 0: 0 covers, 0 lines (rejected: format 0, keys 0, cover 0)
+pool side 1: 39910 covers, 159640 lines (rejected: format 0, keys 0, cover 0)
+start: K0=0 K1=45 conflict-degree-sum=0 (1.84s)
+t=10 T=0.094 K0=0 K1=45 C=0 | acc ins 0/0 del 0/4072 rep 0/0 line 1243/1448
+t=20 T=0.089 K0=0 K1=45 C=0 | acc ins 0/0 del 0/8342 rep 0/0 line 2498/2884
+t=30 T=0.083 K0=0 K1=45 C=0 | acc ins 0/0 del 0/12793 rep 0/0 line 3744/4298
+t=40 T=0.079 K0=0 K1=45 C=0 | acc ins 0/0 del 0/17193 rep 0/0 line 5027/5753
+t=50 T=0.074 K0=0 K1=45 C=0 | acc ins 0/0 del 0/21628 rep 0/0 line 6385/7349
+t=60 T=0.070 K0=0 K1=45 C=0 | acc ins 0/0 del 0/26192 rep 0/0 line 7807/9134
+t=70 T=0.066 K0=0 K1=45 C=0 | acc ins 0/0 del 0/30054 rep 0/0 line 8894/10342
+t=80 T=0.062 K0=0 K1=45 C=0 | acc ins 0/0 del 0/33812 rep 0/0 line 10011/11603
+t=90 T=0.058 K0=0 K1=45 C=0 | acc ins 0/0 del 0/37376 rep 0/0 line 11172/13034
+t=100 T=0.055 K0=0 K1=45 C=0 | acc ins 0/0 del 0/41454 rep 0/0 line 12528/14639
+t=110 T=0.051 K0=0 K1=45 C=0 | acc ins 0/0 del 0/45278 rep 0/0 line 13701/15980
+t=120 T=0.048 K0=0 K1=45 C=0 | acc ins 0/0 del 0/49687 rep 0/0 line 15017/17428
+t=130 T=0.046 K0=0 K1=45 C=0 | acc ins 0/0 del 0/54388 rep 0/0 line 16473/19165
+t=140 T=0.043 K0=0 K1=45 C=0 | acc ins 0/0 del 0/58734 rep 0/0 line 17835/20731
+t=150 T=0.040 K0=0 K1=45 C=0 | acc ins 0/0 del 0/62673 rep 0/0 line 19041/22089
+t=160 T=0.038 K0=0 K1=45 C=0 | acc ins 0/0 del 0/66617 rep 0/0 line 20294/23571
+t=170 T=0.036 K0=0 K1=45 C=0 | acc ins 0/0 del 0/70906 rep 0/0 line 21717/25485
+t=180 T=0.034 K0=0 K1=45 C=0 | acc ins 0/0 del 0/75205 rep 0/0 line 22963/26844
+t=190 T=0.032 K0=0 K1=45 C=0 | acc ins 0/0 del 0/79519 rep 0/0 line 24315/28464
+end: iterations 557696, raw K0=0 K1=45 C=0
+valid orbits 45 (K0=0 K1=45) hubs 990; file had 45 orbits
+=== chunk 7 end 07:19:53 best_now=45
+=== chunk 8 seed 12008 T0=0.18 start 07:19:53 best=45
+setup 1.05s
+pool side 0: 0 covers, 0 lines (rejected: format 0, keys 0, cover 0)
+pool side 1: 39910 covers, 159640 lines (rejected: format 0, keys 0, cover 0)
+start: K0=0 K1=45 conflict-degree-sum=0 (1.81s)
+t=10 T=0.169 K0=0 K1=35 C=0 | acc ins 1/297 del 11/3313 rep 289/1111 line 2028/3521
+t=20 T=0.158 K0=0 K1=35 C=0 | acc ins 11/3899 del 21/5815 rep 1536/6085 line 4010/6416
+t=30 T=0.148 K0=0 K1=37 C=0 | acc ins 16/7250 del 24/8094 rep 2844/10874 line 5879/9115
+t=40 T=0.139 K0=0 K1=34 C=0 | acc ins 18/10638 del 29/10678 rep 3885/15772 line 7939/12027
+t=50 T=0.131 K0=0 K1=36 C=0 | acc ins 27/14687 del 36/13106 rep 5177/21157 line 9938/14978
+t=60 T=0.122 K0=0 K1=38 C=0 | acc ins 31/17867 del 38/15821 rep 6309/26050 line 12202/18196
+t=70 T=0.115 K0=0 K1=37 C=0 | acc ins 31/20848 del 39/18521 rep 6977/30806 line 14360/21271
+t=80 T=0.108 K0=0 K1=37 C=0 | acc ins 33/23699 del 41/20978 rep 7554/35103 line 16282/24035
+t=90 T=0.101 K0=0 K1=37 C=0 | acc ins 33/27575 del 41/23076 rep 8005/39714 line 17826/26340
+t=100 T=0.095 K0=0 K1=37 C=0 | acc ins 33/31668 del 41/25451 rep 8589/44911 line 19647/29035
+t=110 T=0.089 K0=0 K1=37 C=0 | acc ins 33/35355 del 41/28113 rep 9508/50333 line 21841/32173
+t=120 T=0.083 K0=0 K1=37 C=0 | acc ins 33/39756 del 41/30791 rep 10664/56356 line 23916/35219
+t=130 T=0.078 K0=0 K1=38 C=0 | acc ins 34/43147 del 41/33322 rep 11413/61315 line 25907/38187
+t=140 T=0.073 K0=0 K1=38 C=0 | acc ins 34/45924 del 41/36015 rep 12022/65833 line 28072/41363
+t=151 T=0.069 K0=0 K1=38 C=0 | acc ins 34/49425 del 41/38909 rep 12801/70963 line 30398/44689
+t=161 T=0.064 K0=0 K1=38 C=0 | acc ins 34/53391 del 41/41661 rep 13581/76370 line 32503/47814
+t=171 T=0.060 K0=0 K1=39 C=0 | acc ins 35/57105 del 41/44352 rep 14289/81765 line 34763/51038
+t=181 T=0.057 K0=0 K1=39 C=0 | acc ins 35/60389 del 41/47718 rep 15087/87310 line 37408/54875
+t=191 T=0.053 K0=0 K1=39 C=0 | acc ins 35/63386 del 41/51023 rep 15924/92386 line 39981/58574
+end: iterations 361984, raw K0=0 K1=40 C=0
+valid orbits 40 (K0=0 K1=40) hubs 880; file had 45 orbits
+=== chunk 8 end 07:23:15 best_now=45
+DONE

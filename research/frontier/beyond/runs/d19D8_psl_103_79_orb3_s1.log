@@ -1,0 +1,9 @@
+group psl 103 x Z_79, N=43158648 (2N=86317296), rows 5304 x 8137 bits (doubled row 280 words), memory 0.04 GB, threads 2
+alpha: conj by mat(0,102,1,102), z -> 23 z on Z_79 (fixed z: 1); ORBIT k=3 m=6 f=1; W=6.48233e+08 lambda=15.020 mu=12.94
+setup 0.0s
+start cost=15 (0.5s per eval)
+t=2 step=1 evals=5 slot=2 cand=12 cost=12 best=12 T=1.26
+t=3 step=2 evals=9 slot=1 cand=0 cost=0 best=0 T=1.06
+RESULT d=19 D=8 group=psl 103 x Z_79 N=43158648 vertices=86317296 best=0 evals=9 steps=2 time=3.4 orbit k=3 m=6 f=1 mu=12.94
+re-evaluation of the best S: cost 0
+wrote runs/d19D8_psl_103_79_orb3_s1.out

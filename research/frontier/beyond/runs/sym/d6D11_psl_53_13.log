@@ -1,0 +1,9 @@
+group psl 53 x Z_13, N=967356, identity 17914, H order 53, rows 18252, threads 1, setup 0.12s
+wide rows: HW order 117, rows 8268, setup 0.25s
+alpha: conj by mat(21,43,41,31) (index 59878), z -> 3 z on Z_13
+ORBIT k=3 m=2 f=0: |Fix(alpha)| = 26 (+e); mu = 3.20, mu/k = 1.07, fixed-point misses ~ 0.80
+start cost=42
+RESULT d=6 D=11 group=psl 53 x Z_13 N=967356 best=0 evals=9 time=0.1 orbit k=3 m=2 f=0 fix=26
+full diameter check: OK
+full diameter check after normalising s_0 = e: OK
+wrote d6D11_psl_53_13_orb3f0_s1.txt

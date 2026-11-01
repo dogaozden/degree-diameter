@@ -1,0 +1,5 @@
+check: apsp.c, director 2026-10-26T15:49:47Z
+rebuild: python3 mdm/build_mdm.py gq_q16.bin (gqgen 16) <(zcat mdm/dm_q16_s11_c05.sol.gz) 1 1 OUT.edges  [nu, sigma from squad r1/c05's dmfast run, seed 11]
+sha256(uncompressed) 1ec5d9f033ff3a2559e63a92eda4f7bfeb8aa70b17fcb4f8727a922050d8e2d5
+n=52428 edges=498066 degree min=19 max=19 bipartite=yes diameter=5
+RESULT VALID d=19 D=5 n=52428

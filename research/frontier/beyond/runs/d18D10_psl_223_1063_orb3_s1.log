@@ -1,0 +1,9 @@
+group psl 223 x Z_1063, N=5893986336 (2N=11787972672), rows 24864 x 237049 bits (doubled row 7432 words), memory 3.10 GB, threads 2
+alpha: conj by mat(0,222,1,222), z -> 343 z on Z_1063 (fixed z: 1); ORBIT k=3 m=5 f=3; W=1.26e+11 lambda=21.378 mu=3.06
+setup 0.0s
+fixed generators: 2 chosen among 110 alpha-fixed elements
+start cost=15 (119.4s per eval)
+t=274 step=1 evals=5 slot=3 cand=0 cost=0 best=0 T=1.26
+RESULT d=18 D=10 group=psl 223 x Z_1063 N=5893986336 vertices=11787972672 best=0 evals=5 steps=1 time=274.4 orbit k=3 m=5 f=3 mu=3.06
+re-evaluation of the best S: cost 0
+wrote runs/d18D10_psl_223_1063_orb3_s1.out

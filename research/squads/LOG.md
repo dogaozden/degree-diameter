@@ -3,49 +3,182 @@
 One entry per squad round (see .claude/skills/haiku-squad/SKILL.md). Started Oct 23, 2026.
 
 
-## 2026-10-31, job six-five-384 (Opus cloud session, branch claude/haar-graphs-order-384-y2a8qp), goal: (6,5) > 684 via Haar graphs of order 384
+## 2026-10-26, new-cells-beyond, round 1 (goal: first checked values for the 48 cells beyond the 2013 table)
 
-Exhaustive Haar search H(G,S), |S| = 6, diameter 5, over the 20,169 groups of order 384 (research/six-five-384/README.md).
-The director runs the exhaustive sweep on 3 cores; the squad gets the 4th core, so round 1 aimed at the bottleneck
-(speed of the per-group search, ~4 s per group with haarex4) rather than at new searches. Scorer for the speed cards:
-/tmp/claude-0/bench/bench.sh BIN (identical VALID/ASIDE/PAIR/DONE output to haarex4 on 342_12 (10 VALID sets),
-360_53 (41 side-A covers) and 384_11094; user CPU seconds; haarex4 12.4-14.5 s, haarex3 31.5 s under the same load).
+Session: Opus director, cloud (session_01V33FTKBcx5tdhhJVPXXVq3), branch claude/new-cells-beyond-etos3t. Files:
+research/squads/beyond/r1/ (HEADER.md, c01..c17.md, scoreboard.jsonl, one folder per card). 17 Haiku cards (effort
+high), launched together at 15:19 UTC on a 4-core / 15 GB container, each card one cell group or one method, with an
+"already found / ruled out" list in the header. Director, in parallel: odd D and fixed generators for haar_big, the Haar
+queue (D = 8..12), and the multi-doubled-matching lift (research/frontier/beyond/MDM.md).
 
-### Round s384r1 (10:52-11:12 UTC, 8 cards, research/squads/s384r1/)
-Cards: c1 reuse work across b for a fixed 4-prefix · c2 low-level throughput of the target solution sets · c3 cheaper
-orderly test bad() · c4 target ordering · c5 a sound earlier prune · c6 exact quotient test for |G/N| = 128, T = 3 ·
-c7 wildcard (algorithm) · c8 wildcard (tabu near-miss scout on order-384 groups).
-Best per card: c1 8.41 s (per-4-prefix cache of the b-free solution sets A4(x), skip of targets in Q4 Q4, bad(S,5)
-reduced to the terms with b) · c2 10.37 s (byte-array solution sets with store-only marks, -funroll-loops) · c3 12.77 s
-(bitset bad()) · c4 12.7 s (kill-weighted target order; within noise) · c5 no sound prune (counting bounds are vacuous:
-Q4 Q4 covers ~45 elements, one new letter reaches ~4|Q4||S| values) · c6 one infeasible order-128 quotient (128_2046,
-16 groups of order 384); 138 of the 150 most frequent order-128 quotients feasible, 11 undecided · c7 x and x^-1 have
-the same solution set (exact, negligible) · c8 best tabu cost 8 (|G \ (S^-1S)^2| + |G \ (SS^-1)^2|, group 384_18;
-median 23 over 60 groups; the 684 group reaches 0 in ~3 s).
-Director's checks: c1 gives output identical to haarex4 on the 7 other groups with side-A covers (360_55, 360_56,
-360_125, 360_126, 360_136, 360_138, 372_1) and the same prefixes= counts on three order-384 groups; installed as
-research/six-five-384/src/haarex5.c and the main sweep restarted with it (~1.5x). c8's closest groups (18, 95, 42, 45, 94)
-were already closed exhaustively (no side-A cover). c6's 2046 result is not used (the 16 groups are in the sweep).
-Kept for round 2: combine c1 + c2 (+ c3's bitset bad, c4's note that the square-root/conjugator lists cost ~20%).
+Cards (best checked value; all re-checked by the director):
+- c01 D=3: PG(2,16), PG(2,17), PG(2,19) (546, 614, 762, Moore) and the fourth hat at q=17 (19,3) 624. No +1 pair (analysis).
+- c02 D=4: W(16), W(17), W(19) (8,738, 10,440, 14,480, Moore) and AS(17)+clones (19,4) 10,982.
+- c03 (19,4) via Theorem B on Q(4,q) (ovoid clones + shadow lines on a partial spread): reproduces (7,4) 359 at q=5 (21
+  lines), but only 54 lines at q=9 where 61 are needed; q=17 still running at the time of writing.
+- c04 (20,5) route-chart lift over F5: chart with 22 singular patterns, K3,3 + doubled matching over Z18 (67,500) and
+  **Z20 (75,000)**; Z22 stalled at cost 4.
+- c05 (19,5), (20,5) DM lifts of W(16), W(17): dmfast reached 0 at q=16 (routes allowed); the director built the lift
+  and checked it: **(19,5) 52,428**. q=17 not reported.
+- c06 (17,5): Z8 lifts of W(13) with 3 extra matchings, blind annealing, cost in the millions. Nothing.
+- c07 (18,5): Z10 lift of W(13) with two doubled matchings, blind annealing of all voltages: cost 7,667, nothing. (The
+  director's structured version of the same lift, MDM.md, gives 47,600: ν needs only a parity condition, matchings free.)
+- c08 D=6: H(16), H(17) built (hexgen2) and BFS-sampled (≈95 sources each, Moore level sizes); Theorem D at q=17,
+  3,203,968 vertices, max eccentricity 6 from 96 sources; q=19 in progress.
+- c09 D=7: polygon covers of H(q): full apsp of the builder at q=3, 4 (r=1..3) and sampled BFS of the H(16) instances.
+- c10 D=8 2013 pattern: a Z20 lift of H(3)+2 matchings with diameter 8 (14,560 vertices = the pattern's 20·|H(3)| at
+  q=3, j=2) found by annealing from cost 2; q=4 stalled at 150.
+- c11 (3,11) **1,008** (Haar PSL(2,7)×Z3; metacyclic orders 350–400 fail). c12 (3,12) **1,320** (Haar PSL(2,11)).
+- c13 (4,11) **17,600**, (4,12) **48,000** (metacyclic Haar). c14 (5,11) 158,928, (5,12) 229,824, (6,11) 659,568.
+- c15 (17,8) **41,373,072** (Haar SL(2,53)×Z139, orbit search); (18..20,8) not reached.
+- c16 buildings (Weyl-distance graphs) at max degree ≤ 20, D ≤ 12: nothing above the formula values; D=5 capped at
+  31,460. A clean negative.
+- c17 wildcard at (18,7): no construction; analysis only.
 
-### Round s384r2 (11:20-12:20 UTC, 8 cards, research/squads/s384r2/)
-Cards: c1 port s384r1-c2's byte arrays into haarex5 · c2 cut haarex5's per-b fixed cost (x in Q5 Q5 iff x in Q4 Q4 or
-b in A4(x): one bit; bit matrix for bad_b) · c3 branch-free square-root/conjugator lists · c4 exact 3-opt around the
-704-vertex C11:Q16 lift (cost 4) · c5 bi-Cayley graphs with tabu at 704-768 · c6 wildcard: Z3 lifts of the GQ(5,5)
-incidence graph (936 vertices) · c7 wildcard (open) · c8 wildcard: unbalanced orbit structures (1+2 orbits).
-Best per card: c1 7.99 s (haarex5 9.1-10.7 in the same window) · c2 8.21 s · c3 10.59 s (no gain) · c4 no cost
-below 4: every 1-change costs >= 10, exact over all pairs of voltage changes and all values of 4 voltage triples: >= 5
-· c5 cost 20 at 704 (g352_102_2, 6 s runs; calibration: a (5,5) graph on 360 vertices, apsp VALID) · c6 dead: a point
-and a collinear point are joined by one walk of length <= 4 up to backtracking, so any lift has diameter >= 6 · c7
-insertion of two vertices into the 684 record: 318 bad pairs at 686 (unoptimised matching) · c8 counting bound for
-orbit splits with maximum degree 6 and diameter 5: 1+2 orbits <= 249 vertices, 2+3 <= 650, 1+3 <= 108; only 2+2, 3+3
-and 3+4 remain above 684 (director checked 1+2: B-degrees k1 + k2 = 6, k1 = k2 = 3 gives 1 + 15 + 150 = 166 >= 2m);
-a 3+3 Z115 lift (690 vertices) annealed to 1610 bad pairs.
-Director's checks: c1 identical to haarex4 on all 9 calibration groups and on order-384 prefix counts; installed as
-research/six-five-384/src/haarex6.c (about 1.2x over haarex5 on order-384 groups in interleaved runs). Merging c2 into
-c1 gave no further gain (measured), so it was left out. Machine note for the skill: `nice -n 10` inside a card does
-nothing here, because the kernel uses autogroup scheduling (each card's commands run in their own session group at
-nice 0, equal to the director's whole pipeline); the director raised the pipeline's group with
-`echo -10 > /proc/<pid>/autogroup` and lowered the cards' groups to 15.
-Kept: haarex6 for the sweep; no family lead worth more CPU (the 704 lift is an isolated local minimum, the new
-families are far). The order-384 sweep continues; orders 401-450 started on the spare core.
+Kept: the route-chart lift over F5 (c04), the W(16) DM solution (c05), the D=6/D=7 builders (c08, c09), the small
+Haar values (c11–c15). Learned: blind annealing of lifts of W(13) fails (c06, c07) while the structured lift with one
+parity condition works in seconds (director). Next: round 2 evolves the route charts ((20,5) push, 5×F4, 6×F3, 9×F2,
+plain letters for (17,5), (19,5)), tries the MDM lift of W(8) for a (13,5) record, referees MDM, pushes the cubic and
+quartic D=11/12 cells, and checks the literature.
+
+## 2026-10-26, new-cells-beyond, round 2 (rolling, 12 cards, launched 15:45 UTC while round 1 finished)
+
+Same session and branch. Files: research/squads/beyond/r2/ (HEADER.md with the updated found/ruled-out list, d01..d12).
+Cards evolved round 1's best idea (route charts, c04) and the director's MDM lift, plus pushes of the small cells.
+The box ran at load 15–20 (director's billion-vertex Haar checks + cards), which several cards named as the reason
+they stopped early; the next round was cut to four cards.
+
+Cards (best checked value; director re-checked every valid graph):
+- d01 (20,5) push of c04's F5 route chart: a chart with 20 singular patterns (was 22), but K3,3 + doubled matching
+  over Z21 stalls at cost 2 (5 runs), Z22 at 4, D11 at 22, K4,4 over Z16 at 6. 75,000 stays.
+- d02 (20,5) 5 letters × F4: valid 51,200 (K5,5 controller over Z20, m = 100; chart with 42 singular words of 640);
+  Z21–Z30 stall at cost 2–74. Below 75,000.
+- d03 (18,5) 6 letters × F3: valid 29,160 (K3,3 doubled over Z60, m = 180; best chart 312 singular patterns of 1,500);
+  fails above m = 180. Below 47,600.
+- d04 (17,5) route chart + plain fifth letter (degree 17), Z23 controller: cost 1.2M after 2,000 steps. Nothing.
+- d05 **(13,5) 11,700** (record; was 11,486): MDM lift of W(8) over Z2 × Z5 with ν, σ_1, σ_2 annealed against a
+  route-aware cost (mdm8.c), 0 far pairs in ~2 min. apsp + bfs_all, rebuilt identically by the director.
+- d06 MDM referee: no gap found in the proof; negative control (one pair failing (A)) gives diameter 6 as predicted;
+  pure (A) not reached at q = 3, 4, 5, 7 (17, 11, 65, 48 failing pairs).
+- d07 (3,11) voltage lifts of cubic bases: best cost 6 at n = 1,152. Nothing valid.
+- d08 (3,12) lifts of Heawood over PSL(2,7) (2,352): cost 62. Nothing valid.
+- d09 **(4,11) 18,480**, **(4,12) 50,160**: Haar SL(2,11)×Z7 / ×Z19 with S = {e} ∪ one 3-orbit (haar_sym).
+- d10 literature: no published bipartite value for any of the 48 cells (wiki unreachable; Comellas' tables stop at
+  Δ ≤ 16, D ≤ 10; LIT.md lists the sources).
+- d11 (18,5) 9 letters × F2: best 244 of 1,552 uncovered. Nothing.
+- d12 (19,5) 4 chart + 3 plain letters at m = 66: sampled cost 32,013. Nothing.
+
+Kept: MDM with route-aware annealing (gave the (13,5) record), haar_sym orbit runs for Δ = 4. Plain-letter route
+charts and F2/F3 charts did not converge in 25-minute boxes on a loaded machine (not ruled out).
+Director during the round: (6,11) 1,971,744, (6,12) 9,303,840, (5,11) 253,080, (5,12) 912,576 with haar_sym (2–3×
+the round-1 card values, solved in seconds at μ ≈ 2–10), and the Haar queue at D = 8..12.
+
+## 2026-10-26, new-cells-beyond, round 3 (4 cards, 16:00 UTC)
+
+Same session and branch. Files: research/squads/beyond/r3/. Only four cards: the machine was carrying the director's
+D = 10 Haar searches and checks (3–5 GB each), and round 2 had shown that cards on a load-18 box stop early. Each card
+got one concrete method with a scorer.
+
+- e01 (3,11) exhaustive cubic Haar graphs (all pairs {x,y}) over ~45 groups of order 504–1,100: **1,080** (A5 × Z9),
+  above round 1's 1,008; per-group minima in e01/results.txt (AGL(1,23) cost 1, S4 × Z22 cost 14, others higher).
+- e02 (3,12) exhaustive cubic Haar graphs, orders 661–2,500: **1,860** (AGL(1,31)), also AGL(1,29) 1,624, A5×Z13
+  1,560, A5×Z12 1,440, S4×Z28 1,344 (all apsp VALID); exhaustive minima SL(2,11) 16, PSL(2,13) 24, AGL(1,37) 26 (2,664),
+  A5×Z14 6. The director then ran AGL(1,29), AGL(1,31) at D = 11 exhaustively: minima 18 and 58, no gain there.
+- e03 (4,11) **19,152** (SL(2,8) × Z19, ORBIT 3 1 1, solved at once); (4,12): PSL(2,11) × Z39 reached cost 1 twice,
+  SL(2,8) × Z52 cost 5. 50,160 stays (director re-ran two more seeds).
+- e04 D = 7 hub surgery (D7_HEXAGON.md) on level graphs: recipe verified at q = 4, r = 2 (13,682, Δ 7) and q = 5, r = 2
+  (39,108, Δ 8), apsp VALID; for the new cells only predicted values (+0.1–0.4 %), because the hub condition (hubs of
+  one colour within distance 6) failed for larger hub sets at q = 4, 5 and was not established for q = 13, 16.
+
+Kept: exhaustive cubic Haar search (gave (3,11) 1,080 and (3,12) 1,860). Squad totals for the job: 33 cards in three rounds; values
+that came from cards: (3,11), (3,12), (4,11), (4,12), (17,8), (20,5) (75,000), the D = 3, 4, 6 builds, the D = 7
+builder, (13,5) (the record, with the director's MDM lift) and the (19,5) DM solution.
+
+## 2026-10-26, new-cells-beyond, round 4 (1 card, 16:57 UTC) and wrap-up
+
+- f01 (17,5), route chart with a plain fifth letter, exact affine coverage cost, K3,3 + identity + shift controller
+  over Z23 (35,328 vertices): best 63,770 uncovered same-side pairs of 54M (r4/f01/state_n23_s2.txt). Not 0; (17,5)
+  stays at the 33,792 floor.
+- Late reports of round-1 cards: c03 (Theorem B on Q(4,q)) reached |M| = 54 at q = 9 (1,776 at (11,4), apsp VALID,
+  below 1,782) and never ran q = 17 (it needs |M| ≥ 253, with |M| ≤ q² − q + 2 by POLISHED.md Remark 3.5); c09 checked
+  the q = 13 level graphs itself (40 sources, ecc 7); c10 confirmed the Z20 lift of H(3) and the q = 4 floor of 150.
+- Director after the rounds: an exhaustive sweep of all metacyclic groups (one r per (m, k)) for cubic Haar graphs:
+  (3,11) 1,474 (Z67 ⋊ Z11) and (3,12) 2,176 (Z68 ⋊ Z16), both apsp VALID (D = 12 sweep stopped at order 1,728) — larger than every squad value
+  for these cells. Lesson for cubic cells: a cheap exhaustive sweep over a whole group family beat all the clever cards.
+
+## 2026-11-01, beyond-small, round 1 (goal: (17,5) above the 33,792 floor; 16 cards, 04:40 UTC)
+
+Session: Opus director, cloud, branch claude/beyond-small-cells-fwb6si. Files: research/squads/beyond-small/r1/
+(HEADER.md with the found / ruled-out list, c01..c16.md, scoreboard.jsonl). 16 Haiku cards (effort high) on a 4-core box.
+The job's other ten cells (D = 3, 4, 6 at Δ = 17, 18, 20 and (19,6)) are classical Moore graphs or Theorem D; the
+director rebuilt and checked those himself (research/frontier/beyond/BEYOND_SMALL.md), so every card went to (17,5).
+
+Cards (best checked value; director re-checked every valid graph):
+- c01 hubs on the (16,5) graph, greedy set cover by random 17-sets: 18 sets needed, 240 A-vertices uncovered with 17.
+- c02 hubs as a Z22 orbit of one set: **33,814** (22 hubs).
+- c03 hubs whose neighbourhood is 4 affine fibre lines {(v, y + λc)}: one such set covers a whole side; **33,849** (57 hubs).
+  The decisive observation of the job.
+- c04–c07 route chart with a 5th translation vector on one letter (17 = 5+4+4+4): Haar, multi-orbit and matching variants
+  stay at 70k–300k far pairs; c07 shows an extra vector cannot repair a singular pattern that uses the extended letter once.
+- c08 F5 chart with three letters cut to 4 scalars: 3.9M uncovered; boxes, not affine spaces.
+- c09 Z8 lift of W(8) with a polarity-invariant ν: 2,432 far pairs (174k without invariance); supports the director's
+  obstruction argument but gives no graph.
+- c10, c11, c15 Haar graphs (self-dual, orbit, AGL(1,p)): best valid 20,200.
+- c12 hexagon quotients: free Z7 on H(4) gives diameter 6; c14 lifts of W(16) impossible (girth); c13 Theorem-D hubs at
+  D = 6 need 22 cover sets where 7 are available; c16 2 hubs with SA 17-sets: 33,794.
+Kept: c03's line hubs. Director: hubpack.c (line hubs + compatibility graph + clique), 191 A-hubs → **33,983**.
+
+## 2026-11-01, beyond-small, round 2 (16 cards on hubs, 05:25 UTC)
+
+Files: research/squads/beyond-small/r2/. Every card started from the director's 191-hub packing and hubpack.c.
+- **d06 Z22 orbits of line hubs: 34,848** (48 orbits = 1,056 hubs, 27 on side A, 21 on side B; apsp and bfs_all by the
+  director). An orbit is valid when its base N has distinct keys (j, y) and N is compatible with N+u for all u ≠ 0.
+- d15 annealing over packings 34,401 (609 A-hubs); d11 34,398; d01 adaptive growth (each new hub must meet every old
+  hub's distance-2 set) 34,290 (498 A-hubs); d04 17-neighbour hubs (compatibility 0.937 → 0.957) 34,159; d05 hub–hub
+  edges 34,145; d07 affine hub families 34,000; d09 33,986; d08 type analysis 33,969 (compatibility is fixed by
+  controller vertex and direction; 0.99 unreachable with 4-line hubs).
+- Negative: d10 connectors without a common root are at distance 6; d12 3-line hubs (density 0.82); d13 Z23/Z24
+  controllers repaired by extra matchings (39k far pairs); d14 AGL(1,131) bi-Cayley (cost 125); d16 exact sub-family
+  (no cover in the 4 fibres around one controller vertex).
+Kept: Z22 orbits (d06), adaptive growth (d01) and annealing (d15). Next: round 3 on orbit packing (cap 48 orbits per side
+= 35,904). Director in parallel: a projective-plane scaffold (below, BEYOND_SMALL.md).
+
+## 2026-11-01, beyond-small, round 3 (16 cards on Z22-orbit packing, 05:45 UTC)
+
+Files: research/squads/beyond-small/r3/. Start: d06's 27 + 21 orbits (34,848). Sides are independent (BEYOND_SMALL.md),
+so the director combined the best A-packing with the best B-packing after every report.
+- **e02 adaptive orbit growth on side B (growb.c): 21 → 37 B-orbits** (35,200 with d06's A side); **e01 adaptive growth on
+  side A: 27 → 32** (34,958). Director: 32 A + 37 B = **35,310** (apsp).
+- e13 side A from scratch 29; e09 side B re-packed 22; e14 20; e10 side A 27 (pool-limited clique); e07 the automorphism
+  group of G has order 66 (Z22 × F4*, bliss) and H-orbits of 66 hubs give 9 + 8 orbits (34,914); e08 Z11 half-orbits in
+  free keys, one per side (34,870); e06 17-key bases do not raise the orbit count; e11 mixed-direction bases are 10× slower
+  to generate; e05 and e16 single hubs in free slots stall (cost 4 and ~310 uncovered); e15 incomplete.
+Kept: growb (e02). Director: a destroy-and-repair loop around growb (drop 2–5 random orbits, regrow 60 s, keep if not
+worse), side A on the side-swapped graph: A 33 → 36, B 37 → 39 within ~10 iterations → 35,420 and more (round 4).
+
+## 2026-11-01, beyond-small, round 4 (12 cards: destroy-and-repair variants per side, 06:05 UTC)
+
+Files: research/squads/beyond-small/r4/. Start: 36 A-orbits, 39 B-orbits (35,442). Engine: growb (r3/e02); side A on the
+side-swapped graph. Several cards handed back early with their loops still running; the director harvested their
+best_side files when the loops ended.
+- f03 region destroy, side A: **43**; f04 big destroy, A: 42; f01 random drops with long repairs, A: 41; f02
+  conflict-directed, A: 38; f12 exact repair (MCQ clique), A: unfinished.
+- f08 big destroy, side B: **45**; f07 region destroy, B: 44; f06 conflict-directed, B: 44; f05 random, B: 42; f11 exact
+  repair, B: unfinished.
+- f09, f10 free-key filling (Z11 half-orbits, singles): nothing fits (best single B-hub still fails 6 of 858 pairs).
+Director in parallel: destroy-and-repair loops (A 38 → 42 from e03's annealed 38, B 41 → 42), anneal3 from the 83-orbit
+state (no gain at T ≤ 0.6), region destroy on side A. Combinations recorded: 35,618 (bfs_all-checked), 35,640, 35,684,
+35,706, **35,728 = 43 (f03) + 45 (f08)**.
+Kept: all four destroy styles; next round runs them as a portfolio from 43/45.
+
+## 2026-11-01, beyond-small, round 5 (12 cards: portfolio of the four destroy styles + annealing, 06:55 UTC)
+
+Files: research/squads/beyond-small/r5/. Start 43 A-orbits (r4/f03), 45 B-orbits (r4/f08) = 35,728. Six cards per side
+(region, big, conflict-directed, random destroy, annealing, adaptive mix), 45–50 min each, plus the director's loops.
+Result: **no gain**; every card ended at 43 / 45 (many equal-count moves accepted, no 44th A-orbit or 46th B-orbit). At
+45 B-orbits only line swaps remain possible for the annealer (no free keys for inserts). Final (17,5): **35,728**
+(88 orbits of 22 hubs; cap 96). Squad totals for the job: 72 cards in five rounds. What the squad added: the line-hub
+observation (r1/c03), Z22 orbits (r2/d06), adaptive orbit growth (r3/e01, e02), orbit annealing (r3/e03) and the region /
+big destroys (r4/f03, f08); the director added the hub proposition (sides independent), the packers and combinations, the
+destroy-and-repair loop that broke the growth plateau, and every check. Lone directions that failed are listed in
+research/frontier/beyond/BEYOND_SMALL.md.

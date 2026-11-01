@@ -1,0 +1,9 @@
+group psl 47 x Z_19, N=985872, identity 20539, H order 57, rows 17296, threads 1, setup 0.21s
+wide rows: HW order 228, rows 4324, setup 0.31s
+alpha: conj by mat(10,20,25,36) (index 21927), z -> 7 z on Z_19
+ORBIT k=3 m=2 f=0: |Fix(alpha)| = 23 (+e); mu = 4.13, mu/k = 1.38, fixed-point misses ~ 0.77
+start cost=24
+RESULT d=6 D=11 group=psl 47 x Z_19 N=985872 best=0 evals=41 time=0.2 orbit k=3 m=2 f=0 fix=23
+full diameter check: OK
+full diameter check after normalising s_0 = e: OK
+wrote d6D11_psl_47_19_orb3f0_s1.txt

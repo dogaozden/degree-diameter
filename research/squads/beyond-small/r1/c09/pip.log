@@ -1,0 +1,612 @@
+Collecting pynauty
+  Downloading pynauty-2.8.8.1.tar.gz (2.3 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.3/2.3 MB 24.5 MB/s eta 0:00:00
+  Preparing metadata (setup.py): started
+  Preparing metadata (setup.py): finished with status 'done'
+Building wheels for collected packages: pynauty
+  Building wheel for pynauty (setup.py): started
+  Building wheel for pynauty (setup.py): finished with status 'error'
+  error: subprocess-exited-with-error
+  
+  × python setup.py bdist_wheel did not run successfully.
+  │ exit code: 1
+  ╰─> [592 lines of output]
+      running bdist_wheel
+      running build
+      running build_py
+      creating build
+      creating build/lib.linux-x86_64-cpython-313
+      creating build/lib.linux-x86_64-cpython-313/pynauty
+      copying src/pynauty/__init__.py -> build/lib.linux-x86_64-cpython-313/pynauty
+      copying src/pynauty/graph.py -> build/lib.linux-x86_64-cpython-313/pynauty
+      copying src/pynauty/__main__.py -> build/lib.linux-x86_64-cpython-313/pynauty
+      running egg_info
+      writing pynauty.egg-info/PKG-INFO
+      writing dependency_links to pynauty.egg-info/dependency_links.txt
+      writing top-level names to pynauty.egg-info/top_level.txt
+      reading manifest file 'pynauty.egg-info/SOURCES.txt'
+      reading manifest template 'MANIFEST.in'
+      warning: no previously-included files matching '__pycache__/*' found anywhere in distribution
+      warning: no previously-included files matching '*.pyc' found anywhere in distribution
+      warning: no previously-included files matching '*.a' found anywhere in distribution
+      warning: no previously-included files matching '*.o' found anywhere in distribution
+      adding license file 'COPYING'
+      writing manifest file 'pynauty.egg-info/SOURCES.txt'
+      /usr/lib/python3/dist-packages/setuptools/command/build_py.py:204: _Warning: Package 'pynauty.docs.doctrees' is absent from the `packages` configuration.
+      !!
+      
+              ********************************************************************************
+              ############################
+              # Package would be ignored #
+              ############################
+              Python recognizes 'pynauty.docs.doctrees' as an importable package[^1],
+              but it is absent from setuptools' `packages` configuration.
+      
+              This leads to an ambiguous overall configuration. If you want to distribute this
+              package, please make sure that 'pynauty.docs.doctrees' is explicitly added
+              to the `packages` configuration field.
+      
+              Alternatively, you can also rely on setuptools' discovery methods
+              (for example by using `find_namespace_packages(...)`/`find_namespace:`
+              instead of `find_packages(...)`/`find:`).
+      
+              You can read more about "package discovery" on setuptools documentation page:
+      
+              - https://setuptools.pypa.io/en/latest/userguide/package_discovery.html
+      
+              If you don't want 'pynauty.docs.doctrees' to be distributed and are
+              already explicitly excluding 'pynauty.docs.doctrees' via
+              `find_namespace_packages(...)/find_namespace` or `find_packages(...)/find`,
+              you can try to use `exclude_package_data`, or `include-package-data=False` in
+              combination with a more fine grained `package-data` configuration.
+      
+              You can read more about "package data files" on setuptools documentation page:
+      
+              - https://setuptools.pypa.io/en/latest/userguide/datafiles.html
+      
+      
+              [^1]: For Python, any directory (with suitable naming) can be imported,
+                    even if it does not contain any `.py` files.
+                    On the other hand, currently there is no concept of package data
+                    directory, all directories are treated like packages.
+              ********************************************************************************
+      
+      !!
+        check.warn(importable)
+      /usr/lib/python3/dist-packages/setuptools/command/build_py.py:204: _Warning: Package 'pynauty.docs.html' is absent from the `packages` configuration.
+      !!
+      
+              ********************************************************************************
+              ############################
+              # Package would be ignored #
+              ############################
+              Python recognizes 'pynauty.docs.html' as an importable package[^1],
+              but it is absent from setuptools' `packages` configuration.
+      
+              This leads to an ambiguous overall configuration. If you want to distribute this
+              package, please make sure that 'pynauty.docs.html' is explicitly added
+              to the `packages` configuration field.
+      
+              Alternatively, you can also rely on setuptools' discovery methods
+              (for example by using `find_namespace_packages(...)`/`find_namespace:`
+              instead of `find_packages(...)`/`find:`).
+      
+              You can read more about "package discovery" on setuptools documentation page:
+      
+              - https://setuptools.pypa.io/en/latest/userguide/package_discovery.html
+      
+              If you don't want 'pynauty.docs.html' to be distributed and are
+              already explicitly excluding 'pynauty.docs.html' via
+              `find_namespace_packages(...)/find_namespace` or `find_packages(...)/find`,
+              you can try to use `exclude_package_data`, or `include-package-data=False` in
+              combination with a more fine grained `package-data` configuration.
+      
+              You can read more about "package data files" on setuptools documentation page:
+      
+              - https://setuptools.pypa.io/en/latest/userguide/datafiles.html
+      
+      
+              [^1]: For Python, any directory (with suitable naming) can be imported,
+                    even if it does not contain any `.py` files.
+                    On the other hand, currently there is no concept of package data
+                    directory, all directories are treated like packages.
+              ********************************************************************************
+      
+      !!
+        check.warn(importable)
+      /usr/lib/python3/dist-packages/setuptools/command/build_py.py:204: _Warning: Package 'pynauty.docs.html._modules' is absent from the `packages` configuration.
+      !!
+      
+              ********************************************************************************
+              ############################
+              # Package would be ignored #
+              ############################
+              Python recognizes 'pynauty.docs.html._modules' as an importable package[^1],
+              but it is absent from setuptools' `packages` configuration.
+      
+              This leads to an ambiguous overall configuration. If you want to distribute this
+              package, please make sure that 'pynauty.docs.html._modules' is explicitly added
+              to the `packages` configuration field.
+      
+              Alternatively, you can also rely on setuptools' discovery methods
+              (for example by using `find_namespace_packages(...)`/`find_namespace:`
+              instead of `find_packages(...)`/`find:`).
+      
+              You can read more about "package discovery" on setuptools documentation page:
+      
+              - https://setuptools.pypa.io/en/latest/userguide/package_discovery.html
+      
+              If you don't want 'pynauty.docs.html._modules' to be distributed and are
+              already explicitly excluding 'pynauty.docs.html._modules' via
+              `find_namespace_packages(...)/find_namespace` or `find_packages(...)/find`,
+              you can try to use `exclude_package_data`, or `include-package-data=False` in
+              combination with a more fine grained `package-data` configuration.
+      
+              You can read more about "package data files" on setuptools documentation page:
+      
+              - https://setuptools.pypa.io/en/latest/userguide/datafiles.html
+      
+      
+              [^1]: For Python, any directory (with suitable naming) can be imported,
+                    even if it does not contain any `.py` files.
+                    On the other hand, currently there is no concept of package data
+                    directory, all directories are treated like packages.
+              ********************************************************************************
+      
+      !!
+        check.warn(importable)
+      /usr/lib/python3/dist-packages/setuptools/command/build_py.py:204: _Warning: Package 'pynauty.docs.html._modules.pynauty' is absent from the `packages` configuration.
+      !!
+      
+              ********************************************************************************
+              ############################
+              # Package would be ignored #
+              ############################
+              Python recognizes 'pynauty.docs.html._modules.pynauty' as an importable package[^1],
+              but it is absent from setuptools' `packages` configuration.
+      
+              This leads to an ambiguous overall configuration. If you want to distribute this
+              package, please make sure that 'pynauty.docs.html._modules.pynauty' is explicitly added
+              to the `packages` configuration field.
+      
+              Alternatively, you can also rely on setuptools' discovery methods
+              (for example by using `find_namespace_packages(...)`/`find_namespace:`
+              instead of `find_packages(...)`/`find:`).
+      
+              You can read more about "package discovery" on setuptools documentation page:
+      
+              - https://setuptools.pypa.io/en/latest/userguide/package_discovery.html
+      
+              If you don't want 'pynauty.docs.html._modules.pynauty' to be distributed and are
+              already explicitly excluding 'pynauty.docs.html._modules.pynauty' via
+              `find_namespace_packages(...)/find_namespace` or `find_packages(...)/find`,
+              you can try to use `exclude_package_data`, or `include-package-data=False` in
+              combination with a more fine grained `package-data` configuration.
+      
+              You can read more about "package data files" on setuptools documentation page:
+      
+              - https://setuptools.pypa.io/en/latest/userguide/datafiles.html
+      
+      
+              [^1]: For Python, any directory (with suitable naming) can be imported,
+                    even if it does not contain any `.py` files.
+                    On the other hand, currently there is no concept of package data
+                    directory, all directories are treated like packages.
+              ********************************************************************************
+      
+      !!
+        check.warn(importable)
+      /usr/lib/python3/dist-packages/setuptools/command/build_py.py:204: _Warning: Package 'pynauty.docs.html._sources' is absent from the `packages` configuration.
+      !!
+      
+              ********************************************************************************
+              ############################
+              # Package would be ignored #
+              ############################
+              Python recognizes 'pynauty.docs.html._sources' as an importable package[^1],
+              but it is absent from setuptools' `packages` configuration.
+      
+              This leads to an ambiguous overall configuration. If you want to distribute this
+              package, please make sure that 'pynauty.docs.html._sources' is explicitly added
+              to the `packages` configuration field.
+      
+              Alternatively, you can also rely on setuptools' discovery methods
+              (for example by using `find_namespace_packages(...)`/`find_namespace:`
+              instead of `find_packages(...)`/`find:`).
+      
+              You can read more about "package discovery" on setuptools documentation page:
+      
+              - https://setuptools.pypa.io/en/latest/userguide/package_discovery.html
+      
+              If you don't want 'pynauty.docs.html._sources' to be distributed and are
+              already explicitly excluding 'pynauty.docs.html._sources' via
+              `find_namespace_packages(...)/find_namespace` or `find_packages(...)/find`,
+              you can try to use `exclude_package_data`, or `include-package-data=False` in
+              combination with a more fine grained `package-data` configuration.
+      
+              You can read more about "package data files" on setuptools documentation page:
+      
+              - https://setuptools.pypa.io/en/latest/userguide/datafiles.html
+      
+      
+              [^1]: For Python, any directory (with suitable naming) can be imported,
+                    even if it does not contain any `.py` files.
+                    On the other hand, currently there is no concept of package data
+                    directory, all directories are treated like packages.
+              ********************************************************************************
+      
+      !!
+        check.warn(importable)
+      /usr/lib/python3/dist-packages/setuptools/command/build_py.py:204: _Warning: Package 'pynauty.docs.html._static' is absent from the `packages` configuration.
+      !!
+      
+              ********************************************************************************
+              ############################
+              # Package would be ignored #
+              ############################
+              Python recognizes 'pynauty.docs.html._static' as an importable package[^1],
+              but it is absent from setuptools' `packages` configuration.
+      
+              This leads to an ambiguous overall configuration. If you want to distribute this
+              package, please make sure that 'pynauty.docs.html._static' is explicitly added
+              to the `packages` configuration field.
+      
+              Alternatively, you can also rely on setuptools' discovery methods
+              (for example by using `find_namespace_packages(...)`/`find_namespace:`
+              instead of `find_packages(...)`/`find:`).
+      
+              You can read more about "package discovery" on setuptools documentation page:
+      
+              - https://setuptools.pypa.io/en/latest/userguide/package_discovery.html
+      
+              If you don't want 'pynauty.docs.html._static' to be distributed and are
+              already explicitly excluding 'pynauty.docs.html._static' via
+              `find_namespace_packages(...)/find_namespace` or `find_packages(...)/find`,
+              you can try to use `exclude_package_data`, or `include-package-data=False` in
+              combination with a more fine grained `package-data` configuration.
+      
+              You can read more about "package data files" on setuptools documentation page:
+      
+              - https://setuptools.pypa.io/en/latest/userguide/datafiles.html
+      
+      
+              [^1]: For Python, any directory (with suitable naming) can be imported,
+                    even if it does not contain any `.py` files.
+                    On the other hand, currently there is no concept of package data
+                    directory, all directories are treated like packages.
+              ********************************************************************************
+      
+      !!
+        check.warn(importable)
+      /usr/lib/python3/dist-packages/setuptools/command/build_py.py:204: _Warning: Package 'pynauty.tests' is absent from the `packages` configuration.
+      !!
+      
+              ********************************************************************************
+              ############################
+              # Package would be ignored #
+              ############################
+              Python recognizes 'pynauty.tests' as an importable package[^1],
+              but it is absent from setuptools' `packages` configuration.
+      
+              This leads to an ambiguous overall configuration. If you want to distribute this
+              package, please make sure that 'pynauty.tests' is explicitly added
+              to the `packages` configuration field.
+      
+              Alternatively, you can also rely on setuptools' discovery methods
+              (for example by using `find_namespace_packages(...)`/`find_namespace:`
+              instead of `find_packages(...)`/`find:`).
+      
+              You can read more about "package discovery" on setuptools documentation page:
+      
+              - https://setuptools.pypa.io/en/latest/userguide/package_discovery.html
+      
+              If you don't want 'pynauty.tests' to be distributed and are
+              already explicitly excluding 'pynauty.tests' via
+              `find_namespace_packages(...)/find_namespace` or `find_packages(...)/find`,
+              you can try to use `exclude_package_data`, or `include-package-data=False` in
+              combination with a more fine grained `package-data` configuration.
+      
+              You can read more about "package data files" on setuptools documentation page:
+      
+              - https://setuptools.pypa.io/en/latest/userguide/datafiles.html
+      
+      
+              [^1]: For Python, any directory (with suitable naming) can be imported,
+                    even if it does not contain any `.py` files.
+                    On the other hand, currently there is no concept of package data
+                    directory, all directories are treated like packages.
+              ********************************************************************************
+      
+      !!
+        check.warn(importable)
+      copying src/pynauty/nautywrap.c -> build/lib.linux-x86_64-cpython-313/pynauty
+      copying src/pynauty/nautywrap.h -> build/lib.linux-x86_64-cpython-313/pynauty
+      creating build/lib.linux-x86_64-cpython-313/pynauty/docs
+      creating build/lib.linux-x86_64-cpython-313/pynauty/docs/doctrees
+      copying src/pynauty/docs/doctrees/environment.pickle -> build/lib.linux-x86_64-cpython-313/pynauty/docs/doctrees
+      copying src/pynauty/docs/doctrees/guide.doctree -> build/lib.linux-x86_64-cpython-313/pynauty/docs/doctrees
+      copying src/pynauty/docs/doctrees/index.doctree -> build/lib.linux-x86_64-cpython-313/pynauty/docs/doctrees
+      copying src/pynauty/docs/doctrees/install.doctree -> build/lib.linux-x86_64-cpython-313/pynauty/docs/doctrees
+      copying src/pynauty/docs/doctrees/intro.doctree -> build/lib.linux-x86_64-cpython-313/pynauty/docs/doctrees
+      creating build/lib.linux-x86_64-cpython-313/pynauty/docs/html
+      copying src/pynauty/docs/html/.buildinfo -> build/lib.linux-x86_64-cpython-313/pynauty/docs/html
+      copying src/pynauty/docs/html/genindex.html -> build/lib.linux-x86_64-cpython-313/pynauty/docs/html
+      copying src/pynauty/docs/html/guide.html -> build/lib.linux-x86_64-cpython-313/pynauty/docs/html
+      copying src/pynauty/docs/html/index.html -> build/lib.linux-x86_64-cpython-313/pynauty/docs/html
+      copying src/pynauty/docs/html/install.html -> build/lib.linux-x86_64-cpython-313/pynauty/docs/html
+      copying src/pynauty/docs/html/intro.html -> build/lib.linux-x86_64-cpython-313/pynauty/docs/html
+      copying src/pynauty/docs/html/objects.inv -> build/lib.linux-x86_64-cpython-313/pynauty/docs/html
+      copying src/pynauty/docs/html/py-modindex.html -> build/lib.linux-x86_64-cpython-313/pynauty/docs/html
+      copying src/pynauty/docs/html/search.html -> build/lib.linux-x86_64-cpython-313/pynauty/docs/html
+      copying src/pynauty/docs/html/searchindex.js -> build/lib.linux-x86_64-cpython-313/pynauty/docs/html
+      creating build/lib.linux-x86_64-cpython-313/pynauty/docs/html/_modules
+      copying src/pynauty/docs/html/_modules/index.html -> build/lib.linux-x86_64-cpython-313/pynauty/docs/html/_modules
+      copying src/pynauty/docs/html/_modules/pynauty.html -> build/lib.linux-x86_64-cpython-313/pynauty/docs/html/_modules
+      creating build/lib.linux-x86_64-cpython-313/pynauty/docs/html/_modules/pynauty
+      copying src/pynauty/docs/html/_modules/pynauty/graph.html -> build/lib.linux-x86_64-cpython-313/pynauty/docs/html/_modules/pynauty
+      creating build/lib.linux-x86_64-cpython-313/pynauty/docs/html/_sources
+      copying src/pynauty/docs/html/_sources/guide.rst.txt -> build/lib.linux-x86_64-cpython-313/pynauty/docs/html/_sources
+      copying src/pynauty/docs/html/_sources/index.rst.txt -> build/lib.linux-x86_64-cpython-313/pynauty/docs/html/_sources
+      copying src/pynauty/docs/html/_sources/install.rst.txt -> build/lib.linux-x86_64-cpython-313/pynauty/docs/html/_sources
+      copying src/pynauty/docs/html/_sources/intro.rst.txt -> build/lib.linux-x86_64-cpython-313/pynauty/docs/html/_sources
+      creating build/lib.linux-x86_64-cpython-313/pynauty/docs/html/_static
+      copying src/pynauty/docs/html/_static/basic.css -> build/lib.linux-x86_64-cpython-313/pynauty/docs/html/_static
+      copying src/pynauty/docs/html/_static/classic.css -> build/lib.linux-x86_64-cpython-313/pynauty/docs/html/_static
+      copying src/pynauty/docs/html/_static/doctools.js -> build/lib.linux-x86_64-cpython-313/pynauty/docs/html/_static
+      copying src/pynauty/docs/html/_static/documentation_options.js -> build/lib.linux-x86_64-cpython-313/pynauty/docs/html/_static
+      copying src/pynauty/docs/html/_static/file.png -> build/lib.linux-x86_64-cpython-313/pynauty/docs/html/_static
+      copying src/pynauty/docs/html/_static/language_data.js -> build/lib.linux-x86_64-cpython-313/pynauty/docs/html/_static
+      copying src/pynauty/docs/html/_static/minus.png -> build/lib.linux-x86_64-cpython-313/pynauty/docs/html/_static
+      copying src/pynauty/docs/html/_static/plus.png -> build/lib.linux-x86_64-cpython-313/pynauty/docs/html/_static
+      copying src/pynauty/docs/html/_static/pygments.css -> build/lib.linux-x86_64-cpython-313/pynauty/docs/html/_static
+      copying src/pynauty/docs/html/_static/searchtools.js -> build/lib.linux-x86_64-cpython-313/pynauty/docs/html/_static
+      copying src/pynauty/docs/html/_static/sidebar.js -> build/lib.linux-x86_64-cpython-313/pynauty/docs/html/_static
+      copying src/pynauty/docs/html/_static/sphinx_highlight.js -> build/lib.linux-x86_64-cpython-313/pynauty/docs/html/_static
+      creating build/lib.linux-x86_64-cpython-313/pynauty/tests
+      copying src/pynauty/tests/conftest.py -> build/lib.linux-x86_64-cpython-313/pynauty/tests
+      copying src/pynauty/tests/test_autgrp.py -> build/lib.linux-x86_64-cpython-313/pynauty/tests
+      copying src/pynauty/tests/test_isomorphic.py -> build/lib.linux-x86_64-cpython-313/pynauty/tests
+      copying src/pynauty/tests/test_minimal.py -> build/lib.linux-x86_64-cpython-313/pynauty/tests
+      running build_ext
+      make nauty-objects
+      /usr/bin/make -C src -f Makefile.nauty nauty-objects
+      make[1]: Entering directory '/tmp/pip-install-udre2fo7/pynauty_45fadd86b87c41a2be0a899b72129f71/src'
+      cd nauty2_8_8; ./configure CFLAGS='-O4 -fPIC'
+      checking build system type... x86_64-pc-linux-gnu
+      checking host system type... x86_64-pc-linux-gnu
+      checking for gcc... gcc
+      checking whether the C compiler works... yes
+      checking for C compiler default output file name... a.out
+      checking for suffix of executables...
+      checking whether we are cross compiling... no
+      checking for suffix of object files... o
+      checking whether we are using the GNU C compiler... yes
+      checking whether gcc accepts -g... yes
+      checking for gcc option to accept ISO C89... none needed
+      checking for special C compiler options needed for large files... no
+      checking for _FILE_OFFSET_BITS value needed for large files... no
+      checking for sys/wait.h that is POSIX.1 compatible... yes
+      checking how to run the C preprocessor... gcc -E
+      checking for grep that handles long lines and -e... /usr/bin/grep
+      checking for egrep... /usr/bin/grep -E
+      checking for ANSI C header files... yes
+      checking for sys/types.h... yes
+      checking for sys/stat.h... yes
+      checking for stdlib.h... yes
+      checking for string.h... yes
+      checking for memory.h... yes
+      checking for strings.h... yes
+      checking for inttypes.h... yes
+      checking for stdint.h... yes
+      checking for unistd.h... yes
+      checking signal.h usability... yes
+      checking signal.h presence... yes
+      checking for signal.h... yes
+      checking stddef.h usability... yes
+      checking stddef.h presence... yes
+      checking for stddef.h... yes
+      checking for unistd.h... (cached) yes
+      checking for sys/types.h... (cached) yes
+      checking for sys/wait.h... (cached) yes
+      checking for stdlib.h... (cached) yes
+      checking for string.h... (cached) yes
+      checking errno.h usability... yes
+      checking errno.h presence... yes
+      checking for errno.h... yes
+      checking limits.h usability... yes
+      checking limits.h presence... yes
+      checking for limits.h... yes
+      checking for stdint.h... (cached) yes
+      checking for pid_t... yes
+      checking whether ftell is declared... yes
+      checking whether popen is declared... yes
+      checking whether fdopen is declared... yes
+      checking whether putenv is declared... yes
+      checking whether setenv is declared... yes
+      checking whether malloc is declared... yes
+      checking if compiler accepts flexible array members... 1
+      checking if INFINITY is declared in math.h... 1
+      checking size of int... 4
+      checking size of long... 8
+      checking size of long long... 8
+      checking size of void*... 8
+      checking size of __uint128_t... 16
+      checking size of unsigned __int128... 16
+      checking for isatty... yes
+      checking for time... yes
+      checking for gettimeofday... yes
+      checking for clock_gettime... yes
+      checking for clock... yes
+      checking for times... yes
+      checking for getrusage... yes
+      checking for perror... yes
+      checking for pipe... yes
+      checking for wait... yes
+      checking for popen... yes
+      checking for putenv... yes
+      checking for setenv... yes
+      checking vfork.h usability... no
+      checking vfork.h presence... no
+      checking for vfork.h... no
+      checking for fork... yes
+      checking for vfork... yes
+      checking for working fork... yes
+      checking for working vfork... (cached) yes
+      checking for fseeko... yes
+      checking for sigaction... yes
+      checking for sigprocmask... yes
+      checking if popcnt instruction is available and requested... 1
+      checking if __builtin_popcount() is supported... 1
+      checking if __builtin_popcountl() is supported... 1
+      checking if __builtin_popcountll() is supported... 1
+      checking if gcc supports -march=native... yes
+      CC=gcc
+      CFLAGS=-O4 -fPIC
+      MORECFLAGS= -mpopcnt -march=native
+      checking if lzcnt instruction is available and requested... 1
+      checking if __builtin_clz() is supported... 1
+      checking if __builtin_clzl() is supported... 1
+      checking if __builtin_clzll() is supported... 1
+      checking for getc_unlocked... yes
+      checking for flockfile... yes
+      checking for noreturn attribute... _Noreturn
+      checking for thread local storage (TLS) class... _Thread_local
+      checking for gsort... no
+      checking for sort... sort
+      checking if sort supports the -k switch... 1
+      checking if sort supports the -S switch... 1
+      checking for a thread-safe mkdir -p... /usr/bin/mkdir -p
+      checking for a BSD-compatible install... /usr/bin/install -c
+      checking for gunzip... gunzip
+      configure: creating ./config.status
+      config.status: creating makefile
+      config.status: creating nauty.h
+      config.status: creating naututil.h
+      config.status: creating gtools.h
+      config.status: creating nauty.pc
+      config.status: creating runalltests
+      cd nauty2_8_8; make nauty.o nautil.o naugraph.o schreier.o naurng.o
+      make[2]: Entering directory '/tmp/pip-install-udre2fo7/pynauty_45fadd86b87c41a2be0a899b72129f71/src/nauty2_8_8'
+      gcc -c -O4 -fPIC  -mpopcnt -march=native -o nauty.o nauty.c
+      gcc -c -O4 -fPIC  -mpopcnt -march=native -o nautil.o nautil.c
+      gcc -c -O4 -fPIC  -mpopcnt -march=native -o naugraph.o naugraph.c
+      gcc -c -O4 -fPIC  -mpopcnt -march=native -o schreier.o schreier.c
+      gcc -c -O4 -fPIC  -mpopcnt -march=native -o naurng.o naurng.c
+      make[2]: Leaving directory '/tmp/pip-install-udre2fo7/pynauty_45fadd86b87c41a2be0a899b72129f71/src/nauty2_8_8'
+      make[1]: Leaving directory '/tmp/pip-install-udre2fo7/pynauty_45fadd86b87c41a2be0a899b72129f71/src'
+      building 'pynauty.nautywrap' extension
+      creating build/temp.linux-x86_64-cpython-313
+      creating build/temp.linux-x86_64-cpython-313/src
+      creating build/temp.linux-x86_64-cpython-313/src/pynauty
+      cc -pthread -fno-strict-overflow -Wsign-compare -Wunreachable-code -DNDEBUG -g -O3 -Wall -O3 -fstack-protector -fstack-clash-protection -U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=2 -fno-omit-frame-pointer -mno-omit-leaf-frame-pointer -fPIC -fPIC -Isrc/nauty2_8_8 -Isrc/pynauty -I/usr/local/include/python3.13 -c src/pynauty/nautywrap.c -o build/temp.linux-x86_64-cpython-313/src/pynauty/nautywrap.o -O4 -fPIC
+      In file included from src/pynauty/nautywrap.c:17:
+      src/nauty2_8_8/nauty.h:63: warning: "_FILE_OFFSET_BITS" redefined
+         63 | #define _FILE_OFFSET_BITS 0
+            |
+      In file included from /usr/local/include/python3.13/Python.h:14,
+                       from src/pynauty/nautywrap.c:16:
+      /usr/local/include/python3.13/pyconfig.h:1973: note: this is the location of the previous definition
+       1973 | #define _FILE_OFFSET_BITS 64
+            |
+      cc -pthread -shared -Wl,-z,noexecstack -Wl,-z,relro -Wl,-z,now -Wl,--build-id=sha1 -Wl,--exclude-libs,ALL build/temp.linux-x86_64-cpython-313/src/pynauty/nautywrap.o src/nauty2_8_8/nauty.o src/nauty2_8_8/nautil.o src/nauty2_8_8/naugraph.o src/nauty2_8_8/schreier.o src/nauty2_8_8/naurng.o -L/usr/local/lib -o build/lib.linux-x86_64-cpython-313/pynauty/nautywrap.cpython-313-x86_64-linux-gnu.so
+      /usr/lib/python3/dist-packages/setuptools/_distutils/cmd.py:66: SetuptoolsDeprecationWarning: setup.py install is deprecated.
+      !!
+      
+              ********************************************************************************
+              Please avoid running ``setup.py`` directly.
+              Instead, use pypa/build, pypa/installer or other
+              standards-based tools.
+      
+              See https://blog.ganssle.io/articles/2021/10/setup-py-deprecated.html for details.
+              ********************************************************************************
+      
+      !!
+        self.initialize_options()
+      installing to build/bdist.linux-x86_64/wheel
+      running install
+      running install_lib
+      Traceback (most recent call last):
+        File "<string>", line 2, in <module>
+          exec(compile('''
+          ~~~~^^^^^^^^^^^^
+          # This is <pip-setuptools-caller> -- a caller that pip uses to run setup.py
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+          ...<31 lines>...
+          exec(compile(setup_py_code, filename, "exec"))
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+          ''' % ('/tmp/pip-install-udre2fo7/pynauty_45fadd86b87c41a2be0a899b72129f71/setup.py',), "<pip-setuptools-caller>", "exec"))
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        File "<pip-setuptools-caller>", line 34, in <module>
+        File "/tmp/pip-install-udre2fo7/pynauty_45fadd86b87c41a2be0a899b72129f71/setup.py", line 78, in <module>
+          setup( name = MODULE, version = pynauty.__version__,
+          ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                 description = description,
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^
+          ...<14 lines>...
+                 classifiers = classifiers,
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^
+               )
+               ^
+        File "/usr/lib/python3/dist-packages/setuptools/__init__.py", line 107, in setup
+          return distutils.core.setup(**attrs)
+                 ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+        File "/usr/lib/python3/dist-packages/setuptools/_distutils/core.py", line 185, in setup
+          return run_commands(dist)
+        File "/usr/lib/python3/dist-packages/setuptools/_distutils/core.py", line 201, in run_commands
+          dist.run_commands()
+          ~~~~~~~~~~~~~~~~~^^
+        File "/usr/lib/python3/dist-packages/setuptools/_distutils/dist.py", line 969, in run_commands
+          self.run_command(cmd)
+          ~~~~~~~~~~~~~~~~^^^^^
+        File "/usr/lib/python3/dist-packages/setuptools/dist.py", line 1233, in run_command
+          super().run_command(command)
+          ~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+        File "/usr/lib/python3/dist-packages/setuptools/_distutils/dist.py", line 988, in run_command
+          cmd_obj.run()
+          ~~~~~~~~~~~^^
+        File "/usr/lib/python3/dist-packages/wheel/bdist_wheel.py", line 403, in run
+          self.run_command("install")
+          ~~~~~~~~~~~~~~~~^^^^^^^^^^^
+        File "/usr/lib/python3/dist-packages/setuptools/_distutils/cmd.py", line 318, in run_command
+          self.distribution.run_command(command)
+          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+        File "/usr/lib/python3/dist-packages/setuptools/dist.py", line 1233, in run_command
+          super().run_command(command)
+          ~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+        File "/usr/lib/python3/dist-packages/setuptools/_distutils/dist.py", line 988, in run_command
+          cmd_obj.run()
+          ~~~~~~~~~~~^^
+        File "/usr/lib/python3/dist-packages/setuptools/command/install.py", line 78, in run
+          return orig.install.run(self)
+                 ~~~~~~~~~~~~~~~~^^^^^^
+        File "/usr/lib/python3/dist-packages/setuptools/_distutils/command/install.py", line 708, in run
+          self.run_command(cmd_name)
+          ~~~~~~~~~~~~~~~~^^^^^^^^^^
+        File "/usr/lib/python3/dist-packages/setuptools/_distutils/cmd.py", line 318, in run_command
+          self.distribution.run_command(command)
+          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+        File "/usr/lib/python3/dist-packages/setuptools/dist.py", line 1233, in run_command
+          super().run_command(command)
+          ~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+        File "/usr/lib/python3/dist-packages/setuptools/_distutils/dist.py", line 987, in run_command
+          cmd_obj.ensure_finalized()
+          ~~~~~~~~~~~~~~~~~~~~~~~~^^
+        File "/usr/lib/python3/dist-packages/setuptools/_distutils/cmd.py", line 111, in ensure_finalized
+          self.finalize_options()
+          ~~~~~~~~~~~~~~~~~~~~~^^
+        File "/usr/lib/python3/dist-packages/setuptools/command/install_lib.py", line 17, in finalize_options
+          self.set_undefined_options('install',('install_layout','install_layout'))
+          ~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        File "/usr/lib/python3/dist-packages/setuptools/_distutils/cmd.py", line 296, in set_undefined_options
+          setattr(self, dst_option, getattr(src_cmd_obj, src_option))
+                                    ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+        File "/usr/lib/python3/dist-packages/setuptools/_distutils/cmd.py", line 107, in __getattr__
+          raise AttributeError(attr)
+      AttributeError: install_layout. Did you mean: 'install_platlib'?
+      [end of output]
+  
+  note: This error originates from a subprocess, and is likely not a problem with pip.
+  ERROR: Failed building wheel for pynauty
+  Running setup.py clean for pynauty
+Failed to build pynauty
+ERROR: Could not build wheels for pynauty, which is required to install pyproject.toml-based projects

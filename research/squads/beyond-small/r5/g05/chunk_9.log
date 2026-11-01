@@ -1,0 +1,25 @@
+setup 1.19s
+pool side 0: 36565 covers, 146260 lines (rejected: format 0, keys 0, cover 0)
+pool side 1: 0 covers, 0 lines (rejected: format 0, keys 0, cover 0)
+start: K0=43 K1=0 conflict-degree-sum=0 (2.18s)
+t=10 T=0.317 K0=29 K1=0 C=0 | acc ins 86/1537 del 100/1780 rep 2468/3390 line 1225/2219
+t=20 T=0.288 K0=30 K1=0 C=0 | acc ins 155/3558 del 168/3440 rep 5114/7003 line 2477/4430
+t=30 T=0.261 K0=32 K1=0 C=0 | acc ins 201/4951 del 212/5106 rep 7521/10349 line 3694/6573
+t=40 T=0.237 K0=31 K1=0 C=0 | acc ins 246/6487 del 258/7241 rep 10546/14575 line 5199/9244
+t=50 T=0.215 K0=33 K1=0 C=0 | acc ins 283/7602 del 293/9048 rep 12687/17776 line 6589/11567
+t=60 T=0.195 K0=34 K1=0 C=0 | acc ins 301/8375 del 310/10681 rep 14549/20616 line 7863/13718
+t=70 T=0.177 K0=33 K1=0 C=0 | acc ins 307/8987 del 317/12279 rep 15979/22927 line 9052/15953
+t=80 T=0.160 K0=34 K1=0 C=0 | acc ins 315/9654 del 324/14246 rep 17772/25611 line 10333/18316
+t=90 T=0.145 K0=36 K1=0 C=0 | acc ins 320/9860 del 327/16227 rep 18693/27152 line 11824/20805
+t=100 T=0.132 K0=36 K1=0 C=0 | acc ins 320/10004 del 327/18071 rep 19198/28193 line 13154/22958
+t=110 T=0.120 K0=36 K1=0 C=0 | acc ins 322/10328 del 329/19942 rep 19987/29814 line 14593/25298
+t=120 T=0.109 K0=38 K1=0 C=0 | acc ins 324/10475 del 329/21869 rep 20656/30935 line 15965/27606
+t=130 T=0.098 K0=38 K1=0 C=0 | acc ins 324/10641 del 329/24023 rep 21037/31719 line 17484/30177
+t=140 T=0.089 K0=41 K1=0 C=0 | acc ins 327/10690 del 329/25927 rep 21687/32638 line 18848/32586
+t=150 T=0.081 K0=41 K1=0 C=0 | acc ins 327/10710 del 329/27930 rep 21895/32936 line 20040/34773
+t=160 T=0.073 K0=41 K1=0 C=0 | acc ins 327/10758 del 329/29909 rep 21969/33129 line 21333/37025
+t=170 T=0.067 K0=42 K1=0 C=0 | acc ins 328/10759 del 329/32220 rep 22032/33268 line 22523/39229
+t=180 T=0.060 K0=42 K1=0 C=0 | acc ins 328/10759 del 329/34586 rep 22037/33297 line 23867/41648
+t=191 T=0.055 K0=42 K1=0 C=0 | acc ins 328/10759 del 329/36916 rep 22136/33428 line 25109/43960
+end: iterations 526976, raw K0=42 K1=0 C=0
+valid orbits 42 (K0=42 K1=0) hubs 924; file had 43 orbits

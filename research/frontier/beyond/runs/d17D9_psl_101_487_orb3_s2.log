@@ -1,0 +1,9 @@
+group psl 101 x Z_487, N=250853700 (2N=501707400), rows 5100 x 49187 bits (doubled row 1560 words), memory 0.20 GB, threads 2
+alpha: conj by mat(0,100,1,100), z -> 232 z on Z_487 (fixed z: 1); ORBIT k=3 m=5 f=2; W=4.5813e+09 lambda=18.263 mu=2.94
+setup 0.0s
+fixed generators: 1 chosen among 50 alpha-fixed elements
+start cost=33 (2.3s per eval)
+t=11 step=1 evals=5 slot=0 cand=0 cost=0 best=0 T=1.26
+RESULT d=17 D=9 group=psl 101 x Z_487 N=250853700 vertices=501707400 best=0 evals=5 steps=1 time=10.6 orbit k=3 m=5 f=2 mu=2.94
+re-evaluation of the best S: cost 0
+wrote runs/d17D9_psl_101_487_orb3_s2.out

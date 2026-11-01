@@ -1,0 +1,19 @@
+Bipartite graph, 13-regular, diameter 5, 11,700 vertices: multi-doubled-matching lift of W(8) over Z2 x Z5 (k = 2),
+nu, sigma_1, sigma_2 annealed with a route-aware cost by squad card r2/d05 (research/squads/beyond/r2/d05/mdm8.c, state st_run2.txt).
+Old values: (13,5) 2013 table 11,480; lab record 11,486 (unit design).
+sha256(uncompressed) d0b0a99886adafcbb6227cbf71e5f07fd405ee44b5f47d988c9762cfcd8da639
+
+== apsp.c (research/lifts/coordinator_check/apsp.c), director 2026-10-26T15:54:52Z
+n=11700 edges=76050 degree min=13 max=13 bipartite=yes diameter=5
+RESULT VALID d=13 D=5 n=11700
+== apsp.c with D = 4 (must fail)
+RESULT INVALID
+
+== bfs_all.c (research/theorems/squad165/bfs_all.c), BFS from every vertex
+n=11700 edges=76050 degree 13..13 bipartite=yes max_ecc=5
+  dist 0: 11700 ordered pairs
+  dist 1: 152100 ordered pairs
+  dist 2: 1742740 ordered pairs
+  dist 3: 18178020 ordered pairs
+  dist 4: 66690560 ordered pairs
+  dist 5: 50114880 ordered pairs

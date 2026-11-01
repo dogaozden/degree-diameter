@@ -1,0 +1,9 @@
+group psl 71 x Z_343, N=61369560 (2N=122739120), rows 2520 x 24353 bits (doubled row 784 words), memory 0.05 GB, threads 2
+alpha: conj by mat(0,70,1,70), z -> 18 z on Z_343 (fixed z: 1); ORBIT k=3 m=6 f=2; W=9.43531e+08 lambda=15.375 mu=12.91
+setup 0.0s
+fixed generators: 1 chosen among 35 alpha-fixed elements
+start cost=4 (0.4s per eval)
+t=2 step=1 evals=5 slot=3 cand=0 cost=0 best=0 T=1.26
+RESULT d=20 D=8 group=psl 71 x Z_343 N=61369560 vertices=122739120 best=0 evals=5 steps=1 time=1.5 orbit k=3 m=6 f=2 mu=12.91
+re-evaluation of the best S: cost 0
+wrote runs/d20D8_psl_71_343_orb3_s1.out
