@@ -36,3 +36,7 @@ VALID d=18 D=10 group=psl 223 x Z_1063 N=5893986336 vertices=11787972672 (distin
 == d17D5_n33849_hubs57_c03 (beyond-small, branch claude/beyond-small-cells-fwb6si, card c03: the (16,5) route-chart graph plus 57 algebraic hubs): edge list sha256 07cbc17fbe4446fe9d3421a784264f34511a8ae8961e9889ea0a5c7e1dbd3090
 n=33849 edges=271248 degree min=16 max=17 bipartite=yes diameter=5 RESULT VALID d=17 D=5 n=33849 
 at D = 4: RESULT INVALID
+
+== d17D5_n35618_orbits (beyond-small: (16,5) route chart + 83 hub orbits of 22, raises 33,849): edge list sha256 a50170daa4b737c39ab3c9f0f26843944636c8fa067b0abf42b176f558f62912
+n=35618 edges=299794 degree min=16 max=17 bipartite=yes diameter=5 RESULT VALID d=17 D=5 n=35618 
+at D = 4: RESULT INVALID
