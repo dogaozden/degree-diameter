@@ -1,2 +1,6 @@
 it 1 t=45s mode=one_j1 c=169 |R|=8 dropped=2 fixed=37 new_total=39 ok=True accepted=True cur=39 dt=45s
 it 2 t=90s mode=all_j c=180 |R|=12 dropped=7 fixed=32 new_total=39 ok=True accepted=True cur=39 dt=45s
+it 3 t=136s mode=all_j c=205 |R|=12 dropped=9 fixed=30 new_total=41 ok=True accepted=True cur=41 dt=45s
+it 4 t=181s mode=one_j1 c=121 |R|=8 dropped=7 fixed=34 new_total=41 ok=True accepted=True cur=41 dt=45s
+it 5 t=226s mode=one_j2 c=173 |R|=8 dropped=8 fixed=33 new_total=41 ok=True accepted=True cur=41 dt=45s
+it 6 t=271s mode=one_j2 c=84 |R|=8 dropped=7 fixed=34 new_total=40 ok=True accepted=False cur=41 dt=45s
