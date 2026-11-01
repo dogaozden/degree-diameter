@@ -231,3 +231,17 @@ the group the beyond-d11 job had stopped after 48), check running; (16,11) first
 OOM-killed twice by the 14.3 GB bash cgroup; to be checked in a quiet window.
 Kept for round 2: SL/PSL with small n at model-ranked rungs ("ladder" cards that climb on success), haar_meta for the
 Frobenius cells, a random-sampling-vs-annealing test.
+
+### Round 2 (13 ladder cards, 23:21-23:45 UTC, research/squads/raise11/r2/)
+Cards (each climbs model-ranked rungs for one cell): e01 (7,11) SL rungs; e02 (7,11) PSL rungs; e03/e04 (8,11) small/big
+steps; e05/e06 (9,11); e07/e08 (10,11); e09 (6,11) orbit search on SL/PSL; e10 (6,11) Frobenius with haar_meta; e11
+(5,11) both families; e12 (11,11); e13 random sampling vs annealing.
+Best per card: e09 **(6,11) 2,135,280** (PSL(2,41) x Z31, rung 1, about 1 in 2 seeds; haarcheck_gen + haarcheck_lean
+VALID): the orbit search beats the Frobenius family at Δ = 6 too. Near misses at cost 2: e05 (9,11) SL(2,137) x Z31
+(+2.68 %), e10 (6,11) Z23671 x| Z45 (now below the new value), e11 (5,11) Z8209 x| Z19 and Z4219 x| Z37 (+0.17 %);
+cost 4: e08 (10,11) SL(2,617), e01 (7,11) SL(2,67) x Z19; e07 8, e03 8, e04 16, e02 18, e06 20; e13: random sampling
+gave no cost 0 in 159 samples where annealing reached lower costs.
+Findings: (1) at load ~20 the Δ >= 9 cells get 3-28 s per evaluation, so 95-s card runs are too short there (e06, e07,
+e08); those cells moved to director seed loops (dloop.sh) for round 3. (2) Rungs above model K ~ 9 did not solve in
+~10 seeds per card; K <= 8 solved at about 1 in 2-4 seeds. (3) Several cards again made stray read-only
+list_sessions calls (no effect).

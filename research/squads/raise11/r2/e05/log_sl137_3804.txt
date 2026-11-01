@@ -4,3 +4,10 @@ setup 0.0s
 start cost=42 (0.8s per eval)
 t=3 step=1 evals=5 slot=1 cand=26 cost=26 best=26 T=1.26
 t=14 step=2 evals=9 slot=2 cand=40 cost=40 best=26 T=1.06
+t=27 step=3 evals=13 slot=0 cand=22 cost=22 best=22 T=0.89
+t=40 step=4 evals=17 slot=2 cand=18 cost=18 best=18 T=0.75
+t=51 step=5 evals=21 slot=1 cand=16 cost=16 best=16 T=0.63
+t=64 step=6 evals=25 slot=0 cand=42 cost=16 best=16 T=0.53
+t=75 step=7 evals=29 slot=2 cand=24 cost=16 best=16 T=0.45
+t=90 step=8 evals=33 slot=0 cand=42 cost=16 best=16 T=0.38
+RESULT d=9 D=11 group=sl 137 x Z_31 N=79707696 vertices=159415392 best=16 evals=33 steps=8 time=90.3 orbit k=3 m=3 f=0 mu=16.42
