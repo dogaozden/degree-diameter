@@ -49,3 +49,39 @@ nice 0, equal to the director's whole pipeline); the director raised the pipelin
 `echo -10 > /proc/<pid>/autogroup` and lowered the cards' groups to 15.
 Kept: haarex6 for the sweep; no family lead worth more CPU (the 704 lift is an isolated local minimum, the new
 families are far). The order-384 sweep continues; orders 401-450 started on the spare core.
+
+## 2026-11-01, beyond-d13, round 1 (16 cards, 11:39 UTC)
+
+Session: Opus director, job beyond-d13 (branch claude/beyond-d13-search-z35z61). Goal: first values for D = 13 at
+Δ = 3..10 and D = 14 at Δ = 3..8 (no values recorded there), at most 20 billion vertices. Files:
+research/squads/beyond13/r1/ (HEADER.md, c01-c16.md, scoreboard.jsonl). Before the round the director had (4,14) 416,640
+and (5,13) 3,176,880 (1 evaluation each), (10,13) 19,980,294,768 (first S, at the cap) and (9,13) 7,508,907,120
+(5 evaluations), and started (8,14). Machine: 4 cores, 15 GB, shared with the director's three big checks (load 15-29).
+
+Cards (best result; all VALID by haarcheck_gen, apsp or metacheck unless marked):
+- c01 (3,13) metacyclic exhaustive (exh3): Z133 x|_36 Z9, 2,394; only N <= 1,200 reached (exh3 got ~1 % CPU).
+- c02 (3,14) metacyclic sampled: nothing; it used k <= 8 only (virtually abelian; see c15).
+- **c03 (3,13) other groups, exhaustive S = {e,x,y}: A6 x Z4, 2,880**; SL(2,11) 2,640, PSL(2,13) 2,184.
+- c04 (4,13) SL ladder: PSL(2,23) x Z13 78,936; SL(2,43) x Z1 stuck at cost 4 (order-6 holes).
+- **c05 (4,13) new exhaustive orbit scan (orbscan.c, S = {e,x,ax,a^2x} over all x): PSL(2,29) x Z7, 170,520** (38 tries).
+- **c06 (4,14) ladder: PSL(2,41) x Z7, 482,160**; PSL(2,29) x Z19 462,840; PSL(2,79) x Z1 stuck at 31.
+- **c07 (5,13): PSL(2,47) x Z31, 3,217,056** (18 s); PSL(2,37) x Z67 stuck at 18.
+- **c08 (5,14): PSL(2,227), 11,696,856, random S (haar_gen3)**; the orbit form "3 1 2" stalls at 18 (median of random
+  symmetric S 90): at Δ = 5 one random fixed generator plus one orbit is too rigid.
+- **c09 (6,13): PSL(2,103) x Z37, 40,427,088** (11.5 s); PSL(2,109) x Z31 40,142,520; mu 8.5-11.5 stuck at 6-15.
+- **c10 (6,14): PSL(2,101) x Z181, 186,466,200** (chained links, mu ~7).
+- **c11 (7,13): SL(2,199) x Z19, 299,455,200**; SL(2,281) x Z7 310,628,640 search cost 0 (check pending).
+- **c12 (7,14): SL(2,109) x Z613, 1,587,571,920** (13 evals, mu 2.1; director check).
+- **c13 (8,13): SL(2,911) x Z1, 1,512,114,240** (first draw; director check).
+- c14 hole anatomy at (5,13) (ANATOMY.md): -I missed by 20-46 % of random S; central (+-I,z) ~ n e^(-λ/6); PSL
+  involutions 5-11 holes per S; SL 16-20 holes per S against PSL 22-27. Rule stays: SL, small n.
+- **c15 wildcard, odd-order groups at odd D: Z4903 x|_230 Z19 (order 93,157, no involutions), random S, 186,314** — the
+  best (4,13) value, 9 % above the orbit scan. k = 13, 17, 19, 23 all solved at 170-180k; k = 3 hopeless; k = 11 stalls.
+- **c16 wildcard, prime-power field: PSL(2,49), random S, 117,600 at (4,13)**; PGL(2,37) 101,232.
+
+Director's reading: at small Δ the orbit structure is too rigid (c08, c16, c15 all won with random S), and at odd D a
+group without involutions wins (c15) — the exact lemma of ODD_D_HOLES.md predicts it, but nobody had tried odd-order
+groups. Kept for round 2: odd-order metacyclic groups at (4,13), (5,13), (6,13) and products; random S at Δ <= 5;
+the even-D control; exhaustive scans at Δ = 3, 4; pushes of the mid cells. Dropped: metacyclic k <= 8. Process: the
+director's three checks (5 threads at nice 0) starved the cards (c01, c02, c05 report a few % CPU); round 2 gets the
+same machine, so its cards are told to keep runs short.
