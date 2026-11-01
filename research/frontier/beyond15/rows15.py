@@ -36,10 +36,10 @@ if os.path.exists('cells_other.txt'):
         path = chk if os.path.exists(chk) else f'checks/{chk}'
         if not valid(path): continue
         where = os.path.normpath(os.path.join('research/frontier/beyond15', path))
-        rows[(d, D)] = (v, f'{note}; mu = {mu_of(d, D, v // 2):.2f}',
+        rows[(d, D)] = (v, note + (f'; mu = {mu_of(d, D, v // 2):.2f}' if note.startswith('Haar graph') else ''),
                         where + (f' (graph research/frontier/beyond/graphs/{edges})' if edges != '-' else ''))
 for (d, D) in sorted(rows, key=lambda c: (c[1], c[0])):
     v, note, chk = rows[(d, D)]
-    note = note.replace('x|_', 'x\\|_')
+    note = note.replace('\\|', '|').replace('|', '\\|')
     print(f'| ({d},{D}) | **{v:,}** | {100*v/moore(d,D):.2f} | {moore(d,D)-6:,} | {note} | {chk} | '
           f'Haar size law at mu = 5: 2N = {2*n_at_mu(d,D,5):.3g} |')
