@@ -1,0 +1,8 @@
+group meta 6397 41 5330 x Z_1, N=262277, identity 0, H order 41, rows 6397, threads 1, setup 0.20s
+START loaded from s102.sol.best (6 generators)
+start cost=1
+t=30 steps=493 evals=3945 cost=1 best=1 T=0.53
+t=60 steps=936 evals=7489 cost=1 best=1 T=0.19
+moves accepted/proposed: plain 0/1242 pair 0/0 local 0/0
+  move 0: mean candidate cost 33.7 min 4, candidates within +1 of final cost: 0
+RESULT d=6 D=10 group=meta 6397 41 5330 x Z_1 N=262277 best=1 evals=9937 time=80.1

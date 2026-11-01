@@ -1,0 +1,9 @@
+e09 (6,10): Frobenius Z_p x| Z_k, k odd 25..63, N in [262081, 264500] (list from r1/c13 plus own enumeration; 5 candidates).
+hmeta d=6 D=10, 60 s per run, K=64 (K=256 aborts with stack smashing; K=40 ran).
+best per group (cost, last log):
+  Z5851 x| Z45  N=263295  best cost 3   (g45_c4.sol.best, chain of g45_s1 and g45_c4; 6 runs, plateau at 3)
+  Z9049 x| Z29  N=262421  best cost 4   (g29_s1.sol.best; 4 runs)
+  Z10501 x| Z25 N=262525  best cost 5   (g25_s1.sol.best; 4 runs)
+  Z9721 x| Z27  N=262467  best cost 6   (g27_s1.log; 1 run)
+No cost 0 found, so no build_haar2 / apsp check was run. Z6397 x| Z41 skipped per card (e08).
+Command of best run: START=g45_c4.sol.best T0=1 T1=0.2 hmeta 6 10 60 4 64 g45_c4.sol 5851 45 4151 (T0=1 T1=0.1 used)

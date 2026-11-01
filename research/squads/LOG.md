@@ -85,3 +85,30 @@ Reading: on this box the mid cells get ~10-30 evaluations per card link, too few
 director or are dropped. The Frobenius random-S family (D = 11, 12 winners) comes within 2-3 holes at (4,10), (5,10),
 (6,10) above the current values; round 2 farms these. Process: two cards called send_message once with no arguments
 (rejected, nothing sent); several haar_big0 links overran their seconds (the program checks time only between steps).
+
+### Round 2 (16 cards, 23:20 UTC, research/squads/raise10/r2/) — cells (3..6,10) only
+
+Cards: e01/e02 (4,10) Frobenius farms (both redirected after 10 minutes, see below), e03 (4,10) non-Frobenius metacyclic,
+e04/e05 (5,10) Frobenius farms, e06 (5,10) composite-m metacyclic, e07 (5,10) Q x Frobenius products, e08/e09 (6,10)
+Frobenius farms, e10 (6,10) products of two Frobenius groups, e11 (6,10) haar_big1 "3 2 0" FIXF, e12 (3,10) cyclic lifts,
+e13 (3,10) non-abelian lifts, e14 hole anatomy, e15 wildcard, e16 (4,10) products.
+Results (no raise; best cost above the current value):
+- **(5,10) e07: A4 x (Z239 x| Z17) (N 48,756) cost 1**; e04 Z1453 x| Z33 cost 2 (three lineages); e05 Z1783 x| Z27 and
+  Z2857 x| Z17 cost 3; e06 Z2387 x|_8 Z20 cost 7.
+- **(6,10) e08: Z6397 x|_5330 Z41 (N 262,277) cost 1**; e09 Z5851 x| Z45 cost 3; e10 (Z43 x| Z3) x (Z157 x| Z13) cost 4;
+  e11 haar_big1 orbit search cost 18 (orbit S far behind random S at Δ = 6).
+- (4,10): e03 Z113 x|_2 Z56 (r of order 28: a centre of order 2, like the incumbent) cost 2; e16 (Z11 x| Z5) x (Z19 x| Z6)
+  cost 4; e15 PSL(2,7) x Z37 cost 9 and orbit-symmetric S on Frobenius groups (dead: cost 2e4).
+- (3,10): e12 Heawood x Z58 / Z59 cyclic lifts cost 6; e13 non-abelian lifts (own annealer nlift.c) Z7 x| Z12 on a 5+5 base
+  cost 20, C3 x He3 (the incumbent's group) 62.
+- e14 (hole anatomy): every hole of the near misses is at distance exactly 11, one per Z_k-fibre; a Sidon condition on the
+  Z_k-coordinates of S (distinct, all differences distinct and nonzero) cut the random-S hole rate 4.5x (Z251 x| Z25) and
+  27x (Z1453 x| Z33).
+Director during the round: **exh4** (research/frontier/raise10/exh4/), an exhaustive search of Haar graphs H(G,{e,x,y,z}) of
+metacyclic groups up to the automorphisms (a,j) -> (ua + (1-r^j)b, j) (x over orbit representatives, y over stabiliser
+orbits, z over G, x from the lowest orbit), validated on the incumbent's group Z97 x|_19 Z64 (finds cost-0 sets at once).
+**Z251 x| Z25 (r1/c09's cost-2 group): minimum cost 2 over all S, so no 12,550-vertex Haar graph of it has diameter 10**;
+cards e01/e02 were redirected (e01 found nothing new to do and stopped; e02 moved to (6,10)). The sweep of all 39 Frobenius
+groups of order 6,209-6,600 is running. (17,10) solved at 23:29: PSL(2,181) x Z1321, "5 3 2" FIXF, 7,832,948,760 vertices
+(+11.5 %), 598 evaluations; hcheckpsl running. (19,10) started: PSL(2,311) x Z691, "5 3 4" FIXF, mu 17.4.
+Process: one card called archive_session by mistake (no such tool; no effect).

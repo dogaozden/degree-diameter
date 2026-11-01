@@ -1,0 +1,11 @@
+e04 (5,10): Z1453 x|_11 Z33 (N 47949, 95898 vertices), fresh hmeta lineages + chains + finisher. No cost 0 (not beaten, 95,472 stands).
+Fresh (80 s each, THREADS=1, hmeta 5 10 80 <seed> 8 <out> 1453 33 11):
+ seed 101 cost 3 (f101.sol.best); 102 cost 4; 103 cost 2 (f103.sol.best, best state); 104 cost 4; 105 cost 2 (f105.sol.best); 106 cost 3; 107 cost 4.
+Chains from cost-2 state f103 (T0=8, REHEAT=400, seed 203): stayed 2 (c103.sol.best not improved).
+TFULL finisher haar_gen3t on f103 (seed 301): stayed 2. On f105 (seed 302): stayed 2.
+Chain from f105 (T0=2, REHEAT=400, seed 205): stayed 2. Chain from f106 (T0=8, seed 206): stayed 3.
+OPT1=1 exhaustive 1-opt from f103: did not finish in 110 s (hmeta does not check the clock in OPT1; killed by timeout, no output).
+Not checked: no cost-0 state, so build_haar2.py and apsp were not run.
+Best state: research/squads/raise10/r2/e04/f103.sol.best (cost 2).
+Late fresh runs (same command, seeds 108, 109, 110): cost 3, 4, 2 (f110.sol.best is a second cost-2 state, not checked).
+Total: 10 fresh lineages on Z1453 x|11 Z33; 3 reached cost 2. Still no cost 0 (95,472 not beaten).

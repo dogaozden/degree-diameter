@@ -1,0 +1,22 @@
+e13 (3,10) non-abelian voltage lifts. Target: >810 vertices, i.e. |Gamma| >= 82 on a 10-vertex cubic bipartite base.
+Tools: gen_bases.py (random cubic bipartite bases, A=[0,h), B=[h,2h)), nlift.c (annealer + TABU=1 full-neighbourhood tabu finisher),
+groups from research/squads/raise10/tools/groups.py (grp/*.bin). Cost = unreached ordered pairs at distance > 10 from (u,1), summed over base u,
++1000 per duplicate lift edge. Calibration: nlift on cyc 81 reproduces lift.c init cost (1892) exactly.
+Runs (all THREADS=1, load average ~17 on the box, so ~1/6 CPU per process):
+  dih 41 (82)        b10_1_0  anneal 75s         best 282
+  dih 42 (84)        b10_1_1  anneal 75s         best 269
+  cyc 81 (control)   b10_1_0  anneal 60s         best 106
+  heis3 x cyc3 (81)  b10_1_2  anneal 70s         best 62  (incumbent-type group, not reaching 0 here)
+  heis3 x cyc3 (81)  b10_1_2  TABU 70s           best 76
+  meta 7 12 3 (84)   b10_1_3  TABU 75s           best 32
+  meta 7 12 3 (84)   b10_1_4  TABU 75s           best 32
+  meta 14 6 3 (84)   b10_1_5  TABU 70s           best 58
+  meta 7 12 3 (84)   b10_1_5  TABU 75s           best 22   (out/m84_b5s11.best)
+  meta 7 12 3 (84)   b10_1_5  resume START       best 22   (out/m84_b5s12)
+  meta 21 4 8 (84)   b10_1_5  TABU 70s           best 30
+  meta 7 12 3 (84)   b10_1_2  TABU 75s           best 20   (out/m84_b2s14.best, best state of the card)
+  meta 7 12 3 (84)   b10_1_2  resume START       best 20   (out/m84_b2s15)
+  dih 44 (88)        b10_1_0  TABU 70s           best 390
+No cost-0 lift found, so nothing to verify with apsp. Nothing beats 810.
+Note: the rnd10_* files in tools/bases have 20 vertices (10+10), not 10; this card uses its own 5+5 bases (gen_bases.py).
+  meta 7 12 3 (84)   b10_1_2  resume START (last)  see out/m84_b2s17.best

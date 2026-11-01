@@ -1,0 +1,5 @@
+checker: hcheckpsl
+command: ./bin/hcheckpsl runs/d17D10_psl_181_1321_orb5-3-2_s1.out
+start: 2026-11-01T23:38:18Z
+sha256 0067206181abf04aa82928c2f89f61494f24a40a60edcc8fe54700e83f0a47a7  ./bin/hcheckpsl
+sha256 bd021b1f8113115ffc9686c3fb7ea078adb03a96e737ec119f019105d2e4911e  runs/d17D10_psl_181_1321_orb5-3-2_s1.out

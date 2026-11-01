@@ -1,0 +1,5 @@
+group prod psl 3 meta 811 5 212 x Z_1, N=48660, identity 12165, H order 15, rows 3244, threads 1, setup 0.12s
+start cost=365
+t=30 steps=2308 evals=18465 cost=14 best=14 T=0.53
+t=60 steps=4545 evals=36361 cost=11 best=11 T=0.19
+RESULT d=5 D=10 group=prod psl 3 meta 811 5 212 x Z_1 N=48660 best=11 evals=48081 time=80.0

@@ -1,0 +1,5 @@
+group prod psl 7 meta 97 3 35 x Z_1, N=48888, identity 6111, H order 21, rows 2328, threads 1, setup 0.12s
+start cost=373
+t=30 steps=1329 evals=10633 cost=16 best=14 T=0.53
+t=60 steps=2570 evals=20561 cost=13 best=13 T=0.19
+RESULT d=5 D=10 group=prod psl 7 meta 97 3 35 x Z_1 N=48888 best=13 evals=28465 time=80.0
