@@ -180,3 +180,29 @@ Reading: the cost 1-3 plateaus are stable over thousands of evaluations; the sol
 group of similar mu solved quickly. Rounds 2-4 together raised 14 of last week's cells (4..10, 11/12) by 1-37 %.
 The squad stopped here: the remaining near misses look like true floors at this budget, and the director's checks of
 the 6-20 billion-vertex graphs needed the CPU.
+
+## 2026-11-01, beyond-d11: wrap-up (director)
+
+Goal cells, all checked by haarcheck_gen (logs research/frontier/runs/cloudcheck/<stem>.gen.txt; final status in
+research/frontier/beyond/BEYOND_TABLE.md):
+- (11,11) 1,241,299,248 (SL(2,853), mu 10.4, director); earlier 1,210,478,448 (r2/d01) and 1,170,162,000.
+- (12,11) 2,976,066,240 (SL(2,239) x Z109, f = 0, r1/c04); earlier 2,874,207,072.
+- (13,11) 6,781,213,392 (SL(2,563) x Z19, director; check in progress at writing) / 6,508,747,920 VALID.
+- (14,11) 14,381,398,080 (SL(2,1009) x Z7, director).
+- (11,12) 11,189,148,096 (PSL(2,223) x Z1009, director).
+- (12,12) 19,980,294,768 and (13,12) 19,993,487,976 (PSL; at the job's 20-billion cap).
+Plus 14 of last week's cells raised: (4..10, 11) and (4..10, 12), 1-37 % (rounds 2-4).
+
+Who found what: the D = 12 values and the pushes of (11,11), (13,11), (14,11), (11,12) came from the director's runs;
+(12,11) and all 14 small-cell improvements came from cards (c04, d01, d08, d09, d13, e01, e02, e04, e07-e12, f02, f10,
+f12-f14). The decisive idea of the job, that at odd D involutions and central elements are the hard holes (so SL with
+small n, not PSL), came from a card (r2/d04's hole anatomy) answering a question the director asked, and was then
+confirmed by r3/e14. The director's own contributions were haar_big0's f = 0 mode, the redirect of seven running cards,
+the exact lemma behind the effect, and the big runs and checks.
+
+Process lessons: (1) on a 4-core box, 16 concurrent cards get ~0.1-0.2 core each; cheap cells (N <= 3e8) are where they
+can still finish real runs, and that is where they produced values. (2) Autogroup scheduling made `nice` meaningless
+until it was switched off. (3) Memory caps must come from the program's own estimate (n = 1 groups pad rows); three
+cards lost their box to caps the director set too low. (4) Cards still stop early (5-12 minutes of 25) unless told
+explicitly to use the box; with that sentence in the header, rounds 2-4 used 20-25 minutes. (5) Mid-round redirects
+work: four of the seven redirected cards produced values after switching.

@@ -9,3 +9,7 @@ file runs/d10D11_sl_613_1_orb3-3-1_d13.out
 header: 10 11 sl 613 n 1 N 230345784
 group sl 613 x Z_1, |G| = 230345784 = N, vertices 2N = 460691568; 10 distinct generators
 from (e,A): reached A 230345784/230345784, B 230345784/230345784 within 11; ecc 11; level sizes [1, 10, 90, 810, 7290, 65610, 589608, 5248303, 43010497, 190074667, 186738298, 34956384]  (344s)
+from (e,B): reached A 230345784/230345784, B 230345784/230345784 within 11; ecc 11; level sizes [1, 10, 90, 810, 7290, 65610, 589608, 5248303, 43009833, 190074667, 186738962, 34956384]  (679s)
+VALID d=10 D=11 group=sl 613 x Z_1 N=230345784 vertices=460691568 (distinct generators, 10-regular simple; every vertex within 11 of both (e,A) and (e,B); ecc 11; 679s)
+exit: 0
+end: 2026-11-01T07:49:53Z (679 s)
