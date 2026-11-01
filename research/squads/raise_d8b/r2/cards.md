@@ -3,22 +3,24 @@
 # If it solves (a RESULT line with best=0 and a.sol written): check a.sol with haarcheck_gen, then run the "next" rung
 # for the rest of your time box. If it does not solve, report the best cost and the evaluation count.
 
-## d01 (17,8) "5 3 2" on psl 41 641 (mu 51.4); next sl 31 751 (mu 61.0)
-## d02 (17,8) "5 3 2" on sl 29 911 (mu 55.3); next sl 31 761 (mu 73.2)
-## d03 (17,8) orbits of order 7, "7 2 3" on sl 43 281 (mu 60.2); next psl 71 127 (mu 76.5)
-Before the search, RANDORB=16 on sl 43 281 with "7 2 3" and on sl 29 911 with "5 3 2" (equal-ish mu); report both
+## d01 (17,8) "5 3 2" on sl 41 311 (mu 33.6); next psl 41 631 (mu 41.2)
+## d02 (17,8) "5 3 2" on psl 89 61 (mu 35.3); next psl 61 191 (mu 39.6)
+Round 1 (r1/c15) left this exact group at cost 1: first copy /home/user/degree-diameter/research/squads/raise_d8b/r1/c15/s_k5_psl89_61.sol.best
+into your folder and start from it (START=<your copy>, a new SEED). Never write into r1/.
+## d03 (17,8) orbits of order 7, "7 2 3" on sl 29 883 (mu 35.6); next psl 43 547 (mu 41.3)
+Before the search, RANDORB=16 on sl 29 883 with "7 2 3" and on sl 29 881 with "5 3 2" (equal mu); report both
 (min, median, median/k) in your scoreboard "idea" field.
-## d04 (18,8) "5 3 3" on psl 181 11 (mu 51.0); next psl 41 971 (mu 72.8)
-## d05 (18,8) "5 3 3" on sl 31 1111 (mu 62.0); next psl 41 971 (mu 72.8)
-## d06 (18,8) orbits of order 7, "7 2 4" on psl 43 827 (mu 56.8); next psl 43 841 (mu 72.0)
-## d07 (18,8) "5 3 3" on psl 41 971 (mu 72.8) (the bold rung); next psl 29 2761 (mu 78.8)
-## d08 (19,8) "3 6 1" on psl 191 13 (mu 27.5); next sl 53 307 (mu 31.5)
-## d09 (19,8) "3 6 1" on sl 59 223 (mu 32.5); next psl 43 1159 (mu 35.5)
-## d10 (19,8) "5 3 4" on psl 79 191 (mu 49.3) (tests whether k = 5 still wins with 3 commuting fixed letters); next psl 61 421 (mu 61.0)
-## d11 (20,8) "5 4 0" on psl 79 271 (mu 49.0); next psl 149 41 (mu 61.4)
-## d12 (20,8) "5 4 0" on psl 89 191 (mu 55.1); next sl 409 1 (mu 70.1)
-## d13 (20,8) "5 4 0" on psl 149 41 (mu 61.4); next psl 59 671 (mu 77.5)
-## d14 (20,8) "5 4 0" on sl 409 1 (mu 70.1) (the bold rung, n = 1); next psl 59 671 (mu 77.5)
+## d04 (18,8) "5 3 3" on psl 181 11 (mu 51.0) (bold: the director solved mu 44.2 in 18,549 evaluations); next none
+## d05 (18,8) "5 3 3" on sl 31 1091 (mu 47.8); next psl 181 11 (mu 51.0)
+## d06 (18,8) orbits of order 7, "7 2 4" on psl 97 71 (mu 46.3); next psl 43 827 (mu 56.8)
+## d07 (19,8) "5 3 4" on psl 131 41 (mu 35.9); next psl 59 451 (mu 38.5)
+## d08 (19,8) "3 6 1" on psl 43 1159 (mu 35.5) (k = 3 control at the k = 5 frontier); next none
+## d09 (19,8) "5 3 4" on psl 89 131 (mu 36.9); next psl 79 191 (mu 49.3)
+## d10 (19,8) "5 3 4" on psl 59 451 (mu 38.5); next psl 79 191 (mu 49.3)
+## d11 (20,8) "5 4 0" on sl 79 131 (mu 29.2); next psl 109 101 (mu 35.4)
+## d12 (20,8) "5 4 0" on psl 61 571 (mu 30.7); next psl 59 641 (mu 39.0)
+## d13 (20,8) "5 4 0" on psl 109 101 (mu 35.4); next psl 229 11 (mu 41.3)
+## d14 (20,8) "5 4 0" on psl 509 1 (mu 40.2, n = 1); next psl 229 11 (mu 41.3)
 
 ## d15 Wildcard: (19,8) with k = 5 and a NON-abelian centralizer (haar_sym)
 At (19,8) k = 5 needs 4 alpha-fixed letters (19 = 4 + 15), and with alpha = conjugation by an element of order 5 they

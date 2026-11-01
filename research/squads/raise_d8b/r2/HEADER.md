@@ -6,14 +6,14 @@ degree d and diameter 8 for d = 17..20 (cells beyond the 2013 table). Current va
 | cell | vertices (2N) | group, orbit structure ("k m f") |
 |---|---|---|
 | (17,8) | 41,723,520 | SL(2,31) x Z701, "5 3 2" (round 1, c03) |
-| (18,8) | 62,842,200 | PSL(2,101) x Z61, "5 3 3" (director; mu 29.6 solved in 97 evaluations) |
-| (19,8) | 88,597,200 | SL(2,101) x Z43, "3 6 1" (round 1, c08) |
+| (18,8) | 64,577,760 | PSL(2,79) x Z131, "5 3 3" (director; mu 44.2, 18,549 evaluations; mu 29.6 had solved in 97) |
+| (19,8) | 91,939,320 | PSL(2,109) x Z71, "5 3 4" (round 1, c07; mu 34.5) |
 | (20,8) | 126,119,280 | PSL(2,41) x Z1831, "5 4 0" (round 1, c11) |
 
 **Round 1 finding: orbits of order 5 (ORBIT "5 m f") solve far higher mu than order 3** (k = 3 at mu 28 sat at cost 3
 after 12,000 evaluations where k = 5 at mu 29.6 solved in 97). Keep f small: the f - 1 fixed generators all lie in the
 abelian centralizer of alpha, and three or more commuting letters make 6-cycles (round 1: "5 3 4" on sl 41 671 stuck
-at cost 100). Orbit order 9 was much worse than 3 (RANDORB). Order 7 is untested beyond one RANDORB.
+at cost 100, but on psl 109 71 it solved mu 34.5). Orbit order 9 was much worse than 3 (RANDORB). Order 7 is untested beyond one RANDORB.
 
 **This round: every card runs ONE given rung (one group, one orbit type) for a full 1400-second haar_big0 run**, and
 only if it solves early, checks it and moves to the next rung named on its card. No ladder from the bottom.
@@ -57,8 +57,9 @@ BIN=/home/user/degree-diameter/research/frontier/raise_d8/bin, GRP=/home/user/de
 Then reply in at most 5 lines. A Haiku's VALID is a claim; the director re-checks every find.
 
 ## Already found / already ruled out (do not repeat)
-- Values above. The director is running (18,8) PSL(2,79) x Z131, "5 3 3" (mu 44).
-- k = 5 with f = 4 (e + 3 commuting fixed letters) is bad; k = 9 is bad; haar_sym product groups screened badly (r1/c13).
+- Values above. (18,8) 64,577,760 = PSL(2,79) x Z131 "5 3 3" (director, mu 44.2, 18,549 evaluations). The director is running (20,8) SL(2,181) x Z11 "5 4 0" (mu 34.0).
+- Round 1 near the wall (cost 2-6 after ~2,000-8,000 evaluations at ~0.2 core): k = 5 at mu 35-46. At D = 8 the last holes are ordinary elements (r1/c09), not fixed points.
+- k = 5 with f = 4 worked on PSL(2,109) x Z71 but stalled at cost 90-100 on SL(2,41) x Z671; k = 9 is bad; haar_sym product groups screened badly (r1/c13).
 - Orbits of order 2 (involutions), z-only automorphisms, Heisenberg groups, field-automorphism orbits, single orbits,
   big cyclic factors with n/p > ~40, self-dual (transpose-closed) S, -I as a generator, moving the fixed generators:
   all worse (STRUCTURE.md sections 2, 5; job beyond-d11). Random S without orbits walls at mu ~ 21-25.

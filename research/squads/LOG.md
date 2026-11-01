@@ -206,3 +206,57 @@ until it was switched off. (3) Memory caps must come from the program's own esti
 cards lost their box to caps the director set too low. (4) Cards still stop early (5-12 minutes of 25) unless told
 explicitly to use the box; with that sentence in the header, rounds 2-4 used 20-25 minutes. (5) Mid-round redirects
 work: four of the seven redirected cards produced values after switching.
+
+## 2026-11-01, raise-d8b, round 1 (16 cards, 22:51 UTC)
+
+Session: Opus director, job raise-d8b (branch claude/raise-d8-d7-beyond-table-8mozbm). Goal: raise the beyond-table
+D = 8 values (17..20, 8) (Haar graphs at mu ~ 8-20, job new-cells-beyond) and the D = 7 beyond-table cells. Files:
+research/squads/raise_d8b/r1/ (HEADER.md, cards.md, scoreboard.jsonl, card folders). Machine: 4 cores, 15 GB, shared by
+16 cards and the director (load ~18-21, so ~0.2 core per search). Before the round the director found that haar_big0
+(64-bit orbit search, START continuation) is ~4x faster per evaluation than haar_sym at N ~ 3e7, and moved all cards to it.
+
+D = 7 first (no cards): the conics-2 job's (19,7) 11,316,940 and (20,7) 15,795,219 had 9 of 16 and 9 of 24 all-pairs
+source ranges recorded when that job ended. The other ranges had finished in their cloud sessions afterwards; a Haiku
+reader and the director read the RESULT lines and edge-list sha256 from the 22 transcripts: all VALID, coverage complete
+(research/frontier/beyond/checks/d19D7_*_ranges_complete.txt, d20D7_*).
+
+Cards (best result; every find re-checked by the director with haarcheck_gen):
+- c01 (17,8) PSL k = 3 ladder, redirected to k = 5: psl 59 x Z211 "5 3 2" (mu 39.4) to cost 2.
+- c02 (17,8) SL k = 3 ladder: sl 31 x Z703 to cost 3; redirected k = 5: sl 89 x Z31 (mu 44.5) 14, sl 41 x Z311 6.
+- **c03 (17,8) orbits of order 5, "5 3 2": sl 31 x Z701, 41,723,520** (and sl 59 x Z101, 41,474,640); k = 5 solved in
+  seconds where k = 3 on the same group was hopeless (that group had no order-3 scaling on Z101, so the comparison was
+  unfair, but the speed was the signal). Redirected climb psl 29 x Z1811 (mu 50.8): cost 15.
+- c04 (18,8) SL "3 6 0": sl 59 x Z151 (mu 24.2) to cost 3-6. Redirected k = 5 sl 101 x Z31 (mu 37.6): cost 8.
+- c05 (18,8) card said k = 5 but ran k = 3 first; redirected psl 29 x Z2621 (mu 37.4) "5 3 3": cost 5.
+- c06 (18,8) n = 1 shapes: RANDORB medians psl 397 x Z1 41, sl 313 x Z1 26, psl 149 x Z19 36; searches killed early by
+  the card (the director sent it back). Redirected: RANDORB k = 7 "7 2 4" psl 83 x Z113 median 63 vs k = 5 psl 71 x Z181
+  median 75; search psl 71 x Z181 "5 3 3" (mu 46.1) to cost 5.
+- **c07 (19,8) PSL k = 3 ladder (cost 3 at psl 71 x Z247, 79 x Z181), redirected k = 5 "5 3 4": psl 109 x Z71 (mu 34.5),
+  91,939,320** (3,727 evaluations).
+- **c08 (19,8) SL k = 3: sl 101 x Z43 (mu 19.6), 88,597,200**; redirected "5 3 4" sl 41 x Z671: cost 90-100.
+- c09 hole anatomy at (19,8), k = 3: the stalled states (cost 3) miss one ordinary alpha-orbit (unipotent / order-57
+  elements), never fixed points or torus elements. At even D nothing special blocks the search.
+- **c10 (20,8) PSL "3 6 2": psl 109 x Z97, 125,607,240** (145 evaluations); redirected "5 4 0" psl 41 x Z1901 (mu 36.1): 6.
+- **c11 (20,8) orbits of order 5, f = 0, "5 4 0": psl 41 x Z1831, 126,119,280** (257 evaluations); climb sl 29 x Z2741
+  (mu 48.7) to 20, then psl 41 x Z1891.
+- c12 (20,8) SL "3 6 2": sl 61 x Z277, 125,713,680; redirected k = 5 sl 29 x Z2711 (mu 41.2, n/p = 93): cost 16.
+- c13 haar_sym product groups at (19,8): RANDORB prod sl 3 sl 31 x Z61 median 21 at mu 15; search never ran. Negative.
+- c14 shape tournament at (19,8), k = 3, mu ~ 24: RANDORB medians sl 353 x Z1 22, sl 151 x Z13 25, sl 53 x Z301 30,
+  psl 83 x Z157 33, psl 41 x Z1303 36, sl 29 x Z1843 48: small n is best, n/p >~ 40 worst.
+- c15 near-miss finisher on the director's k = 3 (18,8) state: stayed at cost 3 (6,583 evaluations, K 16/32, TARGP 90).
+  Redirected: k = 7 "7 2 3" sl 29 x Z883 median 282 vs k = 5 psl 89 x Z61 median 37 at (17,8); psl 89 x Z61 to cost 1.
+- c16 wildcard, 2+2 voltage lifts of K_{2,2} over SL(2,p) (multi-Haar graphs) at (8,8) scale: no better than Haar graphs
+  at equal order (both solve ~2e5 with similar effort). Negative.
+
+Director during the round: k = 5 "5 3 3" on psl 101 x Z61 solved (18,8) at mu 29.6 in 97 evaluations (k = 3 "3 6 0" on
+psl 79 x Z127, mu 28.0, was at cost 3 after 12,000 and solved only after ~30 minutes): 62,842,200; then psl 79 x Z131
+(mu 44.2) in 18,549 evaluations: **(18,8) 64,577,760** (+12.0 %). Midway the director redirected eleven cards from
+k = 3 to k = 5 rungs at mu 34-51 and two to k = 7 tests.
+
+Reading: orbits of order 5 are the step change at D = 8, d = 17..20 (as k = 5 already won (11,8) and (15,8) in the lab).
+Keep f small: the fixed letters all lie in the abelian centralizer of alpha, so 3+ of them make 6-cycles; "5 3 4" still
+worked on PSL(2,109) x Z71 but not on SL(2,41) x Z671. k = 9 and k = 7 screened worse than k = 5. Walls in ~25 minutes at
+~0.2 core: k = 5 near mu 35-46. Round 2: one high rung per card (mu 27-51), k = 5 everywhere, two k = 7 probes, a k = 3
+control, and a product group whose alpha acts on one factor only (non-abelian centralizer for the (19,8) fixed letters).
+Process: four cards stopped after 2 minutes of a 25-minute box (killed their own searches); the director sent them back
+with explicit run lengths. Killing a wrapper PID left a card's haar_big0 running (c02); the director made the same mistake once.

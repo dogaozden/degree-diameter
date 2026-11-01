@@ -1,0 +1,15 @@
+group psl 109 x Z_101, N=65393460 (2N=130786920), rows 5940 x 11009 bits (doubled row 368 words), memory 0.06 GB, threads 1
+alpha: conj by mat(0,108,1,10), z -> 36 z on Z_101 (fixed z: 1); ORBIT k=5 m=4 f=0; W=9.43531e+08 lambda=14.429 mu=35.42
+setup 0.0s
+start cost=36 (0.2s per eval)
+t=3 step=1 evals=9 slot=0 cand=32 cost=32 best=32 T=1.26
+t=5 step=2 evals=17 slot=1 cand=7 cost=7 best=7 T=1.06
+t=9 step=3 evals=25 slot=2 cand=19 cost=7 best=7 T=0.89
+t=13 step=4 evals=33 slot=0 cand=21 cost=7 best=7 T=0.75
+t=17 step=5 evals=41 slot=1 cand=18 cost=7 best=7 T=0.63
+t=20 step=6 evals=49 slot=2 cand=19 cost=19 best=7 T=0.53
+t=22 step=7 evals=57 slot=2 cand=22 cost=22 best=7 T=0.45
+t=26 step=8 evals=65 slot=2 cand=25 cost=22 best=7 T=0.38
+t=30 step=9 evals=73 slot=1 cand=25 cost=22 best=7 T=0.32
+t=34 step=10 evals=81 slot=0 cand=27 cost=22 best=7 T=0.27
+t=38 step=11 evals=89 slot=3 cand=25 cost=22 best=7 T=0.22
