@@ -156,3 +156,27 @@ Cards (best result; card-checked VALID or director-checked, see BEYOND_TABLE):
 Even-D "prefer PSL with smaller p" was not confirmed (e07, e10, e13: mixed; SL and PSL with moderate n both solve).
 Director during the round: (12,11) 2,976,066,240 VALID; (11,12) pushed to 11,189,148,096 (PSL(2,223) x Z1009, mu 13.3,
 17 evals); mu 28 stalled at 8. Kept for round 4: the many cost 1-3 near misses on cheap cells.
+
+## 2026-11-01, beyond-d11, round 4 (16 cards, 06:05 UTC)
+
+Same session. Files: research/squads/beyond11/r4/. Selection from round 3: finish the cost 1-3 near misses and climb
+the cheap cells (4..10, 11) and (4..10, 12) with the rules found so far; one near-miss finisher tool; composite n.
+
+Cards (best result):
+- **f02 (6,11) SL(2,29) x Z43: 2,094,960** (was 2,083,536 from e02), VALID by the card, 3,731 evals.
+- **f10 (8,12) PSL(2,167) x Z61: 284,095,056** (was 279,900,096); SL(2,89) x Z199 280,542,240 from the e10 state.
+- **f12 (10,12) PSL(2,337) x Z97: 3,712,424,352** (was 3,699,605,280); PSL(2,211) x Z397 (mu 11.2) to cost 3.
+- **f13 (4,11) PSL(2,29): 24,360** (was 19,152), VALID by the card, 4.6 s.
+- **f14 (4,12) SL(2,17) x Z7: 68,544** (was 50,160), VALID by the card; PSL(2,17) x Z13 63,648 also VALID.
+- No gain: f01 (5,11) SL(2,17) x Z31 stuck at 26 (PSL(2,67): all 42 holes trace-0 involutions, as predicted);
+  f03 (7,11) SL(2,67) x Z19 stays at cost 2; f04 (8,11) best 8; f05 (9,11) SL(2,137) x Z31 stays at 2; f06 (10,11)
+  SL(2,617) stays at 8; f07 (5,12) PSL(2,29) x Z43 stays at 9; f08 (6,12) PSL(2,211) stays at cost 1 over ~2,500 evals;
+  f09 (7,12) 3-4; f11 (9,12) stays at 3; f16 composite n: (7,11) has no composite-n SL group in range with small mu,
+  (9,11) SL(2,71) x Z217 to cost 12.
+- f15 near-miss finisher (meet-in-the-middle coverage test per hole, validated exactly against the BFS): did not break
+  the cost-2 plateau at (6,11); 2.5 s per iteration against 0.1 s per plain evaluation.
+
+Reading: the cost 1-3 plateaus are stable over thousands of evaluations; the solved cells are those where a fresh
+group of similar mu solved quickly. Rounds 2-4 together raised 14 of last week's cells (4..10, 11/12) by 1-37 %.
+The squad stopped here: the remaining near misses look like true floors at this budget, and the director's checks of
+the 6-20 billion-vertex graphs needed the CPU.

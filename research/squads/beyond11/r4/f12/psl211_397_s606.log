@@ -1,0 +1,9 @@
+group psl 211 x Z_397, N=1864653420 (2N=3729306840), rows 22260 x 83767 bits (doubled row 2640 words), memory 1.08 GB, threads 1
+alpha: conj by mat(0,210,1,210), z -> 34 z on Z_397 (fixed z: 1); ORBIT k=3 m=3 f=1; W=3.53037e+10 lambda=18.933 mu=11.17
+setup 0.0s
+start cost=9 (26.1s per eval)
+t=48 step=1 evals=2 slot=1 cand=10 cost=10 best=9 T=1.26
+t=68 step=2 evals=3 slot=0 cand=3 cost=3 best=3 T=1.06
+t=88 step=3 evals=4 slot=2 cand=20 cost=3 best=3 T=0.89
+t=108 step=4 evals=5 slot=1 cand=15 cost=3 best=3 T=0.75
+RESULT d=10 D=12 group=psl 211 x Z_397 N=1864653420 vertices=3729306840 best=3 evals=5 steps=4 time=108.3 orbit k=3 m=3 f=1 mu=11.17

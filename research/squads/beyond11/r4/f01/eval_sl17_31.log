@@ -1,0 +1,28 @@
+group sl 17 x Z_31, N=151776 (2N=303552), rows 288 x 527 bits (doubled row 40 words), memory 0.00 GB, threads 1
+EVAL sl17_31_start.sol.best cost=26 time=0.001 mu=15.16
+uncovered 7989 mat(0,1,16,1) z=22
+uncovered 8108 mat(0,1,16,1) z=17
+uncovered 8176 mat(0,1,16,1) z=23
+uncovered 9060 mat(1,16,1,0) z=8
+uncovered 9128 mat(1,16,1,0) z=14
+uncovered 9247 mat(1,16,1,0) z=9
+uncovered 20035 mat(2,1,5,3) z=9
+uncovered 26203 mat(2,12,16,3) z=8
+uncovered 27179 mat(3,5,1,2) z=23
+uncovered 33161 mat(3,16,12,2) z=22
+uncovered 52518 mat(5,8,15,14) z=4
+uncovered 58194 mat(6,1,9,13) z=7
+uncovered 62941 mat(7,15,1,12) z=11
+uncovered 74011 mat(8,12,5,14) z=14
+uncovered 115433 mat(12,2,16,7) z=20
+uncovered 120645 mat(13,16,8,6) z=24
+uncovered 126290 mat(14,9,2,5) z=27
+uncovered 131550 mat(14,5,12,8) z=17
+uncovered 142817 mat(16,0,0,16) z=0
+uncovered 7989 mat(0,1,16,1) z=22 (B side)
+uncovered 8108 mat(0,1,16,1) z=17 (B side)
+uncovered 8176 mat(0,1,16,1) z=23 (B side)
+uncovered 9060 mat(1,16,1,0) z=8 (B side)
+uncovered 9128 mat(1,16,1,0) z=14 (B side)
+uncovered 9247 mat(1,16,1,0) z=9 (B side)
+uncovered 142817 mat(16,0,0,16) z=0 (B side)
