@@ -1,0 +1,35 @@
+group psl 61 x Z_421, N=47766660 (2N=95533320), rows 1860 x 25681 bits (doubled row 824 words), memory 0.04 GB, threads 1
+alpha: conj by mat(0,60,1,17), z -> 252 z on Z_421 (fixed z: 1); ORBIT k=5 m=3 f=4; W=6.48233e+08 lambda=13.571 mu=61.01
+setup 0.0s
+fixed generators: 3 chosen among 29 alpha-fixed elements
+start cost=80 (0.4s per eval)
+t=2 step=1 evals=9 slot=2 cand=80 cost=80 best=80 T=1.26
+t=4 step=2 evals=17 slot=1 cand=65 cost=65 best=65 T=1.06
+t=5 step=3 evals=25 slot=0 cand=65 cost=65 best=65 T=0.89
+t=7 step=4 evals=33 slot=0 cand=60 cost=60 best=60 T=0.75
+t=8 step=5 evals=41 slot=2 cand=60 cost=60 best=60 T=0.63
+t=10 step=6 evals=49 slot=0 cand=55 cost=55 best=55 T=0.53
+t=12 step=7 evals=57 slot=0 cand=65 cost=55 best=55 T=0.45
+t=13 step=8 evals=65 slot=0 cand=45 cost=45 best=45 T=0.38
+t=14 step=9 evals=73 slot=2 cand=45 cost=45 best=45 T=0.32
+t=16 step=10 evals=81 slot=2 cand=70 cost=45 best=45 T=0.27
+t=17 step=11 evals=89 slot=0 cand=60 cost=45 best=45 T=0.22
+t=19 step=12 evals=97 slot=1 cand=55 cost=45 best=45 T=0.19
+t=21 step=13 evals=105 slot=0 cand=60 cost=45 best=45 T=0.16
+t=23 step=14 evals=113 slot=2 cand=85 cost=45 best=45 T=0.15
+t=25 step=15 evals=121 slot=2 cand=75 cost=45 best=45 T=0.15
+t=27 step=16 evals=129 slot=0 cand=65 cost=45 best=45 T=0.15
+t=28 step=17 evals=137 slot=0 cand=50 cost=45 best=45 T=0.15
+t=30 step=18 evals=145 slot=0 cand=70 cost=45 best=45 T=0.15
+t=32 step=19 evals=153 slot=1 cand=65 cost=45 best=45 T=0.15
+t=33 step=20 evals=161 slot=1 cand=50 cost=45 best=45 T=0.15
+t=35 step=21 evals=169 slot=1 cand=70 cost=45 best=45 T=0.15
+t=36 step=22 evals=177 slot=1 cand=50 cost=45 best=45 T=0.15
+t=39 step=23 evals=185 slot=2 cand=65 cost=45 best=45 T=0.15
+t=41 step=24 evals=193 slot=0 cand=50 cost=45 best=45 T=0.15
+t=43 step=25 evals=201 slot=1 cand=65 cost=45 best=45 T=0.15
+t=44 step=26 evals=209 slot=1 cand=55 cost=45 best=45 T=0.15
+t=46 step=27 evals=217 slot=1 cand=40 cost=40 best=40 T=0.15
+t=49 step=28 evals=225 slot=1 cand=55 cost=40 best=40 T=0.15
+t=51 step=29 evals=233 slot=1 cand=50 cost=40 best=40 T=0.15
+t=53 step=30 evals=241 slot=0 cand=65 cost=40 best=40 T=0.15

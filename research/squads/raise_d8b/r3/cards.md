@@ -18,9 +18,7 @@
 ## e12 (20,8), mu ~ 58-61: "7 2 6" psl 167 29 | "5 4 0" psl 149 41 | "7 2 6" psl 71 379
 
 ## e13 Hole anatomy of k = 5 and k = 7 near misses (analysis card, light CPU)
-States (copy them into your folder first; never write elsewhere): the director's
-/home/user/degree-diameter/research/frontier/raise_d8/runs/d20D8_psl_41_1891_orb5-4-0_s2.sol.best.orb (ORBIT "5 4 0",
-psl 41 1891; use the .orb with EVAL for f = 0), and every `*.sol.best` in /home/user/degree-diameter/research/squads/raise_d8b/r2/*/
+States (copy them into your folder first; never write elsewhere): every `*.sol.best` (or `.orb` for f = 0) in /home/user/degree-diameter/research/squads/raise_d8b/r2/*/
 whose log shows best cost <= 10 (the log tells the group and ORBIT). For each, `EVAL=<copy> UNCPRINT=1` with the same
 ORBIT and group lists the holes. Classify each hole: alpha-fixed or not (alpha = conjugation by the printed element,
 z -> r z), z = 0 or not, order of the matrix part, in the torus of the alpha element or not. Report a table (state, cost,

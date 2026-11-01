@@ -5,10 +5,10 @@ degree d and diameter 8 for d = 17..20 (cells beyond the 2013 table). Current va
 
 | cell | vertices (2N) | group, orbit structure ("k m f") |
 |---|---|---|
-| (17,8) | 42,843,360 | SL(2,41) x Z311, "5 3 2" (r2/d01, mu 33.6) |
+| (17,8) | 43,298,640 | PSL(2,71) x Z121, "5 3 2" (director, mu 39.0, 35,928 evaluations) |
 | (18,8) | 64,792,896 | PSL(2,97) x Z71, "7 2 4" (r2/d06, orbits of order 7, mu 46.3, 2,140 evaluations) |
 | (19,8) | 92,166,360 | PSL(2,131) x Z41, "5 3 4" (r2/d07, mu 35.9) |
-| (20,8) | 126,119,280 | PSL(2,41) x Z1831, "5 4 0" (r1/c11, mu 20.0) |
+| (20,8) | 130,252,080 | PSL(2,41) x Z1891, "5 4 0" (r1/c11 to cost 1, finished by the director, mu 33.3) |
 
 **Round 1 finding: orbits of order 5 (ORBIT "5 m f") solve far higher mu than order 3** (k = 3 at mu 28 sat at cost 3
 after 12,000 evaluations where k = 5 at mu 29.6 solved in 97). Keep f small: the f - 1 fixed generators all lie in the
@@ -64,7 +64,8 @@ BIN=/home/user/degree-diameter/research/frontier/raise_d8/bin, GRP=/home/user/de
 Then reply in at most 5 lines. A Haiku's VALID is a claim; the director re-checks every find.
 
 ## Already found / already ruled out (do not repeat)
-- Values above. The director is running (20,8) PSL(2,41) x Z1891 "5 4 0" (mu 33.3, from a cost-1 state) and (17,8) PSL(2,71) x Z121 "5 3 2" (mu 39.0).
+- Values above. The director is running (17,8) SL(2,71) x Z61 "5 3 2" (mu 43.9).
+- Round 2: an alpha acting on one factor of PSL(2,41) x SL(2,5) x Z11 (non-abelian centralizer) has 2,400 fixed elements and screened far worse (median 2,935 vs 47); PSL(2,509) x Z1 at (20,8) is slow (1.5 s/eval) and stalled at 21; "7 2 3" on sl 29 883 stalled at 77.
 - Round 2: cyclic/coset Haar graphs are bounded far below (r2/d16: |4D| counting bound); 2+2 lifts no better than Haar (r1/c16).
 - Round 1 near the wall (cost 2-6 after ~2,000-8,000 evaluations at ~0.2 core): k = 5 at mu 35-46. At D = 8 the last holes are ordinary elements (r1/c09), not fixed points.
 - k = 5 with f = 4 worked on PSL(2,109) x Z71 but stalled at cost 90-100 on SL(2,41) x Z671; k = 9 is bad; haar_sym product groups screened badly (r1/c13).

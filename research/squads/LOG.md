@@ -260,3 +260,36 @@ worked on PSL(2,109) x Z71 but not on SL(2,41) x Z671. k = 9 and k = 7 screened 
 control, and a product group whose alpha acts on one factor only (non-abelian centralizer for the (19,8) fixed letters).
 Process: four cards stopped after 2 minutes of a 25-minute box (killed their own searches); the director sent them back
 with explicit run lengths. Killing a wrapper PID left a card's haar_big0 running (c02); the director made the same mistake once.
+
+## 2026-11-01, raise-d8b, round 2 (16 cards, 23:24 UTC)
+
+Same session. Files: research/squads/raise_d8b/r2/. Design change from round 1: every card ran ONE given rung (one cell,
+one orbit type, one group) for a full 1400-s haar_big0 run, instead of climbing from the bottom; the director chose the
+rungs (k = 5 at mu 30-51, k = 7 probes, one k = 3 control) after redirecting round 1 to k = 5. Most cards handed back
+within a minute with their search still running; the director harvested every log and solution itself
+(raise_d8/harvest.py, roundsum.py).
+
+Cards (group, ORBIT, mu: result):
+- **d01 (17,8) sl 41 x Z311 "5 3 2" mu 33.6: solved, 42,843,360** (8,858 evaluations).
+- d02 (17,8) psl 89 x Z61 "5 3 2" mu 35.3, from r1/c15's cost-1 state: cost 1.
+- d03 (17,8) sl 29 x Z883 "7 2 3" mu 35.6: cost 77 (RANDORB median/k 40 against 12 for k = 5 on sl 29 x Z881).
+- d04 (18,8) psl 181 x Z11 "5 3 3" mu 51.0: 13. d05 sl 31 x Z1091 "5 3 3" mu 47.8: 10.
+- **d06 (18,8) psl 97 x Z71 "7 2 4" mu 46.3: solved, 64,792,896** (2,140 evaluations; k = 5 needed 18,549 at mu 44.2).
+- **d07 (19,8) psl 131 x Z41 "5 3 4" mu 35.9: solved, 92,166,360** (409 evaluations).
+- d08 (19,8) k = 3 control psl 43 x Z1159 "3 6 1" mu 35.5: 13.
+- d09 (19,8) psl 89 x Z131 "5 3 4" mu 36.9: 5. d10 psl 59 x Z451 mu 38.5: 5.
+- d11 (20,8) sl 79 x Z131 "5 4 0" mu 29.1: 5. d12 psl 61 x Z571 mu 30.6: 2. d13 psl 109 x Z101 mu 35.4: 1 (the director
+  continues it). d14 psl 509 x Z1 mu 40.2: 21 (1.5 s per evaluation; n = 1 is slow and poor here).
+- d15 wildcard, alpha acting on one factor of PSL(2,41) x SL(2,5) x Z11 (non-abelian centralizer for the four fixed
+  letters at (19,8)): the centralizer has 2,400 elements, each missed with probability ~e^(-lambda/5), and RANDORB was
+  far worse (median 2,935 against 47 for the automatic alpha). Negative, and it explains why: big centralizers mean many
+  fixed points.
+- d16 wildcard, cyclic / coset-union Haar graphs: a counting bound (|4D| <= 2 C(m+3,4)^2 for d = 2m) caps them near 1e6
+  vertices at d = 18. Negative.
+
+Director during the round: continued r1/c11's cost-1 state on psl 41 x Z1891 "5 4 0" (mu 33.3): **(20,8) 130,252,080**;
+psl 71 x Z121 "5 3 2" (mu 39.0, 35,928 evaluations): **(17,8) 43,298,640**. SL(2,181) x Z11 "5 4 0" (mu 34.0) stalled at 6.
+
+Reading: k = 7 can beat k = 5 by 10x in evaluations (d06), but not on every group (d03); the difference is visible in a
+16-sample RANDORB screen (median cost divided by k), so round 3 screens three candidates per card before searching.
+Walls this round (~0.2 core, 1400 s): k = 5 near mu 36-40 at (19,8) and (20,8), near 46-51 at (18,8) with f = 3.

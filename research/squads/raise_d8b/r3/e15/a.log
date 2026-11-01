@@ -1,0 +1,8 @@
+group sl 47 x Z_313, N=32481888 (2N=64963776), rows 2208 x 14711 bits (doubled row 480 words), memory 0.03 GB, threads 1
+alpha: conj by mat(0,46,1,7), z -> 25 z on Z_313 (fixed z: 1); ORBIT k=4 m=4 f=2; W=4.35985e+08 lambda=13.422 mu=48.12
+setup 0.0s
+fixed generators: 1 chosen among 47 alpha-fixed elements
+start cost=361 (0.2s per eval)
+t=2 step=1 evals=9 slot=1 cand=357 cost=357 best=357 T=1.26
+t=4 step=2 evals=17 slot=1 cand=371 cost=357 best=357 T=1.06
+t=6 step=3 evals=25 slot=1 cand=300 cost=300 best=300 T=0.89
