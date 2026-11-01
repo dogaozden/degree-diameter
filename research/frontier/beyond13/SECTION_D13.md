@@ -46,12 +46,13 @@ liftd, THEORY.md.
   core. The (10,13) check was OOM-killed once after 58 min (a card's numpy checker plus a director search pushed the box
   over 15 GB) and was rerun; cards were then capped at 0.5 GB, which also capped what they could search at (7,14), (8,13).
 
-**Side result inside the 2013 table: (5,10) >= 91,358.** Squad card r6/i10 tested the metacyclic idea on the old table:
+**Side result inside the 2013 table: (5,10) >= 92,318.** Squad card r6/i10 tested the metacyclic idea on the old table:
 the Haar graph of Z1567 x|_871 Z29 (order 45,443, random S, hmeta, 11 s) has 90,886 vertices, maximum degree 5 and
 diameter 10 (apsp: checks/d5D10_n90886_meta1567_29.apsp.txt; metacheck: checks/d5D10_meta_1567_29_i10.metacheck.txt;
 solution sols/d5D10_meta_1567_29_i10.txt), and the director closed i10's cost-1 near miss Z2687 x|_2416 Z17 (order
 45,679) with hmeta chains (T0 = 8, REHEAT = 400): 91,358 vertices, apsp and metacheck VALID
-(checks/d5D10_n91358_meta2687_17_2416.apsp.txt, sols/d5D10_meta_2687_17_2416_dir.txt). The 2013 table (DS14v2, as copied in research/frontier/TABLE.md) has 90,068 for
+(checks/d5D10_n91358_meta2687_17_2416.apsp.txt, sols/d5D10_meta_2687_17_2416_dir.txt). Round-7 card r7/j01 then found Z1489 x|_61 Z31 (order 46,159): 92,318 vertices, apsp and metacheck VALID
+(checks/d5D10_n92318_meta1489_31_61.apsp.txt, sols/d5D10_meta_1489_31_61_j01.txt), 2.5 % above 90,068. The 2013 table (DS14v2, as copied in research/frontier/TABLE.md) has 90,068 for
 (5,10), and the lab's harvest history has no (5,10) entry; literature after 2013 was not checked (TABLE.md says the same
 for every D >= 7 cell), so these are candidates for the coordinator, not claimed records. The same card's (5,9) graph
 (28,418, Z1093 x|_901 Z13) beats the 2013 value 27,936 but not the lab's 29,756 (harvested earlier, also metacyclic).
