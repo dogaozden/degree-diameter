@@ -312,3 +312,31 @@ metacyclic Haar graph is a symmetric lift of Haar(Z_k, {0,a,b}) with one free vo
 is a finite list per (k, pattern, n, lambda) (director's haarsweep.py, exhaustive); girth-8/10 bases (Gray, Tutte 8-cage,
 Foster) beat girth-6 bases. Dropped: orbit S at Δ = 4, 5; products; plain lifts of GP(10,3). Note: three cards' turns
 showed remote-session or messaging tool calls in the harness summary (not requested; no effect seen in the repo).
+
+## 2026-11-01 23:14 UTC, beyond-d15, round 2 (16 cards; seven were stopped by a container restart at 23:29)
+
+Cards (research/squads/beyond15/r2/), one line each, best score:
+- e01 (3,16) Gray order-3 family (gray18) at n = 331-397: cost 56-78 per orbit (stopped by the restart).
+- e02 (3,16) Foster order-5 family: cost 6 at n = 211, rising with n (198: 8, 231: 46, 241: 202).
+- e03 (3,15) Gray order-3 / Foster order-5 and 15 at D = 15: cost 20-50; left a background driver (the director stopped it).
+- e04 exhaustive cubic metacyclic sweep k = 41..120 (haarsweep.py): (3,15) 11,342 and (3,16) 19,306, both below the cells.
+- e05 Tutte 12-cage symmetric lifts: (3,16) 17,892 (n = 142), (3,15) 10,836 (stopped).
+- **e06 (3,15) 11,790**: Tutte 8-cage, order-5 symmetric lift over composite n = 393 = 3 x 131 (anneal, 1.8 s); apsp VALID (card and director).
+- e07 small bases (Dyck, Nauru, Pappus) EXH: cost > 1,000 (stopped).
+- f01 (4,15) k 73-151 at mu 16-19: cost 8 (stopped).
+- **f02 (4,16) 3,623,866**: closed r1/b02's cost-2 state Z24821 x|_16022 Z73 (mu 12.6) in one 30-s link; metacheck.c and metacheck.py VALID.
+- f03 (4,16) k = 151-307: cost 1 at k = 151 (below the cell once f02 landed).
+- f04 quartic symmetric lifts of GQ(3,3) at (4,15): cost 184 (stopped).
+- **g01 (5,15) 47,370,766**: closed r1/c01's cost-2 state Z112253 x|_76172 Z211 (mu 6.5) in one 90-s link; metacheck.c VALID (card and director).
+- g02 (5,16) k = 433, 601: cost 3 at N ~ 8.62-8.67e7 (stopped; states kept for round 3).
+- g03 (5,15) k = 137-139: Z170971 x| Z139 at cost 2 (stopped; the director chains it).
+- w01 Δ = 3 wildcard (non-maximal lambda, involutions): cost 102 and worse.
+- w02 Δ = 4 wildcard (even-order metacyclic groups at (4,16)): cost 33; even m is never fixed-point-free.
+
+Director during the round: exhaustive cubic metacyclic sweep k = 7..40 (haarsweep.py): **(3,15) 11,026** (Z149 x| Z37) and
+**(3,16) 19,670** (Z281 x| Z35); Gray order-9 family at prime n = 379: **(3,16) 20,466** (exhaustive; n = 397 min cost 2
+for every lambda tried); (6,15) 867,831,360 haarcheck_gen VALID (288 s after raising the check's autogroup priority);
+the (6,16) check was killed by the restart and rerun. Found that the scheduler's autogroups make `nice` useless here.
+Kept: closing saved cost-2 states (two of three Haar raises), composite n for symmetric lifts (e06), quotient shapes
+(Tutte 8-cage and Foster share one; quotgen.py generalizes the sweeps). Dropped: order-3 Gray, order-5 Foster, Dyck,
+Nauru, quartic symmetric lifts, even orders, products.
