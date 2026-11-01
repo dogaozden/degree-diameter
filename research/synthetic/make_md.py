@@ -64,6 +64,7 @@ t = tex
 t = re.sub(r'\\begin\{tikzpicture\}.*?\\end\{tikzpicture\}', r'\\emph{[Figure: see SYNTHETIC.pdf.]}', t, flags=re.S)
 t = t.replace('\\emergencystretch=3em', '')
 t = re.sub(r'\\path\{([^}]*)\}', lambda m: r'\texttt{' + m.group(1).replace('_', r'\_') + '}', t)
+t = re.sub(r'--\\ref\{([^}]*)\}', lambda m: '--' + labels.get(m.group(1), '??'), t)  # no space after an en dash
 t = re.sub(r'~?\\ref\{([^}]*)\}', lambda m: ' ' + labels.get(m.group(1), '??'), t)
 t = re.sub(r'~?\\cite(\[[^\]]*\])?\{([^}]*)\}',
            lambda m: ' [' + ', '.join(k.strip() for k in m.group(2).split(',')) + (', ' + m.group(1)[1:-1] if m.group(1) else '') + ']', t)

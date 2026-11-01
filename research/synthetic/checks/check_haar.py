@@ -4,7 +4,7 @@ Everything is written here from the definitions, without the lab's search or che
 
   1. Haar structures (Definition 7.1): right multiplication is an automorphism group acting regularly on the
      points and on the lines; all degrees are Delta.
-  2. Lemma 7.2 (two searches): on random S in small groups (SL(2,3), SL(2,5) x Z_3, PSL(2,7), S_4, D_12,
+  2. Lemma 7.3 (two searches): on random S in small groups (SL(2,3), SL(2,5) x Z_3, PSL(2,7), S_4, D_12,
      metacyclic Z_31 x|_5 Z_3, Z_7 x|_2 Z_9), the exact diameter (all pairs) equals the larger of the
      eccentricities of the point e and the line e; diameter <= D iff the word conditions hold (one condition
      for even D, two for odd D); an example where the two odd-D conditions differ (Z13 x|_3 Z3, D = 7).
@@ -15,9 +15,11 @@ Everything is written here from the definitions, without the lab's search or che
   6. Orbit symmetry (Section 7.4): S invariant under an automorphism alpha of order 3 of SL(2,p) x Z_n; alpha is
      an automorphism of the structure fixing the point e and the line e; the far elements form a union of alpha-orbits.
      Odd-D lemma: (S^-1 S)^h is inverse-closed, and a central element lies in (S^-1 S)^h iff in (S S^-1)^h.
-  7. Record structures rebuilt from their solution files (two searches, Lemma 7.2), with alpha-invariance of S
-     where the file is an orbit solution with e in S; the Delta = 3 lifts and the (3,11) Haar graph by an
-     all-pairs search on their edge lists (no symmetry used).
+  7. Values rebuilt from their solution files (two searches, Lemma 7.3), and (3,11) from its group; the edge lists of
+     the Delta = 3 values by an all-pairs search (no symmetry used), the (3,11) edge list against its group, and the
+     quotients of the (3,13), (3,14) lifts; alpha found from S for every symmetric S containing e in SL(2,p) or
+     PSL(2,p) times a cyclic group (p prime), with f and k checked against the values list, and the field
+     automorphism of (11,10) checked.
   8. The values table and Appendix B: every value agrees with its file, the orbit shapes add up to Delta, every prime
      factor of n is 1 mod k, the tables in SYNTHETIC.tex are generated from the list here (python3 check_haar.py --tables
      prints them), and the size-law numbers of Section 7.3 (W, lambda = W/N, mu = N e^-lambda, 2N/M_b).
@@ -183,8 +185,6 @@ def check_haar_lemmas():
                 for x in range(G.n):
                     img = {(('p', G.mul(g, x)), ('L', G.mul(h, x))) for (_, g), (_, h) in flags}
                     ok(img == flags, f'{G.name}: right multiplication is not an automorphism')
-                for g in range(G.n):    # every point is on Delta lines, every line has Delta points
-                    pass
                 lines_e = sorted(h for (_, g), (_, h) in flags if g == 0)
                 ok(lines_e == sorted(S), 'the lines through the point e are the lines s, s in S')
                 ok(len(flags) == Delta * G.n, 'degrees')
@@ -604,7 +604,7 @@ def orbit_alpha(path, k=3):
                 yield tuple((x + u * y) % p for x, y in zip(basis[0], basis[1]))
             yield tuple(basis[1])
 
-    for r in [r for r in range(2, n) if pow(r, k, n) == 1]:
+    for r in ([r for r in range(2, n) if pow(r, k, n) == 1] if n > 1 else [0]):
         cands = [[m2 for m2, z2 in S if z2 == (r * z) % n] for m, z in S]
         if any(not c for c in cands):
             continue
@@ -785,6 +785,35 @@ def check_records():
         ok(isomorphic(quot, base, nb), f'quotient is not {name}')
         # the base itself: cubic, bipartite, girth 6 (a configuration of points and lines)
         print(f'7. {os.path.basename(path)}: Z{m} acts by i -> i+1 and the quotient is {name}: checked')
+    # (3,11): the Haar structure of Z67 x|_9 Z11 with S = {(0,0), (0,1), (1,5)} (the BEYOND_TABLE row gives S as indices
+    # {0, 67, 336} with index j*67 + a): two searches, and the edge list is exactly this structure
+    head = ['3', '11', 'meta', '67', '11', '9', 'n', '1', 'N', '737']
+    gens = ['meta(a=0,j=0) z=0', 'meta(a=0,j=1) z=0', 'meta(a=1,j=5) z=0']
+    G, S, eA, eB = check_record('(3,11)', head, gens)
+    F = G.factors[0]
+    idx = lambda i: int(F.a[i] + 67 * F.j[i])            # our index a*k + j -> the file's j*67 + a
+    ours = {(idx(g), 737 + idx(int(G.left(s)[g]))) for s in S for g in range(G.N)}
+    with gzip.open(os.path.join(OWN, 'd3D11_n1474_meta67_11_9.edges.gz'), 'rt') as fh:
+        n = int(fh.readline())
+        E = {tuple(sorted(map(int, ln.split()))) for ln in fh if ln.strip()}
+    ok(n == 1474 and E == ours, '(3,11): the edge list is not H(Z67 x|_9 Z11, S)')
+    print(f'7. (3,11): H(Z67 x|_9 Z11, {{(0,0), (0,1), (1,5)}}) has eccentricities {eA}, {eB}, and the edge list '
+          f'd3D11_n1474_meta67_11_9.edges.gz is exactly this structure: checked')
+    # alpha for every symmetric S containing e in SL(2,p) / PSL(2,p) x Z_n, p prime: f and k as in VALUES
+    nal = 0
+    for d, D, v, kind, path, grp, Sh, chk, table in VALUES:
+        if kind != 'H' or '.' not in Sh or Sh.startswith('0+'):
+            continue
+        head, gens = read_sol(os.path.join(REPO, path))
+        if head[2] not in ('sl', 'psl') or 'poly' in head:
+            continue
+        f, mk = Sh.split('+')
+        m, k = mk.split('.')
+        a = orbit_alpha(os.path.join(REPO, path), k=int(k))
+        ok(a is not None and a[2] == int(f), f'({d},{D}): no alpha of order {k} fixing {f} generators')
+        nal += 1
+    print(f'7. alpha found from S alone, with f and k as in the values list, for all {nal} symmetric sets containing e '
+          'in SL(2,p) or PSL(2,p) times a cyclic group: checked')
     # (11,10): PSL(2,243) x Z11, alpha = (x -> x^3 on the matrix entries, GF(243) = GF(3)[x]/(x^5+2x+1)) x (z -> 3z)
     f = 'd11D10_psl_243_11_orb10_frob1d_ar3_s201.txt'
     head, gens = read_sol(os.path.join(SOLS, f))
@@ -819,26 +848,13 @@ def check_records():
     ok(img == Sset and nfix == 1, f + ': S is not invariant under the Frobenius automorphism')
     print(f'7. {f}: S (11 elements) is mapped onto itself by (x -> x^3 on the entries) x (z -> 3 z), an automorphism '
           f'of order 5 fixing only e: checked')
-    a = orbit_alpha(os.path.join(SOLS, 'd16D10_psl_179_821_orb5g_s41.txt'), k=5)
-    ok(a is not None and a[2] == 1, '(16,10): S is not invariant under a conjugation of order 5')
-    print(f'7. d16D10_psl_179_821_orb5g_s41.txt: S (16 elements) is mapped onto itself by (conjugation by {a[0]}) x '
-          f'(z -> {a[1]} z), an automorphism of order 5 fixing only e: checked')
-    # alpha-invariance of S in large orbit solutions with e in S (no diameter check here; that is the checkers' job)
-    for f in ('d14D9_sl_107_49_orb3_s1.txt', 'd13D10_sl_137_133_orb3_ORBW3_s2.txt', 'd17D10_psl_313_229_orb3_s1.txt',
-              'd13D11_sl_563_19_orb3-4-1_s1.txt', 'd13D12_psl_181_5059_orb3-4-1_s1.txt',
-              'd14D12_psl_241_2143_orb3-4-2_s1.txt'):
-        a = orbit_alpha(os.path.join(SOLS, f))
-        ok(a is not None, f + ': S is not invariant under an automorphism of the expected form')
-        t, r, fx = a
-        head, gens = read_sol(os.path.join(SOLS, f))
-        print(f'7. {f}: S ({len(gens)} elements) is mapped onto itself by (conjugation by {t}) x (z -> {r} z), '
-              f'an automorphism of order 3 fixing {fx} of the generators: checked')
+
 
 
 # ------------------------------------------------------------------ the values table and Appendix B
 # Delta, D, value, kind, file (relative to the repository root), group (LaTeX), S, checks, 2013 table value
 #   kind: H = Haar structure, S symmetric (orbit search); M = Haar structure of a metacyclic group (or a product of
-#         two), random S; L = lift of a cubic configuration (not a Haar structure)
+#         two), S without symmetry; L = lift of a small cubic incidence structure (not a Haar structure)
 #   S: 'f+m.k' = f elements fixed by alpha (e among them when f >= 1) and m orbits of size k
 #   checks: B build_haar2.py, I check_haar_indep.py, S haarcheck_sl.c, P haarcheck_psl.c, G haarcheck_gen.c,
 #           T haarcheck2.c, X bigcheck_indep.c, A all-pairs search (apsp.c), M metacheck.py, L Lean, H check_haar.py;
@@ -967,7 +983,7 @@ def grid_rows():
             if (d, D) in CAPPED:
                 marks += r'\circ'
             if (d, D) in NOT_IN_LEDGER:
-                marks += r'*'
+                marks += r'\sharp'
             cells.append(f'${fmt(v)}' + (f'^{{{marks}}}$' if marks else '$'))
         rows.append(f'{d} & ' + ' & '.join(cells) + r'\\')
     return '\n'.join(rows)
@@ -978,9 +994,13 @@ def appendix_rows(Ds):
     for d, D, v, kind, path, grp, S, chk, table in sorted(VALUES, key=lambda r: (r[1], r[0])):
         if D not in Ds:
             continue
-        mu = '--' if kind == 'L' else f'{(v / 2) * math.exp(-W(d, D) / (v / 2)):.3g}'
-        if 'e' in mu:
-            mu = '$0$'
+        if kind == 'L':
+            mu = '--'
+        elif (d, D) in CAPPED:
+            mu = r'$\approx0$'
+        else:
+            m = (v / 2) * math.exp(-W(d, D) / (v / 2))
+            mu = f'{m:.1f}' if m >= 10 else f'{m:.2f}'
         tab = fmt(table) if table else '--'
         rows.append(f'$({d},{D})$ & ${fmt(v)}$ & ${tab}$ & ${grp}$ & {shape_tex(S)} & {mu} & {checks_tex(chk)}'
                     .replace('$--$', '--') + r'\\')

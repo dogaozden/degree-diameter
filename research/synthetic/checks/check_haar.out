@@ -28,14 +28,9 @@
 7. d3D14_n5706_lift_pappus_Z317.edges.gz: 5,706 vertices, cubic, bipartite, diameter 14 (all pairs): checked
 7. d3D13_n3400_lift_gp10_Z170.edges.gz: Z170 acts by i -> i+1 and the quotient is the Desargues graph GP(10,3): checked
 7. d3D14_n5706_lift_pappus_Z317.edges.gz: Z317 acts by i -> i+1 and the quotient is the Pappus graph: checked
+7. (3,11): H(Z67 x|_9 Z11, {(0,0), (0,1), (1,5)}) has eccentricities 11, 11, and the edge list d3D11_n1474_meta67_11_9.edges.gz is exactly this structure: checked
+7. alpha found from S alone, with f and k as in the values list, for all 34 symmetric sets containing e in SL(2,p) or PSL(2,p) times a cyclic group: checked
 7. d11D10_psl_243_11_orb10_frob1d_ar3_s201.txt: S (11 elements) is mapped onto itself by (x -> x^3 on the entries) x (z -> 3 z), an automorphism of order 5 fixing only e: checked
-7. d16D10_psl_179_821_orb5g_s41.txt: S (16 elements) is mapped onto itself by (conjugation by (0, 104, 75, 1)) x (z -> 51 z), an automorphism of order 5 fixing only e: checked
-7. d14D9_sl_107_49_orb3_s1.txt: S (14 elements) is mapped onto itself by (conjugation by (7, 66, 4, 1)) x (z -> 18 z), an automorphism of order 3 fixing 2 of the generators: checked
-7. d13D10_sl_137_133_orb3_ORBW3_s2.txt: S (13 elements) is mapped onto itself by (conjugation by (99, 74, 68, 1)) x (z -> 11 z), an automorphism of order 3 fixing 1 of the generators: checked
-7. d17D10_psl_313_229_orb3_s1.txt: S (17 elements) is mapped onto itself by (conjugation by (0, 1, 312, 1)) x (z -> 94 z), an automorphism of order 3 fixing 2 of the generators: checked
-7. d13D11_sl_563_19_orb3-4-1_s1.txt: S (13 elements) is mapped onto itself by (conjugation by (0, 1, 562, 1)) x (z -> 7 z), an automorphism of order 3 fixing 1 of the generators: checked
-7. d13D12_psl_181_5059_orb3-4-1_s1.txt: S (13 elements) is mapped onto itself by (conjugation by (0, 1, 180, 1)) x (z -> 1912 z), an automorphism of order 3 fixing 1 of the generators: checked
-7. d14D12_psl_241_2143_orb3-4-2_s1.txt: S (14 elements) is mapped onto itself by (conjugation by (0, 1, 240, 1)) x (z -> 349 z), an automorphism of order 3 fixing 2 of the generators: checked
 8. Values table and Appendix B: 74 values agree with their files (2N from the headers, n from the edge lists), the orbit shapes add up to Delta, and the tables in SYNTHETIC.tex are the ones generated from this data: checked
    size law (Haar values, capped cells excluded): mu from 2.62 to 60.6, ln N from 6.6 to 23.4; 2N/M_b by D: D=9: 0.170..0.051, D=10: 0.210..0.045, D=11: 0.360..0.046, D=12: 0.139..0.048, D=13: 0.121..0.050, D=14: 0.104..0.050
    D=9: (5) mu=41.9 17.0%, (6) mu=29.7 13.0%, (7) mu=38.2 11.5%, (8) mu=29.7 10.0%, (9) mu=30.5 9.1%, (10) mu=42.4 8.7%, (11) mu=23.3 7.8%, (12) mu=29.5 7.5%, (13) mu=32.8 7.2%, (14) mu=24.2 6.8%, (15) mu=24.9 6.6%, (16) mu=24.6 6.3%, (17) mu=2.9 5.5%, (18) mu=2.8 5.3%, (19) mu=2.9 5.2%, (20) mu=2.6 5.1%
