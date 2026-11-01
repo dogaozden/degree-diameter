@@ -155,3 +155,18 @@ so the director combined the best A-packing with the best B-packing after every 
   to generate; e05 and e16 single hubs in free slots stall (cost 4 and ~310 uncovered); e15 incomplete.
 Kept: growb (e02). Director: a destroy-and-repair loop around growb (drop 2–5 random orbits, regrow 60 s, keep if not
 worse), side A on the side-swapped graph: A 33 → 36, B 37 → 39 within ~10 iterations → 35,420 and more (round 4).
+
+## 2026-11-01, beyond-small, round 4 (12 cards: destroy-and-repair variants per side, 06:05 UTC)
+
+Files: research/squads/beyond-small/r4/. Start: 36 A-orbits, 39 B-orbits (35,442). Engine: growb (r3/e02); side A on the
+side-swapped graph. Several cards handed back early with their loops still running; the director harvested their
+best_side files when the loops ended.
+- f03 region destroy, side A: **43**; f04 big destroy, A: 42; f01 random drops with long repairs, A: 41; f02
+  conflict-directed, A: 38; f12 exact repair (MCQ clique), A: unfinished.
+- f08 big destroy, side B: **45**; f07 region destroy, B: 44; f06 conflict-directed, B: 44; f05 random, B: 42; f11 exact
+  repair, B: unfinished.
+- f09, f10 free-key filling (Z11 half-orbits, singles): nothing fits (best single B-hub still fails 6 of 858 pairs).
+Director in parallel: destroy-and-repair loops (A 38 → 42 from e03's annealed 38, B 41 → 42), anneal3 from the 83-orbit
+state (no gain at T ≤ 0.6), region destroy on side A. Combinations recorded: 35,618 (bfs_all-checked), 35,640, 35,684,
+35,706, **35,728 = 43 (f03) + 45 (f08)**.
+Kept: all four destroy styles; next round runs them as a portfolio from 43/45.

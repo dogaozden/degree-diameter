@@ -118,7 +118,7 @@ apsp.c on H(4) and on the Theorem D graphs at q = 5 and 7, and rejects D − 1.
 - H(q) (hexgen2.c of research/d10D7, points of X0X4 + X1X5 + X2X6 = X3² with Tits' six line equations): hexauto.c writes
   the edge list and the torus elements diag(a, b, (ab)⁻¹, 1, a⁻¹, b⁻¹, ab), which preserve the quadric and Tits'
   equations (λ0λ1λ2 = 1), for (a,b) = (ω,1), (1,ω). Orbit representatives: 10,026 (q = 16), 11,832 (q = 17),
-  16,230 (q = 19). Results: H(16) and H(17) VALID with diameter exactly 6; H(19): see the check file.
+  16,230 (q = 19). Results: H(16), H(17) and H(19) VALID with diameter exactly 6 (H(19): 5,227,320 vertices, 41 min on 2 threads under load).
 - Theorem D at q = 17 (thmd19/thmd_auto.c, the r1/c08 builder of the previous job plus automorphisms): exactly the torus
   elements with a = 1 preserve the level function (the plane X0 + cX4 = 0, the Hermitian spread, L_v and the exact
   whisker set), so they lift to automorphisms of the doubled graph; one generator of order 16, 200,486 orbit

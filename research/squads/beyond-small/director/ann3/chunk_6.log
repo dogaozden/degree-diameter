@@ -3,3 +3,10 @@ pool side 0: 36607 covers, 146428 lines (rejected: format 0, keys 0, cover 0)
 pool side 1: 39946 covers, 159784 lines (rejected: format 0, keys 0, cover 0)
 start: K0=41 K1=39 conflict-degree-sum=0 (0.57s)
 t=10 T=0.549 K0=28 K1=28 C=1 | acc ins 948/8767 del 972/5038 rep 5970/11608 line 4078/6613
+t=20 T=0.502 K0=31 K1=29 C=2 | acc ins 1890/17525 del 1910/10486 rep 13238/24219 line 8537/13727
+t=30 T=0.460 K0=31 K1=25 C=2 | acc ins 2629/26085 del 2653/15961 rep 19821/36436 line 12749/20644
+t=40 T=0.420 K0=30 K1=30 C=1 | acc ins 3237/34693 del 3257/21203 rep 26132/48623 line 16835/27455
+t=50 T=0.385 K0=31 K1=29 C=0 | acc ins 3709/42677 del 3729/26241 rep 32294/60249 line 20790/34002
+t=60 T=0.352 K0=29 K1=26 C=0 | acc ins 4037/50242 del 4062/31249 rep 37824/71246 line 24779/40386
+t=70 T=0.322 K0=32 K1=28 C=0 | acc ins 4270/55582 del 4290/34754 rep 41781/79127 line 27535/44853
+t=80 T=0.294 K0=32 K1=29 C=0 | acc ins 4348/58406 del 4367/36837 rep 43861/83479 line 29062/47407
