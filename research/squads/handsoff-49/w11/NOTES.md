@@ -42,3 +42,18 @@ Start: 23:13 UTC. Planned end: 01:15 UTC (2 hours). Card: cards.md, "## w11".
 - run_any.sh LIST BUDGET [BIN]: lines "meta m k r cs" or "ns m k r s cs"; resumable; records certified.tsv and scoreboard.
 - Lists: list_run1.txt (26 split groups, cs <= 12), list_run2.txt (79 split groups, cs 13..40), list_ns_c20.txt
   (51 non-split groups, cs <= 20).
+
+## Update 00:43 (coordinator instructions applied)
+- Foreground only now (run_any.sh, timeout 530 nice -n 10). No background jobs.
+- exh3 (orbit-marking, table groups via inner automorphisms) calibrated: meta 71 35 49 min 0 (valid 4,970 graph,
+  apsp VALID at 9), 101 25 5 min 2, 104 24 7 min 4; evaluation counts identical to exh.
+- Scoreboard: 13 of my earlier lines (the first driver version appended every result) are NOT a new lowest cost at
+  their n and are still in scoreboard.tsv; the coordinator should remove the lines whose worker column is w11 and
+  whose time is before 23:30. (I was not allowed to remove them myself: the safety check blocked the rm command.)
+  run_any.sh now appends only for a new lowest cost at its n.
+- Certified this session (certified.tsv has all rows): split groups in list_run1 done up to m208_k12_r11; the remaining
+  split groups of list_main were done (m105_k24_r52 12, m320_k8_r7 12, m427_k6_r13 12, m416_k6_r367 12, m52_k48_r7 12,
+  m215_k12_r92 10, m208_k12_r115 10 (screen 11; exhaustive 10), m208_k12_r69 12).
+- Non-split (ns) groups: slow (inner automorphisms only, 80-270 reps, 2-14 min each); 22 still open at 00:43
+  (state files resume them).
+- Not yet: 2,601..2,700 screen (haar_tab 2 s) and certification at cost <= 8.

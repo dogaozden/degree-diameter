@@ -261,3 +261,20 @@ group of order 355, and a 5+5 base with voltages in a group of order 497. Plan:
    Prefer groups of the same shape (Z_p x| Z_k Frobenius, centreless, small abelianization). Start each search from the
    known voltages mapped into the new group where that makes sense.
 A cost-0 lift with n > 4,970 is a record.
+
+## w17: mixed-orbit graphs: G regular on side A, stabilizers of order 2 or 4 on side B (follows w9)
+
+Haar graphs have G regular on both sides; bi-coset graphs (w7, w9, w14) have the same stabilizer H on both sides. New
+family: G (order N >= 2,486, n = 2N) acts regularly on A = G and with point stabilizers of order 2 or 4 on side B, which
+is a union of orbits G/H_i. An edge orbit G (e, s H_i) gives the edges (g, g s H_i): each A-vertex gets 1 neighbour from
+it and each B-vertex xH_i gets |H_i| neighbours (g in x H_i s^-1). Degree 4 everywhere, |B| = N:
+- type (2,2): B = G/H_1 + G/H_2 with |H_1| = |H_2| = 2, two edge orbits (s_1, s_2) into each;
+- type (4,4,4,4): four orbits G/K_i with |K_i| = 4, one edge orbit each;
+- type (2,4,4): one involution orbit with two edge orbits and two order-4 orbits with one each.
+H_i must not contain a central element (a central involution z makes x and xz twins with the same neighbours, which
+wastes vertices; the quotient then needs a 4-regular graph of diameter 4 on N/2 vertices, impossible). Use groups with
+many non-central involutions or Klein subgroups and a small centre: A_7 (Haar minimum 6, w1), the order-2,496 and
+2,520 metacyclic groups with even k, PGL(2,q) x Z_n, S_5 x F_21, A_5 x AGL(1,7), and w10's and w15's best groups
+(read their NOTES.md). Roots: e in A and one point per B-orbit (G acts transitively on each orbit), so one evaluation
+is 2-5 BFS runs. Exhaustive over (s_i) for fixed H_i when small, annealing otherwise. Compare with the Haar minimum of
+the same group.

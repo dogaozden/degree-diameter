@@ -14,6 +14,12 @@ def main():
     t0 = time.time()
     G = grp14.Grp(grp14.group_gens(name))
     classes = G.subgroup_classes(h, trials)
+    if os.environ.get("CHAIN", "1") == "1":
+        cc = G.subgroup_classes_chain(h, int(os.environ.get("CHAIN_TRIALS", "1500")))
+        keys = {G.canon(H) for H in classes}
+        for H in cc:
+            if G.canon(H) not in keys:
+                keys.add(G.canon(H)); classes.append(H)
     print(f"{name} h={h} n={2*G.N//h}: {len(classes)} classes, sampling {time.time()-t0:.1f}s", flush=True)
     rnd = random.Random(7)
     for hc in range(len(classes)):

@@ -55,7 +55,12 @@ if __name__ == '__main__':
     samples = int(sys.argv[3])
     prefix = sys.argv[4]
     maxout = int(sys.argv[5]) if len(sys.argv) > 5 else 40
-    TP = GRP.table(spec)
+    if spec.endswith('.bin'):
+        sys.path.insert(0, H)
+        from bfs15 import load_bin
+        TP = np.array(load_bin(spec).astype(np.uint16))
+    else:
+        TP = GRP.table(spec)
     N = len(TP)
     ordsP = elem_orders(TP)
     print('P', spec, 'N', N, 'gen orders', [int(ordsP[g]) for g in gens], flush=True)

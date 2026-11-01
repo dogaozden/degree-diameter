@@ -167,6 +167,41 @@ class Grp:
                 classes[key] = H
         return list(classes.values())
 
+    def subgroup_classes_chain(self, h, trials, seed=2):
+        """Random normalising chains (finds non-2-generated groups such as 2^3); normaliser via generators."""
+        rnd = random.Random(seed)
+        ords = self.orders()
+        X = [i for i in range(1, self.N) if h % ords[i] == 0]
+        classes = {}
+        for _ in range(trials):
+            if not X:
+                break
+            gens = [rnd.choice(X)]
+            H = self.gen_sub(gens, h)
+            if H is None:
+                continue
+            steps = 0
+            while len(H) < h and steps < 40:
+                steps += 1
+                inH = np.zeros(self.N, dtype=bool); inH[np.array(H)] = True
+                mask = np.ones(self.N, dtype=bool)
+                for s in gens:
+                    mask &= inH[self.conj_all(s)]
+                cand = np.nonzero(mask)[0] if rnd.random() < 0.85 else np.arange(self.N)
+                cand = cand[~inH[cand]]
+                if len(cand) == 0:
+                    break
+                y = int(cand[rnd.randrange(len(cand))])
+                nH = self.gen_sub(gens + [y], h)
+                if nH is not None and len(nH) > len(H):
+                    H = nH; gens = gens + [y]
+            if len(H) != h:
+                continue
+            key = self.canon(H)
+            if key not in classes:
+                classes[key] = H
+        return list(classes.values())
+
     def describe(self, H):
         ords = self.orders()
         from collections import Counter

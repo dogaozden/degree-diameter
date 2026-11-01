@@ -39,3 +39,6 @@ Start: 2026-10-31 23:23 UTC. Stop (2 hours): about 01:25 UTC.
 ## 00:08 UTC
 - deep run d1_mh2_1_s11 (wtt, 360 s, seed 11, TT 10): cost 76 (far 50,160), 3381 iterations. Next runs in deep1.sh.
 - 00:17 deep1 finished: seed 11 cost 76 (best), seed 12 (mh2_0) 81, seed 13 (TT 20) 78. Started deep2.sh: restarts from the cost-76 solution, 10 min each (seed 21 TT 10 NS 100; seed 22 WPT 40 NS 200 TT 30).
+- 00:35 restart d2_r21 (from cost 76, 600 s, seed 21): cost 64 (far 42,240), 5302 iterations. d2_r22 running (NS 200, WPT 40, TT 30).
+- 00:38 restart d2_r22 (NS 200, WPT 40, TT 30): 66. Best stays cost 64 (runs/d2_r21.best.sol). Started deep3.sh: two chained 15-min restarts (seeds 31, 32) from the best.
+- 00:52 deep3 seed 31 (900 s from cost 64): no gain, stays 64 (8,694 iterations). Seed 32 running from the same best (ends about 01:07).

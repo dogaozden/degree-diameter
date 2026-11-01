@@ -63,6 +63,8 @@ if __name__ == '__main__':
         if r is None:
             continue
         els, seen = r
+        if len(els) != 625:
+            continue
         hits += 1
         T = table_from(els, seen)
         inv = invariants(T.astype(np.int64))

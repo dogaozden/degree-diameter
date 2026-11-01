@@ -37,3 +37,11 @@ time_utc	worker	strategy	n	cost_or_far	valid_claim	file
 23:59	w12	PGL(2,11) x 2+2 base mh2_1 (doubled K22), wtt far-target tabu 60 s; far pairs 54120	5280	82	no	/home/user/degree-diameter/research/squads/handsoff-49/w12/runs/cmp_wtt.best.edges
 00:08	w12	PGL(2,11) x 2+2 base mh2_1, wtt 360 s seed 11 TT 10; far pairs 50160	5280	76	no	/home/user/degree-diameter/research/squads/handsoff-49/w12/runs/d1_mh2_1_s11.best.edges
 00:10	w15	Heis(5)xZ5 semidirect Z4, automorphism diag/random (hb_1 = (Heis(5) x| Z_4) x Z_5), haar_tab 10 s	2500	10	no	/home/user/degree-diameter/research/squads/handsoff-49/w15/tabs/hb_1.bin
+00:24	w13	Haar meta 104 24 7, anneal on S with two-root cost (cost-4 wall; central involution (52,0) missing on both sides)	4992	4	no	/home/user/degree-diameter/research/squads/handsoff-49/w13/best_haar_104_24_7_c4.edges
+00:25	w10	S5 x (Z7 x| Z3) = S5 x F21 centreless, Haar annealing 120 s x3 seeds (floor 8, structural)	5040	8	no	/home/user/degree-diameter/research/squads/handsoff-49/w10/runs/S5xF21_cost8.edges
+00:31	w11	exhaustive m115_k22_r4 (all triples up to Aut, bound 10)	5060	10	no	none
+00:31	w11	exhaustive m215_k12_r92 (all triples up to Aut, bound 10)	5160	10	no	none
+00:35	w12	PGL(2,11) x 2+2 base mh2_1, wtt restart from cost-76 solution, 600 s seed 21; far pairs 42240	5280	64	no	/home/user/degree-diameter/research/squads/handsoff-49/w12/runs/d2_r21.best.edges
+00:36	w11	exhaustive m320_k8_r7 (all triples up to Aut, bound 12)	5120	12	no	none
+00:36	w11	exhaustive m427_k6_r13 (all triples up to Aut, bound 12)	5124	12	no	none
+00:47	w15	maximal-class exponent-5 P of order 625 (subgroup of U_4(F_5)) x| Z_4, automorphism u4m_7, haar_tab 10 s	2500	4	no	/home/user/degree-diameter/research/squads/handsoff-49/w15/tabs/u4m_7.bin

@@ -11,7 +11,7 @@ def main():
     name, h, hcls, nk, cap = sys.argv[1], int(sys.argv[2]), int(sys.argv[3]), int(sys.argv[4]), int(sys.argv[5])
     seed = int(sys.argv[6]) if len(sys.argv) > 6 else 7
     G = grp9.Grp(grp9.group_gens(name))
-    classes = G.subgroup_classes(h, 3000)
+    classes = G.subgroup_classes(h, int(os.environ.get("TRIALS", "3000")))
     H = classes[hcls]
     print(f"{name} h={h} H class {hcls} orders {G.describe(H)}  classes={len(classes)}", flush=True)
     rnd = random.Random(seed)
