@@ -40,6 +40,8 @@ static long coef[MAXE];        /* volt[e] = coef[e] * x_{orb(e)} mod n (coef = +
 static int ox[MAXE];           /* orbit voltages */
 static int nsrc, src[MAXV];    /* rho-orbit representatives of vertices */
 static int *vis, stamp = 0, *qu;
+static long gcdl(long a, long b) { a = a < 0 ? -a : a; while (b) { long t = a % b; a = b; b = t; } return a; }
+static long invmod(long a, long m) { long g = m, x = 0, x1 = 1, a1 = ((a % m) + m) % m; while (a1) { long q = g / a1, t = g - q * a1; g = a1; a1 = t; t = x - q * x1; x = x1; x1 = t; } return ((x % m) + m) % m; }
 static int find_edge(int u, int w, int *s) {
     for (int e = 0; e < E; e++) { if (eu[e] == u && ev[e] == w) { *s = 1; return e; } if (eu[e] == w && ev[e] == u) { *s = -1; return e; } }
     return -1;
@@ -132,7 +134,7 @@ int main(int argc, char **argv) {
         long lp[64]; lp[0] = 1 % n; for (int i = 1; i < 64; i++) lp[i] = lp[i - 1] * lam % n;
         for (int t = 0; t < 5; t++) {
             for (int o = 0; o < norb; o++) ox[o] = (int)(rnd() % n); long c0 = cost(1L << 60);
-            long cc[MAXV]; for (int a = 0; a < nsrc; a++) cc[a] = rnd() % n; long u = 1 + rnd() % (n - 1);
+            long cc[MAXV]; for (int a = 0; a < nsrc; a++) cc[a] = rnd() % n; long u = 1 + rnd() % (n - 1); while (gcdl(u, n) != 1) u = 1 + rnd() % (n - 1);
             for (int o = 0; o < norb; o++) { int e = orbrep[o]; long cw = lp[vi[ev[e]]] * cc[va[ev[e]]] % n, cu = lp[vi[eu[e]]] * cc[va[eu[e]]] % n;
                 ox[o] = (int)(((ox[o] + cw - cu) % n + n) % n * u % n); }
             long c1 = cost(1L << 60); fprintf(stderr, "GTEST %d: cost %ld after gauge+scaling %ld %s\n", t, c0, c1, c0 == c1 ? "ok" : "MISMATCH");
@@ -148,27 +150,28 @@ int main(int argc, char **argv) {
         static long M[MAXE][MAXV]; int piv[MAXE] = {0}, rank = 0; static long R[MAXV][MAXV + 1]; (void)R;
         for (int o = 0; o < norb; o++) { int e = orbrep[o]; for (int a = 0; a < nsrc; a++) M[o][a] = 0;
             M[o][va[ev[e]]] = (M[o][va[ev[e]]] + lp[vi[ev[e]]]) % n; M[o][va[eu[e]]] = (M[o][va[eu[e]]] + n - lp[vi[eu[e]]]) % n; }
-        /* greedy row selection by elimination mod n (n prime assumed) */
-        static long B[MAXE][MAXV]; int nb = 0;
+        /* greedy row selection by elimination mod n: pivots must be UNITS mod n (works for composite n; a row whose
+           remaining entries are all non-units is skipped and its orbit stays free, which keeps the search exhaustive) */
+        static long B[MAXE][MAXV]; int nb = 0, pivcol[MAXV];
         for (int o = 0; o < norb && rank < nsrc; o++) {
             long row[MAXV]; for (int a = 0; a < nsrc; a++) row[a] = M[o][a];
-            for (int t = 0; t < nb; t++) { int pc = -1; for (int a = 0; a < nsrc; a++) if (B[t][a]) { pc = a; break; }
-                if (pc >= 0 && row[pc]) { long f = row[pc]; for (int a = 0; a < nsrc; a++) row[a] = ((row[a] - f * B[t][a]) % n + n) % n; } }
-            int pc = -1; for (int a = 0; a < nsrc; a++) if (row[a]) { pc = a; break; }
+            for (int t = 0; t < nb; t++) { long f = row[pivcol[t]]; if (f) for (int a = 0; a < nsrc; a++) row[a] = ((row[a] - f * B[t][a]) % n + n) % n; }
+            int pc = -1; for (int a = 0; a < nsrc; a++) if (row[a] && gcdl(row[a], n) == 1) { pc = a; break; }
             if (pc < 0) continue;
-            long iv = 1, bb = row[pc], ee = n - 2; while (ee) { if (ee & 1) iv = iv * bb % n; bb = bb * bb % n; ee >>= 1; }
+            long iv = invmod(row[pc], n);
             for (int a = 0; a < nsrc; a++) row[a] = row[a] * iv % n;
-            /* keep B in reduced form so later rows reduce correctly */
-            for (int t = 0; t < nb; t++) if (B[t][pc]) { long f = B[t][pc]; for (int a = 0; a < nsrc; a++) B[t][a] = ((B[t][a] - f * row[a]) % n + n) % n; }
-            for (int a = 0; a < nsrc; a++) B[nb][a] = row[a]; nb++; piv[o] = 1; rank++;
+            for (int t = 0; t < nb; t++) { long f = B[t][pc]; if (f) for (int a = 0; a < nsrc; a++) B[t][a] = ((B[t][a] - f * row[a]) % n + n) % n; }
+            for (int a = 0; a < nsrc; a++) B[nb][a] = row[a]; pivcol[nb] = pc; nb++; piv[o] = 1; rank++;
         }
         int fr[MAXE], nf = 0; for (int o = 0; o < norb; o++) if (!piv[o]) fr[nf++] = o;
-        fprintf(stderr, "EXH: %d edge orbits, gauge rank %d, %d free orbit voltages (first nonzero scaled to 1)\n", norb, rank, nf);
+        fprintf(stderr, "EXH: %d edge orbits, gauge rank %d, %d free orbit voltages (first nonzero scaled to a divisor of n)\n", norb, rank, nf);
         for (int o = 0; o < norb; o++) ox[o] = 0;
         long bestc = 1L << 60, cnt = 0, nsol = 0; int bxx[MAXE]; double te = now();
-        /* enumerate tuples over free orbits whose first nonzero entry is 1 */
-        for (int lead = 0; lead < nf; lead++) {
-            for (int o = 0; o < nf; o++) ox[fr[o]] = 0; ox[fr[lead]] = 1;
+        /* enumerate tuples over free orbits whose first nonzero entry is a divisor d of n (every nonzero x is a unit
+           times gcd(x, n), and scaling by a unit gives an isomorphic lift); for prime n this is d = 1 */
+        long divs[4096]; int ndiv = 0; for (long d = 1; d < n && ndiv < 4096; d++) if (n % d == 0) divs[ndiv++] = d;
+        for (int lead = 0; lead < nf; lead++) for (int di = 0; di < ndiv; di++) {
+            for (int o = 0; o < nf; o++) ox[fr[o]] = 0; ox[fr[lead]] = (int)divs[di];
             int rest = nf - lead - 1; long tot = 1; for (int t = 0; t < rest; t++) tot *= n;
             for (long code = 0; code < tot; code++) {
                 long c2 = code; for (int t = 0; t < rest; t++) { ox[fr[lead + 1 + t]] = (int)(c2 % n); c2 /= n; }

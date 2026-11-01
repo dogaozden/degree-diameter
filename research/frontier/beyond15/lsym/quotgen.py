@@ -55,7 +55,13 @@ for k in range(klo, khi + 1):
         with open(base + '.perm', 'w') as fh: fh.write(' '.join(map(str, perm)) + '\n')
         for n in range(max(3, Vlo // (nv * k)), Vhi // (nv * k) + 1):
             if (not ASECS and not isprime(n)) or (isprime(n) and math.gcd(n - 1, k) == 1): continue
-            for l in [l for l in range(2, n) if math.gcd(l, n) == 1 and pow(l, k, n) == 1][:maxlam]:
+            def lord(l):
+                o, x = 1, l % n
+                while x != 1: x = x * l % n; o += 1
+                return o
+            lams = [l for l in range(2, n) if math.gcd(l, n) == 1 and pow(l, k, n) == 1]
+            lams.sort(key=lambda l: -lord(l))          # exact order k first (small orders give near-abelian lifts)
+            for l in lams[:maxlam]:
                 tag = f'{base}_n{n}_l{l}'
                 env = dict(os.environ); secs = ASECS or '1'
                 if not ASECS: env['EXH'] = '1'

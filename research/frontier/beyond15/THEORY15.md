@@ -34,8 +34,10 @@ Proof. Direct check: the map (v,g) -> (v, g + c(v)) sends the edge (u,g)~(w,g+x_
 an edge of the lift with voltages x'. Equivariance of x' uses c(ρv) = λ c(v). Scaling commutes with multiplication by λ. QED.
 
 c is determined by its values on one vertex per orbit (t values). The map c -> (changes of the edge-orbit voltages) is
-linear; liftsym (EXH=1) computes its rank by elimination mod n (n prime) and sets that many edge-orbit voltages to 0,
-then scales the first nonzero remaining one to 1. A cubic base has 3t/2 edge orbits; generically the rank is t, so
+linear; liftsym (EXH=1) computes its rank by elimination mod n with unit pivots and sets that many edge-orbit voltages to
+0, then scales the first nonzero remaining one to a divisor of n (every nonzero x is a unit times gcd(x, n); for prime n
+this is 1). For composite n a row whose remaining entries are all non-units is not used as a pivot, so the scan stays
+exhaustive (it only enumerates more). A cubic base has 3t/2 edge orbits; generically the rank is t, so
 **t/2 orbit voltages remain, one of which is scaled away**: t/2 - 1 free parameters in Z_n.
 
 | t (vertex orbits) | example | free after gauge + scaling | lifts per (base, n, λ) |
@@ -47,6 +49,16 @@ then scales the first nonzero remaining one to 1. A cubic base has 3t/2 edge orb
 So each (base, n, λ) is searched EXHAUSTIVELY in milliseconds (t = 2), seconds (t = 4) or minutes (t = 6). The
 self-test (liftsym GTEST=1) applies a random gauge and scaling to random voltages and finds the same cost every time.
 Measured gauge ranks: Desargues 4 of 6 edge orbits, Gray/Tutte 8-cage/Foster 6 of 9, Haar bases 2 of 3 (as predicted).
+
+## 2a. The quotient view
+
+Dividing the lift by the whole group Z_n x|_λ Z_k gives a cubic bipartite multigraph Q on t vertices (the quotient); the
+base B is a Z_k voltage cover of Q, and the lift is a Z_n x|_λ Z_k voltage cover of Q. So a family is fixed by (Q, the Z_k
+pattern, n, λ). For t = 2, Q is the theta graph (Haar graphs). For t = 6 there are exactly three connected cubic bipartite
+multigraphs on 3 + 3 vertices (enumerated): biadjacency rows (1,0,2),(1,2,0),(1,1,1) — the quotient of the Tutte 8-cage
+(k = 5) and of the Foster graph (k = 15); rows each with one double and one single edge — the quotient of the Gray graph
+(k = 9); and K3,3. lsym/quotgen.py samples Z_k patterns on any Q. The (3,15) value 11,802 is the Tutte/Foster shape with
+k = 7 and n = 281 (squad card r3/k03), a graph that is neither the Tutte 8-cage nor the Foster graph lifted.
 
 ## 3. What this means for the search
 
