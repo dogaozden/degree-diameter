@@ -1,0 +1,51 @@
+group psl 79 x Z_181, N=44612880 (2N=89225760), rows 3120 x 14299 bits (doubled row 472 words), memory 0.04 GB, threads 1
+alpha: conj by mat(0,78,1,78), z -> 48 z on Z_181 (fixed z: 1); ORBIT k=3 m=6 f=1; W=6.48233e+08 lambda=14.530 mu=21.83
+setup 0.0s
+start cost=21 (0.7s per eval)
+t=1 step=1 evals=9 slot=2 cand=18 cost=18 best=18 T=1.26
+t=2 step=2 evals=17 slot=0 cand=3 cost=3 best=3 T=1.06
+t=2 step=3 evals=25 slot=4 cand=24 cost=3 best=3 T=0.89
+t=3 step=4 evals=33 slot=0 cand=18 cost=3 best=3 T=0.75
+t=4 step=5 evals=41 slot=1 cand=21 cost=3 best=3 T=0.63
+t=5 step=6 evals=49 slot=3 cand=21 cost=3 best=3 T=0.53
+t=6 step=7 evals=57 slot=0 cand=15 cost=3 best=3 T=0.45
+t=6 step=8 evals=65 slot=3 cand=12 cost=3 best=3 T=0.38
+t=7 step=9 evals=73 slot=4 cand=18 cost=3 best=3 T=0.32
+t=8 step=10 evals=81 slot=0 cand=15 cost=3 best=3 T=0.27
+t=8 step=11 evals=89 slot=3 cand=21 cost=3 best=3 T=0.22
+t=10 step=12 evals=97 slot=5 cand=18 cost=3 best=3 T=0.19
+t=11 step=13 evals=105 slot=3 cand=6 cost=3 best=3 T=0.16
+t=12 step=14 evals=113 slot=0 cand=21 cost=3 best=3 T=0.15
+t=13 step=15 evals=121 slot=3 cand=21 cost=3 best=3 T=0.15
+t=14 step=16 evals=129 slot=2 cand=15 cost=3 best=3 T=0.15
+t=16 step=17 evals=137 slot=5 cand=18 cost=3 best=3 T=0.15
+t=17 step=18 evals=145 slot=3 cand=9 cost=3 best=3 T=0.15
+t=18 step=19 evals=153 slot=0 cand=15 cost=3 best=3 T=0.15
+t=20 step=20 evals=161 slot=2 cand=18 cost=3 best=3 T=0.15
+t=22 step=21 evals=169 slot=1 cand=12 cost=3 best=3 T=0.15
+t=23 step=22 evals=177 slot=5 cand=15 cost=3 best=3 T=0.15
+t=23 step=23 evals=185 slot=3 cand=12 cost=3 best=3 T=0.15
+t=25 step=24 evals=193 slot=5 cand=18 cost=3 best=3 T=0.15
+t=26 step=25 evals=201 slot=5 cand=18 cost=3 best=3 T=0.15
+t=26 step=26 evals=209 slot=2 cand=18 cost=3 best=3 T=0.15
+t=27 step=27 evals=217 slot=4 cand=15 cost=3 best=3 T=0.15
+t=28 step=28 evals=225 slot=2 cand=15 cost=3 best=3 T=0.15
+t=30 step=29 evals=233 slot=3 cand=18 cost=3 best=3 T=0.15
+t=32 step=30 evals=241 slot=0 cand=16 cost=3 best=3 T=0.15
+t=33 step=31 evals=249 slot=1 cand=13 cost=3 best=3 T=0.15
+t=34 step=32 evals=257 slot=3 cand=6 cost=3 best=3 T=0.15
+t=35 step=33 evals=265 slot=0 cand=15 cost=3 best=3 T=0.15
+t=37 step=34 evals=273 slot=5 cand=21 cost=3 best=3 T=0.15
+t=38 step=35 evals=281 slot=2 cand=18 cost=3 best=3 T=0.15
+t=40 step=36 evals=289 slot=3 cand=7 cost=3 best=3 T=0.15
+t=41 step=37 evals=297 slot=5 cand=15 cost=3 best=3 T=0.15
+t=43 step=38 evals=305 slot=2 cand=18 cost=3 best=3 T=0.15
+t=44 step=39 evals=313 slot=5 cand=24 cost=3 best=3 T=0.15
+t=45 step=40 evals=321 slot=1 cand=12 cost=3 best=3 T=0.15
+t=47 step=41 evals=329 slot=2 cand=27 cost=3 best=3 T=0.15
+t=48 step=42 evals=337 slot=0 cand=21 cost=3 best=3 T=0.15
+t=50 step=43 evals=345 slot=5 cand=18 cost=3 best=3 T=0.15
+t=51 step=44 evals=353 slot=4 cand=21 cost=3 best=3 T=0.15
+t=53 step=45 evals=361 slot=0 cand=16 cost=3 best=3 T=0.15
+t=55 step=46 evals=369 slot=0 cand=16 cost=3 best=3 T=0.15
+t=57 step=47 evals=377 slot=4 cand=15 cost=3 best=3 T=0.15
