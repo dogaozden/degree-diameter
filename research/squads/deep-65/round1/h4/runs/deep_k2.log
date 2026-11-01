@@ -1,0 +1,10 @@
+BEST k=2 m=234 seed=2 cost=7 iters=2816 secs=28.1 nsub=13   S=127,125,205,131,22 K=0,35 H=0,107 R=54,81,233,108,76,224,137,164 check=7 
+ grp=234_1 C13 : C18
+BEST k=2 m=230 seed=2 cost=10 iters=2728 secs=28.0 nsub=5   S=204,87,91,39,110 K=0,29 H=0,29 R=205,228,210,226,190,227,12,59 check=10 
+ grp=230_1 C23 x D10
+BEST k=2 m=234 seed=2 cost=12 iters=1856 secs=28.0 nsub=9   S=155,149,78,200,71 K=0,6 H=0,35 R=202,209,207,227,214,229,25,32 check=12 
+ grp=234_3 C13 x D18
+BEST k=2 m=234 seed=3 cost=7 iters=3952 secs=42.0 nsub=13   S=46,53,77,113,155 K=0,71 H=0,89 R=80,197,66,75,201,174,2,86 miss=1,1,0,4,1,0 check=7   wrote runs/edges_234_1_s3.txt (n=702) 
+ grp=234_1
+BEST k=2 m=230 seed=3 cost=14 iters=4400 secs=40.1 nsub=5   S=229,40,166,128,125 K=0,19 H=0,19 R=1,15,8,5,6,38,120,158 miss=6,1,0,6,1,0 check=14   wrote runs/edges_230_1_s3.txt (n=690) 
+ grp=230_1

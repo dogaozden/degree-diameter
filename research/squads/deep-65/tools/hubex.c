@@ -203,7 +203,7 @@ int main(int argc, char **argv) {
                 int m1, m4; int tot = full_check(S, ns, &m1, &m4);
                 hist[tot < 63 ? tot : 63]++;
                 if (tot < bestmiss) bestmiss = tot;
-                static int nnear2 = 0; if (!NORED && (tot <= 1 || (tot == 2 && nnear2++ < 5))) { printf("%s pair %d S =", tot == 0 ? "SOLUTION" : "near", pairno);
+                static int nnear2 = 0; static int NEARMAX = -1; if (NEARMAX < 0) NEARMAX = getenv("NEARMAX") ? atoi(getenv("NEARMAX")) : 5; if (!NORED && (tot <= 1 || (tot == 2 && nnear2++ < NEARMAX))) { printf("%s pair %d S =", tot == 0 ? "SOLUTION" : "near", pairno);
                     for (int i = 0; i < ns; i++) printf(" %d", S[i]); printf("  KA = <");
                     for (int i = 0; i < D; i++) printf("%d%s", KA[i], i < D - 1 ? "," : ">"); printf(" HB = <");
                     for (int i = 0; i < D; i++) printf("%d%s", HB[i], i < D - 1 ? "," : ">"); printf(" miss1 %d miss4 %d\n", m1, m4); fflush(stdout); }

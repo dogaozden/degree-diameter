@@ -76,3 +76,14 @@ or adjacent to another y_j, and a (1,2) pair only if v is adjacent to another x_
 four deleted edges offer about 20 such B-neighbours and 4 x 30 A-vertices at distance 2, while the five edges need
 their 40-80 damaged partners each to land there. That is why annealing floors at 144-177 and symmetric insertions get
 worse. (Squad card h1 tests designed choices.)
+
+## General k: "Haar degree 5 + hubs of size k + hub graph of degree 6-k" (tools/hubk.c)
+Six conditions with R = the hub-hub relation (union of H-K double cosets, |R| = k(6-k)); validated against BFS from
+the four orbit representatives on random parameters for k = 2..6 (0 mismatches on groups of orders 60-84), and
+k = 6 reproduces hubex (294_12: best 3). Exact results (no solution anywhere):
+- k = 3 (1,3|1,3 with N = 5,1,1,1; hub3.c, full double cosets): SmallGroup(258,2) 1.5e10 configurations, best 4
+  (= c22's tabu value). hubk k = 3: SmallGroup(258,1) = C43:C6, 7.7e9 leaves, nothing passes the hub-level conditions.
+  258_3, 258_4, 258_5 have a normal C3 (then R has 102,340 choices in 1190 orbits): not finished, not claimed.
+- k = 4: SmallGroup(280,35) (n = 700; round-1 tabu cost 3): all 6 class pairs, 1.2e10 leaves, no solution
+  (best among subsets passing the hub-level conditions 10; the tabu cost-3 state fails condition (5)).
+- k = 5: every group of order 290 has a normal C5 (degenerate, R = a coset of it); 290_1 not finished.

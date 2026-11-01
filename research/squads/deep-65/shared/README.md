@@ -14,3 +14,5 @@ multiplication table, element 0 = identity).
 | h684.edges | the 684 record graph (Haar graph of SmallGroup(342,12)); vertices 0..341 side A, 342..683 side B |
 | damage684.c | `damage EDGES`: for each edge at vertex 0, the pairs that become far when it is deleted |
 | cost2_294_11.edges | the 686-vertex hub graph with bad = 294 (exactly 2 missing elements, proven optimal in its family) |
+| tabu.c, kopt.c | lift tools (vl format): `tabu SOL GROUP [OUT]` (env SECS, SEED, INIT=random), `kopt SOL GROUP K` (exact K-change neighbourhood) |
+| lift_294_11_cost12.vl, lift_147_3_cost12.vl | the two bad-294 graphs at 686 as lifts of 14-vertex bases by C7 x C7 (tables c7xc7_from_*.grp); lift cost 12 |
