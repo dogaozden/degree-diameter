@@ -37,3 +37,8 @@ identifies them.
 | (5,11) | d5D11_meta_5023_31_2886_b5k05 (master) | metacheck.py | VALID |
 | (3,11) | d3D11_n1474_meta67_11_9.edges | apsp.c | VALID at D = 11, INVALID at D = 10 |
 | (17,5) | d17D5_n35728_orbits.edges | apsp.c | VALID at D = 5, INVALID at D = 4 |
+
+Not completed: the reference check of (10,13) (d10D13_psl_503_157_orb3-3-1_s1, about 7 GB per half). The A half was
+killed by the session's memory limit after 20 minutes when the B half was started beside it, and the B half was then
+stopped, since running the halves one after the other would have taken about two more hours. (16,11) was not
+attempted.

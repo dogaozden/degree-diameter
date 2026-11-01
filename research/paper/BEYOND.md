@@ -180,7 +180,7 @@ apsp logs are on the beyond-d11b branch (`research/frontier/runs/cloudcheck/d4D1
 Counts: 44 of the 64 values are on master, each with two independent checkers or an all-pairs BFS: 24 at D = 11, 12,
 the 12 Haar graphs at Δ = 17..20 and D = 8..10, 4 at D = 13, 14 with Δ = 3, 4, and (18,5), (19,5), (20,5), (17,7).
 For four of them, (4,11), (5,11), (6,11) and (5,12), the second checker on master's file was run by this job. 20 are
-on branches only: 10 at D = 13, 14 with Δ = 5..10 (nine now with two checkers, the second one run by this job; (10,13) with one so far), (16,11) (one checker), the four D = 6 values (exact
+on branches only: 10 at D = 13, 14 with Δ = 5..10 (nine now with two checkers, the second one run by this job; (10,13) with one), (16,11) (one checker), the four D = 6 values (exact
 check via automorphisms), the three level graphs at D = 7 (theorem plus sampled BFS), and two values above master's,
 (17,5) and (3,11), each checked all-pairs twice. One value, (3,14), is below a published census graph.
 
@@ -222,8 +222,10 @@ the value rests on the theorem. No exact check (all-pairs or by automorphisms) h
 on the same file (sha256 in each log): sl or psl on (6,13), (7,13), (8,13), (9,13), (6,14), (7,14), (8,14); bh2 on
 (5,13) and (5,14); mc on master's (4,11), (5,11), (5,12) and (6,11), whose master logs have bh2 only (by the session
 and again by the harvest); and apsp on the 1,474-vertex (3,11) graph and the 35,728-vertex (17,5) graph. All of them
-reported VALID. The reference check of (10,13) (19,980,294,768 vertices, about 7 GB per half) was still running when this draft was written. The reference check of (16,11) (29,961,590,400 vertices) needs about 11 GB and roughly 1.5–3
-hours for each half here, and was not run.
+reported VALID. The reference check of (10,13) (19,980,294,768 vertices) needs about 7 GB per half: the two halves did not fit in
+this session's memory side by side (the A half was killed after 20 minutes when the B half started), and running them
+one after the other would have taken about two more hours, so it was stopped unfinished. The reference check of
+(16,11) (29,961,590,400 vertices, about 11 GB per half) was not attempted.
 
 # 5. Methods
 
@@ -355,7 +357,7 @@ The two sides are independent, so the best packings of each side combine. With |
 
 **Hubs from fibre lines, in orbits.** A set T of 4 affine lines {(v, y + βc) : β ∈ F~4~} in 4 controller vertices
 covers a whole side within distance 3 for many choices (squad card r1/c03). Translation g ↦ g + 1 on the controller
-coordinate is an automorphism of the base, so a good N gives 22 hubs at once (card r2/d06), provided its translates are
+coordinate is an automorphism of the base, so a good T gives 22 hubs at once (card r2/d06), provided its translates are
 disjoint and pairwise compatible. Call the orbit of an old vertex under the translation its *key*; a side has
 16,896 / 22 = 768 keys, the translates of T are disjoint exactly when its 16 vertices have distinct keys, and orbits
 must not share keys. So a side holds at most 48 orbits,
@@ -431,7 +433,9 @@ session, by a separate plain BFS from every vertex (`bfs_all`), and by this job.
 
 # 7. Loose ends
 
-1. The reference check (psl, two halves) of (16,11).
+1. The reference check of (16,11) and (10,13): `haarcheck_psl FILE A` and `haarcheck_psl FILE B`
+   (research/structured/tools/haarcheck_psl.c) on `d16D11_psl_449_331_orb3-5-1_s1.txt` (beyond-d11b branch) and
+   `d10D13_psl_503_157_orb3-3-1_s1.txt` (beyond-d13 branch), about 11 GB and 7 GB per half.
 2. An exact check of the three level graphs at D = 7, or the hub step of (17,7) applied to them.
 3. The coordinator's own check and recording of the 20 branch-only values: (17,5) 35,728 and (3,11) 1,474, which are
    above master's values, the D = 13, 14 values at Δ = 5..10, (16,11), and the four D = 6 values.

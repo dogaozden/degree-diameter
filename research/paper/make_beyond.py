@@ -184,6 +184,9 @@ def pdf():
     hdr.unlink()
     s = tex.read_text()
     s = s.replace("\\usepackage{lmodern}\n", "")
+    # let long paths break after "/" and "_" inside \texttt{...}
+    s = re.sub(r"\\texttt\{([^{}]*)\}",
+               lambda m: "\\texttt{" + m.group(1).replace("/", "/\\allowbreak{}").replace("\\_", "\\_\\allowbreak{}") + "}", s)
     tex.write_text(s)
     subprocess.run([os.environ.get("TECTONIC", "tectonic"), str(tex)], cwd=HERE, check=True)
 
