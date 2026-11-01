@@ -22,10 +22,14 @@ centres, again trivial. QED.
 
 So in these groups every element is "generic" in the sense of ODD_D_HOLES.md, and the only obstruction left is the
 generic one (and the growth obstruction below). Measured: at (4,13) the SL/PSL(2,p) x Z_n orbit searches stop at
-170,520 (PSL(2,29) x Z7, exhaustive orbit scan), the Frobenius group Z4903 x|_230 Z19 gives 186,314; at (5,13)
-3,217,056 (PSL(2,47) x Z31) against 3,525,298 for (Z29 x|_16 Z7) x (Z457 x|_289 Z19); at (4,11) 24,360 (PSL(2,29))
-against 27,554 (Z599 x|_498 Z23). At even D, where neither clump exists for any group, metacyclic groups gave no gain
-(squad r2/e06), as Fact 1 predicts.
+170,520 (PSL(2,29) x Z7, exhaustive orbit scan), the Frobenius group Z2237 x|_1984 Z43 gives 192,382; at (5,13)
+3,217,056 (PSL(2,47) x Z31) against 3,594,910 for (Z11 x|_4 Z5) x (Z2971 x|_1764 Z11); at (4,11) 24,360 (PSL(2,29))
+against 28,418 (Z1093 x|_901 Z13). At even D neither clump exists for any group, so Fact 1 predicts no special
+advantage there; the metacyclic groups nevertheless won the even-D cells at Δ = 4, 5 ((4,12), (4,14), (5,12), (5,10))
+by 1-8 %. That gain has a different cause: at Δ = 4 the alpha-orbit form S = {e, x, ax, a^2x} has one free element
+(about N/3 candidates), at Δ = 5 one random fixed generator plus one orbit, while random S has Δ - 1 free elements
+(squad r6/i12 CANDIDATES.md, r7/j14 RULE.md). The odd-D margin is larger (13-17 % at Δ = 4) than the even-D one (3-8 %),
+which is the part Fact 1 explains.
 
 **Growth caveat.** Z_m x|_r Z_k has the abelian normal subgroup Z_m of index k. The a-part of a word is
 sum_i r^(J_i) a_i (J_i = partial sums of the Z_k parts), so it depends only on the multiset of pairs (J_i, letter_i):
