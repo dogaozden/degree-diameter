@@ -5,3 +5,32 @@ progress: 17:02:05 UTC, elapsed 30 min, still running, RSS about 11 GB, no outpu
 progress: 17:32:18 UTC, elapsed 60 min, still running (pid 682), RSS about 11 GB, no output yet
 progress: 18:02:28 UTC, elapsed 90 min, still running (pid 682), RSS about 11 GB, no output yet
 progress: 18:32:38 UTC, elapsed 120 min, still running (pid 682), RSS about 11 GB, no output yet
+progress: 18:53:10 UTC, finished: pid 682 exited with status 0 after 141 min (see the final block below)
+################ haarcheck_psl (reference checker, research/structured/tools/haarcheck_psl.c, built gcc -O3, single-threaded; ONE BFS from (e,A) only): /usr/bin/time -v haarcheck_psl research/frontier/sols/d12D12_psl_241_2143_orb3-4-0_s1.txt A   (stdout, complete)
+from (e,A): reached A 14998085520/14998085520, B 14998085520/14998085520 within 12, ecc 12
+HALF-VALID from (e,A) d=12 D=12 group=psl 241 x Z_2143 N=14998085520 vertices=29996171040
+--- /usr/bin/time -v (stderr, complete)
+	Command being timed: "/tmp/claude-0/-home-user-degree-diameter/c6128623-9805-5119-952d-89daa924f28f/scratchpad/haarcheck_psl /home/user/degree-diameter/research/frontier/sols/d12D12_psl_241_2143_orb3-4-0_s1.txt A"
+	User time (seconds): 8349.06
+	System time (seconds): 41.03
+	Percent of CPU this job got: 99%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 2:21:05
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 10986716
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 2746317
+	Voluntary context switches: 1
+	Involuntary context switches: 9217
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 16
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+[exit 0; wall 8465s (2:21:05); peak RSS 10729 MB (10986716 KB); 1 thread]
