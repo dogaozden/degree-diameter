@@ -162,6 +162,14 @@ int main(int argc, char **argv) {
         double t = now(); i64 c = cost(); printf("EVAL cost=%lld (%.2fs) N=%lld\n", (long long)c, now() - t, (long long)N); return 0; }
     if (getenv("START")) { if (!readsol(getenv("START"))) { fprintf(stderr, "bad START file\n"); return 2; } }
     else for (int i = 1; i < d; i++) do S[i] = rel(); while (!distinct(i));
+    if (getenv("OPT1")) {   /* exhaustive 1-opt from the START S: every slot, every group element */
+        i64 c0 = cost(); fprintf(stderr, "OPT1 from cost %lld (N=%lld)\n", (long long)c0, (long long)N);
+        for (int i = 1; i < d; i++) { el si = S[i];
+            for (i64 x = 1; x < N; x++) { S[i].a = x / K_; S[i].j = x % K_; if (!distinct(i)) continue;
+                if (cost() == 0) { writesol(out); printf("RESULT d=%d D=%d group=meta %lld %lld %lld N=%lld vertices=%lld best=0 opt1 slot=%d\n", d, D, (long long)M, (long long)K_, (long long)R_, (long long)N, (long long)(2 * N), i); return 0; } }
+            S[i] = si; }
+        printf("RESULT d=%d D=%d group=meta %lld %lld %lld N=%lld best=%lld opt1 exhausted\n", d, D, (long long)M, (long long)K_, (long long)R_, (long long)N, (long long)c0); return 0;
+    }
     if (getenv("OPT2")) {   /* exhaustive 2-opt from the START S: every pair of slots (i,j), every (x,y) in G^2 */
         i64 c0 = cost(); fprintf(stderr, "OPT2 from cost %lld (N=%lld)\n", (long long)c0, (long long)N);
         int pi = 0, pj = 0; if (getenv("OPT2PAIR")) sscanf(getenv("OPT2PAIR"), "%d,%d", &pi, &pj);   /* only this pair */

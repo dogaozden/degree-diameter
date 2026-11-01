@@ -2,7 +2,7 @@
 
 Job beyond-d13 (Opus director + seven Haiku squad rounds of 15-16 cards, cloud session, branch
 claude/beyond-d13-search-z35z61). Fourteen new cells (nothing was recorded at D = 13, 14 before), five of the lab's
-D = 11, 12 values raised ((4,11), (5,11), (6,11), (4,12), (5,12)), and one 2013-table value beaten ((5,10), below). Size limit: at most about 20 billion vertices. Files:
+D = 11, 12 values raised ((4,11), (5,11), (6,11), (4,12), (5,12)), and two 2013-table values beaten ((5,10) and (4,10), below). Size limit: at most about 20 billion vertices. Files:
 research/frontier/beyond13/ (cells.txt and cells_other.txt list every value with its check; rows13.py makes the rows,
 splice13.py puts them here; sols/, runs/ (haarcheck_gen logs), checks/ (apsp, metacheck), graphs/ (edge lists),
 THEORY.md); squad cards and scoreboards research/squads/beyond13/r1..r7; log research/squads/LOG.md.
@@ -62,7 +62,10 @@ The 2013 table (DS14v2, as copied in research/frontier/TABLE.md) has 90,068 for
 (5,10), and the lab's harvest history has no (5,10) entry; literature after 2013 was not checked (TABLE.md says the same
 for every D >= 7 cell), so these are candidates for the coordinator, not claimed records. The same card's (5,9) graph
 (28,418, Z1093 x|_901 Z13) beats the 2013 value 27,936 but not the lab's 29,756 (harvested earlier, also metacyclic).
-(4,8), (4,9) and (4,10) near misses above the 2013 values (2,184, 4,970, 11,748): Z55 x|_2 Z20 (2,200 vertices,
-cost 1), Z101 x|_5 Z25 (5,050, cost 2) and Z215 x|_2 Z28 (12,040, cost 1) (r7/j03-j05). An exhaustive 2-opt from the
+Also (4,10) >= 11,772 against the 2013 value 11,748: a director scan of all 55 metacyclic groups of order 5,875-6,300
+(meta/scan410.sh, 20-s hmeta starts) solved Z218 x|_3 Z27 (order 5,886) in 6 s; apsp and metacheck VALID
+(checks/d4D10_n11772_meta218_27.apsp.txt, sols/d4D10_meta_218_27_dir.txt); the lab has no later (4,10) entry either.
+(4,8) and (4,9) near misses above the 2013 values (2,184, 4,970): Z55 x|_2 Z20 (2,200 vertices, cost 1) and
+Z101 x|_5 Z25 (5,050, cost 2) (r7/j04, j05); (4,10) Z215 x|_2 Z28 (12,040) at cost 1 (r7/j03). An exhaustive 2-opt from the
 (4,8) and (4,9) states (hmeta OPT2: every pair of generators replaced by every pair of group elements, 3.6e6 and 1.9e7
 evaluations) found no cost 0: no generator set within two changes of those states has the required diameter.
