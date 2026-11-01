@@ -1,0 +1,8 @@
+group meta 23671 45 13612 x Z_1, N=1065195, identity 0, H order 45, rows 23671, threads 1, setup 1.99s
+start cost=24
+t=30 steps=65 evals=261 cost=8 best=8 T=0.53
+t=60 steps=129 evals=517 cost=8 best=8 T=0.19
+t=90 steps=191 evals=765 cost=6 best=6 T=0.15
+moves accepted/proposed: plain 8/191 pair 0/0 local 0/0
+  move 0: mean candidate cost 67.9 min 6, candidates within +1 of final cost: 10
+RESULT d=6 D=11 group=meta 23671 45 13612 x Z_1 N=1065195 best=6 evals=765 time=90.5

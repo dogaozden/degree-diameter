@@ -1,0 +1,7 @@
+# l01 runs (round 6). start 14:02:40 UTC. start state = r5/k14/c11.best.txt (cost 1, copied to start1.txt)
+exh full 1-swap scan of start1 (3 slots x 35204, two halves XLO/XHI 0-18000, 18000-35204): min cost 1 (self only), no cost 0, no cost 2, 3 neighbours at cost 3 (slot1: 17204, 19288, 23652)
+exh 1-swap scans from cost-3 neighbours nb_17204.txt, nb_19288.txt, nb_23652.txt (two halves each): min cost 1, no cost 0
+tfull6 TFULL=1 TARGP=100 TMAX=0.6 seed 1601 K=8 90s from start1: best 1 (0 accepted)
+tfull4 TFULL=1 TARGP=100 seed 1602 K=4 90s from start1: best 1 (0 accepted)
+plain6 seed 1603 K=8 90s from start1: best 1 (1 accepted)
+tfull4b TFULL=1 TARGP=100 TMAX=0.6 seed 1604 K=4 90s from start1: see run_t4.log

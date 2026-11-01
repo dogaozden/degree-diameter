@@ -1,0 +1,8 @@
+group meta 9791 55 1073 x Z_1, N=538505, identity 0, H order 55, rows 9791, threads 1, setup 1.23s
+start cost=18
+t=30 steps=346 evals=1385 cost=5 best=5 T=0.53
+t=60 steps=699 evals=2797 cost=2 best=2 T=0.19
+t=90 steps=1010 evals=4041 cost=2 best=2 T=0.15
+moves accepted/proposed: plain 38/1010 pair 0/0 local 0/0
+  move 0: mean candidate cost 79.8 min 2, candidates within +1 of final cost: 49
+RESULT d=5 D=12 group=meta 9791 55 1073 x Z_1 N=538505 best=2 evals=4041 time=90.1

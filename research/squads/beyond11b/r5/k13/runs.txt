@@ -1,0 +1,12 @@
+run=677_plain1 start=start677 PAIRP=0 LOCALP=0 seed=1101 K=4 (cmd: ./hg 4 12 95 1101 4 out677_plain1.sol meta 677 52 12 1)
+run=677_local1 start=start677 LOCALP=30 LOCALW=3 seed=1102 K=4
+run=677_pair1 start=start677 PAIRP=30 seed=1103 K=4
+run=5023_plain1 start=start5023 PAIRP=0 LOCALP=0 seed=1201 K=4 (meta 5023 31 2886 1, d=5 D=11)
+run=5023_local1 start=start5023 LOCALP=20 LOCALW=3 seed=1202 K=4
+run=5023_pair1 start=start5023 PAIRP=20 seed=1203 K=4
+run=5023_mix1 start=start5023 PAIRP=10 LOCALP=10 seed=1204 K=4 (with per-move candidate-cost stats)
+run=5023_tfull1 start=start5023 TFULL=1 TARGP=100 seed=1205 K=4
+run=677_chain2 start=s677_plain1 (cost 2) plain seed=1106 K=8
+run=677_tfull start=s677_chain2 (cost 2) TFULL=1 TARGP=100 seed=1107 K=4
+run=677_tfull2 start=s677_tfull (cost 1) TFULL=1 TARGP=100 seed=1108 K=4
+run=677_tfull3 start=s677_tfull2 (cost 1) TFULL=1 TARGP=100 seed=1109 K=8 secs=90

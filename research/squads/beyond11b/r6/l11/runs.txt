@@ -1,0 +1,14 @@
+t74a seed=301 K=8 start=/home/user/degree-diameter/research/squads/beyond11b/r5/k10/f74_s213c.best tfull=1 bin=haar_gen3t spec=meta 74719 63 37726 | RESULT d=6 D=12 group=meta 74719 63 37726 x Z_1 N=4707297 best=1 evals=313 time=91.9 | nosol
+t74b seed=302 K=8 start=/home/user/degree-diameter/research/squads/beyond11b/r6/l11/t74a.best tfull=1 bin=haar_gen3t spec=meta 74719 63 37726 | RESULT d=6 D=12 group=meta 74719 63 37726 x Z_1 N=4707297 best=1 evals=305 time=92.6 | nosol
+g62a seed=401 K=8 start=- tfull=0 bin=haar_gen3 spec=meta 75703 62 17254 | RESULT d=6 D=12 group=meta 75703 62 17254 x Z_1 N=4693586 best=37 evals=305 time=91.4 | nosol
+g59a seed=402 K=8 start=- tfull=0 bin=haar_gen3 spec=meta 79769 59 43532 | RESULT d=6 D=12 group=meta 79769 59 43532 x Z_1 N=4706371 best=3 evals=273 time=92.4 | nosol
+g59b seed=403 K=8 start=/home/user/degree-diameter/research/squads/beyond11b/r6/l11/g59a.best tfull=1 bin=haar_gen3t spec=meta 79769 59 43532 |  | nosol
+g59c seed=404 K=8 start=- tfull=0 bin=haar_gen3s spec=meta 79769 59 43532 | RESULT d=6 D=12 group=meta 79769 59 43532 x Z_1 N=4706371 best=3 evals=289 time=90.7 | nosol
+g59d seed=405 K=8 start=/home/user/degree-diameter/research/squads/beyond11b/r6/l11/g59c.best tfull=1 bin=haar_gen3t spec=meta 79769 59 43532 | RESULT d=6 D=12 group=meta 79769 59 43532 x Z_1 N=4706371 best=3 evals=265 time=93.0 | nosol
+t74c seed=303 K=8 start=/home/user/degree-diameter/research/squads/beyond11b/r6/l11/t74b.best tfull=1 bin=haar_gen3t spec=meta 74719 63 37726 | RESULT d=6 D=12 group=meta 74719 63 37726 x Z_1 N=4707297 best=1 evals=281 time=91.5 | nosol
+p41a seed=501 K=8 start=- tfull=0 bin=haar_gen3s spec=prod psl 41 meta 17 8 2 1 | RESULT d=6 D=12 group=prod psl 41 meta 17 8 2 x Z_1 N=4683840 best=6 evals=209 time=91.5 | nosol
+t74d seed=304 K=8 start=/home/user/degree-diameter/research/squads/beyond11b/r6/l11/t74c.best tfull=1 bin=haar_gen3t spec=meta 74719 63 37726 | RESULT d=6 D=12 group=meta 74719 63 37726 x Z_1 N=4707297 best=1 evals=297 time=93.1 | nosol
+p41b seed=502 K=8 start=/home/user/degree-diameter/research/squads/beyond11b/r6/l11/p41a.best tfull=1 bin=haar_gen3t spec=prod psl 41 meta 17 8 2 1 | RESULT d=6 D=12 group=prod psl 41 meta 17 8 2 x Z_1 N=4683840 best=5 evals=201 time=91.5 | nosol
+g60a seed=601 K=8 start=- tfull=0 bin=haar_gen3s spec=meta 78301 60 41040 | RESULT d=6 D=12 group=meta 78301 60 41040 x Z_1 N=4698060 best=37 evals=257 time=91.0 | nosol
+t74e seed=305 K=8 start=/home/user/degree-diameter/research/squads/beyond11b/r6/l11/t74d.best tfull=1 bin=haar_gen3t spec=meta 74719 63 37726 | RESULT d=6 D=12 group=meta 74719 63 37726 x Z_1 N=4707297 best=1 evals=297 time=92.4 | nosol
+t74f seed=306 K=8 start=/home/user/degree-diameter/research/squads/beyond11b/r6/l11/t74e.best tfull=1 bin=haar_gen3t spec=meta 74719 63 37726 | RESULT d=6 D=12 group=meta 74719 63 37726 x Z_1 N=4707297 best=1 evals=321 time=91.9 | nosol

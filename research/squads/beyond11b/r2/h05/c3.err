@@ -1,0 +1,8 @@
+group prod sl 5 meta 421 3 400 x Z_1, N=151560, identity 25260, H order 30, rows 5052, threads 1, setup 0.16s
+wide rows: no cyclic subgroup of order >= 64 found (best 30); using haar_gen3's evaluation
+alpha: conj by prod[mat(0,3,3,4);meta(a=375,j=1)] (index 18808), z -> 0 z on Z_1
+ORBIT k=3 m=1 f=2: |Fix(alpha)| = 17 (+e); mu = 14.94, mu/k = 4.98, fixed-point misses ~ 1.66
+start cost=294180
+t=30 steps=293 evals=2345 cost=193224 best=193224 T=0.53
+t=60 steps=580 evals=4641 cost=193224 best=193224 T=0.19
+t=90 steps=861 evals=6889 cost=193224 best=193224 T=0.15

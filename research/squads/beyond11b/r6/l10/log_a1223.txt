@@ -1,0 +1,7 @@
+group meta 1223 13 117 x Z_1, N=15899, identity 0, H order 13, rows 1223, threads 1, setup 0.00s
+start cost=216
+t=30 steps=2154 evals=8617 cost=6 best=6 T=0.53
+t=60 steps=4410 evals=17641 cost=6 best=6 T=0.19
+moves accepted/proposed: plain 7/6621 pair 0/0 local 0/0
+  move 0: mean candidate cost 329.1 min 6, candidates within +1 of final cost: 9
+RESULT d=4 D=11 group=meta 1223 13 117 x Z_1 N=15899 best=6 evals=26485 time=90.1

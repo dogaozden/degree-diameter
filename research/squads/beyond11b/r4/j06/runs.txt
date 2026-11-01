@@ -1,0 +1,17 @@
+run log: seed K group N cost-best result-file
+1001 4 meta17203x61 (9845) N=1049383 best=2
+1002 8 meta17203x61 N=1049383 best=2
+1003 4 meta17203x61 N=1049383 best=2
+1004 8 meta17203x61 N=1049383 best=2
+1005 4 meta17203x61 N=1049383 best=0
+1005 4 meta17203x61 N=1049383 best=0 -> cost-0 file k61_s1005_K4.sol; independent check VALID diam 11 (check_meta)
+2001 4 meta16759x63 N=1055817 best=6
+2002 8 meta16759x63 N=1055817 best=4
+3001 4 meta20707x51 N=1056057 best=0
+3001 4 meta20707x51 N=1056057 best=0 (27 s) -> cost-0 file k51_s3001_K4.sol; check_meta VALID
+4001 4 meta32077x33 N=1058541 best=4
+4002 8 meta20707x51 N=1056057 best=4
+5001 4 meta55633x19 N=1057027 best=12
+5002 4 meta20707x51 N=1056057 best=4
+5003 8 meta20707x51 N=1056057 best=4
+5004 4 meta20707x51 N=1056057 best=0

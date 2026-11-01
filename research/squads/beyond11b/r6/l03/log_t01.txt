@@ -1,0 +1,8 @@
+group meta 8969 59 205 x Z_1, N=529171, identity 0, H order 59, rows 8969, threads 1, setup 1.31s
+START loaded from start_c308c.txt (5 generators)
+start cost=1
+t=30 steps=351 evals=1405 cost=1 best=1 T=0.53
+t=60 steps=713 evals=2853 cost=1 best=1 T=0.19
+moves accepted/proposed: plain 1/1066 pair 0/0 local 0/0
+  move 0: mean candidate cost 255.4 min 1, candidates within +1 of final cost: 3
+RESULT d=5 D=12 group=meta 8969 59 205 x Z_1 N=529171 best=1 evals=4265 time=90.1

@@ -1,0 +1,8 @@
+group meta 16633 63 9643 x Z_1, N=1047879, identity 0, H order 63, rows 16633, threads 1, setup 0.06s
+start cost=178
+t=30 steps=243 evals=973 cost=4 best=4 T=0.53
+t=60 steps=444 evals=1777 cost=4 best=4 T=0.19
+t=90 steps=647 evals=2589 cost=4 best=4 T=0.15
+RESULT d=6 D=11 group=meta 16633 63 9643 x Z_1 N=1047879 best=0 evals=2673 time=93.0
+full diameter check: OK
+wrote k63_s1_K4.sol

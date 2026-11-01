@@ -1,0 +1,12 @@
+run=r1 seed=101 K=4 start_from=- rc=1 start cost=44 best=8 evals=7897 saved=cost 8
+run=r2 seed=202 K=8 start_from=best_r1.txt rc=1 start cost=8 best=6 evals=7441 saved=cost 6
+run=r3 seed=303 K=4 start_from=best_r2.txt rc=1 start cost=6 best=4 evals=7665 saved=cost 4
+run=r4 seed=404 K=8 start_from=best_r3.txt rc=1 start cost=4 best=4 evals=18121 saved=cost 4
+run=r5 seed=505 K=4 start_from=best_r4.txt rc=1 start cost=4 best=4 evals=3617 saved=cost 4
+run=r6 seed=606 K=8 start_from=best_r5.txt rc=1 start cost=4 best=4 evals=3593 saved=cost 4
+# variant: TMAX=3 (hotter restarts) from best_r6
+run=r7 seed=707 K=4 start_from=best_r6.txt rc=1 start cost=4 best=4 evals=3697 saved=cost 4
+run=r8 seed=808 K=8 start_from=best_r7.txt rc=1 start cost=4 best=4 evals=3665 saved=cost 4
+run=r9 seed=909 K=4 start_from=best_r8.txt rc=1 start cost=4 best=4 evals=3993 saved=cost 4
+# r7, r8: TMAX=3; r9: TMAX=0.4 (all from the previous best)
+run=r10 seed=1010 K=8 start_from=- rc=1 start cost=110 best=8 evals=3641 saved=cost 8

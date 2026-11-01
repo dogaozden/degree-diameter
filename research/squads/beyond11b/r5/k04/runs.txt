@@ -1,0 +1,14 @@
+seed91 K4 fresh best=2 saved s91.txt
+start=s91.txt seed301 K4 best=2
+fresh seed401 K4 best=8 saved s401.txt
+start=s91.txt seed501 K8 best=2 saved s501.txt
+start=s501.txt seed601 K4 best=2 saved s601.txt
+fresh seed777 K3 best=6 saved s777.txt
+start=s91c.txt seed701 K6 best=2 saved s701.txt
+fresh seed1001 K4 best=12 saved s1001.txt
+start=s701.txt seed801 K2 best=2 saved s801.txt
+start=s601.txt seed901 K8 best=2 saved s901.txt
+start=s901.txt seed1101 K4 best=2 saved s1101.txt
+start=s1101.txt seed1201 K4 best=2 saved s1201.txt
+start=s1201.txt seed1301 K8 best=2 saved s1301.txt
+start=s1301.txt seed1401 K3 best=2 saved s1401.txt

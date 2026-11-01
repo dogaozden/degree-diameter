@@ -1,0 +1,8 @@
+group sl 103 x Z_5, N=5463120, identity 52530, H order 52, rows 105060, threads 1, setup 2.85s
+wide rows: HW order 255, rows 21424, setup 5.01s
+alpha: conj by mat(35,38,40,67) (index 375166), z -> 1 z on Z_5
+ORBIT k=3 m=2 f=1: |Fix(alpha)| = 509 (+e); mu = 9.32, mu/k = 3.11, fixed-point misses ~ 12.19
+start cost=102
+t=31 steps=45 evals=181 cost=42 best=42 T=0.52
+t=61 steps=90 evals=361 cost=42 best=42 T=0.18
+RESULT d=7 D=11 group=sl 103 x Z_5 N=5463120 best=38 evals=497 time=85.2 orbit k=3 m=2 f=1 fix=509

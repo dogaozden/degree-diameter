@@ -1,0 +1,32 @@
+Frob Z4801 x| Z3 N=14403 Delta=4 seeds=8
+model W_t: {0: 1, 2: 13, 4: 121, 6: 1093, 8: 9841, 10: 88573}
+seed 0 A ball {0: 1, 2: 13, 4: 91, 6: 373, 8: 1047, 10: 2371} B ball {0: 1, 2: 13, 4: 91, 6: 373, 8: 1047, 10: 2371}
+   uncov@10 A {'id': 0, 'central': 0, 'other': 12032} B {'id': 0, 'central': 0, 'other': 12032}
+seed 1 A ball {0: 1, 2: 13, 4: 85, 6: 409, 8: 1375, 10: 3583} B ball {0: 1, 2: 13, 4: 85, 6: 409, 8: 1375, 10: 3583}
+   uncov@10 A {'id': 0, 'central': 0, 'other': 10820} B {'id': 0, 'central': 0, 'other': 10820}
+seed 2 A ball {0: 1, 2: 13, 4: 85, 6: 409, 8: 1375, 10: 3583} B ball {0: 1, 2: 13, 4: 85, 6: 409, 8: 1375, 10: 3583}
+   uncov@10 A {'id': 0, 'central': 0, 'other': 10820} B {'id': 0, 'central': 0, 'other': 10820}
+seed 3 A ball {0: 1, 2: 13, 4: 85, 6: 409, 8: 1375, 10: 3583} B ball {0: 1, 2: 13, 4: 85, 6: 409, 8: 1375, 10: 3583}
+   uncov@10 A {'id': 0, 'central': 0, 'other': 10820} B {'id': 0, 'central': 0, 'other': 10820}
+seed 4 A ball {0: 1, 2: 13, 4: 91, 6: 373, 8: 1047, 10: 2145} B ball {0: 1, 2: 13, 4: 91, 6: 373, 8: 1047, 10: 2145}
+   uncov@10 A {'id': 0, 'central': 0, 'other': 12258} B {'id': 0, 'central': 0, 'other': 12258}
+seed 5 A ball {0: 1, 2: 13, 4: 91, 6: 373, 8: 1047, 10: 2371} B ball {0: 1, 2: 13, 4: 91, 6: 373, 8: 1047, 10: 2371}
+   uncov@10 A {'id': 0, 'central': 0, 'other': 12032} B {'id': 0, 'central': 0, 'other': 12032}
+seed 6 A ball {0: 1, 2: 13, 4: 89, 6: 397, 8: 1221, 10: 2953} B ball {0: 1, 2: 13, 4: 89, 6: 397, 8: 1221, 10: 2953}
+   uncov@10 A {'id': 0, 'central': 0, 'other': 11450} B {'id': 0, 'central': 0, 'other': 11450}
+seed 7 A ball {0: 1, 2: 13, 4: 91, 6: 373, 8: 1047, 10: 2371} B ball {0: 1, 2: 13, 4: 91, 6: 373, 8: 1047, 10: 2371}
+   uncov@10 A {'id': 0, 'central': 0, 'other': 12032} B {'id': 0, 'central': 0, 'other': 12032}
+AVG A-ball X_t, model N(1-exp(-W/N)), ratio
+  t= 0 W=       1 X_A=      1.0 X_B=      1.0 model=      1.0 A/model=1.0000 B/model=1.0000
+  t= 2 W=      13 X_A=     13.0 X_B=     13.0 model=     13.0 A/model=1.0005 B/model=1.0005
+  t= 4 W=     121 X_A=     88.5 X_B=     88.5 model=    120.5 A/model=0.7345 B/model=0.7345
+  t= 6 W=    1093 X_A=    389.5 X_B=    389.5 model=   1052.6 A/model=0.3701 B/model=0.3701
+  t= 8 W=    9841 X_A=   1191.8 X_B=   1191.8 model=   7129.9 A/model=0.1671 B/model=0.1671
+  t=10 W=   88573 X_A=   2870.0 X_B=   2870.0 model=  14372.3 A/model=0.1997 B/model=0.1997
+A id uncov@10 mean 0.0
+A central uncov@10 mean 0.0
+A other uncov@10 mean 11533.0
+B id uncov@10 mean 0.0
+B central uncov@10 mean 0.0
+B other uncov@10 mean 11533.0
+mu_model at t=10: 30.740167609657302

@@ -1,0 +1,26 @@
+TFULL resume from r5/k11/c36.txt seed 41 K 4 secs 85 -> run41.log
+# RESULT d=7 D=11 group=meta 90281 61 60307 x Z_1 N=5507141 best=2 evals=141 time=87.1
+TMAX0.6 TFULL resume from r5/k11/c35.txt seed 42 K 4 secs 85 -> run42.log
+# RESULT d=7 D=11 group=meta 90281 61 60307 x Z_1 N=5507141 best=2 evals=137 time=87.7
+TFULL K16 resume from r5/k11/c34.txt seed 43 secs 85 -> run43.log
+# RESULT d=7 D=11 group=meta 90281 61 60307 x Z_1 N=5507141 best=2 evals=145 time=92.7
+plain (no TFULL) resume from r5/k11/s21.txt seed 44 K 4 secs 78 -> run44.log
+# RESULT d=7 D=11 group=meta 90281 61 60307 x Z_1 N=5507141 best=2 evals=121 time=80.0
+hot TMAX4 TMIN0.5 COOL40 TFULL resume from r5/k11/c36.txt seed 45 secs 78 -> run45.log
+# RESULT d=7 D=11 group=meta 90281 61 60307 x Z_1 N=5507141 best=2 evals=125 time=78.8
+TFULL K8 resume from l05/t41.txt seed 46 secs 70 -> run46.log
+# RESULT d=7 D=11 group=meta 90281 61 60307 x Z_1 N=5507141 best=2 evals=105 time=72.1
+TMAX0.6 TFULL K4 resume from r5/k11/c35.txt seed 47 secs 80 -> run47.log
+# RESULT d=7 D=11 group=meta 90281 61 60307 x Z_1 N=5507141 best=2 evals=125 time=83.8
+TFULL K4 resume from r5/k11/c28.txt seed 48 secs 85 -> run48.log
+# RESULT d=7 D=11 group=meta 90281 61 60307 x Z_1 N=5507141 best=2 evals=133 time=87.8
+plain K8 resume from l05/t46.txt seed 49 secs 80 -> run49.log
+# RESULT d=7 D=11 group=meta 90281 61 60307 x Z_1 N=5507141 best=2 evals=129 time=81.1
+TMAX1.0 TFULL K8 resume from r5/k11/c34.txt seed 50 secs 78 -> run50.log
+# RESULT d=7 D=11 group=meta 90281 61 60307 x Z_1 N=5507141 best=2 evals=121 time=79.5
+TFULL K4 resume from r5/k11/s33.txt seed 51 secs 85 -> run51.log
+# RESULT d=7 D=11 group=meta 90281 61 60307 x Z_1 N=5507141 best=6 evals=141 time=87.2
+TFULL K4 resume from l05/t41.txt seed 52 secs 80 -> run52.log
+# RESULT d=7 D=11 group=meta 90281 61 60307 x Z_1 N=5507141 best=2 evals=125 time=81.0
+plain K4 resume from r5/k11/c36.txt seed 53 secs 80 -> run53.log
+# RESULT d=7 D=11 group=meta 90281 61 60307 x Z_1 N=5507141 best=2 evals=133 time=81.0

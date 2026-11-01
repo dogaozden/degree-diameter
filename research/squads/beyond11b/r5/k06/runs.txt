@@ -1,0 +1,14 @@
+seed K group N cost(best) evals time file
+301 4 meta 3061 51 16 n1 N=156111 best=4 evals=9577 time=95.1 file=s_51_3061_301_K4.txt
+302 4 meta 2861 55 13 n1 N=157355 best=4 evals=10157 time=95.1 file=s_55_2861_302_K4.txt
+303 4 meta 3511 45 76 n1 N=157995 best=6 evals=8181 time=95.1 file=s_45_3511_303_K4.txt
+304 4 meta 2969 53 128 n1 N=157357 best=6 evals=9429 time=95.0 file=s_53_2969_304_K4.txt
+305 8 meta 4481 35 90 n1 N=156835 best=8 evals=5897 time=95.1 file=s_35_4481_305_K8.txt
+306 4 meta 2861 55 13 n1 N=157355 START=s_55_2861_302_K4.txt best=4 evals=10033 time=95.0 file=s_55_2861_306_c1.txt
+307 4 meta 3061 51 16 n1 START=s_51_3061_301_K4.txt N=156111 best=4 evals=8493 time=95.1 file=s_51_3061_307_c1.txt
+308 4 meta 4219 37 31 n1 N=156103 best=6 evals=6433 time=95.0 file=s_37_4219_308_K4.txt
+309 4 meta 4481 35 90 n1 N=156835 best=10 evals=5873 time=95.0 file=s_35_4481_309_K4.txt
+310 8 meta 2861 55 13 n1 N=157355 best=6 evals=9129 time=95.1 file=s_55_2861_310_K8.txt
+311 8 meta 3061 51 16 n1 N=156111 best=6 evals=10465 time=95.0 file=s_51_3061_311_K8.txt
+312 4 meta 3061 51 16 n1 START=s_51_3061_307_c1.txt N=156111 best=4 evals=8981 time=95.0 file=s_51_3061_312_c2.txt
+313 8 meta 3511 45 76 n1 N=157995 d=5 D=11 group=meta 3511 45 76 x Z_1 N=157995 best=8 evals=7705 time=95.1

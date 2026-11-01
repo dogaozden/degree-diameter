@@ -1,0 +1,8 @@
+group psl 81 poly x^4+x+2 x Z_18, N=4782240, identity 58320, H order 60, rows 79704, threads 1, setup 1.71s
+wide rows: HW order 246, rows 19440, setup 3.43s
+alpha: Frobenius x -> x^3 on entries, z -> 17 z on Z_18
+ORBIT k=4 m=1 f=2: |Fix(alpha)| = 47 (+e); mu = 13.70, mu/k = 3.43, fixed-point misses ~ 1.97
+start cost=3886586
+t=30 steps=113 evals=453 cost=86 best=86 T=0.53
+t=60 steps=232 evals=929 cost=86 best=86 T=0.19
+RESULT d=6 D=12 group=psl 81 poly x^4+x+2 x Z_18 N=4782240 best=86 evals=1313 time=85.2 orbit k=4 m=1 f=2 fix=47

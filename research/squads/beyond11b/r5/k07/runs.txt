@@ -1,0 +1,30 @@
+run log: 13:36:59 seed K group N start best sol
+13:37:47 k35_s6001_K4 group=meta 30241 35 17372 x1 N=1058435 start=none best=6 sol=no
+13:38:35 k33b_s6002_K4 group=meta 32077 33 8638 x1 N=1058541 start=none best=8 sol=no
+13:39:26 k33c_s6003_K4 group=meta 32143 33 9335 x1 N=1060719 start=none best=10 sol=no
+13:40:13 k57_s6004_K4 group=meta 18583 57 6834 x1 N=1059231 start=none best=6 sol=no
+13:41:04 k45_s6005_K4 group=meta 23581 45 17962 x1 N=1061145 start=none best=8 sol=no
+13:41:51 k51_s6006_K4 group=meta 20809 51 12972 x1 N=1061259 start=none best=0 sol=yes
+13:42:00 k51_s6006 cost 0 N=1061259 (sol k51_s6006_K4.sol) -> verifying
+13:42:40 VERIFIED check_meta (r4/j06/check_meta) k51_s6006_K4.sol: N=1061259 diameter 11 VALID, 2122518 vertices
+13:43:28 k41_s6007_K4 group=meta 25913 41 6526 x1 N=1062433 start=none best=6 sol=no
+13:44:16 k43_s6008_K4 group=meta 24683 43 7562 x1 N=1061369 start=none best=4 sol=no
+13:45:08 k43c_s6009_K8 group=meta 24683 43 7562 x1 N=1061369 start=/home/user/degree-diameter/research/squads/beyond11b/r5/k07/k43_s6008_K4.best best=4 sol=no
+13:45:55 k43c_s6010_K4 group=meta 24683 43 7562 x1 N=1061369 start=/home/user/degree-diameter/research/squads/beyond11b/r5/k07/k43_s6008_K4.best best=4 sol=no
+13:46:46 k41b_s6011_K4 group=meta 25913 41 6526 x1 N=1062433 start=/home/user/degree-diameter/research/squads/beyond11b/r5/k07/k41_s6007_K4.best best=4 sol=no
+13:47:35 k41_s6012_K8 group=meta 25913 41 6526 x1 N=1062433 start=none best=4 sol=no
+13:48:27 k43d_s6013_K8 group=meta 24683 43 7562 x1 N=1061369 start=/home/user/degree-diameter/research/squads/beyond11b/r5/k07/k43c_s6010_K4.best best=4 sol=no
+13:49:15 k41c_s6014_K8 group=meta 25913 41 6526 x1 N=1062433 start=/home/user/degree-diameter/research/squads/beyond11b/r5/k07/k41b_s6011_K4.best best=4 sol=no
+13:50:07 k43e_s6015_K4 group=meta 24683 43 7562 x1 N=1061369 start=none best=4 sol=no
+13:50:55 k41d_s6016_K4 group=meta 25913 41 6526 x1 N=1062433 start=/home/user/degree-diameter/research/squads/beyond11b/r5/k07/k41c_s6014_K8.best best=4 sol=no
+13:51:46 k43f_s6017_K8 group=meta 24683 43 7562 x1 N=1061369 start=/home/user/degree-diameter/research/squads/beyond11b/r5/k07/k43e_s6015_K4.best best=2 sol=no
+13:52:34 k41e_s6018_K8 group=meta 25913 41 6526 x1 N=1062433 start=/home/user/degree-diameter/research/squads/beyond11b/r5/k07/k41d_s6016_K4.best best=4 sol=no
+13:53:25 k43g_s6019_K8 group=meta 24683 43 7562 x1 N=1061369 start=/home/user/degree-diameter/research/squads/beyond11b/r5/k07/k43f_s6017_K8.best best=2 sol=no
+13:54:14 k43h_s6020_K8 group=meta 24683 43 7562 x1 N=1061369 start=/home/user/degree-diameter/research/squads/beyond11b/r5/k07/k43f_s6017_K8.best best=2 sol=no
+13:55:05 k43i_s6021_K4 group=meta 24683 43 7562 x1 N=1061369 start=/home/user/degree-diameter/research/squads/beyond11b/r5/k07/k43h_s6020_K8.best best=2 sol=no
+13:55:53 k43j_s6022_K8 group=meta 24683 43 7562 x1 N=1061369 start=/home/user/degree-diameter/research/squads/beyond11b/r5/k07/k43h_s6020_K8.best best=2 sol=no
+13:56:44 k43k_s6023_K8 group=meta 24683 43 7562 x1 N=1061369 start=/home/user/degree-diameter/research/squads/beyond11b/r5/k07/k43j_s6022_K8.best best=2 sol=no
+13:57:32 k43l_s6024_K4 group=meta 24683 43 7562 x1 N=1061369 start=/home/user/degree-diameter/research/squads/beyond11b/r5/k07/k43i_s6021_K4.best best=2 sol=no
+13:58:24 k43m_s6025_K8 group=meta 24683 43 7562 x1 N=1061369 start=/home/user/degree-diameter/research/squads/beyond11b/r5/k07/k43k_s6023_K8.best best=2 sol=no
+13:59:13 k43n_s6026_K8 group=meta 24683 43 7562 x1 N=1061369 start=/home/user/degree-diameter/research/squads/beyond11b/r5/k07/k43l_s6024_K4.best best=2 sol=no
+14:00:21 k43o_s6027_K8 group=meta 24683 43 7562 x1 N=1061369 start=/home/user/degree-diameter/research/squads/beyond11b/r5/k07/k43m_s6025_K8.best best=2 sol=no

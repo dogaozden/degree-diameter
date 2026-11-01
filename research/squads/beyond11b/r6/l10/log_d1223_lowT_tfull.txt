@@ -1,0 +1,8 @@
+group meta 1223 13 117 x Z_1, N=15899, identity 0, H order 13, rows 1223, threads 1, setup 0.00s
+START loaded from /home/user/degree-diameter/research/squads/beyond11b/r6/l10/b1223_a.txt (4 generators)
+start cost=6
+t=30 steps=2353 evals=9413 cost=6 best=6 T=0.21
+t=60 steps=4773 evals=19093 cost=6 best=6 T=0.15
+moves accepted/proposed: plain 1/7123 pair 0/0 local 0/0
+  move 0: mean candidate cost 306.1 min 6, candidates within +1 of final cost: 1
+RESULT d=4 D=11 group=meta 1223 13 117 x Z_1 N=15899 best=6 evals=28493 time=90.0

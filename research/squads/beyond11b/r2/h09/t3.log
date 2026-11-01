@@ -1,0 +1,6 @@
+group prod sl 103 meta 7 3 2 x Z_1, N=22945104, identity 220626, H order 56, rows 409734, threads 1, setup 19.29s
+wide rows: HW order 238, rows 96408, setup 32.17s
+alpha: conj by prod[mat(57,0,100,47);meta(a=2,j=1)] (index 12698917), z -> 0 z on Z_1
+ORBIT k=3 m=1 f=5: |Fix(alpha)| = 305 (+e); mu = 13.27, mu/k = 4.42, fixed-point misses ~ 5.10
+start cost=39334464
+RESULT d=8 D=11 group=prod sl 103 meta 7 3 2 x Z_1 N=22945104 best=91482 evals=5 time=30.6 orbit k=3 m=1 f=5 fix=305

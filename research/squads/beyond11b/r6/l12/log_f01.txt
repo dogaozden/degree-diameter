@@ -1,0 +1,7 @@
+group meta 8443 63 2679 x Z_1, N=531909, identity 0, H order 63, rows 8443, threads 1, setup 1.05s
+start cost=10
+t=30 steps=399 evals=1597 cost=2 best=2 T=0.53
+t=60 steps=796 evals=3185 cost=2 best=2 T=0.19
+moves accepted/proposed: plain 7/1168 pair 0/0 local 0/0
+  move 0: mean candidate cost 722.3 min 2, candidates within +1 of final cost: 7
+RESULT d=5 D=12 group=meta 8443 63 2679 x Z_1 N=531909 best=2 evals=4673 time=90.1

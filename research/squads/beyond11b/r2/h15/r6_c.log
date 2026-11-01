@@ -1,0 +1,6 @@
+group prod meta 41 5 10 meta 1031 5 264 x Z_1, N=1056775, identity 0, H order 41, rows 25775, threads 1, setup 1.07s
+start cost=82
+t=30 steps=164 evals=657 cost=16 best=16 T=0.53
+t=60 steps=328 evals=1313 cost=12 best=12 T=0.19
+t=90 steps=494 evals=1977 cost=12 best=12 T=0.15
+RESULT d=6 D=11 group=prod meta 41 5 10 meta 1031 5 264 x Z_1 N=1056775 best=12 evals=2085 time=95.2

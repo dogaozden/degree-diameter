@@ -1,0 +1,17 @@
+run1: SAVEBEST=b1.txt START none, meta 371857 61 153765 1, seed 21 K 4 secs 90, TMAX default
+run2: START=b1.txt SAVEBEST=b2.txt TMAX=0.6 seed 22 K4 secs 70 (haar_gen3s, same spec)
+link 3 mode=tfull start=b2.txt seed=31 14:10:32
+exit 124 14:12:45
+link 4 mode=plain start=b3.txt seed=32 14:12:45
+exit 124 14:14:42
+link 5 mode=tfull start=b4.txt seed=33 14:14:42
+exit 124 14:16:59
+link 6 mode=plain start=b5.txt seed=34 14:16:59
+exit 124 14:19:10
+link 7 mode=tfull start=b6.txt seed=35 14:19:10
+exit 124 14:21:26
+link 8 mode=plain start=b7.txt seed=36 14:21:26
+exit 124 14:23:18
+CHAIN_DONE
+link 9 mode=plain(TMAX 0.6) start=b8.txt seed=37 14:23:24
+link 10 mode=tfull start=b9.txt seed=38 14:25:39

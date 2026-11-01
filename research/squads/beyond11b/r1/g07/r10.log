@@ -1,0 +1,8 @@
+group prod sl 7 sl 7 x Z_49, N=5531904, identity 693546, H order 56, rows 98784, threads 1, setup 2.34s
+wide rows: HW order 196, rows 28224, setup 4.38s
+alpha: conj by prod[mat(2,4,0,4);mat(2,0,3,4)] (index 40078), z -> 18 z on Z_49
+ORBIT k=3 m=1 f=4: |Fix(alpha)| = 35 (+e); mu = 11.13, mu/k = 3.71, fixed-point misses ~ 0.91
+start cost=9680862
+t=33 steps=6 evals=25 cost=9680832 best=9680832 T=0.48
+t=66 steps=14 evals=57 cost=9680832 best=9680832 T=0.15
+RESULT d=7 D=11 group=prod sl 7 sl 7 x Z_49 N=5531904 best=146616 evals=97 time=85.4 orbit k=3 m=1 f=4 fix=35

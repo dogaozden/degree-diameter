@@ -1,0 +1,8 @@
+group meta 1321 11 925 x Z_1, N=14531, identity 0, H order 11, rows 1321, threads 1, setup 0.00s
+wide rows: no cyclic subgroup of order >= 64 found (best 11); using haar_gen3's evaluation
+alpha: meta scaling a -> 1023 a, z -> 0 z on Z_1
+ORBIT k=3 m=1 f=1: |Fix(alpha)| = 10 (+e); mu = 32.74, mu/k = 10.91, fixed-point misses ~ 2.88
+start cost=6180
+t=30 steps=2434 evals=9737 cost=6180 best=6180 T=0.53
+t=60 steps=4808 evals=19233 cost=6180 best=6180 T=0.19
+RESULT d=4 D=11 group=meta 1321 11 925 x Z_1 N=14531 best=6180 evals=28557 time=90.0 orbit k=3 m=1 f=1 fix=10

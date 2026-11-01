@@ -1,0 +1,7 @@
+group meta 8821 60 4462 x Z_1, N=529260, identity 0, H order 60, rows 8821, threads 1, setup 0.77s
+start cost=116
+t=30 steps=362 evals=1449 cost=19 best=19 T=0.53
+t=60 steps=701 evals=2805 cost=17 best=17 T=0.19
+moves accepted/proposed: plain 17/1040 pair 0/0 local 0/0
+  move 0: mean candidate cost 532.3 min 15, candidates within +1 of final cost: 19
+RESULT d=5 D=12 group=meta 8821 60 4462 x Z_1 N=529260 best=15 evals=4161 time=90.0

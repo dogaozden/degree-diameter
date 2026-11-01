@@ -1,0 +1,9 @@
+group prod sl 5 sl 11 x Z_35, N=5544000, identity 927850, H order 60, rows 92400, threads 1, setup 4.05s
+wide rows: HW order 231, rows 24000, setup 7.94s
+alpha: conj by prod[mat(3,2,4,3);mat(7,8,8,3)] (index 111812), z -> 11 z on Z_35
+ORBIT k=3 m=2 f=1: |Fix(alpha)| = 359 (+e); mu = 11.48, mu/k = 3.83, fixed-point misses ~ 9.18
+start cost=402
+t=31 steps=46 evals=185 cost=84 best=84 T=0.52
+t=61 steps=99 evals=397 cost=56 best=56 T=0.18
+t=91 steps=142 evals=569 cost=56 best=56 T=0.15
+RESULT d=7 D=11 group=prod sl 5 sl 11 x Z_35 N=5544000 best=56 evals=581 time=93.6 orbit k=3 m=2 f=1 fix=359

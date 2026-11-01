@@ -1,0 +1,10 @@
+checker: haarcheck_gen
+command: ./bin/haarcheck_gen runs/d12D12_psl_241_2143_orb3-4-0_s1.out
+start: 2026-11-01T15:19:55Z
+sha256 e52e247f4a92a474f49ff0d5d438660ba0b557bbdfd4a8e24311ca881ff3f17c  ./bin/haarcheck_gen
+sha256 baab08bfdd34d66eee2dca57e3a51516e13c480e7bb8a9cf2405755e2c8a5dca  runs/d12D12_psl_241_2143_orb3-4-0_s1.out
+selftest psl 241: |M| = 6998640, index round trip over all elements ok
+selftest group multiplication: associativity, identity, inverse on 20000 random triples ok
+file runs/d12D12_psl_241_2143_orb3-4-0_s1.out
+header: 12 12 psl 241 n 2143 N 14998085520
+group psl 241 x Z_2143, |G| = 14998085520 = N, vertices 2N = 29996171040; 12 distinct generators

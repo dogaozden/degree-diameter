@@ -1,0 +1,8 @@
+group meta 2861 55 13 x Z_1, N=157355, identity 0, H order 55, rows 2861, threads 1, setup 0.08s
+START loaded from start_2861.txt (5 generators)
+start cost=4
+t=30 steps=824 evals=3297 cost=4 best=4 T=0.15
+t=60 steps=1546 evals=6185 cost=4 best=4 T=0.15
+moves accepted/proposed: plain 0/2309 pair 0/0 local 0/0
+  move 0: mean candidate cost 528.6 min 8, candidates within +1 of final cost: 0
+RESULT d=5 D=11 group=meta 2861 55 13 x Z_1 N=157355 best=4 evals=9237 time=90.1

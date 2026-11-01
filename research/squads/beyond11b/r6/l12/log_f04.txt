@@ -1,0 +1,7 @@
+group meta 9521 56 7702 x Z_1, N=533176, identity 0, H order 56, rows 9521, threads 1, setup 0.73s
+start cost=80830
+t=30 steps=160 evals=1281 cost=25 best=25 T=0.53
+t=60 steps=323 evals=2585 cost=25 best=25 T=0.19
+moves accepted/proposed: plain 13/480 pair 0/0 local 0/0
+  move 0: mean candidate cost 751.0 min 24, candidates within +1 of final cost: 33
+RESULT d=5 D=12 group=meta 9521 56 7702 x Z_1 N=533176 best=24 evals=3841 time=90.3

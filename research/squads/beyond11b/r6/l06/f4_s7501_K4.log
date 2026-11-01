@@ -1,0 +1,7 @@
+group meta 19471 55 17381 x Z_1, N=1070905, identity 0, H order 55, rows 19471, threads 1, setup 2.09s
+start cost=350
+t=30 steps=85 evals=341 cost=6 best=6 T=0.52
+t=61 steps=175 evals=701 cost=6 best=6 T=0.18
+moves accepted/proposed: plain 6/272 pair 0/0 local 0/0
+  move 0: mean candidate cost 36.2 min 6, candidates within +1 of final cost: 8
+RESULT d=6 D=11 group=meta 19471 55 17381 x Z_1 N=1070905 best=6 evals=1089 time=90.5

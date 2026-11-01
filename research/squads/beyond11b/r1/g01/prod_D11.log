@@ -1,0 +1,11 @@
+meta 7 3 2 x meta 13 3 3 | N=819 2N=1638 | GROUP N=819 2N=1638 D=11 classes=34 pairs=27778 mincost=614 at (x=52,y=274) ties_at_min=2208 cost0_pairs=0 secs=0.1 | RESULT NONE | 10.8s
+meta 7 3 2 x cyc 37 | N=777 2N=1554 | GROUP N=777 2N=1554 D=11 classes=184 pairs=142600 mincost=700 at (x=38,y=275) ties_at_min=3744 cost0_pairs=0 secs=1.0 | RESULT NONE | 95.6s
+heis 7 x cyc 3 | N=1029 2N=2058 | GROUP N=1029 2N=2058 D=11 classes=164 pairs=168428 mincost=1562 at (x=22,y=149) ties_at_min=28224 cost0_pairs=0 secs=0.8 | RESULT NONE | 78.7s
+heis 7 x cyc 5 | N=1715 2N=3430 | NORUN  |  | 100.5s
+heis 11 | N=1331 2N=2662 | NORUN  |  | 100.3s
+meta 7 3 2 x meta 7 3 2 x cyc 3 | N=1323 2N=2646 | GROUP N=1323 2N=2646 D=11 classes=74 pairs=97754 mincost=3534 at (x=67,y=210) ties_at_min=2496 cost0_pairs=0 secs=0.3 | RESULT NONE | 30.6s
+meta 13 3 3 x cyc 19 | N=741 2N=1482 | NORUN  |  | 100.2s
+meta 19 3 7 x cyc 13 | N=741 2N=1482 | NORUN  |  | 100.1s
+meta 31 3 5 x cyc 9 | N=837 2N=1674 | GROUP N=837 2N=1674 D=11 classes=116 pairs=96860 mincost=1428 at (x=10,y=281) ties_at_min=13320 cost0_pairs=0 secs=0.3 | RESULT NONE | 27.2s
+meta 37 3 10 x cyc 7 | N=777 2N=1554 | GROUP N=777 2N=1554 D=11 classes=104 pairs=80600 mincost=204 at (x=8,y=262) ties_at_min=12384 cost0_pairs=0 secs=0.9 | RESULT NONE | 81.0s
+meta 7 3 2 x cyc 49 | N=1029 2N=2058 | NORUN  |  | 100.3s

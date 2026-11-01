@@ -1,0 +1,38 @@
+# runs: seed K start-file spec -> best cost (fill in)
+seed=1 K=4 start=none spec=meta 881 40 832 best=4
+t=90 steps=8866 evals=70929 cost=4 best=4 T=0.15
+RESULT d=4 D=12 group=meta 701 50 261 x Z_1 N=35050 best=4 evals=75121 time=95.0
+seed=2 K=8 start=none spec=meta 701 50 261 best=4
+t=90 steps=16088 evals=64353 cost=2 best=2 T=0.15
+RESULT d=4 D=12 group=meta 707 50 13 x Z_1 N=35350 best=2 evals=67885 time=95.0
+seed=3 K=4 start=none spec=meta 707 50 13 best=2
+t=90 steps=17102 evals=68409 cost=2 best=2 T=0.15
+RESULT d=4 D=12 group=meta 707 50 13 x Z_1 N=35350 best=2 evals=72197 time=95.1
+seed=4 K=4 START=s707_3.txt spec=meta 707 50 13 best=2 (stalled)
+t=90 steps=19141 evals=76565 cost=14 best=14 T=0.15
+RESULT d=4 D=12 group=meta 676 52 5 x Z_1 N=35152 best=14 evals=80377 time=95.1
+seed=5 K=4 spec=meta 676 52 5 best=14
+t=90 steps=20345 evals=81381 cost=1 best=1 T=0.15
+RESULT d=4 D=12 group=meta 731 48 6 x Z_1 N=35088 best=1 evals=85601 time=95.0
+seed=6 K=4 spec=meta 731 48 6 best=1
+t=90 steps=18530 evals=74121 cost=1 best=1 T=0.15
+RESULT d=4 D=12 group=meta 731 48 6 x Z_1 N=35088 best=1 evals=78421 time=95.1
+seed=7 K=4 START=s731_6.txt spec=meta 731 48 6 best=1 (stalled)
+t=90 steps=8027 evals=64217 cost=1 best=1 T=0.15
+RESULT d=4 D=12 group=meta 731 48 7 x Z_1 N=35088 best=1 evals=67785 time=95.1
+seed=8 K=8 spec=meta 731 48 7 best=1
+full diameter check: OK
+wrote o731r7_9.txt
+seed=9 K=4 START=s731r7_8.txt spec=meta 731 48 7 -> COST 0 FOUND, file o731r7_9.txt
+indep_check.py (BFS from (e,A),(e,B) in python): ecc 12 both, 70176 vertices, valid
+t=90 steps=14719 evals=58877 cost=620 best=620 T=0.15
+RESULT d=4 D=12 group=meta 801 44 10 x Z_1 N=35244 best=620 evals=58877 time=90.1
+seed=10 K=4 spec=meta 801 44 10 best=620 (bad)
+t=90 steps=24346 evals=97385 cost=1 best=1 T=0.15
+RESULT d=4 D=12 group=meta 805 44 13 x Z_1 N=35420 best=1 evals=97385 time=90.1
+seed=11 K=4 spec=meta 805 44 13 best=1
+t=60 steps=14911 evals=59645 cost=1 best=1 T=0.19
+RESULT d=4 D=12 group=meta 805 44 13 x Z_1 N=35420 best=1 evals=85929 time=90.0
+seed=12 K=4 START=s805_11.txt spec=meta 805 44 13 best=1 (stalled)
+t=60 steps=12445 evals=49781 cost=134 best=134 T=0.19
+RESULT d=4 D=12 group=meta 805 44 8 x Z_1 N=35420 best=134 evals=72033 time=85.0

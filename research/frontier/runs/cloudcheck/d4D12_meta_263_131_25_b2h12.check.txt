@@ -1,0 +1,12 @@
+check of sols/d4D12_meta_263_131_25_b2h12.txt (job beyond-d11b, director), 2026-11-01T12:32:35Z
+sha256 9824ab8f2d43f40f304c8ca1560876a61b0941ac174449a07a583629691987ac  sols/d4D12_meta_263_131_25_b2h12.txt
+== build_haar2.py
+ecc from A = 12 unreached 0
+ecc from B = 12 unreached 0
+n = 68906 edges = 137812 max degree = 4 min degree = 4 duplicate edges = 0
+edge list sha256 = 305bee59a54fd8840880b5eb409c3c8c86a0a0527cfc2dd843b0cdba040e89ff
+VALID d=4 D=12 group=meta 263 131 25 x Z_1 N=34453 vertices=68906
+== apsp (research/lifts/coordinator_check/apsp.c) on that edge list
+n=68906 edges=137812 degree min=4 max=4 bipartite=yes diameter=12
+RESULT VALID d=4 D=12 n=68906
+apsp time 25 s

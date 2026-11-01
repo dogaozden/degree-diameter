@@ -1,0 +1,8 @@
+group meta 10177 53 3290 x Z_1, N=539381, identity 0, H order 53, rows 10177, threads 1, setup 1.05s
+START loaded from b_f06.txt (5 generators)
+start cost=3
+t=30 steps=278 evals=1113 cost=5 best=3 T=0.53
+t=60 steps=591 evals=2365 cost=4 best=3 T=0.19
+moves accepted/proposed: plain 18/897 pair 0/0 local 0/0
+  move 0: mean candidate cost 216.8 min 3, candidates within +1 of final cost: 19
+RESULT d=5 D=12 group=meta 10177 53 3290 x Z_1 N=539381 best=3 evals=3589 time=90.2

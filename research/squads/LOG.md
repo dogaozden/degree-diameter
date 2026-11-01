@@ -49,3 +49,118 @@ nice 0, equal to the director's whole pipeline); the director raised the pipelin
 `echo -10 > /proc/<pid>/autogroup` and lowered the cards' groups to 15.
 Kept: haarex6 for the sweep; no family lead worth more CPU (the 704 lift is an isolated local minimum, the new
 families are far). The order-384 sweep continues; orders 401-450 started on the spare core.
+
+## 2026-11-01, job beyond-d11b (Opus director, branch claude/beyond-d11-d12-new-cells-3t3djx)
+
+Goal: new cells (15,11), (16,11), (14,12) with Haar graphs of at most ~30 billion vertices, and raises of the D = 11, 12
+cells. Before round 1 the director's haar_big0 runs had already solved all five ~30-billion targets in 1-45 evaluations
+each ((16,11) PSL(2,449) x Z331, (15,11) SL(2,617) x Z61 at mu 5.2, (14,12) and (12,12) PSL(2,241) x Z2143, (13,12)
+PSL(2,181) x Z5059); their haarcheck_gen checks (one at a time, ~11 GB each) run alongside the squads. So the squads
+were aimed at the smaller cells, with ideas nobody had tried. Machine: 4 cores, 16 GB; autogroup off.
+
+### Round 1 (16 cards, 11:48-12:12 UTC, research/squads/beyond11b/r1/)
+
+Cards (best result):
+- **g02 (4,11) odd-order metacyclic, plain S: Z_761 x|_25 Z_19 (Frobenius, order 14,459), 28,918 vertices** (was 24,360,
+  +18.7 %) at size-law mu 31.6; N = 12,181 and 14,209 solved in seconds; 14,531-15,025 stopped at cost 2-4.
+- **g16 SL(2,p) x (odd centre-free Frobenius H): (4,11) SL(2,5) x (Z37 x| Z3) 26,640 in 0.2 s; (5,11) SL(2,5) x
+  (Z251 x| Z5) 301,200** (was 297,648); (6,11) SL(2,7) x (Z449 x| Z7) to cost 2. Conjugation-alpha orbits hurt here.
+- g03 (5,11) odd-order meta with composite m / with a centre: start costs 1e3-2.6e5, plateau 4-14. g04 F_q x| C_k,
+  q = 37^3, k = 21: ~10x worse than the size law. g13 Sz(8): bad at odd D. g06 bipartite Cayley graphs of PGL(2,p):
+  worse than Haar at equal size. g05 Frobenius field automorphism as alpha (SL(2,49) x Z9): better start costs than
+  conjugation, plateau 10. g08 PSL(2,p^e) with Frobenius alpha at even D: plateau 5 at (5,12). g07 SL x SL products at
+  (7,11): cost 24, budget-limited. g11 agl1 products at (4,12)/(4,11): plateaus 11 / 8. g12 Z_m lifts of PG(2,3)
+  incidence: (4,11) 19,500 (below). g14 metacyclic lifts of cubic multigraphs: (3,12) cost 2 at 2,184 vertices. g01
+  non-metacyclic cubic groups: best min-cost 184. g10 -I pair constraint (a^-1 b of order 10): 2/4 seeds solved
+  SL(2,101) at (6,11) against 0/4 plain (2,060,400, below the value). g09 (15,9) calibration: "3 4 3" starts lower than
+  "3 5 0" at n = 1, solved SL(2,173) x Z19 at mu 9.5; otherwise inconclusive. g15 theory (r1/g15/NOTE.md): with f = 0
+  the number of words reaching -I is 0 mod 6; buying -I with s, -s is bad.
+
+Verified by the director (build_haar2.py and all-pairs apsp; logs research/frontier/runs/cloudcheck/*b1g*.check.txt):
+(4,11) 28,918, (4,11) 26,640, (5,11) 301,200. Kept: odd-order centre-free Frobenius groups and SL(2,q) x Frobenius at
+odd D (round 2 is built on them, from (4,11) to (8,11), plus an even-D control, a measurement card and a theory card).
+Dropped: F_{p^3} x| C_k, Sz(8), bipartite Cayley, agl1 products, conjugation-alpha orbits on Frobenius products.
+Process: cards stopped after 6-20 minutes of their 25 (g15 after 7); round 2's prompt says not to stop before 25.
+
+### Round 2 (17 cards, 12:13-12:38 UTC, research/squads/beyond11b/r2/)
+
+All cards built on round 1's lead (odd-order, centre-free Frobenius groups Z_p x| Z_k, and SL(2,q) x Frobenius).
+Cards (best result):
+- **h01 (4,11) Z_523 x| Z_29 (N 15,167): 30,334** (two seeds of two solved); k = 9-15 groups stall at 6-62.
+- **h02 (4,11) Z_421 x| Z_35: 29,470** (1 seed of 4); groups near N = 15k stall at 2-10; k > 63 runs slowly in haar_gen3.
+- h03 (4,11) (Z7 x| Z3) x (Z53 x| Z13): 28,938 (below h01); other products 6-2,412.
+- **h04 (5,11) Z_5279 x| Z_29: 306,182** (1 seed of 5; k = 25-65 cost 4-8 in 60 s, k = 9 cost 252).
+- **h17 (theory) (5,11) Z_8171 x| Z_19: 310,498**; NOTE.md: no involutions / trivial centre (proved), W_j = W_-j,
+  coset coverage by Cauchy-Davenport, balanced C_k labels of S predict fewer holes; k = 7 median 434 holes vs k = 19 35.
+- **h12 (4,12) even D, Z_263 x| Z_131: 68,906** (was 68,544; 1 seed of 5); (5,12) Z2897 x| Z181 cost 8.
+- h13 measurement: median holes at radius 10 vs size law: Frobenius k = 19 1.1x, k = 13 1.6x, SL(2,23) 4.3x,
+  SL(2,13) x Z7 5.2x; the gain is in the middle levels (X_8/model 0.99 vs 0.89-0.92), k = 3 collapses.
+- No raise: h05 (5,11) SL(2,q) x F (plateau 10-18); h06 (6,11) Frobenius, 240 groups, k = 63 cost 2 on 4 seeds; h07 (6,11)
+  SL(2,7) x (Z449 x| Z7) cost 4; h08 (7,11) k = 23 plateau 18; h09 (8,11) SL(2,103) x H21 cost 14; h10 scaling-automorphism
+  orbits (AMU) degenerate; h11 cubic Frobenius (exh3) cost >= 84; h14 cubic lifts cost 2 at 2,184; h15 (6,11)
+  (Z67 x| Z3) x (Z307 x| Z17) cost 2; h16 2-dim Frobenius Z29^2 x| Z15 25,230 at (4,11).
+Director-verified (build_haar2.py + apsp, logs runs/cloudcheck/*b2h*.check.txt): (4,11) 30,334 and 29,470, (4,12)
+68,906; (5,11) 310,498 and 306,182 checks running. Kept for round 3: many seeds per group near the limit, k ~ 19-63,
+Frobenius at even D, the cost-2 near misses at (6,11), label balance as a search constraint. Dropped: AMU orbits, SL x F
+above (5,11), cubic Frobenius. Process: card h14 called create_session once by mistake (an empty session) and archived
+it; round 3's header forbids session and messaging tools.
+
+### Round 3 (16 cards, 12:40-13:06 UTC, research/squads/beyond11b/r3/)
+
+Cards (best result; director re-checks: build_haar2.py, plus apsp where 2N <= 310k; logs runs/cloudcheck/*b3*.check.txt):
+- **i08 (6,11) (Z67 x| Z3) x (Z307 x| Z17), N = 1,049,019: 2,098,038** (was 2,094,960; 1 seed of 8; build_haar2 VALID).
+- **i07 (6,11) Z16633 x| Z63, N = 1,047,879: 2,095,758** (1 run of ~6; build_haar2 VALID).
+- **i10 (4,12) Z1297 x| Z27, N = 35,019: 70,038** (solved in 2 s; also Z1117 x| Z31 69,254 and Z617 x| Z56 69,104; VALID).
+- **i11 (5,12) Z9859 x| Z53, N = 522,527: 1,045,054** (was 1,041,768; build_haar2 VALID).
+- No raise: i01 (4,11) k = 29/31 window empty (director's card error; only N = 15,167 exists); i02 Z463 x| Z33 (N = 15,279)
+  15 seeds stuck at 4-6; i03 Z307 x| Z51 cost 8, (Z7 x| Z3) x (Z67 x| Z11) cost 6; i04 (5,11) Z8209 x| Z19 9 seeds best 4;
+  i05 Z6763 x| Z23 and Z5023 x| Z31 cost 2; i09 (7,11) Z90281 x| Z61 cost 2 (k 53-63 run 7x faster than k = 23);
+  i12 (6,12) PSL(2,41) x (Z17 x| Z8) cost 3; i13 label-balanced S: mean best cost 6.0 vs 8.4 plain at (5,11), no
+  solve-rate difference in 5 seeds; i14 (8,11) and i16 (7,12) too slow for a card (17 evals per seed); i15 composite k
+  and p^2 kernels worse than prime k; i16 (5,12) PSL and Frobenius plateau alike (no even-D advantage measured there).
+Kept: seed farms on the cost-1/2 near misses ((4,12) Z701 x| Z50 cost 1; (5,12) Z8317 x| Z63 and Z11093 x| Z47 cost 1;
+(5,11) Z6763 x| Z23, Z5023 x| Z31; (6,11) products N = 1,050,063; (7,11) Z90281 x| Z61). Process: three cards made stray
+calls to messaging/session tools despite the header (all failed with argument errors, nothing sent).
+
+### Round 4 (14 cards, 13:08-13:33 UTC, research/squads/beyond11b/r4/)
+
+Mostly seed farms on round 3's near misses, plus a tool card. Cards (best result; director re-checks with build_haar2.py):
+- **j06 (6,11) Z20707 x| Z51, N = 1,056,057: 2,112,114** (2 of 7 seeds); k = 61 N = 1,049,383 also solved (2,098,766).
+- **j10 (5,12) Z10303 x| Z51, N = 525,453: 1,050,906** (also Z8317 x| Z63 1,047,942); near misses cost 1-2 up to N = 529k.
+- **j12 (5,11) Z3613 x| Z43, N = 155,359: 310,718** (17.5 s; second seed cost 4).
+- j05 (6,11) (Z7 x| Z3) x (Z1613 x| Z31): 2,100,126 (below j06). j14 TOOL: haar_gen3s (SAVEBEST / START; chaining reached
+  cost 4 where one run reached 8, then stalled). No raise: j01 (4,11) above N = 15,167 (k 13-23, cost 6-22); j02/j03/j04
+  (5,11) farms (cost 2-6); j07/j08 (7,11) (cost 2-4 over 27 runs); j09 (4,12) Z677 x| Z52 and Z701 x| Z50 cost 2;
+  j11 (6,12) Z74719 x| Z63 cost 2; j13 even-D products (5,12) cost 1.
+Kept for round 5: chains with haar_gen3s on the cost-1/2 near misses, (6,11) above N = 1,056,057, a move-set card and a
+hole-anatomy card. Process: four more stray calls to messaging/session tools by cards, all rejected for missing arguments.
+
+### Round 5 (14 cards, 13:38-14:03 UTC, research/squads/beyond11b/r5/)
+
+Seed farms and save/resume chains (haar_gen3s from r4/j14) on the near misses, a move-set card and a hole-anatomy card.
+- **k07 (6,11) Z20809 x| Z51, N = 1,061,259: 2,122,518** (44 s); k = 43 at 1,061,369 cost 2.
+- **k03 (5,12) Z8663 x| Z61, N = 528,443: 1,056,886** (cost 2 fresh, then 0 after one resume).
+- **k05 (5,11) Z5023 x| Z31, N = 155,713: 311,426** (cost 4 fresh, 0 after one resume).
+- **k02 (4,12) Z731 x| Z48 (731 = 17 x 43), N = 35,088: 70,176** (cost 1, 1, then 0 on the 4th chain link).
+- k13 TOOL (haar_gen3t): pair moves and s -> s w moves useless; full-length targeted walks (TFULL = 1, TARGP = 100) took
+  (4,12) Z677 x| Z52 from cost 2 to 1 where plain chains stayed at 2-3.
+- k14 hole anatomy: at odd D the holes of a Frobenius group are inverse pairs on one side (cost 4 = one pair per side, as
+  the inversion symmetry predicts); at (4,12) the last hole of a cost-1 state was an involution of Z677 x| Z52 (k = 52 even).
+- No raise: k01 (4,12) Z677 x| Z52 cost 1; k04 (5,11) product lineage stuck at 2 over 9 chains; k06 (5,11) six groups at
+  4-10; k08 (6,11) products cost 4; k09/k10 (6,12) Z74719 x| Z63 cost 1-3; k11 (7,11) Z90281 x| Z61 cost 2 plateau; k12
+  (7,11) Z100981 x| Z55 low-temperature chain 8 -> 2.
+Director-verified with build_haar2.py (plus apsp for (4,12) and (5,11)). Round 6 applies the TFULL finisher to the cost-1/2
+states. Process: three more stray session-tool calls (rejected) and some multi-line scoreboard records.
+
+### Round 6 (12 cards, 14:04-14:28 UTC, research/squads/beyond11b/r6/) - last round
+
+Finisher round: the TFULL targeted move (haar_gen3t, r5/k13), low-temperature and plain resumes on the cost-1/2 states.
+- **l03 (5,12) Z8969 x| Z59, N = 529,171: 1,058,342** (cost 1 frozen for 6 runs, then 0 in 11 s on the 7th; build_haar2 VALID).
+- l01 (4,12) Z677 x| Z52 cost-1 state: an exhaustive scan of all 105,609 single-generator swaps finds no cost 0 (only the
+  state itself at cost 1; 3 neighbours at cost 3; their full 1-swap scans also bottom out at 1). An isolated local minimum.
+- l07 (5,11) product cost-2 state: the 2 holes are an inverse pair on the B side (A side complete), as predicted.
+- No raise: l02/l11 (6,12) Z74719 x| Z63 cost 1 (14 + 7 runs); l04/l05 (7,11) cost-2 states, 0 accepted targeted moves
+  (one replacement costs +6 or more); l06 (6,11) Z24683 x| Z43 cost 2; l08 (5,11) Z3061 x| Z51 4 -> 2; l09 (8,11) cost 8
+  (setup 45-50 s of each 90 s run); l10 (4,11) Z463 x| Z33 cost 4; l12 (5,12) fresh groups cost 2.
+Reading: near the limit the annealer's local minima are real (exhaustive 1-swap check at (4,12)); solves come from many
+fresh lineages, not from deeper finishing. The squad stopped here so the last three ~11 GB checks run on an idle machine.

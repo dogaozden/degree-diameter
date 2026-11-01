@@ -1,0 +1,42 @@
+bad group prod meta 7 3 2 meta 173 43 16
+tfull seed1101 K4 start=start0.txt
+start cost=2
+t=30 steps=535 evals=2141 cost=2 best=2 T=0.53
+t=60 steps=1094 evals=4377 cost=2 best=2 T=0.19
+moves accepted/proposed: plain 1/1628 pair 0/0 local 0/0
+  move 0: mean candidate cost 1116.2 min 2, candidates within +1 of final cost: 1
+RESULT d=5 D=11 group=prod meta 7 3 2 meta 173 43 16 x Z_1 N=156219 best=2 evals=6513 time=90.1
+tfull seed1101 K4 start=start0.txt
+t=90 steps=2069 evals=6208 cost=2 best=2 T=0.15
+moves accepted/proposed: plain 0/2069 pair 0/0 local 0/0
+  move 0: mean candidate cost 940.8 min 4, candidates within +1 of final cost: 0
+RESULT d=5 D=11 group=prod meta 7 3 2 meta 173 43 16 x Z_1 N=156219 best=2 evals=6208 time=90.1
+tfull TMAX0.6 seed1201 K3 start=b1.txt
+t=60 steps=543 evals=4345 cost=2 best=2 T=0.19
+moves accepted/proposed: plain 0/801 pair 0/0 local 0/0
+  move 0: mean candidate cost 754.5 min 8, candidates within +1 of final cost: 0
+RESULT d=5 D=11 group=prod meta 7 3 2 meta 173 43 16 x Z_1 N=156219 best=2 evals=6409 time=90.1
+plain-mix TARGP30 seed1301 K8 start=b1.txt
+moves accepted/proposed: plain 0/2252 pair 0/0 local 0/0
+  move 0: mean candidate cost 844.9 min 10, candidates within +1 of final cost: 0
+RESULT d=5 D=11 group=prod meta 7 3 2 meta 173 43 16 x Z_1 N=156219 best=2 evals=6757 time=90.1
+default-mix TARGP70 TMAX1.5 seed1401 K3 start=b2.txt
+  move 0: mean candidate cost 990.5 min 10, candidates within +1 of final cost: 0
+RESULT d=5 D=11 group=prod meta 7 3 2 meta 173 43 16 x Z_1 N=156219 best=2 evals=6049 time=90.3
+tfull TMAX0.9 seed1501 K6 start=b4.txt
+  move 0: mean candidate cost 643.3 min 8, candidates within +1 of final cost: 0
+RESULT d=5 D=11 group=prod meta 7 3 2 meta 173 43 16 x Z_1 N=156219 best=2 evals=6209 time=90.1
+plain-only TARGP0 TMAX1.5 REHEAT40 seed1601 K2 start=b5.txt
+  move 0: mean candidate cost 24987.5 min 6, candidates within +1 of final cost: 10
+RESULT d=5 D=11 group=prod meta 7 3 2 meta 173 43 16 x Z_1 N=156219 best=6 evals=7409 time=90.1
+fresh TFULL seed1701 K4 (no start)
+  move 0: mean candidate cost 868.6 min 4, candidates within +1 of final cost: 0
+RESULT d=5 D=11 group=prod meta 7 3 2 meta 173 43 16 x Z_1 N=156219 best=2 evals=6546 time=90.2
+tfull TMAX0.6 seed1801 K5 start=b6.txt
+group prod meta 7 3 2 meta 173 43 16 x Z_1, N=156219, identity 0, H order 7, rows 22317, threads 1, setup 0.36s
+RESULT d=5 D=11 group=prod meta 7 3 2 meta 173 43 16 x Z_1 N=156219 best=2 evals=1093 time=90.2
+tfull HMAX21 seed1901 K4 start=b8.txt
+RESULT d=5 D=11 group=prod meta 7 3 2 meta 173 43 16 x Z_1 N=156219 best=2 evals=6457 time=90.3
+mix TARGP50 TMAX1.2 seed2001 K8 start=b1.txt
+RESULT d=5 D=11 group=prod meta 7 3 2 meta 173 43 16 x Z_1 N=156219 best=2 evals=6436 time=90.0
+tfull seed2101 K3 start=b10.txt
