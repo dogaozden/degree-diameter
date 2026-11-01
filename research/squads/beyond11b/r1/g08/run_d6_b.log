@@ -1,0 +1,8 @@
+group psl 125 poly x^3+x+1 x Z_5, N=4882500, identity 38750, H order 63, rows 77500, threads 1, setup 2.29s
+wide rows: HW order 155, rows 31500, setup 4.06s
+alpha: Frobenius x -> x^5 on entries, z -> 1 z on Z_5
+ORBIT k=3 m=1 f=3: |Fix(alpha)| = 299 (+e); mu = 18.18, mu/k = 6.06, fixed-point misses ~ 4.65
+start cost=7591
+t=30 steps=52 evals=209 cost=9 best=9 T=0.53
+t=60 steps=104 evals=417 cost=9 best=9 T=0.19
+RESULT d=6 D=12 group=psl 125 poly x^3+x+1 x Z_5 N=4882500 best=9 evals=585 time=85.1 orbit k=3 m=1 f=3 fix=299

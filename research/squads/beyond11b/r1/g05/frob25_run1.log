@@ -1,0 +1,9 @@
+group sl 25 poly x^2+2 x Z_10, N=156000, identity 6000, H order 60, rows 2600, threads 1, setup 0.00s
+wide rows: HW order 130, rows 1200, setup 0.05s
+alpha: Frobenius x -> x^5 on entries, z -> 9 z on Z_10
+ORBIT k=2 m=2 f=1: |Fix(alpha)| = 239 (+e); mu = 19.99, mu/k = 10.00, fixed-point misses ~ 5.43
+start cost=2968
+t=30 steps=2186 evals=8745 cost=54 best=54 T=0.53
+t=60 steps=4314 evals=17257 cost=54 best=54 T=0.19
+t=90 steps=6506 evals=26025 cost=36 best=36 T=0.15
+RESULT d=5 D=11 group=sl 25 poly x^2+2 x Z_10 N=156000 best=36 evals=26025 time=90.0 orbit k=2 m=2 f=1 fix=239

@@ -1,0 +1,7 @@
+group prod sl 7 meta 13 3 3 x Z_1, N=13104, identity 1638, H order 52, rows 252, threads 1, setup 0.03s
+wide rows: HW order 182, rows 72, setup 0.03s
+alpha: conj by prod[mat(1,4,1,5);meta(a=4,j=1)] (index 2782), z -> 0 z on Z_1
+ORBIT k=3 m=1 f=1: |Fix(alpha)| = 17 (+e); mu = 15.20, mu/k = 5.07, fixed-point misses ~ 3.78
+start cost=25726
+t=30 steps=14669 evals=117353 cost=222 best=222 T=0.53
+t=60 steps=32624 evals=260993 cost=222 best=222 T=0.19

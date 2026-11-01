@@ -1,0 +1,9 @@
+group sl 49 poly x^2+1 x Z_9, N=1058400, identity 21168, H order 63, rows 16800, threads 1, setup 0.51s
+wide rows: HW order 225, rows 4704, setup 0.99s
+alpha: conj by mat(9,7,31,47) (index 21934), z -> 8 z on Z_9
+ORBIT k=2 m=2 f=2: |Fix(alpha)| = 47 (+e); mu = 10.37, mu/k = 5.18, fixed-point misses ~ 0.30
+start cost=6302
+t=30 steps=437 evals=1749 cost=154 best=154 T=0.53
+t=60 steps=935 evals=3741 cost=152 best=152 T=0.19
+t=90 steps=1383 evals=5533 cost=146 best=146 T=0.15
+RESULT d=6 D=11 group=sl 49 poly x^2+1 x Z_9 N=1058400 best=146 evals=5841 time=95.0 orbit k=2 m=2 f=2 fix=47

@@ -1,0 +1,8 @@
+group sl 173 x Z_19, N=98373336 (2N=196746672), rows 29928 x 3287 bits (doubled row 128 words), memory 0.10 GB, threads 1
+alpha: conj by mat(0,172,1,172), z -> 7 z on Z_19 (fixed z: 1); ORBIT k=3 m=4 f=3; W=1.58931e+09 lambda=16.156 mu=9.47
+setup 0.0s
+start cost=6 (5.3s per eval)
+t=15 step=1 evals=5 slot=3 cand=0 cost=0 best=0 T=1.26
+RESULT d=15 D=9 group=sl 173 x Z_19 N=98373336 vertices=196746672 best=0 evals=5 steps=1 time=15.1 orbit k=3 m=4 f=3 mu=9.47
+re-evaluation of the best S: cost 0
+wrote s6_chain_p173_n19.sol

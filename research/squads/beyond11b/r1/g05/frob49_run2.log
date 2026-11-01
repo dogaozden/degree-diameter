@@ -1,0 +1,9 @@
+group sl 49 poly x^2+1 x Z_9, N=1058400, identity 21168, H order 63, rows 16800, threads 1, setup 0.31s
+wide rows: HW order 225, rows 4704, setup 0.72s
+alpha: Frobenius x -> x^7 on entries, z -> 8 z on Z_9
+ORBIT k=2 m=2 f=2: |Fix(alpha)| = 335 (+e); mu = 10.37, mu/k = 5.18, fixed-point misses ~ 2.10
+start cost=154
+t=30 steps=445 evals=1781 cost=10 best=10 T=0.53
+t=60 steps=914 evals=3657 cost=10 best=10 T=0.19
+t=90 steps=1373 evals=5493 cost=10 best=10 T=0.15
+RESULT d=6 D=11 group=sl 49 poly x^2+1 x Z_9 N=1058400 best=10 evals=5781 time=95.0 orbit k=2 m=2 f=2 fix=335

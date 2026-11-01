@@ -1,0 +1,8 @@
+group sl 81 poly x^4+x+2 x Z_2, N=1062720, identity 12960, H order 41, rows 25920, threads 1, setup 0.77s
+wide rows: HW order 82, rows 12960, setup 1.25s
+alpha: Frobenius x -> x^9 on entries, z -> 1 z on Z_2
+ORBIT k=2 m=2 f=2: |Fix(alpha)| = 1439 (+e); mu = 10.91, mu/k = 5.46, fixed-point misses ~ 9.23
+start cost=1062720
+t=30 steps=148 evals=593 cost=18 best=18 T=0.53
+t=60 steps=288 evals=1153 cost=18 best=18 T=0.19
+RESULT d=6 D=11 group=sl 81 poly x^4+x+2 x Z_2 N=1062720 best=18 evals=1733 time=90.1 orbit k=2 m=2 f=2 fix=1439

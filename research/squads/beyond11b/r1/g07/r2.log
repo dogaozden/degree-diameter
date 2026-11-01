@@ -1,0 +1,6 @@
+group prod sl 5 sl 11 x Z_35, N=5544000, identity 927850, H order 60, rows 92400, threads 1, setup 2.84s
+wide rows: HW order 231, rows 24000, setup 5.22s
+start cost=62
+t=30 steps=57 evals=229 cost=28 best=28 T=0.53
+t=60 steps=117 evals=469 cost=28 best=28 T=0.19
+RESULT d=7 D=11 group=prod sl 5 sl 11 x Z_35 N=5544000 best=28 evals=665 time=85.5
