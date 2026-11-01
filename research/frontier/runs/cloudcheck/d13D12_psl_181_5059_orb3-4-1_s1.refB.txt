@@ -1,12 +1,36 @@
 machine: vm; nproc=4; free -g: total 15G used 3G free 11G avail 12G; Linux 6.18.44-fc-v185; gcc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0
 sha256: ba8115986b134ccca56f9d2975fa50f50f579e5b322f0f39d328856db236934c  research/frontier/sols/d13D12_psl_181_5059_orb3-4-1_s1.txt  (copied from origin/claude/beyond-d11-d12-new-cells-3t3djx, file header N 14998822020, vertices 2N = 29997644040)
-build: gcc -O3 -o haarcheck_psl research/structured/tools/haarcheck_psl.c   (master e3cdf1f, includes f816dbc7c0 A|B argument); binary kept outside the repo
+build: gcc -O3 -o haarcheck_psl research/structured/tools/haarcheck_psl.c   (master e3cdf1f, includes f816dbc7c0 A|B argument); binary built and run from the scratchpad, outside the repo; /usr/bin/time installed with apt for this run
 
-# progress: started 17:32:28 UTC; elapsed 0 min; still running (haarcheck_psl PID 755, single thread, expect 3 to 3.5 h, job limit 5.5 h)
+# progress notes (pushed during the run):
+# progress: 20:17 UTC note above was the last one before exit; process ended at 20:15:46 UTC
 
-################ haarcheck_psl (reference checker, one BFS from (e,B) only, 6 bitsets of N bits): /usr/bin/time -v ./haarcheck_psl research/frontier/sols/d13D12_psl_181_5059_orb3-4-1_s1.txt B   (stdout and time -v stderr, complete; output is pending)
-# progress: at 18:16:02 UTC, elapsed 43 min; still running (single thread, RSS 10729.6 MB)
-# progress: at 18:51:24 UTC, elapsed 78 min; still running (single thread, RSS 10729.6 MB)
-# progress: at 19:20:34 UTC, elapsed 108 min; still running (single thread, RSS 10729.6 MB)
-# progress: at 19:51:40 UTC, elapsed 139 min; still running (single thread, RSS 10729.6 MB)
-# progress: at 20:17:06 UTC, elapsed 164 min; still running (single thread, RSS )
+################ haarcheck_psl (reference checker; one BFS from (e,B) only): /usr/bin/time -v <scratchpad>/haarcheck_psl research/frontier/sols/d13D12_psl_181_5059_orb3-4-1_s1.txt B   (stdout, complete)
+from (e,B): reached A 14998822020/14998822020, B 14998822020/14998822020 within 12, ecc 12
+HALF-VALID from (e,B) d=13 D=12 group=psl 181 x Z_5059 N=14998822020 vertices=29997644040
+[exit 0; wall 9798s (2:43:18); peak RSS 10729 MB]
+
+time -v stderr (complete, from /usr/bin/time -v):
+	Command being timed: "/tmp/claude-0/-home-user-degree-diameter/3c77da24-9c29-565e-8184-df79b4504b1b/scratchpad/haarcheck_psl research/frontier/sols/d13D12_psl_181_5059_orb3-4-1_s1.txt B"
+	User time (seconds): 9631.87
+	System time (seconds): 70.00
+	Percent of CPU this job got: 99%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 2:43:18
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 10987092
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 2746450
+	Voluntary context switches: 1
+	Involuntary context switches: 10996
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 16
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
