@@ -1,0 +1,8 @@
+selftest sl 61: |M| = 226920, det-1 matrices 226920
+selftest group multiplication: associativity, identity, inverse on 20000 random triples ok
+file a.sol
+header: 20 8 sl 61 n 277 N 62856840
+group sl 61 x Z_277, |G| = 62856840 = N, vertices 2N = 125713680; 20 distinct generators
+from (e,A): reached A 62856840/62856840, B 62856840/62856840 within 8; ecc 8; level sizes [1, 20, 380, 7205, 136490, 2536738, 33964169, 60312877, 28755800]  (156s)
+from (e,B): reached A 62856840/62856840, B 62856840/62856840 within 8; ecc 8; level sizes [1, 20, 380, 7205, 136490, 2536738, 33958521, 60312877, 28761448]  (328s)
+VALID d=20 D=8 group=sl 61 x Z_277 N=62856840 vertices=125713680 (distinct generators, 20-regular simple; every vertex within 8 of both (e,A) and (e,B); ecc 8; 328s)

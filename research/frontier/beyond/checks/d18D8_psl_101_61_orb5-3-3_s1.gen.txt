@@ -1,0 +1,9 @@
+# d18D8_psl_101_61_orb5-3-3_s1: haarcheck_gen (research/frontier/haarcheck_gen.c) on 390976f07629c30f..., Sun Nov  1 22:59:48 UTC 2026
+selftest psl 101: |M| = 515100, index round trip over all elements ok
+selftest group multiplication: associativity, identity, inverse on 20000 random triples ok
+file runs/d18D8_psl_101_61_orb5-3-3_s1.sol
+header: 18 8 psl 101 n 61 N 31421100
+group psl 101 x Z_61, |G| = 31421100 = N, vertices 2N = 62842200; 18 distinct generators
+from (e,A): reached A 31421100/31421100, B 31421100/31421100 within 8; ecc 8; level sizes [1, 18, 306, 5199, 88102, 1459975, 17315420, 29955908, 14017271]  (8s)
+from (e,B): reached A 31421100/31421100, B 31421100/31421100 within 8; ecc 8; level sizes [1, 18, 306, 5199, 88102, 1459975, 17312765, 29955908, 14019926]  (15s)
+VALID d=18 D=8 group=psl 101 x Z_61 N=31421100 vertices=62842200 (distinct generators, 18-regular simple; every vertex within 8 of both (e,A) and (e,B); ecc 8; 15s)
