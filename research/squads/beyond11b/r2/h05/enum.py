@@ -5,26 +5,24 @@ def isprime(n):
         if n%i==0: return False
         i+=1
     return True
-def order(r,p):
-    x=r%p; k=1
-    while x!=1:
-        x=x*r%p; k+=1
-    return k
-cands=[]
-for p in range(3,20000):
-    if not isprime(p): continue
-    for k in range(3,p,2):
-        if (p-1)%k: continue
-        if not isprime(k) and k>1:
-            pass
-        # need element r of order exactly k mod p
-        ok=None
-        for r in range(2,p):
-            if order(r,p)==k: ok=r; break
-        if ok is None: continue
-        F=p*k
-        for base,name in [(120,'SL25'),(24,'SL23'),(336,'SL27'),(720,'SL29')]:
-            N=base*F
-            if 150601<=N<=160000:
-                cands.append((N,name,p,k,ok,F))
-for c in sorted(cands): print(c)
+out=[]
+for base,name in [(120,'SL25'),(24,'SL23'),(336,'SL27'),(720,'SL29')]:
+    lo=-(-150601//base); hi=160000//base
+    for F in range(lo,hi+1):
+        # F = p*k, k odd >=3, k | p-1
+        for k in range(3,F+1,2):
+            if F%k: continue
+            p=F//k
+            if p<k+1 or not isprime(p) or (p-1)%k: continue
+            # primitive root
+            def pw(a,e,m):
+                return pow(a,e,m)
+            # find element of order k
+            r=None
+            for g in range(2,p):
+                cand=pow(g,(p-1)//k,p)
+                if cand!=1 and all(pow(cand,k//q,p)!=1 for q in range(2,k+1) if k%q==0 and isprime(q)):
+                    r=cand; break
+            if r is None: continue
+            out.append((base*F,name,p,k,r,F))
+for c in sorted(out): print(c)

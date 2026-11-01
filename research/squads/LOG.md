@@ -81,3 +81,26 @@ Verified by the director (build_haar2.py and all-pairs apsp; logs research/front
 odd D (round 2 is built on them, from (4,11) to (8,11), plus an even-D control, a measurement card and a theory card).
 Dropped: F_{p^3} x| C_k, Sz(8), bipartite Cayley, agl1 products, conjugation-alpha orbits on Frobenius products.
 Process: cards stopped after 6-20 minutes of their 25 (g15 after 7); round 2's prompt says not to stop before 25.
+
+### Round 2 (17 cards, 12:13-12:38 UTC, research/squads/beyond11b/r2/)
+
+All cards built on round 1's lead (odd-order, centre-free Frobenius groups Z_p x| Z_k, and SL(2,q) x Frobenius).
+Cards (best result):
+- **h01 (4,11) Z_523 x| Z_29 (N 15,167): 30,334** (two seeds of two solved); k = 9-15 groups stall at 6-62.
+- **h02 (4,11) Z_421 x| Z_35: 29,470** (1 seed of 4); groups near N = 15k stall at 2-10; k > 63 runs slowly in haar_gen3.
+- h03 (4,11) (Z7 x| Z3) x (Z53 x| Z13): 28,938 (below h01); other products 6-2,412.
+- **h04 (5,11) Z_5279 x| Z_29: 306,182** (1 seed of 5; k = 25-65 cost 4-8 in 60 s, k = 9 cost 252).
+- **h17 (theory) (5,11) Z_8171 x| Z_19: 310,498**; NOTE.md: no involutions / trivial centre (proved), W_j = W_-j,
+  coset coverage by Cauchy-Davenport, balanced C_k labels of S predict fewer holes; k = 7 median 434 holes vs k = 19 35.
+- **h12 (4,12) even D, Z_263 x| Z_131: 68,906** (was 68,544; 1 seed of 5); (5,12) Z2897 x| Z181 cost 8.
+- h13 measurement: median holes at radius 10 vs size law: Frobenius k = 19 1.1x, k = 13 1.6x, SL(2,23) 4.3x,
+  SL(2,13) x Z7 5.2x; the gain is in the middle levels (X_8/model 0.99 vs 0.89-0.92), k = 3 collapses.
+- No raise: h05 (5,11) SL(2,q) x F (plateau 10-18); h06 (6,11) Frobenius, 240 groups, k = 63 cost 2 on 4 seeds; h07 (6,11)
+  SL(2,7) x (Z449 x| Z7) cost 4; h08 (7,11) k = 23 plateau 18; h09 (8,11) SL(2,103) x H21 cost 14; h10 scaling-automorphism
+  orbits (AMU) degenerate; h11 cubic Frobenius (exh3) cost >= 84; h14 cubic lifts cost 2 at 2,184; h15 (6,11)
+  (Z67 x| Z3) x (Z307 x| Z17) cost 2; h16 2-dim Frobenius Z29^2 x| Z15 25,230 at (4,11).
+Director-verified (build_haar2.py + apsp, logs runs/cloudcheck/*b2h*.check.txt): (4,11) 30,334 and 29,470, (4,12)
+68,906; (5,11) 310,498 and 306,182 checks running. Kept for round 3: many seeds per group near the limit, k ~ 19-63,
+Frobenius at even D, the cost-2 near misses at (6,11), label balance as a search constraint. Dropped: AMU orbits, SL x F
+above (5,11), cubic Frobenius. Process: card h14 called create_session once by mistake (an empty session) and archived
+it; round 3's header forbids session and messaging tools.
