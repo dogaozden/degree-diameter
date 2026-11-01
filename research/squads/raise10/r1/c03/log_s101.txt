@@ -1,0 +1,8 @@
+group psl 131 x Z_311, N=349557780 (2N=699115560), rows 8580 x 40741 bits (doubled row 1296 words), memory 0.25 GB, threads 1
+alpha: conj by mat(0,130,1,11), z -> 6 z on Z_311 (fixed z: 1); ORBIT k=5 m=2 f=3; W=5.62885e+09 lambda=16.103 mu=35.50
+setup 0.0s
+fixed generators: 2 chosen among 64 alpha-fixed elements
+FIXF: 64 alpha-fixed elements other than e (0.2s); FIXTRY 200 FIXMAX 0
+start cost=60 (2.3s per eval)
+t=12 step=1 evals=9 slot=0 cand=35 cost=35 best=35 T=1.26 screened=8 (1s) fh=0,0,0,0,0,0,0,0
+t=32 step=2 evals=17 slot=1 cand=35 cost=35 best=35 T=1.06 screened=16 (2s) fh=0,0,0,0,0,0,0,0
