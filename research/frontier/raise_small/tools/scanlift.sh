@@ -11,8 +11,8 @@ while read N m k r rest; do
   [ -f "$tab" ] || python3 "$H/tools/gtab.py" "$tab" $m $k $r 2>/dev/null
   for s in $SEEDS; do
     out=$O/${tag}_D${D}_p${p}_s$s.sol
-    res=$(D=$D timeout $((S + 30)) nice -n 5 "$H/bin/salift_s" $p "$tab" 1 $s $S 10 0.3 "$out" | tail -1)
-    best=$(echo "$res" | awk '{print $3}')
+    res=$(D=$D timeout $((4 * S + 120)) nice -n 5 "$H/bin/salift_s" $p "$tab" 1 $s $S 10 0.3 "$out" | tail -1)
+    if [ -f "$out" ]; then best=0; else best=$(head -1 "$out.best" 2>/dev/null | awk '{print $4}'); fi
     line="N=$N n=$((2 * p * N)) m=$m k=$k r=$r seed=$s best=$best"
     if [ "$best" = "0" ]; then
       python3 "$H/tools/sol2edges.py" "$out" $m $k $r "${out%.sol}.edges" > /dev/null
