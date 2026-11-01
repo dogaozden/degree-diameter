@@ -1,1 +1,18 @@
 start 13:06:24; log: seed K spec best_cost
+13 4 prod_7x3_173x43 6(seed1 K4 done earlier)
+13 4 prod_7x3_173x43 best=4
+21 4 meta_8209x19 best=6
+22 8 prod_7x3_173x43 best=8
+31 4 meta_8209x19 best=6
+41 4 prod_7x3_173x43 best=4
+51 4 prod_7x3_173x43 best=6
+61 4 meta_8209x19 best=8
+71 4 prod_7x3_173x43 best=8
+81 4 meta_8209x19 best=6
+91 4 prod_7x3_173x43 best=2
+92 4 prod_7x3_173x43 best=8
+93 4 prod_7x3_173x43 best=10
+101 4 meta_8209x19 best=8
+SUMMARY (seed K spec best cost, 95 s each, 1 thread; prod = (Z7 x| Z3) x (Z173 x| Z43), N=156219; Z8209 = Z8209 x| Z19, N=155971)
+1 4 prod 6 | 13 4 prod 4 (repeated: same result on re-run of seed 13 not tested) | 41 4 prod 4 | 51 4 prod 6 | 71 4 prod 8 | 91 4 prod 2 | 92 4 prod 8 | 93 4 prod 10 | 22 8 prod 8
+21 4 Z8209 6 | 31 4 Z8209 6 | 61 4 Z8209 8 | 81 4 Z8209 6 | 101 4 Z8209 8

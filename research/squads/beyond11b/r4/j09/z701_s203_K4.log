@@ -1,0 +1,6 @@
+group meta 701 50 46 x Z_1, N=35050, identity 0, H order 50, rows 701, threads 1, setup 0.00s
+start cost=123
+t=30 steps=12915 evals=51661 cost=4 best=4 T=0.53
+t=60 steps=26134 evals=104537 cost=2 best=2 T=0.19
+t=90 steps=39293 evals=157173 cost=2 best=2 T=0.15
+RESULT d=4 D=12 group=meta 701 50 46 x Z_1 N=35050 best=2 evals=164385 time=95.0

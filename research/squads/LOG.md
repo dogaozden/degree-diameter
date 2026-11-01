@@ -121,3 +121,16 @@ Cards (best result; director re-checks: build_haar2.py, plus apsp where 2N <= 31
 Kept: seed farms on the cost-1/2 near misses ((4,12) Z701 x| Z50 cost 1; (5,12) Z8317 x| Z63 and Z11093 x| Z47 cost 1;
 (5,11) Z6763 x| Z23, Z5023 x| Z31; (6,11) products N = 1,050,063; (7,11) Z90281 x| Z61). Process: three cards made stray
 calls to messaging/session tools despite the header (all failed with argument errors, nothing sent).
+
+### Round 4 (14 cards, 13:08-13:33 UTC, research/squads/beyond11b/r4/)
+
+Mostly seed farms on round 3's near misses, plus a tool card. Cards (best result; director re-checks with build_haar2.py):
+- **j06 (6,11) Z20707 x| Z51, N = 1,056,057: 2,112,114** (2 of 7 seeds); k = 61 N = 1,049,383 also solved (2,098,766).
+- **j10 (5,12) Z10303 x| Z51, N = 525,453: 1,050,906** (also Z8317 x| Z63 1,047,942); near misses cost 1-2 up to N = 529k.
+- **j12 (5,11) Z3613 x| Z43, N = 155,359: 310,718** (17.5 s; second seed cost 4).
+- j05 (6,11) (Z7 x| Z3) x (Z1613 x| Z31): 2,100,126 (below j06). j14 TOOL: haar_gen3s (SAVEBEST / START; chaining reached
+  cost 4 where one run reached 8, then stalled). No raise: j01 (4,11) above N = 15,167 (k 13-23, cost 6-22); j02/j03/j04
+  (5,11) farms (cost 2-6); j07/j08 (7,11) (cost 2-4 over 27 runs); j09 (4,12) Z677 x| Z52 and Z701 x| Z50 cost 2;
+  j11 (6,12) Z74719 x| Z63 cost 2; j13 even-D products (5,12) cost 1.
+Kept for round 5: chains with haar_gen3s on the cost-1/2 near misses, (6,11) above N = 1,056,057, a move-set card and a
+hole-anatomy card. Process: four more stray calls to messaging/session tools by cards, all rejected for missing arguments.

@@ -1,0 +1,6 @@
+group meta 1489 24 67 x Z_1, N=35736, identity 0, H order 24, rows 1489, threads 1, setup 0.00s
+start cost=523
+t=30 steps=3000 evals=12001 cost=30 best=30 T=0.53
+t=60 steps=6016 evals=24065 cost=25 best=25 T=0.19
+t=90 steps=8980 evals=35921 cost=25 best=25 T=0.15
+RESULT d=4 D=12 group=meta 1489 24 67 x Z_1 N=35736 best=25 evals=37937 time=95.0

@@ -1,1 +1,18 @@
 start 13:06:45 card j10
+seed=101 K=4 spec=meta 8317 63 1128 N=523971
+seed=102 K=8 spec=meta 8317 63 1128
+seed=102 K=8 spec=meta 8317 63 1128 -> COST 0, N=523971, 2N=1047942; hcheck_bin (independent BFS) diameter 12 OK
+seed=201 K=8 spec=meta 30839 17 6 N=524263
+seed=202 K=4 spec=meta 21841 24 1327 N=524184
+seed=203 K=8 spec=meta 10303 51 313 N=525453
+seed=203 K=8 spec=meta 10303 51 313 -> COST 0 (27.6 s), N=525453, 2N=1050906; hcheck_bin diameter 12 OK; SOLUTION_5_12_meta10303x51_r313.txt
+seed=204 K=8 spec=meta 11701 45 1063 N=526545
+seed=205 K=8 spec=meta 8663 61 43 N=528443
+seed=206 K=4 spec=meta 11701 45 1063 N=526545
+seed=207 K=8 spec=meta 10781 49 405 N=528269
+seed=208 K=4 spec=meta 8663 61 43 N=528443
+seed=209 K=8 spec=meta 8969 59 205 N=529171
+seed=210 K=8 spec=meta 11701 45 1063 N=526545
+seed=211 K=4 spec=meta 8969 59 205 N=529171
+seed=212 K=8 spec=meta 8663 61 43 N=528443
+seed=213 K=8 spec=meta 11701 45 1063 N=526545

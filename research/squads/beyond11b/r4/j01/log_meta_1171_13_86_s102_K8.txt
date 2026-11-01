@@ -1,2 +1,6 @@
 group meta 1171 13 86 x Z_1, N=15223, identity 0, H order 13, rows 1171, threads 1, setup 0.04s
 start cost=402
+t=30 steps=2657 evals=21257 cost=8 best=8 T=0.53
+t=60 steps=5323 evals=42585 cost=8 best=8 T=0.19
+t=90 steps=7770 evals=62161 cost=8 best=8 T=0.15
+RESULT d=4 D=11 group=meta 1171 13 86 x Z_1 N=15223 best=8 evals=66249 time=95.0
