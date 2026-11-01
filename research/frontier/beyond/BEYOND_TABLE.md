@@ -343,9 +343,10 @@ The 2013 table (DS14v2, as copied in research/frontier/TABLE.md) has 90,068 for
 (5,10), and the lab's harvest history has no (5,10) entry; literature after 2013 was not checked (TABLE.md says the same
 for every D >= 7 cell), so these are candidates for the coordinator, not claimed records. The same card's (5,9) graph
 (28,418, Z1093 x|_901 Z13) beats the 2013 value 27,936 but not the lab's 29,756 (harvested earlier, also metacyclic).
-Also (4,10) >= 11,772 against the 2013 value 11,748: a director scan of all 55 metacyclic groups of order 5,875-6,300
-(meta/scan410.sh, 20-s hmeta starts) solved Z218 x|_3 Z27 (order 5,886) in 6 s; apsp and metacheck VALID
-(checks/d4D10_n11772_meta218_27.apsp.txt, sols/d4D10_meta_218_27_dir.txt); the lab has no later (4,10) entry either.
+Also (4,10) >= 11,988 against the 2013 value 11,748: a director scan of all 55 metacyclic groups of order 5,875-6,300
+(meta/scan410.sh, 20-s hmeta starts) solved Z218 x|_3 Z27 (order 5,886, 11,772 vertices) in 6 s and Z333 x|_4 Z18
+(order 5,994, 11,988 vertices); both apsp and metacheck VALID (checks/d4D10_n11988_meta333_18.apsp.txt,
+sols/d4D10_meta_333_18_dir.txt); the lab has no later (4,10) entry either.
 (4,8) and (4,9) near misses above the 2013 values (2,184, 4,970): Z55 x|_2 Z20 (2,200 vertices, cost 1) and
 Z101 x|_5 Z25 (5,050, cost 2) (r7/j04, j05); (4,10) Z215 x|_2 Z28 (12,040) at cost 1 (r7/j03). An exhaustive 2-opt from the
 (4,8) and (4,9) states (hmeta OPT2: every pair of generators replaced by every pair of group elements, 3.6e6 and 1.9e7
