@@ -1,0 +1,8 @@
+selftest psl 97: |M| = 456288, index round trip over all elements ok
+selftest group multiplication: associativity, identity, inverse on 20000 random triples ok
+file ./sol_psl_97_13.txt
+header: 5 14 psl 97 n 13 N 5931744
+group psl 97 x Z_13, |G| = 5931744 = N, vertices 2N = 11863488; 5 distinct generators
+from (e,A): reached A 5931744/5931744, B 5931744/5931744 within 14; ecc 14; level sizes [1, 5, 20, 80, 320, 1280, 5120, 20452, 81470, 318941, 1164532, 3295097, 4546851, 2295889, 133430]  (6s)
+from (e,B): reached A 5931744/5931744, B 5931744/5931744 within 14; ecc 14; level sizes [1, 5, 20, 80, 320, 1280, 5120, 20452, 81470, 318941, 1164640, 3295097, 4547265, 2295889, 132908]  (11s)
+VALID d=5 D=14 group=psl 97 x Z_13 N=5931744 vertices=11863488 (distinct generators, 5-regular simple; every vertex within 14 of both (e,A) and (e,B); ecc 14; 11s)
