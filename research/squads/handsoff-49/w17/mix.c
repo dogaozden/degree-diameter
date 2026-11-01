@@ -205,6 +205,47 @@ int main(int argc, char **argv) {
     int restarts = 0;
     double cycle_secs = getenv("CYCLE") ? atof(getenv("CYCLE")) : secs;
     long long evals = 0;
+    if (getenv("LS")) {  /* iterated line search: scan all cosets of one free edge orbit, keep the best; perturb when stuck */
+        long long cur_best_all = -1;
+        int c2[DEG];
+        for (int j = 0; j < E; j++) c2[j] = (j == 0) ? 0 : (int)(rnd64() % M[oj[j]]);
+        long long cur = eval(c2, 0);
+        memcpy(c, c2, sizeof(c));
+        long long lbest = cur;
+        int lbc[DEG]; memcpy(lbc, c, sizeof(c));
+        int stuck = 0; long long sweeps = 0;
+        while (now_sec() - t0 < secs && lbest != 0) {
+            int j = 1 + (int)(rnd64() % (E - 1));
+            long long bv = cur; int bc = c[j];
+            int nm = M[oj[j]];
+            for (int v = 0; v < nm; v++) {
+                if (v == c[j]) continue;
+                int save = c[j]; c[j] = v;
+                long long val = eval(c, 0); evals++;
+                if (val < bv || (val == bv && (rnd64() & 1))) { bv = val; bc = v; }
+                c[j] = save;
+                if (now_sec() - t0 > secs) break;
+            }
+            sweeps++;
+            if (bc != c[j] && bv <= cur) { c[j] = bc; cur = bv; stuck = 0; }
+            else {
+                stuck++;
+                if (stuck > 6) { /* perturb: random restart of two coordinates from current best */
+                    for (int t = 0; t < 2; t++) { int jj = 1 + (int)(rnd64() % (E - 1)); c[jj] = (int)(rnd64() % M[oj[jj]]); }
+                    cur = eval(c, 0); evals++; stuck = 0;
+                }
+            }
+            if (cur < lbest) {
+                lbest = cur; memcpy(lbc, c, sizeof(c));
+                printf("BEST cost=%lld sweeps=%lld time=%.1f c=", lbest, sweeps, now_sec() - t0);
+                for (int q = 0; q < E; q++) printf("%d%s", lbc[q], q + 1 < E ? "," : "");
+                printf("\n"); fflush(stdout);
+                if (outpath) { write_edges(outpath, lbc); printf("WROTE %s\n", outpath); }
+            }
+        }
+        printf("FINAL cost=%lld sweeps=%lld evals=%lld time=%.1f N=%d n=%d (LS)\n", lbest, sweeps, evals, now_sec() - t0, N, V);
+        return 0;
+    }
     do {
         /* random start: c_0 pinned to 0 */
         for (int j = 0; j < E; j++) c[j] = (j == 0) ? 0 : (int)(rnd64() % M[oj[j]]);
@@ -244,7 +285,7 @@ int main(int argc, char **argv) {
             for (int j = 0; j < E; j++) printf("%d%s", bestc[j], j + 1 < E ? "," : "");
             printf("\n");
             fflush(stdout);
-            if (gbest == 0 && outpath) { write_edges(outpath, bestc); printf("WROTE %s\n", outpath); }
+            if (outpath) { write_edges(outpath, bestc); printf("WROTE %s\n", outpath); }
         }
     } while (now_sec() - t0 < secs && gbest != 0);
     printf("FINAL cost=%lld restarts=%d evals=%lld time=%.1f N=%d n=%d\n", gbest, restarts, evals, now_sec() - t0, N, V);

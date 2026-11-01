@@ -32,8 +32,10 @@ MAN = {
  42: ('5160', '-', '-', '-', '-', '-', '-', 'no file; exh3 certification', 'reproduced by w18: exact min 10'),
  44: ('5120', '-', '-', '-', '-', '-', '-', 'no file; exh3 certification', 'reproduced by w18: exact min 12'),
  45: ('5124', '-', '-', '-', '-', '-', '-', 'no file; exh3 certification', 'reproduced by w18: exact min 12'),
+ 50: ('5000', '10000', '4-4', 'yes', '10', '5000', 'INVALID', 'w23 result is a text listing (runs_reps1_7.txt, runs_rep0.txt, runs_reps8_13.txt); set {0,620,631,1380} rebuilt by w18 from w15/tabs/u4m_7.bin: w18/val/w23chk_a.edges', 'holds: cost 4 set verified (far 5000 = 4*2500/2); exhaustive histogram over all 14 orbit reps has no cost < 4 (see NOTES)'),
  46: ('5000', '10000', '4-4', 'yes', '10', '5000', 'INVALID', 'rebuilt by w18 (haar_tab copy with SAVE_ANY, seed 8, 10 s): w18/val/u4m7_c.edges', 'holds for cost 4 at the TRUE order: scoreboard n=2500 is wrong, Haar graph has 2|G| = 5000 vertices'),
 }
+if True: pass
 NONEDGE_NOFILE = {25, 26, 27, 28, 29, 30, 31, 33, 34, 41, 42, 44, 45}
 out = open(W + '/audit.tsv', 'w')
 out.write('line\tscoreboard_time\tworker\tclaimed_n\tclaimed_cost_or_far\tclaimed_valid\tfile\tfile_status\t'
@@ -49,6 +51,8 @@ for idx, r in enumerate(rows, start=1):
     if idx == 7: exp = '0'
     if idx == 48: exp = '0'
     if idx == 13: exp = '4992'
+    if idx == 50: exp = '5000'
+    if idx == 51: exp = '15120'
     if idx == 14: exp = '2525'
     st = 'missing' if (p and not os.path.exists(p)) else ('none' if not p else 'present')
     if idx in MAN:
@@ -87,6 +91,8 @@ for idx, r in enumerate(rows, start=1):
                 verdict = 'STALE: same path as line 17, file overwritten later; current far %s = cost %d at N=1248, claim %s not reproducible' % (fr, int(fr) * 2 // 1248, cc)
             if idx == 4:
                 verdict = 'n/a'
+            if idx == 51:
+                verdict = 'holds: claim is a far-pair count (15120), matches; n=5040, diameter 10, not a record'
             if idx == 48:
                 verdict = 'VALID at n=4970: not a record (needs n > 4970)'
             if idx == 17:
@@ -96,7 +102,7 @@ for idx, r in enumerate(rows, start=1):
             if idx == 7:
                 verdict = 'VALID at n=3200: not a record (n <= 4970)'
             if idx == 1:
-                verdict = 'holds (far = 2600*30/2 = 39000; diameter 10)'
+                verdict = 'holds (far = 2600*30/2 = 39000; diameter 10); exact min 30 re-derived by w18 with w9 bi9 ({3,1}: 6912 combos, {1,1,1,1}: 70 combos, min 10368)'
             if idx == 9:
                 verdict = 'holds (n = 8*622 = 4976; cost = 2*far/622)'
             if idx == 10:
@@ -106,11 +112,11 @@ for idx, r in enumerate(rows, start=1):
             if idx == 22 or idx == 23:
                 verdict = 'holds (cost 4 = 2*4992/2496); cost 4 is the exact minimum for this group (w11 certified)'
             if idx == 24:
-                verdict = 'holds (far = 2520*15/2 = 18900)'
+                verdict = 'holds (far = 2520*15/2 = 18900); exact over all compositions for this class, re-run by w18 (CAP=2000000): {2,2} min 15, {2,1,1} min 44, {1,1,1,1} min 9984'
             if idx == 19:
-                verdict = 'holds (far = 2640*38/2 = 50160)'
+                verdict = 'holds (far = 2640*38/2 = 50160); exact min 38 re-derived by w18 with bi9 ({3,1}: 10512 combos; {1,1,1,1}: 495 combos, min 10512)'
             if idx == 47:
-                verdict = 'holds (far = 2520*312/2 = 393120; diameter 11, claim said 11)'
+                verdict = 'holds (far = 2520*312/2 = 393120; diameter 11); kbi exh re-run by w18 on the same (H,K) pair gives 312'
             if idx == 5 or idx == 11 or idx == 12 or idx == 32:
                 verdict = 'holds (cost = 2*far/832 or /1248)'
             if idx == 18 or idx == 20 or idx == 35:

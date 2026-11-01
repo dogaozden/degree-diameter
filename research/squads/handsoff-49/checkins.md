@@ -48,3 +48,10 @@ what I changed.
   scoreboard lines that were not new lows: kept (they are true results). Launched w20 (certificate for all metacyclic
   groups of order 2,486..2,520 with a D = 9 quotient bound), w21 (exhaustive minima for S_5 x F_21 and other best
   non-metacyclic groups), w22 (free wildcard with the full list of tried families).
+- 02:03 check-in 8. Opus/Haiku 0.472/0.362 (Haiku 43.4%). No record. Finished: w15 (92 min; order 2,500 = P x| Z_4:
+  best n = 5,000 cost 4 with P a maximal-class exponent-5 group), w16 (94 min; the 5+5/7+7/35+35 quotients of the 4,970
+  graph rebuild it, but annealing/tabu cannot re-find cost 0 on the 5+5 base over the order-497 group: stalls at 68-98,
+  so the optimizer is the wall for bases above 2+2), w18 (auditor, 55 min; 51 lines checked, no VALID above 4,970,
+  certified negatives re-run and matched; 3 path/n slips found). w23 made the order-2,500 floor exact (4, exhaustive up
+  to Aut, |Aut| = 20,000). Launched w23 (order 2,500 follow-up), w24 (optimizer benchmark: re-find the known 5+5 cost-0
+  lift), w25 (final audit + summary table for the report).

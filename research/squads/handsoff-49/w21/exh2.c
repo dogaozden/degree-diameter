@@ -52,6 +52,7 @@ int main(int argc, char **argv) {
     fprintf(stderr, "N=%d classes=%d (non-identity reps %d) range [%d,%d) bound %d\n", N, nreps, nR, R0, R1, bound);
     vis = malloc(N); fr = malloc(sizeof(int) * N); nf = malloc(sizeof(int) * N);
     int *Cen = malloc(sizeof(int) * N); unsigned char *seen = malloc(N); int *brep = malloc(sizeof(int) * N);
+    int *Stab = malloc(sizeof(int) * N); unsigned char *seen2 = malloc(N);
     int best = bound; long long evals = 0, zeros = 0;
     clock_t t0 = clock();
     for (int ri = R0; ri < R1; ri++) {
@@ -68,8 +69,13 @@ int main(int argc, char **argv) {
         long long ev0 = evals;
         for (int bi = 0; bi < nb; bi++) {
             int b = brep[bi];
+            /* second reduction: c up to conjugation by Stab = {h in C : h b h^-1 = b} (fixes e, r, b) */
+            int nS = 0;
+            for (int k = 0; k < nC; k++) if (cjg(Cen[k], b) == b) Stab[nS++] = Cen[k];
+            memset(seen2, 0, N); seen2[0] = 1; seen2[r] = 1; seen2[b] = 1;
             for (int c = 0; c < N; c++) {
-                if (c == 0 || c == r || c == b) continue;
+                if (seen2[c]) continue;
+                for (int k = 0; k < nS; k++) seen2[cjg(Stab[k], c)] = 1;
                 int S[4] = {0, r, b, c};
                 int U[12]; int ng = 0;
                 for (int i = 0; i < 4; i++) for (int j = 0; j < 4; j++) { int u = T[(size_t)INV[S[j]] * N + S[i]]; if (u == 0) continue; int dup = 0; for (int k = 0; k < ng; k++) if (U[k] == u) { dup = 1; break; } if (!dup) U[ng++] = u; }

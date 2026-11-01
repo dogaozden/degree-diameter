@@ -1,5 +1,5 @@
 line	scoreboard_time	worker	claimed_n	claimed_cost_or_far	claimed_valid	file	file_status	actual_n	actual_edges	deg	bipartite	actual_diameter	actual_far_pairs	score48_apsp	expected_far_from_claim	verdict
-1	21:59	w7	5200	30	no	/home/user/degree-diameter/research/squads/handsoff-49/w7/best_psl25_h3_C30_n5200.edges	present	5200	10400	4-4	yes	10	39000	INVALID	39000	holds (far = 2600*30/2 = 39000; diameter 10)
+1	21:59	w7	5200	30	no	/home/user/degree-diameter/research/squads/handsoff-49/w7/best_psl25_h3_C30_n5200.edges	present	5200	10400	4-4	yes	10	39000	INVALID	39000	holds (far = 2600*30/2 = 39000; diameter 10); exact min 30 re-derived by w18 with w9 bi9 ({3,1}: 6912 combos, {1,1,1,1}: 70 combos, min 10368)
 2	22:01	w6	4972	160	no	/home/user/degree-diameter/research/squads/handsoff-49/w6/tmp/surgsa4_best160.edges	present	4972	9944	4-4	yes	10	160	INVALID	160	holds
 3	22:17	w8	4992	24	no	/home/user/degree-diameter/research/squads/handsoff-49/w8/runs/w8_best_n4992.edges	present	4992	9984	4-4	yes	10	9360	INVALID	14976	STALE: same path as line 17, file overwritten later; current far 9360 = cost 15 at N=1248, claim 24 not reproducible
 4	22:18	w1	5040	6	no	/home/user/degree-diameter/research/squads/handsoff-49/w1/t/A7_near_cost6.edges	missing	-	-	-	-	-	-	INVALID		file never existed; superseded by line 10 (w1 correction 22:26, same cost 6, file present and checked)
@@ -17,12 +17,12 @@ line	scoreboard_time	worker	claimed_n	claimed_cost_or_far	claimed_valid	file	fil
 16	23:02	w1	5040	6	no	/home/user/degree-diameter/research/squads/handsoff-49/w1/res/exh_A7_class19.out	not an edge list	5040	-	-	-	-	-	INVALID		reproduced by w18: exh on rep element 19 gives evals 3168903, best 6, zeros 0 (same as w1 out)
 17	23:05	w8	4992	15	no	/home/user/degree-diameter/research/squads/handsoff-49/w8/runs/w8_best_n4992.edges	present	4992	9984	4-4	yes	10	9360	INVALID	9360	holds (file is the latest version of the path shared by lines 3, 8, 15, 17)
 18	23:12	w4	4992	97	no	/home/user/degree-diameter/research/squads/handsoff-49/w4/r12m13.edges	present	4992	9984	4-4	yes	10	20176	INVALID	20176	holds (cost = 2*far/416)
-19	23:13	w9	5280	38	no	/home/user/degree-diameter/research/squads/handsoff-49/w9/runs/M11_h3_K0.edges	present	5280	10560	4-4	yes	10	50160	INVALID	50160	holds (far = 2640*38/2 = 50160)
+19	23:13	w9	5280	38	no	/home/user/degree-diameter/research/squads/handsoff-49/w9/runs/M11_h3_K0.edges	present	5280	10560	4-4	yes	10	50160	INVALID	50160	holds (far = 2640*38/2 = 50160); exact min 38 re-derived by w18 with bi9 ({3,1}: 10512 combos; {1,1,1,1}: 495 combos, min 10512)
 20	23:17	w4	4992	80	no	/home/user/degree-diameter/research/squads/handsoff-49/w4/r12m13_80.edges	present	4992	9984	4-4	yes	10	16640	INVALID	16640	holds (cost = 2*far/416)
 21	23:20	w11	5050	2	no	/home/user/degree-diameter/research/squads/handsoff-49/w11/out/m101_k25_r5_c2.edges	present	5050	10100	4-4	yes	10	2525	INVALID	2525	holds (cost 2 = 2*2525/2525)
 22	23:21	w11	4992	4	no	/home/user/degree-diameter/research/squads/handsoff-49/w11/out/m104_k24_r7_c4.edges	present	4992	9984	4-4	yes	10	4992	INVALID	4992	holds (cost 4 = 2*4992/2496); cost 4 is the exact minimum for this group (w11 certified)
 23	23:21	w11	4992	4	no	/home/user/degree-diameter/research/squads/handsoff-49/w11/out/m208_k12_r3_c4.edges	present	4992	9984	4-4	yes	10	4992	INVALID	4992	holds (cost 4 = 2*4992/2496); cost 4 is the exact minimum for this group (w11 certified)
-24	23:22	w9	5040	15	no	/home/user/degree-diameter/research/squads/handsoff-49/w9/runs/S7_h2_K2.edges	present	5040	10080	4-4	yes	10	18900	INVALID	18900	holds (far = 2520*15/2 = 18900)
+24	23:22	w9	5040	15	no	/home/user/degree-diameter/research/squads/handsoff-49/w9/runs/S7_h2_K2.edges	present	5040	10080	4-4	yes	10	18900	INVALID	18900	holds (far = 2520*15/2 = 18900); exact over all compositions for this class, re-run by w18 (CAP=2000000): {2,2} min 15, {2,1,1} min 44, {1,1,1,1} min 9984
 25	23:23	w11	5040	6	no	none	none (exhaustive claim)	5040	-	-	-	-	-	INVALID		reproduced by w18: exact min 6
 26	23:23	w11	5040	6	no	none	none (exhaustive claim)	5040	-	-	-	-	-	INVALID		reproduced by w18: exact min 6 (repro_w11.tsv)
 27	23:24	w11	4992	6	no	none	none (exhaustive claim)	4992	-	-	-	-	-	INVALID		reproduced by w18: exact min 6
@@ -45,6 +45,8 @@ line	scoreboard_time	worker	claimed_n	claimed_cost_or_far	claimed_valid	file	fil
 44	00:36	w11	5120	12	no	none	none (exhaustive claim)	5120	-	-	-	-	-	INVALID		reproduced by w18: exact min 12
 45	00:36	w11	5124	12	no	none	none (exhaustive claim)	5124	-	-	-	-	-	INVALID		reproduced by w18: exact min 12
 46	00:47	w15	2500	4	no	/home/user/degree-diameter/research/squads/handsoff-49/w15/tabs/u4m_7.bin	present: scoreboard file is a group table; rebuilt	5000	10000	4-4	yes	10	5000	INVALID	5000	holds for cost 4 at the TRUE order: scoreboard n=2500 is wrong, Haar graph has 2|G| = 5000 vertices
-47	00:54	w14	5040	312	no	/home/user/degree-diameter/research/squads/handsoff-49/w14/runs/K_PSL34_h8_H3_K5_c0.edges	present	5040	10080	4-4	yes	11	393120	INVALID	393120	holds (far = 2520*312/2 = 393120; diameter 11, claim said 11)
+47	00:54	w14	5040	312	no	/home/user/degree-diameter/research/squads/handsoff-49/w14/runs/K_PSL34_h8_H3_K5_c0.edges	present	5040	10080	4-4	yes	11	393120	INVALID	393120	holds (far = 2520*312/2 = 393120; diameter 11); kbi exh re-run by w18 on the same (H,K) pair gives 312
 48	01:15	w16	4970	0	VALID	/home/user/degree-diameter/research/squads/handsoff-49/w16/out/lift_q5.edges	present	4970	9940	4-4	yes	9	0	VALID	0	VALID at n=4970: not a record (needs n > 4970)
 49	01:15	w16	5040	82	no	/home/user/degree-diameter/research/squads/handsoff-49/w16/out/wl_q5_meta_14_36_3.best.edges	present	5040	10080	4-4	yes	10	20664	INVALID	20664	holds
+50	01:48	w23	5000	4 (exact floor)	no	/home/user/degree-diameter/research/squads/handsoff-49/w23/runs_reps1_7.txt	present	5000	10000	4-4	yes	10	5000	INVALID	5000	holds: cost 4 set verified (far 5000 = 4*2500/2); exhaustive histogram over all 14 orbit reps has no cost < 4 (see NOTES)
+51	01:50	w17	5040	15120	no	/home/user/degree-diameter/research/squads/handsoff-49/w17/runs/A7_r4444_8_deep.edges	present	5040	10080	4-4	yes	10	15120	INVALID	15120	holds: claim is a far-pair count (15120), matches; n=5040, diameter 10, not a record

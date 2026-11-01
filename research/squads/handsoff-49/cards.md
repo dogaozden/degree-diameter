@@ -364,3 +364,16 @@ a few seconds per pair with a bitset BFS); moves aimed at far pairs; solving fir
 voltages in G/Z_71 must already give a good 5+5 lift over Z_7) and then lifting; restarts with a population (keep the
 10 best, recombine voltages). Measure success rate and time on the benchmark. If a method reaches 0 on the benchmark,
 run it on w16's best groups of order 498..530 (w16's tables) and the 7+7 base over orders 356..380.
+
+## w25: final auditor and summary table (follows w18)
+
+Part 1 (until 02:57 UTC): continue w18's audit (`$H/w18/audit.tsv`, `$H/w18/NOTES.md`; copy its method): every
+scoreboard line added after 02:00 gets the same checks (score48 and apsp on the file, claimed vs actual n, far pairs,
+diameter); append to `$H/w25/audit2.tsv`. Re-check every 15 minutes.
+Part 2 (from 02:58 UTC, when the workers have finished): write `$H/w25/summary.md`: one row per worker w1..w24 (card
+title from cards.md; start and end time; best n, cost and far pairs at n > 4,970, and whether the audit confirmed it;
+exact or certified negative results with the command that proves them; the worker's own "next idea"), read from each
+`$H/wN/NOTES.md`, the scoreboard and the audits. Then a short table per construction family (Haar metacyclic, Haar
+other groups, lifts by base size, bi-coset, mixed-orbit, surgery, quotients/refinements): best verified near miss.
+Also count lines of code each worker wrote (`wc -l` over its .c and .py files). Plain text, no claims you did not check.
+Finish by 03:10 UTC and reply in at most 5 lines.

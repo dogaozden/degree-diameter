@@ -1,0 +1,13 @@
+  new best cost 348  L={1,1914,2198,0} t=0.0s nev=1
+  new best cost 290  L={1,1914,2198,1152} t=0.0s nev=8
+  new best cost 116  L={1,1914,2198,1966} t=0.0s nev=11
+  new best cost 38  L={3,912,1603,0} t=0.0s nev=25
+partition exhaustive, count 10512
+partition {3,1}: count of orbit choices (see nev), minimum cost 38 (overall best 38)
+partition exhaustive, count 495
+partition {1,1,1,1}: count of orbit choices (see nev), minimum cost 10512 (overall best 38)
+RESULT_EXH M=2640 h=3 n=5280 evals=11007 best_cost=38 L=3,912,1603,0 time=1.8s
+
+real	0m1.812s
+user	0m1.189s
+sys	0m0.004s
