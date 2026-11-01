@@ -54,3 +54,39 @@ Next: the A/B test (below) decides whether a c3 = 0 start changes the chain mini
 - Speed under load (load 7 on 4 cores): about 8 ms per step, so a chain of about 14,000 steps takes about 2 minutes.
   Expect about 25 chains per arm in the window, not the 60 the card asks for; reported as such.
 
+
+## A/B result (final: run ended by its timeout at 5400 s, exit 124; no process left running)
+
+70 chains, 35 per arm (the card asks for at least 60 per arm; the machine ran at about half a core, so the window gave
+35). Full CHAIN log in ab.log; `python3 analyze_ab.py` gives the summary.
+
+| arm | n | chain-min distribution (ORBW=3 energy) | median | mean | <=9 | <=12 | median start energy |
+|---|---|---|---|---|---|---|---|
+| R (random start) | 35 | 12:1 15:5 18:11 21:12 24:6 | 21 | 19.5 | 0 | 1 | 153 |
+| B (best of 50 by C3E) | 35 | 12:2 15:8 18:12 21:6 24:7 | 18 | 18.7 | 0 | 2 | 66 |
+
+- Mean B minus R = -0.77 with 95 % bootstrap CI [-2.2, +0.8]. Mann-Whitney P(min_B > min_R) = 0.43, p = 0.33.
+- Start c3 = 0 in 97 % of B starts and 9 % of R starts; the annealer still ends in the same place, so c3 is not
+  what decides the end. Within arms, Spearman(chain min, start energy) is +0.10 (R) and -0.24 (B); with start c3,
+  +0.15 (R) and +0.31 (B). These are weak and not significant at n = 35.
+- Verdict: the biased start on c3 (distance-3 collisions, then energy) does not change the chain minima detectably.
+  The test can exclude a shift larger than about 2 units (about one energy level), not smaller ones.
+- No chain reached energy 9 or below in either arm; best 12 (both arms). No cost 0, no CLAIM, no record.
+
+## Notes on the data
+
+- A start-stat decode trap: startstat = 1000 * c3 + energy, and energies can exceed 1000 (random degenerate sets reach
+  126,825), so c3 must be decoded as (startstat - startE) / 1000, not startstat // 1000. analyze_ab.py fixed.
+- Degenerate random starts (energy in the thousands, c3 up to 146) exist; biased starts never pick them.
+
+## What I would try next (not run)
+
+- The c3 = 0 property is already reached by the descents (84-95 % of chain ends), so a start-only bias is unlikely to
+  matter at TMAX = 1.5. A bias would need a colder start (lower TMAX for the first 2000 steps) to act on the start.
+- A larger A/B (60+ per arm) needs about 2.5 hours of one core at this load, or a shorter, equal-schedule comparison.
+- The statistic that separates good from random (c3 = 0 at distance 3; AUC 0.94 psl, 0.85 prod) is cheap (one BFS,
+  0.4 ms CPU). It is a useful filter for generating candidate sets, but not a start-quality predictor here.
+
+## Scoreboard
+
+- 23:58 UTC (Oct 31): first result, chain min 12 (ORBW=3 energy), psl 23 97, not a record. No later improvement.

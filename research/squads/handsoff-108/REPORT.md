@@ -39,7 +39,7 @@ spent most of their wall time waiting on their own C programs.
 | c3-twist | twisted cyclic factor (tpgl, csl) to cut the abelian tax | Haar | tpgl worse (RANDORB median 345 vs 132); csl with n ≡ 2 mod 4 is SL × Z_{n/2}; stopped after 8 min | dead; one side lead |
 | c3b-sl23x49 | descents on SL(2,23) × Z49 (c3's side lead) | Haar | 138 descents, min 12, median 24 (PSL(2,23)×Z97: 9, 21) | dead |
 | c3c-grind | extra fresh-seed grind | Haar | 137 descents, min 12 | volume only |
-| c4-groups | screen of direct-product groups in the window | Haar | PSL(2,29)×Z49 as good as the reference in RANDORB; 40 descents min 12; meta and n = 1 groups broken or slow; stalled at 22:39 and never handed back | inconclusive |
+| c4-groups | screen of direct-product groups in the window | Haar | 473 groups screened (RANDORB 300, top 30 at 1000; 3,850 enumerated); best PSL(2,29)×Z49 and PSL(2,27)×Z61, about as good as the reference in RANDORB; descents worse (40 and 39 chains, best 12 and 21); meta and n > 5000 groups dead or too slow; its notes stopped at 22:39 and it reported only when told to stop at 03:30 | dead |
 | c5-selfdual | twisted pairing S⁻¹ = β(S) with α of order 3 | Haar | far worse (best 113 vs 47 for standard orbits); the outer β my card asked for does not exist | dead |
 | c5b-cosetscreen | screen of 14 coset-graph families | coset, N ≈ 590-600k | best family K (one regular double coset, h = 10); non-regular and h = 6 families 3-10× worse | lead (then closed by c6b) |
 | c5c-scanC | exhaustive scan of coset family C (PGL(2,181), D5) | coset | 16,407 classes, minimum 44 | dead, exhaustive |
@@ -70,7 +70,7 @@ three hours, carried by cards I wrote from each hand-back. That chaining was the
 
 What it did worse:
 - **Stalls.** Five times a Haiku ended its turn "waiting on background work" with nothing running, and sat idle:
-  c2-repair for 85 minutes, c7, c5b, c3b, and c4 (never resumed). A message wakes them, but only if I notice. Cards
+  c2-repair for 85 minutes, c7, c5b, c3b, and c4 (its notes stopped at 22:39; it reported only when told to stop at 03:30). A message wakes them, but only if I notice. Cards
   must tell them to poll with sleep loops and never end a turn while a run is going; after I added that line, the
   later runs kept going.
 - **Premise errors go both ways.** Three of my cards had a wrong premise (c5: the outer β does not exist; c6c: no single

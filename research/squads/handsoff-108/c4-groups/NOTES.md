@@ -45,10 +45,29 @@ vs psl 23 x Z97 5.9 % generic loss), but a bigger mu (75.8). Neither beats the r
   543k-569k (broken: almost every element uncovered). k = 4..8, n = 1: median 3.4k (p = 118801, k = 5), 38.9k
   (p = 73609, k = 8), 283k, 543k. Not screened in full (n > 1 meta: 1311 groups, not run).
 - agl1 q with n in the window: 28 of 413 screened (n <= 5000); the rest n > 5000, as above.
-- Groups with n = 1 mod 3-prime-free Z-part and no order-3 conjugation: fail in choose_alpha ("no conjugation of
-  order dividing 3 found"), e.g. meta 147977 4 33976 1.
+- Some meta groups fail in choose_alpha ("no conjugation of order dividing 3 found"), e.g. meta 147977 4 33976 1.
 
 ## Descents (ORBW=3, RESTARTAFTER=0 COOL=15 REHEAT=30, 30 min each, nice 10, one at a time)
+
+Both runs finished (run 1 at 23:07 UTC, 40 chains; run 2 at 23:37 UTC, 39 chains). No chain reached cost 9 or below,
+so no EXDESC follow-up. The best is 12 (run 1), the same value as the first scoreboard line; no new scoreboard line.
 - run 1: psl 29 x Z49, seed 108502, `d1.log`, `d1.out`, CKPT `d1.ckpt`.
 - run 2: psl 27 x Z61, seed 108503, `d2.log`, `d2.out`, CKPT `d2.ckpt`.
 - Reference (card): psl 23 x Z97 chain minima median 18-21, P(min <= 9) about 1/15, ~50 s per chain.
+
+Chain-minimum histograms (ORBW=3 units, energy):
+- psl 29 x Z49 (d1.log, 40 chains, ~45 s each): 12:1, 15:1, 18:5, 21:13, 24:14, 27:6. Median 22.5. P(min <= 9) = 0/40.
+- psl 27 x Z61 (d2.log, 39 chains, ~46 s each): 21:2, 24:12, 27:7, 30:9, 33:9. Median 27. P(min <= 9) = 0/39.
+
+Verdict: neither group beats psl 23 x Z97 (median 18-21). psl 29 x Z49 is the closer one (median 22.5 vs 18-21) and
+has the best RANDORB score of the new groups, but 40 chains with no minimum at or below 9 is not a find (the card's
+bar is P(min <= 9) above 1/15; the reference's own rate is about 1/15, so 0/40 is consistent with it but gives no
+support). Next step if continued: a longer run on psl 29 x Z49 (2 h, one core) before comparing rates.
+
+## Result summary
+- Screened: 3850 candidates enumerated; 473 non-meta with n <= 5000 at 300 samples; top 30 at 1000 samples;
+  40 groups with n > 5000 and 14 meta groups at 100 samples (pilots). Meta n > 1 and the rest of n > 5000 were not run.
+- Best new groups by RANDORB score: psl 29 x Z49 (0.959), psl 27 x Z61 (1.035); sl 23 x Z49 (0.959) and the
+  grind's own prod psl 7 x sl 8 x Z7 are already run by others.
+- Descents: psl 29 x Z49 best chain min 12; psl 27 x Z61 best chain min 21. No cost 0, no new record, no near miss.
+- No record claimed; nothing copied to records/.
