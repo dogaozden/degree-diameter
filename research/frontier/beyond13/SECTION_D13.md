@@ -66,7 +66,10 @@ Also (4,10) >= 12,246 against the 2013 value 11,748: a director scan of all 55 m
 (meta/scan410.sh, 20-s hmeta starts, two seeds each) solved Z218 x|_3 Z27 (11,772 vertices), Z333 x|_4 Z18 (11,988) and
 the odd-order Frobenius group Z157 x|_9 Z39 (order 6,123, 12,246 vertices); all apsp and metacheck VALID
 (checks/d4D10_n12246_meta157_39.apsp.txt, sols/d4D10_meta_157_39_dir.txt); the lab has no later (4,10) entry either.
-(4,8) and (4,9) near misses above the 2013 values (2,184, 4,970): Z55 x|_2 Z20 (2,200 vertices, cost 1) and
+Director scans of every metacyclic group Z_m x|_r Z_k (k >= 12, one r of exact order k per (m,k); meta/enumeta.py,
+meta/scanmeta.sh, two 15-30-s hmeta starts each) found nothing at (4,8) (orders 1,093-1,300), (4,9) (2,486-2,800, best
+cost 2) and (5,8) (4,881-5,200, best cost 4); (5,9) (14,879-15,400) and (4,10) (6,301-6,700, best cost 1) were stopped
+part way. (4,8) and (4,9) near misses above the 2013 values (2,184, 4,970): Z55 x|_2 Z20 (2,200 vertices, cost 1) and
 Z101 x|_5 Z25 (5,050, cost 2) (r7/j04, j05); (4,10) Z215 x|_2 Z28 (12,040) at cost 1 (r7/j03). An exhaustive 2-opt from the
 (4,8) and (4,9) states (hmeta OPT2: every pair of generators replaced by every pair of group elements, 3.6e6 and 1.9e7
 evaluations) found no cost 0: no generator set within two changes of those states has the required diameter.
