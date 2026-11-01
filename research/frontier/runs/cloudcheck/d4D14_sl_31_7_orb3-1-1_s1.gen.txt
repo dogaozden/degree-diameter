@@ -1,0 +1,15 @@
+checker: haarcheck_gen
+command: ./bin/haarcheck_gen runs/d4D14_sl_31_7_orb3-1-1_s1.out
+start: 2026-11-01T11:34:29Z
+sha256 e52e247f4a92a474f49ff0d5d438660ba0b557bbdfd4a8e24311ca881ff3f17c  ./bin/haarcheck_gen
+sha256 95a7f7e6ac722ba1607f1475044662ddcaec1ce74f1f5c4ebd401ed3c7afd7fd  runs/d4D14_sl_31_7_orb3-1-1_s1.out
+selftest sl 31: |M| = 29760, det-1 matrices 29760
+selftest group multiplication: associativity, identity, inverse on 20000 random triples ok
+file runs/d4D14_sl_31_7_orb3-1-1_s1.out
+header: 4 14 sl 31 n 7 N 208320
+group sl 31 x Z_7, |G| = 208320 = N, vertices 2N = 416640; 4 distinct generators
+from (e,A): reached A 208320/208320, B 208320/208320 within 14; ecc 14; level sizes [1, 4, 12, 36, 108, 324, 972, 2895, 8550, 24337, 62742, 122712, 131414, 58012, 4521]  (0s)
+from (e,B): reached A 208320/208320, B 208320/208320 within 14; ecc 14; level sizes [1, 4, 12, 36, 108, 324, 972, 2895, 8550, 24337, 62722, 122712, 131386, 58012, 4569]  (0s)
+VALID d=4 D=14 group=sl 31 x Z_7 N=208320 vertices=416640 (distinct generators, 4-regular simple; every vertex within 14 of both (e,A) and (e,B); ecc 14; 0s)
+exit: 0
+end: 2026-11-01T11:34:29Z (0 s)

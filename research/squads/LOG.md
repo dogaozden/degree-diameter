@@ -246,3 +246,28 @@ Cards (best result; all checked by the director):
 Director's reading: the rule holds where predicted (Δ = 4, 5, odd D best) and gives out at Δ = 6..7. Round 7 produced
 one table-cell raise candidate ((5,10) 92,318) and four near misses at cost 1-2 above 2013 values ((4,8), (4,9), (4,10))
 or lab values ((6,9)). The squad stops here: the remaining time goes to the big checks and the write-up.
+
+## 2026-11-01, beyond-d13: wrap-up (director)
+
+All fourteen new cells have checked values (haarcheck_gen for SL/PSL Haar graphs, logs in
+research/frontier/runs/cloudcheck/; apsp all-pairs and/or metacheck for the rest, research/frontier/beyond13/checks/):
+
+| D \ Δ | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 |
+|---|---|---|---|---|---|---|---|---|
+| 13 | 3,400 | 192,382 | 3,594,910 | 41,734,392 | 312,227,760 | 1,739,514,000 | 7,924,036,032 | 19,980,294,768 |
+| 14 | 5,706 | 497,042 | 12,795,166 | 187,990,656 | 1,674,490,944 | 11,325,238,056 | | |
+
+Raised lab values: (4,11) 24,360 -> 28,418, (5,11) 297,648 -> 306,182, (6,11) 2,094,960 -> 2,098,766, (4,12) 68,544 ->
+74,066, (5,12) 1,041,768 -> 1,045,054. Inside the 2013 table: (5,10) 93,166 against 90,068 (candidate; literature after
+2013 not checked).
+
+Who found what: Δ = 3 values came from lifts (card idea r2/e16; the director's cooling fix and runs gave Z163-Z170 at
+D = 13 and Z280 at D = 14; cards r5/h02 and r7/j13 the scan finisher and the Pappus Z317 lift). Δ = 4, 5 values came from
+metacyclic groups with random S (card ideas r1/c15, r2/e12; values by cards r5/h03, r6/i04, r6/i06, r6/i07). Δ = 6, 7
+values by cards (r3/f11, r4/g07, r2/e10, r5/h14), Δ = 8..10 by the director (haar_big0, first solutions at mu 3-12).
+The (5,10) value: card r6/i10 found the idea's first table win, the director and r7/j01 pushed it.
+The odd-order explanation is ODD_D_HOLES.md's lemma plus Fact 1 of research/frontier/beyond13/THEORY.md (Frobenius
+groups have no involutions and trivial centre); the lift bound is Fact 2. Process: 111 cards in 7 rounds on 4 cores; the
+director's big checks starved the cards for the first two hours, and one OOM kill cost an hour of the (10,13) check.
+Three cards touched remote-session tools by mistake (no effect; one archived an accidental session), and one card's
+`pkill -f bases/` may have killed other cards' lift runs; later headers forbade both.
