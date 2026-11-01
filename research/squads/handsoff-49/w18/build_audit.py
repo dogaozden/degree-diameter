@@ -17,8 +17,8 @@ MAN = {
  7: ('3200', '6400', '4-4', 'yes', '9', '0', 'VALID', 'edge file', 'VALID at n=3200 (not a record: n <= 4970)'),
  13: ('4992', '9984', '4-4', 'yes', '10', '4992', 'INVALID', 'no edge file in w2 (deep.tsv row only); same group re-checked via w11/out/m208_k12_r3_c4.edges (line 23)', 'holds: group 208 12 3 floor 4 (exact, see w11 line 23 and repro_w11.tsv)'),
  14: ('5050', '10100', '4-4', 'yes', '10', '2525', 'INVALID', 'no edge file in w2 (deep.tsv row only); same group re-checked via w11/out/m101_k25_r5_c2.edges (line 21)', 'holds: group 101 25 5 floor 2 (exact, reproduced by w18: exh3 min 2)'),
- 16: ('5040', '-', '-', '-', '-', '-', '-', 'w1 text output: exh_A7_class19.out; exact re-run by w18 on rep element 19 (see NOTES)', 'see NOTES: re-run reproduces min 6 (class scan)'),
- 25: ('5040', '-', '-', '-', '-', '-', '-', 'no file; exh3 certification (w11 certified.tsv)', 'reproduction pending in w18 run (exh3 m35 k72 r4, bound 6)'),
+ 16: ('5040', '-', '-', '-', '-', '-', '-', 'w1 text output: exh_A7_class19.out; exact re-run by w18 on rep element 19 (see NOTES)', 'reproduced by w18: exh on rep element 19 gives evals 3168903, best 6, zeros 0 (same as w1 out)'),
+ 25: ('5040', '-', '-', '-', '-', '-', '-', 'no file; exh3 certification (w11 certified.tsv)', 'reproduced by w18: exact min 6'),
  26: ('5040', '-', '-', '-', '-', '-', '-', 'no file; exh3 certification', 'reproduced by w18: exact min 6 (repro_w11.tsv)'),
  27: ('4992', '-', '-', '-', '-', '-', '-', 'no file; exh3 certification', 'reproduced by w18: exact min 6'),
  28: ('5040', '-', '-', '-', '-', '-', '-', 'no file; exh3 certification', 'reproduced by w18: exact min 6'),
@@ -30,7 +30,7 @@ MAN = {
  38: ('5000', '10000', '4-4', 'yes', '10', '12500', 'INVALID', 'rebuilt by w18 (haar_tab copy with SAVE_ANY, seed 8, 10 s): w18/val/hb1_c.edges', 'holds for cost 10 at the TRUE order: scoreboard n=2500 is wrong, Haar graph has 2|G| = 5000 vertices'),
  41: ('5060', '-', '-', '-', '-', '-', '-', 'no file; exh3 certification', 'reproduced by w18: exact min 10'),
  42: ('5160', '-', '-', '-', '-', '-', '-', 'no file; exh3 certification', 'reproduced by w18: exact min 10'),
- 44: ('5120', '-', '-', '-', '-', '-', '-', 'no file; exh3 certification', 'reproduction pending in w18 run (exh3 m320 k8 r7, bound 12)'),
+ 44: ('5120', '-', '-', '-', '-', '-', '-', 'no file; exh3 certification', 'reproduced by w18: exact min 12'),
  45: ('5124', '-', '-', '-', '-', '-', '-', 'no file; exh3 certification', 'reproduced by w18: exact min 12'),
  46: ('5000', '10000', '4-4', 'yes', '10', '5000', 'INVALID', 'rebuilt by w18 (haar_tab copy with SAVE_ANY, seed 8, 10 s): w18/val/u4m7_c.edges', 'holds for cost 4 at the TRUE order: scoreboard n=2500 is wrong, Haar graph has 2|G| = 5000 vertices'),
 }
@@ -48,6 +48,8 @@ for idx, r in enumerate(rows, start=1):
     if idx == 2: exp = '160'
     if idx == 7: exp = '0'
     if idx == 48: exp = '0'
+    if idx == 13: exp = '4992'
+    if idx == 14: exp = '2525'
     st = 'missing' if (p and not os.path.exists(p)) else ('none' if not p else 'present')
     if idx in MAN:
         n_, e_, dg, bp, dm, fr, ap, how, verdict = MAN[idx]
@@ -85,6 +87,8 @@ for idx, r in enumerate(rows, start=1):
                 verdict = 'STALE: same path as line 17, file overwritten later; current far %s = cost %d at N=1248, claim %s not reproducible' % (fr, int(fr) * 2 // 1248, cc)
             if idx == 4:
                 verdict = 'n/a'
+            if idx == 48:
+                verdict = 'VALID at n=4970: not a record (needs n > 4970)'
             if idx == 17:
                 verdict = 'holds (file is the latest version of the path shared by lines 3, 8, 15, 17)'
             if idx == 2:

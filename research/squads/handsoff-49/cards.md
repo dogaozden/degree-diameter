@@ -341,3 +341,26 @@ involution far). Think of a different construction (for example a product-like o
 a non-regular group action not listed, a graph built from a finite geometry other than generalized polygons, or a
 search over non-vertex-transitive graphs guided by the near misses), argue in NOTES.md why it might beat 4,970, then
 build and test it.
+
+## w23: order 2,500 groups P x| Z_4 (follows w15)
+
+Read `$H/w15/NOTES.md` (tables in w15/tabs/, rebuild commands, auto15.py). w15's best: P = a maximal-class exponent-5
+group of order 625 (inside U_4(F_5)) extended by Z_4 (group u4m_7): Haar cost 4 at n = 5,000, a floor across seeds.
+(1) Make it exact: exhaustive search up to automorphism (w1's `$H/w1/exh.c` or w11's `$H/w11/exh3`; r over class
+representatives under the automorphisms you can find, b and c over all elements). (2) Look at the far pairs of cost-4
+states (farlist): which group elements separate them (central? an element of the Z_4 part?), and whether the same wall as
+at 4,992 (a central involution) is at work. (3) Build the order-625 groups w15 did not cover (class-2 exponent-25
+groups, other maximal-class ones), their order-4 automorphisms (auto15.py), and screen P x| Z_4 with haar_tab
+(60 s, 3 seeds). Copy w15's files into your folder before changing anything.
+
+## w24: an optimizer that can find known solutions on 5+5 bases (follows w16)
+
+w16 found that the 4,970 table graph is a 5+5 lift over a group of order 497 (Z_71 x| Z_7, `meta:71:7:45`), and that
+annealing, tabu and a smooth walk-count cost all stall at cost 68-98 on that base and group, where cost 0 exists. So for
+bases bigger than 2+2 the optimizer is the wall. Read `$H/w16/NOTES.md` (quot.py builds the base and the known voltages).
+Benchmark: from random voltages, reach cost 0 on that 5+5 base over meta:71:7:45. Ideas: large-neighbourhood search
+(re-optimize 2 voltages exhaustively: 497^2 = 247,009 pairs, each evaluation is a few BFS runs on 4,970 vertices, so
+a few seconds per pair with a bitset BFS); moves aimed at far pairs; solving first in the quotient Z_7 (the images of the
+voltages in G/Z_71 must already give a good 5+5 lift over Z_7) and then lifting; restarts with a population (keep the
+10 best, recombine voltages). Measure success rate and time on the benchmark. If a method reaches 0 on the benchmark,
+run it on w16's best groups of order 498..530 (w16's tables) and the 7+7 base over orders 356..380.

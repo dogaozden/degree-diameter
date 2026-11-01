@@ -48,3 +48,7 @@ Start: 2026-10-31 23:53 UTC. Planned end: about 01:55 UTC. Last update: about 01
 - Finer dedupe (cycle type of phi on P, auto15.py now keys on it too): the same class lists come back for u4_1 (8
   classes, u4f_7 = u4m_7) and Heis(5) x Z_5 (11 classes, hf_k = hb_k). So the automorphism classes sampled are
   complete for these two P, and the cost floors above are the floors of all Z_4 actions on them.
+- U_4(Z/25) subgroups of order 625 (u4z25.py, 3,000 samples, sparse generators): three invariant classes, all
+  matching known groups (Z_25^2; centre 25 / ab 125 / exponent 25 twice). No new invariant type, so no new P was added.
+- Final state (01:26 UTC): best cost 4 (u4m_7), no record. Stopped because every new P class and every Z_4 automorphism
+  class from the sampling gave a floor of 4 or more.
