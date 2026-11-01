@@ -1,0 +1,10 @@
+checker: haarcheck_gen
+command: OMP_NUM_THREADS=1 ./bin/haarcheck_gen sols/d6D14_psl_107_157_orb3-2-0_d13.txt
+start: 2026-11-01T23:29:26Z
+12f19f8fb8ad6b12922efb1c37638c7e6888ed8914f8090f753528e337401cb4  sols/d6D14_psl_107_157_orb3-2-0_d13.txt
+selftest psl 107: |M| = 612468, index round trip over all elements ok
+selftest group multiplication: associativity, identity, inverse on 20000 random triples ok
+file sols/d6D14_psl_107_157_orb3-2-0_d13.txt
+header: 6 14 psl 107 n 157 N 96157476
+group psl 107 x Z_157, |G| = 96157476 = N, vertices 2N = 192314952; 6 distinct generators
+from (e,A): reached A 96157476/96157476, B 96157476/96157476 within 14; ecc 14; level sizes [1, 6, 30, 150, 750, 3750, 18729, 93519, 465900, 2300412, 10894038, 42439008, 80565347, 51320631, 4212681]  (23s)

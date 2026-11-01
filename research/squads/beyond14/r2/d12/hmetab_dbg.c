@@ -110,7 +110,8 @@ static int hole(int side, el *u) {
 static int distinct(int i) { for (int t = 0; t < d; t++) if (t != i && S[t].a == S[i].a && S[t].j == S[i].j) return 0; return 1; }
 /* ---- order-2 orbit form: S = {e, x1, b(x1), x2, b(x2)}, b(a,j) = (-a, j) (an involutive automorphism, a != 0 so that
  * b(x) != x). Slots: 0 = e; pair q occupies slots 1+2q (x) and 2+2q (b(x)). Move: replace one pair. ---- */
-static inline el bof(el x) { el y = { (M - x.a) % M, x.j }; return y; }
+static i64 UU = -1;  /* b(a,j) = (UU*a mod m, j): UU^2 = 1 mod m; default m-1 (= -1) */
+static inline el bof(el x) { el y = { (__int128)UU * x.a % M, x.j }; return y; }
 static int pairok(int i) {   /* slot i (x, with a != 0) and slot i+1 (= b(x)) distinct from all other slots */
     if (S[i].a == 0) return 0;
     if (!distinct(i) || !distinct(i + 1)) return 0;
@@ -162,6 +163,7 @@ int main(int argc, char **argv) {
     int Kc = atoi(argv[5]); const char *out = argv[6]; M = atoll(argv[7]); K_ = atoll(argv[8]); R_ = atoll(argv[9]);
     if (d != 5) { fprintf(stderr, "this variant is for d = 5 (e + two orbit pairs)\n"); return 2; }
     if (M % 2 == 0 || mpow(R_, K_, M) != 1 % M) { fprintf(stderr, "need m odd and r^k = 1 mod m\n"); return 2; }
+    UU = getenv("UU") ? atoll(getenv("UU")) : M - 1; if (mpow(UU, 2, M) != 1 % M) { fprintf(stderr, "UU^2 != 1 mod m\n"); return 2; }
     N = M * K_; RP = malloc(sizeof(i64) * K_); for (i64 j = 0; j < K_; j++) RP[j] = mpow(R_, j, M);
     W = (M + 63) / 64; W2 = (2 * M + 63) / 64 + 2; lastmask = (M % 64) ? ((1ULL << (M % 64)) - 1) : ~0ULL;
     HA = malloc(K_ * W * 8); HB = malloc(K_ * W * 8);
@@ -173,11 +175,8 @@ int main(int argc, char **argv) {
     int reheat = getenv("REHEAT") ? atoi(getenv("REHEAT")) : 400;
     int targp = getenv("TARGP") ? atoi(getenv("TARGP")) : 70;
     S[0].a = 0; S[0].j = 0;
-    if (getenv("ROWS")) { for (int q = 0; q < 2; q++) { int i = 1 + 2 * q; do { setpair(i, relnz()); } while (!pairok(i)); } i64 c = cost();
-        printf("cost %lld\n", (long long)c);
-        for (i64 j = 0; j < K_; j++) { i64 miss = 0; for (i64 w = 0; w < W; w++) { u64 v = ~HA[j * W + w]; if (w == W - 1) v &= lastmask; miss += __builtin_popcountll(v); }
-            printf("row %lld missing %lld\n", (long long)j, (long long)miss); }
-        for (int i = 0; i < d; i++) printf("S%d a=%lld j=%lld\n", i, (long long)S[i].a, (long long)S[i].j); return 0; }
+    if (getenv("ROWS")) { for (int q = 0; q < 2; q++) { int i = 1 + 2 * q; do { setpair(i, relnz()); } while (!pairok(i)); }
+        printf("cost %lld\n", (long long)cost()); return 0; }
     if (getenv("EVAL")) { if (!readsol2(getenv("EVAL"))) { fprintf(stderr, "bad EVAL file (orbit form?)\n"); return 2; }
         double t = now(); i64 c = cost(); printf("EVAL cost=%lld (%.2fs) N=%lld\n", (long long)c, now() - t, (long long)N); return 0; }
     if (getenv("START")) { if (!readsol2(getenv("START"))) { fprintf(stderr, "bad START file (orbit form?)\n"); return 2; } }

@@ -1,6 +1,6 @@
 checker: haarcheck_gen (research/frontier/haarcheck_gen.c, built here as bin/haarcheck_gen)
 command: OMP_NUM_THREADS=2 ./bin/haarcheck_gen sols/d9D14_psl_241_1429_orb3-3-0_s1.txt
-start: 2026-11-01T22:55:31Z
+start: 2026-11-01T23:29:23Z (third start: the first was stopped at a 30-min limit, the second by a container restart)
 e52e247f4a92a474f49ff0d5d438660ba0b557bbdfd4a8e24311ca881ff3f17c  bin/haarcheck_gen
 ab67992562de5476110bbd2b3af3f024854719b3cd2007055c9a30047d58e898  sols/d9D14_psl_241_1429_orb3-3-0_s1.txt
 selftest psl 241: |M| = 6998640, index round trip over all elements ok

@@ -115,9 +115,11 @@ int main(int argc, char **argv) {
         }
     }
     long c = cost(), best = c;
+    if (c == 0) { writefile(out, 0, eu, ev, ea); printf("FOUND at start\n"); }
     int bestU[16], bestV[16], bestA[16];
     memcpy(bestU, eu, sizeof eu); memcpy(bestV, ev, sizeof ev); memcpy(bestA, ea, sizeof ea);
     clock_t st = clock(); double cyc = 30.0; long it = 0, idle = 0;
+    if (c == 0) { printf("end best 0 its 0\n"); return 0; }
     printf("lift4 p=%d m=%d k=%d r=%d N=%d n=%d D=%d start %ld\n", p, m, k, r, N, n, D, c); fflush(stdout);
     for (;;) {
         double el = (double)(clock() - st) / CLOCKS_PER_SEC; if (el > secs) break;
