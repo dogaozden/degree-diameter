@@ -1,0 +1,57 @@
+Coordinator report (Mac mini coordinator, 2026-11-01T23:33:09Z): d16D11_psl_449_331_orb3-5-1_s1.txt, sha256 1467494757357932d28c0e064db3672226ab99a90815580d6ea0f43b83870d68 (the same in all three reports below).
+Too big for the Mac mini; both checkers ran in the cloud. The reference check (haarcheck_psl) was split by start side (A|B); half B was rerun after a first run on a slow machine hit its brief's time limit. The three reports are copied below unedited.
+
+======== gen: research/frontier/runs/cloudcheck/d16D11_psl_449_331_orb3-5-1_s1.gen.txt from origin/claude/beyond-d11-d12-new-cells-3t3djx ========
+checker: haarcheck_gen
+command: ./bin/haarcheck_gen runs/d16D11_psl_449_331_orb3-5-1_s1.out
+start: 2026-11-01T11:46:21Z
+sha256 e52e247f4a92a474f49ff0d5d438660ba0b557bbdfd4a8e24311ca881ff3f17c  ./bin/haarcheck_gen
+sha256 1467494757357932d28c0e064db3672226ab99a90815580d6ea0f43b83870d68  runs/d16D11_psl_449_331_orb3-5-1_s1.out
+selftest psl 449: |M| = 45259200, index round trip over all elements ok
+selftest group multiplication: associativity, identity, inverse on 20000 random triples ok
+file runs/d16D11_psl_449_331_orb3-5-1_s1.out
+header: 16 11 psl 449 n 331 N 14980795200
+group psl 449 x Z_331, |G| = 14980795200 = N, vertices 2N = 29961590400; 16 distinct generators
+from (e,A): reached A 14980795200/14980795200, B 14980795200/14980795200 within 11; ecc 11; level sizes [1, 16, 240, 3600, 54000, 809970, 12144518, 181120153, 2496288504, 13839512425, 12472307937, 959349036]  (2583s)
+from (e,B): reached A 14980795200/14980795200, B 14980795200/14980795200 within 11; ecc 11; level sizes [1, 16, 240, 3600, 54000, 809970, 12144518, 181120153, 2496283314, 13839512425, 12472313127, 959349036]  (5281s)
+VALID d=16 D=11 group=psl 449 x Z_331 N=14980795200 vertices=29961590400 (distinct generators, 16-regular simple; every vertex within 11 of both (e,A) and (e,B); ecc 11; 5281s)
+exit: 0
+end: 2026-11-01T13:14:23Z (5282 s)
+
+======== refA: research/frontier/runs/cloudcheck/d16D11_psl_449_331_orb3-5-1_s1.refA.txt from origin/claude/haar-graph-verification-woz6d5 ========
+machine: vm; nproc=4; free -g: total 15G used 0G free 14G avail 15G at start; Linux 6.18.44-fc-v185; gcc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0
+sha256: 1467494757357932d28c0e064db3672226ab99a90815580d6ea0f43b83870d68  research/frontier/sols/d16D11_psl_449_331_orb3-5-1_s1.txt  (copied with git show from branch claude/beyond-d11-d12-new-cells-3t3djx; checker source research/structured/tools/haarcheck_psl.c on master f816dbc7c0 / c3b542a)
+progress: 2026-11-01 13:47 UTC, run started 13:45:37 UTC (one-sided BFS from (e,A) only, PID 758), elapsed 2 min, still running, RSS about 1.8 GB and climbing
+progress: 2026-11-01 14:16 UTC, run started 13:45:37 UTC, elapsed 31 min, still running (PID 758), RSS about 10.97 GB (near the full ~11.2 GB of bitsets), no output yet (the checker prints only when the BFS ends)
+progress: 2026-11-01 14:47 UTC, run started 13:45:37 UTC, elapsed 61 min, still running (PID 758), RSS steady at about 10.97 GB, no output yet
+progress: 2026-11-01 15:17 UTC, run started 13:45:37 UTC, elapsed 91 min, still running (PID 758), RSS steady at about 10.97 GB, no output yet
+progress: 2026-11-01 15:47 UTC, run started 13:45:37 UTC, elapsed 121 min, still running (PID 758), RSS steady at about 10.97 GB, no output yet
+progress: 2026-11-01 16:17 UTC, run started 13:45:37 UTC, elapsed 151 min, still running (PID 758), RSS steady at about 10.97 GB, no output yet
+progress: 2026-11-01 16:47 UTC, run started 13:45:37 UTC, elapsed 181 min, still running (PID 758), RSS steady at about 10.97 GB, no output yet; expected end at about 3 to 3.5 h, cap 5.5 h
+progress: 2026-11-01 17:17 UTC, run started 13:45:37 UTC, elapsed 211 min, still running (PID 758), RSS steady at about 10.97 GB, no output yet; cap 5.5 h, not stopped early
+progress: 2026-11-01 17:22 UTC, run finished (exit 0, wall 3:36:41), final section below
+
+################ haarcheck_psl (reference checker, research/structured/tools/haarcheck_psl.c on master c3b542a, built with gcc -O3 -o haarcheck_psl research/structured/tools/haarcheck_psl.c; one side only, BFS from (e,A)): cd /home/user/degree-diameter && /usr/bin/time -v -o /tmp/claude-0/-home-user-degree-diameter/1719b04c-6812-55ef-a363-9e53a7bbbdf0/scratchpad/time.txt /tmp/claude-0/-home-user-degree-diameter/1719b04c-6812-55ef-a363-9e53a7bbbdf0/scratchpad/haarcheck_psl research/frontier/sols/d16D11_psl_449_331_orb3-5-1_s1.txt A   (stdout, complete; binary and time file kept in the session scratchpad, not committed)
+from (e,A): reached A 14980795200/14980795200, B 14980795200/14980795200 within 11, ecc 11
+HALF-VALID from (e,A) d=16 D=11 group=psl 449 x Z_331 N=14980795200 vertices=29961590400
+[exit 0; wall 13001s (3:36:41); peak RSS 10717 MB (10973908 KB); 1 thread, user 12820 s, sys 66 s]
+
+======== refB: research/frontier/runs/cloudcheck/d16D11_psl_449_331_orb3-5-1_s1.refB.txt from origin/claude/haar-graph-verification-3ayat8 ========
+machine: vm; nproc=4; free -g: total 15G used 3G free 12G avail 12G; Linux 6.18.44-fc-v185; gcc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0
+sha256: 1467494757357932d28c0e064db3672226ab99a90815580d6ea0f43b83870d68  research/frontier/sols/d16D11_psl_449_331_orb3-5-1_s1.txt (copied from branch claude/beyond-d11-d12-new-cells-3t3djx; checker: haarcheck_psl from master, A|B argument commit f816dbc7c0)
+progress 19:32:26 UTC: started 19:32:18 UTC, BFS from (e,B) running (pid 799, RSS 2687 MB)
+progress 20:02:48 UTC: elapsed 30 min, still running (pid 760, RSS 10973 MB; free 4 GB); no output yet, checker prints only after its BFS
+progress 20:32:28 UTC: elapsed 60 min, still running (pid 760, RSS 10716 MB); no output yet
+progress 21:02:42 UTC: elapsed 90 min, still running (pid 760, RSS 10973 MB); no output yet
+progress 21:32:23 UTC: elapsed 120 min, still running (pid 760, RSS 10716 MB); no output yet
+progress 22:02:34 UTC: elapsed 150 min, still running (pid 760, RSS 10973 MB); no output yet
+progress 22:31:51 UTC: run finished, exit 0 after 179 min
+
+################ haarcheck_psl (reference checker, research/structured/tools/haarcheck_psl.c from master; built with gcc -O3; split run: BFS from (e,B) only, the other half runs in another job): haarcheck_psl research/frontier/sols/d16D11_psl_449_331_orb3-5-1_s1.txt B   (stdout, complete)
+from (e,B): reached A 14980795200/14980795200, B 14980795200/14980795200 within 11, ecc 11
+HALF-VALID from (e,B) d=16 D=11 group=psl 449 x Z_331 N=14980795200 vertices=29961590400
+[exit 0; wall 10742s (2:59:02); peak RSS 10717 MB (10973916 kB); user 10575.06 s, sys 51.58 s; /usr/bin/time -v]
+
+======== coordinator summary ========
+haarcheck_gen: VALID d=16 D=11 (both starts). haarcheck_psl: HALF-VALID from (e,A) and HALF-VALID from (e,B); each reaches all 14980795200 elements of each side within 11. Right multiplication is transitive on each side, so the two halves together are the full reference check.
+RESULT VALID d=16 D=11 group=psl 449 x Z_331 N=14980795200 vertices=29961590400 (two independent checkers: haarcheck_gen, and haarcheck_psl run as two halves)
