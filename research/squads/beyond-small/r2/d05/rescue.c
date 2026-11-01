@@ -22,7 +22,7 @@
 #define W 264
 static int adjA[H][16], adjB[H][16];
 static uint64_t *d2B, *d2A;
-static int nA, nB, (*NA)[16], (*NB)[16], *szA, *szB;
+static int nA, nB, (*NA)[17], (*NB)[17], *szA, *szB;
 static unsigned char *CA, *OA, *CB, *OB, *RA, *RB;   /* RA[j*nA+i]: B-hub j rescues A-pair (.,i); RB[i*nB+j] */
 static int *pA, *pB, *inA, *inB, *memA, *memB, *posA, *posB, nmA, nmB, *flA, *flB;
 static int V;
@@ -74,10 +74,10 @@ static void unmatch(int i, int side) {   /* clears the matching of hub i (side) 
     else { if (pB[i] >= 0) { pA[pB[i]] = -1; pB[i] = -1; } }
 }
 
-static void readpool(const char *fn, int **sz, int (**out)[16], int *n) {
+static void readpool(const char *fn, int **sz, int (**out)[17], int *n) {
     FILE *f = fopen(fn, "r"); if (!f) { perror(fn); exit(2); }
     int nc; if (fscanf(f, "%d", &nc) != 1) exit(2);
-    *out = malloc(sizeof(int[16]) * nc); *sz = malloc(4 * nc);
+    *out = malloc(sizeof(int[17]) * nc); *sz = malloc(4 * nc);
     for (int i = 0; i < nc; i++) { int k; if (fscanf(f, "%d", &k) != 1) exit(2); (*sz)[i] = k;
         for (int a = 0; a < k; a++) if (fscanf(f, "%d", &(*out)[i][a]) != 1) exit(2); }
     fclose(f); *n = nc;

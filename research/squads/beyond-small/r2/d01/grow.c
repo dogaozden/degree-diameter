@@ -35,6 +35,7 @@ static int scal(int l, int a) { int r = 0; for (int k = 0; k < 4; k++) r |= MUL4
 static inline void setb(uint64_t *a, int i) { a[i >> 6] |= 1ULL << (i & 63); }
 
 static const char *OUTF;
+static uint64_t hmaskG[HW];   /* bits < m, refreshed before each attempt */
 
 static void write_out(void) {
     FILE *g = fopen(OUTF, "w");
@@ -59,10 +60,34 @@ static void add_hub(const int *N, int sz) {
 /* one randomized greedy attempt; returns 1 and fills out[] (size 16 or 17) on success */
 static int try_build(int K, double noise, double wH, int *out, int *osz) {
     uint64_t covA[W], hit[HW];
+    memset(hmaskG, 0, sizeof hmaskG); for (int h = 0; h < m; h++) setb(hmaskG, h);
     memset(covA, 0, sizeof covA); memset(hit, 0, sizeof hit);
     int chosen[17], nc = 0;
     for (int step = 0; step < 4; step++) {
         int bi = -1; double bs = -1e18;
+        if (step == 3) {   /* exhaustive last line: first line (from a random start) that completes A and the hubs */
+            int off = (int)(rnd64() % (unsigned long long)NL);
+            for (int jj = 0; jj < NL; jj++) {
+                int i = (jj + off) % NL; int *L = lines[i];
+                if (used[L[0]] || used[L[1]] || used[L[2]] || used[L[3]]) continue;
+                int clash = 0;
+                for (int k = 0; k < 4 && !clash; k++) for (int q = 0; q < nc; q++) if (chosen[q] == L[k]) { clash = 1; break; }
+                if (clash) continue;
+                int ok = 1;
+                for (int w = 0; w < W && ok; w++) {
+                    uint64_t u = ballB[L[0]][w] | ballB[L[1]][w] | ballB[L[2]][w] | ballB[L[3]][w];
+                    if (~covA[w] & ~u) ok = 0;
+                }
+                for (int w = 0; w < HW && ok; w++) {
+                    uint64_t hh = S[L[0]][w] | S[L[1]][w] | S[L[2]][w] | S[L[3]][w];
+                    if (~hit[w] & ~hh & hmaskG[w]) ok = 0;
+                }
+                if (ok) { bi = i; break; }
+            }
+            if (bi < 0) return 0;
+            for (int k = 0; k < 4; k++) chosen[nc++] = lines[bi][k];
+            break;
+        }
         int valid = 0;
         for (long tries = 0; valid < K && tries < 60LL * K; tries++) {
             int i = (int)(rnd64() % (unsigned long long)NL); int *L = lines[i];
