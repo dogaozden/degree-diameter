@@ -258,7 +258,7 @@ research/frontier/runs/cloudcheck/; apsp all-pairs and/or metacheck for the rest
 | 14 | 5,706 | 497,042 | 12,795,166 | 187,990,656 | 1,674,490,944 | 11,325,238,056 | | |
 
 Raised lab values: (4,11) 24,360 -> 28,418, (5,11) 297,648 -> 306,182, (6,11) 2,094,960 -> 2,098,766, (4,12) 68,544 ->
-74,066, (5,12) 1,041,768 -> 1,045,054. Inside the 2013 table: (5,10) 93,166 against 90,068 (candidate; literature after
+74,066, (5,12) 1,041,768 -> 1,045,054. Inside the 2013 table: (5,10) 93,738 against 90,068 (candidate; literature after
 2013 not checked).
 
 Who found what: Δ = 3 values came from lifts (card idea r2/e16; the director's cooling fix and runs gave Z163-Z170 at
