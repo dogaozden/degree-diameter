@@ -49,3 +49,42 @@ nice 0, equal to the director's whole pipeline); the director raised the pipelin
 `echo -10 > /proc/<pid>/autogroup` and lowered the cards' groups to 15.
 Kept: haarex6 for the sweep; no family lead worth more CPU (the 704 lift is an isolated local minimum, the new
 families are far). The order-384 sweep continues; orders 401-450 started on the spare core.
+
+## 2026-11-01, beyond-d14, round 1 (16 cards, 22:48 UTC)
+
+Session: Opus director, job beyond-d14 (branch claude/beyond-d14-new-cells-v6dcaa). Goal: the D = 14 column at
+Δ = 3..8. All six cells already had checked values from job beyond-d13 (earlier the same day), so every target is a
+raise: (3,14) 5,706, (4,14) 497,042, (5,14) 12,795,166, (6,14) 187,990,656, (7,14) 1,674,490,944, (8,14) 11.3e9.
+Files: research/squads/beyond14/r1/ (HEADER.md, c01-c16.md, scoreboard.jsonl). Machine: 4 cores, 15 GB; the Agent
+tool's "remote" isolation runs in this same container (same boot id), so all cards share the 4 cores.
+
+Cards (best result; VALID = checked by the director with haarcheck_gen, build_haar2 or apsp):
+- c01 (3,14) Pappus cyclic lift n = 318/319: cost 2. c02 larger-girth bases (Tutte 8-cage n = 210 cost 30, Tutte
+  12-cage n = 50 cost 376, Foster n = 70 cost 270). c03 metacyclic voltages on Pappus: cost 6-8 at 5,724. c04 cubic
+  Haar graphs of non-metacyclic groups: cost 6 at 6,560 (AGL(1,41) x Z2). Nothing above 5,706.
+- **c05 (4,14): Z3079 x|_1863 Z81 (prime m), hmeta screen of 40 prime-m groups at N 249K-251K, 498,798 VALID**
+  (build_haar2; apsp running). Near miss Z5581 x| Z45 (502,290) cost 1.
+- c06 (4,14) other families at matched N: PGL(2,37) x Z5 cost 2 (253,080), SL(2,37) x Z5 3-4, PSL(2,47) x Z5 8.
+- c09 (5,14): SL(2,53) x Z43 random S 12,798,864 VALID (build_haar2), above the old record, below c11.
+- **c11 (5,14): PSL(2,163) x Z3 with ORBIT "2 2 1" (S = {e, x, ax, y, ay}, a of order 2), 12,991,752 VALID**
+  (haarcheck_gen and build_haar2); random symmetric S: median cost 41, min 10.
+- **c12 (6,14): SL(2,137) x Z37, ORBIT "3 2 0", cost 0 on the FIRST random S (mu 10.3), 190,269,984 VALID**
+  (haarcheck_gen, 210 s). Screen min/median: SL(2,137) x Z37 1/15, SL(2,239) x Z7 3/16, SL(2,79) x Z193 4/49.
+- c13 (6,14) other orbit forms: "6 1 0" degenerate, "2 3 0" cost 1,306, "3 1 3" worse: "3 2 0" stays.
+- **c15 (7,14): SL(2,233) x Z67, ORBIT "3 2 1", 1,694,979,936** (check running); also cost 0 at PSL(2,139) x Z631
+  and PSL(2,191) x Z241; PSL(2,137) x Z661 stalls at 3.
+- c07, c08, c10, c14, c16: pending at the time of writing.
+
+Director, outside the cards: (a) the Foster census of cubic edge-transitive graphs (Potocnik et al.,
+fostercensus.graphsym.net, TableCSS.html and CSS_lcf.txt) lists CSS(6272,3) and CSS(6272,7), semisymmetric cubic graphs
+of diameter 14 on 6,272 vertices: built from LCF, apsp VALID (diameter exactly 14). They are not ours; they set the
+(3,14) bar at 6,272. (b) Following the lab's own (3,10)-(3,12) records (job own-small: regular lifts of 4+4 cubic bases
+over non-abelian groups, joint base+voltage annealing with salift_s), a 60-s salift_s screen at D = 14 over Z113 x|_16 Z7
+(order 791) gave **6,328** (apsp VALID, diameter exactly 14), above the census and the old 5,706. Z41 x| Z20 (820)
+stalls at 6, Z101 x| Z8 (808) at 20. (c) (9,14): PSL(2,241) x Z1429 with three free 3-orbits solved at the first
+evaluation (N = 1.0e10, far below the size-law order ~2.8e10), 20,002,113,120 vertices; haarcheck_gen running. It is
+also the first value for (10,14) by monotonicity in Δ.
+
+Director's reading: cards stop after 6-16 minutes. Round 2 keeps the lift method at Δ = 3 (six cards over base size
+and group family), takes it to Δ = 4 (d08), pushes the round-1 winners at (4,14), (5,14), (6,14), (7,14) to larger N,
+and drops cyclic lifts, larger-girth bases, and the orbit forms "6 1 0", "2 3 0", "3 1 3".

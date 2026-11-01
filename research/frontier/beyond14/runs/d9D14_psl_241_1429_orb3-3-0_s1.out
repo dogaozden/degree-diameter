@@ -1,0 +1,8 @@
+group psl 241 x Z_1429, N=10001056560 (2N=20002113120), rows 29040 x 344389 bits (doubled row 10784 words), memory 5.15 GB, threads 2
+alpha: conj by mat(0,240,1,240), z -> 664 z on Z_1429 (fixed z: 1); ORBIT k=3 m=3 f=0; W=6.28292e+11 lambda=62.823 mu=0.00
+setup 0.0s
+start cost=0 (100.9s per eval)
+RESULT d=9 D=14 group=psl 241 x Z_1429 N=10001056560 vertices=20002113120 best=0 evals=1 steps=0 time=100.9 orbit k=3 m=3 f=0 mu=0.00
+re-evaluation of the best S: cost 0
+wrote runs/d9D14_psl_241_1429_orb3-3-0_s1.txt
+exit 0

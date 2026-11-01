@@ -6,7 +6,7 @@ to BEAT them. Values to beat (graph order = 2N for Haar graphs):
 
 | cell | value to beat | how it was made | size-law mu |
 |---|---:|---|---:|
-| (3,14) | 5,706 | Z317 cyclic voltage lift of the Pappus graph (18 vertices) | 9.2 |
+| (3,14) | 6,272 (census) / 5,706 (lab) | Foster census CSS(6272,7), a semisymmetric graph (not ours; found 22:55 UTC by the director, apsp VALID); the lab's own best is the Z317 lift of the Pappus graph (18 vertices) | 16.9 / 9.2 |
 | (4,14) | 497,042 (N = 248,521) | Haar graph of Z2731 x\|_2400 Z91, random S (hmeta) | 16.5 |
 | (5,14) | 12,795,166 (N = 6,397,583) | Haar graph of Z148781 x\|_85175 Z43, random S (hmeta) | 5.4 |
 | (6,14) | 187,990,656 (N = 93,995,328) | Haar graph SL(2,97) x Z103, S = 2 free alpha-orbits of size 3 (haar_big0 ORBIT="3 2 0") | 8.4 |
@@ -59,7 +59,8 @@ harder). Evaluations are CHEAP here: one cost evaluation takes ~1 ms at (4,14), 
   d6D14_sl_97_103_orb3-2-0_g07.txt, d7D14_psl_223_151_orb3-2-1_h14.txt, ...).
 - Checkers (run on your best find before reporting it as valid):
   Haar graphs up to ~20M vertices: `python3 research/frontier/build_haar2.py SOL` (all families; exit code 0 = valid).
-  Lifts / any edge list: `research/frontier/beyond14/bin/apsp EDGES` (first line n, then "u v" lines).
+  Lifts / any edge list: `research/frontier/beyond14/bin/apsp EDGES d D` (e.g. `apsp g.edges 3 14`; first line n, then
+  "u v" lines; it must print RESULT VALID). (Corrected 22:56 UTC: the first version of this header omitted d D.)
   SL/PSL above 20M vertices: do not check yourself; report the cost-0 solution file and the director runs
   research/frontier/beyond14/bin/haarcheck_gen on it.
 

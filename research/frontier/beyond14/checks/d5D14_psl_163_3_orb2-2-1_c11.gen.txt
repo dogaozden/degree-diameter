@@ -1,0 +1,14 @@
+checker: haarcheck_gen
+command: OMP_NUM_THREADS=1 ./bin/haarcheck_gen sols/d5D14_psl_163_3_orb2-2-1_c11.txt
+start: 2026-11-01T23:01:03Z
+24565db02f2290b3496132606a8c6da70eb118b09803b30fc1dfa15735ba731a  sols/d5D14_psl_163_3_orb2-2-1_c11.txt
+selftest psl 163: |M| = 2165292, index round trip over all elements ok
+selftest group multiplication: associativity, identity, inverse on 20000 random triples ok
+file sols/d5D14_psl_163_3_orb2-2-1_c11.txt
+header: 5 14 psl 163 n 3 N 6495876
+group psl 163 x Z_3, |G| = 6495876 = N, vertices 2N = 12991752; 5 distinct generators
+from (e,A): reached A 6495876/6495876, B 6495876/6495876 within 14; ecc 14; level sizes [1, 5, 20, 80, 320, 1280, 5111, 20408, 81049, 316704, 1160202, 3371847, 5017622, 2785552, 231551]  (7s)
+from (e,B): reached A 6495876/6495876, B 6495876/6495876 within 14; ecc 14; level sizes [1, 5, 20, 80, 320, 1280, 5111, 20408, 81049, 316704, 1159998, 3371847, 5017767, 2785552, 231610]  (14s)
+VALID d=5 D=14 group=psl 163 x Z_3 N=6495876 vertices=12991752 (distinct generators, 5-regular simple; every vertex within 14 of both (e,A) and (e,B); ecc 14; 14s)
+exit: 0
+end: 2026-11-01T23:01:17Z (14 s)
