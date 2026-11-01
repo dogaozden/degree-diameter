@@ -16,3 +16,9 @@ progress run 2 2026-11-01T02:21:42Z: still running. Elapsed about 100 min (start
 progress run 2 2026-11-01T02:46:51Z: still running. Elapsed about 126 min (started 2026-11-01T00:41:09Z), RSS 11.2 GB (steady). Checker prints only at the end. Still running.
 progress run 2 2026-11-01T03:11:59Z: still running. Elapsed about 151 min (started 2026-11-01T00:41:09Z), RSS 11.2 GB (steady). Checker prints only at the end. Still running.
 progress run 2 2026-11-01T03:37:07Z: still running. Elapsed about 176 min (started 2026-11-01T00:41:09Z), RSS 11.2 GB (steady). Checker prints only at the end. Still running.
+
+################ run 2 (the run that completed; run 1 above was lost to the container restart): research/structured/tools/haarcheck_psl research/frontier/sols/d20D10_psl_421_409_orb3_s1.txt B   (built: gcc -O3 -o haarcheck_psl haarcheck_psl.c -lm, master f816dbc; started 2026-11-01T00:41:09Z; single-threaded; stdout complete)
+from (e,B): reached A 15259389180/15259389180, B 15259389180/15259389180 within 10, ecc 10
+HALF-VALID from (e,B) d=20 D=10 group=psl 421 x Z_409 N=15259389180 vertices=30518778360
+[exit 0; wall 11556s; peak RSS 10916 MB]
+time -v (verbatim, from /usr/bin/time -v): Elapsed (wall clock) 3:12:36; Maximum resident set size (kbytes): 11178012; User time 11418.35 s; System time 55.72 s; Minor page faults 2794162; Major page faults 1; Exit status 0
