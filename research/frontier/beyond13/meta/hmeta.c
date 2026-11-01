@@ -162,6 +162,17 @@ int main(int argc, char **argv) {
         double t = now(); i64 c = cost(); printf("EVAL cost=%lld (%.2fs) N=%lld\n", (long long)c, now() - t, (long long)N); return 0; }
     if (getenv("START")) { if (!readsol(getenv("START"))) { fprintf(stderr, "bad START file\n"); return 2; } }
     else for (int i = 1; i < d; i++) do S[i] = rel(); while (!distinct(i));
+    if (getenv("OPT2")) {   /* exhaustive 2-opt from the START S: every pair of slots (i,j), every (x,y) in G^2 */
+        i64 c0 = cost(); fprintf(stderr, "OPT2 from cost %lld (N=%lld)\n", (long long)c0, (long long)N);
+        for (int i = 1; i < d; i++) for (int j = i + 1; j < d; j++) {
+            el si = S[i], sj = S[j]; long ev = 0; double t1 = now();
+            for (i64 x = 1; x < N; x++) { S[i].a = x / K_; S[i].j = x % K_; if (!distinct(i)) continue;
+                for (i64 y = 1; y < N; y++) { S[j].a = y / K_; S[j].j = y % K_; if (!distinct(j)) continue;
+                    i64 c = cost(); ev++;
+                    if (c == 0) { writesol(out); printf("RESULT d=%d D=%d group=meta %lld %lld %lld N=%lld vertices=%lld best=0 opt2 slots=%d,%d evals=%ld\n", d, D, (long long)M, (long long)K_, (long long)R_, (long long)N, (long long)(2 * N), i, j, ev); return 0; } } }
+            fprintf(stderr, "slots %d,%d: %ld evals, no cost 0 (%.0fs)\n", i, j, ev, now() - t1); S[i] = si; S[j] = sj; }
+        printf("RESULT d=%d D=%d group=meta %lld %lld %lld N=%lld best=%lld opt2 exhausted\n", d, D, (long long)M, (long long)K_, (long long)R_, (long long)N, (long long)c0); return 0;
+    }
     double t0 = now(); i64 cur = cost(), best = cur; el BS[64]; memcpy(BS, S, sizeof S);
     fprintf(stderr, "hmeta d=%d D=%d meta %lld %lld %lld N=%lld: start cost=%lld (%.2fs per eval)\n", d, D, (long long)M, (long long)K_, (long long)R_, (long long)N, (long long)cur, now() - t0);
     long evals = 1, moves = 0, since = 0; char bf[600]; snprintf(bf, sizeof bf, "%s.best", out);
