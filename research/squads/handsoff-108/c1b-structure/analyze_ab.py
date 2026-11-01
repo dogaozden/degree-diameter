@@ -5,7 +5,7 @@ for line in open('ab.log', errors='replace'):
     m = re.match(r'CHAIN (\d+) min (\d+) arm (\w) startE (\d+) startstat ([\d.]+) secs (\d+) evals (\d+)', line)
     if m:
         k, mn, arm, se, ss, secs, ev = m.group(1), int(m.group(2)), m.group(3), int(m.group(4)), float(m.group(5)), int(m.group(6)), int(m.group(7))
-        c3 = int(ss // 1000); e_start = ss - 1000 * c3
+        e_start = se; c3 = int(round((ss - se) / 1000.0))   # startstat = 1000*c3 + energy, energy may exceed 1000
         rows.append((int(k), arm, mn, se, c3, e_start, secs, ev))
 print('chains logged:', len(rows))
 def mw(a, b):

@@ -30,3 +30,16 @@ Seeds 108981-108990 (restart = next seed). Own folder; no other folder written.
 ## Final (written by the coordinator, 03:28 UTC)
 - The run ended before 03:25 UTC; no process left. g4.log: 88 chains, min 12 (2 chains), median 21, <=9: 0, <=6: 0. No cost 0, no CLAIM.
 - The worker scheduled a one-shot wake-up message (send_later, 02:18 UTC); it reached the coordinator session instead and is recorded here.
+
+## Final (03:27 UTC; process ended on its own)
+
+- Process 6530 ended at its 4000 s budget (RESULT in g4.out: best=12, evals=8,319,489, time=4000.0). Nothing left alive
+  (the timeout wrapper 6529 is gone too). The monitor expired after 30 min; I re-armed late, so the checks between
+  02:36 and 03:26 were not made. Chain 89 was still running at the end and is not counted.
+- Final counts (88 complete chains, ORBW=3 units): best 12 (2 chains), median 21; <=12: 2; <=9: 0; <=6: 0; <=3: 0.
+  Histogram 12:2 15:4 18:27 21:42 24:12 27:1. Mean chain about 40-45 s.
+- Reference: psl 23 97 pooled median 18, 1 in 87 chains at <=9 (c1-grind/NOTES.md). This run: 0 of 88 at <=9, median 21.
+  Under load (about 5-6 on 4 cores) the wall-clock schedule gives weaker chains, as c1 found; not separately measured.
+- Scoreboard: the first-result line was missed during the run and was added at 03:27 (best 12, plain note says ORBW=3).
+  No line for <=6 (none). No EXDESC run (none <=3). No CLAIM, no records/ file.
+- Mistake (see above): one send_later reminder created at 02:16, trig_01L8kwjnzh9WhB8NcKHg9nDt, not deleted.
