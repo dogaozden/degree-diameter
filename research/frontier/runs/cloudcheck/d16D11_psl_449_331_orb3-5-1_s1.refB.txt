@@ -1,0 +1,4 @@
+machine: vm; nproc=4; free -g: total 15G used 0G free 14G avail 15G; Linux 6.18.44-fc-v185; gcc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0
+sha256: 1467494757357932d28c0e064db3672226ab99a90815580d6ea0f43b83870d68  research/frontier/sols/d16D11_psl_449_331_orb3-5-1_s1.txt
+progress: 2026-11-01 13:46 UTC; STILL RUNNING, elapsed 20s (~0 min); current RSS 1870 MB; no checker output yet (it prints at the end)
+################ reference checker haarcheck_psl (research/structured/tools/haarcheck_psl.c, BFS from (e,B) only); cd research/structured/tools && gcc -O3 -o haarcheck_psl haarcheck_psl.c (binary moved out of the repo); /usr/bin/time -v ./haarcheck_psl research/frontier/sols/d16D11_psl_449_331_orb3-5-1_s1.txt B   (stdout: pending)
