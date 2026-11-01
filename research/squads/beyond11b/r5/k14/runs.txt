@@ -1,0 +1,14 @@
+c01 seed=101 K=4 start=s0_f677.txt shape=(4 12) spec=[meta 677 52 12 1] :: start cost=3 :: RESULT d=4 D=12 group=meta 677 52 12 x Z_1 N=35204 best=3 evals=76153 time=95.1
+c02 seed=201 K=8 start=- shape=(4 12) spec=[meta 677 52 12 1] :: start cost=25 :: RESULT d=4 D=12 group=meta 677 52 12 x Z_1 N=35204 best=3 evals=79457 time=95.0
+c03 seed=202 K=4 start=c02.best.txt shape=(4 12) spec=[meta 677 52 12 1] :: start cost=3 :: RESULT d=4 D=12 group=meta 677 52 12 x Z_1 N=35204 best=3 evals=74713 time=95.1
+c04 seed=301 K=4 start=- shape=(5 11) spec=[meta 5023 31 2886 1] :: start cost=42 :: RESULT d=5 D=11 group=meta 5023 31 2886 x Z_1 N=155713 best=4 evals=5853 time=95.1
+c05 seed=302 K=8 start=c04.best.txt shape=(5 11) spec=[meta 5023 31 2886 1] :: start cost=4 :: RESULT d=5 D=11 group=meta 5023 31 2886 x Z_1 N=155713 best=4 evals=5521 time=95.1
+c06 seed=401 K=4 start=c05.best.txt shape=(5 11) spec=[meta 5023 31 2886 1] :: start cost=4 :: RESULT d=5 D=11 group=meta 5023 31 2886 x Z_1 N=155713 best=4 evals=5185 time=95.1
+c07 seed=501 K=8 start=c03.best.txt shape=(4 12) spec=[meta 677 52 12 1] :: start cost=3 :: RESULT d=4 D=12 group=meta 677 52 12 x Z_1 N=35204 best=3 evals=72817 time=95.1
+c08 seed=602 K=4 start=- shape=(5 11) spec=[meta 5023 31 2886 1] :: start cost=4488 :: RESULT d=5 D=11 group=meta 5023 31 2886 x Z_1 N=155713 best=6 evals=5309 time=95.0
+c09 seed=603 K=4 start=c08.best.txt shape=(5 11) spec=[meta 5023 31 2886 1] :: start cost=6 :: RESULT d=5 D=11 group=meta 5023 31 2886 x Z_1 N=155713 best=6 evals=5297 time=95.0
+c10 seed=701 K=2 start=c05.best.txt shape=(5 11) spec=[meta 5023 31 2886 1] :: start cost=4 :: RESULT d=5 D=11 group=meta 5023 31 2886 x Z_1 N=155713 best=4 evals=6753 time=95.1
+c11 seed=801 K=8 start=- shape=(4 12) spec=[meta 677 52 12 1] :: start cost=12 :: RESULT d=4 D=12 group=meta 677 52 12 x Z_1 N=35204 best=1 evals=82905 time=95.1
+c12 seed=802 K=4 start=c11.best.txt shape=(4 12) spec=[meta 677 52 12 1] :: start cost=1 :: RESULT d=4 D=12 group=meta 677 52 12 x Z_1 N=35204 best=1 evals=75265 time=95.1
+c13 seed=803 K=8 start=c12.best.txt shape=(4 12) spec=[meta 677 52 12 1] :: start cost=1 :: RESULT d=4 D=12 group=meta 677 52 12 x Z_1 N=35204 best=1 evals=77265 time=95.1
+c14 seed=804 K=4 start=c13.best.txt shape=(4 12) spec=[meta 677 52 12 1] :: start cost=1 :: RESULT d=4 D=12 group=meta 677 52 12 x Z_1 N=35204 best=1 evals=80957 time=95.1

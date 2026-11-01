@@ -1,2 +1,6 @@
 group meta 3061 51 16 x Z_1, N=156111, identity 0, H order 51, rows 3061, threads 1, setup 0.14s
 start cost=62
+t=30 steps=697 evals=2789 cost=8 best=8 T=0.53
+t=60 steps=1416 evals=5665 cost=4 best=4 T=0.19
+t=90 steps=2273 evals=9093 cost=4 best=4 T=0.15
+RESULT d=5 D=11 group=meta 3061 51 16 x Z_1 N=156111 best=4 evals=9577 time=95.1

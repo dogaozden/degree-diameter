@@ -1,1 +1,12 @@
 start 13:36 card k03 (5,12) near misses above N=525453
+13:39:30 tag=f302 seed=302 K=4 start=- spec=meta 11701 45 1063 rc=1 :: RESULT d=5 D=12 group=meta 11701 45 1063 x Z_1 N=526545 best=3 evals=3537 time=95.1
+13:41:09 tag=f303 seed=303 K=8 start=- spec=meta 8663 61 43 rc=1 :: RESULT d=5 D=12 group=meta 8663 61 43 x Z_1 N=528443 best=2 evals=4673 time=95.1
+13:42:48 tag=f304 seed=304 K=8 start=- spec=meta 8969 59 205 rc=1 :: RESULT d=5 D=12 group=meta 8969 59 205 x Z_1 N=529171 best=2 evals=4289 time=95.2
+13:44:20 tag=c303a seed=305 K=8 start=s_f303.txt spec=meta 8663 61 43 rc=0 :: RESULT d=5 D=12 group=meta 8663 61 43 x Z_1 N=528443 best=0 evals=4369 time=88.3
+13:47:55 tag=c304a seed=306 K=8 start=s_f304.txt spec=meta 8969 59 205 rc=1 :: RESULT d=5 D=12 group=meta 8969 59 205 x Z_1 N=529171 best=2 evals=4225 time=95.1
+13:49:34 tag=c304b seed=307 K=4 start=s_c304a.txt spec=meta 8969 59 205 rc=1 :: RESULT d=5 D=12 group=meta 8969 59 205 x Z_1 N=529171 best=2 evals=3657 time=95.1
+13:51:16 tag=f308 seed=308 K=8 start=- spec=meta 8969 59 205 rc=1 :: RESULT d=5 D=12 group=meta 8969 59 205 x Z_1 N=529171 best=2 evals=4145 time=95.1
+13:52:54 tag=f309 seed=309 K=8 start=- spec=meta 11701 45 1063 rc=1 :: RESULT d=5 D=12 group=meta 11701 45 1063 x Z_1 N=526545 best=3 evals=3041 time=95.0
+13:54:32 tag=c308a seed=310 K=4 start=s_f308.txt spec=meta 8969 59 205 rc=1 :: RESULT d=5 D=12 group=meta 8969 59 205 x Z_1 N=529171 best=1 evals=5117 time=95.0
+13:56:11 tag=c308b seed=311 K=8 start=s_c308a.txt spec=meta 8969 59 205 rc=1 :: RESULT d=5 D=12 group=meta 8969 59 205 x Z_1 N=529171 best=1 evals=4649 time=95.0
+13:57:50 tag=c308c seed=312 K=4 start=s_c308b.txt spec=meta 8969 59 205 rc=1 :: RESULT d=5 D=12 group=meta 8969 59 205 x Z_1 N=529171 best=1 evals=4377 time=95.1

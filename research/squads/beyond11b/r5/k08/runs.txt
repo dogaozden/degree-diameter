@@ -1,0 +1,12 @@
+c1 seed101 K4 exit 1
+c4 (29,7,16)x(307,17,273) seed201 K4 exit 1
+c6 (43,3,36)x(223,37,64) seed301 K8 exit 1
+c7 (37,9,16)x(139,23,64) seed401 K4 exit 1
+c3 (89,11,78)x(47,23,4) seed501 K4 exit 1
+c1 resume from c1_s101.best seed102 K4 exit 1
+c1 resume from c1_s102.best seed103 K4 exit 1
+c2 (19,3,7)x(883,21,729) seed601 K8 exit 1
+c2 resume from c2_s601.best seed602 K8 exit 1
+c2 resume from c2_s602.best seed603 K4 exit 1
+c1 resume from c1_s103.best seed104 K8 exit 1
+c2 resume from c2_s603.best seed604 K8 exit 1

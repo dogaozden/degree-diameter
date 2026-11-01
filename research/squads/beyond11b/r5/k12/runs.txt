@@ -1,0 +1,13 @@
+f104729k53 seed=1 K=4 p=104729 k=53 r=2558 N=5550637 start=fresh rc=124 best=10 :: RESULT d=7 D=11 group=meta 104729 53 2558 x Z_1 N=5550637 best=10 evals=125 time=92.8
+f90403k61 seed=1 K=4 p=90403 k=61 r=1387 N=5514583 start=fresh rc=124 best=10 :: RESULT d=7 D=11 group=meta 90403 61 1387 x Z_1 N=5514583 best=10 evals=153 time=92.9
+f93811k59 seed=1 K=4 p=93811 k=59 r=331 N=5534849 start=fresh rc=124 best=8 :: RESULT d=7 D=11 group=meta 93811 59 331 x Z_1 N=5534849 best=8 evals=129 time=92.8
+f96787k57 seed=1 K=4 p=96787 k=57 r=1936 N=5516859 start=fresh rc=124 best=10 :: RESULT d=7 D=11 group=meta 96787 57 1936 x Z_1 N=5516859 best=10 evals=137 time=91.7
+f100981k55 seed=1 K=4 p=100981 k=55 r=1490 N=5553955 start=fresh rc=124 best=8 :: RESULT d=7 D=11 group=meta 100981 55 1490 x Z_1 N=5553955 best=8 evals=129 time=91.4
+c93811k59a seed=2 K=4 p=93811 k=59 r=331 N=5534849 start=/home/user/degree-diameter/research/squads/beyond11b/r5/k12/f93811k59.best.txt rc=124 best=8 :: RESULT d=7 D=11 group=meta 93811 59 331 x Z_1 N=5534849 best=8 evals=133 time=90.1
+c100981k55a seed=3 K=4 p=100981 k=55 r=1490 N=5553955 start=/home/user/degree-diameter/research/squads/beyond11b/r5/k12/f100981k55.best.txt rc=124 best=2 :: RESULT d=7 D=11 group=meta 100981 55 1490 x Z_1 N=5553955 best=2 evals=117 time=92.6
+c100981k55b seed=4 K=4 p=100981 k=55 r=1490 N=5553955 start=/home/user/degree-diameter/research/squads/beyond11b/r5/k12/c100981k55a.best.txt rc=124 best=2 :: RESULT d=7 D=11 group=meta 100981 55 1490 x Z_1 N=5553955 best=2 evals=113 time=92.2
+c93811k59b seed=5 K=4 p=93811 k=59 r=331 N=5534849 start=/home/user/degree-diameter/research/squads/beyond11b/r5/k12/f93811k59.best.txt rc=124 best=8 :: RESULT d=7 D=11 group=meta 93811 59 331 x Z_1 N=5534849 best=8 evals=153 time=90.3
+c100981k55c seed=6 K=8 p=100981 k=55 r=1490 N=5553955 start=/home/user/degree-diameter/research/squads/beyond11b/r5/k12/c100981k55b.best.txt rc=124 best=2 :: RESULT d=7 D=11 group=meta 100981 55 1490 x Z_1 N=5553955 best=2 evals=137 time=97.9
+c100981k55d seed=7 K=4 p=100981 k=55 r=1490 N=5553955 start=/home/user/degree-diameter/research/squads/beyond11b/r5/k12/c100981k55c.best.txt rc=124 best=2 :: RESULT d=7 D=11 group=meta 100981 55 1490 x Z_1 N=5553955 best=2 evals=125 time=93.4
+c93811k59c seed=8 K=4 p=93811 k=59 r=331 N=5534849 start=/home/user/degree-diameter/research/squads/beyond11b/r5/k12/c93811k59b.best.txt rc=124 best=6 :: RESULT d=7 D=11 group=meta 93811 59 331 x Z_1 N=5534849 best=6 evals=137 time=93.6
+c100981k55e seed=9 K=4 p=100981 k=55 r=1490 N=5553955 start=/home/user/degree-diameter/research/squads/beyond11b/r5/k12/c100981k55d.best.txt rc=124 best=2 :: RESULT d=7 D=11 group=meta 100981 55 1490 x Z_1 N=5553955 best=2 evals=125 time=90.2
