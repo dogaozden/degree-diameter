@@ -19,7 +19,8 @@ One heavy process at a time, nice -n 10, THREADS=1. python-igraph (BLISS) instal
    (cyclic of prime order P, acting fixed-point-freely on points and lines) and annealing on orbit variables works far
    better than unrestricted annealing (section 4). Verified valid lifts (explicit BFS, indep.c DIAMETER_OK):
    q=3 (Delta 6): 30 copies (21,840 vertices; table 20). q=4 (Delta 7): 20 copies (54,600; table 20, equal).
-   q=5 (Delta 8): 20 copies (156,240; table 25; 21 reached cost 4 units, not valid). q=7 (Delta 10): 20 copies not
+   q=5 (Delta 8): 21 copies (164,052 vertices, verified; table 25) with a 14,000-step schedule (T0 0.8, found at step
+   ~11,000); with the 8,000-step schedule 21 stalled at 4 units. q=7 (Delta 10): 20 copies not
    reached in 2,500 steps (best 13 units = cost 559); table 30 is far off with this method (section 4.4).
    None of this is a record: the repo's current (6,8) record is 31,680 vertices (research/RESULTS.md, Oct 23 22:11 PT).
 
@@ -113,13 +114,15 @@ Calibration of E against random starts (point cost, full random hexagon voltages
 | 4 | 7 | 20 | Z13 (105) | 32 | 8000 | cost 13598 (1046 units) | runs/sym_q4_p13_m32_s108.* |
 | 4 | 7 | 20 | Z7 (195) | 24 | 1190 of 8000 (stopped) | best 61 units | runs/sym_q4_p7_m24_s109.log |
 | 5 | 8 | 25 | Z31 (126) | 20 | 1866 | valid (indep DIAMETER_OK), 156,240 vertices | runs/sym_q5_p31_m20.sol |
-| 5 | 8 | 25 | Z31 (126) | 21 | 8000 | best 4 units (124) | runs/sym_q5_p31_m21_s111.* |
+| 5 | 8 | 25 | Z31 (126) | 21 | 8000 (T0 1.0) | best 4 units (124) | runs/sym_q5_p31_m21_s111.* |
+| 5 | 8 | 25 | Z31 (126) | 21 | 14000 (T0 0.8), found at about 11,000 | valid (indep DIAMETER_OK), 164,052 vertices | runs/sym_q5_p31_m21_s113.sol |
 | 5 | 8 | 25 | Z31 (126) | 22 | 8000 | best 17 units (527) | runs/sym_q5_p31_m22.* |
+| 5 | 8 | 25 | Z31 (126) | 22 | 14000 (T0 0.8) | best 14 units (434), not valid | runs/sym_q5_p31_m22_s114.log |
 | 5 | 8 | 25 | Z31 (126) | 25 | 6148 (stopped mid-schedule) | best 294 units (9114) | runs/sym_q5_p31_m25.log |
 | 7 | 10 | 30 | Z43 (456) | 20 | 2372 of 2500 (time limit 40 min) | best 13 units (559), hexeval full check 559 | runs/sym_q7_p43_m20.* |
 
 Unrestricted annealing for comparison: q=3 Z24 valid (c6, 2133 steps), Z28 stalls at 12 (c6); q=5 Z15 valid, Z16 stalls
-at 30 (c6); q=7 best 17 (c6). So K-symmetry gives +6 copies at q=3 (30 against 24) and +5 at q=5 (20 against 15); at q=4 it
+at 30 (c6); q=7 best 17 (c6). So K-symmetry gives +6 copies at q=3 (30 against 24) and +6 at q=5 (21 against 15); at q=4 it
 gives the same 20 as the unrestricted search.
 
 Unrestricted q=4: c6 Z20 valid; the symmetric Z20 lift above is the same table value found with 105 orbit variables.
@@ -129,10 +132,14 @@ Unrestricted q=4: c6 Z20 valid; the symmetric Z20 lift above is the same table v
   with 1/P), so the symmetric gain is in the search, not in the existence threshold.
 - Symmetric annealing at q=4 (K=Z13, Z7) reaches 20 but not 24: the gain is not uniform across q. q=3 (small N, many
   orbits per copy) is the favourable case.
-- q=5 frontier with this annealer: 20 valid, 21 cost 4 units, 22 cost 17 units. Table 25 is not reached.
-- Frontier by q (this annealer, 8000-step schedules unless noted): q=3 30 (table 20), q=4 20 (table 20), q=5 20
-  (table 25), q=7 not 20 (table 30; 2500 steps). The gap to the table grows with q, consistent with the first-moment
+- q=5 frontier with this annealer: 21 valid (longer schedule); 22 not reached (14 units after 14,000 steps). Table 25 not reached.
+- Frontier by q (this annealer, 8000-step schedules unless noted): q=3 30 (table 20), q=4 20 (table 20), q=5 21
+  (table 25; 14,000 steps; 22 not reached), q=7 not 20 (table 30; 2,372 steps). The gap to the table grows with q, consistent with the first-moment
   picture (section 1).
+
+### 4.5 q=5, K = Z31, m = 22 (14,000 steps, T0 0.8)
+- Final: best 14 units = cost 434 (plain), not valid (runs/sym_q5_p31_m22_s114.log). So the symmetric frontier at q=5 with
+  this annealer is 21 (valid) and 22 is not reached in 14,000 steps.
 
 ### 4.4 q=7, K = Z43 (456 orbits)
 - One symmetric evaluation takes about 1.1 s (456 sources, 3 lanes of 20 bits per pass, early abort). Run at m=20,
@@ -143,7 +150,7 @@ Unrestricted q=4: c6 Z20 valid; the symmetric Z20 lift above is the same table v
 
 - Random-like constructions cannot reach m = 30 at q = 7 (E/L = 1.21); 31 needs anti-correlated walk sums.
 - The symmetric search is the first route in this session that goes past the unrestricted annealer's frontier. Its
-  frontier falls with q (q=3: 30 against table 20; q=5: 20 against table 25); whether it reaches 30 at q=7 needs far
+  frontier falls with q (q=3: 30 against table 20; q=5: 21 against table 25); whether it reaches 30 at q=7 needs far
   more CPU than one hour per run. A longer q=7 run (or a larger group: composite orders were not found by random
   words) would be the next step.
 - Checks to use for any candidate: explicit BFS (src/indep.c), and walk dispersion (src/wcount.c): random survivors give

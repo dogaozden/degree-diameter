@@ -10,8 +10,9 @@ order-12 subgroups: C = 501 plain (A4). No cost 0, no record, no CLAIM.
 The card says "Degree 10 needs ONE regular double coset". That cannot hold with |H| = 12. A double coset H z H has
 c = |HzH|/|H| = 12/k left cosets, k = |H ∩ z H z^-1| in {1,2,3,4,6,12}, so c is in {12,6,4,3,2,1}. A regular
 double coset (c = 12) gives degree 12, too many. Degree 10 needs a SET D of double cosets with c-values summing to 10,
-and all of them are non-regular (k >= 2) except one reading of the card. So the families are sets of several
-non-regular double cosets, which c5b found to be 3-10x worse than regular ones. I scanned every such set exactly.
+so every double coset in D has k >= 2 (non-regular). c5b found such families 3-10x worse than regular ones. I scanned
+every such set exactly. (A two-subgroup version, H of order 12 against K of order 10, gives biregular degrees 10/12,
+which the card does not allow.)
 
 ## Subgroups of order 12 in PGL(2,193) (generators from mkgens.py, closure checked)
 
@@ -54,7 +55,8 @@ they replace the samples. Medians are over sets (weighted by class size). "P" = 
 | D6 square | 40,480 (6+3+1 1,984; 6+2+2 26,040; 6+2+1+1 3,720; 3+3+3+1 8; 3+3+2+2 630; 3+3+2+1+1 90; 3+2+2+2+1 3,640; 2^5 3,003; 2^4+1+1 1,365) | 20,316 | 900 (6+3+1) | 900 (exact) | 34,273 | 2,856 |
 | C12 | 64,512,240 (all c1 types) | - | - | disconnected | - | - |
 
-Family minima are exact: for every class not known exactly, the lower bound P is above the family minimum found.
+Family minima are exact: every class without an exact C has P >= the family minimum found (A4 and D6 nonsquare:
+equal, so they cannot go lower; D6 square: next lower bound 1320 > 900). "disconnected-like" = uBA > 100,000.
 Reference: the K family (h = 10, one regular double coset) has min 4 and median 340 plain (34 per unit of 10).
 
 Per partition (median P in plain vertices):
@@ -64,15 +66,16 @@ Per partition (median P in plain vertices):
   3+3+2+2 median 64,188 (min P 9,000); 3+2+2+2+1 median 229,740; 2^5 and 2^4+1+1 disconnected.
 
 Details of the minima (plain units):
-- A4: min C 501 for class 382.45928 (self-inverse: uBA 501, uAA 0, uBB 0); also 46305.49590 (non-self-inverse, C 501,
-  B-root checked with scanB).
-- D6 nonsquare: min C 1,266 for class 11305.34046.48016 (self-inverse: uBA 1266, uAA 0, uBB 0).
-- D6 square: min C 900 for classes 0.37371.49813 and 23617.38750.45261 (non-self-inverse; B-root: uBB 0, uBA 898,
-  uAA 2). Next exact: 964, 984, 1090, 1129.
+- A4 top exact (B-root for P <= 1500 done): C 501 for classes 382.45928 (self-inverse, uBA 501) and 46305.49590
+  (uBB 0, uBA 501); next 527 (23673.49953, 380.49872).
+- D6 nonsquare top exact (B-root for P <= 2200 done): C 1,266 for 11304.34241.44927 and 11305.34046.48016; next 1464.
+- D6 square top exact (B-root for P <= 2200 done): C 900 for 0.37371.49813 and 23617.38750.45261 (uBB 0, uBA 898,
+  uAA 2); next 964 (0.33399.49813, 38750.45261.45417), 984, 1090.
 
-Verdict: none of the three h = 12 families gets near 0 (best 501 plain, A4, 125 times K's min 4). Non-regular double
-cosets (k >= 2) create short relations that make the orbits collapse; the regular double coset of the h = 10 family
-is the reason K is much better. A cost-0 graph on 1,198,144 vertices was not found in any of these families.
+Verdict: none of the three h = 12 families gets near 0 (best 501 plain, A4, about 125 times K's min 4). Every set
+has non-regular double cosets (k >= 2), and that is consistent with the collapse we see (many sets disconnected,
+the rest with uBA in the hundreds or thousands). The K family's regular double coset is the likely reason it is much
+better (a hypothesis, not checked). No cost-0 graph on 1,198,144 vertices exists in these three families.
 
 ## Files
 
@@ -83,11 +86,11 @@ is the reason K is much better. A cost-0 graph on 1,198,144 vertices was not fou
 
 ## Scoreboard
 
-- One line: A4 full scan, best exact C = 501 plain (not a record). The other families did not beat it.
+- One line: A4 full scan, best exact C = 501 plain (not a record). D6 nonsquare (1266) and D6 square (900) are worse; no line.
 
 ## Next steps (not done)
 
-- Nothing from this card can reach cost 0 with h = 12 in PGL(2,193): all families are exhausted.
-- If the squad wants more h = 12 candidates, the only other order-12 subgroup types in PGL(2,q) are C12 (dead) and the
-  two D6 classes and A4 (done). Other degrees (for example a degree-10 set with c-values 12-free from |H| = 15, 20, or
-  H in PGL(2,q) with other q) would need a new screen.
+- Nothing from this card can reach cost 0 with h = 12 in PGL(2,193): all three subgroup classes are exhausted and C12
+  is disconnected.
+- Among primes q < 1000, PGL(2,193) is the only PGL(2,q) with N = |G|/12 in [588,241, 600,000]. (PSL(2,q) has
+  N half as big: no prime q in range.) A larger q (N above 600,000) is allowed but outside this card.
