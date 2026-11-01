@@ -340,3 +340,32 @@ the (6,16) check was killed by the restart and rerun. Found that the scheduler's
 Kept: closing saved cost-2 states (two of three Haar raises), composite n for symmetric lifts (e06), quotient shapes
 (Tutte 8-cage and Foster share one; quotgen.py generalizes the sweeps). Dropped: order-3 Gray, order-5 Foster, Dyck,
 Nauru, quartic symmetric lifts, even orders, products.
+
+## 2026-11-01 23:33 UTC, beyond-d15, round 3 (16 cards, research/squads/beyond15/r3/)
+
+Cards, one line each, best score:
+- k01 Tutte 8-cage composite n (3,15)/(3,16): n = 403 stays at cost 2; 394-420 and 683-701 worse.
+- k02 Gray order-9 composite n (3,16): cost 2 at n = 381 (lambda 22) and n = 399 (lambda 4); the director chains them.
+- **k03 Tutte/Foster quotient shape with other k (quotgen.py): (3,15) 11,802**, Z281 x|_59 Z7 with 6 orbits (EXH); apsp VALID (card and director).
+- k04 Gray quotient shape with other k: k = 13, pattern [8,8,4,11], n = 158 (12,324) at cost 2 (30-s anneals); D = 16 k = 13 n = 265 cost 6.
+- k05 cubic metacyclic Haar graphs with composite m (hmeta d = 3): cost 263+; composite m is weak.
+- k06 Tutte 12-cage at n = 143-175: cost 32+.
+- k07 4-orbit (Desargues-shape) quotient with composite n: cost 10.
+- l01 (4,15) k 37-137: Z12721 x| Z53 cost 4.
+- l02 (4,16) k 61-83: Z27337 x| Z67 cost 2 (director chains it). The card rewrote other cards' scoreboard lines with sed (path expansion only).
+- l03 (4,15) k 31-59: Z11447 x| Z59 cost 2 (director chains it).
+- l04 (4,16) k 107-127: cost 2-4, below the cell.
+- **m01 (5,16) 172,011,046**: closed r1/c02's cost-2 state Z569573 x|_342015 Z151 with one 80-s link; metacheck VALID (card and director).
+- m02 (5,15): closed r2/g03's cost-4 state Z171799 x| Z137 = 47,072,926 VALID, but below the cell.
+- m03 (5,16) k = 401-997: (reported after the log entry).
+- **m04 (5,15) 47,587,354**: Z76507 x|_75438 Z311 (mu 7.0), fresh start + one link; metacheck VALID (card and director).
+- w03 analysis: the minimum number of distinct net traversal vectors per endpoint (Fact 2 of beyond-d13 THEORY.md)
+  ranks the bases as the achieved n do (Desargues > Tutte 8-cage > Gray > Foster), achieved n / bound ~ 0.16-0.22;
+  the ratio distinct/walks does not (research/squads/beyond15/r3/w03/table.tsv).
+
+Director: (6,16) 4,021,844,904 haarcheck_gen VALID (676 s; rerun after the restart); rechecked every card find above;
+spliced the eight rows into BEYOND_TABLE.md; closers on the (4,15), (4,16), (5,15), (5,16) cost-2 states (Z170971 x| Z139
+did not close in 10 links); the only three 6-vertex cubic quotients are the Tutte/Foster shape, the Gray shape and K3,3
+(enumerated), so round 4 adds K3,3. One card's turn showed an interrupt-session tool call (not requested; no effect seen).
+Kept: quotient shapes with other k (two of the three cubic raises came from that view), closers on cost-2 states (two Haar
+raises). Dropped: composite-m cubic Haar, Tutte 12-cage, 4-orbit composite n.

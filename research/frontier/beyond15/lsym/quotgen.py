@@ -66,7 +66,7 @@ for k in range(klo, khi + 1):
                 mc = int(line[0].split('min_cost=')[1].split()[0]) if 'min_cost=' in line[0] else int(line[0].split('best=')[1].split()[0])
                 print('RUN', k, js, n, l, nv * k * n, 'min_cost', mc, flush=True)
                 if mc == 0: print('FOUND', k, js, n, l, nv * k * n, base, flush=True)
-                else:
+                elif mc > 4:
                     for ext in ('.best', '.edges'):
                         try: os.remove(tag + ext)
                         except FileNotFoundError: pass
