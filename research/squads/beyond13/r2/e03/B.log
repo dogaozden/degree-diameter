@@ -1,0 +1,8 @@
+group meta 1063849 19 344247 x Z_1, N=20213131, identity 0, H order 19, rows 1063849, threads 1, setup 21.92s
+wide rows: no cyclic subgroup of order >= 64 found (best 19); using haar_gen3's evaluation
+alpha: meta scaling a -> 287654 a, z -> 0 z on Z_1
+ORBIT k=3 m=2 f=0: |Fix(alpha)| = 18 (+e); mu = 5.61, mu/k = 1.87, fixed-point misses ~ 0.25
+start cost=16423914
+t=132 steps=1 evals=9 cost=16200862 best=16200862 T=0.15
+t=305 steps=2 evals=17 cost=16200862 best=16200862 T=0.15
+RESULT d=6 D=13 group=meta 1063849 19 344247 x Z_1 N=20213131 best=16200862 evals=17 time=309.2 orbit k=3 m=2 f=0 fix=18

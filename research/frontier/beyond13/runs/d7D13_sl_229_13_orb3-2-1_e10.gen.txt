@@ -1,0 +1,11 @@
+checker: haarcheck_gen
+command: ./bin/haarcheck_gen runs/d7D13_sl_229_13_orb3-2-1_e10.out
+start: 2026-11-01T12:19:52Z
+sha256 e52e247f4a92a474f49ff0d5d438660ba0b557bbdfd4a8e24311ca881ff3f17c  ./bin/haarcheck_gen
+sha256 0e13d6f19d91242200509344c45e5b0085a1a646a0c22b7129c3e8aac3aadf34  runs/d7D13_sl_229_13_orb3-2-1_e10.out
+selftest sl 229: |M| = 12008760, index round trip over all elements ok
+selftest group multiplication: associativity, identity, inverse on 20000 random triples ok
+file runs/d7D13_sl_229_13_orb3-2-1_e10.out
+header: 7 13 sl 229 n 13 N 156113880
+group sl 229 x Z_13, |G| = 156113880 = N, vertices 2N = 312227760; 7 distinct generators
+from (e,A): reached A 156113880/156113880, B 156113880/156113880 within 13; ecc 13; level sizes [1, 7, 42, 252, 1512, 9072, 54414, 326125, 1945814, 11289432, 55945242, 134805355, 98166855, 9683637]  (103s)
