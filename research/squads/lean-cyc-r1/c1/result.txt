@@ -1,0 +1,21 @@
+PASS parse: outA3400 has 20 rows :: rows=20
+PASS parse: each row has 3 arcs :: row lengths=[(3, 20)]
+PASS shape: n == b*m :: n=3400 b=20 m=170
+PASS shape: all u < b and beta < m
+PASS parse: side3400 has 20 entries :: len=20
+info: directed arcs=10200, raw loops=0
+PASS simple: each out-list is loop-free with distinct targets
+PASS simple: no loop in symmetric closure
+PASS lift: symmetric edge count == 5100 (3400*3/2) :: |E|=5100
+PASS degree: every vertex has exactly 3 neighbours :: degree counts={3: 3400}
+PASS edge file: first line is n=3400 :: header=3400
+PASS edge file: 5100 edge lines, no loops, no duplicates :: lines=5100 loops=0 distinct=5100
+PASS edge file == lift edge set :: only_in_lift=0 only_in_file=0
+PASS vertices in edge file all in 0..n-1
+PASS bipartite: BFS 2-colouring exists
+PASS bipartite: Lean side3400 (by base vertex) is a proper colouring
+PASS connected: BFS from every vertex reaches all 3400 vertices
+PASS diameter: max eccentricity == 13 (all-pairs BFS) :: diameter=13 radius=13
+time: 2.6s
+FAILED: none
+SCORE 1

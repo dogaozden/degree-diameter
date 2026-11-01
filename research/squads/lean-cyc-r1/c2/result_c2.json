@@ -1,0 +1,72 @@
+{
+ "card": "c2",
+ "file": "N5706.lean",
+ "n": 5706,
+ "m": 317,
+ "D_stated": 14,
+ "deg_stated": 3,
+ "lean_rows": 18,
+ "lean_row_lengths": [
+  [
+   3,
+   18
+  ]
+ ],
+ "lean_side_len": 18,
+ "raw_arcs": 17118,
+ "raw_loops": 0,
+ "raw_outdeg_distinct_all_3": true,
+ "raw_arcs_symmetric": true,
+ "lift_degree_hist": [
+  [
+   3,
+   5706
+  ]
+ ],
+ "lift_degree_all_stated": true,
+ "lift_undirected_edges": 8559,
+ "lift_simple_no_loops": true,
+ "edgefile_n": 5706,
+ "edgefile_lines_edges": 8559,
+ "edgefile_duplicates": 0,
+ "edgefile_out_of_range": 0,
+ "edgefile_loops": 0,
+ "edgefile_unique_edges": 8559,
+ "lift_eq_edgefile": true,
+ "lift_minus_file": 0,
+ "file_minus_lift": 0,
+ "edgefile_degree_hist": [
+  [
+   3,
+   5706
+  ]
+ ],
+ "edgefile_degree_all_stated": true,
+ "connected_colouring_reach": 5706,
+ "bipartite_2colouring_ok": true,
+ "lean_side5706_is_proper_colouring": true,
+ "side5706_true_count": 9,
+ "bfs_sources": 5706,
+ "disconnected_sources": 0,
+ "ecc_hist": [
+  [
+   14,
+   5706
+  ]
+ ],
+ "max_ecc_diameter": 14,
+ "bfs_seconds": 8.3,
+ "checks": {
+  "n_5706": true,
+  "simple_no_loops": true,
+  "degree_3_all_vertices": true,
+  "lift_eq_edgefile": true,
+  "bipartite": true,
+  "connected": true,
+  "diameter_exactly_14": true
+ },
+ "raw_arcs_symmetric_flag": true,
+ "score": 1,
+ "failed": [],
+ "total_seconds": 8.3
+}
