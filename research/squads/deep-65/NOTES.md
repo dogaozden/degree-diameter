@@ -38,3 +38,19 @@ cost 2 is the global minimum, not a local one.
 Validation of the reduction: NORED=1 (all subgroup pairs, all subsets, no symmetry) and the reduced search agree on
 existence and best value for all 157 groups of orders 24-56 with d = 4 (10 with solutions, 147 without). Solutions
 found there rebuild (hubeval) to graphs that apsp.c calls VALID at D = 5 and INVALID at D = 4 (n = 70, d = 4).
+
+### All 23 groups of order 294 (n = 686): closed
+tools/hubex.c on every SmallGroup(294, i) (one class of order-6 subgroups in each; S3 hubs where those are the order-6
+subgroups). No solution in any group. Best missing count (1)+(4) among subsets passing (2),(3),(5),(6):
+294_11 2, **294_12 3** (t18 tabu had 4), 294_7 7 ((C7 x C7):S3, S3 hubs; c26 also found 7), 294_17 16, 294_1 17,
+294_9 18, 294_8 19, 294_14 21, 294_13 28, 294_10 66; the other 12 groups have no S passing (2),(3),(5),(6) at all.
+Runs: 6 to 86 s per group. So the 1,6|1,6 family has no graph of diameter 5 on 686 vertices.
+
+## The cost-2 graph as a lift
+nauty: Aut(cost-2 graph) has order exactly 294 (4 orbits), so it is not part of a more symmetric object.
+The normal C7 x C7 of SmallGroup(294,11) meets the hub subgroups trivially, so it acts freely on all four orbits: the
+graph is a regular lift of a 14-vertex base (6 + 1 per side: a_i ~ b_(i+u) three times, b_(i+v), b_(i+w), hub; the
+hub alpha ~ all b_j) by C7 x C7 (tools/hub2lift.py writes it in the vl format of shared/tabu.c; lift cost 12 = 6 A0
+sources x 2). In that bigger family (29 free voltages): shared/kopt K = 2 from the cost-2 state, 900,792 candidates,
+no cost-0 lift; tabu from random voltages reaches only 76 in 90 s and tabu from the cost-2 state stays at 12.
+So breaking the C6 symmetry does not open a way down; the symmetric family is the better search space.
