@@ -124,7 +124,7 @@ apsp.c on H(4) and on the Theorem D graphs at q = 5 and 7, and rejects D − 1.
 - Theorem D at q = 17 (thmd19/thmd_auto.c, the r1/c08 builder of the previous job plus automorphisms): exactly the torus
   elements with a = 1 preserve the level function (the plane X0 + cX4 = 0, the Hermitian spread, L_v and the exact
   whisker set), so they lift to automorphisms of the doubled graph; one generator of order 16, 200,486 orbit
-  representatives. Result: see the check file.
+  representatives. Result: VALID, diameter exactly 6 (83 CPU-minutes on 3 threads).
 Rebuild: `cd research/frontier/beyond/hex6 && gcc -O3 -o hexgen2 hexgen2.c && gcc -O3 -o hexauto hexauto.c && gcc -O3
 -pthread -o apsp_auto apsp_auto.c && ./hexgen2 q && ./hexauto q && ./apsp_auto hex_q{q}.edges hex_q{q}.aut q+1 6 T`;
 Theorem D: `cd ../thmd19 && gcc -O3 -o thmd_auto thmd_auto.c && ./thmd_auto ../hex6/hex/hex_q17.bin 0 1 E.edges E.aut &&

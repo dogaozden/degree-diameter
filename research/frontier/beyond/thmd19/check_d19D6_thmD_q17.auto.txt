@@ -36,3 +36,9 @@ degrees: min 18 max 19 (q+m = 19); histogram: 18:186124 19:3017844
 generator 0: t(a=1,b=3)
 edge list sha256: 8e2e42d2fca629eeebff80c12ff0fb76df7268007c980e16af5e8c72f9262157
 n=3203968 edges=30344634 degree min=18 max=19 bipartite=yes automorphisms verified=1 orbits=200486
+diameter=6 (BFS from 200486 orbit representatives)
+RESULT VALID d=19 D=6 n=3203968
+
+real	150m43.106s
+user	83m16.105s
+sys	0m5.226s
