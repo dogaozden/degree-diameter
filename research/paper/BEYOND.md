@@ -30,10 +30,11 @@ exactly by a program that does not share code with the search that found them; t
 on a theorem (section 4). A literature card of the new-cells-beyond job (`research/squads/beyond/r2/d10/LIT.md` on its
 branch) looked for published bipartite values in 40 of these 64 cells (Δ = 17..20 at D = 5..10, and D = 11, 12 at
 Δ = 3..10; its list of 48 also has the D = 3, 4 cells) and found none, but it could not read the Combinatorics Wiki
-page (HTTP 503) or the tables of some papers. For the other 24 cells no search was made. So we call the values *first
+page (HTTP 503) or the tables of some papers. For the other 24 cells no literature search was made (apart from the cubic censuses below). So we call the values *first
 values for the lab*, not records.
 
-**Cubic cells: published graphs.** The census of cubic edge-transitive graphs (Foster census) lists bipartite cubic
+**Cubic cells: published graphs.** The census of cubic edge-transitive graphs (fostercensus.graphsym.net; CAT =
+arc-transitive, CSS = semisymmetric) lists bipartite cubic
 graphs of diameter 11 on 1,200 vertices (CAT(1200,1)), 12 on 2,304 (CSS(2304,5)), 13 on 3,360 (CAT(3360,4)) and 14 on
 6,272 (CSS(6272,7)), and the census of cubic vertex-transitive graphs one of diameter 11 on 1,250 (lab notes:
 `research/squads/own-small/newcells/README.md`, where the 1,200-, 1,250- and 2,304-vertex graphs were also checked
@@ -75,8 +76,9 @@ no BEYOND_TABLE.md yet. Where the branches and master disagree, the table takes 
 its own, and says where it is. The disagreements: (17,5), master 35,618, beyond-small 35,728; (3,11), master 1,344 (a
 voltage lift from own-small), every BEYOND_TABLE.md 1,474; (3,12), master 2,368, the BEYOND_TABLE.md files 2,176;
 (17,7), master 5,693,959, the BEYOND_TABLE.md files 5,631,276; (12,12) and (13,12), master and beyond-d11b about 30
-billion, the older tables about 20 billion; and (4,11), (5,11), (6,11), (4,12), (5,12), which beyond-d13 and
-beyond-d11b raised in parallel, where master holds the larger value of each pair.
+billion, the older tables about 20 billion; the D = 11, 12 values at Δ = 4..10, which the older tables give as found
+on October 26 and master holds at the later, larger values; and (4,11), (5,11), (6,11), (4,12), (5,12), which
+beyond-d13 and beyond-d11b raised in parallel, where master holds the larger value of each pair.
 
 # 3. The table
 
@@ -260,9 +262,9 @@ probability about e^−λ/2^ and a central element about e^−λ/h^, against e^�
 PSL(2, p) has about p²/2 involutions, SL(2, p) only −I, and G × Z~n~ has n or 2n central elements. The rule that came
 out of this, and that gave most D = 11 and 13 values: at odd D use SL(2, p) × Z~n~ with small n; at even D,
 PSL(2, p) × Z~n~ with moderate or large n is fine. The exceptions in the table: (12,11), SL(2,239) × Z~109~, found
-before the rule; (16,11), PSL(2,449) × Z~331~, at the size cap, where λ = 41 is so large that even the special
-elements are reached; and at D = 13, (6,13) and (10,13), PSL × Z~n~ with n = 73 and 157 (beyond-d13 found that PSL
-with moderate n also worked there). PSL with n = 1 is the worst choice at odd D: in the measured random S almost all
+before the rule; (16,11), PSL(2,449) × Z~331~, and (10,13), PSL(2,503) × Z~157~, both at the size cap, with λ = 41 and
+32 (for (16,11) beyond-d11b notes that λ is then large enough for the special elements to be reached too); and (6,13), PSL(2,83) × Z~73~ (beyond-d13 found that
+PSL with moderate n, 40 to 75, also worked at D = 13). PSL with n = 1 is the worst choice at odd D: in the measured random S almost all
 holes (93–98 %) were involutions, although the same groups work at even D. Measured hole counts of random S were
 higher than these rates predict, by 1.3–1.5 times at μ ≈ 10 and 2–2.3 times at μ ≈ 30 (beyond-d11 card r3/e14).
 
@@ -277,7 +279,7 @@ At small Δ the groups are small (10^3^ to 10^7^ elements) and other groups can 
 
 **Odd-order and Frobenius groups.** In Z~m~ ⋊~r~ Z~k~ with m prime and r of order k > 1 mod m, the centre is trivial,
 and if mk is odd there are no involutions (proved by both beyond-d13, `research/frontier/beyond13/THEORY.md` Fact 1,
-and beyond-d11b, `research/frontier/beyond11/FROBENIUS.md` and its card r2/h17). So the special holes of section 5.1
+and beyond-d11b, `research/frontier/beyond11/FROBENIUS.md` on the beyond-d11b branch, and its card r2/h17). So the special holes of section 5.1
 do not exist. These groups beat the SL/PSL values at odd D: (4,13) 192,382 against 170,520 for the best
 PSL(2,29) × Z~7~ orbit graph, (5,13) 3,594,910 against 3,217,056, and (4,11) 30,334 against 24,360. Products of two
 such groups also work ((5,13)). The two jobs measured different reasons. beyond-d13 points to the missing special
@@ -288,7 +290,7 @@ matter; we do not know their shares.
 
 **Random S instead of orbits.** At Δ = 4 the orbit form {e, x, αx, α²x} has one free element, and at Δ = 5 one fixed
 generator plus one orbit; a random S has Δ − 1 free elements. beyond-d13 gives this as the reason the metacyclic
-groups with random S also won the even-D cells (4,12), (4,14) and (5,12), by 2–8 % over the orbit graphs. At (5,14)
+groups with random S also won the even-D cells (4,12), (4,14) and (5,12), by 1.6–8 % over the orbit graphs. At (5,14)
 the runner-up already had random S (SL(2,97) × Z~7~, 12,776,064), and the metacyclic graph won by only 0.15 %. The search is plain annealing of S (`research/frontier/haar_gen3.c`, and
 the beyond-d11b versions with save/resume and a targeted finisher, `research/squads/beyond11b/tools/`; beyond-d13's
 bit-parallel `research/frontier/beyond13/meta/hmeta.c`), plus scans of every metacyclic group in an order range with
@@ -334,15 +336,14 @@ usable prime power q. The new-cells-beyond job left only the floor 33,792, the (
 job added vertices to that graph.
 
 **Route-chart lifts** (`research/theorems/chartlift/chartlib.py`). Start from a small bipartite *controller* graph whose
-edges are properly coloured with k colours (*letters*); letter c carries an invertible matrix A~c~ and a vector b~c~
-over F~q~. Each controller vertex u becomes a *fibre* of vertices (u, x), x in F~q~^n^, and a controller edge u – v of
-letter c becomes the q^n+1^ edges (u, x) ~ (v, A~c~x + βb~c~), β in F~q~. The lift has degree kq. Along a sequence of
+edges are properly coloured with ℓ colours (*letters*); letter c carries an invertible matrix A~c~ and a vector b~c~
+over F~q~. Each controller vertex u becomes a *fibre* of vertices (u, x), x in F~q~^s^, and a controller edge u – v of
+letter c becomes the q^s+1^ edges (u, x) ~ (v, A~c~x + βb~c~), β in F~q~. The lift has degree ℓq. Along a sequence of
 letters (a *pattern*) the reachable set in the fibre is an affine subspace; the pattern is *singular* if that subspace
 is not the whole fibre, and a good chart has few singular patterns.
 
 **Base.** The (16,5) graph (`research/theorems/graphs/build_d16D5_n33792.py`): K~3,3~ with a doubled perfect matching,
-lifted by Z~22~ (66 + 66 controller vertices), 4 letters, fibre F~4~^4^, with edges ((a~i~, g), x) ~ ((b~j~, g + v), A~c~x + βb~c~),
-β in F~4~. It has 33,792 vertices, is 16-regular, has diameter 5, and every vertex has one spare degree when Δ = 17.
+lifted by Z~22~ (66 + 66 controller vertices), 4 letters, fibre F~4~^4^ (q = 4, s = 4). It has 33,792 vertices, is 16-regular, has diameter 5, and every vertex has one spare degree when Δ = 17.
 
 **Proposition (hubs).** Let G be bipartite with sides A, B and diameter 5. Add new vertices (hubs): a hub on side A
 is joined to a set T ⊆ B, a hub on side B to a set T ⊆ A, each old vertex in at most one T. If (1) every vertex of the
@@ -355,7 +356,7 @@ since distances between B-vertices in G are at most 4 (G is bipartite with diame
 
 The two sides are independent, so the best packings of each side combine. With |T| = 16 the maximum degree is 17.
 
-**Hubs from fibre lines, in orbits.** A set T of 4 affine lines {(v, y + βc) : β ∈ F~4~} in 4 controller vertices
+**Hubs from fibre lines, in orbits.** A set T of 4 affine lines {(v, y + βd) : β ∈ F~4~} (d a direction in the fibre) in 4 controller vertices
 covers a whole side within distance 3 for many choices (squad card r1/c03). Translation g ↦ g + 1 on the controller
 coordinate is an automorphism of the base, so a good T gives 22 hubs at once (card r2/d06), provided its translates are
 disjoint and pairwise compatible. Call the orbit of an old vertex under the translation its *key*; a side has
@@ -365,7 +366,7 @@ and the method is capped at 33,792 + 2 · 48 · 22 = 35,904 vertices.
 
 **Packing.** Greedy growth of orbit bases saturated at 32 orbits on side A and 37 on side B. Destroy-and-repair loops
 (drop 2–5 orbits, regrow for 60 s, keep if not worse), an annealer over orbit packings, and "region" destroys (drop
-every orbit meeting a random affine set of keys) brought side A to 43 orbits and side B to 45: 88 orbits, 1,936 hubs,
+every orbit with a key in a randomly chosen structured region, then regrow; card r4/f07) brought side A to 43 orbits and side B to 45: 88 orbits, 1,936 hubs,
 35,728 vertices, 25.6 % of the Moore bound. Twelve more search cards in a fifth round found no 44th or 46th orbit.
 Master has the earlier 35,618 (83 orbits), checked all-pairs by the coordinator; 35,728 is checked all-pairs by the
 session, by a separate plain BFS from every vertex (`bfs_all`), and by this job.
@@ -437,8 +438,8 @@ session, by a separate plain BFS from every vertex (`bfs_all`), and by this job.
    (research/structured/tools/haarcheck_psl.c) on `d16D11_psl_449_331_orb3-5-1_s1.txt` (beyond-d11b branch) and
    `d10D13_psl_503_157_orb3-3-1_s1.txt` (beyond-d13 branch), about 11 GB and 7 GB per half.
 2. An exact check of the three level graphs at D = 7, or the hub step of (17,7) applied to them.
-3. The coordinator's own check and recording of the 20 branch-only values: (17,5) 35,728 and (3,11) 1,474, which are
-   above master's values, the D = 13, 14 values at Δ = 5..10, (16,11), and the four D = 6 values.
+3. The coordinator's own check and recording of the other 17 branch-only values: (17,5) 35,728 and (3,11) 1,474,
+   which are above master's values, the D = 13, 14 values at Δ = 5..10, (16,11), and the four D = 6 values.
 4. An apsp check of the census graph CSS(6272,7) at (3,14) (and CAT(3360,4) at (3,13)), and a literature check for all
    64 cells.
 

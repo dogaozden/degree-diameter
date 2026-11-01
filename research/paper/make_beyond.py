@@ -169,6 +169,7 @@ HEADER = r"""
 \usepackage{newunicodechar}
 \newunicodechar{⋊}{\ensuremath{\rtimes}}
 \newunicodechar{∎}{\ensuremath{\square}}
+\newunicodechar{ℓ}{\ensuremath{\ell}}
 \setlength{\emergencystretch}{3em}
 \renewcommand{\arraystretch}{1.12}
 """
