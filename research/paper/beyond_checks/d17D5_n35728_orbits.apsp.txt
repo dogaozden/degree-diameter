@@ -1,0 +1,7 @@
+file d17D5_n35728_orbits.edges sha256 da65917c56a5f1ff6fcb426c592c8f475edea4a03388818f5883cd730db1c6c0
+checker research/lifts/coordinator_check/apsp.c (master 9a97f7a5), gcc -O3
+n=35728 edges=301708 degree min=16 max=17 bipartite=yes diameter=5
+RESULT VALID d=17 D=5 n=35728
+at D-1 (must fail):
+n=35728 edges=301708 degree min=16 max=17 bipartite=yes diameter=5
+RESULT INVALID
