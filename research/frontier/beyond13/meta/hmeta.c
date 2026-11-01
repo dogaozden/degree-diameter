@@ -164,7 +164,9 @@ int main(int argc, char **argv) {
     else for (int i = 1; i < d; i++) do S[i] = rel(); while (!distinct(i));
     if (getenv("OPT2")) {   /* exhaustive 2-opt from the START S: every pair of slots (i,j), every (x,y) in G^2 */
         i64 c0 = cost(); fprintf(stderr, "OPT2 from cost %lld (N=%lld)\n", (long long)c0, (long long)N);
+        int pi = 0, pj = 0; if (getenv("OPT2PAIR")) sscanf(getenv("OPT2PAIR"), "%d,%d", &pi, &pj);   /* only this pair */
         for (int i = 1; i < d; i++) for (int j = i + 1; j < d; j++) {
+            if (pi && (i != pi || j != pj)) continue;
             el si = S[i], sj = S[j]; long ev = 0; double t1 = now();
             for (i64 x = 1; x < N; x++) { S[i].a = x / K_; S[i].j = x % K_; if (!distinct(i)) continue;
                 for (i64 y = 1; y < N; y++) { S[j].a = y / K_; S[j].j = y % K_; if (!distinct(j)) continue;
