@@ -142,3 +142,16 @@ Files: research/squads/beyond-small/r2/. Every card started from the director's 
   (no cover in the 4 fibres around one controller vertex).
 Kept: Z22 orbits (d06), adaptive growth (d01) and annealing (d15). Next: round 3 on orbit packing (cap 48 orbits per side
 = 35,904). Director in parallel: a projective-plane scaffold (below, BEYOND_SMALL.md).
+
+## 2026-11-01, beyond-small, round 3 (16 cards on Z22-orbit packing, 05:45 UTC)
+
+Files: research/squads/beyond-small/r3/. Start: d06's 27 + 21 orbits (34,848). Sides are independent (BEYOND_SMALL.md),
+so the director combined the best A-packing with the best B-packing after every report.
+- **e02 adaptive orbit growth on side B (growb.c): 21 → 37 B-orbits** (35,200 with d06's A side); **e01 adaptive growth on
+  side A: 27 → 32** (34,958). Director: 32 A + 37 B = **35,310** (apsp).
+- e13 side A from scratch 29; e09 side B re-packed 22; e14 20; e10 side A 27 (pool-limited clique); e07 the automorphism
+  group of G has order 66 (Z22 × F4*, bliss) and H-orbits of 66 hubs give 9 + 8 orbits (34,914); e08 Z11 half-orbits in
+  free keys, one per side (34,870); e06 17-key bases do not raise the orbit count; e11 mixed-direction bases are 10× slower
+  to generate; e05 and e16 single hubs in free slots stall (cost 4 and ~310 uncovered); e15 incomplete.
+Kept: growb (e02). Director: a destroy-and-repair loop around growb (drop 2–5 random orbits, regrow 60 s, keep if not
+worse), side A on the side-swapped graph: A 33 → 36, B 37 → 39 within ~10 iterations → 35,420 and more (round 4).
