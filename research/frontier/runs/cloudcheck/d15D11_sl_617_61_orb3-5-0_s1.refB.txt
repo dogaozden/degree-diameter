@@ -2,7 +2,10 @@ machine: vm; nproc=4; free -g: total 15G used 3G free 11G avail 11G; Linux 6.18.
 sha256: f06dbe2dec0ad5ede609972b229a716d473af9e321bc22f62d7f7fb28963b3c6  research/frontier/sols/d15D11_sl_617_61_orb3-5-0_s1.txt (copied with git show from branch claude/beyond-d11-d12-new-cells-3t3djx; 560 bytes, 15 generators, N=14327954256)
 checker: research/frontier/haarcheck_sl.c on master e93cbf856c, sha256 d2a212fcf927e2a7b6bb6779c0a774b2a3523c525aa9d84a1b45fdb77557a932; built with gcc -O3 -o haarcheck_sl research/frontier/haarcheck_sl.c (binary kept outside the repo)
 
-################ PROGRESS NOTE (replaced by the final report when the run ends)
-run started: 2026-11-01T15:32:25Z; progress written: 2026-11-01T17:03:29Z; elapsed ~91 min; STILL RUNNING
-command: /usr/bin/time -v haarcheck_sl research/frontier/sols/d15D11_sl_617_61_orb3-5-0_s1.txt B  (only the (e,B) BFS; the checker prints nothing until it finishes)
-resident set at this note: 10495804 KB
+################ haarcheck_sl (reference checker, research/frontier/haarcheck_sl.c on master e93cbf856c, built with gcc -O3; only the (e,B) BFS): /usr/bin/time -v -o time.txt haarcheck_sl research/frontier/sols/d15D11_sl_617_61_orb3-5-0_s1.txt B   (stdout, complete; stderr was empty)
+from (e,B): reached A 14327954256/14327954256, B 14327954256/14327954256 within 11, ecc 11
+HALF-VALID from (e,B) d=15 D=11 group=sl 617 x Z_61 N=14327954256 vertices=28655908512
+[exit 0; wall 5553s; peak RSS 10249 MB (10495828 KB); user 5454.93 s, system 45.16 s]
+
+note: this is one half of the two-sided check. The (e,A) BFS is run by another job, and the search session's haarcheck_gen run covers the other side. The coordinator combines the halves; this report does not claim VALID for the whole graph.
+run started 2026-11-01T15:32:25Z, ended 2026-11-01T17:04:58Z; ran to completion, not stopped early.
