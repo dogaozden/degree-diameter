@@ -55,3 +55,9 @@ what I changed.
   certified negatives re-run and matched; 3 path/n slips found). w23 made the order-2,500 floor exact (4, exhaustive up
   to Aut, |Aut| = 20,000). Launched w23 (order 2,500 follow-up), w24 (optimizer benchmark: re-find the known 5+5 cost-0
   lift), w25 (final audit + summary table for the report).
+- 02:29 check-in 9. Opus/Haiku 0.524/0.391 at 02:18 (Haiku 42.7%). No record. 02:10: learned from the (3,7) sister squad
+  (branch claude/handsoff-37-d3d7-r13gzx) that a subagent command longer than ~120 s is moved to the background and the
+  Haiku then idles; that explains our "waiting on background work" hand-backs (w6, w10, w11, w18). Sent all 8 running
+  workers the rule "every command under 110 s, chain many short runs". w22 (wildcard, 56 min) finished: compound
+  graphs (7 copies of H(3)) and mixed left/right bi-Cayley graphs behave like random graphs (81,619 and 34k far pairs);
+  launched w26 (size benchmark for the report: checker and search speed at 170, 686, 4,970 vertices).

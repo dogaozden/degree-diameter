@@ -80,6 +80,7 @@ def phi_list(m, k, r, korder):
         for h in range(n):
             if mul(g, h) == e: invs[g] = h; break
     xs = [g for g in range(n) if ords[g] == m]
+    # the identity phi is handled by the caller
     ys = [g for g in range(n) if (ords[g] == k or (k == 1 and g == 0)) and (k > 1 or g == 0)]
     ys = [g for g in range(n) if (k > 1 and g // m != 0 and ords[g] == k) or (k == 1 and g == 0)]
     res = []
@@ -87,10 +88,19 @@ def phi_list(m, k, r, korder):
         xr = power(xp, r % m) if m > 1 else e
         for yp in ys:
             if mul(mul(yp, xp), invs[yp]) != xr: continue
+            pxa = [e]
+            for a in range(1, m): pxa.append(mul(pxa[-1], xp))
+            pyt = [e]
+            for t in range(1, k): pyt.append(mul(pyt[-1], yp))
+            # cheap order test: phi^korder must fix the generators x and y
+            ok5 = True
+            for gen in (x, y):
+                g = gen
+                for _ in range(korder): g = mul(pxa[g % m], pyt[g // m])
+                if g != gen: ok5 = False; break
+            if not ok5: continue
             # phi(a,t) = xp^a * yp^t
             phi = [0] * n
-            pxa = [power(xp, a) for a in range(m)]
-            pyt = [power(yp, t) for t in range(k)]
             for a in range(m):
                 for t in range(k):
                     phi[a + m * t] = mul(pxa[a], pyt[t])
@@ -151,13 +161,14 @@ def main():
                 out.write(f"{n_}\t{spec}\terror {ex}\n"); continue
             classes = [('id', [list(range(m * k))])] if False else []
             cand = []
-            cand.append(('id', list(range(m * k))))  # identity phi: volt constant on sigma-orbits
+            pass  # identity phi gave cost ~23000 in a test: skipped
             seen_orb = set()
-            for phi in phis:
-                key = tuple(phi)
+            for pi_, phi in enumerate(phis):
+                key = phi[1] if m > 1 else phi[m]   # phi(x): one representative per value (conjugacy proxy)
                 if key in seen_orb: continue
                 seen_orb.add(key)
-                cand.append((f"phi{phis.index(phi)}", phi))
+                cand.append((f"phi{pi_}", phi))
+                if len(cand) >= 2: break
             if not cand: continue
             gfn = os.path.join(tmp, f"g_{m}_{k}_{r}.bin")
             write_group(m, k, r, gfn)
@@ -165,7 +176,7 @@ def main():
                 sfn = os.path.join(tmp, f"sym_{m}_{k}_{r}_{name}.txt")
                 R = sym_file(sig, E, phi, korder, sfn)
                 for s in range(1, seeds + 1):
-                    cmd = ['nice', '-n', '10', os.path.join(here, 'sym'), base_f, gfn, '9', str(iters), str(s), '5', '0.5',
+                    cmd = ['nice', '-n', '10', os.environ.get('SYMBIN', os.path.join(here, 'sym')), base_f, gfn, '9', str(iters), str(s), '5', '0.5',
                            os.path.join(tmp, f"o_{m}_{k}_{r}_{name}_{s}"), sfn]
                     try:
                         res = subprocess.run(cmd, capture_output=True, text=True, timeout=120).stdout

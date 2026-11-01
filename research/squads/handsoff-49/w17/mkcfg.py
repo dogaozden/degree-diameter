@@ -161,6 +161,12 @@ def main():
         subs, inv = subgroups(T, {2, 4})
         ids2 = [i for i, s_ in enumerate(subs) if len(s_) == 2]
         ids4 = [i for i, s_ in enumerate(subs) if len(s_) == 4]
+        import os
+        if os.environ.get("CLS") is not None:
+            inv_ = inverses(T)
+            cl_, _ = conj_classes(T, inv_, subs)
+            want_cls = int(os.environ["CLS"])
+            ids4 = [i for i in ids4 if cl_[i] == want_cls]
         want = {"1": [], "22": [2, 2], "244": [2, 4, 4], "4444": [4, 4, 4, 4]}[typ]
         pick = []
         for h in want:

@@ -46,6 +46,7 @@ static unsigned gen = 0;
 static int *queue_;
 static int D = 9;
 static int *sj;
+static long far_orb[NORB_MAX];   /* far counts from the orbit roots of the last evaluation (for BIAS moves) */
 
 static uint64_t rng_state = 88172645463325252ULL;
 static inline uint64_t rnd64(void) {
@@ -95,7 +96,8 @@ static long long eval(const int *c, int build_only_check) {
     }
     long long total = (long long)N * (V - bfs_reach(0));
     for (int i = 0; i < K; i++) {
-        total += (long long)M[i] * (V - bfs_reach(off[i]));
+        far_orb[i] = V - bfs_reach(off[i]);
+        total += (long long)M[i] * far_orb[i];
     }
     if (total & 1) return -3;
     return total / 2;
@@ -197,6 +199,7 @@ int main(int argc, char **argv) {
     D = atoi(argv[5]);
     long iters = atol(argv[6]);
     double T0 = atof(argv[7]), T1 = atof(argv[8]);
+    double bias = getenv("BIAS") ? atof(getenv("BIAS")) : 0.0;
     const char *outpath = argc > 9 ? argv[9] : NULL;
 
     int c[DEG], bestc[DEG];
@@ -261,6 +264,13 @@ int main(int argc, char **argv) {
             else { frac = (now_sec() - cyc_t0) / cyc_secs; if (frac >= 1.0) break; }
             double T = T0 * pow(T1 / T0, frac);
             int j = 1 + (int)(rnd64() % (E - 1));
+            if (bias > 0 && rnd01() < bias) {  /* bias: pick an edge orbit attached to the worst B-orbit */
+                int worst = 0;
+                for (int i = 1; i < K; i++) if (far_orb[i] * (long)M[i] > far_orb[worst] * (long)M[worst]) worst = i;
+                int cand[DEG], nc = 0;
+                for (int q = 1; q < E; q++) if (oj[q] == worst) cand[nc++] = q;
+                if (nc > 0) j = cand[rnd64() % nc];
+            }
             int oldc = c[j];
             int newc = (int)(rnd64() % M[oj[j]]);
             if (newc == oldc) continue;

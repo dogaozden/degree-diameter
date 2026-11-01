@@ -377,3 +377,17 @@ exact or certified negative results with the command that proves them; the worke
 other groups, lifts by base size, bi-coset, mixed-orbit, surgery, quotients/refinements): best verified near miss.
 Also count lines of code each worker wrote (`wc -l` over its .c and .py files). Plain text, no claims you did not check.
 Finish by 03:10 UTC and reply in at most 5 lines.
+
+## w26: size benchmark for the report (follows w22)
+
+Three sister squads ran this experiment at different graph sizes: (3,7) at about 170 vertices, (6,5) at about 686, and
+this one, (4,9), at about 4,970. Measure what the size changes for a worker, on this machine, with nice -n 10:
+(1) checker cost: time `$H/tools/apsp` and `$H/tools/score48` on a 4-regular bipartite graph of 4,970 vertices
+(`$H/seeds/valid4970.edges`), on a 3-regular bipartite graph of about 170 vertices and a 6-regular one of about 686
+(make random bipartite ones, or Haar graphs with haar_tab: `haar_tab 3 7 ...` and `haar_tab 6 5 ...` over groups of
+order 85 and 343); repeat each 20 times, report the median. (2) search speed: haar_tab evaluations per second (its
+RESULT line prints evals and time) at (d, D, N) = (3, 7, 85), (6, 5, 343), (4, 9, 2,485), 30 s each; flift evaluations
+per second for a 2+2 base at the same three sizes (groups of order about 43, 172, 1,243). (3) how many evaluations an
+annealing run needs to reach cost 0 on a known-solvable instance at each size (haar_tab on meta 71 35 49 for (4,9);
+find a solvable group for the other two by trying a few). Write `$H/w26/bench.md`: a table, the exact commands, and two
+sentences on what changes with size. Finish by 03:05 UTC; keep every command under 110 s (timeout 100).

@@ -34,15 +34,7 @@ for x in range(N):
         phi = np.empty(N, dtype=np.int64)
         for j in range(k):
             phi[j * m:(j + 1) * m] = T[np.array(Px), Py[j]]
-        # surjectivity: the image is <x, y>; check it is all of G by closure from the identity
-        seen = np.zeros(N, dtype=bool); seen[0] = True; front = [0]
-        while front:
-            nf = []
-            for g in front:
-                for h in (int(T[g, x]), int(T[g, y])):
-                    if not seen[h]: seen[h] = True; nf.append(h)
-            front = nf
-        if seen.all(): auts.append(phi)
+        if len(np.unique(phi)) == N: auts.append(phi)   # bijective hom = automorphism
 A = np.array(auts, dtype=np.int32)
 with open(sys.argv[6], "wb") as f:
     np.array([len(auts)], dtype=np.int32).tofile(f)

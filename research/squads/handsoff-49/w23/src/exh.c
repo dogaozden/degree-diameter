@@ -96,6 +96,7 @@ int main(int argc,char**argv){
       }
     }
     fprintf(stderr,"rep %d a=%d done (%ld sets)\n", ri, a, cnt);
+    { fprintf(stderr,"HISTSO_FAR"); for(int i=0;i<=cap;i++) fprintf(stderr," %d:%ld", i, hist[i]); fprintf(stderr,"\n"); }
     fflush(stdout);
   }
   printf("HIST");
