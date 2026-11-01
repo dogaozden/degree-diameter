@@ -70,8 +70,8 @@ and the builder build_d17D5_hubs.py, which rebuilds G from research/theorems/gra
 orbits, checks conditions (1) and (2) of the proposition directly, and writes the edge list.
 Rebuild: `python3 research/squads/beyond-small/graphs/build_d17D5_hubs.py OUT.edges --orbits
 research/squads/beyond-small/graphs/d17D5_n35728_orbit_bases.txt && apsp OUT.edges 17 5`.
-Independent checks: apsp.c for every recorded value; bfs_all.c (plain BFS from every vertex) on 35,618 as well
-(max eccentricity 5, distance histogram sums to n²: graphs/d17D5_n35618.bfs_all.txt).
+Independent checks: apsp.c for every recorded value; bfs_all.c (plain BFS from every vertex) on the final 35,728 graph and on 35,618
+(max eccentricity 5, distance histograms sum to n²: graphs/d17D5_n35728.bfs_all.txt, d17D5_n35618.bfs_all.txt).
 
 Steps on the way (all apsp VALID, director-checked): 33,794 (2 SA hubs, r1/c16), 33,814 (one Z22 orbit, r1/c02), 33,849
 (57 line hubs, r1/c03), 33,983 (191 hubs, director's hubpack clique packing), 34,290 / 34,401 (adaptive growth and
