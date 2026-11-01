@@ -1,0 +1,3 @@
+machine: cloud VM (job gencheck-q); nproc=4; free -g: total 15G used 0G free 14G avail 15G at start; Linux 6.18.44-fc-v185; gcc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0; checker built as cc -O3 (single-threaded)
+sha256: baab08bfdd34d66eee2dca57e3a51516e13c480e7bb8a9cf2405755e2c8a5dca  research/frontier/sols/d12D12_psl_241_2143_orb3-4-0_s1.txt  (copied with git show from origin/claude/beyond-d11-d12-new-cells-3t3djx, 452 bytes; header "12 12 psl 241 n 2143 N 14998085520", 12 generators, vertices 2N = 29996171040)
+progress: started 2026-11-01 16:31:46 UTC (Ctrl: reference checker run alone, one BFS from (e,A): haarcheck_psl research/frontier/sols/d12D12_psl_241_2143_orb3-4-0_s1.txt A; no time limit inside this job, expected 2.5-3.5 h, memory ~11 GB)
