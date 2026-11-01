@@ -11,25 +11,25 @@ def add(d, D, value, how, check, files, note=""):
     R[(d, D)] = dict(value=value, how=how, check=check, files=files, note=note)
 
 # D = 3
-add(17, 3, 546, "PG(2,16) incidence graph (Moore graph)", "apsp: checks/d17D3_n546_pg2_16.apsp.txt", "graphs/d17D3_n546_pg2_16.edges.gz; builder research/squads/beyond/r1/c01/build.py")
-add(18, 3, 614, "PG(2,17) incidence graph (Moore graph)", "apsp: checks/d18D3_n614_pg2_17.apsp.txt", "graphs/d18D3_n614_pg2_17.edges.gz")
+add(17, 3, 546, "PG(2,16) incidence graph (Moore graph)", "apsp: checks/d17D3_n546_pg2_16.apsp.txt; independent rebuild moore/build_moore_d34.py (identical sha256), moore/check_d17D3_pg16.apsp.txt", "graphs/d17D3_n546_pg2_16.edges.gz; builder moore/build_moore_d34.py pg 16")
+add(18, 3, 614, "PG(2,17) incidence graph (Moore graph)", "apsp: checks/d18D3_n614_pg2_17.apsp.txt; rebuild moore/build_moore_d34.py (identical sha256)", "graphs/d18D3_n614_pg2_17.edges.gz; builder moore/build_moore_d34.py pg 17")
 add(19, 3, 624, "fourth hat R(17;2,3), POLISHED.md Thm 2.2 (19-regular)", "apsp: checks/d19D3_n624_fourthhat_q17.apsp.txt", "graphs/d19D3_n624_fourthhat_q17.edges.gz; builder c01/build.py hat 17 2 3")
-add(20, 3, 762, "PG(2,19) incidence graph (Moore graph)", "apsp: checks/d20D3_n762_pg2_19.apsp.txt", "graphs/d20D3_n762_pg2_19.edges.gz")
+add(20, 3, 762, "PG(2,19) incidence graph (Moore graph)", "apsp: checks/d20D3_n762_pg2_19.apsp.txt; rebuild moore/build_moore_d34.py (identical sha256)", "graphs/d20D3_n762_pg2_19.edges.gz; builder moore/build_moore_d34.py pg 19")
 # D = 4
-add(17, 4, 8738, "W(16) incidence graph (Moore graph)", "apsp: checks/d17D4_n8738_W16.apsp.txt", "graphs/d17D4_n8738_W16.edges.gz; builder c02/gq2edges.py")
-add(18, 4, 10440, "W(17) incidence graph (Moore graph)", "apsp: checks/d18D4_n10440_W17.apsp.txt", "graphs/d18D4_n10440_W17.edges.gz")
+add(17, 4, 8738, "W(16) incidence graph (Moore graph)", "apsp: checks/d17D4_n8738_W16.apsp.txt; rebuild moore/check_d17D4_w16.apsp.txt", "graphs/d17D4_n8738_W16.edges.gz; builder moore/build_moore_d34.py w 16")
+add(18, 4, 10440, "W(17) incidence graph (Moore graph)", "apsp: checks/d18D4_n10440_W17.apsp.txt; rebuild moore/check_d18D4_w17.apsp.txt", "graphs/d18D4_n10440_W17.edges.gz; builder moore/build_moore_d34.py w 17")
 add(19, 4, 10982, "AS(17) + clones of two elliptic quadrics, POLISHED.md Cor. A1 (19-regular)", "apsp: checks/d19D4_n10982_AS17_clones.apsp.txt", "graphs/d19D4_n10982_AS17_clones.edges.gz; builder c02/build_as_clones.py")
-add(20, 4, 14480, "W(19) incidence graph (Moore graph)", "apsp: checks/d20D4_n14480_W19.apsp.txt", "graphs/d20D4_n14480_W19.edges.gz")
+add(20, 4, 14480, "W(19) incidence graph (Moore graph)", "apsp: checks/d20D4_n14480_W19.apsp.txt; rebuild moore/check_d20D4_w19.apsp.txt", "graphs/d20D4_n14480_W19.edges.gz; builder moore/build_moore_d34.py w 19")
 # D = 5
-add(17, 5, 33792, "the (16,5) route-chart lift (max degree 16 <= 17); nothing larger found", "apsp (research/theorems/graphs/d16D5_n33792_check.txt)", "research/theorems/graphs/build_d16D5_n33792.py")
+add(17, 5, 35310, "(16,5) route-chart graph + 1,518 hubs (new vertices joined to 4 affine fibre lines of old vertices) in 69 Z22-orbits: 32 on side A, 37 on side B (job beyond-small, BEYOND_SMALL.md)", "apsp: research/squads/beyond-small/graphs/d17D5_n35310.check.txt", "research/squads/beyond-small/graphs/d17D5_n35310_orbit_bases.txt; builder research/squads/beyond-small/graphs/build_d17D5_hubs.py")
 add(18, 5, 47600, "multi-doubled-matching lift of W(13): 2 doubled matchings, Z2 x Z5 (18-regular)", "apsp: checks/d18D5_n47600_W13_2dm_Z10.apsp.txt", "graphs/d18D5_n47600_W13_2dm_Z10.edges.gz; builder mdm/build_mdm.py + mdm/nu_q13_s2.txt")
 add(20, 5, 75000, "route-chart lift over F5 (4 letters x 5 scalars, fibre F5^4): K3,3 + doubled matching over Z20 (m = 60), chart with 22 singular patterns (squad r1 c04); also 66,640 by the multi-doubled-matching lift of W(13), Z2 x Z7 (MDM.md)", "apsp: checks/d20D5_n75000_routechart_F5_Z20.apsp.txt; checks/d20D5_n66640_W13_3dm_Z14.apsp.txt", "graphs/d20D5_n75000_routechart_F5_Z20.edges.gz (code research/squads/beyond/r1/c04/); graphs/d20D5_n66640_W13_3dm_Z14.edges.gz")
 add(19, 5, 52428, "doubled-matching lift of W(16) over Z6 (DM_D5.md; = MDM with k = 1); nu, sigma annealed by squad r1/c05 (dmfast, routes allowed)", "apsp: checks/d19D5_n52428_W16_dm_Z6.apsp.txt", "graphs/d19D5_n52428_W16_dm_Z6.edges.gz; mdm/dm_q16_s11_c05.sol.gz + mdm/build_mdm.py (k = 1)")
 # D = 6
-add(17, 6, 2236962, "H(16) incidence graph (split Cayley hexagon; Moore graph)", "classical (Tits); built with research/d10D7/hexgen2.c, BFS from 94 vertices: ecc 6 and Moore level sizes (checks/d17D6_n2236962_H16.sampled.txt)", "builder: research/squads/beyond/r1/c08/hexgen2.c + hexbfs.c")
-add(18, 6, 3017196, "H(17) incidence graph (Moore graph)", "classical; BFS from 96 vertices: ecc 6, Moore levels (checks/d18D6_n3017196_H17.sampled.txt)", "builder: c08/hexgen2.c")
-add(19, 6, 3203968, "Theorem D of POLISHED.md, q = 17, m = 2 (doubling of H(17) with levels and exact whiskers; max degree 19)", "theorem (paper + Lean for all odd q); builder checked all-pairs at q = 5, 7 (checks/thmD_builder_q5_q7.apsp.txt); q = 17 instance: BFS from 96 vertices, ecc 6 (checks/d19D6_n3203968_thmD_q17.sampled.txt)", "builder: research/squads/beyond/r1/c08/thmd.c")
-add(20, 6, 5227320, "H(19) incidence graph (Moore graph)", "classical; BFS from 100 vertices: ecc 6, Moore levels (checks/d20D6_n5227320_H19.sampled.txt)", "builder: c08/hexgen2fast.c (identical output to hexgen2.c)")
+add(17, 6, 2236962, "H(16) incidence graph (split Cayley hexagon; Moore graph)", "exact: BFS from 10,026 orbit representatives of 2 verified torus automorphisms (hex6/check_d17D6_H16.auto.txt)", "builder hex6/hexgen2.c + hex6/hexauto.c; checker hex6/apsp_auto.c")
+add(18, 6, 3017196, "H(17) incidence graph (Moore graph)", "exact: BFS from 11,832 orbit representatives (hex6/check_d18D6_H17.auto.txt)", "builder hex6/hexgen2.c + hex6/hexauto.c")
+add(19, 6, 3203968, "Theorem D of POLISHED.md, q = 17, m = 2 (doubling of H(17) with levels and exact whiskers; max degree 19)", "theorem (paper + Lean); exact: BFS from 200,486 orbit representatives of a verified automorphism of order 16 (thmd19/check_d19D6_thmD_q17.auto.txt)", "builder thmd19/thmd_auto.c (from squad beyond r1/c08 thmd.c)")
+add(20, 6, 5227320, "H(19) incidence graph (Moore graph)", "exact: BFS from 16,230 orbit representatives (hex6/check_d20D6_H19.auto.txt)", "builder hex6/hexgen2.c + hex6/hexauto.c")
 # D = 7
 add(17, 7, 5631276, "level graph of H(13): 7 copies joined by 3 matchings, voltages 1, 2, 3 in Z7 (polygon cover; D7_HEXAGON.md Thm A)", "theorem (any matchings); builder all-pairs at q = 3, 4, r = 1..3 (r1/c09 small/); this instance: BFS from 64 random vertices, max ecc 7 (checks/d7_levelgraphs_sampled.txt)", "builder: research/squads/beyond/r1/c09/lift7.c (lift7 13 3 1 edges OUT)")
 add(18, 7, 7240212, "level graph of H(13): 9 copies, 4 matchings, Z9", "same theorem; BFS from 64 random vertices, max ecc 7 (checks/d7_levelgraphs_sampled.txt)", "lift7 13 4 1 edges OUT")
