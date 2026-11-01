@@ -87,3 +87,8 @@ k = 6 reproduces hubex (294_12: best 3). Exact results (no solution anywhere):
 - k = 4: SmallGroup(280,35) (n = 700; round-1 tabu cost 3): all 6 class pairs, 1.2e10 leaves, no solution
   (best among subsets passing the hub-level conditions 10; the tabu cost-3 state fails condition (5)).
 - k = 5: every group of order 290 has a normal C5 (degenerate, R = a coset of it); 290_1 not finished.
+- k = 4: SmallGroup(280,34) = C14 x (C5:C4): all class pairs, no solution (best 10).
+- k = 3: SmallGroup(264,12) = C11 x SL(2,3) and SmallGroup(264,31) = C11 x S4 (n = 704; round-2 tabu cost 4 on both):
+  8.76e10 leaves each (71 R-orbits; counted first with COUNT=1, then run as 2 x 2 split processes, 52 min), no
+  solution; best 4 (264_12) and 6 (264_31) among subsets passing the hub-level conditions.
+Outputs of all exact runs: runs/.

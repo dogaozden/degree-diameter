@@ -245,6 +245,7 @@ static void run_ex(int NPROC, int PROC) {
                 int cand[MAXM], nc = 0; for (int i = start; i < ne; i++) if (elist[i] != r0) cand[nc++] = elist[i];
                 start += osz[o];
                 if (nc < 4) break;
+                if (getenv("COUNT")) { nleaf += (long long)nc * (nc - 1) / 2 * (nc - 2) / 3 * (nc - 3) / 4; continue; }
                 S[0] = r0;
                 int idx[5]; bs_t m3[5], m6[5];
                 m3[0] = F3; bor(&m3[0], &a3[r0], W); m6[0] = F6; bor(&m6[0], &a6[r0], W);
@@ -280,6 +281,7 @@ static void run_ex(int NPROC, int PROC) {
                 }
             }
         }
+        if (getenv("COUNT")) { printf("pair %d,%d: %d R-orbits, leaves to enumerate %lld\n", ca, cb, nRo, nleaf); fflush(stdout); continue; }
         printf("pair %d,%d done: leaves %lld, pass (3)(6) %lld, pass (2)(5) %lld, solutions %lld, best miss %d, %.1f s\n  hist:", ca, cb, nleaf, np36, np25, nsol, bestm, now() - t0);
         for (int i = 0; i < 64; i++) if (hist[i]) printf(" %d:%lld", i, hist[i]);
         printf("\n"); fflush(stdout);

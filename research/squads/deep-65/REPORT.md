@@ -1,4 +1,4 @@
-# deep-65: an Opus-led deep run on the (6,5) cell (Nov 1, 2026, 01:30 to about 05:40 UTC)
+# deep-65: an Opus-led deep run on the (6,5) cell (Nov 1, 2026, 01:30-05:35 UTC)
 
 Target: a bipartite graph with maximum degree 6 and diameter 5 on more than 684 vertices (table value 684, the Haar
 graph of C6 x (C19:C3) = SmallGroup(342,12)). Brief: depth on the two leads the hands-off squad (handsoff-65) left at
@@ -24,7 +24,7 @@ exactly:
   repaired by any choice it tried. Its best is 144, tying the hands-off value with a different design.
 - **Generalisations searched exactly:** "Haar degree 5 + hubs of size k + hub graph of degree 6-k" (k = 6 is lead b).
   k = 3 on SmallGroup(258,2) (688): closed, best 4. k = 3 on 258_1: closed. k = 4 on SmallGroup(280,35) and (280,34)
-  (700): closed. k = 3 on C11 x SL(2,3) and C11 x S4 (704): see the table below.
+  (700): closed. k = 3 on C11 x SL(2,3) and C11 x S4 (704): closed (best 4 and 6).
   Haiku tabu screens over k = 2, 3, 4 at 690-720 vertices found nothing below cost 3-4.
 
 ## Lead (b): the hub family, exactly
@@ -76,8 +76,8 @@ They are validated against BFS from the four orbit representatives on random par
 | 3 | SmallGroup(258,1) = C43:C6 | 688 | no solution (nothing passes the hub-level conditions) |
 | 4 | SmallGroup(280,35) = C2 x (C5:(C7:C4)) | 700 | no solution (round-1 tabu: cost 3 on a state failing condition (5)) |
 | 4 | SmallGroup(280,34) = C14 x (C5:C4) | 700 | no solution |
-| 3 | SmallGroup(264,12) = C11 x SL(2,3) | 704 | PENDING |
-| 3 | SmallGroup(264,31) = C11 x S4 | 704 | PENDING |
+| 3 | SmallGroup(264,12) = C11 x SL(2,3) | 704 | no solution, 8.76e10 leaves (71 R-orbits), best 4 (= round-2 tabu) |
+| 3 | SmallGroup(264,31) = C11 x S4 | 704 | no solution, 8.76e10 leaves, best 6 (tabu had 4 on a state failing a hub-level condition) |
 
 Not finished, not claimed: k = 3 on 258_3/4/5 and k = 5 on 290_1-3 (the hub subgroup is normal; R then has
 10^4-10^5 choices), k = 4 on order 276 (tabu best 68, so far), and k = 2 at all orders (about 1e11 leaves per group,
@@ -111,28 +111,30 @@ search); h7 lifts of the 14-vertex hub bases by the five groups of order 50. No 
 structured 12. The non-abelian D50 and (C5 x C5):C2 were worse, but random-start tabu cannot even re-find 12 over
 C7 x C7, so this does not test the non-abelian-core reading either way.
 
-## Spend (tools/session_usage.py --arm deep-65, from 01:30:05 UTC)
+## Spend (tools/session_usage.py --arm deep-65, 01:30:05-05:30 UTC; the wrap-up adds a little Opus)
 
 | model | messages | output tokens | units | share |
 |---|---|---|---|---|
-| Opus (me) | SPEND_OPUS_MSG | SPEND_OPUS_OUT | SPEND_OPUS_U | SPEND_OPUS_SH |
-| Haiku (7 runs) | SPEND_H_MSG | SPEND_H_OUT | SPEND_H_U | SPEND_H_SH |
+| Opus (me) | 140 | 284,113 | 1.252 | 98% |
+| Haiku (7 runs) | 269 | 386,942 | 0.028 | 2% |
+
+Opus cache reads were 43.5M tokens (140 turns over a long context); that and about 284k output tokens of derivation and code are the cost. The exact searches themselves used about 9 CPU-hours on the 4-core container and no model time.
 
 ## Comparison with handsoff-65 (same cell, the day before)
 
 | | handsoff-65 | deep-65 |
 |---|---|---|
 | structure | Opus plans and checks; 28 Haiku runs search | Opus derives and searches; 7 Haiku runs on Opus cards |
-| wall clock | 5.5 h | about 4.2 h |
-| spend (units) | Opus 0.542 + Haiku 0.280 = 0.822 (34% Haiku) | SPEND_TOTAL (SPEND_H_SH Haiku) |
+| wall clock | 5.5 h | 4.1 h |
+| spend (units) | Opus 0.542 + Haiku 0.280 = 0.822 (34% Haiku) | Opus 1.252 + Haiku 0.028 = 1.279 (2% Haiku) |
 | record | none | none |
 | families covered | about 20, broadly, by annealing/tabu | 1,6|1,6 closed exactly at 686 and 700-728; k-hub family exact on 258, 280, 264; 5 new families screened by Haikus |
 | lead (b) | cost 2 found; "exact search ~1e12, out of reach" | cost 2 proven optimal on every group of order 294 in about 10 CPU-minutes; the obstruction located (abelian core) |
 | lead (a) | 144, "strict local minimum" | why: damage is local and unrepairable through two new vertices; 117 pairs left in the best design |
 
 Plain verdict. On the record, the same: none. On understanding, this run did better. The hands-off run's two open
-leads are now closed or explained, and the main family is settled by proof-quality exhaustive search instead of a
-1e12 estimate. On breadth it did worse: 7 Haiku runs against 28. It also cost more: Opus spent about twice the hands-off
+leads are now closed or explained, and the main family is settled by an exhaustive search (checked against brute force on small cases) instead of
+a 1e12 estimate. On breadth it did worse: 7 Haiku runs against 28. It also cost more: Opus spent about twice the hands-off
 coordinator's total, because the work was derivation, code and verification in a long context. A cheaper version would
 do the derivation in one Opus session and hand the sweeps to Haiku cards much earlier. Most of the exact searches were
 plain compute that needed no model at all.
@@ -145,7 +147,8 @@ designed insertions with the damage facts given). Their best finds (h3's second 
 - tools/hubeval.c (one state: six conditions + edge list), tools/hubex.c (exact 1,6|1,6, NORED=1 brute-force check),
   tools/hub3.c (exact 1,3|1,3 full double cosets), tools/hubk.c (general k: rand = BFS validation, ex = exact),
   tools/hub2lift.py and tools/graph2lift.py (graphs as voltage lifts), tools/gap_tables.g.
-- NOTES.md (derivations and run log), round1/ and round2/ (cards, scoreboards, Haiku code and notes),
+- runs/ (the output of every exact search: one file per group, near states of 294_11), NOTES.md (derivations and run
+  log), round1/ and round2/ (cards, scoreboards, Haiku code and notes),
   shared/ (scorer, apsp.c, lift tools, the two bad-294 lifts).
 - Reproduce the main result: `gap -q -c 'ORDER:=294; OUTDIR:="groups";' tools/gap_tables.g` then
   `gcc -O3 -march=native -o hubex tools/hubex.c && for i in $(seq 1 23); do ./hubex groups/sg_294_$i.txt 6; done`.
