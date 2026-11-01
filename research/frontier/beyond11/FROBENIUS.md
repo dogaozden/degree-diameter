@@ -1,7 +1,7 @@
 # Frobenius groups Z_p x| Z_k for the small D = 11, 12 cells
 
 Job beyond-d11b, 2026-11-01 (Opus director, Haiku squad rounds r1-r6, research/squads/beyond11b/). Summary of a lead
-that came out of round 1 and raised five cells in rounds 1-3.
+that came out of round 1 and raised five cells in rounds 1-6.
 
 ## Groups
 
