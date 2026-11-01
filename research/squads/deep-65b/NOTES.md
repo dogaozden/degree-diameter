@@ -45,3 +45,19 @@ class lookup before the four remaining conditions.
 Checks: the branching search finds exactly the E2 that brute force over all C(176,5) sets finds (C1 and C4 only), for
 E1 with 0, 0, 1, 131,660, 771,352 and 2,140,076 partners on C11:Q16 (runs/bf_176_17_*.txt).
 On C11:Q16 there are 11,327 E1 classes (37.75M 4-subsets, union-find 23 s).
+
+## First exact result: C11:Q16 = SmallGroup(176,17), n = 704: no solution, best 2
+3 processes, 586-646 s each (first version, no capacity bound). 11,327 E1 classes, 1.89e9 leaves (most rejected by
+the swap rule), 4.87M pairs fully tested. Best cost 2: E1 = {0,17,19,31,39}, E2 = {23,70,124,128,162}: C1-C4 hold,
+C5 and C6 each miss one element; built graph (split15 edges): score65 bad = 352 = 2 x 176, the same bad count as
+handsoff c1's best704 on the same group with the other base [[2,4],[4,2]]. Runs: runs/ex_176_17_p*.txt.
+
+## Speed-ups (both exact, both checked on a 1/40 sample of 176_17 E1 classes: same best, same pairs)
+- Capacity bound in the DFS: with k elements of E2 chosen, a new element covers at most max_y |lin(y) n U| uncovered
+  elements per side, and the quadratic words add at most 20 - k(k-1) per side. Before: every bad E1 (q >= 50, no
+  partner at all) still cost ~0.2 s of branching. Sample: 78 s -> 13 s of search.
+- List mode for the best E1 classes: all 5-sets whose class has q <= QT (bucketed by q), scanned directly, because a good
+  E1 (q <= ~16) has millions of C1-C4 partners that the DFS reaches as free completions. QT is adaptive (largest q with
+  at most LMAX = 4e7 sets in the list). Sample: 131,508 pairs tested in both modes (the DFS count is 168,558 with the
+  default 4M-entry dedupe hash, which stops deduplicating above 3M; with a 64M-entry hash it is 131,508: duplicates
+  only cost time).

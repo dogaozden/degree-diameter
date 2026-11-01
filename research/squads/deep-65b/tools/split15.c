@@ -23,7 +23,11 @@
  *
  * usage: split15 TAB rand N SEED      validation against BFS
  *        split15 TAB ex [NPROC PROC]   exact search; prints SOL lines, best near-miss cost (sum of misses of C2,C3,C5,C6)
- *        split15 TAB bf K              brute force over all E2 for the K-th E1 representative, compared with the DFS
+ *            env: QT (list threshold; default adaptive with LMAX = 2e7 sets), PROF=1 (per-E1 timing), NOPRUNE=1
+ *        split15 TAB bf K|qV           brute force over all E2 for the K-th E1 class (or the first with q = V), vs the DFS
+ *        split15 TAB stats [TOP]       histogram of q = |UA|+|UB| over E1 classes
+ *        split15 TAB edges E1x5 E2x5 OUT   edge list of one lift (A0 = 0..m-1, A1, B0, B1) and its six miss counts
+ *        split15 TAB cost E1x5 E2x5    the six miss counts
  * TAB: m, the m x m table (identity 0), then "ngen k" and k automorphism generators (images of 0..m-1).
  */
 #include <stdint.h>
@@ -155,7 +159,7 @@ static int32_t cls1; static int q1cur;
 static long long nleaf, ndup, nswap, ncheck, nsol;
 static int bestcost = 1 << 30; static int bestE1[5], bestE2[5];
 static int quiet = 0;
-static int noswap = 0;
+static int noswap = 0, noprune = 0; static long long npruned = 0;
 /* dedup hash */
 #define HB 22
 static uint64_t *hkey; static uint32_t *hgen, curgen = 1;
@@ -186,6 +190,7 @@ static void initial_U(bs *UA, bs *UB) {
     for (int i = 0; i < 4; i++) { UA->w[i] = FULL.w[i] & ~ca.w[i]; UB->w[i] = FULL.w[i] & ~cb.w[i]; }
 }
 
+static void check_pair(const int *E2);
 static void leaf(const int *Y) {
     nleaf++;
     int E2[5]; for (int i = 0; i < 5; i++) E2[i] = Y[i];
@@ -195,6 +200,9 @@ static void leaf(const int *Y) {
     hcount++;
     if (!noswap) { int32_t c2 = class5(E2); int q2 = qv[c2];
         if (q2 > q1cur || (q2 == q1cur && c2 > cls1)) { nswap++; return; } }
+    check_pair(E2);
+}
+static void check_pair(const int *E2) {
     ncheck++;
     /* C5 then C6, C2, C3 with a running miss count (early exit above the best near miss) */
     int I2[5]; for (int i = 0; i < 5; i++) I2[i] = inv_[E2[i]];
@@ -219,7 +227,7 @@ static void leaf(const int *Y) {
     for (int i = 0; i < 5; i++) for (int j = 0; j < 5; j++) { bset(&c, T[I1[i]][E2[j]]); bset(&c, T[I2[i]][E1[j]]); }
     for (int a = 0; a < nP2; a++) for (int b = 0; b < nP2; b++) bset(&c, T[P2[a]][P2[b]]);
     cost += bmissing(&c); if (cost > bestcost) return;
-    if (cost < bestcost) { bestcost = cost; memcpy(bestE1, E1, sizeof E1); memcpy(bestE2, E2, sizeof E2);
+    if (cost < bestcost) { bestcost = cost; memcpy(bestE1, E1, sizeof E1); memcpy(bestE2, E2, sizeof(int) * 5);
         if (!quiet) { printf("BEST %d E1 %d %d %d %d %d E2 %d %d %d %d %d\n", cost, E1[0], E1[1], E1[2], E1[3], E1[4], E2[0], E2[1], E2[2], E2[3], E2[4]); fflush(stdout); } }
     if (cost == 0) { nsol++; printf("SOL E1 %d %d %d %d %d E2 %d %d %d %d %d\n", E1[0], E1[1], E1[2], E1[3], E1[4], E2[0], E2[1], E2[2], E2[3], E2[4]); fflush(stdout); }
 }
@@ -245,6 +253,15 @@ static void dfs(int *Y, int k, bs UA, bs UB) {
     int ea = bempty(&UA), eb = bempty(&UB);
     if (k == 5) { if (ea && eb) leaf(Y); return; }
     if (ea && eb) { dfs_free(Y, k, 0); return; }   /* everything covered: the remaining elements are free */
+    if (!noprune) {   /* capacity bound: each new element covers <= max_y |lin(y) n U| linearly, quadratic words <= 20 - k(k-1) */
+        int cA = bcount(&UA), cB = bcount(&UB), quad = 20 - k * (k - 1), r = 5 - k;
+        if (cA > 10 * r + quad || cB > 10 * r + quad) { npruned++; return; }
+        int mA = 0, mB = 0, mAB = 0;
+        for (int y = 0; y < m; y++) { int a = 0, b = 0;
+            for (int w = 0; w < NW; w++) { a += __builtin_popcountll(linA[y].w[w] & UA.w[w]); b += __builtin_popcountll(linB[y].w[w] & UB.w[w]); }
+            if (a > mA) mA = a; if (b > mB) mB = b; if (a + b > mAB) mAB = a + b; }
+        if (cA > mA * r + quad || cB > mB * r + quad || cA + cB > mAB * r + 2 * quad) { npruned++; return; }
+    }
     int x, sideA = !ea;
     { const bs *U = sideA ? &UA : &UB; int i = 0; while (!U->w[i]) i++; x = i * 64 + __builtin_ctzll(U->w[i]); }
     int xi = inv_[x];
@@ -279,6 +296,41 @@ static void dfs(int *Y, int k, bs UA, bs UB) {
     }
 }
 
+/* list mode for good E1: all 5-sets whose class has q <= QT, sorted by q */
+static int QT = 0; static long long nL = 0, *Lstart; static uint8_t (*Lset)[5]; static int32_t *Lcls;
+static void build_list(void) {
+    long long cnt[600] = {0};
+    for (uint64_t r = 0; r < N4; r++) { int q = qv[par[r]]; if (q <= QT) cnt[q]++; }
+    long long tot = 0; for (int q = 0; q <= QT; q++) tot += cnt[q];
+    nL = tot * m / 5;
+    Lset = malloc(5 * nL); Lcls = malloc(sizeof(int32_t) * nL); Lstart = calloc(QT + 2, sizeof(long long));
+    long long pos[600]; long long acc = 0; for (int q = 0; q <= QT; q++) { Lstart[q] = acc; pos[q] = acc; acc += cnt[q] * m / 5; } Lstart[QT + 1] = acc;
+    long long got = 0;
+    for (uint64_t r = 0; r < N4; r++) { int32_t c = par[r]; int q = qv[c]; if (q > QT) continue;
+        int s[4]; unrank4(r, s); int S0[5] = {0, s[0], s[1], s[2], s[3]};
+        for (int t = 0; t < m; t++) { int S[5], mn = 999; for (int i = 0; i < 5; i++) { S[i] = T[t][S0[i]]; if (S[i] < mn) mn = S[i]; }
+            if (mn != t) continue;
+            if (pos[q] >= Lstart[q + 1]) { fprintf(stderr, "list overflow\n"); exit(3); }
+            for (int i = 0; i < 5; i++) Lset[pos[q]][i] = S[i]; Lcls[pos[q]] = c; pos[q]++; got++; } }
+    if (got != nL) { fprintf(stderr, "list count mismatch %lld %lld\n", got, nL); exit(3); }
+    fprintf(stderr, "list: QT %d, %lld 5-sets (%.0f MB)\n", QT, nL, nL * 9.0 / 1e6);
+}
+static void run_E1_list(const int *e1) {
+    setup_E1(e1); cls1 = class5(e1);
+    bs UA, UB; initial_U(&UA, &UB); q1cur = bcount(&UA) + bcount(&UB);
+    for (long long i = 0; i < Lstart[q1cur + 1]; i++) {
+        if (Lstart[q1cur] <= i && Lcls[i] > cls1) continue;   /* tie rule as in leaf() */
+        const uint8_t *y = Lset[i]; bs ca = UA, cb = UB;
+        for (int a = 0; a < 5; a++) for (int w = 0; w < NW; w++) { ca.w[w] &= ~linA[y[a]].w[w]; cb.w[w] &= ~linB[y[a]].w[w]; }
+        if (bempty(&ca) && bempty(&cb)) goto ok;
+        for (int a = 0; a < 5; a++) for (int b = 0; b < 5; b++) if (a != b) { int u = T[y[a]][inv_[y[b]]], v = T[inv_[y[a]]][y[b]];
+            ca.w[u >> 6] &= ~(1ULL << (u & 63)); cb.w[v >> 6] &= ~(1ULL << (v & 63)); }
+        if (!bempty(&ca) || !bempty(&cb)) continue;
+      ok:
+        nleaf++;
+        { int E2[5]; for (int a = 0; a < 5; a++) E2[a] = y[a]; check_pair(E2); }
+    }
+}
 static void run_E1(const int *e1) {
     setup_E1(e1); cls1 = class5(e1);
     bs UA, UB; initial_U(&UA, &UB); q1cur = bcount(&UA) + bcount(&UB);
@@ -312,6 +364,20 @@ int main(int argc, char **argv) {
         }
         printf("rand: %d tests, %d mismatches, %d valid\n", N, bad, nvalid);
         return bad != 0;
+    }
+    if (!strcmp(argv[2], "edges")) {   /* split15 TAB edges e1 e1 e1 e1 e1 e2 e2 e2 e2 e2 OUT: edge list (4m vertices) + conditions */
+        int e1[5], e2[5]; for (int i = 0; i < 5; i++) { e1[i] = atoi(argv[3 + i]); e2[i] = atoi(argv[8 + i]); }
+        if (!build(e1, e2)) { fprintf(stderr, "not 6-regular/simple\n"); return 1; }
+        int miss[6]; conds(e1, e2, miss);
+        printf("conditions C1..C6 missing: %d %d %d %d %d %d\n", miss[0], miss[1], miss[2], miss[3], miss[4], miss[5]);
+        FILE *o = fopen(argv[13], "w"); fprintf(o, "%d\n", nv);
+        for (int v = 0; v < nv; v++) for (int i = 0; i < 6; i++) if (adj[v][i] > v) fprintf(o, "%d %d\n", v, adj[v][i]);
+        fclose(o); return 0;
+    }
+    if (!strcmp(argv[2], "cost")) {   /* split15 TAB cost e1 x5 e2 x5: the six miss counts */
+        int e1[5], e2[5]; for (int i = 0; i < 5; i++) { e1[i] = atoi(argv[3 + i]); e2[i] = atoi(argv[8 + i]); }
+        int miss[6]; conds(e1, e2, miss);
+        printf("%d %d %d %d %d %d\n", miss[0], miss[1], miss[2], miss[3], miss[4], miss[5]); return 0;
     }
     hkey = malloc(sizeof(uint64_t) << HB); hgen = calloc(1ULL << HB, sizeof(uint32_t));
     double t0 = now();
@@ -370,16 +436,27 @@ int main(int argc, char **argv) {
         return 0;
     }
     /* ex */
-    int NP = argc > 3 ? atoi(argv[3]) : 1, PR = argc > 4 ? atoi(argv[4]) : 0;
+    int NP = argc > 3 ? atoi(argv[3]) : 1, PR = argc > 4 ? atoi(argv[4]) : 0, prof = getenv("PROF") != NULL;
+    QT = getenv("QT") ? atoi(getenv("QT")) : -1;
+    if (QT < 0) {   /* adaptive: the largest q such that the list of 5-sets with q' <= q has at most LMAX sets */
+        long long lmax = getenv("LMAX") ? atoll(getenv("LMAX")) : 20000000LL, cnt[600] = {0}, acc = 0;
+        for (uint64_t r = 0; r < N4; r++) cnt[qv[par[r]]]++;
+        QT = 0; for (int q = 0; q < 600; q++) { acc += cnt[q] * m / 5; if (acc > lmax) break; QT = q; }
+    }
+    if (QT > 0) build_list();
+    noprune = getenv("NOPRUNE") != NULL;
     long long idx = 0, done = 0; double tl = now();
     for (uint64_t r = 0; r < N4; r++) {
         if (par[r] != (int32_t)r) continue;
         if (idx++ % NP != PR) continue;
         int s[4]; unrank4(r, s); int e1[5] = {0, s[0], s[1], s[2], s[3]};
-        run_E1(e1); done++;
+        int useL = QT > 0 && qv[r] <= QT;
+        if (prof) { long long l0 = nleaf; double ts = now(); if (useL) run_E1_list(e1); else run_E1(e1); fprintf(stderr, "PROF q %d %s leaves %lld secs %.4f\n", q1cur, useL ? "L" : "D", nleaf - l0, now() - ts); }
+        else if (useL) run_E1_list(e1); else run_E1(e1);
+        done++;
         if (now() - tl > 60) { tl = now(); fprintf(stderr, "progress %lld/%lld E1, leaves %lld distinct-checked %lld sols %lld best %d (%.0f s)\n", done, nclass / NP, nleaf, ncheck, nsol, bestcost, now() - t0); }
     }
-    printf("DONE m %d E1 %lld leaves %lld dup %lld swap %lld checked %lld solutions %lld best %d E1 %d %d %d %d %d E2 %d %d %d %d %d secs %.1f\n",
-           m, done, nleaf, ndup, nswap, ncheck, nsol, bestcost, bestE1[0], bestE1[1], bestE1[2], bestE1[3], bestE1[4], bestE2[0], bestE2[1], bestE2[2], bestE2[3], bestE2[4], now() - t0);
+    printf("DONE m %d E1 %lld pruned %lld leaves %lld dup %lld swap %lld checked %lld solutions %lld best %d E1 %d %d %d %d %d E2 %d %d %d %d %d secs %.1f\n",
+           m, done, npruned, nleaf, ndup, nswap, ncheck, nsol, bestcost, bestE1[0], bestE1[1], bestE1[2], bestE1[3], bestE1[4], bestE2[0], bestE2[1], bestE2[2], bestE2[3], bestE2[4], now() - t0);
     return 0;
 }
