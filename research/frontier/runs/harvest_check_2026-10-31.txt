@@ -937,3 +937,32 @@ time -v (verbatim, from /usr/bin/time -v): Elapsed (wall clock) 3:12:36; Maximum
 ======== coordinator summary ========
 haarcheck_gen: VALID d=20 D=10 (both starts, ecc 10). haarcheck_psl: HALF-VALID from (e,A) and HALF-VALID from (e,B); both reach all 15259389180 elements of each side within 10, ecc 10, matching haarcheck_gen's reach counts. Right multiplication is transitive on each side, so the two halves together are the full reference check.
 RESULT VALID d=20 D=10 group=psl 421 x Z_409 N=15259389180 vertices=30518778360 (two independent checkers: haarcheck_gen, and haarcheck_psl run as two halves)
+== d11D11_sl_251_37_orb3-3-2_s1 (origin/claude/new-cells-d11-d12-beyond-8sas9r, 22:38 PT)
+Coordinator report (Mac mini coordinator, 2026-11-01T05:37:03Z): d11D11_sl_251_37_orb3-3-2_s1.txt, sha256 067743abc21ce85ee5d6baa1169a2ae427777ecfa6df5cc7d125e1dc3b5ea031.
+
+======== cloud report d11D11_sl_251_37_orb3-3-2_s1.gen.txt from origin/claude/new-cells-d11-d12-beyond-8sas9r (unedited) ========
+checker: haarcheck_gen
+command: ./bin/haarcheck_gen runs/d11D11_sl_251_37_orb3-3-2_s1.out
+start: 2026-11-01T04:37:20Z
+sha256 e52e247f4a92a474f49ff0d5d438660ba0b557bbdfd4a8e24311ca881ff3f17c  ./bin/haarcheck_gen
+sha256 067743abc21ce85ee5d6baa1169a2ae427777ecfa6df5cc7d125e1dc3b5ea031  runs/d11D11_sl_251_37_orb3-3-2_s1.out
+selftest sl 251: |M| = 15813000, index round trip over all elements ok
+selftest group multiplication: associativity, identity, inverse on 20000 random triples ok
+file runs/d11D11_sl_251_37_orb3-3-2_s1.out
+header: 11 11 sl 251 n 37 N 585081000
+group sl 251 x Z_37, |G| = 585081000 = N, vertices 2N = 1170162000; 11 distinct generators
+from (e,A): reached A 585081000/585081000, B 585081000/585081000 within 11; ecc 11; level sizes [1, 11, 110, 1100, 10988, 109782, 1095638, 10849818, 99562568, 485305189, 484411695, 88815100]  (54s)
+from (e,B): reached A 585081000/585081000, B 585081000/585081000 within 11; ecc 11; level sizes [1, 11, 110, 1100, 10990, 109782, 1095848, 10849818, 99581734, 485305189, 484392317, 88815100]  (107s)
+VALID d=11 D=11 group=sl 251 x Z_37 N=585081000 vertices=1170162000 (distinct generators, 11-regular simple; every vertex within 11 of both (e,A) and (e,B); ecc 11; 107s)
+exit: 0
+end: 2026-11-01T04:39:07Z (107 s)
+
+======== Mac mini: haarcheck_sl (research/frontier/haarcheck_sl.c, master; clang -O3), 155 s, 440 MB ========
+from (e,A): reached A 585081000/585081000, B 585081000/585081000 within 11, ecc 11
+from (e,B): reached A 585081000/585081000, B 585081000/585081000 within 11, ecc 11
+VALID d=11 D=11 group=sl 251 x Z_37 N=585081000 vertices=1170162000 (distinct generators, 11-regular simple)
+
+======== Mac mini: haarcheck_gen (research/frontier/haarcheck_gen.c, master; clang -O3, no OpenMP), 238 s, 441 MB; level sizes identical to the cloud run ========
+from (e,A): reached A 585081000/585081000, B 585081000/585081000 within 11; ecc 11; level sizes [1, 11, 110, 1100, 10988, 109782, 1095638, 10849818, 99562568, 485305189, 484411695, 88815100]  (119s)
+from (e,B): reached A 585081000/585081000, B 585081000/585081000 within 11; ecc 11; level sizes [1, 11, 110, 1100, 10990, 109782, 1095848, 10849818, 99581734, 485305189, 484392317, 88815100]  (238s)
+VALID d=11 D=11 group=sl 251 x Z_37 N=585081000 vertices=1170162000 (distinct generators, 11-regular simple; every vertex within 11 of both (e,A) and (e,B); ecc 11; 238s)

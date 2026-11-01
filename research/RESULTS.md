@@ -290,3 +290,5 @@ by the coordinator with build_haar.py, two BFS from both sides, ecc ≤ D, nothi
 - Oct 31 12:30 PT (harvest): (19,10) 19,233,722,496 (was 0), sl 607 n 43; claude/new-cells-beyond-etos3t.
 
 - Oct 31 20:56 PT (harvest): (20,10) 30,518,778,360 (was 0), psl 421 n 409; claude/new-cells-beyond-etos3t.
+
+- Oct 31 22:38 PT (harvest): (11,11) 1,170,162,000 (was 0), sl 251 n 37; claude/new-cells-d11-d12-beyond-8sas9r.
