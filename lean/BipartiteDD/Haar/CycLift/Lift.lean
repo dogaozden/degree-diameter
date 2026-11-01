@@ -310,11 +310,11 @@ theorem arc_of_adj (hn : n = b * m) (hm : 0 < m) (hA : arcsOK m b outA = true) {
 
 end Local
 
-/-- The main theorem: the five checks on the base data give a bipartite lift of degree at most `d` and diameter
-at most `D`. -/
-theorem isBipartiteDegDiam_of_checks {n m b d D : ℕ} {outA : List (List (ℕ × ℕ))} (side : List Bool)
+/-- The four local checks on the base data and a bound on all distances give `IsBipartiteDegDiam`. -/
+theorem isBipartiteDegDiam_of_edist {n m b d D : ℕ} {outA : List (List (ℕ × ℕ))} (side : List Bool)
     (hn : n = b * m) (hm : 0 < m) (hA : arcsOK m b outA = true) (hS : symOK m b outA = true)
-    (hd : degOK d b outA = true) (hc : colOK b side outA = true) (hE : eccOK m b D outA = true) :
+    (hd : degOK d b outA = true) (hc : colOK b side outA = true)
+    (hdiam : ∀ v w : Fin n, (liftGraph n m outA).edist v w ≤ D) :
     IsBipartiteDegDiam (liftGraph n m outA) d D := by
   refine ⟨?_, ?_, ?_⟩
   · let C : (liftGraph n m outA).Coloring (Fin 2) :=
@@ -355,6 +355,14 @@ theorem isBipartiteDegDiam_of_checks {n m b d D : ℕ} {outA : List (List (ℕ �
       _ = (outA.getD (v.val / m) []).length := by simp [nbrs]
       _ ≤ d := hdeg
   · rw [SimpleGraph.ediam_le_iff]
-    exact edist_le_of_eccOK hn hm hA hE
+    exact hdiam
+
+/-- The main theorem: the five checks on the base data give a bipartite lift of degree at most `d` and diameter
+at most `D`. -/
+theorem isBipartiteDegDiam_of_checks {n m b d D : ℕ} {outA : List (List (ℕ × ℕ))} (side : List Bool)
+    (hn : n = b * m) (hm : 0 < m) (hA : arcsOK m b outA = true) (hS : symOK m b outA = true)
+    (hd : degOK d b outA = true) (hc : colOK b side outA = true) (hE : eccOK m b D outA = true) :
+    IsBipartiteDegDiam (liftGraph n m outA) d D :=
+  isBipartiteDegDiam_of_edist side hn hm hA hS hd hc (edist_le_of_eccOK hn hm hA hE)
 
 end BipartiteDD.CycLift
