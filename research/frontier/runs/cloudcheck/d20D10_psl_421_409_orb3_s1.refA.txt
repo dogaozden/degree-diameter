@@ -12,3 +12,8 @@ progress 2026-11-01T00:12:07Z: elapsed 90m; still running; RSS 11178004 KB
 progress 2026-11-01T00:42:09Z: elapsed 120m; still running; RSS 11178004 KB
 progress 2026-11-01T01:12:11Z: elapsed 150m; still running; RSS 11178004 KB
 progress 2026-11-01T01:42:13Z: elapsed 180m; still running; RSS 11178004 KB
+
+################ reference checker, BFS from (e,A) only: gcc -O3 -o /tmp/hsl research/structured/tools/haarcheck_psl.c && /tmp/hsl research/frontier/sols/d20D10_psl_421_409_orb3_s1.txt A
+from (e,A): reached A 15259389180/15259389180, B 15259389180/15259389180 within 10, ecc 10
+HALF-VALID from (e,A) d=20 D=10 group=psl 421 x Z_409 N=15259389180 vertices=30518778360
+[exit 0; wall 12610s (3:30:10); peak RSS 10915 MB]
