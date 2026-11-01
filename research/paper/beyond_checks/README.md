@@ -9,7 +9,8 @@ checker written separately from the one already used. Each log starts with the f
   `*.refA.txt` / `*.refB.txt` = BFS from (e,A) / (e,B) in two runs (both halves are needed).
 - Metacyclic Haar graphs: `research/frontier/build_haar2.py` (master) on the two D = 13, 14 files the search session
   had checked with its own metacheck/metacheck2; `research/frontier/beyond13/metacheck.py` (branch
-  claude/beyond-d13-search-z35z61) on master's (5,12) and (6,11) files, which had been checked by build_haar2.py only.
+  claude/beyond-d13-search-z35z61) on master's (4,11), (5,11), (5,12) and (6,11) files, whose master logs have
+  build_haar2.py only (the all-pairs logs of (4,11) and (5,11) are on branch claude/beyond-d11-d12-new-cells-3t3djx).
 - Edge lists: `research/lifts/coordinator_check/apsp.c` (all pairs, no symmetry), also at D - 1, where it must fail.
   (3,11) 1,474 from branch claude/new-cells-beyond-etos3t (research/frontier/beyond/graphs/), (17,5) 35,728 from branch
   claude/beyond-small-cells-fwb6si (research/squads/beyond-small/graphs/).
@@ -27,9 +28,12 @@ identifies them.
 | (9,13) | d9D13_sl_593_19_orb3-3-0_s6 | haarcheck_sl, A and B halves | HALF-VALID + HALF-VALID = VALID (21 min per half) |
 | (6,14) | d6D14_sl_97_103_orb3-2-0_g07 | haarcheck_sl | VALID |
 | (7,14) | d7D14_psl_223_151_orb3-2-1_h14 | haarcheck_psl | VALID |
+| (8,14) | d8D14_psl_397_181_orb3-2-2_s4 | haarcheck_psl, A and B halves | HALF-VALID + HALF-VALID = VALID (40 min per half; a first A run was killed for memory and rerun) |
 | (5,13) | d5D13_prodmeta_11_5_2971_11_i06 | build_haar2.py | VALID |
 | (5,14) | d5D14_meta_148781_43_i07 | build_haar2.py | VALID |
 | (5,12) | d5D12_meta_8969_59_205_b6l03 (master) | metacheck.py | VALID |
 | (6,11) | d6D11_meta_20809_51_12972_b5k07 (master) | metacheck.py | VALID |
+| (4,11) | d4D11_meta_523_29_9_b2h01 (master) | metacheck.py | VALID |
+| (5,11) | d5D11_meta_5023_31_2886_b5k05 (master) | metacheck.py | VALID |
 | (3,11) | d3D11_n1474_meta67_11_9.edges | apsp.c | VALID at D = 11, INVALID at D = 10 |
 | (17,5) | d17D5_n35728_orbits.edges | apsp.c | VALID at D = 5, INVALID at D = 4 |
