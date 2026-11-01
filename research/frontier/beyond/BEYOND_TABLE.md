@@ -121,7 +121,7 @@ plane, generalized quadrangle or generalized hexagon of order 18, whose existenc
 | (6,13) | **41,734,392** | 6.84 | 610,351,556 | Haar graph PSL(2,83) x Z73, S = 2 free orbits of size 3 (squad r3/f11, first link, mu 9.3); earlier 41,519,712 (SL(2,103) x Z19, r2/e09) and 40,427,088 (PSL(2,103) x Z37, r1/c09); mu = 9.29 | haarcheck_gen VALID (research/frontier/runs/cloudcheck/d6D13_psl_83_73_orb3-2-0_f11.gen.txt) | Haar size law at mu = 5: 2N = 4.01e+07 |
 | (7,13) | **312,227,760** | 5.98 | 5,224,277,600 | Haar graph SL(2,229) x Z13, S = {e} + 2 orbits of size 3 (squad r2/e10, chained links); earlier 310,628,640 (SL(2,281) x Z7, r1/c11) and 299,455,200 (SL(2,199) x Z19); mu = 8.45 | haarcheck_gen VALID (research/frontier/runs/cloudcheck/d7D13_sl_229_13_orb3-2-1_e10.gen.txt) | Haar size law at mu = 5: 2N = 3.03e+08 |
 | (8,13) | **1,739,514,000** | 5.39 | 32,296,336,796 | Haar graph SL(2,499) x Z7, S = {e} + 1 fixed + 2 orbits of size 3 (director, 33 evaluations, mu 7.5); earlier 1,676,500,800 (SL(2,401) x Z13, director) and 1,512,114,240 (SL(2,911), squad r1/c13); mu = 7.52 | haarcheck_gen VALID (research/frontier/runs/cloudcheck/d8D13_sl_499_7_orb3-2-2_s2.gen.txt) | Haar size law at mu = 5: 2N = 1.7e+09 |
-| (9,13) | **7,508,907,120** | 4.78 | 157,073,089,676 | Haar graph SL(2,661) x Z13, S = 3 free orbits of size 3 (director, 5 evaluations, mu 3.1); mu = 3.09 | haarcheck_gen VALID (research/frontier/runs/cloudcheck/d9D13_sl_661_13_orb3-3-0_s1.gen.txt) | Haar size law at mu = 5: 2N = 7.68e+09 |
+| (9,13) | **7,924,036,032** | 5.04 | 157,073,089,676 | Haar graph SL(2,593) x Z19, S = 3 free orbits of size 3 (director, 17 evaluations, mu 9.75); earlier 7,685,933,808 (SL(2,587) x Z19, mu 5.1, 5 evaluations, unchecked) and 7,508,907,120 (SL(2,661) x Z13, mu 3.1, VALID); mu = 9.75 | haarcheck_gen VALID (research/frontier/runs/cloudcheck/d9D13_sl_593_19_orb3-3-0_s6.gen.txt) | Haar size law at mu = 5: 2N = 7.68e+09 |
 | (3,14) | **5,706** | 17.41 | 32,760 | Z317 voltage lift of the Pappus graph (squad r7/j13: 20-s anneal, then four links of the 1-opt + tabu finisher scan.c); not a Haar graph; earlier 5,640 (GP(10,3) x Z282, r5/h02), 5,600 (GP(10,3) x Z280, director) and 5,040 (Haar graph of PSL(2,7) x Z15, r2/e05); mu = 9.15 | research/frontier/beyond13/checks/d3D14_n5706_lift_pappus_Z317.apsp.txt (graph research/frontier/beyond13/graphs/d3D14_n5706_lift_pappus_Z317.edges.gz) | Haar size law at mu = 5: 2N = 5.23e+03 |
 | (4,14) | **497,042** | 10.39 | 4,782,962 | Haar graph of the odd-order metacyclic group Z2731 x|_2400 Z91 (order 248,521), S random (hmeta, squad r6/i04; solution research/frontier/beyond13/sols/d4D14_meta_2731_91_i04.txt; also metacheck VALID); earlier 491,294 (Z4027 x|_2950 Z61, r5/h04), 490,070 and 482,160 (PSL(2,41) x Z7, orbit S); mu = 16.45 | research/frontier/beyond13/checks/d4D14_n497042_meta2731_91_2400.apsp.txt (graph research/frontier/beyond13/graphs/d4D14_n497042_meta2731_91_2400.edges.gz) | Haar size law at mu = 5: 2N = 4.47e+05 |
 | (5,14) | **12,795,166** | 7.15 | 178,956,964 | Haar graph of the odd-order metacyclic group Z148781 x|_85175 Z43 (order 6,397,583), S random (hmeta, START continuation; squad r6/i07; solution research/frontier/beyond13/sols/d5D14_meta_148781_43_i07.txt); earlier 12,776,064 (SL(2,97) x Z7, random S, r5/h06), 12,352,392 and 11,696,856; mu = 5.39 | research/frontier/beyond13/checks/d5D14_meta_148781_43_i07.metacheck.txt | Haar size law at mu = 5: 2N = 1.27e+07 |
@@ -307,7 +307,7 @@ THEORY.md); squad cards and scoreboards research/squads/beyond13/r1..r7; log res
   metacyclic rule reached Δ = 6 only at D = 11 ((6,11) Z17203 x|_9845 Z61); at (6,13), (6,12), (6,9) it stopped at
   cost 2-6, and at Δ = 7 at cost 4-14 (r7/j14 RULE.md).
 - (10,13) is at the 20-billion cap (PSL(2,503) x Z157, first S solved, λ = W/N = 31.8). (9,13) solved at mu 3.1, 5.1 and
-  9.8 in 5-17 evaluations; (8,14) at mu 7.1 in 21 and at mu 12.1 in 146 evaluations; odd D needed chained links at mu 7-9 for Δ = 6, 7.
+  9.8 in 5-17 evaluations (7,924,036,032 checked; SL(2,677) x Z13 at mu 14 stopped at cost 12); (8,14) at mu 7.1 in 21 and at mu 12.1 in 146 evaluations; odd D needed chained links at mu 7-9 for Δ = 6, 7.
 
 **Squad (111 Haiku cards in 7 rounds; LOG.md).** The ideas that moved the small cells came from cards: odd-order
 groups (r1/c15), voltage lifts (r2/e16), products of Frobenius groups (r2/e12), the lift cooling fix (r4/g01), the 1-opt
@@ -327,13 +327,15 @@ liftd, THEORY.md.
   core. The (10,13) check was OOM-killed once after 58 min (a card's numpy checker plus a director search pushed the box
   over 15 GB) and was rerun; cards were then capped at 0.5 GB, which also capped what they could search at (7,14), (8,13).
 
-**Side result inside the 2013 table: (5,10) >= 92,318.** Squad card r6/i10 tested the metacyclic idea on the old table:
+**Side result inside the 2013 table: (5,10) >= 93,166.** Squad card r6/i10 tested the metacyclic idea on the old table:
 the Haar graph of Z1567 x|_871 Z29 (order 45,443, random S, hmeta, 11 s) has 90,886 vertices, maximum degree 5 and
 diameter 10 (apsp: checks/d5D10_n90886_meta1567_29.apsp.txt; metacheck: checks/d5D10_meta_1567_29_i10.metacheck.txt;
 solution sols/d5D10_meta_1567_29_i10.txt), and the director closed i10's cost-1 near miss Z2687 x|_2416 Z17 (order 45,679) with hmeta chains (T0 = 8, REHEAT = 400): 91,358 vertices, apsp and metacheck VALID
 (checks/d5D10_n91358_meta2687_17_2416.apsp.txt, sols/d5D10_meta_2687_17_2416_dir.txt).
 Round-7 card r7/j01 then found Z1489 x|_61 Z31 (order 46,159): 92,318 vertices, apsp and metacheck VALID
-(checks/d5D10_n92318_meta1489_31_61.apsp.txt, sols/d5D10_meta_1489_31_61_j01.txt), 2.5 % above 90,068.
+(checks/d5D10_n92318_meta1489_31_61.apsp.txt, sols/d5D10_meta_1489_31_61_j01.txt), and the director closed j01's cost-1
+near miss Z1259 x|_26 Z37 (order 46,583) in one hmeta link: 93,166 vertices, apsp and metacheck VALID
+(checks/d5D10_n93166_meta1259_37_26.apsp.txt, sols/d5D10_meta_1259_37_26_dir.txt), 3.4 % above 90,068.
 The 2013 table (DS14v2, as copied in research/frontier/TABLE.md) has 90,068 for
 (5,10), and the lab's harvest history has no (5,10) entry; literature after 2013 was not checked (TABLE.md says the same
 for every D >= 7 cell), so these are candidates for the coordinator, not claimed records. The same card's (5,9) graph
