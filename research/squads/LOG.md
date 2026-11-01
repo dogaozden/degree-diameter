@@ -148,3 +148,28 @@ Cards (best result):
 Director's reading: the odd-order rule holds at D = 11 too (one more cell raised). Lifts win at Δ = 3 but not at Δ = 4, 5
 with the bases tried; the lift theory says girth >= 8 bases are needed. Kept for round 4: Tutte 8-cage and GQ(3,3)
 lifts, a provable lift bound, odd-order products at (4,13) and (5,11), hmeta at (4,14) and (5,13), pushes of the mid cells.
+
+## 2026-11-01, beyond-d13, round 4 (16 cards, 12:58 UTC)
+
+Same session. Files: research/squads/beyond13/r4/. Selection from round 3: girth-8 lift bases (Tutte 8-cage g01, GQ(3,3)
+g03), other cubic bases at (3,14) (g02), odd-order products at (5,11) (g04) and (4,13) (g10), hmeta at (4,14) and (5,13)
+(g13, g14), metacyclic voltage lifts with a better annealer (g12), the lift bound (g11), pushes (g05-g09, g15), wildcard g16.
+
+Cards (best result):
+- g01 Tutte 8-cage lifts: (3,14) n = 187 (5,610) cost 2, (3,13) n = 107 cost 10; found that lift.c's cooling runs over
+  L = 20,000 evaluations, so short runs never cooled (all earlier short lift runs were effectively hot).
+- g02 other cubic bases at (3,14): Pappus n = 312 (5,616) cost 2; F26A, Tutte, Heawood, Moebius-Kantor worse.
+- g03 GQ(3,3) lifts at (4,14): cost 612 at 482,400 (bit-parallel lift cost, 20x faster). Nothing.
+- **g04 (5,11): (Z29 x|_7 Z7) x (Z67 x|_9 Z11), odd order, 299,222 — raises the beyond-d11 value 297,648.**
+- g05 (8,13): cost 16 at mu 9.3 (71 s per evaluation under load). g08 (6,13): SL(2,59) x Z103 cost 2.
+- **g06 (7,14): SL(2,269) x Z43, 1,673,976,240** (director check). **g07 (6,14): SL(2,97) x Z103, 187,990,656**
+  (RANDORB screen of start costs, then 2 links). **g09 (5,14): PSL(2,53) x Z83, random S, 12,352,392.**
+- g10 (4,13) odd-order products: cost 16 at N 100,891. g12 metacyclic voltages on GP(10,3): cost 2 at 3,300 (tabu).
+- **g13 (4,14): odd-order metacyclic Z7001 x|_4532 Z35, hmeta, 490,070** (cost 1 chain, then T0 = 4, REHEAT = 200) —
+  the first even-D cell where a metacyclic group beat SL/PSL.
+- g15 (7,13): SL(2,137) x Z61 cost 6. g16 Z_a x Z_b lifts of GQ(3,3) at (4,13): cost 753.
+- g11 (lift bound), g14 (hmeta (5,13)): pending at the time of writing.
+
+Director's reading: four more cells raised, one more D = 11 cell raised by the odd-order rule; the lift near misses at
+Δ = 3 (cost 2 in three bases) may have been cooling-limited. Round 5: the same near misses with proper cooling and
+START chains, the lift and metacyclic ideas tested on the lab's D = 11, 12 cells, RANDORB screening for the mid cells.
