@@ -57,3 +57,19 @@ Start: 23:13 UTC. Planned end: 01:15 UTC (2 hours). Card: cards.md, "## w11".
 - Non-split (ns) groups: slow (inner automorphisms only, 80-270 reps, 2-14 min each); 22 still open at 00:43
   (state files resume them).
 - Not yet: 2,601..2,700 screen (haar_tab 2 s) and certification at cost <= 8.
+
+## Update 01:06
+- 2,601..2,700: enumerated 1,583 metacyclic groups (groups_2601_2700.txt). Screened 281 of the 777 with k >= 4 and
+  |G/G'| <= 200 (screen2601.tsv, haar_tab 4 9 1.5 s, seed 1). Best screen cost 10 (2604 434 6 5, 2653 379 7 86,
+  2667 127 21 25). None at cost <= 8, so nothing to certify from this subset. The other 496 of the 777 and the k <= 3
+  groups are not screened yet.
+- Non-split groups still open at 01:06 (state/ files resume them): ns_m420_k6_r109_s35 (paused at rep 144),
+  ns_m208_k12_r29_s52, ns_m208_k12_r37_s52, ns_m208_k12_r43_s104, ns_m208_k12_r11_s104, ns_m52_k48_r7_s26,
+  ns_m104_k24_r7_s52, ns_m104_k24_r11_s52, ns_m104_k24_r37_s26, ns_m70_k36_r3_s35, ns_m105_k24_r52_s35,
+  ns_m210_k12_r23_s105, ns_m210_k12_r73_s35, ns_m208_k12_r115_s104, ns_m208_k12_r7_s104, ns_m208_k12_r69_s52,
+  ns_m416_k6_r367_s208, ns_m70_k36_r23_s35, ns_m105_k24_r37_s35, ns_m210_k12_r37_s35, ns_m320_k8_r7_s160.
+- Resume: cd w11 && timeout 530 nice -n 10 ./run_any.sh list_metafirst.txt 450 ./exh3 (foreground).
+- Records: no cost 0 found anywhere (no record). Best new exact minima: m208_k12_r115 (2,496 split: m208 k12 r115 is
+  split, 2,496 cost 10 from screen 11), m215_k12_r92 (2,580) cost 10.
+- Next idea: per-pair search with the full Aut(G) for the non-split groups (inner automorphisms are too few; the
+  slow ns groups take 10-15 min each), then the 496 unscreened k >= 4 groups of 2,601..2,700.

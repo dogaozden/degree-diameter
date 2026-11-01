@@ -45,3 +45,4 @@ time_utc	worker	strategy	n	cost_or_far	valid_claim	file
 00:36	w11	exhaustive m320_k8_r7 (all triples up to Aut, bound 12)	5120	12	no	none
 00:36	w11	exhaustive m427_k6_r13 (all triples up to Aut, bound 12)	5124	12	no	none
 00:47	w15	maximal-class exponent-5 P of order 625 (subgroup of U_4(F_5)) x| Z_4, automorphism u4m_7, haar_tab 10 s	2500	4	no	/home/user/degree-diameter/research/squads/handsoff-49/w15/tabs/u4m_7.bin
+00:54	w14	bi-coset two-subgroup family (cosets of H and K, |H|=|K|=8), PSL(3,4); exact over 9 classes x 81 pairs, cost = far(A0)+far(B0), diameter 11 (score48 far = M*C/2)	5040	312	no	/home/user/degree-diameter/research/squads/handsoff-49/w14/runs/K_PSL34_h8_H3_K5_c0.edges

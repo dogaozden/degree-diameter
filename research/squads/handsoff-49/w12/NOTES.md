@@ -42,3 +42,22 @@ Start: 2026-10-31 23:23 UTC. Stop (2 hours): about 01:25 UTC.
 - 00:35 restart d2_r21 (from cost 76, 600 s, seed 21): cost 64 (far 42,240), 5302 iterations. d2_r22 running (NS 200, WPT 40, TT 30).
 - 00:38 restart d2_r22 (NS 200, WPT 40, TT 30): 66. Best stays cost 64 (runs/d2_r21.best.sol). Started deep3.sh: two chained 15-min restarts (seeds 31, 32) from the best.
 - 00:52 deep3 seed 31 (900 s from cost 64): no gain, stays 64 (8,694 iterations). Seed 32 running from the same best (ends about 01:07).
+
+## Final (01:08 UTC)
+- Best: PGL(2,11) (groups/pgl11.bin, order 1320) lifted over the doubled-K22 base (bases/b4_mh2_1.txt, 2+2 vertices,
+  4 parallel pairs), n = 5,280, cost 64 = far pairs 42,240 (score48 checked; apsp at D = 9 INVALID, diameter 10).
+  File: runs/d2_r21.best.edges (voltages runs/d2_r21.best.sol). No record.
+- Rebuild: `./wtt bases/b4_mh2_1.txt groups/pgl11.bin 9 360 11 runs/d1_mh2_1_s11 10 20 100 10 10` (cost 76, 6 min),
+  then `./wtt bases/b4_mh2_1.txt groups/pgl11.bin 9 600 21 runs/d2_r21 10 20 100 10 10 runs/d1_mh2_1_s11.best.sol` (cost 64).
+- Other groups at 20 s screen: PSL(2,11) 4+4 136; PSL(2,8) 5+5 136 (n = 5,040); A6 7+7 181; M10 4+4 209 (n = 5,760);
+  PGL(2,9) 271; S6 276; PGL(2,7) 8+8 339 (n = 5,376); PSL(2,13) 3+3 416 (n = 6,552). The 2+2 base over PGL(2,11) is
+  the clear winner, and mh2_0 deepened to 81 (not 64).
+- Restarts stall: the cost 64 solution did not move in two 15-minute chained restarts (seeds 31, 32).
+- Simple/centreless group lifts stay far from the solvable ones (w8 reached 15 at n = 4,992 with a 2+2 base over
+  AGL(1,13) x Z_8, K = 1,248). Walk counting says the same-side coverage ratio is about 3.7 for any base at n about 5,000,
+  and non-abelian products give no structural help here.
+
+## Next idea (not done)
+- Impose a symmetry: an automorphism of order 2 of PGL(2,11) combined with a base involution, so the voltages live on
+  half the cotree and the same-side constraints halve. That halves the search space; it may let tabu reach 0 or get
+  closer to it.

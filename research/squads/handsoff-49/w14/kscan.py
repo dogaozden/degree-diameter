@@ -33,8 +33,8 @@ def main():
                 os.makedirs(os.path.join(HERE, "runs"), exist_ok=True)
                 M, nD, cnt = kgrp.build(G, H, K, binp)
                 edges = os.path.join(HERE, "runs", "K_" + tag + ".edges")
-                r = subprocess.run(["nice", "-n", "10", os.path.join(HERE, "kbi"), binp, "exh", "0", edges],
-                                   capture_output=True, text=True, timeout=540)
+                r = subprocess.run(["nice", "-n", "10", os.path.join(HERE, "kbi"), binp, "exh", os.environ.get("KLIMIT", "0"), edges],
+                                   capture_output=True, text=True, timeout=int(os.environ.get("KTIMEOUT", "540")))
                 line = r.stdout.strip().splitlines()[-1] if r.stdout.strip() else "ERR " + r.stderr[-200:]
                 print(f"{tag} n={2*M} usable={cnt[1:]} {line}", flush=True)
                 with open(os.path.join(HERE, "results14K.tsv"), "a") as fh:

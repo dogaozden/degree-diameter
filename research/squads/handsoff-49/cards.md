@@ -278,3 +278,32 @@ many non-central involutions or Klein subgroups and a small centre: A_7 (Haar mi
 (read their NOTES.md). Roots: e in A and one point per B-orbit (G acts transitively on each orbit), so one evaluation
 is 2-5 BFS runs. Exhaustive over (s_i) for fixed H_i when small, annealing otherwise. Compare with the Haar minimum of
 the same group.
+
+## w18: auditor: re-check every claim on the scoreboard (follows w13)
+
+Do not trust any worker's numbers. For every line of `$H/scoreboard.tsv` (skip the header): check that the file exists
+(if the path is a solution or voltage file, find the matching .edges file in the worker's folder or rebuild it with the
+worker's documented command from its NOTES.md), then run `$H/tools/score48 FILE 4 9` and `$H/tools/apsp FILE 4 9` and
+record: worker, claimed n, actual n, claimed cost, actual far pairs, actual diameter, max degree, bipartite, VALID or not,
+and whether the claim holds (far pairs consistent with the claimed cost: for Haar/lift costs far = cost x N / 2 or as the
+worker's NOTES.md defines it). Write `$H/w18/audit.tsv` (one line per scoreboard line) and a short `$H/w18/NOTES.md`
+with the per-worker best verified near miss (smallest far pairs at n > 4,970 and lowest cost), and every discrepancy.
+Also list, per worker folder, the certified (exhaustive) negative results claimed in NOTES.md with the command that
+proves them. Re-run the audit on new scoreboard lines every 20 minutes until 02:50 UTC.
+If any line is VALID at d = 4, D = 9 with n > 4,970: copy it to `$H/records/` at once and write it first in NOTES.md.
+
+## w19: refinement ladder from the best Haar near misses (follows w12)
+
+A Haar graph H(G,S) is also a voltage lift of a k+k base over ANY subgroup K of index k in G (restrict the right
+action of G to K; the quotient has k vertices per side). The k+k voltage space is strictly larger than the Haar space,
+so its minimum is <= the Haar minimum, and anything lower is a new non-Haar structure. Start from the best near misses:
+- Z_101 x|_5 Z_25 (N = 2,525, n = 5,050, exact Haar minimum cost 2, w11): subgroups of index 5 (Z_101 x| Z_5, order
+  505: a 5+5 base), index 25 (Z_101: 25+25) and index 101 (Z_25: 101+101; too big?);
+- Z_104 x|_7 Z_24 and Z_208 x|_3 Z_12 (N = 2,496, n = 4,992, exact Haar minimum cost 4): subgroups of index 2, 3, 4, 6, 8
+  (2+2 over 1,248 is w5's family, where cost 4 is also the floor; go to 3+3, 4+4, 6+6, 8+8).
+Steps: (1) take an optimal S (w11's certified searches in `$H/w11/` or haar_tab with a few seeds; w13's file
+`$H/w13/best_haar_104_24_7_c4.edges`), build the k+k base and its voltages over K (w16 in `$H/w16/` is writing similar
+quotient code: read it, do not edit it), and check that the lift rebuilds the same graph with the same far pairs;
+(2) run tabu (`$H/w5/tabu.c` TABU=1, `$H/w8/wt.c`, or `$H/w12/wtt.c` which aims moves at far pairs) from those voltages,
+with restarts and perturbations; (3) also try the same from several different optimal S. Report the lowest cost per
+(group, k). Cost below the Haar minimum at the same n is progress; cost 0 is a record.

@@ -1,6 +1,6 @@
 # w10 NOTES (handsoff-49): Haar graphs of centreless groups with small abelianization
 
-Start: 2026-10-31 23:13 UTC. Planned end: 01:15 UTC. Last update: 00:38 UTC.
+Start: 2026-10-31 23:13 UTC. Planned end: 01:15 UTC. Last update: 01:08 UTC.
 
 ## Best result
 - **S5 x (Z7 x| Z3) = S5 x F21 (order 2520, n = 5040, centreless, |G^ab| = 6): best cost 8** (every seed and K=4, 8, 16:
@@ -8,7 +8,7 @@ Start: 2026-10-31 23:13 UTC. Planned end: 01:15 UTC. Last update: 00:38 UTC.
   apsp on runs/S5xF21_cost8.edges: diameter 10, far pairs 10080. Scoreboard line written (00:25).
 - No group in this card reached cost <= 4, so the exhaustive search (cards: cost <= 4 rule) was not triggered.
 
-## Screen (haar_tab, table groups, N = 2n/2; 60 s per run unless noted; screen.tsv has every run)
+## Screen (haar_tab, table groups; order N, n = 2N; 60 s per run unless noted; screen.tsv has every run)
 | group | N | ab | best cost (seeds) | structure |
 | S5 x F21 (S5 x (Z7:Z3)) | 2520 | 6 | **8** (x6 seeds, 120 s x3) | nonsolvable, centre 1 |
 | Z3^5 : Z11 | 2673 | 11 | 22 (3 seeds + 120 s x2) | Frobenius, abelian normal V |
@@ -34,6 +34,13 @@ Pattern: the nonsolvable groups (S5 x F21 = 8, A7 = 6 from w1) are the only ones
 normal subgroup of small index (Frobenius, V x| H with H small, dihedral factors) sit at 22-2296. Direct products with dihedral
 factors are bad (D11, D21 factors: 150-174).
 
+## Partial exhaustive on S5 x F21 (w1's exh, S = {e, r, b, c}, r = class rep)
+- Class reps 0..9 of 34 non-identity classes (35 classes total) done: min cost 9 in every class, zero none.
+  Logs: runs/exh_S5F21_c0_1.out, runs/exh_S5F21_c2_7.*, runs/exh_S5F21_c6_9.err, runs/exh_S5F21_c8_11.err (reps 10..34 not run).
+  So the annealer's 8 comes from a later class rep; the full scan (about 75-120 s per rep) is the next step.
+
+## Extra group: AGL(2,4) = F_2^4 x| GL(2,4), order 2880, centreless, ab 3: best cost 43 (90 s, one seed).
+
 ## Tools (w10/)
 - mk.py: group toolkit (semidirect_vec over GF(p), props: centre, |G'|, abelianization; write_bin).
 - build1.py, build2.py, build3.py: table builders for the lists above (tabs/NAME.bin).
@@ -41,8 +48,8 @@ factors are bad (D11, D21 factors: 150-174).
 - runs/S5F21_sav.sol: best S of the S5 x F21 run (w1's haar_tab_w1 with SAVE_ANY=1); runs/S5xF21_cost8.edges.
 
 ## Next ideas (not done)
-1. Exhaustive over all S of S5 x F21 up to conjugation (35 conjugacy classes x about 3.2M sets, with the 8 us cost of haar_tab's
-   evaluator instead of w1's 75 us): about 1 h of CPU. It would settle whether 8 is the true minimum for this group.
+1. Finish the exhaustive over S5 x F21 class reps 10..34 (about 75-120 s each with w1's exh; run in chunks of 3-4 reps). It
+   would settle whether 8 is the true minimum for this group.
 2. Non-solvable centreless groups of order 2486..2700 that are not direct products with a dihedral or Frobenius factor (search
-   for groups of the form V x| H with H nonsolvable acting without fixed points); AGL(2,4) (order 2880) is the next to test.
+   for groups of the form V x| H with H nonsolvable acting without fixed points); AGL(2,4) (order 2880) gave 43, so this direction is weak too.
 3. Surgery on the S5 x F21 cost-8 set: 2-switch moves from the far-pair list (far pairs 10080 is large, so probably a dead end).

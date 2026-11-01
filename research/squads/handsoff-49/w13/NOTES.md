@@ -72,3 +72,11 @@ Start: 2026-10-31 23:34 UTC. Planned end: 01:35 UTC (2 hours). Card: cards.md, "
 - meta 13 96 5, 2+2 mh2_1, 300 s tabu, seed 9: cost 10. Seeds matter: w5's seeds 31/61/72 reached 4 in 50-60 s.
 - Files: best_haar_104_24_7_c4.edges (n = 4992, cost 4), nocen_screen.tsv (325 no-central-involution groups, 2 s),
   centre_1243_1300.tsv (centres of the 764 groups), screen_centreless.tsv, long60_mh2.tsv, long300_mh2.tsv.
+
+## Last runs (00:59 UTC)
+- 2+2 mh2_1, 120 s tabu: meta 39 32 31 seeds 201/202/203/204 -> 4, 10, 10, 12 (the floor 4 is hit about once in four
+  seeds at this length, never below 4). meta 13 96 5 seed 201 -> 10.
+- Other order-1248 members of the 39 32 family, 90 s, seed 301: meta 39 32 5 -> 6, 39 32 25 -> 56, 39 32 38 -> 90,
+  39 32 14 -> 218 (fam39_mh2.tsv).
+- Floor summary for n = 4972..4992 (2+2 lifts, 4N = n): best 4 (order 1248, meta 39 32 31 and 13 96 5), i.e. no
+  improvement on the card's wall. Haar: 4 at N = 2496 (both cost-4 families); odd Haar 2487..2523 far worse.

@@ -35,3 +35,9 @@ what I changed.
 - 00:25 check-in 5. Opus/Haiku 0.343/0.245 (Haiku 41.6%). No record. All 8 round-2 workers active (files touched within
   minutes). New lines: w12 PGL(2,11) 2+2 lift n = 5,280 cost 76 (50,160 far pairs); w15 Heis(5) x Z_5 x| Z_4 (order
   2,500) cost 10. No change; polling less often to cut Opus spend.
+- 01:15 check-in 6. No record. Finished since 00:25: w9 (103 min; bi-coset exact minima: S_7 with an involution n = 5,040
+  cost 15, M_11 38, PSL(2,25) 30, A_8 168, PSL(3,4) 354), w13 (86 min; the cost-4 wall is the central involution: Haar
+  diameter <= 9 iff (S^-1 S)^4 = G on both sides, and (52,0) is far in every cost <= 6 state; all workarounds worse),
+  w12 (104 min; lifts over simple groups: PGL(2,11) 2+2 n = 5,280 cost 64, others 88-416). Launched w17 (mixed-orbit
+  graphs: regular on A, stabilizers 2 or 4 on B), w18 (auditor: re-score every scoreboard file), w19 (refinement ladder:
+  Haar near misses as k+k lifts over index-k subgroups, tabu in the larger space).
