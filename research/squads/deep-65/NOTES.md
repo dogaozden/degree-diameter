@@ -54,3 +54,25 @@ hub alpha ~ all b_j) by C7 x C7 (tools/hub2lift.py writes it in the vl format of
 sources x 2). In that bigger family (29 free voltages): shared/kopt K = 2 from the cost-2 state, 900,792 candidates,
 no cost-0 lift; tabu from random voltages reaches only 76 in 90 s and tabu from the cost-2 state stays at 12.
 So breaking the C6 symmetry does not open a way down; the symmetric family is the better search space.
+
+## Why the 294_11 minimum is 2 (structure of the near misses)
+The exact search lists 12 subsets with 2 missing elements (6 miss in (1), their 6 duals miss in (4); KA = HB = one C6).
+In all six A-side states: three elements of S lie in the normal Sylow subgroup N = C7 x C7, one in each of two other
+N-cosets, and the two missing elements are an inverse pair of order 7 **inside N**. Coverage of condition (1) per N-coset:
+47/49 for N itself, 49/49 for the other five cosets. So the deficit is always in the zero-weight words (walks whose
+image in G/N = C6 is trivial, i.e. closed walks at a base vertex of the 7+7 quotient). N is abelian, so these words
+collide: with n1, n2, n3 in S n N the pure-N part of TT is D + D for D = {0, +-(n1-n2), +-(n1-n3), +-(n2-n3)}, a
+hexagonal ball of 19 elements, and the mixed words cannot fill the last two of 49. The 684 record has the same shape
+over a NON-abelian core (Haar graph of C6 x (C19:C3), quotient C6, core C19:C3), which is consistent with this reading.
+At 686 every group of order 294 has an abelian Sylow-7 subgroup, so this obstruction is built into the 1,6|1,6 family.
+
+## Lead (a): why surgery on the 684 graph floors far above 0 (shared/damage684.c)
+Deleting one edge (x, y) of the 684 graph damages 44, 47, 49, 60, 81 or 83 pairs (by edge type), and EVERY damaged pair
+is a same-side pair at distance 4 whose only 4-path used the edge, of two kinds: (0,3) = (x, v) with v at distance 3
+from y (or the mirror), 23-42 per edge; (1,2) = (u, v) with u ~ x, v at distance 2 from y, 18-39 per edge; plus 0-3
+pairs at distance 2. No opposite-side pair is ever damaged. For an inserted pair a ~ b, a ~ y_i, b ~ x_i the detour
+x_i-b-a-y_i adds 2, so it repairs nothing; a (0,3) pair (x_i, v) is repaired only if v is within 2 of another x_j
+or adjacent to another y_j, and a (1,2) pair only if v is adjacent to another x_j (or the mirror through a). The other
+four deleted edges offer about 20 such B-neighbours and 4 x 30 A-vertices at distance 2, while the five edges need
+their 40-80 damaged partners each to land there. That is why annealing floors at 144-177 and symmetric insertions get
+worse. (Squad card h1 tests designed choices.)
