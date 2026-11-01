@@ -1,4 +1,4 @@
-import BipartiteDD.Haar.CycLift.Aut
+import BipartiteDD.Haar.CycLift.Exact
 
 /-! The (4,11) graph on 30334 vertices: the Haar graph of `Z_523 ⋊_9 Z_29` with
 `S = {(0, 0), (36, 6), (240, 1), (241, 26)}` (elements `(a, j)`, product `(a, j) (b, l) = (a + 9^j b, j + l)`), written as a `Z_523`-lift of
@@ -91,6 +91,11 @@ theorem G30334_isBipartiteDegDiam : IsBipartiteDegDiam G30334 4 11 :=
   isBipartiteDegDiam_of_srcs (b := 58) (π := pi30334) (π' := piInv30334) (μ := 465) (μ' := 9) (K := 29)
     side30334 [0, 29] rfl (by decide) (by decide +kernel) (by decide +kernel) (by decide +kernel)
     (by decide +kernel) (by decide +kernel) (by decide +kernel) (by decide +kernel) (by decide +kernel)
+
+/-- Every vertex has exactly 4 neighbours, and the diameter is exactly 11. -/
+theorem G30334_exact : (∀ v, (G30334.neighborSet v).ncard = 4) ∧ G30334.ediam = 11 :=
+  exact_of (b := 58) side30334 [0] rfl (by decide) (by decide +kernel) (by decide +kernel) (by decide +kernel)
+    (by decide +kernel) (by decide) G30334_isBipartiteDegDiam (by decide +kernel)
 
 end BipartiteDD.CycLift
 

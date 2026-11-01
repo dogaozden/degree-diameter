@@ -1,4 +1,4 @@
-import BipartiteDD.Haar.CycLift.Aut
+import BipartiteDD.Haar.CycLift.Exact
 
 /-! The (4,13) graph on 192382 vertices: the Haar graph of `Z_2237 ⋊_1984 Z_43` with
 `S = {(0, 0), (18, 21), (182, 33), (1689, 24)}` (elements `(a, j)`, product `(a, j) (b, l) = (a + 1984^j b, j + l)`), written as a `Z_2237`-lift of
@@ -119,6 +119,11 @@ theorem G192382_isBipartiteDegDiam : IsBipartiteDegDiam G192382 4 13 :=
   isBipartiteDegDiam_of_srcs (b := 86) (π := pi192382) (π' := piInv192382) (μ := 2069) (μ' := 1984) (K := 43)
     side192382 [0, 43] rfl (by decide) (by decide +kernel) (by decide +kernel) (by decide +kernel)
     (by decide +kernel) (by decide +kernel) (by decide +kernel) (by decide +kernel) (by decide +kernel)
+
+/-- Every vertex has exactly 4 neighbours, and the diameter is exactly 13. -/
+theorem G192382_exact : (∀ v, (G192382.neighborSet v).ncard = 4) ∧ G192382.ediam = 13 :=
+  exact_of (b := 86) side192382 [0] rfl (by decide) (by decide +kernel) (by decide +kernel) (by decide +kernel)
+    (by decide +kernel) (by decide) G192382_isBipartiteDegDiam (by decide +kernel)
 
 end BipartiteDD.CycLift
 

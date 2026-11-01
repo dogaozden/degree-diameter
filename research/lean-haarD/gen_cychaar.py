@@ -148,7 +148,8 @@ def main():
     assert orb == set(range(b))
     # 5. the Lean search
     assert search_full(M, b, D, outA, 0) and search_full(M, b, D, outA, K)
-    assert not (search_full(M, b, D - 1, outA, 0) and search_full(M, b, D - 1, outA, K))
+    assert not search_full(M, b, D - 1, outA, 0), 'the search from A_0 is full at D - 1'
+    assert all(len(set(outA[w])) == len(outA[w]) == len(S) for w in range(b))
     # 6. plain BFS in the Haar graph
     adj = [[] for _ in range(n)]
     for a, c in E:
@@ -163,7 +164,7 @@ def main():
     rows = ',\n'.join('  [' + ', '.join(f'({u}, {beta})' for (u, beta) in outA[w]) + ']' for w in range(b))
     rel = path[path.index('research/'):] if 'research/' in path else path
     Sstr = ', '.join(f'({c}, {l})' for (c, l) in S)
-    text = f'''import BipartiteDD.Haar.CycLift.Aut
+    text = f'''import BipartiteDD.Haar.CycLift.Exact
 
 /-! The ({d},{D}) graph on {n} vertices: the Haar graph of `Z_{M} ⋊_{R} Z_{K}` with
 `S = {{{Sstr}}}` (elements `(a, j)`, product `(a, j) (b, l) = (a + {R}^j b, j + l)`), written as a `Z_{M}`-lift of
@@ -199,6 +200,11 @@ theorem G{n}_isBipartiteDegDiam : IsBipartiteDegDiam G{n} {d} {D} :=
   isBipartiteDegDiam_of_srcs (b := {b}) (π := pi{n}) (π' := piInv{n}) (μ := {mu}) (μ' := {mup}) (K := {K})
     side{n} [0, {K}] rfl (by decide) (by decide +kernel) (by decide +kernel) (by decide +kernel)
     (by decide +kernel) (by decide +kernel) (by decide +kernel) (by decide +kernel) (by decide +kernel)
+
+/-- Every vertex has exactly {d} neighbours, and the diameter is exactly {D}. -/
+theorem G{n}_exact : (∀ v, (G{n}.neighborSet v).ncard = {d}) ∧ G{n}.ediam = {D} :=
+  exact_of (b := {b}) side{n} [0] rfl (by decide) (by decide +kernel) (by decide +kernel) (by decide +kernel)
+    (by decide +kernel) (by decide) G{n}_isBipartiteDegDiam (by decide +kernel)
 
 end BipartiteDD.CycLift
 

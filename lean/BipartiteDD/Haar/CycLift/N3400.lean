@@ -1,4 +1,4 @@
-import BipartiteDD.Haar.CycLift.Lift
+import BipartiteDD.Haar.CycLift.Exact
 
 /-! The (3,13) graph on 3400 vertices: a regular `Z_170` voltage lift of a 20-vertex cubic base graph.
 
@@ -42,6 +42,11 @@ def G3400 : SimpleGraph (Fin 3400) := liftGraph 3400 170 outA3400
 theorem G3400_isBipartiteDegDiam : IsBipartiteDegDiam G3400 3 13 :=
   isBipartiteDegDiam_of_checks (b := 20) side3400 rfl (by decide) (by decide +kernel) (by decide +kernel)
     (by decide +kernel) (by decide +kernel) (by decide +kernel)
+
+/-- Every vertex has exactly 3 neighbours, and the diameter is exactly 13. -/
+theorem G3400_exact : (∀ v, (G3400.neighborSet v).ncard = 3) ∧ G3400.ediam = 13 :=
+  exact_of (b := 20) side3400 [0] rfl (by decide) (by decide +kernel) (by decide +kernel) (by decide +kernel)
+    (by decide +kernel) (by decide) G3400_isBipartiteDegDiam (by decide +kernel)
 
 end BipartiteDD.CycLift
 

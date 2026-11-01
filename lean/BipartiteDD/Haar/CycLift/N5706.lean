@@ -1,4 +1,4 @@
-import BipartiteDD.Haar.CycLift.Lift
+import BipartiteDD.Haar.CycLift.Exact
 
 /-! The (3,14) graph on 5706 vertices: a regular `Z_317` voltage lift of a 18-vertex cubic base graph.
 
@@ -40,6 +40,11 @@ def G5706 : SimpleGraph (Fin 5706) := liftGraph 5706 317 outA5706
 theorem G5706_isBipartiteDegDiam : IsBipartiteDegDiam G5706 3 14 :=
   isBipartiteDegDiam_of_checks (b := 18) side5706 rfl (by decide) (by decide +kernel) (by decide +kernel)
     (by decide +kernel) (by decide +kernel) (by decide +kernel)
+
+/-- Every vertex has exactly 3 neighbours, and the diameter is exactly 14. -/
+theorem G5706_exact : (∀ v, (G5706.neighborSet v).ncard = 3) ∧ G5706.ediam = 14 :=
+  exact_of (b := 18) side5706 [0] rfl (by decide) (by decide +kernel) (by decide +kernel) (by decide +kernel)
+    (by decide +kernel) (by decide) G5706_isBipartiteDegDiam (by decide +kernel)
 
 end BipartiteDD.CycLift
 

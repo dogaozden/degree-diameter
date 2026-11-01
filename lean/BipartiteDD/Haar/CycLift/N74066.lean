@@ -1,4 +1,4 @@
-import BipartiteDD.Haar.CycLift.Aut
+import BipartiteDD.Haar.CycLift.Exact
 
 /-! The (4,12) graph on 74066 vertices: the Haar graph of `Z_1277 ⋊_964 Z_29` with
 `S = {(0, 0), (359, 17), (411, 20), (1158, 4)}` (elements `(a, j)`, product `(a, j) (b, l) = (a + 964^j b, j + l)`), written as a `Z_1277`-lift of
@@ -91,6 +91,11 @@ theorem G74066_isBipartiteDegDiam : IsBipartiteDegDiam G74066 4 12 :=
   isBipartiteDegDiam_of_srcs (b := 58) (π := pi74066) (π' := piInv74066) (μ := 1175) (μ' := 964) (K := 29)
     side74066 [0, 29] rfl (by decide) (by decide +kernel) (by decide +kernel) (by decide +kernel)
     (by decide +kernel) (by decide +kernel) (by decide +kernel) (by decide +kernel) (by decide +kernel)
+
+/-- Every vertex has exactly 4 neighbours, and the diameter is exactly 12. -/
+theorem G74066_exact : (∀ v, (G74066.neighborSet v).ncard = 4) ∧ G74066.ediam = 12 :=
+  exact_of (b := 58) side74066 [0] rfl (by decide) (by decide +kernel) (by decide +kernel) (by decide +kernel)
+    (by decide +kernel) (by decide) G74066_isBipartiteDegDiam (by decide +kernel)
 
 end BipartiteDD.CycLift
 

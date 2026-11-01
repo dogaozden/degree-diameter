@@ -72,6 +72,21 @@ def rotR(m, beta, x):
     return ((xm >> beta) | (xm << (m - beta))) & mask
 
 
+def search_full(m, b, D, outA, u0):
+    mask = (1 << m) - 1
+    cur = [1 if w == u0 else 0 for w in range(b)]
+    for _ in range(D):
+        cur = [cur[w] | _or_rot(m, outA[w], cur) for w in range(b)]
+    return all((x & mask) == mask for x in cur)
+
+
+def _or_rot(m, arcs, cur):
+    acc = 0
+    for (u, beta) in arcs:
+        acc |= rotR(m, beta, cur[u])
+    return acc
+
+
 def ecc_ok(m, b, D, outA):
     mask = (1 << m) - 1
     for u0 in range(b):
@@ -124,13 +139,15 @@ def main():
     assert diam == D, f'diameter {diam}, not {D}'
     # 5. the Lean search
     assert ecc_ok(m, b, D, outA) and not ecc_ok(m, b, D - 1, outA)
+    assert not search_full(m, b, D - 1, outA, 0), 'the search from base vertex 0 is full at D - 1'
+    assert all(len(set(outA[w])) == len(outA[w]) == deg for w in range(b))
     print(f'{name}: n={n} b={b} m={m} edges={len(E)} degree={deg} bipartite diameter={diam} (all pairs) '
           f'eccOK at {D} and not at {D - 1}; sha256 {sha}')
     if not leanfile:
         return
     rows = ',\n'.join('  [' + ', '.join(f'({u}, {beta})' for (u, beta) in outA[w]) + ']' for w in range(b))
     sides = ', '.join('true' if s else 'false' for s in side)
-    text = f'''import BipartiteDD.Haar.CycLift.Lift
+    text = f'''import BipartiteDD.Haar.CycLift.Exact
 
 /-! The ({deg},{D}) graph on {n} vertices: a regular `Z_{m}` voltage lift of a {b}-vertex cubic base graph.
 
@@ -155,6 +172,11 @@ def G{n} : SimpleGraph (Fin {n}) := liftGraph {n} {m} outA{n}
 theorem G{n}_isBipartiteDegDiam : IsBipartiteDegDiam G{n} {deg} {D} :=
   isBipartiteDegDiam_of_checks (b := {b}) side{n} rfl (by decide) (by decide +kernel) (by decide +kernel)
     (by decide +kernel) (by decide +kernel) (by decide +kernel)
+
+/-- Every vertex has exactly {deg} neighbours, and the diameter is exactly {D}. -/
+theorem G{n}_exact : (∀ v, (G{n}.neighborSet v).ncard = {deg}) ∧ G{n}.ediam = {D} :=
+  exact_of (b := {b}) side{n} [0] rfl (by decide) (by decide +kernel) (by decide +kernel) (by decide +kernel)
+    (by decide +kernel) (by decide) G{n}_isBipartiteDegDiam (by decide +kernel)
 
 end BipartiteDD.CycLift
 
