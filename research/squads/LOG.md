@@ -84,3 +84,27 @@ was CPU-starved (load ~19 on 4 cores, ~15 % of a core per card; autogroup schedu
 director raised its own groups to nice -7), so round 2 has 8-10 cards.
 Kept for round 2: 3+3 / 2+2 bands just above each solved N, chains on every cost-2 state, quartic 2+2 lifts at (4,9),
 (4,10), (4,11), and one wildcard (orbit-constrained lifts).
+
+Round-1 late reports: c07 (3,14) 4+4 N = 861-912: cost 6 at 7,104 · c09 (3,12) p = 4..6: cost 8 at 2,408 (exact 2-move
+local minimum) · c10 (3,11) cost 2 at 1,536 (4+4 over Z48 x|_5 Z4; the director's exact polish: local minimum) ·
+**c15 (4,14) 498,798** (Haar graph of Z3079 x|_568 Z81 with random S, hmeta; a fresh seed after a cost-1 state; director
+re-check: metacheck VALID from both sides, apsp VALID at D = 14).
+
+### Round 2 (10 cards, 23:20-00:05; research/squads/raise-small/r2/)
+
+Cards: d01 (3,13) 3+3 N = 625-720 · d02 (3,13) 2+2 N = 937-1,100 · d03 (3,14) 3+3 N = 1,101-1,170 + chain c06's
+cost-2 state · d04 (3,14) 2+2 N = 1,651-1,850 · d06 (3,11) 3+3 / 2+2 / other 4+4 groups · d07 (4,9) quartic 2+2 / 3+3,
+other groups · d08 (4,10) quartic 2+2 (salift4m) · d09 (4,11) quartic 2+2 · d10 wildcard orbit-constrained lifts ·
+d11 Δ = 4 Haar chases from near misses.
+
+Best per card: **d02 (3,13) 4,324** (2+2 over Z47 x|_2 Z23, first 22-s screen; cost 2 at 4,400) · **d03 (3,14) 7,008**
+(chain of c06's cost-2 3+3 state over Z73 x|_10 Z16) · d04 (3,14) 7,004 and 6,844 (2+2; cost 2 at 7,104) · d07 (4,9)
+cost 18 at 5,040 · d08 (4,10) cost 30 at 12,480 · d09 (4,11) cost 36 at 30,360 · d10 cost 60 at 4,116 (much worse than
+unconstrained) · d11 (4,12) cost 2 at 74,386, (4,13) cost 4, (4,11) cost 6. (d01, d06: below.)
+Director meanwhile: **(3,12) 2,436** (2+2 over Z29 x|_7 Z21, N = 609, a 25-s screen of the D = 12 2+2 scan; nobody
+had run 2+2 joint annealing at D = 12); 3+3 D = 14 scan above 1,171 (costs 4-14); every find re-checked
+(sol2edges.py + apsp, invalid at D - 1).
+
+Selection: 2+2 bases are the surprise of the round (D = 12 and 13 values from first screens); at D = 14 2+2 and 3+3 tie.
+The quartic joint lifts plateau (18-36) at every Δ = 4 cell, so Δ = 4 goes back to Haar chases only. Orbit lifts
+dropped. Round 3 = 2+2/3+3 bands above every solved N plus chains of the cost-2 states, a (3,10) card, a Δ = 4 Haar card.
