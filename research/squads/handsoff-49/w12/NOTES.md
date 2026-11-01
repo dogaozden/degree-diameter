@@ -24,3 +24,18 @@ Start: 2026-10-31 23:23 UTC. Stop (2 hours): about 01:25 UTC.
   cmp_tools.sh compares wt12 and wtt for 60 s each on PGL(2,11) 2+2 (mh2_1), after the screen.
 - Expectation from the walk count: same-side targets get about 3.7 walks each for any base (n about 5,000), so random
   lifts miss about 2.5 % of same-side pairs. Cost 0 needs structure; simple-group lifts are likely to stop at cost 10-50.
+
+## Screen 1 result (78 pairs, 20 s each, wt12 NS=100 TT=20; full table in screen1.tsv)
+- Best per group (cost = 2*far/K; n in brackets): PGL(2,11) 2+2 mh2_1 88 (5280); PSL(2,11) 4+4 136 (5280);
+  PSL(2,8) 5+5 136 (5040); A6 7+7 181 (5040); M10 4+4 209 (5760); PGL(2,9) 4+4 271 (5760); S6 4+4 276 (5760);
+  PGL(2,7) 8+8 339 (5376); PSL(2,13) 3+3 416 (6552). Group means are much worse than the best base, so the
+  2+2 base over PGL(2,11) is the one to deepen.
+- wt12 vs wtt, 60 s each on PGL(2,11) 2+2 mh2_1: wt12 85, wtt 82 (wtt's far-pair moves help a little).
+  40 s variants: TT 5 -> 82, TT 50 -> 87, no random moves (NT 30, WPT 40) -> 88. Differences are small; both stall near 80.
+- Checked: wtt's cost 82 = score48 far_pairs 54120 = 82*1320/2 (apsp: diameter 10, INVALID).
+- Scoreboard line added for cost 82 (5280, PGL(2,11) 2+2).
+- Running now: deep1.sh, three 6-minute wtt runs on PGL(2,11) 2+2 (seeds 11, 12, 13; TT 10, 10, 20), then restarts.
+
+## 00:08 UTC
+- deep run d1_mh2_1_s11 (wtt, 360 s, seed 11, TT 10): cost 76 (far 50,160), 3381 iterations. Next runs in deep1.sh.
+- 00:17 deep1 finished: seed 11 cost 76 (best), seed 12 (mh2_0) 81, seed 13 (TT 20) 78. Started deep2.sh: restarts from the cost-76 solution, 10 min each (seed 21 TT 10 NS 100; seed 22 WPT 40 NS 200 TT 30).

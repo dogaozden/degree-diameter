@@ -1,0 +1,18 @@
+group SZ8: order 29120, degree 65  (sampling 1.3s)
+subgroup classes of order 8: 3
+[SZ8_h8_K0] H element orders {1: 1, 4: 4, 2: 3}  M=3640 h=8 n=7280 orbits: size1=4 size2=2 size3=0 size4=12 larger=448
+RESULT_EXH M=3640 h=8 n=7280 evals=26 best_cost=14528 L=2517,3214,0,1627 time=0.1s
+partition {2,1,1}: count of orbit choices (see nev), minimum cost 14528 (overall best 14528)
+partition exhaustive, count 1
+partition {1,1,1,1}: count of orbit choices (see nev), minimum cost 14544 (overall best 14528)
+[SZ8_h8_K1] H element orders {1: 1, 2: 3, 4: 4}  M=3640 h=8 n=7280 orbits: size1=4 size2=2 size3=0 size4=12 larger=448
+RESULT_EXH M=3640 h=8 n=7280 evals=26 best_cost=14528 L=1107,2579,0,2519 time=0.0s
+partition {2,1,1}: count of orbit choices (see nev), minimum cost 14528 (overall best 14528)
+partition exhaustive, count 1
+partition {1,1,1,1}: count of orbit choices (see nev), minimum cost 14544 (overall best 14528)
+[SZ8_h8_K2] H element orders {1: 1, 2: 3, 4: 4}  M=3640 h=8 n=7280 orbits: size1=4 size2=2 size3=0 size4=12 larger=448
+RESULT_EXH M=3640 h=8 n=7280 evals=26 best_cost=14528 L=283,1950,0,1663 time=0.0s
+partition {2,1,1}: count of orbit choices (see nev), minimum cost 14528 (overall best 14528)
+partition exhaustive, count 1
+partition {1,1,1,1}: count of orbit choices (see nev), minimum cost 14544 (overall best 14528)
+done 147.9s

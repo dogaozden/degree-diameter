@@ -32,3 +32,6 @@ what I changed.
   running: nudged both. Launched w12 (small bases over simple groups, tabu), w13 (the cost-4 wall at 4,992), w14
   (bi-coset, larger simple groups, |H| 4-24), w15 (order 2,500 = P x| Z_4 fixed-point-free, centreless), w16 (quotients
   of the 4,970 graph: 5+5 over 497, 7+7 over 355, 35+35 over Z_71; calibrate, then re-lift over larger groups).
+- 00:25 check-in 5. Opus/Haiku 0.343/0.245 (Haiku 41.6%). No record. All 8 round-2 workers active (files touched within
+  minutes). New lines: w12 PGL(2,11) 2+2 lift n = 5,280 cost 76 (50,160 far pairs); w15 Heis(5) x Z_5 x| Z_4 (order
+  2,500) cost 10. No change; polling less often to cut Opus spend.

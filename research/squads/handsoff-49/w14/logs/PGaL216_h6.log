@@ -1,0 +1,18 @@
+group PSLs2_2^4: order 16320, degree 17  (sampling 0.2s)
+subgroup classes of order 6: 3
+[PSLs2_2^4_h6_K0] H element orders {1: 1, 2: 1, 3: 2, 6: 2}  M=2720 h=6 n=5440 orbits: size1=4 size2=8 size3=12 size4=0 larger=444
+RESULT_EXH M=2720 h=6 n=5440 evals=125 best_cost=10720 L=31,488,820,440 time=0.0s
+partition {2,1,1}: count of orbit choices (see nev), minimum cost 10800 (overall best 10720)
+partition exhaustive, count 1
+partition {1,1,1,1}: count of orbit choices (see nev), minimum cost 10864 (overall best 10720)
+[PSLs2_2^4_h6_K1] H element orders {1: 1, 2: 3, 3: 2}  M=2720 h=6 n=5440 orbits: size1=4 size2=8 size3=28 size4=0 larger=436
+RESULT_EXH M=2720 h=6 n=5440 evals=189 best_cost=453 L=9,10,1429,2232 time=0.1s
+partition {2,1,1}: count of orbit choices (see nev), minimum cost 10800 (overall best 453)
+partition exhaustive, count 1
+partition {1,1,1,1}: count of orbit choices (see nev), minimum cost 10864 (overall best 453)
+[PSLs2_2^4_h6_K2] H element orders {1: 1, 2: 3, 3: 2}  M=2720 h=6 n=5440 orbits: size1=20 size2=0 size3=100 size4=0 larger=400
+RESULT_EXH M=2720 h=6 n=5440 evals=6845 best_cost=558 L=3,106,2477,509 time=0.4s
+partition {3,1}: count of orbit choices (see nev), minimum cost 558 (overall best 558)
+partition exhaustive, count 4845
+partition {1,1,1,1}: count of orbit choices (see nev), minimum cost 10800 (overall best 558)
+done 15.4s

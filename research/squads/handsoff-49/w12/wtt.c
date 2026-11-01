@@ -139,7 +139,7 @@ static int candc[1 << 16], candv[1 << 16];
 static inline int MUL(int a, int b) { return MT[a * K + b]; }
 
 int main(int argc, char **argv) {
-    if (argc < 13) { fprintf(stderr, "usage: wtt BASE GROUP.bin D seconds seed OUT NT WPT NS NR TT [INIT.sol]\n"); return 2; }
+    if (argc < 12) { fprintf(stderr, "usage: wtt BASE GROUP.bin D seconds seed OUT NT WPT NS NR TT [INIT.sol]\n"); return 2; }
     FILE *bf = fopen(argv[1], "r");
     if (!bf) { perror(argv[1]); return 2; }
     int n; if (fscanf(bf, "%d", &n) != 1) return 2;

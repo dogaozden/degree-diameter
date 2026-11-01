@@ -37,6 +37,10 @@ def group_gens(name):
         return [cyc(9, (0, 1, 2)), cyc(9, tuple(range(7))), cyc(9, (7, 8))]
     if name == "A8":
         return [cyc(8, (0, 1, 2)), cyc(8, tuple(range(1, 8)))]
+    if name == "PSp43":
+        return sp43_gens()
+    if name == "PSL3_4":
+        return sl34_gens()
     if name.startswith("PSL2_") or name.startswith("PGL2_") or name.startswith("PSLs2_"):
         pgl = name.startswith("PGL2_")
         spec = name.split("_")[1]
@@ -56,6 +60,55 @@ def group_gens(name):
             gens = gens + [frob]
         return gens
     raise SystemExit("unknown group " + name)
+
+def sp43_gens():
+    """PSp(4,3) on the 40 points of PG(3,3) for the symplectic form x0y1-x1y0+x2y3-x3y2 (symplectic transvections)."""
+    import itertools
+    vecs = [v for v in itertools.product(range(3), repeat=4) if any(v)]
+    def norm(v):
+        f = next(x for x in v if x)
+        inv = 1 if f == 1 else 2
+        return tuple((x * inv) % 3 for x in v)
+    pts = sorted({norm(v) for v in vecs})
+    idx = {p: i for i, p in enumerate(pts)}
+    def B(x, y):
+        return (x[0] * y[1] - x[1] * y[0] + x[2] * y[3] - x[3] * y[2]) % 3
+    gens = []
+    for v in pts:
+        for lam in (1, 2):
+            perm = []
+            for p in pts:
+                c = (lam * B(p, v)) % 3
+                w = tuple((p[i] + c * v[i]) % 3 for i in range(4))
+                perm.append(idx[norm(w)] if any(w) else None)
+            assert None not in perm
+            gens.append(tuple(perm))
+    return gens
+
+def sl34_gens():
+    """PSL(3,4) on the 21 points of PG(2,4). GF(4) = {0,1,2=w,3=w+1}: addition = XOR, mult table below."""
+    import itertools
+    MUL = [[0, 0, 0, 0], [0, 1, 2, 3], [0, 2, 3, 1], [0, 3, 1, 2]]
+    vecs = [v for v in itertools.product(range(4), repeat=3) if any(v)]
+    def norm(v):
+        f = next(x for x in v if x)
+        inv = {1: 1, 2: 3, 3: 2}[f]
+        return tuple(MUL[inv][x] for x in v)
+    pts = sorted({norm(v) for v in vecs})
+    idx = {p: i for i, p in enumerate(pts)}
+    gens = []
+    for i in range(3):
+        for j in range(3):
+            if i == j:
+                continue
+            for a in (1, 2, 3):
+                perm = []
+                for p in pts:
+                    w = list(p)
+                    w[i] ^= MUL[a][p[j]]          # row i <- row i + a * row j  (elementary, det 1)
+                    perm.append(idx[norm(tuple(w))])
+                gens.append(tuple(perm))
+    return gens
 
 class Grp:
     def __init__(self, gens):
@@ -127,24 +180,25 @@ class Grp:
         for _ in range(trials):
             if not X:
                 break
-            H = self.gen_sub([rnd.choice(X)], h)
+            gens = [rnd.choice(X)]
+            H = self.gen_sub(gens, h)
             if H is None:
                 continue
             steps = 0
-            while len(H) < h and steps < 80:
+            while len(H) < h and steps < 12:
                 steps += 1
                 Hset = np.array(H)
                 mask = np.ones(self.N, dtype=bool)
-                for hh in H:
-                    mask &= np.isin(self.conj_all(hh), Hset)
+                for gg in gens:                      # g normalises H iff it normalises every generator
+                    mask &= np.isin(self.conj_all(gg), Hset)
                 cand = np.nonzero(mask)[0] if rnd.random() < 0.85 else np.arange(self.N)
                 cand = cand[~np.isin(cand, Hset)]
                 if len(cand) == 0:
                     break
                 y = int(cand[rnd.randrange(len(cand))])
-                nH = self.gen_sub(H + [y], h)
+                nH = self.gen_sub(gens + [y], h)
                 if nH is not None and len(nH) > len(H):
-                    H = nH
+                    H = nH; gens = gens + [y]
             if len(H) != h:
                 continue
             key = self.canon(H)
@@ -216,3 +270,36 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+# ---- two-subgroup family: S = K S H (H, K of the same order); A-cosets of H, B-cosets of K ----
+def build_bin2(G, H, K, path):
+    H = np.array(H, dtype=np.int64); K = np.array(K, dtype=np.int64); h = len(H)
+    assert len(K) == h
+    Hp = G.P[H]; Kp = G.P[K]
+    def cosets(Sub):  # left cosets Sub*x : label = min element index
+        Q = np.stack([Sub_p[k][G.P] for k in range(len(Sub))]) if False else None
+        Sp = G.P[Sub]
+        Qk = np.stack([Sp[k][G.P] for k in range(len(Sub))])
+        lab = G.idx(Qk).min(axis=0)
+        uniq = np.unique(lab)
+        return uniq, np.searchsorted(uniq, lab)
+    uH, cH = cosets(H); uK, cK = cosets(K)
+    M = len(uH); assert len(uK) == M and M * h == G.N
+    PH = G.P[uH]; PK = G.P[uK]
+    TA = np.empty((M, M), dtype=np.uint16)     # TA[c][i] = cid_K(repK_c o repH_i)  (A-side: left K-cosets of S)
+    TB = np.empty((M, M), dtype=np.uint16)     # TB[c][j] = cid_H(repH_c o repK_j)  (B-side: left H-cosets of S^-1)
+    for c in range(M):
+        TA[c] = cK[G.idx(PK[c][PH])]
+        TB[c] = cH[G.idx(PH[c][PK])]
+    PKinv = G.Pinv[uK]
+    Ainv = np.empty((M, h), dtype=np.int32); rho = np.empty((M, h), dtype=np.int32)
+    for t in range(h):
+        Ainv[:, t] = cH[G.idx(PKinv[:, Kp[t]])]     # cid_H(repK_c^-1 o K_t)
+        rho[:, t] = cK[G.idx(PK[:, Hp[t]])]         # right action of H on K-cosets: repK_c o H_t
+    with open(path, "wb") as f:
+        f.write(np.array([M, h], dtype="<i4").tobytes())
+        f.write(TA.astype("<u2").tobytes())
+        f.write(Ainv.astype("<i4").tobytes())
+        f.write(rho.astype("<i4").tobytes())
+        f.write(TB.astype("<u2").tobytes())
+    return M, h

@@ -1,0 +1,33 @@
+group PSp43: order 25920, degree 40  (sampling 0.7s)
+subgroup classes of order 8: 6
+[PSp43_h8_K0] H element orders {1: 1, 4: 2, 2: 5}  M=3240 h=8 n=6480 orbits: size1=2 size2=7 size3=0 size4=86 larger=360
+RESULT_EXH M=3240 h=8 n=6480 evals=114 best_cost=3332 L=119,1038,1147,2013 time=0.0s
+partition {2,2}: count of orbit choices (see nev), minimum cost 3584 (overall best 3332)
+partition exhaustive, count 7
+partition {2,1,1}: count of orbit choices (see nev), minimum cost 12912 (overall best 3332)
+[PSp43_h8_K1] H element orders {1: 1, 4: 6, 2: 1}  M=3240 h=8 n=6480 orbits: size1=36 size2=0 size3=0 size4=9 larger=396
+RESULT_EXH M=3240 h=8 n=6480 evals=58914 best_cost=12816 L=0,145,168,394 time=1.7s
+  new best cost 12816  L={0,145,168,394} t=0.0s nev=11
+partition exhaustive, count 58905
+partition {1,1,1,1}: count of orbit choices (see nev), minimum cost 12816 (overall best 12816)
+[PSp43_h8_K2] H element orders {1: 1, 2: 5, 4: 2}  M=3240 h=8 n=6480 orbits: size1=2 size2=7 size3=0 size4=62 larger=372
+RESULT_EXH M=3240 h=8 n=6480 evals=90 best_cost=1616 L=36,1807,834,3224 time=0.0s
+partition {2,2}: count of orbit choices (see nev), minimum cost 1976 (overall best 1616)
+partition exhaustive, count 7
+partition {2,1,1}: count of orbit choices (see nev), minimum cost 12912 (overall best 1616)
+[PSp43_h8_K3] H element orders {1: 1, 2: 3, 4: 4}  M=3240 h=8 n=6480 orbits: size1=4 size2=2 size3=0 size4=24 larger=392
+RESULT_EXH M=3240 h=8 n=6480 evals=38 best_cost=12864 L=93,1230,542,1075 time=0.0s
+partition {2,1,1}: count of orbit choices (see nev), minimum cost 12928 (overall best 12864)
+partition exhaustive, count 1
+partition {1,1,1,1}: count of orbit choices (see nev), minimum cost 12944 (overall best 12864)
+[PSp43_h8_K4] H element orders {1: 1, 4: 4, 2: 3}  M=3240 h=8 n=6480 orbits: size1=8 size2=16 size3=0 size4=16 larger=392
+RESULT_EXH M=3240 h=8 n=6480 evals=654 best_cost=12672 L=108,2124,0,625 time=0.0s
+partition {2,1,1}: count of orbit choices (see nev), minimum cost 12672 (overall best 12672)
+partition exhaustive, count 70
+partition {1,1,1,1}: count of orbit choices (see nev), minimum cost 12928 (overall best 12672)
+[PSp43_h8_K5] H element orders {1: 1, 4: 2, 2: 5}  M=3240 h=8 n=6480 orbits: size1=4 size2=16 size3=0 size4=41 larger=380
+RESULT_EXH M=3240 h=8 n=6480 evals=258 best_cost=12864 L=3,1763,155,3044 time=0.0s
+partition {2,1,1}: count of orbit choices (see nev), minimum cost 12864 (overall best 12864)
+partition exhaustive, count 1
+partition {1,1,1,1}: count of orbit choices (see nev), minimum cost 12944 (overall best 12864)
+done 98.2s

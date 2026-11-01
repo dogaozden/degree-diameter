@@ -34,3 +34,6 @@ time_utc	worker	strategy	n	cost_or_far	valid_claim	file
 23:27	w11	exhaustive meta 208 12 43 (aut-reduced, all triples, bound 8)	4992	8	no	none
 23:27	w11	exhaustive meta 208 12 11 (aut-reduced, all triples, bound 9)	4992	9	no	none
 23:30	w4	rb12 lift over meta 13 32 5 (order 416), ILS refined from cost 80, cost = 2*far/k	4992	76	no	/home/user/degree-diameter/research/squads/handsoff-49/w4/r12m13_76.edges
+23:59	w12	PGL(2,11) x 2+2 base mh2_1 (doubled K22), wtt far-target tabu 60 s; far pairs 54120	5280	82	no	/home/user/degree-diameter/research/squads/handsoff-49/w12/runs/cmp_wtt.best.edges
+00:08	w12	PGL(2,11) x 2+2 base mh2_1, wtt 360 s seed 11 TT 10; far pairs 50160	5280	76	no	/home/user/degree-diameter/research/squads/handsoff-49/w12/runs/d1_mh2_1_s11.best.edges
+00:10	w15	Heis(5)xZ5 semidirect Z4, automorphism diag/random (hb_1 = (Heis(5) x| Z_4) x Z_5), haar_tab 10 s	2500	10	no	/home/user/degree-diameter/research/squads/handsoff-49/w15/tabs/hb_1.bin
