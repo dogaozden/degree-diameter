@@ -1,0 +1,46 @@
+group psl 103 x Z_43, N=23491416 (2N=46982832), rows 5304 x 4429 bits (doubled row 160 words), memory 0.02 GB, threads 1
+alpha: conj by mat(0,102,1,102), z -> 6 z on Z_43 (fixed z: 1); ORBIT k=3 m=2 f=2; W=3.29554e+08 lambda=14.029 mu=18.98
+setup 0.0s
+fixed generators: 1 chosen among 50 alpha-fixed elements
+start cost=21 (0.1s per eval)
+t=0 step=1 evals=5 slot=1 cand=27 cost=21 best=21 T=1.26
+t=1 step=2 evals=9 slot=1 cand=23 cost=23 best=21 T=1.06
+t=1 step=3 evals=13 slot=1 cand=50 cost=23 best=21 T=0.89
+t=4 step=4 evals=17 slot=1 cand=60 cost=23 best=21 T=0.75
+t=7 step=5 evals=21 slot=0 cand=63 cost=23 best=21 T=0.63
+t=9 step=6 evals=25 slot=1 cand=69 cost=23 best=21 T=0.53
+t=12 step=7 evals=29 slot=0 cand=77 cost=23 best=21 T=0.45
+t=16 step=8 evals=33 slot=0 cand=39 cost=23 best=21 T=0.38
+t=19 step=9 evals=37 slot=1 cand=30 cost=23 best=21 T=0.32
+t=22 step=10 evals=41 slot=0 cand=30 cost=23 best=21 T=0.27
+t=24 step=11 evals=45 slot=0 cand=33 cost=23 best=21 T=0.22
+t=26 step=12 evals=49 slot=1 cand=57 cost=23 best=21 T=0.19
+t=29 step=13 evals=53 slot=0 cand=30 cost=23 best=21 T=0.16
+t=32 step=14 evals=57 slot=1 cand=54 cost=23 best=21 T=0.15
+t=35 step=15 evals=61 slot=0 cand=62 cost=23 best=21 T=0.15
+t=38 step=16 evals=65 slot=0 cand=57 cost=23 best=21 T=0.15
+t=41 step=17 evals=69 slot=0 cand=75 cost=23 best=21 T=0.15
+t=44 step=18 evals=73 slot=0 cand=72 cost=23 best=21 T=0.15
+t=47 step=19 evals=77 slot=1 cand=28 cost=23 best=21 T=0.15
+t=49 step=20 evals=81 slot=1 cand=51 cost=23 best=21 T=0.15
+t=52 step=21 evals=85 slot=0 cand=51 cost=23 best=21 T=0.15
+t=54 step=22 evals=89 slot=1 cand=64 cost=23 best=21 T=0.15
+t=56 step=23 evals=93 slot=1 cand=21 cost=21 best=21 T=0.15
+t=59 step=24 evals=97 slot=0 cand=48 cost=21 best=21 T=0.15
+t=60 step=25 evals=101 slot=0 cand=48 cost=21 best=21 T=0.15
+t=62 step=26 evals=105 slot=0 cand=53 cost=21 best=21 T=0.15
+t=64 step=27 evals=109 slot=1 cand=42 cost=21 best=21 T=0.15
+t=67 step=28 evals=113 slot=0 cand=51 cost=21 best=21 T=0.15
+t=71 step=29 evals=117 slot=1 cand=60 cost=21 best=21 T=0.15
+t=74 step=30 evals=121 slot=1 cand=42 cost=21 best=21 T=0.15
+t=75 step=31 evals=125 slot=1 cand=24 cost=21 best=21 T=0.15
+t=78 step=32 evals=129 slot=0 cand=41 cost=21 best=21 T=0.15
+t=80 step=33 evals=133 slot=1 cand=42 cost=21 best=21 T=0.15
+t=82 step=34 evals=137 slot=0 cand=83 cost=21 best=21 T=0.15
+t=84 step=35 evals=141 slot=1 cand=48 cost=21 best=21 T=0.15
+t=87 step=36 evals=145 slot=0 cand=51 cost=21 best=21 T=0.15
+t=88 step=37 evals=149 slot=0 cand=21 cost=21 best=21 T=0.15
+t=91 step=38 evals=153 slot=0 cand=45 cost=21 best=21 T=0.15
+t=93 step=39 evals=157 slot=1 cand=60 cost=21 best=21 T=0.15
+t=96 step=40 evals=161 slot=0 cand=51 cost=21 best=21 T=0.15
+RESULT d=8 D=11 group=psl 103 x Z_43 N=23491416 vertices=46982832 best=21 evals=161 steps=40 time=96.2 orbit k=3 m=2 f=2 mu=18.98
