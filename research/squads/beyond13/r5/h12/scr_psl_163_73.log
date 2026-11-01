@@ -1,0 +1,6 @@
+group psl 163 x Z_73, N=158066316 (2N=316132632), rows 13284 x 11899 bits (doubled row 392 words), memory 0.10 GB, threads 1
+alpha: conj by mat(0,162,1,162), z -> 8 z on Z_73 (fixed z: 1); ORBIT k=3 m=2 f=1; W=2.61214e+09 lambda=16.526 mu=10.52
+setup 0.0s
+RANDORB sample 0 cost 30 (5.4s) zq 1.000
+RANDORB sample 1 cost 922 (10.3s) zq 1.000
+RANDORB sample 2 cost 327 (14.0s) zq 1.000
