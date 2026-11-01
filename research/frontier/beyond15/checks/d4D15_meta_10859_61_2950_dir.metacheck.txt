@@ -1,0 +1,13 @@
+checker: metacheck
+command: ./bin/metacheck sols/d4D15_meta_10859_61_2950_dir.txt
+start: 2026-11-01T22:51:46Z
+sha256 b896147c93ee6271f74ea274ea8a47fcb894acf2d5fbdf3a90a1ee96366eb24b  ./bin/metacheck
+sha256 cbf90618aa7f03770283c356ae500eb47e26cbfb0c82243a9957090ce3949318  sols/d4D15_meta_10859_61_2950_dir.txt
+file sols/d4D15_meta_10859_61_2950_dir.txt
+header: d=4 D=15 factors=1 [Z10859 x|_2950 Z61] x Z1  N=662399 (file says 662399)
+selftest: r^k = 1, associativity/identity/inverse on 20000 random triples, index round trip ok; 4 distinct generators
+from (e,A): reached A 662399/662399, B 662399/662399 within 15; eccentricity 15; levels 1 4 12 36 108 324 972 2916 8732 25914 74270 192524 383454 423984 194850 16697 (2.0 s)
+from (e,B): reached A 662399/662399, B 662399/662399 within 15; eccentricity 15; levels 1 4 12 36 108 324 972 2916 8732 25914 74266 192524 383434 423984 194874 16697 (1.9 s)
+VALID d=4 D=15 N=662399 vertices=1324798 diameter=15 (3.9 s, 1 threads)
+exit: 0
+end: 2026-11-01T22:51:50Z (4 s)
