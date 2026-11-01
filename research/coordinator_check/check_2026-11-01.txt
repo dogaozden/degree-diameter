@@ -15,3 +15,28 @@ at D = 12: RESULT INVALID
 == d4D14_n490070_meta7001_35_4532 (beyond-d13): edge list sha256 0e35bbeebd4f6882942ab5ab8edc4b4ed22afa4094420466ae8026f96ee2fecb
 n=490070 edges=980140 degree min=4 max=4 bipartite=yes diameter=14 RESULT VALID d=4 D=14 n=490070 
 at D = 13: RESULT INVALID
+
+== d3D13_n3400_lift_gp10_Z170 (beyond-d13): edge list sha256 68a0d7feea71e65bf94ad60b2970414431a2e41f38ae4c0b32d339f2333d536a
+n=3400 edges=5100 degree min=3 max=3 bipartite=yes diameter=13
+RESULT VALID d=3 D=13 n=3400
+at D = 12: RESULT INVALID
+
+== d3D14_n5706_lift_pappus_Z317 (beyond-d13): edge list sha256 fd460a47630982cbf4b3b472f4b31155f7ed3d41e72b3a480e32da14a30894bf
+n=5706 edges=8559 degree min=3 max=3 bipartite=yes diameter=14
+RESULT VALID d=3 D=14 n=5706
+at D = 13: RESULT INVALID
+
+== d4D12_n74066_meta1277_29_964 (beyond-d13): edge list sha256 ea095a487bef8e84400fd7443bd9e234703bce0adbe9108dcd17386efe47c071
+n=74066 edges=148132 degree min=4 max=4 bipartite=yes diameter=12
+RESULT VALID d=4 D=12 n=74066
+at D = 11: RESULT INVALID
+
+== d4D13_n192382_meta2237_43_1984 (beyond-d13): edge list sha256 cbeab803bcf10a4d16e5b1d321a7472d7db98915a1e38bdb10125fcb6ca40844
+n=192382 edges=384764 degree min=4 max=4 bipartite=yes diameter=13
+RESULT VALID d=4 D=13 n=192382
+at D = 12: RESULT INVALID
+
+== d4D14_n491294_meta4027_61_2950 (beyond-d13): edge list sha256 b5461ba6045e8862418e22094c358c1b9897476522adcac366dab6a232ac34a8
+n=491294 edges=982588 degree min=4 max=4 bipartite=yes diameter=14
+RESULT VALID d=4 D=14 n=491294
+at D = 13: RESULT INVALID
