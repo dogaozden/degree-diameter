@@ -17,13 +17,16 @@ outside that table. This note gives one value for each of 64 of them:
 
 The Δ = 17..20 cells at D = 3 and 4 were filled in the same week but are not in the table below: at Δ = 17, 18, 20
 they are incidence graphs of PG(2, Δ−1) and W(Δ−1) (Moore graphs, so optimal), and at Δ = 19 they are the lab's
-fourth-hat graph (624) and Theorem A graph (10,982), both checked all-pairs by the coordinator on October 26.
+fourth-hat graph (624) and the AS(17) graph of Corollary A1 (10,982), both checked all-pairs by the coordinator on
+October 26.
 
-Each value is a lower bound: one explicit graph, built from files in the repository and checked by a program that
-does not share code with the program that found it. The new-cells-beyond job's literature card (research/squads/beyond/,
-round 2, card d10) found no published bipartite values for these cells, so we call the values *first values*, not
-records. No literature search was done after that card. For cubic graphs in particular, published censuses of
-cubic graphs of given girth or diameter may contain larger bipartite graphs; this has not been checked.
+Each value is a lower bound: one explicit graph, built from files in the repository. All but three were checked
+exactly by a program that does not share code with the search that found them; the three level graphs at D = 7 rest
+on a theorem (section 4). A literature card of the new-cells-beyond job (`research/squads/beyond/r2/d10/LIT.md` on its
+branch) looked for published bipartite values in 48 of these cells (Δ = 17..20 at D ≤ 10, and D = 11, 12 at
+Δ ≤ 10) and found none, but it could not read the Combinatorics Wiki page (HTTP 503) or the tables of some papers. For
+the other cells no search was made. So we call the values *first values for the lab*, not records. For cubic graphs in
+particular, published censuses may contain larger bipartite graphs of these diameters; this has not been checked.
 
 For comparison, the bipartite Moore bound is M~b~(Δ, D) = 2(1 + (Δ−1) + … + (Δ−1)^D−1^), and for 5 ≤ D ≤ 187,
 D ≠ 6, N^b^(Δ, D) ≤ M~b~(Δ, D) − 6 (Feria-Purón and Pineda-Villavicencio, Discrete Appl. Math. 160 (2012),
@@ -53,9 +56,9 @@ On master the values live in `research/RESULTS.md` (harvest and coordinator line
 (beyond-small), `research/frontier/beyond13/` (beyond-d13) and `research/frontier/beyond11/` (beyond-d11). Master has
 no BEYOND_TABLE.md yet. Where the branches and master disagree, the table takes the largest value that has a check of
 its own, and says where it is. Three such cases: (17,5), where master has 35,618 and beyond-small has 35,728; (3,11),
-where master has 1,344 (a voltage lift from own-small) and every BEYOND_TABLE.md has 1,474; and the D = 11, 12 cells at
-Δ = 4..6, where the beyond-d13 and beyond-d11b branches raised the same cells in parallel and master holds the larger
-value of each pair.
+where master has 1,344 (a voltage lift from own-small) and every BEYOND_TABLE.md has 1,474; and (4,11), (5,11),
+(6,11), (4,12), (5,12), which the beyond-d13 and beyond-d11b branches raised in parallel; master holds the larger value
+of each pair.
 
 # 3. The table
 
@@ -217,14 +220,15 @@ branch tables give μ for each row); the four cells at the size cap have μ ≈ 
 arithmetic, and an automorphism α of order 3: conjugation by a matrix of order 3 on the first factor, times z ↦ rz
 with r of order 3 mod n on the second.
 
-**Orbit search.** S = {e} ∪ F ∪ (orbits of α of size 3), with F a few α-fixed elements. Making S α-invariant makes the
-whole word set α-invariant, which lowers the cost of the search and, in the lab's earlier runs, broke the wall where
-random S stops working (research/structured/, research/theory/). The search anneals the orbit representatives; the
+**Orbit search.** S = {e} ∪ F ∪ (orbits of α of size 3), with F a few α-fixed elements. Making S α-invariant shrinks
+the search space and makes the whole word set α-invariant; in the lab's earlier runs at D = 7..10 this broke the wall
+where random S stops working (README, research/structured/, research/theory/). The search anneals the orbit
+representatives; the
 cost is the number of uncovered elements, counted by a bit-parallel BFS (`research/bighaar/haar_big.c` and the
 beyond-d11 version `research/frontier/beyond11/haar_big0.c`, 64-bit indices, N/2 bytes of memory, so 10^10^-element
 groups fit in about 5 GB). beyond-d11 added two things: S made of free orbits only, without e (right for 3 | Δ), and a
-fix in the choice of α (the old code could pick an element of order 2 or 3 instead of 3 for k = 4, 6, 10; no earlier
-result was affected).
+fix in the choice of the automorphism for orbit sizes 4, 6 and 10 (the old code could pick a matrix of order 2 or 3
+there; orbits of size 3 and 5 were not affected, so no earlier result changed).
 
 **Odd D is harder than even D.** For D = 2h + 1 the diameter condition is (S^−1^S)^h^ = G and (SS^−1^)^h^ = G. The
 beyond-d11 job proved (research/frontier/beyond11/ODD_D_HOLES.md, on its branch) that the words reaching an
@@ -232,8 +236,8 @@ involution come in pairs (reverse and invert), and the words reaching a central 
 two letters, and a central hole is a hole on both sides at once. In the random model an involution is then missed with
 probability about e^−λ/2^ and a central element about e^−λ/h^, against e^−λ^ for an ordinary element (λ = W/N).
 PSL(2, p) has about p²/2 involutions, SL(2, p) only −I, and G × Z~n~ has n or 2n central elements. The rule that came
-out of this, and that gave most D = 11 and 13 values: at odd D use SL(2, p) × Z~n~ with small n (1 to 43 at D = 11);
-at even D, PSL(2, p) × Z~n~ with moderate or large n is fine. PSL with n = 1 is the worst choice at odd D (every one of
+out of this, and that gave most D = 11 and 13 values: at odd D use SL(2, p) × Z~n~ with small n (n ≤ 61 at D = 11,
+except (12,11), which was found before the rule); at even D, PSL(2, p) × Z~n~ with moderate or large n is fine. PSL with n = 1 is the worst choice at odd D (every one of
 the about 130 holes of a random S was an involution) although it works at even D. Measured hole counts of random S
 agreed with these rates within a factor 1.3–2.
 
@@ -264,10 +268,11 @@ short runs on each.
 6 % for k = 3, 73 % for k = 5, 91 % for k = 9 and 97–99 % for k ≥ 11. The Δ = 4, 5, 6 values in the table use single
 groups with k = 29 to 91, or (at (5,13)) a product of two groups with k = 5 and k = 11.
 
-**Cubic cells.** At Δ = 3 with S = {e, x, y} all pairs (x, y) can be searched per group (x over conjugacy class
-representatives). The new-cells-beyond job swept every metacyclic group of order 541–1,100 at D = 11 (641 groups) and
-found Z~67~ ⋊~9~ Z~11~ (1,474 vertices), the only metacyclic hit in that range. At D = 12 the best Haar graph (2,176,
-Z~68~ ⋊~3~ Z~16~) is below the own-small job's voltage lift over Z~37~ ⋊ Z~8~ (2,368), which the table lists.
+**Cubic cells.** At Δ = 3 with S = {e, x, y} all pairs (x, y) can be searched in each group, in 0.1–2 s per group.
+The new-cells-beyond job swept every metacyclic group of order 541–1,100 at D = 11 (641 groups, one r of each order
+per m) and found Z~67~ ⋊~9~ Z~11~ (1,474 vertices), the only metacyclic hit in that range. At D = 12 the best
+metacyclic Haar graph (2,176, Z~68~ ⋊~3~ Z~16~) is below the own-small job's voltage lift over Z~37~ ⋊ Z~8~ (2,368),
+which the table lists.
 
 The metacyclic idea reached Δ = 6 only at D = 11; at (6,12), (6,13) and Δ = 7 it stopped at 2 to 14 uncovered
 elements, and SL/PSL orbit graphs stayed ahead.
