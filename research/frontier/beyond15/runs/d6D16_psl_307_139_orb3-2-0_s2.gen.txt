@@ -8,3 +8,4 @@ selftest group multiplication: associativity, identity, inverse on 20000 random 
 file runs/d6D16_psl_307_139_orb3-2-0_s2.out
 header: 6 16 psl 307 n 139 N 2010922452
 group psl 307 x Z_139, |G| = 2010922452 = N, vertices 2N = 4021844904; 6 distinct generators
+from (e,A): reached A 2010922452/2010922452, B 2010922452/2010922452 within 16; ecc 16; level sizes [1, 6, 30, 150, 750, 3750, 18744, 93669, 468000, 2337120, 11645936, 57443939, 269622002, 1004533270, 1682356678, 946510548, 46810311]  (272s)
