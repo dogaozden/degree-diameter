@@ -8,11 +8,11 @@ mkdir -p "$O"; N=$((m * k)); tag=g${N}_${m}_${k}_${r}; tab=$O/$tag.tab
 cur=$O/${tag}_D${D}_p${p}_chain.sol; [ -f "$cur.best" ] || cp "$ST" "$cur.best"   # resume an existing chain
 for i in $(seq 0 $((L - 1))); do
   s=$((s0 + i))
-  res=$(START="$cur.best" D=$D timeout $((4 * S + 120)) nice -n 5 "$H/bin/salift_s" $p "$tab" 1 $s $S $T0 $T1 "$cur" | tail -1)
+  res=$(START="$cur.best" D=$D timeout $((4 * S + 120)) nice -n 5 "$H/bin/${BIN:-salift_s}" $p "$tab" 1 $s $S $T0 $T1 "$cur" | tail -1)
   if [ -f "$cur" ]; then best=0; else best=$(head -1 "$cur.best" | awk '{print $4}'); fi; echo "link $i seed $s N=$N n=$((2*p*N)) best=$best" | tee -a "$O/chain.log"
   if [ "$best" = "0" ]; then
     python3 "$H/tools/sol2edges.py" "$cur" $m $k $r "${cur%.sol}.edges" > /dev/null
-    echo "$("$H/bin/apsp" "${cur%.sol}.edges" 3 $D | tail -1) | at D-1: $("$H/bin/apsp" "${cur%.sol}.edges" 3 $((D - 1)) | tail -1)" | tee -a "$O/chain.log"
+    echo "$("$H/bin/apsp" "${cur%.sol}.edges" ${DEG:-3} $D | tail -1) | at D-1: $("$H/bin/apsp" "${cur%.sol}.edges" ${DEG:-3} $((D - 1)) | tail -1)" | tee -a "$O/chain.log"
     break
   fi
 done
