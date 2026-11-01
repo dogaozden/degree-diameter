@@ -1,0 +1,9 @@
+# c16 RANDORB screen, (11,11), ORBIT "3 3 2", random symmetric S, no search. Costs = uncovered count (0 = solution).
+group	mu	n_samples	min	median	all_costs
+SL(2,359) x Z13	5.71	16	4	21	4 6 10 10 14 14 14 18 20 22 26 26 26 28 32 34
+SL(2,241) x Z43	5.78	12	8	22	8 10 12 16 18 18 26 30 30 30 32 34
+PSL(2,197) x Z157	5.47	12	6	24	6 6 9 14 21 24 24 27 30 39 51 60
+SL(2,149) x Z181	5.22	12	6	40	6 12 18 24 26 38 42 44 50 60 66 108
+PSL(2,151) x Z349	5.58	12	12	44	12 18 24 24 30 39 49 54 60 66 66 78
+PSL(2,1063) x Z1	5.54	10	117	151	117 120 133 135 148 151 163 167 179 235
+# PSL(2,1063) x Z1 peak RSS 629 MB (over the 0.4 GB cap); the other runs were measured or estimated at 0.37-0.44 GB.

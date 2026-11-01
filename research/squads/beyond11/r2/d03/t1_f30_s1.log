@@ -1,0 +1,19 @@
+group psl 73 x Z_43, N=8362296 (2N=16724592), rows 2664 x 3139 bits (doubled row 120 words), memory 0.01 GB, threads 1
+alpha: conj by mat(0,72,1,72), z -> 6 z on Z_43 (fixed z: 1); ORBIT k=3 m=3 f=2; W=1.11111e+08 lambda=13.287 mu=14.18
+setup 0.0s
+fixed generators: 1 chosen among 35 alpha-fixed elements
+start cost=67 (0.1s per eval)
+FX t=1 step=1 evals=17 slot=1 fxacc=1/1 cost=22 best=22 T=1.26
+FX t=2 step=2 evals=33 slot=1 fxacc=2/2 cost=18 best=18 T=1.06
+t=3 step=3 evals=49 slot=2 cand=24 cost=18 best=18 T=0.89
+FX t=4 step=4 evals=65 slot=1 fxacc=2/3 cost=18 best=18 T=0.75
+t=4 step=5 evals=81 slot=1 cand=17 cost=17 best=17 T=0.63
+t=5 step=6 evals=97 slot=0 cand=28 cost=17 best=17 T=0.53
+t=6 step=7 evals=113 slot=0 cand=27 cost=17 best=17 T=0.45
+t=7 step=8 evals=129 slot=0 cand=18 cost=17 best=17 T=0.38
+t=8 step=9 evals=145 slot=1 cand=30 cost=17 best=17 T=0.32
+t=9 step=10 evals=161 slot=0 cand=29 cost=17 best=17 T=0.27
+FX t=10 step=11 evals=177 slot=1 fxacc=2/4 cost=17 best=17 T=0.22
+t=12 step=12 evals=193 slot=0 cand=32 cost=17 best=17 T=0.19
+t=13 step=13 evals=209 slot=1 cand=36 cost=17 best=17 T=0.16
+t=13 step=14 evals=225 slot=1 cand=32 cost=17 best=17 T=0.15

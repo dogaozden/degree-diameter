@@ -9,3 +9,7 @@ file runs/d12D11_sl_263_79_orb3-4-0_s1.out
 header: 12 11 sl 263 n 79 N 1437103536
 group sl 263 x Z_79, |G| = 1437103536 = N, vertices 2N = 2874207072; 12 distinct generators
 from (e,A): reached A 1437103536/1437103536, B 1437103536/1437103536 within 11; ecc 11; level sizes [1, 12, 132, 1452, 15972, 175677, 1931166, 21092575, 215365676, 1178768224, 1219790589, 237065596]  (251s)
+from (e,B): reached A 1437103536/1437103536, B 1437103536/1437103536 within 11; ecc 11; level sizes [1, 12, 132, 1452, 15972, 175677, 1931166, 21092575, 215366652, 1178768224, 1219789613, 237065596]  (1005s)
+VALID d=12 D=11 group=sl 263 x Z_79 N=1437103536 vertices=2874207072 (distinct generators, 12-regular simple; every vertex within 11 of both (e,A) and (e,B); ecc 11; 1005s)
+exit: 0
+end: 2026-11-01T04:59:51Z (1005 s)

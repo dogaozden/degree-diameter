@@ -1,0 +1,9 @@
+group sl 37 x Z_157, N=7946712 (2N=15893424), rows 1368 x 5809 bits (doubled row 200 words), memory 0.01 GB, threads 1
+alpha: conj by mat(0,36,1,36), z -> 12 z on Z_157 (fixed z: 1); ORBIT k=3 m=3 f=2; W=1.11111e+08 lambda=13.982 mu=6.73
+setup 0.0s
+fixed generators: 1 chosen among 35 alpha-fixed elements
+start cost=30 (0.1s per eval)
+t=0 step=1 evals=9 slot=1 cand=0 cost=0 best=0 T=1.26
+RESULT d=11 D=9 group=sl 37 x Z_157 N=7946712 vertices=15893424 best=0 evals=9 steps=1 time=0.3 orbit k=3 m=3 f=2 mu=6.73
+re-evaluation of the best S: cost 0
+wrote /home/user/degree-diameter/research/squads/beyond11/r2/d16/runs/d11D9_sl_37_157_o3-3-2_plain_s1.out

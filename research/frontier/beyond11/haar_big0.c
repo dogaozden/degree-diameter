@@ -358,8 +358,11 @@ static void choose_alpha(void) {   /* g = [[0,-1],[1,t]] with g^k = +-I (project
     for (int tt = 0; tt < P && tsel < 0; tt++) {
         int t = (tt == 0) ? P - 1 : tt - 1; if (tt > 0 && t == P - 1) continue;
         el g = (el){0, P - 1, 1, t, 0}, y = E_ID; int ispm = 0;
-        for (int i = 0; i < OK_; i++) y = emul(y, g);       /* emul canonicalises for PSL; compare up to sign */
-        if ((y.a == 1 && y.d == 1 && !y.b && !y.c) || (y.a == P - 1 && y.d == P - 1 && !y.b && !y.c)) ispm = 1;
+        for (int i = 1; i <= OK_; i++) {                     /* emul canonicalises for PSL; compare up to sign */
+            y = emul(y, g);
+            int pm = (y.a == 1 && y.d == 1 && !y.b && !y.c) || (y.a == P - 1 && y.d == P - 1 && !y.b && !y.c);
+            if (pm) { ispm = (i == OK_); break; }            /* projective order exactly k (beyond-d11 fix: haar_big */
+        }                                                    /* took the first g with g^k = +-I, wrong for k = 4, 6, 10) */
         if (ispm) tsel = t;
     }
     if (getenv("AT")) tsel = atoi(getenv("AT"));

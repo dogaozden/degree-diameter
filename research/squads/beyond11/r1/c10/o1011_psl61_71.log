@@ -1,0 +1,59 @@
+group psl 61 x Z_71, N=8055660 (2N=16111320), rows 1860 x 4331 bits (doubled row 160 words), memory 0.01 GB, threads 1
+alpha: conj by mat(0,60,1,0), z -> 5 z on Z_71 (fixed z: 1); ORBIT k=10 m=1 f=1; W=1.11111e+08 lambda=13.793 mu=8.24
+setup 0.0s
+start cost=16039494 (0.3s per eval)
+t=1 step=1 evals=5 slot=0 cand=16039494 cost=16039494 best=16039494 T=1.26
+t=3 step=2 evals=9 slot=0 cand=16039494 cost=16039494 best=16039494 T=1.06
+t=4 step=3 evals=13 slot=0 cand=16044038 cost=16039494 best=16039494 T=0.89
+t=5 step=4 evals=17 slot=0 cand=16039494 cost=16039494 best=16039494 T=0.75
+t=6 step=5 evals=21 slot=0 cand=16040630 cost=16039494 best=16039494 T=0.63
+t=8 step=6 evals=25 slot=0 cand=16039494 cost=16039494 best=16039494 T=0.53
+t=9 step=7 evals=29 slot=0 cand=16040630 cost=16039494 best=16039494 T=0.45
+t=10 step=8 evals=33 slot=0 cand=16039494 cost=16039494 best=16039494 T=0.38
+t=11 step=9 evals=37 slot=0 cand=16039494 cost=16039494 best=16039494 T=0.32
+t=12 step=10 evals=41 slot=0 cand=16039494 cost=16039494 best=16039494 T=0.27
+t=13 step=11 evals=45 slot=0 cand=16039494 cost=16039494 best=16039494 T=0.22
+t=14 step=12 evals=49 slot=0 cand=16039494 cost=16039494 best=16039494 T=0.19
+t=15 step=13 evals=53 slot=0 cand=16039494 cost=16039494 best=16039494 T=0.16
+t=16 step=14 evals=57 slot=0 cand=16039494 cost=16039494 best=16039494 T=0.15
+t=17 step=15 evals=61 slot=0 cand=16039494 cost=16039494 best=16039494 T=0.15
+t=18 step=16 evals=65 slot=0 cand=16039494 cost=16039494 best=16039494 T=0.15
+t=19 step=17 evals=69 slot=0 cand=16039494 cost=16039494 best=16039494 T=0.15
+t=20 step=18 evals=73 slot=0 cand=16039494 cost=16039494 best=16039494 T=0.15
+t=21 step=19 evals=77 slot=0 cand=16039494 cost=16039494 best=16039494 T=0.15
+t=22 step=20 evals=81 slot=0 cand=16042638 cost=16039494 best=16039494 T=0.15
+t=24 step=21 evals=85 slot=0 cand=16039494 cost=16039494 best=16039494 T=0.15
+t=25 step=22 evals=89 slot=0 cand=16039494 cost=16039494 best=16039494 T=0.15
+t=26 step=23 evals=93 slot=0 cand=16039494 cost=16039494 best=16039494 T=0.15
+t=27 step=24 evals=97 slot=0 cand=16039494 cost=16039494 best=16039494 T=0.15
+t=28 step=25 evals=101 slot=0 cand=16039494 cost=16039494 best=16039494 T=0.15
+t=29 step=26 evals=105 slot=0 cand=16040630 cost=16039494 best=16039494 T=0.15
+t=31 step=27 evals=109 slot=0 cand=16039494 cost=16039494 best=16039494 T=0.15
+t=32 step=28 evals=113 slot=0 cand=16039494 cost=16039494 best=16039494 T=0.15
+t=33 step=29 evals=117 slot=0 cand=16039494 cost=16039494 best=16039494 T=0.15
+t=34 step=30 evals=121 slot=0 cand=16039494 cost=16039494 best=16039494 T=0.15
+t=35 step=31 evals=125 slot=0 cand=16039494 cost=16039494 best=16039494 T=0.15
+t=36 step=32 evals=129 slot=0 cand=16039494 cost=16039494 best=16039494 T=0.15
+t=38 step=33 evals=133 slot=0 cand=16039494 cost=16039494 best=16039494 T=0.15
+t=39 step=34 evals=137 slot=0 cand=16039494 cost=16039494 best=16039494 T=0.15
+t=40 step=35 evals=141 slot=0 cand=16040630 cost=16039494 best=16039494 T=0.15
+t=41 step=36 evals=145 slot=0 cand=16039494 cost=16039494 best=16039494 T=0.15
+t=42 step=37 evals=149 slot=0 cand=16039494 cost=16039494 best=16039494 T=0.15
+t=43 step=38 evals=153 slot=0 cand=16040294 cost=16039494 best=16039494 T=0.15
+t=44 step=39 evals=157 slot=0 cand=16039494 cost=16039494 best=16039494 T=0.15
+t=46 step=40 evals=161 slot=0 cand=16039494 cost=16039494 best=16039494 T=0.15
+t=47 step=41 evals=165 slot=0 cand=16039494 cost=16039494 best=16039494 T=0.15
+t=48 step=42 evals=169 slot=0 cand=16039494 cost=16039494 best=16039494 T=0.15
+t=49 step=43 evals=173 slot=0 cand=16039494 cost=16039494 best=16039494 T=0.15
+t=50 step=44 evals=177 slot=0 cand=16039494 cost=16039494 best=16039494 T=0.15
+t=51 step=45 evals=181 slot=0 cand=16039494 cost=16039494 best=16039494 T=0.15
+t=52 step=46 evals=185 slot=0 cand=16039494 cost=16039494 best=16039494 T=0.15
+t=53 step=47 evals=189 slot=0 cand=16040630 cost=16039494 best=16039494 T=0.15
+t=54 step=48 evals=193 slot=0 cand=16039494 cost=16039494 best=16039494 T=0.15
+t=55 step=49 evals=197 slot=0 cand=16039494 cost=16039494 best=16039494 T=0.15
+t=56 step=50 evals=201 slot=0 cand=16039494 cost=16039494 best=16039494 T=0.15
+t=57 step=51 evals=205 slot=0 cand=16039494 cost=16039494 best=16039494 T=0.15
+t=59 step=52 evals=209 slot=0 cand=16039494 cost=16039494 best=16039494 T=0.15
+t=60 step=53 evals=213 slot=0 cand=16039494 cost=16039494 best=16039494 T=0.15
+t=61 step=54 evals=217 slot=0 cand=16039494 cost=16039494 best=16039494 T=0.15
+RESULT d=11 D=9 group=psl 61 x Z_71 N=8055660 vertices=16111320 best=16039494 evals=217 steps=54 time=60.7 orbit k=10 m=1 f=1 mu=8.24

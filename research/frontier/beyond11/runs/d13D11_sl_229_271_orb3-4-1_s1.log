@@ -1,0 +1,8 @@
+group sl 229 x Z_271, N=3254373960 (2N=6508747920), rows 52440 x 62059 bits (doubled row 1960 words), memory 1.80 GB, threads 2
+alpha: conj by mat(0,228,1,228), z -> 28 z on Z_271 (fixed z: 1); ORBIT k=3 m=4 f=1; W=6.75462e+10 lambda=20.756 mu=3.15
+setup 0.0s
+start cost=18 (3.4s per eval)
+t=15 step=1 evals=5 slot=0 cand=0 cost=0 best=0 T=1.26
+RESULT d=13 D=11 group=sl 229 x Z_271 N=3254373960 vertices=6508747920 best=0 evals=5 steps=1 time=15.5 orbit k=3 m=4 f=1 mu=3.15
+re-evaluation of the best S: cost 0
+wrote runs/d13D11_sl_229_271_orb3-4-1_s1.out

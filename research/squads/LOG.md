@@ -49,3 +49,47 @@ nice 0, equal to the director's whole pipeline); the director raised the pipelin
 `echo -10 > /proc/<pid>/autogroup` and lowered the cards' groups to 15.
 Kept: haarex6 for the sweep; no family lead worth more CPU (the 704 lift is an isolated local minimum, the new
 families are far). The order-384 sweep continues; orders 401-450 started on the spare core.
+
+## 2026-11-01, beyond-d11, round 1 (16 cards, 04:47 UTC)
+
+Session: Opus director, job beyond-d11 (branch claude/new-cells-d11-d12-beyond-8sas9r). Goal: first values for
+(11..14, 11) and (11..13, 12), Haar graphs of SL/PSL(2,p) x Z_n with alpha-orbit generator sets, at most 20 billion
+vertices. Files: research/squads/beyond11/r1/ (HEADER.md, cards c01-c16, scoreboard.jsonl). Before the round the
+director had (11,11) 1,170,162,000 (VALID), (12,11) 2,874,207,072 (f = 0, new in haar_big0), and the three D = 12
+values (5, 1 and 1 evaluations). Machine: 4 cores, 15 GB, shared with the director's checks.
+
+Cards (best result):
+- c01 (11,11) SL ladder "3 3 2": SL(2,443) x Z7 (mu 7.2) to cost 2, then stopped: the director's memory cap (0.4 GB)
+  was below what N > 5.85e8 needs. Director's mistake, not the card's.
+- c02 (11,11) PSL ladder: PSL(2,257) x Z73 (mu 10.1) stalls at cost 9 (K = 4 and 8 alike).
+- c03 (11,11) k = 5 ("5 2 1"): start costs 16-54 (k = 3: 2), best 6 at mu 6.1. Worse at this cell.
+- **c04 (12,11) SL ladder "3 4 0": SL(2,239) x Z109, mu 7.0, 2,976,066,240 vertices** (+3.5 %, search cost 0 in 9 evals;
+  director's haarcheck_gen pending); SL(2,193) x Z211 (mu 10.3) to cost 2.
+- c05 (12,11) PSL bold ladder (mu 9-14): stalled at 27-155.
+- c06 (12,11) other free-orbit orders: k = 2 bad (460), k = 4 degenerate (cost 2.6e9), k = 6 "no orbit". Led to a bug:
+  haar_big's choose_alpha took the first g with g^k = +-I, so k = 4, 6, 10 got an alpha of order 2 or 3 (fixed in haar_big0;
+  c09 found the same bug and used AT = trace as a workaround).
+- c07 (13,11) "3 4 1": SL(2,229) x Z277 (mu 5.05) to cost 2 (1-5 evals per 100 s chunk under load).
+- c08 (13,9) structure tournament: only "3 4 1" solved (PSL(2,101) x Z61, mu 10.3, VALID); "4 3 1", "6 2 1", "2 6 1" at
+  116-432; n = 1 (PSL(2,401)) 87-111 and n = 5 (PSL(2,233)) 34-42 also bad. Same choose_alpha bug, worked around with AT.
+- c09 (14,9) tournament at mu ~10: "3 4 2" best (66), "7 2 0" 82, k = 4 / 6 (with correct alpha) 3,204 / 62,568, "2 7 0" 9,786.
+- c10 (11,9) tournament: "5 2 1" solved mu 22.6 (PSL(2,41) x Z251, VALID), "3 3 2" mu 10.4 (VALID); "2 5 1", "3 2 5",
+  "10 1 1" far behind. One seed per rung.
+- c11 (13,9) group shapes at mu ~15: PSL(2,59) x Z313 best (cost 4-6); n = 1 (PSL(2,401)) 87-111; n/p >= 40 also bad.
+- c12 self-dual S (transpose-closed, one BFS per eval): implemented and verified, but random S get far worse (start 180
+  versus 9 evals to solve for plain haar_big0). Negative.
+- c13 tuning (K, TARGP, BOUNDCUR): within seed noise. (11,9) 15,760,800 VALID as a by-product.
+- c14 theory note: odd-D Haar criterion needs both (S^-1 S)^h = G and (S S^-1)^h = G (D6 counterexample); claims the
+  D = 12 upper bound is only M_b - 4 (from memory; round 2 card d14 checks the paper).
+- c15 calibration from 161 lab runs: mu ~7 solves within ~300 evals, mu ~10 within ~1,000 (P = 0.5); start cost > 30 at
+  mu >= 8 rarely solves.
+- c16 RANDORB at (11,11), mu ~5.5: SL(2,359) x Z13 and SL(2,241) x Z43 lowest (median 21-22), n > p worse (40-44), PSL(2,1063)
+  with n = 1 much worse (151).
+
+Director's reading: the near misses fail at special elements. SL(2,193) x Z211 misses only -I (both sides); SL(2,443) x Z7
+misses two alpha-fixed torus elements. At odd D = 2h+1 the words reaching a central element are closed under cyclic
+rotation by two letters, so central elements behave as if they had about lambda/h words instead of lambda; SL has 2n
+central elements including -I, PSL has n. Kept for round 2: k = 3; PSL with small n (no -I); finishing near misses;
+moving the fixed generator (never moved by haar_big); the n = 1 anomaly as a question. Dropped: k = 2, 4, 6, self-dual S,
+tuning knobs. Process notes: cards stopped after 5-12 minutes of their 25; the kernel's autogroup scheduling had made
+the cards' nice 10 meaningless (each Bash call is its own group); the director turned autogroup off at 04:58.
