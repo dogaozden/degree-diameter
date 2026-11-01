@@ -10,7 +10,7 @@ progress: 2026-11-01 16:47 UTC, run started 13:45:37 UTC, elapsed 181 min, still
 progress: 2026-11-01 17:17 UTC, run started 13:45:37 UTC, elapsed 211 min, still running (PID 758), RSS steady at about 10.97 GB, no output yet; cap 5.5 h, not stopped early
 progress: 2026-11-01 17:22 UTC, run finished (exit 0, wall 3:36:41), final section below
 
-################ haarcheck_psl (reference checker, research/structured/tools/haarcheck_psl.c on master c3b542a, built with gcc -O3 -o haarcheck_psl research/structured/tools/haarcheck_psl.c; one side only, BFS from (e,A)): cd /home/user/degree-diameter && /usr/bin/time -v -o time.txt ./haarcheck_psl research/frontier/sols/d16D11_psl_449_331_orb3-5-1_s1.txt A   (stdout, complete)
+################ haarcheck_psl (reference checker, research/structured/tools/haarcheck_psl.c on master c3b542a, built with gcc -O3 -o haarcheck_psl research/structured/tools/haarcheck_psl.c; one side only, BFS from (e,A)): cd /home/user/degree-diameter && /usr/bin/time -v -o /tmp/claude-0/-home-user-degree-diameter/1719b04c-6812-55ef-a363-9e53a7bbbdf0/scratchpad/time.txt /tmp/claude-0/-home-user-degree-diameter/1719b04c-6812-55ef-a363-9e53a7bbbdf0/scratchpad/haarcheck_psl research/frontier/sols/d16D11_psl_449_331_orb3-5-1_s1.txt A   (stdout, complete; binary and time file kept in the session scratchpad, not committed)
 from (e,A): reached A 14980795200/14980795200, B 14980795200/14980795200 within 11, ecc 11
 HALF-VALID from (e,A) d=16 D=11 group=psl 449 x Z_331 N=14980795200 vertices=29961590400
 [exit 0; wall 13001s (3:36:41); peak RSS 10717 MB (10973908 KB); 1 thread, user 12820 s, sys 66 s]
