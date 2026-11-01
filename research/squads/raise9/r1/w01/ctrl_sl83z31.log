@@ -1,0 +1,8 @@
+group sl 83 x Z_31, N=17722824, identity 210986, H order 62, rows 285852, threads 1, setup 2.12s
+wide rows: HW order 217, rows 81672, setup 3.54s
+alpha: conj by mat(13,32,28,69) (index 92158), z -> 5 z on Z_31
+ORBIT k=3 m=4 f=0: |Fix(alpha)| = 83 (+e); mu = 29.54, mu/k = 9.85, fixed-point misses ~ 1.99
+start cost=72
+t=30 steps=17 evals=137 cost=24 best=22 T=0.52
+t=62 steps=37 evals=297 cost=14 best=14 T=0.18
+RESULT d=12 D=9 group=sl 83 x Z_31 N=17722824 best=14 evals=393 time=81.6 orbit k=3 m=4 f=0 fix=83

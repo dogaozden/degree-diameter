@@ -1,0 +1,39 @@
+group sl 103 x Z_8, N=8740992 (2N=17481984), rows 10608 x 824 bits (doubled row 48 words), memory 0.01 GB, threads 1
+alpha: conj by mat(0,102,1,102), z -> 1 z on Z_8 (fixed z: 8); ORBIT k=3 m=3 f=2; W=1.11111e+08 lambda=12.711 mu=26.36
+setup 0.0s
+fixed generators: 1 chosen among 815 alpha-fixed elements
+start cost=1196 (0.1s per eval)
+t=1 step=1 evals=5 slot=2 cand=124 cost=124 best=124 T=1.26
+t=1 step=2 evals=9 slot=0 cand=110 cost=110 best=110 T=1.06
+t=2 step=3 evals=13 slot=1 cand=92 cost=92 best=92 T=0.89
+t=3 step=4 evals=17 slot=1 cand=262 cost=92 best=92 T=0.75
+t=4 step=5 evals=21 slot=2 cand=116 cost=92 best=92 T=0.63
+t=5 step=6 evals=25 slot=1 cand=132 cost=92 best=92 T=0.53
+t=5 step=7 evals=29 slot=0 cand=116 cost=92 best=92 T=0.45
+t=6 step=8 evals=33 slot=2 cand=132 cost=92 best=92 T=0.38
+t=7 step=9 evals=37 slot=1 cand=110 cost=92 best=92 T=0.32
+t=8 step=10 evals=41 slot=0 cand=106 cost=92 best=92 T=0.27
+t=8 step=11 evals=45 slot=1 cand=100 cost=92 best=92 T=0.22
+t=9 step=12 evals=49 slot=2 cand=86 cost=86 best=86 T=0.19
+t=10 step=13 evals=53 slot=0 cand=154 cost=86 best=86 T=0.16
+t=11 step=14 evals=57 slot=1 cand=140 cost=86 best=86 T=0.15
+t=11 step=15 evals=61 slot=0 cand=142 cost=86 best=86 T=0.15
+t=13 step=16 evals=65 slot=1 cand=92 cost=86 best=86 T=0.15
+t=13 step=17 evals=69 slot=0 cand=122 cost=86 best=86 T=0.15
+t=14 step=18 evals=73 slot=1 cand=116 cost=86 best=86 T=0.15
+t=15 step=19 evals=77 slot=2 cand=122 cost=86 best=86 T=0.15
+t=15 step=20 evals=81 slot=0 cand=114 cost=86 best=86 T=0.15
+t=16 step=21 evals=85 slot=0 cand=138 cost=86 best=86 T=0.15
+t=17 step=22 evals=89 slot=2 cand=114 cost=86 best=86 T=0.15
+t=18 step=23 evals=93 slot=1 cand=124 cost=86 best=86 T=0.15
+t=18 step=24 evals=97 slot=2 cand=96 cost=86 best=86 T=0.15
+t=19 step=25 evals=101 slot=1 cand=154 cost=86 best=86 T=0.15
+t=20 step=26 evals=105 slot=1 cand=146 cost=86 best=86 T=0.15
+t=20 step=27 evals=109 slot=0 cand=118 cost=86 best=86 T=0.15
+t=21 step=28 evals=113 slot=2 cand=146 cost=86 best=86 T=0.15
+t=22 step=29 evals=117 slot=1 cand=148 cost=86 best=86 T=0.15
+t=23 step=30 evals=121 slot=0 cand=206 cost=86 best=86 T=0.15
+t=24 step=31 evals=125 slot=1 cand=118 cost=86 best=86 T=0.15
+t=24 step=32 evals=129 slot=0 cand=102 cost=86 best=86 T=0.15
+t=25 step=33 evals=133 slot=1 cand=96 cost=86 best=86 T=0.15
+t=26 step=34 evals=137 slot=2 cand=110 cost=86 best=86 T=0.15

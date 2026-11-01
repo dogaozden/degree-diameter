@@ -7,3 +7,8 @@ selftest group multiplication: associativity, identity, inverse on 20000 random 
 file runs/d19D9_sl_277_31_orb3-6-1_s1.out
 header: 19 9 sl 277 n 31 N 658863336
 group sl 277 x Z_31, |G| = 658863336 = N, vertices 2N = 1317726672; 19 distinct generators
+from (e,A): reached A 658863336/658863336, B 658863336/658863336 within 9; ecc 9; level sizes [1, 19, 342, 6156, 110808, 1991439, 34923723, 410364609, 623828462, 246501113]  (688s)
+from (e,B): reached A 658863336/658863336, B 658863336/658863336 within 9; ecc 9; level sizes [1, 19, 342, 6156, 110808, 1991439, 34924057, 410364609, 623828128, 246501113]  (1081s)
+VALID d=19 D=9 group=sl 277 x Z_31 N=658863336 vertices=1317726672 (distinct generators, 19-regular simple; every vertex within 9 of both (e,A) and (e,B); ecc 9; 1081s)
+exit: 0
+end: 2026-11-01T23:10:23Z (1081 s)

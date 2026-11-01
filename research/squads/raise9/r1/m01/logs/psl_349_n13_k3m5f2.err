@@ -1,0 +1,10 @@
+group psl 349 x Z_13, N=276303300 (2N=552606600), rows 60900 x 4537 bits (doubled row 160 words), memory 0.25 GB, threads 1
+alpha: conj by mat(0,348,1,348), z -> 3 z on Z_13 (fixed z: 1); ORBIT k=3 m=5 f=2; W=4.5813e+09 lambda=16.581 mu=17.40
+setup 0.0s
+fixed generators: 1 chosen among 173 alpha-fixed elements
+RANDORB sample 0 cost 75 (4.7s) zq 1.000
+RANDORB sample 1 cost 75 (8.2s) zq 1.000
+RANDORB sample 2 cost 66 (11.7s) zq 1.000
+RANDORB sample 3 cost 75 (15.1s) zq 1.000
+RANDORB sample 4 cost 79 (18.8s) zq 1.000
+RANDORB sample 5 cost 50 (22.0s) zq 1.000
