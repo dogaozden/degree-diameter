@@ -46,3 +46,12 @@ Start: 2026-11-01 00:53 UTC. Deadline: about 02:55 UTC (2 hours). Last update: 0
 - Next idea: exact search over (4,4,4,4) choices on A_7 with the connectivity filter (K's must generate A_7), or a
   tabu on per-orbit far vertices (move the coset that covers the far vertices of the worst B-orbit), since the far
   count of the A-root is already 3 and the B-orbits carry the cost.
+
+## Last checks (02:38 UTC)
+- Far-orbit biased moves (BIAS env): 17,325 (BIAS 0.5) and 17,955 (0.2) on the A_7 class-1 config, worse than 15,120.
+- Class-1 (all four order-4 subgroups in conjugacy class 1, size 315) random A_7 configs: 15,120 reached in about 8 of
+  roughly 25 screens at 10 s, never below. Score48 re-checked for the three 15,120 graphs: far = 15,120 each.
+- Conclusion: for A_7 the (4,4,4,4) family floors at 15,120 far pairs (n = 5,040) with this annealer; no n >= 4,972
+  graph with cost 0 found in the mixed family in this session. Scoreboard line appended at 01:50.
+- 02:43: extra seeds on the three 15,120 configs (94, 95, 96 and class-1 93) gave 17,955 to 20,160. The best file stays
+  the 15,120 graph. Session stopped here; the next idea is listed under "Final picture".

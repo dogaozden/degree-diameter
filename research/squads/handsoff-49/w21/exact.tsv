@@ -1,2 +1,5 @@
 group	order	minimum	classes_covered	seconds	note
 S5 x F21 (S5 x (Z7:Z3), w10 tab)	2520	8	34 of 34 non-identity reps (all)	360	exact min 8 (exh2, no zero); reps 10 and 11 give 8, others >= 9
+PSL(2,8) x Z5 (SL(2,8) x Z5, centre 5)	2520	8	44 of 44 non-identity reps (all)	~1100 wall (chunked)	exact min 8 (exh2, no zero); 20 sets at cost 8, none below
+u4m_7 (P x| Z4, order 2500, centre 10)	2500	4 found (floor), exact not finished	6 of 123 non-identity reps (partial)	~270	no cost below 4 in reps 0..5 (exh2, bound 5); partial only, not a certificate
+A5 x S3 x Z7 (centre 7)	2520	>=9 on covered reps (annealing floor 8 not yet reached in scan)	35 of 104 non-identity reps (reps 0..34, partial)	~600 wall (chunked)	no cost below 9 in reps 0..34; the 8 seen by annealing lies in a later class rep, scan not finished

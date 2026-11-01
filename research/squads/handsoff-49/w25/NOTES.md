@@ -80,3 +80,17 @@ raw/ (score48 and apsp output per edge file), summary.md (part 2).
 - 02:25 meta 105 24 2 LIMIT 9: DONE, no set of cost <= 9 (3,588,742 evals): lower bound 10 confirmed (w11 min 10).
 - 02:25 meta 210 12 23 LIMIT 9: DONE, no set of cost <= 9 (2,450,006 evals): lower bound 10 confirmed (w11 min 10).
 - 02:27 meta 210 12 79 LIMIT 9: DONE, no set of cost <= 9 (3,555,307 evals): lower bound 10 confirmed (w11 min 10).
+- 02:29 meta 35 72 3 LIMIT 9 (two segments, 107 reps): DONE, no set of cost <= 9: lower bound 10 confirmed (w11 min 10).
+- 02:29 meta 416 6 367 LIMIT 11: DONE, no set of cost <= 11 (1,053,761 evals): lower bound 12 confirmed (w11 min 12).
+- 02:31 meta 52 48 7 LIMIT 11 (two segments, 107 reps): DONE, no set of cost <= 11: lower bound 12 confirmed (w11 min 12).
+- 02:31 meta 427 6 13 LIMIT 11: DONE, no set of cost <= 11 (324,771 evals): lower bound 12 confirmed (N = 2562, w11 min 12).
+- 02:32 meta 320 8 7 LIMIT 11: DONE, no set of cost <= 11 (1,913,065 evals): lower bound 12 confirmed (N = 2560).
+- 02:33 meta 105 24 52 LIMIT 11: DONE, no set of cost <= 11 (2,657,306 evals): lower bound 12 confirmed (w11 min 12).
+- 02:33 meta 208 12 69 LIMIT 11: DONE, no set of cost <= 11 (2,878,189 evals): lower bound 12 confirmed.
+- 02:36 meta 35 72 4 LIMIT 5 (two segments, 143 reps): DONE, no set of cost <= 5: lower bound 6 confirmed (N = 2520).
+- 02:37 meta 420 6 109 LIMIT 5: DONE, no set of cost <= 5 (2,096,240 evals): lower bound 6 confirmed (N = 2520).
+- 02:37 meta 420 6 109 done above. Repeat of meta 105 24 17 LIMIT 5 gave the same 3,207,758 evaluations (reproducible).
+- 02:38 meta 208 12 115 LIMIT 9: DONE, no set of cost <= 9 (1,685,982 evals): lower bound 10 confirmed (w11 min 10).
+- 02:39 meta 215 12 92 LIMIT 9: DONE, no set of cost <= 9 (718,677 evals): lower bound 10 confirmed (N = 2580, w11 min 10). SUMMARY OF w25 RE-RUNS of w11 exh3 (copy of w11/exh3, LIMIT = claimed min - 1): 26 split groups, every DONE with no set below the claimed minimum: 101_25_5 (L1), 104_24_7 (L3), 208_12_3 (L3), 105_24_17 (L5), 208_12_141 (L5), 208_12_11 (L8), 104_24_11 (L9), 416_6_367 (L11), 52_48_7 (L11), 427_6_13 (L11), 320_8_7 (L11), 105_24_52 (L11), 208_12_69 (L11), 208_12_43 (L7), 208_12_29 (L7), 208_12_37 (L7), 70_36_9 (L7), 105_24_2 (L9), 210_12_23 (L9), 210_12_79 (L9), 35_72_3 (L9), 208_12_115 (L9), 215_12_92 (L9), 35_72_4 (L5), 420_6_109 (L5). Attainment (a set of the claimed cost exists) checked by an edge file only for 101_25_5 (cost 2, line 21), 104_24_7 (cost 4, line 39) and 208_12_3 (cost 4, line 23).
+- 02:45 meta 1245 2 1244 LIMIT 1 (w20 DONE row, N=2490): DONE over 8 reps (three segments, 1,564,230 evals in total), no set of cost <= 1 (no edge file). Confirms w20's >= 2. Note: a single call with MAXSEC 90 was killed by the 100-s timeout twice; resume with MAXSEC 30 works.
+- 02:47 meta 1247 2 1246 LIMIT 1 (w20 DONE row, N=2494): DONE, no set of cost <= 1 (2 segments). Confirms w20's >= 2.

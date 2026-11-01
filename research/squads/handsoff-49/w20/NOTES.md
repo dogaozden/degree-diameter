@@ -29,11 +29,25 @@ N in 2,486..2,520 (split or non-split) and S, |S| = 4, with H(G,S) of diameter 9
   only the first few dozen. The rest are a clear list for the coordinator: rows of cand_ordered.tsv not in certificate.tsv.
 - Order: w2 screen cost first (low cost = most dangerous), then dk.
 
-## 4. Results so far
-- See certificate.tsv (one row per group: tag, N, dk, type, status, cost-0 found?, minimum seen, seconds).
-- No cost-0 set found in any group checked so far. No record.
+## 4. Results so far (02:46)
+- certificate.tsv: 62 candidate groups certified, no cost-0 set in any of them: 39 by my exhaustive pass
+  (DONE, no_cost0 = yes), 23 already exact in w11's certified.tsv (covered_by_w11). Hits (cost 0): none.
+- Calibration: exh4 (exh3 + explicit automorphism list) reproduces cost 0 on meta 71 35 49 (the valid 4,970 graph,
+  same 1,560,685 evaluations as w11) and min 4 on 104 24 7.
+- Non-split groups now use the full Aut(G) list (aut_gen.py, capped at 3,000 automorphisms; any subset is a valid
+  symmetry reduction). About 15-80 s per group instead of 100-250 s.
+- Remaining: about 840 of the 901 candidate classes are not certified yet (rows of cand_run.tsv not in certificate.tsv).
+  The next one is found by the first row of cand_run.tsv that has no certificate.tsv row.
+
+## 4b. Notes on the tools
+- run21.sh LIST BUDGET: resumable driver (split = exh3 meta, non-split = exh4 with aut_gen lists). Call it as
+  `timeout 100 nice -n 10 ./run21.sh cand_run.tsv 60`. A group is saved after every rep (state/), so a cut-off call
+  loses at most one rep.
+- Earlier w20 runs of non-split groups (before the aut lists) are valid DONE rows; their state files were moved to
+  state/old_*.
 
 ## 5. What I would try next
-- Split the remaining rows of cand_ordered.tsv across workers (run20.sh takes any list in the same format).
-- Speed up exh3: the cost of a set is one full BFS per root (about 100 us); pruning by the reach count of a small
-  quotient might cut most evaluations, and a full Aut(G) for non-split groups would cut the 10-min cases.
+- Give the remaining rows of cand_run.tsv to other workers (any split of the list works; the state files are per tag).
+- Full Aut(G) with no cap for the big-Aut non-split groups (|Aut| up to 80,000), generated in chunks.
+- The bound may be sharpened by checking, for each abelian quotient Q = G/G' (order dk), whether some 4-set of Q covers Q;
+  this excludes large dk groups that the bare count 309 does not.

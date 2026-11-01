@@ -20,12 +20,15 @@ pm, pk, ps, pr = vpow(m), vpow(k), vpow(s), vpow(r)
 assert np.all(T[np.arange(N), inv] == ident)
 auts = []
 ys = np.arange(N, dtype=np.int64)
+CAP = 3000   # any subset of Aut(G) is a valid symmetry reduction (exh4 only needs each map to be an automorphism)
 for x in range(N):
+    if len(auts) >= CAP: break
     if pm[x] != ident: continue
     yx = T[ys, x]                       # y*x
     yxyi = T[yx, inv[ys]]               # y*x*y^-1
     ok = (pk[ys] == ps[x]) & (yxyi == pr[x])
     for y in np.nonzero(ok)[0]:
+        if len(auts) >= CAP: break
         y = int(y)
         Px = [0] * m; cur = 0
         for i in range(m): Px[i] = cur; cur = int(T[cur, x])

@@ -168,7 +168,7 @@ def main():
                 if key in seen_orb: continue
                 seen_orb.add(key)
                 cand.append((f"phi{pi_}", phi))
-                if len(cand) >= 2: break
+                if len(cand) >= int(os.environ.get("CAP", "2")): break
             if not cand: continue
             gfn = os.path.join(tmp, f"g_{m}_{k}_{r}.bin")
             write_group(m, k, r, gfn)

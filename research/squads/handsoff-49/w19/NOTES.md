@@ -66,3 +66,9 @@ Scoreboard: no line appended (no improvement below the Haar start at any n).
 - `./lann q/m101_K5/K.bin q/m101_K5/S0.base 9 SECS SEED OUT` (SA); `./ltabu ...` (tabu); `./fa ...` (far-pair moves);
   `./fa2 ...` (two-step lookahead). Each writes OUT.best.txt; cost 0 writes OUT.edges and prints RESULT FOUND.
 - Lift of a base file: edges (u,x) ~ (v, g x) with u*|K|+x labels (checked against score48, see above).
+
+## Final (02:37 UTC)
+- Last runs added: fa2 5+5 from S7, S23, S31, S40 (80 s each, pairs 2,900-6,300): best 10. fa 5+5 from S15 (85 s): 10.
+  fa 8+8 from S60: 32. fa 6+6 from S30: 24. ltabu 4+4 from S0 (85 s): 16. fa2 3+3 from S60: 12, fa2 4+4 from S30: 16.
+- Nothing below the Haar floor. Best k+k voltage lifts found: the Haar starts themselves (the search never descended).
+- Next idea: the pair-move search above with a repair candidate on the same far pair, or a symmetric base ansatz.
