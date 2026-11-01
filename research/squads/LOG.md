@@ -49,3 +49,38 @@ nice 0, equal to the director's whole pipeline); the director raised the pipelin
 `echo -10 > /proc/<pid>/autogroup` and lowered the cards' groups to 15.
 Kept: haarex6 for the sweep; no family lead worth more CPU (the 704 lift is an isolated local minimum, the new
 families are far). The order-384 sweep continues; orders 401-450 started on the spare core.
+
+## 2026-11-01, job raise-small-d (Opus cloud session, branch claude/raise-d-delta-3-4-5wyh9b), goal: raise (3|4, 9..14)
+
+Round 0 (director, before the squad): own-small's joint base+voltage annealer (salift_s: a p+p cubic base multigraph and
+its voltages in a group, both free) had never been run at D = 13, 14. With metacyclic groups Z_m x|_r Z_k (tables from
+a new gtab.py) a 4+4 base solved D = 13 at N = 440-456 in seconds: (3,13) 3,648 (was 3,400), apsp VALID. 70-s probes at
+D = 14 (4+4, N = 812, 816) reached cost 2 (n = 6,496, above the census 6,272).
+
+### Round 1 (17 cards, 22:50-23:35; research/squads/raise-small/r1/)
+
+Cards (one line each): c01 (3,13) 3+3 bases · c02 (3,13) 5+5/6+6 · c03 (3,13) 8+8..12+12 · c04 (3,13) non-metacyclic
+groups · c05 (3,14) 5+5/6+6 · c06 (3,14) 3+3 and 2+2 · c07 (3,14) 4+4 high band N = 861-1,000 · c08 (3,14)
+non-metacyclic groups · c09 (3,12) lifts p = 3..6 · c10 (3,11) lifts p = 2..6 · c11 (3,10)/(3,9) lifts + polish ·
+c12 (4,9)/(4,10) quartic joint lifts (salift4) · c13 (4,11)/(4,12) table-free quartic joint lifts · c14 (4,13) hmeta
+Haar · c15 (4,14) hmeta Haar · c16 wildcard cubic (Cayley graphs of three involutions) · c17 wildcard quartic (fixed
+GQ(3,3) base, metacyclic voltages).
+
+Best per card: c06 **(3,14) 6,600** (3+3 over Z11 x|_2 Z100; also 6,486, 6,528, 6,552 and 2+2 6,560; cost 2 at 7,008)
+· c01 **(3,13) 3,744** (3+3 over Z13 x|_2 Z48; cost 2 at 3,780 and 3,960) · c05 cost 6 at 6,480 (6+6) · c08 cost 4 at
+6,720 (AGammaL(1,8) x Z5) · c04 cost 6 at 3,840 (SL(2,3) x Z20) · c02 cost 6 at 3,744 (6+6) · c03 cost 20 at 3,840 (8+8)
+· c11 cost 12 at 864 · c12 (4,9) cost 18 at 4,992 (2+2 quartic; Haar hmeta at the same n: 150) · c13 cost 72 at (4,11)
+30,360 · c14 (4,13) Haar cost 2 at 192,550 · c16 2,184 (PGL(2,13), D = 13; Cayley graphs reach diameter ~log2 n + 2)
+· c17 cost 1,208. (c07, c09, c10, c15: added below when they report.)
+
+Director meanwhile: 4+4 scans at D = 13 (N = 462, 465, 468 solve; 3,744 VALID twice) and 3+3 at D = 14 above 1,169
+(cost 2 at 1,170); all finds re-checked with sol2edges.py (own group arithmetic) + apsp.c, saved to
+research/frontier/raise_small/sols/ and research/frontier/beyond/graphs/.
+
+Selection: small bases win. 2+2, 3+3 and 4+4 beat 5+5 and larger at both D; 3+3 is best at D = 14. Groups with large
+k / large r-order beat nearly abelian ones (k = 6 scans cost 30-120); non-metacyclic groups are not better. For Δ = 4
+the quartic joint lift beats Haar random-S by a wide margin at (4,9) (the only signal for a 2013-table cell). The squad
+was CPU-starved (load ~19 on 4 cores, ~15 % of a core per card; autogroup scheduling makes `nice` ineffective, so the
+director raised its own groups to nice -7), so round 2 has 8-10 cards.
+Kept for round 2: 3+3 / 2+2 bands just above each solved N, chains on every cost-2 state, quartic 2+2 lifts at (4,9),
+(4,10), (4,11), and one wildcard (orbit-constrained lifts).
