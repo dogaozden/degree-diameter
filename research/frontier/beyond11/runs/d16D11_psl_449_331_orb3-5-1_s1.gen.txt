@@ -8,3 +8,8 @@ selftest group multiplication: associativity, identity, inverse on 20000 random 
 file runs/d16D11_psl_449_331_orb3-5-1_s1.out
 header: 16 11 psl 449 n 331 N 14980795200
 group psl 449 x Z_331, |G| = 14980795200 = N, vertices 2N = 29961590400; 16 distinct generators
+from (e,A): reached A 14980795200/14980795200, B 14980795200/14980795200 within 11; ecc 11; level sizes [1, 16, 240, 3600, 54000, 809970, 12144518, 181120153, 2496288504, 13839512425, 12472307937, 959349036]  (2583s)
+from (e,B): reached A 14980795200/14980795200, B 14980795200/14980795200 within 11; ecc 11; level sizes [1, 16, 240, 3600, 54000, 809970, 12144518, 181120153, 2496283314, 13839512425, 12472313127, 959349036]  (5281s)
+VALID d=16 D=11 group=psl 449 x Z_331 N=14980795200 vertices=29961590400 (distinct generators, 16-regular simple; every vertex within 11 of both (e,A) and (e,B); ecc 11; 5281s)
+exit: 0
+end: 2026-11-01T13:14:23Z (5282 s)
