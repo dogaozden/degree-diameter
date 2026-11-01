@@ -36,5 +36,6 @@ if os.path.exists('cells_other.txt'):
                         f'research/frontier/beyond13/checks/{chk}' + (f' (graph research/frontier/beyond13/graphs/{edges})' if edges != '-' else ''))
 for (d, D) in sorted(rows, key=lambda c: (c[1], c[0])):
     v, note, chk = rows[(d, D)]
+    note = note.replace('x|_', 'x\\|_')   # a bare | would split the markdown table cell
     print(f'| ({d},{D}) | **{v:,}** | {100*v/moore(d,D):.2f} | {moore(d,D)-6:,} | {note} | {chk} | '
           f'Haar size law at mu = 5: 2N = {2*n_at_mu(d,D,5):.3g} |')
