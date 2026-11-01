@@ -1,0 +1,9 @@
+group sl 67 x Z_499, N=150047304 (2N=300094608), rows 4488 x 33433 bits (doubled row 1064 words), memory 0.11 GB, threads 1
+alpha: conj by mat(0,66,1,66), z -> 139 z on Z_499 (fixed z: 1); ORBIT k=3 m=4 f=0; W=2.59374e+09 lambda=17.286 mu=4.67
+setup 0.0s
+start cost=42 (1.2s per eval)
+t=5 step=1 evals=5 slot=0 cand=1 cost=1 best=1 T=1.26
+t=9 step=2 evals=9 slot=3 cand=0 cost=0 best=0 T=1.06
+RESULT d=12 D=10 group=sl 67 x Z_499 N=150047304 vertices=300094608 best=0 evals=9 steps=2 time=9.1 orbit k=3 m=4 f=0 mu=4.67
+re-evaluation of the best S: cost 0
+wrote /home/user/degree-diameter/research/squads/beyond11/r2/d11/a_sl67_n499_s1.sol

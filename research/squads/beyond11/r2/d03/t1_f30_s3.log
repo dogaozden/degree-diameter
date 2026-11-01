@@ -1,0 +1,98 @@
+group psl 73 x Z_43, N=8362296 (2N=16724592), rows 2664 x 3139 bits (doubled row 120 words), memory 0.01 GB, threads 1
+alpha: conj by mat(0,72,1,72), z -> 6 z on Z_43 (fixed z: 1); ORBIT k=3 m=3 f=2; W=1.11111e+08 lambda=13.287 mu=14.18
+setup 0.0s
+fixed generators: 1 chosen among 35 alpha-fixed elements
+start cost=42 (0.2s per eval)
+t=1 step=1 evals=17 slot=2 cand=13 cost=13 best=13 T=1.26
+t=2 step=2 evals=33 slot=2 cand=27 cost=13 best=13 T=1.06
+FX t=3 step=3 evals=49 slot=1 fxacc=0/1 cost=13 best=13 T=0.89
+t=4 step=4 evals=65 slot=1 cand=33 cost=13 best=13 T=0.75
+FX t=5 step=5 evals=81 slot=1 fxacc=0/2 cost=13 best=13 T=0.63
+FX t=6 step=6 evals=97 slot=1 fxacc=1/3 cost=13 best=13 T=0.53
+t=7 step=7 evals=113 slot=2 cand=21 cost=13 best=13 T=0.45
+t=7 step=8 evals=129 slot=0 cand=21 cost=13 best=13 T=0.38
+FX t=8 step=9 evals=145 slot=1 fxacc=1/4 cost=13 best=13 T=0.32
+FX t=9 step=10 evals=161 slot=1 fxacc=1/5 cost=13 best=13 T=0.27
+FX t=10 step=11 evals=177 slot=1 fxacc=1/6 cost=13 best=13 T=0.22
+t=11 step=12 evals=193 slot=0 cand=13 cost=13 best=13 T=0.19
+FX t=12 step=13 evals=209 slot=1 fxacc=1/7 cost=13 best=13 T=0.16
+t=13 step=14 evals=225 slot=1 cand=8 cost=8 best=8 T=0.15
+FX t=13 step=15 evals=241 slot=1 fxacc=1/8 cost=8 best=8 T=0.15
+t=14 step=16 evals=257 slot=1 cand=19 cost=8 best=8 T=0.15
+FX t=15 step=17 evals=273 slot=1 fxacc=1/9 cost=8 best=8 T=0.15
+t=16 step=18 evals=289 slot=0 cand=21 cost=8 best=8 T=0.15
+t=17 step=19 evals=305 slot=1 cand=15 cost=8 best=8 T=0.15
+t=18 step=20 evals=321 slot=2 cand=30 cost=8 best=8 T=0.15
+t=19 step=21 evals=337 slot=0 cand=21 cost=8 best=8 T=0.15
+t=20 step=22 evals=353 slot=2 cand=18 cost=8 best=8 T=0.15
+FX t=21 step=23 evals=369 slot=1 fxacc=1/10 cost=8 best=8 T=0.15
+FX t=21 step=24 evals=385 slot=1 fxacc=1/11 cost=8 best=8 T=0.15
+FX t=22 step=25 evals=401 slot=1 fxacc=1/12 cost=8 best=8 T=0.15
+t=23 step=26 evals=417 slot=2 cand=24 cost=8 best=8 T=0.15
+t=24 step=27 evals=433 slot=2 cand=18 cost=8 best=8 T=0.15
+t=26 step=28 evals=449 slot=2 cand=36 cost=8 best=8 T=0.15
+t=27 step=29 evals=465 slot=0 cand=31 cost=8 best=8 T=0.15
+t=28 step=30 evals=481 slot=1 cand=15 cost=8 best=8 T=0.15
+t=28 step=31 evals=497 slot=0 cand=18 cost=8 best=8 T=0.15
+t=29 step=32 evals=513 slot=1 cand=15 cost=8 best=8 T=0.15
+FX t=30 step=33 evals=529 slot=1 fxacc=1/13 cost=8 best=8 T=0.15
+t=31 step=34 evals=545 slot=0 cand=9 cost=8 best=8 T=0.15
+t=32 step=35 evals=561 slot=1 cand=12 cost=8 best=8 T=0.15
+t=33 step=36 evals=577 slot=0 cand=30 cost=8 best=8 T=0.15
+FX t=34 step=37 evals=593 slot=1 fxacc=1/14 cost=8 best=8 T=0.15
+FX t=35 step=38 evals=609 slot=1 fxacc=1/15 cost=8 best=8 T=0.15
+FX t=35 step=39 evals=625 slot=1 fxacc=1/16 cost=8 best=8 T=0.15
+FX t=36 step=40 evals=641 slot=1 fxacc=1/17 cost=8 best=8 T=0.15
+t=37 step=41 evals=657 slot=1 cand=21 cost=8 best=8 T=0.15
+t=38 step=42 evals=673 slot=2 cand=18 cost=8 best=8 T=0.15
+t=39 step=43 evals=689 slot=2 cand=24 cost=8 best=8 T=0.15
+FX t=40 step=44 evals=705 slot=1 fxacc=1/18 cost=8 best=8 T=0.15
+t=41 step=45 evals=721 slot=2 cand=12 cost=8 best=8 T=0.15
+FX t=42 step=46 evals=737 slot=1 fxacc=1/19 cost=8 best=8 T=0.15
+t=43 step=47 evals=753 slot=0 cand=27 cost=8 best=8 T=0.15
+FX t=43 step=48 evals=769 slot=1 fxacc=1/20 cost=8 best=8 T=0.15
+t=44 step=49 evals=785 slot=0 cand=29 cost=8 best=8 T=0.15
+t=45 step=50 evals=801 slot=1 cand=36 cost=8 best=8 T=0.15
+t=46 step=51 evals=817 slot=0 cand=24 cost=8 best=8 T=0.15
+FX t=47 step=52 evals=833 slot=1 fxacc=1/21 cost=8 best=8 T=0.15
+t=48 step=53 evals=849 slot=0 cand=21 cost=8 best=8 T=0.15
+FX t=49 step=54 evals=865 slot=1 fxacc=1/22 cost=8 best=8 T=0.15
+t=49 step=55 evals=881 slot=1 cand=19 cost=8 best=8 T=0.15
+FX t=50 step=56 evals=897 slot=1 fxacc=1/23 cost=8 best=8 T=0.15
+t=51 step=57 evals=913 slot=0 cand=17 cost=8 best=8 T=0.15
+t=52 step=58 evals=929 slot=1 cand=15 cost=8 best=8 T=0.15
+t=53 step=59 evals=945 slot=2 cand=15 cost=8 best=8 T=0.15
+t=53 step=60 evals=961 slot=2 cand=23 cost=8 best=8 T=0.15
+FX t=54 step=61 evals=977 slot=1 fxacc=1/24 cost=8 best=8 T=0.15
+t=55 step=62 evals=993 slot=0 cand=12 cost=8 best=8 T=0.15
+t=56 step=63 evals=1009 slot=2 cand=15 cost=8 best=8 T=0.15
+t=57 step=64 evals=1025 slot=2 cand=12 cost=8 best=8 T=0.15
+t=58 step=65 evals=1041 slot=1 cand=12 cost=8 best=8 T=0.15
+t=59 step=66 evals=1057 slot=0 cand=39 cost=8 best=8 T=0.15
+FX t=60 step=67 evals=1073 slot=1 fxacc=1/25 cost=8 best=8 T=0.15
+t=61 step=68 evals=1089 slot=0 cand=15 cost=8 best=8 T=0.15
+t=61 step=69 evals=1105 slot=0 cand=14 cost=8 best=8 T=0.15
+t=62 step=70 evals=1121 slot=1 cand=9 cost=8 best=8 T=0.15
+t=63 step=71 evals=1137 slot=2 cand=27 cost=8 best=8 T=0.15
+t=64 step=72 evals=1153 slot=0 cand=21 cost=8 best=8 T=0.15
+t=65 step=73 evals=1169 slot=0 cand=33 cost=8 best=8 T=0.15
+t=65 step=74 evals=1185 slot=2 cand=27 cost=8 best=8 T=0.15
+reheat at step 75: back to best S, cost 8
+t=66 step=75 evals=1202 slot=2 cand=12 cost=8 best=8 T=1.50
+t=67 step=76 evals=1218 slot=1 cand=21 cost=8 best=8 T=1.26
+t=68 step=77 evals=1234 slot=2 cand=27 cost=27 best=8 T=1.06
+t=69 step=78 evals=1250 slot=1 cand=21 cost=21 best=8 T=0.89
+t=70 step=79 evals=1266 slot=0 cand=30 cost=21 best=8 T=0.75
+FX t=71 step=80 evals=1282 slot=1 fxacc=2/26 cost=21 best=8 T=0.63
+t=72 step=81 evals=1298 slot=2 cand=24 cost=24 best=8 T=0.53
+FX t=73 step=82 evals=1314 slot=1 fxacc=3/27 cost=17 best=8 T=0.45
+t=74 step=83 evals=1330 slot=1 cand=30 cost=17 best=8 T=0.38
+t=74 step=84 evals=1346 slot=0 cand=7 cost=7 best=7 T=0.32
+t=75 step=85 evals=1362 slot=0 cand=15 cost=7 best=7 T=0.27
+FX t=76 step=86 evals=1378 slot=1 fxacc=3/28 cost=7 best=7 T=0.22
+FX t=77 step=87 evals=1394 slot=1 fxacc=3/29 cost=7 best=7 T=0.19
+t=78 step=88 evals=1410 slot=2 cand=30 cost=7 best=7 T=0.16
+t=78 step=89 evals=1426 slot=2 cand=15 cost=7 best=7 T=0.15
+t=79 step=90 evals=1442 slot=2 cand=21 cost=7 best=7 T=0.15
+t=80 step=91 evals=1458 slot=0 cand=12 cost=7 best=7 T=0.15
+FX t=81 step=92 evals=1474 slot=1 fxacc=3/30 cost=7 best=7 T=0.15

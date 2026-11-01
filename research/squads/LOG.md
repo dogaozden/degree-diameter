@@ -93,3 +93,36 @@ central elements including -I, PSL has n. Kept for round 2: k = 3; PSL with smal
 moving the fixed generator (never moved by haar_big); the n = 1 anomaly as a question. Dropped: k = 2, 4, 6, self-dual S,
 tuning knobs. Process notes: cards stopped after 5-12 minutes of their 25; the kernel's autogroup scheduling had made
 the cards' nice 10 meaningless (each Bash call is its own group); the director turned autogroup off at 04:58.
+
+## 2026-11-01, beyond-d11, round 2 (16 cards, 05:10 UTC)
+
+Same session. Files: research/squads/beyond11/r2/. Cards built on round 1: PSL with small n (my reading of the -I hole),
+near-miss finishing, fixed-generator moves, hole anatomy, n-scans at odd and even D, k = 5, the (7..10, 11) cells, the
+upper-bound citation, two wildcards. At 05:21 the director redirected seven cards from PSL to SL after d04's result.
+
+Cards (best result; finds with N > 1e8 checked by the director, see BEYOND_TABLE):
+- **d04 hole anatomy at (11,11)**: PSL(2,1063) x Z1 holes are all involutions (about 130 per seed); PSL(2,557) x Z7 also
+  involution-dominated (35-59); SL(2,149) x Z181 central-dominated (24-26 central holes); SL(2,251) x Z37 2-22. Rates fit
+  exp(-lambda/2) for involutions and exp(-lambda/5) for central elements. This turned the round: at odd D use SL (one
+  involution) with small n (few central elements). Write-up: research/frontier/beyond11/ODD_D_HOLES.md.
+- **d01 (11,11) SL(2,317) x Z19, mu 6.4: 1,210,478,448** (after the redirect; PSL rungs had stalled at 12-21).
+- **d13 (10,11) SL(2,613) x Z1, mu 9.3: 460,691,568** (was 445,709,568) and SL(2,229) x Z19 456,332,880; PSL(2,401) x Z7 stalled at 15.
+- **d08 (9,11) SL(2,223) x Z7, "3 3 0", mu 10.6: 155,250,816** (was 145,258,344; haarcheck_gen VALID by the card).
+- **d09 (8,11) PSL(2,113) x Z31: 44,726,304** (was 43,702,560) and **(7,11) SL(2,53) x Z37: 11,012,976** (was 10,648,176), both VALID by the card.
+- d02 SL(2,443) x Z7 near miss: stays at cost 2 over 11 seeds. d03 fixed-generator moves (FXMOVE): no gain.
+- d05 (12,11): SL(2,487) x Z13 (mu 8.4) to cost 8, PSL(2,541) x Z19 18 (25-40 s per eval on one loaded core).
+- d06 (12,11) n-scan: PSL n = 1 start 294, n = 7 60, n = 37 18, n = 151 21; SL n = 7 14, n = 1 14 (few evals each).
+- d07 (13,11): PSL(2,599) x Z31 to cost 10; the SL rungs needed 2.1-3.4 GB, over its cap (not run).
+- d10/d11 odd/even n-scans at D = 9, 10: inconclusive (mu not matched, few seeds); d11's SL(2,67) x Z499 at (12,10),
+  300,094,608, is below the table value 300,383,050.
+- d12 k = 5 at (11,9), mu ~20: 2 of 5 seeds solved (PSL(2,41) x Z251, VALID) against 0 of 3 for k = 3. At (11,11) too slow
+  to judge. (At D = 11, k = 5 pays exp(-lambda/5) per alpha-fixed element, so it needs small p and then large n.)
+- d14 upper bounds: read arXiv 1010.5651; Prop. 6.4 (p. 25) gives N_b <= M_b - 6 for 5 <= D <= 187, D != 6, so the table's
+  bound stands for D = 11 and 12; round 1's c14 claim (M_b - 4 at D = 12) was wrong.
+- d15 wildcard: SL(2,199) x Z1 solves (11,9) quickly, PSL(2,251) x Z1 stalls at 33-36 (consistent with d04).
+- d16 central cover (fixed generator -I or x with x^2 = -I): -I as a generator is bad; x^2 = -I solved 1 of 6 at (13,9)
+  where plain solved 0 of 6. Weak.
+
+Director during the round: (13,11) 6,508,747,920 VALID; (14,11) solved at mu 6.9, SL(2,1009) x Z7, 14,381,398,080
+(49 evals, 522 s at 2 threads). Kept: SL with small n at odd D (now the job's rule), f = 0 when 3 | Δ. Dropped: PSL at odd D,
+k = 5 at D = 11, fixed-generator moves, central covers. Round 3 applies the rule to the cheap cells (5..10, 11) and (5..10, 12).

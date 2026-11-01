@@ -8,3 +8,8 @@ selftest group multiplication: associativity, identity, inverse on 20000 random 
 file runs/d13D11_sl_229_271_orb3-4-1_s1.out
 header: 13 11 sl 229 n 271 N 3254373960
 group sl 229 x Z_271, |G| = 3254373960 = N, vertices 2N = 6508747920; 13 distinct generators
+from (e,A): reached A 3254373960/3254373960, B 3254373960/3254373960 within 11; ecc 11; level sizes [1, 13, 156, 1872, 22464, 269538, 3231924, 38551004, 432988822, 2636059932, 2818130593, 579491601]  (676s)
+from (e,B): reached A 3254373960/3254373960, B 3254373960/3254373960 within 11; ecc 11; level sizes [1, 13, 156, 1872, 22464, 269538, 3231924, 38551004, 432991142, 2636059932, 2818128273, 579491601]  (1196s)
+VALID d=13 D=11 group=sl 229 x Z_271 N=3254373960 vertices=6508747920 (distinct generators, 13-regular simple; every vertex within 11 of both (e,A) and (e,B); ecc 11; 1196s)
+exit: 0
+end: 2026-11-01T05:20:07Z (1196 s)

@@ -707,9 +707,13 @@ int main(int argc, char **argv) {
         if (nc < OF - 1) { fprintf(stderr, "only %d alpha-fixed elements, need %d\n", nc, OF - 1); return 2; }
         for (int u = 1; u < OF; u++) { el x; int ok; do { x = cand[rnd() % nc]; ok = 1; for (int v = 1; v < u; v++) if (eeq(FIXG[v], x)) ok = 0; } while (!ok); FIXG[u] = x; }
         NFIXG = OF - 1; fprintf(stderr, "fixed generators: %d chosen among %d alpha-fixed elements\n", NFIXG, nc);
-        if (getenv("CENTER") && !PSL && NFIXG >= 1) {   /* d16: CENTER=1 makes the first alpha-fixed generator -I (central, alpha-fixed) */
-            FIXG[1] = canon((el){md(-1), 0, 0, md(-1), 0});
-            fprintf(stderr, "CENTER: fixed generator 1 set to -I\n");
+        if (getenv("CENTER") && !PSL && NFIXG >= 1) {   /* d16: CENTER=1 makes the first alpha-fixed generator -I (central, alpha-fixed);
+                                                           CENTER=3: an alpha-fixed x with x^2 = -I (order 4) if one is in the centralizer */
+            el mi = canon((el){md(-1), 0, 0, md(-1), 0});
+            if (atoi(getenv("CENTER")) == 3) {
+                int got = 0; for (int u = 0; u < nc && !got; u++) if (eeq(emul(cand[u], cand[u]), mi) && !eeq(cand[u], mi)) { FIXG[1] = cand[u]; got = 1; }
+                fprintf(stderr, "CENTER=3: %s\n", got ? "fixed generator 1 set to an alpha-fixed x with x^2 = -I" : "no such element; fixed generator unchanged");
+            } else { FIXG[1] = mi; fprintf(stderr, "CENTER: fixed generator 1 set to -I\n"); }
         }
         free(cand); free(fz);
     }
