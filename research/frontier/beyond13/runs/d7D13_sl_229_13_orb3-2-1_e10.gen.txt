@@ -9,3 +9,7 @@ file runs/d7D13_sl_229_13_orb3-2-1_e10.out
 header: 7 13 sl 229 n 13 N 156113880
 group sl 229 x Z_13, |G| = 156113880 = N, vertices 2N = 312227760; 7 distinct generators
 from (e,A): reached A 156113880/156113880, B 156113880/156113880 within 13; ecc 13; level sizes [1, 7, 42, 252, 1512, 9072, 54414, 326125, 1945814, 11289432, 55945242, 134805355, 98166855, 9683637]  (103s)
+from (e,B): reached A 156113880/156113880, B 156113880/156113880 within 13; ecc 13; level sizes [1, 7, 42, 252, 1512, 9072, 54414, 326125, 1945804, 11289432, 55942098, 134805355, 98170009, 9683637]  (205s)
+VALID d=7 D=13 group=sl 229 x Z_13 N=156113880 vertices=312227760 (distinct generators, 7-regular simple; every vertex within 13 of both (e,A) and (e,B); ecc 13; 205s)
+exit: 0
+end: 2026-11-01T12:23:17Z (205 s)

@@ -85,3 +85,34 @@ groups. Kept for round 2: odd-order metacyclic groups at (4,13), (5,13), (6,13) 
 the even-D control; exhaustive scans at Δ = 3, 4; pushes of the mid cells. Dropped: metacyclic k <= 8. Process: the
 director's three checks (5 threads at nice 0) starved the cards (c01, c02, c05 report a few % CPU); round 2 gets the
 same machine, so its cards are told to keep runs short.
+
+## 2026-11-01, beyond-d13, round 2 (16 cards, 12:04 UTC)
+
+Same session. Files: research/squads/beyond13/r2/. Selection from round 1: odd-order groups at odd D (e01-e03, e12, e14),
+the even-D control (e06), random S at Δ = 5 (e07), exhaustive scans at Δ = 3, 4 (e04, e05, e13), pushes of the mid
+cells (e08-e10), theory of odd-order groups (e11), and two wildcards (e15 other odd-order groups, e16 voltage lifts).
+Machine: the director's (10,13) and (9,13) checks and pushes held 4-5 threads at nice 0; cards got 5-10 % of a core.
+
+Cards (best result; all VALID by haarcheck_gen, apsp or metacheck unless marked):
+- e01 (4,13) meta push: nothing above 186,314 (Z7177 x|_368 Z13, N = 93,301, stuck at 2; starved).
+- e02 (5,13) single odd-order meta: Z72497 x|_9840 Z23, 3,334,862 (beats 3,217,056; below e12).
+- e03 (6,13) meta: Z331231 x|_58155 Z61 cost 2 (N 2.02e7, below the record anyway); the meta orbit form saturates.
+- e04 (3,13) exhaustive: nothing (7 % CPU). e05 (3,14) exhaustive: PSL(2,7) x Z15, 5,040 (below the lift).
+- e06 (4,14) meta control: best cost 1; metacyclic groups do not clearly help at even D.
+- **e07 (5,14): PSL(2,53) x Z79, random S, 11,757,096.**
+- **e08 (6,14): SL(2,193) x Z13, 186,910,464.** **e09 (6,13): SL(2,103) x Z19, 41,519,712.**
+- **e10 (7,13): SL(2,229) x Z13, 312,227,760.**
+- e11 theory (r2/e11/ODD_ORDER.md): Z_m x|_r Z_k with m prime is a Frobenius group: no involutions and trivial centre, so
+  neither odd-D clump exists; word cover of random S is 1 % (k = 1), 6 % (k = 3), 73 % (k = 5), 97-99 % (k >= 11).
+- **e12 (5,13): (Z79 x|_64 Z13) x (Z59 x|_4 Z29), odd order, random S, 3,514,394** (+9 % over the orbit-S value).
+- e13 (4,14) orbit scan: starved, nothing. e14: orbit S in meta groups saturates; random S better (6,13).
+- e15 (4,13) Z_p^2 x| Z_k (odd order): 162,266 (below).
+- **e16 (3,13): Z160 voltage lift of the Desargues graph, 3,200** (above every Haar graph); the director then ran the same
+  tool at D = 14: **Z280 lift, 5,600** in 12 s.
+
+Director's reading: two new families beat the Haar orbit searches at small Δ: odd-order groups at odd D (Δ = 4, 5) and
+cyclic voltage lifts at Δ = 3 (both D). At Δ >= 6 the SL/PSL orbit search still wins (meta random S at (6,13), (7,13)
+stays at cost 2-36 at matched N, also with the director's new bit-parallel hmeta). Kept for round 3: lifts at Δ = 3, 4,
+5 (liftd, any degree), odd-order pushes with hmeta at (4,13), (5,13), the D = 11 test of the odd-order rule, theory of
+lifts, pushes of (4,14), (5,14), (6,13), (6,14), (7,13), (7,14). Dropped: meta orbit S, meta at even D, exhaustive Haar
+pairs at Δ = 3 (lifts are larger).
