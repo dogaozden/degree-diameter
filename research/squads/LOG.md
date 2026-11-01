@@ -187,7 +187,7 @@ Goal cells, all checked by haarcheck_gen (logs research/frontier/runs/cloudcheck
 research/frontier/beyond/BEYOND_TABLE.md):
 - (11,11) 1,241,299,248 (SL(2,853), mu 10.4, director); earlier 1,210,478,448 (r2/d01) and 1,170,162,000.
 - (12,11) 2,976,066,240 (SL(2,239) x Z109, f = 0, r1/c04); earlier 2,874,207,072.
-- (13,11) 6,781,213,392 (SL(2,563) x Z19, director; check in progress at writing) / 6,508,747,920 VALID.
+- (13,11) 6,781,213,392 (SL(2,563) x Z19, director); earlier 6,508,747,920.
 - (14,11) 14,381,398,080 (SL(2,1009) x Z7, director).
 - (11,12) 11,189,148,096 (PSL(2,223) x Z1009, director).
 - (12,12) 19,980,294,768 and (13,12) 19,993,487,976 (PSL; at the job's 20-billion cap).
