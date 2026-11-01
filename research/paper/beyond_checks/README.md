@@ -16,3 +16,20 @@ checker written separately from the one already used. Each log starts with the f
 
 The solution files and edge lists were taken unchanged from those branches (git show); the sha256 in each log
 identifies them.
+
+## Results
+
+| cell | file | checker | result |
+|---|---|---|---|
+| (6,13) | d6D13_psl_83_73_orb3-2-0_f11 | haarcheck_psl | VALID |
+| (7,13) | d7D13_sl_229_13_orb3-2-1_e10 | haarcheck_sl | VALID |
+| (8,13) | d8D13_sl_499_7_orb3-2-2_s2 | haarcheck_sl | VALID |
+| (9,13) | d9D13_sl_593_19_orb3-3-0_s6 | haarcheck_sl, A and B halves | HALF-VALID + HALF-VALID = VALID (21 min per half) |
+| (6,14) | d6D14_sl_97_103_orb3-2-0_g07 | haarcheck_sl | VALID |
+| (7,14) | d7D14_psl_223_151_orb3-2-1_h14 | haarcheck_psl | VALID |
+| (5,13) | d5D13_prodmeta_11_5_2971_11_i06 | build_haar2.py | VALID |
+| (5,14) | d5D14_meta_148781_43_i07 | build_haar2.py | VALID |
+| (5,12) | d5D12_meta_8969_59_205_b6l03 (master) | metacheck.py | VALID |
+| (6,11) | d6D11_meta_20809_51_12972_b5k07 (master) | metacheck.py | VALID |
+| (3,11) | d3D11_n1474_meta67_11_9.edges | apsp.c | VALID at D = 11, INVALID at D = 10 |
+| (17,5) | d17D5_n35728_orbits.edges | apsp.c | VALID at D = 5, INVALID at D = 4 |
