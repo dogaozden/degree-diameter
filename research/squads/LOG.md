@@ -116,3 +116,35 @@ stays at cost 2-36 at matched N, also with the director's new bit-parallel hmeta
 5 (liftd, any degree), odd-order pushes with hmeta at (4,13), (5,13), the D = 11 test of the odd-order rule, theory of
 lifts, pushes of (4,14), (5,14), (6,13), (6,14), (7,13), (7,14). Dropped: meta orbit S, meta at even D, exhaustive Haar
 pairs at Δ = 3 (lifts are larger).
+
+## 2026-11-01, beyond-d13, round 3 (16 cards, 12:31 UTC)
+
+Same session. Files: research/squads/beyond13/r3/. Selection from round 2: lifts at Δ = 3, 4, 5 (f01, f02, f04-f06; the
+director generalised e16's lift.c to any degree, liftd), lift theory (f03), odd-order pushes (f07, f08) and the D = 11
+test of the odd-order rule (f15), non-abelian voltage lifts (f16), pushes of (4,14), (5,14), (6,13), (6,14), (7,13),
+(7,14) (f09-f14). The director's (10,13) check was OOM-killed at 12:35 after 58 min (a card's python checker plus the
+director's (8,14) push pushed the box over 15 GB); restarted at 12:50 with 3 threads.
+
+Cards (best result):
+- f01 (3,13) lifts of 40-vertex bases: cost >= 26 at 3,240-3,360; nothing above 3,200.
+- f02 (3,14) GP(10,3) at n = 281-285: best cost 2 at n = 282 (5,640); nothing above 5,600.
+- f03 theory (r3/f03/LIFTS.md): in a Z_n lift the end of a walk depends only on its net traversal vector; GP(10,3)
+  keeps 82 % of the 24,574 nonbacktracking walks of length <= 13 distinct (74 % at 14); random voltages give n ~ 130-150
+  (D = 13) and 250-300 (D = 14) against 160 and 280 found; K4,4 lifts cap near 31,000 at (4,13); a girth-8 4-regular
+  base could reach ~2.9e5.
+- f04 (4,13) lifts: PG(2,3) x Z4600, 119,600 (apsp VALID); below the Haar value. f05 (4,14) GQ(3,3) x Z6100 (488,000):
+  start cost 1,330, 900-s anneal under load.
+- f06 Δ = 5 lifts: start costs in the millions; nothing.
+- f07 (4,13) hmeta: (pending at the time of writing).
+- **f08 (5,13): (Z29 x|_16 Z7) x (Z457 x|_289 Z19), 3,525,298** (metacheck2 VALID).
+- f09 (4,14) orbscan / ladder: all groups at N 241-260k have mu 12-17; best cost 30.
+- **f10 (5,14): PSL(2,73) x Z31, random S, 12,057,264.** **f11 (6,13): PSL(2,83) x Z73, 41,734,392.**
+- **f12 (6,14): PSL(2,137) x Z73, 187,698,768.** **f13 (7,14): SL(2,163) x Z193, 1,671,605,424** (director check).
+- f14 (7,13): (pending).
+- **f15 (4,11): odd-order Z599 x|_498 Z23, 27,554 — raises the beyond-d11 value 24,360 by 13 %** (metacheck and apsp
+  VALID). (5,11) not beaten (single meta stuck at 6).
+- f16 non-abelian (metacyclic) voltage lifts of GP(10,3): cost 2 at 3,300; annealer too weak to judge.
+
+Director's reading: the odd-order rule holds at D = 11 too (one more cell raised). Lifts win at Δ = 3 but not at Δ = 4, 5
+with the bases tried; the lift theory says girth >= 8 bases are needed. Kept for round 4: Tutte 8-cage and GQ(3,3)
+lifts, a provable lift bound, odd-order products at (4,13) and (5,11), hmeta at (4,14) and (5,13), pushes of the mid cells.
