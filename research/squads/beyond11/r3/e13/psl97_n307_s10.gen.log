@@ -1,0 +1,6 @@
+group psl 97 x Z_307, N=140080416 (2N=280160832), rows 4704 x 29779 bits (doubled row 952 words), memory 0.07 GB, threads 1
+alpha: conj by mat(0,96,1,96), z -> 17 z on Z_307 (fixed z: 1); ORBIT k=3 m=2 f=2; W=2.30688e+09 lambda=16.468 mu=9.87
+setup 0.0s
+fixed generators: 1 chosen among 47 alpha-fixed elements
+start cost=53937 (3.1s per eval)
+RESULT d=8 D=12 group=psl 97 x Z_307 N=140080416 vertices=280160832 best=53937 evals=1 steps=0 time=3.1 orbit k=3 m=2 f=2 mu=9.87

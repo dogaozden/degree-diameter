@@ -126,3 +126,33 @@ Cards (best result; finds with N > 1e8 checked by the director, see BEYOND_TABLE
 Director during the round: (13,11) 6,508,747,920 VALID; (14,11) solved at mu 6.9, SL(2,1009) x Z7, 14,381,398,080
 (49 evals, 522 s at 2 threads). Kept: SL with small n at odd D (now the job's rule), f = 0 when 3 | Δ. Dropped: PSL at odd D,
 k = 5 at D = 11, fixed-generator moves, central covers. Round 3 applies the rule to the cheap cells (5..10, 11) and (5..10, 12).
+
+## 2026-11-01, beyond-d11, round 3 (16 cards, 05:38 UTC)
+
+Same session. Files: research/squads/beyond11/r3/. Selection from round 2: apply "SL with small n at odd D, f = 0 when
+3 | Δ" to the cheap cells (5..10, 11) and test PSL with smaller p at even D on (5..10, 12); one even-D hole anatomy, one
+quantitative test of the hole model, one real-scale (11,11) card, one wildcard.
+
+Cards (best result; card-checked VALID or director-checked, see BEYOND_TABLE):
+- **e01 (5,11) SL(2,53) x Z1: 297,648** (was 253,080), VALID by the card.
+- **e02 (6,11) SL(2,53) x Z7: 2,083,536** (was 1,971,744), VALID by the card; SL(2,103) x Z1 (mu 15.4) to cost 2.
+- e03 (7,11): SL(2,67) x Z19 (mu 17.4) to cost 2; no gain.
+- **e04 (8,11) SL(2,283) x Z1: 45,329,808** (was 44,726,304), search cost 0.
+- e05 (9,11): SL(2,137) x Z31 (mu 16.4) to cost 2. e06 (10,11): SL(2,617) x Z1 (mu 13.1) to cost 8.
+- **e07 (5,12) PSL(2,53) x Z7: 1,041,768** (was 912,576), VALID by the card.
+- **e08 (6,12) PSL(2,79) x Z19: 9,366,240** (was 9,303,840), VALID by the card.
+- **e09 (7,12) PSL(2,67) x Z199: 59,838,504** (was 56,297,592).
+- **e10 (8,12) SL(2,113) x Z97: 279,900,096** (was 268,496,208).
+- **e11 (9,12) PSL(2,241) x Z79: 1,105,785,120** (was 1,055,973,600).
+- **e12 (10,12) PSL(2,239) x Z271: 3,699,605,280** (was 3,500,976,768).
+- e13 even-D anatomy at (8,12): no involution or rotation clumps at even D (as predicted); alpha-fixed holes enriched
+  but most holes ordinary; smaller p did not help; S with a generator of projective order 2 cost > 1e4.
+- e14 model fit at (11,9), 22 groups: generic term mu (not mu/3); model 1.3-2.3x low; involution and central terms of
+  the predicted form (central ~ exp(-lambda/4) at h = 4).
+- e15 (11,11) SL(2,853) x Z1: stopped, memory cap too low for n = 1 (rows are padded; 0.86 GB, the director's error).
+- e16 composite n (products of primes = 1 mod 3) fill gaps in the group list: PSL(2,97) x Z301 at (8,12), 274,685,376
+  (below e10); n >= ~900 starts at huge cost.
+
+Even-D "prefer PSL with smaller p" was not confirmed (e07, e10, e13: mixed; SL and PSL with moderate n both solve).
+Director during the round: (12,11) 2,976,066,240 VALID; (11,12) pushed to 11,189,148,096 (PSL(2,223) x Z1009, mu 13.3,
+17 evals); mu 28 stalled at 8. Kept for round 4: the many cost 1-3 near misses on cheap cells.

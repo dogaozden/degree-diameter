@@ -1,0 +1,10 @@
+group psl 241 x Z_79, N=552892560 (2N=1105785120), rows 29040 x 19039 bits (doubled row 616 words), memory 0.37 GB, threads 1
+alpha: conj by mat(0,240,1,240), z -> 23 z on Z_79 (fixed z: 1); ORBIT k=3 m=3 f=0; W=9.81707e+09 lambda=17.756 mu=10.75
+setup 0.0s
+start cost=1 (7.1s per eval)
+t=24 step=1 evals=5 slot=2 cand=9 cost=1 best=1 T=1.26
+t=41 step=2 evals=9 slot=0 cand=12 cost=1 best=1 T=1.06
+t=59 step=3 evals=13 slot=1 cand=0 cost=0 best=0 T=0.89
+RESULT d=9 D=12 group=psl 241 x Z_79 N=552892560 vertices=1105785120 best=0 evals=13 steps=3 time=58.7 orbit k=3 m=3 f=0 mu=10.75
+re-evaluation of the best S: cost 0
+wrote /home/user/degree-diameter/research/squads/beyond11/r3/e11/psl241_79_s3.sol

@@ -70,3 +70,17 @@ with -I as its only hole on both sides (item 3), SL(2,443) x Z7 at (11,11) with 
 
 Round-1 data agree: PSL n = 1 was the worst shape at (11,11) (c16, median 151) and at (13,9) (c11, c08, 87-111), and
 n/p >= 40 was bad (central elements). This is why the job's D = 11 values use SL(2,p) x Z_n.
+
+## Quantitative fit (round 3, card e14) and the even-D control (card e13)
+
+- e14 (research/squads/beyond11/r3/e14/FIT.md): RANDORB medians for 22 SL/PSL groups at (11,9) (h = 4), n = 1..367,
+  against expected holes = mu + I exp(-lambda/2) + C exp(-lambda/h) + F exp(-lambda/3) (generic term mu: the cost counts
+  elements, so alpha only clumps them; it does not reduce their expected number). The model is 1.3-1.5x low at mu ~10 and
+  2-2.3x low at mu 30-36; the involution term fits at about 1.3 exp(-lambda/2), the central term at about 2 exp(-lambda/4),
+  worst for SL with n ~ 350. Random S have heavy tails (some samples cost 1e3-1e6), so medians were used.
+- e13 (research/squads/beyond11/r3/e13/ANATOMY.md), (8,12), 62 random S: at even D there are no involution or rotation
+  clumps, as predicted (and side B is always complete). Alpha-fixed holes are enriched, but most holes are ordinary
+  elements; smaller p did not give fewer holes (median 14.5 for SL(2,271) x Z7, 19.5 for PSL(2,653), 57-62 for PSL(2,79-97)
+  with large n). Every random S containing a generator of projective order 2 cost above 1e4.
+- In practice even D was easy at these sizes: (11,12) solved at mu 8.7 in 85 evaluations and at mu 13.3 in 17
+  (PSL(2,223) x Z1009), while the odd-D cells stall near mu 7-10.

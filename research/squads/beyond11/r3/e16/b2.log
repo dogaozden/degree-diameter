@@ -1,0 +1,15 @@
+group psl 103 x Z_247, N=134939064 (2N=269878128), rows 5304 x 25441 bits (doubled row 816 words), memory 0.09 GB, threads 1
+alpha: conj by mat(0,102,1,102), z -> 68 z on Z_247 (fixed z: 1); ORBIT k=3 m=2 f=2; W=2.30688e+09 lambda=17.096 mu=5.08
+setup 0.0s
+fixed generators: 1 chosen among 50 alpha-fixed elements
+start cost=60 (1.2s per eval)
+t=5 step=1 evals=5 slot=0 cand=12 cost=12 best=12 T=1.26
+t=9 step=2 evals=9 slot=0 cand=6 cost=6 best=6 T=1.06
+t=13 step=3 evals=13 slot=1 cand=3 cost=3 best=3 T=0.89
+t=16 step=4 evals=17 slot=1 cand=4 cost=4 best=3 T=0.75
+t=20 step=5 evals=21 slot=0 cand=3 cost=3 best=3 T=0.63
+t=23 step=6 evals=25 slot=0 cand=3 cost=3 best=3 T=0.53
+t=27 step=7 evals=29 slot=0 cand=0 cost=0 best=0 T=0.45
+RESULT d=8 D=12 group=psl 103 x Z_247 N=134939064 vertices=269878128 best=0 evals=29 steps=7 time=26.6 orbit k=3 m=2 f=2 mu=5.08
+re-evaluation of the best S: cost 0
+wrote /home/user/degree-diameter/research/squads/beyond11/r3/e16/b2.sol
