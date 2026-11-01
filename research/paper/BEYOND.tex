@@ -108,29 +108,42 @@ cells outside that table. This note gives one value for each of 64 of them:
 
 The Δ = 17..20 cells at D = 3 and 4 were filled in the same week but are not in the table below: at Δ = 17, 18, 20
 they are incidence graphs of PG(2, Δ−1) and W(Δ−1) (Moore graphs, so optimal), and at Δ = 19 they are the lab's
-fourth-hat graph (624) and the AS(17) graph of Corollary A1 (10,982), both checked all-pairs by the coordinator on
-October 26.
+fourth-hat graph (624) and the AS(17) graph of Corollary A1 (10,982) (both in
+\texttt{papers/Ozden\_polished\_results.pdf}), checked all-pairs by the coordinator on October 26.
+
+Words used below: a \emph{hole} is a group element (or vertex pair) not yet within the required distance, and the
+\emph{cost} of a candidate is its number of holes; \emph{far pairs} are vertex pairs at distance more than D; an
+\emph{evaluation} is one diameter test inside a search; \emph{squad cards} (r2/e16 and so on) are short runs by Claude
+Haiku helpers, each trying one idea, directed by an Opus session (\texttt{research/squads/LOG.md}).
 
 Each value is a lower bound: one explicit graph, built from files in the repository. All but three were checked
 exactly by a program that does not share code with the search that found them; the three level graphs at D = 7 rest on
 a theorem (section 4). A literature card of the new-cells-beyond job (\texttt{research/squads/beyond/r2/d10/LIT.md} on
-its branch) looked for published bipartite values in 48 of these cells (Δ = 17..20 at D ≤ 10, and D = 11, 12 at Δ ≤
-10) and found none, but it could not read the Combinatorics Wiki page (HTTP 503) or the tables of some papers. For the
-other cells no search was made. So we call the values \emph{first values for the lab}, not records. For cubic graphs
-in particular, published censuses may contain larger bipartite graphs of these diameters; this has not been checked.
+its branch) looked for published bipartite values in 40 of these 64 cells (Δ = 17..20 at D = 5..10, and D = 11, 12 at
+Δ = 3..10; its list of 48 also has the D = 3, 4 cells) and found none, but it could not read the Combinatorics Wiki
+page (HTTP 503) or the tables of some papers. For the other 24 cells no search was made. So we call the values
+\emph{first values for the lab}, not records.
 
-For comparison, the bipartite Moore bound is M\textsubscript{b}(Δ, D) = 2(1 + (Δ−1) + \ldots{} +
-(Δ−1)\textsuperscript{D−1}), and for 5 ≤ D ≤ 187, D ≠ 6, N\textsuperscript{b}(Δ, D) ≤ M\textsubscript{b}(Δ, D) − 6
-(Feria-Purón and Pineda-Villavicencio, Discrete Appl. Math. 160 (2012), Prop. 6.4). Our values are 100 \% of the Moore
-bound at (17,6), (18,6), (20,6), 80 \% at (19,6), 24--27 \% at D = 5, 14--16 \% at D = 7, 4.5--7.7 \% for the orbit-S
-Haar graphs at D = 8..14 (0.8--3.1 \% in the four cells stopped at the jobs' size cap), and 7--36 \% for the
-metacyclic Haar graphs and lifts at Δ = 3..6.
+\textbf{Cubic cells: published graphs.} The census of cubic edge-transitive graphs (Foster census) lists bipartite
+cubic graphs of diameter 11 on 1,200 vertices (CAT(1200,1)), 12 on 2,304 (CSS(2304,5)), 13 on 3,360 (CAT(3360,4)) and
+14 on 6,272 (CSS(6272,7)), and the census of cubic vertex-transitive graphs one of diameter 11 on 1,250 (lab notes:
+\texttt{research/squads/own-small/newcells/README.md}, where the 1,200-, 1,250- and 2,304-vertex graphs were also
+checked all-pairs). All are below the lab's values at D = 11, 12 (1,474 and 2,368). But at (3,14) a published graph,
+CSS(6272,7), is larger than the lab's 5,706, and at (3,13) the lab's 3,400 is only 40 above CAT(3360,4). The (3,13)
+and (3,14) census graphs have not been checked here, and censuses of larger orders were not searched.
+
+For comparison, the bipartite Moore bound is M\textsuperscript{b}(Δ, D) = 2(1 + (Δ−1) + \ldots{} +
+(Δ−1)\textsuperscript{D−1}), and for Δ ≥ 3, 5 ≤ D ≤ 187, D ≠ 6, N\textsuperscript{b}(Δ, D) ≤ M\textsuperscript{b}(Δ,
+D) − 6 (Feria-Purón and Pineda-Villavicencio, Discrete Appl. Math. 160 (2012); Prop. 6.4 in arXiv 1010.5651v2, the
+version that was read). Our values are 100 \% of the Moore bound at (17,6), (18,6), (20,6), 80 \% at (19,6), 24--27 \%
+at D = 5, 14--16 \% at D = 7, 4.5--7.7 \% for the orbit-S Haar graphs at D = 8..14 (0.8--3.1 \% in the four cells
+stopped at the jobs' size cap), and 7--36 \% for the metacyclic Haar graphs and lifts at Δ = 3..6.
 
 \hypertarget{where-the-numbers-come-from}{%
 \section{2. Where the numbers come from}\label{where-the-numbers-come-from}}
 
 Every value in the table was copied from one of these, and the vertex counts were re-derived from the group orders or
-formulas (\texttt{python3\ research/paper/make\_beyond.py} prints the comparison):
+formulas (\texttt{python3\ research/paper/make\_beyond.py} prints the comparison and rewrites the table in this file):
 
 \begin{longtable}[]{@{}
   >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.2087}}
@@ -138,7 +151,7 @@ formulas (\texttt{python3\ research/paper/make\_beyond.py} prints the comparison
   >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.4522}}@{}}
 \toprule\noalign{}
 \begin{minipage}[b]{\linewidth}\raggedright
-job (dates)
+job (date)
 \end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
 branch
 \end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
@@ -148,38 +161,45 @@ cells
 \endhead
 \bottomrule\noalign{}
 \endlastfoot
-new-cells-beyond (Oct 26--31) & claude/new-cells-beyond-etos3t & Δ = 17..20 at D = 3..10; first values at D = 11, 12
-for Δ = 3..10 \\
+new-cells-beyond (Oct 26) & claude/new-cells-beyond-etos3t & Δ = 17..20 at D = 3..10; first values at D = 11, 12 for Δ
+= 3..10 \\
 conics-2 (Oct 29--30) & claude/conics-2-diameter-7-ic0oat & (17,7) \\
-own-small (Oct 26--30) & claude/own-small-cells-dkwo42 & (3,12) \\
+own-small (Oct 26) & claude/own-small-cells-dkwo42 & (3,12) \\
 beyond-d11 (Oct 31--Nov 1) & claude/new-cells-d11-d12-beyond-8sas9r & D = 11 at Δ = 11..14, D = 12 at Δ = 11..13;
 raises at Δ = 4..10 \\
 beyond-d11b (Nov 1) & claude/beyond-d11-d12-new-cells-3t3djx & (15,11), (16,11), (14,12); raises of (12,12), (13,12)
 and of Δ = 4..6 \\
-beyond-d13 (Nov 1) & claude/beyond-d13-search-z35z61 & D = 13 at Δ = 3..10, D = 14 at Δ = 3..8 \\
+beyond-d13 (Nov 1) & claude/beyond-d13-search-z35z61 & D = 13 at Δ = 3..10, D = 14 at Δ = 3..8; raise of (4,12) \\
 beyond-small (Nov 1) & claude/beyond-small-cells-fwb6si & (17,5); exact checks at D = 6 \\
 \end{longtable}
 
-On master the values live in \texttt{research/RESULTS.md} (harvest and coordinator lines), the harvest check reports
-\texttt{research/frontier/runs/harvest\_check\_2026-10-31.txt} and \texttt{…\_2026-11-01.txt}, and the coordinator's
-logs \texttt{research/coordinator\_check/check\_2026-10-29.txt} \ldots{} \texttt{check\_2026-11-01.txt}. On the
-branches they are in \texttt{research/frontier/beyond/BEYOND\_TABLE.md} (each branch has its own version),
+(Dates are when the jobs ran; the harvest and the coordinator recorded the values on master between October 26 and
+November 1.) On master the values live in \texttt{research/RESULTS.md} (harvest and coordinator lines), the harvest
+check reports \texttt{research/frontier/runs/harvest\_check\_2026-10-31.txt} and \texttt{…\_2026-11-01.txt}, and the
+coordinator's logs \texttt{research/coordinator\_check/check\_2026-10-29.txt} \ldots{} \texttt{check\_2026-11-01.txt}.
+RESULTS.md has no line yet for (17,5) 35,618, (3,13), (3,14), (4,12) 74,066, (4,13) or (4,14); on master these are in
+the coordinator logs of October 31 and November 1, with their edge lists. On the branches they are in
+\texttt{research/frontier/beyond/BEYOND\_TABLE.md} (each branch has its own version),
 \texttt{research/frontier/beyond/BEYOND\_SMALL.md} (beyond-small), \texttt{research/frontier/beyond13/} (beyond-d13)
 and \texttt{research/frontier/beyond11/} (beyond-d11). Master has no BEYOND\_TABLE.md yet. Where the branches and
-master disagree, the table takes the largest value that has a check of its own, and says where it is. Three such
-cases: (17,5), where master has 35,618 and beyond-small has 35,728; (3,11), where master has 1,344 (a voltage lift
-from own-small) and every BEYOND\_TABLE.md has 1,474; and (4,11), (5,11), (6,11), (4,12), (5,12), which the beyond-d13
-and beyond-d11b branches raised in parallel; master holds the larger value of each pair.
+master disagree, the table takes the largest value that has a check of its own, and says where it is. The
+disagreements: (17,5), master 35,618, beyond-small 35,728; (3,11), master 1,344 (a voltage lift from own-small), every
+BEYOND\_TABLE.md 1,474; (3,12), master 2,368, the BEYOND\_TABLE.md files 2,176; (17,7), master 5,693,959, the
+BEYOND\_TABLE.md files 5,631,276; (12,12) and (13,12), master and beyond-d11b about 30 billion, the older tables about
+20 billion; and (4,11), (5,11), (6,11), (4,12), (5,12), which beyond-d13 and beyond-d11b raised in parallel, where
+master holds the larger value of each pair.
 
 \hypertarget{the-table}{%
 \section{3. The table}\label{the-table}}
 
-\textbf{Columns.} \emph{construction}: ``Haar, orbit S'' is a Haar graph H(G, S) with S a union of orbits of a group
-automorphism (section 5.1); ``Haar, random S'' has S searched with no imposed symmetry (section 5.2); ``(size cap)''
-marks the four cells where the job stopped at its size limit with the first S that worked. \emph{Group or base graph}:
-Z\textsubscript{m} ⋊\textsubscript{r} Z\textsubscript{k} is the group of pairs (a, j), a mod m, j mod k, with (a,
-j)(b, l) = (a + r\textsuperscript{j} b, j + l); ``Frobenius'' means m is prime and r has order k mod m. \emph{Check}
-(a semicolon separates checks run at different times; ``+'' joins two independent checkers in one report):
+\textbf{Columns.} \emph{construction}: ``Haar, orbit S'' is a Haar graph Haar(G, S) with S a union of orbits of a
+group automorphism (section 5.1); ``Haar, random S'' has S searched with no imposed symmetry (section 5.2); ``(size
+cap)'' marks the four cells where the job stopped at its size limit with the first S that worked. \emph{Group or base
+graph}: Z\textsubscript{m} ⋊\textsubscript{r} Z\textsubscript{k} is the group of pairs (a, j), a mod m, j mod k, with
+(a, j)(b, l) = (a + r\textsuperscript{j} b, j + l); ``Frobenius'' means m is prime and r has order k mod m (so the
+group has trivial centre). \emph{Check}: ``+'' joins two independent checkers in one report (the harvest's or the
+coordinator's); ``,'' joins checks run by the search session; a semicolon separates checks run at different times by
+different people:
 
 \begin{itemize}
 \tightlist
@@ -206,8 +226,9 @@ j)(b, l) = (a + r\textsuperscript{j} b, j + l); ``Frobenius'' means m is prime a
 
 \emph{Where}: ``master'' = harvested or recorded by the coordinator on master; ``branch'' = only on the job's branch.
 Footnotes: ᵃ master has 35,618 (coordinator apsp, October 31). ᵇ no exact check (section 4). ᶜ master has 1,344. ᵈ one
-checker so far; the reference check, split into two halves as for the other cells above 20 billion vertices, has not
-been run.
+checker so far (section 4). ᵉ a published census graph, CSS(6272,7), is larger (section 1). ᶠ the session's apsp logs
+are on the beyond-d11b branch (\texttt{research/frontier/runs/cloudcheck/d4D11\_meta\_523\_29\_9\_b2h01.check.txt},
+\texttt{d5D11\_meta\_5023\_31\_2886\_b5k05.check.txt}); master's harvest has bh2 only.
 
 \begin{longtable}[]{@{}
   >{\raggedright\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.0650}}
@@ -244,8 +265,8 @@ F₄⁴ & apsp, bfs\_all; apsp† & branch ᵃ \\
 (19, 6) & 3,203,968 & Theorem D, q = 17, m = 2 & H(17) doubled with levels and whiskers & theorem (Lean); auto &
 branch \\
 (20, 6) & 5,227,320 & Moore graph & H(19) & classical; auto & branch \\
-(17, 7) & 5,693,959 & typed whisker cover + hubs & H(13); 32,356 + 30,327 hubs & coord. apsp; apsp (8 ranges) &
-master \\
+(17, 7) & 5,693,959 & cover of H(13) with freed incidences + hubs & 7 copies of H(13); 32,356 + 30,327 hubs & coord.
+apsp; apsp (8 ranges) & master \\
 (18, 7) & 7,240,212 & level graph & 9 copies of H(13), 4 matchings, Z₉ & theorem; samp & branch ᵇ \\
 (19, 7) & 11,184,810 & level graph & 5 copies of H(16), 2 matchings, Z₅ & theorem; samp & branch ᵇ \\
 (20, 7) & 15,658,734 & level graph & 7 copies of H(16), 3 matchings, Z₇ & theorem; samp & branch ᵇ \\
@@ -261,9 +282,9 @@ master \\
 (18, 10) & 11,787,972,672 & Haar, orbit S & PSL(2,223) × Z₁₀₆₃ & psl + gen & master \\
 (19, 10) & 19,233,722,496 & Haar, orbit S & SL(2,607) × Z₄₃ & sl + gen & master \\
 (20, 10) & 30,518,778,360 & Haar, orbit S & PSL(2,421) × Z₄₀₉ & psl (2 halves) + gen & master \\
-(3, 11) & 1,474 & Haar, all pairs \{x, y\} searched & Z₆₇ ⋊₉ Z₁₁ & apsp; apsp† & branch ᶜ \\
-(4, 11) & 30,334 & Haar, random S & Z₅₂₃ ⋊₉ Z₂₉ (Frobenius) & bh2 + apsp & master \\
-(5, 11) & 311,426 & Haar, random S & Z₅₀₂₃ ⋊₂₈₈₆ Z₃₁ (Frobenius) & bh2 + apsp & master \\
+(3, 11) & 1,474 & Haar, all pairs \{x, y\} searched & Z₆₇ ⋊₉ Z₁₁ (Frobenius) & apsp; apsp† & branch ᶜ \\
+(4, 11) & 30,334 & Haar, random S & Z₅₂₃ ⋊₉ Z₂₉ (Frobenius) & bh2, apsp ᶠ; mc† & master \\
+(5, 11) & 311,426 & Haar, random S & Z₅₀₂₃ ⋊₂₈₈₆ Z₃₁ (Frobenius) & bh2, apsp ᶠ; mc† & master \\
 (6, 11) & 2,122,518 & Haar, random S & Z₂₀₈₀₉ ⋊₁₂₉₇₂ Z₅₁ (Frobenius) & bh2; mc† & master \\
 (7, 11) & 11,012,976 & Haar, orbit S & SL(2,53) × Z₃₇ & gen + sl & master \\
 (8, 11) & 45,329,808 & Haar, orbit S & SL(2,283) & gen + sl & master \\
@@ -275,9 +296,9 @@ master \\
 (14, 11) & 14,381,398,080 & Haar, orbit S & SL(2,1009) × Z₇ & gen + sl & master \\
 (15, 11) & 28,655,908,512 & Haar, orbit S & SL(2,617) × Z₆₁ & gen + sl (2 halves) & master \\
 (16, 11) & 29,961,590,400 & Haar, orbit S (size cap) & PSL(2,449) × Z₃₃₁ & gen only & branch ᵈ \\
-(3, 12) & 2,368 & voltage lift & cubic 4 + 4-vertex base; Z₃₇ ⋊ Z₈ = SmallGroup(296,3) & coord. rebuild + apsp &
+(3, 12) & 2,368 & voltage lift & cubic 4 + 4-vertex base; Z₃₇ ⋊₆ Z₈ = SmallGroup(296,3) & coord. rebuild + apsp &
 master \\
-(4, 12) & 74,066 & Haar, random S & Z₁₂₇₇ ⋊₉₆₄ Z₂₉ & apsp + mc; coord. apsp & master \\
+(4, 12) & 74,066 & Haar, random S & Z₁₂₇₇ ⋊₉₆₄ Z₂₉ (Frobenius) & apsp, mc; coord. apsp & master \\
 (5, 12) & 1,058,342 & Haar, random S & Z₈₉₆₉ ⋊₂₀₅ Z₅₉ (Frobenius) & bh2; mc† & master \\
 (6, 12) & 9,366,240 & Haar, orbit S & PSL(2,79) × Z₁₉ & gen + psl & master \\
 (7, 12) & 59,838,504 & Haar, orbit S & PSL(2,67) × Z₁₉₉ & gen + psl & master \\
@@ -289,16 +310,16 @@ master \\
 (13, 12) & 29,997,644,040 & Haar, orbit S (size cap) & PSL(2,181) × Z₅₀₅₉ & gen + psl (2 halves) & master \\
 (14, 12) & 29,996,171,040 & Haar, orbit S (size cap) & PSL(2,241) × Z₂₁₄₃ & gen + psl (2 halves) & master \\
 (3, 13) & 3,400 & cyclic voltage lift & Desargues graph GP(10,3); Z₁₇₀ & apsp; coord. apsp & master \\
-(4, 13) & 192,382 & Haar, random S & Z₂₂₃₇ ⋊₁₉₈₄ Z₄₃ (Frobenius) & apsp + mc; coord. apsp & master \\
-(5, 13) & 3,594,910 & Haar, random S & (Z₁₁ ⋊₄ Z₅) × (Z₂₉₇₁ ⋊₁₇₆₄ Z₁₁) & mc; bh2† & branch \\
+(4, 13) & 192,382 & Haar, random S & Z₂₂₃₇ ⋊₁₉₈₄ Z₄₃ (Frobenius) & apsp, mc; coord. apsp & master \\
+(5, 13) & 3,594,910 & Haar, random S & (Z₁₁ ⋊₄ Z₅) × (Z₂₉₇₁ ⋊₁₇₆₄ Z₁₁), both Frobenius & mc; bh2† & branch \\
 (6, 13) & 41,734,392 & Haar, orbit S & PSL(2,83) × Z₇₃ & gen; psl† & branch \\
 (7, 13) & 312,227,760 & Haar, orbit S & SL(2,229) × Z₁₃ & gen; sl† & branch \\
 (8, 13) & 1,739,514,000 & Haar, orbit S & SL(2,499) × Z₇ & gen; sl† & branch \\
 (9, 13) & 7,924,036,032 & Haar, orbit S & SL(2,593) × Z₁₉ & gen; sl† & branch \\
 (10, 13) & 19,980,294,768 & Haar, orbit S (size cap) & PSL(2,503) × Z₁₅₇ & gen only & branch ᵈ \\
-(3, 14) & 5,706 & cyclic voltage lift & Pappus graph; Z₃₁₇ & apsp; coord. apsp & master \\
-(4, 14) & 497,042 & Haar, random S & Z₂₇₃₁ ⋊₂₄₀₀ Z₉₁ & apsp + mc; coord. apsp & master \\
-(5, 14) & 12,795,166 & Haar, random S & Z₁₄₈₇₈₁ ⋊₈₅₁₇₅ Z₄₃ & mc; bh2† & branch \\
+(3, 14) & 5,706 & cyclic voltage lift & Pappus graph; Z₃₁₇ & apsp; coord. apsp & master ᵉ \\
+(4, 14) & 497,042 & Haar, random S & Z₂₇₃₁ ⋊₂₄₀₀ Z₉₁ (Frobenius) & apsp, mc; coord. apsp & master \\
+(5, 14) & 12,795,166 & Haar, random S & Z₁₄₈₇₈₁ ⋊₈₅₁₇₅ Z₄₃ (Frobenius) & mc; bh2† & branch \\
 (6, 14) & 187,990,656 & Haar, orbit S & SL(2,97) × Z₁₀₃ & gen; sl† & branch \\
 (7, 14) & 1,674,490,944 & Haar, orbit S & PSL(2,223) × Z₁₅₁ & gen; psl† & branch \\
 (8, 14) & 11,325,238,056 & Haar, orbit S & PSL(2,397) × Z₁₈₁ & gen; psl† & branch \\
@@ -306,37 +327,39 @@ master \\
 
 Counts: 44 of the 64 values are on master, each with two independent checkers or an all-pairs BFS: 24 at D = 11, 12,
 the 12 Haar graphs at Δ = 17..20 and D = 8..10, 4 at D = 13, 14 with Δ = 3, 4, and (18,5), (19,5), (20,5), (17,7). For
-two of them, (6,11) and (5,12), the second checker was run by this job. 20 are on branches only: 10 at D = 13, 14 with
-Δ = 5..10 (nine now with two checkers, the second one run by this job; (10,13) with one), (16,11) (one checker), the
-four D = 6 values (exact check via automorphisms), the three level graphs at D = 7 (theorem plus sampled BFS), and two
-values above master's, (17,5) and (3,11), each checked all-pairs twice.
+four of them, (4,11), (5,11), (6,11) and (5,12), the second checker on master's file was run by this job. 20 are on
+branches only: 10 at D = 13, 14 with Δ = 5..10 (nine now with two checkers, the second one run by this job; (10,13)
+with one so far), (16,11) (one checker), the four D = 6 values (exact check via automorphisms), the three level graphs
+at D = 7 (theorem plus sampled BFS), and two values above master's, (17,5) and (3,11), each checked all-pairs twice.
+One value, (3,14), is below a published census graph.
 
 \hypertarget{how-the-values-were-checked}{%
 \section{4. How the values were checked}\label{how-the-values-were-checked}}
 
-\textbf{Haar graphs.} H(G, S) has vertices (g, A) and (g, B) for g in G and edges (g, A) \textasciitilde{} (sg, B) for
-s in S. Right multiplication by any h in G maps edges to edges and acts transitively on each side, so every vertex of
-one side has the same eccentricity, and the diameter is the larger of the eccentricities of (e, A) and (e, B). Two BFS
-therefore decide the diameter exactly. Both are needed: for odd D and non-abelian G one side can pass while the other
-fails (the first odd-D version of the new-cells-beyond search counted one side only; the checkers, which run both BFS,
-rejected a (10,11) candidate it produced, and the file was discarded). Every checker listed above builds the group
-from its definition (matrices mod p, or pairs (a, j) with the semidirect product rule), checks that the Δ generators
-are distinct, and runs both BFS. The reference checkers sl and psl were written separately from gen, with their own
-element indexing; above about 20 billion vertices their two BFS are run as two jobs (``2 halves''), which is the same
-check split in two. bh2 can also write the edge list, so small Haar graphs can be given to apsp as well.
+\textbf{Haar graphs.} Haar(G, S) has vertices (g, A) and (g, B) for g in G and edges (g, A) \textasciitilde{} (sg, B)
+for s in S. Right multiplication by any h in G maps edges to edges and acts transitively on each side, so every vertex
+of one side has the same eccentricity, and the diameter is the larger of the eccentricities of (e, A) and (e, B). Two
+BFS therefore decide the diameter exactly. Both are needed: for odd D and non-abelian G one side can pass while the
+other fails (the first odd-D version of the new-cells-beyond search counted one side only; the checkers, which run
+both BFS, rejected a (10,11) candidate it produced, and the file was discarded). Every checker listed above builds the
+group from its definition (matrices mod p, or pairs (a, j) with the semidirect product rule), checks that the Δ
+generators are distinct, and runs both BFS. The reference checkers sl and psl were written separately from gen, with
+their own element indexing; above about 20 billion vertices their two BFS are run as two jobs (``2 halves''), which is
+the same check split in two. bh2 can also write the edge list, so small Haar graphs can be given to apsp as well.
 
 \textbf{Edge lists.} The non-Haar graphs (lifts, hub graphs, the level graphs at small q) were checked by apsp, which
 reads an edge list and runs a BFS from every vertex (64 sources at a time) with no symmetry assumed; it also checks
 simplicity, the maximum degree and bipartiteness. By the lab's convention each graph is also run at diameter D − 1,
 where it must fail.
 
-\textbf{D = 6 (Moore graphs and Theorem D).} These have 2.2--5.2 million vertices; an all-pairs BFS is out of reach on
-the 4-core cloud machines. The beyond-small job checked them exactly with apsp\_auto: it is given permutations of the
-vertex set, verifies that each maps every edge to an edge, and runs a BFS from one vertex per orbit of the group they
-generate (eccentricity is constant on orbits). For H(q) the permutations come from diagonal matrices that preserve the
-quadric and Tits' line equations (10,026 to 16,230 orbit representatives); for Theorem D at q = 17 one generator of
-order 16, with 200,486 orbit representatives. apsp\_auto agrees with apsp on H(4) and on the Theorem D graphs at q = 5
-and 7, and fails at D − 1. The H(q) values are also classical (Tits), and Theorem D is proved in Lean for every odd q.
+\textbf{D = 6 (Moore graphs and Theorem D).} These have 2.2--5.2 million vertices; an all-pairs BFS of each takes
+hours on a 4-core cloud machine (the 5.7-million-vertex (17,7) graph was checked all-pairs that way, split over eight
+machines). The beyond-small job checked them exactly with apsp\_auto: it is given permutations of the vertex set,
+verifies that each maps every edge to an edge, and runs a BFS from one vertex per orbit of the group they generate
+(eccentricity is constant on orbits). For H(q) the permutations come from diagonal matrices that preserve the quadric
+and Tits' line equations (10,026 to 16,230 orbit representatives); for Theorem D at q = 17 one generator of order 16,
+with 200,486 orbit representatives. apsp\_auto agrees with apsp on H(4) and on the Theorem D graphs at q = 5 and 7,
+and fails at D − 1. The H(q) values are also classical (Tits), and Theorem D is proved in Lean for every odd q.
 
 \textbf{D = 7 level graphs.} (18,7), (19,7), (20,7) are 2r + 1 copies of a generalized hexagon joined by r matchings.
 Their diameter is at most 7 for every choice of matchings (research/synthetic/SYNTHETIC.md, Theorem 4.2), and the
@@ -347,22 +370,23 @@ graphs.
 
 \textbf{Second checks run by this job.} Where a row had only the search session's checker, this job ran a different
 one on the same file (sha256 in each log): sl or psl on (6,13), (7,13), (8,13), (9,13), (6,14), (7,14), (8,14); bh2 on
-(5,13) and (5,14); mc on master's (5,12) and (6,11), which had been checked by bh2 only (by the session and again by
-the harvest); and apsp on the 1,474-vertex (3,11) graph and the 35,728-vertex (17,5) graph. All of them reported
-VALID. (16,11) (29,961,590,400 vertices) and (10,13) (19,980,294,768) need about 11 GB and 7 GB for each half of the
-reference check and several hours per half single-threaded; they were not run here.
+(5,13) and (5,14); mc on master's (4,11), (5,11), (5,12) and (6,11), whose master logs have bh2 only (by the session
+and again by the harvest); and apsp on the 1,474-vertex (3,11) graph and the 35,728-vertex (17,5) graph. All of them
+reported VALID. The reference check of (10,13) (19,980,294,768 vertices, about 7 GB per half) was still running when
+this draft was written. The reference check of (16,11) (29,961,590,400 vertices) needs about 11 GB and roughly 1.5--3
+hours for each half here, and was not run.
 
 \hypertarget{methods}{%
 \section{5. Methods}\label{methods}}
 
-\hypertarget{haar-graphs-with-orbit-closed-generator-sets-ux3b4-6-at-d-8..14}{%
-\subsection{5.1 Haar graphs with orbit-closed generator sets (Δ ≥ 6 at D =
-8..14)}\label{haar-graphs-with-orbit-closed-generator-sets-ux3b4-6-at-d-8..14}}
+\hypertarget{haar-graphs-with-orbit-closed-generator-sets-ux3b4-17..20-at-d-8..10-ux3b4-6-or-7-at-d-11..14}{%
+\subsection{5.1 Haar graphs with orbit-closed generator sets (Δ = 17..20 at D = 8..10; Δ ≥ 6 or 7 at D =
+11..14)}\label{haar-graphs-with-orbit-closed-generator-sets-ux3b4-17..20-at-d-8..10-ux3b4-6-or-7-at-d-11..14}}
 
 \textbf{Why Haar graphs, and how big.} For a Haar graph the diameter condition is a covering condition in G: every
-element must be reached by a word of length at most D − 1 in S and S\textsuperscript{−1} (alternating). About W = Δ(Δ
+element must be reached by a word of length at most D − 1 in S and S\textsuperscript{−1} (alternating). About w = Δ(Δ
 − 1)\textsuperscript{D−2} such words exist. If they behaved like random elements, the expected number of elements
-missed would be μ = N e\textsuperscript{−W/N} with N = \textbar G\textbar{} (research/frontier/SIZE\_LAW.md).
+missed would be μ = N e\textsuperscript{−w/N} with N = \textbar G\textbar{} (research/frontier/SIZE\_LAW.md).
 Annealing closes the last holes only when μ is small (SIZE\_LAW.md measured a limit μ* of about 9--40, depending on
 effort), so the jobs chose group orders by this ``size law''. The Δ = 17..20 values were taken at μ ≈ 3--13 and not
 pushed further; the D = 11..14 values with orbit S sit at μ ≈ 5--14 (the branch tables give μ for each row); the four
@@ -370,17 +394,19 @@ cells at the size cap have μ ≈ 0.
 
 \textbf{Groups.} G = SL(2, p) × Z\textsubscript{n} or PSL(2, p) × Z\textsubscript{n}, p prime. These have many orders
 near any target, cheap arithmetic, and an automorphism α of order 3: conjugation by a matrix of order 3 on the first
-factor, times z ↦ rz with r of order 3 mod n on the second.
+factor, times z ↦ rz with r of order 3 mod n on the second (for n = 1, or n with no such r, α acts on the first factor
+only).
 
 \textbf{Orbit search.} S = \{e\} ∪ F ∪ (orbits of α of size 3), with F a few α-fixed elements. Making S α-invariant
 shrinks the search space and makes the whole word set α-invariant; in the lab's earlier runs at D = 7..10 this broke
 the wall where random S stops working (README, research/structured/, research/theory/). The search anneals the orbit
 representatives; the cost is the number of uncovered elements, counted by a bit-parallel BFS
-(\texttt{research/bighaar/haar\_big.c} and the beyond-d11 version \texttt{research/frontier/beyond11/haar\_big0.c},
-64-bit indices, N/2 bytes of memory, so 10\textsuperscript{10}-element groups fit in about 5 GB). beyond-d11 added two
-things: S made of free orbits only, without e (right for 3 \textbar{} Δ), and a fix in the choice of the automorphism
-for orbit sizes 4, 6 and 10 (the old code could pick a matrix of order 2 or 3 there; orbits of size 3 and 5 were not
-affected, so no earlier result changed).
+(\texttt{research/bighaar/haar\_big.c} on the new-cells-beyond branch, and the beyond-d11 version
+\texttt{research/frontier/beyond11/haar\_big0.c}, 64-bit indices, N/2 bytes of memory, so
+10\textsuperscript{10}-element groups fit in about 5 GB). beyond-d11 added two things: S made of free orbits only,
+without e (right for 3 \textbar{} Δ), and a fix in the choice of the automorphism for orbit sizes 4, 6 and 10 (the old
+code could pick a matrix of order 2 or 3 there; orbits of size 3 and 5 were not affected, so no earlier result
+changed).
 
 \textbf{Odd D is harder than even D.} For D = 2h + 1 the diameter condition is
 (S\textsuperscript{−1}S)\textsuperscript{h} = G and (SS\textsuperscript{−1})\textsuperscript{h} = G. The beyond-d11
@@ -388,12 +414,15 @@ job proved (research/frontier/beyond11/ODD\_D\_HOLES.md, on its branch) that the
 pairs (reverse and invert), and the words reaching a central element are closed under rotation by two letters, and a
 central hole is a hole on both sides at once. In the random model an involution is then missed with probability about
 e\textsuperscript{−λ/2} and a central element about e\textsuperscript{−λ/h}, against e\textsuperscript{−λ} for an
-ordinary element (λ = W/N). PSL(2, p) has about p²/2 involutions, SL(2, p) only −I, and G × Z\textsubscript{n} has n
+ordinary element (λ = w/N). PSL(2, p) has about p²/2 involutions, SL(2, p) only −I, and G × Z\textsubscript{n} has n
 or 2n central elements. The rule that came out of this, and that gave most D = 11 and 13 values: at odd D use SL(2, p)
-× Z\textsubscript{n} with small n (n ≤ 61 at D = 11, except (12,11), which was found before the rule); at even D,
-PSL(2, p) × Z\textsubscript{n} with moderate or large n is fine. PSL with n = 1 is the worst choice at odd D (every
-one of the about 130 holes of a random S was an involution) although it works at even D. Measured hole counts of
-random S agreed with these rates within a factor 1.3--2.
+× Z\textsubscript{n} with small n; at even D, PSL(2, p) × Z\textsubscript{n} with moderate or large n is fine. The
+exceptions in the table: (12,11), SL(2,239) × Z\textsubscript{109}, found before the rule; (16,11), PSL(2,449) ×
+Z\textsubscript{331}, at the size cap, where λ = 41 is so large that even the special elements are reached; and at D =
+13, (6,13) and (10,13), PSL × Z\textsubscript{n} with n = 73 and 157 (beyond-d13 found that PSL with moderate n also
+worked there). PSL with n = 1 is the worst choice at odd D: in the measured random S almost all holes (93--98 \%) were
+involutions, although the same groups work at even D. Measured hole counts of random S were higher than these rates
+predict, by 1.3--1.5 times at μ ≈ 10 and 2--2.3 times at μ ≈ 30 (beyond-d11 card r3/e14).
 
 \textbf{Size caps.} The jobs set a size limit so that the low-memory checkers finish in hours: 20 billion vertices for
 beyond-d11 and beyond-d13, 30 billion for beyond-d11b. In (16,11), (13,12), (14,12) and (10,13) the first S tried
@@ -407,17 +436,23 @@ At small Δ the groups are small (10\textsuperscript{3} to 10\textsuperscript{7}
 tried. Two kinds won.
 
 \textbf{Odd-order and Frobenius groups.} In Z\textsubscript{m} ⋊\textsubscript{r} Z\textsubscript{k} with m prime and
-r of order k \textgreater{} 1 mod m, the centre is trivial, and if mk is odd there are no involutions (beyond-d13,
-research/frontier/beyond13/THEORY.md, Fact 1, with a two-line proof). So the special holes of section 5.1 do not
-exist, and only the ordinary ones are left. This is what beat the SL/PSL values at odd D: (4,13) 192,382 against
-170,520 for the best PSL(2,29) × Z\textsubscript{7} orbit graph, (5,13) 3,594,910 against 3,217,056, and (4,11) 30,334
-against 24,360. Products of two such groups also work ((5,13)).
+r of order k \textgreater{} 1 mod m, the centre is trivial, and if mk is odd there are no involutions (proved by both
+beyond-d13, \texttt{research/frontier/beyond13/THEORY.md} Fact 1, and beyond-d11b,
+\texttt{research/frontier/beyond11/FROBENIUS.md} and its card r2/h17). So the special holes of section 5.1 do not
+exist. These groups beat the SL/PSL values at odd D: (4,13) 192,382 against 170,520 for the best PSL(2,29) ×
+Z\textsubscript{7} orbit graph, (5,13) 3,594,910 against 3,217,056, and (4,11) 30,334 against 24,360. Products of two
+such groups also work ((5,13)). The two jobs measured different reasons. beyond-d13 points to the missing special
+holes. beyond-d11b (card r2/h13, at Δ = 4) found that the balls of radius 8 in the Frobenius groups reach 0.99--1.00
+of the random-words model and those of small SL(2, p) only 0.89--0.92, because short relations in small SL(2, p) make
+words collide, and that involution and central holes were not the cause in that measurement. Both effects may matter;
+we do not know their shares.
 
 \textbf{Random S instead of orbits.} At Δ = 4 the orbit form \{e, x, αx, α²x\} has one free element, and at Δ = 5 one
-fixed generator plus one orbit; a random S has Δ − 1 free elements. This is why the metacyclic groups with random S
-also won the even-D cells at Δ = 4, 5, by 1--8 \%. The search is plain annealing of S
-(\texttt{research/frontier/haar\_gen3.c}, and the beyond-d11b versions with save/resume and a targeted finisher,
-\texttt{research/squads/beyond11b/tools/}; beyond-d13's bit-parallel
+fixed generator plus one orbit; a random S has Δ − 1 free elements. beyond-d13 gives this as the reason the metacyclic
+groups with random S also won the even-D cells (4,12), (4,14) and (5,12), by 2--8 \% over the orbit graphs. At (5,14)
+the runner-up already had random S (SL(2,97) × Z\textsubscript{7}, 12,776,064), and the metacyclic graph won by only
+0.15 \%. The search is plain annealing of S (\texttt{research/frontier/haar\_gen3.c}, and the beyond-d11b versions
+with save/resume and a targeted finisher, \texttt{research/squads/beyond11b/tools/}; beyond-d13's bit-parallel
 \texttt{research/frontier/beyond13/meta/hmeta.c}), plus scans of every metacyclic group in an order range with short
 runs on each.
 
@@ -431,8 +466,8 @@ The Δ = 4, 5, 6 values in the table use single groups with k = 29 to 91, or (at
 group. The new-cells-beyond job swept every metacyclic group of order 541--1,100 at D = 11 (641 groups, one r of each
 order per m) and found Z\textsubscript{67} ⋊\textsubscript{9} Z\textsubscript{11} (1,474 vertices), the only
 metacyclic hit in that range. At D = 12 the best metacyclic Haar graph (2,176, Z\textsubscript{68} ⋊\textsubscript{3}
-Z\textsubscript{16}) is below the own-small job's voltage lift over Z\textsubscript{37} ⋊ Z\textsubscript{8} (2,368),
-which the table lists.
+Z\textsubscript{16}) is below the own-small job's voltage lift over Z\textsubscript{37} ⋊\textsubscript{6}
+Z\textsubscript{8} (2,368), which the table lists.
 
 The metacyclic idea reached Δ = 6 only at D = 11; at (6,12), (6,13) and Δ = 7 it stopped at 2 to 14 uncovered
 elements, and SL/PSL orbit graphs stayed ahead.
@@ -454,40 +489,51 @@ searched; 5,040 for PSL(2,7) × Z\textsubscript{15} at D = 14).
 c\textsubscript{e} x\textsubscript{e}), where c is the walk's net traversal vector (signed edge counts). So if the
 lift has diameter ≤ D, then n is at most the number of distinct net traversal vectors of walks from s to v of length ≤
 D, for every pair s, v. For GP(10,3) this allows n ≤ 647 at D = 13 and n ≤ 1,197 at D = 14; the lifts found have n =
-170 and (for GP(10,3) at D = 14) 282. At D = 11, 12 the lifts did not beat the metacyclic values, and at Δ = 4, 5
-lifts of K\textsubscript{4,4}, PG(2,3), GQ(3,3) and random bases stayed below the Haar values.
+170 and (for GP(10,3) at D = 14) 282. At D = 11, 12 beyond-d13's cyclic lifts did not beat the lab's existing values,
+and at Δ = 4, 5 lifts of K\textsubscript{4,4}, PG(2,3), GQ(3,3) and random bases stayed below the Haar values.
 
 \hypertarget{route-chart-lift-plus-hubs-175}{%
 \subsection{5.4 Route-chart lift plus hubs: (17,5)}\label{route-chart-lift-plus-hubs-175}}
 
-(17,5) was the one cell in this note where none of the lab's formula families applies: the multi-doubled-matching
-lifts need Δ = q + 1 + (an even number), and route charts need Δ = (letters) × (field size); 17 is neither for a
-usable prime power q. The new-cells-beyond job left only the floor 33,792, the (16,5) graph itself. The beyond-small
-job added vertices to that graph.
+(17,5) was the one cell at D ≤ 7 in this note where none of the lab's formula families applies: the
+multi-doubled-matching lifts need Δ = q + 1 + (an even number), and route charts need Δ = (letters) × (field size); 17
+is neither for a usable prime power q. The new-cells-beyond job left only the floor 33,792, the (16,5) graph itself.
+The beyond-small job added vertices to that graph.
+
+\textbf{Route-chart lifts} (\texttt{research/theorems/chartlift/chartlib.py}). Start from a small bipartite
+\emph{controller} graph whose edges are properly coloured with k colours (\emph{letters}); letter c carries an
+invertible matrix A\textsubscript{c} and a vector b\textsubscript{c} over F\textsubscript{q}. Each controller vertex u
+becomes a \emph{fibre} of vertices (u, x), x in F\textsubscript{q}\textsuperscript{n}, and a controller edge u -- v of
+letter c becomes the q\textsuperscript{n+1} edges (u, x) \textasciitilde{} (v, A\textsubscript{c}x +
+βb\textsubscript{c}), β in F\textsubscript{q}. The lift has degree kq. Along a sequence of letters (a \emph{pattern})
+the reachable set in the fibre is an affine subspace; the pattern is \emph{singular} if that subspace is not the whole
+fibre, and a good chart has few singular patterns.
 
 \textbf{Base.} The (16,5) graph (\texttt{research/theorems/graphs/build\_d16D5\_n33792.py}): K\textsubscript{3,3} with
-a doubled perfect matching, lifted by Z\textsubscript{22} (66 + 66 controller vertices), fibre
+a doubled perfect matching, lifted by Z\textsubscript{22} (66 + 66 controller vertices), 4 letters, fibre
 F\textsubscript{4}\textsuperscript{4}, with edges ((a\textsubscript{i}, g), x) \textasciitilde{} ((b\textsubscript{j},
-g + v), A\textsubscript{c}x + λb\textsubscript{c}), λ in F\textsubscript{4}. It has 33,792 vertices, is 16-regular,
+g + v), A\textsubscript{c}x + βb\textsubscript{c}), β in F\textsubscript{4}. It has 33,792 vertices, is 16-regular,
 has diameter 5, and every vertex has one spare degree when Δ = 17.
 
 \textbf{Proposition (hubs).} Let G be bipartite with sides A, B and diameter 5. Add new vertices (hubs): a hub on side
-A is joined to a set N ⊆ B, a hub on side B to a set N ⊆ A, each old vertex in at most one N. If (1) every vertex of
-the hub's own side is within distance 3 of N, and (2) any two hubs on the same side have neighbours x, x′ with
+A is joined to a set T ⊆ B, a hub on side B to a set T ⊆ A, each old vertex in at most one T. If (1) every vertex of
+the hub's own side is within distance 3 of T, and (2) any two hubs on the same side have neighbours x, x′ with
 d\textsubscript{G}(x, x′) ≤ 2, then the new graph has diameter ≤ 5.
 
-\emph{Proof.} Old pairs keep their distance. A hub h on side A reaches all of A within 4 by (1), and all of B within
-5, since distances between B-vertices in G are at most 4 (G is bipartite with diameter 5). Two A-hubs are within 4 by
+\emph{Proof.} Old pairs are still within 5. A hub h on side A reaches all of A within 4 by (1), and all of B within 5,
+since distances between B-vertices in G are at most 4 (G is bipartite with diameter 5). Two A-hubs are within 4 by
 (2). An A-hub reaches every A-vertex within 4, so it reaches every B-hub, which has a neighbour in A, within 5. ∎
 
-The two sides are independent, so the best packings of each side combine. With \textbar N\textbar{} = 16 the maximum
+The two sides are independent, so the best packings of each side combine. With \textbar T\textbar{} = 16 the maximum
 degree is 17.
 
-\textbf{Hubs from fibre lines, in orbits.} A set N of 4 affine lines \{(v, y + λc) : λ ∈ F\textsubscript{4}\} in 4
+\textbf{Hubs from fibre lines, in orbits.} A set T of 4 affine lines \{(v, y + βc) : β ∈ F\textsubscript{4}\} in 4
 controller vertices covers a whole side within distance 3 for many choices (squad card r1/c03). Translation g ↦ g + 1
 on the controller coordinate is an automorphism of the base, so a good N gives 22 hubs at once (card r2/d06), provided
-its translates are disjoint and pairwise compatible. Each orbit uses 16 of the 768 ``keys'' of its side, so a side
-holds at most 48 orbits, and the method is capped at 33,792 + 2 · 48 · 22 = 35,904 vertices.
+its translates are disjoint and pairwise compatible. Call the orbit of an old vertex under the translation its
+\emph{key}; a side has 16,896 / 22 = 768 keys, the translates of T are disjoint exactly when its 16 vertices have
+distinct keys, and orbits must not share keys. So a side holds at most 48 orbits, and the method is capped at 33,792 +
+2 · 48 · 22 = 35,904 vertices.
 
 \textbf{Packing.} Greedy growth of orbit bases saturated at 32 orbits on side A and 37 on side B. Destroy-and-repair
 loops (drop 2--5 orbits, regrow for 60 s, keep if not worse), an annealer over orbit packings, and ``region'' destroys
@@ -505,8 +551,9 @@ the session, by a separate plain BFS from every vertex (\texttt{bfs\_all}), and 
   \textbf{(18,5), (19,5): doubled-matching lifts of W(q)} (\texttt{research/frontier/beyond/MDM.md} on the branches,
   \texttt{research/d10D7/DM\_D5.md}). With k doubled matchings over Z\textsubscript{2} × Z\textsubscript{2k+1} the
   lift of the symplectic quadrangle W(q) has degree q + 1 + 2k and 4(2k + 1)(q + 1)(q² + 1) vertices, and diameter ≤ 5
-  as soon as one parity labelling of the flags splits the q + 1 geodesics of every opposite pair; the matchings can be
-  anything. (18,5): q = 13, k = 2; (19,5): q = 16, k = 1 (Z\textsubscript{6}).
+  as soon as one labelling of the flags by parities splits the q + 1 shortest paths between every two opposite
+  elements (elements at distance 4 in W(q)); the matchings can be anything. (18,5): q = 13, k = 2; (19,5): q = 16, k =
+  1 (Z\textsubscript{6}).
 \item
   \textbf{(20,5): route-chart lift over F\textsubscript{5}.} The (16,5) construction with fibre
   F\textsubscript{5}\textsuperscript{4} and 4 letters × 5 scalars, controller K\textsubscript{3,3} + doubled matching
@@ -518,8 +565,9 @@ the session, by a separate plain BFS from every vertex (\texttt{bfs\_all}), and 
   \textbf{D = 7.} 2r + 1 copies of H(q) joined by r matchings (section 4); for (17,7) the conics-2 job freed some
   incidences of the 7-copy cover of H(13) and used the freed slots for 32,356 + 30,327 hub vertices joined by a hub
   graph of degree at most 10 (SYNTHETIC.md §4.2), 5,693,959 against 5,631,276 for the plain cover. For (18,7), (19,7),
-  (20,7) the plain covers are listed: the new-cells-beyond job did not establish the hub condition for q = 13 and 16
-  and expected gains of only 0.1--0.4 \%, and the conics-2 hub construction was run for (17,7) only.
+  (20,7) the plain covers are listed: the new-cells-beyond job tried a simpler hub surgery, did not establish its hub
+  condition for q = 13 and 16, and estimated its gain at 0.1--0.4 \%; the conics-2 construction (which gained 1.1 \%
+  at (17,7)) was run for (17,7) only.
 \end{itemize}
 
 \hypertarget{what-failed}{%
@@ -529,11 +577,13 @@ the session, by a separate plain BFS from every vertex (\texttt{bfs\_all}), and 
 \tightlist
 \item
   \textbf{(17,5) before the hubs.} A fifth translation vector on one route-chart letter (17 = 5 + 4 + 4 + 4) cut the
-  far pairs at Z\textsubscript{23} from 106,000 to 47,000 but not to 0, and cannot repair a singular pattern that uses
-  the extended letter once. Lifts of W(13) with 3 extra degrees (8 sheets): with a doubled and a plain matching the
-  conditions force the labelling to be a coboundary, which kills the needed parity condition unless the matching is a
-  polarity; on W(8), which has one, the far pairs fell from 174,000 to 2,432 but not to 0. In any cover of W(16) two
-  copies of one vertex are at distance at least 6 (girth 8). Haar graphs: best 20,200 (AGL(1,101)). A projective-plane
+  far pairs at Z\textsubscript{23} from 106,000 to 47,000 but not to 0, and cannot repair a singular pattern (section
+  5.4) that uses the extended letter once. Lifts of W(13) with 3 extra degrees (8 sheets): with a doubled and a plain
+  matching, the director's argument suggests that the conditions (needed for almost all pairs) force the labelling to
+  be a coboundary, which kills the needed parity condition unless the matching is a polarity (a duality of order 2);
+  on W(8), which has one, the far pairs fell from 174,000 to 2,432 but not to 0. In any cover of W(16) two copies of
+  one vertex are at distance more than 5 (a path between them projects to a closed walk with nonzero voltage, which
+  contains a cycle of W(16), and W(16) has girth 8). Haar graphs: best 20,200 (AGL(1,101)). A projective-plane
   scaffold for the hubs left 12,182 far pairs. Hub packing itself sits on a plateau at 43 + 45 orbits.
 \item
   \textbf{Larger μ at D = 11.} (12,11) SL(2,601) × Z\textsubscript{7} (μ 10.7) stopped at 2 holes after about 230
@@ -550,8 +600,8 @@ the session, by a separate plain BFS from every vertex (\texttt{bfs\_all}), and 
 \item
   \textbf{Other shapes for S.} Orbits of size 2, 4, 5, 6 at D = 11; transpose-closed S; −I as a generator;
   orbit-closed S inside metacyclic groups; a meet-in-the-middle finisher. None beat the order-3 orbits (in SL/PSL) or
-  random S (in metacyclic groups). Near the limit the annealer's 1- and 2-hole states are real local minima: all
-  105,609 single-generator swaps of a 1-hole (4,12) state were tried and none closed it.
+  random S (in metacyclic groups). Near the limit the annealer's 1- and 2-hole states seem to be true local minima:
+  for one 1-hole (4,12) state all 105,609 single-generator swaps were tried and none closed it.
 \item
   \textbf{Other groups and bases.} Metacyclic groups at Δ ≥ 6 (except (6,11)); Frobenius groups at (7,11) and (8,11)
   (2 and 8 holes); non-abelian voltage groups on GP(10,3) (2 holes at 3,300 vertices); in beyond-d11b's first round
@@ -560,10 +610,13 @@ the session, by a separate plain BFS from every vertex (\texttt{bfs\_all}), and 
   (4,11)).
 \item
   \textbf{D = 8 from hexagons.} The 2013 table's D = 8 values follow a pattern (2j + 1)(⌊(q − 1)/2⌋ + 3(j −
-  1))·\textbar H(q)\textbar{} whose construction we do not know. Card r1/c10 of new-cells-beyond found a
-  Z\textsubscript{20} lift of H(3) plus two matchings with diameter 8 (14,560, the pattern's value at q = 3) by
-  annealing, but q = 4 stalled at 150 holes. Such a construction would give about 1.6--1.9 times the Haar values at D
-  = 8 (for example about 2.2 · 10\textsuperscript{8} at (20,8) against 1.2 · 10\textsuperscript{8}).
+  1))·\textbar H(q)\textbar{} (\texttt{research/theorems/REGULARITIES.md}). Its j = 2 case is the order of Gómez's
+  compound graphs ΩH\textsubscript{q}, which as defined have diameter at least 9 (research/synthetic/SYNTHETIC.md §6;
+  a diameter-8 version with a labelling for each copy is known only for q = 2, 3); for other j no construction is
+  known. Card r1/c10 of new-cells-beyond found a Z\textsubscript{20} lift of H(3) plus two matchings with diameter 8
+  (14,560, the pattern's value at q = 3, j = 2) by annealing, but q = 4 stalled at 150 holes. If the pattern could be
+  realized for large q, it would give about 1.6--1.9 times the Haar values at D = 8 (for example about 2.2 ·
+  10\textsuperscript{8} at (20,8) against 1.2 · 10\textsuperscript{8}).
 \item
   \textbf{D = 5 otherwise.} Route charts over F\textsubscript{3} (6 letters) and F\textsubscript{2} (9 letters)
   reached only 29,160 at (18,5) in 25-minute runs. Blind annealing of voltages on W(13) stayed in the millions of
@@ -582,14 +635,15 @@ the session, by a separate plain BFS from every vertex (\texttt{bfs\_all}), and 
 \def\labelenumi{\arabic{enumi}.}
 \tightlist
 \item
-  The reference check (sl or psl, two halves) of (16,11) and (10,13).
+  The reference check (psl, two halves) of (16,11).
 \item
   An exact check of the three level graphs at D = 7, or the hub step of (17,7) applied to them.
 \item
-  The coordinator's own check and recording of (17,5) 35,728 and (3,11) 1,474, which are above master's values, and of
-  the D = 13, 14 values that are still only on the beyond-d13 branch.
+  The coordinator's own check and recording of the 20 branch-only values: (17,5) 35,728 and (3,11) 1,474, which are
+  above master's values, the D = 13, 14 values at Δ = 5..10, (16,11), and the four D = 6 values.
 \item
-  A literature check for all 64 cells, cubic cells first.
+  An apsp check of the census graph CSS(6272,7) at (3,14) (and CAT(3360,4) at (3,13)), and a literature check for all
+  64 cells.
 \end{enumerate}
 
 \hypertarget{files}{%
@@ -598,21 +652,23 @@ the session, by a separate plain BFS from every vertex (\texttt{bfs\_all}), and 
 \begin{itemize}
 \tightlist
 \item
-  Table rows and PDF: \texttt{research/paper/make\_beyond.py} (re-derives every vertex count and percentage;
-  \texttt{-\/-pdf} runs pandoc and tectonic). This note: \texttt{research/paper/BEYOND.md}, \texttt{BEYOND.tex},
-  \texttt{BEYOND.pdf}.
+  Table rows and PDF: \texttt{research/paper/make\_beyond.py} (re-derives every vertex count and percentage and
+  rewrites the table in BEYOND.md; \texttt{-\/-pdf} also runs pandoc and tectonic). This note:
+  \texttt{research/paper/BEYOND.md}, \texttt{BEYOND.tex}, \texttt{BEYOND.pdf}.
 \item
   Second checks of this job: \texttt{research/paper/beyond\_checks/} (README there).
 \item
   Haar solution files: \texttt{research/frontier/sols/d\textless{}Δ\textgreater{}D\textless{}D\textgreater{}\_*.txt}
-  (master for D ≤ 12 except (16,11); the beyond-d13 branch for D = 13, 14; the beyond-d11b branch for (16,11)).
-  Rebuild and check one with \texttt{python3\ research/frontier/build\_haar2.py\ FILE} (small) or
+  (master for D ≤ 12 except (16,11); the beyond-d13 branch for D = 13, 14 (and
+  \texttt{research/frontier/beyond13/sols/} there for the metacyclic (4,12) 74,066, of which master has only the edge
+  list); the beyond-d11b branch for (16,11)). Rebuild and check one with
+  \texttt{python3\ research/frontier/build\_haar2.py\ FILE} (small) or
   \texttt{cc\ -O3\ -o\ sl\ research/frontier/haarcheck\_sl.c\ \&\&\ ./sl\ FILE}.
 \item
   Edge lists: \texttt{research/frontier/beyond/graphs/} (master and branches),
   \texttt{research/frontier/beyond13/graphs/} (beyond-d13), \texttt{research/squads/beyond-small/graphs/}
-  (beyond-small); check with
-  \texttt{cc\ -O3\ -o\ apsp\ research/lifts/coordinator\_check/apsp.c\ \&\&\ ./apsp\ EDGES\ Δ\ D}.
+  (beyond-small); the files are gzipped; check with
+  \texttt{cc\ -O3\ -o\ apsp\ research/lifts/coordinator\_check/apsp.c\ \&\&\ gunzip\ -k\ G.edges.gz\ \&\&\ ./apsp\ G.edges\ Δ\ D}.
 \item
   Squad logs: \texttt{research/squads/LOG.md} and \texttt{research/squads/beyond*/} on each branch.
 \end{itemize}

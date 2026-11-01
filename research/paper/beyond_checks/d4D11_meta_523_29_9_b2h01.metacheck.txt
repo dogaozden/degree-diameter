@@ -1,0 +1,6 @@
+file research/frontier/sols/d4D11_meta_523_29_9_b2h01.txt sha256 155225e6b6129908d5421ba5ef0f3d568f7e66f1788ff2d8f30f7d62d5d69638
+checker research/frontier/beyond13/metacheck.py (branch claude/beyond-d13-search-z35z61, sha256 453f9b3e451f1cda3397e11563a64bca4f5416c4f2c5b6390eb301fbdb6b011a)
+from (e,A): reached A 15167/15167, B 15167/15167 within 11; level sizes [1, 4, 12, 36, 108, 324, 972, 2763, 6646, 10421, 7428, 1619]
+from (e,B): reached A 15167/15167, B 15167/15167 within 11; level sizes [1, 4, 12, 36, 108, 324, 972, 2763, 6638, 10421, 7436, 1619]
+VALID d=4 D=11 group=meta 523 29 9 x Z_1 N=15167 vertices=30334 (0s)
+exit 0

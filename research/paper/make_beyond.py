@@ -26,7 +26,7 @@ ROWS = [
     (18, 6, 3017196, "Moore graph", "H(17)", "classical; auto", "branch"),
     (19, 6, 3203968, "Theorem D, q = 17, m = 2", "H(17) doubled with levels and whiskers", "theorem (Lean); auto", "branch"),
     (20, 6, 5227320, "Moore graph", "H(19)", "classical; auto", "branch"),
-    (17, 7, 5693959, "typed whisker cover + hubs", "H(13); 32,356 + 30,327 hubs", "coord. apsp; apsp (8 ranges)", M),
+    (17, 7, 5693959, "cover of H(13) with freed incidences + hubs", "7 copies of H(13); 32,356 + 30,327 hubs", "coord. apsp; apsp (8 ranges)", M),
     (18, 7, 7240212, "level graph", "9 copies of H(13), 4 matchings, Z₉", "theorem; samp", "branch ᵇ"),
     (19, 7, 11184810, "level graph", "5 copies of H(16), 2 matchings, Z₅", "theorem; samp", "branch ᵇ"),
     (20, 7, 15658734, "level graph", "7 copies of H(16), 3 matchings, Z₇", "theorem; samp", "branch ᵇ"),
@@ -42,9 +42,9 @@ ROWS = [
     (18, 10, 11787972672, "Haar, orbit S", "PSL(2,223) × Z₁₀₆₃", "psl + gen", M),
     (19, 10, 19233722496, "Haar, orbit S", "SL(2,607) × Z₄₃", "sl + gen", M),
     (20, 10, 30518778360, "Haar, orbit S", "PSL(2,421) × Z₄₀₉", "psl (2 halves) + gen", M),
-    (3, 11, 1474, "Haar, all pairs {x, y} searched", "Z₆₇ ⋊₉ Z₁₁", "apsp; apsp†", "branch ᶜ"),
-    (4, 11, 30334, "Haar, random S", "Z₅₂₃ ⋊₉ Z₂₉ (Frobenius)", "bh2 + apsp", M),
-    (5, 11, 311426, "Haar, random S", "Z₅₀₂₃ ⋊₂₈₈₆ Z₃₁ (Frobenius)", "bh2 + apsp", M),
+    (3, 11, 1474, "Haar, all pairs {x, y} searched", "Z₆₇ ⋊₉ Z₁₁ (Frobenius)", "apsp; apsp†", "branch ᶜ"),
+    (4, 11, 30334, "Haar, random S", "Z₅₂₃ ⋊₉ Z₂₉ (Frobenius)", "bh2, apsp ᶠ; mc†", M),
+    (5, 11, 311426, "Haar, random S", "Z₅₀₂₃ ⋊₂₈₈₆ Z₃₁ (Frobenius)", "bh2, apsp ᶠ; mc†", M),
     (6, 11, 2122518, "Haar, random S", "Z₂₀₈₀₉ ⋊₁₂₉₇₂ Z₅₁ (Frobenius)", "bh2; mc†", M),
     (7, 11, 11012976, "Haar, orbit S", "SL(2,53) × Z₃₇", "gen + sl", M),
     (8, 11, 45329808, "Haar, orbit S", "SL(2,283)", "gen + sl", M),
@@ -56,8 +56,8 @@ ROWS = [
     (14, 11, 14381398080, "Haar, orbit S", "SL(2,1009) × Z₇", "gen + sl", M),
     (15, 11, 28655908512, "Haar, orbit S", "SL(2,617) × Z₆₁", "gen + sl (2 halves)", M),
     (16, 11, 29961590400, "Haar, orbit S (size cap)", "PSL(2,449) × Z₃₃₁", "gen only", "branch ᵈ"),
-    (3, 12, 2368, "voltage lift", "cubic 4 + 4-vertex base; Z₃₇ ⋊ Z₈ = SmallGroup(296,3)", "coord. rebuild + apsp", M),
-    (4, 12, 74066, "Haar, random S", "Z₁₂₇₇ ⋊₉₆₄ Z₂₉", "apsp + mc; coord. apsp", M),
+    (3, 12, 2368, "voltage lift", "cubic 4 + 4-vertex base; Z₃₇ ⋊₆ Z₈ = SmallGroup(296,3)", "coord. rebuild + apsp", M),
+    (4, 12, 74066, "Haar, random S", "Z₁₂₇₇ ⋊₉₆₄ Z₂₉ (Frobenius)", "apsp, mc; coord. apsp", M),
     (5, 12, 1058342, "Haar, random S", "Z₈₉₆₉ ⋊₂₀₅ Z₅₉ (Frobenius)", "bh2; mc†", M),
     (6, 12, 9366240, "Haar, orbit S", "PSL(2,79) × Z₁₉", "gen + psl", M),
     (7, 12, 59838504, "Haar, orbit S", "PSL(2,67) × Z₁₉₉", "gen + psl", M),
@@ -69,16 +69,16 @@ ROWS = [
     (13, 12, 29997644040, "Haar, orbit S (size cap)", "PSL(2,181) × Z₅₀₅₉", "gen + psl (2 halves)", M),
     (14, 12, 29996171040, "Haar, orbit S (size cap)", "PSL(2,241) × Z₂₁₄₃", "gen + psl (2 halves)", M),
     (3, 13, 3400, "cyclic voltage lift", "Desargues graph GP(10,3); Z₁₇₀", "apsp; coord. apsp", M),
-    (4, 13, 192382, "Haar, random S", "Z₂₂₃₇ ⋊₁₉₈₄ Z₄₃ (Frobenius)", "apsp + mc; coord. apsp", M),
-    (5, 13, 3594910, "Haar, random S", "(Z₁₁ ⋊₄ Z₅) × (Z₂₉₇₁ ⋊₁₇₆₄ Z₁₁)", "mc; bh2†", "branch"),
+    (4, 13, 192382, "Haar, random S", "Z₂₂₃₇ ⋊₁₉₈₄ Z₄₃ (Frobenius)", "apsp, mc; coord. apsp", M),
+    (5, 13, 3594910, "Haar, random S", "(Z₁₁ ⋊₄ Z₅) × (Z₂₉₇₁ ⋊₁₇₆₄ Z₁₁), both Frobenius", "mc; bh2†", "branch"),
     (6, 13, 41734392, "Haar, orbit S", "PSL(2,83) × Z₇₃", "gen; psl†", "branch"),
     (7, 13, 312227760, "Haar, orbit S", "SL(2,229) × Z₁₃", "gen; sl†", "branch"),
     (8, 13, 1739514000, "Haar, orbit S", "SL(2,499) × Z₇", "gen; sl†", "branch"),
     (9, 13, 7924036032, "Haar, orbit S", "SL(2,593) × Z₁₉", "gen; sl†", "branch"),
     (10, 13, 19980294768, "Haar, orbit S (size cap)", "PSL(2,503) × Z₁₅₇", "gen only", "branch ᵈ"),
-    (3, 14, 5706, "cyclic voltage lift", "Pappus graph; Z₃₁₇", "apsp; coord. apsp", M),
-    (4, 14, 497042, "Haar, random S", "Z₂₇₃₁ ⋊₂₄₀₀ Z₉₁", "apsp + mc; coord. apsp", M),
-    (5, 14, 12795166, "Haar, random S", "Z₁₄₈₇₈₁ ⋊₈₅₁₇₅ Z₄₃", "mc; bh2†", "branch"),
+    (3, 14, 5706, "cyclic voltage lift", "Pappus graph; Z₃₁₇", "apsp; coord. apsp", "master ᵉ"),
+    (4, 14, 497042, "Haar, random S", "Z₂₇₃₁ ⋊₂₄₀₀ Z₉₁ (Frobenius)", "apsp, mc; coord. apsp", M),
+    (5, 14, 12795166, "Haar, random S", "Z₁₄₈₇₈₁ ⋊₈₅₁₇₅ Z₄₃ (Frobenius)", "mc; bh2†", "branch"),
     (6, 14, 187990656, "Haar, orbit S", "SL(2,97) × Z₁₀₃", "gen; sl†", "branch"),
     (7, 14, 1674490944, "Haar, orbit S", "PSL(2,223) × Z₁₅₁", "gen; psl†", "branch"),
     (8, 14, 11325238056, "Haar, orbit S", "PSL(2,397) × Z₁₈₁", "gen; psl†", "branch"),
@@ -114,7 +114,7 @@ def verify():
         elif con == "level graph":
             c, q = re.search(r"(\d+) copies of H\((\d+)\)", g).groups()
             want = int(c) * hexagon(int(q))
-        elif con.startswith("typed whisker cover"):
+        elif con.startswith("cover of H(13) with freed"):
             want = 7 * hexagon(13) + 32356 + 30327
         elif con.startswith("Theorem D"):
             q = 17
