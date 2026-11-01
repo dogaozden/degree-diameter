@@ -6,3 +6,4 @@ started: 2026-11-01T01:30:41Z
 ################ haarcheck_psl (reference, research/structured/tools/haarcheck_psl.c, master f816dbc7c0), BFS from (e,B) only: gcc -O3 -o haarcheck_psl research/structured/tools/haarcheck_psl.c && timeout 19800 ./haarcheck_psl research/frontier/sols/d20D10_psl_421_409_orb3_s1.txt B   (stdout, complete when the [exit] line appears)
 progress: 2026-11-01T01:30:55Z elapsed 0 min; haarcheck_psl (B side) still running, RSS 2407.62 MB
 progress: 2026-11-01T02:01:31Z elapsed ~31 min; haarcheck_psl (B side) still running, RSS 11178004 kB (~10.7 GB), no stdout yet (checker prints at end)
+progress: 2026-11-01T02:31:39Z elapsed ~61 min; haarcheck_psl (B side) still running, RSS 10916 MB (no stdout yet)
