@@ -2,7 +2,7 @@ machine: vm; nproc=4; free -g (before launch): total 15G used 0G free 15G avail 
 sha256: 95577f6c539c1e534722cb2dbf49baa66b7c37f786aef905390a85e2c6623d50  research/frontier/sols/d14D12_psl_241_2143_orb3-4-2_s1.txt  (copied with git show from origin/claude/beyond-d11-d12-new-cells-3t3djx)
 checker source: research/structured/tools/haarcheck_psl.c on master e93cbf8 (sha256 ba816e278a1fa0616d55b563301644c443971a1d361293c00e4f98c36f9976b4); built with gcc -O3 (single-threaded)
 job: the reference checker, BFS from (e,B) only (argument B). The BFS from (e,A) and the haarcheck_gen run are other jobs.
-STATUS: RUNNING (started 2026-11-01T15:32:21Z)
+STATUS: FINISHED 2026-11-01T18:35Z (started 2026-11-01T15:32:21Z; exit 0; wall 10997s; peak RSS 10728 MB). Result: HALF-VALID from (e,B), see the checker section below.
 progress 2026-11-01T15:32:21Z: started; the checker prints nothing until its BFS ends
 progress 2026-11-01T16:02:25Z (elapsed 30m04s): still running; RSS 10986624 KB (about 10.5 GB)
 progress 2026-11-01T16:32:33Z (elapsed 60m12s): still running; RSS 10986624 KB (about 10.5 GB)
@@ -10,3 +10,8 @@ progress 2026-11-01T17:02:35Z (elapsed 90m14s): still running; RSS 10986624 KB (
 progress 2026-11-01T17:32:37Z (elapsed 120m16s): still running; RSS 10986624 KB (about 10.5 GB)
 progress 2026-11-01T18:02:39Z (elapsed 150m18s): still running; RSS 10986624 KB (about 10.5 GB)
 progress 2026-11-01T18:32:41Z (elapsed 180m20s): still running; RSS 10986624 KB (about 10.5 GB)
+
+################ haarcheck_psl (reference checker, research/structured/tools/haarcheck_psl.c on master e93cbf8, built with gcc -O3, single-threaded; BFS from (e,B) only): gcc -O3 -o haarcheck_psl haarcheck_psl.c && ./haarcheck_psl research/frontier/sols/d14D12_psl_241_2143_orb3-4-2_s1.txt B   (stdout, complete; stderr was empty)
+from (e,B): reached A 14998085520/14998085520, B 14998085520/14998085520 within 12, ecc 12
+HALF-VALID from (e,B) d=14 D=12 group=psl 241 x Z_2143 N=14998085520 vertices=29996171040
+[exit 0; wall 10997s (3:03:17); peak RSS 10728 MB (10986588 KB); /usr/bin/time -v]
