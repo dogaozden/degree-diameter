@@ -233,8 +233,9 @@ rotation (h rotations), and a central element is a hole on both sides at once. S
 probability ~exp(-lambda/2), central elements ~exp(-lambda/h), against exp(-lambda) for an ordinary element
 (lambda = W/N ~ 19 here). PSL(2,p) has ~p^2/2 involutions, SL(2,p) only -I; G x Z_n has n or 2n central elements.
 Hole counts of random S (squad card r2/d04) and a 22-group fit (r3/e14) agree with these rates within a factor 1.3-2.
-Consequence used for every D = 11 value: SL(2,p) x Z_n with small n (1-43) and large p; PSL with n = 1 is the worst
-shape at odd D (all ~130 holes per random S are involutions) although it is fine at even D.
+Consequence, used for the D = 11 values found after round 1: SL(2,p) x Z_n with small n (1-43) and large p. (The
+exceptions are (12,11), SL(2,239) x Z109 from round 1, and (4,11), PSL(2,29), where the group is tiny.) PSL with n = 1
+is the worst shape at odd D (all ~130 holes per random S are involutions) although it is fine at even D.
 
 **Squad (64 Haiku cards in 4 rounds; research/squads/LOG.md, research/squads/beyond11/r1..r4).** Round 1 mapped
 structures and found the choose_alpha bug (two cards independently), the -I and torus near misses, and the size-law
@@ -254,8 +255,9 @@ generator, a meet-in-the-middle near-miss finisher, composite n at (7,11).
   checkers' budget.
 - Checking cost depends on p, not only on the size: haarcheck_gen multiplies matrices through p^2-entry field tables,
   which leave the L2 cache for p ~ 850-1,000. The 14.4-billion-vertex (14,11) check (SL(2,1009) x Z7) took about
-  4 CPU-hours here, and the 1.24-billion (11,11) check of SL(2,853) about 40 CPU-minutes, against 7 CPU-minutes for
-  the 1.17-billion SL(2,251) x Z37. For the coordinator's second check, prefer the PSL/SL-specific checkers for p > 600.
+  4.4 CPU-hours (10,919 s wall on 2 threads, partly shared with squad jobs), and the 1.24-billion (11,11) check of
+  SL(2,853) about 40 CPU-minutes, against 7 CPU-minutes for the 1.17-billion SL(2,251) x Z37. For the coordinator's
+  second check, the PSL/SL-specific checkers should be much faster for p > 600.
 
 ## What failed, and why it matters for the next attempt
 
