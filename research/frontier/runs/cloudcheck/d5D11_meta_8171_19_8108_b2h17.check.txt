@@ -7,3 +7,6 @@ n = 310498 edges = 776245 max degree = 5 min degree = 5 duplicate edges = 0
 edge list sha256 = 4d8604a9c6b4c7a8a8938854eb2f6a22bf736fb4fe50f932813dbe234db7effc
 VALID d=5 D=11 group=meta 8171 19 8108 x Z_1 N=155249 vertices=310498
 == apsp (research/lifts/coordinator_check/apsp.c) on that edge list
+n=310498 edges=776245 degree min=5 max=5 bipartite=yes diameter=11
+RESULT VALID d=5 D=11 n=310498
+apsp time 1127 s
