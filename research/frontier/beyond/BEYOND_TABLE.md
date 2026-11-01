@@ -343,8 +343,10 @@ The 2013 table (DS14v2, as copied in research/frontier/TABLE.md) has 90,068 for
 (5,10), and the lab's harvest history has no (5,10) entry; literature after 2013 was not checked (TABLE.md says the same
 for every D >= 7 cell), so these are candidates for the coordinator, not claimed records. The same card's (5,9) graph
 (28,418, Z1093 x|_901 Z13) beats the 2013 value 27,936 but not the lab's 29,756 (harvested earlier, also metacyclic).
-(4,9) and (4,10) near misses: Z101 x|_5 Z25 (5,050 vertices, cost 2) and Z109 x|_12 Z54 (11,772, cost 2) against 4,970
-and 11,748 (r6/i09 and director chains).
+(4,8), (4,9) and (4,10) near misses above the 2013 values (2,184, 4,970, 11,748): Z55 x|_2 Z20 (2,200 vertices,
+cost 1), Z101 x|_5 Z25 (5,050, cost 2) and Z215 x|_2 Z28 (12,040, cost 1) (r7/j03-j05). An exhaustive 2-opt from the
+(4,8) and (4,9) states (hmeta OPT2: every pair of generators replaced by every pair of group elements, 3.6e6 and 1.9e7
+evaluations) found no cost 0: no generator set within two changes of those states has the required diameter.
 
 ## What failed, and why it matters for the next attempt
 
