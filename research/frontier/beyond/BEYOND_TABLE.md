@@ -380,6 +380,14 @@ negative, and the negatives explain the shape of the method:
   holes), inverse-closed S, order-5 conjugation orbits in PSL(2,p) (fixed torus of ~p/2 elements), unstructured
   cubic graphs (1,350 vertices).
 
+**Leads for other cells (not run; outside this job's D = 12 scope).** research/frontier/raise-d12/fieldfit.py lists, for
+even D, the groups SL(2,32), SL(2,128), PSL(2,243) x Z_n (n with an order-k multiplier, gcd(n,|T|) = 1) and orbit
+structures Δ = f + k m (f <= 2) with mu/k <= 5, where the (8..10,12) finds were solved (mu/k = 4.0, 4.9, 5.1); best
+per cell in fieldfit_best.txt. Above the current values: (17,10) PSL(2,243) x Z541, "5 3 2", 7,762,627,224 (table
+7,022,052,336, +10.5 %); (20,8) SL(2,32) x Z1951, "5 4 0", 127,735,872 (table 122,739,120, +4.1 %); (17,8) SL(2,32) x
+Z641, "5 3 2", 41,967,552 (table 41,373,072, +1.4 %). Caution: the SL(2,32) x Z_n candidates have large n, and with one
+orbit that failed at (7,12) (n = 941); with 3-4 orbits the word lattice is much larger, but test RANDORB first.
+
 ## What failed, and why it matters for the next attempt
 
 - (17,5) has no construction of its own (see D = 5). It is the one cell where the formula families leave a gap:
