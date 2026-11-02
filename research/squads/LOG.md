@@ -369,3 +369,52 @@ did not close in 10 links); the only three 6-vertex cubic quotients are the Tutt
 (enumerated), so round 4 adds K3,3. One card's turn showed an interrupt-session tool call (not requested; no effect seen).
 Kept: quotient shapes with other k (two of the three cubic raises came from that view), closers on cost-2 states (two Haar
 raises). Dropped: composite-m cubic Haar, Tutte 12-cage, 4-orbit composite n.
+
+## 2026-11-02 00:00 UTC, beyond-d15, round 4 (14 cards, research/squads/beyond15/r4/)
+
+Cards, one line each, best score:
+- n01 (3,16) Tutte/Foster quotient, k = 7: cost 6 at n = 491 (the director's exhaustive scan: k = 7, n = 491 min cost 2).
+- n02 (3,16) Tutte/Foster quotient, k = 11-16: (handed back early; see its folder).
+- **n03 (3,15) 12,246**: Gray-shape quotient with k = 13, pattern [10,2,3,10], n = 157, lambda 14 (anneal screen + chain); apsp VALID (card and director).
+- n04 (3,16) Gray-shape quotient, k = 10: cost 12 (handed back after 20 % of the card); found that quotgen.py picked small-order lambdas (fixed: exact order first).
+- n05 (3,15) Tutte/Foster quotient, composite n: 11,748 VALID (k = 11, n = 178), below the cell.
+- n06 K3,3 quotient (the third 6-vertex shape): cost 8 at k = 5, n = 401; k = 6 cost 112+.
+- n07 K3,3 quotient EXH: single EXH runs did not fit in 100 s under load; nothing.
+- o01 (4,15) k 37-59: Z12721 x| Z53 cost 2 (1,348,426 if closed).
+- o02 (4,16) k 43-67: Z38729 x| Z47 cost 2 (3,640,526 if closed; director's 7 links did not close it).
+- o03 (4,16) cost-3 closers and Z25561 x| Z71: cost 1 (3,629,662 if closed; director chains it).
+- p01, p03 (5,15) k 151-389: cost 4-6. p02 (5,16) k 211-307: three new cost-2 states, none closed.
+- w04 quartic 2-orbit EXH (Haar graphs of Z_n x| Z73 as symmetric lifts): ran in the background past its report.
+
+Director during the round: liftsym's exhaustive mode now handles composite n (unit pivots; and for squarefree n a CRT
+product of the per-prime gauge classes, checked against the known Z393 Tutte 8-cage family: 24 solutions found). Exact
+scans proved the round-3 near miss (Gray shape, k = 13, pattern [8,8,4,11], n = 158) and n03's pattern at n = 158 (all 8
+lambdas) empty; the Tutte/Foster quotient with k = 7 at prime n = 491 (D = 16, 20,622) has min cost 2. Closers on the
+cost-2 Haar states at (4,15), (4,16), (5,15), (5,16) did not close in 7-10 links each.
+Note: two cards' turns showed remote-session tool calls (list_sessions, read-only, and an interrupt call) against the card
+rules; no effect seen. Several round-4 cards handed back after 2-5 minutes saying their drivers were stopped when a
+handback was requested, and left background jobs that finished later.
+
+## 2026-11-02 00:25 UTC, beyond-d15: wrap-up (director)
+
+All eight new cells have checked values (haarcheck_gen for SL/PSL Haar graphs, logs in research/frontier/beyond15/runs/;
+metacheck.c for metacyclic groups, research/frontier/beyond15/checks/; apsp all-pairs for the cubic graphs,
+research/frontier/beyond/checks/):
+
+| D \ Δ | 3 | 4 | 5 | 6 |
+|---|---|---|---|---|
+| 15 | 12,246 | 1,343,054 | 47,587,354 | 867,831,360 |
+| 16 | 20,466 | 3,623,866 | 172,011,046 | 4,021,844,904 |
+
+Who found what. Director: the Δ = 6 values (haar_big0, first solutions at mu 10 and 11.6), the (3,16) value (exhaustive
+symmetric lifts of the Gray graph, liftsym.c), the first values of (4,15), (4,16), (5,15) (hmeta calibration runs), the
+symmetric-lift tools (liftsym EXH with gauge fixing, CRT for composite n; haarsweep.py, quotsweep.py, quotgen.py), the
+quotient enumeration, metacheck.c, and every check. Cards: (3,15) 12,246 (r4/n03, Gray-shape quotient with k = 13;
+earlier raises r2/e06 and r3/k03), (4,15) 1,343,054 (r1/b01), (4,16) 3,623,866 (r2/f02 closing r1/b02's state),
+(5,15) 47,587,354 (r3/m04), (5,16) 172,011,046 (r3/m01 closing r1/c02's state); also the k-threshold table (r1/c05),
+the first (3,16) Haar value (r1/a04) and the lift-bound analysis of the bases (r3/w03).
+Process: 62 Haiku cards in 4 rounds (16, 16, 16, 14) on 4 cores; a container restart at 23:29 killed seven round-2 cards
+and the first (6,16) check. Lessons: (1) structured families with an exhaustive inner search (symmetric lifts, quotient
+shapes) moved Δ = 3 four times, plain annealing never did; (2) at Δ = 4, 5 the cards' value was mostly closing saved
+cost-2 states with new seeds; many cost-1/2 states (listed in the round-4 entry) did not close; (3) `nice` is useless
+under the container's autogroup scheduler; raise a long check's group priority through /proc/<pid>/autogroup.

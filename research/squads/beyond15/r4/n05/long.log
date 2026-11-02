@@ -6,3 +6,8 @@ k7 n284 s12: t=2.4 evals=781 best=6
 k7 n284 s12: RESULT b=42 k=7 lambda=37 n=284 N=11928 D=15 best=6 evals=29808 secs=45.0
 k11 n178 s12: t=3.2 evals=1126 best=0
 k11 n178 s12: RESULT b=66 k=11 lambda=39 n=178 N=11748 D=15 best=0 evals=1126 secs=3.2
+k7 n284 s13: t=17.8 evals=13058 best=2 (scan)
+k7 n284 s13: RESULT b=42 k=7 lambda=37 n=284 N=11928 D=15 best=2 evals=32914 secs=45.0
+k11 n178 s13: t=2.0 evals=784 best=4
+k11 n178 s13: RESULT b=66 k=11 lambda=39 n=178 N=11748 D=15 best=4 evals=33602 secs=45.0
+LONGDONE
