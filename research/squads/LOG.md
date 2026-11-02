@@ -82,3 +82,10 @@ No zero above 704. Director: exact split15 runs on 180_13 (best 6), 180_6 (best 
 180_21 and on 192_865, 909, 544, 105, 106 (Aut of order 384-6144, so 2-35 min each).
 Kept for round 3: more seeds with tabu15f on the closest groups (180, 192), plus two structures next to the split
 family (split + hub orbits via mcos; cyclic lifts of the 8-vertex split base with free voltages).
+
+### Round 3 (00:57-01:07 UTC, 4 cards, research/squads/deep-65b/round3/), stopped early for budget
+Cards: c1 split + hub orbits via mcos (n = 728) · c2 order 180 with 20 seeds of the faster tabu · c3 order 192, next 12
+groups, 12 seeds · c4 cyclic lifts of the 8-vertex split base with free voltages (n = 712-800).
+Results: c4 calibrated on the record's Z88 voltages (cost 0) but random-start tabu never reaches 0, even at n = 88;
+best 34 at n = 90; c1-c3 stopped before reporting, no zero on the scoreboard. Director's exact runs: 180_21 (best 3),
+192_865, 909, 544, 105, 106: no solution. Run ended at 01:07 UTC with the 704 record (deep-65b/REPORT.md).
