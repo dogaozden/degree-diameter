@@ -134,3 +134,22 @@ session, archived by its creator in the same second it was made.
 Selection: the values sit at thresholds: D = 13 2+2 near N = 1,081-1,100, D = 14 2+2 near 1,751-1,810 and 3+3 near
 1,168. First screens solved twice and chains almost never, so round 4 = dense fresh-seed sweeps of every large-d group
 in those narrow bands.
+
+Round-3 late report: e06 (3,14) 2+2: cost-2 floors at 7,104 (Z37 x|_8 Z48), 7,084 (Z23 x|_2 Z77), 7,072 (Z17 x|_2 Z104).
+Director after round 3: **(4,13) 193,058** (Haar graph of Z1163 x|_102 Z83: e10's cost-2 group, fresh seeds 2001-2005
+stopped at 2, seed 2006 solved in 22 s; metacheck and apsp VALID); (4,11) fresh seeds on the seven odd Frobenius groups
+of order 15,223-15,657: seed-independent floors 4-112. Far-pair analysis (tools/farpairs.py) of three cost-2 lift floors:
+each is one orbit of pairs at distance D + 1 (seen from both ends), at elements of order 16, 20, 77: no central or
+involution structure to avoid.
+
+### Round 4 (6 cards, 00:55-01:40; research/squads/raise-small/r4/)
+
+Cards: f01 (3,13) 2+2 all d >= 8 groups at N = 1,082-1,120, fresh seeds · f02 same at 1,121-1,250 · f03 (3,14) 2+2
+1,753-1,800 · f04 (3,14) 2+2 1,801-1,850 + chain of e07's cost-4 state · f05 (3,14) 3+3 1,169-1,215 · f06 (3,12) 2+2
+second pass with new seeds at 610-660.
+Best per card: **f03 (3,14) 7,040** (2+2 over Z88 x|_7 Z20, N = 1,760; seeds 1 and 2 both solved; director re-check
+apsp VALID) · f01 cost 2 (floors at Z136 x|_53 Z8 and Z55 x|_2 Z20) · f04 cost 2 (floors at 1,806) · f05 cost 4 (three
+groups). (f02, f06: below.)
+Selection: dense fresh-seed sweeps found one more raise; at D = 13 every d >= 8 group in 1,082-1,120 is at a floor >= 2.
+Round 5 (final) = the remaining unswept groups (d = 6, 7 and Z_c products at D = 13; D = 14 2+2 at 1,851-1,960) and
+fresh-seed Haar sweeps of Frobenius groups just above (4,12), (4,13), (4,14).
