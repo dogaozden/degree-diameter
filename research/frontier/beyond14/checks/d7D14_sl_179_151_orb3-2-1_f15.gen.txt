@@ -1,0 +1,9 @@
+checker: haarcheck_gen
+command: OMP_NUM_THREADS=1 ./bin/haarcheck_gen sols/d7D14_sl_179_151_orb3-2-1_f15.txt
+start: 2026-11-02T00:29:33Z
+afe9a9f0fd7b50c10b056a984358f4fdcab50598a6ff65348e5e5369d5d8dec1  sols/d7D14_sl_179_151_orb3-2-1_f15.txt
+selftest sl 179: |M| = 5735160, index round trip over all elements ok
+selftest group multiplication: associativity, identity, inverse on 20000 random triples ok
+file sols/d7D14_sl_179_151_orb3-2-1_f15.txt
+header: 7 14 sl 179 n 151 N 866009160
+group sl 179 x Z_151, |G| = 866009160 = N, vertices 2N = 1732018320; 7 distinct generators

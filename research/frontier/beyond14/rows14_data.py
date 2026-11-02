@@ -15,11 +15,12 @@ ROWS[(4, 14)] = (504382,
     'x\\|_5711 Z43, r2/d07) and 498,798 (Z3079 x\\|_1863 Z81, r1/c05); beyond-d13: 497,042',
     f'build_haar2 VALID ({C}d4D14_meta_6151_41_e06.build_haar2.txt)',
     'Haar size law at mu = 5: 2N = 4.47e+05')
-ROWS[(5, 14)] = (13105798,
-    'Haar graph of the metacyclic group Z152393 x\\|_149882 Z43 (order 6,552,899), S random (hmeta, 4 s; squad '
-    'r1/c08); earlier 12,991,752 (PSL(2,163) x Z3 with an order-2 orbit S = {e, x, ax, y, ay}, r1/c11); beyond-d13: '
-    '12,795,166',
-    f'build_haar2 VALID ({C}d5D14_meta_152393_43_c08.build_haar2.txt)',
+ROWS[(5, 14)] = (13156186,
+    'Haar graph of the metacyclic group Z83267 x\\|_31904 Z79 (order 6,578,093), S random: a cost-1 hmeta state '
+    '(r3/e09) finished by a hole-directed search (candidates that put a word through the replaced generator onto the '
+    'missing element; squad r4/f09, tool beyond14/tools/hmeta_fin.c); earlier 13,105,798 (Z152393 x\\|_149882 Z43, '
+    'r1/c08) and 12,991,752 (PSL(2,163) x Z3 with an order-2 orbit S, r1/c11); beyond-d13: 12,795,166',
+    f'build_haar2 VALID ({C}d5D14_meta_83267_79_f09.build_haar2.txt)',
     'Haar size law at mu = 5: 2N = 1.27e+07')
 ROWS[(6, 14)] = (193333056,
     'Haar graph SL(2,113) x Z67, S = 2 free orbits of size 3 (ORBIT "3 2 0"), a random symmetric S from a RANDORB screen '

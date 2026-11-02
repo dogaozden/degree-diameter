@@ -2,3 +2,7 @@ group psl 239 x Z_1789, N=12211427760 (2N=24422855520), rows 28560 x 427571 bits
 alpha: conj by mat(0,238,1,238), z -> 152 z on Z_1789 (fixed z: 1); ORBIT k=3 m=3 f=1; W=2.8596e+12 lambda=234.174 mu=0.00
 setup 0.0s
 start cost=0 (12.5s per eval)
+RESULT d=10 D=14 group=psl 239 x Z_1789 N=12211427760 vertices=24422855520 best=0 evals=1 steps=0 time=12.5 orbit k=3 m=3 f=1 mu=0.00
+re-evaluation of the best S: cost 0
+wrote runs/d10D14_psl_239_1789_orb3-3-1_s1.txt
+search exit 0

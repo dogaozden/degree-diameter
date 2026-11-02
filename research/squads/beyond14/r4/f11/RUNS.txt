@@ -1,0 +1,11 @@
+f11 runs: haar_gen3 5 14 95 SEED 16 OUT GROUP (THREADS=1, timeout 105). No cost-0 result. Best RESULT per group:
+sl 149 x Z2  N=6615600  best=2 (seeds 12, 14)
+sl 131 x Z3  N=6743880  best=2 (seed 8), 4 (seeds 9, 17)
+sl 61 x Z29  N=6580680  best=3 (seed 6)
+sl 103 x Z6  N=6555744  best=3 (seed 1)
+psl 103 x Z12 N=6555744 best=3 (seed 2)
+psl 83 x Z23 N=6574596 best=4 (seed 4)
+psl 101 x Z13 N=6696300 best=4 (seed 7)
+psl 149 x Z4 N=6615600 best=4 (seed 13)
+sl 59 x Z32 N=6570240 best=5 (seed 3); psl 139 x Z5 N=6713700 best=5 (seed 10); psl 107 x Z11 N=6737148 best=5 (seed 15)
+sl 73 x Z17 N=6612048 best=6 (seed 5); sl 67 x Z22 N=6615312 best=6 (seed 16); psl 131 x Z6 N=6743880 best=8 (seed 11)

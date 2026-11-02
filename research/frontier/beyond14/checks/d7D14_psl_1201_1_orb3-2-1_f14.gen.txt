@@ -1,0 +1,9 @@
+checker: haarcheck_gen
+command: OMP_NUM_THREADS=1 ./bin/haarcheck_gen sols/d7D14_psl_1201_1_orb3-2-1_f14.txt
+start: 2026-11-02T00:25:17Z
+50dcd2af1b2a8e0867a49973843f9800ee97b0eccb6d38dd857f857ce9b02413  sols/d7D14_psl_1201_1_orb3-2-1_f14.txt
+selftest psl 1201: |M| = 866161200, index round trip over all elements ok
+selftest group multiplication: associativity, identity, inverse on 20000 random triples ok
+file sols/d7D14_psl_1201_1_orb3-2-1_f14.txt
+header: 7 14 psl 1201 n 1 N 866161200
+group psl 1201 x Z_1, |G| = 866161200 = N, vertices 2N = 1732322400; 7 distinct generators

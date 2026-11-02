@@ -121,3 +121,60 @@ Director's reading: at Δ = 3 the base size matters more than the group: the siz
 to 21 (3+3) to 33 (2+2). Round 3 keeps p = 2, 3 at (3,14) (five cards), the prime-m metacyclic screens and a 1-opt
 finisher at (4,14), lifts with large-k groups at Δ = 4, 5, metacyclic pushes at (5,14), and random symmetric S screens
 at (6,14) and (7,14).
+
+## 2026-11-01/02, beyond-d14, round 3 (16 cards, 23:34 UTC)
+
+Same session (restarted container; the director's checks were restarted with 2-hour limits). Files:
+research/squads/beyond14/r3/. Selection from round 2: (3,14) lifts at p = 2, 3 near the record (e01-e04, e16 with the
+base shape fixed), (4,14) prime-m screens (e05, e08) and an exhaustive 1-opt finisher (e06), Δ = 4, 5 lifts with large-k
+groups (e07, e11), (5,14) metacyclic pushes (e09, e10), random symmetric S at (6,14) (e12, e13) and (7,14) (e14, e15).
+
+Cards (best result; VALID = director check):
+- (3,14): nothing above 7,004. p = 2 has a floor at cost 6 just above order 1,751 for Frobenius groups (e01, e16);
+  e02: cost 2 at Z37 x|_8 Z48 (1,776) and Z17 x|_2 Z104 (1,768), large k and r of smaller order; e04: PSL(2,7) x Z11
+  (1,848, 7,392) cost 4; e03: p = 3 over F13^2 x| Z7 (1,183, 7,098) cost 4.
+- **e06 (4,14): Z6151 x|_5694 Z41, 504,382 VALID** (build_haar2): an exhaustive 1-opt over one generator slot of d07's
+  cost-2 state. e05: cost 1 at Z8123 x| Z31 (251,813); e08: cost 2 at Z7351 x| Z35 (257,285).
+- e07 (4,14) and e11 (5,14): lifts of 2+2 bases over large-k Frobenius groups do NOT beat Haar graphs at Δ = 4, 5
+  (cost 26 at 503K; at Δ = 5 cost 0 only up to 8.0M, ~130 at 12.5M).
+- e09, e10 (5,14): cost 1 at Z73693 x| Z89 (6.56M), Z153511 x| Z43 (6.60M), Z100501 x| Z67 (6.73M); no cost 0.
+- **e12 (6,14): SL(2,113) x Z67, 193,333,056 VALID** and SL(2,131) x Z43, 193,324,560 VALID (haarcheck_gen), both
+  random symmetric S from RANDORB screens. e13: cost 3-4 at 97.5-98M.
+- **e15 (7,14): SL(2,163) x Z199, 1,723,572,432 VALID** (haarcheck_gen; 9 evaluations from a random start); cost 3 at
+  SL(2,179) x Z151 (866M). e14: cost 0 at 857M (below e15) with a cheap z-uniformity filter on random S.
+
+Director, outside the cards: 2+2 lifts at D = 13 solve far above beyond-d13's (3,13) 3,400: Z43 x| Z21 (3,612) and
+**Z47 x|_2 Z23 (4,324, apsp VALID, diameter exactly 13)** in 30-s screens; at D = 12 orders 602-618 did not solve (the
+lab's 2,368 stands). A round-2 card had created and immediately archived an empty remote session (23:11 UTC) against the
+header's rule; no other session was affected (checked with list_sessions); later headers name the tool explicitly.
+
+Director's reading: (6,14) and (7,14) keep moving by ~0.5 % per round from random symmetric S just above the record;
+(4,14) moved by finishing near misses exhaustively; (5,14) is stuck at cost 1. Round 4: finishers on every cost-1/2
+state, breadth over large-k metacyclic groups at p = 2 for (3,14), and a theory card on why small-base lifts only win at Δ = 3.
+
+## 2026-11-02, beyond-d14, round 4 (16 cards, 00:02 UTC)
+
+Same session. Files: research/squads/beyond14/r4/. Selection from round 3: finish the near misses (f01 p = 2 cost-2
+lifts, f04 p = 3, f06 1-opt at (4,14), f09 hole-directed finisher at (5,14), f13 SL(2,241) x Z7, f14 SL(2,179) x Z151),
+breadth (f02 large-k groups, f03 simple x cyclic, f07 composite m, f08 more seeds, f10 k 61-101, f11 SL/PSL random S,
+f16 non-Frobenius 2+2), the z-filter at Δ = 6 and 7 (f12, f15), a theory card (f05).
+
+Cards (best result; VALID = director check):
+- **f09 (5,14): Z83267 x|_31904 Z79, 13,156,186 VALID** (build_haar2): the card wrote a hole-directed finisher (each
+  round: a random slot, K candidates that force a word through that slot onto the missing element, keep the best,
+  sideways moves allowed; now research/frontier/beyond14/tools/hmeta_fin.c) and closed two cost-1 states (also
+  Z73693 x| Z89, 13,117,354).
+- **f14 (7,14): PSL(2,1201) x Z1, 1,732,322,400** and **f15: SL(2,179) x Z151, 1,732,018,320** (f15 by a low-temperature
+  anneal from a cost-3 start; also SL(2,127) x Z421 at 862.3M): checks running.
+- f07 (4,14): composite m works (Z2 x (Z1877 x| Z67), 503,036 VALID per card) but below the 504,382 record.
+- f05 theory (r4/f05/LIFTS.md): at matched size the group's action order k changes random-state costs far more than the
+  base size p; small-k and abelian groups collapse walk endpoints (E13/n 0.05-0.5 against 0.94-0.98).
+- No cost 0: f01 (cost-2 lift states are strict local minima), f02 (16 large-k groups, cost 162+), f03 and f16
+  (PSL(2,7) x Z11 cost 4), f04 (F13^2 x| Z7 cost 4), f08 (cost 1 at Z7211 x| Z35), f10 (cost 1 at Z91397 x| Z73 and
+  Z65651 x| Z101), f11 (cost 2, SL(2,149) x Z2), f12 (z-filter useless at Δ = 6), f13 (cost 4).
+- Two cards made stray calls to send_message / archive tools (both failed with missing arguments; nothing happened).
+
+Director: (9,14) PSL(2,241) x Z1429 VALID (haarcheck_gen, 2,858 s): 20,002,113,120 vertices, a new cell, also the first
+(10,14) value by monotonicity; (10,14) PSL(2,239) x Z1789 (24,422,855,520 vertices) solved at the first evaluation,
+check running. Round 5: hole-directed finishers on every cost-1/2 state at (4,14), (5,14); a lift version for (3,14);
+low-temperature anneals at (6,14), (7,14); side cells (3,11)-(3,13).
