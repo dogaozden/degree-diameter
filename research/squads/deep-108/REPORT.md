@@ -1,6 +1,6 @@
 # deep-108: an Opus-led depth run on Δ10·D8 (final report)
 
-Session: Opus coordinator with a small Haiku squad, 2026-11-01 22:39 UTC to __END__, branch
+Session: Opus coordinator with a small Haiku squad, 2026-11-01 22:39 UTC to 2026-11-02 01:13 UTC (stopped early by Doğa for budget, after 2 h 34 min), branch
 `claude/d10-d8-depth-search-3b5yyu` (draft PR #528). Target: a bipartite graph with maximum degree 10, diameter 8 and
 at least 1,176,481 vertices (table 1,176,480 = 30 copies of the split Cayley hexagon H(7)). Brief: the depth the
 hands-off run (handsoff-108) lacked, on its two leads: (a) the energy-3 orbit states on PSL(2,23) × Z97, (b) the coset
@@ -130,15 +130,35 @@ roughly a 60 % chance of leaving a fixed element uncovered. The two energy-3 sta
   construction in handsoff-108's files; I read (a) as the energy-3 Haar states named in the brief.
 
 So (a) stays a lottery: P(cost 0) per 50-s F15W3 descent is at most about 1·10⁻⁴ (15,500 earlier descents, none
-reached 0). This run added __GRIND__.
+reached 0). This run added 455 fresh F15W3 descents (4 processes, about 1 h 45 min; 3 on psl 23 x Z97, 1 on prod psl 7 sl 8 x Z7): best chain energy 9 (6 times), no cost 0. Logs: research/d10D8/runs/deep108_g1-4.log.
 
 ## The Opus/Haiku split
 
-__SPLIT__
+Spend from tools/session_usage.py (since 22:39:09Z, last line of research/squads/usage/deep-108.jsonl at 01:12):
+Opus 1.147 budget units (260k output, 39.4M cache-read tokens, 118 messages), Haiku 0.020 units (292k output,
+161 messages): Haiku share 1.7 %. Opus did the thinking and most of the work: the evaluator (cq, cq2, cq3), the K
+analysis, the tax tests, the zero-special design, the class reduction and two of the five exhaustive scans. Three
+Haikus (one round, 3 cards) ran the A5 × PSL(2,59) and PSL(2,181) × Z2 scans and a wildcard. Their results were
+correct (minima rechecked from their scan files), and c2 caught an error in its card (a second D5 class). As in
+handsoff-108, most Opus spend is re-reading my own context on each turn (39M cache-read tokens).
 
 ## Comparison with the hands-off run on the same cell
 
-__COMPARE__
+- Result: the same (no record). Neither run moved the cell; both leads are now closed for structural reasons, not
+  for lack of CPU.
+- Depth: handsoff-108 found K and scanned it (min 4). This run explained the 4 (two size-2 special orbits, coin flip
+  P about 3 %) and the 4.4x tax (non-local correlation of neighbour coverage, with three local causes ruled out). It
+  closed every other order-10 family near the bound (three new exhaustive families, two by Haikus) and showed
+  that the families are smaller than counted (normaliser reduction: C 8,226 classes, not 16,407). It designed a
+  family with no special orbits (A5 × PSL(2,59)), which turned out worse. For (a) it found no design lever and
+  explained why: fixed-element misses are e^(-λ/3) events, not repairable locally.
+- Breadth: handsoff covered more directions (20 Haiku runs: hexagon lifts, group screens, schedule A/B tests).
+  This run covered fewer directions, each to an exact answer.
+- Spend: handsoff 0.80 Opus + 0.29 Haiku over 5 h 50 min; this run 1.15 Opus + 0.02 Haiku over 2 h 34 min. Opus-led
+  depth costs about 3x more Opus per hour. Per closed question it is cheaper, because the evaluator made each family
+  a 20-minute exact scan instead of a sampling estimate.
+- Left open: the global mechanism of the tax (radius > 4 correlation); the Haar grind (lead a) at about 1e-4 per
+  descent or less, which only volume can test.
 
 ## Files
 
