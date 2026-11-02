@@ -306,3 +306,30 @@ Cards (best result; all negative):
 Reading: (3,12) beyond 2,368 needs a voltage group as good as SmallGroup(296,3) at order >= 297; none of the 13 tried is.
 The squad part of the job ends here (33 cards in 3 rounds, no raise); every raise of the job came from the director's
 field-automorphism runs. Process: one stray read-only session-tool call (c03, list_sessions).
+
+## 2026-11-02, raise-d12: wrap-up (director)
+
+Goal cells, all checked by haarcheck_gen from (e,A) and (e,B) (logs research/frontier/runs/cloudcheck/<stem>.gen.txt;
+write-up research/frontier/beyond/BEYOND_TABLE.md, section "D = 12: field-automorphism orbits"):
+- (8,12) 284,095,056 -> 297,777,408 (+4.8 %), SL(2,128) x Z71, e + one orbit of the field automorphism x -> x^2 (order 7).
+- (9,12) 1,105,785,120 -> 1,178,527,488 (+6.6 %), SL(2,128) x Z281, e + order-3 fixed + one 7-orbit.
+- (10,12) 3,712,424,352 -> 3,888,487,944 (+4.7 %), PSL(2,243) x Z271, two free orbits of x -> x^3 (order 5).
+- (11,12) 11,189,148,096 -> 11,780,253,144 (+5.3 %), PSL(2,243) x Z821 (Z811: 11,636,766,504, also VALID), e + two 5-orbits.
+- (15,12) new cell 29,999,670,624, PSL(2,197) x Z3924 (conjugation 3-orbits), above the floor 29,997,644,040.
+- Bonus, outside the D = 12 brief (same tool, a few minutes each): (17,10) 7,022,052,336 -> 7,762,627,224 (+10.5 %),
+  (20,8) 122,739,120 -> 130,354,752 (+6.2 %), (17,8) 41,373,072 -> 41,967,552 (+1.4 %).
+- Not raised: (3..7,12) (33 squad cards, no structure found; see rounds 1-3), (12..14,12) (already at the 30-billion
+  cap; an exact-cap regraph would add < 0.02 % for a 1-hour check each, not done).
+
+Who found what: every value came from the director's runs with a tool written in the job (haar_bigq: haar_big0 over
+GF(p^e), split-torus rows, field-automorphism orbits), aimed by BEYOND_RANDOM.md's clump model (large odd k, tiny fixed
+set). The squads produced no value; they produced the map of why the small cells resist (abelian-section and parity
+walls, Moore-base walk counts, disconnection proofs, exhaustive scans of affine and metacyclic families), which is
+what stopped the director from spending more on (3..7,12).
+
+Process lessons: (1) The decisive step was again a structural idea plus the director's own tool, not card volume; with
+3 rounds (33 cards) the squads were useful mainly as fast, parallel falsifiers. (2) Cards on this 4-core box got 10-40 %
+of a core while the director's searches and 4-11 GB checks ran; round 3 was sized to 6 cards for that reason, and
+still ran CPU-starved. (3) Six stray session/messaging-tool calls in three rounds despite explicit rules (all errored or
+were harmless; one card created and archived an empty session); one card rewrote the shared scoreboard. (4) pkill -f
+with a pattern that also appears in the calling shell's command line kills the director's own shell; use PIDs.
