@@ -1,0 +1,23 @@
+Syntax warning: Unbound global variable in tools/gap_fast.g:10
+  idx := function(x) local p; p := PositionSorted(srt, x); if p = e then retur\
+n 0; elif p < e then return p; else return p - 1; fi; end;
+                                                  ^^^
+Syntax warning: Unbound global variable in tools/gap_fast.g:10
+  idx := function(x) local p; p := PositionSorted(srt, x); if p = e then retur\
+n 0; elif p < e then return p; else return p - 1; fi; end;
+                                                                  ^
+Syntax warning: Unbound global variable in tools/gap_fast.g:10
+  idx := function(x) local p; p := PositionSorted(srt, x); if p = e then retur\
+n 0; elif p < e then return p; else return p - 1; fi; end;
+                                                                              \
+              ^
+Syntax warning: Unbound global variable in tools/gap_fast.g:16
+  for g in el do AppendTo(out, JoinStringsWithSeparator(List(el, h -> String(i\
+dx(g*h))), " "), "\n"); od;
+                                                                             ^\
+^^
+Syntax warning: Unbound global variable in tools/gap_fast.g:20
+    for a in gens0 do AppendTo(out, JoinStringsWithSeparator(List(el, h -> Str\
+ing(idx(Image(a, h)))), " "), "\n"); od;
+                                                                              \
+    ^^^
