@@ -39,3 +39,14 @@ paired runs (same seed, same wall time, back to back) are the fair comparison.
   research/squads/deep-65b; about 1 s per group; the GAP syntax warnings are harmless). Ids 2 (C192) and 127 are abelian: skipped.
 - Scan: `round2/c6/scan192.sh` (resumable; todo192.txt; 2 seeds x 8 s per group with tabu15f; no new group after 80 s per call),
   results in raw192.txt (id seed best t_best name); zeros in hits/HITS.txt with edges in hits/.
+
+## Order 192 result (ids 1..127, 125 non-abelian groups; ids 2 and 127 abelian; c3/c4 ids not touched)
+- 2 seeds x 8 s per group with tabu15f (raw192.txt). No zero. Best cost per group: min 8 (ids 58, 105, 106),
+  then 9 (11, 53), 10 (20, 37, 102, 117), 11 (71); median 17; max 288 (id 7, D192, both seeds the same).
+- Scale: at m = 176 the tabu reaches 2 (sg_176_23) and at m = 192 the best is 8, so no order-192 group in ids 1..127
+  is near 0 with this budget. Ids 58, 105, 106 are the ones to re-run with more seeds.
+- Not done (time box): ids 128..1543 at order 192 (c3/c4 cover 128-1535 partly), and longer runs on the best groups.
+
+## Files
+- tabu15f.c, NOTES.md, cmp20.txt, states20.txt, paired_speed.txt, ttz_176_23.txt, seed3_176_23.edges (704-vertex graph,
+  verified: score65 bad=0, apsp RESULT VALID), scan192.sh, todo192.txt, raw192.txt, hits/ (empty), tabs/ (order 192 tables, ids 1..127).
