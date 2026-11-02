@@ -172,7 +172,7 @@ static void fixslot(int i) { if ((S[i].a == 0 && S[i].j == 0) || !distinct(i)) d
 static int t2_run(double secs, i64 start_cost, int Kc, const char *out) {
     double tt0 = now(); i64 cur = start_cost, gbest = cur; long ev = 1, acc = 0, it = 0;
     el U[64]; el CI[256], CJ[256];
-    fprintf(stderr, "T2 start cost %lld N %lld Kc %d\n", (long long)cur, (long long)N, Kc);
+    fprintf(stderr, "T2 start cost %lld N %lld Kc %d\n", (long long)cur, (long long)N, Kc); writesol(out);
     while (cur > 0 && now() - tt0 < secs) {
         it++;
         int nh = holes_list(0, U, 64); if (nh == 0) { fprintf(stderr, "no holes\n"); break; }
@@ -192,12 +192,13 @@ static int t2_run(double secs, i64 start_cost, int Kc, const char *out) {
             if (x == 0) { writesol(out); printf("RESULT T2 cost0 d=%d D=%d group=meta %lld %lld %lld N=%lld vertices=%lld evals=%ld time=%.1f\n", d, D, (long long)M, (long long)K_, (long long)R_, (long long)N, (long long)(2 * N), ev, now() - tt0); return 1; }
             if (bcost < 0 || x < bcost || (x == bcost && (rnd() & 1))) { bcost = x; bi = S[i]; bj = S[j]; }
         }
-        if (bcost <= cur) { S[i] = bi; S[j] = bj; cur = bcost; acc++; } else { S[i] = oi; S[j] = oj; }
+        double T2T = getenv("T2T") ? atof(getenv("T2T")) : 0.0;
+        int take = bcost <= cur || (T2T > 0 && exp(-(double)(bcost - cur) / T2T) > (rnd() % 1000000) / 1e6);
+        if (take) { S[i] = bi; S[j] = bj; cur = bcost; acc++; } else { S[i] = oi; S[j] = oj; }
         cost(); ev++;   /* refresh HA (holes) and SI for the state now in S */
         if (cur < gbest) { gbest = cur; writesol(out); }
         if (it % 5 == 0 || cur <= 1) fprintf(stderr, "it %ld slots %d,%d hole-pick %d/%d cur %lld best %lld accepted %ld evals %ld t=%.1f\n", it, i, j, nh, nh, (long long)cur, (long long)gbest, acc, ev, now() - tt0);
     }
-    writesol(out);
     printf("RESULT T2 open d=%d D=%d group=meta %lld %lld %lld N=%lld cur=%lld best=%lld evals=%ld time=%.1f\n", d, D, (long long)M, (long long)K_, (long long)R_, (long long)N, (long long)cur, (long long)gbest, ev, now() - tt0);
     return 0;
 }

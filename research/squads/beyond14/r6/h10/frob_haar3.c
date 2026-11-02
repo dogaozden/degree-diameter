@@ -56,6 +56,7 @@ int main(int argc, char **argv){
     if(argc<4){ fprintf(stderr,"usage: m k D [outprefix]\n"); return 1; }
     m=atoi(argv[1]); k=atoi(argv[2]); D=atoi(argv[3]);
     const char *outp = argc>4 ? argv[4] : "h10";
+    int xlo = argc>5 ? atoi(argv[5]) : 0, xhi = argc>6 ? atoi(argv[6]) : -1;
     N=m*k; int V=2*N;
     if(V>8000){ fprintf(stderr,"too big\n"); return 1; }
     // primitive root
@@ -92,7 +93,8 @@ int main(int argc, char **argv){
     xs[0]=1; for(int j=1;j<k;j++) xs[j]=m*j;
     int best=1<<30; int bx=-1, by=-1; long n0=0; long evals=0;
     int bestcount=0;
-    for(int xi=0; xi<nx; xi++){
+    if(xhi<0 || xhi>nx) xhi=nx;
+    for(int xi=xlo; xi<xhi; xi++){
         int x=xs[xi];
         for(int y=1; y<N; y++){
             if(y==x) continue;
@@ -116,7 +118,7 @@ int main(int argc, char **argv){
             }
         }
     }
-    printf("RESULT m=%d k=%d N=%d V=%d D=%d best_cost=%d at x=(%d,%d) y=(%d,%d) cost0_count=%ld evals=%ld\n",
-           m,k,N,V,D,best, bx%m,bx/m, by%m,by/m, n0, evals);
+    printf("RESULT xrange=%d-%d m=%d k=%d N=%d V=%d D=%d best_cost=%d at x=(%d,%d) y=(%d,%d) cost0_count=%ld evals=%ld\n",
+           xlo,xhi,m,k,N,V,D,best, bx%m,bx/m, by%m,by/m, n0, evals);
     return 0;
 }

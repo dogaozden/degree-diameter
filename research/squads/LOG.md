@@ -204,3 +204,11 @@ Cards (best result; VALID = director check):
 Director: (7,14) SL(2,179) x Z151 (r4/f15) 1,732,018,320 VALID (haarcheck_gen); (5,14) Z83267 x| Z79 (r4/f09) 13,156,186
 VALID (build_haar2). Round 6 (last): the FIN + low-T pair everywhere, an orbit-S finisher for haar_big0, targeted 2-opt
 for states no single change closes, side cells.
+
+## 2026-11-02, beyond-d14, round 6 (16 cards, 01:02 UTC; stopped 01:12 by Doğa for budget)
+
+Cards h01-h16 (research/squads/beyond14/r6/): finishers at (4,14)-(7,14), base shapes and exhaustive cubic Haar at (3,14),
+side cells. All stopped after ~10 minutes; only h14 reported (an orbit-S finisher: no sideways moves at Δ = 6, the (6,14)
+and (7,14) near misses stayed at cost 3 and 1). One card created an empty remote session (session_01QYEEyHR8yEW2Yd8tMxxCbF,
+idle) in round 5 against the rules; another made a read-only list_events call. The director stopped the (10,14) and
+PSL(2,1201) checks unfinished. Final values and what is left: research/frontier/beyond14/STATUS.md.

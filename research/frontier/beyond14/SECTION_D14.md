@@ -18,7 +18,7 @@ research/squads/LOG.md.
 | (7,14) | 1,674,490,944 | **1,732,018,320** | +3.4 % | SL(2,179) x Z151, ORBIT "3 2 1" |
 | (8,14) | 11,325,238,056 | (not attempted) | | |
 | (9,14) | (none; floor 11.3e9) | **20,002,113,120** | new cell | PSL(2,241) x Z1429, ORBIT "3 3 0" |
-| (10,14) | (none) | see the row | new cell | PSL(2,239) x Z1789, ORBIT "3 3 1" (or the (9,14) graph by monotonicity) |
+| (10,14) | (none) | **20,002,113,120** | new cell | the (9,14) graph (max degree 9 <= 10); a 10-regular 24,422,855,520 candidate is unchecked |
 | (3,13) | 3,400 | **4,324** | +27 % | 2+2 base lifted over Z47 x\|_2 Z23 |
 | (3,12) | 2,368 (lab, own-small) | **2,436** | +2.9 % | 2+2 base lifted over Z87 x\|_7 Z7 |
 
@@ -63,8 +63,9 @@ far above what the checker can do here (haarcheck_gen needs 0.75 N bytes and ~0.
 values are set by the checker, not by the search: at N ~ 1e10 the first random symmetric S has cost 0 (mu ~ 0).
 H(PSL(2,241) x Z1429, S), S three free alpha-orbits of size 3, has 20,002,113,120 vertices and diameter 14 (haarcheck_gen
 from (e,A) and (e,B), 2,858 s on 2 threads); it is also a lower bound for (10,14). H(PSL(2,239) x Z1789, S) with
-S = {e} + three alpha-orbits (10-regular) has 24,422,855,520 vertices (search cost 0 at the first S; see the (10,14) row
-for its check).
+S = {e} + three alpha-orbits (10-regular) has 24,422,855,520 vertices (search cost 0 at the first S), but its haarcheck_gen run was stopped
+unfinished at the end of the job (solution research/frontier/beyond14/sols/d10D14_psl_239_1789_orb3-3-1_s1.txt), so the
+(10,14) row uses the checked (9,14) graph.
 
 **What failed.**
 - (3,14): cyclic lifts of larger-girth bases (Tutte 12-cage, Foster graph: cost 270-376), metacyclic voltages on the Pappus
@@ -73,7 +74,8 @@ for its check).
 - (4,14)-(5,14): products of Frobenius groups, PSL/SL/PGL/AGL with random S, order-2 orbit forms in SL(2,q) x Z_n and in
   metacyclic groups (cost 18-4,000), lifts of 2+2 bases (above), the z-uniformity filter at Δ = 6.
 - (6,14) above 97M and (7,14) above 866M: cost-3 states (SL(2,241) x Z7 at 98.0M; PSL(2,223) x Z157 at 870.5M) and one
-  cost-1 random S (SL(2,359) x Z19 at 879M) did not close in the time.
+  cost-1 random S (SL(2,359) x Z19 at 879M) did not close in the time. A cost-0 PSL(2,1201) S at 866,161,200 (r4/f14,
+  1,732,322,400 vertices, research/frontier/beyond14/sols/d7D14_psl_1201_1_orb3-2-1_f14.txt) is unchecked (check stopped).
 - (8,14) was not attempted: one evaluation takes ~10-30 s at N ~ 5.8e9 here, the check ~1 hour, and the expected gain at
   the incumbent's mu 12 is ~1-2 %.
 

@@ -52,3 +52,9 @@ ROWS[(3, 12)] = (2436,
     'Z37 x\\|_6 Z8, job own-small, research/squads/own-small/records/); earlier rows of this table: 2,176 (metacyclic Haar)',
     f'apsp VALID, diameter exactly 12 ({G}d3D12_n2436_lift2_meta87_7_7.apsp.txt)',
     'Haar size law at mu = 5: 2N = 1.61e+03')
+ROWS[(10, 14)] = (20002113120,
+    'the (9,14) graph: Haar graph PSL(2,241) x Z1429 (maximum degree 9 <= 10). A 10-regular Haar graph PSL(2,239) x Z1789 '
+    'with S = {e} + three alpha-orbits (24,422,855,520 vertices) had cost 0 at the first random S, but its check was stopped '
+    'unfinished (sols/d10D14_psl_239_1789_orb3-3-1_s1.txt); director, job beyond-d14. New cell',
+    f'haarcheck_gen VALID for the (9,14) graph ({C}d9D14_psl_241_1429_orb3-3-0_s1.gen.txt)',
+    'Haar size law at mu = 5: 2N ~ 2.3e+11')

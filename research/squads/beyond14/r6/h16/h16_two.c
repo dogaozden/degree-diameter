@@ -197,9 +197,14 @@ int main(int argc, char **argv) {
                     if (bcost < 0 || c2 < bcost || (c2 == bcost && (rnd() & 1))) { bcost = c2; memcpy(bS, S, sizeof S); }
                 }
             }
-            if (bcost >= 0 && bcost <= cur) { memcpy(S, bS, sizeof S); cur = bcost; } else memcpy(S, S0, sizeof S);
+            static el GS[64]; static int gsset = 0; static long since = 0;
+            double T2 = getenv("T2") ? atof(getenv("T2")) : 1.0; double frt = (now() - tt0) / secs;
+            double Tn = T2 * (1.0 - frt) + 0.05;
+            if (!gsset) { memcpy(GS, S0, sizeof S); gsset = 1; }
+            if (bcost >= 0 && (bcost <= cur || exp(-(double)(bcost - cur) / Tn) > (rnd() % 1000000) / 1e6)) { memcpy(S, bS, sizeof S); cur = bcost; } else memcpy(S, S0, sizeof S);
             cost(); ev++;
-            if (cur < gbest) { gbest = cur; writesol(bf); }
+            if (cur < gbest) { gbest = cur; memcpy(GS, S, sizeof S); since = 0; writesol(bf); } else since++;
+            if (since > (getenv("REHEAT2") ? atol(getenv("REHEAT2")) : 60)) { memcpy(S, GS, sizeof S); cur = gbest; since = 0; cost(); ev++; }
             if (it % 5 == 0 || cur <= 1) fprintf(stderr, "it %ld pair %d,%d holes %d best-in-iter %lld cur %lld gbest %lld evals %ld t=%.1f\n", it, pi, pj, nh, (long long)bcost, (long long)cur, (long long)gbest, ev, now() - tt0);
         }
         printf("RESULT TWO open d=%d D=%d group=meta %lld %lld %lld N=%lld cur=%lld best=%lld iters=%ld evals=%ld time=%.1f\n", d, D, (long long)M, (long long)K_, (long long)R_, (long long)N, (long long)cur, (long long)gbest, it, ev, now() - tt0);
