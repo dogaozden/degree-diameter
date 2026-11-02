@@ -1,0 +1,4 @@
+group sl 32 poly x^5+x^2+1 x Z_151, N=4943136, identity 149792, H order 33, rows 149792, threads 1, setup 1.91s
+wide rows: HW order 151, rows 32736, setup 3.44s
+alpha: Frobenius x -> x^2 on entries, z -> 8 z on Z_151
+ORBIT k=5 m=1 f=1: |Fix(alpha)| = 5 (+e); mu = 21.46, mu/k = 4.29, fixed-point misses ~ 0.51
