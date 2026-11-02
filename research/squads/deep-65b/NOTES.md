@@ -61,3 +61,28 @@ handsoff c1's best704 on the same group with the other base [[2,4],[4,2]]. Runs:
   at most LMAX = 4e7 sets in the list). Sample: 131,508 pairs tested in both modes (the DFS count is 168,558 with the
   default 4M-entry dedupe hash, which stops deduplicating above 3M; with a 64M-entry hash it is 131,508: duplicates
   only cost time).
+
+## The record: 704 vertices (00:00 UTC Nov 2)
+Round-1 Haiku c1 (tabu over (E1, E2) with the six conditions, 9 s per seed, seed 3) hit cost 0 on SmallGroup(176,23) =
+C11 x M16 (M16 = C8:C2, x^y = x^5). Opus: rebuilt from an explicit formula of the group (no GAP; GAP's isomorphism
+G -> Z11 x M16 and the table agree on all 176^2 products), apsp VALID at D = 5, INVALID at D = 4, score65 bad 0,
+records/ (builder, edges, checks, sha256).
+Exact search on 176_23 (3 processes, 573-580 s, 19,967 E1 classes): exactly ONE solution class pair (259566, 348067),
+the one c1 found (split15 classes mode puts c1's pair in the same classes). So the search is calibrated end to end,
+and the 704 graph is unique in its group up to the symmetries. The other near misses in 176_23: cost 2 and 5.
+Shape: the winner has a central C11, so the graph is a Z11-lift of the split graph of M16 (64 vertices).
+Earlier calibration attempts: 150_12 (C3:((C5xC5):C2)) has no E1 with any C1-C4 partner; C9:Q16 (144_4, n = 576)
+has no solution (best 15; a hill climber also found none in 105 s); A5 (m = 60) has millions. Solutions are sparse and
+group-dependent, not monotone in m.
+
+## Exact results so far for the split family (tools/summ.sh)
+No solution: 176_17 (best 2), and every group run from the cheap end of the queue: 172_1, 174_3, 176_27, 176_29, 176_33,
+176_34, 176_35, 176_41, 178_1, 180_17, 180_22 (best 6), 180_27, 180_36, 182_3, 184_11, 189_12 (best 16) -- most of these
+have no E1 class with any C1-C4 partner at all (dihedral-like groups, large elementary abelian factors).
+Solution: 176_23 (one class).
+
+## Round-1 hub cards (deep-65's open questions)
+- k = 5 (c3, hubk ex): SmallGroup(290,1..3) (n = 696) closed, no solution, nothing passes the hub-level conditions;
+  order 300: 16 of 45 non-abelian groups closed (none passes the hub-level conditions); 305, 310, 315 not run.
+- k = 3 on 258_3, 258_4, 258_5 (c4): not finished (0.09%, 12%, 6.4% of the leaves), no leaf passes the hub-level
+  conditions in 1.7e10 leaves; 258_3 needs ~170 h as written (3.7e12 leaves).
