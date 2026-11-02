@@ -1,0 +1,23 @@
+Coordinator report (Mac mini coordinator, 2026-11-02T01:29:41Z): d9D14_psl_241_1429_orb3-3-0_s1.txt from origin/claude/beyond-d14-new-cells-v6dcaa, sha256 ab67992562de5476110bbd2b3af3f024854719b3cd2007055c9a30047d58e898.
+
+======== cloud haarcheck_gen report research/frontier/beyond14/checks/d9D14_psl_241_1429_orb3-3-0_s1.gen.txt from origin/claude/beyond-d14-new-cells-v6dcaa (unedited, final) ========
+checker: haarcheck_gen (research/frontier/haarcheck_gen.c, built here as bin/haarcheck_gen)
+command: OMP_NUM_THREADS=2 ./bin/haarcheck_gen sols/d9D14_psl_241_1429_orb3-3-0_s1.txt
+start: 2026-11-01T23:29:23Z (third start: the first was stopped at a 30-min limit, the second by a container restart)
+e52e247f4a92a474f49ff0d5d438660ba0b557bbdfd4a8e24311ca881ff3f17c  bin/haarcheck_gen
+ab67992562de5476110bbd2b3af3f024854719b3cd2007055c9a30047d58e898  sols/d9D14_psl_241_1429_orb3-3-0_s1.txt
+selftest psl 241: |M| = 6998640, index round trip over all elements ok
+selftest group multiplication: associativity, identity, inverse on 20000 random triples ok
+file sols/d9D14_psl_241_1429_orb3-3-0_s1.txt
+header: 9 14 psl 241 n 1429 N 10001056560
+group psl 241 x Z_1429, |G| = 10001056560 = N, vertices 2N = 20002113120; 9 distinct generators
+from (e,A): reached A 10001056560/10001056560, B 10001056560/10001056560 within 14; ecc 14; level sizes [1, 9, 72, 576, 4608, 36864, 294900, 2358705, 18849264, 149698495, 1133781409, 6088478762, 8843998773, 3760483149, 4127533]  (1449s)
+from (e,B): reached A 10001056560/10001056560, B 10001056560/10001056560 within 14; ecc 14; level sizes [1, 9, 72, 576, 4608, 36864, 294900, 2358705, 18849246, 149698495, 1133787670, 6088478762, 8843988369, 3760483149, 4131694]  (2857s)
+VALID d=9 D=14 group=psl 241 x Z_1429 N=10001056560 vertices=20002113120 (distinct generators, 9-regular simple; every vertex within 14 of both (e,A) and (e,B); ecc 14; 2857s)
+exit: 0
+end: 2026-11-02T00:17:01Z (2858 s)
+
+======== Mac mini: research/structured/tools/haarcheck_psl.c (master; clang -O3), exit 0, 4756 s ========
+from (e,A): reached A 10001056560/10001056560, B 10001056560/10001056560 within 14, ecc 14
+from (e,B): reached A 10001056560/10001056560, B 10001056560/10001056560 within 14, ecc 14
+VALID d=9 D=14 group=psl 241 x Z_1429 N=10001056560 vertices=20002113120 (distinct generators, 9-regular simple)
