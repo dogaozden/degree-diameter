@@ -10,6 +10,9 @@ Extended 2026-11-01 by job beyond-d11 (branch claude/new-cells-d11-d12-beyond-8s
 Δ = 11..14 and D = 12 at Δ = 11..13, and new values for (4..10, 11) and (4..10, 12); see the section "D = 11 at
 Δ = 11..14 and D = 12 at Δ = 11..13" below.
 
+Extended 2026-11-02 by job raise-d9 (branch claude/raise-d9-orbit-metacyclic-ndvfty): new values for (17..20, 9), +9-11 %;
+see the section "D = 9 at Δ = 17..20, raised" below.
+
 Extended 2026-11-01 by job beyond-d11b (branch claude/beyond-d11-d12-new-cells-3t3djx): new cells (15,11), (16,11) and
 (14,12) with Haar graphs of 28.7-30.0 billion vertices, (12,12) and (13,12) raised to ~30 billion, and (4..6, 11), (4,12),
 (5,12) raised with Frobenius groups Z_p x| Z_k; see the section "D = 11 at Δ = 15, 16, D = 12 at Δ = 14, and raises".
@@ -74,7 +77,7 @@ plane, generalized quadrangle or generalized hexagon of order 18, whose existenc
 | (18,6) | **3,017,196** | 100.00 | 3,017,196 | H(17) incidence graph (Moore graph) | classical; BFS from 96 vertices: ecc 6, Moore levels (checks/d18D6_n3017196_H17.sampled.txt) | 3,017,196 (H(17) incidence graph (Moore)) |
 | (18,7) | **7,240,212** | 14.12 | 51,292,328 | level graph of H(13): 9 copies, 4 matchings, Z9 | same theorem; BFS from 64 random vertices, max ecc 7 (checks/d7_levelgraphs_sampled.txt) | 7,240,212 (polygon cover 9xH(13) (j=4)) |
 | (18,8) | **57,637,680** | 6.61 | 871,969,674 | Haar graph SL(2,61) x Z127, S = {e} + 2 fixed + 5 orbits of size 3 | hcheck5 VALID (runs/check_hcheck5_d18D8_sl_61_127_orb3_s2.txt) | 2013-table D=8 pattern (no construction known): 108,603,180 (q=13, j=4); Haar size law at mu = 5: 2N = 5.61e+07 |
-| (18,9) | **867,712,560** | 5.85 | 14,823,484,556 | Haar graph SL(2,131) x Z193, S = {e} + 2 fixed + 5 orbits of size 3 (haar_big0, director, 229 evals at mu 16.52; job raise-d9; first rung SL(2,191) x Z61 850,056,960, also VALID); was 790,626,816 (SL(2,127) x Z193); mu = 16.52 | haarcheck_gen VALID (research/frontier/raise9/checks/d18D9_sl_131_193_orb3-5-3_s1.gen.txt) | Haar size law at mu = 5: 2N = 8.14e+08 |
+| (18,9) | **879,874,800** | 5.94 | 14,823,484,556 | Haar graph SL(2,149) x Z133, S = {e} + 2 fixed + 5 orbits of size 3 (director, haar_big1 with FIXF, fresh run, 422 evals at mu 21.22; job raise-d9; rungs on the way SL(2,191) x Z61 850,056,960, SL(2,131) x Z193 867,712,560, SL(2,151) x Z127 874,471,200, all VALID); was 790,626,816 (SL(2,127) x Z193); mu = 21.22 | haarcheck_gen VALID (research/frontier/raise9/checks/d18D9_sl_149_133_orb3-5-3_s1.gen.txt) | Haar size law at mu = 5: 2N = 8.14e+08 |
 | (18,10) | **11,787,972,672** | 4.68 | 251,999,237,550 | Haar graph PSL(2,223) x Z1063, S = {e} + 2 fixed + 5 orbits of size 3 | hcheckpsl VALID, ecc 10/10 (runs/check_hcheckpsl_d18D10_psl_223_1063_orb3_s1.txt) | Haar size law at mu = 5: 2N = 1.21e+10 |
 | (19,3) | **624** | 90.96 | 686 | fourth hat R(17;2,3), POLISHED.md Thm 2.2 (19-regular) | apsp: checks/d19D3_n624_fourthhat_q17.apsp.txt | 624 (fourth hat, q=17 (POLISHED Thm 2.2)) |
 | (19,4) | **10,982** | 88.92 | 12,350 | AS(17) + clones of two elliptic quadrics, POLISHED.md Cor. A1 (19-regular) | apsp: checks/d19D4_n10982_AS17_clones.apsp.txt | 10,982 (Thm B, q=17: 2q^2 Delta) |
@@ -314,6 +317,73 @@ odd-D searches stall, for gains of 1-3 %, and the machine was busy with the five
 (exhaustive Frobenius and product groups, lifts of cubic multigraphs to cost 2 at 2,184 vertices for (3,12)). Negatives
 from round 1: Sz(8), F_{p^3} x| C_k, bipartite Cayley graphs of PGL(2,p), PSL(2,p^e) with a Frobenius automorphism,
 agl1 products, voltage lifts of PG(2,3) (19,500 at (4,11)). Squad log: research/squads/LOG.md (job beyond-d11b).
+
+### D = 9 at Δ = 17..20, raised (job raise-d9, 2026-11-01/02)
+
+Job raise-d9 (Opus director + four Haiku squad rounds of 16-17 cards, cloud session, branch
+claude/raise-d9-orbit-metacyclic-ndvfty). Goal: raise every D = 9 value at Δ = 3..20 with the orbit and
+metacyclic/Frobenius searches of beyond-d11 and beyond-d11b. Tools: research/frontier/beyond11/haar_big0.c and the new
+research/frontier/raise9/haar_big1.c (haar_big0 plus FIXF at D = 9, below); queue and check scripts research/frontier/raise9/
+(dq.sh, chk.sh, cells9.txt, rows9.py); search logs runs/, check logs checks/, squad work research/squads/raise9/r1..r4/.
+
+**Where the room was.** In size-law terms (mu = N exp(-W/N), SIZE_LAW.md) the D = 9 values at Δ <= 16 already sat at mu 23-47
+(earlier orbit-search jobs pushed them hard), but the four new cells (17..20, 9) of new-cells-beyond sat at mu 2.6-2.9 (first S
+solved). haar_big0 evaluates an orbit S of SL(2,p) x Z_n at N = 2.7e8 in about 0.2 s with 2 threads (1e9 in about 2.5 s), so
+these cells could be pushed up the mu ladder.
+
+**Results (all haarcheck_gen VALID from (e,A) and (e,B); solution files research/frontier/sols/, check logs
+research/frontier/raise9/checks/):**
+
+| cell | was | first rung (mu) | now (mu, evaluations) | gain |
+|---|---:|---|---|---:|
+| (17,9) | 501,707,400 | 543,962,400 SL(2,151) x Z79 (13.2); 549,370,752 SL(2,97) x Z301 (15.7) | **553,208,880** SL(2,139) x Z103 "3 5 2" (17.7; cost-2 torus plateau after 2,883 evals, then 334 with FIXF) | +10.3 % |
+| (18,9) | 790,626,816 | 850,056,960 SL(2,191) x Z61 (11.35); 867,712,560 SL(2,131) x Z193 (16.5); 874,471,200 SL(2,151) x Z127 (19.0, FIXF finish) | **879,874,800** SL(2,149) x Z133 "3 5 3" (21.2, 422, fresh FIXF run) | +11.3 % |
+| (19,9) | 1,218,394,320 | 1,317,726,672 SL(2,277) x Z31 (13.4) | **1,328,920,800** SL(2,151) x Z193 "3 6 1" (15.7, 17) | +9.1 % |
+| (20,9) | 1,823,175,864 | 1,972,000,272 SL(2,373) x Z19 (12.5); 1,993,145,280 SL(2,239) x Z73 (15.35) | **1,998,558,432** SL(2,233) x Z79 "3 6 2" (16.2, 57) | +9.6 % |
+
+**What decided the shape: torus holes.** ODD_D_HOLES.md (beyond-d11) predicted that at odd D the extra holes are -I, the 2n
+central elements (+-I, z) and the ~p alpha-fixed torus elements, and recommended SL(2,p) x Z_n with small n. At D = 9 the
+first rungs (mu 12.5-13.4) solved with that shape, but every push above mu ~17 with large p and small n (SL(2,277) x Z13,
+SL(2,313) x Z9, SL(2,457) x Z7, SL(2,523) x Z7) stalled at cost 2-30. EVAL + UNCPRINT of the cost-2 plateaus (SL(2,277) x Z13
+and SL(2,139) x Z103 at (17,9)) showed an inverse pair of alpha-fixed TORUS elements a I + b g, z = 0, each time; squad card
+r3/w07 found no central holes in 6 sides where the clump model predicted ~9. So the director switched to small p (97-233) and
+large n with gcd(r - 1, n) = 1 (only z = 0 alpha-fixed): (19,9) SL(2,151) x Z193 at mu 15.7 solved in 17 evaluations, (20,9)
+SL(2,233) x Z79 at mu 16.2 in 57, (18,9) SL(2,131) x Z193 at mu 16.5 in 229, (17,9) SL(2,97) x Z301 at mu 15.7 in 2,639; with FIXF (below) (17,9) and (18,9) went to mu 17.7 and 21.2. Very
+small p is bad again (r4/p4: SL(2,53) x Z1867 stalled at 78): short relations in small SL(2,p) (FROBENIUS.md, r2/h13).
+ORBIT split: the fewest fixed generators gave the best random statistics (r3/w07, s18, s19: (18,9) "3 6 0" < "3 5 3" <
+"3 4 6"; (19,9) "3 6 1" < "3 5 4" < "3 4 7"), but at (18,9) the solves came with "3 5 3".
+
+**haar_big1: FIXF at D = 9.** haar_big0's FIXF screen (fully evaluate only candidate orbits that leave no alpha-fixed hole)
+existed for D = 10 only. haar_big1.c adds the odd-D test: an alpha-fixed x is within 8 of (e,A) iff v x is in
+X_4 = S^-1 S S^-1 S for some v in X_4 (one v per alpha-orbit), and the same with Y_4 = S S^-1 S S^-1 for side B. Validated
+against the full evaluation on five states (2 of 2, 0 of 0, 0 of 6, 0 of 6, 0 of 6 alpha-fixed holes; 0.06-0.34 s per screen).
+Results: the (17,9) cost-2 torus plateau of SL(2,139) x Z103 (mu 17.73) finished in 334 evaluations after 2,883 plain ones
+had stayed at 2; the (18,9) cost-2 torus plateau of SL(2,151) x Z127 (mu 19.0) finished in 519; a fresh FIXF run solved
+(18,9) SL(2,149) x Z133 at mu 21.2 in 422 evaluations. FIXF does not help generic holes: cost-6 plateaus at (17,9) mu 22.3,
+(19,9) mu 17.3, (20,9) mu 17.1 and 20.0 had no alpha-fixed hole and stayed at 6.
+
+**Inside the 2013 table (Δ <= 16): no raise.** Squad rounds 1-4 (65 cards, research/squads/LOG.md) tried: SL(2,p) x Z_n with
+small n at (8,9), (9,9), (11..14, 9) (worse at (13,9), at par elsewhere; best near misses cost 9-12); odd-order Frobenius
+groups Z_p x| Z_k at (6,9) (random-S statistics 2x better than SL(2,17) x Z13, cost 2 on 3 of ~170 fresh seeds of Z1559 x|_84
+Z41 and Z2551 x|_7 Z25, never 0), (7,9) (cost 16), (8,9) (18), (9,9) (24); products with a Frobenius factor; orbit order 5
+at (10,9)-(16,9) ((15,9) PSL(2,151) x Z61 "5 3 0" cost 4 at N just above the bar; no edge in random medians elsewhere);
+field-automorphism orbits at (8,9)/(9,9); product groups at (12,9); a twisted product Z173 x| PGL(2,29) at (10,9);
+single-orbit S (exhaustive over the representative) at (5,9)-(7,9); lifts of a 2+2 base and odd non-metacyclic groups at
+(4,9) (best cost 24 and 28); bi-coset graphs for (3,9) (weak negative).
+- (3,9): exhaustive cubic Haar search over 2,191 groups of order 254-330 and ~690 metacyclic groups of order 331-360 (r1/a02):
+  no diameter-9 graph; min cost 8 at N = 272 (Z17 x| Z16); cost 0 only at N = 253 (Z23 x| Z11 = the 506 value itself).
+- Covers (r3/w09): a regular cover of a solved D = 9 Haar graph never has diameter 9: every solved base has a same-side vertex
+  reached by exactly one non-backtracking walk of length <= 8, so in an M-fold regular cover the other M - 1 lifts of it are at
+  distance > 8 from the lift of the start.
+Why these cells did not fall: the values at Δ <= 16 sit at mu 23-47, where the orbit search of earlier jobs already ran for
+hours per cell; the squads' cards got ~1/10 core each on this 4-core machine (load ~20), i.e. 90-300 evaluations per card,
+and the near misses were generic holes (no alpha-fixed ones) that more search, not a screen, would have to remove.
+
+**Stopped (budget) at 01:10 UTC with these runs unfinished** (best states in research/frontier/raise9/runs/*.best):
+(17,9) SL(2,113) x Z193 mu 19.9 (cost 6), (18,9) SL(2,107) x Z361 mu 23.3 (24), (19,9) SL(2,239) x Z49 mu 17.8 (just
+started), (20,9) SL(2,107) x Z823 mu 19.1 (just started); (6,9) Z1559 x| Z41 director farm, 62 seeds, best cost 2 (seed 1013).
+Next steps: rungs of +1.5-2 in mu with p ~ 130-240, n with gcd(r - 1, n) = 1, FIXF on; at (19,9) and (20,9) the steps above
+mu 16 stalled with generic holes, so try more groups at mu 16.5-17.5 there.
 
 ## What failed, and why it matters for the next attempt
 

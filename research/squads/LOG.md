@@ -300,3 +300,12 @@ director's 2-thread queues. The remaining gains (next rungs at (17..20, 9), +0.5
 evaluations, which 16 cards on 4 cores cannot give (1/10 core each), so the last 3 hours go to the director's queues, a new
 odd-D FIXF screen (haar_big1, below) and the checks.
 Process: 3 more stray session-tool calls in round 4 (send_message, read_documentation), all rejected or read-only.
+
+### raise-d9 wrap-up (director, stopped for budget at 01:10 UTC)
+
+After the squads stopped, haar_big1 (FIXF at D = 9) finished two torus plateaus ((17,9) SL(2,139) x Z103 mu 17.73 in 334
+evaluations, (18,9) SL(2,151) x Z127 mu 19.0) and solved (18,9) SL(2,149) x Z133 at mu 21.2 in a fresh run. Final values,
+all haarcheck_gen VALID: (17,9) 553,208,880, (18,9) 879,874,800, (19,9) 1,328,920,800, (20,9) 1,998,558,432 (+9-11 %). No
+D = 9 cell at Δ <= 16 moved. Status: research/frontier/raise9/STATUS.md; section in research/frontier/beyond/BEYOND_TABLE.md.
+Squad verdict for this job: 65 cards, 0 raises; their measurements and negatives steered the director, whose own tools and
+checks produced every value (the same pattern as the big-squad test).

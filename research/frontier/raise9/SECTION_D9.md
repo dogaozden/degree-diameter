@@ -16,8 +16,8 @@ research/frontier/raise9/checks/):**
 
 | cell | was | first rung (mu) | now (mu, evaluations) | gain |
 |---|---:|---|---|---:|
-| (17,9) | 501,707,400 | 543,962,400 SL(2,151) x Z79 (13.2) | **549,370,752** SL(2,97) x Z301 "3 5 2" (15.7, 2,639) | +9.5 % |
-| (18,9) | 790,626,816 | 850,056,960 SL(2,191) x Z61 (11.35) | **867,712,560** SL(2,131) x Z193 "3 5 3" (16.5, 229) | +9.7 % |
+| (17,9) | 501,707,400 | 543,962,400 SL(2,151) x Z79 (13.2); 549,370,752 SL(2,97) x Z301 (15.7) | **553,208,880** SL(2,139) x Z103 "3 5 2" (17.7; cost-2 torus plateau after 2,883 evals, then 334 with FIXF) | +10.3 % |
+| (18,9) | 790,626,816 | 850,056,960 SL(2,191) x Z61 (11.35); 867,712,560 SL(2,131) x Z193 (16.5); 874,471,200 SL(2,151) x Z127 (19.0, FIXF finish) | **879,874,800** SL(2,149) x Z133 "3 5 3" (21.2, 422, fresh FIXF run) | +11.3 % |
 | (19,9) | 1,218,394,320 | 1,317,726,672 SL(2,277) x Z31 (13.4) | **1,328,920,800** SL(2,151) x Z193 "3 6 1" (15.7, 17) | +9.1 % |
 | (20,9) | 1,823,175,864 | 1,972,000,272 SL(2,373) x Z19 (12.5); 1,993,145,280 SL(2,239) x Z73 (15.35) | **1,998,558,432** SL(2,233) x Z79 "3 6 2" (16.2, 57) | +9.6 % |
 
@@ -28,7 +28,7 @@ SL(2,313) x Z9, SL(2,457) x Z7, SL(2,523) x Z7) stalled at cost 2-30. EVAL + UNC
 and SL(2,139) x Z103 at (17,9)) showed an inverse pair of alpha-fixed TORUS elements a I + b g, z = 0, each time; squad card
 r3/w07 found no central holes in 6 sides where the clump model predicted ~9. So the director switched to small p (97-233) and
 large n with gcd(r - 1, n) = 1 (only z = 0 alpha-fixed): (19,9) SL(2,151) x Z193 at mu 15.7 solved in 17 evaluations, (20,9)
-SL(2,233) x Z79 at mu 16.2 in 57, (18,9) SL(2,131) x Z193 at mu 16.5 in 229, (17,9) SL(2,97) x Z301 at mu 15.7 in 2,639. Very
+SL(2,233) x Z79 at mu 16.2 in 57, (18,9) SL(2,131) x Z193 at mu 16.5 in 229, (17,9) SL(2,97) x Z301 at mu 15.7 in 2,639; with FIXF (below) (17,9) and (18,9) went to mu 17.7 and 21.2. Very
 small p is bad again (r4/p4: SL(2,53) x Z1867 stalled at 78): short relations in small SL(2,p) (FROBENIUS.md, r2/h13).
 ORBIT split: the fewest fixed generators gave the best random statistics (r3/w07, s18, s19: (18,9) "3 6 0" < "3 5 3" <
 "3 4 6"; (19,9) "3 6 1" < "3 5 4" < "3 4 7"), but at (18,9) the solves came with "3 5 3".
@@ -37,7 +37,10 @@ ORBIT split: the fewest fixed generators gave the best random statistics (r3/w07
 existed for D = 10 only. haar_big1.c adds the odd-D test: an alpha-fixed x is within 8 of (e,A) iff v x is in
 X_4 = S^-1 S S^-1 S for some v in X_4 (one v per alpha-orbit), and the same with Y_4 = S S^-1 S S^-1 for side B. Validated
 against the full evaluation on five states (2 of 2, 0 of 0, 0 of 6, 0 of 6, 0 of 6 alpha-fixed holes; 0.06-0.34 s per screen).
-RESULTS_FIXF
+Results: the (17,9) cost-2 torus plateau of SL(2,139) x Z103 (mu 17.73) finished in 334 evaluations after 2,883 plain ones
+had stayed at 2; the (18,9) cost-2 torus plateau of SL(2,151) x Z127 (mu 19.0) finished in 519; a fresh FIXF run solved
+(18,9) SL(2,149) x Z133 at mu 21.2 in 422 evaluations. FIXF does not help generic holes: cost-6 plateaus at (17,9) mu 22.3,
+(19,9) mu 17.3, (20,9) mu 17.1 and 20.0 had no alpha-fixed hole and stayed at 6.
 
 **Inside the 2013 table (Δ <= 16): no raise.** Squad rounds 1-4 (65 cards, research/squads/LOG.md) tried: SL(2,p) x Z_n with
 small n at (8,9), (9,9), (11..14, 9) (worse at (13,9), at par elsewhere; best near misses cost 9-12); odd-order Frobenius
@@ -55,3 +58,9 @@ single-orbit S (exhaustive over the representative) at (5,9)-(7,9); lifts of a 2
 Why these cells did not fall: the values at Δ <= 16 sit at mu 23-47, where the orbit search of earlier jobs already ran for
 hours per cell; the squads' cards got ~1/10 core each on this 4-core machine (load ~20), i.e. 90-300 evaluations per card,
 and the near misses were generic holes (no alpha-fixed ones) that more search, not a screen, would have to remove.
+
+**Stopped (budget) at 01:10 UTC with these runs unfinished** (best states in research/frontier/raise9/runs/*.best):
+(17,9) SL(2,113) x Z193 mu 19.9 (cost 6), (18,9) SL(2,107) x Z361 mu 23.3 (24), (19,9) SL(2,239) x Z49 mu 17.8 (just
+started), (20,9) SL(2,107) x Z823 mu 19.1 (just started); (6,9) Z1559 x| Z41 director farm, 62 seeds, best cost 2 (seed 1013).
+Next steps: rungs of +1.5-2 in mu with p ~ 130-240, n with gcd(r - 1, n) = 1, FIXF on; at (19,9) and (20,9) the steps above
+mu 16 stalled with generic holes, so try more groups at mu 16.5-17.5 there.
