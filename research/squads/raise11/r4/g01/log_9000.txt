@@ -1,0 +1,13 @@
+group sl 179 x Z_1, N=5735160 (2N=11470320), rows 32040 x 179 bits (doubled row 24 words), memory 0.02 GB, threads 1
+alpha: conj by mat(0,178,1,178), z -> 0 z on Z_1 (fixed z: 1); ORBIT k=3 m=2 f=1; W=7.25594e+07 lambda=12.652 mu=18.36
+setup 0.0s
+start cost=46 (0.1s per eval)
+t=0 step=1 evals=5 slot=1 cand=50 cost=46 best=46 T=1.26
+t=1 step=2 evals=9 slot=0 cand=42 cost=42 best=42 T=1.06
+t=1 step=3 evals=13 slot=0 cand=64 cost=42 best=42 T=0.89
+t=1 step=4 evals=17 slot=1 cand=34 cost=34 best=34 T=0.75
+t=1 step=5 evals=21 slot=1 cand=16 cost=16 best=16 T=0.63
+t=1 step=6 evals=25 slot=1 cand=76 cost=16 best=16 T=0.53
+t=2 step=7 evals=29 slot=1 cand=44 cost=16 best=16 T=0.45
+t=3 step=8 evals=33 slot=0 cand=30 cost=16 best=16 T=0.38
+t=3 step=9 evals=37 slot=1 cand=30 cost=16 best=16 T=0.32

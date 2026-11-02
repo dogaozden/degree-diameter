@@ -1,0 +1,33 @@
+checker: haarcheck_lean
+command: ./bin/haarcheck_lean runs/d8D11_sl_107_19_orb3-2-2_r4g02.out
+start: 2026-11-02T00:26:50Z
+sha256 179df797fd8985860df27b329e0c084f00e67a52ef21f25f5de424699e8868c5  ./bin/haarcheck_lean
+sha256 2fbbede3c8c835e6a7f6c40cfc52a5d4a77c6ecb2d78d4a3768f449a7380f4a1  runs/d8D11_sl_107_19_orb3-2-2_r4g02.out
+haarcheck_lean: sl 107 x Z_19, N = 23273784, vertices 46547568, d = 8, D = 11; self-tests ok (1000000 index round trips)
+  root (e,A) step 1 (push): side B has 8 of 23273784   [0 s]
+  root (e,A) step 2 (push): side A has 57 of 23273784   [0 s]
+  root (e,A) step 3 (push): side B has 400 of 23273784   [0 s]
+  root (e,A) step 4 (push): side A has 2801 of 23273784   [0 s]
+  root (e,A) step 5 (push): side B has 19608 of 23273784   [0 s]
+  root (e,A) step 6 (push): side A has 136861 of 23273784   [0 s]
+  root (e,A) step 7 (push): side B has 940573 of 23273784   [0 s]
+  root (e,A) step 8 (push): side A has 5834097 of 23273784   [0 s]
+  root (e,A) step 9 (push): side B has 20166330 of 23273784   [2 s]
+  root (e,A) step 10 (pull): side A has 23273784 of 23273784   [3 s]
+  root (e,A) step 11 (pull): side B has 23273784 of 23273784   [3 s]
+root (e,A): complete, every vertex within 11 at step 11 (unreached A 0, B 0), 3 s
+  root (e,B) step 1 (push): side A has 8 of 23273784   [0 s]
+  root (e,B) step 2 (push): side B has 57 of 23273784   [0 s]
+  root (e,B) step 3 (push): side A has 400 of 23273784   [0 s]
+  root (e,B) step 4 (push): side B has 2801 of 23273784   [0 s]
+  root (e,B) step 5 (push): side A has 19608 of 23273784   [0 s]
+  root (e,B) step 6 (push): side B has 136867 of 23273784   [0 s]
+  root (e,B) step 7 (push): side A has 940573 of 23273784   [0 s]
+  root (e,B) step 8 (push): side B has 5833925 of 23273784   [0 s]
+  root (e,B) step 9 (push): side A has 20166330 of 23273784   [2 s]
+  root (e,B) step 10 (pull): side B has 23273784 of 23273784   [3 s]
+  root (e,B) step 11 (pull): side A has 23273784 of 23273784   [3 s]
+root (e,B): complete, every vertex within 11 at step 11 (unreached A 0, B 0), 3 s
+VALID d=8 D=11 group=sl 107 x Z_19 N=23273784 vertices=46547568
+exit: 0
+end: 2026-11-02T00:26:57Z (7 s)
