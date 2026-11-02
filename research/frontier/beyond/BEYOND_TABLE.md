@@ -14,6 +14,10 @@ Extended 2026-11-01 by job beyond-d13 (branch claude/beyond-d13-search-z35z61): 
 and D = 14 at Δ = 3..8, and new values for (4,11), (5,11), (4,12), (5,12); see the section "D = 13 at Δ = 3..10 and
 D = 14 at Δ = 3..8" below.
 
+Raised 2026-11-02 by job raise-d10 (branch claude/raise-d10-beyond-rcdq5p): (17,10), (18,10), (19,10) (checked) and a find
+at (20,10) whose check was stopped unfinished; see the section "D = 10 column (job raise-d10)" below and
+research/frontier/raise10/STATUS.md.
+
 ## Summary
 
 - **Optimal (Moore graphs), 9 cells:** (17|18|20, 3), (17|18|20, 4), (17|18|20, 6) — incidence graphs of PG(2,q),
@@ -75,7 +79,7 @@ plane, generalized quadrangle or generalized hexagon of order 18, whose existenc
 | (18,7) | **7,240,212** | 14.12 | 51,292,328 | level graph of H(13): 9 copies, 4 matchings, Z9 | same theorem; BFS from 64 random vertices, max ecc 7 (checks/d7_levelgraphs_sampled.txt) | 7,240,212 (polygon cover 9xH(13) (j=4)) |
 | (18,8) | **57,637,680** | 6.61 | 871,969,674 | Haar graph SL(2,61) x Z127, S = {e} + 2 fixed + 5 orbits of size 3 | hcheck5 VALID (runs/check_hcheck5_d18D8_sl_61_127_orb3_s2.txt) | 2013-table D=8 pattern (no construction known): 108,603,180 (q=13, j=4); Haar size law at mu = 5: 2N = 5.61e+07 |
 | (18,9) | **790,626,816** | 5.33 | 14,823,484,556 | Haar graph SL(2,127) x Z193, S = {e} + 2 fixed + 5 orbits of size 3 | hcheck5 VALID (runs/check_hcheck5_d18D9_sl_127_193_orb3_s2.txt) | Haar size law at mu = 5: 2N = 8.14e+08 |
-| (18,10) | **11,787,972,672** | 4.68 | 251,999,237,550 | Haar graph PSL(2,223) x Z1063, S = {e} + 2 fixed + 5 orbits of size 3 | hcheckpsl VALID, ecc 10/10 (runs/check_hcheckpsl_d18D10_psl_223_1063_orb3_s1.txt) | Haar size law at mu = 5: 2N = 1.21e+10 |
+| (18,10) | **12,784,852,920** | 5.07 | 251,999,237,550 | Haar graph PSL(2,211) x Z1361, S = {e} + 2 fixed + 3 orbits of size 5 (automorphism of order 5; FIXF screen; job raise-d10, 21 evaluations, mu 17.6); was 11,787,972,672 (PSL(2,223) x Z1063, orbits of size 3) | hcheckpsl VALID, ecc 10/10 (research/frontier/raise10/checks/d18D10_psl_211_1361_orb5-3-3_s2.hcheckpsl.txt) | Haar size law at mu = 5: 2N = 1.21e+10 |
 | (19,3) | **624** | 90.96 | 686 | fourth hat R(17;2,3), POLISHED.md Thm 2.2 (19-regular) | apsp: checks/d19D3_n624_fourthhat_q17.apsp.txt | 624 (fourth hat, q=17 (POLISHED Thm 2.2)) |
 | (19,4) | **10,982** | 88.92 | 12,350 | AS(17) + clones of two elliptic quadrics, POLISHED.md Cor. A1 (19-regular) | apsp: checks/d19D4_n10982_AS17_clones.apsp.txt | 10,982 (Thm B, q=17: 2q^2 Delta) |
 | (19,5) | **52,428** | 23.58 | 222,296 | doubled-matching lift of W(16) over Z6 (DM_D5.md; = MDM with k = 1); nu, sigma annealed by squad r1/c05 (dmfast, routes allowed) | apsp: checks/d19D5_n52428_W16_dm_Z6.apsp.txt | 52,428 (doubled matching 6x W(16) (DM_D5, annealed)) |
@@ -83,7 +87,7 @@ plane, generalized quadrangle or generalized hexagon of order 18, whose existenc
 | (19,7) | **11,184,810** | 15.53 | 72,025,880 | level graph of H(16): 5 copies joined by 2 matchings, voltages 1, 2 in Z5 (polygon cover; D7_HEXAGON.md Thm A) | theorem (any matchings); builder all-pairs at q = 3, 4, r = 1..3 (r1/c09 small/); this instance: BFS from 64 random vertices, max ecc 7 (checks/d7_levelgraphs_sampled.txt) | 11,184,810 (polygon cover 5xH(16) (j=2)) |
 | (19,8) | **86,317,296** | 6.66 | 1,296,465,944 | Haar graph PSL(2,103) x Z79, S = {e} + 6 orbits of size 3 | hcheckpsl VALID (runs/check_hcheckpsl_d19D8_psl_103_79_orb3_s1.txt) | 22,369,620 (polygon cover n+2: 10x H(16)); 2013-table D=8 pattern (no construction known): 159,284,664 (q=13, j=5); Haar size law at mu = 5: 2N = 8.15e+07 |
 | (19,9) | **1,218,394,320** | 5.22 | 23,336,387,096 | Haar graph SL(2,131) x Z271, S = {e} + 6 orbits of size 3 | hcheck5 VALID (runs/check_hcheck5_d19D9_sl_131_271_orb3_s2.txt) | Haar size law at mu = 5: 2N = 1.25e+09 |
-| (19,10) | **19,233,722,496** | 4.58 | 420,054,967,832 | Haar graph SL(2,607) x Z43, S = {e} + 6 orbits of size 3 | hcheck5 VALID, ecc 10/10 (runs/check_hcheck5_d19D10_sl_607_43_orb3_s1.txt) | Haar size law at mu = 5: 2N = 1.96e+10 |
+| (19,10) | **20,785,224,720** | 4.95 | 420,054,967,832 | Haar graph PSL(2,311) x Z691, S = {e} + 3 fixed + 3 orbits of size 5 (automorphism of order 5; FIXF screen; job raise-d10, 46 evaluations, mu 17.4); was 19,233,722,496 (SL(2,607) x Z43, orbits of size 3) | hcheckpsl VALID, ecc 10/10 (research/frontier/raise10/checks/d19D10_psl_311_691_orb5-3-4_s2.hcheckpsl.txt) | Haar size law at mu = 5: 2N = 1.96e+10 |
 | (20,3) | **762** | 100.00 | 762 | PG(2,19) incidence graph (Moore graph) | apsp: checks/d20D3_n762_pg2_19.apsp.txt | 762 (PG(2,19) incidence graph (Moore)) |
 | (20,4) | **14,480** | 100.00 | 14,480 | W(19) incidence graph (Moore graph) | apsp: checks/d20D4_n14480_W19.apsp.txt | 14,480 (W(19) incidence graph (Moore)) |
 | (20,5) | **75,000** | 27.26 | 275,116 | route-chart lift over F5 (4 letters x 5 scalars, fibre F5^4): K3,3 + doubled matching over Z20 (m = 60), chart with 22 singular patterns (squad r1 c04); also 66,640 by the multi-doubled-matching lift of W(13), Z2 x Z7 (MDM.md) | apsp: checks/d20D5_n75000_routechart_F5_Z20.apsp.txt; checks/d20D5_n66640_W13_3dm_Z14.apsp.txt | 82,500 (route chart 4 letters x F5 IF a controller with m = 66 per side existed (not found; 2*m*q^4)) |
@@ -354,6 +358,22 @@ part way. (4,8) and (4,9) near misses above the 2013 values (2,184, 4,970): Z55 
 Z101 x|_5 Z25 (5,050, cost 2) (r7/j04, j05); (4,10) Z215 x|_2 Z28 (12,040) at cost 1 (r7/j03). An exhaustive 2-opt from the
 (4,8) and (4,9) states (hmeta OPT2: every pair of generators replaced by every pair of group elements, 3.6e6 and 1.9e7
 evaluations) found no cost 0: no generator set within two changes of those states has the required diameter.
+
+### D = 10 column (job raise-d10, 2026-11-02; stopped early for budget)
+
+Haar graphs of PSL(2,p) x Z_n with S closed under an automorphism of order 5 (k = 5 orbits) and the FIXF screen, which counts a
+candidate's holes among the alpha-fixed elements exactly by meet in the middle before the full evaluation (the (16,10) recipe).
+Job tool research/frontier/raise10/haar_big1.c extends FIXF to f = 0 (S = free orbits only); validated against full
+evaluations on 15 random S. All Δ = 17..20 values above were at size-law mu ~3 (k = 3, first S solved); with k = 5 + FIXF
+the searches solved at mu 17-18 in 9-46 evaluations and at mu 29 in 598.
+
+- (17,10) 7,832,948,760, (18,10) 12,784,852,920, (19,10) 20,785,224,720: hcheckpsl VALID (rows above).
+- (20,10) 33,036,831,960 (PSL(2,331) x Z911, four free orbits of size 5, haar_big1 f = 0 FIXF, 9 evaluations): found, the
+  independent check was stopped unfinished, so the row above keeps 30,518,778,360.
+- (3..8,10): four Haiku squad rounds (65 cards) and an exhaustive search of Δ = 4 Haar graphs of metacyclic groups (exh4) found
+  no raise. Exhaustive: no Frobenius group of order 6,209-6,600 has a (4,10) Haar graph. Near misses: (5,10) and (6,10) at one
+  hole (strict 1-opt local minima). (12,10), (13,10) at one orbit of holes when stopped. Details:
+  research/frontier/raise10/STATUS.md and research/squads/LOG.md.
 
 ## What failed, and why it matters for the next attempt
 

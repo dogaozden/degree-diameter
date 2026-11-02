@@ -164,3 +164,10 @@ Reading: four squad rounds (65 cards) produced no raise of (3..8,10). The near m
 fresh lineages keep landing at 2-4; two rounds in a row added nothing new. The squad stops here; the remaining CPU goes to
 the director's checks and the mid cells, where k = 5 FIXF is new and evaluations are cheap.
 Process: two more stray tool calls by cards (both rejected); one card's shell hung on an append and it used Edit instead.
+
+### Stop (01:08 UTC, Doğa: stop for budget)
+
+All searches and checks were stopped. Checked: (17,10) 7,832,948,760, (18,10) 12,784,852,920, (19,10) 20,785,224,720.
+Found but unchecked: (20,10) 33,036,831,960 (check stopped after 38 minutes). Open runs at stop: (13,10) and (12,10) at cost 5,
+(10,10) at cost 10. Exhaustive (4,10) sweep: all 39 Frobenius groups done (no solution), 6 of 23 central-involution groups done.
+No squad round 5. Status note: research/frontier/raise10/STATUS.md.
