@@ -24,6 +24,11 @@ ROWS = {
               'earlier 74,066 (Z1277 x\\|_964 Z29, beyond-d13)',
               'metacheck VALID from (e,A) and (e,B) and apsp VALID, diameter exactly 12 '
               '(research/frontier/raise_small/checks/d4D12_meta_1123_33_60_e10.check.txt)'),
+    (4, 13): (193058, 'Haar graph of the odd-order Frobenius group Z1163 x\\|_102 Z83 (order 96,529), S random '
+              '(hmeta; director, fresh seed 2006 after squad r3/e10 left it at cost 2; solution '
+              'research/frontier/sols/d4D13_meta_1163_83_102_dir.txt); earlier 192,382 (Z2237 x\\|_1984 Z43, beyond-d13)',
+              'metacheck VALID from (e,A) and (e,B) and apsp VALID, diameter exactly 13 '
+              '(research/frontier/raise_small/checks/d4D13_meta_1163_83_102_dir.check.txt)'),
     (4, 14): (498798, 'Haar graph of the Frobenius group Z3079 x\\|_568 Z81 (order 249,399), S random (hmeta, '
               'raise-small-d squad r1/c15; solution research/frontier/sols/d4D14_meta_3079_81_568_c15.txt); earlier '
               '497,042 (Z2731 x\\|_2400 Z91, beyond-d13)',
