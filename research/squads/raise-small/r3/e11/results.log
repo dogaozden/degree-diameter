@@ -1,0 +1,17 @@
+p=3 N=136 m=17 k=8 r=2 c=1 d=8 fpf=1 seed=1 secs=12 wall=75 :: end best 10 its 858724
+p=3 N=140 m=5 k=28 r=2 c=1 d=4 fpf=1 seed=1 secs=10 wall=61 :: end best 10 its 713277
+p=3 N=136 m=17 k=8 r=4 c=1 d=4 fpf=1 seed=1 secs=10 wall=59 :: end best 2 its 719366
+chain 136 17 8 4 seed2 T0=4 done
+polish N=136 17 8 4 cost2 -> local minimum 2 (exact)
+p=3 N=136 m=17 k=4 r=4 c=2 d=4 fpf=1 seed=1 secs=10 wall=68 :: end best 36 its 715108
+p=3 N=147 m=7 k=21 r=2 c=1 d=3 fpf=1 seed=1 secs=10 wall=69 :: end best 16 its 657549
+p=3 N=150 m=3 k=50 r=2 c=1 d=2 fpf=1 seed=1 secs=10 wall=68 :: end best 14 its 654798
+p=3 N=144 m=3 k=48 r=2 c=1 d=2 fpf=1 seed=1 secs=10 wall=65 :: end best 12 its 663507
+p=3 N=136 m=17 k=8 r=4 c=1 d=4 fpf=1 seed=2 secs=10 wall=69 :: end best 2 its 709223
+p=3 N=136 m=17 k=8 r=4 c=1 d=4 fpf=1 seed=3 secs=10 wall=69 :: end best 2 its 723126
+polish N=136 17 8 4 seed2 cost2 done
+p=4 N=110 m=11 k=10 r=2 c=1 d=10 fpf=1 seed=1 secs=10 wall=68 :: end best 32 its 646055
+p=4 N=110 m=11 k=10 r=3 c=1 d=5 fpf=1 seed=1 secs=10 wall=65 :: end best 14 its 666205
+p=4 N=104 m=13 k=8 r=5 c=1 d=4 fpf=1 seed=1 secs=10 wall=59 :: end best 10 its 694548
+chain N=136 17 8 4 from s1 seed5 T0=4
+p=3 N=136 m=17 k=8 r=16 c=1 d=2 fpf=1 seed=1 secs=10 wall=67 :: end best 26 its 695386

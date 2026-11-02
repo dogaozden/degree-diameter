@@ -1,0 +1,9 @@
+seed 2001 RESULT d=4 D=13 group=meta 1163 83 102 N=96529 vertices=193058 best=2 evals=237559 time=70.0
+seed 2002 RESULT d=4 D=13 group=meta 1163 83 102 N=96529 vertices=193058 best=2 evals=243883 time=70.0
+seed 2003 RESULT d=4 D=13 group=meta 1163 83 102 N=96529 vertices=193058 best=2 evals=244155 time=70.0
+seed 2004 RESULT d=4 D=13 group=meta 1163 83 102 N=96529 vertices=193058 best=2 evals=247249 time=70.0
+seed 2005 RESULT d=4 D=13 group=meta 1163 83 102 N=96529 vertices=193058 best=2 evals=242778 time=70.0
+seed 2006 RESULT d=4 D=13 group=meta 1163 83 102 N=96529 vertices=193058 best=0 evals=76127 time=21.8
+from (e,A): reached A 96529/96529, B 96529/96529 within 13; level sizes [1, 4, 12, 36, 108, 324, 972, 2916, 8548, 23252, 50728, 65276, 36160, 4721]
+from (e,B): reached A 96529/96529, B 96529/96529 within 13; level sizes [1, 4, 12, 36, 108, 324, 972, 2916, 8548, 23252, 50674, 65276, 36214, 4721]
+VALID d=4 D=13 group=meta 1163 83 102 x Z_1 N=96529 vertices=193058 (1s)

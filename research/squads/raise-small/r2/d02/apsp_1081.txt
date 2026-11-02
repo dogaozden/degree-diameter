@@ -1,0 +1,4 @@
+sol2edges: out1081.sol 47 23 2 -> out1081.edges (4324 vertices, 6486 edges)
+apsp out1081.edges 3 13:
+n=4324 edges=6486 degree min=3 max=3 bipartite=yes diameter=13
+RESULT VALID d=3 D=13 n=4324
