@@ -60,3 +60,20 @@ D5e -> D5o and fixes C10, so (D5e,D5ot) ~ (D5o,D5et), (D5e,C10t) ~ (D5o,C10t), (
 isomorphic pairs agree up to sampling noise (e.g. medUA 343 vs 345 for (a) vs D5o x D5ot). Also the family depends only
 on the G-classes of L and R separately (X(G;L,R;D) = X(G;L,gRg^-1; D g^-1)), so the card's class list is enough.
 Reference K (ref/K_scanA.tsv, 16,293 classes): median uBA+uAA = 368, 40 % have uBA+uAA <= 300.
+
+## Exhaustive scan of pair (a) = D5e x D5et (card's pair with L = D5x0, R = D5')
+Command (24 resumable chunks, each `timeout 100 nice -n 10 ../../cq/cq2 181 1 2 $D5e $D5et scanLR scan_D5e_D5et.tsv 300 k 24`,
+k = 0..23, via chunk.sh; each chunk about 70 s for about 2470 members). Result: 59,292 members (= all regular double cosets
+L z R; c10:59292 census), 59,292 unique ids, 22,860 connected (uBA+uAA <= 300, uBB computed; 38.6 %).
+- Min C over connected members = 54, no C = 0 (no CLAIM). Histogram of the lowest values: 54 (8 members), 60 (8), 62 (8),
+  64 (8), 68 (8), 70 (8), 72 (24), 74 (16), 76 (8), 80 (24), 82 (8), 84 (40). Median C over connected = 218.
+- 10 best (id, z, uBA uAA uBB): 47939 (9 11 153 167 0) C 54; 47940 (same z, res 1) C 54; 50580 (9 73 90 167 0) C 54;
+  50581 (same, res 1) C 54; 51953 (10 21 106 96 0) C 54; 51954 (res 1) C 54; 52113 (10 23 144 96 0) C 54;
+  52114 (res 1) C 54; 28383 (3 38 86 64 0) C 60 (uBA 58 uAA 1 uBB 1); 28384 (res 1) C 60.
+- Every member comes in a pair (z, z*(I,1)): the central Z2 twist flips the residue and gives the same costs.
+- Best member re-checked with member mode: uBA 54 uAA 0 uBB 0 (C 54). Its 54 uncovered B-vertices are in
+  regular (size-10) and size-2 orbits (unc mode, unc_best_47939.txt).
+- Full-family medUA (uBA+uAA over all 59,292) = 366, so the sample estimate (343 / 362) was right.
+
+Untwisted pairs (D5e x C10, C10 x C10, D5o x D5o, D5e x D5o, D5o x C10): all 297 members disconnected
+(uBA+uAA about 593000), as the residue argument predicts.
