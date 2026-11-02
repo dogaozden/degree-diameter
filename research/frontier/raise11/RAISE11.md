@@ -28,16 +28,16 @@ orbit shape solves at mu ~ 15 within a few fresh runs.
 | cell | was | now | gain | group | found by | checks |
 |---|---:|---:|---:|---|---|---|
 | (5,11) | 311,426 | 314,714 | +1.05 % | Frobenius Z2969 x\|_1038 Z53, plain random S | squad r5/h02 (haar_meta) | metacheck, build_haar2.py |
-| (6,11) | 2,122,518 | 2,137,526 | +0.71 % | Frobenius Z15053 x\|_5955 Z71, plain random S | squad r4/g05 (haar_meta) | metacheck, build_haar2.py |
-| (7,11) | 11,012,976 | 11,426,448 | +3.75 % | SL(2,67) x Z19, ORBIT "3 2 1" | squad r3/f01 | haarcheck_gen, haarcheck_lean |
+| (6,11) | 2,122,518 | 2,153,062 | +1.44 % | Frobenius Z14747 x\|_11174 Z73, plain random S | squad r5/h01 (haar_meta) | metacheck, build_haar2.py |
+| (7,11) | 11,012,976 | 11,470,320 | +4.15 % | SL(2,179), ORBIT "3 2 1" | director loop (600-s run) | haarcheck_gen, haarcheck_lean |
 | (8,11) | 45,329,808 | 46,547,568 | +2.69 % | SL(2,107) x Z19, ORBIT "3 2 2" | squad r4/g02 | haarcheck_gen, haarcheck_lean |
 | (9,11) | 155,250,816 | 159,415,392 | +2.68 % | SL(2,137) x Z31, ORBIT "3 3 0" | director loop (600-s run) | haarcheck_gen, haarcheck_lean |
 | (10,11) | 460,691,568 | 469,768,992 | +1.97 % | SL(2,617), ORBIT "3 3 1" | director loop | haarcheck_gen |
 | (12,11) | 2,976,066,240 | 3,039,136,800 | +2.12 % | SL(2,601) x Z7, ORBIT "3 4 0" | director (5 evaluations) | haarcheck_gen (3,781 s) |
-| (16,11) | 29,961,590,400 | 33,763,363,200 | +12.69 % | PSL(2,449) x Z373, ORBIT "3 5 1", first random S | director | haarcheck_gen (see the run log) |
+| (16,11) | 29,961,590,400 | (33,763,363,200) | (+12.69 %) | PSL(2,449) x Z373, ORBIT "3 5 1", first random S | director | **NOT YET CHECKED**: cost 0 in haar_big0 only; the haarcheck_gen run was stopped at the budget stop |
 
-Intermediate values also found and checked: (5,11) 311,942 (Z8209 x| Z19); (6,11) 2,124,866 (Z25913 x| Z41) and
-2,135,280 (PSL(2,41) x Z31, orbit search); (7,11) 11,311,584 (PSL(2,47) x Z109); (8,11) 46,309,200 (SL(2,149) x Z7) and
+Intermediate values also found and checked: (5,11) 311,942 (Z8209 x| Z19) and 312,206 (Z4219 x| Z37); (6,11) 2,137,526 (Z15053 x| Z71); (6,11) 2,124,866 (Z25913 x| Z41) and
+2,135,280 (PSL(2,41) x Z31, orbit search); (7,11) 11,311,584 (PSL(2,47) x Z109) and 11,426,448 (SL(2,67) x Z19); (8,11) 46,309,200 (SL(2,149) x Z7) and
 45,445,680 (PSL(2,71) x Z127, card check only); (10,11) 461,335,200 (SL(2,151) x Z67).
 
 Not raised: (11,11) (SL(2,449) x Z7 at +2.09 % reached cost 6-8 in 600-s runs of ~70 evaluations; the (9,11) solve needed
@@ -79,3 +79,19 @@ run. For card rounds: give Δ >= 9 to longer director loops, or let cards chain 
   searches and cards ran. Big checks need a quiet window (or haarcheck_lean at N/4 bytes, slower).
 - `pkill -f <pattern>` from a Bash tool call kills the calling shell when the pattern occurs in its own command line;
   use PIDs.
+
+## Status at the budget stop (2026-11-02 ~01:10 UTC)
+
+Stopped on Doğa's instruction; nothing is running. Verified raises: (5,11) 314,714, (6,11) 2,153,062, (7,11) 11,470,320,
+(8,11) 46,547,568, (9,11) 159,415,392, (10,11) 469,768,992, (12,11) 3,039,136,800 (each by two independent checkers
+except (10,11) and (12,11): haarcheck_gen only). **(16,11) 33,763,363,200 is a candidate only**: haar_big0 found cost 0
+for the first random S of PSL(2,449) x Z373 (lambda = 36.6, mu ~ 0) and re-evaluated it at cost 0, but no independent check
+finished (two runs were OOM-killed by the 14.3 GB bash cgroup; the third, in a quiet window, was stopped after ~50 min,
+before its first root finished). Solution file: research/frontier/raise11/runs/d16D11_psl_449_373_orb3-5-1_s1.out; it
+needs haarcheck_psl SOL A and SOL B (~12 GB each) or haarcheck_gen (12.7 GB) on an otherwise idle machine. The table row
+for (16,11) is left at 29,961,590,400.
+
+Left undone: (11,11) (SL(2,449) x Z7, +2.09 %, best cost 6-8; needs runs of ~10^3 evaluations, about an hour each on
+one core); (13,11), (14,11) (planned SL(2,643) x Z13 and SL(2,619) x Z31, model K 5-6; stopped for the checks); (15,11);
+next rungs: (7,11) SL(2,181) (+3.4 %), (9,11) SL(2,227) x Z7 (+2.7 %, cost 12 in one 600-s run), (8,11) SL(2,151) x Z7
+or PSL(2,103) x Z43, (6,11) and (5,11) further Frobenius rungs (they solved in 1-3 fresh seeds each).

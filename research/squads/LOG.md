@@ -271,3 +271,24 @@ g01 running.
 Director: moved (9,11) SL(2,137) x Z31 to a 600-s loop: **solved on its first run (851 evaluations; 159,415,392, +2.68 %;
 haarcheck_gen + haarcheck_lean VALID)**. So the 95-s card limit, not the group, held (9,11) back: at Δ >= 9 one lineage
 needs ~10^3 evaluations. (16,11) check (haarcheck_gen, 12.7 GB) running in a quiet window since 00:20.
+
+### Round 5 and stop (2026-11-02, 00:55-01:10 UTC)
+Cards h01 (6,11) Frobenius ladder, h02 (5,11) Frobenius farm/ladder (haar_meta). h02: **(5,11) 312,206** (Z4219 x| Z37)
+then **314,714** (Z2969 x|_1038 Z53); h01: **(6,11) 2,153,062** (Z14747 x|_11174 Z73); all metacheck + build_haar2.py
+VALID. Director loop: **(7,11) 11,470,320** (SL(2,179), 2nd 600-s run, 783 evaluations; haarcheck_gen + haarcheck_lean
+VALID). Stopped at ~01:10 UTC on Doğa's budget instruction (h01 stopped mid-run; director loops on (7,11) SL(2,181),
+(9,11) SL(2,227) x Z7, (11,11) SL(2,449) x Z7 and the (16,11) haarcheck_gen run killed).
+
+## 2026-11-02, raise-d11: wrap-up (director)
+Verified raises (was -> now): (5,11) 311,426 -> 314,714; (6,11) 2,122,518 -> 2,153,062; (7,11) 11,012,976 ->
+11,470,320; (8,11) 45,329,808 -> 46,547,568; (9,11) 155,250,816 -> 159,415,392; (10,11) 460,691,568 -> 469,768,992;
+(12,11) 2,976,066,240 -> 3,039,136,800. Candidate, unchecked: (16,11) 33,763,363,200 (PSL(2,449) x Z373; cost 0 in
+haar_big0; checks OOM-killed or stopped).
+Who found what: squads found (5,11), (6,11), (8,11) and the intermediate values of (5..8,11) and (10,11); the director's
+loops found (7,11), (9,11), (10,11), (12,11) and the (16,11) candidate. The key idea came from squad card r1/c13 (clump
+model ranking SL(2,p) x Z_n with small n), first confirmed by r1/c06. Squad rounds: 5 (16, 13, 12, 5, 2 cards).
+Process lessons: (1) on this 4-core box ~20 concurrent searches made each evaluation 20-25x slower than on an idle core,
+so rounds of 16 cards lost throughput; (2) at Δ >= 9 a lineage needs ~10^3 evaluations, more than 95-s card runs get, so
+those cells belong in longer director runs; (3) the 14.3 GB bash cgroup blocks 12 GB checks beside anything else;
+(4) autogroup scheduling makes `nice` in card shells ineffective; (5) cards still made stray read-only session-tool
+calls despite the rules (no effect). Notes: research/frontier/raise11/RAISE11.md.

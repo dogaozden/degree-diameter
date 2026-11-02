@@ -14,6 +14,10 @@ Extended 2026-11-01 by job beyond-d11b (branch claude/beyond-d11-d12-new-cells-3
 (14,12) with Haar graphs of 28.7-30.0 billion vertices, (12,12) and (13,12) raised to ~30 billion, and (4..6, 11), (4,12),
 (5,12) raised with Frobenius groups Z_p x| Z_k; see the section "D = 11 at Δ = 15, 16, D = 12 at Δ = 14, and raises".
 
+Extended 2026-11-02 by job raise-d11 (branch claude/raise-d11-frontier-26r11l): (5..10, 11) and (12,11) raised by 1.0-4.2 %
+(SL(2,p) x Z_n with small n chosen by a clump model, and Frobenius groups with a fast search); see the section "D = 11
+raises at Δ = 5..10 and 12".
+
 ## Summary
 
 - **Optimal (Moore graphs), 9 cells:** (17|18|20, 3), (17|18|20, 4), (17|18|20, 6) — incidence graphs of PG(2,q),
@@ -95,7 +99,7 @@ plane, generalized quadrangle or generalized hexagon of order 18, whose existenc
 | (3,11) | **1,474** | 36.00 | 4,088 | metacyclic Haar graph Z67 x|_9 Z11, S = {e, 67, 336} (director sweep of all metacyclic groups of order 541-1,100, exhaustive pairs); earlier 1,080 (A5 x Z9, r3/e01) | apsp VALID, diameter exactly 11 (checks/d3D11_n1474_meta67_11_9.apsp.txt) | Haar size law at mu = 5: 2N = 908 |
 | (4,11) | **30,334** | 17.12 | 177,140 | Haar graph of the Frobenius group Z523 x\|_9 Z29 (odd order 15,167, trivial centre), plain random S = 4 elements (haar_gen3; job beyond-d11b squad r2/h01); was 24,360 (PSL(2,29)); also 29,470 (Z421 x\| Z35, r2/h02), 28,918 (Z761 x\| Z19, r1/g02); mu = 44.13 | build_haar2.py VALID and all-pairs apsp VALID (research/frontier/runs/cloudcheck/d4D11_meta_523_29_9_b2h01.check.txt) | Haar size law at mu = 5: 2N = 2.29e+04 |
 | (5,11) | **314,714** | 11.26 | 2,796,196 | Haar graph of the Frobenius group Z2969 x|_1038 Z53 (N 157,357), plain random S (haar_meta, fresh seed; job raise-d11 squad r5/h02, ladder); was 311,426 (Z5023 x\| Z31); also 311,942 (Z8209 x\| Z19, r3/f10) and 312,206 (Z4219 x\| Z37, r5/h02) | metacheck VALID and build_haar2.py VALID (research/frontier/raise11/runs/d5D11_meta_2969_53_1038_r5h02.metacheck.txt) | Haar size law at mu = 5: 2N = 2.74e+05 |
-| (6,11) | **2,137,526** | 8.76 | 24,414,056 | Haar graph of the Frobenius group Z15053 x|_5955 Z71 (N 1,068,763), plain random S (haar_meta, fresh seed; job raise-d11 squad r4/g05 after r3/f11 reached cost 2); was 2,122,518 (Frobenius Z20809 x\| Z51); also 2,135,280 (PSL(2,41) x Z31, orbit search, r2/e09) and 2,124,866 (Z25913 x\| Z41, r1/c01) | metacheck VALID and build_haar2.py VALID (research/frontier/raise11/runs/d6D11_meta_15053_71_5955_r4g05.metacheck.txt) | Haar size law at mu = 5: 2N = 2e+06 |
+| (6,11) | **2,153,062** | 8.82 | 24,414,056 | Haar graph of the Frobenius group Z14747 x|_11174 Z73 (N 1,076,531), plain random S (haar_meta, fresh seed; job raise-d11 squad r5/h01, ladder); was 2,122,518 (Frobenius Z20809 x\| Z51); also 2,137,526 (Z15053 x\| Z71, r4/g05), 2,135,280 (PSL(2,41) x Z31, orbit search, r2/e09), 2,124,866 (Z25913 x\| Z41, r1/c01) | metacheck VALID and build_haar2.py VALID (research/frontier/raise11/runs/d6D11_meta_14747_73_11174_r5h01.metacheck.txt) | Haar size law at mu = 5: 2N = 2e+06 |
 | (7,11) | **11,470,320** | 7.90 | 145,118,816 | Haar graph SL(2,179), S = {e} + 2 orbits of size 3 (ORBIT "3 2 1"; job raise-d11 director seed loop, 2nd 600-s run, 783 evaluations, after 30 card runs of 95 s reached cost 6-24); was 11,012,976 (SL(2,53) x Z37); also 11,426,448 (SL(2,67) x Z19, r3/f01) and 11,311,584 (PSL(2,47) x Z109, r1/c04) | haarcheck_gen VALID and haarcheck_lean VALID (research/frontier/raise11/runs/d7D11_sl_179_1_orb3-2-1_s112.gen.txt) | Haar size law at mu = 5: 2N = 1.05e+07 |
 | (8,11) | **46,547,568** | 7.06 | 659,108,908 | Haar graph SL(2,107) x Z19, S = {e} + 1 fixed + 2 orbits of size 3 (ORBIT "3 2 2"; job raise-d11 squad r4/g02, fresh seed, about 1 in 8 runs; group ranked by the c13 clump model, K 7.6); was 45,329,808 (SL(2,283)); also 46,309,200 (SL(2,149) x Z7, r1/c06) | haarcheck_gen VALID and haarcheck_lean VALID (research/frontier/raise11/runs/d8D11_sl_107_19_orb3-2-2_r4g02.gen.txt) | Haar size law at mu = 5: 2N = 4.31e+07 |
 | (9,11) | **159,415,392** | 6.50 | 2,454,267,020 | Haar graph SL(2,137) x Z31, S = 3 free orbits of size 3 (f = 0, ORBIT "3 3 0"; job raise-d11 director seed loop, first 600-s run, 851 evaluations; the group reached cost 2 in 95-s squad runs r2/e05, r3/f06, r4/g03; ranked by the c13 clump model, K 8.4); was 155,250,816 (SL(2,223) x Z7) | haarcheck_gen VALID and haarcheck_lean VALID (research/frontier/raise11/runs/d9D11_sl_137_31_orb3-3-0_s91.gen.txt) | Haar size law at mu = 5: 2N = 1.49e+08 |
@@ -314,6 +318,45 @@ odd-D searches stall, for gains of 1-3 %, and the machine was busy with the five
 (exhaustive Frobenius and product groups, lifts of cubic multigraphs to cost 2 at 2,184 vertices for (3,12)). Negatives
 from round 1: Sz(8), F_{p^3} x| C_k, bipartite Cayley graphs of PGL(2,p), PSL(2,p^e) with a Frobenius automorphism,
 agl1 products, voltage lifts of PG(2,3) (19,500 at (4,11)). Squad log: research/squads/LOG.md (job beyond-d11b).
+
+### D = 11 raises at Δ = 5..10 and 12 (job raise-d11, 2026-11-01/02)
+
+Job raise-d11 (Opus director + Haiku squad rounds, cloud session, branch claude/raise-d11-frontier-26r11l; notes in
+research/frontier/raise11/RAISE11.md, squad log in research/squads/LOG.md).
+
+**The lever: small n.** The earlier D = 11 jobs used SL(2,p) x Z_n with n up to 271 (and PSL with n = 1) and stalled at
+size-law mu ~ 7-11. Squad card r1/c13 wrote a clump model (research/squads/raise11/r1/c13/MODEL.md): with S closed
+under alpha (order 3) the holes come in clumps, generic elements 6 at a time (alpha x inversion), alpha-fixed torus
+elements (about p of them, missed with probability ~exp(-lambda/3)) and central elements (+-I, z) (2n of them,
+~exp(-lambda/5)) singly or in pairs; K = expected number of independent clumps, P(cost 0 per fresh run) ~ exp(-K).
+Ranking groups by K (research/frontier/raise11/rank11.py) picks SL(2,p) x Z_n with n = 1..31; those solved at
+mu ~ 15 within a few fresh runs. Fresh seeds beat resumed chains near the limit.
+
+**Values (all independently checked):**
+- (5,11) 314,714: Frobenius Z2969 x|_1038 Z53 (haar_meta, squad r5/h02; metacheck + build_haar2.py); earlier 311,942, 312,206.
+- (6,11) 2,153,062: Frobenius Z14747 x|_11174 Z73 (haar_meta, r5/h01; metacheck + build_haar2.py); earlier 2,124,866,
+  2,135,280 (PSL(2,41) x Z31, orbit search, r2/e09) and 2,137,526 (Z15053 x| Z71).
+- (7,11) 11,470,320: SL(2,179), director loop, 600-s run (haarcheck_gen + haarcheck_lean); earlier 11,311,584 (PSL(2,47)
+  x Z109, r1/c04) and 11,426,448 (SL(2,67) x Z19, r3/f01).
+- (8,11) 46,547,568: SL(2,107) x Z19 (r4/g02; haarcheck_gen + haarcheck_lean); earlier 46,309,200 SL(2,149) x Z7 (r1/c06).
+- (10,11) 469,768,992: SL(2,617), director seed loop; also 461,335,200 SL(2,151) x Z67 (r1/c08).
+- (12,11) 3,039,136,800: SL(2,601) x Z7, f = 0, director, 5 evaluations (haarcheck_gen 3,781 s).
+- (9,11) 159,415,392: SL(2,137) x Z31, director loop, first 600-s run (851 evaluations; haarcheck_gen + haarcheck_lean).
+- **(16,11) candidate, not recorded:** 33,763,363,200 = PSL(2,449) x Z373, first random S, cost 0 in haar_big0 (mu ~ 0;
+  the old value is the beyond-d11b 30-billion cap). No independent check finished before the budget stop (12+ GB checks
+  were OOM-killed by the 14.3 GB bash cgroup, then stopped); file research/frontier/raise11/runs/d16D11_psl_449_373_orb3-5-1_s1.out.
+
+**What did not work (details in RAISE11.md):** inverse-closed S (S = S^-1, one side to cover: per-side holes double
+without e, words collapse with e; haar_sd.c, card r1/c12); more alpha-fixed generators (f >= 4); PGL, SL(2,49), AGL(1,q)
+at (7,11) (r1/c15); pure random sampling instead of annealing (r2/e13); rungs with model K above ~9-10 did not solve
+in 10-15 fresh runs per card. (11,11), (13,11), (14,11), (15,11) were not raised: (11,11) SL(2,449) x Z7 (+2.09 %) reached cost 6-8 in 600-s runs
+of ~70 evaluations; the (9,11) solve needed 851. Run length matters at Δ >= 9: 95-s card runs stalled at cost 2 on the
+group that one 600-s run solved.
+
+**Machine lessons:** the bash cgroup is limited to 14.3 GB, so checks of 12+ GB need a quiet window; autogroup
+scheduling makes `nice` inside card shells useless (renice_loop.sh sets autogroup nice per process); with ~20
+concurrent searches on 4 cores a single evaluation was 20-25x slower than on an idle core (cache and memory-bandwidth
+contention on top of the CPU share), so rounds of 16 cards lost throughput; rounds 3-4 used fewer concurrent searches.
 
 ## What failed, and why it matters for the next attempt
 
