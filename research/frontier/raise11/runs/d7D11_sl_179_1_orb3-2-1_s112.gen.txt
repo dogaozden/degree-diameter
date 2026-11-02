@@ -1,0 +1,15 @@
+checker: haarcheck_gen
+command: ./bin/haarcheck_gen runs/d7D11_sl_179_1_orb3-2-1_s112.out
+start: 2026-11-02T01:04:43Z
+sha256 0262672f6433fe9806f8319443cd58fb87c68a60277b9dd3beb89559a59e93c9  ./bin/haarcheck_gen
+sha256 4d16bbeba5bf770afde4429bd4730d718e51354d2c267552eb8e65430b0991bf  runs/d7D11_sl_179_1_orb3-2-1_s112.out
+selftest sl 179: |M| = 5735160, index round trip over all elements ok
+selftest group multiplication: associativity, identity, inverse on 20000 random triples ok
+file runs/d7D11_sl_179_1_orb3-2-1_s112.out
+header: 7 11 sl 179 n 1 N 5735160
+group sl 179 x Z_1, |G| = 5735160 = N, vertices 2N = 11470320; 7 distinct generators
+from (e,A): reached A 5735160/5735160, B 5735160/5735160 within 11; ecc 11; level sizes [1, 7, 42, 252, 1512, 9072, 54264, 317558, 1642171, 4702018, 4037170, 706253]  (3s)
+from (e,B): reached A 5735160/5735160, B 5735160/5735160 within 11; ecc 11; level sizes [1, 7, 42, 252, 1512, 9072, 54264, 317558, 1642055, 4702018, 4037286, 706253]  (5s)
+VALID d=7 D=11 group=sl 179 x Z_1 N=5735160 vertices=11470320 (distinct generators, 7-regular simple; every vertex within 11 of both (e,A) and (e,B); ecc 11; 5s)
+exit: 0
+end: 2026-11-02T01:04:48Z (5 s)

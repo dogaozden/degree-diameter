@@ -1,0 +1,15 @@
+checker: haarcheck_gen
+command: ./bin/haarcheck_gen runs/d7D11_sl_67_19_orb3-2-1_r3f01.out
+start: 2026-11-02T00:08:06Z
+sha256 0262672f6433fe9806f8319443cd58fb87c68a60277b9dd3beb89559a59e93c9  ./bin/haarcheck_gen
+sha256 6e9aca9900822af730526eac433b84eab3249dc53866cd4c1f8b8280aba1e9f0  runs/d7D11_sl_67_19_orb3-2-1_r3f01.out
+selftest sl 67: |M| = 300696, det-1 matrices 300696
+selftest group multiplication: associativity, identity, inverse on 20000 random triples ok
+file runs/d7D11_sl_67_19_orb3-2-1_r3f01.out
+header: 7 11 sl 67 n 19 N 5713224
+group sl 67 x Z_19, |G| = 5713224 = N, vertices 2N = 11426448; 7 distinct generators
+from (e,A): reached A 5713224/5713224, B 5713224/5713224 within 11; ecc 11; level sizes [1, 7, 42, 252, 1512, 9072, 54198, 316672, 1639630, 4689982, 4017841, 697239]  (2s)
+from (e,B): reached A 5713224/5713224, B 5713224/5713224 within 11; ecc 11; level sizes [1, 7, 42, 252, 1512, 9072, 54198, 316672, 1639912, 4689982, 4017559, 697239]  (5s)
+VALID d=7 D=11 group=sl 67 x Z_19 N=5713224 vertices=11426448 (distinct generators, 7-regular simple; every vertex within 11 of both (e,A) and (e,B); ecc 11; 5s)
+exit: 0
+end: 2026-11-02T00:08:11Z (4 s)

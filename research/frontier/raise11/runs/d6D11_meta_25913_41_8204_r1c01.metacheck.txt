@@ -1,0 +1,33 @@
+checker: metacheck
+command: ./bin/metacheck runs/d6D11_meta_25913_41_8204_r1c01.out
+start: 2026-11-01T23:21:03Z
+sha256 723e1b6e6a6e83416c7a4d811e824ccb30c2e73a4335360cfafcae2778310924  ./bin/metacheck
+sha256 d2740320f89017e4b2a856e75af8e57bdf0e5c766fb2373fa74caf34756e8531  runs/d6D11_meta_25913_41_8204_r1c01.out
+group meta 25913 41 8204, N=1062433, vertices=2124866, d=6, D=11
+  from (e,A): level 1 reached 6 new (side B total 6)
+  from (e,A): level 2 reached 30 new (side A total 31)
+  from (e,A): level 3 reached 150 new (side B total 156)
+  from (e,A): level 4 reached 750 new (side A total 781)
+  from (e,A): level 5 reached 3750 new (side B total 3906)
+  from (e,A): level 6 reached 18630 new (side A total 19411)
+  from (e,A): level 7 reached 89854 new (side B total 93760)
+  from (e,A): level 8 reached 374158 new (side A total 393569)
+  from (e,A): level 9 reached 863168 new (side B total 956928)
+  from (e,A): level 10 reached 668864 new (side A total 1062433)
+  from (e,A): level 11 reached 105505 new (side B total 1062433)
+BFS from (e,A): eccentricity 11, unreached 0
+  from (e,B): level 1 reached 6 new (side A total 6)
+  from (e,B): level 2 reached 30 new (side B total 31)
+  from (e,B): level 3 reached 150 new (side A total 156)
+  from (e,B): level 4 reached 750 new (side B total 781)
+  from (e,B): level 5 reached 3750 new (side A total 3906)
+  from (e,B): level 6 reached 18630 new (side B total 19411)
+  from (e,B): level 7 reached 89854 new (side A total 93760)
+  from (e,B): level 8 reached 374318 new (side B total 393729)
+  from (e,B): level 9 reached 863168 new (side A total 956928)
+  from (e,B): level 10 reached 668704 new (side B total 1062433)
+  from (e,B): level 11 reached 105505 new (side A total 1062433)
+BFS from (e,B): eccentricity 11, unreached 0
+VALID d=6 D=11 group=meta 25913 41 8204 N=1062433 vertices=2124866
+exit: 0
+end: 2026-11-01T23:21:10Z (7 s)
