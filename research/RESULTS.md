@@ -374,3 +374,17 @@ by the coordinator with build_haar.py, two BFS from both sides, ecc ≤ D, nothi
 - Nov 01 18:41 PT (harvest): (5,11) 314,714 (was 311,942), meta 2969 53 1038 n 1; claude/raise-d11-frontier-26r11l.
 - Nov 01 18:41 PT (harvest): (6,11) 2,153,062 (was 2,135,280), meta 14747 73 11174 n 1; claude/raise-d11-frontier-26r11l.
 - Nov 01 18:41 PT (harvest): (9,14) 20,002,113,120 (was 0), psl 241 n 1429; claude/beyond-d14-new-cells-v6dcaa.
+
+- Nov 01 19:34 PT (harvest): (6,14) 193,539,888 (was 190,269,984), sl 107 n 79; claude/beyond-d14-new-cells-v6dcaa.
+- Nov 01 19:34 PT (harvest): (7,11) 11,470,320 (was 11,012,976), sl 179 n 1; claude/raise-d11-frontier-26r11l.
+- Nov 01 19:34 PT (harvest): (7,14) 1,732,018,320 (was 0), sl 179 n 151; claude/beyond-d14-new-cells-v6dcaa.
+- Nov 01 19:34 PT (harvest): (8,11) 46,547,568 (was 46,309,200), sl 107 n 19; claude/raise-d11-frontier-26r11l.
+- Nov 01 19:34 PT (harvest): (9,11) 159,415,392 (was 155,250,816), sl 137 n 31; claude/raise-d11-frontier-26r11l.
+- Nov 01 19:34 PT (harvest): (10,11) 469,768,992 (was 461,335,200), sl 617 n 1; claude/raise-d11-frontier-26r11l.
+- Nov 01 19:34 PT (harvest): (17,8) 43,463,280 (was 41,723,520), psl 41 n 631; claude/raise-d8-d7-beyond-table-8mozbm.
+- Nov 01 19:34 PT (harvest): (17,9) 553,208,880 (was 543,962,400), sl 139 n 103; claude/raise-d9-orbit-metacyclic-ndvfty.
+- Nov 01 19:34 PT (harvest): (18,8) 64,792,896 (was 64,577,760), psl 97 n 71; claude/raise-d8-d7-beyond-table-8mozbm.
+- Nov 01 19:34 PT (harvest): (18,9) 879,874,800 (was 790,626,816), sl 149 n 133; claude/raise-d9-orbit-metacyclic-ndvfty.
+- Nov 01 19:34 PT (harvest): (19,8) 92,599,320 (was 91,939,320), psl 59 n 451; claude/raise-d8-d7-beyond-table-8mozbm.
+- Nov 01 19:34 PT (harvest): (19,9) 1,328,920,800 (was 1,317,726,672), sl 151 n 193; claude/raise-d9-orbit-metacyclic-ndvfty.
+- Nov 01 19:34 PT (harvest): (20,8) 131,610,120 (was 126,119,280), psl 59 n 641; claude/raise-d8-d7-beyond-table-8mozbm.
