@@ -49,3 +49,19 @@ nice 0, equal to the director's whole pipeline); the director raised the pipelin
 `echo -10 > /proc/<pid>/autogroup` and lowered the cards' groups to 15.
 Kept: haarex6 for the sweep; no family lead worth more CPU (the 704 lift is an isolated local minimum, the new
 families are far). The order-384 sweep continues; orders 401-450 started on the spare core.
+
+### deep-108 round r1 (2026-11-01 23:20 to 2026-11-02 00:22 UTC, 3 cards, research/squads/deep-108/r1/)
+Session: deep-108 (Opus-led depth run on Δ10·D8, table 1,176,480; branch claude/d10-d8-depth-search-3b5yyu). Goal:
+generalise handsoff-108's coset family K (min 4) to other groups and subgroup pairs; scorer cq2/cq3 (orbit-quotient BFS,
+17-20 ms per member). Only 3 cards: the remaining breadth was three families, and 4 cores were shared with the
+coordinator's own exhaustive scans.
+Cards: c1-a5 A5 x PSL(2,59) zero-special and low-special pairs · c2-z2 PSL(2,181) x Z2 with twisted D5/C10 ·
+c3-wild a family none of the others tries.
+Best per card: c1 95 (pair P4, exhaustive; zero-special pair0 exhaustive min 111) · c2 54 (D5 x twisted D5,
+exhaustive, E_s 2.9) · c3 704 (PGL(2,229) D10 with edge stabiliser C2: all 135 members; twisted C5 with a central
+Z_m: >= 2,564).
+Director's checks: c1's and c2's minima recomputed from their scan files (111, 95, 54); cq3 validated on K before the
+card. c2 caught an error in its card (PSL(2,181) has two D5 classes) and added them.
+Kept: nothing. With the coordinator's scans (PGL(2,181) (D5s,D5n) min 44, (C10,D5n) min 64), every one-double-coset
+family with vertex stabiliser of order 10 near the bound is closed; K's 4 is the only outlier. No round 2: the
+remaining CPU went to the Haar k=3 grind for lead (a).
