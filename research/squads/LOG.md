@@ -304,3 +304,29 @@ Cards: f1-f3 (5,13) single odd-order Frobenius groups Z_m x| Z_k with random S (
 (6,13) SL(2,p), n = 1; e3 (6,13) Frobenius groups (hmeta, long runs); e4 (6,13) SL x Z_n, n 37-73; e5 (6,13) wildcard;
 d1 (7,13) SL x Z_n, n 1-13; d2 (7,13) SL n 21-37; d3 (7,13) PSL, odd n 27-73; d4 (7,13) wildcard; c1 (8,13) SL n 1-9;
 c2 (8,13) SL n 13-43.
+
+Round 1 results (scoreboard: beyond13b/r1/scoreboard.jsonl; every kept value re-checked by the director):
+- **e4 (6,13): SL(2,89) x Z31, 43,702,560** (mu 18.8, cost 0 in 136 s; haarcheck_gen VALID), and SL(2,83) x Z37 42,306,096
+  (VALID). Large n plateaued at constant costs: SL(2,67) x Z73 12, SL(2,61) x Z97 24, SL(2,59) x Z109 44, SL(2,47) x Z211 72.
+- **f2 (5,13): Z34981 x|_27415 Z53, 3,707,986** (mu 10.7; metacheck and build_haar2 VALID); also k = 59, 61 groups up
+  to N 1,844,989; Z35617 x| Z53 (N 1,887,701, mu 13.5) stuck at cost 2 for 45 min.
+- **d1 (7,13): SL(2,283) x Z7, 317,308,656** (mu 11.2, cost 0 after 17 evaluations; VALID); mu-19 rungs (SL(2,263) x Z9,
+  SL(2,547)) stalled at 14-16.
+- f1 (5,13) 3,684,706 (Z39199 x| Z47, after continuing a cost-2 state), f3 3,623,086 (Z62467 x| Z29), f5 (wildcard)
+  3,620,058 (Z46411 x|_23265 Z39: composite odd k works; k = 21 does not), f4 3,610,310 ((Z11 x| Z5) x (Z1427 x| Z23)).
+- e5 (6,13, wildcard): orbits of size 5 (ORBIT "5 1 1", alpha = conjugation by an order-5 matrix x z -> rz) solve:
+  PSL(2,101) x Z41 42,238,200 in 60 s; needs every prime factor of n = 1 mod 5, else the graph degenerates.
+- e3 (6,13): Frobenius Z342821 x| Z61, 41,824,162 (continuation from a cost-4 state; card's own low-memory BFS), below e4.
+- d3 (7,13): PSL(2,163) x Z73 316,132,632 (VALID), below d1; PSL(2,173) x Z61 cost 3.
+- Near misses: d2 (7,13) SL(2,163) x Z37 cost 2 (320,463,216); c2 (8,13) SL(2,409) x Z13 cost 2 (three runs); c1 (8,13)
+  SL(2,461) x Z9 cost 8; e2 (6,13) SL(2,277) x Z1 cost 2 in four runs; e1 (6,13) best cost 6; d4 (7,13, wildcard)
+  "5 1 2" on SL(2,109) x Z121 cost 2, "3 1 4" and "7 1 0" degenerate (fixed generators in one torus; r = 1 mod some q).
+- Director: (9,13) SL(2,677) x Z13, 8,067,489,456 (mu 14.1, cost 0 after 113 evaluations in its own scheduling group);
+  (10,13) check postponed until the (9,13) check is done (memory).
+- Lesson repeated by four cards: continuing a saved cost-2 state with a NEW seed closes near misses that fresh starts
+  cannot (f1, f4, f5, e3). Process: three cards made stray calls to session tools (interrupt_session, archive_session,
+  read_documentation) with made-up or no ids; all were rejected or read-only. Round 2's rules forbid every mcp__ tool.
+
+Kept for round 2: Frobenius chains at (5,13) above N 1.854M (k 53-61, 37-47, composite k, products); (6,13) SL x Z_n
+with odd n <= 57 and PSL x odd n, k = 5 orbits; (7,13) continue SL(2,163) x Z37, larger n, k = 5 orbits; (8,13) the
+low-mu groups (SL(2,359) x Z19, SL n 21-45, PSL x odd n); a hole-anatomy card for the constant-cost plateaus.

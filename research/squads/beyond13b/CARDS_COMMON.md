@@ -3,7 +3,8 @@
 Job beyond-d13b (2026-11-01/02, Opus director). Goal: raise the D = 13 column at Δ = 5..10 of
 research/frontier/beyond/BEYOND_TABLE.md. All cards and the director share ONE machine (4 cores, 15 GB) and one repo
 checkout at /home/user/degree-diameter. The director is running a 10 GB, 4-thread check of a 29-billion-vertex graph
-there, so every card gets a slice of a core: about 0.1-0.25 core. Be frugal.
+there, so every card gets a slice of a core: about 0.1-0.25 core (round 2: less while the director's checks run). Be
+frugal.
 
 (A first launch on 2026-11-01 at 22:56 UTC told cards they had their own containers. They did not: 17 cards shared one
 work/ folder, collided on file names, ran ~40 threads and got the director's check OOM-killed. These rules fix that.)
@@ -24,7 +25,10 @@ work/ folder, collided on file names, ran ~40 threads and got the director's che
 5. **Never end your turn while your run is going.** Keep polling until it finishes or your time box is used up; then kill
    it (`kill $(cat out/TAG.pid)`) and finish. Never touch processes you did not start.
 6. Memory: at most 0.7 GB per run.
-7. Do not call any MCP, session, remote or scheduling tool; do not contact anyone. Write plainly.
+7. **Never call any tool whose name starts with `mcp__`** (interrupt_session, archive_session, read_documentation, ...):
+   they act on the director's cloud session, not on your runs, and could end the whole job. Round-1 cards made several
+   such calls with made-up ids (all rejected). To stop a run use `kill $(cat out/TAG.pid)`. Do not contact anyone.
+   Write plainly.
 8. A "valid" claim needs cost 0 from the search program itself (it re-evaluates its best S: `re-evaluation of the best
    S: cost 0`), plus the independent checker where the card says so. The director re-checks everything.
 
