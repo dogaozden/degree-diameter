@@ -108,3 +108,29 @@ had run 2+2 joint annealing at D = 12); 3+3 D = 14 scan above 1,171 (costs 4-14)
 Selection: 2+2 bases are the surprise of the round (D = 12 and 13 values from first screens); at D = 14 2+2 and 3+3 tie.
 The quartic joint lifts plateau (18-36) at every Δ = 4 cell, so Δ = 4 goes back to Haar chases only. Orbit lifts
 dropped. Round 3 = 2+2/3+3 bands above every solved N plus chains of the cost-2 states, a (3,10) card, a Δ = 4 Haar card.
+
+Round-2 late reports: d01 (3,13) 3+3 cost 1 at 3,780 (below the value by then) · d06 (3,11) cost 10 at 1,512.
+
+### Round 3 (8 cards, 00:05-00:50; research/squads/raise-small/r3/)
+
+Cards: e01 (3,13) 2+2 chain of d02's cost-2 state + N = 1,082-1,100 · e02 (3,13) 2+2 N = 1,301-1,420 · e04 (3,12) 2+2
+N = 721-820 · e05 (3,12) 3+3 N = 407-480 · e06 (3,14) 2+2 chain of d04's cost-2 state at N = 1,776 · e07 (3,14) 3+3
+N = 1,301-1,400 and 2+2 N = 1,801-1,900 · e10 Δ = 4 Haar chases (fresh seeds) · e11 (3,10) 3+3/4+4 + exact polish.
+
+Best per card: **e10 (4,12) 74,118** (Haar graph of the Frobenius group Z1123 x|_60 Z33, a fresh seed; director
+re-check: metacheck VALID, apsp VALID, diameter 12); (4,13) cost 2 at 193,058 · e01 cost 2 at 4,400 (a floor: ten
+links, and the director's six fresh runs with and without targeted moves all end at 2) · e02 cost 80+ above
+N = 1,300 · e04 cost 28 at 2,948 · e05 cost 12 at 2,448 · e07 cost 4 at 7,224 (2+2, Z43 x|_3 Z42) · e11 (3,10) cost 2
+at 816 (Z17 x|_4 Z8, exact 2-move local minimum). (e06: below.)
+Director meanwhile: targeted voltage moves (saliftt.c: solve one voltage on a random walk of length <= D so a far pair
+becomes close) A/B against plain annealing on two groups, three seeds each: identical final costs (18 and 2, both group
+floors); odd-order groups at D = 13 2+2 (costs 12-28) and at D = 11 3+3 (cost 10 at 1,518, Z23 x|_2 Z11); exhaustive
+Haar (p = 1) at D = 13 over 23 odd groups of order >= 2,163 (min cost 52); quartic lifts over odd groups at (4,9)
+(cost 20, 72): odd order does not break the Δ = 4 floor. All stopped to give the cards CPU.
+Process note: one card's report listed a call of the remote-session archive tool (forbidden by the header); the account's
+other sessions were all still running afterwards, and the only archived session in the listing was another job's seed
+session, archived by its creator in the same second it was made.
+
+Selection: the values sit at thresholds: D = 13 2+2 near N = 1,081-1,100, D = 14 2+2 near 1,751-1,810 and 3+3 near
+1,168. First screens solved twice and chains almost never, so round 4 = dense fresh-seed sweeps of every large-d group
+in those narrow bands.
