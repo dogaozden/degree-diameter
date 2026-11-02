@@ -1,0 +1,8 @@
+group prod meta 7 3 2 meta 137 17 16 x Z_1, N=48909, identity 0, H order 51, rows 959, threads 1, setup 0.05s
+START loaded from research/squads/raise10/r3/g02/c_m137.best (5 generators)
+start cost=5
+t=30 steps=10882 evals=21765 cost=8 best=5 T=0.53
+t=60 steps=22834 evals=45669 cost=7 best=5 T=0.19
+moves accepted/proposed: plain 5/30987 pair 0/0 local 0/0
+  move 0: mean candidate cost 230.7 min 7, candidates within +1 of final cost: 10
+RESULT d=5 D=10 group=prod meta 7 3 2 meta 137 17 16 x Z_1 N=48909 best=5 evals=61975 time=80.0

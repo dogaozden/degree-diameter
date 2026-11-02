@@ -1,3 +1,5 @@
 group prod psl 3 meta 239 17 6 x Z_1, N=48756, identity 12189, H order 51, rows 956, threads 1, setup 0.02s
 start cost=41
 t=30 steps=2838 evals=22705 cost=9 best=6 T=0.53
+t=60 steps=5403 evals=43225 cost=6 best=6 T=0.19
+RESULT d=5 D=10 group=prod psl 3 meta 239 17 6 x Z_1 N=48756 best=6 evals=56593 time=80.0

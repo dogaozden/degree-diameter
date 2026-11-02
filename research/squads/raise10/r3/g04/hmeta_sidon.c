@@ -202,7 +202,7 @@ int main(int argc, char **argv) {
         double fr = (now() - t0) / secs; double T = T0 * pow(T1 / T0, fr);
         int i = 1 + rnd() % (d - 1); el old = S[i], bc = old; i64 bcost = -1;
         /* holes of the current S (HA/HB hold the last evaluation, which may be a rejected candidate: re-evaluate) */
-        int ntarg = 0; el U[64]; int US[64];
+        int ntarg = 0; el U[256]; int US[256];   /* r3/g04: was [64], overflowed for K > 64 */
         if (targp > 0 && cur > 0) { S[i] = old; cost(); evals++;
             for (int c = 0; c < Kc; c++) { int side = (D % 2 == 0 || (lastA > 0 && (lastB == 0 || rnd() % (lastA + lastB) < (u64)lastA))) ? 0 : 1;
                 if ((int)(rnd() % 100) < targp && hole(side, &U[ntarg])) US[ntarg++] = side; } }

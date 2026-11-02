@@ -178,8 +178,10 @@ int main(int argc, char **argv) {
     else for (int i = 1; i < d; i++) do S[i] = rel(); while (!distinct(i) || (SIDON_ON && !sidon_ok(i + 1)));
     if (getenv("OPT1")) {   /* exhaustive 1-opt from the START S: every slot, every group element */
         i64 c0 = cost(); fprintf(stderr, "OPT1 from cost %lld (N=%lld)\n", (long long)c0, (long long)N);
-        for (int i = 1; i < d; i++) { el si = S[i];
-            for (i64 x = 1; x < N; x++) { S[i].a = x / K_; S[i].j = x % K_; if (!distinct(i)) continue;
+        int oslot = getenv("OPT1SLOT") ? atoi(getenv("OPT1SLOT")) : 0;   /* card g03: chunked exhaustive 1-opt (one slot, x in [LO,HI)) */
+        i64 olo = getenv("OPT1LO") ? atoll(getenv("OPT1LO")) : 1, ohi = getenv("OPT1HI") ? atoll(getenv("OPT1HI")) : N;
+        for (int i = 1; i < d; i++) { el si = S[i]; if (oslot && i != oslot) continue;
+            for (i64 x = olo; x < ohi && x < N; x++) { S[i].a = x / K_; S[i].j = x % K_; if (!distinct(i) || (SIDON_ON && !sidon_ok(d))) continue;
                 if (cost() == 0) { writesol(out); printf("RESULT d=%d D=%d group=meta %lld %lld %lld N=%lld vertices=%lld best=0 opt1 slot=%d\n", d, D, (long long)M, (long long)K_, (long long)R_, (long long)N, (long long)(2 * N), i); return 0; } }
             S[i] = si; }
         printf("RESULT d=%d D=%d group=meta %lld %lld %lld N=%lld best=%lld opt1 exhausted\n", d, D, (long long)M, (long long)K_, (long long)R_, (long long)N, (long long)c0); return 0;
@@ -219,12 +221,13 @@ int main(int argc, char **argv) {
             i64 x = cost(); evals++;
             if (bcost < 0 || x < bcost) { bcost = x; bc = S[i]; } }
         moves++; since++;
-        if (bcost >= 0 && (bcost <= cur || exp(-(double)(bcost - cur) / (T * (1 + 0.02 * cur))) > (rnd() % 1000000) / 1e6) { S[i] = bc; cur = bcost; } else S[i] = old;
+        if (bcost >= 0 && (bcost <= cur || exp(-(double)(bcost - cur) / (T * (1 + 0.02 * cur))) > (rnd() % 1000000) / 1e6)) { S[i] = bc; cur = bcost; } else S[i] = old;
         if (cur < best) { best = cur; memcpy(BS, S, sizeof S); since = 0; el tmp[64]; memcpy(tmp, S, sizeof S); writesol(bf);
             fprintf(stderr, "t=%.0f moves=%ld evals=%ld best=%lld T=%.2f\n", now() - t0, moves, evals, (long long)best, T); }
         if (since > reheat) { memcpy(S, BS, sizeof S); cur = best; since = 0; }
     }
     memcpy(S, BS, sizeof S);
+    if (SIDON_ON) fprintf(stderr, "SIDON: candidates dropped %ld, redrawn %ld\n", nrej, nsidon_redraw);
     if (best == 0) { i64 c = cost(); if (c != 0) { fprintf(stderr, "re-evaluation failed (%lld)\n", (long long)c); return 1; } writesol(out); }
     printf("RESULT d=%d D=%d group=meta %lld %lld %lld N=%lld vertices=%lld best=%lld evals=%ld time=%.1f\n", d, D, (long long)M, (long long)K_, (long long)R_, (long long)N, (long long)(2 * N), (long long)best, evals, now() - t0);
     return 0;

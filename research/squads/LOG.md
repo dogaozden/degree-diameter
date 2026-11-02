@@ -112,3 +112,27 @@ cards e01/e02 were redirected (e01 found nothing new to do and stopped; e02 move
 groups of order 6,209-6,600 is running. (17,10) solved at 23:29: PSL(2,181) x Z1321, "5 3 2" FIXF, 7,832,948,760 vertices
 (+11.5 %), 598 evaluations; hcheckpsl running. (19,10) started: PSL(2,311) x Z691, "5 3 4" FIXF, mu 17.4.
 Process: one card called archive_session by mistake (no such tool; no effect).
+
+### Round 3 (16 cards, 23:45 UTC, research/squads/raise10/r3/) — farms and tools on the near misses
+
+Cards: g01 A4 x (Z239 x| Z17) farm, g02 Q x Frobenius at (5,10), g03/g04 Sidon-constrained hmeta (hmeta_sidon.c, written by
+g03) at (5,10)/(6,10), g05 Frobenius farms at (5,10), g06/g07 Frobenius farms at (6,10), g08 A4 x F at (6,10), g09 Q x F at
+(4,10), g10 exhaustive opt on products at (4,10) (prodopt.c), g11 Heawood lifts, g12 non-abelian lifts, g13 1-opt tool for
+the A4 x F state (prodopt5.c), g14 measurement, g15 wildcard, g16 products of two Frobenius groups at (6,10).
+Results (no raise):
+- **(5,10) g03: Sidon-constrained Z1453 x| Z33 cost 1** (Sidon start costs: median 48 vs 60, mean 64 vs 2,080 unconstrained;
+  the exhaustive Sidon 1-opt of the cost-1 state has no solution); g05 Z2857 x| Z17 cost 2; g02 (Z7 x| Z3) x (Z137 x| Z17)
+  cost 3, A4 x (Z313 x| Z13) 5; g14: median holes / size-law mu: A4 x F and (Z7 x| Z3) x F ~1.5, Frobenius ~2, PSL(2,7) x F
+  8, SL(2,3) x F ~190.
+- (6,10): g04 Sidon Z6397 x| Z41 cost 3 (8 runs; not separable from plain); g07 Z5851 x| Z45 cost 3; g16 (Z43 x| Z3) x
+  (Z157 x| Z13) cost 3; g08 A4 x (Z811 x| Z27) cost 4; g14: Z6397 x| Z41 median 1.3 x mu, the best family measured.
+- (4,10): g09 (Z7 x| Z3) x (Z43 x| Z7) (N 6,321) cost 3; g10 (Z11 x| Z5) x (Z19 x| Z6): exhaustive 1-opt min 4 (2-opt only
+  sampled).
+- (3,10): g11 Heawood x Z58 cost 6 again; g12 non-abelian lifts: Z28 x| Z3 (order 84) on a 5+5 base cost 14; g15 Z6 x Z14
+  lift cost 34, bi-coset graphs dead.
+Director during the round: (19,10) **20,785,224,720** found (PSL(2,311) x Z691, "5 3 4" FIXF, mu 17.4, 46 evaluations) and
+(18,10) **12,784,852,920** (PSL(2,211) x Z1361, "5 3 3" FIXF, mu 17.6, 21 evaluations, after a mu-24 run on PSL(2,251) x Z821
+stopped at cost 5 after 307 evaluations); (20,10) started with haar_big1 "5 4 0" FIXF on PSL(2,331) x Z911 (mu 18.3). The
+(6,10) cost-1 state of r2/e08 is a strict 1-opt local minimum (hmeta OPT1, all 1.3M single swaps).
+Process: three cards made stray tool calls (interrupt_session, read_documentation, send_message without arguments; all
+rejected or read-only).

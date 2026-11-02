@@ -1,0 +1,15 @@
+g09 (4,10): non-metacyclic products Q x F, target N >= 6209 (value 12,416). All runs haar_gen3s d=4 D=10, THREADS=1.
+Best cost reached: 4 (Z7 x| Z3 x Z43 x| Z7, N=6321). No cost-0 state found, so nothing to check with build_haar2/apsp.
+Runs (cost at end):
+- A4 x (Z175 x| Z3), N=6300, 60 s: cost 164
+- Z7x|Z3 x (Z43 x| Z7), N=6321, 60 s seed 2: cost 4 (state D_s1.best); chain 80 s seed 7: 4; fresh seed 8 80 s: 4;
+  haar_gen3t TFULL=1 TARGP=100 from D_s1.best 75 s: 4; fresh seed 14 75 s: 4; chain from D_s2.best seed 15 75 s: 4
+- Z7x|Z3 x (Z61 x| Z5), N=6405, 60 s: cost 5; fresh seed 12 75 s: 4 (E_s2.best); chain seed 13 75 s: 4
+- Z7x|Z3 x (Z103 x| Z3), N=6489, 40 s: cost 153
+- A4 x (Z180 x| Z3), N=6480, 50 s: cost 2352
+- SL(2,3) x (Z90 x| Z3), N=6480, 50 s: cost 698
+- A4 x (Z259 x| Z2), N=6216, 60 s: cost 325
+- Z7x|Z3 x (Z149 x| Z2), N=6258, 70 s: cost 3975
+Frobenius-only candidates in range: A4 x Frobenius has none (no prime p, k odd with p*k in 518..541 and k | p-1).
+Ranking: (Z43 x| Z7) and (Z61 x| Z5) with the Z7 x| Z3 factor are the best families; cyclic-factor and dihedral-type F are far off.
+Later runs: Z7x|Z3 x Z43x|Z7 fresh seed 16 75 s: cost 4; Z7x|Z3 x Z61x|Z5 fresh seed 17 75 s: cost 5; haar_gen3t TFULL=1 TARGP=100 from D_s4.best 75 s: cost 3 (state D_s4t.best, best cost of the card).
