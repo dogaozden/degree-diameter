@@ -11,8 +11,9 @@ are also proved in Lean 4 (most of the others are too large for kernel-checked c
 [Haar graphs, D = 8–10](papers/Ozden_Haar_D8-10.pdf) ·
 [Gómez's ΩH_q and the D = 8 entries (1 page)](papers/Ozden_OmegaH_D8_note.pdf).
 
-**See it:** [dogaozden.com/degree-diameter](https://dogaozden.com/degree-diameter/) shows the first eight records in 3D and
-how the search found them (that page predates most of the results below).
+**See it:** [dogaozden.com/math/degree-diameter](https://dogaozden.com/math/degree-diameter/) shows the first eight records in 3D and
+how the search found them (that page predates most of the results below). Every record, live:
+[dogaozden.com/math/live](https://dogaozden.com/math/live/degree-diameter/).
 
 ## The problem
 
