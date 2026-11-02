@@ -27,7 +27,7 @@ orbit shape solves at mu ~ 15 within a few fresh runs.
 
 | cell | was | now | gain | group | found by | checks |
 |---|---:|---:|---:|---|---|---|
-| (5,11) | 311,426 | 312,206 | +0.25 % | Frobenius Z4219 x\|_2565 Z37, plain random S | squad r5/h02 (haar_meta) | metacheck, build_haar2.py |
+| (5,11) | 311,426 | 314,714 | +1.05 % | Frobenius Z2969 x\|_1038 Z53, plain random S | squad r5/h02 (haar_meta) | metacheck, build_haar2.py |
 | (6,11) | 2,122,518 | 2,137,526 | +0.71 % | Frobenius Z15053 x\|_5955 Z71, plain random S | squad r4/g05 (haar_meta) | metacheck, build_haar2.py |
 | (7,11) | 11,012,976 | 11,426,448 | +3.75 % | SL(2,67) x Z19, ORBIT "3 2 1" | squad r3/f01 | haarcheck_gen, haarcheck_lean |
 | (8,11) | 45,329,808 | 46,547,568 | +2.69 % | SL(2,107) x Z19, ORBIT "3 2 2" | squad r4/g02 | haarcheck_gen, haarcheck_lean |
