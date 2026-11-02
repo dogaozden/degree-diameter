@@ -32,3 +32,7 @@ QUEUE 3 DONE 22:48:31
 00:38:31 
 QUEUE /home/user/degree-diameter/research/frontier/raise9/qa.txt DONE 00:38:31
 00:38:50 start d17D9_sl_139_103_orb3-5-2_s11 (600 s, 2 threads) FIXF=1 START=runs/d17D9_sl_139_103_orb3-5-2_s1.out.best
+00:41:56 RESULT d=17 D=9 group=sl 139 x Z_103 N=276604440 vertices=553208880 best=0 evals=334 steps=83 time=184.5 orbit k=3 m=5 f=2 mu=17.73
+00:41:56 start d17D9_sl_139_103_orb3-5-2_s12 (600 s, 2 threads) FIXF=1
+00:42:12 RESULT d=17 D=9 group=sl 139 x Z_103 N=276604440 vertices=553208880 best=18 evals=30 steps=8 time=16.5 orbit k=3 m=5 f=2 mu=17.73
+00:42:12 start d17D9_sl_137_109_orb3-5-2_s13 (900 s, 2 threads) FIXF=1 START=runs/p6_d17_sl137_109.best
