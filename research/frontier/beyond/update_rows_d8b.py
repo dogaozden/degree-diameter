@@ -16,6 +16,7 @@ for i, line in enumerate(s):
     key = (int(m[1]), int(m[2]))
     if key not in ROWS: continue
     cols = line.split(" | ")
+    if len(cols) < 7: continue   # the small summary tables in the text
     value, how, check = ROWS[key]
     d, D = key
     cols[1] = f"**{fmt(value)}**"; cols[2] = f"{100.0 * value / moore(d, D):.2f}"; cols[3] = fmt(upper(d, D))

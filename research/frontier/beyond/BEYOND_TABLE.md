@@ -80,7 +80,7 @@ plane, generalized quadrangle or generalized hexagon of order 18, whose existenc
 | (19,5) | **52,428** | 23.58 | 222,296 | doubled-matching lift of W(16) over Z6 (DM_D5.md; = MDM with k = 1); nu, sigma annealed by squad r1/c05 (dmfast, routes allowed) | apsp: checks/d19D5_n52428_W16_dm_Z6.apsp.txt | 52,428 (doubled matching 6x W(16) (DM_D5, annealed)) |
 | (19,6) | **3,203,968** | 80.07 | 4,001,438 | Theorem D of POLISHED.md, q = 17, m = 2 (doubling of H(17) with levels and exact whiskers; max degree 19) | theorem (paper + Lean for all odd q); builder checked all-pairs at q = 5, 7 (checks/thmD_builder_q5_q7.apsp.txt); q = 17 instance: BFS from 96 vertices, ecc 6 (checks/d19D6_n3203968_thmD_q17.sampled.txt) | 3,203,968 (Thm D, q=17, m=2) |
 | (19,7) | **11,316,940** | 15.71 | 72,025,880 | typed whiskers + hubs on 5 levels of H(16) (HDHDH), 66,065 + 66,065 hubs, random hub graph of degree 14 (conics-2); was 11,184,810 | all-pairs check in 16 source ranges, all VALID (checks/d19D7_n11316940_ranges_complete.txt; the last 7 ranges were read from the finished check sessions by raise-d8b) | 11,184,810 (polygon cover 5xH(16) (j=2)) |
-| (19,8) | **92,166,360** | 7.11 | 1,296,465,944 | Haar graph PSL(2,131) x Z41, S = {e} + 3 fixed + 3 orbits of size 5 (alpha of order 5; raise-d8b squad r2/d07, mu 35.9); earlier 91,939,320 (PSL(2,109) x Z71, r1/c07) and 88,597,200 (SL(2,101) x Z43, k = 3); was 86,317,296 | haarcheck_gen VALID (checks/d19D8_psl_131_41_orb5-3-4_r2d07.gen.txt) | 22,369,620 (polygon cover n+2: 10x H(16)); 2013-table D=8 pattern (no construction known): 159,284,664 (q=13, j=5); Haar size law at mu = 5: 2N = 8.15e+07 |
+| (19,8) | **92,599,320** | 7.14 | 1,296,465,944 | Haar graph PSL(2,59) x Z451, S = {e} + 3 fixed + 3 orbits of size 5 (alpha of order 5; squad r2/d10 reached cost 5, the director finished it from that state, mu 38.5); earlier 92,166,360 (PSL(2,131) x Z41, r2/d07), 91,939,320 and 88,597,200; was 86,317,296 | haarcheck_gen VALID (checks/d19D8_psl_59_451_orb5-3-4_s3.gen.txt) | 22,369,620 (polygon cover n+2: 10x H(16)); 2013-table D=8 pattern (no construction known): 159,284,664 (q=13, j=5); Haar size law at mu = 5: 2N = 8.15e+07 |
 | (19,9) | **1,218,394,320** | 5.22 | 23,336,387,096 | Haar graph SL(2,131) x Z271, S = {e} + 6 orbits of size 3 | hcheck5 VALID (runs/check_hcheck5_d19D9_sl_131_271_orb3_s2.txt) | Haar size law at mu = 5: 2N = 1.25e+09 |
 | (19,10) | **19,233,722,496** | 4.58 | 420,054,967,832 | Haar graph SL(2,607) x Z43, S = {e} + 6 orbits of size 3 | hcheck5 VALID, ecc 10/10 (runs/check_hcheck5_d19D10_sl_607_43_orb3_s1.txt) | Haar size law at mu = 5: 2N = 1.96e+10 |
 | (20,3) | **762** | 100.00 | 762 | PG(2,19) incidence graph (Moore graph) | apsp: checks/d20D3_n762_pg2_19.apsp.txt | 762 (PG(2,19) incidence graph (Moore)) |
@@ -278,7 +278,7 @@ logs in checks/*.gen.txt):
 |---|---:|---:|---:|---|
 | (17,8) | 41,373,072 | **43,463,280** | +5.1 % | PSL(2,41) x Z631, e + 2 fixed + 2 orbits of 7 (mu 41.2) |
 | (18,8) | 57,637,680 | **64,792,896** | +12.4 % | PSL(2,97) x Z71, e + 3 fixed + 2 orbits of 7 (mu 46.3) |
-| (19,8) | 86,317,296 | **92,166,360** | +6.8 % | PSL(2,131) x Z41, e + 3 fixed + 3 orbits of 5 (mu 35.9) |
+| (19,8) | 86,317,296 | **92,599,320** | +7.3 % | PSL(2,59) x Z451, e + 3 fixed + 3 orbits of 5 (mu 38.5) |
 | (20,8) | 122,739,120 | **131,610,120** | +7.2 % | PSL(2,59) x Z641, 4 free orbits of 5, no e (mu 39.0) |
 
 **What made the difference: the order of the automorphism.** The earlier values used S closed under an automorphism

@@ -1,0 +1,6 @@
+selftest psl 59: |M| = 102660, det-1 matrices 205320
+selftest group multiplication: associativity, identity, inverse on 20000 random triples ok
+file a.sol
+header: 20 8 psl 59 n 641 N 65805060
+group psl 59 x Z_641, |G| = 65805060 = N, vertices 2N = 131610120; 20 distinct generators
+from (e,A): reached A 65805060/65805060, B 65805060/65805060 within 8; ecc 8; level sizes [1, 20, 380, 7220, 136940, 2549296, 34604358, 63248524, 31063381]  (296s)

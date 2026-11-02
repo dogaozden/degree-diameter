@@ -1,0 +1,9 @@
+# d19D8_psl_59_451_orb5-3-4_s3: haarcheck_gen (research/frontier/haarcheck_gen.c) on b277c79940bbb7dd..., Mon Nov  2 00:43:30 UTC 2026
+selftest psl 59: |M| = 102660, det-1 matrices 205320
+selftest group multiplication: associativity, identity, inverse on 20000 random triples ok
+file runs/d19D8_psl_59_451_orb5-3-4_s3.sol
+header: 19 8 psl 59 n 451 N 46299660
+group psl 59 x Z_451, |G| = 46299660 = N, vertices 2N = 92599320; 19 distinct generators
+from (e,A): reached A 46299660/46299660, B 46299660/46299660 within 8; ecc 8; level sizes [1, 19, 342, 6141, 110187, 1938860, 24737990, 44354640, 21451140]  (13s)
+from (e,B): reached A 46299660/46299660, B 46299660/46299660 within 8; ecc 8; level sizes [1, 19, 342, 6141, 110187, 1938860, 24738855, 44354640, 21450275]  (26s)
+VALID d=19 D=8 group=psl 59 x Z_451 N=46299660 vertices=92599320 (distinct generators, 19-regular simple; every vertex within 8 of both (e,A) and (e,B); ecc 8; 26s)
