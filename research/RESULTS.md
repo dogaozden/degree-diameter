@@ -354,3 +354,18 @@ by the coordinator with build_haar.py, two BFS from both sides, ecc ≤ D, nothi
 - Nov 01 16:37 PT (harvest): (4,14) 503,014 (was 497,042), meta 5849 43 5711 n 1; claude/beyond-d14-new-cells-v6dcaa.
 - Nov 01 16:37 PT (harvest): (6,11) 2,135,280 (was 2,124,866), psl 41 n 31; claude/raise-d11-frontier-26r11l.
 - Nov 01 16:37 PT (harvest): (16,11) 29,961,590,400 (was 0), psl 449 n 331; claude/beyond-d11-d12-new-cells-3t3djx.
+
+- Nov 01 17:36 PT (harvest): (4,12) 74,118 (was 74,066), meta 1123 33 60 n 1; claude/raise-d-delta-3-4-5wyh9b.
+- Nov 01 17:36 PT (harvest): (4,13) 193,058 (was 192,382), meta 1163 83 102 n 1; claude/raise-d-delta-3-4-5wyh9b.
+- Nov 01 17:36 PT (harvest): (4,14) 504,382 (was 503,014), meta 6151 41 5694 n 1; claude/beyond-d14-new-cells-v6dcaa.
+- Nov 01 17:36 PT (harvest): (5,11) 311,942 (was 311,426), meta 8209 19 477 n 1; claude/raise-d11-frontier-26r11l.
+- Nov 01 17:36 PT (harvest): (6,14) 190,269,984 (was 0), sl 137 n 37; claude/beyond-d14-new-cells-v6dcaa.
+- Nov 01 17:36 PT (harvest): (6,15) 867,831,360 (was 0), sl 241 n 31; claude/new-cells-d15-d16-fpj633.
+- Nov 01 17:36 PT (harvest): (8,11) 46,309,200 (was 45,329,808), sl 149 n 7; claude/raise-d11-frontier-26r11l.
+- Nov 01 17:36 PT (harvest): (10,11) 461,335,200 (was 460,691,568), sl 151 n 67; claude/raise-d11-frontier-26r11l.
+- Nov 01 17:36 PT (harvest): (17,8) 41,723,520 (was 41,373,072), sl 31 n 701; claude/raise-d8-d7-beyond-table-8mozbm.
+- Nov 01 17:36 PT (harvest): (17,9) 543,962,400 (was 501,707,400), sl 151 n 79; claude/raise-d9-orbit-metacyclic-ndvfty.
+- Nov 01 17:36 PT (harvest): (18,8) 64,577,760 (was 57,637,680), psl 79 n 131; claude/raise-d8-d7-beyond-table-8mozbm.
+- Nov 01 17:36 PT (harvest): (19,8) 91,939,320 (was 86,317,296), psl 109 n 71; claude/raise-d8-d7-beyond-table-8mozbm.
+- Nov 01 17:36 PT (harvest): (19,9) 1,317,726,672 (was 1,218,394,320), sl 277 n 31; claude/raise-d9-orbit-metacyclic-ndvfty.
+- Nov 01 17:36 PT (harvest): (20,8) 126,119,280 (was 122,739,120), psl 41 n 1831; claude/raise-d8-d7-beyond-table-8mozbm.
