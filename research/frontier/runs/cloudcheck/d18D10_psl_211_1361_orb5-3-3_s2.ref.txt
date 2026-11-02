@@ -4,3 +4,4 @@ checker: haarcheck_psl, source git show origin/master:research/structured/tools/
 job: gencheck-v, reference checker only (haarcheck_gen is run by the search session; not repeated here). Single run, single thread; expected about 4.6 GB and about 2.5 h.
 status: RUNNING; started 2026-11-02T05:31:20Z
 progress 2026-11-02T06:02:10Z: still running, elapsed 30:50, RSS 4683648 KB, 98.9% CPU; no output yet (the checker prints only after each BFS).
+progress 2026-11-02T06:32:18Z: running, elapsed 01:00:58, RSS 4683648 KB, 98.8% CPU; exit file: (not finished); stdout so far: 0 lines.
