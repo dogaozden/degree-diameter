@@ -2,3 +2,4 @@ machine: nproc=4; free -g: total 15 used 0 free 14 avail 15; Linux 6.18.44-fc-v1
 checker source: research/structured/tools/haarcheck_psl.c on master ef3d56ac7a07ad255a15e080ac72efe0de868d63 (sha256 ba816e278a1fa0616d55b563301644c443971a1d361293c00e4f98c36f9976b4 of the copy built); cc -O3 -o haarcheck_psl haarcheck_psl.c
 note: /usr/bin/time is not installed on this machine (apt unavailable), so peak RSS is taken from getrusage(RUSAGE_CHILDREN).ru_maxrss via a small python3 wrapper (same field time -v reports); wall time from time.time().
 progress 2026-11-02T05:31:31Z: check started 05:31:19Z, BFS from (e,A) running (pid 519), RSS 487 MB at start; no result yet.
+progress 2026-11-02T06:01:47Z: still running after 30 min (pid 519), VmRSS 7613472 kB (peak so far), no output yet; will run to completion.
