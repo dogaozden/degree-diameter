@@ -264,6 +264,66 @@ generator, a meet-in-the-middle near-miss finisher, composite n at (7,11).
   SL(2,853) about 40 CPU-minutes, against 7 CPU-minutes for the 1.17-billion SL(2,251) x Z37. For the coordinator's
   second check, the PSL/SL-specific checkers should be much faster for p > 600.
 
+### D = 8 at Δ = 17..20 and D = 7 (job raise-d8b, 2026-11-01/02)
+
+Job raise-d8b (Opus director + five Haiku squad rounds of 16 cards, cloud session, 4 cores shared by all searches,
+branch claude/raise-d8-d7-beyond-table-8mozbm). Tools in research/frontier/raise_d8/ (big.sh, bigw.sh, grp.py,
+save.sh, harvest.py, roundsum.py, haar_big0w.c); squad cards, logs and scoreboards in research/squads/raise_d8b/r1..r5;
+round notes in research/squads/LOG.md.
+
+**D = 8 values** (every one checked by haarcheck_gen, BFS from (e,A) and (e,B); solutions in research/frontier/sols/,
+logs in checks/*.gen.txt):
+
+| cell | before | now | gain | group, S |
+|---|---:|---:|---:|---|
+| (17,8) | 41,373,072 | **43,463,280** | +5.1 % | PSL(2,41) x Z631, e + 2 fixed + 2 orbits of 7 (mu 41.2) |
+| (18,8) | 57,637,680 | **64,792,896** | +12.4 % | PSL(2,97) x Z71, e + 3 fixed + 2 orbits of 7 (mu 46.3) |
+| (19,8) | 86,317,296 | **92,166,360** | +6.8 % | PSL(2,131) x Z41, e + 3 fixed + 3 orbits of 5 (mu 35.9) |
+| (20,8) | 122,739,120 | **131,610,120** | +7.2 % | PSL(2,59) x Z641, 4 free orbits of 5, no e (mu 39.0) |
+
+**What made the difference: the order of the automorphism.** The earlier values used S closed under an automorphism
+alpha of order 3 (conjugation by an element of order 3 times z -> r z). With alpha of order 5 or 7 the uncovered set
+comes in alpha-orbits of 5 or 7, and the search cost follows mu/k (the expected number of uncovered orbits): a fit over
+74 finished runs of this job (squad card r4/f15) gives evaluations ~ exp(1.0 + 1.21 mu/k) (sigma 1.9), with nothing
+solved beyond mu/k ~ 9 at the ~0.2 core per search available here. The first k = 5 run solved (18,8) at mu 29.6 in 97
+evaluations, where k = 3 at mu 28 needed ~30 minutes. Limits found on the way:
+- **Fixed letters must be few.** S = {e} + (f - 1) alpha-fixed letters + orbits; the fixed letters lie in the abelian
+  centralizer of alpha (a torus), and three or more commuting letters make 6-cycles. "5 3 4" (f = 4) still worked on
+  PSL with moderate n, but k = 7 with f = 5, 6 ((19,8), (20,8)) screened 5-20x worse than k = 5, as did "5 3 5" at (20,8).
+- **With f = 0 the last holes are alpha-fixed elements** (r3/e13): z = 0 and in the torus of the alpha element, each
+  missed with probability ~ e^(-lambda/k), so the expected number is (torus size) x e^(-lambda/5): ~1 for PSL(2,41)
+  (torus 20), ~3 for PSL(2,109) (55), ~6 for PSL(2,229) (115). The fix that solved (20,8) at mu 39: weight an uncovered
+  fixed element 5 in the search energy (ORBW, as in haar_sym and the lab's (15,8) record) and use a group with a small
+  torus; research/frontier/raise_d8/haar_big0w.c adds ORBW to haar_big0 (for f = 0 a hole x of H(G, S s0^-1) is tested
+  as x s0).
+- **Which k wins depends on the group**, and a 16-sample RANDORB screen (median cost divided by k) predicted it: round 3's
+  screen chose k = 7 at (17,8) and solved in 1,860 evaluations. k = 9 (alpha^3 of order 3), orbits of order 4, single
+  orbits of 11 and k = 7 with many fixed letters all screened far worse.
+- Large cyclic factors (n/p > ~40) and n = 1 with large p (PSL(2,509), 1.5 s per evaluation) were poor, as before.
+
+**Negative results** (squad cards, numbers in the LOG): product groups in haar_sym; an alpha acting on one factor of
+PSL(2,41) x SL(2,5) x Z11 to give the fixed letters a non-abelian centralizer (2,400 fixed elements, far worse); 2+2
+multi-Haar lifts of K_{2,2} over SL(2,p) (no better than Haar graphs of equal order); cyclic and coset-union Haar graphs
+(a counting bound caps them near 10^6 vertices); k = 3 near-miss finishing with larger K and other seeds; the doubling
+n_b(Δ,D) >= 2 n(Δ-1,D-1), since the general table stops at degree 16 and 2 n(16,7) = 29,990,734 < 41.4M.
+
+**D = 7.** The table now carries the hexagon-with-hubs graphs of job conics-2 (branch claude/conics-2-diameter-7-ic0oat,
+research/synthetic/conics2/README.md): (17,7) 5,693,959 (on master since Oct 30), (18,7) 7,309,092, (19,7) 11,316,940
+and (20,7) 15,795,219. When that job ended, (19,7) had 9 of 16 and (20,7) 9 of 24 source ranges of its all-pairs check
+recorded; the other ranges had finished afterwards in their cloud sessions, and this job read the RESULT lines and the
+edge-list sha256 from the 22 session transcripts: all VALID, full coverage (checks/d19D7_n11316940_ranges_complete.txt,
+checks/d20D7_n15795219_ranges_complete.txt). Haar graphs are far below these values at D = 7 (size law ~2.9M at
+(17,7)). Squad card r3/e16 tried extra hubs on the spare slots of the typed level graphs at q = 5: one to 200 extra hubs
+always leave 170-220 level-0 vertices at distance 8, because level 0 (whose freed set sets the hub cap) has no spare
+slots. Negative for the naive version.
+
+**A lead for D = 8 (not pursued).** The 2013 table's (q+2, 8) values are exactly 3(q^6 - 1) (e.g. (13,8) = 5,314,680 =
+3 x (11^6 - 1)), and q^6 - 1 is the number of nonzero singular vectors of the parabolic quadric Q(6,q) that carries the
+split Cayley hexagon H(q). So the table's construction looks like a lift of H(q) whose vertices are singular vectors up
+to sign (q - 1)/2 per point, times Z3 levels, joined by one matching. For q = 3 random voltages already work (squad
+beyond r1/c10), so small cases do not reveal the structure. If found, it would give about 1.6-1.9x the current Haar
+values at (17..20, 8) (REGULARITIES.md 2.1).
+
 ## What failed, and why it matters for the next attempt
 
 - (17,5) has no construction of its own (see D = 5). It is the one cell where the formula families leave a gap:
