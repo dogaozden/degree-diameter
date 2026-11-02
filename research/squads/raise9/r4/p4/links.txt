@@ -3,3 +3,13 @@ s1 link1 start=fresh seed1 killed at 108s (KILL, no RESULT); best written: 17 9 
 link | seed | start | best cost | evals (killed by KILL at 108 s; eval ~8.6 s under load 19)
 s1 L1 | 1 | fresh | 84 (from 318) | 13
 s2 L1 | 2 | fresh | 138 (from 212) | 13
+s1 L2 | 3 | OUT_s1.txt.best (cost 84) | 84 (no gain) | 13
+s1 L3 | 4 | OUT_s1.txt.best (cost 84) | 84 (no gain) | 11
+s1 L4 | 5 | OUT_s1.txt.best | 84 (no gain; 3 links stalled -> fresh seed) | 17
+s6 L1 | 6 | fresh | 102 (from 2xx; killed at 108 s) | ~17
+s6 L2 | 7 | OUT_s6.txt.best | 102 (no gain) | 17
+s6 L3 | 8 | OUT_s6.txt.best | 102 (no gain; stalled 3 links -> fresh seed) | 17
+s9 L1 | 9 | fresh | 96 | 17
+s9 L2 | 10 | OUT_s9.txt.best | 78 (improved from 96) | 17
+s9 L3 | 11 | OUT_s9L2.txt.best | 78 (no gain) | 21
+s9 L4 | 12 | OUT_s9L2.txt.best | 78 (no gain; ~22 min used, stopped) | 17

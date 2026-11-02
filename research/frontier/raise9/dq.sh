@@ -7,10 +7,10 @@ while true; do
   line=$(grep -v "^#" "$QF" | grep . | head -1); [ -z "$line" ] && break
   grep -vxF "$line" "$QF" > "$QF.tmp"; mv "$QF.tmp" "$QF"; echo "$line" >> "$QF.done"
   eval set -- $line
-  d=$1 D=$2 secs=$3 seed=$4 K=$5 fam=$6 p=$7 n=$8 orb=$9 th=${10}; st=${11}
+  d=$1 D=$2 secs=$3 seed=$4 K=$5 fam=$6 p=$7 n=$8 orb=$9 th=${10}; st="${*:11}"
   set -- $orb; tag=d${d}D${D}_${fam}_${p}_${n}_orb$1-$2-$3_s${seed}
   echo "$(date -u +%T) start $tag ($secs s, $th threads) $st"
-  nice -n ${DNICE:-3} env $st ORBIT="$orb" THREADS=$th $B/haar_big0 $d $D $secs $seed $K runs/$tag.out $fam $p $n > runs/$tag.log 2>&1
+  nice -n ${DNICE:-3} env $st ORBIT="$orb" THREADS=$th $B/haar_big1 $d $D $secs $seed $K runs/$tag.out $fam $p $n > runs/$tag.log 2>&1
   echo "$(date -u +%T) $(grep RESULT runs/$tag.log | tail -1)"
 done
 echo "QUEUE $QF DONE $(date -u +%T)"

@@ -1,3 +1,15 @@
 # q5 links: seed | start file | best cost | evals
 s1 | fresh | 104 (start 174) | 5 evals in 100 s (load ~10-20, 17 s/eval), killed at 108 s
 s2 | fresh | 64 (start 98) | 5 evals in 100 s (15 s/eval), killed at 108 s
+s3 | OUT_s2.txt.best.orb | 64 (no gain) | 5 evals
+s4 | OUT_s2.txt.best.orb | 64 (no gain) | 5 evals
+s5 | OUT_s2.txt.best.orb | 64 (no gain) | 9 evals (RESULT line, 104.9 s)
+s6 | fresh | 68 (start 132) | 9+ evals (improving)
+s7 | OUT_s6.txt.best.orb | 50 (from 68) | 9+ evals (improving)
+s8 | OUT_s7.txt.best.orb | 36 (from 50) | 9+ evals (improving)
+s9 | OUT_s8.txt.best.orb | 36 (no gain) | 9 evals
+s10 | OUT_s8.txt.best.orb (typo attempt with OUT_s9 failed: no file) | 36 (no gain) | 9 evals
+s11 | OUT_s8.txt.best.orb | 36 (no gain) | 9 evals
+s12 | OUT_s8.txt.best.orb | 36 (no gain) | 9 evals
+# summary: best lineage seed 6 -> s7 -> s8 at cost 36 (mu 21.71, N 440,501,040, orbit "3 6 0"). No cost 0.
+# Each link is 5-9 evals (11-17 s per eval under load ~20), so about 1 link per 100 s.

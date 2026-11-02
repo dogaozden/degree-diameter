@@ -1,2 +1,12 @@
 seed1 fresh | none | 54 | 9 evals (start 72)
 seed2 fresh | none | 72 | 13 evals (start 114)
+seed3 | OUT_s1.txt.best | 54 | 13 evals (no gain)
+seed4 | OUT_s1.txt.best | 54 | 9 evals (no gain; lineage s1 stalled 3 links, switch to fresh seeds)
+seed5 fresh | none | 30 | 13+ evals (start 72; best lineage so far)
+seed6 | OUT_s5.txt.best | 30 | 13 evals (no gain)
+seed7 | OUT_s5.txt.best | 30 | 13 evals (no gain)
+seed8 | OUT_s5.txt.best | 30 | 13 evals (no gain; s5 lineage stalled 3 links, fresh seeds)
+seed9 fresh | none | 30 | 17 evals (start ~72)
+seed10 | OUT_s9.txt.best | 30 | 17 evals (no gain)
+seed11 fresh | none | 42 | 17 evals
+seed12 fresh | none | 54 | 13 evals (no gain)

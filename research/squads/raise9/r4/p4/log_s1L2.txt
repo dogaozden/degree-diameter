@@ -3,3 +3,5 @@ alpha: conj by mat(0,52,1,52), z -> 834 z on Z_1867 (fixed z: 1); ORBIT k=3 m=5 
 setup 0.1s
 start cost=84 (9.7s per eval)
 t=32 step=1 evals=5 slot=4 cand=120 cost=84 best=84 T=1.26
+t=65 step=2 evals=9 slot=2 cand=138 cost=84 best=84 T=1.06
+t=98 step=3 evals=13 slot=0 cand=132 cost=84 best=84 T=0.89

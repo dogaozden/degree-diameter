@@ -1,2 +1,13 @@
 s1 | fresh | 48 | 5 (killed at 108 s, start cost 102, 17.4 s per eval under load 20)
 s2 | OUT_s1.txt.best | 44 | 5 (start 48)
+s3 | OUT_s2.txt.best | 44 (no improvement; no .best written) | 5
+s4 | OUT_s2.txt.best | 32 | 5 (start 44)
+s5 | OUT_s4.txt.best | 32 (no improvement) | 9
+s6 | OUT_s4.txt.best | 32 (no improvement) | 9
+s7 | OUT_s4.txt.best | 32 (no improvement; lineage stalled 3 links, fresh seed next) | 9
+s8 | fresh | 66 | 9 (start 96)
+s9 | OUT_s8.txt.best | 66 (no improvement) | 9
+s10 | OUT_s8.txt.best | 32 (start 66) | 9
+s11 | OUT_s10.txt.best | 32 (no improvement) | 9
+s12 | OUT_s10.txt.best | 32 (no improvement) | 9
+s13 | OUT_s10.txt.best | 32 (no improvement; ended at 00:36) | 9

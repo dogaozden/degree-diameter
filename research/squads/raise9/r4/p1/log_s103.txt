@@ -2,3 +2,5 @@ group sl 113 x Z_193, N=278457312 (2N=556914624), rows 12768 x 21809 bits (doubl
 alpha: conj by mat(0,112,1,112), z -> 84 z on Z_193 (fixed z: 1); ORBIT k=3 m=5 f=2; W=4.5813e+09 lambda=16.452 mu=19.93
 setup 0.1s
 start cost=42 (12.0s per eval)
+t=46 step=1 evals=5 slot=4 cand=48 cost=42 best=42 T=1.26
+t=79 step=2 evals=9 slot=0 cand=36 cost=36 best=36 T=1.06

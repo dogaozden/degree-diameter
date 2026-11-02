@@ -274,3 +274,29 @@ rungs use small p (~100-240) and large n with one alpha-fixed z (gcd(r - 1, n) =
 and SL(2,523) x Z7 had stalled at cost 6-30.
 Process: i03 dumped 87 non-JSON lines into the scoreboard (moved to r3/i03/scoreboard_spill.txt); 6 more stray
 session-tool calls (archive_session, interrupt_session, read_documentation), all rejected or read-only.
+
+### Round 4 (16 cards, 00:12-00:40 UTC, research/squads/raise9/r4/) - last round
+
+Parallel lineages of the new shape (small p, large n with one alpha-fixed z) on the director's cells, one group per card,
+plus four (6,9) farms. Cards (best cost; none solved):
+- (17,9) "3 5 2": p1 SL(2,113) x Z193 (mu 19.9) 8; p2 SL(2,83) x Z487 (19.9) 12; p3 SL(2,101) x Z271 (20.9) 12 (holes with
+  z != 0, none in the torus); p4 SL(2,53) x Z1867 (19.2) 78 (very small p is bad); p5 SL(2,89) x Z397 (21.7) 24; p6 SL(2,137) x
+  Z109 (22.3) 6; p7 SL(2,79) x Z571 (24.0) 30.
+- (18,9): q1 SL(2,109) x Z337 "3 6 0" (18.4) 24; q2 SL(2,151) x Z127 "3 5 3" (19.0) 6 (6 generic holes, director's FIXF
+  screen: 0 alpha-fixed); q3 SL(2,139) x Z163 "3 6 0" (19.4) 18; q4 SL(2,83) x Z769 "3 5 3" (21.0) 32; q5 SL(2,71) x Z1231 "3 6 0"
+  (21.7) 36.
+- (6,9) farms, K = 16: r1/r3 Z1559 x| Z41 best 4 (31 seeds), r2/r4 Z2551 x| Z25 best 6 (31 seeds).
+At load ~20 each card got 5-20 s of CPU per 100 s link (7-22 s per evaluation at (17,9)/(18,9)), i.e. 90-300 evaluations
+per card in 25 minutes; the director's solves at these cells needed 17-2,639. Meanwhile the director (2 threads each)
+solved (17,9) SL(2,97) x Z301 at mu 15.69 (549,370,752) and (18,9) SL(2,131) x Z193 at mu 16.52 (867,712,560).
+Also from round 2: x01 left a partial exhaustive (4,9) search on Z101 x| Z25 with a fixed up to automorphisms (min cost 6
+over 508 (a,b) pairs; r2/x01/res.txt), no solution.
+
+**Why the squads stop here (director).** Four rounds, 65 cards: no card solved anything. What the squad did contribute was
+information the director used: m01/s17-s19/w07 shape and f-split tables, w07's observation that central holes are rarer than
+modelled, b03/p4 (small n and very small p are bad), the (3,9) exhaustive negative (a02) and the cover theorem (w09). The
+director's own EVAL + UNCPRINT of a cost-2 plateau (torus holes) was the decisive step, and every raise came from the
+director's 2-thread queues. The remaining gains (next rungs at (17..20, 9), +0.5-2 % each) need full-core runs of 200-3,000
+evaluations, which 16 cards on 4 cores cannot give (1/10 core each), so the last 3 hours go to the director's queues, a new
+odd-D FIXF screen (haar_big1, below) and the checks.
+Process: 3 more stray session-tool calls in round 4 (send_message, read_documentation), all rejected or read-only.

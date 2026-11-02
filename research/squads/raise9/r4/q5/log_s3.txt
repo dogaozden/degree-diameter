@@ -1,3 +1,5 @@
 group sl 71 x Z_1231, N=440501040 (2N=881002080), rows 5040 x 87401 bits (doubled row 2752 words), memory 0.35 GB, threads 1
 alpha: conj by mat(0,70,1,70), z -> 126 z on Z_1231 (fixed z: 1); ORBIT k=3 m=6 f=0; W=7.41174e+09 lambda=16.826 mu=21.71
 setup 0.0s
+start cost=64 (15.4s per eval)
+t=66 step=1 evals=5 slot=5 cand=90 cost=64 best=64 T=1.26

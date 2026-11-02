@@ -1,3 +1,13 @@
 seed | start file | best cost | evals
 101 | fresh | 24 (start 24, no improvement) | 9
 102 | fresh | 42 (start 54) | 9
+103 | OUT_s102.txt.best | 36 | 9
+104 | OUT_s103.txt.best | 36 (no gain) | 9
+105 | OUT_s103.txt.best | 14 | 9
+106 | OUT_s105.txt.best | 14 (no gain, 13 evals) | 13
+107 | OUT_s105.txt.best | 14 (no gain, 13 evals) | 13
+108 | OUT_s105.txt.best | 8 | 13
+109 | OUT_s108.txt.best | 8 (no gain, 13 evals) | 13
+110 | OUT_s108.txt.best | 8 (no gain, 13 evals) | 13
+111 | OUT_s108.txt.best | 8 (no gain, 13 evals) | 13
+201 | fresh | 24 (start 24, no gain, 13 evals) | 13

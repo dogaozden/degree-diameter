@@ -1,2 +1,18 @@
-101 | fresh | 
-102 | fresh |  | t=86 step=2 evals=9 slot=4 cand=12 cost=12 best=12 T=1.06
+seed | start file | best cost | evals (logged)
+101 | fresh | 18 | 9 (killed at 108 s, .best written)
+102 | fresh | 12 | 9
+103 | START=OUT_s102.txt.best | 12 (no gain) | 9 (killed at 108 s)
+104 | START=OUT_s102.txt.best | best=6 | 2 progress lines
+105 | START=OUT_s104.txt.best | best=6 | 2 progress lines
+106 | START=OUT_s104.txt.best | best=6 | 2 progress lines
+107 | START=OUT_s104.txt.best | best=6 | 3 progress lines
+107 | START=OUT_s104.txt.best | 6 (no gain) | 13 (ended normally, RESULT best=6)
+108 | fresh | best=24 | evals=13
+109 | START=OUT_s108.txt.best | best=24 | evals=13
+109 | START=OUT_s108.txt.best | 24 (no gain) | 13 (killed at 108 s)
+110 | fresh | best=36 | evals=13
+111 | fresh | best=26 | evals=13
+112 | START=OUT_s111.txt.best | best=26 | evals=9
+112 | START=OUT_s111.txt.best | 26 (no gain) | 9 (killed at 108 s)
+113 | START=OUT_s104.txt.best | best=6 | evals=9
+113 | START=OUT_s104.txt.best | 6 (no gain) | 9 (killed at 108 s)
