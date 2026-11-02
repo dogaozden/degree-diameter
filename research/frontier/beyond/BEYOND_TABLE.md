@@ -10,6 +10,11 @@ Extended 2026-11-01 by job beyond-d11 (branch claude/new-cells-d11-d12-beyond-8s
 Δ = 11..14 and D = 12 at Δ = 11..13, and new values for (4..10, 11) and (4..10, 12); see the section "D = 11 at
 Δ = 11..14 and D = 12 at Δ = 11..13" below.
 
+Extended 2026-11-02 by job raise-d8b (branch claude/raise-d8-d7-beyond-table-8mozbm): the four D = 8 cells at
+Δ = 17..20 raised with generator sets closed under an automorphism of order 5 or 7, and the four D = 7 cells updated to
+the hexagon-with-hubs graphs of job conics-2, whose all-pairs checks are now complete; see the section "D = 8 at
+Δ = 17..20 and D = 7 (job raise-d8b)" below.
+
 ## Summary
 
 - **Optimal (Moore graphs), 9 cells:** (17|18|20, 3), (17|18|20, 4), (17|18|20, 6) — incidence graphs of PG(2,q),
@@ -18,8 +23,10 @@ Extended 2026-11-01 by job beyond-d11 (branch claude/new-cells-d11-d12-beyond-8s
 - **D = 5, new construction:** multi-doubled-matching lifts of W(q) (MDM.md): (18,5) 47,600 and, inside the old
   table, a record (13,5) 11,700 (was 11,486). (19,5) 52,428 is the k = 1 case (DM on W(16)); (20,5) 75,000 is a
   route-chart lift over F5 from squad round 1. (17,5) has only the floor 33,792 (the (16,5) graph).
-- **D = 7:** level graphs (polygon covers) of H(13) and H(16), 5.6M–15.7M vertices (classical theorem).
-- **D = 8 .. 12:** Haar graphs of SL(2,p) × Z_n / PSL(2,p) × Z_n with automorphism-orbit generator sets, up to
+- **D = 7:** level graphs (polygon covers) of H(13) and H(16) plus hub vertices on freed point-line pairs (job
+  conics-2, typed whiskers), 5.7M–15.8M vertices, every one checked all-pairs (split into source ranges).
+- **D = 8 .. 12:** Haar graphs of SL(2,p) × Z_n / PSL(2,p) × Z_n with automorphism-orbit generator sets (at D = 8,
+  Δ = 17..20 orbits of order 5 or 7, job raise-d8b), up to
   billions of vertices, each checked by an independent low-memory BFS from both sides; the small cells (Δ = 3, 4) by
   exhaustive or annealed Haar searches.
 - **D = 11 at Δ = 11..14, D = 12 at Δ = 11..13 (beyond-d11):** Haar graphs of SL(2,p) x Z_n (odd D) and
