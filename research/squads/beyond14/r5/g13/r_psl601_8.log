@@ -1,0 +1,7 @@
+group psl 601 x Z_8, N=868324800 (2N=1736649600), rows 180600 x 4808 bits (doubled row 176 words), memory 0.63 GB, threads 1
+alpha: conj by mat(0,600,1,600), z -> 1 z on Z_8 (fixed z: 8); ORBIT k=3 m=2 f=1; W=1.56728e+10 lambda=18.050 mu=12.59
+setup 0.0s
+RANDORB sample 0 cost 759784200 (84.1s) zq 60368234.586
+RANDORB sample 1 cost 16873095 (99.7s) zq 1327220.330
+RANDORB sample 2 cost 18 (111.0s) zq 1.000
+RANDORB d=7 D=14 group=psl 601 x Z_8 N=868324800 samples=3 min=18 p10=18 median=16873095 mean=258885771.00 mu=12.59 time=111.0

@@ -49,3 +49,158 @@ nice 0, equal to the director's whole pipeline); the director raised the pipelin
 `echo -10 > /proc/<pid>/autogroup` and lowered the cards' groups to 15.
 Kept: haarex6 for the sweep; no family lead worth more CPU (the 704 lift is an isolated local minimum, the new
 families are far). The order-384 sweep continues; orders 401-450 started on the spare core.
+
+## 2026-11-01, beyond-d14, round 1 (16 cards, 22:48 UTC)
+
+Session: Opus director, job beyond-d14 (branch claude/beyond-d14-new-cells-v6dcaa). Goal: the D = 14 column at
+Δ = 3..8. All six cells already had checked values from job beyond-d13 (earlier the same day), so every target is a
+raise: (3,14) 5,706, (4,14) 497,042, (5,14) 12,795,166, (6,14) 187,990,656, (7,14) 1,674,490,944, (8,14) 11.3e9.
+Files: research/squads/beyond14/r1/ (HEADER.md, c01-c16.md, scoreboard.jsonl). Machine: 4 cores, 15 GB; the Agent
+tool's "remote" isolation runs in this same container (same boot id), so all cards share the 4 cores.
+
+Cards (best result; VALID = checked by the director with haarcheck_gen, build_haar2 or apsp):
+- c01 (3,14) Pappus cyclic lift n = 318/319: cost 2. c02 larger-girth bases (Tutte 8-cage n = 210 cost 30, Tutte
+  12-cage n = 50 cost 376, Foster n = 70 cost 270). c03 metacyclic voltages on Pappus: cost 6-8 at 5,724. c04 cubic
+  Haar graphs of non-metacyclic groups: cost 6 at 6,560 (AGL(1,41) x Z2). Nothing above 5,706.
+- **c05 (4,14): Z3079 x|_1863 Z81 (prime m), hmeta screen of 40 prime-m groups at N 249K-251K, 498,798 VALID**
+  (build_haar2; apsp running). Near miss Z5581 x| Z45 (502,290) cost 1.
+- c06 (4,14) other families at matched N: PGL(2,37) x Z5 cost 2 (253,080), SL(2,37) x Z5 3-4, PSL(2,47) x Z5 8.
+- c09 (5,14): SL(2,53) x Z43 random S 12,798,864 VALID (build_haar2), above the old record, below c11.
+- **c11 (5,14): PSL(2,163) x Z3 with ORBIT "2 2 1" (S = {e, x, ax, y, ay}, a of order 2), 12,991,752 VALID**
+  (haarcheck_gen and build_haar2); random symmetric S: median cost 41, min 10.
+- **c12 (6,14): SL(2,137) x Z37, ORBIT "3 2 0", cost 0 on the FIRST random S (mu 10.3), 190,269,984 VALID**
+  (haarcheck_gen, 210 s). Screen min/median: SL(2,137) x Z37 1/15, SL(2,239) x Z7 3/16, SL(2,79) x Z193 4/49.
+- c13 (6,14) other orbit forms: "6 1 0" degenerate, "2 3 0" cost 1,306, "3 1 3" worse: "3 2 0" stays.
+- **c15 (7,14): SL(2,233) x Z67, ORBIT "3 2 1", 1,694,979,936** (check running); also cost 0 at PSL(2,139) x Z631
+  and PSL(2,191) x Z241; PSL(2,137) x Z661 stalls at 3.
+- c07, c08, c10, c14, c16: pending at the time of writing.
+
+Director, outside the cards: (a) the Foster census of cubic edge-transitive graphs (Potocnik et al.,
+fostercensus.graphsym.net, TableCSS.html and CSS_lcf.txt) lists CSS(6272,3) and CSS(6272,7), semisymmetric cubic graphs
+of diameter 14 on 6,272 vertices: built from LCF, apsp VALID (diameter exactly 14). They are not ours; they set the
+(3,14) bar at 6,272. (b) Following the lab's own (3,10)-(3,12) records (job own-small: regular lifts of 4+4 cubic bases
+over non-abelian groups, joint base+voltage annealing with salift_s), a 60-s salift_s screen at D = 14 over Z113 x|_16 Z7
+(order 791) gave **6,328** (apsp VALID, diameter exactly 14), above the census and the old 5,706. Z41 x| Z20 (820)
+stalls at 6, Z101 x| Z8 (808) at 20. (c) (9,14): PSL(2,241) x Z1429 with three free 3-orbits solved at the first
+evaluation (N = 1.0e10, far below the size-law order ~2.8e10), 20,002,113,120 vertices; haarcheck_gen running. It is
+also the first value for (10,14) by monotonicity in Δ.
+
+Director's reading: cards stop after 6-16 minutes. Round 2 keeps the lift method at Δ = 3 (six cards over base size
+and group family), takes it to Δ = 4 (d08), pushes the round-1 winners at (4,14), (5,14), (6,14), (7,14) to larger N,
+and drops cyclic lifts, larger-girth bases, and the orbit forms "6 1 0", "2 3 0", "3 1 3".
+
+Round 1 late cards (after the entry above was written): **c08 (5,14) Z152393 x|_149882 Z43, 13,105,798 VALID**
+(build_haar2; hmeta, 4 s), near miss Z153511 x| Z43 (6.6M) cost 1; c10 (5,14) (Z337 x| Z7) x (Z307 x| Z9) 13,035,834
+(below c08); c07 (4,14) products of Frobenius groups no better than single metacyclic groups (cost 3 at 502,964);
+c14 (6,14) metacyclic random S cost 1 at 188,005,162 (k = 109); **c15 (7,14) SL(2,233) x Z67, 1,694,979,936 VALID**
+(haarcheck_gen, 559 s); c16 (7,14) "2 3 1" and "6 1 1" worse than "3 2 1", SL(2,947) x Z1 cost 1.
+
+## 2026-11-01, beyond-d14, round 2 (16 cards, 23:09 UTC; stopped at 23:28 by a container restart)
+
+Same session. Files: research/squads/beyond14/r2/. Selection from round 1: the director's lift result (4+4 base over a
+Frobenius group, 6,328) became six cards over base size and group family (d01-d06); (4,14) the prime-m metacyclic
+screen pushed (d07), lifts of 4-regular bases (d08), order-2 orbit forms (d09); (5,14) the "2 2 1" form in PSL, SL and
+metacyclic groups (d10-d12); pushes at (6,14) (d13, d14) and (7,14) (d15, d16). The Agent tool's 30-minute default
+background limit also stopped the director's first (9,14) check; the container restart stopped everything at 23:28.
+
+Cards (best result; VALID = director check):
+- **d04 (3,14): 3+3 base over Z47 x|_2 Z23, 6,486 VALID** (apsp). Then the director: **2+2 base over Z103 x|_8 Z17,
+  7,004 VALID** (apsp, diameter exactly 14); all five Frobenius groups of order 1,629-1,751 solved at p = 2 in 40 CPU-s;
+  1,778-1,884 stalled at 6-74. The six lift cards were redirected to p = 1, 2, 3 windows at 23:17: best states d06
+  Z199 x| Z9 (7,164) cost 6, d04 Z61 x| Z20 (7,320, p = 3) cost 24, d02 (7,104) cost 24, d03 p = 1 (7,164) cost 56,
+  d05 products at p = 2 (8,700+) cost in the thousands.
+- **d07 (4,14): Z5849 x|_5711 Z43, 503,014 VALID** (build_haar2); cost 2 at 252,191 and 252,385.
+- d08 (4,14) lifts of 2+2 4-regular bases over Z_m x| Z7: cost 4 at 397K (k = 7 too small; redirected to k >= 30).
+- d11 (5,14) "2 2 1" in SL(2,q) x Z_n: cost 18-36. d12 "2 2 1"-type pairs in metacyclic groups: cost 3,921 (far worse).
+- **d13 (6,14): PSL(2,107) x Z157, 192,314,952** (cost 0; check restarted after the restart).
+- **d15 (7,14): PSL(2,167) x Z367, 1,709,227,632** and SL(2,241) x Z61, 1,707,668,160, both from RANDORB=8 screens
+  (cost 0 in about 1 of 8 random symmetric S at 853-855M; min 3 above 855M); check running.
+- d09, d10, d14, d16: stopped by the restart without a scoreboard line.
+
+Director's reading: at Δ = 3 the base size matters more than the group: the size-law mu reached grows from 18 (4+4)
+to 21 (3+3) to 33 (2+2). Round 3 keeps p = 2, 3 at (3,14) (five cards), the prime-m metacyclic screens and a 1-opt
+finisher at (4,14), lifts with large-k groups at Δ = 4, 5, metacyclic pushes at (5,14), and random symmetric S screens
+at (6,14) and (7,14).
+
+## 2026-11-01/02, beyond-d14, round 3 (16 cards, 23:34 UTC)
+
+Same session (restarted container; the director's checks were restarted with 2-hour limits). Files:
+research/squads/beyond14/r3/. Selection from round 2: (3,14) lifts at p = 2, 3 near the record (e01-e04, e16 with the
+base shape fixed), (4,14) prime-m screens (e05, e08) and an exhaustive 1-opt finisher (e06), Δ = 4, 5 lifts with large-k
+groups (e07, e11), (5,14) metacyclic pushes (e09, e10), random symmetric S at (6,14) (e12, e13) and (7,14) (e14, e15).
+
+Cards (best result; VALID = director check):
+- (3,14): nothing above 7,004. p = 2 has a floor at cost 6 just above order 1,751 for Frobenius groups (e01, e16);
+  e02: cost 2 at Z37 x|_8 Z48 (1,776) and Z17 x|_2 Z104 (1,768), large k and r of smaller order; e04: PSL(2,7) x Z11
+  (1,848, 7,392) cost 4; e03: p = 3 over F13^2 x| Z7 (1,183, 7,098) cost 4.
+- **e06 (4,14): Z6151 x|_5694 Z41, 504,382 VALID** (build_haar2): an exhaustive 1-opt over one generator slot of d07's
+  cost-2 state. e05: cost 1 at Z8123 x| Z31 (251,813); e08: cost 2 at Z7351 x| Z35 (257,285).
+- e07 (4,14) and e11 (5,14): lifts of 2+2 bases over large-k Frobenius groups do NOT beat Haar graphs at Δ = 4, 5
+  (cost 26 at 503K; at Δ = 5 cost 0 only up to 8.0M, ~130 at 12.5M).
+- e09, e10 (5,14): cost 1 at Z73693 x| Z89 (6.56M), Z153511 x| Z43 (6.60M), Z100501 x| Z67 (6.73M); no cost 0.
+- **e12 (6,14): SL(2,113) x Z67, 193,333,056 VALID** and SL(2,131) x Z43, 193,324,560 VALID (haarcheck_gen), both
+  random symmetric S from RANDORB screens. e13: cost 3-4 at 97.5-98M.
+- **e15 (7,14): SL(2,163) x Z199, 1,723,572,432 VALID** (haarcheck_gen; 9 evaluations from a random start); cost 3 at
+  SL(2,179) x Z151 (866M). e14: cost 0 at 857M (below e15) with a cheap z-uniformity filter on random S.
+
+Director, outside the cards: 2+2 lifts at D = 13 solve far above beyond-d13's (3,13) 3,400: Z43 x| Z21 (3,612) and
+**Z47 x|_2 Z23 (4,324, apsp VALID, diameter exactly 13)** in 30-s screens; at D = 12 orders 602-618 did not solve (the
+lab's 2,368 stands). A round-2 card had created and immediately archived an empty remote session (23:11 UTC) against the
+header's rule; no other session was affected (checked with list_sessions); later headers name the tool explicitly.
+
+Director's reading: (6,14) and (7,14) keep moving by ~0.5 % per round from random symmetric S just above the record;
+(4,14) moved by finishing near misses exhaustively; (5,14) is stuck at cost 1. Round 4: finishers on every cost-1/2
+state, breadth over large-k metacyclic groups at p = 2 for (3,14), and a theory card on why small-base lifts only win at Δ = 3.
+
+## 2026-11-02, beyond-d14, round 4 (16 cards, 00:02 UTC)
+
+Same session. Files: research/squads/beyond14/r4/. Selection from round 3: finish the near misses (f01 p = 2 cost-2
+lifts, f04 p = 3, f06 1-opt at (4,14), f09 hole-directed finisher at (5,14), f13 SL(2,241) x Z7, f14 SL(2,179) x Z151),
+breadth (f02 large-k groups, f03 simple x cyclic, f07 composite m, f08 more seeds, f10 k 61-101, f11 SL/PSL random S,
+f16 non-Frobenius 2+2), the z-filter at Δ = 6 and 7 (f12, f15), a theory card (f05).
+
+Cards (best result; VALID = director check):
+- **f09 (5,14): Z83267 x|_31904 Z79, 13,156,186 VALID** (build_haar2): the card wrote a hole-directed finisher (each
+  round: a random slot, K candidates that force a word through that slot onto the missing element, keep the best,
+  sideways moves allowed; now research/frontier/beyond14/tools/hmeta_fin.c) and closed two cost-1 states (also
+  Z73693 x| Z89, 13,117,354).
+- **f14 (7,14): PSL(2,1201) x Z1, 1,732,322,400** and **f15: SL(2,179) x Z151, 1,732,018,320** (f15 by a low-temperature
+  anneal from a cost-3 start; also SL(2,127) x Z421 at 862.3M): checks running.
+- f07 (4,14): composite m works (Z2 x (Z1877 x| Z67), 503,036 VALID per card) but below the 504,382 record.
+- f05 theory (r4/f05/LIFTS.md): at matched size the group's action order k changes random-state costs far more than the
+  base size p; small-k and abelian groups collapse walk endpoints (E13/n 0.05-0.5 against 0.94-0.98).
+- No cost 0: f01 (cost-2 lift states are strict local minima), f02 (16 large-k groups, cost 162+), f03 and f16
+  (PSL(2,7) x Z11 cost 4), f04 (F13^2 x| Z7 cost 4), f08 (cost 1 at Z7211 x| Z35), f10 (cost 1 at Z91397 x| Z73 and
+  Z65651 x| Z101), f11 (cost 2, SL(2,149) x Z2), f12 (z-filter useless at Δ = 6), f13 (cost 4).
+- Two cards made stray calls to send_message / archive tools (both failed with missing arguments; nothing happened).
+
+Director: (9,14) PSL(2,241) x Z1429 VALID (haarcheck_gen, 2,858 s): 20,002,113,120 vertices, a new cell, also the first
+(10,14) value by monotonicity; (10,14) PSL(2,239) x Z1789 (24,422,855,520 vertices) solved at the first evaluation,
+check running. Round 5: hole-directed finishers on every cost-1/2 state at (4,14), (5,14); a lift version for (3,14);
+low-temperature anneals at (6,14), (7,14); side cells (3,11)-(3,13).
+
+## 2026-11-02, beyond-d14, round 5 (16 cards, 00:33 UTC)
+
+Same session. Files: research/squads/beyond14/r5/. Selection from round 4: f09's hole-directed finisher (now
+research/frontier/beyond14/tools/hmeta_fin.c) on every cost-1/2 state at (4,14), (5,14) (g01-g05, g15, g16), a lift
+version for (3,14) (g06), large-k groups at p = 3, 4 (g07), low-temperature anneals and random-S draws at (6,14) and
+(7,14) (g09-g13), side cells (3,11)-(3,13) (g08, g14).
+
+Cards (best result; VALID = director check):
+- **g02 (5,14): Z100501 x|_52125 Z67, 13,467,134 VALID** (build_haar2): FIN did not close the cost-1 state, a
+  low-temperature hmeta anneal from the FIN output did (T0 0.5, T1 0.1, TARGP 90, K 4, 39 s).
+- **g09 (6,14): SL(2,107) x Z79, 193,539,888 VALID** (haarcheck_gen): best of 60 random symmetric S (cost 4), then a
+  short anneal.
+- **g14 (3,12) side cell: 2+2 base over Z87 x|_7 Z7, 2,436 VALID** (apsp, diameter exactly 12; director rebuild from the
+  group formula), above the lab's 2,368 (own-small); (3,11): cost 2 at 1,368 (lab 1,344).
+- g12 (7,14): SL(2,359) x Z19 (N 879,090,480) cost 1 from a z-filtered random S (1 of ~70); g13 SL(2,499) x Z7 cost 3;
+  g11 cost-3 states at 866-871M did not move under low-T anneals.
+- No cost 0: g01 (FIN alone on Z100501 x| Z67), g03 (cost 1 at Z139967 x| Z47, 6,578,449), g15 (cost 2 at 6.68-6.70M),
+  g04 and g05 ((4,14) cost-1/2 states survive FIN, low-T and full 1-opt over all slots), g06 (lift finisher: cost-2 floor),
+  g07 (p = 3, 4 large-k: cost 8), g08 ((3,13) cost 2 at 4,400), g10 ((6,14) SL(2,241) x Z7 cost 3).
+- Rule breaks: g03 called interrupt_session and g09 archive_session (both without arguments, both failed); g02 and g13
+  made read-only remote calls (read_documentation, list_sessions). No session was changed.
+
+Director: (7,14) SL(2,179) x Z151 (r4/f15) 1,732,018,320 VALID (haarcheck_gen); (5,14) Z83267 x| Z79 (r4/f09) 13,156,186
+VALID (build_haar2). Round 6 (last): the FIN + low-T pair everywhere, an orbit-S finisher for haar_big0, targeted 2-opt
+for states no single change closes, side cells.
