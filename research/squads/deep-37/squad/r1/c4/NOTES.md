@@ -19,8 +19,8 @@ Region: {2,3}-groups (all SmallGroups of order 18, 24, 36, plus A4 = (12,3) and 
 
 - orbdfs: 1502 G-sets settled, DONE with 0 solutions (groups of order 12 (A4), 18, 24, 36, 48 (C2xS4) in the capped lists).
   Most die at the root (nodes <= 5): e.g. a fixed vertex whose three neighbours have no orbit of total size 3.
-- Unsettled (TIMEOUT at 100 s): `g12_3/f_5.txt` (PROBE 9.1e5), `g12_3/f_6.txt` (PROBE 9.4e3; unsharded background run
-  started, see below), `g24_6/f_4.txt` (colour-reversing, PROBE 8.2e3).
+- Unsettled (TIMEOUT at 100 s; the 1500 s unsharded run on f_6 also did not finish): `g12_3/f_5.txt` (PROBE 9.1e5),
+  `g12_3/f_6.txt` (PROBE 9.4e3, real tree much larger), `g24_6/f_4.txt` (colour-reversing, PROBE 8.2e3).
 - Not done: G-sets beyond the per-group caps (the census is far larger than the caps; see count numbers above);
   groups of order 2^a and 3^b, and any {2,3}-group of order above 48.
 - Local search (symbo, 40 s each, 11 families): best score37 far 868 (g24_3 f_56). 
@@ -30,9 +30,11 @@ Region: {2,3}-groups (all SmallGroups of order 18, 24, 36, plus A4 = (12,3) and 
 
 ## Problems found
 
-- SHARD in `src/orbdfs.c` is not additive. On `g24_3/f_53` (unsharded: DONE nodes=927, sols 0) the two shards at
-  SHARDDEPTH=2 total 17 nodes; on `g12_3/f_6` the 64 shards at depth 3 total 1615 nodes, while the unsharded run does not
-  finish in 100 s. I did not use SHARD for any settlement claim; all DONE results above are unsharded.
+- SHARD in `src/orbdfs.c` was not additive with the binary I first used (g24_3/f_53: unsharded DONE nodes=927, two
+  depth-2 shards summed to 17 nodes; g12_3/f_6: 64 depth-3 shards summed to 1615 nodes). Opus reports the cause (pass-through
+  calls reused a depth, so the shard filter could fire twice on one path) and a fix in bin/orbdfs. Rechecked with the fixed
+  binary: shards m=2 sum to 936 and m=3 to 945 nodes on g24_3/f_53 (unsharded 927; the extra nodes are the shared upper levels).
+  All settlements above are unsharded. The earlier sharded numbers are invalid and nothing rests on them.
 - symbo's cost counts only same-side pairs at distance > 6 and ignores connectivity, so its proxy can differ from score37
   (the 126 vs 135 case above). On colour-reversing families symbo wrote an invalid best file (maxdeg 8, not simple,
   `g18_3/f_1`), so those were excluded.
@@ -41,4 +43,4 @@ Region: {2,3}-groups (all SmallGroups of order 18, 24, 36, plus A4 = (12,3) and 
 ## Files
 
 - `runs.tsv` (orbdfs per G-set), `ls_results.tsv` (symbo per family), `gs/n170/*/est.txt`, `best_far132_A4f6.edges`
-- Long unsharded orbdfs on `g12_3/f_6`: `long/a4f6.out` (LONG_STATUS_PLACEHOLDER)
+- Long unsharded orbdfs on `g12_3/f_6`: `long/a4f6.out`, 1500 s, no DONE (still unsettled). Also unsettled: `g12_3/f_5`, `g24_6/f_4`.

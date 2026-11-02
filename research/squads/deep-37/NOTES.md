@@ -37,3 +37,19 @@ Start 2026-11-01T22:39:08Z. Target: bipartite (3,7) graph on 170 vertices (table
   (3 orbits of size 5 + 7 of size 10 per side) ~2.3e8: running.
 - Fail-first fill order (DYN=1): same 96 solutions at 168, 3.6M vs 4.7M nodes on F20rev b=3; not a real gain.
 - Squad round 1 launched at 23:45Z (7 cards, squad/r1/CARDS.md).
+
+## 00:00-00:40 round 1 results (verified by Opus where stated)
+- c6 (exact LNS): far 43 at n = 170 from the far-60 F20 graph with symmetry-breaking regions (8-12 removed edges near a
+  far pair, all completions enumerated, supergraph lower bound). Verified: bin/score37 far 43, apsp VALID at D = 8.
+  Trivial automorphism group; 43 far pairs (all distance 8) on 68 vertices; differs from its start in 48 edges. Also a
+  far-44 graph (another class). nearmiss/n170_far43_c6lns.edges, n170_far44_c6lns.edges. New best near miss at 170
+  (old 46). Local minimum for regions of up to 13-15 edges. The F20-invariant neighbourhoods of the far-60 graph have
+  no completion below 60, and the far-46 graph has none below 46 for 8-12 edge regions.
+- c4: 1,502 few-orbit G-sets of {2,3}-groups (A4, all groups of order 18, 24, 36, C2xS4) settled exactly at 170, none.
+  Opus reran a random sample of 6: identical node counts, group files valid (85 + 85). Best heuristic far 132.
+- c2: far-46 floor reproduced by annealing from fresh starts; pair relocation of the far-46 graph (510 moves) and
+  designed insertions (4-edge, 12-cycle) give nothing below 46; girth-8 seed 92.
+- c3, c7: n = 169 best far 122 / 123 (exhaustive single-vertex insertion into C168.1 floors at 126, then SA), local
+  minima; C3-symmetric SA at 169 147.
+- Bug found by c4: orbdfs SHARD did not partition the tree (pass-through calls reuse the depth). Fixed 00:20Z; shard
+  totals now add up (96 = 96 on the 168 calibration). None of Opus's runs used shards.
