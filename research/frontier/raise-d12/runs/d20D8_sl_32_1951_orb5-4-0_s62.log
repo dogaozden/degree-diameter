@@ -1,0 +1,23 @@
+group sl 32 poly x^5+x^2+1 x Z_1951, N=63867936 (2N=127735872), rows 1056 x 60481 bits (doubled row 1912 words), memory 0.05 GB, threads 1
+alpha: Frobenius x -> x^(p^AFROB) (identity matrix 1,0,0,1), z -> 896 zsetup 0.0s
+start cost=40 (0.4s per eval)
+t=1 step=1 evals=5 slot=3 cand=20 cost=20 best=20 T=1.26
+t=1 step=2 evals=9 slot=2 cand=30 cost=20 best=20 T=1.06
+t=1 step=3 evals=13 slot=1 cand=20 cost=20 best=20 T=0.89
+t=2 step=4 evals=17 slot=0 cand=31 cost=20 best=20 T=0.75
+t=2 step=5 evals=21 slot=0 cand=26 cost=20 best=20 T=0.63
+t=2 step=6 evals=25 slot=2 cand=15 cost=15 best=15 T=0.53
+t=3 step=7 evals=29 slot=3 cand=11 cost=11 best=11 T=0.45
+t=3 step=8 evals=33 slot=2 cand=16 cost=11 best=11 T=0.38
+t=3 step=9 evals=37 slot=1 cand=25 cost=11 best=11 T=0.32
+t=3 step=10 evals=41 slot=0 cand=12 cost=11 best=11 T=0.27
+t=4 step=11 evals=45 slot=3 cand=20 cost=11 best=11 T=0.22
+t=4 step=12 evals=49 slot=0 cand=35 cost=11 best=11 T=0.19
+t=4 step=13 evals=53 slot=3 cand=15 cost=11 best=11 T=0.16
+t=4 step=14 evals=57 slot=0 cand=20 cost=11 best=11 T=0.15
+t=5 step=15 evals=61 slot=0 cand=20 cost=11 best=11 T=0.15
+t=5 step=16 evals=65 slot=2 cand=25 cost=11 best=11 T=0.15
+t=5 step=17 evals=69 slot=2 cand=0 cost=0 best=0 T=0.15
+RESULT d=20 D=8 group=sl 32 poly x^5+x^2+1 x Z_1951 N=63867936 vertices=127735872 best=0 evals=69 steps=17 time=5.0 orbit k=5 m=4 f=0 mu=24.51
+re-evaluation of the best S: cost 0
+wrote d20D8_sl_32_1951_orb5-4-0_s62.out
