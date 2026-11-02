@@ -266,7 +266,7 @@ generator, a meet-in-the-middle near-miss finisher, composite n at (7,11).
 
 ### D = 8 at Δ = 17..20 and D = 7 (job raise-d8b, 2026-11-01/02)
 
-Job raise-d8b (Opus director + five Haiku squad rounds of 16 cards, cloud session, 4 cores shared by all searches,
+Job raise-d8b (Opus director + six Haiku squad rounds of 16 cards, cloud session, 4 cores shared by all searches,
 branch claude/raise-d8-d7-beyond-table-8mozbm). Tools in research/frontier/raise_d8/ (big.sh, bigw.sh, grp.py,
 save.sh, harvest.py, roundsum.py, haar_big0w.c); squad cards, logs and scoreboards in research/squads/raise_d8b/r1..r5;
 round notes in research/squads/LOG.md.
@@ -341,6 +341,13 @@ values at (17..20, 8) (REGULARITIES.md 2.1).
 ## Rebuilding
 
 - Edge lists: graphs/*.edges.gz (first line n, then "u v"); check with research/lifts/coordinator_check/apsp.c.
+- raise-d8b (D = 8, Δ = 17..20): solutions research/frontier/sols/d1[7-9]D8_*_orb[57]-*.txt and d20D8_*_orb5-4-0_*.txt
+  (orbit form k-m-f in the name); check with research/frontier/haarcheck_gen.c (`haarcheck_gen SOL`, prints VALID);
+  logs checks/d*D8_*.gen.txt. Search: research/frontier/raise_d8/big.sh (haar_big0) and bigw.sh (haar_big0w with ORBW).
+- raise-d8b (D = 7): the hexagon-with-hubs graphs are rebuilt, not stored (5.7M-15.8M vertices): `python3
+  research/synthetic/conics2/typed_build.py build HEXBIN research/frontier/sols/d1xD7_*.sol OUT.edges` with HEXBIN =
+  research/p4/d6/hex/hex_q13.bin (q = 13) or the output of research/d10D7/hexgen2.c 16 (q = 16, sha256 f7a701a1...);
+  the edge-list sha256 to compare is in the range-check files.
 - Haar graphs: research/frontier/sols/d<Δ>D<D>_*.txt; check with research/frontier/build_haar2.py (small),
   research/squads/d16D10-r1/c5/hcheck5.c (SL) or research/squads/d16D10-r2/checker/hcheckpsl.c (PSL); search runs and
   check logs in runs/ (runs/check_*), job lists in queue*.txt, driver hq.sh / runq.sh.

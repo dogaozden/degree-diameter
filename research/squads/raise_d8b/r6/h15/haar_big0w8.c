@@ -507,7 +507,7 @@ static i64 *HY3; static i64 HY3CAP; static int FASTM;
 static inline el mulx(el x, el y) { return FASTM ? femul(x, y) : emul(x, y); }
 static inline i64 hkey(el x) { return FASTM ? fkey(x) : eidx(x); }
 static inline el alphax(el x) { el y = mulx(mulx(AG, x), AGI); y.z = NC > 1 ? (i64)((__int128)AR * x.z % NC) : 0; return y; }
-static int fixholes8(const el *SS, int stopat) {
+static int fixholes8_ref(const el *SS, int stopat) {   /* r5/g15 version, kept for comparison (FIXREF=1) */
     if (!BMP) BMP = (((u64)1 << 40) + P - 1) / P;
     FASTM = P < 512;
     if (!HY3) { HY3CAP = 1; while (HY3CAP < 2 * (i64)d * d * d) HY3CAP <<= 1; HY3 = malloc(sizeof(i64) * HY3CAP); }
@@ -527,6 +527,54 @@ static int fixholes8(const el *SS, int stopat) {
     for (int f = 0; f < NFIX && holes < stopat; f++) {
         int hit = 0;
         for (int i = 0; i < NVL && !hit; i++) hit = hhas(HY3, HY3CAP, hkey(mulx(VL[i], FIXE[f])));
+        if (!hit) holes++;
+    }
+    return holes;
+}
+/* ---- h15 (raise-d8b round 6): fast D = 8 screen, same test as fixholes8_ref ----
+ * x in Y_7 iff v x in Y_3 for some v in V = (S S^-1)^2 (V = V^-1, alpha(V) = V).  Here V is hashed once (all d^4
+ * products of the d^2 words s_a s_b^-1, one femul each, no alpha checks), and each alpha-fixed x scans Y_3 instead:
+ * x in V Y_3 iff x t^-1 in V for some t in Y_3.  Y_3 is alpha-invariant and alpha(x t^-1) = x alpha(t)^-1, so one t
+ * per alpha-orbit of Y_3 (the smallest key) is scanned.  Expected lookups for a covered x ~ |G| / |V|, against
+ * |G| / |Y_3| for the old scan over V.  Exact (no orbit reduction of V), so it is valid for any k. */
+static el *H15WL, *H15TL, *H15TI, *H15VL; static int H15CAP = 0;
+static int fixholes8(const el *SS, int stopat) {
+    if (!BMP) BMP = (((u64)1 << 40) + P - 1) / P;
+    FASTM = P < 512;
+    if (!HY3) { HY3CAP = 1; while (HY3CAP < 2 * (i64)d * d * d) HY3CAP <<= 1; HY3 = malloc(sizeof(i64) * HY3CAP); }
+    if (!H15CAP) { H15CAP = d * d; H15WL = malloc(sizeof(el) * (size_t)H15CAP); H15TL = malloc(sizeof(el) * (size_t)d * d * d); H15TI = malloc(sizeof(el) * (size_t)d * d * d); }
+    el SI[MAXD]; for (int i = 0; i < d; i++) SI[i] = einv(SS[i]);
+    for (int a = 0; a < d; a++) for (int b = 0; b < d; b++) H15WL[a * d + b] = mulx(SS[a], SI[b]);
+    int nw = d * d;
+    memset(HT2, 0xff, sizeof(i64) * HT2CAP);
+    static int MODE = -1; if (MODE < 0) MODE = getenv("H15MODE") ? atoi(getenv("H15MODE")) : 2;
+    if (MODE == 2) {   /* scan V (all d^4 products, no reduction) against the hashed Y_3; cheap build, d^4 scan per hole */
+        if (!H15VL) H15VL = malloc(sizeof(el) * (size_t)d * d * d * d);
+        int nv = 0;
+        for (int i = 0; i < nw; i++) for (int j = 0; j < nw; j++) H15VL[nv++] = mulx(H15WL[i], H15WL[j]);
+        memset(HY3, 0xff, sizeof(i64) * HY3CAP);
+        for (int i = 0; i < nw; i++) for (int c = 0; c < d; c++) hadd(HY3, HY3CAP, hkey(mulx(H15WL[i], SS[c])));
+        int holes = 0;
+        for (int f = 0; f < NFIX && holes < stopat; f++) {   /* x in V Y_3 iff v x in Y_3 for some v in V (V = V^-1) */
+            int hit = 0;
+            for (int i = 0; i < nv && !hit; i++) hit = hhas(HY3, HY3CAP, hkey(mulx(H15VL[i], FIXE[f])));
+            if (!hit) holes++;
+        }
+        return holes;
+    }
+    for (int i = 0; i < nw; i++) for (int j = 0; j < nw; j++) hadd(HT2, HT2CAP, hkey(mulx(H15WL[i], H15WL[j])));
+    memset(HY3, 0xff, sizeof(i64) * HY3CAP); int NT = 0;
+    for (int i = 0; i < nw; i++) for (int c = 0; c < d; c++) {
+        el t = mulx(H15WL[i], SS[c]); i64 it = hkey(t);
+        if (!hadd(HY3, HY3CAP, it)) continue;
+        el w = t; int rep = 1;                          /* one t per alpha-orbit: the smallest key */
+        for (int k = 1; k < OK_ && rep; k++) { w = alphax(w); if (hkey(w) < it) rep = 0; }
+        if (rep) { H15TL[NT] = t; H15TI[NT] = einv(t); NT++; }
+    }
+    int holes = 0;
+    for (int f = 0; f < NFIX && holes < stopat; f++) {
+        int hit = 0;
+        for (int i = 0; i < NT && !hit; i++) hit = hhas(HT2, HT2CAP, hkey(mulx(FIXE[f], H15TI[i])));
         if (!hit) holes++;
     }
     return holes;
@@ -772,6 +820,7 @@ int main(int argc, char **argv) {
     for (int j = 0; j < d; j++) make_tables(j);
     if (getenv("RANDORB")) {
         int m = atoi(getenv("RANDORB")); i64 *v = malloc(sizeof(i64) * m); double t0 = now(), sm = 0;
+        double TSCR = 0, TREF = 0; int FULLBAD = 0, REFBAD = 0, NPOS = 0;
         for (int t = 0; t < m && !stop_flag; t++) {
             for (int j = 0; j < OM; j++) for (int i = 0; i < OK_; i++) S[ostart(j) + i] = (el){0, 0, 0, 0, -1};
             for (int j = 0; j < OM; j++) { el o[MAXD]; random_orbit(j, o); for (int i = 0; i < OK_; i++) S[ostart(j) + i] = o[i]; }
@@ -781,12 +830,17 @@ int main(int argc, char **argv) {
             fprintf(stderr, "RANDORB sample %d cost %lld (%.1fs) zq %.3f", t, (long long)v[t], now() - t0, zq(S, W / NG));
             if (LEVPOP) fprintf(stderr, " pop7 %lld pop8 %lld", (long long)POPC[7], (long long)POPC[8]);
             if (FIXF) { int fu = 0; for (int i = 0; i < nu; i++) { el x = eofidx(ULIST[0][i]); if (eeq(alpha(x), x)) fu++; }
-                double tsc0 = now(); int scr = fixholes(S, 1 << 30); fprintf(stderr, " full-eval %.4fs fixed holes: full %d screen %d (screen %.4fs)%s", tfull, fu, scr, now() - tsc0, nu >= UCAP ? " (list capped)" : ""); }
+                int FSTOP = getenv("FIXSTOP") ? atoi(getenv("FIXSTOP")) : 1 << 30; double tsc0 = now(); int scr = fixholes(S, FSTOP); double ts = now() - tsc0; TSCR += ts;
+                int ref = -1; double tr = 0;
+                if (getenv("FIXREF")) { double tr0 = now(); ref = fixholes8_ref(S, FSTOP); tr = now() - tr0; TREF += tr; if (ref != scr) REFBAD++; }
+                fprintf(stderr, " full-eval %.4fs fixed holes: full %d screen %d (screen %.4fs) ref %d (%.4fs)%s", tfull, fu, scr, ts, ref, tr, nu >= UCAP ? " (list capped)" : "");
+                if (fu != scr) FULLBAD++; if (fu > 0) NPOS++; }
             fprintf(stderr, "\n");
             if (v[t] == 0 && strcmp(out, "/dev/null")) { write_sol(out, S); printf("RANDORB sample %d has cost 0, wrote %s\n", t, out); }
             if (stop_flag) { m = t + 1; break; }
         }
         qsort(v, m, sizeof(i64), cmpll);
+        if (FIXF) fprintf(stderr, "h15 summary: samples %d, screen!=full %d, screen!=ref %d, samples with fixed holes %d, mean screen %.5f s, mean ref %.5f s (FIXREF=%s)\n", m, FULLBAD, REFBAD, NPOS, TSCR / m, TREF / m, getenv("FIXREF") ? "1" : "0");
         printf("RANDORB d=%d D=%d group=%s x Z_%lld N=%lld samples=%d min=%lld p10=%lld median=%lld mean=%.2f mu=%.2f time=%.1f\n",
                d, D, SPEC, (long long)NC, (long long)NG, m, (long long)v[0], (long long)v[m / 10], (long long)v[m / 2], sm / m, mu, now() - t0);
         return 0;

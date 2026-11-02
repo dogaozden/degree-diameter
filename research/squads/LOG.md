@@ -384,3 +384,18 @@ running.
 Reading: as the fit predicts, mu/k ~ 8 rungs (k = 7 at mu 55) do not solve in one 1400-s run at ~0.2 core, and
 cost-5 states (one orbit) do not finish by reseeding. The cells are near the wall of this method at this compute.
 Round 6 (the last) continues the best states once more with ORBW where it applies.
+
+## 2026-11-02, raise-d8b, round 6 (16 cards, 01:02 UTC; stopped at 01:11 on Doğa's instruction)
+
+Same session. Files: research/squads/raise_d8b/r6/. Continuations of the best states with ORBW where it applies, fresh
+small-torus (20,8) groups, a coding card and a wildcard. Stopped about 8 minutes in (budget); no new values.
+- h15 made the D = 8 fixed-hole screen fast: 0.015-0.025 s per candidate at d = 17-20 (r5's version 0.08-0.17 s), equal
+  to full evaluation on 50 random S in each of 8 configurations (r6/h15/haar_big0w8.c). Not yet used in a search.
+- h16 wildcard: orbits of order 6 ("6 3 2") at (20,8) on PSL(2,191) x Z19: cost 18 after 89 evaluations. Weak.
+- Director: (20,8) PSL(2,41) x Z1931 ORBW (mu 45.8) ended at one fixed hole after 44,738 evaluations; (17,8) SL(2,71) x
+  Z61 ORBW ended at one fixed hole; PSL(2,31) x Z4441 at cost 5 when stopped.
+
+Job summary (squad vs director): the step change (orbits of order 5) came from a card (r1/c03) and was confirmed and
+spread by the director; k = 7 was first tried on the director's card list and won at (18,8) (r2/d06) and, chosen by a
+card's own screen, at (17,8) (r3/e01). Of the eight value-raising finds, five were card runs and three director runs
+(two of them continuing card states). Status: research/frontier/raise_d8/STATUS.md.
