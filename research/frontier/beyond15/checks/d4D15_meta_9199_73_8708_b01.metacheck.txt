@@ -1,0 +1,13 @@
+checker: metacheck
+command: ./bin/metacheck sols/d4D15_meta_9199_73_8708_b01.txt
+start: 2026-11-01T23:07:59Z
+sha256 b896147c93ee6271f74ea274ea8a47fcb894acf2d5fbdf3a90a1ee96366eb24b  ./bin/metacheck
+sha256 276a1985ac26a07473f21e642db14e17ec29e10cfa0afab532856f166a0a6c70  sols/d4D15_meta_9199_73_8708_b01.txt
+file sols/d4D15_meta_9199_73_8708_b01.txt
+header: d=4 D=15 factors=1 [Z9199 x|_8708 Z73] x Z1  N=671527 (file says 671527)
+selftest: r^k = 1, associativity/identity/inverse on 20000 random triples, index round trip ok; 4 distinct generators
+from (e,A): reached A 671527/671527, B 671527/671527 within 15; eccentricity 15; levels 1 4 12 36 108 324 972 2916 8748 25985 74602 194018 388430 431184 198654 17060 (0.5 s)
+from (e,B): reached A 671527/671527, B 671527/671527 within 15; eccentricity 15; levels 1 4 12 36 108 324 972 2916 8748 25985 74594 194018 388274 431184 198818 17060 (0.5 s)
+VALID d=4 D=15 N=671527 vertices=1343054 diameter=15 (1.0 s, 1 threads)
+exit: 0
+end: 2026-11-01T23:08:00Z (1 s)

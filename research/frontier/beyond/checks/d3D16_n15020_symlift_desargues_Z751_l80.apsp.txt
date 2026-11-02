@@ -1,0 +1,9 @@
+checker: apsp
+command: ./bin/apsp lsym/out/desargues_D16_n751_l80.edges 3 16
+start: 2026-11-01T23:01:45Z
+sha256 8bce5713d2a2b5ab0019ae5209fe3a6acce43005bc4bd9cc932ae966ec1afdf2  ./bin/apsp
+sha256 38b6e0d94ad432ee9edfa7f81039749fe53624dd835f3c14c3982abd1a3104f9  lsym/out/desargues_D16_n751_l80.edges
+n=15020 edges=22530 degree min=3 max=3 bipartite=yes diameter=16
+RESULT VALID d=3 D=16 n=15020
+exit: 0
+end: 2026-11-01T23:01:46Z (1 s)

@@ -1,0 +1,9 @@
+checker: apsp
+command: ./bin/apsp ../../squads/beyond15/r4/n03/sol_12246_k13_n157_l14.edges 3 15
+start: 2026-11-02T00:05:35Z
+sha256 8bce5713d2a2b5ab0019ae5209fe3a6acce43005bc4bd9cc932ae966ec1afdf2  ./bin/apsp
+sha256 19d193f9c160ffaecd6c939a56fc6474d79d2fef2eb9db3149350d79760ab8aa  ../../squads/beyond15/r4/n03/sol_12246_k13_n157_l14.edges
+n=12246 edges=18369 degree min=3 max=3 bipartite=yes diameter=15
+RESULT VALID d=3 D=15 n=12246
+exit: 0
+end: 2026-11-02T00:05:36Z (1 s)
