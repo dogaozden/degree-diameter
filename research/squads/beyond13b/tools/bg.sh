@@ -10,5 +10,5 @@ nohup nice -n 10 "$@" > out/$tag.log 2>&1 &
 echo $! > out/$tag.pid; date +%s > out/$tag.t0
 # autogroup scheduling is on here: each run is its own scheduling group and plain nice has no effect against other
 # groups, so set the group's nice too (AGNICE, default 15; the director's own runs keep 0)
-[ -z "$DIRECTOR" ] && echo ${AGNICE:-15} > /proc/$!/autogroup 2>/dev/null
+[ -z "$DIRECTOR" ] && echo ${AGNICE:-19} > /proc/$!/autogroup 2>/dev/null
 echo "started $tag (pid $(cat out/$tag.pid)) at $(date -u +%T)"
