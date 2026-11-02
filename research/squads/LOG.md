@@ -260,3 +260,14 @@ throughput drops several-fold; from here on the director keeps at most ~6 search
 Director meanwhile: (10,11) **469,768,992** (SL(2,617), dloop, 4th seed; check running); (12,11) 3,039,136,800 check
 past root (e,A); loops on (11,11) SL(2,449) x Z7 (best 6), (12,11) SL(2,491) x Z13 (8), (13,11) SL(2,643) x Z13 (12)
 stopped to cut load.
+
+### Round 4 (5 cards, 00:12-00:45 UTC, research/squads/raise11/r4/; low concurrency, one group per card)
+Cards: g01 (7,11) SL(2,179); g02 (8,11) SL(2,107) x Z19; g03 (9,11) SL(2,137) x Z31; g04 (6,11) SL(2,103); g05 (6,11)
+Frobenius Z15053 x| Z71 and (5,11) Z4219 x| Z37 (g06 not launched).
+Best per card: g02 **(8,11) 46,547,568** (SL(2,107) x Z19, 1 in 8 fresh runs; haarcheck_gen + haarcheck_lean VALID);
+g05 **(6,11) 2,137,526** (Z15053 x|_5955 Z71, 3 solves in 9 seeds; metacheck + build_haar2.py VALID), (5,11) Z4219 x| Z37
+cost 2 in 4 of 6; g03 (9,11) cost 2 (1 of 15, only 70-97 evaluations per 95-s run at 1.4 s each); g04 cost 2 (1 of 11);
+g01 running.
+Director: moved (9,11) SL(2,137) x Z31 to a 600-s loop: **solved on its first run (851 evaluations; 159,415,392, +2.68 %;
+haarcheck_gen + haarcheck_lean VALID)**. So the 95-s card limit, not the group, held (9,11) back: at Δ >= 9 one lineage
+needs ~10^3 evaluations. (16,11) check (haarcheck_gen, 12.7 GB) running in a quiet window since 00:20.
