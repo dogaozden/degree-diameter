@@ -16,23 +16,33 @@ static u64 rng_s[2];
 static inline u64 rnd(void) { u64 s1 = rng_s[0]; const u64 s0 = rng_s[1]; rng_s[0] = s0; s1 ^= s1 << 23; rng_s[1] = s1 ^ s0 ^ (s1 >> 17) ^ (s0 >> 26); return rng_s[1] + s0; }
 static inline int rndn(int k) { return (int)(rnd() % (u64)k); }
 
+static int EXC = 0; static long last_far = 0;
 static long far_count(void) {
+    /* EXC=0: far = unordered pairs at distance > 7. EXC=1: excess = sum over pairs of max(0, dist - 7) (smoother). */
     static u64 R[MAXN][NW], F[MAXN][NW], G[MAXN][NW];
     int nw = (N + 63) / 64;
     for (int v = 0; v < N; v++) for (int w = 0; w < nw; w++) { R[v][w] = 0; F[v][w] = 0; }
     for (int v = 0; v < N; v++) { R[v][v >> 6] |= 1ULL << (v & 63); F[v][v >> 6] |= 1ULL << (v & 63); }
-    for (int step = 0; step < 7; step++) {
+    long excess = 0, far7 = 0;
+    for (int step = 1; step <= 12; step++) {
         for (int v = 0; v < N; v++) {
             for (int w = 0; w < nw; w++) G[v][w] = 0;
             for (int j = 0; j < dg[v]; j++) { int u = nb[v][j]; for (int w = 0; w < nw; w++) G[v][w] |= F[u][w]; }
             for (int w = 0; w < nw; w++) G[v][w] &= ~R[v][w];
         }
         for (int v = 0; v < N; v++) for (int w = 0; w < nw; w++) { F[v][w] = G[v][w]; R[v][w] |= G[v][w]; }
+        long reached = 0;
+        for (int v = 0; v < N; v++) for (int w = 0; w < nw; w++) reached += __builtin_popcountll(R[v][w]);
+        long unreached = (long)N * (N - 1) - (reached - N);   /* ordered pairs at distance > step */
+        if (step == 7) far7 = unreached / 2;
+        if (step >= 7) excess += unreached;
+        if (unreached == 0) break;
     }
-    long reached = 0;
-    for (int v = 0; v < N; v++) for (int w = 0; w < nw; w++) reached += __builtin_popcountll(R[v][w]);
-    return ((long)N * (N - 1) - (reached - N)) / 2;
+    last_far = far7;
+    if (EXC) return excess / 2;
+    return far7;
 }
+
 static int has_edge(int a, int b) { for (int j = 0; j < dg[a]; j++) if (nb[a][j] == b) return 1; return 0; }
 static void del_edge(int a, int b) {
     for (int j = 0; j < dg[a]; j++) if (nb[a][j] == b) { nb[a][j] = nb[a][--dg[a]]; break; }
@@ -42,6 +52,7 @@ static void add_edge(int a, int b) { nb[a][dg[a]++] = b; nb[b][dg[b]++] = a; }
 
 int main(int argc, char **argv) {
     if (argc < 7) { fprintf(stderr, "usage: c7sa START ITERS SEED T0 T1 OUT\n"); return 2; }
+    EXC = getenv("EXC") ? atoi(getenv("EXC")) : 0;
     FILE *f = fopen(argv[1], "r"); int m = 0, a, b; static int ea[1000], eb[1000];
     if (fscanf(f, "%d", &N) != 1) return 2;
     while (fscanf(f, "%d %d", &a, &b) == 2) { ea[m] = a; eb[m] = b; m++; }
@@ -94,6 +105,6 @@ int main(int argc, char **argv) {
     FILE *o = fopen(argv[6], "w"); fprintf(o, "%d\n", N);
     for (int v = 0; v < N; v++) for (int j = 0; j < dg[v]; j++) if (nb[v][j] > v) fprintf(o, "%d %d\n", v, nb[v][j]);
     fclose(o);
-    printf("best %ld\n", best);
+    EXC = 0; long ff = far_count(); printf("best %ld far %ld\n", best, ff);
     return 0;
 }

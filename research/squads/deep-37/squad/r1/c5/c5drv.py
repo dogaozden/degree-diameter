@@ -9,9 +9,9 @@ import sys, os, re, subprocess, time, math, glob
 ROOT = '/home/user/degree-diameter/research/squads/deep-37'
 C5 = os.path.join(ROOT, 'squad/r1/c5')
 RUNS = os.path.join(C5, 'runs.tsv')
-TARGET = 2e6          # nodes per shard (~20 s at 1e5 nodes/s)
+TARGET = 1e6          # nodes per shard (~25 s at 4e4 nodes/s on the shared machine)
 MAXM = 256
-SHARD_TMO = 90        # seconds per shard run before TIMEOUT
+SHARD_TMO = 40        # seconds per shard run before TIMEOUT (a timeout raises the split level by 8)
 
 def gdir(g): return os.path.join(C5, 'gs', 'g' + g)
 
@@ -96,20 +96,25 @@ def level_state(mine, ev):
     done = {int(r[3].split('/')[0]) for r in mine if r[4] == 'DONE' and int(r[2]) == m}
     return m, done, last[4]
 
-def cmd_solve(g, budget):
+def cmd_solve(gs, budget):
+    # gs: comma-separated group ids; one priority queue (cheapest estimate first) over all of them
     ests = []
-    for f, (e, d) in load_est(g).items():
-        if e in ('NA', 'EXCL'): continue
-        ests.append((float(e), f, d))
+    for g in gs.split(','):
+        for f, (e, d) in load_est(g).items():
+            if e in ('NA', 'EXCL'): continue
+            ests.append((float(e), f, d))
     ests.sort()
+    g = gs
     rows = load_runs()
     t0 = time.time(); ran = 0; settled_now = 0
     for ev, f, d in ests:
+        _m, _done, _last = level_state([r for r in rows if r[0] == f], ev) if any(r[0] == f for r in rows) else (0, set(), None)
+        if _last not in (None, 'HOPELESS') and _m and len(_done) == _m: continue
         while True:
             mine = [r for r in rows if r[0] == f]
             if mine and mine[-1][4] == 'HOPELESS': break
             if mine and mine[-1][4] == 'TIMEOUT' and int(mine[-1][2]) >= MAXM:
-                row = [f, g, mine[-1][2], '-', 'HOPELESS', '0', '0', '0', '%.3e' % ev, d]
+                row = [f, re.search(r'/g(\d+_\d+)/', f).group(1), mine[-1][2], '-', 'HOPELESS', '0', '0', '0', '%.3e' % ev, d]
                 with open(RUNS, 'a') as fo: fo.write('\t'.join(row) + '\n')
                 rows.append(row); break
             m, done_i, last = level_state(mine, ev)
@@ -117,10 +122,14 @@ def cmd_solve(g, budget):
                 settled_now += 1; print('SETTLED', f, 'm=%d' % m, d[:60], flush=True); break
             i = min(set(range(m)) - done_i)
             rem = budget - (time.time() - t0)
-            if rem < 15: print('solve', g, 'shard runs=%d' % ran, 'settled=%d' % settled_now, 'budget used'); return
+            # predicted duration from the observed node rate; do not start a shard that will not fit
+            nd = sum(int(r[5]) for r in rows if r[4] == 'DONE'); sd = sum(float(r[7]) for r in rows if r[4] == 'DONE')
+            rate = nd / sd if sd > 0 and nd > 0 else 3e4
+            pred = (ev / m) / rate
+            if rem < 15 or pred * 1.3 > rem: print('solve', gs, 'shard runs=%d' % ran, 'settled=%d' % settled_now, 'budget used'); return
             tmo = min(rem, SHARD_TMO)
-            base = os.path.basename(f)[:-4]
-            env = {'MAXSOL': '50', 'SOLPREFIX': os.path.join(C5, 'sols', 'g%s_%s_m%d_s%d' % (g, base, m, i)),
+            base = os.path.basename(f)[:-4]; gf = re.search(r'/g(\d+_\d+)/', f).group(1)
+            env = {'MAXSOL': '50', 'SOLPREFIX': os.path.join(C5, 'sols', 'g%s_%s_m%d_s%d' % (gf, base, m, i)),
                    'SHARDDEPTH': '8'}
             if m > 1: env['SHARD'] = '%d/%d' % (i, m)
             t1 = time.time()
@@ -128,17 +137,18 @@ def cmd_solve(g, budget):
             secs = time.time() - t1
             mm = re.search(r'DONE nodes=(\d+) sols=(\d+)', out)
             if to and tmo < SHARD_TMO:
-                print('solve', g, 'budget cut a shard run; not logged', flush=True); return
+                print('solve', gs, 'budget cut a shard run; not logged', flush=True); return
             if to or not mm:
                 status, nodes, sols = ('TIMEOUT' if to else 'ERROR'), 0, 0
             else:
                 status, nodes, sols = 'DONE', int(mm.group(1)), int(mm.group(2))
-            row = [f, g, str(m), '%d/%d' % (i, m), status, str(nodes), str(sols), '%.1f' % secs, '%.3e' % ev, d]
+            row = [f, gf, str(m), '%d/%d' % (i, m), status, str(nodes), str(sols), '%.1f' % secs, '%.3e' % ev, d]
             with open(RUNS, 'a') as fo: fo.write('\t'.join(row) + '\n')
             rows.append(row); ran += 1
             if status == 'DONE' and sols > 0: print('SOLUTIONS', sols, f, 'shard', i, m, flush=True)
             if status == 'ERROR': print('ERROR', f, out[-200:], flush=True); break
-    print('solve', g, 'shard runs=%d' % ran, 'sets settled this call=%d' % settled_now, 'elapsed=%.0fs' % (time.time() - t0))
+            if status == 'DONE' and sols > 0: pass
+    print('solve', gs, 'shard runs=%d' % ran, 'sets settled this call=%d' % settled_now, 'elapsed=%.0fs' % (time.time() - t0))
 
 def cmd_status():
     rows = load_runs()

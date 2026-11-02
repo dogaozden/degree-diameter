@@ -143,9 +143,11 @@ static void search(int depth, int fo, int d0, int phase, int lastA, int lastkey,
     if (stop) return;
     nodes++;
     if (probe) probe_sum += probe_prod;
-    if (shard_i >= 0 && depth == sharddepth) { if ((shardctr++ % shard_m) != shard_i) return; }
     int x = rep[fo];
     if (deg[x] == 3) { next_fill(depth); return; }
+    /* shard filter only at branching nodes: along a path each depth value has exactly one search() call with a free
+       slot (the pass-through calls above reuse the depth), so the depth-d branching nodes are partitioned. */
+    if (shard_i >= 0 && depth == sharddepth) { if ((shardctr++ % shard_m) != shard_i) return; }
     static Opt *optbuf[4096]; if (!optbuf[depth]) optbuf[depth] = malloc(sizeof(Opt) * (n * 4 + 16));
     Opt *opt = optbuf[depth]; int no = 0;
     int cx = col[x];

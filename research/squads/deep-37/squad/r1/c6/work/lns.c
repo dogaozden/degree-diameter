@@ -35,7 +35,7 @@ static inline uint64_t rnd(void) { rs ^= rs << 13; rs ^= rs >> 7; rs ^= rs << 17
 static inline int rndint(int m) { return (int)(rnd() % (uint64_t)m); }
 
 static int fcount(const int *ea, const int *eb, int m) {
-    static int adj[MAXN][4]; static int deg[MAXN];
+    static int adj[MAXN][MAXN]; static int deg[MAXN];
     static uint64_t R[MAXN], F[MAXN], NF[MAXN];
     memset(deg, 0, sizeof(int) * n);
     for (int i = 0; i < m; i++) { adj[ea[i]][deg[ea[i]]++] = eb[i]; adj[eb[i]][deg[eb[i]]++] = ea[i]; }
@@ -63,13 +63,15 @@ static void alldist(void) {
     }
 }
 
+static double now(void) { struct timespec ts; clock_gettime(CLOCK_MONOTONIC, &ts); return ts.tv_sec + 1e-9 * ts.tv_nsec; }
 static int nr, RA[MAXE], RB[MAXE];
 static int nt, TA[MAXE], TB[MAXE];
 static int LA[MAXE], LB[MAXE];
 static long leaves, nodes_, maxleaf;
 static int capped, minfar, cntmin;
 static int vcur, wcur;
-static int prunelvl = 2, bound_thr = 0; static long pruned_nodes = 0;
+static double regsecs = 5.0;
+static int prunelvl = 2, bound_thr = 0, delta = 0; static long pruned_nodes = 0;
 
 static void leaf(void) {
     leaves++;
@@ -77,10 +79,8 @@ static void leaf(void) {
     for (int i = 0; i < nr; i++) { LA[m] = RA[i]; LB[m] = RB[i]; m++; }
     for (int i = 0; i < nt; i++) { LA[m] = TA[i]; LB[m] = TB[i]; m++; }
     int f = fcount(LA, LB, m);
-    if (f < minfar) {
-        minfar = f; cntmin = 1; BESTN = nt;
-        for (int i = 0; i < nt; i++) { BESTA[i] = TA[i]; BESTB[i] = TB[i]; }
-    } else if (f == minfar) {
+    if (f < minfar) minfar = f;
+    if (f <= bound_thr) {
         cntmin++;
         if (rndint(cntmin) == 0) { BESTN = nt; for (int i = 0; i < nt; i++) { BESTA[i] = TA[i]; BESTB[i] = TB[i]; } }
     }
@@ -107,9 +107,11 @@ static int bound_far(void) {
     return fcount(BA2, BB2, m);
 }
 
+static double region_deadline = 1e18; static double now(void);
 static void dfs(void) {
     if (capped) return;
     nodes_++;
+    if ((nodes_ & 4095) == 0 && now() > region_deadline) { capped = 1; return; }
     int v = -1;
     for (int x = 0; x < n; x++) if (need[x] > 0) { v = x; break; }
     if (v < 0) { leaf(); return; }
@@ -158,7 +160,6 @@ static void dfs(void) {
     }
 }
 
-static double now(void) { struct timespec ts; clock_gettime(CLOCK_MONOTONIC, &ts); return ts.tv_sec + 1e-9 * ts.tv_nsec; }
 
 static void savegraph(const char *path, const int *A, const int *B, int m) {
     FILE *o = fopen(path, "w"); if (!o) { perror(path); exit(1); }
@@ -200,6 +201,8 @@ int main(int argc, char **argv) {
     for (int i = 0; i < ne; i++) eidx[CA[i]][CB[i]] = eidx[CB[i]][CA[i]] = i;
 
     if (getenv("LNS_PRUNE")) prunelvl = atoi(getenv("LNS_PRUNE"));
+    if (getenv("LNS_DELTA")) delta = atoi(getenv("LNS_DELTA"));
+    if (getenv("LNS_REGSECS")) regsecs = atof(getenv("LNS_REGSECS"));
     int curfar = fcount(CA, CB, ne), bestfar = curfar;
     savegraph("/dev/null", CA, CB, 0);
     { char p[1024]; sprintf(p, "%s_best.edges", outp); savegraph(p, CA, CB, ne); }
@@ -262,23 +265,28 @@ int main(int argc, char **argv) {
         }
         for (int x = 0; x < n; x++) lo[x] = -1;
         nt = 0; leaves = 0; nodes_ = 0; capped = 0; minfar = 1 << 30; cntmin = 0;
-        bound_thr = curfar;
-        if (prunelvl >= 1 && bound_far() > curfar) { pruned_nodes++; leaves = 0; }
+        bound_thr = curfar > bestfar + delta ? curfar : bestfar + delta;
+        region_deadline = now() + regsecs;
+        if (prunelvl >= 1 && bound_far() > bound_thr) { pruned_nodes++; leaves = 0; }
         else dfs();
-        if (getenv("LNS_TEST")) { printf("LEAVES %ld MINFAR %d CAPPED %d\n", leaves, minfar, capped); continue; }
+        if (getenv("LNS_TEST")) { printf("LEAVES %ld MINFAR %d CAPPED %d BAND %ld\n", leaves, minfar, capped, cntmin); continue; }
         totleaves += leaves;
         regs[sz]++; if (!capped) exh[sz]++; lsum[sz] += leaves;
         if (minfar < curfar) impr[sz]++;
         if (minfar == curfar) eqm[sz]++;
         if (minfar < bestk[sz]) bestk[sz] = minfar;
-        if (minfar <= curfar && BESTN >= 0 && minfar < (1 << 30)) {
+        if (cntmin > 0) {
             /* accept: new graph = R + best completion */
             int m = 0;
             for (int i = 0; i < nr; i++) { NCA[m] = RA[i]; NCB[m] = RB[i]; m++; }
             for (int i = 0; i < BESTN; i++) { NCA[m] = BESTA[i]; NCB[m] = BESTB[i]; m++; }
             for (int i = 0; i < m; i++) { CA[i] = NCA[i]; CB[i] = NCB[i]; }
             ne = m;
-            curfar = minfar;
+            {
+                int nf = fcount(CA, CB, ne);
+                if (nf != bound_thr && 0) curfar = nf;
+                curfar = nf;
+            }
             for (int i = 0; i < n; i++) for (int j = 0; j < n; j++) eidx[i][j] = -1;
             for (int i = 0; i < ne; i++) eidx[CA[i]][CB[i]] = eidx[CB[i]][CA[i]] = i;
             if (curfar < bestfar) {

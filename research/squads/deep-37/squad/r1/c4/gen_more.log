@@ -16,3 +16,40 @@ g24_6 # D24 order 24 files=40
 g24_6 elapsed 21s
 g24_7 # C2 x (C3 : C4) order 24 files=40
 g24_7 elapsed 17s
+g24_8 # (C6 x C2) : C2 order 24 files=40
+g24_8 elapsed 18s
+g24_9 # C12 x C2 order 24 files=40
+g24_9 elapsed 19s
+g24_10 # C3 x D8 order 24 files=40
+g24_10 elapsed 17s
+g24_11 # C3 x Q8 order 24 files=40
+g24_11 elapsed 14s
+g24_14 # C2 x C2 x S3 order 24 files=0
+g24_14 elapsed 91s
+g24_15 # C6 x C2 x C2 order 24 files=0
+g24_15 elapsed 90s
+g36_1 # C9 : C4 order 36 files=40
+g36_1 elapsed 24s
+g36_2 # C36 order 36 files=40
+g36_2 elapsed 21s
+g36_3 # (C2 x C2) : C9 order 36 files=40
+g36_3 elapsed 25s
+g36_4 # D36 order 36 files=40
+g36_4 elapsed 26s
+g36_5 # C18 x C2 order 36 files=40
+g36_5 elapsed 24s
+g36_6 # C3 x (C3 : C4) order 36 files=40
+g36_6 elapsed 23s
+g36_7 # (C3 x C3) : C4 order 36 files=40
+g36_7 elapsed 32s
+g36_8 # C12 x C3 order 36 files=40
+g36_8 elapsed 31s
+g36_10 # S3 x S3 order 36 files=0
+g36_10 elapsed 91s
+g36_12 # C6 x S3 order 36 files=0
+g36_12 elapsed 90s
+g36_13 # C2 x ((C3 x C3) : C2) order 36 files=0
+g36_13 elapsed 90s
+g36_14 # C6 x C6 order 36 files=0
+g36_14 elapsed 91s
+MORE_DONE

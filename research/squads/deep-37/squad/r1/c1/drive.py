@@ -6,7 +6,7 @@ W = "/home/user/degree-diameter/research/squads/deep-37"
 os.chdir(W)
 thresh = float(sys.argv[1]); estfiles = sys.argv[2:]
 SHARDS = int(os.environ.get("SHARDS", "16"))
-BUDGET = float(os.environ.get("BUDGET", "600"))  # seconds of sharded search per G-set
+BUDGET = float(os.environ.get("BUDGET", "300"))  # seconds of sharded search per G-set
 R = "squad/r1/c1/runs.tsv"
 done = set()
 if os.path.exists(R):
