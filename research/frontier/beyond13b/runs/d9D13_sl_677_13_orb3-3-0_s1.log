@@ -1,0 +1,35 @@
+group sl 677 x Z_13, N=4033744728 (2N=8067489456), rows 458328 x 8801 bits (doubled row 296 words), memory 2.40 GB, threads 4
+alpha: conj by mat(0,676,1,676), z -> 3 z on Z_13 (fixed z: 1); ORBIT k=3 m=3 f=0; W=7.85365e+10 lambda=19.470 mu=14.13
+setup 0.0s
+start cost=78 (11.1s per eval)
+t=42 step=1 evals=5 slot=1 cand=18 cost=18 best=18 T=1.26
+t=69 step=2 evals=9 slot=1 cand=20 cost=18 best=18 T=1.06
+t=92 step=3 evals=13 slot=1 cand=12 cost=12 best=12 T=0.89
+t=119 step=4 evals=17 slot=2 cand=20 cost=12 best=12 T=0.75
+t=142 step=5 evals=21 slot=0 cand=20 cost=12 best=12 T=0.63
+t=178 step=6 evals=25 slot=2 cand=30 cost=12 best=12 T=0.53
+t=210 step=7 evals=29 slot=0 cand=12 cost=12 best=12 T=0.45
+t=244 step=8 evals=33 slot=2 cand=8 cost=8 best=8 T=0.38
+t=273 step=9 evals=37 slot=1 cand=26 cost=8 best=8 T=0.32
+t=298 step=10 evals=41 slot=2 cand=22 cost=8 best=8 T=0.27
+t=330 step=11 evals=45 slot=1 cand=36 cost=8 best=8 T=0.22
+t=357 step=12 evals=49 slot=0 cand=16 cost=8 best=8 T=0.19
+t=389 step=13 evals=53 slot=0 cand=18 cost=8 best=8 T=0.16
+t=412 step=14 evals=57 slot=2 cand=20 cost=8 best=8 T=0.15
+t=446 step=15 evals=61 slot=0 cand=18 cost=8 best=8 T=0.15
+t=474 step=16 evals=65 slot=1 cand=8 cost=8 best=8 T=0.15
+t=507 step=17 evals=69 slot=0 cand=14 cost=8 best=8 T=0.15
+t=529 step=18 evals=73 slot=2 cand=14 cost=8 best=8 T=0.15
+t=558 step=19 evals=77 slot=2 cand=8 cost=8 best=8 T=0.15
+t=587 step=20 evals=81 slot=0 cand=34 cost=8 best=8 T=0.15
+t=610 step=21 evals=85 slot=2 cand=12 cost=8 best=8 T=0.15
+t=632 step=22 evals=89 slot=1 cand=14 cost=8 best=8 T=0.15
+t=657 step=23 evals=93 slot=1 cand=6 cost=6 best=6 T=0.15
+t=686 step=24 evals=97 slot=1 cand=8 cost=6 best=6 T=0.15
+t=708 step=25 evals=101 slot=2 cand=16 cost=6 best=6 T=0.15
+t=737 step=26 evals=105 slot=2 cand=18 cost=6 best=6 T=0.15
+t=769 step=27 evals=109 slot=0 cand=18 cost=6 best=6 T=0.15
+t=808 step=28 evals=113 slot=0 cand=0 cost=0 best=0 T=0.15
+RESULT d=9 D=13 group=sl 677 x Z_13 N=4033744728 vertices=8067489456 best=0 evals=113 steps=28 time=808.4 orbit k=3 m=3 f=0 mu=14.13
+re-evaluation of the best S: cost 0
+wrote out/d9D13_sl_677_13_orb3-3-0_s1.out

@@ -1,0 +1,15 @@
+checker: haarcheck_gen
+command: ./bin/haarcheck_gen runs/d7D14_sl_109_613_orb3-2-1_c12.out
+start: 2026-11-01T11:57:57Z
+sha256 e52e247f4a92a474f49ff0d5d438660ba0b557bbdfd4a8e24311ca881ff3f17c  ./bin/haarcheck_gen
+sha256 de2f5674c41de1a7e90cae552274c97a5111a1c6400c73d4ca144efe419aabb8  runs/d7D14_sl_109_613_orb3-2-1_c12.out
+selftest sl 109: |M| = 1294920, index round trip over all elements ok
+selftest group multiplication: associativity, identity, inverse on 20000 random triples ok
+file runs/d7D14_sl_109_613_orb3-2-1_c12.out
+header: 7 14 sl 109 n 613 N 793785960
+group sl 109 x Z_613, |G| = 793785960 = N, vertices 2N = 1587571920; 7 distinct generators
+from (e,A): reached A 793785960/793785960, B 793785960/793785960 within 14; ecc 14; level sizes [1, 7, 42, 252, 1512, 9072, 54420, 326322, 1953354, 11619717, 66859474, 320127575, 693466429, 461703015, 31450728]  (281s)
+from (e,B): reached A 793785960/793785960, B 793785960/793785960 within 14; ecc 14; level sizes [1, 7, 42, 252, 1512, 9072, 54420, 326322, 1953360, 11619717, 66860164, 320127575, 693454109, 461703015, 31462352]  (919s)
+VALID d=7 D=14 group=sl 109 x Z_613 N=793785960 vertices=1587571920 (distinct generators, 7-regular simple; every vertex within 14 of both (e,A) and (e,B); ecc 14; 919s)
+exit: 0
+end: 2026-11-01T12:13:16Z (919 s)

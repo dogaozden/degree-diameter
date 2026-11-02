@@ -1,0 +1,10 @@
+checker: metacheck
+command: python3 metacheck.py ../../squads/beyond13/r1/c15/best_4_13_meta4903_19_230.sol
+start: 2026-11-01T12:01:03Z
+sha256 453f9b3e451f1cda3397e11563a64bca4f5416c4f2c5b6390eb301fbdb6b011a  metacheck.py
+sha256 62513dc6dda593e86dd494f4fe6e4a4ca935400e4e6485238a95375f02280cb3  ../../squads/beyond13/r1/c15/best_4_13_meta4903_19_230.sol
+from (e,A): reached A 93157/93157, B 93157/93157 within 13; level sizes [1, 4, 12, 36, 108, 324, 972, 2902, 8480, 23089, 49914, 62744, 33670, 4058]
+from (e,B): reached A 93157/93157, B 93157/93157 within 13; level sizes [1, 4, 12, 36, 108, 324, 972, 2902, 8480, 23089, 49906, 62744, 33678, 4058]
+VALID d=4 D=13 group=meta 4903 19 230 x Z_1 N=93157 vertices=186314 (1s)
+exit: 0
+end: 2026-11-01T12:01:04Z (1 s)

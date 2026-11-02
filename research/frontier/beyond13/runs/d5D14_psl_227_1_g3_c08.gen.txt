@@ -1,0 +1,15 @@
+checker: haarcheck_gen
+command: ./bin/haarcheck_gen runs/d5D14_psl_227_1_g3_c08.out
+start: 2026-11-01T11:44:00Z
+sha256 e52e247f4a92a474f49ff0d5d438660ba0b557bbdfd4a8e24311ca881ff3f17c  ./bin/haarcheck_gen
+sha256 9f73ba4622c76618fa0a665a63ebfe44cabaf041d7b89b5443156f1f5bc4fb56  runs/d5D14_psl_227_1_g3_c08.out
+selftest psl 227: |M| = 5848428, index round trip over all elements ok
+selftest group multiplication: associativity, identity, inverse on 20000 random triples ok
+file runs/d5D14_psl_227_1_g3_c08.out
+header: 5 14 psl 227 n 1 N 5848428
+group psl 227 x Z_1, |G| = 5848428 = N, vertices 2N = 11696856; 5 distinct generators
+from (e,A): reached A 5848428/5848428, B 5848428/5848428 within 14; ecc 14; level sizes [1, 5, 20, 80, 320, 1280, 5115, 20426, 81091, 316183, 1148341, 3239800, 4476787, 2270654, 136753]  (3s)
+from (e,B): reached A 5848428/5848428, B 5848428/5848428 within 14; ecc 14; level sizes [1, 5, 20, 80, 320, 1280, 5115, 20426, 81086, 316183, 1148332, 3239800, 4476158, 2270654, 137396]  (6s)
+VALID d=5 D=14 group=psl 227 x Z_1 N=5848428 vertices=11696856 (distinct generators, 5-regular simple; every vertex within 14 of both (e,A) and (e,B); ecc 14; 6s)
+exit: 0
+end: 2026-11-01T11:44:06Z (6 s)

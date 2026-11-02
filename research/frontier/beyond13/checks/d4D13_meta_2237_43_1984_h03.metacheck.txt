@@ -1,0 +1,10 @@
+checker: metacheck
+command: python3 metacheck.py sols/d4D13_meta_2237_43_1984_h03.txt
+start: 2026-11-01T13:38:27Z
+sha256 453f9b3e451f1cda3397e11563a64bca4f5416c4f2c5b6390eb301fbdb6b011a  metacheck.py
+sha256 b2fb4d759b9b7a0036dfa19d6faf67c55cd86471e9a4547f81e280ccfaef3651  sols/d4D13_meta_2237_43_1984_h03.txt
+from (e,A): reached A 96191/96191, B 96191/96191 within 13; level sizes [1, 4, 12, 36, 108, 324, 972, 2902, 8464, 22993, 50506, 65304, 36128, 4628]
+from (e,B): reached A 96191/96191, B 96191/96191 within 13; level sizes [1, 4, 12, 36, 108, 324, 972, 2902, 8466, 22993, 50422, 65304, 36210, 4628]
+VALID d=4 D=13 group=meta 2237 43 1984 x Z_1 N=96191 vertices=192382 (1s)
+exit: 0
+end: 2026-11-01T13:38:28Z (1 s)

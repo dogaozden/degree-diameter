@@ -49,3 +49,296 @@ nice 0, equal to the director's whole pipeline); the director raised the pipelin
 `echo -10 > /proc/<pid>/autogroup` and lowered the cards' groups to 15.
 Kept: haarex6 for the sweep; no family lead worth more CPU (the 704 lift is an isolated local minimum, the new
 families are far). The order-384 sweep continues; orders 401-450 started on the spare core.
+
+## 2026-11-01, beyond-d13, round 1 (16 cards, 11:39 UTC)
+
+Session: Opus director, job beyond-d13 (branch claude/beyond-d13-search-z35z61). Goal: first values for D = 13 at
+Δ = 3..10 and D = 14 at Δ = 3..8 (no values recorded there), at most 20 billion vertices. Files:
+research/squads/beyond13/r1/ (HEADER.md, c01-c16.md, scoreboard.jsonl). Before the round the director had (4,14) 416,640
+and (5,13) 3,176,880 (1 evaluation each), (10,13) 19,980,294,768 (first S, at the cap) and (9,13) 7,508,907,120
+(5 evaluations), and started (8,14). Machine: 4 cores, 15 GB, shared with the director's three big checks (load 15-29).
+
+Cards (best result; all VALID by haarcheck_gen, apsp or metacheck unless marked):
+- c01 (3,13) metacyclic exhaustive (exh3): Z133 x|_36 Z9, 2,394; only N <= 1,200 reached (exh3 got ~1 % CPU).
+- c02 (3,14) metacyclic sampled: nothing; it used k <= 8 only (virtually abelian; see c15).
+- **c03 (3,13) other groups, exhaustive S = {e,x,y}: A6 x Z4, 2,880**; SL(2,11) 2,640, PSL(2,13) 2,184.
+- c04 (4,13) SL ladder: PSL(2,23) x Z13 78,936; SL(2,43) x Z1 stuck at cost 4 (order-6 holes).
+- **c05 (4,13) new exhaustive orbit scan (orbscan.c, S = {e,x,ax,a^2x} over all x): PSL(2,29) x Z7, 170,520** (38 tries).
+- **c06 (4,14) ladder: PSL(2,41) x Z7, 482,160**; PSL(2,29) x Z19 462,840; PSL(2,79) x Z1 stuck at 31.
+- **c07 (5,13): PSL(2,47) x Z31, 3,217,056** (18 s); PSL(2,37) x Z67 stuck at 18.
+- **c08 (5,14): PSL(2,227), 11,696,856, random S (haar_gen3)**; the orbit form "3 1 2" stalls at 18 (median of random
+  symmetric S 90): at Δ = 5 one random fixed generator plus one orbit is too rigid.
+- **c09 (6,13): PSL(2,103) x Z37, 40,427,088** (11.5 s); PSL(2,109) x Z31 40,142,520; mu 8.5-11.5 stuck at 6-15.
+- **c10 (6,14): PSL(2,101) x Z181, 186,466,200** (chained links, mu ~7).
+- **c11 (7,13): SL(2,199) x Z19, 299,455,200**; SL(2,281) x Z7 310,628,640 search cost 0 (check pending).
+- **c12 (7,14): SL(2,109) x Z613, 1,587,571,920** (13 evals, mu 2.1; director check).
+- **c13 (8,13): SL(2,911) x Z1, 1,512,114,240** (first draw; director check).
+- c14 hole anatomy at (5,13) (ANATOMY.md): -I missed by 20-46 % of random S; central (+-I,z) ~ n e^(-λ/6); PSL
+  involutions 5-11 holes per S; SL 16-20 holes per S against PSL 22-27. Rule stays: SL, small n.
+- **c15 wildcard, odd-order groups at odd D: Z4903 x|_230 Z19 (order 93,157, no involutions), random S, 186,314** — the
+  best (4,13) value, 9 % above the orbit scan. k = 13, 17, 19, 23 all solved at 170-180k; k = 3 hopeless; k = 11 stalls.
+- **c16 wildcard, prime-power field: PSL(2,49), random S, 117,600 at (4,13)**; PGL(2,37) 101,232.
+
+Director's reading: at small Δ the orbit structure is too rigid (c08, c16, c15 all won with random S), and at odd D a
+group without involutions wins (c15) — the exact lemma of ODD_D_HOLES.md predicts it, but nobody had tried odd-order
+groups. Kept for round 2: odd-order metacyclic groups at (4,13), (5,13), (6,13) and products; random S at Δ <= 5;
+the even-D control; exhaustive scans at Δ = 3, 4; pushes of the mid cells. Dropped: metacyclic k <= 8. Process: the
+director's three checks (5 threads at nice 0) starved the cards (c01, c02, c05 report a few % CPU); round 2 gets the
+same machine, so its cards are told to keep runs short.
+
+## 2026-11-01, beyond-d13, round 2 (16 cards, 12:04 UTC)
+
+Same session. Files: research/squads/beyond13/r2/. Selection from round 1: odd-order groups at odd D (e01-e03, e12, e14),
+the even-D control (e06), random S at Δ = 5 (e07), exhaustive scans at Δ = 3, 4 (e04, e05, e13), pushes of the mid
+cells (e08-e10), theory of odd-order groups (e11), and two wildcards (e15 other odd-order groups, e16 voltage lifts).
+Machine: the director's (10,13) and (9,13) checks and pushes held 4-5 threads at nice 0; cards got 5-10 % of a core.
+
+Cards (best result; all VALID by haarcheck_gen, apsp or metacheck unless marked):
+- e01 (4,13) meta push: nothing above 186,314 (Z7177 x|_368 Z13, N = 93,301, stuck at 2; starved).
+- e02 (5,13) single odd-order meta: Z72497 x|_9840 Z23, 3,334,862 (beats 3,217,056; below e12).
+- e03 (6,13) meta: Z331231 x|_58155 Z61 cost 2 (N 2.02e7, below the record anyway); the meta orbit form saturates.
+- e04 (3,13) exhaustive: nothing (7 % CPU). e05 (3,14) exhaustive: PSL(2,7) x Z15, 5,040 (below the lift).
+- e06 (4,14) meta control: best cost 1; metacyclic groups do not clearly help at even D.
+- **e07 (5,14): PSL(2,53) x Z79, random S, 11,757,096.**
+- **e08 (6,14): SL(2,193) x Z13, 186,910,464.** **e09 (6,13): SL(2,103) x Z19, 41,519,712.**
+- **e10 (7,13): SL(2,229) x Z13, 312,227,760.**
+- e11 theory (r2/e11/ODD_ORDER.md): Z_m x|_r Z_k with m prime is a Frobenius group: no involutions and trivial centre, so
+  neither odd-D clump exists; word cover of random S is 1 % (k = 1), 6 % (k = 3), 73 % (k = 5), 97-99 % (k >= 11).
+- **e12 (5,13): (Z79 x|_64 Z13) x (Z59 x|_4 Z29), odd order, random S, 3,514,394** (+9 % over the orbit-S value).
+- e13 (4,14) orbit scan: starved, nothing. e14: orbit S in meta groups saturates; random S better (6,13).
+- e15 (4,13) Z_p^2 x| Z_k (odd order): 162,266 (below).
+- **e16 (3,13): Z160 voltage lift of the Desargues graph, 3,200** (above every Haar graph); the director then ran the same
+  tool at D = 14: **Z280 lift, 5,600** in 12 s.
+
+Director's reading: two new families beat the Haar orbit searches at small Δ: odd-order groups at odd D (Δ = 4, 5) and
+cyclic voltage lifts at Δ = 3 (both D). At Δ >= 6 the SL/PSL orbit search still wins (meta random S at (6,13), (7,13)
+stays at cost 2-36 at matched N, also with the director's new bit-parallel hmeta). Kept for round 3: lifts at Δ = 3, 4,
+5 (liftd, any degree), odd-order pushes with hmeta at (4,13), (5,13), the D = 11 test of the odd-order rule, theory of
+lifts, pushes of (4,14), (5,14), (6,13), (6,14), (7,13), (7,14). Dropped: meta orbit S, meta at even D, exhaustive Haar
+pairs at Δ = 3 (lifts are larger).
+
+## 2026-11-01, beyond-d13, round 3 (16 cards, 12:31 UTC)
+
+Same session. Files: research/squads/beyond13/r3/. Selection from round 2: lifts at Δ = 3, 4, 5 (f01, f02, f04-f06; the
+director generalised e16's lift.c to any degree, liftd), lift theory (f03), odd-order pushes (f07, f08) and the D = 11
+test of the odd-order rule (f15), non-abelian voltage lifts (f16), pushes of (4,14), (5,14), (6,13), (6,14), (7,13),
+(7,14) (f09-f14). The director's (10,13) check was OOM-killed at 12:35 after 58 min (a card's python checker plus the
+director's (8,14) push pushed the box over 15 GB); restarted at 12:50 with 3 threads.
+
+Cards (best result):
+- f01 (3,13) lifts of 40-vertex bases: cost >= 26 at 3,240-3,360; nothing above 3,200.
+- f02 (3,14) GP(10,3) at n = 281-285: best cost 2 at n = 282 (5,640); nothing above 5,600.
+- f03 theory (r3/f03/LIFTS.md): in a Z_n lift the end of a walk depends only on its net traversal vector; GP(10,3)
+  keeps 82 % of the 24,574 nonbacktracking walks of length <= 13 distinct (74 % at 14); random voltages give n ~ 130-150
+  (D = 13) and 250-300 (D = 14) against 160 and 280 found; K4,4 lifts cap near 31,000 at (4,13); a girth-8 4-regular
+  base could reach ~2.9e5.
+- f04 (4,13) lifts: PG(2,3) x Z4600, 119,600 (apsp VALID); below the Haar value. f05 (4,14) GQ(3,3) x Z6100 (488,000):
+  start cost 1,330, 900-s anneal under load.
+- f06 Δ = 5 lifts: start costs in the millions; nothing.
+- f07 (4,13) hmeta: (pending at the time of writing).
+- **f08 (5,13): (Z29 x|_16 Z7) x (Z457 x|_289 Z19), 3,525,298** (metacheck2 VALID).
+- f09 (4,14) orbscan / ladder: all groups at N 241-260k have mu 12-17; best cost 30.
+- **f10 (5,14): PSL(2,73) x Z31, random S, 12,057,264.** **f11 (6,13): PSL(2,83) x Z73, 41,734,392.**
+- **f12 (6,14): PSL(2,137) x Z73, 187,698,768.** **f13 (7,14): SL(2,163) x Z193, 1,671,605,424** (director check).
+- f14 (7,13): (pending).
+- **f15 (4,11): odd-order Z599 x|_498 Z23, 27,554 — raises the beyond-d11 value 24,360 by 13 %** (metacheck and apsp
+  VALID). (5,11) not beaten (single meta stuck at 6).
+- f16 non-abelian (metacyclic) voltage lifts of GP(10,3): cost 2 at 3,300; annealer too weak to judge.
+
+Director's reading: the odd-order rule holds at D = 11 too (one more cell raised). Lifts win at Δ = 3 but not at Δ = 4, 5
+with the bases tried; the lift theory says girth >= 8 bases are needed. Kept for round 4: Tutte 8-cage and GQ(3,3)
+lifts, a provable lift bound, odd-order products at (4,13) and (5,11), hmeta at (4,14) and (5,13), pushes of the mid cells.
+
+## 2026-11-01, beyond-d13, round 4 (16 cards, 12:58 UTC)
+
+Same session. Files: research/squads/beyond13/r4/. Selection from round 3: girth-8 lift bases (Tutte 8-cage g01, GQ(3,3)
+g03), other cubic bases at (3,14) (g02), odd-order products at (5,11) (g04) and (4,13) (g10), hmeta at (4,14) and (5,13)
+(g13, g14), metacyclic voltage lifts with a better annealer (g12), the lift bound (g11), pushes (g05-g09, g15), wildcard g16.
+
+Cards (best result):
+- g01 Tutte 8-cage lifts: (3,14) n = 187 (5,610) cost 2, (3,13) n = 107 cost 10; found that lift.c's cooling runs over
+  L = 20,000 evaluations, so short runs never cooled (all earlier short lift runs were effectively hot).
+- g02 other cubic bases at (3,14): Pappus n = 312 (5,616) cost 2; F26A, Tutte, Heawood, Moebius-Kantor worse.
+- g03 GQ(3,3) lifts at (4,14): cost 612 at 482,400 (bit-parallel lift cost, 20x faster). Nothing.
+- **g04 (5,11): (Z29 x|_7 Z7) x (Z67 x|_9 Z11), odd order, 299,222 — raises the beyond-d11 value 297,648.**
+- g05 (8,13): cost 16 at mu 9.3 (71 s per evaluation under load). g08 (6,13): SL(2,59) x Z103 cost 2.
+- **g06 (7,14): SL(2,269) x Z43, 1,673,976,240** (director check). **g07 (6,14): SL(2,97) x Z103, 187,990,656**
+  (RANDORB screen of start costs, then 2 links). **g09 (5,14): PSL(2,53) x Z83, random S, 12,352,392.**
+- g10 (4,13) odd-order products: cost 16 at N 100,891. g12 metacyclic voltages on GP(10,3): cost 2 at 3,300 (tabu).
+- **g13 (4,14): odd-order metacyclic Z7001 x|_4532 Z35, hmeta, 490,070** (cost 1 chain, then T0 = 4, REHEAT = 200) —
+  the first even-D cell where a metacyclic group beat SL/PSL.
+- g15 (7,13): SL(2,137) x Z61 cost 6. g16 Z_a x Z_b lifts of GQ(3,3) at (4,13): cost 753.
+- g11 (lift bound), g14 (hmeta (5,13)): pending at the time of writing.
+
+Director's reading: four more cells raised, one more D = 11 cell raised by the odd-order rule; the lift near misses at
+Δ = 3 (cost 2 in three bases) may have been cooling-limited. Round 5: the same near misses with proper cooling and
+START chains, the lift and metacyclic ideas tested on the lab's D = 11, 12 cells, RANDORB screening for the mid cells.
+
+## 2026-11-01, beyond-d13, round 5 (16 cards, 13:24 UTC)
+
+Same session. Files: research/squads/beyond13/r5/. Selection from round 4: near misses with proper cooling and START
+chains (h01-h04), products and random S at Δ = 5 (h05-h07), the metacyclic idea on the lab's D = 11, 12 cells (h07-h09),
+lifts at D = 11, 12 (h10), RANDORB screening for the mid cells (h11-h14), two wildcards.
+
+Cards (best result; all checked by the director unless marked):
+- h01 (3,13): Pappus x Z179, 3,222 (the director meanwhile had GP(10,3) x Z163 3,260 and x Z166 **3,320** with L = 1,200).
+- **h02 (3,14): GP(10,3) x Z282, 5,640**, with a new finisher scan.c (exhaustive 1-opt voltage scan + tabu), from the
+  director's cost-2 near miss, in 7 iterations.
+- **h03 (4,13): Z2237 x|_1984 Z43, 192,382** (hmeta, second link with T0 = 8, REHEAT = 400).
+- **h04 (4,14): Z4027 x|_2950 Z61, 491,294.** (The card also started a remote session by mistake and archived it.)
+- **h05 (5,13): (Z11 x|_4 Z5) x (Z1301 x|_667 Z25), 3,577,750.** **h06 (5,14): SL(2,97) x Z7, random S, 12,776,064.**
+- **h07 (5,11): Z5279 x|_1922 Z29, 306,182** (lab value 297,648). **h08: (4,12) Z1277 x|_964 Z29, 74,066** (lab 68,544)
+  and **(5,12) Z17981 x|_15904 Z29, 1,042,898** (lab 1,041,768) — even D, so the gain at Δ = 4, 5 is from random S
+  (three free generators against one orbit), not only from odd order.
+- h09 (6,11): meta at cost 2 (lab 2,094,960 stands). h10: lifts at D = 11, 12 stay below the metacyclic Haar values.
+- h11 (6,13): SL(2,59) x Z103 stays at 2 (the two holes are a transpose pair). h12 (7,13): PSL(2,131) x Z139 at 3.
+- h13 (6,14): PSL(2,83) x Z331 at 3. h14 (7,14): PSL(2,223) x Z151, 1,674,490,944 (+0.03 %; not checked).
+- h15 exh3 over odd-order groups at (3,13): cost 4. h16 orbit S on products: no orbit found; random S cost 68.
+
+Director's reading: the small cells keep moving (Δ = 3 lifts via cooling and the 1-opt finisher; Δ = 4, 5 metacyclic
+groups with random S also at even D). Round 6 (last): the same levers once more, and a test against the 2013 records at
+D = 9, 10 for Δ = 3, 4, 5, plus the first-moment explanation of random vs orbit S.
+
+## 2026-11-01, beyond-d13, round 6 (16 cards, 13:48 UTC)
+
+Same session. Files: research/squads/beyond13/r6/. Selection from round 5: the same levers once more (lifts with the scan
+finisher; hmeta with T0 = 8, REHEAT = 400; products; random S), the metacyclic rule on the lab's D = 11, 12 cells and on
+the 2013 table at D = 9, 10 (i09, i10, i16), the first-moment theory (i12), mid-cell screens (i13, i14), two wildcards.
+
+Cards (best result; all checked by the director):
+- **i04 (4,14): Z2731 x|_2400 Z91, 497,042.** **i05 (4,11): Z1093 x|_901 Z13, 28,418** (lab 24,360 before this job).
+- **i06 (5,13): (Z11 x|_4 Z5) x (Z2971 x|_1764 Z11), 3,594,910.** **i08 (5,12): Z9859 x|_4192 Z53, 1,045,054.**
+- **i10: (5,10) Z1567 x|_871 Z29, 90,886 — above the 2013 table value 90,068** (apsp + metacheck; the lab has no later
+  (5,10) entry; a candidate for the coordinator). (5,9) 28,418 beats 27,936 (2013) but not the lab's 29,756.
+- **i11 (6,11): Z17203 x|_9845 Z61, 2,098,766** (lab 2,094,960): the metacyclic rule reaches Δ = 6 at D = 11.
+- i09 (4,9), (4,10): near misses at cost 2 above the 2013 values (5,050 and 11,772 vertices).
+- i01 (3,13), i02 (3,14): no gain over the director's 3,400 / 5,640. i02 reported calling two remote-session tools by
+  mistake (no effect) and an early `pkill -f bases/` that may have killed other cards' lift runs.
+- i03 (4,13): Z2069 x|_2064 Z47 at cost 2. i07, i14, i16: (pending at the time of writing).
+- i12 theory (r6/i12/CANDIDATES.md): random S has 22-49 nats more candidates than orbit S, but measured holes exceed the
+  size-law mu by 25-2,700x, so the lower tail of the cost distribution decides; at Δ = 5 random S hits cost 0 in about 1
+  of 300 samples at N ~ 1.4M.
+- i13 (6,13), (6,14): cost 8 at best. i15 (7,14): cost 30 at PSL(2,109) x Z1291.
+
+Director's reading: the metacyclic random-S rule keeps winning at Δ = 4, 5 at every D tried (9 to 14) and now at Δ = 6
+(D = 11). Round 7 (last) tests it at Δ = 4..7 against the 2013 table and the lab's D = 8..12 values, and pushes the
+new cells once more.
+
+## 2026-11-01, beyond-d13, round 7 (15 cards, 14:11 UTC)
+
+Same session. Files: research/squads/beyond13/r7/. The metacyclic random-S rule tested at Δ = 4..7 against the 2013 table
+and the lab's D = 8..12 values (j01-j09), pushes of (4,12), (4,13), (5,13), (5,14), (6,13) (j10-j12, j15), lifts (j13),
+the rule's data table (j14). (j16 not launched: subagent cap.)
+
+Cards (best result; all checked by the director):
+- **j01 (5,10): Z1489 x|_61 Z31, 92,318** (apsp + metacheck VALID), 2.5 % above the 2013 table value 90,068 (the director
+  had closed r6/i10's near miss Z2687 x|_2416 Z17 at 91,358 just before).
+- **j13 (3,14): Pappus x Z317 lift, 5,706** (lift then four scan links; apsp VALID).
+- j02 (5,9): cost 8 above the lab's 29,756. j03 (4,10): Z215 x|_2 Z28 (12,040) at cost 1 above 11,748. j04 (4,9):
+  Z101 x|_5 Z25 (5,050) stays at 2 above 4,970. j05 (4,8): Z55 x|_2 Z20 (2,200) at 1 above 2,184; (5,8) cost 22+.
+- j06 (6,9): cost 4 at 125,434 (lab 121,440). j07 (7,10), (7,11): cost 14 and 4 — the rule fades at Δ = 7.
+- j09 (7,13): start costs 38-68 (6 % CPU). j10 (5,13) single meta: cost 2. j11 (5,14): cost 1 (four groups).
+- j12 (4,12): Z2861 x|_1385 Z13 (74,386) at cost 1. j15 (6,13): Z354001 x|_194759 Z59 at 6.
+- j14 (r7/j14/RULE.md): metacyclic random S beats SL/PSL orbit S by 13-17 % at Δ = 4 at odd D, 3-8 % at even D,
+  0-4 % at Δ = 5, break-even at Δ = 6; the even-D gain is the orbit form's one free element at Δ = 4.
+- j08 (Δ = 6 even D): pending at the time of writing.
+
+Director's reading: the rule holds where predicted (Δ = 4, 5, odd D best) and gives out at Δ = 6..7. Round 7 produced
+one table-cell raise candidate ((5,10) 92,318) and four near misses at cost 1-2 above 2013 values ((4,8), (4,9), (4,10))
+or lab values ((6,9)). The squad stops here: the remaining time goes to the big checks and the write-up.
+
+## 2026-11-01, beyond-d13: wrap-up (director)
+
+All fourteen new cells have checked values (haarcheck_gen for SL/PSL Haar graphs, logs in
+research/frontier/runs/cloudcheck/; apsp all-pairs and/or metacheck for the rest, research/frontier/beyond13/checks/):
+
+| D \ Δ | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 |
+|---|---|---|---|---|---|---|---|---|
+| 13 | 3,400 | 192,382 | 3,594,910 | 41,734,392 | 312,227,760 | 1,739,514,000 | 7,924,036,032 | 19,980,294,768 |
+| 14 | 5,706 | 497,042 | 12,795,166 | 187,990,656 | 1,674,490,944 | 11,325,238,056 | | |
+
+Raised lab values: (4,11) 24,360 -> 28,418, (5,11) 297,648 -> 306,182, (6,11) 2,094,960 -> 2,098,766, (4,12) 68,544 ->
+74,066, (5,12) 1,041,768 -> 1,045,054. Inside the 2013 table: (5,10) 93,738 against 90,068 and (4,10) 12,246 against 11,748 (director scans of all
+metacyclic groups in an order range with short hmeta starts; candidates, literature after 2013 not checked).
+
+Who found what: Δ = 3 values came from lifts (card idea r2/e16; the director's cooling fix and runs gave Z163-Z170 at
+D = 13 and Z280 at D = 14; cards r5/h02 and r7/j13 the scan finisher and the Pappus Z317 lift). Δ = 4, 5 values came from
+metacyclic groups with random S (card ideas r1/c15, r2/e12; values by cards r5/h03, r6/i04, r6/i06, r6/i07). Δ = 6, 7
+values by cards (r3/f11, r4/g07, r2/e10, r5/h14), Δ = 8..10 by the director (haar_big0, first solutions at mu 3-12).
+The (5,10) value: card r6/i10 found the idea's first table win, the director and r7/j01 pushed it.
+The odd-order explanation is ODD_D_HOLES.md's lemma plus Fact 1 of research/frontier/beyond13/THEORY.md (Frobenius
+groups have no involutions and trivial centre); the lift bound is Fact 2. Process: 111 cards in 7 rounds on 4 cores; the
+director's big checks starved the cards for the first two hours, and one OOM kill cost an hour of the (10,13) check.
+Three cards touched remote-session tools by mistake (no effect; one archived an accidental session), and one card's
+`pkill -f bases/` may have killed other cards' lift runs; later headers forbade both.
+
+## 2026-11-01/02, job beyond-d13b (Opus cloud session, branch claude/beyond-d13-extend-5n8uwl), goal: raise the D = 13 column at Δ = 5..10
+
+Brief: raise and extend (5..10,13) from beyond-d13's values (3,594,910 / 41,734,392 / 312,227,760 / 1,739,514,000 /
+7,924,036,032 / 19,980,294,768). Tools from beyond-d13 and beyond-d11b (haar_big0, hmeta, haar_gen3s/t, haarcheck_gen,
+metacheck); new helpers research/squads/beyond13b/tools/ (cands.py, bg.sh, poll.sh). Cap for this job: 2N <= 3.0e10
+(the coordinator accepted 30-billion values at D = 11, 12 today).
+
+Director first (22:52 UTC): (10,13) SL(2,601) x Z67 (2N = 29,088,880,800, mu 4.7, p small enough for a ~1-hour check),
+ORBIT "3 3 1": cost 0 after 17 evaluations (175 s on 4 threads).
+
+### Round 0 (22:56-23:00 UTC), ABORTED: 17 cards, no results
+
+Launched with the Agent tool's isolation "remote", expecting one 4-core container per card (a probe agent had reported
+4 cores and 15 GB, which matched this container, not a new one). The cards ran here, all in one work/ folder: tags and
+output files collided (seven cards wrote out/A.log), ~40 threads ran on 4 cores, each card ran `git reset --hard` in the
+director's checkout (no harm: nothing was uncommitted), and the director's (10,13) check was OOM-killed. All cards were
+stopped after four minutes and their processes killed. Cards as written: beyond13b/r0/cards.md. Lesson: on this
+platform "remote" subagents share the director's container; every card needs its own folder and a hard thread cap.
+
+### Round 1 (23:03 UTC, 16 cards, 60-minute boxes, one single-thread run per card)
+
+New rules (beyond13b/CARDS_COMMON.md): own folder, no git, prebuilt binaries, bg.sh forces THREADS=1 and nice 10 and
+refuses a second live run. Found during the round: this kernel has autogroup scheduling on, so each card run is its own
+scheduling group and a plain nice does nothing against the director's jobs; bg.sh now also writes the group's nice
+(/proc/PID/autogroup, 10 for cards). The director stopped the (10,13) check for the round (it would have taken ~3 h at
+its 1/17 share) and ran a (9,13) search in its own group instead.
+
+Cards: f1-f3 (5,13) single odd-order Frobenius groups Z_m x| Z_k with random S (hmeta), k 37-47 / 53-61 / 13-31; f4
+(5,13) products of two Frobenius groups (haar_gen3s); f5 (5,13) wildcard; e1 (6,13) PSL/SL x Z_n, n 21-43, "3 2 0"; e2
+(6,13) SL(2,p), n = 1; e3 (6,13) Frobenius groups (hmeta, long runs); e4 (6,13) SL x Z_n, n 37-73; e5 (6,13) wildcard;
+d1 (7,13) SL x Z_n, n 1-13; d2 (7,13) SL n 21-37; d3 (7,13) PSL, odd n 27-73; d4 (7,13) wildcard; c1 (8,13) SL n 1-9;
+c2 (8,13) SL n 13-43.
+
+Round 1 results (scoreboard: beyond13b/r1/scoreboard.jsonl; every kept value re-checked by the director):
+- **e4 (6,13): SL(2,89) x Z31, 43,702,560** (mu 18.8, cost 0 in 136 s; haarcheck_gen VALID), and SL(2,83) x Z37 42,306,096
+  (VALID). Large n plateaued at constant costs: SL(2,67) x Z73 12, SL(2,61) x Z97 24, SL(2,59) x Z109 44, SL(2,47) x Z211 72.
+- **f2 (5,13): Z34981 x|_27415 Z53, 3,707,986** (mu 10.7; metacheck and build_haar2 VALID); also k = 59, 61 groups up
+  to N 1,844,989; Z35617 x| Z53 (N 1,887,701, mu 13.5) stuck at cost 2 for 45 min.
+- **d1 (7,13): SL(2,283) x Z7, 317,308,656** (mu 11.2, cost 0 after 17 evaluations; VALID); mu-19 rungs (SL(2,263) x Z9,
+  SL(2,547)) stalled at 14-16.
+- f1 (5,13) 3,684,706 (Z39199 x| Z47, after continuing a cost-2 state), f3 3,623,086 (Z62467 x| Z29), f5 (wildcard)
+  3,620,058 (Z46411 x|_23265 Z39: composite odd k works; k = 21 does not), f4 3,610,310 ((Z11 x| Z5) x (Z1427 x| Z23)).
+- e5 (6,13, wildcard): orbits of size 5 (ORBIT "5 1 1", alpha = conjugation by an order-5 matrix x z -> rz) solve:
+  PSL(2,101) x Z41 42,238,200 in 60 s; needs every prime factor of n = 1 mod 5, else the graph degenerates.
+- e3 (6,13): Frobenius Z342821 x| Z61, 41,824,162 (continuation from a cost-4 state; card's own low-memory BFS), below e4.
+- d3 (7,13): PSL(2,163) x Z73 316,132,632 (VALID), below d1; PSL(2,173) x Z61 cost 3.
+- Near misses: d2 (7,13) SL(2,163) x Z37 cost 2 (320,463,216); c2 (8,13) SL(2,409) x Z13 cost 2 (three runs); c1 (8,13)
+  SL(2,461) x Z9 cost 8; e2 (6,13) SL(2,277) x Z1 cost 2 in four runs; e1 (6,13) best cost 6; d4 (7,13, wildcard)
+  "5 1 2" on SL(2,109) x Z121 cost 2, "3 1 4" and "7 1 0" degenerate (fixed generators in one torus; r = 1 mod some q).
+- Director: (9,13) SL(2,677) x Z13, 8,067,489,456 (mu 14.1, cost 0 after 113 evaluations in its own scheduling group);
+  (10,13) check postponed until the (9,13) check is done (memory).
+- Lesson repeated by four cards: continuing a saved cost-2 state with a NEW seed closes near misses that fresh starts
+  cannot (f1, f4, f5, e3). Process: three cards made stray calls to session tools (interrupt_session, archive_session,
+  read_documentation) with made-up or no ids; all were rejected or read-only. Round 2's rules forbid every mcp__ tool.
+
+Kept for round 2: Frobenius chains at (5,13) above N 1.854M (k 53-61, 37-47, composite k, products); (6,13) SL x Z_n
+with odd n <= 57 and PSL x odd n, k = 5 orbits; (7,13) continue SL(2,163) x Z37, larger n, k = 5 orbits; (8,13) the
+low-mu groups (SL(2,359) x Z19, SL n 21-45, PSL x odd n); a hole-anatomy card for the constant-cost plateaus.
+
+### Round 2 (00:01 UTC, 16 cards) and stop
+
+Round 2 ran at a small CPU share (the director's (9,13) and (10,13) checks had priority). Finds: **g03 (5,13) Z32719 x|_29509
+Z57, 3,729,966** (odd composite k; metacheck + build_haar2 VALID), **g09 (7,13) SL(2,163) x Z37, 320,463,216** (closed
+r1/d2's cost-2 state; VALID), **g12 (8,13) SL(2,359) x Z19, 1,758,180,960** (VALID). g08 (analysis): holes at odd D come
+in Gamma = <alpha, inverse> blocks of 6, so haar_big0's energy cost/3 freezes at its default TMIN; the constant-cost
+plateaus are frozen annealing (r2/g08/NOTE.md). No gain: g01, g02 (Frobenius chains, cost 2 at N 1.86-1.89M), g04
+(products, cost 4), g05, g06, g07 ((6,13) at cost 15-74), g11 ((7,13) k = 5 orbits, cost 6), g14, g15 (wildcards). g10,
+g13, g16 were stopped before reporting. Cards again made stray read-only or rejected session-tool calls (g04, g05, g14).
+Director: (9,13) 8,067,489,456 VALID. (10,13) 29,088,880,800: the (e,A) half of the check passed, then the job was
+stopped at 01:10 UTC on Doğa's budget stop; (e,B) half left for the coordinator. Status: research/frontier/beyond13b/STATUS.md.

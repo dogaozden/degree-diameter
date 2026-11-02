@@ -1,0 +1,10 @@
+checker: metacheck2
+command: nice -n 3 python3 metacheck2.py sols/d5D13_prodmeta_11_5_1301_25_h05.txt
+start: 2026-11-01T13:42:12Z
+sha256 291f8bb425643719bcd2a7612b26a0feea5bb8bc032145866a74f6d284b2c03f  metacheck2.py
+sha256 7e60c04b06a60adf9a7215027795877273ebc260d7ae31942e17a938c01ffbcd  sols/d5D13_prodmeta_11_5_1301_25_h05.txt
+from (e,A): reached A 1788875/1788875, B 1788875/1788875 within 13; level sizes [1, 5, 20, 80, 320, 1278, 5104, 20316, 79774, 296227, 885108, 1392343, 818548, 78626]
+from (e,B): reached A 1788875/1788875, B 1788875/1788875 within 13; level sizes [1, 5, 20, 80, 320, 1278, 5104, 20316, 79770, 296227, 885280, 1392343, 818380, 78626]
+VALID d=5 D=13 group=meta 11 5 x meta 1301 25 x Z_1 N=1788875 vertices=3577750 (74s)
+exit: 0
+end: 2026-11-01T13:43:27Z (75 s)

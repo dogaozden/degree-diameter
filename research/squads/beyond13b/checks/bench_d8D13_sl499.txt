@@ -1,0 +1,6 @@
+selftest sl 499: |M| = 124251000, index round trip over all elements ok
+selftest group multiplication: associativity, identity, inverse on 20000 random triples ok
+file ../sols/d8D13_sl_499_7_orb3-2-2_s2.txt
+header: 8 13 sl 499 n 7 N 869757000
+group sl 499 x Z_7, |G| = 869757000 = N, vertices 2N = 1739514000; 8 distinct generators
+from (e,A): reached A 869757000/869757000, B 869757000/869757000 within 13; ecc 13; level sizes [1, 8, 56, 392, 2744, 19208, 134450, 940731, 6563286, 44870209, 267606570, 762595058, 595449893, 61331394]  (126s)
