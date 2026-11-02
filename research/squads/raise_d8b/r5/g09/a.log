@@ -1,0 +1,13 @@
+group psl 41 x Z_1361, N=46872840 (2N=93745680), rows 840 x 55801 bits (doubled row 1768 words), memory 0.04 GB, threads 1
+alpha: conj by mat(0,40,1,6), z -> 211 z on Z_1361 (fixed z: 1); ORBIT k=5 m=3 f=4; W=6.48233e+08 lambda=13.830 mu=46.22
+setup 0.0s
+fixed generators: 3 chosen among 19 alpha-fixed elements
+start cost=80 (0.2s per eval)
+t=2 step=1 evals=9 slot=2 cand=55 cost=55 best=55 T=1.26
+t=5 step=2 evals=17 slot=1 cand=55 cost=55 best=55 T=1.06
+t=9 step=3 evals=25 slot=0 cand=65 cost=55 best=55 T=0.89
+t=13 step=4 evals=33 slot=2 cand=80 cost=55 best=55 T=0.75
+t=17 step=5 evals=41 slot=0 cand=70 cost=55 best=55 T=0.63
+t=21 step=6 evals=49 slot=2 cand=65 cost=55 best=55 T=0.53
+t=23 step=7 evals=57 slot=1 cand=55 cost=55 best=55 T=0.45
+t=27 step=8 evals=65 slot=0 cand=70 cost=55 best=55 T=0.38

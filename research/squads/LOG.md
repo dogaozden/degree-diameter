@@ -328,3 +328,32 @@ Reading: one more solve this round, at (17,8) by the screen's choice of k = 7. W
 (17,8) mu ~42-44, (18,8) ~47, (19,8) ~37-49 (cost 5 states), (20,8) ~33-36 with f = 0 because of fixed holes. Round 4:
 continue the saved near misses (cost 5-13) with START, use haar_big0w ORBW=5 on every f = 0 run, two k = 7 rungs at
 (18,8) mu 56-57, and a fit of evaluations against mu/k.
+
+## 2026-11-02, raise-d8b, round 4 (16 cards, 00:13 UTC)
+
+Same session. Files: research/squads/raise_d8b/r4/. Cards continued the saved near misses of rounds 2-3 with START and
+new seeds, ran every "5 4 0" search with haar_big0w ORBW=5, tried two k = 7 rungs at (18,8), and one analysis card fit
+search cost against mu/k.
+
+Cards (group, ORBIT, mu: result):
+- **f04 (20,8) psl 59 x Z641 "5 4 0" ORBW=5, fresh, mu 39.0: solved in 2,156 evaluations, 131,610,120.**
+- f01 (20,8) psl 41 x Z1901 ORBW=5 from r1/c10's state, mu 36.1: weighted 5 (one fixed hole). f02 psl 229 x Z11
+  mu 41.3: 25 (torus of 115 elements: ~6 expected fixed holes). f03 psl 79 x Z271 mu 49.0: 15. f05 psl 89 x Z191 mu
+  55.1: 20.
+- f06, f07, f08 (19,8) "5 3 4" continuations at mu 36.9, 38.5, 49.3: all stayed at cost 5 (one free orbit). f09 sl 71 x
+  Z131 mu 46.3: 65-71 (SL with f = 4 is bad again).
+- f10 (18,8) psl 41 x Z953 "7 2 4" mu 55.9: 14. f11 psl 43 x Z827 mu 56.8: 70. f12 psl 181 x Z11 "5 3 3" mu 51.0: 10.
+- f13 (17,8) psl 31 x Z1481 "5 3 2" mu 50.2 from e02's state: 5. f14 sl 89 x Z31 mu 44.5: 14.
+- **f15 fit over 74 finished runs of this job (censored log-normal): log(evals) = 1.00 + 1.21 mu/k, sigma 1.9; median
+  ~1.2k evaluations at mu/k = 5, ~13k at 7, ~45k at 8; P(solve within ~7,000 evaluations) 0.62 at mu/k 6, 0.37 at 7,
+  0.16 at 8, 0.05 at 9.** f and ln N add nothing clear. k = 3 runs solve less often than k = 5 at equal mu/k.
+- f16 wildcard: PGL(2,281) at (17,8) with haar_sym, did not get past setup in the box.
+
+Director during the round: SL(2,71) x Z61 "5 3 2" (17,8) ended at cost 1 after 109,000 evaluations; its last hole is
+alpha-fixed (weighted 5 under ORBW), continued with ORBW=5. (20,8) PSL(2,109) x Z101 ORBW=5 stayed at one fixed hole
+(torus of 55 elements) for 16,000 evaluations; replaced by PSL(2,41) x Z1931 (mu 45.8, torus 20), which screened like
+groups at lower mu. (19,8) PSL(2,59) x Z451 from d10's state: cost 5.
+
+Reading: ORBW=5 plus a small torus solved (20,8) at mu 39 where unweighted runs stalled at mu 33-36. The fit says
+mu/k ~ 8 is the practical ceiling here, so round 5 aims k = 7 at mu 54-60 for (17,8) and (18,8) and keeps k = 5 at
+mu 36-49 for (19,8) and (20,8), with a coding card for a D = 8 fixed-hole screen.

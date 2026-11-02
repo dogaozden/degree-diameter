@@ -1,0 +1,23 @@
+group psl 41 x Z_953, N=32821320 (2N=65642640), rows 840 x 39073 bits (doubled row 1240 words), memory 0.03 GB, threads 1
+alpha: conj by mat(0,40,1,4), z -> 431 z on Z_953 (fixed z: 1); ORBIT k=7 m=2 f=4; W=4.35985e+08 lambda=13.284 mu=55.87
+setup 0.0s
+start cost=14 (0.4s per eval)
+t=2 step=1 evals=9 slot=0 cand=63 cost=14 best=14 T=1.26
+t=3 step=2 evals=17 slot=0 cand=49 cost=14 best=14 T=1.06
+t=4 step=3 evals=25 slot=1 cand=91 cost=14 best=14 T=0.89
+t=5 step=4 evals=33 slot=1 cand=49 cost=14 best=14 T=0.75
+t=6 step=5 evals=41 slot=1 cand=63 cost=14 best=14 T=0.63
+t=7 step=6 evals=49 slot=1 cand=56 cost=14 best=14 T=0.53
+t=9 step=7 evals=57 slot=1 cand=63 cost=14 best=14 T=0.45
+t=11 step=8 evals=65 slot=1 cand=63 cost=14 best=14 T=0.38
+t=12 step=9 evals=73 slot=0 cand=49 cost=14 best=14 T=0.32
+t=14 step=10 evals=81 slot=1 cand=70 cost=14 best=14 T=0.27
+t=17 step=11 evals=89 slot=1 cand=77 cost=14 best=14 T=0.22
+t=18 step=12 evals=97 slot=0 cand=77 cost=14 best=14 T=0.19
+t=20 step=13 evals=105 slot=1 cand=70 cost=14 best=14 T=0.16
+t=21 step=14 evals=113 slot=0 cand=63 cost=14 best=14 T=0.15
+t=22 step=15 evals=121 slot=1 cand=70 cost=14 best=14 T=0.15
+t=24 step=16 evals=129 slot=0 cand=77 cost=14 best=14 T=0.15
+t=25 step=17 evals=137 slot=1 cand=84 cost=14 best=14 T=0.15
+t=27 step=18 evals=145 slot=0 cand=42 cost=14 best=14 T=0.15
+t=30 step=19 evals=153 slot=1 cand=63 cost=14 best=14 T=0.15

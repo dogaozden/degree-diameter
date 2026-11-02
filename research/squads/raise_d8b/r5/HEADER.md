@@ -8,7 +8,7 @@ degree d and diameter 8 for d = 17..20 (cells beyond the 2013 table). Current va
 | (17,8) | 43,463,280 | PSL(2,41) x Z631, "7 2 3" (r3/e01: its RANDORB screen picked k = 7; mu 41.2, 1,860 evaluations) |
 | (18,8) | 64,792,896 | PSL(2,97) x Z71, "7 2 4" (r2/d06, orbits of order 7, mu 46.3, 2,140 evaluations) |
 | (19,8) | 92,166,360 | PSL(2,131) x Z41, "5 3 4" (r2/d07, mu 35.9) |
-| (20,8) | 130,252,080 | PSL(2,41) x Z1891, "5 4 0" (r1/c11 to cost 1, finished by the director, mu 33.3) |
+| (20,8) | 131,610,120 | PSL(2,59) x Z641, "5 4 0" with ORBW=5 (r4/f04, mu 39.0, 2,156 evaluations) |
 
 **Round 1 finding: orbits of order 5 (ORBIT "5 m f") solve far higher mu than order 3** (k = 3 at mu 28 sat at cost 3
 after 12,000 evaluations where k = 5 at mu 29.6 solved in 97). Keep f small: the f - 1 fixed generators all lie in the
