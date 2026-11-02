@@ -1,0 +1,10 @@
+c07 (3,10) cyclic voltage lifts, 2026-11-01 22:53-23:12 UTC. Threads 1. Checker not run (no cost 0).
+Runs (lift = tools/bin/lift 100 s, L=1200; scan_h02 = 1-opt + tabu finisher 100 s, START=best):
+  gp10_3 (Desargues, 20) n=41 (N=820) seed1: best 134
+  pappus18 n=46 (N=828) seed2: 72; chain seed3: 72; scan_h02 seed4: 72
+  gp12_5 (Nauru, 24) n=34 (N=816) seed5: 124
+  gp16_3 (32) n=26 (N=832) seed6: 184
+  gp8_3 (Moebius-Kantor, 16) n=51 (N=816) seed7: 62; scan_h02 seed8 from it: 26; seed9 chain: 26;
+    seed10 fresh lift: 60; scan_h02 seed11 T0=0.5 from the 26 state: 26
+Best state: c07/mk_scan_n51.best (N=816 > 810, but cost 26: some pairs at distance > 10).
+Files: c07/*.best voltage files; no .edges written (no cost 0).

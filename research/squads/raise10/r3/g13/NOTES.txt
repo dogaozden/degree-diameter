@@ -1,0 +1,7 @@
+g13: 1-opt of the A4 x (Z239 x|_6 Z17) cost-1 state (r2/e07/psl3m239_s10.best).
+Code: prodopt5.c (BFS cost = haar_gen3 rule, full ecc check on cost 0). Binary prodopt5 (gcc -O3).
+Base state reproduced: cost 1; build_haar2.py on testA4_base.txt: ecc 11 from A and B, 0 unreached (so the hole is at distance 11).
+Exhaustive 1-opt needs 195,024 evaluations (4 slots x 48,756). Under load (nice 10, load ~19 on 4 cores) one evaluation
+costs ~40-65 ms wall, so this card covered 29,632 of them: 27,456 by the interleaved order (IL=1, progress prog_a4il.txt)
+plus 1,216 earlier by the slot-1-first order (a4.cands). Results: no candidate with cost 0 or 1; best neighbour cost 8.
+Remaining: continue with `IL=1 ./prodopt5 3 239 17 6 state_a4.txt prog_a4il.txt 80 a4il` (resumes at 29,632).

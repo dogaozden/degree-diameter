@@ -1,0 +1,8 @@
+group prod meta 43 3 36 meta 157 13 130 x Z_1, N=263289, identity 0, H order 43, rows 6123, threads 1, setup 0.41s
+START loaded from research/squads/raise10/r2/e10/g4_263289_c5.best (6 generators)
+start cost=4
+t=30 steps=448 evals=3585 cost=8 best=4 T=0.53
+t=60 steps=850 evals=6801 cost=7 best=4 T=0.19
+moves accepted/proposed: plain 6/1097 pair 0/0 local 0/0
+  move 0: mean candidate cost 256.8 min 7, candidates within +1 of final cost: 7
+RESULT d=6 D=10 group=prod meta 43 3 36 meta 157 13 130 x Z_1 N=263289 best=4 evals=8777 time=80.1

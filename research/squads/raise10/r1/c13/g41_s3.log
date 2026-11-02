@@ -1,0 +1,8 @@
+group meta 6397 41 5330 x Z_1, N=262277, identity 0, H order 41, rows 6397, threads 1, setup 0.15s
+start cost=63
+t=30 steps=576 evals=4609 cost=3 best=3 T=0.53
+t=60 steps=1129 evals=9033 cost=3 best=3 T=0.19
+t=90 steps=1776 evals=14209 cost=3 best=3 T=0.15
+moves accepted/proposed: plain 41/1776 pair 0/0 local 0/0
+  move 0: mean candidate cost 61.6 min 3, candidates within +1 of final cost: 69
+RESULT d=6 D=10 group=meta 6397 41 5330 x Z_1 N=262277 best=3 evals=14209 time=90.1

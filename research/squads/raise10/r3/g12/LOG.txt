@@ -1,0 +1,63 @@
+b=10 E=15 M=84 N=840 D=10 nfree=6 init cost 308
+tabu iters 17 best 38
+RESULT b=10 M=84 N=840 D=10 best=38 evals=15726 secs=68.6
+== m7_12_6 b10_1_2
+b=10 E=15 M=84 N=840 D=10 nfree=6 init cost 987
+tabu iters 18 best 58
+RESULT b=10 M=84 N=840 D=10 best=58 evals=15769 secs=69.4
+== a4c7 b10_1_2
+b=10 E=15 M=84 N=840 D=10 nfree=6 init cost 913
+tabu iters 17 best 44
+RESULT b=10 M=84 N=840 D=10 best=44 evals=15045 secs=68.2
+== m3_28_2 b10_1_2
+b=10 E=15 M=84 N=840 D=10 nfree=6 init cost 379
+tabu iters 16 best 38
+RESULT b=10 M=84 N=840 D=10 best=38 evals=14492 secs=67.9
+== m17_4_4 (order 68) b12_7_0 (N=816)
+b=12 E=18 M=68 N=816 D=10 nfree=7 init cost 548
+tabu iters 24 best 90
+RESULT b=12 M=68 N=816 D=10 best=90 evals=20472 secs=68.0
+== m11_8_10 (order 88) b10_1_2 (N=880)
+b=10 E=15 M=88 N=880 D=10 nfree=6 init cost 418
+tabu iters 24 best 66
+RESULT b=10 M=88 N=880 D=10 best=66 evals=21984 secs=67.7
+== m15_6_4 (order 90) b10_1_3
+b=10 E=15 M=90 N=900 D=10 nfree=6 init cost 1053
+tabu iters 23 best 69
+RESULT b=10 M=90 N=900 D=10 best=69 evals=20887 secs=67.8
+== chain m84 (meta 7 12 3) from r2 m84_b2s17.best, reheat T0=1.0 b10_1_2
+b=10 E=15 M=84 N=840 D=10 nfree=6 init cost 20
+tabu iters 25 best 20
+RESULT b=10 M=84 N=840 D=10 best=20 evals=22960 secs=67.6
+== a5 (A5, order 60) on 14-vertex base b14_9_0 (N=840)
+b=14 E=21 M=60 N=840 D=10 nfree=8 init cost 808
+tabu iters 18 best 98
+RESULT b=14 M=60 N=840 D=10 best=98 evals=15139 secs=68.0
+== m5_12_2 (order 60) on 14-vertex base b14_9_1 (N=840)
+b=14 E=21 M=60 N=840 D=10 nfree=8 init cost 430
+tabu iters 18 best 60
+RESULT b=14 M=60 N=840 D=10 best=60 evals=15461 secs=68.5
+== m9_10_8 (order 90) b10_1_2 (N=900)
+b=10 E=15 M=90 N=900 D=10 nfree=6 init cost 649
+tabu iters 23 best 42
+RESULT b=10 M=90 N=900 D=10 best=42 evals=21877 secs=68.1
+== chain m9_10_8 from out/m9_10_8_s11.best, T0=1.5
+b=10 E=15 M=90 N=900 D=10 nfree=6 init cost 42
+tabu iters 38 best 42
+RESULT b=10 M=90 N=900 D=10 best=42 evals=35605 secs=67.9
+== m9_10_8 (order 90) b10_1_4 seed 13
+b=10 E=15 M=90 N=900 D=10 nfree=6 init cost 3683
+tabu iters 38 best 68
+RESULT b=10 M=90 N=900 D=10 best=68 evals=36686 secs=68.0
+== m28_3_9 (order 84) b10_1_5 seed 14
+b=10 E=15 M=84 N=840 D=10 nfree=6 init cost 506
+tabu iters 20 best 14
+RESULT b=10 M=84 N=840 D=10 best=14 evals=19285 secs=67.6
+== chain m28_3_9 from out/m28_3_9_s14.best, T0=1.0
+b=10 E=15 M=84 N=840 D=10 nfree=6 init cost 14
+tabu iters 21 best 14
+RESULT b=10 M=84 N=840 D=10 best=14 evals=18517 secs=67.6
+== m28_3_9 (order 84) b10_1_2 seed 16
+b=10 E=15 M=84 N=840 D=10 nfree=6 init cost 471
+tabu iters 28 best 22
+RESULT b=10 M=84 N=840 D=10 best=22 evals=22758 secs=68.1

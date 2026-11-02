@@ -1,0 +1,7 @@
+c01 (12,10): ORBIT="5 2 2" FIXF=1 BOUNDCUR=1, haar_big0, 100-80 s links, THREADS=1.
+Groups tried (pick5 list, 2N > 332,797,296): psl 131 x Z151 (N 169,720,980): best cost 15 after 4 links;
+psl 149 x Z101 (N 167,043,900): best cost 10 after 6 links (best state c01/g149_101_s2002.out.best, cost 10 = not a
+diameter-10 graph); psl 101 x Z331 (N 170,498,100): best cost 15 after 4 links.
+Every link stayed on the plateau (no cost 0). No candidate passed the checker, so hcheckpsl was not run.
+Logs: c01/g*.log; states: c01/g*.out.best.
+Note: haar_big0 call ran ~100-107 s per link; 110 s timeout killed one run at 110 s (rc 124, no RESULT line).

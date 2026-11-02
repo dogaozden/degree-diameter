@@ -1,0 +1,5 @@
+group prod sl 3 meta 401 5 39 x Z_1, N=48120, identity 12030, H order 30, rows 1604, threads 1, setup 0.02s
+start cost=264
+t=30 steps=2044 evals=16353 cost=11 best=11 T=0.53
+t=60 steps=3594 evals=28753 cost=11 best=11 T=0.19
+RESULT d=5 D=10 group=prod sl 3 meta 401 5 39 x Z_1 N=48120 best=11 evals=38105 time=80.0

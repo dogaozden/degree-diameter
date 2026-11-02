@@ -1,0 +1,18 @@
+h09 (4,10), product (Z7 x| Z3) x (Z43 x| Z7), N = 6321, start state r3/g09/D_s4t.best (cost 3). Target: cost 0 (N >= 6209 needed to beat 12,416).
+Evaluator prod2opt.c: cost = N - |S T^4|, T = S^-1 S, computed by set products on a factorised multiplication
+(no BFS). Base cost 3 agrees with the BFS cost of the state file. Cost-0 candidates would be checked with BFS from (e,A),(e,B).
+Speed: one evaluation 1.6-2.7 ms under load average ~17-21 on 4 cores (unloaded estimate ~0.5 ms), so the full 2-opt
+(2e7 pairs per slot pair, 6e7 total) needs ~1e4 s on one thread and was NOT completed.
+Runs (all THREADS=1, <= 75 s each):
+- 1-opt, all slots of D_s4t.best: 18,954 evals (3 x 6,318), best 3. Cost-3 neighbours: slot 1 x in {591,1494,2397,3300,4203,6009}, slot 2 and 3 only the current value.
+- 1-opt of the alternate cost-3 state (slot 1 = 591): 18,954 evals, best 3, no cost < 3 neighbour.
+- 2-opt restricted to pairs with one changed slot taking a cost-3 1-opt value (LIST mode), all 6 ordered restrictions:
+  (x1 in L1, any y2): 37,920 evals best 3; (x1 in L1, any y3): 37,920 best 3; (x2=1555, any y1) and (x2, any y3): 6,318 each best 3;
+  (x3=1689, any y1) and (x3, any y2): 6,318 each best 3.
+- Sampled 2-opt, pseudo-random pairs over the whole pair space, slots (1,2): 28,288 evals, best 7 (random pairs are far worse).
+Result: min cost 3 over every neighbourhood tried; no cost-0 state; nothing to check with build_haar2 or apsp.
+Files: prod2opt.c (binary prod2opt), alt591.txt, list_*.txt, *.txt progress files, cands in *.cands if any.
+- Full 2-opt in pair order, slots (2,3): pairs 0..134,294 of 19,968,040 (about 0.7 %), 134,294 evals, best 8 (x=2..19 region).
+  Random-order (SAMPLE) pairs gave best 7, so the cost-3 plateau is reached only by pairs with a 1-opt-good value.
+Final: best cost 3 over all neighbourhoods run (1-opt, restricted 2-opt, partial full 2-opt). No cost-0 state.
+Wall time about 20 min of 25 (the 1-opt and restricted runs took most of the time; each eval ~2-3 ms under load).

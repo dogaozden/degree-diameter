@@ -1,0 +1,11 @@
+g11 (3,10) Heawood lifts and other bases, 23:43-00:03 UTC 2026-11-01/02. THREADS=1, every run 80 s program time.
+Runs (lift = tools/bin/lift BASE n 10 80 seed PREFIX T0 T1 1200; scan = tools/bin/scan_h02 same CLI with START=<prev>.best):
+  random 7+7 cubic bipartite b14_1 (g11/b14_1.txt) n=58 seed101: 60 -> scan seed103: 36
+  random 7+7 b14_2 (g11/b14_2.txt) n=58 seed102: 66 (not chained)
+  random 8+8 b16_4 (g11/b16_4.txt) n=51 (N=816) seed104: 52 (not chained)
+  Pappus18 n=46 (N=828) seed141: 66 -> scan seed161: 66
+  heawood n=58 seed111: 20 -> scan seed112: 16 -> seed113: 8 -> seed114: 8 (hw58_s111_scan3.best)
+  heawood n=58 seed121 T0=1 T1=0.2: 44 -> scan seed122: 12 (hw58_s121_scan.best)
+  heawood n=58 from r2/e12/hw58_scan3.best, seed131 T0=1 T1=0.2: 6; seed151 T0=2: 6 (hw58_r2best2.best)
+Best: cost 6 at N=812 (Heawood x Z58), same plateau as r2/e12. No cost 0, so no apsp check and no .edges file.
+Random cubic bipartite 14- and 16-vertex bases start at cost 50-66 and stall at 36 or above; Heawood remains the only base near 6.

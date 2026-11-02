@@ -1,0 +1,14 @@
+hmeta d=5 D=10 meta 1453 33 11 N=47949: start cost=34 (0.00s per eval)
+t=0 moves=1 evals=10 best=31 T=2.00
+t=0 moves=2 evals=19 best=28 T=2.00
+t=0 moves=3 evals=28 best=13 T=2.00
+t=0 moves=6 evals=55 best=12 T=1.99
+t=1 moves=42 evals=379 best=11 T=1.96
+t=1 moves=56 evals=505 best=10 T=1.95
+t=1 moves=88 evals=793 best=9 T=1.93
+t=2 moves=172 evals=1549 best=8 T=1.88
+t=3 moves=261 evals=2350 best=6 T=1.83
+t=25 moves=2410 evals=21690 best=5 T=0.98
+t=26 moves=2557 evals=23013 best=4 T=0.94
+SIDON: candidates dropped 7, redrawn 44805
+RESULT d=5 D=10 group=meta 1453 33 11 N=47949 vertices=95898 best=4 evals=65568 time=80.0

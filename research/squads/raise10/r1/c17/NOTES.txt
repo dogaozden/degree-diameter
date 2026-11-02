@@ -1,0 +1,13 @@
+c17 wildcard, cell (10,10), target > 64,294,560 vertices (N > 32,147,280).
+Strategy: orbit-symmetric Haar search, ORBIT "5 2 0" (f = 0, two free alpha-orbits of size 5), no FIXF,
+annealing with haar_big0 (K candidates per step, 90-100 s links). Groups from pick5.py d=10 mu 40-80 k=5:
+  PSL(2,79) x Z131 (N 32,288,880, mu 44.34), PSL(2,71) x Z181 (N 32,384,520, mu 46.28), PSL(2,181) x Z11 (N 32,612,580, mu 51.20).
+RANDORB (40 random S): PSL79xZ131 min 33 median 63; PSL71xZ181 min 41 median 72; PSL181xZ11 min 31 median 78.
+Results (best cost reached, no cost-0 state, so nothing to check with hcheckpsl):
+  79x131 seed 1 K=8: 12 (g79_131_s1.sol.best.orb); chains seeds 2, 7: stuck at 12; fresh seed 11 K=4: 17.
+  79x131 from the 12-state with K=16 BOUNDCUR=1 seed 9: 10 (g79_131_s9.sol.best.orb); seeds 10, 21 (TMAX 0.6): stuck at 10.
+  71x181 seed 3 K=8: 19; chain seed 8: 19. 181x11 seed 5 K=8: 31.
+  ORBIT "5 1 5" (f = 5, one orbit + 4 fixed generators) on 79x131: cost 17425, useless.
+Each eval ~0.3-0.5 s at N = 3.2e7 (about 200-270 evals per 95 s link).
+Logs: g79_131_*.log, g71_181_s3.log, g71_181_s8.log, g181_11_s5.log in this folder.
+Checker: none run (no valid cost-0 state).

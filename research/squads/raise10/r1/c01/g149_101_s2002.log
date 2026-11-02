@@ -1,0 +1,10 @@
+group psl 149 x Z_101, N=167043900 (2N=334087800), rows 11100 x 15049 bits (doubled row 496 words), memory 0.12 GB, threads 1
+alpha: conj by mat(0,148,1,40), z -> 36 z on Z_101 (fixed z: 1); ORBIT k=5 m=2 f=2; W=2.59374e+09 lambda=15.527 mu=30.16
+setup 0.0s
+fixed generators: 1 chosen among 74 alpha-fixed elements
+FIXF: 74 alpha-fixed elements other than e (3.5s); FIXTRY 200 FIXMAX 0
+start cost=23 (4.0s per eval)
+t=30 step=1 evals=5 slot=0 cand=10 cost=10 best=10 T=1.26 screened=34 (13s) fh=0,0,0,0
+t=65 step=2 evals=9 slot=1 cand=15 cost=10 best=10 T=1.06 screened=92 (33s) fh=0,0,0,0
+t=101 step=3 evals=13 slot=1 cand=15 cost=10 best=10 T=0.89 screened=156 (56s) fh=0,0,0,0
+RESULT d=12 D=10 group=psl 149 x Z_101 N=167043900 vertices=334087800 best=10 evals=13 steps=3 time=101.3 orbit k=5 m=2 f=2 mu=30.16

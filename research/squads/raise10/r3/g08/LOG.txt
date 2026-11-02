@@ -1,0 +1,12 @@
+g08 (6,10): products Q x Frobenius Z_p x| Z_k, N in [262081, 265000], haar_gen3s 6 10 80, one fresh run per group (80 s each).
+Group (N)                          best cost (fresh run)
+sl 3 x meta 331 33 79 (262152)     7
+psl 3 x meta 811 27 7 (262764)     6
+psl 3 x meta 593 37 16 (263292)    7
+meta 13 3 3 x meta 233 29 2 (263523) 7
+sl 3 x meta 647 17 43 (263976)     6 (re-run with SAVEBEST: 8)
+meta 13 3 3 x meta 521 13 18 (264147) 7
+psl 3 x meta 1471 15 137 (264780)  13
+psl 3 x meta 1051 21 57 (264852)   7
+Farm of psl 3 x meta 811 27 7 (SAVEBEST/START chain, 80 s links): 6 -> 5 -> 4 -> 4 -> 4 (state psl3_811_27_7.b4 cost 4).
+Not reached: cost 0. No solution found; no checker run (no cost-0 state). Enumeration: enum.py (only 8 candidates in the window).

@@ -1,0 +1,21 @@
+group psl 13 x Z_241, N=263172 (2N=526344), rows 84 x 3133 bits (doubled row 120 words), memory 0.00 GB, threads 1
+EVAL research/squads/raise10/r2/e11/a3_psl13_241.sol.best cost=18 time=0.000 mu=24.62
+uncovered 3055 mat(1,0,0,1) z=163
+uncovered 27478 mat(1,9,8,8) z=4
+uncovered 57954 mat(2,0,5,7) z=114
+uncovered 64772 mat(2,12,7,10) z=184
+uncovered 73164 mat(2,0,10,7) z=141
+uncovered 90819 mat(3,3,2,11) z=203
+uncovered 94799 mat(3,9,4,8) z=86
+uncovered 113445 mat(3,8,10,1) z=175
+uncovered 115345 mat(3,1,10,8) z=147
+uncovered 150272 mat(4,7,8,11) z=129
+uncovered 156393 mat(4,12,10,1) z=225
+uncovered 204327 mat(6,10,0,11) z=200
+uncovered 211365 mat(6,1,2,7) z=8
+uncovered 212036 mat(6,10,2,10) z=197
+uncovered 221290 mat(6,11,5,5) z=52
+uncovered 224390 mat(6,8,6,6) z=19
+uncovered 225583 mat(6,3,7,8) z=7
+uncovered 240453 mat(6,4,11,1) z=176
+FIXF 5 fixed elements (k=3): screen says 0 fixed holes (0.001 s), full evaluation 0 of 18 holes fixed

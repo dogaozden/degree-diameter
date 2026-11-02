@@ -1,0 +1,7 @@
+group sl 179 x Z_31, N=177789960 (2N=355579920), rows 32040 x 5549 bits (doubled row 192 words), memory 0.14 GB, threads 1
+alpha: conj by mat(0,178,1,74), z -> 2 z on Z_31 (fixed z: 1); ORBIT k=5 m=2 f=2; W=2.59374e+09 lambda=14.589 mu=82.05
+setup 0.0s
+fixed generators: 1 chosen among 179 alpha-fixed elements
+FIXF: 179 alpha-fixed elements other than e (8.6s); FIXTRY 200 FIXMAX 0
+start cost=77 (8.5s per eval)
+RESULT d=12 D=10 group=sl 179 x Z_31 N=177789960 vertices=355579920 best=77 evals=1 steps=0 time=173.7 orbit k=5 m=2 f=2 mu=82.05
