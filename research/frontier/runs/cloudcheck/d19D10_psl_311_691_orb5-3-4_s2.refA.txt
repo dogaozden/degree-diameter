@@ -14,3 +14,7 @@ progress 2026-11-02T09:22:53Z: running at 3h51m elapsed (pid 519), VmRSS 7613472
 progress 2026-11-02T09:48:01Z: running at 4h16m elapsed (pid 519), VmRSS 7613472 kB, unchanged; no output yet.
 progress 2026-11-02T10:13:07Z: running at 4h42m elapsed (pid 519), VmRSS 7613472 kB, unchanged; no output yet.
 progress 2026-11-02T10:38:14Z: running at 5h07m elapsed (pid 519), VmRSS 7613472 kB, unchanged; no output yet.
+################ haarcheck_psl (reference checker, research/structured/tools/haarcheck_psl.c on master ef3d56ac; cc -O3 -o haarcheck_psl haarcheck_psl.c): ./haarcheck_psl research/frontier/sols/d19D10_psl_311_691_orb5-3-4_s2.txt A   (BFS from (e,A) only)
+(stdout: empty. The process was terminated by SIGTERM at the 5.5 h cap before it printed anything. Its stdout was fully buffered in a file, so no partial progress was flushed. No HALF-VALID or HALF-INVALID line was produced.)
+NO VERDICT: refA check INCOMPLETE. Not run to the end; cap reached.
+[exit -15; wall 19926s; peak RSS 7435 MB]
