@@ -1,0 +1,7 @@
+Sidon lineages (SIDON=1 K=64, 78 s each, THREADS=1), final costs (RESULT best):
+Z6397 x|5330 Z41 fresh: s5101 5, s5102 2, s5104 3, s5106 3, s5107 6, s5108 4, s5110 4 (s5103 hung in Sidon init, killed, no result)
+Z6397 chains from s5102.sol.best: c5202 2, c5203 2, c5204 2 (no gain)
+Z5851 x|4151 Z45 fresh: s5105 6, s5109 6
+Plain baseline (r3/g06, same group, 16 lineages): best 3, median 4. No cost 0 reached; 524,160 not beaten.
+s5111 (fresh, Z6397) see RESULT line above
+s5111 (Z6397 fresh) best 4; s5112 (Z5851 fresh) best 4. Totals: Sidon fresh on Z6397 best 2/3/3/4/4/5/6/4 (median 4); Z5851 6,6,4.

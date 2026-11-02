@@ -1,0 +1,6 @@
+h12 (7,10): target N >= 1,149,121 (vertices > 2,298,240). Runs in h12/runs/*.log (haar_gen3s / haar_gen3t, THREADS=1).
+Candidate enumeration: h12/enum2.py (single Frobenius meta p k r with k in 13..63, A4 = psl 3, Z7 x| Z3 = meta 7 3 2).
+Best: prod psl 3 meta 2237 43 1984 x Z_1 (A4 x Z2237 x| Z43), N=1154292, best cost 12 (G2, chain G -> G2).
+Other: A4 x Z3307 x| Z29 cost 14; A4 x Z2237 x| Z43 fresh cost 13-14; (Z7 x| Z3) x Z1831 x| Z30 cost 19;
+A4 x Z4801 x| Z20 cost 57; A4 x Z1783 x| Z54 cost 21; A4 x Z9631 x| Z10 cost 330; single Frobenius Z88427 x| Z13 cost 44;
+Z47881 x| Z24 cost 1307 after 15 s. No cost 0, so no build_haar2 check was run.

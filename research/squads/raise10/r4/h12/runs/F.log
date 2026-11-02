@@ -1,0 +1,5 @@
+group prod psl 3 meta 4801 20 1038 x Z_1, N=1152240, identity 288060, H order 60, rows 19204, threads 1, setup 1.59s
+start cost=180
+t=33 steps=11 evals=705 cost=57 best=57 T=0.49
+t=64 steps=22 evals=1409 cost=57 best=57 T=0.16
+RESULT d=7 D=10 group=prod psl 3 meta 4801 20 1038 x Z_1 N=1152240 best=57 evals=1665 time=75.6

@@ -136,3 +136,31 @@ stopped at cost 5 after 307 evaluations); (20,10) started with haar_big1 "5 4 0"
 (6,10) cost-1 state of r2/e08 is a strict 1-opt local minimum (hmeta OPT1, all 1.3M single swaps).
 Process: three cards made stray tool calls (interrupt_session, read_documentation, send_message without arguments; all
 rejected or read-only).
+
+### Round 4 (16 cards, 00:09 UTC, research/squads/raise10/r4/) — Sidon farms, 1-opt proofs, products, Δ = 7, 8
+
+Cards: h01/h02 Sidon farms at (5,10), h03 Z2857 x| Z17 with a slot-split 1-opt (hmeta_split.c), h04 Q x F at (5,10), h05 Sidon
+at (6,10), h06 F x F at (6,10), h07 Frobenius k 31-63 at (6,10), h08 odd-order products at (4,10), h09 fast 2-opt for products
+(prod2opt.c), h10 non-abelian lifts, h11 exhaustive cubic Haar graphs of ~70 non-metacyclic groups of order 406-432, h12 (7,10)
+and h13 (8,10) Q x F / F x F, h14 full 1-opt of the cost-1 states (hmeta1.c), h15 wildcard, h16 quotient statistics as filters.
+Results (no raise):
+- Proofs of local minima: **the (5,10) Z1453 x| Z33 cost-1 state is a strict 1-opt local minimum** (h14, all 191,792 swaps; best
+  neighbour 2); the (5,10) Z2857 x| Z17 cost-2 state likewise (h03, all slots); (6,10) Z6397 x| Z41: 19 % of the 1-opt done by
+  h14, none solves (the director's full hmeta OPT1 of the r2 cost-1 state: none of 1.3M swaps solves).
+- (6,10) h05 Sidon Z6397 x| Z41 cost 2 (1 of 8 lineages; median 4, plain median 4); h07 Z7561 x| Z35 cost 4; h06
+  (Z19 x| Z3) x (Z419 x| Z11) cost 5.
+- (5,10) h01 Sidon Z1453 x| Z33: 21 lineages, best new 3; h02 Z881 x| Z55 cost 3 with Sidon (5 plain); h04 SL(2,3) x
+  (Z157 x| Z13) 3; h16: |ball of radius 5| predicts the final cost (Spearman -0.68) but filtering by it gave no gain.
+- (4,10) h08/h09 (Z7 x| Z3) x (Z43 x| Z7) (N 6,321) cost 3: 1-opt minimum 3, restricted 2-opt minimum 3.
+- (3,10) h10 Z7 x| Z12 lift on a 5+5 base cost 10; h11: no cost-0 cubic Haar graph in ~70 non-metacyclic groups of order
+  406-432 (best (Z3^2 x| SD16) x Z3, N 432, cost 6); h15: abelian Haar graphs are bounded by sum_t C(Δ+t-1,t)^2 (far below
+  every record for Δ >= 4), cyclic cubic Haar graphs reach diameter 10 only up to N = 70.
+- (7,10) h12 A4 x (Z2237 x| Z43) cost 12; (8,10) h13 (Z211 x| Z5) x (Z547 x| Z7) cost 20.
+Director during the round: **(18,10) 12,784,852,920 VALID** (hcheckpsl, ecc 10/10, 1,175 s), **(19,10) 20,785,224,720 VALID**
+(1,887 s), **(20,10) 33,036,831,960 found in 9 evaluations** by haar_big1 (k = 5, four free orbits, the new f = 0 FIXF screen;
+check running). Mid-cell runs with k = 5 FIXF started: (13,10) PSL(2,179) x Z121 "5 2 3" (mu 31.3), (12,10) PSL(2,131) x Z151
+"5 2 2" (mu 39.2).
+Reading: four squad rounds (65 cards) produced no raise of (3..8,10). The near misses are strict local minima at 1-3 holes and
+fresh lineages keep landing at 2-4; two rounds in a row added nothing new. The squad stops here; the remaining CPU goes to
+the director's checks and the mid cells, where k = 5 FIXF is new and evaluations are cheap.
+Process: two more stray tool calls by cards (both rejected); one card's shell hung on an append and it used Edit instead.
