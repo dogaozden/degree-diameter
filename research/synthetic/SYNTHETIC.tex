@@ -47,17 +47,17 @@
 
 \title[The constructions without coordinates]{Adding points and lines to generalized polygons:\\ the constructions without coordinates}
 \author{Degree--diameter lab}
-\date{30 October 2026}
+\date{1 November 2026}
 
 \begin{document}
 
 \begin{abstract}
-Written for Gabriela Araujo-Pardo and Ignacio L\'opez. Each construction of the lab is described here only in terms of incidence: points, lines, the lines through a point, the points of a line, flags, anti-flags, collinearity, distances in the incidence graph, and configurations (ovoids, spreads, $m$-ovoids, whiskers, partial ovoids, local dualities) defined by their combinatorial properties. For each construction we say what is chosen in the starting geometry, which incidences are deleted or moved, which new points and lines are added and exactly what they are incident with, which pairs of elements stop being collinear or concurrent and how the new elements repair this, and why the diameter and the degrees are as claimed. Section~\ref{sec:d3} treats the diameter-$3$ constructions in a projective plane: the three hats of Araujo-Pardo and L\'opez and our four hats, side by side and in the same words. Sections~\ref{sec:d4}--\ref{sec:d7} treat diameters $4$, $6$ and $7$ in generalized quadrangles and hexagons, and Section~\ref{sec:d5} treats diameter $5$: copies of a quadrangle joined by bijections, freed incidences and hubs, with an exact combinatorial criterion for which incidences can be freed. Section~\ref{sec:d8} treats G\'omez's diameter-$8$ construction on copies of a generalized hexagon: it says what is his, why as defined its diameter is at least $9$, and what is known about repairing it with a separate labelling of each copy (it works for $q=2,3$, fails for geometric labellings when $q\ge7$, and is open otherwise). The sections can be read independently.
+Written for Gabriela Araujo-Pardo and Ignacio L\'opez. Each construction of the lab is described here only in terms of incidence: points, lines, the lines through a point, the points of a line, flags, anti-flags, collinearity, distances in the incidence graph, and configurations (ovoids, spreads, $m$-ovoids, whiskers, partial ovoids, local dualities) defined by their combinatorial properties. For each construction we say what is chosen in the starting geometry, which incidences are deleted or moved, which new points and lines are added and exactly what they are incident with, which pairs of elements stop being collinear or concurrent and how the new elements repair this, and why the diameter and the degrees are as claimed. Section~\ref{sec:d3} treats the diameter-$3$ constructions in a projective plane: the three hats of Araujo-Pardo and L\'opez and our four hats, side by side and in the same words. Sections~\ref{sec:d4}--\ref{sec:d7} treat diameters $4$, $6$ and $7$ in generalized quadrangles and hexagons, and Section~\ref{sec:d5} treats diameter $5$: copies of a quadrangle joined by bijections, freed incidences and hubs, with an exact combinatorial criterion for which incidences can be freed. Section~\ref{sec:d8} treats G\'omez's diameter-$8$ construction on copies of a generalized hexagon: it says what is his, why as defined its diameter is at least $9$, and what is known about repairing it with a separate labelling of each copy (it works for $q=2,3$, fails for geometric labellings when $q\ge7$, and is open otherwise). Section~\ref{sec:haar} treats our values at diameters $9$ to $14$, which do not come from a generalized polygon: almost all of them are Haar structures, with a point and a line for each element of a group and incidences given by a set $S$ of $\Delta$ group elements. It says why two breadth-first searches decide the diameter, how $S$ was found (closed under an automorphism of order $3$, or random in a metacyclic group), a heuristic for why the orders found are a fraction about $1/\ln N$ of the Moore bound, and how each value was checked. The sections can be read independently.
 \end{abstract}
 
 \maketitle
 
-\noindent\emergencystretch=3em\emph{Sources.} Everything here is taken from the lab's notes: \path{research/theorems/POLISHED.md} (coordinates and complete proofs for diameters $3$, $4$ and $6$), \path{research/theorems/D7_HEXAGON.md} (the same for diameter $7$), \path{research/theorems/D5_QUADRANGLE.md} (diameter $5$; the corrected version on branch \path{claude/d5-relax-searches-osr72a}, read with its referee report \path{research/referee/d5-quadrangle.md} on \path{claude/referee-d5-quadrangle-621u7o}), \path{research/theorems/OMEGA_NOTE.md} (diameter $8$, branch \path{claude/omega-d8-note-xrbqux}; it replaces the note \path{papers/Ozden_OmegaH_D8_note.pdf}), \path{research/geometry/geometry.tex}, \path{research/plus2/coords/coords.tex} and the joint draft \path{research/paper/joint.tex}. No new result is claimed. Every combinatorial statement in Section~\ref{sec:d3} was checked by a program that builds both structures from the rules below on a plane given only by its incidence relation (\path{research/synthetic/checks/check_d3.py}: $\mathrm{PG}(2,q)$ for $q=3,4,5,7,8,9$, the two non-Desarguesian nearfield planes of order $9$, and agreement with the coordinate version for $q\le 9$). The other sections were checked in the same way on small quadrangles and hexagons (Appendix~\ref{app:checks}).
+\noindent\emergencystretch=3em\emph{Sources.} Everything here is taken from the lab's notes: \path{research/theorems/POLISHED.md} (coordinates and complete proofs for diameters $3$, $4$ and $6$), \path{research/theorems/D7_HEXAGON.md} (the same for diameter $7$), \path{research/theorems/D5_QUADRANGLE.md} (diameter $5$; the corrected version on branch \path{claude/d5-relax-searches-osr72a}, read with its referee report \path{research/referee/d5-quadrangle.md} on \path{claude/referee-d5-quadrangle-621u7o}), \path{research/theorems/OMEGA_NOTE.md} (diameter $8$, branch \path{claude/omega-d8-note-xrbqux}; it replaces the note \path{papers/Ozden_OmegaH_D8_note.pdf}), \path{research/geometry/geometry.tex}, \path{research/plus2/coords/coords.tex} and the joint draft \path{research/paper/joint.tex}. No new result is claimed. Every combinatorial statement in Section~\ref{sec:d3} was checked by a program that builds both structures from the rules below on a plane given only by its incidence relation (\path{research/synthetic/checks/check_d3.py}: $\mathrm{PG}(2,q)$ for $q=3,4,5,7,8,9$, the two non-Desarguesian nearfield planes of order $9$, and agreement with the coordinate version for $q\le 9$). The other sections were checked in the same way on small quadrangles, hexagons and groups (Appendix~\ref{app:checks}). Section~\ref{sec:haar} lists its own sources at its start.
 
 \setcounter{section}{-1}
 \section{Conventions}\label{sec:conv}
@@ -66,7 +66,7 @@ An \emph{incidence structure} consists of points, lines and a symmetric incidenc
 
 The \emph{incidence graph} has the elements as vertices and the flags as edges; it is bipartite. Distances $d(x,y)$ and the diameter are taken in it. So two points are at distance $2$ when they are collinear, a point and a line are at distance $3$ when they form an anti-flag and some point of the line is collinear with the point, and so on.
 
-A \emph{generalized $n$-gon} is an incidence structure whose incidence graph has diameter $n$ and girth $2n$; elements at distance $n$ are \emph{opposite}. It has \emph{order $(s,t)$} if every line has $s+1$ points and every point is on $t+1$ lines. Projective planes are the generalized $3$-gons, generalized quadrangles the $4$-gons, generalized hexagons the $6$-gons. Write $n_b(\Delta,D)$ for the largest number of elements of an incidence structure with all degrees at most $\Delta$ and diameter at most $D$ (the bipartite degree--diameter problem). A generalized $n$-gon of order $(q,q)$ attains the counting (Moore) bound for $n_b(q+1,n)$. When $q+1$ is not a prime power, no generalized polygon of order $(q+1,q+1)$ is known, and every construction below starts from a generalized polygon of order $(q,q)$ (or $(q-1,q+1)$) and adds points and lines, or joins several copies by new incidences, so that the maximum degree grows while the diameter stays the same or grows by one (by two in Section~\ref{sec:d8}). Table~\ref{tab:overview} is a summary.
+A \emph{generalized $n$-gon} is an incidence structure whose incidence graph has diameter $n$ and girth $2n$; elements at distance $n$ are \emph{opposite}. It has \emph{order $(s,t)$} if every line has $s+1$ points and every point is on $t+1$ lines. Projective planes are the generalized $3$-gons, generalized quadrangles the $4$-gons, generalized hexagons the $6$-gons. Write $n_b(\Delta,D)$ for the largest number of elements of an incidence structure with all degrees at most $\Delta$ and diameter at most $D$ (the bipartite degree--diameter problem). A generalized $n$-gon of order $(q,q)$ attains the counting (Moore) bound for $n_b(q+1,n)$. When $q+1$ is not a prime power, no generalized polygon of order $(q+1,q+1)$ is known, and every construction in Sections~\ref{sec:d3}--\ref{sec:d8} starts from a generalized polygon of order $(q,q)$ (or $(q-1,q+1)$) and adds points and lines, or joins several copies by new incidences, so that the maximum degree grows while the diameter stays the same or grows by one (by two in Section~\ref{sec:d8}). Section~\ref{sec:haar} starts from a group instead. Table~\ref{tab:overview} is a summary.
 
 \begin{table}[ht]
 \centering\small
@@ -81,6 +81,7 @@ A \emph{generalized $n$-gon} is an incidence structure whose incidence graph has
 \ref{sec:d7} & $2r+1$ copies of a generalized hexagon; $D=7$ & bijections from the points of one copy to the lines of another; freed sets (segment sets, local dualities) & the incidences between copies at the freed points are deleted & hub points and hub lines\\
 \ref{sec:d5} & $2r+1$ copies of a generalized quadrangle or its dual; $D=5$ & bijections as in \S\ref{sec:d7}; freed sets (partial ovoids and spreads, two-point local dualities, concurrent pairs) & the incidences between copies at the freed points are deleted & hub points and hub lines\\
 \ref{sec:d8} & $5\alpha$ copies of a generalized hexagon, $\alpha=\lfloor(q+3)/2\rfloor$; $D=8$ claimed, $\ge9$ as defined & one labelling of the points and lines, the same in every copy (one per copy in the repair); block types; a reading of the figures & none & $10N$ new elements, each incident with the point or the line of one label in each of $2\alpha$ copies\\
+\ref{sec:haar} & a finite group $G$ (mostly $\mathrm{SL}(2,p)$ or $\mathrm{PSL}(2,p)$ times a cyclic group); $D=9,\dots,14$ & a set $S$ of $\Delta$ elements, found by search, mostly closed under an automorphism of order $3$ & no starting geometry & a point $p_g$ and a line $L_g$ for each $g\in G$; $p_g\I L_h$ iff $hg^{-1}\in S$\\
 \bottomrule
 \end{tabular}
 \caption{The constructions at a glance.}
@@ -1244,13 +1245,168 @@ The thesis uses one labelling for all copies. The obvious repair keeps the wirin
 \subsection{What can be claimed}\label{ssec:omegaclaim}
 The six entries $(10,8)$, $(11,8)$, $(12,8)$, $(14,8)$, $(15,8)$, $(16,8)$ are the orders of G\'omez's structures $\Omega H_q$, $q=7,8,9,11,11,13$. As defined in the thesis (every copy of the hexagon carries the same labels, and a new element with label $t$ is incident only with elements labelled $t$), they have diameter at least $9$ for each of these $q$, under every reading of the figures and every pairing of point labels with line labels (Theorems~\ref{thm:projection} and~\ref{thm:twolabels}, and computation). The paper the table cites was never published, as far as we could find, so these cells have no checkable structure of diameter $8$. Giving each copy its own labelling repairs the construction at $q=2,3$; for $q\ge7$ no geometric labelling does. (For $q=7,8,11,13$, reading~$1$ with both block types has no geometric labelling at all, since a transfer from points to lines would be a duality; there Theorem~\ref{thm:twolabels} covers the thesis labelling.) We do not claim that no structure with these parameters exists, nor that no labelling works.
 
+\section{Diameters 9 to 14: Haar structures}\label{sec:haar}
+
+Beyond diameter $6$ there is no generalized polygon with as many points as lines to start from. By the theorem of Feit and Higman \cite{FH64}, a thick generalized $n$-gon (one with $s,t\ge2$) has $n\in\{3,4,6,8\}$, and for $n=8$ the orders $s$ and $t$ differ ($2st$ is a square). Sections~\ref{sec:d7}--\ref{sec:d8} built diameters $5$, $7$ and $8$ from several copies of a quadrangle or a hexagon. Our values at diameters $9$ to $14$ come from somewhere else: almost all from incidence structures with a group of automorphisms acting regularly on the points and on the lines (the exceptions are four lifts at $\Delta=3$, \S\ref{ssec:smalldeg}). Such a structure is determined by a finite group $G$ and a set $S$ of $\Delta$ elements of $G$. Nothing is deleted or added; the work is in choosing $G$ and $S$, and this is done by computer search. So, unlike Sections~\ref{sec:d3}--\ref{sec:d8}, this section has no theorem that produces a family: each value is one structure, found by a search and checked by computer, by two independent checks for all but one value (\S\ref{ssec:haarchecks}). We name the groups, but every argument uses only the group law. The sources are \path{research/frontier/SIZE_LAW.md} (the size law), \path{research/structured/STRUCTURE.md} (the orbit search), \path{research/theory/} (what is proved), \path{research/frontier/beyond11/ODD_D_HOLES.md} and \path{FROBENIUS.md} (branch \path{claude/beyond-d11-d12-new-cells-3t3djx}), \path{research/frontier/beyond/BEYOND_TABLE.md} (branches \path{claude/beyond-d11-d12-new-cells-3t3djx} and \path{claude/beyond-d13-search-z35z61}), the results table of \path{README.md} and the ledger \path{research/RESULTS.md} on \path{master}.
+
+\subsection{Haar structures}\label{ssec:haardef}
+
+\begin{definition}[Haar structure]\label{def:haar}
+Let $G$ be a finite group with identity $e$, and $S\subseteq G$ a set of $\Delta$ elements. The \emph{Haar structure} $H(G,S)$ has a point $p_g$ and a line $L_g$ for every $g\in G$, and
+$$p_g\I L_h\iff hg^{-1}\in S.$$
+\end{definition}
+
+So the lines through $p_g$ are the $\Delta$ lines $L_{sg}$, $s\in S$, and the points of $L_h$ are the $\Delta$ points $p_{s^{-1}h}$, $s\in S$; every element has degree $\Delta$, and there are $2|G|$ elements. The incidence graph is the \emph{Haar graph} of $G$ and $S$ (\cite{HMP02}, there for cyclic $G$; the definition is the same for any group): in the lab's files its vertices are $(g,A)=p_g$ and $(h,B)=L_h$, with $(g,A)\sim(sg,B)$.
+
+\begin{lemma}\label{lem:regular}
+\begin{enumerate}[label=\textup{(\alph*)}]
+\item For $x\in G$, the map $\rho_x\colon p_g\mapsto p_{gx}$, $L_h\mapsto L_{hx}$ is an automorphism of $H(G,S)$. The group of these maps acts regularly on the points and regularly on the lines.
+\item Conversely, if a group $G$ of automorphisms of an incidence structure maps points to points and lines to lines and acts regularly on both, the structure is a Haar structure of $G$.
+\item $H(G,S)$ is isomorphic to $H(G,Ss_0^{-1})$ for every $s_0\in S$ (by $p_g\mapsto p_{s_0g}$, $L_h\mapsto L_h$), and to $H(G,\varphi(S))$ for every automorphism $\varphi$ of $G$ (by $p_g\mapsto p_{\varphi(g)}$, $L_h\mapsto L_{\varphi(h)}$).
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+(a) $(hx)(gx)^{-1}=hg^{-1}$, and $\rho_x$ maps $p_e$ to $p_x$. (b) Write the action on the right, fix a point $p$ and a line $L$, and name the points $p^g$ and the lines $L^h$ ($g,h\in G$). Then $p^g\I L^h$ iff $p^{gh^{-1}}\I L$, that is, iff $hg^{-1}\in S$ with $S=\{t^{-1}: p^t\I L\}$. (c) $hg^{-1}\in S$ iff $h(s_0g)^{-1}\in Ss_0^{-1}$, and $\varphi(h)\varphi(g)^{-1}=\varphi(hg^{-1})$.
+\end{proof}
+
+By (c) we may and do assume $e\in S$; all the lab's files are written that way. A first example, at diameter $3$: if $G$ is the cyclic group $\mathbb{Z}_{q^2+q+1}$ and $S$ is a perfect difference set (every nonzero element of $G$ is a difference of two elements of $S$ in exactly one way), then two points $p_g,p_{g'}$ have exactly one common line, two lines exactly one common point, and $H(G,S)$ is a projective plane of order $q$; by Singer's theorem \cite{Si38} every Desarguesian plane arises in this way. So the Haar structures include the Desarguesian planes of Section~\ref{sec:d3}, where the group was invisible.
+
+\subsection{Distances, and why two searches are enough}\label{ssec:twobfs}
+
+A path from $p_e$ alternates points and lines: $p_e$, $L_{s_1}$, $p_{s_2^{-1}s_1}$, $L_{s_3s_2^{-1}s_1}$, and so on. So the elements reached are products of elements of $S$ and their inverses, with alternating signs. For sets $X,Y\subseteq G$ write $XY=\{xy:x\in X,\,y\in Y\}$ and $X^{-1}=\{x^{-1}:x\in X\}$.
+
+\begin{lemma}[Two searches]\label{lem:twobfs}
+Let $t\ge0$.
+\begin{enumerate}[label=\textup{(\alph*)}]
+\item $d(p_e,p_g)\le 2t$ iff $g\in(S^{-1}S)^t$; $d(L_e,L_h)\le 2t$ iff $h\in(SS^{-1})^t$; $d(p_e,L_h)\le 2t+1$ iff $h\in S(S^{-1}S)^t$.
+\item Every element is within $\max(\varepsilon(p_e),\varepsilon(L_e))$ of every other, where $\varepsilon$ is the eccentricity; so $\diam H(G,S)=\max(\varepsilon(p_e),\varepsilon(L_e))$.
+\item $\diam H(G,S)\le 2t$ iff $S(S^{-1}S)^{t-1}=G$ ($t\ge1$): one condition, every line within $2t-1$ of $p_e$.
+\item $\diam H(G,S)\le 2t+1$ iff $(S^{-1}S)^t=G$ and $(SS^{-1})^t=G$: two conditions, every point within $2t$ of $p_e$ and every line within $2t$ of $L_e$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+(a) By induction on the path, as above; since $e\in S^{-1}S$ and $e\in SS^{-1}$ for every nonempty $S$, the sets grow with $t$, so ``at most $2t$'' and ``a product of exactly $t$ factors'' agree. (b) $\rho_{g^{-1}}$ maps $p_g$ to $p_e$ and $\rho_{h^{-1}}$ maps $L_h$ to $L_e$, and automorphisms keep distances. (c) As in the proof of Lemma~\ref{lem:diam}: point--line distances are odd, and two points (or two lines) are within $2t$ as soon as every point--line pair is within $2t-1$. By (a) applied after $\rho_{g^{-1}}$, $d(p_g,L_h)=d(p_e,L_{hg^{-1}})$, so all point--line pairs are within $2t-1$ iff every line is within $2t-1$ of $p_e$. (d) As in Lemma~\ref{lem:diam5}: the diameter is at most $2t+1$ iff any two elements of the same kind are within $2t$; by (b) it suffices to look from $p_e$ and from $L_e$, and (a) translates this.
+\end{proof}
+
+So one breadth-first search from $p_e$ decides an even diameter, and two, from $p_e$ and from $L_e$, decide an odd one. Each search visits every element once, instead of once for each of the $2|G|$ starting elements: this is what makes structures with $3\cdot10^{10}$ elements checkable (\S\ref{ssec:haarchecks}). At odd $D$ both searches are needed: for $G=\mathbb{Z}_{13}\rtimes_3\mathbb{Z}_3$ (elements $(a,j)$, $(a,j)(b,l)=(a+3^jb,\,j+l)$) and $S=\{(0,0),(0,1),(1,0)\}$, $(SS^{-1})^3=G$ but $(S^{-1}S)^3$ misses two elements, so $\varepsilon(L_e)=7$ and $\varepsilon(p_e)=8$ (\path{check_haar.py}). The ``if'' directions of (c) and (d) are proved in Lean for every $k$ (\path{lean/BipartiteDD/Haar/GraphD.lean}, \texttt{haar\_ediam\_le\_even} and \texttt{haar\_ediam\_le\_odd}).
+
+\emph{The counting bound.} A product $s_\ell^{\pm1}\cdots s_2^{-1}s_1$ with $s_{i+1}\ne s_i$ is a path that never steps straight back, and there are $\Delta(\Delta-1)^{\ell-1}$ of length $\ell\ge1$. Every element of $G$ must be such a product of one of the lengths in (c) or (d), that is, of length at most $D-1$ and of the parity of $D-1$. So $|G|\le W(\Delta,D)$, where
+$$W(\Delta,2t)=\Delta\sum_{i=0}^{t-1}(\Delta-1)^{2i},\qquad W(\Delta,2t+1)=1+\sum_{i=1}^{t}\Delta(\Delta-1)^{2i-1}.$$
+Expanding $\Delta=(\Delta-1)+1$ gives $W(\Delta,D)=\sum_{i=0}^{D-1}(\Delta-1)^i=M_b(\Delta,D)/2$ in both cases, where $M_b$ is the bipartite Moore bound. So for Haar structures the counting bound is the Moore bound itself, and the Singer planes attain it at $D=3$. The longest words, of length $D-1$, number $\Delta(\Delta-1)^{D-2}$, a fraction close to $1-1/(\Delta-1)^2$ of $W$ ($3/4$ at $\Delta=3$).
+
+\subsection{Why the orders are what they are: the size law}\label{ssec:sizelaw}
+
+\path{SIZE_LAW.md} found that the best Haar structures from the searches follow $|G|\approx C_D(\Delta-1)^{D-2}$ within each diameter, within a few per cent, with a $C_D$ that rises slowly with $\Delta$ and falls with $D$. The explanation is a coupon-collector count. Write $N=|G|$, $W=W(\Delta,D)$, $\lambda=W/N$, and pretend that the $W$ words of the condition in Lemma~\ref{lem:twobfs}(c), or of one of the two conditions in (d), are $W$ independent uniform elements of $G$. (At odd $D$ there are two conditions, but in each the words come in inverse pairs, Lemma~\ref{lem:oddholes}(a); together the two conditions give the same mean number of misses as one, \path{SIZE_LAW.md}, \S2.3.) Then the expected number of elements of $G$ that no word reaches is
+$$\mu=N(1-1/N)^W\approx Ne^{-\lambda},$$
+and the number missed is roughly Poisson with mean $\mu$: one random $S$ works with probability about $e^{-\mu}$. A search that tries many sets $S$ can absorb a small mean $\mu^*$, which depends on how long it runs. Solving $Ne^{-W/N}=\mu^*$ for $N$, and using $W=M_b/2$,
+$$2N=\frac{M_b(\Delta,D)}{\ln(N/\mu^*)}.$$
+With $\mu:=Ne^{-W/N}$ taken as a definition this is an identity; the content is that at our values $\mu$ stays between about $3$ and $61$ (Appendix~\ref{app:haar}; four values stopped at a size cap have $\mu\approx0$), while $\ln N$ grows from about $7$ to $23$. So a Haar structure found by search has a fraction about $1/\ln(N/\mu)$ of the Moore bound, falling as $N$ grows: from $17\%$ ($\Delta=5$) to $5\%$ ($\Delta=20$) at $D=9$, and from $10\%$ ($\Delta=4$) to $5\%$ ($\Delta=8$) at $D=14$. Fitted on the best structure of each cell then available ($19$ cells at $D=5,8,9,10$), $\ln\mu^*=4.34-0.123\ln N$; with this fit \path{SIZE_LAW.md} predicted, before running them, the orders reached in seven cells not tried before (the results came within $3\%$ of the predictions), and ``a run solves iff $\mu\le\mu^*$'' held for every run of that test (\S3.2 there).
+
+This is a heuristic, not a theorem. For $D$ fixed and $\Delta$ large, a threshold theorem of this kind is proved for every finite group (\path{research/theory/THRESHOLD.md}, Theorems~3 and~4; we have not checked these proofs here). In the regime of the records, $\Delta$ fixed and $D$ growing, it is open, as is any proof that $\diam H(G,S)$ is close to $\log_{\Delta-1}|G|$ for random $S$ (\path{research/theory/SUMMARY.md}). The model also explains differences between groups: some elements are missed more often than others, and which ones depends on the group.
+
+\begin{lemma}[Odd diameter: inverses and central elements]\label{lem:oddholes}
+Let $t\ge1$, $X_A=(S^{-1}S)^t$ and $X_B=(SS^{-1})^t$.
+\begin{enumerate}[label=\textup{(\alph*)}]
+\item $X_A=X_A^{-1}$ and $X_B=X_B^{-1}$. The words of length $2t$ reaching $x$ (sequences $s_1,\dots,s_{2t}$ with $s_{2t}^{-1}s_{2t-1}\cdots s_2^{-1}s_1=x$, as in Lemma~\textup{\ref{lem:twobfs}}) are in bijection with those reaching $x^{-1}$, by reversing the sequence; for an involution $x$ the reversal permutes the words reaching $x$, and has no fixed sequence.
+\item A central element $c$ lies in $X_A$ iff it lies in $X_B$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+(a) The inverse of $s_{2t}^{-1}s_{2t-1}\cdots s_2^{-1}s_1$ is $s_1^{-1}s_2\cdots s_{2t-1}^{-1}s_{2t}$, the word of the reversed sequence. A sequence equal to its reverse gives $e$, since the middle letters cancel and then the next ones, and so on; $e$ is not an involution. The same for $X_B$. (b) If $c=s_{2t}^{-1}(s_{2t-1}\cdots s_1)$, conjugating by $s_{2t}^{-1}$ gives $c=(s_{2t-1}\cdots s_1)s_{2t}^{-1}$, a product of $t$ factors of $SS^{-1}$; the converse is the same.
+\end{proof}
+
+So at odd $D$ the words reaching an involution come in pairs, and in the Poisson picture an involution is missed with probability about $e^{-\lambda/2}$ instead of $e^{-\lambda}$; a central element is missed on both sides at once, and the words reaching it are also closed under moving two letters from the front to the back, so it is missed with probability about $e^{-\lambda/t}$ (\path{ODD_D_HOLES.md}, where these rates are measured). $\mathrm{PSL}(2,p)$ has about $p^2/2$ involutions and $\mathrm{SL}(2,p)$ one, $-I$. At $(11,11)$, three random symmetric $S$ in $\mathrm{PSL}(2,1063)$ ($\mu=5.5$) missed $117$ to $159$ involutions, and three in $\mathrm{SL}(2,251)\times\mathbb{Z}_{37}$ ($\mu=3.3$) missed $2$ to $22$ elements in all. This is why the $D=11$ values for $\Delta=7,\dots,15$ use $\mathrm{SL}(2,p)\times\mathbb{Z}_n$, and why no odd-$D$ value uses $\mathrm{PSL}(2,p)$ alone; the Frobenius groups of odd order used at $D\ge11$ (\S\ref{ssec:smalldeg}) have no involutions and a trivial centre. At even $D$ both effects disappear, since the words of Lemma~\ref{lem:twobfs}(c) have odd length and reversing one changes its side ($\mathrm{PSL}(2,389)$ alone solved $(10,10)$ in $385$ evaluations, \path{STRUCTURE.md}, \S2).
+
+\subsection{Orbit search: \texorpdfstring{$S$}{S} closed under an automorphism}\label{ssec:orbit}
+
+Let $\alpha$ be an automorphism of $G$ of prime order $k$, and take
+$$S=F\cup O_1\cup\dots\cup O_m,\qquad F\subseteq\mathrm{Fix}(\alpha),\ e\in F,\ |F|=f,\qquad O_j=\{x_j,\alpha(x_j),\dots,\alpha^{k-1}(x_j)\},$$
+with $x_j$ not fixed by $\alpha$, so that $\Delta=f+km$. (When $k\mid\Delta$ the lab also uses $f=0$: $S$ is $\Delta/k$ orbits and does not contain $e$; by Lemma~\ref{lem:regular}(c) the files then store $Ss_0^{-1}$.)
+
+\begin{lemma}\label{lem:orbit}
+If $\alpha(S)=S$, then $p_g\mapsto p_{\alpha(g)}$, $L_h\mapsto L_{\alpha(h)}$ is an automorphism of $H(G,S)$ fixing $p_e$ and $L_e$. So for every $\rho\ge0$ the set of elements at distance more than $\rho$ from $p_e$ (or from $L_e$) is a union of $\alpha$-orbits.
+\end{lemma}
+
+\begin{proof}
+$\alpha(h)\alpha(g)^{-1}=\alpha(hg^{-1})$, and $\alpha(S)=S$.
+\end{proof}
+
+So the elements a symmetric $S$ misses come in whole $\alpha$-orbits: $k$ at a time, or one fixed element at a time. In the Poisson picture the number of missed orbits has mean about $\mu/k$, plus about $e^{-\lambda/k}$ for each fixed element (the $k$ words that $\alpha$ permutes all reach the same fixed element); a random symmetric $S$ works with probability about $e^{-\mu/k}$ instead of $e^{-\mu}$, and the search moves the $m$ representatives $x_j$ instead of $\Delta-1$ free elements. This does not raise the counting ceiling: there are only about $N^m$ symmetric sets, against $N^{\Delta-1}$ in all, and the first-moment estimate gives the same ceiling for both. It makes the band below the ceiling searchable. On the same groups and seeds at $(7,8)$, orbit search solved $\mu=34$ in $1.7$--$5.8\cdot10^4$ evaluations of $S$, where random $S$ had not succeeded after $1.2$--$1.6\cdot10^6$; the reachable $\mu$ roughly doubled, which is $5$ to $11\%$ in $N$ (\path{STRUCTURE.md}, \S\S0, 3).
+
+What is used (\path{STRUCTURE.md}, \S2, and the beyond jobs): $G=Q\times\mathbb{Z}_n$ with $Q=\mathrm{SL}(2,p)$ or $\mathrm{PSL}(2,p)$ ($p$ prime; also $\mathrm{SL}(2,25)$, $\mathrm{PSL}(2,81)$, $\mathrm{PSL}(2,243)$ and products such as $\mathrm{PSL}(2,7)\times\mathrm{SL}(2,7)$), and $k=3$, with $\alpha$ conjugation by an element of order $3$ (modulo the centre) on $Q$ times $z\mapsto rz$ on $\mathbb{Z}_n$, $r$ of order $3$ modulo $n$; then $f=1$ or $2$ when $\Delta\equiv1$ or $2$ modulo $3$, and $f=0$ (or $f=3$, at $\Delta=18$) when $3\mid\Delta$; the fixed generators other than $e$ lie in the torus that centralizes the conjugating element. Five cells at $D=9,10$ use $k=5$: $(10,9)$, $(10,10)$, $(15,10)$ and $(16,10)$ with conjugations, and $(11,10)$, $\mathrm{PSL}(2,243)\times\mathbb{Z}_{11}$, with the field automorphism $x\mapsto x^3$ of $\mathrm{GF}(243)$ applied to the matrix entries in place of a conjugation. Three rules came out of the experiments: $k$ must be odd (when $\alpha$ is an involution, two different words collide whenever $\alpha(u)=u^{-1}$ for a product $u=x_ax_b^{-1}$ of two generators; for the conjugations tried in $\mathrm{SL}(2,q)\times\mathbb{Z}_n$ this is a fraction about $1/q$ of all $u$); $\alpha$ must move every small quotient of $G$ (an orbit has a single image in a quotient on which $\alpha$ acts trivially), hence every prime factor of $n$ is $\equiv1$ modulo $k$ (true for all our values); and $\alpha$ should have few fixed points (a conjugation fixes a torus, about $p$ elements). For every value with a symmetric $S$ containing $e$ in $\mathrm{SL}(2,p)$ or $\mathrm{PSL}(2,p)$ times a cyclic group ($p$ prime), \path{check_haar.py} finds such an $\alpha$ from $S$ alone (by a search over the images of the generators, solving a linear system for the conjugating matrix at each step) and checks $\alpha(S)=S$ and the numbers $f$ and $k$ of Appendix~\ref{app:haar}; at $(11,10)$ it checks the field automorphism.
+
+\subsection{Small degrees: metacyclic groups and lifts of small cubic structures}\label{ssec:smalldeg}
+
+At $\Delta=4,5$ (and $\Delta=6$ at $D=11$) the best groups are metacyclic, $\mathbb{Z}_m\rtimes_u\mathbb{Z}_\ell$ with $(a,j)(b,i)=(a+u^jb,\,j+i)$ and $u^\ell\equiv1\bmod m$ (or a product of two such groups), with random $S$ and no symmetry; at $D\ge11$ all of them have odd order, and most are Frobenius groups ($m$ prime, $u$ of order $\ell$). A Frobenius group of odd order has no involutions and a trivial centre, so Lemma~\ref{lem:oddholes} costs nothing, and at these small orders it mixes like a random group, while $\mathrm{SL}(2,p)$ for small $p$ has many short relations (\path{FROBENIUS.md}). At $(4,11)$ the metacyclic value sits at $\mu=44$, where $\mathrm{SL}$ and $\mathrm{PSL}$ groups stall at $\mu\approx8$--$15$.
+
+At $\Delta=3$ a Haar structure gives our value only at $D=11$. Haar structures are lifts of the \emph{dipole}, one point and one line joined by $\Delta$ parallel incidences (a multigraph), and at $D=10,12,13,14$ a larger base does better. Let $B$ be a small incidence structure with all degrees $3$ (repeated incidences allowed), and give each incidence $\iota$ of $B$, between a point $P$ and a line $L$, an element $v(\iota)$ of a group $\Gamma$. The \emph{lift} has points $(P,\gamma)$ and lines $(L,\gamma)$, $\gamma\in\Gamma$, with $(P,\gamma)\I(L,\gamma v(\iota))$ for every incidence $\iota$ of $B$ between $P$ and $L$; all degrees are again $3$, and $\Gamma$ acts on it (by left multiplication) with $|B|$ orbits. With the elements of $S^{-1}$ on the $\Delta$ incidences of the dipole, the lift is $H(G,S)$, by $(P,\gamma)\mapsto p_{\gamma^{-1}}$, $(L,\gamma)\mapsto L_{\gamma^{-1}}$. Our values: $(3,13)$, the Desargues configuration ($10$ points, $10$ lines; incidence graph the generalized Petersen graph $GP(10,3)$) lifted by $\mathbb{Z}_{170}$; $(3,14)$, the Pappus configuration ($9$ points, $9$ lines) lifted by $\mathbb{Z}_{317}$; $(3,12)$, the structure whose $4$ lines are the four $3$-subsets of $4$ points, lifted by $\mathbb{Z}_{37}\rtimes_6\mathbb{Z}_8$; $(3,10)$, a base with $5$ points and $5$ lines (two of its lines have the same three points) lifted by $\mathbb{Z}_3\times\mathrm{He}_3$ (He$_3$ the Heisenberg group of order $27$); and $(3,11)$ is the Haar structure of $\mathbb{Z}_{67}\rtimes_9\mathbb{Z}_{11}$. The voltages (and for $(3,10)$, $(3,12)$ also the bases) were found by annealing, finished by exhaustive searches over one or two changes for $(3,12)$, $(3,13)$, $(3,14)$.
+
+\subsection{Our values at diameters 9 to 14}\label{ssec:haarvalues}
+
+Table~\ref{tab:haarvalues} gives, for every cell with $9\le D\le 14$ and $3\le\Delta\le20$ in which the lab has a structure, the number of elements of the largest one; Appendix~\ref{app:haar} gives for each the group, the shape of $S$, $\mu$ and the checks. The values are those of the results table of \path{README.md} on \path{master} ($D=9,10$, $\Delta\le16$), of the ledger \path{research/RESULTS.md}, which is ahead of the README in three cells ($(5,9)$, $(7,10)$, $(8,10)$: $29{,}756$, $2{,}298{,}240$, $8{,}043{,}840$ against $29{,}540$, $2{,}237{,}760$, $7{,}818{,}096$), and of \path{BEYOND_TABLE.md} on the beyond branches ($\Delta=17,\dots,20$ at $D=9,10$; $D=11,\dots,14$). Where these disagree we took the largest value with a check log: $(4,12)$ $74{,}066$ from \path{claude/beyond-d13-search-z35z61} (the ledger has $70{,}176$), $(3,11)$ $1{,}474$ from \path{BEYOND_TABLE.md} (the ledger has $1{,}344$), and $(3,12)$ $2{,}368$ from the ledger (\path{BEYOND_TABLE.md} has $2{,}176$). At $(14,12)$ the structure found for $\Delta=14$ has $29{,}996{,}171{,}040$ elements, fewer than the $(13,12)$ structure, whose degree $13$ is at most $14$; so the value of that cell is the $(13,12)$ one.
+
+\begin{table}[ht]
+\centering\footnotesize
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{@{}r*{6}{r}@{}}
+\toprule
+$\Delta$ & $D=9$ & $D=10$ & $D=11$ & $D=12$ & $D=13$ & $D=14$\\
+\midrule
+3 & -- & $810^{\dagger}$ & $1{,}474^{\ddagger\sharp}$ & $2{,}368^{\dagger}$ & $3{,}400^{\dagger\sharp}$ & $5{,}706^{\dagger\sharp}$\\
+4 & -- & $12{,}416^{\ddagger}$ & $30{,}334^{\ddagger}$ & $74{,}066^{\ddagger\sharp}$ & $192{,}382^{\ddagger\sharp}$ & $497{,}042^{\ddagger\sharp}$\\
+5 & $29{,}756^{\ddagger}$ & $95{,}472^{\ddagger}$ & $311{,}426^{\ddagger}$ & $1{,}058{,}342^{\ddagger}$ & $3{,}594{,}910^{\ddagger\sharp}$ & $12{,}795{,}166^{\ddagger\sharp}$\\
+6 & $127{,}296$ & $524{,}160$ & $2{,}122{,}518^{\ddagger}$ & $9{,}366{,}240$ & $41{,}734{,}392^{\sharp}$ & $187{,}990{,}656^{\sharp}$\\
+7 & $462{,}840$ & $2{,}298{,}240$ & $11{,}012{,}976$ & $59{,}838{,}504$ & $312{,}227{,}760^{\sharp}$ & $1{,}674{,}490{,}944^{\sharp}$\\
+8 & $1{,}341{,}600$ & $8{,}043{,}840$ & $45{,}329{,}808$ & $284{,}095{,}056$ & $1{,}739{,}514{,}000^{\sharp}$ & $11{,}325{,}238{,}056^{\sharp}$\\
+9 & $3{,}499{,}776$ & $24{,}099{,}600$ & $155{,}250{,}816$ & $1{,}105{,}785{,}120$ & $7{,}924{,}036{,}032^{\sharp}$ & --\\
+10 & $8{,}418{,}120$ & $64{,}294{,}560$ & $460{,}691{,}568$ & $3{,}712{,}424{,}352$ & $19{,}980{,}294{,}768^{\circ\sharp}$ & --\\
+11 & $17{,}323{,}152$ & $157{,}835{,}304$ & $1{,}241{,}299{,}248$ & $11{,}189{,}148{,}096$ & -- & --\\
+12 & $35{,}445{,}648$ & $332{,}797{,}296$ & $2{,}976{,}066{,}240$ & $29{,}996{,}171{,}040$ & -- & --\\
+13 & $67{,}742{,}688$ & $683{,}943{,}456$ & $6{,}781{,}213{,}392$ & $29{,}997{,}644{,}040^{\circ}$ & -- & --\\
+14 & $120{,}043{,}728$ & $1{,}350{,}537{,}864$ & $14{,}381{,}398{,}080$ & $29{,}997{,}644{,}040^{\S\circ}$ & -- & --\\
+15 & $208{,}483{,}200$ & $2{,}566{,}531{,}440$ & $28{,}655{,}908{,}512$ & -- & -- & --\\
+16 & $348{,}207{,}600$ & $4{,}708{,}566{,}360$ & $29{,}961{,}590{,}400^{\circ\sharp}$ & -- & -- & --\\
+17 & $501{,}707{,}400$ & $7{,}022{,}052{,}336$ & -- & -- & -- & --\\
+18 & $790{,}626{,}816$ & $11{,}787{,}972{,}672$ & -- & -- & -- & --\\
+19 & $1{,}218{,}394{,}320$ & $19{,}233{,}722{,}496$ & -- & -- & -- & --\\
+20 & $1{,}823{,}175{,}864$ & $30{,}518{,}778{,}360$ & -- & -- & -- & --\\
+\bottomrule
+\end{tabular}
+\caption{Our largest structures with maximum degree $\Delta$ and diameter $D$, $9\le D\le14$ (number of elements, that is, of vertices of the incidence graph). Unmarked: Haar structures of $\mathrm{SL}(2,q)$, $\mathrm{PSL}(2,q)$ or products, times a cyclic group, with $S$ closed under an automorphism of order $3$ or $5$; ${\ddagger}$: Haar structures of metacyclic groups (or a product of two), $S$ without symmetry; ${\dagger}$: lifts of small cubic incidence structures, not Haar structures; ${\circ}$: the first $S$ found at a size cap of the search (here $\mu\approx0$); ${\sharp}$: not yet in the lab's ledger \texttt{research/RESULTS.md}; ${\S}$: the $(13,12)$ structure. $(3,9)$ and $(4,9)$: no value of ours above the 2013 table ($506$ and $4{,}970$).}
+\label{tab:haarvalues}
+\end{table}
+
+The 2013 table \cite{MS13} stops at $D=10$ and $\Delta=16$. Wherever it has an entry and we have a value, ours is larger: by $6.5$ to $32.9\%$ at $D=9$ ($\Delta=5,\dots,16$) and by $1.3$ to $27.7\%$ at $D=10$ ($\Delta=3,\dots,16$). A literature search of the job \path{new-cells-beyond} (card r2/d10) found no published bipartite values for $\Delta=17,\dots,20$ at $D\le10$ or for $D=11,12$ at $\Delta\le10$; for the cells added later ($D=11,12$ with $\Delta\ge11$, and $D=13,14$) no search was made. So these are first values as far as we know, except at $\Delta=3$, where censuses of cubic graphs list bipartite graphs of diameter $11$ to $14$ (\path{research/squads/own-small/newcells/README.md}): $1{,}250$ vertices at $D=11$ in the census of cubic vertex-transitive graphs of Poto\v{c}nik, Spiga and Verret, and $1{,}200$, $2{,}304$, $3{,}360$ and $6{,}272$ vertices at $D=11,12,13,14$ in the Foster census of cubic edge-transitive graphs. Ours are larger at $D=11,12,13$; at $(3,14)$ the census graph $\mathrm{CSS}(6272,7)$ is larger than our $5{,}706$ (we have not checked it). Four values (${\circ}$) are the first $S$ that solved at a size limit of the job ($20$ or $30$ billion elements), with $\mu\approx0$; they say nothing about how far a search could go. The values at $\Delta=17,\dots,20$, $D=9,10$ were taken at $\mu\approx3$ and not pushed. In the other cells $\mu$ lies between about $5$ and $61$.
+
+\subsection{How the values were checked}\label{ssec:haarchecks}
+
+Every Haar value except $(3,11)$ was checked by programs that rebuild the structure from its solution file (the group from its definition, the elements of $S$ from their descriptions) and run the searches of Lemma~\ref{lem:twobfs} from $p_e$ and from $L_e$. The lifts, $(3,11)$ and the smallest Haar structures were checked by a breadth-first search from every vertex of an edge list, which uses no symmetry. Each checker is a separate program from the search that found the structure and builds the group itself; we note what each file's header says about its independence. The checkers are (the letters are those of Appendix~\ref{app:haar}):
+\begin{itemize}[leftmargin=1.5em]
+\item B \path{research/frontier/build_haar2.py}: rebuilds the whole incidence graph with numpy, for every group family the searches use, ``independently of the C code''; it fits in memory up to about $6\cdot10^7$ elements.
+\item I \path{research/frontier/check_haar_indep.py}: its own field and matrix arithmetic, one permutation of $G$ per generator; $\mathrm{SL}$, $\mathrm{PSL}$, $\mathrm{PGL}$ over $\mathrm{GF}(q)$ and products.
+\item S \path{research/frontier/haarcheck_sl.c} and P \path{research/structured/tools/haarcheck_psl.c}: low-memory checkers for $\mathrm{SL}(2,p)\times\mathbb{Z}_n$ and $\mathrm{PSL}(2,p)\times\mathbb{Z}_n$, four bitsets of $|G|$ bits per search; S numbers $\mathrm{SL}(2,p)$ by its own key (on the entry $c$, ``unlike haar\_gen3's $a$-keyed one''), and P was modelled on S, so the two are never counted as a pair.
+\item T \path{research/frontier/haarcheck2.c}: another low-memory checker for $\mathrm{SL}(2,p)\times\mathbb{Z}_n$, which, like the search program \path{haar_gen3.c}, keys $\mathrm{SL}(2,p)$ on the entry $a$.
+\item G \path{research/frontier/haarcheck_gen.c}: a low-memory checker for $\mathrm{SL}$ and $\mathrm{PSL}$ over $\mathrm{GF}(q)$ and products of two, times $\mathbb{Z}_n$, which tests the field and the group law at start-up. Its header says its code is not shared with B, I or T; it says nothing about S and P, with which the coordinator's harvests pair it.
+\item X \path{bigcheck_indep.c} (branch \path{claude/bigcheck-indep-haar-cdziu4}): written without reading the other checkers or the search programs.
+\item M \path{metacheck.py}, \path{metacheck2.py} (branch \path{claude/beyond-d13-search-z35z61}): metacyclic groups and products of two, with their own group code, written in the session that also wrote the search program \path{hmeta}.
+\item A \path{research/lifts/coordinator_check/apsp.c}: a search from every vertex of an edge list, no symmetry assumed; it reports the exact diameter.
+\item L the Lean proofs in \path{lean/BipartiteDD/Haar/}: kernel-checked certificates for the covering conditions of Lemma~\ref{lem:twobfs} (Haar structures), or a kernel-checked computation of the distances of the edge list (the lifts $(3,10)$ and $(3,12)$).
+\item H \path{research/synthetic/checks/check_haar.py}, written for this note from the definitions: it rebuilds the Haar structures with at most $2\cdot10^7$ group elements, $(3,11)$ included, and runs the two searches; it runs a search from every vertex on the edge lists of the lifts and of $(3,11)$, and checks that the $(3,11)$ edge list is the Haar structure of its group.
+\end{itemize}
+The logs are on \path{master}: the coordinator's harvest checks \path{research/frontier/runs/harvest_check_2026-10-*.txt} and \path{harvest_check_2026-11-01.txt}, \path{research/frontier/runs/cloudcheck/}, \path{research/coordinator_check/} and \path{research/lifts/coordinator_check/}. A check marked $^\ast$ in Appendix~\ref{app:haar} has its log only on a branch: the \path{BEYOND_TABLE.md} rows give most of these paths; the M logs of $(4,12)$, $(4,13)$, $(4,14)$ are in \path{research/frontier/beyond13/checks/} on \path{claude/beyond-d13-search-z35z61}, and the two halves of P for $(16,11)$ are \path{research/frontier/runs/cloudcheck/d16D11_psl_449_331_orb3-5-1_s1.refA.txt} on \path{claude/haar-graph-verification-woz6d5} and \path{...refB.txt} on \path{claude/haar-graph-verification-3ayat8}. A check marked $^\prime$ was run for this note with the lab's checker S or P as on \path{master} at \path{9a97f7a5}; its log is in \path{research/synthetic/checks/haar/} (with a \path{README.md} saying how they were run). Where a log records a sha256, it is that of the file listed in Appendix~\ref{app:haar}; the G logs of $(6,13)$ and $(6,14)$ name the squad's copies of the files and record none.
+
+Before this note, $45$ values had two independent checkers with logs on \path{master}: the Haar values at $D=9$ with $\Delta\ge9$, at $D=10$ with $\Delta\ge7$, at $D=11$ with $7\le\Delta\le15$ and at $D=12$ with $6\le\Delta\le14$, and the lift at $(3,12)$ (the finder's run of A, and the coordinator's own rebuild with a search from every vertex). Seven, $(5,9)$, $(6,9)$, $(7,9)$, $(3,10)$, $(4,10)$, $(5,10)$ and $(6,10)$, had one checker and a Lean proof. $(16,11)$ has two (G, and P in two halves), with all logs on branches. The other $21$ had one check, or a second one with its log only on a branch: $(8,9)$ B (a run of I is reported in a note on its branch, without a log); $(6,11)$ and $(5,12)$ only B (run twice); $(3,11)$, $(3,13)$ and $(3,14)$ only searches from every vertex of one edge list; $(5,13)$ and $(5,14)$ only M; $(4,11)$, $(5,11)$, $(4,12)$, $(4,13)$ and $(4,14)$ a second check on a branch; and $(\Delta,13)$ for $\Delta=6,\dots,10$ and $(\Delta,14)$ for $\Delta=6,7,8$ only G. For $20$ of these a second independent check was run for this note, with its log on this note's branch: H for the first $13$, and S or P for $(\Delta,13)$, $\Delta=6,\dots,9$, and $(\Delta,14)$, $\Delta=6,7,8$. H also checks the seven with a Lean proof again. One value, $(10,13)$ (the first $S$ found at the $20$-billion cap), still has a single check, G: a run of P needs about $7$ GB and an hour for each of its two searches, more than this note's machine had to spare while the other checks ran.
+
 \appendix
 \section{Coordinates and checks}\label{app:checks}
 \emergencystretch=3em\emph{Coordinates.} Explicit coordinates for every construction: \path{research/theorems/POLISHED.md} (\S2 for the hats, \S\S3--5 for diameter $4$, \S\S6--7 for diameter $6$; on branch \path{claude/thm-polish-2oddll}), \path{research/plus2/coords/coords.tex} (the hats, with a hand-checkable proof), \path{research/theorems/D7_HEXAGON.md} (diameter $7$; branch \path{claude/d7-hexagon-theorems-4w1prt}), \path{research/theorems/D5_QUADRANGLE.md} (diameter $5$: \S1.2 for $W(q)$ and $Q(4,q)$, Lemma~1.1 for an explicit ovoid of $Q(4,q)$, Lemma~1.3 for the $3q-1$ pairwise non-collinear points of $W(q)$, Lemma~1.4 for a duality of $W(q)$, $q$ even; branch \path{claude/d5-relax-searches-osr72a}), and \path{research/theorems/OMEGA_NOTE.md} (diameter $8$: \S1.1 for $H(q)$ in the quadric $Q(6,q)$, \S5.5 for the case $q=7$; branch \path{claude/omega-d8-note-xrbqux}).
 
 \emph{The completing matching of \cite{AL20}.} In coordinates, \cite{AL20} (arXiv v1, p.~8) complete the three-hat structure by the pairs $(x,y)\sim[x,y]$ and $P_i\sim L_i$; with the index set $i\in\mathrm{GF}(q)\setminus\{0,1,a\}$ printed there, the four elements $P_1,P_a,L_1,L_a$ keep degree $q+1$, and $i\in\mathrm{GF}(q)^*$ gives a regular structure (\path{POLISHED.md}, Remark~2.7; we have not seen the journal version). Neither the order nor the diameter depends on the matching (\S\ref{ssec:degrees}).
 
-\emph{Checks.} The scripts are in \path{research/synthetic/checks/}, each with its output in a \path{.out} file. They build the classical geometries from coordinates and then use only incidence; each runs in a few seconds, except \path{check_d8.py} (about three minutes).
+\emph{Checks.} The scripts are in \path{research/synthetic/checks/}, each with its output in a \path{.out} file. They build the classical geometries from coordinates (\path{check_haar.py}: the groups from their definitions) and then use only incidence; each runs in a few seconds, except \path{check_d8.py} and \path{check_haar.py} (two to three minutes each).
 \begin{itemize}[leftmargin=1.5em]
 \item \path{check_d3.py} (Section~\ref{sec:d3}): both hat constructions from rules \ref{r:plane}--\ref{r:links} on a plane given by its incidence relation; equality with the coordinate construction of \path{coords.py} for $q=4,5,7,8,9$ and every admissible $(a,c)$; the gadget tables; the matching of Figure~\ref{fig:frame}; the crossed doubling and the patches (Proposition~\ref{prop:doubling}, Lemma~\ref{lem:dbl}, including the extra far pair at $q=3$); the broken pairs and their repairs; every line of Table~\ref{tab:cases}; degrees and the deficient elements (Lemma~\ref{lem:deg}); the duality (Lemma~\ref{lem:dual}); diameter $3$; the changes of \S\ref{ssec:steps}. Planes: $\mathrm{PG}(2,q)$, $q=3,4,5,7,8,9$, and the two planes of order $9$ over the Dickson nearfield (lines $y=x\circ m+b$ and $y=m\circ x+b$), with random frames.
 \item \path{check_d4.py} (Section~\ref{sec:d4}): Theorem~\ref{thm:B} on random weights, shadow lines and stand-ins in $W(3)$ and $\mathrm{AS}(3)$; $\mathrm{AS}(q)$ built from $W(q)$ by Payne derivation using only incidence, and properties (E1), (E2) of the two quadrics, for $q=3,5,7$; the $2$-ovoid and spread of $W(q)$ and the explicit completion, $q=3,5$; Delorme's construction on $W(3)$; ovoid and spread of $W(2)$; the $(7,4)$ example.
@@ -1258,9 +1414,128 @@ The six entries $(10,8)$, $(11,8)$, $(12,8)$, $(14,8)$, $(15,8)$, $(16,8)$ are t
 \item \path{check_d7.py} (Section~\ref{sec:d7}): Theorem~\ref{thm:levelA} with random matchings on $H(2)$, $r=1,2$; Theorem~\ref{thm:segment} on $H(3)$ (a spread's point set and a non-collinear set are repaired, a turning triple is not); Theorem~\ref{thm:localdual} on $H(3)$ with a local duality at three pairwise opposite points (and a random bijection at the same set is not repaired); a three-copy structure with hubs on $H(3)$, diameter $7$.
 \item \path{check_d5.py} (Section~\ref{sec:d5}): $W(q)$ from the symplectic form of \path{D5_QUADRANGLE.md} and $Q(4,q)$ as its dual, $q=2,3,5,7$ (checked to be quadrangles for $q\le5$); Theorem~\ref{thm:levelA5} on random level structures ($q=2,3$, $r=1,2$); Theorem~\ref{thm:E} against a direct distance computation on $416$ transitions (among them transitions failing only (E2) and only (E3)); Theorem~\ref{thm:B5} for identity transitions ($q=3$) and for the duality of $W(2)$; the two-point recipe, Theorem~\ref{thm:C5} and the remark on (H2) ($q=3,5$); triad centres in $W(q)$ and $Q(4,q)$ ($q=3$ all triads, $q=5$ a sample); Propositions~\ref{prop:badpairs} and~\ref{prop:hubrule} ($q=3,5$); the hub graphs (Y1), (Y2) ($s=2,3$); the slot vectors and the six family values; seven copies $HHHDHHD$ over $Q(4,5)$ with a partner pair meeting at an ovoid point and hubs placed as in \path{D5_QUADRANGLE.md}, Lemma~7.3 ($2{,}188$ elements, diameter $5$); and the family of \S\ref{ssec:families5} at $q=7$ in full ($4{,}044$ elements, maximum degree $10$, diameter $5$).
 \item \path{check_d8.py} (Section~\ref{sec:d8}): Lemma~\ref{lem:hexcounts} on $H(2)$, $H(3)$; G\'omez's wiring for all block types, both readings and random pairings ($q=2,3$): degrees, counts, colouring; the far sets of Theorem~\ref{thm:projection}; exact diameters $9$ ($q=2$: $ab$; $q=3$: $aba$; both readings) and $10$ (one block type); the constants of Theorem~\ref{thm:twolabels}; the starved pairs and the counts of two-passage words for $\alpha=5,\dots,8$ and every choice of block types (largest $m_2$ of a starved pair $140$, $201$, $272$, $353$; in every choice some starved pair with $m_2\le134$, $197$, $262$, $347$), written from the wiring alone; \path{OMEGA_NOTE.md}, Lemma~5.2, at $q=2$ with collineations $(v,a,w)\mapsto(Av,a,A^{-T}w)$; and the $q=3$ labelling of the table audit (\path{research/projects/table-audit/omega/labs/q3_aba_LLL_G13.lab} on branch \path{claude/table-audit-2-p7x6hn}, with the audit's base hexagon, both copied into \path{checks/}), rebuilt from the definition: $14{,}560$ elements, $6$-regular, diameter $8$.
+\item \path{check_haar.py} (Section~\ref{sec:haar}): Lemmas~\ref{lem:regular} and~\ref{lem:twobfs} on random $S$ in seven small groups ($\mathrm{SL}(2,3)$, $\mathrm{SL}(2,5)\times\mathbb{Z}_3$, $\mathrm{PSL}(2,7)$, $S_4$, the dihedral group of order $12$, $\mathbb{Z}_{31}\rtimes_5\mathbb{Z}_3$, $\mathbb{Z}_7\rtimes_2\mathbb{Z}_9$): right multiplication, the diameter from all pairs against the two searches, the word conditions for $D=2,\dots,14$; the example in $\mathbb{Z}_{13}\rtimes_3\mathbb{Z}_3$ where the two odd-$D$ conditions differ; the isomorphisms of Lemma~\ref{lem:regular}(c) (with $\varphi$ inner); the Singer planes of orders $2$ to $5$; the word counts and $W=M_b/2$; Lemmas~\ref{lem:oddholes} and~\ref{lem:orbit} in $\mathrm{SL}(2,7)\times\mathbb{Z}_7$; $16$ Haar values rebuilt from their solution files and $(3,11)$ from its group, with the two searches; the edge lists of the five values at $\Delta=3$ by a search from every vertex, the $(3,11)$ edge list against its group, and the quotients of the $(3,13)$ and $(3,14)$ lifts identified as the Desargues and Pappus graphs; $\alpha$ found from $S$ alone (a search over the images of the generators, with a linear system at each step) for every symmetric set containing $e$ in $\mathrm{SL}(2,p)$ or $\mathrm{PSL}(2,p)$ times a cyclic group, and the given field automorphism checked at $(11,10)$; and the values of Table~\ref{tab:haarvalues} and Appendix~\ref{app:haar} against their files as described there.
 \end{itemize}
-The record values themselves were checked by the lab's coordinator with all-pairs breadth-first search (\path{research/coordinator_check/}).
+The record values themselves were checked by the lab's coordinator with all-pairs breadth-first search (\path{research/coordinator_check/}); for the values of Section~\ref{sec:haar}, see \S\ref{ssec:haarchecks}.
 
+\section{The values of Section~\ref{sec:haar}, cell by cell}\label{app:haar}
+
+Tables~\ref{tab:haar910}--\ref{tab:haar1314} list the structures of Table~\ref{tab:haarvalues}: the number of elements, the 2013 table value where there is one, the group $G$ (for the lifts: the base and the voltage group), the shape of $S$, $\mu=Ne^{-W/N}$ (\S\ref{ssec:sizelaw}; not given for the lifts) and the checks (\S\ref{ssec:haarchecks}). The shape $f+m\cdot k$ means $f$ elements fixed by $\alpha$, $e$ among them when $f\ge1$, and $m$ orbits of size $k$; ``random'' means $S$ has no symmetry imposed and was found by annealing, ``exhaustive'' that it was found by an exhaustive search over pairs of elements; at $(11,10)$ $\alpha$ is the field automorphism of \S\ref{ssec:orbit}. At $(14,12)$ the row gives the structure found for $\Delta=14$; the value of that cell is the $(13,12)$ structure (Table~\ref{tab:haarvalues}). For the four values stopped at a size cap, $\mu$ is printed as $\approx0$. Each solution file is in \path{research/frontier/sols/} on \path{master} (Haar structures), \path{research/lifts/sols/} ($(4,10)$, $(5,10)$) or \path{research/synthetic/checks/haar/} (copied from the beyond branches); the edge lists of the lifts and of $(3,11)$ are in \path{research/squads/own-small/records/}, \path{research/frontier/beyond/graphs/} and \path{research/synthetic/checks/haar/}. \path{check_haar.py} generates these tables from one list and checks, against each file, the number of elements, $\Delta$, $D$ and $|S|$, that the shape adds up to $\Delta$, that every prime factor of $n$ is $1$ modulo $k$, and, for the symmetric sets containing $e$ in $\mathrm{SL}(2,p)$ or $\mathrm{PSL}(2,p)$ times a cyclic group, $f$ and $k$ (by finding $\alpha$); the groups, the 2013 values and the check letters were compared with the files and logs by hand.
+
+\begin{table}[ht]
+\centering\scriptsize
+\setlength{\tabcolsep}{3.5pt}
+\begin{tabular}{@{}lrr>{\raggedright}p{0.33\textwidth}llp{0.1\textwidth}@{}}
+\toprule
+$(\Delta,D)$ & elements & 2013 table & $G$ & $S$ & $\mu$ & checks\\
+\midrule
+$(5,9)$ & $29{,}756$ & $27{,}936$ & $\mathbb{Z}_{346}\rtimes_{29}\mathbb{Z}_{43}$ & random & 41.9 & B, L, H\\
+$(6,9)$ & $127{,}296$ & $117{,}360$ & $\mathrm{SL}(2,17)\times\mathbb{Z}_{13}$ & $0+2\cdot3$ & 29.7 & B, L, H\\
+$(7,9)$ & $462{,}840$ & $400{,}160$ & $\mathrm{PSL}(2,29)\times\mathbb{Z}_{19}$ & $1+2\cdot3$ & 38.2 & B, L, H\\
+$(8,9)$ & $1{,}341{,}600$ & $1{,}091{,}232$ & $\mathrm{SL}(2,25)\times\mathbb{Z}_{43}$ & $2+2\cdot3$ & 29.7 & B, H\\
+$(9,9)$ & $3{,}499{,}776$ & $2{,}961{,}536$ & $\mathrm{PSL}(2,7)\times\mathrm{SL}(2,7)\times\mathbb{Z}_{31}$ & $0+3\cdot3$ & 30.5 & B, X\\
+$(10,9)$ & $8{,}418{,}120$ & $7{,}057{,}400$ & $\mathrm{PSL}(2,59)\times\mathbb{Z}_{41}$ & $0+2\cdot5$ & 42.4 & P, I\\
+$(11,9)$ & $17{,}323{,}152$ & $15{,}200{,}448$ & $\mathrm{SL}(2,43)\times\mathbb{Z}_{109}$ & $2+3\cdot3$ & 23.3 & S, T\\
+$(12,9)$ & $35{,}445{,}648$ & $30{,}001{,}152$ & $\mathrm{SL}(2,83)\times\mathbb{Z}_{31}$ & $0+4\cdot3$ & 29.5 & S, T\\
+$(13,9)$ & $67{,}742{,}688$ & $50{,}990{,}610$ & $\mathrm{SL}(2,103)\times\mathbb{Z}_{31}$ & $1+4\cdot3$ & 32.8 & S, X\\
+$(14,9)$ & $120{,}043{,}728$ & $95{,}087{,}738$ & $\mathrm{SL}(2,107)\times\mathbb{Z}_{49}$ & $2+4\cdot3$ & 24.2 & S, T\\
+$(15,9)$ & $208{,}483{,}200$ & $168{,}016{,}334$ & $\mathrm{SL}(2,5)\times\mathrm{SL}(2,19)\times\mathbb{Z}_{127}$ & $0+5\cdot3$ & 24.9 & G, I\\
+$(16,9)$ & $348{,}207{,}600$ & $288{,}939{,}118$ & $\mathrm{SL}(2,101)\times\mathbb{Z}_{169}$ & $1+5\cdot3$ & 24.6 & S, T\\
+$(17,9)$ & $501{,}707{,}400$ & -- & $\mathrm{PSL}(2,101)\times\mathbb{Z}_{487}$ & $2+5\cdot3$ & 2.94 & P, I\\
+$(18,9)$ & $790{,}626{,}816$ & -- & $\mathrm{SL}(2,127)\times\mathbb{Z}_{193}$ & $3+5\cdot3$ & 2.85 & S, T\\
+$(19,9)$ & $1{,}218{,}394{,}320$ & -- & $\mathrm{SL}(2,131)\times\mathbb{Z}_{271}$ & $1+6\cdot3$ & 2.93 & S, T\\
+$(20,9)$ & $1{,}823{,}175{,}864$ & -- & $\mathrm{PSL}(2,163)\times\mathbb{Z}_{421}$ & $2+6\cdot3$ & 2.62 & P, G\\
+$(3,10)$ & $810$ & $800$ & $5+5 \text{ base}, \mathbb{Z}_3\times\mathrm{He}_3$ & lift & -- & A, L, H\\
+$(4,10)$ & $12{,}416$ & $11{,}748$ & $\mathbb{Z}_{97}\rtimes_{19}\mathbb{Z}_{64}$ & random & 53.4 & A, L, H\\
+$(5,10)$ & $95{,}472$ & $90{,}068$ & $\mathbb{Z}_{1989}\rtimes_{461}\mathbb{Z}_{24}$ & random & 31.5 & A, L, H\\
+$(6,10)$ & $524{,}160$ & $452{,}032$ & $\mathrm{SL}(2,5)\times\mathrm{PSL}(2,7)\times\mathbb{Z}_{13}$ & $0+2\cdot3$ & 23.6 & B, L, H\\
+$(7,10)$ & $2{,}298{,}240$ & $1{,}987{,}380$ & $\mathrm{SL}(2,7)\times\mathrm{PSL}(2,19)$ & $1+2\cdot3$ & 30.9 & B, I\\
+$(8,10)$ & $8{,}043{,}840$ & $6{,}927{,}210$ & $\mathrm{PSL}(2,7)\times\mathrm{PSL}(2,19)\times\mathbb{Z}_{7}$ & $2+2\cdot3$ & 33.2 & B, I\\
+$(9,10)$ & $24{,}099{,}600$ & $20{,}017{,}260$ & $\mathrm{PSL}(2,151)\times\mathbb{Z}_{7}$ & $0+3\cdot3$ & 35.7 & P, I\\
+$(10,10)$ & $64{,}294{,}560$ & $50{,}331{,}156$ & $\mathrm{PSL}(2,81)\times\mathbb{Z}_{121}$ & $0+2\cdot5$ & 41.6 & B, I\\
+$(11,10)$ & $157{,}835{,}304$ & $130{,}592{,}354$ & $\mathrm{PSL}(2,243)\times\mathbb{Z}_{11}$ & $1+2\cdot5$ & 60.6 & G, I\\
+$(12,10)$ & $332{,}797{,}296$ & $300{,}383{,}050$ & $\mathrm{SL}(2,157)\times\mathbb{Z}_{43}$ & $0+4\cdot3$ & 28.3 & S, T\\
+$(13,10)$ & $683{,}943{,}456$ & $617{,}330{,}936$ & $\mathrm{SL}(2,137)\times\mathbb{Z}_{133}$ & $1+4\cdot3$ & 24.3 & S, T\\
+$(14,10)$ & $1{,}350{,}537{,}864$ & $1{,}213{,}477{,}190$ & $\mathrm{PSL}(2,157)\times\mathbb{Z}_{349}$ & $2+4\cdot3$ & 27.6 & P, G\\
+$(15,10)$ & $2{,}566{,}531{,}440$ & $2{,}300{,}326{,}510$ & $\mathrm{SL}(2,109)\times\mathbb{Z}_{991}$ & $0+3\cdot5$ & 37.9 & S, T, G\\
+$(16,10)$ & $4{,}708{,}566{,}360$ & $4{,}119{,}507{,}330$ & $\mathrm{PSL}(2,179)\times\mathbb{Z}_{821}$ & $1+3\cdot5$ & 59.4 & P, G\\
+$(17,10)$ & $7{,}022{,}052{,}336$ & -- & $\mathrm{PSL}(2,313)\times\mathbb{Z}_{229}$ & $2+5\cdot3$ & 3.01 & P, G\\
+$(18,10)$ & $11{,}787{,}972{,}672$ & -- & $\mathrm{PSL}(2,223)\times\mathbb{Z}_{1063}$ & $3+5\cdot3$ & 3.06 & G, P\\
+$(19,10)$ & $19{,}233{,}722{,}496$ & -- & $\mathrm{SL}(2,607)\times\mathbb{Z}_{43}$ & $1+6\cdot3$ & 3.15 & G, S\\
+$(20,10)$ & $30{,}518{,}778{,}360$ & -- & $\mathrm{PSL}(2,421)\times\mathbb{Z}_{409}$ & $2+6\cdot3$ & 3.09 & G, P\\
+\bottomrule
+\end{tabular}
+\caption{The values at $D=9$ and $10$.}
+\label{tab:haar910}
+\end{table}
+
+\begin{table}[ht]
+\centering\scriptsize
+\setlength{\tabcolsep}{3.5pt}
+\begin{tabular}{@{}lrr>{\raggedright}p{0.33\textwidth}llp{0.1\textwidth}@{}}
+\toprule
+$(\Delta,D)$ & elements & 2013 table & $G$ & $S$ & $\mu$ & checks\\
+\midrule
+$(3,11)$ & $1{,}474$ & -- & $\mathbb{Z}_{67}\rtimes_{9}\mathbb{Z}_{11}$ & exhaustive & 45.8 & A$^\ast$, H\\
+$(4,11)$ & $30{,}334$ & -- & $\mathbb{Z}_{523}\rtimes_{9}\mathbb{Z}_{29}$ & random & 44.1 & B, A$^\ast$, H\\
+$(5,11)$ & $311{,}426$ & -- & $\mathbb{Z}_{5023}\rtimes_{2886}\mathbb{Z}_{31}$ & random & 19.6 & B, A$^\ast$, H\\
+$(6,11)$ & $2{,}122{,}518$ & -- & $\mathbb{Z}_{20809}\rtimes_{12972}\mathbb{Z}_{51}$ & random & 10.7 & B, H\\
+$(7,11)$ & $11{,}012{,}976$ & -- & $\mathrm{SL}(2,53)\times\mathbb{Z}_{37}$ & $1+2\cdot3$ & 10.4 & G, S\\
+$(8,11)$ & $45{,}329{,}808$ & -- & $\mathrm{SL}(2,283)$ & $2+2\cdot3$ & 11.0 & G, S\\
+$(9,11)$ & $155{,}250{,}816$ & -- & $\mathrm{SL}(2,223)\times\mathbb{Z}_{7}$ & $0+3\cdot3$ & 10.6 & G, S\\
+$(10,11)$ & $460{,}691{,}568$ & -- & $\mathrm{SL}(2,613)$ & $1+3\cdot3$ & 9.26 & G, S\\
+$(11,11)$ & $1{,}241{,}299{,}248$ & -- & $\mathrm{SL}(2,853)$ & $2+3\cdot3$ & 10.4 & G, S\\
+$(12,11)$ & $2{,}976{,}066{,}240$ & -- & $\mathrm{SL}(2,239)\times\mathbb{Z}_{109}$ & $0+4\cdot3$ & 7.01 & G, S\\
+$(13,11)$ & $6{,}781{,}213{,}392$ & -- & $\mathrm{SL}(2,563)\times\mathbb{Z}_{19}$ & $1+4\cdot3$ & 7.56 & G, S\\
+$(14,11)$ & $14{,}381{,}398{,}080$ & -- & $\mathrm{SL}(2,1009)\times\mathbb{Z}_{7}$ & $2+4\cdot3$ & 6.87 & G, S\\
+$(15,11)$ & $28{,}655{,}908{,}512$ & -- & $\mathrm{SL}(2,617)\times\mathbb{Z}_{61}$ & $0+5\cdot3$ & 5.18 & G, S\\
+$(16,11)$ & $29{,}961{,}590{,}400$ & -- & $\mathrm{PSL}(2,449)\times\mathbb{Z}_{331}$ & $1+5\cdot3$ & $\approx0$ & G$^\ast$, P$^\ast$\\
+$(3,12)$ & $2{,}368$ & -- & $4+4 \text{ base}, \mathbb{Z}_{37}\rtimes_{6}\mathbb{Z}_{8}$ & lift & -- & A, A, L, H\\
+$(4,12)$ & $74{,}066$ & -- & $\mathbb{Z}_{1277}\rtimes_{964}\mathbb{Z}_{29}$ & random & 28.3 & A, M$^\ast$, H\\
+$(5,12)$ & $1{,}058{,}342$ & -- & $\mathbb{Z}_{8969}\rtimes_{205}\mathbb{Z}_{59}$ & random & 13.6 & B, H\\
+$(6,12)$ & $9{,}366{,}240$ & -- & $\mathrm{PSL}(2,79)\times\mathbb{Z}_{19}$ & $0+2\cdot3$ & 10.2 & G, P\\
+$(7,12)$ & $59{,}838{,}504$ & -- & $\mathrm{PSL}(2,67)\times\mathbb{Z}_{199}$ & $1+2\cdot3$ & 14.3 & G, P\\
+$(8,12)$ & $284{,}095{,}056$ & -- & $\mathrm{PSL}(2,167)\times\mathbb{Z}_{61}$ & $2+2\cdot3$ & 12.6 & G, P\\
+$(9,12)$ & $1{,}105{,}785{,}120$ & -- & $\mathrm{PSL}(2,241)\times\mathbb{Z}_{79}$ & $0+3\cdot3$ & 10.7 & G, P\\
+$(10,12)$ & $3{,}712{,}424{,}352$ & -- & $\mathrm{PSL}(2,337)\times\mathbb{Z}_{97}$ & $1+3\cdot3$ & 10.2 & G, P\\
+$(11,12)$ & $11{,}189{,}148{,}096$ & -- & $\mathrm{PSL}(2,223)\times\mathbb{Z}_{1009}$ & $2+3\cdot3$ & 13.3 & G, P\\
+$(12,12)$ & $29{,}996{,}171{,}040$ & -- & $\mathrm{PSL}(2,241)\times\mathbb{Z}_{2143}$ & $0+4\cdot3$ & 12.3 & G, P\\
+$(13,12)$ & $29{,}997{,}644{,}040$ & -- & $\mathrm{PSL}(2,181)\times\mathbb{Z}_{5059}$ & $1+4\cdot3$ & $\approx0$ & G, P\\
+$(14,12)$ & $29{,}996{,}171{,}040$ & -- & $\mathrm{PSL}(2,241)\times\mathbb{Z}_{2143}$ & $2+4\cdot3$ & $\approx0$ & G, P\\
+\bottomrule
+\end{tabular}
+\caption{The values at $D=11$ and $12$.}
+\label{tab:haar1112}
+\end{table}
+
+\begin{table}[ht]
+\centering\scriptsize
+\setlength{\tabcolsep}{3.5pt}
+\begin{tabular}{@{}lrr>{\raggedright}p{0.33\textwidth}llp{0.1\textwidth}@{}}
+\toprule
+$(\Delta,D)$ & elements & 2013 table & $G$ & $S$ & $\mu$ & checks\\
+\midrule
+$(3,13)$ & $3{,}400$ & -- & $\text{Desargues}, \mathbb{Z}_{170}$ & lift & -- & A$^\ast$, A, H\\
+$(4,13)$ & $192{,}382$ & -- & $\mathbb{Z}_{2237}\rtimes_{1984}\mathbb{Z}_{43}$ & random & 24.2 & A, M$^\ast$, H\\
+$(5,13)$ & $3{,}594{,}910$ & -- & $(\mathbb{Z}_{11}\rtimes_4\mathbb{Z}_5)\times(\mathbb{Z}_{2971}\rtimes_{1764}\mathbb{Z}_{11})$ & random & 7.08 & M$^\ast$, H\\
+$(6,13)$ & $41{,}734{,}392$ & -- & $\mathrm{PSL}(2,83)\times\mathbb{Z}_{73}$ & $0+2\cdot3$ & 9.29 & G$^\ast$, P$^\prime$\\
+$(7,13)$ & $312{,}227{,}760$ & -- & $\mathrm{SL}(2,229)\times\mathbb{Z}_{13}$ & $1+2\cdot3$ & 8.45 & G$^\ast$, S$^\prime$\\
+$(8,13)$ & $1{,}739{,}514{,}000$ & -- & $\mathrm{SL}(2,499)\times\mathbb{Z}_{7}$ & $2+2\cdot3$ & 7.52 & G$^\ast$, S$^\prime$\\
+$(9,13)$ & $7{,}924{,}036{,}032$ & -- & $\mathrm{SL}(2,593)\times\mathbb{Z}_{19}$ & $0+3\cdot3$ & 9.75 & G$^\ast$, S$^\prime$\\
+$(10,13)$ & $19{,}980{,}294{,}768$ & -- & $\mathrm{PSL}(2,503)\times\mathbb{Z}_{157}$ & $1+3\cdot3$ & $\approx0$ & G$^\ast$\\
+$(3,14)$ & $5{,}706$ & -- & $\text{Pappus}, \mathbb{Z}_{317}$ & lift & -- & A$^\ast$, A, H\\
+$(4,14)$ & $497{,}042$ & -- & $\mathbb{Z}_{2731}\rtimes_{2400}\mathbb{Z}_{91}$ & random & 16.5 & A, M$^\ast$, H\\
+$(5,14)$ & $12{,}795{,}166$ & -- & $\mathbb{Z}_{148781}\rtimes_{85175}\mathbb{Z}_{43}$ & random & 5.39 & M$^\ast$, H\\
+$(6,14)$ & $187{,}990{,}656$ & -- & $\mathrm{SL}(2,97)\times\mathbb{Z}_{103}$ & $0+2\cdot3$ & 8.37 & G$^\ast$, S$^\prime$\\
+$(7,14)$ & $1{,}674{,}490{,}944$ & -- & $\mathrm{PSL}(2,223)\times\mathbb{Z}_{151}$ & $1+2\cdot3$ & 6.21 & G$^\ast$, P$^\prime$\\
+$(8,14)$ & $11{,}325{,}238{,}056$ & -- & $\mathrm{PSL}(2,397)\times\mathbb{Z}_{181}$ & $2+2\cdot3$ & 12.1 & G$^\ast$, P$^\prime$\\
+\bottomrule
+\end{tabular}
+\caption{The values at $D=13$ and $14$.}
+\label{tab:haar1314}
+\end{table}
+
+\clearpage
 \begin{thebibliography}{99}
 \bibitem{AL20} G.~Araujo-Pardo and N.~L\'opez, On new record graphs close to bipartite Moore graphs, Graphs Combin. \textbf{38} (2022), no.~4, Paper 110; arXiv:2005.02427.
 \bibitem{BLP09} J.~Bamberg, M.~Law and T.~Penttila, Tight sets and $m$-ovoids of generalised quadrangles, Combinatorica \textbf{29} (2009), 1--17.
@@ -1275,6 +1550,9 @@ The record values themselves were checked by the lab's coordinator with all-pair
 \bibitem{LPP} E.~Loz, H.~P\'erez-Ros\'es and G.~Pineda-Villavicencio, The degree--diameter problem for bipartite graphs, CombinatoricsWiki (2010); table as of January 2012, equal to \cite[Table 4]{MS13}, read through the Internet Archive.
 \bibitem{MS13} M.~Miller and J.~\v{S}ir\'a\v{n}, Moore graphs and beyond: a survey of the degree/diameter problem, Electron. J. Combin. (2013), dynamic survey DS14v2.
 \bibitem{R26} R.~Rajiv, preprint, Zenodo, 30 September 2026, doi:10.5281/zenodo.23052995.
+\bibitem{FH64} W.~Feit and G.~Higman, The nonexistence of certain generalized polygons, J. Algebra \textbf{1} (1964), 114--131.
+\bibitem{HMP02} M.~Hladnik, D.~Maru\v{s}i\v{c} and T.~Pisanski, Cyclic Haar graphs, Discrete Math. \textbf{244} (2002), 137--152.
+\bibitem{Si38} J.~Singer, A theorem in finite projective geometry and some applications to number theory, Trans. Amer. Math. Soc. \textbf{43} (1938), 377--385.
 \bibitem{Ta91} G.~Tallini, Blocking sets with respect to planes in $\mathrm{PG}(3,q)$ and maximal spreads of a nonsingular quadric in $\mathrm{PG}(4,q)$, Mitt. Math. Sem. Giessen \textbf{201} (1991), 141--147.
 \end{thebibliography}
 
