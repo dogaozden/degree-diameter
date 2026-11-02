@@ -39,3 +39,9 @@ ROWS[(3, 13)] = (4324,
     'Z43 x\\|_9 Z21, beyond-d14) and 3,400 (beyond-d13: Z170 lift of GP(10,3)); Foster census: CSS(2800,3)',
     f'apsp VALID, diameter exactly 13 ({G}d3D13_n4324_lift2_meta47_23_2.apsp.txt)',
     'Haar size law at mu = 5: 2N = 2.89e+03')
+ROWS[(9, 14)] = (20002113120,
+    'Haar graph PSL(2,241) x Z1429, S = three free alpha-orbits of size 3 (ORBIT "3 3 0", haar_big0 f = 0): the first '
+    'random symmetric S at N = 1.0e10 (size-law order for this cell ~2.8e10, so mu ~ 0); director. New cell (nothing was '
+    'recorded at Δ = 9, D = 14; the floor from (8,14) was 11,325,238,056)',
+    f'haarcheck_gen VALID from (e,A) and (e,B), 2,858 s ({C}d9D14_psl_241_1429_orb3-3-0_s1.gen.txt)',
+    'Haar size law at mu = 5: 2N ~ 5.6e+10')
