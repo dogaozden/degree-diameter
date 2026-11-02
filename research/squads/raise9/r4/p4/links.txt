@@ -1,0 +1,5 @@
+start 00:11:47
+s1 link1 start=fresh seed1 killed at 108s (KILL, no RESULT); best written: 17 9 sl 53 n 1867 N 277854408
+link | seed | start | best cost | evals (killed by KILL at 108 s; eval ~8.6 s under load 19)
+s1 L1 | 1 | fresh | 84 (from 318) | 13
+s2 L1 | 2 | fresh | 138 (from 212) | 13
