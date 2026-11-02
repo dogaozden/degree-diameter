@@ -1,0 +1,22 @@
+Coordinator report (Mac mini coordinator, 2026-11-02T02:32:31Z): d20D9_sl_233_79_orb3-6-2_s1.txt from origin/claude/raise-d9-orbit-metacyclic-ndvfty, sha256 cc7fcf531ca8d95087ad8d87ea10cd4e8c1f5d6a2472689d7a12cf864ce07d02.
+
+======== cloud haarcheck_gen report research/frontier/raise9/checks/d20D9_sl_233_79_orb3-6-2_s1.gen.txt from origin/claude/raise-d9-orbit-metacyclic-ndvfty (unedited) ========
+checker: haarcheck_gen (research/frontier/haarcheck_gen.c)
+file: runs/d20D9_sl_233_79_orb3-6-2_s1.out
+sha256 cc7fcf531ca8d95087ad8d87ea10cd4e8c1f5d6a2472689d7a12cf864ce07d02  runs/d20D9_sl_233_79_orb3-6-2_s1.out
+start: 2026-11-01T23:59:33Z
+selftest sl 233: |M| = 12649104, index round trip over all elements ok
+selftest group multiplication: associativity, identity, inverse on 20000 random triples ok
+file runs/d20D9_sl_233_79_orb3-6-2_s1.out
+header: 20 9 sl 233 n 79 N 999279216
+group sl 233 x Z_79, |G| = 999279216 = N, vertices 2N = 1998558432; 20 distinct generators
+from (e,A): reached A 999279216/999279216, B 999279216/999279216 within 9; ecc 9; level sizes [1, 20, 380, 7220, 137180, 2603480, 48320252, 608019172, 950821403, 388649324]  (258s)
+from (e,B): reached A 999279216/999279216, B 999279216/999279216 within 9; ecc 9; level sizes [1, 20, 380, 7220, 137180, 2603480, 48320426, 608019172, 950821229, 388649324]  (499s)
+VALID d=20 D=9 group=sl 233 x Z_79 N=999279216 vertices=1998558432 (distinct generators, 20-regular simple; every vertex within 9 of both (e,A) and (e,B); ecc 9; 499s)
+exit: 0
+end: 2026-11-02T00:07:51Z (498 s)
+
+======== Mac mini: research/frontier/haarcheck_sl.c (master; clang -O3), exit 0, 585 s ========
+from (e,A): reached A 999279216/999279216, B 999279216/999279216 within 9, ecc 9
+from (e,B): reached A 999279216/999279216, B 999279216/999279216 within 9, ecc 9
+VALID d=20 D=9 group=sl 233 x Z_79 N=999279216 vertices=1998558432 (distinct generators, 20-regular simple)
