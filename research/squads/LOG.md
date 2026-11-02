@@ -357,3 +357,30 @@ groups at lower mu. (19,8) PSL(2,59) x Z451 from d10's state: cost 5.
 Reading: ORBW=5 plus a small torus solved (20,8) at mu 39 where unweighted runs stalled at mu 33-36. The fit says
 mu/k ~ 8 is the practical ceiling here, so round 5 aims k = 7 at mu 54-60 for (17,8) and (18,8) and keeps k = 5 at
 mu 36-49 for (19,8) and (20,8), with a coding card for a D = 8 fixed-hole screen.
+
+## 2026-11-02, raise-d8b, round 5 (16 cards, 00:37 UTC)
+
+Same session. Files: research/squads/raise_d8b/r5/. Cards: k = 7 at mu 54-60 for (17,8) and (18,8), k = 5 continuations
+and fresh rungs for (19,8) and (20,8) (ORBW=5 for "5 4 0"), a coding card for a D = 8 fixed-hole screen, a wildcard.
+
+Cards (group, ORBIT, mu: result): nothing new solved.
+- (17,8): g01, g02 sl 281 x Z1 "7 2 3" mu 55.2: 47 and 44-55 (1.6 s per evaluation with n = 1). g03 sl 43 x Z281 mu 60.2
+  from e03's state: 10, flat. g04 psl 31 x Z1481 "5 3 2" mu 50.2 ORBW from f13's state: 5.
+- (18,8): g05 psl 29 x Z2689 "7 2 4" mu 54.2: 91 (n/p 93). g06, g07 psl 41 x Z953 mu 55.9: 14, 35.
+- (19,8): g08 psl 79 x Z191 "5 3 4" mu 49.3 from f08's state: 5 (third run at cost 5). g09, g10 psl 41 x Z1361 mu 46.2:
+  10, 40.
+- (20,8): g11 re-found PSL(2,59) x Z641 (the f04 state was already a solution; a fresh seed stalled at 5). g12 psl 41 x
+  Z1901 mu 36.1: 5. g13 psl 79 x Z271 mu 49.0: 15. g14 psl 41 x Z1931 mu 45.8: 15.
+- g15 wrote a D = 8 fixed-hole screen (x in Y_7 iff v x in Y_3 for some v in (S S^-1)^2, one v per alpha-orbit) in a copy
+  of haar_big0w (r5/g15/haar_big0w8.c, FIXF=1 at D = 8, f >= 1 only). Its count equals the full evaluation on 100
+  random S (psl 13 x Z7, psl 29 x Z7); but 0.18-0.28 s per candidate at d = 20 against 0.04 s for a full evaluation, so
+  not yet useful.
+- g16 PGL(2,281) for (17,8) in haar_sym: setup did not finish in the box (second time). Untested.
+
+Director during the round: (19,8) PSL(2,59) x Z451 from d10's cost-5 state solved after 51,658 evaluations (mu 38.5):
+**(19,8) 92,599,320**. (20,8) PSL(2,41) x Z1931 and PSL(2,31) x Z4441 with ORBW=5 and (17,8) SL(2,71) x Z61 with ORBW=5
+running.
+
+Reading: as the fit predicts, mu/k ~ 8 rungs (k = 7 at mu 55) do not solve in one 1400-s run at ~0.2 core, and
+cost-5 states (one orbit) do not finish by reseeding. The cells are near the wall of this method at this compute.
+Round 6 (the last) continues the best states once more with ORBW where it applies.

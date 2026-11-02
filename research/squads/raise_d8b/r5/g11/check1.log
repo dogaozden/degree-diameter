@@ -4,3 +4,5 @@ file a.sol
 header: 20 8 psl 59 n 641 N 65805060
 group psl 59 x Z_641, |G| = 65805060 = N, vertices 2N = 131610120; 20 distinct generators
 from (e,A): reached A 65805060/65805060, B 65805060/65805060 within 8; ecc 8; level sizes [1, 20, 380, 7220, 136940, 2549296, 34604358, 63248524, 31063381]  (296s)
+from (e,B): reached A 65805060/65805060, B 65805060/65805060 within 8; ecc 8; level sizes [1, 20, 380, 7220, 136940, 2549296, 34598509, 63248524, 31069230]  (558s)
+VALID d=20 D=8 group=psl 59 x Z_641 N=65805060 vertices=131610120 (distinct generators, 20-regular simple; every vertex within 8 of both (e,A) and (e,B); ecc 8; 558s)
