@@ -1,12 +1,37 @@
 # deep-37: an Opus-led deep pass on the bipartite (3,7) cell
 
-Session on branch `claude/deep-37-d3d7-c59pr7`, Nov 1-2 2026, 22:39Z to __END__. Goal: a bipartite graph with
+Session on branch `claude/deep-37-d3d7-c59pr7`, Nov 1-2 2026, 22:39Z to 01:07Z (stopped for budget). Goal: a bipartite graph with
 maximum degree 3, diameter 7 and more than 168 vertices (170 is the natural target). Brief: go deep on the leads of the
 hands-off Haiku run (handsoff-37): the far-46 insertion basin, the non-free F21 symmetry, the D5 family at far 60.
 
 ## Result
 
-__RESULT__
+**Stopped early for budget at 01:07Z (2h28m in). No record: 168 stands.** Status note:
+
+Found:
+- A second bipartite (3,7) graph on 168 vertices (ties the record): girth 8, Aut = AGammaL(1,8) = SmallGroup(168,43),
+  orbits 56/28/84. records/n168_new_girth8_aut168.edges (+ .sha256). apsp VALID at D = 7, INVALID at D = 6.
+- New best near miss at 170: far 43 (was 46). nearmiss/n170_far43_c6lns.edges (+ SHA256SUMS), score37 far 43,
+  apsp VALID at D = 8. It came from exact large-neighbourhood search (squad c6/d3) starting from either far-60 F20 graph
+  (both lead to the same far-43 class). Trivial automorphism group.
+- Exact solver orbdfs (validated vs brute force on 13 G-sets, twin-lemma test on twin40_6) and a 1.7x faster version
+  (src/orbdfs_fast.c, identical search tree, verified).
+- Exact negatives at 170: F20 with colour-reversing C4, orbit types b = 1, 3, 5, 7, 9, 13 (none); C15: 15 of 25
+  admissible G-sets settled (none); D5: 5 of 82; C10: 9 of 65 (after exclusions); {2,3}-groups: 1,502 few-orbit G-sets
+  (squad c4, sample re-run by Opus). At 168: census over groups with an order-7 element (partial) finds only the two
+  known classes. At 180: 2,432 G-sets of order-20/30 groups settled (squad c5, mostly trivially infeasible; sample re-run).
+
+Left undone (killed at the stop):
+- The exact run of the far-60 family's own D5 G-set (runs/d5far60, ~1e8-1e9 nodes, ~1 h CPU done, unfinished).
+- F20 colour-reversing b = 11, 15, 17; C15 pass 2 (9 G-sets); D5/C10 timeouts; (C2)^4:C5 family (about 1e7 G-sets,
+  needs a dedicated generator).
+- Squad round 3 (e1/e2: more symmetric seeds -> LNS; e3: far-43 deep dive) and d2 (exact n = 169 with symmetry) were
+  stopped before reporting; partial files are in squad/r2/d2 and squad/r3/.
+
+Spend at the stop (tools/session_usage.py --since 22:39:08Z): Opus 1.18 units (153 messages), Haiku 0.09 units
+(739 messages, 13 Haiku runs), total 1.27: 93% Opus / 7% Haiku. handsoff-37 used 0.48 Opus + 0.93 Haiku = 1.41 for
+the whole run (34% / 66%) and ended at far 46. This run ended at far 43 plus the second 168 graph and exact negatives,
+for slightly less total spend, but with the split reversed.
 
 ## 1. A new exact tool: orbdfs
 
@@ -56,8 +81,8 @@ cannot act freely), and elements of order 3 must fix vertices (85 = 1 mod 3).
   (their squares are the D5 involutions, 3 fixed vertices per side). Their 60 far pairs are all same-side at distance 8,
   between vertices of regular orbits, in 5 classes under F20 (10 under D5); the size-5 "hub" orbits are fully covered.
 - Exact: there is no F20-invariant (3,7) graph at 170 with colour-reversing C4 for any orbit structure
-  (a orbits of size 20 and b of size 10, 2a + b = 17): b = __F20REV__ settled, none.
-- Exact: the far-60 family's own G-set (D5, three orbits of size 5 and seven of size 10 on each side): __D5FAR60__.
+  (a orbits of size 20 and b of size 10, 2a + b = 17): b = 1, 3, 5, 7, 9, 13 settled, none.
+- Exact: the far-60 family's own G-set (D5, three orbits of size 5 and seven of size 10 on each side): not finished (killed at the budget stop).
 
 So the far-60 graphs are not near a diameter-7 graph of their symmetry type: the type has none.
 
@@ -68,7 +93,7 @@ minimal overgroup M of P: P normal in M with |M:P| prime (M = C10, D5 or C15), o
 {2,3}-subgroup, which is elementary abelian of order 2^4 or 3^4 (SmallGroup(80,49), SmallGroup(405,15)). The last
 cannot act at 170 (a 3-group vertex stabiliser in a connected cubic graph has order <= 3, so orbits have size >= 135).
 Hence settling every G-set of D5, C10, C15 and (C2)^4:C5 settles every (3,7) graph on 170 vertices with an
-automorphism of order 5 and more than 5 automorphisms. Status: __MINSTATUS__
+automorphism of order 5 and more than 5 automorphisms. Status: partial (see the status note above)
 
 ## 5. Lead (a): the far-46 basin
 
@@ -86,12 +111,12 @@ automorphism of order 5 and more than 5 automorphisms. Status: __MINSTATUS__
 
 ## 6. Squad rounds (Haiku)
 
-__SQUAD__
+See research/squads/LOG.md (rounds 1-3) and squad/r*/; round 3 stopped unfinished.
 
 ## 7. Spend and the Opus/Haiku split
 
-__SPEND__
+See the status note above.
 
 ## 8. Comparison with the hands-off run on the same cell
 
-__COMPARE__
+See the status note above (short version; the full comparison was not written).
