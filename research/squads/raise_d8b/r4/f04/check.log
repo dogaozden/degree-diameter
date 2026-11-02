@@ -1,0 +1,6 @@
+selftest psl 59: |M| = 102660, det-1 matrices 205320
+selftest group multiplication: associativity, identity, inverse on 20000 random triples ok
+file a.sol
+header: 20 8 psl 59 n 641 N 65805060
+group psl 59 x Z_641, |G| = 65805060 = N, vertices 2N = 131610120; 20 distinct generators
+CHECK_EXIT 143
