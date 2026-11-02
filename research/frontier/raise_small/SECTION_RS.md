@@ -2,15 +2,17 @@
 
 Job raise-small-d (Opus director + Haiku squads, cloud session, branch claude/raise-d-delta-3-4-5wyh9b). Goal: raise
 the lab's values at Δ = 3, 4 and D = 9..14. Files: research/frontier/raise_small/ (tools/, sols/, checks/, runs/;
-README.md); squad cards and scoreboards research/squads/raise-small/r1..r__; log research/squads/LOG.md.
+README.md); squad cards and scoreboards research/squads/raise-small/r1..r5; log research/squads/LOG.md.
 
-**Results.** (3,12) 2,368 -> **2,436**, (3,13) 3,400 -> **4,324** (+27 %), (3,14) 5,706 -> **7,008** (+23 %; the
-Foster census graph CSS(6272,7) has 6,272), (4,14) 497,042 -> **498,798**. Unchanged: (3,9) 506 (2013 table), (3,10)
-810, (3,11) 1,474, (4,9) 4,970 (2013 table), (4,10) 12,416, (4,11) 30,334, (4,12) 74,066, (4,13) 192,382.
-Every cubic value is a regular voltage lift, rebuilt from its solution file by tools/sol2edges.py (group product
-recomputed from (m, k, r), not read from the search's table) and checked by research/lifts/coordinator_check/apsp.c
-(VALID at D, INVALID at D - 1); edge lists and checks in research/frontier/beyond/graphs/. The (4,14) graph is a Haar
-graph (solution in research/frontier/sols/), checked by metacheck.py from both sides and by apsp (diameter 14).
+**Results.** (3,12) 2,368 -> **2,436**, (3,13) 3,400 -> **4,324** (+27 %), (3,14) 5,706 -> **7,296** (+28 %; the
+Foster census graph CSS(6272,7) has 6,272), (4,12) 74,066 -> **74,118**, (4,13) 192,382 -> **194,486**, (4,14)
+497,042 -> **498,798**. Unchanged: (3,9) 506 (2013 table), (3,10) 810, (3,11) 1,474, (4,9) 4,970 (2013 table), (4,10)
+12,416, (4,11) 30,334. Every cubic value is a regular voltage lift, rebuilt from its solution file by tools/sol2edges.py
+(group product recomputed from (m, k, r), not read from the search's table) and checked by
+research/lifts/coordinator_check/apsp.c (VALID at D, INVALID at D - 1); edge lists and checks in
+research/frontier/beyond/graphs/. The Δ = 4 values are Haar graphs (solutions in research/frontier/sols/), checked by
+metacheck.py from both sides; (4,12), (4,14) and the 193,058 (4,13) graph also by apsp; the final (4,13) 194,486 (found
+by a card minutes before the job was stopped) only by metacheck.
 
 **Method: joint base+voltage annealing with small bases.** own-small's salift_s anneals a p+p cubic bipartite base
 multigraph (three perfect matchings, multi-edges allowed) and its voltages in a group G together; the lift has
@@ -18,9 +20,10 @@ n = 2pN vertices, and since left multiplication by G is a semiregular automorphi
 a bit-parallel BFS from the 2p roots (u, e) gives the exact number of far (root, vertex) pairs. The job added group
 tables for any metacyclic group Z_m x|_r Z_k (x Z_c) (tools/gtab.py; own-small used GAP's SmallGroups, which are
 not installed here) and ran it at D = 12..14 for the first time. Results by base size:
-- 2+2 bases (p = 2, n = 4N): best at D = 12 and D = 13: 2,436 over Z29 x|_7 Z21 (order 609) and 4,324 over the
-  Frobenius group Z47 x|_2 Z23 (order 1,081), both on the first short screen of the group.
-- 3+3 (n = 6N): best at D = 14 (7,008 over Z73 x|_10 Z16), level with 2+2 there (7,004 over Z103 x|_8 Z17).
+- 2+2 bases (p = 2, n = 4N): best at D = 12, 13 and 14: 2,436 over Z29 x|_7 Z21 (order 609), 4,324 over the
+  Frobenius group Z47 x|_2 Z23 (order 1,081), 7,296 over Z152 x|_69 Z12 (order 1,824), each on the first short screen
+  of its group (dense sweeps of every group with large r-order in a narrow order band).
+- 3+3 (n = 6N): 7,008 at D = 14 (Z73 x|_10 Z16), then overtaken by 2+2.
 - 4+4 (n = 8N): the first raise of (3,13) (3,648, 3,696, 3,744) but stops near N = 470 at D = 13 and N = 816 at D = 14.
 - 5+5 and larger (up to 12+12): worse at every size tried (cost 6-60 just above the values).
 At the same n the small bases have fewer free voltages but a larger, less abelian group; large r-order d (Frobenius-like
@@ -40,3 +43,9 @@ Heisenberg groups) were not better.
   (PGL(2,q), S_7: diameter ~log2 n + 2), orbit-constrained lifts (voltages equivariant under a base rotation and a
   group automorphism of order 3: cost 60 where the free lift reaches 2), a 1-move tabu finisher and targeted voltage
   moves (a far pair is made close by solving for one voltage on a walk of length <= D): no gain over plain annealing.
+
+**Status when stopped (2026-11-02, budget).** Still open: the D = 14 2+2 sweep had reached order 1,824 of 1,950 and was
+still finding solutions (7,224 at 1,806, 7,296 at 1,824), so (3,14) is probably not at its limit; round-5 cards on
+D = 14 2+2 orders 1,851-1,960, (3,13) d = 6, 7 groups and Z_c products, and fresh-seed Haar sweeps at (4,12), (4,14) were
+stopped part way. (4,13) 194,486 still needs the all-pairs check. (3,9), (3,10), (3,11), (4,9), (4,10), (4,11) did not
+move: their lifts stop at exact local minima or group floors (cost 2 at (3,10) 816 and (3,11) 1,536; 18 at (4,9)).

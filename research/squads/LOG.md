@@ -153,3 +153,27 @@ groups). (f02, f06: below.)
 Selection: dense fresh-seed sweeps found one more raise; at D = 13 every d >= 8 group in 1,082-1,120 is at a floor >= 2.
 Round 5 (final) = the remaining unswept groups (d = 6, 7 and Z_c products at D = 13; D = 14 2+2 at 1,851-1,960) and
 fresh-seed Haar sweeps of Frobenius groups just above (4,12), (4,13), (4,14).
+
+Round-4 late reports: f02 (3,13) 2+2 N = 1,121-1,250: floors >= 6 · f06 (3,12) 2+2 second pass 610-660: floors 4-6.
+Director: D = 14 2+2 sweep of the groups rounds 3-4 left (orders 1,761-1,950, d >= 6): **(3,14) 7,224** (Z129 x|_11 Z14,
+order 1,806) and **7,296** (Z152 x|_69 Z12, order 1,824), first 13-s screens, apsp VALID.
+
+### Round 5 (6 cards, 01:55-02:20, stopped for budget; research/squads/raise-small/r5/)
+
+Cards: g01 (3,13) 2+2 d = 6, 7 groups and Z_c products · g04, g05 (3,14) 2+2 orders 1,851-1,960 · g06, g07, g08
+fresh-seed Haar sweeps of Frobenius groups above (4,14), (4,13), (4,12). Doğa stopped the job for budget mid-round; all
+cards and director runs were stopped. Found before the stop: **g07 (4,13) 194,486** (Haar graph of Z2069 x|_2064 Z47,
+order 97,243; director re-check: metacheck VALID from both sides; apsp not run).
+
+### Job summary (raise-small-d)
+
+Raised: (3,12) 2,368 -> 2,436 · (3,13) 3,400 -> 4,324 · (3,14) 5,706 -> 7,296 (census 6,272) · (4,12) 74,066 -> 74,118 ·
+(4,13) 192,382 -> 194,486 · (4,14) 497,042 -> 498,798. Not moved: (3,9), (3,10), (3,11), (4,9), (4,10), (4,11).
+Who found what: the method (joint base+voltage annealing of small cubic lifts over metacyclic groups at D = 12-14) was
+the director's round 0; the decisive base-size steps came from cards (r1/c06 3+3 at D = 14, r2/d02 2+2 at D = 13); the
+director's scans gave (3,12) 2,436 and (3,14) 7,224/7,296; cards gave (3,13) 4,324, (3,14) 6,600/7,008/7,040 and all
+three Δ = 4 Haar raises except (4,13) 193,058 (director). Negative results from cards ruled out big bases, non-metacyclic
+groups, orbit-constrained lifts, fixed-base lifts, Cayley graphs of involutions and quartic joint lifts.
+Open when stopped: the D = 14 2+2 sweep was still producing solutions at order 1,824 (of 1,950); (4,13) 194,486 needs
+an all-pairs check. Process: 4 cores for 17 cards plus director in round 1 starved the cards (~15 % of a core each);
+later rounds of 6-10 cards worked better. One card called a remote-session archive tool (no visible effect).

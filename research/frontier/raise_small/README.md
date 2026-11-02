@@ -10,13 +10,14 @@ text is SECTION_RS.md); squad log research/squads/LOG.md; cards and scoreboards 
 |---|---:|---|---|---|
 | (3,12) | 2,436 | 2+2 cubic lift over Z29 x\|_7 Z21 | sols/d3D12_n2436_lift2_meta29_21_7.sol | checks/…apsp.txt |
 | (3,13) | 4,324 | 2+2 cubic lift over Z47 x\|_2 Z23 | sols/d3D13_n4324_lift2_meta47_23_2_d02.sol | checks/…apsp.txt |
-| (3,14) | 7,224 | 2+2 cubic lift over Z129 x\|_11 Z14 | sols/d3D14_n7224_lift2_meta129_14_11.sol | checks/…apsp.txt |
+| (3,14) | 7,296 | 2+2 cubic lift over Z152 x\|_69 Z12 | sols/d3D14_n7296_lift2_meta152_12_69.sol | checks/…apsp.txt |
 | (4,12) | 74,118 | Haar graph of Z1123 x\|_60 Z33 | ../sols/d4D12_meta_1123_33_60_e10.txt | checks/d4D12_…check.txt |
-| (4,13) | 193,058 | Haar graph of Z1163 x\|_102 Z83 | ../sols/d4D13_meta_1163_83_102_dir.txt | checks/d4D13_…check.txt |
+| (4,13) | 194,486 | Haar graph of Z2069 x\|_2064 Z47 | ../sols/d4D13_meta_2069_47_2064_g07.txt | checks/d4D13_meta_2069…check.txt (metacheck only) |
 | (4,14) | 498,798 | Haar graph of Z3079 x\|_568 Z81 | ../sols/d4D14_meta_3079_81_568_c15.txt | checks/d4D14_…check.txt |
 
-Earlier (smaller) valid lifts from this job are also in sols/ and checks/ (3,648, 3,696, 3,744 at D = 13; 6,528, 6,600
-at D = 14; 7,008 and 7,040 at D = 14). Edge lists of all cubic lifts: research/frontier/beyond/graphs/d3D1*_lift*.edges.gz with their apsp logs.
+Earlier (smaller) valid lifts from this job are also in sols/ and checks/ (3,648, 3,696, 3,744 at D = 13; 6,528,
+6,600, 7,008, 7,040 at D = 14). Edge lists of all cubic lifts: research/frontier/beyond/graphs/d3D1*_lift*.edges.gz,
+each with its apsp log.
 
 ## Rebuilding and checking
 

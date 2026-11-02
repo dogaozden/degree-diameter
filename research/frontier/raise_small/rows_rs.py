@@ -14,21 +14,21 @@ ROWS = {
               '(raise-small-d squad r2/d02, first 22-s screen); earlier 3,744 (3+3 over Z13 x\\|_2 Z48, 4+4 over '
               'Z39 x\\|_17 Z12), 3,696, 3,648 (this job), 3,400 (Z170 lift of GP(10,3), beyond-d13); census CAT(3360,4)',
               f'apsp VALID, diameter exactly 13 ({G}d3D13_n4324_lift2_meta47_23_2_d02.apsp.txt)'),
-    (3, 14): (7224, 'regular lift of a 2+2 cubic base multigraph over Z129 x\\|_11 Z14 (order 1,806), joint annealing '
-              '(raise-small-d director sweep of the 2+2 groups left by round 4, first 13-s screen); earlier 7,040 (2+2 over '
-              'Z88 x\\|_7 Z20, squad r4/f03), 7,008 (3+3 over Z73 x\\|_10 Z16, r2/d03), 6,600 and 6,528 (this job), 5,706 '
-              '(Z317 lift of the Pappus graph, beyond-d13); the Foster census has CSS(6272,7) with 6,272',
-              f'apsp VALID, diameter exactly 14 ({G}d3D14_n7224_lift2_meta129_14_11.apsp.txt)'),
+    (3, 14): (7296, 'regular lift of a 2+2 cubic base multigraph over Z152 x\\|_69 Z12 (order 1,824), joint annealing '
+              '(raise-small-d director sweep, first 13-s screen); earlier 7,224 (2+2 over Z129 x\\|_11 Z14), 7,040 (Z88 x\\|_7 '
+              'Z20, squad r4/f03), 7,008 (3+3, r2/d03), 6,600, 6,528 (this job), 5,706 (Pappus x Z317, beyond-d13); the '
+              'Foster census has CSS(6272,7) with 6,272',
+              f'apsp VALID, diameter exactly 14 ({G}d3D14_n7296_lift2_meta152_12_69.apsp.txt)'),
     (4, 12): (74118, 'Haar graph of the Frobenius group Z1123 x\\|_60 Z33 (order 37,059), S random (hmeta, '
               'raise-small-d squad r3/e10, a fresh seed; solution research/frontier/sols/d4D12_meta_1123_33_60_e10.txt); '
               'earlier 74,066 (Z1277 x\\|_964 Z29, beyond-d13)',
               'metacheck VALID from (e,A) and (e,B) and apsp VALID, diameter exactly 12 '
               '(research/frontier/raise_small/checks/d4D12_meta_1123_33_60_e10.check.txt)'),
-    (4, 13): (193058, 'Haar graph of the odd-order Frobenius group Z1163 x\\|_102 Z83 (order 96,529), S random '
-              '(hmeta; director, fresh seed 2006 after squad r3/e10 left it at cost 2; solution '
-              'research/frontier/sols/d4D13_meta_1163_83_102_dir.txt); earlier 192,382 (Z2237 x\\|_1984 Z43, beyond-d13)',
-              'metacheck VALID from (e,A) and (e,B) and apsp VALID, diameter exactly 13 '
-              '(research/frontier/raise_small/checks/d4D13_meta_1163_83_102_dir.check.txt)'),
+    (4, 13): (194486, 'Haar graph of the odd-order Frobenius group Z2069 x\\|_2064 Z47 (order 97,243), S random (hmeta, '
+              'raise-small-d squad r5/g07; solution research/frontier/sols/d4D13_meta_2069_47_2064_g07.txt); earlier '
+              '193,058 (Z1163 x\\|_102 Z83, director), 192,382 (Z2237 x\\|_1984 Z43, beyond-d13)',
+              'metacheck VALID from (e,A) and (e,B) (exact for Haar graphs; apsp not run, job stopped) '
+              '(research/frontier/raise_small/checks/d4D13_meta_2069_47_2064_g07.check.txt)'),
     (4, 14): (498798, 'Haar graph of the Frobenius group Z3079 x\\|_568 Z81 (order 249,399), S random (hmeta, '
               'raise-small-d squad r1/c15; solution research/frontier/sols/d4D14_meta_3079_81_568_c15.txt); earlier '
               '497,042 (Z2731 x\\|_2400 Z91, beyond-d13)',

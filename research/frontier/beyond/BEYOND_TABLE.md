@@ -14,6 +14,10 @@ Extended 2026-11-01 by job beyond-d13 (branch claude/beyond-d13-search-z35z61): 
 and D = 14 at Δ = 3..8, and new values for (4,11), (5,11), (4,12), (5,12); see the section "D = 13 at Δ = 3..10 and
 D = 14 at Δ = 3..8" below.
 
+Extended 2026-11-02 by job raise-small-d (branch claude/raise-d-delta-3-4-5wyh9b): (3,12), (3,13), (3,14), (4,12),
+(4,13), (4,14) raised by joint base+voltage annealing of small cubic lifts and fresh-seed Haar searches; see the
+section "Δ = 3, 4 at D = 9..14" below.
+
 ## Summary
 
 - **Optimal (Moore graphs), 9 cells:** (17|18|20, 3), (17|18|20, 4), (17|18|20, 6) — incidence graphs of PG(2,q),
@@ -116,13 +120,13 @@ plane, generalized quadrangle or generalized hexagon of order 18, whose existenc
 | (12,12) | **19,980,294,768** | 3.18 | 627,685,675,338 | Haar graph PSL(2,503) x Z157, S = 4 free orbits of size 3; at the job's 20-billion-vertex cap (first S solved); mu = 0.00 | haarcheck_gen VALID (research/frontier/runs/cloudcheck/d12D12_psl_503_157_orb3-4-0_s1.gen.txt) | Haar size law at mu = 5: 2N = 2.88e+10 |
 | (13,12) | **19,993,487,976** | 1.23 | 1,621,109,172,404 | Haar graph PSL(2,307) x Z691, S = {e} + 4 orbits of size 3; at the job's 20-billion-vertex cap (first S solved); mu = 0.00 | haarcheck_gen VALID (research/frontier/runs/cloudcheck/d13D12_psl_307_691_orb3-4-1_s1.gen.txt) | Haar size law at mu = 5: 2N = 7.14e+10 |
 | (3,13) | **4,324** | 26.39 | 16,376 | regular lift of a 2+2 cubic base multigraph over Z47 x\|_2 Z23 (order 1,081), joint annealing (raise-small-d squad r2/d02, first 22-s screen); earlier 3,744 (3+3 over Z13 x\|_2 Z48, 4+4 over Z39 x\|_17 Z12), 3,696, 3,648 (this job), 3,400 (Z170 lift of GP(10,3), beyond-d13); census CAT(3360,4) | apsp VALID, diameter exactly 13 (research/frontier/beyond/graphs/d3D13_n4324_lift2_meta47_23_2_d02.apsp.txt) | Haar size law at mu = 5: 2N = 2.89e+03 |
-| (4,13) | **193,058** | 12.11 | 1,594,316 | Haar graph of the odd-order Frobenius group Z1163 x\|_102 Z83 (order 96,529), S random (hmeta; director, fresh seed 2006 after squad r3/e10 left it at cost 2; solution research/frontier/sols/d4D13_meta_1163_83_102_dir.txt); earlier 192,382 (Z2237 x\|_1984 Z43, beyond-d13) | metacheck VALID from (e,A) and (e,B) and apsp VALID, diameter exactly 13 (research/frontier/raise_small/checks/d4D13_meta_1163_83_102_dir.check.txt) | Haar size law at mu = 5: 2N = 1.64e+05 |
+| (4,13) | **194,486** | 12.20 | 1,594,316 | Haar graph of the odd-order Frobenius group Z2069 x\|_2064 Z47 (order 97,243), S random (hmeta, raise-small-d squad r5/g07; solution research/frontier/sols/d4D13_meta_2069_47_2064_g07.txt); earlier 193,058 (Z1163 x\|_102 Z83, director), 192,382 (Z2237 x\|_1984 Z43, beyond-d13) | metacheck VALID from (e,A) and (e,B) (exact for Haar graphs; apsp not run, job stopped) (research/frontier/raise_small/checks/d4D13_meta_2069_47_2064_g07.check.txt) | Haar size law at mu = 5: 2N = 1.64e+05 |
 | (5,13) | **3,594,910** | 8.04 | 44,739,236 | Haar graph of the odd-order group (Z11 x\|_4 Z5) x (Z2971 x\|_1764 Z11) (order 1,797,455), S random (haar_gen3, squad r6/i06; solution research/frontier/beyond13/sols/d5D13_prodmeta_11_5_2971_11_i06.txt); earlier 3,577,750 (r5/h05), 3,525,298 (r3/f08), 3,514,394 (r2/e12) and 3,217,056 (PSL(2,47) x Z31, orbit S, r1/c07); mu = 7.08 | research/frontier/beyond13/checks/d5D13_prodmeta_11_5_2971_11_i06.metacheck.txt | Haar size law at mu = 5: 2N = 3.5e+06 |
 | (6,13) | **41,734,392** | 6.84 | 610,351,556 | Haar graph PSL(2,83) x Z73, S = 2 free orbits of size 3 (squad r3/f11, first link, mu 9.3); earlier 41,519,712 (SL(2,103) x Z19, r2/e09) and 40,427,088 (PSL(2,103) x Z37, r1/c09); mu = 9.29 | haarcheck_gen VALID (research/frontier/runs/cloudcheck/d6D13_psl_83_73_orb3-2-0_f11.gen.txt) | Haar size law at mu = 5: 2N = 4.01e+07 |
 | (7,13) | **312,227,760** | 5.98 | 5,224,277,600 | Haar graph SL(2,229) x Z13, S = {e} + 2 orbits of size 3 (squad r2/e10, chained links); earlier 310,628,640 (SL(2,281) x Z7, r1/c11) and 299,455,200 (SL(2,199) x Z19); mu = 8.45 | haarcheck_gen VALID (research/frontier/runs/cloudcheck/d7D13_sl_229_13_orb3-2-1_e10.gen.txt) | Haar size law at mu = 5: 2N = 3.03e+08 |
 | (8,13) | **1,739,514,000** | 5.39 | 32,296,336,796 | Haar graph SL(2,499) x Z7, S = {e} + 1 fixed + 2 orbits of size 3 (director, 33 evaluations, mu 7.5); earlier 1,676,500,800 (SL(2,401) x Z13, director) and 1,512,114,240 (SL(2,911), squad r1/c13); mu = 7.52 | haarcheck_gen VALID (research/frontier/runs/cloudcheck/d8D13_sl_499_7_orb3-2-2_s2.gen.txt) | Haar size law at mu = 5: 2N = 1.7e+09 |
 | (9,13) | **7,924,036,032** | 5.04 | 157,073,089,676 | Haar graph SL(2,593) x Z19, S = 3 free orbits of size 3 (director, 17 evaluations, mu 9.75); earlier 7,685,933,808 (SL(2,587) x Z19, mu 5.1, 5 evaluations, unchecked) and 7,508,907,120 (SL(2,661) x Z13, mu 3.1, VALID); mu = 9.75 | haarcheck_gen VALID (research/frontier/runs/cloudcheck/d9D13_sl_593_19_orb3-3-0_s6.gen.txt) | Haar size law at mu = 5: 2N = 7.68e+09 |
-| (3,14) | **7,224** | 22.05 | 32,760 | regular lift of a 2+2 cubic base multigraph over Z129 x\|_11 Z14 (order 1,806), joint annealing (raise-small-d director sweep of the 2+2 groups left by round 4, first 13-s screen); earlier 7,040 (2+2 over Z88 x\|_7 Z20, squad r4/f03), 7,008 (3+3 over Z73 x\|_10 Z16, r2/d03), 6,600 and 6,528 (this job), 5,706 (Z317 lift of the Pappus graph, beyond-d13); the Foster census has CSS(6272,7) with 6,272 | apsp VALID, diameter exactly 14 (research/frontier/beyond/graphs/d3D14_n7224_lift2_meta129_14_11.apsp.txt) | Haar size law at mu = 5: 2N = 5.23e+03 |
+| (3,14) | **7,296** | 22.27 | 32,760 | regular lift of a 2+2 cubic base multigraph over Z152 x\|_69 Z12 (order 1,824), joint annealing (raise-small-d director sweep, first 13-s screen); earlier 7,224 (2+2 over Z129 x\|_11 Z14), 7,040 (Z88 x\|_7 Z20, squad r4/f03), 7,008 (3+3, r2/d03), 6,600, 6,528 (this job), 5,706 (Pappus x Z317, beyond-d13); the Foster census has CSS(6272,7) with 6,272 | apsp VALID, diameter exactly 14 (research/frontier/beyond/graphs/d3D14_n7296_lift2_meta152_12_69.apsp.txt) | Haar size law at mu = 5: 2N = 5.23e+03 |
 | (4,14) | **498,798** | 10.43 | 4,782,962 | Haar graph of the Frobenius group Z3079 x\|_568 Z81 (order 249,399), S random (hmeta, raise-small-d squad r1/c15; solution research/frontier/sols/d4D14_meta_3079_81_568_c15.txt); earlier 497,042 (Z2731 x\|_2400 Z91, beyond-d13) | metacheck VALID from (e,A) and (e,B) and apsp VALID, diameter exactly 14 (research/frontier/raise_small/checks/d4D14_meta_3079_81_568_c15.check.txt) | Haar size law at mu = 5: 2N = 4.47e+05 |
 | (5,14) | **12,795,166** | 7.15 | 178,956,964 | Haar graph of the odd-order metacyclic group Z148781 x\|_85175 Z43 (order 6,397,583), S random (hmeta, START continuation; squad r6/i07; solution research/frontier/beyond13/sols/d5D14_meta_148781_43_i07.txt); earlier 12,776,064 (SL(2,97) x Z7, random S, r5/h06), 12,352,392 and 11,696,856; mu = 5.39 | research/frontier/beyond13/checks/d5D14_meta_148781_43_i07.metacheck.txt | Haar size law at mu = 5: 2N = 1.27e+07 |
 | (6,14) | **187,990,656** | 6.16 | 3,051,757,806 | Haar graph SL(2,97) x Z103, S = 2 free orbits of size 3 (squad r4/g07: RANDORB screen, then two links); earlier 187,698,768 (PSL(2,137) x Z73, r3/f12), 186,910,464 and 186,466,200; mu = 8.37 | haarcheck_gen VALID (research/frontier/runs/cloudcheck/d6D14_sl_97_103_orb3-2-0_g07.gen.txt) | Haar size law at mu = 5: 2N = 1.83e+08 |
@@ -354,6 +358,58 @@ part way. (4,8) and (4,9) near misses above the 2013 values (2,184, 4,970): Z55 
 Z101 x|_5 Z25 (5,050, cost 2) (r7/j04, j05); (4,10) Z215 x|_2 Z28 (12,040) at cost 1 (r7/j03). An exhaustive 2-opt from the
 (4,8) and (4,9) states (hmeta OPT2: every pair of generators replaced by every pair of group elements, 3.6e6 and 1.9e7
 evaluations) found no cost 0: no generator set within two changes of those states has the required diameter.
+
+### Δ = 3, 4 at D = 9..14 (job raise-small-d, 2026-11-01/02)
+
+Job raise-small-d (Opus director + Haiku squads, cloud session, branch claude/raise-d-delta-3-4-5wyh9b). Goal: raise
+the lab's values at Δ = 3, 4 and D = 9..14. Files: research/frontier/raise_small/ (tools/, sols/, checks/, runs/;
+README.md); squad cards and scoreboards research/squads/raise-small/r1..r5; log research/squads/LOG.md.
+
+**Results.** (3,12) 2,368 -> **2,436**, (3,13) 3,400 -> **4,324** (+27 %), (3,14) 5,706 -> **7,296** (+28 %; the
+Foster census graph CSS(6272,7) has 6,272), (4,12) 74,066 -> **74,118**, (4,13) 192,382 -> **194,486**, (4,14)
+497,042 -> **498,798**. Unchanged: (3,9) 506 (2013 table), (3,10) 810, (3,11) 1,474, (4,9) 4,970 (2013 table), (4,10)
+12,416, (4,11) 30,334. Every cubic value is a regular voltage lift, rebuilt from its solution file by tools/sol2edges.py
+(group product recomputed from (m, k, r), not read from the search's table) and checked by
+research/lifts/coordinator_check/apsp.c (VALID at D, INVALID at D - 1); edge lists and checks in
+research/frontier/beyond/graphs/. The Δ = 4 values are Haar graphs (solutions in research/frontier/sols/), checked by
+metacheck.py from both sides; (4,12), (4,14) and the 193,058 (4,13) graph also by apsp; the final (4,13) 194,486 (found
+by a card minutes before the job was stopped) only by metacheck.
+
+**Method: joint base+voltage annealing with small bases.** own-small's salift_s anneals a p+p cubic bipartite base
+multigraph (three perfect matchings, multi-edges allowed) and its voltages in a group G together; the lift has
+n = 2pN vertices, and since left multiplication by G is a semiregular automorphism group with the fibres as orbits,
+a bit-parallel BFS from the 2p roots (u, e) gives the exact number of far (root, vertex) pairs. The job added group
+tables for any metacyclic group Z_m x|_r Z_k (x Z_c) (tools/gtab.py; own-small used GAP's SmallGroups, which are
+not installed here) and ran it at D = 12..14 for the first time. Results by base size:
+- 2+2 bases (p = 2, n = 4N): best at D = 12, 13 and 14: 2,436 over Z29 x|_7 Z21 (order 609), 4,324 over the
+  Frobenius group Z47 x|_2 Z23 (order 1,081), 7,296 over Z152 x|_69 Z12 (order 1,824), each on the first short screen
+  of its group (dense sweeps of every group with large r-order in a narrow order band).
+- 3+3 (n = 6N): 7,008 at D = 14 (Z73 x|_10 Z16), then overtaken by 2+2.
+- 4+4 (n = 8N): the first raise of (3,13) (3,648, 3,696, 3,744) but stops near N = 470 at D = 13 and N = 816 at D = 14.
+- 5+5 and larger (up to 12+12): worse at every size tried (cost 6-60 just above the values).
+At the same n the small bases have fewer free voltages but a larger, less abelian group; large r-order d (Frobenius-like
+groups, m prime, d = k) matters most: groups with k = 6 or small d stay at cost 18-130, and many groups have a hard
+floor (every seed and every chain ends at the same cost, e.g. 18 for Z93 x|_5 Z12 and 2 for Z55 x|_2 Z20 at D = 13,
+also with targeted moves). Non-metacyclic groups (AGL(1,q), SL(2,3) x Z20, A5 x Z_c, AGammaL(1,8) x Z5, wreath and
+Heisenberg groups) were not better.
+
+**What did not work.**
+- Δ = 4 with the same idea (salift4 / table-free salift4m, 2+2 and 3+3 quartic bases): cost 18 at (4,9) n = 4,992-5,040
+  (but Haar random S at the same n: 150), 30 at (4,10) 12,480, 36 at (4,11) 30,360, 80 at (4,12). Haar graphs of
+  metacyclic groups with random S (hmeta) stay the method at Δ = 4; near misses (4,12) Z2861 x|_1385 Z13 cost 2
+  (74,386), (4,13) cost 2-4 (192,550 and 193,058).
+- (3,10), (3,11), (3,12) below the 2+2 threshold: 3+3 cost 2 at (3,10) n = 816 (Z17 x|_4 Z8, an exact 2-move local
+  minimum), 4+4 cost 2 at (3,11) n = 1,536 (Z48 x|_5 Z4, exact local minimum), 3+3 cost 12 at (3,12) 2,448.
+- Fixed bases with metacyclic voltages (GQ(3,3) at (4,11): cost 1,208), cubic Cayley graphs of three involutions
+  (PGL(2,q), S_7: diameter ~log2 n + 2), orbit-constrained lifts (voltages equivariant under a base rotation and a
+  group automorphism of order 3: cost 60 where the free lift reaches 2), a 1-move tabu finisher and targeted voltage
+  moves (a far pair is made close by solving for one voltage on a walk of length <= D): no gain over plain annealing.
+
+**Status when stopped (2026-11-02, budget).** Still open: the D = 14 2+2 sweep had reached order 1,824 of 1,950 and was
+still finding solutions (7,224 at 1,806, 7,296 at 1,824), so (3,14) is probably not at its limit; round-5 cards on
+D = 14 2+2 orders 1,851-1,960, (3,13) d = 6, 7 groups and Z_c products, and fresh-seed Haar sweeps at (4,12), (4,14) were
+stopped part way. (4,13) 194,486 still needs the all-pairs check. (3,9), (3,10), (3,11), (4,9), (4,10), (4,11) did not
+move: their lifts stop at exact local minima or group floors (cost 2 at (3,10) 816 and (3,11) 1,536; 18 at (4,9)).
 
 ## What failed, and why it matters for the next attempt
 
