@@ -48,6 +48,7 @@ record, with dates and checks, is in [`research/RESULTS.md`](research/RESULTS.md
 | (16, 4) | 5,134 | **5,440** | +6.0% | orbit search (Haar) | ✓ |
 | (4, 5) | 160 | **162** | +1.2% | evolutionary search | ✓ |
 | (5, 5) | 336 | **384** | +14.3% | voltage lift of a 4-vertex base by a group of order 96 | [354] |
+| (6, 5) | 684 | **704** | +2.9% | voltage lift of a 4-vertex base by a group of order 176 (not a Haar graph) | — |
 | (7, 5) | 1,134 | **1,312** | +15.7% | Haar graph of C41 : C16 with a self-dual connection set (a bipartite Cayley graph) | [1,200] |
 | (8, 5) | 1,710 | **2,048** | +19.8% | route-chart lift | (1,764) |
 | (9, 5) | 2,496 | **3,036** | +21.6% | Haar graph of C69 : C22 with a self-dual connection set (a bipartite Cayley graph) | (2,758) |

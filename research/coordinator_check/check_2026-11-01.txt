@@ -45,3 +45,10 @@ at D = 13: RESULT INVALID
 n=497042 edges=994084 degree min=4 max=4 bipartite=yes diameter=14
 RESULT VALID d=4 D=14 n=497042
 at D = 13: RESULT INVALID
+
+== d6D5_n704_split_c11xm16 (deep-65b, branch claude/bipartite-d6-d5-depth-bkg1ku): edge list sha256 85b88c13999f3b0f36798a43a57e5f8cca11e7bf93888f3e37a4232d1335aece
+n=704 edges=2112 degree min=6 max=6 bipartite=yes diameter=5
+RESULT VALID d=6 D=5 n=704
+at D = 4: RESULT INVALID
+independent Python BFS (all pairs): n 704 edges 2112 maxdeg 6 mindeg 6 bipartite yes diameter 5
+rebuilt from the closed form (build_d6D5_n704.py): identical edge set (2112 edges)
