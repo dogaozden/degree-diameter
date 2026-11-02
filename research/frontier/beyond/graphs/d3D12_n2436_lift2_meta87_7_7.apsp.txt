@@ -1,0 +1,5 @@
+n=2436 edges=3654 degree min=3 max=3 bipartite=yes diameter=12
+RESULT VALID d=3 D=12 n=2436
+at D = 11: RESULT INVALID
+edge list sha256 cc95b4faeb9746c9a2daaec3f26bd4c9211138b428ae029b3dfa853f8d3d608b
+built by research/frontier/beyond14/ownsmall/build_lift.py SOL 87 7 7 OUT (group Z87 x|_7 Z7, element (x,j) <-> index 7x + j); found by squad card r5/g14 (salift_s, p = 2, D = 12)
