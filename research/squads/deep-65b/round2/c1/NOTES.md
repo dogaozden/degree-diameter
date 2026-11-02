@@ -15,3 +15,16 @@ Best cost per group (min over 6 seeds): 180_6 5, 180_14 5, 180_21 5, 180_2 6, 18
 180_36 239, 180_11 247. No zero.
 Top 5 for phase 2: 6, 14, 21 (cost 5); 13 and 2 (cost 6; tie with 33 broken by mean over seeds: 13 mean 6.2, 2 mean 8.0,
 33 mean 8.7).
+
+## Phase 2 (done 00:47): seeds 7..16 x 12 s on the top 5 (180_2, 180_6, 180_13, 180_14, 180_21)
+180_2 (C9 x (C5 : C4)): best 4 at seed 11 (2.56 s); seeds 7-16 min 4, mean 8.0 over 16 seeds.
+180_6 (C9 : (C5 : C4)): best 5 (seed 7); 180_14 (C15 x (C3 : C4)): best 5 (seed 15); 180_21 (C3 x (C15 : C4)): best 5 (seed 3, phase 1).
+180_13 (C3 x C3 x (C5 : C4)): best 6 (phase 1 min; seeds 7-16 min 6).
+Zeros: none (grep ' best=0 ' raw.txt is empty). No graph was built (no cost 0), so no apsp/score65 check was needed.
+Full table: table.tsv (per group: best cost, number of seeds, mean cost, name). Raw RES lines: raw.txt.
+
+## Result
+- Order 180 (n = 720), 33 non-abelian groups: best cost 4 (180_2), then 5 (180_6, 180_14, 180_21), 6 (180_13, 180_33).
+- No cost 0 on any group, so no valid order-180 graph with diameter 5 in this family from these 6+10 seeds.
+- Tabu is noisy: the cost-4 hit came from 1 of 16 seeds on 180_2; 16 seeds x 12 s is far from exhaustive.
+- Every seed ran 12 s (except the early exit at cost 0, which never happened).

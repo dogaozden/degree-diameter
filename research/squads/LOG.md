@@ -62,7 +62,7 @@ other 2+2 bases, calibrated on the 684 record · c3 hub family k = 5 exact (hubk
 k = 3 on 258_3..5 exact · c5 wildcard "path-split" Haar graphs (3+3 lifts) · c6 open wildcard.
 Best per card: c1 **cost 0 at 704 vertices: SmallGroup(176,23) = C11 x M16** (seed 3 of 5, 9 s runs; ranking of 160
 groups, next best 174_1 2, 176_17 2) · c2 general 9-voltage tabu does not re-find 684; the mirrored (Haar-type)
-subfamily re-finds it in 6/8 seeds; screen 172-180: best 10 (720) · c3 (pending at the time of writing) · c4 258_3
+subfamily re-finds it in 6/8 seeds; screen 172-180: best 10 (720) · c3 k = 5: 290_1..3 closed (n = 696, nothing passes the hub-level conditions) and 16 of 45 groups of order 300; 305-315 not run · c4 258_3
 0.09%, 258_4 12%, 258_5 6% of the leaves, no state passes the hub-level conditions so far, full runs 2-4 h (258_4/5) and
 ~170 h (258_3) · c5 path-split best 1755 bad pairs at 702 (C13:C9) · c6 4+4 lifts best 1505 bad pairs at 688.
 Director's checks: rebuilt c1's graph from an explicit formula of C11 x M16 (no GAP), apsp VALID at D = 5 and
@@ -70,3 +70,15 @@ INVALID at D = 4, score65 bad 0 (research/squads/deep-65b/records/). The exact s
 same solution class (end-to-end check). The exact search had closed 176_17 (best 2) before the hit.
 Kept for round 2: c1's tabu, spread over orders 178-200 with more seeds (one zero came from 1 of 5 seeds), and a faster
 tabu.
+
+### Round 2 (00:00-00:55 UTC, 6 cards, research/squads/deep-65b/round2/)
+Cards: c1 order 180 all 33 non-abelian groups, 6-16 tabu seeds x 12 s · c2 orders 178-190 (incl. C61:C3 at 183) · c3/c4
+order 192, the 256 groups C3 x P64 (the winner's shape: central cyclic x 2-group), 2-8 seeds x 8 s · c5 orders 195-200
+and 59 other order-192 groups · c6 a faster tabu (code card).
+Best per card: c1 180_2 cost 4 (C9 x (C5:C4)), 180_6/14/21 5 · c2 183_1 (C61:C3), 189_6, 189_8 7 · c3 192_865, 192_909
+6 · c4 192_900, 192_168 8 · c5 200_19 13, 192_544 10 · c6 tabu15f: same trajectory as tabu15, 3.3x faster, costs equal
+split15 on 20 states; re-finds the 704 graph (seed 3, 2.55 s); order-192 ids 1-127 best 8.
+No zero above 704. Director: exact split15 runs on 180_13 (best 6), 180_6 (best 5): no solution; exact runs started on
+180_21 and on 192_865, 909, 544, 105, 106 (Aut of order 384-6144, so 2-35 min each).
+Kept for round 3: more seeds with tabu15f on the closest groups (180, 192), plus two structures next to the split
+family (split + hub orbits via mcos; cyclic lifts of the 8-vertex split base with free voltages).
