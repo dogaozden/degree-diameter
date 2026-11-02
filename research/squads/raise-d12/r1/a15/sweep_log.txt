@@ -1,0 +1,8 @@
+psl2_11_x_cyc_2 | N=1320 2N=2640 | NONE | GROUP N=1320 2N=2640 D=12 classes=15 pairs=19770 mincost=54 at (x=8,y=37) ties_at_min=64 cost0_pairs=0 secs=0.5 | build+run 50.3s
+pgl2_11 | N=1320 2N=2640 | NONE | GROUP N=1320 2N=2640 D=12 classes=12 pairs=15816 mincost=54 at (x=3,y=8) ties_at_min=66 cost0_pairs=0 secs=0.4 | build+run 75.5s
+sl2_5_x_cyc_10 | N=1200 2N=2400 | TIMEOUT_OR_ERR |  | build+run 101.1s
+semi_p7_k25_M1_0_0_1 | N=1225 2N=2450 | TIMEOUT_OR_ERR |  | build+run 107.0s
+psl2_11_x_cyc_2 | N=1320 2N=2640 | NONE | GROUP N=1320 2N=2640 D=12 classes=15 pairs=19770 mincost=54 at (x=8,y=37) ties_at_min=64 cost0_pairs=0 secs=0.5 | build+run 102.6s
+pgl2_11 | N=1320 2N=2640 | NONE | GROUP N=1320 2N=2640 D=12 classes=12 pairs=15816 mincost=54 at (x=3,y=8) ties_at_min=66 cost0_pairs=0 secs=0.4 | build+run 108.9s
+sl2_5_x_cyc_10 | N=1200 2N=2400 | TIMEOUT_OR_ERR |  | build+run 100.5s
+sl2_5_x_cyc_11 | N=1320 2N=2640 | TIMEOUT_OR_ERR |  | build+run 100.9s

@@ -1,0 +1,8 @@
+a10 (5,12), alpha = Frobenius x->x^2 on GF(8) (order 3, Fix = SL(2,2) x {0}), ORBIT "3 1 2", SL(2,8) x Z_n.
+RANDORB=100-300 symmetric S, n=1063 (N=535752): raw cost min 436k, median 438k-443k (uncovered ~82% of B side); mu formula says 15.7.
+RANDORB=60, AR=1 (no z-action), n=1063: min 490k. Annealing 60 s (ORBIT, n=1063): stuck at 437,727 (937 evals).
+RANDORB=60, n=19: min 0; n=1 (N=504): min 0 (mean 38). So the collapse starts at larger n.
+Plain random S (haar_gen3, no orbit), n=1063: start 24.8k-42.7k; 40 s annealing best 4,741 (1,409 evals).
+Plain random, n=631 (N=318,024), 45 s: best 13. Plain random, n=331: start cost 1. n=19,127: start 0.
+Symmetric, n=631, 45 s: best 219,999 (start 230,568), predicted mu 0.01.
+No valid graph above 1,058,342 found. Not verified independently (no valid graph produced).

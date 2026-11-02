@@ -1,0 +1,6 @@
+group sl 32 poly x^5+x^2+1 x Z_151, N=4943136, identity 149792, H order 33, rows 149792, threads 1, setup 2.56s
+wide rows: HW order 151, rows 32736, setup 4.85s
+alpha: Frobenius x -> x^2 on entries, z -> 8 z on Z_151
+ORBIT k=5 m=1 f=1: |Fix(alpha)| = 5 (+e); mu = 21.46, mu/k = 4.29, fixed-point misses ~ 0.51
+RANDORB d=6 D=12 group=sl 32 poly x^5+x^2+1 x Z_151 N=4943136 k=5 m=1 f=1 fix=5 samples=120 min=25 p1=27 p10=47 median=186 mean=521078.04 var=2217643699822.8 mu=21.46 time=30.6
+RANDORB hist (cost/k): 0 0 0 0 0 2 2 1 3 5 4 6 7 5 2 1 3 4 1 2 0 1 1 3 0 1 0 0 0 1 0 65

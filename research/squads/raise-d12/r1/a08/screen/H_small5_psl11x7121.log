@@ -1,0 +1,6 @@
+group psl 11 x Z_7121, N=4699860, identity 391655, H order 11, rows 427260, threads 1, setup 7.34s
+wide rows: no cyclic subgroup of order >= 64 found (best 11); using haar_gen3's evaluation
+alpha: conj by mat(2,8,10,2) (index 274), z -> 517 z on Z_7121
+ORBIT k=5 m=1 f=1: |Fix(alpha)| = 4 (+e); mu = 10.77, mu/k = 2.15, fixed-point misses ~ 0.37
+RANDORB d=6 D=12 group=psl 11 x Z_7121 N=4699860 k=5 m=1 f=1 fix=4 samples=120 min=428270 p1=428270 p10=437400 median=732595 mean=1784543.82 var=3079126304862.2 mu=10.77 time=82.7
+RANDORB hist (cost/k): 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 120
