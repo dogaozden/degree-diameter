@@ -380,6 +380,13 @@ negative, and the negatives explain the shape of the method:
   holes), inverse-closed S, order-5 conjugation orbits in PSL(2,p) (fixed torus of ~p/2 elements), unstructured
   cubic graphs (1,350 vertices).
 
+**Who found what, and cost.** All five values of the job are the director's (haar_bigq written in the job, groups and
+orbit structures chosen from the clump model of BEYOND_RANDOM.md; (15,12) with haar_big0). The 33 Haiku cards of three
+rounds raised nothing; their value was negative knowledge: the abelian-section and parity walls, the Moore-base walk count,
+disconnection proofs, and exhaustive scans that closed whole families for (3..7,12) (research/squads/LOG.md). Machine
+time: searches 15 s ((15,12)), 82 s of sampling ((8,12)), 904 s ((9,12)), 1,435 s ((10,12)), 494 s ((11,12)); checks
+172 s, 387 s, 1,079 s, 1,121 s and 4,120 s.
+
 **Leads for other cells (not run; outside this job's D = 12 scope).** research/frontier/raise-d12/fieldfit.py lists, for
 even D, the groups SL(2,32), SL(2,128), PSL(2,243) x Z_n (n with an order-k multiplier, gcd(n,|T|) = 1) and orbit
 structures Δ = f + k m (f <= 2) with mu/k <= 5, where the (8..10,12) finds were solved (mu/k = 4.0, 4.9, 5.1); best
