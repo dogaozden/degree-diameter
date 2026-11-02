@@ -293,3 +293,38 @@ psl 71 x Z121 "5 3 2" (mu 39.0, 35,928 evaluations): **(17,8) 43,298,640**. SL(2
 Reading: k = 7 can beat k = 5 by 10x in evaluations (d06), but not on every group (d03); the difference is visible in a
 16-sample RANDORB screen (median cost divided by k), so round 3 screens three candidates per card before searching.
 Walls this round (~0.2 core, 1400 s): k = 5 near mu 36-40 at (19,8) and (20,8), near 46-51 at (18,8) with f = 3.
+
+## 2026-11-01, raise-d8b, round 3 (16 cards, 23:49 UTC)
+
+Same session. Files: research/squads/raise_d8b/r3/. Each search card screened three candidates (cell, orbit type, group)
+with RANDORB=16 and searched the one with the lowest median cost per orbit (median/k) for 1400 s; two analysis cards,
+two wildcards.
+
+Cards (searched group, ORBIT, mu: result; screens in the card folders):
+- **e01 (17,8): screen put "7 2 3" on psl 41 x Z631 (median/k 8.0) ahead of "5 3 2" on psl 41 x Z631 (15.0) and
+  psl 61 x Z191 (10.2); solved at mu 41.2 in 1,860 evaluations: 43,463,280.**
+- e02 (17,8) psl 31 x Z1481 "5 3 2" mu 50.2: 10. e03 sl 43 x Z281 "7 2 3" mu 60.2: 11.
+- e04 (18,8) psl 181 x Z11 "5 3 3" mu 51.0: 13. e05 psl 41 x Z961 "5 3 3" mu 62.9: 15.
+- e06 (19,8) psl 79 x Z191 "5 3 4" mu 49.3: 5. e07 psl 59 x Z461 mu 53.3: 15. e08 psl 61 x Z421 mu 61.0: 20.
+- e09 (20,8) psl 229 x Z11 "5 4 0" mu 41.3: 7. e10 psl 79 x Z271 mu 49.0: 7. e11 psl 89 x Z191 mu 55.1: 8.
+  e12 psl 149 x Z41 mu 61.4: 23. Their screens: "7 2 6" medians/k 97-261 against 11-15 for "5 4 0".
+- e13 hole anatomy of ten round-2 near misses: with f = 0 ("5 4 0") every remaining hole is alpha-fixed (z = 0, in the
+  torus of the order-5 element), 1-5 of them, as expected from (torus size) x e^(-lambda/5); with f = 3-4 the remaining
+  holes are whole free orbits of 5. No fixed holes there, because words in the fixed letters cover the torus.
+- e14 small centralizers for k = 7 at (20,8): psl 167 x Z29 screened best (median/7 = 24) but "7 2 6" is far behind
+  "5 4 0"; search stalled at 84.
+- e15 wildcard: orbits of order 4, "4 4 2" on sl 47 x Z313 (mu 48.1): 53. Negative.
+- e16 wildcard (D = 7): extra hubs on the spare slots of the typed level graphs. At q = 5 ((7,7) analogue, 23,598) one
+  to 200 extra hubs on levels 2-6 always leave 170-220 level-0 vertices at distance 8: level 0, whose freed slots set the
+  hub cap, is the blind spot. Negative for the naive version.
+
+Director during the round: added ORBW to haar_big0 (raise_d8/haar_big0w.c: an uncovered alpha-fixed element weighs w in
+the energy, as haar_sym's ORBW, which the lab's (15,8) record used with f = 0; for f = 0 the hole x of H(G, S s0^-1) is
+tested as x s0). On d13's (20,8) state (one fixed hole) the weighted start cost is 5, as it should be. Screened "5 3 5"
+against "5 4 0" at (20,8): 3-8x worse (four commuting fixed letters). SL(2,71) x Z61 "5 3 2" at (17,8) (mu 43.9) reached
+cost 1 after 84,000 evaluations.
+
+Reading: one more solve this round, at (17,8) by the screen's choice of k = 7. Walls at ~0.2 core and 1400 s:
+(17,8) mu ~42-44, (18,8) ~47, (19,8) ~37-49 (cost 5 states), (20,8) ~33-36 with f = 0 because of fixed holes. Round 4:
+continue the saved near misses (cost 5-13) with START, use haar_big0w ORBW=5 on every f = 0 run, two k = 7 rungs at
+(18,8) mu 56-57, and a fit of evaluations against mu/k.

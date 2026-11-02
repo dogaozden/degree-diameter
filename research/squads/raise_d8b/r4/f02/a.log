@@ -1,0 +1,7 @@
+group psl 229 x Z_11, N=66048180 (2N=132096360), rows 26220 x 2519 bits (doubled row 104 words), memory 0.08 GB, threads 1
+alpha: conj by mat(0,228,1,81), z -> 3 z on Z_11 (fixed z: 1); ORBIT k=5 m=4 f=0; W=9.43531e+08 lambda=14.286 mu=41.28
+setup 0.0s
+start cost=35 (0.5s per eval)
+t=5 step=1 evals=9 slot=2 cand=65 cost=35 best=35 T=1.26
+t=15 step=2 evals=17 slot=2 cand=45 cost=45 best=35 T=1.06
+t=28 step=3 evals=25 slot=1 cand=60 cost=45 best=35 T=0.89

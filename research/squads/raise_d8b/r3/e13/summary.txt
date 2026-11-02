@@ -1,0 +1,15 @@
+e13 summary (EVAL UNCPRINT of the r2 near misses with best cost <= 10; alpha = conj by printed mat, z -> r z)
+state | group | ORBIT | cost | alpha-fixed holes | orbit holes (size) | expected fixed holes F*exp(-lambda/k)
+d01_a.sol.best | sl 41 311 | 5 3 2 | 0 | 0 | 0 | - (solved, no holes)
+d02_start.sol.best | psl 89 61 | 5 3 2 | 1 | 1 | 0 | 3.07 (F=44)
+d05_a.sol.best | sl 31 1091 | 5 3 3 | 10 | 0 | 10 (two orbits of 5) | 1.98 (F=29)
+d06_d06.sol.best | psl 97 71 | 7 2 4 | 0 | 0 | 0 | - (solved, no holes)
+d07_a.sol.best | psl 131 41 | 5 3 4 | 0 | 0 | 0 | - (solved, no holes)
+d09_a.sol.best | psl 89 131 | 5 3 4 | 5 | 0 | 5 (one orbit of 5) | 2.65 (F=44)
+d10_a.sol.best | psl 59 451 | 5 3 4 | 5 | 0 | 5 (one orbit of 5) | 1.76 (F=29)
+d11_a.sol.best.orb | sl 79 131 | 5 4 0 | 5 | 5 | 0 | 4.25 (F=79)
+d12_a.sol.best.orb | psl 61 571 | 5 4 0 | 2 | 2 (includes identity e) | 0 | 1.58 (F=29)
+d13_a.sol.best.orb | psl 109 101 | 5 4 0 | 1 | 1 | 0 | 3.01 (F=54)
+Notes: all alpha-fixed holes have z=0 (gcd(r-1,n)=1 in every state), lie in the alpha torus, orders 1,5,20,45,55,80. Orbit holes (d05, d09, d10) have z != 0 and lie outside the alpha torus.
+f=0 states (d11, d12, d13): EVAL reports holes of T = S s0^-1; mapped to S-form by h_S = h_T s0; alpha-closure holds for every state after the mapping.
+No k=7 near miss with cost <= 10 other than the solved d06; r2/d03 (k=7, cost 77) is outside the rule.

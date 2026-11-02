@@ -1,0 +1,28 @@
+group psl 41 x Z_953, N=32821320 (2N=65642640), rows 840 x 39073 bits (doubled row 1240 words), memory 0.03 GB, threads 1
+alpha: conj by mat(0,40,1,4), z -> 431 z on Z_953 (fixed z: 1); ORBIT k=7 m=2 f=4; W=4.35985e+08 lambda=13.284 mu=55.87
+setup 0.0s
+fixed generators: 3 chosen among 20 alpha-fixed elements
+start cost=84 (0.2s per eval)
+t=1 step=1 evals=9 slot=1 cand=70 cost=70 best=70 T=1.26
+t=2 step=2 evals=17 slot=0 cand=91 cost=70 best=70 T=1.06
+t=3 step=3 evals=25 slot=1 cand=84 cost=70 best=70 T=0.89
+t=5 step=4 evals=33 slot=0 cand=49 cost=49 best=49 T=0.75
+t=6 step=5 evals=41 slot=1 cand=84 cost=49 best=49 T=0.63
+t=7 step=6 evals=49 slot=1 cand=70 cost=49 best=49 T=0.53
+t=8 step=7 evals=57 slot=0 cand=49 cost=49 best=49 T=0.45
+t=9 step=8 evals=65 slot=0 cand=84 cost=49 best=49 T=0.38
+t=11 step=9 evals=73 slot=1 cand=56 cost=49 best=49 T=0.32
+t=13 step=10 evals=81 slot=0 cand=35 cost=35 best=35 T=0.27
+t=14 step=11 evals=89 slot=1 cand=70 cost=35 best=35 T=0.22
+t=15 step=12 evals=97 slot=0 cand=70 cost=35 best=35 T=0.19
+t=16 step=13 evals=105 slot=0 cand=84 cost=35 best=35 T=0.16
+t=16 step=14 evals=113 slot=0 cand=56 cost=35 best=35 T=0.15
+t=18 step=15 evals=121 slot=1 cand=56 cost=35 best=35 T=0.15
+t=19 step=16 evals=129 slot=0 cand=56 cost=35 best=35 T=0.15
+t=20 step=17 evals=137 slot=0 cand=49 cost=35 best=35 T=0.15
+t=21 step=18 evals=145 slot=1 cand=56 cost=35 best=35 T=0.15
+t=22 step=19 evals=153 slot=1 cand=63 cost=35 best=35 T=0.15
+t=24 step=20 evals=161 slot=0 cand=119 cost=35 best=35 T=0.15
+t=25 step=21 evals=169 slot=0 cand=84 cost=35 best=35 T=0.15
+t=26 step=22 evals=177 slot=0 cand=91 cost=35 best=35 T=0.15
+t=26 step=23 evals=185 slot=0 cand=63 cost=35 best=35 T=0.15
