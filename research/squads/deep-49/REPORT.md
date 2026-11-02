@@ -1,7 +1,7 @@
 # deep-49: an Opus-led squad on the bipartite (4,9) cell
 
 Session session_01QYEEyH81pZHeSQtpD99oPr, branch `claude/deep-49-bipartite-cell-3tog1a`, 2026-11-01 22:39Z (start stamp
-`research/squads/usage/deep-49.start`) to about 02:00Z. Goal: a bipartite graph with maximum degree 4, diameter 9 and
+`research/squads/usage/deep-49.start`) to about 00:50Z. Goal: a bipartite graph with maximum degree 4, diameter 9 and
 4,971 or more vertices (table 4,970). Brief: depth on the hands-off run's leads (handsoff-49): the cost-2 Haar graph at
 5,050 ("(b)"), the cost-4 walls at 4,992 and 5,000, and the 2-vertex surgery at 4,972 with 160 far pairs ("(a)").
 
@@ -15,11 +15,11 @@ searches instead of annealing floors, and each floor has a concrete reason:
 | Haar graphs, all groups of order 2,486..2,600 in GAP's SmallGroups library | metacyclic only, screened | **none has diameter 9** (67 groups searched exhaustively, the other 96 excluded by the abelian-quotient bound) |
 | metacyclic Haar graphs, orders 2,486..2,530 missing from the library | 46 groups certified "no cost <= 1" | all 263 split groups (d >= 3, \|G/G'\| <= 309) exhaustive: no cost 0 |
 | non-metacyclic solvable, missing orders | a few by hand | 368 groups exhaustive: no cost 0 (partial coverage, see below) |
-| non-solvable, order 2,520 | A7 6, S5 x F21 8, PSL(2,8) x C5 8 | all 18 groups listed below exhaustive; **new best SL(2,5) x F21: exact minimum 4 (n = 5,040)** |
-| (b) 5,050, Z_101 x\| Z_25 | minimum 2 | minimum 2 with 2 isomorphism classes; the missed pair always lies in the conjugacy classes y^(+-6) or y^(+-9) (cosets of the kernel), never in the kernel; parity lemma explains why 2 and not 1 |
+| non-solvable, order 2,520 | A7 6, S5 x F21 8, PSL(2,8) x C5 8 | every group listed below exhaustive (16 new ones); **new best SL(2,5) x F21: exact minimum 4 (n = 5,040)** |
+| (b) 5,050, Z_101 x\| Z_25 | minimum 2 | minimum 2, two classes of graphs (by invariants); the missed pair always lies in the conjugacy classes y^(+-6) or y^(+-9) (cosets of the kernel), never in the kernel; parity lemma explains why 2 and not 1 |
 | 4,992 walls | central involution always far (sampled) | **exact: all 184 / 96 cost-4 sets miss the central involution on both sides; forcing it costs 8 / 12** |
 | (a) surgery at 4,972 | 160 far pairs (annealed) | **149 by design**, exhaustive over all 41,040 "linked" designs; every remaining far pair is a slack-0 critical pair of a deleted edge |
-| hub types (point stabilisers) | bi-coset of simple groups 15-30 | bi-coset of Frobenius / metacyclic groups: >= 16 (exhaustive); one-sided stabilisers and cubic-Haar-plus-hubs: screens 17-30 |
+| hub types (point stabilisers) | bi-coset of simple groups 15-30 | bi-coset of Frobenius / metacyclic groups: >= 16 (exhaustive); one-sided stabilisers and cubic-Haar-plus-hubs: screens, best 17 and 25 |
 
 Verified graph files (all apsp-checked by me): the record rebuilt from hx's output (`seeds/valid4970.edges`, VALID at 9,
 INVALID at 8) and a new diameter-9 Haar graph below the record, Z_61 x|_8 Z_40 at n = 4,880 (`r2/c/g2440_61_40_8.edges`,
@@ -57,7 +57,8 @@ h = 2 (Z_101 x| Z_50) and h = 4 (Z_101 x| Z_100); since gcd(h, 25) = 1 both are 
 h-invariant S, a subfamily, so they cannot do better than 2 (card c6 found 16 there, exhaustively).
 
 **Fibre counts.** For S with j-parts {0,3,7,15} the formal word count per fibre is 372-415 (total = 9,841, the Moore
-count: no forced coincidences at all), and the actual multiplicities in the missed fibre are 3-12 with a single 0. So
+count: no forced coincidences at all), and the actual multiplicities of the 101 elements of the missed fibre are mostly 3-8 (one element is hit 0 times,
+one once, one twice). So
 the miss is not a shortage of words in a fibre but a collision pattern: the minimum is luck, not a structural wall.
 The record is the same kind of object: its group has a single cost-0 graph up to the invariants (24 canonical hits, one
 class), and that graph has girth >= 10 (its same-side layer sizes are 1, 12, 108, 902, 1,462 against the Moore
@@ -71,11 +72,12 @@ class), and that graph has girth >= 10 (its same-side layer sizes are 1, 12, 108
 - Orders missing from the library (2,488, 2,490, 2,492, 2,496, 2,499, 2,500, 2,502, 2,504, 2,508, 2,511, 2,512,
   2,516, 2,520, 2,528, 2,530): card c2 certified all 263 split metacyclic groups (d >= 3, |G/G'| <= 309); card c7 368
   non-metacyclic solvable groups built as semidirect and direct products; cards c1 and r2a every non-solvable group of
-  order 2,520 we could list (A7; A6 x C7; PSL(2,7) x C15; SL(2,5) x C21 and x F21; A5 x X for the six groups X of
-  order 42 and A5 x C7 x S3; S5 x C21, S5 x F21; the fibred products S5 x_C2 X for X = D21, C7:C6, C3 x D7, C7 x S3;
+  order 2,520 we could list (A7; A6 x C7; PSL(2,7) x C15; SL(2,5) x C21 and x F21; A5 x X for all six groups X of
+  order 42; S5 x C21, S5 x F21; the fibred products S5 x_C2 X for X = D21, C7:C6, C3 x D7, C7 x S3;
   PSL(2,8) x C5 from handsoff) plus A5 x C43 (2,580) and PSL(2,11) x C4, x C2^2 (2,640). No cost 0 anywhere.
   Exact minima: SL(2,5) x F21 4, A7 6, S5 x C21 7, A6 x C7 8, S5 x F21 8, A5 x C7 x S3 8, A5 x C2 x F21 9,
-  PSL(2,7) x C15 10, the rest > 8 or > 10. Not covered: groups of order 2,496 and 2,500 beyond direct products and
+  PSL(2,7) x C15 10, the rest > 8 or > 10. For 2,532..2,600 card r2e certified the 245 split metacyclic groups of
+  the orders missing from the library. Not covered: groups of order 2,496 and 2,500 beyond direct products and
   sampled P:C4 actions, some solvable 2,520 groups, non-split metacyclic groups of the missing orders.
 - Capacity by twist (tools/capacity): for a metacyclic group whose kernel action has order d, |(SS^-1)^4| is at most
   309, 1,849, 4,429, 6,157, 7,581, 8,441, 9,003, 9,281 for d = 1..8 (9,793 at d = 12; 9,841 is the Moore count).
@@ -114,8 +116,8 @@ needs a genuine shortcut, that is, one of the other new neighbours within distan
 distance to the edge). For the "balanced" slack-0 pairs (both ends at distance >= 2 from the edge; 33-41 per edge) that
 means a new neighbour within distance 2-4 of a specific vertex: with only six other new neighbours, most stay far.
 
-**Design instead of annealing.** The annealed 160-pair surgery of the hands-off squad turns out to have a clear
-structure (reproduced here: 161): its four deleted edges are the 1st, 3rd, 5th and 7th edges of a path of length 7, so
+**Design instead of annealing.** The hands-off annealer (w6's surgsa.c, rerun here: 161 far pairs) converges to a clear
+structure: its four deleted edges are the 1st, 3rd, 5th and 7th edges of a path of length 7, so
 every deleted edge has a detour of length 3 through a kept path edge and a new vertex. (A 6-cycle would be the natural
 "closed" version, but the record has girth >= 10.) Exhaustive design searches:
 - alternating paths of length 7 from a fixed vertex (2,916 designs; vertex-transitivity makes this all of them): best
@@ -127,8 +129,9 @@ every deleted edge has a detour of length 3 through a kept path edge and a new v
   families: 294.
 In the best design all 149 far pairs are slack-0 critical pairs of the deleted edges (27 with split (0,7), 41 (1,6),
 32 (2,5), 32 (3,4)) plus 17 pairs at the new vertices (analysis/classify_surgeries.txt). The detour design kills every
-critical pair with slack >= 2, and the slack-0 pairs are what is left. A 2-vertex surgery on this graph cannot get
-near 0: it would need about 140 shortcut repairs from six vertices.
+critical pair with slack >= 2, and the slack-0 pairs are what is left. This is not a proof that no 2-vertex surgery
+reaches 0, but every design we could enumerate stops near 150, and getting to 0 would take about 140 more shortcut
+repairs from the same six new neighbours.
 
 ## Squad rounds and the Opus / Haiku split
 
@@ -140,7 +143,7 @@ and every command was kept under 110 s (no Haiku idled in the background this ti
 |---|---|---|
 | director, before the squad | hx, GAP, SmallGroups sweep, bicos, capacity | 67 groups of order 2,486..2,600 certified; bi-coset Frobenius >= 88 |
 | r1 (8 Haikus, 23:10-00:20Z) | c1-c8 above | SL(2,5) x F21 = 4 (new); 263 + 368 groups certified; wall structure at 4,992; luck curve; surgery 149 |
-| r2 (5 Haikus, 23:35-01:00Z) | r2a-r2e | non-direct 2,520 groups > 8; mixed / hub screens 17 / 25; 4,880 cost 0 below the record; audit 8 of 9 confirmed; [r2e] |
+| r2 (5 Haikus, 23:35-01:00Z) | r2a-r2e | non-direct 2,520 groups > 8; mixed / hub screens 17 / 25; 4,880 cost 0 below the record; audit 8 of 9 confirmed; 245 more split metacyclic groups of 2,532..2,600 certified |
 | director, during the squad | design searches, slack analysis, verification | surgery 149 exhaustive over 41,040 designs; every claimed VALID graph re-checked with apsp |
 
 Verification: every graph called VALID here was checked by me with tools/apsp.c (the coordinator's apsp.c) at D = 9 and
@@ -152,8 +155,45 @@ random ">0" groups; all agree (one more was too slow to finish). It also found o
 
 Spend (tools/session_usage.py --since 2026-11-01T22:39:07Z --arm deep-49, log research/squads/usage/deep-49.jsonl):
 
-[usage table]
+| model | messages | output tokens | cache-read tokens | cache-write tokens | budget units | share |
+|---|---|---|---|---|---|---|
+| Opus (director) | 151 | 301,541 | 50.3 M | 0.43 M | 1.415 | 94.5% |
+| Haiku (14 cards) | 721 | 1,019,344 | 91.9 M | 1.67 M | 0.082 | 5.5% |
+| total | | | | | 1.497 | |
+
+Measured at 00:44Z when the last card had handed back; writing this report adds a few hundredths of Opus. The Haikus
+wrote 3.4 times as many output tokens as Opus for 6% of the units. Opus spend is almost all re-reading its own long
+context (50 M cache-read tokens over 151 calls): the tools, the analyses and the card writing happened in one long
+conversation, so every later call was expensive.
 
 ## Comparison with the hands-off run on the same cell
 
-[fill in]
+Same cell, same result: neither run found a graph on more than 4,970 vertices.
+
+| | handsoff-49 (Oct 31) | deep-49 (Nov 1) |
+|---|---|---|
+| wall time | about 5.7 h | about 2.1 h |
+| spend (units) | 1.049 (Opus 58%, Haiku 42%) | 1.50 (Opus 94%, Haiku 6%) |
+| Haiku workers | 26, about 95 min each | 14, 20-70 min each |
+| groups with an exact Haar answer near 2,500 | about 80 (33 metacyclic minima, 46 "cost >= 2", A7, S5 x F21, PSL(2,8) x C5, one order-2,500 group) | about 1,000 (67 library groups, 263 + 245 split metacyclic, 368 non-metacyclic solvable, ~20 non-solvable, 22 Frobenius minima, 46 below the record) |
+| best near misses | 5,050 cost 2; 4,992 / 5,000 cost 4; 4,972 surgery 160; 5,040 A7 cost 6 | the same plus 5,040 SL(2,5) x F21 cost 4 and 4,972 surgery 149 |
+| the walls | central involution always far (sampled) | exact: always missed, forcing it costs 8 / 12; the 5,050 misses only in classes +-6 / +-9 |
+
+What made the difference was not the squad but the first hour of director work: GAP turned out to be installable with
+apt, and a general exact searcher with the Aut(G) reduction made "one group" a 10-60 s job instead of a 15-minute
+annealing card. After that, certificates were cheap, uniform breadth that Haiku cards could run without judgement, and
+the Haikus did it well (14 cards, no idle background waits, every claim re-checked by an auditor card). The hands-off
+run had to build every group by hand and could only screen, so its negative results were mostly floors of heuristics.
+
+What the hands-off run did better: it tried more kinds of structure (lifts of W(3) and H(3), large voltage bases,
+compound graphs, mixed orbits on A7), each over a longer stretch, and it produced several real ideas on its own (the
+H(3) girth argument, the central-involution picture, the symmetric lift ansatz). This run did not revisit those families;
+it went deep on the three leads it was given and closed them.
+
+Cost: this run was dearer in units (1.50 against 1.05) in less than half the time, because nearly all of it was Opus
+context. An Opus-led run is the better buy when the useful work is a few precise tools and the rest is mechanical; the
+hands-off shape buys more independent exploration per unit. For this cell the leads are now closed in the Haar world:
+the cost-0 Haar groups found near this size (2,211, 2,265, 2,440, 2,485) are isolated lucky events, no group of order
+2,486..2,600 that we could build has one, and the local repairs of the record stop at 149 far pairs for a clear reason.
+A record would need a construction that is neither a Haar graph nor a small modification of one; nothing tried here, or in
+handsoff-49, points to which.

@@ -1491,451 +1491,1223 @@
 "mintext": "MIN >0 evals 10148119 full 780"
 },
 "g2560_80_32_47": {
-"status": "run",
-"next": 1,
+"status": "done",
+"next": 72,
 "gap_to": true,
 "gap_why": "rc=-9 timeout=True",
 "build": "mkmeta",
 "naut": 5,
 "naut_ok": 5,
-"K": null,
+"K": 71,
 "hits": 0,
-"stuck": 0
+"stuck": 0,
+"mintext": "MIN >0 evals 14670169 full 474"
 },
 "g2560_80_32_53": {
-"status": "new",
-"next": 1
+"status": "done",
+"next": 54,
+"gap_to": true,
+"gap_why": "rc=-9 timeout=True",
+"build": "mkmeta",
+"naut": 5,
+"naut_ok": 5,
+"K": 53,
+"hits": 0,
+"stuck": 0,
+"mintext": "MIN >0 evals 7269103 full 750"
 },
 "g2560_80_32_57": {
-"status": "new",
-"next": 1
+"status": "done",
+"next": 54,
+"gap_to": true,
+"gap_why": "rc=-9 timeout=True",
+"build": "mkmeta",
+"naut": 5,
+"naut_ok": 5,
+"K": 53,
+"hits": 0,
+"stuck": 0,
+"mintext": "MIN >0 evals 7269103 full 172"
 },
 "g2560_128_20_31": {
-"status": "new",
-"next": 1
+"status": "done",
+"next": 34,
+"build": "gap",
+"naut": 14,
+"naut_ok": 14,
+"K": 33,
+"hits": 0,
+"stuck": 0,
+"mintext": "MIN >0 evals 6777637 full 23"
 },
 "g2560_160_16_7": {
-"status": "new",
-"next": 1
+"status": "done",
+"next": 50,
+"build": "gap",
+"naut": 7,
+"naut_ok": 7,
+"K": 49,
+"hits": 0,
+"stuck": 0,
+"mintext": "MIN >0 evals 5108949 full 15"
 },
 "g2560_160_16_9": {
-"status": "new",
-"next": 1
+"status": "done",
+"next": 31,
+"build": "gap",
+"naut": 6,
+"naut_ok": 6,
+"K": 30,
+"hits": 0,
+"stuck": 0,
+"mintext": "MIN >0 evals 2555420 full 12"
 },
 "g2560_160_16_17": {
-"status": "new",
-"next": 1
+"status": "done",
+"next": 37,
+"build": "gap",
+"naut": 7,
+"naut_ok": 7,
+"K": 36,
+"hits": 0,
+"stuck": 0,
+"mintext": "MIN >0 evals 2969574 full 12"
 },
 "g2560_160_16_39": {
-"status": "new",
-"next": 1
+"status": "done",
+"next": 58,
+"build": "gap",
+"naut": 7,
+"naut_ok": 7,
+"K": 57,
+"hits": 0,
+"stuck": 0,
+"mintext": "MIN >0 evals 8455046 full 10"
 },
 "g2560_160_16_47": {
-"status": "new",
-"next": 1
+"status": "done",
+"next": 56,
+"build": "gap",
+"naut": 7,
+"naut_ok": 7,
+"K": 55,
+"hits": 0,
+"stuck": 0,
+"mintext": "MIN >0 evals 6974100 full 9"
 },
 "g2560_160_16_57": {
-"status": "new",
-"next": 1
+"status": "done",
+"next": 37,
+"build": "gap",
+"naut": 7,
+"naut_ok": 7,
+"K": 36,
+"hits": 0,
+"stuck": 0,
+"mintext": "MIN >0 evals 2967316 full 20"
 },
 "g2560_160_16_63": {
-"status": "new",
-"next": 1
+"status": "done",
+"next": 58,
+"build": "gap",
+"naut": 7,
+"naut_ok": 7,
+"K": 57,
+"hits": 0,
+"stuck": 0,
+"mintext": "MIN >0 evals 8149914 full 11"
 },
 "g2560_160_16_71": {
-"status": "new",
-"next": 1
+"status": "done",
+"next": 60,
+"build": "gap",
+"naut": 13,
+"naut_ok": 13,
+"K": 59,
+"hits": 0,
+"stuck": 0,
+"mintext": "MIN >0 evals 13318497 full 23"
 },
 "g2560_160_16_87": {
-"status": "new",
-"next": 1
+"status": "done",
+"next": 50,
+"build": "gap",
+"naut": 7,
+"naut_ok": 7,
+"K": 49,
+"hits": 0,
+"stuck": 0,
+"mintext": "MIN >0 evals 5108949 full 13"
 },
 "g2560_160_16_137": {
-"status": "new",
-"next": 1
+"status": "done",
+"next": 37,
+"build": "gap",
+"naut": 7,
+"naut_ok": 7,
+"K": 36,
+"hits": 0,
+"stuck": 0,
+"mintext": "MIN >0 evals 2967316 full 18"
 },
 "g2560_320_8_17": {
-"status": "new",
-"next": 1
+"status": "done",
+"next": 41,
+"build": "gap",
+"naut": 7,
+"naut_ok": 7,
+"K": 40,
+"hits": 0,
+"stuck": 0,
+"mintext": "MIN >0 evals 6016422 full 37"
 },
 "g2560_320_8_33": {
-"status": "new",
-"next": 1
+"status": "done",
+"next": 41,
+"build": "gap",
+"naut": 7,
+"naut_ok": 7,
+"K": 40,
+"hits": 0,
+"stuck": 0,
+"mintext": "MIN >0 evals 6016422 full 27"
 },
 "g2560_320_8_47": {
-"status": "new",
-"next": 1
+"status": "done",
+"next": 35,
+"build": "gap",
+"naut": 6,
+"naut_ok": 6,
+"K": 34,
+"hits": 0,
+"stuck": 0,
+"mintext": "MIN >0 evals 3175872 full 15"
 },
 "g2560_320_8_49": {
-"status": "new",
-"next": 1
+"status": "done",
+"next": 43,
+"build": "gap",
+"naut": 7,
+"naut_ok": 7,
+"K": 42,
+"hits": 0,
+"stuck": 0,
+"mintext": "MIN >0 evals 5623542 full 21"
 },
 "g2560_320_8_63": {
-"status": "new",
-"next": 1
+"status": "done",
+"next": 41,
+"build": "gap",
+"naut": 6,
+"naut_ok": 6,
+"K": 40,
+"hits": 0,
+"stuck": 0,
+"mintext": "MIN >0 evals 5356657 full 9"
 },
 "g2560_320_8_79": {
-"status": "new",
-"next": 1
+"status": "done",
+"next": 44,
+"build": "gap",
+"naut": 6,
+"naut_ok": 6,
+"K": 43,
+"hits": 0,
+"stuck": 0,
+"mintext": "MIN >0 evals 5565560 full 7"
 },
 "g2560_320_8_111": {
-"status": "new",
-"next": 1
+"status": "done",
+"next": 46,
+"build": "gap",
+"naut": 14,
+"naut_ok": 14,
+"K": 45,
+"hits": 0,
+"stuck": 0,
+"mintext": "MIN >0 evals 8608291 full 23"
 },
 "g2560_320_8_177": {
-"status": "new",
-"next": 1
+"status": "done",
+"next": 41,
+"build": "gap",
+"naut": 7,
+"naut_ok": 7,
+"K": 40,
+"hits": 0,
+"stuck": 0,
+"mintext": "MIN >0 evals 6016422 full 30"
 },
 "g2560_320_8_207": {
-"status": "new",
-"next": 1
+"status": "done",
+"next": 35,
+"build": "gap",
+"naut": 6,
+"naut_ok": 6,
+"K": 34,
+"hits": 0,
+"stuck": 0,
+"mintext": "MIN >0 evals 3175872 full 19"
 },
 "g2560_320_8_223": {
-"status": "new",
-"next": 1
+"status": "done",
+"next": 39,
+"build": "gap",
+"naut": 6,
+"naut_ok": 6,
+"K": 38,
+"hits": 0,
+"stuck": 0,
+"mintext": "MIN >0 evals 4401578 full 18"
 },
 "g2560_640_4_31": {
-"status": "new",
-"next": 1
+"status": "done",
+"next": 34,
+"build": "gap",
+"naut": 14,
+"naut_ok": 14,
+"K": 33,
+"hits": 0,
+"stuck": 0,
+"mintext": "MIN >0 evals 6788583 full 20"
 },
 "g2560_640_4_33": {
-"status": "new",
-"next": 1
+"status": "done",
+"next": 35,
+"build": "gap",
+"naut": 5,
+"naut_ok": 5,
+"K": 34,
+"hits": 0,
+"stuck": 0,
+"mintext": "MIN >0 evals 9314149 full 65"
 },
 "g2560_640_4_63": {
-"status": "new",
-"next": 1
+"status": "done",
+"next": 25,
+"build": "gap",
+"naut": 5,
+"naut_ok": 5,
+"K": 24,
+"hits": 0,
+"stuck": 0,
+"mintext": "MIN >0 evals 3101737 full 9"
 },
 "g2560_640_4_127": {
-"status": "new",
-"next": 1
+"status": "done",
+"next": 26,
+"build": "gap",
+"naut": 5,
+"naut_ok": 5,
+"K": 25,
+"hits": 0,
+"stuck": 0,
+"mintext": "MIN >0 evals 3784347 full 7"
 },
 "g2560_640_4_159": {
-"status": "new",
-"next": 1
+"status": "done",
+"next": 31,
+"build": "gap",
+"naut": 6,
+"naut_ok": 6,
+"K": 30,
+"hits": 0,
+"stuck": 0,
+"mintext": "MIN >0 evals 4436730 full 6"
 },
 "g2560_640_4_193": {
-"status": "new",
-"next": 1
+"status": "done",
+"next": 35,
+"build": "gap",
+"naut": 5,
+"naut_ok": 5,
+"K": 34,
+"hits": 0,
+"stuck": 0,
+"mintext": "MIN >0 evals 9314149 full 32"
 },
 "g2560_640_4_223": {
-"status": "new",
-"next": 1
+"status": "done",
+"next": 27,
+"build": "gap",
+"naut": 5,
+"naut_ok": 5,
+"K": 26,
+"hits": 0,
+"stuck": 0,
+"mintext": "MIN >0 evals 3577564 full 21"
 },
 "g2560_640_4_289": {
-"status": "new",
-"next": 1
+"status": "done",
+"next": 39,
+"build": "gap",
+"naut": 6,
+"naut_ok": 6,
+"K": 38,
+"hits": 0,
+"stuck": 0,
+"mintext": "MIN >0 evals 9194160 full 35"
 },
 "g2560_640_4_353": {
-"status": "new",
-"next": 1
+"status": "done",
+"next": 35,
+"build": "gap",
+"naut": 5,
+"naut_ok": 5,
+"K": 34,
+"hits": 0,
+"stuck": 0,
+"mintext": "MIN >0 evals 9314149 full 52"
 },
 "g2560_640_4_543": {
-"status": "new",
-"next": 1
+"status": "done",
+"next": 27,
+"build": "gap",
+"naut": 5,
+"naut_ok": 5,
+"K": 26,
+"hits": 0,
+"stuck": 0,
+"mintext": "MIN >0 evals 3577564 full 22"
 },
 "g2580_15_172_2": {
-"status": "new",
-"next": 1
+"status": "done",
+"next": 16,
+"build": "gap",
+"naut": 4,
+"naut_ok": 4,
+"K": 15,
+"hits": 0,
+"stuck": 0,
+"mintext": "MIN >0 evals 6540006 full 110"
 },
 "g2580_215_12_42": {
-"status": "new",
-"next": 1
+"status": "done",
+"next": 16,
+"build": "gap",
+"naut": 4,
+"naut_ok": 4,
+"K": 15,
+"hits": 0,
+"stuck": 0,
+"mintext": "MIN >0 evals 2430540 full 55"
 },
 "g2580_645_4_128": {
-"status": "new",
-"next": 1
+"status": "done",
+"next": 14,
+"build": "gap",
+"naut": 4,
+"naut_ok": 4,
+"K": 13,
+"hits": 0,
+"stuck": 0,
+"mintext": "MIN >0 evals 2104202 full 23"
 },
 "g2580_645_4_173": {
-"status": "new",
-"next": 1
+"status": "done",
+"next": 16,
+"build": "gap",
+"naut": 4,
+"naut_ok": 4,
+"K": 15,
+"hits": 0,
+"stuck": 0,
+"mintext": "MIN >0 evals 6540006 full 99"
 },
 "g2580_645_4_343": {
-"status": "new",
-"next": 1
+"status": "done",
+"next": 16,
+"build": "gap",
+"naut": 4,
+"naut_ok": 4,
+"K": 15,
+"hits": 0,
+"stuck": 0,
+"mintext": "MIN >0 evals 2430540 full 59"
 },
 "g2584_17_152_4": {
-"status": "new",
-"next": 1
+"status": "done",
+"next": 16,
+"build": "gap",
+"naut": 4,
+"naut_ok": 4,
+"K": 15,
+"hits": 0,
+"stuck": 0,
+"mintext": "MIN >0 evals 3315285 full 62"
 },
 "g2584_34_76_13": {
-"status": "new",
-"next": 1
+"status": "done",
+"next": 16,
+"build": "gap",
+"naut": 4,
+"naut_ok": 4,
+"K": 15,
+"hits": 0,
+"stuck": 0,
+"mintext": "MIN >0 evals 3371668 full 35"
 },
 "g2584_323_8_115": {
-"status": "new",
-"next": 1
+"status": "done",
+"next": 16,
+"build": "gap",
+"naut": 4,
+"naut_ok": 4,
+"K": 15,
+"hits": 0,
+"stuck": 0,
+"mintext": "MIN >0 evals 3315285 full 56"
 },
 "g2584_323_8_132": {
-"status": "new",
-"next": 1
+"status": "done",
+"next": 14,
+"build": "gap",
+"naut": 4,
+"naut_ok": 4,
+"K": 13,
+"hits": 0,
+"stuck": 0,
+"mintext": "MIN >0 evals 1338945 full 51"
 },
 "g2584_646_4_115": {
-"status": "new",
-"next": 1
+"status": "done",
+"next": 16,
+"build": "gap",
+"naut": 4,
+"naut_ok": 4,
+"K": 15,
+"hits": 0,
+"stuck": 0,
+"mintext": "MIN >0 evals 3371668 full 35"
 },
 "g2584_646_4_455": {
-"status": "new",
-"next": 1
+"status": "done",
+"next": 14,
+"build": "gap",
+"naut": 4,
+"naut_ok": 4,
+"K": 13,
+"hits": 0,
+"stuck": 0,
+"mintext": "MIN >0 evals 1377233 full 13"
 },
 "g2600_13_200_5": {
-"status": "new",
-"next": 1
+"status": "done",
+"next": 24,
+"build": "gap",
+"naut": 4,
+"naut_ok": 4,
+"K": 23,
+"hits": 0,
+"stuck": 0,
+"mintext": "MIN >0 evals 5372014 full 32"
 },
 "g2600_25_104_7": {
-"status": "new",
-"next": 1
+"status": "done",
+"next": 20,
+"build": "gap",
+"naut": 5,
+"naut_ok": 5,
+"K": 19,
+"hits": 0,
+"stuck": 0,
+"mintext": "MIN >0 evals 4241565 full 64"
 },
 "g2600_26_100_5": {
-"status": "new",
-"next": 1
+"status": "done",
+"next": 24,
+"build": "gap",
+"naut": 4,
+"naut_ok": 4,
+"K": 23,
+"hits": 0,
+"stuck": 0,
+"mintext": "MIN >0 evals 5529847 full 26"
 },
 "g2600_50_52_7": {
-"status": "new",
-"next": 1
+"status": "done",
+"next": 20,
+"build": "gap",
+"naut": 5,
+"naut_ok": 5,
+"K": 19,
+"hits": 0,
+"stuck": 0,
+"mintext": "MIN >0 evals 4376804 full 34"
 },
 "g2600_65_40_8": {
-"status": "new",
-"next": 1
+"status": "done",
+"next": 24,
+"build": "gap",
+"naut": 5,
+"naut_ok": 5,
+"K": 23,
+"hits": 0,
+"stuck": 0,
+"mintext": "MIN >0 evals 3082963 full 162"
 },
 "g2600_65_40_12": {
-"status": "new",
-"next": 1
+"status": "done",
+"next": 28,
+"build": "gap",
+"naut": 5,
+"naut_ok": 5,
+"K": 27,
+"hits": 0,
+"stuck": 0,
+"mintext": "MIN >0 evals 5451531 full 39"
 },
 "g2600_65_40_18": {
-"status": "new",
-"next": 1
+"status": "done",
+"next": 24,
+"build": "gap",
+"naut": 5,
+"naut_ok": 5,
+"K": 23,
+"hits": 0,
+"stuck": 0,
+"mintext": "MIN >0 evals 3082963 full 132"
 },
 "g2600_65_40_21": {
-"status": "new",
-"next": 1
+"status": "done",
+"next": 16,
+"build": "gap",
+"naut": 6,
+"naut_ok": 6,
+"K": 15,
+"hits": 0,
+"stuck": 0,
+"mintext": "MIN >0 evals 1013978 full 22"
 },
 "g2600_65_40_34": {
-"status": "new",
-"next": 1
+"status": "done",
+"next": 28,
+"gap_to": true,
+"gap_why": "rc=-9 timeout=True",
+"build": "mkmeta",
+"naut": 6,
+"naut_ok": 6,
+"K": 27,
+"hits": 0,
+"stuck": 0,
+"mintext": "MIN >0 evals 5007086 full 4641"
 },
 "g2600_130_20_21": {
-"status": "new",
-"next": 1
+"status": "done",
+"next": 16,
+"build": "gap",
+"naut": 4,
+"naut_ok": 4,
+"K": 15,
+"hits": 0,
+"stuck": 0,
+"mintext": "MIN >0 evals 1047469 full 18"
 },
 "g2600_130_20_47": {
-"status": "new",
-"next": 1
+"status": "done",
+"next": 24,
+"build": "gap",
+"naut": 5,
+"naut_ok": 5,
+"K": 23,
+"hits": 0,
+"stuck": 0,
+"mintext": "MIN >0 evals 3205376 full 22"
 },
 "g2600_130_20_57": {
-"status": "new",
-"next": 1
+"status": "done",
+"next": 24,
+"build": "gap",
+"naut": 5,
+"naut_ok": 5,
+"K": 23,
+"hits": 0,
+"stuck": 0,
+"mintext": "MIN >0 evals 3205376 full 22"
 },
 "g2600_130_20_77": {
-"status": "new",
-"next": 1
+"status": "done",
+"next": 28,
+"build": "gap",
+"naut": 5,
+"naut_ok": 5,
+"K": 27,
+"hits": 0,
+"stuck": 0,
+"mintext": "MIN >0 evals 5657775 full 33"
 },
 "g2600_130_20_99": {
-"status": "new",
-"next": 1
+"status": "done",
+"next": 28,
+"build": "gap",
+"naut": 5,
+"naut_ok": 5,
+"K": 27,
+"hits": 0,
+"stuck": 0,
+"mintext": "MIN >0 evals 4333681 full 64"
 },
 "g2600_325_8_18": {
-"status": "new",
-"next": 1
+"status": "done",
+"next": 16,
+"build": "gap",
+"naut": 5,
+"naut_ok": 5,
+"K": 15,
+"hits": 0,
+"stuck": 0,
+"mintext": "MIN >0 evals 1142780 full 9"
 },
 "g2600_325_8_57": {
-"status": "new",
-"next": 1
+"status": "done",
+"next": 16,
+"build": "gap",
+"naut": 5,
+"naut_ok": 5,
+"K": 15,
+"hits": 0,
+"stuck": 0,
+"mintext": "MIN >0 evals 1142780 full 12"
 },
 "g2600_325_8_99": {
-"status": "new",
-"next": 1
+"status": "done",
+"next": 20,
+"build": "gap",
+"naut": 5,
+"naut_ok": 5,
+"K": 19,
+"hits": 0,
+"stuck": 0,
+"mintext": "MIN >0 evals 2020190 full 17"
 },
 "g2600_325_8_118": {
-"status": "new",
-"next": 1
+"status": "done",
+"next": 20,
+"build": "gap",
+"naut": 5,
+"naut_ok": 5,
+"K": 19,
+"hits": 0,
+"stuck": 0,
+"mintext": "MIN >0 evals 4241565 full 84"
 },
 "g2600_325_8_151": {
-"status": "new",
-"next": 1
+"status": "done",
+"next": 24,
+"build": "gap",
+"naut": 4,
+"naut_ok": 4,
+"K": 23,
+"hits": 0,
+"stuck": 0,
+"mintext": "MIN >0 evals 5372014 full 31"
 },
 "g2600_325_8_168": {
-"status": "new",
-"next": 1
+"status": "done",
+"next": 18,
+"build": "gap",
+"naut": 5,
+"naut_ok": 5,
+"K": 17,
+"hits": 0,
+"stuck": 0,
+"mintext": "MIN >0 evals 1876499 full 83"
 },
 "g2600_650_4_57": {
-"status": "new",
-"next": 1
+"status": "done",
+"next": 16,
+"build": "gap",
+"naut": 5,
+"naut_ok": 5,
+"K": 15,
+"hits": 0,
+"stuck": 0,
+"mintext": "MIN >0 evals 1180071 full 5"
 },
 "g2600_650_4_99": {
-"status": "new",
-"next": 1
+"status": "done",
+"next": 20,
+"build": "gap",
+"naut": 5,
+"naut_ok": 5,
+"K": 19,
+"hits": 0,
+"stuck": 0,
+"mintext": "MIN >0 evals 2107647 full 9"
 },
 "g2600_650_4_151": {
-"status": "new",
-"next": 1
+"status": "done",
+"next": 24,
+"build": "gap",
+"naut": 4,
+"naut_ok": 4,
+"K": 23,
+"hits": 0,
+"stuck": 0,
+"mintext": "MIN >0 evals 5338818 full 35"
 },
 "g2600_650_4_157": {
-"status": "new",
-"next": 1
+"status": "done",
+"next": 20,
+"build": "gap",
+"naut": 5,
+"naut_ok": 5,
+"K": 19,
+"hits": 0,
+"stuck": 0,
+"mintext": "MIN >0 evals 4164092 full 42"
 },
 "g2600_650_4_207": {
-"status": "new",
-"next": 1
+"status": "done",
+"next": 18,
+"build": "gap",
+"naut": 5,
+"naut_ok": 5,
+"K": 17,
+"hits": 0,
+"stuck": 0,
+"mintext": "MIN >0 evals 1950531 full 9"
 },
 "g2600_650_4_307": {
-"status": "new",
-"next": 1
+"status": "done",
+"next": 16,
+"build": "gap",
+"naut": 5,
+"naut_ok": 5,
+"K": 15,
+"hits": 0,
+"stuck": 0,
+"mintext": "MIN >0 evals 1180071 full 5"
 },
 "g2532_211_12_14": {
-"status": "new",
-"next": 1
+"status": "done",
+"next": 12,
+"build": "gap",
+"naut": 3,
+"naut_ok": 3,
+"K": 11,
+"hits": 0,
+"stuck": 0,
+"mintext": "MIN >0 evals 1158009 full 113"
 },
 "g2532_422_6_225": {
-"status": "new",
-"next": 1
+"status": "done",
+"next": 8,
+"build": "gap",
+"naut": 3,
+"naut_ok": 3,
+"K": 7,
+"hits": 0,
+"stuck": 0,
+"mintext": "MIN >0 evals 578805 full 80"
 },
 "g2532_844_3_225": {
-"status": "new",
-"next": 1
+"status": "done",
+"next": 12,
+"build": "gap",
+"naut": 3,
+"naut_ok": 3,
+"K": 11,
+"hits": 0,
+"stuck": 0,
+"mintext": "MIN >0 evals 1158009 full 113"
 },
 "g2535_13_195_3": {
-"status": "new",
-"next": 1
+"status": "done",
+"next": 16,
+"build": "gap",
+"naut": 4,
+"naut_ok": 4,
+"K": 15,
+"hits": 0,
+"stuck": 0,
+"mintext": "MIN >0 evals 3707163 full 32"
 },
 "g2535_65_39_16": {
-"status": "new",
-"next": 1
+"status": "done",
+"next": 16,
+"build": "gap",
+"naut": 4,
+"naut_ok": 4,
+"K": 15,
+"hits": 0,
+"stuck": 0,
+"mintext": "MIN >0 evals 3707163 full 32"
 },
 "g2535_169_15_22": {
-"status": "new",
-"next": 1
+"status": "done",
+"next": 10,
+"build": "gap",
+"naut": 4,
+"naut_ok": 4,
+"K": 9,
+"hits": 0,
+"stuck": 0,
+"mintext": "MIN >0 evals 892174 full 147"
 },
 "g2535_845_3_146": {
-"status": "new",
-"next": 1
+"status": "done",
+"next": 10,
+"build": "gap",
+"naut": 4,
+"naut_ok": 4,
+"K": 9,
+"hits": 0,
+"stuck": 0,
+"mintext": "MIN >0 evals 892174 full 125"
 },
 "g2562_61_42_13": {
-"status": "new",
-"next": 1
+"status": "done",
+"next": 16,
+"build": "gap",
+"naut": 3,
+"naut_ok": 3,
+"K": 15,
+"hits": 0,
+"stuck": 0,
+"mintext": "MIN >0 evals 1997626 full 99"
 },
 "g2562_122_21_13": {
-"status": "new",
-"next": 1
+"status": "done",
+"next": 16,
+"build": "gap",
+"naut": 3,
+"naut_ok": 3,
+"K": 15,
+"hits": 0,
+"stuck": 0,
+"mintext": "MIN >0 evals 1997626 full 99"
 },
 "g2562_427_6_74": {
-"status": "new",
-"next": 1
+"status": "done",
+"next": 12,
+"build": "gap",
+"naut": 3,
+"naut_ok": 3,
+"K": 11,
+"hits": 0,
+"stuck": 0,
+"mintext": "MIN >0 evals 1223498 full 28"
 },
 "g2562_427_6_135": {
-"status": "new",
-"next": 1
+"status": "done",
+"next": 12,
+"build": "gap",
+"naut": 3,
+"naut_ok": 3,
+"K": 11,
+"hits": 0,
+"stuck": 0,
+"mintext": "MIN >0 evals 1223498 full 27"
 },
 "g2562_427_6_169": {
-"status": "new",
-"next": 1
+"status": "done",
+"next": 16,
+"build": "gap",
+"naut": 3,
+"naut_ok": 3,
+"K": 15,
+"hits": 0,
+"stuck": 0,
+"mintext": "MIN >0 evals 1997626 full 87"
 },
 "g2562_854_3_135": {
-"status": "new",
-"next": 1
+"status": "done",
+"next": 12,
+"build": "gap",
+"naut": 3,
+"naut_ok": 3,
+"K": 11,
+"hits": 0,
+"stuck": 0,
+"mintext": "MIN >0 evals 1223498 full 27"
 },
 "g2562_854_3_169": {
-"status": "new",
-"next": 1
+"status": "done",
+"next": 16,
+"build": "gap",
+"naut": 3,
+"naut_ok": 3,
+"K": 15,
+"hits": 0,
+"stuck": 0,
+"mintext": "MIN >0 evals 1997626 full 87"
 },
 "g2562_854_3_501": {
-"status": "new",
-"next": 1
+"status": "done",
+"next": 12,
+"build": "gap",
+"naut": 3,
+"naut_ok": 3,
+"K": 11,
+"hits": 0,
+"stuck": 0,
+"mintext": "MIN >0 evals 1223498 full 28"
 },
 "g2565_19_135_7": {
-"status": "new",
-"next": 1
+"status": "done",
+"next": 24,
+"build": "gap",
+"naut": 3,
+"naut_ok": 3,
+"K": 23,
+"hits": 0,
+"stuck": 0,
+"mintext": "MIN >0 evals 4331664 full 25"
 },
 "g2565_57_45_7": {
-"status": "new",
-"next": 1
+"status": "done",
+"next": 20,
+"build": "gap",
+"naut": 4,
+"naut_ok": 4,
+"K": 19,
+"hits": 0,
+"stuck": 0,
+"mintext": "MIN >0 evals 2408889 full 11"
 },
 "g2565_95_27_11": {
-"status": "new",
-"next": 1
+"status": "done",
+"next": 24,
+"build": "gap",
+"naut": 3,
+"naut_ok": 3,
+"K": 23,
+"hits": 0,
+"stuck": 0,
+"mintext": "MIN >0 evals 4331664 full 25"
 },
 "g2565_171_15_7": {
-"status": "new",
-"next": 1
+"status": "done",
+"next": 20,
+"build": "gap",
+"naut": 4,
+"naut_ok": 4,
+"K": 19,
+"hits": 0,
+"stuck": 0,
+"mintext": "MIN >0 evals 2888795 full 184"
 },
 "g2565_171_15_64": {
-"status": "new",
-"next": 1
+"status": "done",
+"next": 20,
+"build": "gap",
+"naut": 4,
+"naut_ok": 4,
+"K": 19,
+"hits": 0,
+"stuck": 0,
+"mintext": "MIN >0 evals 2764927 full 34"
 },
 "g2565_171_15_106": {
-"status": "new",
-"next": 1
+"status": "done",
+"next": 20,
+"build": "gap",
+"naut": 4,
+"naut_ok": 4,
+"K": 19,
+"hits": 0,
+"stuck": 0,
+"mintext": "MIN >0 evals 2888795 full 153"
 },
 "g2565_285_9_106": {
-"status": "new",
-"next": 1
+"status": "done",
+"next": 20,
+"build": "gap",
+"naut": 4,
+"naut_ok": 4,
+"K": 19,
+"hits": 0,
+"stuck": 0,
+"mintext": "MIN >0 evals 2408889 full 11"
 },
 "g2565_855_3_106": {
-"status": "new",
-"next": 1
+"status": "done",
+"next": 20,
+"build": "gap",
+"naut": 4,
+"naut_ok": 4,
+"K": 19,
+"hits": 0,
+"stuck": 0,
+"mintext": "MIN >0 evals 2764927 full 171"
 },
 "g2565_855_3_391": {
-"status": "new",
-"next": 1
+"status": "done",
+"next": 20,
+"build": "gap",
+"naut": 4,
+"naut_ok": 4,
+"K": 19,
+"hits": 0,
+"stuck": 0,
+"mintext": "MIN >0 evals 2764927 full 231"
 },
 "g2565_855_3_406": {
-"status": "new",
-"next": 1
+"status": "done",
+"next": 20,
+"build": "gap",
+"naut": 4,
+"naut_ok": 4,
+"K": 19,
+"hits": 0,
+"stuck": 0,
+"mintext": "MIN >0 evals 2764927 full 34"
 },
 "g2574_13_198_3": {
-"status": "new",
-"next": 1
+"status": "done",
+"next": 32,
+"build": "gap",
+"naut": 3,
+"naut_ok": 3,
+"K": 31,
+"hits": 0,
+"stuck": 0,
+"mintext": "MIN >0 evals 9031600 full 14"
 },
 "g2574_26_99_3": {
-"status": "new",
-"next": 1
+"status": "done",
+"next": 32,
+"build": "gap",
+"naut": 3,
+"naut_ok": 3,
+"K": 31,
+"hits": 0,
+"stuck": 0,
+"mintext": "MIN >0 evals 9031600 full 14"
 },
 "g2574_39_66_16": {
-"status": "new",
-"next": 1
+"status": "done",
+"next": 24,
+"build": "gap",
+"naut": 4,
+"naut_ok": 4,
+"K": 23,
+"hits": 0,
+"stuck": 0,
+"mintext": "MIN >0 evals 5631238 full 22"
 },
 "g2574_78_33_55": {
-"status": "new",
-"next": 1
+"status": "done",
+"next": 24,
+"gap_to": true,
+"gap_why": "rc=-9 timeout=True",
+"build": "mkmeta",
+"naut": 5,
+"naut_ok": 5,
+"K": 23,
+"hits": 0,
+"stuck": 0,
+"mintext": "MIN >0 evals 7342106 full 135"
 },
 "g2574_143_18_100": {
-"status": "new",
-"next": 1
+"status": "done",
+"next": 32,
+"build": "gap",
+"naut": 3,
+"naut_ok": 3,
+"K": 31,
+"hits": 0,
+"stuck": 0,
+"mintext": "MIN >0 evals 9031600 full 14"
 },
 "g2574_286_9_133": {
-"status": "new",
-"next": 1
+"status": "done",
+"next": 32,
+"build": "gap",
+"naut": 3,
+"naut_ok": 3,
+"K": 31,
+"hits": 0,
+"stuck": 0,
+"mintext": "MIN >0 evals 9031600 full 14"
 },
 "g2574_429_6_100": {
-"status": "new",
-"next": 1
+"status": "done",
+"next": 24,
+"build": "gap",
+"naut": 4,
+"naut_ok": 4,
+"K": 23,
+"hits": 0,
+"stuck": 0,
+"mintext": "MIN >0 evals 5631238 full 23"
 },
 "g2574_858_3_133": {
-"status": "new",
-"next": 1
+"status": "done",
+"next": 24,
+"build": "gap",
+"naut": 4,
+"naut_ok": 4,
+"K": 23,
+"hits": 0,
+"stuck": 0,
+"mintext": "MIN >0 evals 5253688 full 34"
 },
 "g2580_43_60_6": {
-"status": "new",
-"next": 1
+"status": "done",
+"next": 24,
+"build": "gap",
+"naut": 4,
+"naut_ok": 4,
+"K": 23,
+"hits": 0,
+"stuck": 0,
+"mintext": "MIN >0 evals 3421581 full 138"
 },
 "g2580_86_30_49": {
-"status": "new",
-"next": 1
+"status": "done",
+"next": 16,
+"build": "gap",
+"naut": 4,
+"naut_ok": 4,
+"K": 15,
+"hits": 0,
+"stuck": 0,
+"mintext": "MIN >0 evals 1734489 full 51"
 },
 "g2580_172_15_49": {
-"status": "new",
-"next": 1
+"status": "done",
+"next": 24,
+"build": "gap",
+"naut": 4,
+"naut_ok": 4,
+"K": 23,
+"hits": 0,
+"stuck": 0,
+"mintext": "MIN >0 evals 3421581 full 138"
 },
 "g2580_215_12_6": {
-"status": "new",
-"next": 1
+"status": "done",
+"next": 24,
+"build": "gap",
+"naut": 4,
+"naut_ok": 4,
+"K": 23,
+"hits": 0,
+"stuck": 0,
+"mintext": "MIN >0 evals 3421581 full 138"
 },
 "g2580_430_6_221": {
-"status": "new",
-"next": 1
+"status": "done",
+"next": 16,
+"build": "gap",
+"naut": 4,
+"naut_ok": 4,
+"K": 15,
+"hits": 0,
+"stuck": 0,
+"mintext": "MIN >0 evals 1734489 full 51"
 },
 "g2580_860_3_221": {
-"status": "new",
-"next": 1
+"status": "done",
+"next": 24,
+"build": "gap",
+"naut": 4,
+"naut_ok": 4,
+"K": 23,
+"hits": 0,
+"stuck": 0,
+"mintext": "MIN >0 evals 3421581 full 138"
 }
 }
