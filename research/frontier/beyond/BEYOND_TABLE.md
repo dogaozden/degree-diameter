@@ -364,6 +364,13 @@ automorphism. It reproduces haar_big0's cost exactly on prime fields and haarche
   20 billion vertices; the coordinator's haarcheck_psl / haarcheck_sl only handle prime fields, so the reference
   re-check of the GF(128) / GF(243) graphs needs haarcheck_gen (its header format "sl 128 poly x^7+x+1"). (15,12) is a prime-field PSL graph above 20 billion: haarcheck_psl SOL A and SOL B.
 
+**Calibration of the clump model on these groups (random orbit-closed S, haar_bigq RANDORB).** Median cost / k against
+the model's mu/k: (8,12) 42/7 = 6.0 against 4.0 (1.5x), (9,12) 56/7 = 8.0 against 4.9 (1.6x), (10,12) 30/5 = 6.0 against
+5.1 (1.2x); (6,12) SL(2,32) x Z151 126/5 = 25 against 4.3, with a hard floor of 3 clumps. So where the structure fits, the
+model holds within the factor 1.3-2 that earlier jobs measured; the m = 1 cells are solved by sampling the orbit
+representative ((8,12): 3 of 420), the m >= 2 cells by haar_bigq's annealer (161-626 evaluations), and the m = 1 cell
+(9,12) needed 1,444 annealing evaluations.
+
 **Why it works and where it does not (squads, 27 cards in 2 rounds, research/squads/LOG.md).** Every card was
 negative, and the negatives explain the shape of the method:
 - The abelian-section wall (round 1 a05, a10, a14; round 2 b07, b08): the image of a word in an abelian quotient (or in
