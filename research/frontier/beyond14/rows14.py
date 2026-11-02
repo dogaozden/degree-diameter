@@ -17,11 +17,13 @@ out = []
 done = set()
 for line in lines:
     m = re.match(r'^\| \((\d+),(\d+)\) \|', line)
-    if m and (int(m.group(1)), int(m.group(2))) in ROWS:
-        key = (int(m.group(1)), int(m.group(2)))
-        out.append(None); out[-1] = key; done.add(key)
-        continue
-    out.append(line)
+    key = (int(m.group(1)), int(m.group(2))) if m else None
+    if key in ROWS:
+        out.append(key); done.add(key)
+    else:
+        out.append(line)
+    if key == (8, 14):
+        out.append('INSERT_D14_AFTER_8')
 
 def row(key):
     d, D = key
@@ -33,10 +35,10 @@ res = []
 for item in out:
     if isinstance(item, tuple):
         res.append(row(item))
-        if item == (8, 14):
-            for k in sorted(ROWS):
-                if k not in done and k[1] == 14 and k[0] > 8:
-                    res.append(row(k)); done.add(k)
+    elif item == 'INSERT_D14_AFTER_8':
+        for k in sorted(ROWS):
+            if k not in done and k[1] == 14 and k[0] > 8:
+                res.append(row(k)); done.add(k)
     else:
         res.append(item)
 s = '\n'.join(res)

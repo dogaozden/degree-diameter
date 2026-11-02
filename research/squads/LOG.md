@@ -178,3 +178,29 @@ Director: (9,14) PSL(2,241) x Z1429 VALID (haarcheck_gen, 2,858 s): 20,002,113,1
 (10,14) value by monotonicity; (10,14) PSL(2,239) x Z1789 (24,422,855,520 vertices) solved at the first evaluation,
 check running. Round 5: hole-directed finishers on every cost-1/2 state at (4,14), (5,14); a lift version for (3,14);
 low-temperature anneals at (6,14), (7,14); side cells (3,11)-(3,13).
+
+## 2026-11-02, beyond-d14, round 5 (16 cards, 00:33 UTC)
+
+Same session. Files: research/squads/beyond14/r5/. Selection from round 4: f09's hole-directed finisher (now
+research/frontier/beyond14/tools/hmeta_fin.c) on every cost-1/2 state at (4,14), (5,14) (g01-g05, g15, g16), a lift
+version for (3,14) (g06), large-k groups at p = 3, 4 (g07), low-temperature anneals and random-S draws at (6,14) and
+(7,14) (g09-g13), side cells (3,11)-(3,13) (g08, g14).
+
+Cards (best result; VALID = director check):
+- **g02 (5,14): Z100501 x|_52125 Z67, 13,467,134 VALID** (build_haar2): FIN did not close the cost-1 state, a
+  low-temperature hmeta anneal from the FIN output did (T0 0.5, T1 0.1, TARGP 90, K 4, 39 s).
+- **g09 (6,14): SL(2,107) x Z79, 193,539,888 VALID** (haarcheck_gen): best of 60 random symmetric S (cost 4), then a
+  short anneal.
+- **g14 (3,12) side cell: 2+2 base over Z87 x|_7 Z7, 2,436 VALID** (apsp, diameter exactly 12; director rebuild from the
+  group formula), above the lab's 2,368 (own-small); (3,11): cost 2 at 1,368 (lab 1,344).
+- g12 (7,14): SL(2,359) x Z19 (N 879,090,480) cost 1 from a z-filtered random S (1 of ~70); g13 SL(2,499) x Z7 cost 3;
+  g11 cost-3 states at 866-871M did not move under low-T anneals.
+- No cost 0: g01 (FIN alone on Z100501 x| Z67), g03 (cost 1 at Z139967 x| Z47, 6,578,449), g15 (cost 2 at 6.68-6.70M),
+  g04 and g05 ((4,14) cost-1/2 states survive FIN, low-T and full 1-opt over all slots), g06 (lift finisher: cost-2 floor),
+  g07 (p = 3, 4 large-k: cost 8), g08 ((3,13) cost 2 at 4,400), g10 ((6,14) SL(2,241) x Z7 cost 3).
+- Rule breaks: g03 called interrupt_session and g09 archive_session (both without arguments, both failed); g02 and g13
+  made read-only remote calls (read_documentation, list_sessions). No session was changed.
+
+Director: (7,14) SL(2,179) x Z151 (r4/f15) 1,732,018,320 VALID (haarcheck_gen); (5,14) Z83267 x| Z79 (r4/f09) 13,156,186
+VALID (build_haar2). Round 6 (last): the FIN + low-T pair everywhere, an orbit-S finisher for haar_big0, targeted 2-opt
+for states no single change closes, side cells.
