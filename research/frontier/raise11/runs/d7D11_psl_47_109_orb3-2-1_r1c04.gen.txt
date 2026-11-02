@@ -1,0 +1,15 @@
+checker: haarcheck_gen
+command: ./bin/haarcheck_gen runs/d7D11_psl_47_109_orb3-2-1_r1c04.out
+start: 2026-11-02T00:19:58Z
+sha256 0262672f6433fe9806f8319443cd58fb87c68a60277b9dd3beb89559a59e93c9  ./bin/haarcheck_gen
+sha256 e790fe68cc646c1d785e2c8648326a4af34ea601faf091de0acd3857dabb38f4  runs/d7D11_psl_47_109_orb3-2-1_r1c04.out
+selftest psl 47: |M| = 51888, det-1 matrices 103776
+selftest group multiplication: associativity, identity, inverse on 20000 random triples ok
+file runs/d7D11_psl_47_109_orb3-2-1_r1c04.out
+header: 7 11 psl 47 n 109 N 5655792
+group psl 47 x Z_109, |G| = 5655792 = N, vertices 2N = 11311584; 7 distinct generators
+from (e,A): reached A 5655792/5655792, B 5655792/5655792 within 11; ecc 11; level sizes [1, 7, 42, 252, 1512, 9072, 54171, 316820, 1637178, 4653042, 3962888, 676599]  (1s)
+from (e,B): reached A 5655792/5655792, B 5655792/5655792 within 11; ecc 11; level sizes [1, 7, 42, 252, 1512, 9072, 54171, 316820, 1636939, 4653042, 3963127, 676599]  (2s)
+VALID d=7 D=11 group=psl 47 x Z_109 N=5655792 vertices=11311584 (distinct generators, 7-regular simple; every vertex within 11 of both (e,A) and (e,B); ecc 11; 2s)
+exit: 0
+end: 2026-11-02T00:20:00Z (2 s)

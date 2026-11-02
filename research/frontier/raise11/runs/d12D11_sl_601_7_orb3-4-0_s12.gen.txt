@@ -9,3 +9,7 @@ file runs/d12D11_sl_601_7_orb3-4-0_s12.out
 header: 12 11 sl 601 n 7 N 1519568400
 group sl 601 x Z_7, |G| = 1519568400 = N, vertices 2N = 3039136800; 12 distinct generators
 from (e,A): reached A 1519568400/1519568400, B 1519568400/1519568400 within 11; ecc 11; level sizes [1, 12, 132, 1452, 15972, 175677, 1930878, 21097454, 216268213, 1221898984, 1301353204, 276394821]  (2416s)
+from (e,B): reached A 1519568400/1519568400, B 1519568400/1519568400 within 11; ecc 11; level sizes [1, 12, 132, 1452, 15972, 175677, 1930878, 21097454, 216270073, 1221898984, 1301351344, 276394821]  (3781s)
+VALID d=12 D=11 group=sl 601 x Z_7 N=1519568400 vertices=3039136800 (distinct generators, 12-regular simple; every vertex within 11 of both (e,A) and (e,B); ecc 11; 3781s)
+exit: 0
+end: 2026-11-02T00:19:58Z (3782 s)

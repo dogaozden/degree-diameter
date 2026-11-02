@@ -6,7 +6,7 @@ while true; do
   for d in /proc/[0-9]*; do
     c=$(readlink $d/cwd 2>/dev/null) || continue
     case "$c" in
-      */squads/raise11*) echo 10 > $d/autogroup 2>/dev/null;;
+      */squads/raise11*) echo 10 > $d/autogroup 2>/dev/null; echo 1000 > $d/oom_score_adj 2>/dev/null;;
       */frontier/raise11*) case "$(cat $d/comm 2>/dev/null)" in haar_*) echo ${SEARCHNICE:-5} > $d/autogroup 2>/dev/null;;
                                                        *check*) echo 0 > $d/autogroup 2>/dev/null;; esac;;
     esac
