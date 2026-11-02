@@ -285,3 +285,24 @@ traps, disconnection) that the cards measured and, in four cases, proved. Two ro
 these cells will not fall to orbit structures at this budget; the field-automorphism groups that work exist only at
 the sizes of (8..11,12) (SL(2,128), PSL(2,243)). Process: two stray session-tool calls again (b08 archive_session without
 arguments, b12 send_message without arguments; both errored), despite the explicit tool list in the header.
+
+## 2026-11-02, raise-d12, round 3 (6 cards, 00:05 UTC)
+
+Same session. Files: research/squads/raise-d12/r3/. After two rounds of structural negatives, the director went back to
+the one small-cell method with a record: own-small's joint base+voltage annealing of 4+4 cubic lifts (salift_s) plus the
+exact two-move polish, on new voltage groups, now with more CPU than round-1 card a04 had; and one long annealing card
+for the best (4,12) lead. Machine: the director's (11,12) and (17,10) searches and checks ran throughout (load 6-10).
+
+Cards (best result; all negative):
+- Calibration on the record group Z37 x|_6 Z8 (order 296) from random starts: cost 4-6 in 4-6 CPU-s (c01-c04), the level
+  own-small polished to 0; so the method works and the budget is the limit.
+- c01 g297 (Z99 x| Z3) 18, g301 (Z43 x| Z7) 10; c02 g305 (Z61 x| Z5), g309 (Z103 x| Z3) 18; c03 g310 (Z31 x| Z10) and
+  g312 (Z13 x| Z24) 20; c04 seven more metacyclic groups of order 300-320: best Z21 x|_4 Z15 (315) 14, exact polish no
+  gain. At equal budget every new group is clearly worse than the record group.
+- c05 5+5 and 6+6 bases (orders 200-256): no cost 0 (still running when logged).
+- c06 (4,12) F_512 x| C73, random S, ~90k evaluations, fresh and resumed chains: floor 6 (a swap scan of the cost-6
+  state: min 12). Size-law mu 31 there; the (4,12) value sits at mu 18.
+
+Reading: (3,12) beyond 2,368 needs a voltage group as good as SmallGroup(296,3) at order >= 297; none of the 13 tried is.
+The squad part of the job ends here (33 cards in 3 rounds, no raise); every raise of the job came from the director's
+field-automorphism runs. Process: one stray read-only session-tool call (c03, list_sessions).
