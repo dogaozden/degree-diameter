@@ -3,3 +3,4 @@ sha256: e24c4bf877da0bdf559348c82a95f1e48b291c439b54f79bda7e37c0c5384d7e  resear
 checker: haarcheck_psl, source git show origin/master:research/structured/tools/haarcheck_psl.c (sha256 ba816e278a1fa0616d55b563301644c443971a1d361293c00e4f98c36f9976b4), built with: gcc -O3 -o haarcheck_psl haarcheck_psl.c (in the session scratchpad, not committed)
 job: gencheck-v, reference checker only (haarcheck_gen is run by the search session; not repeated here). Single run, single thread; expected about 4.6 GB and about 2.5 h.
 status: RUNNING; started 2026-11-02T05:31:20Z
+progress 2026-11-02T06:02:10Z: still running, elapsed 30:50, RSS 4683648 KB, 98.9% CPU; no output yet (the checker prints only after each BFS).
