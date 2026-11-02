@@ -117,11 +117,11 @@ plane, generalized quadrangle or generalized hexagon of order 18, whose existenc
 | (13,12) | **19,993,487,976** | 1.23 | 1,621,109,172,404 | Haar graph PSL(2,307) x Z691, S = {e} + 4 orbits of size 3; at the job's 20-billion-vertex cap (first S solved); mu = 0.00 | haarcheck_gen VALID (research/frontier/runs/cloudcheck/d13D12_psl_307_691_orb3-4-1_s1.gen.txt) | Haar size law at mu = 5: 2N = 7.14e+10 |
 | (3,13) | **3,400** | 20.75 | 16,376 | Z170 voltage lift of the Desargues graph GP(10,3) (director: 20-s anneals with cooling over L = 1,200 evaluations to cost 4, then two 95-s links of squad r5/h02's 1-opt + tabu finisher scan.c); not a Haar graph; earlier 3,320 (Z166), 3,200 (Z160, r2/e16), 2,880 (Haar graph of A6 x Z4, r1/c03); mu = 13.74 | research/frontier/beyond13/checks/d3D13_n3400_lift_gp10_Z170.apsp.txt (graph research/frontier/beyond13/graphs/d3D13_n3400_lift_gp10_Z170.edges.gz) | Haar size law at mu = 5: 2N = 2.89e+03 |
 | (4,13) | **192,382** | 12.07 | 1,594,316 | Haar graph of the odd-order Frobenius group Z2237 x\|_1984 Z43 (order 96,191), S random (hmeta, second link with T0 = 8, REHEAT = 400; squad r5/h03; solution research/frontier/beyond13/sols/d4D13_meta_2237_43_1984_h03.txt; also metacheck VALID); earlier 186,314 (Z4903 x\|_230 Z19, r1/c15) and 170,520 (PSL(2,29) x Z7, orbit scan, r1/c05); mu = 24.21 | research/frontier/beyond13/checks/d4D13_n192382_meta2237_43_1984.apsp.txt (graph research/frontier/beyond13/graphs/d4D13_n192382_meta2237_43_1984.edges.gz) | Haar size law at mu = 5: 2N = 1.64e+05 |
-| (5,13) | **3,594,910** | 8.04 | 44,739,236 | Haar graph of the odd-order group (Z11 x\|_4 Z5) x (Z2971 x\|_1764 Z11) (order 1,797,455), S random (haar_gen3, squad r6/i06; solution research/frontier/beyond13/sols/d5D13_prodmeta_11_5_2971_11_i06.txt); earlier 3,577,750 (r5/h05), 3,525,298 (r3/f08), 3,514,394 (r2/e12) and 3,217,056 (PSL(2,47) x Z31, orbit S, r1/c07); mu = 7.08 | research/frontier/beyond13/checks/d5D13_prodmeta_11_5_2971_11_i06.metacheck.txt | Haar size law at mu = 5: 2N = 3.5e+06 |
-| (6,13) | **41,734,392** | 6.84 | 610,351,556 | Haar graph PSL(2,83) x Z73, S = 2 free orbits of size 3 (squad r3/f11, first link, mu 9.3); earlier 41,519,712 (SL(2,103) x Z19, r2/e09) and 40,427,088 (PSL(2,103) x Z37, r1/c09); mu = 9.29 | haarcheck_gen VALID (research/frontier/runs/cloudcheck/d6D13_psl_83_73_orb3-2-0_f11.gen.txt) | Haar size law at mu = 5: 2N = 4.01e+07 |
-| (7,13) | **312,227,760** | 5.98 | 5,224,277,600 | Haar graph SL(2,229) x Z13, S = {e} + 2 orbits of size 3 (squad r2/e10, chained links); earlier 310,628,640 (SL(2,281) x Z7, r1/c11) and 299,455,200 (SL(2,199) x Z19); mu = 8.45 | haarcheck_gen VALID (research/frontier/runs/cloudcheck/d7D13_sl_229_13_orb3-2-1_e10.gen.txt) | Haar size law at mu = 5: 2N = 3.03e+08 |
-| (8,13) | **1,739,514,000** | 5.39 | 32,296,336,796 | Haar graph SL(2,499) x Z7, S = {e} + 1 fixed + 2 orbits of size 3 (director, 33 evaluations, mu 7.5); earlier 1,676,500,800 (SL(2,401) x Z13, director) and 1,512,114,240 (SL(2,911), squad r1/c13); mu = 7.52 | haarcheck_gen VALID (research/frontier/runs/cloudcheck/d8D13_sl_499_7_orb3-2-2_s2.gen.txt) | Haar size law at mu = 5: 2N = 1.7e+09 |
-| (9,13) | **7,924,036,032** | 5.04 | 157,073,089,676 | Haar graph SL(2,593) x Z19, S = 3 free orbits of size 3 (director, 17 evaluations, mu 9.75); earlier 7,685,933,808 (SL(2,587) x Z19, mu 5.1, 5 evaluations, unchecked) and 7,508,907,120 (SL(2,661) x Z13, mu 3.1, VALID); mu = 9.75 | haarcheck_gen VALID (research/frontier/runs/cloudcheck/d9D13_sl_593_19_orb3-3-0_s6.gen.txt) | Haar size law at mu = 5: 2N = 7.68e+09 |
+| (5,13) | **3,729,966** | 8.34 | 44,739,236 | Haar graph of the odd-order metacyclic group Z32719 x\|_29509 Z57 (order 1,864,983; k = 57 composite, r of order 57 mod the prime 32719), S random (hmeta, squad r2/g03, continuation link); also build_haar2 VALID (checks/d5D13_meta_32719_57_r2g03.build_haar2.txt); earlier 3,707,986 (Z34981 x\|_27415 Z53, r1/f2) and 3,594,910 (beyond-d13); mu = 11.52 | research/frontier/beyond13b/checks/d5D13_meta_32719_57_r2g03.metacheck.txt (solution research/frontier/sols/d5D13_meta_32719_57_29509_r2g03.txt) | Haar size law at mu = 5: 2N = 3.5e+06 |
+| (6,13) | **43,702,560** | 7.16 | 610,351,556 | Haar graph SL(2,89) x Z31, S = 2 free alpha-orbits of size 3 (ORBIT "3 2 0"; squad r1/e4, 136 s); earlier 42,306,096 (SL(2,83) x Z37, r1/e4) and 41,734,392 (PSL(2,83) x Z73, beyond-d13); mu = 18.80 | research/frontier/beyond13b/runs/d6D13_sl_89_31_e4.gen.txt (solution research/frontier/sols/d6D13_sl_89_31_orb3-2-0_r1e4.txt) | Haar size law at mu = 5: 2N = 4.01e+07 |
+| (7,13) | **320,463,216** | 6.13 | 5,224,277,600 | Haar graph SL(2,163) x Z37, S = {e} + 2 alpha-orbits of size 3 (ORBIT "3 2 1"; squad r1/d2 left it at cost 2, r2/g09 closed it by continuing the saved state with new seeds); earlier 317,308,656 (SL(2,283) x Z7, r1/d1) and 312,227,760 (SL(2,229) x Z13, beyond-d13); mu = 13.33 | research/frontier/beyond13b/runs/d7D13_sl_163_37_g09.gen.txt (solution research/frontier/sols/d7D13_sl_163_37_orb3-2-1_r2g09.txt) | Haar size law at mu = 5: 2N = 3.03e+08 |
+| (8,13) | **1,758,180,960** | 5.44 | 32,296,336,796 | Haar graph SL(2,359) x Z19, S = {e} + 1 fixed + 2 alpha-orbits of size 3 (ORBIT "3 2 2"; squad r2/g12, first run); earlier 1,739,514,000 (SL(2,499) x Z7, beyond-d13); mu = 9.26 | research/frontier/beyond13b/runs/d8D13_sl_359_19_g12.gen.txt (solution research/frontier/sols/d8D13_sl_359_19_orb3-2-2_r2g12.txt) | Haar size law at mu = 5: 2N = 1.7e+09 |
+| (9,13) | **8,067,489,456** | 5.14 | 157,073,089,676 | Haar graph SL(2,677) x Z13, S = 3 free alpha-orbits of size 3 (ORBIT "3 3 0"; director, 113 evaluations at mu 14.1); earlier 7,924,036,032 (SL(2,593) x Z19, beyond-d13); mu = 14.13 | research/frontier/beyond13b/runs/d9D13_sl_677_13_orb3-3-0_s1.gen.txt (solution research/frontier/sols/d9D13_sl_677_13_orb3-3-0_s1b.txt) | Haar size law at mu = 5: 2N = 7.68e+09 |
 | (3,14) | **5,706** | 17.41 | 32,760 | Z317 voltage lift of the Pappus graph (squad r7/j13: 20-s anneal, then four links of the 1-opt + tabu finisher scan.c); not a Haar graph; earlier 5,640 (GP(10,3) x Z282, r5/h02), 5,600 (GP(10,3) x Z280, director) and 5,040 (Haar graph of PSL(2,7) x Z15, r2/e05); mu = 9.15 | research/frontier/beyond13/checks/d3D14_n5706_lift_pappus_Z317.apsp.txt (graph research/frontier/beyond13/graphs/d3D14_n5706_lift_pappus_Z317.edges.gz) | Haar size law at mu = 5: 2N = 5.23e+03 |
 | (4,14) | **497,042** | 10.39 | 4,782,962 | Haar graph of the odd-order metacyclic group Z2731 x\|_2400 Z91 (order 248,521), S random (hmeta, squad r6/i04; solution research/frontier/beyond13/sols/d4D14_meta_2731_91_i04.txt; also metacheck VALID); earlier 491,294 (Z4027 x\|_2950 Z61, r5/h04), 490,070 and 482,160 (PSL(2,41) x Z7, orbit S); mu = 16.45 | research/frontier/beyond13/checks/d4D14_n497042_meta2731_91_2400.apsp.txt (graph research/frontier/beyond13/graphs/d4D14_n497042_meta2731_91_2400.edges.gz) | Haar size law at mu = 5: 2N = 4.47e+05 |
 | (5,14) | **12,795,166** | 7.15 | 178,956,964 | Haar graph of the odd-order metacyclic group Z148781 x\|_85175 Z43 (order 6,397,583), S random (hmeta, START continuation; squad r6/i07; solution research/frontier/beyond13/sols/d5D14_meta_148781_43_i07.txt); earlier 12,776,064 (SL(2,97) x Z7, random S, r5/h06), 12,352,392 and 11,696,856; mu = 5.39 | research/frontier/beyond13/checks/d5D14_meta_148781_43_i07.metacheck.txt | Haar size law at mu = 5: 2N = 1.27e+07 |
@@ -354,6 +354,78 @@ part way. (4,8) and (4,9) near misses above the 2013 values (2,184, 4,970): Z55 
 Z101 x|_5 Z25 (5,050, cost 2) (r7/j04, j05); (4,10) Z215 x|_2 Z28 (12,040) at cost 1 (r7/j03). An exhaustive 2-opt from the
 (4,8) and (4,9) states (hmeta OPT2: every pair of generators replaced by every pair of group elements, 3.6e6 and 1.9e7
 evaluations) found no cost 0: no generator set within two changes of those states has the required diameter.
+
+### D = 13 at Δ = 5..10, second pass (job beyond-d13b, 2026-11-01/02)
+
+Job beyond-d13b (Opus director + Haiku squad rounds, cloud session, branch claude/beyond-d13-extend-5n8uwl). Goal: raise
+the D = 13 values of beyond-d13 at Δ = 5..10. Size cap for this job: 2N <= 3.0e10 vertices (the cap the coordinator
+accepted for the 30-billion D = 11, 12 values of job beyond-d11b). Files: research/frontier/beyond13b/ (cells.txt lists
+every value with its check; rows13b.py / splice13b.py put the rows and this section here; runs/ holds the solutions as
+found and the haarcheck_gen logs, checks/ the metacheck and build_haar2 logs); squad cards and scoreboards
+research/squads/beyond13b/r*; log research/squads/LOG.md.
+
+**Results.** (5..9,13): checked (haarcheck_gen, or metacheck + build_haar2 for the metacyclic group). (10,13): search
+cost 0 and the (e,A) half of haarcheck_gen passed; the (e,B) half was stopped unfinished at the budget stop
+(runs/d10D13_sl_601_67_orb3-3-1_s1.gen.partial.txt), so it is a candidate for the coordinator's check, not a table row yet.
+
+| cell | was (beyond-d13) | now | gain | group, S | mu | found by |
+|---|---:|---:|---:|---|---:|---|
+| (5,13) | 3,594,910 | 3,729,966 | +3.8 % | Z32719 x\|_29509 Z57 (odd composite k), random S (hmeta) | 11.5 | r2/g03 (earlier 3,707,986, Z34981 x\| Z53, r1/f2) |
+| (6,13) | 41,734,392 | 43,702,560 | +4.7 % | SL(2,89) x Z31, 2 free alpha-orbits | 18.8 | r1/e4 |
+| (7,13) | 312,227,760 | 320,463,216 | +2.6 % | SL(2,163) x Z37, e + 2 orbits | 13.3 | r1/d2 (cost 2), closed by r2/g09 |
+| (8,13) | 1,739,514,000 | 1,758,180,960 | +1.1 % | SL(2,359) x Z19, e + 1 fixed + 2 orbits | 9.3 | r2/g12 |
+| (9,13) | 7,924,036,032 | 8,067,489,456 | +1.8 % | SL(2,677) x Z13, 3 free orbits | 14.1 | director |
+| (10,13) | 19,980,294,768 | 29,088,880,800 (candidate, half checked) | +45.6 % | SL(2,601) x Z67, e + 3 orbits | 4.7 | director |
+
+
+**Method.** The same families as beyond-d13: Haar graphs H(G,S) of SL(2,p) x Z_n with alpha-orbit generator sets
+(research/frontier/beyond11/haar_big0.c) at Δ = 6..10, and odd-order Frobenius groups Z_m x|_r Z_k with random S
+(research/frontier/beyond13/meta/hmeta.c) at Δ = 5. What changed is how far up the size law the searches went: the
+beyond-d13 values sat at mu = 7-10 (mu = N exp(-W/N), SIZE_LAW.md), found after 5-900 evaluations with cards running at
+5-10 % of a core. Here the director ran the large cells on all four cores and the cards ran one thread each.
+
+**Per cell.**
+- (10,13), director: the old value sat at the old 20-billion cap with mu ~ 0, so the gain is the cap itself. Group
+  choice at 2N ~ 2.9-3.0e10 (lambda = W/N ~ 21.8): SL rather than PSL (one involution instead of ~p^2/2, each missed with
+  probability ~exp(-lambda/2)), n odd and moderate (2n central elements, each missed with ~exp(-lambda/6)), and p <= ~620
+  so that haarcheck_gen's p^2-entry field tables stay in cache and the check takes about an hour on 4 threads. SL(2,601) x
+  Z67 (mu 4.7) reached cost 0 after 17 evaluations (175 s on 4 threads, 38 s per evaluation, 7.3 GB). Not tried:
+  SL(2,607) x Z67 (2N = 29,968,823,424, mu 9.3), the largest p <= 620 shape under the cap (+3 %).
+- (9,13), director: SL(2,677) x Z13 (mu 14.1) had stopped at cost 12 after a few evaluations in beyond-d13; in its own
+  scheduling group it reached cost 0 after 113 evaluations (808 s).
+- (8,13): SL(2,359) x Z19 (mu 9.3) solved in card r2/g12's first run. Near misses: SL(2,409) x Z13 (mu 11.6) at cost 2 in
+  four runs (the two holes are an alpha-fixed inverse pair with z = 0, r2/g08), SL(2,461) x Z9 at cost 8.
+- (7,13): SL(2,283) x Z7 (mu 11.2, 17 evaluations, r1/d1), then SL(2,163) x Z37 (mu 13.3): r1/d2 left it at cost 2 (the
+  holes were -I on both sides), r2/g09 closed it by continuing the saved state with new seeds. At 2N ~ 3.2e8 the best
+  cost fell with n: 12 (n = 21), 4 (n = 31), 2 then 0 (n = 37). PSL(2,163) x Z73 also solved (316,132,632, r1/d3).
+- (6,13): SL(2,83) x Z37 and SL(2,89) x Z31 (mu 18.8) solved in 1-2 minutes (r1/e4), against mu 9.3 for the old
+  PSL(2,83) x Z73. Larger n sat at constant costs (SL(2,67) x Z73 12, SL(2,61) x Z97 24, SL(2,59) x Z109 44, SL(2,47) x
+  Z211 72); card r2/g08 showed these are frozen annealing, not an obstruction (below). Below the best but new shapes:
+  orbits of size 5 (ORBIT "5 1 1", PSL(2,101) x Z41, 42,238,200, r1/e5) and a Frobenius group (Z342821 x| Z61,
+  41,824,162, r1/e3). SL(2,277) x Z1 stayed at cost 2 in four runs (an alpha-fixed inverse pair).
+- (5,13): single odd-order Frobenius groups Z_m x|_r Z_k with random S beat the old product of two Frobenius groups: up
+  to mu ~ 10.7 they solve in 15-250 s, and they stall at cost 2 near mu 12-13.5 (Z35617 x| Z53, N 1,887,701). Continuing a
+  saved cost-2 state with a new seed closed several near misses that fresh starts did not (Z42829 x| Z43, Z39199 x| Z47,
+  a product, Z342821 x| Z61 at (6,13)). Composite odd k works (Z46411 x|_23265 Z39, 3,620,058); k = 21 does not.
+
+**Hole anatomy at odd D (card r2/g08, research/squads/beyond13b/r2/g08/NOTE.md).** For S = alpha-orbits in
+SL(2,p) x Z_n, the uncovered elements of a state are closed under Gamma = <alpha, x -> x^-1> on each side, so they come in
+blocks of 6 (generic), 2 (an inverse pair of alpha-fixed elements) or 1 (-I). haar_big0 anneals on energy cost/3, so the
+smallest generic move changes the energy by 2 and the chain freezes at its low temperatures (TMIN 0.15): the
+constant-cost plateaus at (6,13) were 2-12 frozen blocks, not a forced obstruction (random symmetric S at SL(2,61) x Z97:
+minimum 42 of 400, median 174). The alpha-fixed elements C(g) x {z : rz = z} are covered with probability
+~exp(-lambda/3) and give a floor of about |C(g)| (mu/n)^(1/3) holes per side; that floor is what the small-n cost-2
+states at (6,13), (7,13), (8,13) consist of.
+
+**Process and what was left.** Two squad rounds of 16 Haiku cards (research/squads/beyond13b/r1, r2; a first launch,
+r0, was aborted after four minutes because "remote" subagents ran in this container and collided). All cards and the
+director share 4 cores; this kernel schedules by autogroup, so card runs were given an autogroup nice (bg.sh) to keep
+the director's checks fast. Stopped at 01:10 UTC on 2026-11-02 by Doğa's budget stop, before round 3. Left: the (e,B)
+half of the (10,13) check; SL(2,607) x Z67 (2N = 29,968,823,424, mu 9.3) for (10,13); (9,13) SL(2,599) x Z19 (mu 18);
+near misses at cost 2-4 with saved states: (5,13) Z32833 x| Z57 (N 1,871,481), Z50321 x| Z37, Z43517 x| Z43, Z35617 x|
+Z53; (6,13) PSL(2,101) x Z43 cost 15, SL(2,83) x Z39 cost 22; (7,13) SL(2,149) x Z49 cost 10; (8,13) SL(2,409) x Z13
+cost 2, SL(2,461) x Z9 cost 8; and round 3's plan, re-annealing these with a higher final temperature (TMIN ~0.6),
+since r2/g08 showed that haar_big0's default TMIN freezes odd-D searches on blocks of 6 holes.
 
 ## What failed, and why it matters for the next attempt
 

@@ -7,16 +7,18 @@ every value with its check; rows13b.py / splice13b.py put the rows and this sect
 found and the haarcheck_gen logs, checks/ the metacheck and build_haar2 logs); squad cards and scoreboards
 research/squads/beyond13b/r*; log research/squads/LOG.md.
 
-**Results (all checked; the (10,13) check log is runs/d10D13_sl_601_67_orb3-3-1_s1.gen.txt).**
+**Results.** (5..9,13): checked (haarcheck_gen, or metacheck + build_haar2 for the metacyclic group). (10,13): search
+cost 0 and the (e,A) half of haarcheck_gen passed; the (e,B) half was stopped unfinished at the budget stop
+(runs/d10D13_sl_601_67_orb3-3-1_s1.gen.partial.txt), so it is a candidate for the coordinator's check, not a table row yet.
 
 | cell | was (beyond-d13) | now | gain | group, S | mu | found by |
 |---|---:|---:|---:|---|---:|---|
-| (5,13) | 3,594,910 | 3,707,986 | +3.1 % | Frobenius Z34981 x\|_27415 Z53, random S (hmeta) | 10.7 | r1/f2 |
+| (5,13) | 3,594,910 | 3,729,966 | +3.8 % | Z32719 x\|_29509 Z57 (odd composite k), random S (hmeta) | 11.5 | r2/g03 (earlier 3,707,986, Z34981 x\| Z53, r1/f2) |
 | (6,13) | 41,734,392 | 43,702,560 | +4.7 % | SL(2,89) x Z31, 2 free alpha-orbits | 18.8 | r1/e4 |
 | (7,13) | 312,227,760 | 320,463,216 | +2.6 % | SL(2,163) x Z37, e + 2 orbits | 13.3 | r1/d2 (cost 2), closed by r2/g09 |
 | (8,13) | 1,739,514,000 | 1,758,180,960 | +1.1 % | SL(2,359) x Z19, e + 1 fixed + 2 orbits | 9.3 | r2/g12 |
 | (9,13) | 7,924,036,032 | 8,067,489,456 | +1.8 % | SL(2,677) x Z13, 3 free orbits | 14.1 | director |
-| (10,13) | 19,980,294,768 | 29,088,880,800 | +45.6 % | SL(2,601) x Z67, e + 3 orbits | 4.7 | director |
+| (10,13) | 19,980,294,768 | 29,088,880,800 (candidate, half checked) | +45.6 % | SL(2,601) x Z67, e + 3 orbits | 4.7 | director |
 
 
 **Method.** The same families as beyond-d13: Haar graphs H(G,S) of SL(2,p) x Z_n with alpha-orbit generator sets
@@ -58,4 +60,12 @@ minimum 42 of 400, median 174). The alpha-fixed elements C(g) x {z : rz = z} are
 ~exp(-lambda/3) and give a floor of about |C(g)| (mu/n)^(1/3) holes per side; that floor is what the small-n cost-2
 states at (6,13), (7,13), (8,13) consist of.
 
-<!-- PROCESS -->
+**Process and what was left.** Two squad rounds of 16 Haiku cards (research/squads/beyond13b/r1, r2; a first launch,
+r0, was aborted after four minutes because "remote" subagents ran in this container and collided). All cards and the
+director share 4 cores; this kernel schedules by autogroup, so card runs were given an autogroup nice (bg.sh) to keep
+the director's checks fast. Stopped at 01:10 UTC on 2026-11-02 by Doğa's budget stop, before round 3. Left: the (e,B)
+half of the (10,13) check; SL(2,607) x Z67 (2N = 29,968,823,424, mu 9.3) for (10,13); (9,13) SL(2,599) x Z19 (mu 18);
+near misses at cost 2-4 with saved states: (5,13) Z32833 x| Z57 (N 1,871,481), Z50321 x| Z37, Z43517 x| Z43, Z35617 x|
+Z53; (6,13) PSL(2,101) x Z43 cost 15, SL(2,83) x Z39 cost 22; (7,13) SL(2,149) x Z49 cost 10; (8,13) SL(2,409) x Z13
+cost 2, SL(2,461) x Z9 cost 8; and round 3's plan, re-annealing these with a higher final temperature (TMIN ~0.6),
+since r2/g08 showed that haar_big0's default TMIN freezes odd-D searches on blocks of 6 holes.

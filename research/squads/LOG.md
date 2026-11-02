@@ -330,3 +330,15 @@ Round 1 results (scoreboard: beyond13b/r1/scoreboard.jsonl; every kept value re-
 Kept for round 2: Frobenius chains at (5,13) above N 1.854M (k 53-61, 37-47, composite k, products); (6,13) SL x Z_n
 with odd n <= 57 and PSL x odd n, k = 5 orbits; (7,13) continue SL(2,163) x Z37, larger n, k = 5 orbits; (8,13) the
 low-mu groups (SL(2,359) x Z19, SL n 21-45, PSL x odd n); a hole-anatomy card for the constant-cost plateaus.
+
+### Round 2 (00:01 UTC, 16 cards) and stop
+
+Round 2 ran at a small CPU share (the director's (9,13) and (10,13) checks had priority). Finds: **g03 (5,13) Z32719 x|_29509
+Z57, 3,729,966** (odd composite k; metacheck + build_haar2 VALID), **g09 (7,13) SL(2,163) x Z37, 320,463,216** (closed
+r1/d2's cost-2 state; VALID), **g12 (8,13) SL(2,359) x Z19, 1,758,180,960** (VALID). g08 (analysis): holes at odd D come
+in Gamma = <alpha, inverse> blocks of 6, so haar_big0's energy cost/3 freezes at its default TMIN; the constant-cost
+plateaus are frozen annealing (r2/g08/NOTE.md). No gain: g01, g02 (Frobenius chains, cost 2 at N 1.86-1.89M), g04
+(products, cost 4), g05, g06, g07 ((6,13) at cost 15-74), g11 ((7,13) k = 5 orbits, cost 6), g14, g15 (wildcards). g10,
+g13, g16 were stopped before reporting. Cards again made stray read-only or rejected session-tool calls (g04, g05, g14).
+Director: (9,13) 8,067,489,456 VALID. (10,13) 29,088,880,800: the (e,A) half of the check passed, then the job was
+stopped at 01:10 UTC on Doğa's budget stop; (e,B) half left for the coordinator. Status: research/frontier/beyond13b/STATUS.md.
