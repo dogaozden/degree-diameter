@@ -1,0 +1,9 @@
+# d20D8_sl_61_277_orb3-6-2_r1c12: haarcheck_gen (research/frontier/haarcheck_gen.c) on 10400165000eb1aa..., Sun Nov  1 22:58:35 UTC 2026
+selftest sl 61: |M| = 226920, det-1 matrices 226920
+selftest group multiplication: associativity, identity, inverse on 20000 random triples ok
+file /home/user/degree-diameter/research/squads/raise_d8b/r1/c12/a.sol
+header: 20 8 sl 61 n 277 N 62856840
+group sl 61 x Z_277, |G| = 62856840 = N, vertices 2N = 125713680; 20 distinct generators
+from (e,A): reached A 62856840/62856840, B 62856840/62856840 within 8; ecc 8; level sizes [1, 20, 380, 7205, 136490, 2536738, 33964169, 60312877, 28755800]  (15s)
+from (e,B): reached A 62856840/62856840, B 62856840/62856840 within 8; ecc 8; level sizes [1, 20, 380, 7205, 136490, 2536738, 33958521, 60312877, 28761448]  (29s)
+VALID d=20 D=8 group=sl 61 x Z_277 N=62856840 vertices=125713680 (distinct generators, 20-regular simple; every vertex within 8 of both (e,A) and (e,B); ecc 8; 29s)

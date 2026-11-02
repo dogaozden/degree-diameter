@@ -1,0 +1,6 @@
+selftest psl 131: |M| = 1123980, index round trip over all elements ok
+selftest group multiplication: associativity, identity, inverse on 20000 random triples ok
+file a.sol
+header: 19 8 psl 131 n 41 N 46083180
+group psl 131 x Z_41, |G| = 46083180 = N, vertices 2N = 92166360; 19 distinct generators
+EXIT=137

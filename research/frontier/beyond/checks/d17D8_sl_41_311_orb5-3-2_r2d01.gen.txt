@@ -1,0 +1,9 @@
+# d17D8_sl_41_311_orb5-3-2_r2d01: haarcheck_gen (research/frontier/haarcheck_gen.c) on a234bd7d515ae69d..., Sun Nov  1 23:36:32 UTC 2026
+selftest sl 41: |M| = 68880, det-1 matrices 68880
+selftest group multiplication: associativity, identity, inverse on 20000 random triples ok
+file ../../squads/raise_d8b/r2/d01/a.sol
+header: 17 8 sl 41 n 311 N 21421680
+group sl 41 x Z_311, |G| = 21421680 = N, vertices 2N = 42843360; 17 distinct generators
+from (e,A): reached A 21421680/21421680, B 21421680/21421680 within 8; ecc 8; level sizes [1, 17, 272, 4352, 69592, 1085378, 12044248, 20331933, 9307567]  (5s)
+from (e,B): reached A 21421680/21421680, B 21421680/21421680 within 8; ecc 8; level sizes [1, 17, 272, 4352, 69592, 1085378, 12039422, 20331933, 9312393]  (10s)
+VALID d=17 D=8 group=sl 41 x Z_311 N=21421680 vertices=42843360 (distinct generators, 17-regular simple; every vertex within 8 of both (e,A) and (e,B); ecc 8; 10s)

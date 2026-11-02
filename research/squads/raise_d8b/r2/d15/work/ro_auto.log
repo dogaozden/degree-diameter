@@ -1,0 +1,6 @@
+group prod psl 41 sl 5 x Z_11, N=45460800, identity 1082620, H order 60, rows 757680, threads 1, setup 11.59s
+wide rows: HW order 246, rows 184800, setup 24.10s
+alpha: conj by prod[mat(8,22,35,40);mat(4,3,0,4)] (index 1622990), z -> 3 z on Z_11
+ORBIT k=5 m=3 f=4: |Fix(alpha)| = 199 (+e); mu = 29.17, mu/k = 5.83, fixed-point misses ~ 11.55
+RANDORB d=19 D=8 group=prod psl 41 sl 5 x Z_11 N=45460800 k=5 m=3 f=4 fix=199 samples=16 min=33 p1=33 p10=33 median=47 mean=53.06 var=651.7 mu=29.17 time=21.4
+RANDORB hist (cost/k): 0 0 0 0 0 0 2 4 2 1 2 1 1 1 0 0 0 0 1 0 0 0 0 0 0 0 1 0 0 0 0 0

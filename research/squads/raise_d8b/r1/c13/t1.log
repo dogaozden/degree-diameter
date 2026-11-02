@@ -1,0 +1,6 @@
+group prod sl 3 sl 31 x Z_61, N=43568640, identity 10948890, H order 62, rows 702720, threads 1, setup 8.98s
+wide rows: HW order 244, rows 178560, setup 21.52s
+alpha: conj by prod[mat(2,1,2,0);mat(13,26,19,19)] (index 608487), z -> 13 z on Z_61
+ORBIT k=3 m=6 f=1: |Fix(alpha)| = 179 (+e); mu = 15.05, mu/k = 5.02, fixed-point misses ~ 1.26
+RANDORB d=19 D=8 group=prod sl 3 sl 31 x Z_61 N=43568640 k=3 m=6 f=1 fix=179 samples=20 min=8 p1=8 p10=13 median=21 mean=25.90 var=196.2 mu=15.05 time=93.1
+RANDORB hist (cost/k): 0 0 1 1 3 1 4 1 0 4 0 1 0 0 1 1 0 0 1 1 0 0 0 0 0 0 0 0 0 0 0 0
