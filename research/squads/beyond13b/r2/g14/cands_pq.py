@@ -29,8 +29,8 @@ out = []
 for k in [x for x in range(3, kmax+1, 2) if isp(x)]:
     if k < 13: continue
     # primes p = 1 mod k in range [k+1, hi/(k*2)]: need p*q*k in [lo,hi] with p<q
-    ps = [p for p in range(2*k+1, int(math.isqrt(hi // k)) + 2, 2*k) if isp(p)]
-    qs = [q for q in range(2*k+1, hi // (k * 2) + 2, 2*k) if isp(q)]
+    ps = [p for p in range(k+1, int(math.isqrt(hi // k)) + 2, k) if p % 2 == 1 and isp(p)]
+    qs = [q for q in range(k+1, hi // (k * (k+1)) + 2, k) if q % 2 == 1 and isp(q)]
     for p in ps:
         for q in qs:
             if q <= p: continue
@@ -43,11 +43,12 @@ for k in [x for x in range(3, kmax+1, 2) if isp(x)]:
                     g = rng.randrange(2, z - 1)
                     r = pow(g, (z-1)//k, z)
                     if r != 1: return r
-            rp = elt_order_k(p); rq = elt_order_k(q)
-            # CRT
-            r = (rp * q * pow(q, -1, p) + rq * p * pow(p, -1, q)) % m
-            assert pow(r, k, m) == 1 and math.gcd(r, m) == 1 and (r - 1) % p and (r - 1) % q
-            out.append((N, m, k, r, p, q, N * math.exp(-w / N)))
+            for _rep in range(int(sys.argv[4]) if len(sys.argv) > 4 else 1):
+                rp = elt_order_k(p); rq = elt_order_k(q)
+                # CRT
+                r = (rp * q * pow(q, -1, p) + rq * p * pow(p, -1, q)) % m
+                assert pow(r, k, m) == 1 and math.gcd(r, m) == 1 and (r - 1) % p and (r - 1) % q
+                out.append((N, m, k, r, p, q, N * math.exp(-w / N)))
 out.sort()
 for N, m, k, r, p, q, mu in out:
     print(m, k, r, N, f"{mu:.2f}", f"p={p}", f"q={q}")

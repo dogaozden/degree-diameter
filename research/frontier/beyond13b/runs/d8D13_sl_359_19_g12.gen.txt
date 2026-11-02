@@ -1,0 +1,10 @@
+checker: haarcheck_gen
+command: ../beyond13/bin/haarcheck_gen runs/d8D13_sl_359_19_g12.txt
+start: 2026-11-02T00:21:38Z
+sha256 e52e247f4a92a474f49ff0d5d438660ba0b557bbdfd4a8e24311ca881ff3f17c  ../beyond13/bin/haarcheck_gen
+sha256 eda82e0e8270477891e658efa98f01e261d9d0d50ed25890f5cfaf9bfd67afca  runs/d8D13_sl_359_19_g12.txt
+selftest sl 359: |M| = 46267920, index round trip over all elements ok
+selftest group multiplication: associativity, identity, inverse on 20000 random triples ok
+file runs/d8D13_sl_359_19_g12.txt
+header: 8 13 sl 359 n 19 N 879090480
+group sl 359 x Z_19, |G| = 879090480 = N, vertices 2N = 1758180960; 8 distinct generators

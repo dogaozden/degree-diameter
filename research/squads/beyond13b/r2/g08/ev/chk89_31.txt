@@ -1,0 +1,8 @@
+selftest sl 89: |M| = 704880, index round trip over all elements ok
+selftest group multiplication: associativity, identity, inverse on 20000 random triples ok
+file /home/user/degree-diameter/research/squads/beyond13b/r1/e4/out/d6D13_sl_89_31_e4.out
+header: 6 13 sl 89 n 31 N 21851280
+group sl 89 x Z_31, |G| = 21851280 = N, vertices 2N = 43702560; 6 distinct generators
+from (e,A): reached A 21851280/21851280, B 21851280/21851280 within 13; ecc 13; level sizes [1, 6, 30, 150, 750, 3750, 18732, 93423, 461972, 2199921, 8800220, 18159499, 12569575, 1394531]  (4s)
+from (e,B): reached A 21851280/21851280, B 21851280/21851280 within 13; ecc 13; level sizes [1, 6, 30, 150, 750, 3750, 18732, 93423, 461982, 2199921, 8800406, 18159499, 12569379, 1394531]  (9s)
+VALID d=6 D=13 group=sl 89 x Z_31 N=21851280 vertices=43702560 (distinct generators, 6-regular simple; every vertex within 13 of both (e,A) and (e,B); ecc 13; 9s)

@@ -1,0 +1,8 @@
+selftest sl 83: |M| = 571704, index round trip over all elements ok
+selftest group multiplication: associativity, identity, inverse on 20000 random triples ok
+file /home/user/degree-diameter/research/squads/beyond13b/r1/e4/out/d6D13_sl_83_37_e4.out
+header: 6 13 sl 83 n 37 N 21153048
+group sl 83 x Z_37, |G| = 21153048 = N, vertices 2N = 42306096; 6 distinct generators
+from (e,A): reached A 21153048/21153048, B 21153048/21153048 within 13; ecc 13; level sizes [1, 6, 30, 150, 750, 3750, 18750, 93435, 461918, 2197895, 8734854, 17627985, 11936745, 1229827]  (5s)
+from (e,B): reached A 21153048/21153048, B 21153048/21153048 within 13; ecc 13; level sizes [1, 6, 30, 150, 750, 3750, 18750, 93435, 461900, 2197895, 8733036, 17627985, 11938581, 1229827]  (9s)
+VALID d=6 D=13 group=sl 83 x Z_37 N=21153048 vertices=42306096 (distinct generators, 6-regular simple; every vertex within 13 of both (e,A) and (e,B); ecc 13; 9s)
