@@ -16,7 +16,8 @@ Extended 2026-11-01 by job beyond-d11b (branch claude/beyond-d11-d12-new-cells-3
 
 Extended 2026-11-02 by job raise-d12 (branch claude/d12-frontier-cells-m24ikx): new cell (15,12) at 30.0 billion
 vertices, and (8,12), (9,12), (10,12), (11,12) raised 4.0-6.6 % with orbits of the field automorphism of GF(128)
-(order 7) and GF(243) (order 5); see the section "D = 12: field-automorphism orbits".
+(order 7) and GF(243) (order 5); the same orbits also raised (17,8), (20,8) and (17,10) (+1.4 %, +6.2 %, +10.5 %); see
+the section "D = 12: field-automorphism orbits".
 
 ## Summary
 
@@ -40,7 +41,8 @@ vertices, and (8,12), (9,12), (10,12), (11,12) raised 4.0-6.6 % with orbits of t
   (research/frontier/beyond11/FROBENIUS.md).
 - **raise-d12:** (8,12), (9,12) on SL(2,128) x Z_n with S closed under the field automorphism x -> x^2 (order 7,
   fixed set SL(2,2)), (10,12), (11,12) on PSL(2,243) x Z_n with x -> x^3 (order 5, fixed set PSL(2,3)): +4.0-6.6 %;
-  new cell (15,12) 29,999,670,624 (PSL(2,197) x Z3924) at the 30-billion cap. Squad rounds found no structure for
+  new cell (15,12) 29,999,670,624 (PSL(2,197) x Z3924) at the 30-billion cap; with the same orbits (17,8) 41,967,552,
+  (20,8) 130,354,752 and (17,10) 7,762,627,224. Squad rounds found no structure for
   (3..7,12), where no field group of the right size exists (research/squads/LOG.md, job raise-d12).
 - Every value is at least the trivial floor from the neighbouring cells (n_b(Δ,D) ≥ n_b(Δ−1,D), n_b(Δ,D−1)).
 
