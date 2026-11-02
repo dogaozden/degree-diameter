@@ -1,0 +1,14 @@
+PSL(2,97) x Z19, ORBIT "3 3 2", mu 23.55, 95 s per run, THREADS=1, machine load avg ~25 on 4 cores
+seed run          best cost   evals
+101 K4            23          490
+102 K2 TARGP90    21          453
+103 K8            21          465
+104 K4            23          442
+105 K4            25          434
+106 K4 TARGP90    27          458
+107 resume r1 c12 12          462  (no gain)
+108 K4            29          458
+109 K4            24          498
+110 K2            24          537
+111 K4            24          581
+RANDORB 200 samples: PSL97xZ19 min 30 median 87 (cost 0 never seen); SL(2,41) x Z127 min 42 median 112

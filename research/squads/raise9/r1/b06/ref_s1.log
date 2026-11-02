@@ -1,0 +1,8 @@
+group sl 25 poly x^2+2 x Z_43, N=670800, identity 25800, H order 43, rows 15600, threads 1, setup 0.15s
+wide rows: HW order 215, rows 3120, setup 0.27s
+alpha: conj by mat(13,12,7,16) (index 8407), z -> 6 z on Z_43
+ORBIT k=3 m=2 f=2: |Fix(alpha)| = 23 (+e); mu = 29.67, mu/k = 9.89, fixed-point misses ~ 1.70
+start cost=102
+t=30 steps=2492 evals=9969 cost=18 best=18 T=0.53
+t=60 steps=4891 evals=19565 cost=16 best=16 T=0.19
+RESULT d=8 D=9 group=sl 25 poly x^2+2 x Z_43 N=670800 best=16 evals=30681 time=90.0 orbit k=3 m=2 f=2 fix=23

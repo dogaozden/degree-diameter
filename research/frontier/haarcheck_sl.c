@@ -5,8 +5,9 @@
  * Own element indexing (keyed on c, unlike haar_gen3's a-keyed one): c != 0: (c,a,d) -> b = (ad-1)/c;
  * c = 0: a != 0, d = 1/a, b free.  Neighbours are computed by explicit 2x2 matrix products mod p.
  * Memory: 4 bitsets of N bits per BFS.  Usage: haarcheck_sl SOL.txt [A|B]
- * With A or B only that one BFS runs (to split a long check into two jobs); the last line then reads
- * HALF-VALID/INVALID from (e,A) or (e,B), and the graph is VALID only when both halves are HALF-VALID. */
+ * With A or B only that one BFS runs (to split a long check into two jobs, as in research/structured/tools/haarcheck_psl.c;
+ * added by job beyond-d11b); the last line then reads HALF-VALID/HALF-INVALID from (e,A) or (e,B), and the graph is
+ * VALID only when both halves are HALF-VALID. */
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdint.h>

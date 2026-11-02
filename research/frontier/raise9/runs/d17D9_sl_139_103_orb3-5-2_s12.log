@@ -1,0 +1,15 @@
+group sl 139 x Z_103, N=276604440 (2N=553208880), rows 19320 x 14317 bits (doubled row 472 words), memory 0.23 GB, threads 2
+alpha: conj by mat(0,138,1,138), z -> 46 z on Z_103 (fixed z: 1); ORBIT k=3 m=5 f=2; W=4.5813e+09 lambda=16.563 mu=17.73
+setup 0.0s
+fixed generators: 1 chosen among 137 alpha-fixed elements
+FIXF: 137 alpha-fixed elements other than e (0.2s); FIXTRY 200 FIXMAX 0
+start cost=54 (0.6s per eval)
+t=3 step=1 evals=5 slot=2 cand=24 cost=24 best=24 T=1.26 screened=6 (0s) fh=0,0,0,0
+t=5 step=2 evals=9 slot=4 cand=18 cost=18 best=18 T=1.06 screened=13 (1s) fh=0,0,0,0
+t=7 step=3 evals=13 slot=3 cand=36 cost=18 best=18 T=0.89 screened=18 (1s) fh=0,0,0,0
+t=10 step=4 evals=17 slot=4 cand=36 cost=18 best=18 T=0.75 screened=36 (1s) fh=0,0,0,0
+t=11 step=5 evals=21 slot=2 cand=30 cost=18 best=18 T=0.63 screened=45 (1s) fh=0,0,0,0
+t=14 step=6 evals=25 slot=2 cand=24 cost=18 best=18 T=0.53 screened=74 (2s) fh=0,0,0,0
+t=16 step=7 evals=29 slot=0 cand=18 cost=18 best=18 T=0.45 screened=83 (2s) fh=0,0,0,0
+t=16 step=8 evals=30 slot=2 cand=42 cost=18 best=18 T=0.38 screened=89 (3s) fh=0,0,0,0
+RESULT d=17 D=9 group=sl 139 x Z_103 N=276604440 vertices=553208880 best=18 evals=30 steps=8 time=16.5 orbit k=3 m=5 f=2 mu=17.73

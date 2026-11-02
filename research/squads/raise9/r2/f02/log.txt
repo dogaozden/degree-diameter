@@ -1,0 +1,14 @@
+z1559s2 seed=2 meta 1559 41 84 : RESULT d=6 D=9 group=meta 1559 41 84 x Z_1 N=63919 best=6 evals=43521 time=90.0
+z1559s3 seed=3 meta 1559 41 84 : RESULT d=6 D=9 group=meta 1559 41 84 x Z_1 N=63919 best=8 evals=44553 time=90.0
+z4261s1 seed=1 meta 4261 15 290 : RESULT d=6 D=9 group=meta 4261 15 290 x Z_1 N=63915 best=20 evals=16545 time=90.0
+z4261s2 seed=2 meta 4261 15 290 : RESULT d=6 D=9 group=meta 4261 15 290 x Z_1 N=63915 best=22 evals=17017 time=90.0
+z1559s4 seed=4 meta 1559 41 84 : RESULT d=6 D=9 group=meta 1559 41 84 x Z_1 N=63919 best=10 evals=43129 time=90.0
+z1559s5 seed=5 meta 1559 41 84 : RESULT d=6 D=9 group=meta 1559 41 84 x Z_1 N=63919 best=6 evals=40185 time=90.1
+fin z1559s5 seed=7 : RESULT d=6 D=9 group=meta 1559 41 84 x Z_1 N=63919 best=6 evals=39145 time=80.0
+z1559s6 seed=6 meta 1559 41 84 : RESULT d=6 D=9 group=meta 1559 41 84 x Z_1 N=63919 best=2 evals=45313 time=90.0
+fin z1559s6 seed=8 : RESULT d=6 D=9 group=meta 1559 41 84 x Z_1 N=63919 best=2 evals=44865 time=85.0
+resume r6 from z1559s6 cost2: RESULT d=6 D=9 group=meta 1559 41 84 x Z_1 N=63919 best=2 evals=42313 time=90.0
+z1559s9 seed=9 meta 1559 41 84 : RESULT d=6 D=9 group=meta 1559 41 84 x Z_1 N=63919 best=8 evals=54825 time=90.1
+z1559s10 seed=10 meta 1559 41 84 : RESULT d=6 D=9 group=meta 1559 41 84 x Z_1 N=63919 best=6 evals=51193 time=90.0
+z1559s11 seed=11 meta 1559 41 84 : RESULT d=6 D=9 group=meta 1559 41 84 x Z_1 N=63919 best=10 evals=54609 time=90.0
+z1559s12 seed=12 meta 1559 41 84 : RESULT d=6 D=9 group=meta 1559 41 84 x Z_1 N=63919 best=6 evals=92121 time=90.0

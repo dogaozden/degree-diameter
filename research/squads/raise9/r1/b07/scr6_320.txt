@@ -1,0 +1,23 @@
+psl q=17 n=26 N=127296 :: group=psl 17 x Z_26 N=63648 samples=20 min=62 p10=142 median=6132 mean=26600.45 mu=29.65 time=0.0
+sl q=17 n=13 N=127296 :: group=sl 17 x Z_13 N=63648 samples=20 min=24 p10=68 median=240 mean=1969.90 mu=29.65 time=0.0
+psl q=7 n=379 N=127344 :: group=psl 7 x Z_379 N=63672 samples=20 min=2346 p10=6450 median=38316 mean=43002.05 mu=29.75 time=0.0
+psl q=7 n=380 N=127680 :: group=psl 7 x Z_380 N=63840 samples=20 min=71776 p10=72126 median=95760 mean=93136.80 mu=30.44 time=0.0
+sl q=7 n=190 N=127680 :: group=sl 7 x Z_190 N=63840 samples=20 min=25616 p10=27086 median=63880 mean=71204.20 mu=30.44 time=0.1
+psl q=7 n=381 N=128016 :: group=psl 7 x Z_381 N=64008 samples=20 min=882 p10=2182 median=14985 mean=30419.35 mu=31.13 time=0.0
+sl q=8 n=127 N=128016 :: group=sl 8 poly x^3+x+1 x Z_127 N=64008 k=3 m=2 f=0 fix=8 samples=20 min=167 p1=167 p10=236 median=1352 mean=13981.15 var=692254025.4 mu=31.13 time=0.0
+psl q=11 n=97 N=128040 :: group=psl 11 x Z_97 N=64020 samples=20 min=118 p10=225 median=3198 mean=22340.45 mu=31.19 time=0.0
+psl q=9 n=178 N=128160 :: group=psl 9 poly x^2+1 x Z_178 N=64080 k=3 m=2 f=0 fix=1601 samples=20 min=121680 p1=121680 p10=121680 median=121728 mean=122919.20 var=4643493.7 mu=31.44 time=0.0
+sl q=9 n=89 N=128160 :: group=sl 9 poly x^2+1 x Z_89 N=64080 k=3 m=2 f=0 fix=1601 samples=20 min=115208 p1=115208 p10=115216 median=115770 mean=119210.50 var=25412695.1 mu=31.44 time=0.0
+psl q=7 n=382 N=128352 :: group=psl 7 x Z_382 N=64176 samples=20 min=125328 p10=125328 median=125328 mean=125476.50 mu=31.85 time=0.0
+sl q=7 n=191 N=128352 :: group=sl 7 x Z_191 N=64176 samples=20 min=122304 p10=122304 median=122308 mean=122922.50 mu=31.85 time=0.0
+psl q=7 n=383 N=128688 :: group=psl 7 x Z_383 N=64344 samples=20 min=125664 p10=125664 median=125664 mean=125810.70 mu=32.57 time=0.0
+psl q=13 n=59 N=128856 :: group=psl 13 x Z_59 N=64428 samples=20 min=109206 p10=109212 median=109288 mean=110375.20 mu=32.94 time=0.1
+psl q=9 n=179 N=128880 :: group=psl 9 poly x^2+1 x Z_179 N=64440 k=3 m=2 f=0 fix=1610 samples=20 min=122400 p1=122400 p10=122400 median=122412 mean=123040.25 var=3028538.4 mu=32.99 time=0.0
+psl q=7 n=384 N=129024 :: group=psl 7 x Z_384 N=64512 samples=20 min=126000 p10=126000 median=126000 mean=126463.80 mu=33.31 time=0.0
+sl q=7 n=192 N=129024 :: group=sl 7 x Z_192 N=64512 samples=20 min=122976 p10=122976 median=122976 mean=123179.20 mu=33.31 time=0.0
+psl q=11 n=98 N=129360 :: group=psl 11 x Z_98 N=64680 samples=20 min=92 p10=182 median=64680 mean=47582.05 mu=34.06 time=0.0
+sl q=11 n=49 N=129360 :: group=sl 11 x Z_49 N=64680 samples=20 min=50 p10=152 median=380 mean=8285.90 mu=34.06 time=0.0
+psl q=7 n=386 N=129696 :: group=psl 7 x Z_386 N=64848 samples=20 min=380 p10=722 median=61334 mean=38669.20 mu=34.82 time=0.0
+sl q=7 n=193 N=129696 :: group=sl 7 x Z_193 N=64848 samples=20 min=330 p10=748 median=2796 mean=16154.90 mu=34.82 time=0.0
+psl q=7 n=387 N=130032 :: group=psl 7 x Z_387 N=65016 samples=20 min=408 p10=558 median=5640 mean=39088.75 mu=35.60 time=0.0
+sl q=8 n=129 N=130032 :: group=sl 8 poly x^3+x+1 x Z_129 N=65016 k=3 m=2 f=0 fix=26 samples=20 min=221 p1=221 p10=356 median=7426 mean=23498.85 var=1006879108.0 mu=35.60 time=0.0

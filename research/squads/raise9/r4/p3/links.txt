@@ -1,0 +1,11 @@
+101 | fresh | 12 (best at kill, 3 improvements in 100s) | ~12
+102 | START=OUT_s101.txt.best | 12 (no gain) | 13
+103 | START=OUT_s101.txt.best | 12 (killed at 108 s, no gain) | ~9
+201 | fresh | 42 (killed at 108 s, 2 steps, still descending) | 9
+202 | START=OUT_s201.txt.best | 26 (complete, 13 evals) | 13
+203 | START=OUT_s202.txt.best | 26 (no gain, 17 evals) | 17
+204 | START=OUT_s101.txt.best | 12 (no gain, 17 evals; lineage s101 stuck 4 links) | 17
+301 | fresh | 18 (killed at 108 s, 13 evals, descending from 66) | 13
+302 | START=OUT_s301.txt.best | 14 (killed at 108 s, 13 evals) | 13
+303 | START=OUT_s302.txt.best | 14 (killed at 108 s, no gain, 13 evals) | 13
+401 | START=OUT_s101.txt.best | 12 (killed at 108 s, no gain, 13 evals) | 13

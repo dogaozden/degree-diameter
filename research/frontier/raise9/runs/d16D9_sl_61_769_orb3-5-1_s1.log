@@ -1,0 +1,15 @@
+group sl 61 x Z_769, N=174501480 (2N=349002960), rows 3720 x 46909 bits (doubled row 1488 words), memory 0.13 GB, threads 2
+alpha: conj by mat(0,60,1,60), z -> 360 z on Z_769 (fixed z: 1); ORBIT k=3 m=5 f=1; W=2.74595e+09 lambda=15.736 mu=25.57
+setup 0.0s
+FIXF: 59 alpha-fixed elements other than e (0.0s); FIXTRY 200 FIXMAX 0
+start cost=110 (0.5s per eval)
+t=2 step=1 evals=5 slot=2 cand=108 cost=108 best=108 T=1.26 screened=7 (0s) fh=0,0,0,0
+t=3 step=2 evals=9 slot=2 cand=120 cost=108 best=108 T=1.06 screened=18 (0s) fh=0,0,0,0
+t=5 step=3 evals=13 slot=0 cand=90 cost=90 best=90 T=0.89 screened=26 (1s) fh=0,0,0,0
+t=6 step=4 evals=17 slot=1 cand=90 cost=90 best=90 T=0.75 screened=30 (1s) fh=0,0,0,0
+t=7 step=5 evals=21 slot=0 cand=72 cost=72 best=72 T=0.63 screened=37 (1s) fh=0,0,0,0
+t=9 step=6 evals=25 slot=4 cand=126 cost=72 best=72 T=0.53 screened=44 (1s) fh=0,0,0,0
+t=10 step=7 evals=29 slot=2 cand=96 cost=72 best=72 T=0.45 screened=48 (1s) fh=0,0,0,0
+t=11 step=8 evals=33 slot=0 cand=78 cost=72 best=72 T=0.38 screened=60 (1s) fh=0,0,0,0
+t=11 step=9 evals=34 slot=1 cand=28596 cost=72 best=72 T=0.32 screened=65 (1s) fh=0,0,0,0
+RESULT d=16 D=9 group=sl 61 x Z_769 N=174501480 vertices=349002960 best=72 evals=34 steps=9 time=11.5 orbit k=3 m=5 f=1 mu=25.57

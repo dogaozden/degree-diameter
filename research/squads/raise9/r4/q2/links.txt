@@ -1,0 +1,14 @@
+start 00:12:07
+s1 link1 start=none seed=1 best=32 (killed at 108s, evals 5, 21 s/eval at start)
+s2 link1 start=none seed=2 best=42 evals=5
+s3 link2 start=OUT_s1.txt.best seed=3 best=32 (no gain) evals=5
+s4 link2 start=OUT_s1.txt.best seed=4 best=6 (improved from 32) evals=5
+s5 link3 start=OUT_s4.txt.best seed=5 best=6 (no gain) evals=5
+s6 link4 start=OUT_s4.txt.best seed=6 best=6 (no gain) evals=5
+s7 link5 start=OUT_s4.txt.best seed=7 best=6 (no gain, lineage s4 stalled 3 links: fresh seed next)
+s8 link1 fresh seed=8 best=38 evals=5
+s9 link2 start=OUT_s8.txt.best seed=9 best=36 (from 38) evals=5
+s10 link3 start=OUT_s9.txt.best seed=10 best=18 (from 36) evals=5
+s11 link4 start=OUT_s10.txt.best seed=11 best=18 (no gain) evals=5
+s12 link5 start=OUT_s4.txt.best (best cost-6 state) seed=12
+s13 link6 start=OUT_s4.txt.best seed=13 best=6 evals=5

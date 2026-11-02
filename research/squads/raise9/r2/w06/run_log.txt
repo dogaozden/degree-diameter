@@ -1,0 +1,8 @@
+Commands used (all with THREADS=1, nice 10, B=/home/user/degree-diameter/research/squads/raise9/bin):
+python3 enum.py 63649 66500 9 63 prime|composite   (enumerate odd meta groups Z_m x|_r Z_k, frob = fixed-point-free)
+./screen.sh LIST OUT 1000                          (each line: haar_gen3 group args incl. n; RANDSAMPLE=1000)
+SAVEBEST=best_1559_41_s11.txt $B/haar_gen3s 6 9 90 11 41 out_1559_41_s11.txt meta 1559 41 84 1
+START=best_1559_41_s11.txt SAVEBEST=best_1559_41_s12.txt $B/haar_gen3s 6 9 90 12 41 out_1559_41_s12.txt meta 1559 41 84 1
+TFULL=1 TARGP=100 START=best_1559_41_s12.txt $B/haar_gen3t 6 9 90 13 41 out_1559_41_t13.txt meta 1559 41 84 1
+SAVEBEST=best_1559_41_s21.txt $B/haar_gen3s 6 9 95 21 41 out_1559_41_s21.txt meta 1559 41 84 1
+START=best_1559_41_s12.txt SAVEBEST=best_1559_41_s31.txt $B/haar_gen3s 6 9 95 31 41 out_1559_41_s31.txt meta 1559 41 84 1

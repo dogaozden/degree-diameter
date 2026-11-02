@@ -1,0 +1,13 @@
+101 | fresh | 52 (killed at 108 s; start cost 54, 5 evals, 20.8 s/eval) | 5
+102 | OUT_s101.txt.best.orb | 40 (killed at 108 s, 5 evals, 19.5 s/eval) | 5
+103 | OUT_s102.txt.best.orb | 40 (no gain, 5 evals, 18.3 s/eval) | 5
+104 | OUT_s102.txt.best.orb | 30 (gain 40->30, 5 evals, 21 s/eval) | 5
+105 | OUT_s104.txt.best.orb | 26 (gain 30->26, 5 evals, 21 s/eval) | 5
+106 | OUT_s105.txt.best.orb | 26 (no gain, 5 evals, 14.7 s/eval) | 5
+107 | OUT_s105.txt.best.orb | 26 (no gain, 5 evals, 14.5 s/eval) | 5
+108 | OUT_s105.txt.best.orb | 26 (no gain, 5 evals, 15 s/eval) | 5  -> 3 non-improving links: fresh seed next
+109 | fresh | 32 (start 50, 5 evals, 14.2 s/eval) | 5
+110 | OUT_s109.txt.best.orb | 32 (no gain, 5 evals, 14.8 s/eval) | 5
+111 | OUT_s109.txt.best.orb | 18 (gain 32->18, 9 evals, 105.7 s, ended itself) | 9
+112 | OUT_s111.txt.best.orb | 18 (no gain, 9 evals, 106.7 s) | 9
+113 | OUT_s111.txt.best.orb | 18 (no gain, 5 evals, 19.1 s/eval, killed at 108 s) | 5

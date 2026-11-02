@@ -1,0 +1,6 @@
+group prod meta 13 3 3 meta 239 7 10 x Z_1, N=65247, identity 0, H order 21, rows 3107, threads 1, setup 0.03s
+start cost=150
+t=30 steps=955 evals=7641 cost=18 best=18 T=0.53
+t=60 steps=2055 evals=16441 cost=18 best=18 T=0.19
+t=90 steps=3005 evals=24041 cost=18 best=18 T=0.15
+RESULT d=6 D=9 group=prod meta 13 3 3 meta 239 7 10 x Z_1 N=65247 best=18 evals=24041 time=90.1
