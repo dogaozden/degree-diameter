@@ -1,4 +1,4 @@
-# Beyond the 2013 table: first values for 58 new cells
+# Beyond the 2013 table: first values for 59 new cells
 
 Job new-cells-beyond (Opus director + Haiku squads, cloud session, 2026-10-26, branch claude/new-cells-beyond-etos3t).
 The 2013 bipartite table (DS14v2, Table 4) stops at Δ = 16 and D = 10. This file gives a checked lower bound for every
@@ -13,6 +13,10 @@ Extended 2026-11-01 by job beyond-d11 (branch claude/new-cells-d11-d12-beyond-8s
 Extended 2026-11-01 by job beyond-d11b (branch claude/beyond-d11-d12-new-cells-3t3djx): new cells (15,11), (16,11) and
 (14,12) with Haar graphs of 28.7-30.0 billion vertices, (12,12) and (13,12) raised to ~30 billion, and (4..6, 11), (4,12),
 (5,12) raised with Frobenius groups Z_p x| Z_k; see the section "D = 11 at Δ = 15, 16, D = 12 at Δ = 14, and raises".
+
+Extended 2026-11-02 by job raise-d12 (branch claude/d12-frontier-cells-m24ikx): new cell (15,12) at 30.0 billion
+vertices, and (8,12), (9,12), (10,12) raised 4.0-6.6 % with orbits of the field automorphism of GF(128)
+(order 7) and GF(243) (order 5); see the section "D = 12: field-automorphism orbits".
 
 ## Summary
 
@@ -34,6 +38,10 @@ Extended 2026-11-01 by job beyond-d11b (branch claude/beyond-d11-d12-new-cells-3
   PSL(2,241) x Z2143), (12,12) and (13,12) raised to ~30 billion at the job's 30-billion cap; the small cells (4..6, 11),
   (4,12), (5,12) raised with odd-order Frobenius groups Z_p x| Z_k, which at Δ = 4 beat the size law by far
   (research/frontier/beyond11/FROBENIUS.md).
+- **raise-d12:** (8,12), (9,12) on SL(2,128) x Z_n with S closed under the field automorphism x -> x^2 (order 7,
+  fixed set SL(2,2)), (10,12) on PSL(2,243) x Z_n with x -> x^3 (order 5, fixed set PSL(2,3)): +4.0-6.6 %;
+  new cell (15,12) 29,999,670,624 (PSL(2,197) x Z3924) at the 30-billion cap. Squad rounds found no structure for
+  (3..7,12), where no field group of the right size exists (research/squads/LOG.md, job raise-d12).
 - Every value is at least the trivial floor from the neighbouring cells (n_b(Δ,D) ≥ n_b(Δ−1,D), n_b(Δ,D−1)).
 
 ## Upper bounds
@@ -111,13 +119,14 @@ plane, generalized quadrangle or generalized hexagon of order 18, whose existenc
 | (5,12) | **1,058,342** | 9.46 | 11,184,804 | Haar graph of the Frobenius group Z8969 x\|_205 Z59 (order 529,171), random S finished with save/resume chains (haar_gen3t; job beyond-d11b squad r6/l03); was 1,041,768 (PSL(2,53) x Z7); also 1,056,886 (Z8663 x\| Z61, r5/k03), 1,050,906 (Z10303 x\| Z51, r4/j10); mu = 13.61 | build_haar2.py VALID (research/frontier/runs/cloudcheck/d5D12_meta_8969_59_205_b6l03.check.txt) | Haar size law at mu = 5: 2N = 9.74e+05 |
 | (6,12) | **9,366,240** | 7.67 | 122,070,306 | Haar graph PSL(2,79) x Z19, S = 2 free orbits of size 3 (squad r3/e08); was 9,303,840; mu = 10.24 | haarcheck_gen VALID (research/frontier/runs/cloudcheck/d6D12_psl_79_19_orb3-2-0_e08.gen.txt) | Haar size law at mu = 5: 2N = 8.91e+06 |
 | (7,12) | **59,838,504** | 6.87 | 870,712,928 | Haar graph PSL(2,67) x Z199, S = {e} + 2 orbits of size 3 (squad r3/e09); was 56,297,592; mu = 14.34 | haarcheck_gen VALID (research/frontier/runs/cloudcheck/d7D12_psl_67_199_orb3-2-1_e09.gen.txt) | Haar size law at mu = 5: 2N = 5.6e+07 |
-| (8,12) | **284,095,056** | 6.16 | 4,613,762,394 | Haar graph PSL(2,167) x Z61, S = {e} + 1 fixed + 2 orbits of size 3 (squad r4/f10); was 268,496,208; mu = 12.57 | haarcheck_gen VALID (research/frontier/runs/cloudcheck/d8D12_psl_167_61_orb3-2-2_f10.gen.txt) | Haar size law at mu = 5: 2N = 2.7e+08 |
-| (9,12) | **1,105,785,120** | 5.63 | 19,634,136,204 | Haar graph PSL(2,241) x Z79, S = 3 free orbits of size 3 (squad r3/e11); was 1,055,973,600; mu = 10.75 | haarcheck_gen VALID (research/frontier/runs/cloudcheck/d9D12_psl_241_79_orb3-3-0_e11.gen.txt) | Haar size law at mu = 5: 2N = 1.06e+09 |
-| (10,12) | **3,712,424,352** | 5.26 | 70,607,384,114 | Haar graph PSL(2,337) x Z97, S = {e} + 3 orbits of size 3 (squad r4/f12); was 3,500,976,768; mu = 10.20 | haarcheck_gen VALID (research/frontier/runs/cloudcheck/d10D12_psl_337_97_orb3-3-1_f12.gen.txt) | Haar size law at mu = 5: 2N = 3.58e+09 |
+| (8,12) | **297,777,408** | 6.45 | 4,613,762,394 | Haar graph SL(2,128) x Z71, S = {e} + one orbit of size 7 of alpha = (field automorphism x -> x^2 of GF(128), order 7) x (z -> 20 z), Fix(alpha) = SL(2,2) (director, haar_bigq, 3 of 420 random orbit samples had cost 0; job raise-d12); was 284,095,056 (PSL(2,167) x Z61, k = 3); mu = 27.79 | haarcheck_gen VALID (research/frontier/runs/cloudcheck/d8D12_sl_128_71_orb7-1-1_r2.gen.txt) | Haar size law at mu = 5: 2N = 2.7e+08 |
+| (9,12) | **1,178,527,488** | 6.00 | 19,634,136,204 | Haar graph SL(2,128) x Z281, S = {e} + one alpha-fixed generator of order 3 + one orbit of size 7 of the field automorphism (director, haar_bigq, 1,444 evaluations; job raise-d12); was 1,105,785,120 (PSL(2,241) x Z79, k = 3); mu = 34.28 | haarcheck_gen VALID (research/frontier/runs/cloudcheck/d9D12_sl_128_281_orb7-1-2_s21.gen.txt) | Haar size law at mu = 5: 2N = 1.06e+09 |
+| (10,12) | **3,888,487,944** | 5.51 | 70,607,384,114 | Haar graph PSL(2,243) x Z271, S = 2 free orbits of size 5 of alpha = (field automorphism x -> x^3 of GF(243), order 5) x (z -> r z), Fix(alpha) = PSL(2,3) (director, haar_bigq, 626 evaluations; job raise-d12); was 3,712,424,352 (PSL(2,337) x Z97, k = 3); mu = 25.28 | haarcheck_gen VALID (research/frontier/runs/cloudcheck/d10D12_psl_243_271_orb5-2-0_s11.gen.txt) | Haar size law at mu = 5: 2N = 3.58e+09 |
 | (11,12) | **11,189,148,096** | 5.04 | 222,222,222,216 | Haar graph PSL(2,223) x Z1009, S = {e} + 1 fixed + 3 orbits of size 3 (director, 17 evals); earlier 10,966,037,544 and 10,474,157,232; mu = 13.26 | haarcheck_gen VALID (research/frontier/runs/cloudcheck/d11D12_psl_223_1009_orb3-3-2_s2.gen.txt) | Haar size law at mu = 5: 2N = 1.07e+10 |
 | (12,12) | **29,996,171,040** | 4.78 | 627,685,675,338 | Haar graph PSL(2,241) x Z2143, S = 4 free orbits of size 3 (director, 45 evals, job beyond-d11b); was 19,980,294,768 (PSL(2,503) x Z157, 20-billion cap); mu = 12.25 | haarcheck_gen VALID (research/frontier/runs/cloudcheck/d12D12_psl_241_2143_orb3-4-0_s1.gen.txt) | Haar size law at mu = 5: 2N = 2.88e+10 |
 | (13,12) | **29,997,644,040** | 1.85 | 1,621,109,172,404 | Haar graph PSL(2,181) x Z5059, S = {e} + 4 orbits of size 3; at the job's 30-billion cap (first S solved; job beyond-d11b); was 19,993,487,976 (PSL(2,307) x Z691, 20-billion cap); mu = 0.00 | haarcheck_gen VALID (research/frontier/runs/cloudcheck/d13D12_psl_181_5059_orb3-4-1_s1.gen.txt) | Haar size law at mu = 5: 2N = 7.14e+10 |
 | (14,12) | **29,996,171,040** | 0.77 | 3,883,014,187,074 | Haar graph PSL(2,241) x Z2143, S = {e} + 1 fixed + 4 orbits of size 3; at the job's 30-billion cap (first S solved); new cell (job beyond-d11b); mu = 0.00 | haarcheck_gen VALID (research/frontier/runs/cloudcheck/d14D12_psl_241_2143_orb3-4-2_s1.gen.txt) | Haar size law at mu = 5: 2N = 1.65e+11 |
+| (15,12) | **29,999,670,624** | 0.34 | 8,722,140,365,424 | Haar graph PSL(2,197) x Z3924, S = 5 free orbits of size 3 (conjugation alpha; f = 0); at the job's 30-billion cap (first S solved); new cell (job raise-d12); the floor from (13,12) is 29,997,644,040; mu = 0.00 | haarcheck_gen VALID (research/frontier/runs/cloudcheck/d15D12_psl_197_3924_orb3-5-0_s1.gen.txt) | Haar size law at mu = 5: 2N = 3.59e+11 |
 <!-- /TABLE -->
 
 ## Notes by diameter
@@ -314,6 +323,62 @@ odd-D searches stall, for gains of 1-3 %, and the machine was busy with the five
 (exhaustive Frobenius and product groups, lifts of cubic multigraphs to cost 2 at 2,184 vertices for (3,12)). Negatives
 from round 1: Sz(8), F_{p^3} x| C_k, bipartite Cayley graphs of PGL(2,p), PSL(2,p^e) with a Frobenius automorphism,
 agl1 products, voltage lifts of PG(2,3) (19,500 at (4,11)). Squad log: research/squads/LOG.md (job beyond-d11b).
+
+### D = 12: field-automorphism orbits at Δ = 8..11, and (15,12) (job raise-d12, 2026-11-01/02)
+
+Job raise-d12 (Opus director + Haiku squad rounds, cloud session, branch claude/d12-frontier-cells-m24ikx). Size limit:
+30 billion vertices.
+
+**The idea.** BEYOND_RANDOM.md: if S is closed under an automorphism alpha of odd order k, the uncovered elements come in
+alpha-orbits, so a valid S appears with probability about exp(-mu/k - F) instead of exp(-mu), where F counts the
+alpha-fixed elements (each missed with probability exp(-lambda/k)). The earlier D = 12 values used k = 3 (conjugation by
+a matrix of order 3, whose fixed set is a torus of ~p/2 elements). The field automorphism x -> x^p of GF(p^e) has order e
+and fixes only SL(2,p) or PSL(2,p): for SL(2,128) (e = 7) the fixed set is SL(2,2), 6 elements, and for PSL(2,243)
+(e = 5) it is PSL(2,3), 12 elements. So these groups allow k = 7 and k = 5 with almost no fixed-point cost. The search
+tool is research/frontier/raise-d12/haar_bigq.c: haar_big0 (bit-parallel, N/2 bytes) for SL/PSL(2,q) x Z_n with q a
+prime power; its rows are cosets of the split torus x Z_n (cyclic when gcd(|T|, n) = 1), and AFROB=j selects the field
+automorphism. It reproduces haar_big0's cost exactly on prime fields and haarcheck_gen's unreached count on GF(81).
+
+**Results (director).**
+- (8,12) **297,777,408** (+4.8 %): SL(2,128) x Z71, alpha = (x -> x^2) x (z -> 20 z), S = {e} + one 7-orbit
+  ("7 1 1"). Size-law mu 27.8, so mu/7 = 4.0 and the fixed term ~ 5 exp(-lambda/7) = 0.55: plain random sampling of
+  the orbit representative x gave cost 0 for 3 of 420 samples (0.22 s each). n = 71 is the only n with an order-7
+  multiplier between the old value and mu ~ 100, so the method stops here at Δ = 8.
+- (9,12) **1,178,527,488** (+6.6 %): SL(2,128) x Z281, S = {e} + one alpha-fixed generator of order 3 (from SL(2,2))
+  + one 7-orbit ("7 1 2", FIXORD=3); mu 34.3. Solved by haar_bigq's annealer after 1,444 evaluations (random sampling:
+  none in ~1,100 samples, minimum one clump). An involution as the fixed generator is much worse (median cost 357
+  against 56): e t^-1 = t e^-1 wastes words.
+- (10,12) **3,888,487,944** (+4.7 %): PSL(2,243) x Z271, alpha = (x -> x^3, order 5) x (z -> r z), S = two free
+  5-orbits ("5 2 0"); mu 25.3. Solved after 626 evaluations (a second seed also reached 0); the last holes were
+  alpha-fixed elements.
+- (11,12): PSL(2,243) x Z811 (S = {e} + two 5-orbits, +4.0 %) and x Z821 (+5.3 %) were still being searched when this
+  was written; see research/frontier/raise-d12/runs/.
+- (15,12) **29,999,670,624**, new cell: PSL(2,197) x Z3924 with 5 free conjugation 3-orbits (haar_big0); lambda = 291,
+  so the first S solved (15 s). The group order was picked so that 2N lies between the floor 29,997,644,040 (the (13,12)
+  graph, also a graph of max degree 15) and the cap 30,000,000,000. haarcheck_gen from (e,A) and (e,B), 4,120 s,
+  11.3 GB.
+- Checks: research/frontier/haarcheck_gen.c (independent group and field code, BFS from (e,A) and (e,B)), logs in
+  research/frontier/runs/cloudcheck/<stem>.gen.txt; solutions in research/frontier/sols/. (8..10,12) are below
+  20 billion vertices; the coordinator's haarcheck_psl / haarcheck_sl only handle prime fields, so the reference
+  re-check of the GF(128) / GF(243) graphs needs haarcheck_gen (its header format "sl 128 poly x^7+x+1"). (15,12) is a prime-field PSL graph above 20 billion: haarcheck_psl SOL A and SOL B.
+
+**Why it works and where it does not (squads, 27 cards in 2 rounds, research/squads/LOG.md).** Every card was
+negative, and the negatives explain the shape of the method:
+- The abelian-section wall (round 1 a05, a10, a14; round 2 b07, b08): the image of a word in an abelian quotient (or in
+  an abelian normal subgroup on which alpha acts by a scalar) depends only on its signed letter counts, so an
+  orbit-closed S reaches a bounded set of residues there. SL(2,8) x Z1063 leaves 82 % uncovered; SL(2,32) x (Z191 x| Z5)
+  at (7,12) has 1,121 holes against 25 for a random S. b08's exact count (r2/b08/NOTE.md): one 3-orbit covers Z_n only
+  for n <= 241, one 5-orbit up to 7,691; some failures (SL(2,8) x Z73 at (4,12), min cost 61 over all 12,262 orbits;
+  SL(2,32) x Z941 at (7,12), min 395) are not explained by the count alone.
+- Small cells have no field group of the right size: SL(2,32) (order 32,736) and PSL(2,243) (7.2 million) bracket
+  (5..7,12), and products with a cyclic or dihedral factor hit the wall above. (6,12) SL(2,32) x Z151 (one 5-orbit,
+  +5.6 %) and the affine group F_32768 x| C151 both floor at 3 clumps of 5 holes (cost 15) over ~10^5 samples.
+- Other families measured and dropped: lifts of Moore-graph bases (Tutte 12-cage lifts stop at 1,386 vertices for
+  (3,12): 65 walks per vertex-line pair, all geodesic plus apartment detours; W(3) and H(3) lifts at (4,12)), class-2
+  groups with fixed-point-free automorphisms, wreath groups H^k with the shift (D7^5: always disconnected, proof), affine
+  semilinear groups F_q x| C_k (54 groups exhaustively at Δ = 3; F_512 x| C73 at Δ = 4 has a structural floor of 22
+  holes), inverse-closed S, order-5 conjugation orbits in PSL(2,p) (fixed torus of ~p/2 elements), unstructured
+  cubic graphs (1,350 vertices).
 
 ## What failed, and why it matters for the next attempt
 
