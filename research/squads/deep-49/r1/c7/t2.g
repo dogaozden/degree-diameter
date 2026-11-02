@@ -1,0 +1,12 @@
+Read("/home/user/degree-diameter/research/squads/deep-49/r1/c7/lib.g");
+t := Runtime();
+keep := MakeOrder(311, 8, "x");
+Print("ms ", Runtime()-t, "\n");
+G := keep[1][2];
+Print("type ", IsPermGroup(G), IsPcGroup(G), " size ", Size(G), "\n");
+t := Runtime(); Print("centre ", Size(Centre(G)), " ", Runtime()-t, "\n");
+t := Runtime(); Print("ncc ", NrConjugacyClasses(G), " ", Runtime()-t, "\n");
+t := Runtime(); c := Collected(List(AsList(G), Order)); Print("orders ", Runtime()-t, "\n");
+G2 := keep[2][2];
+t := Runtime(); Print("iso ", IsomorphismGroups(G, G2) <> fail, " ", Runtime()-t, "\n");
+QUIT;

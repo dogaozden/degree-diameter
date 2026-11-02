@@ -1,0 +1,29 @@
+aut: |AUT| = 10100 verified (u,c) maps, 101 of them translations (u=1)
+exh tag=z101 N=2525 nH=25 R=101 reps=25 start_rep=0 bound=2 D=9
+rep 1/25 x=1 stab=100 best=2 (was 2) orbits=36303 rep_evals=36303 total=36303 t=0.8
+rep 2/25 x=101 stab=99 best=2 (was 2) orbits=32078 rep_evals=32078 total=68381 t=1.4
+rep 3/25 x=202 stab=99 best=2 (was 2) orbits=32078 rep_evals=32078 total=100459 t=2.0
+WROTE cost=2 S={0,303,708,1564} out/z101_c2.edges
+rep 4/25 x=303 stab=99 best=2 (was 2) orbits=32078 rep_evals=32078 total=132537 t=2.8
+rep 5/25 x=404 stab=99 best=2 (was 2) orbits=32078 rep_evals=32078 total=164615 t=3.5
+rep 6/25 x=505 stab=99 best=2 (was 2) orbits=32078 rep_evals=32078 total=196693 t=4.2
+rep 7/25 x=606 stab=99 best=2 (was 2) orbits=32078 rep_evals=32078 total=228771 t=4.9
+rep 8/25 x=707 stab=99 best=2 (was 2) orbits=32078 rep_evals=32078 total=260849 t=5.7
+rep 9/25 x=808 stab=99 best=2 (was 2) orbits=32078 rep_evals=32078 total=292927 t=6.4
+rep 10/25 x=909 stab=99 best=2 (was 2) orbits=32078 rep_evals=32078 total=325005 t=7.0
+rep 11/25 x=1010 stab=99 best=2 (was 2) orbits=32078 rep_evals=32078 total=357083 t=7.6
+rep 12/25 x=1111 stab=99 best=2 (was 2) orbits=32078 rep_evals=32078 total=389161 t=8.4
+rep 13/25 x=1212 stab=99 best=2 (was 2) orbits=32078 rep_evals=32078 total=421239 t=9.0
+rep 14/25 x=1313 stab=99 best=2 (was 2) orbits=32078 rep_evals=32078 total=453317 t=9.7
+rep 15/25 x=1414 stab=99 best=2 (was 2) orbits=32078 rep_evals=32078 total=485395 t=10.4
+rep 16/25 x=1515 stab=99 best=2 (was 2) orbits=32078 rep_evals=32078 total=517473 t=11.0
+rep 17/25 x=1616 stab=99 best=2 (was 2) orbits=32078 rep_evals=32078 total=549551 t=11.7
+rep 18/25 x=1717 stab=99 best=2 (was 2) orbits=32078 rep_evals=32078 total=581629 t=12.5
+rep 19/25 x=1818 stab=99 best=2 (was 2) orbits=32078 rep_evals=32078 total=613707 t=13.2
+rep 20/25 x=1919 stab=99 best=2 (was 2) orbits=32078 rep_evals=32078 total=645785 t=13.8
+rep 21/25 x=2020 stab=99 best=2 (was 2) orbits=32078 rep_evals=32078 total=677863 t=14.6
+rep 22/25 x=2121 stab=99 best=2 (was 2) orbits=32078 rep_evals=32078 total=709941 t=15.3
+rep 23/25 x=2222 stab=99 best=2 (was 2) orbits=32078 rep_evals=32078 total=742019 t=16.0
+rep 24/25 x=2323 stab=99 best=2 (was 2) orbits=32078 rep_evals=32078 total=774097 t=16.7
+rep 25/25 x=2424 stab=99 best=2 (was 2) orbits=32078 rep_evals=32078 total=806175 t=17.4
+DONE tag=z101 N=2525 min=2 (exact over all 25 reps, evals=806175)
