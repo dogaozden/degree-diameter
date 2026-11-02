@@ -1,0 +1,10 @@
+Coordinator report (Mac mini coordinator, 2026-11-02T04:16:41Z): d17D10_psl_181_1321_orb5-3-2_s1.txt from origin/claude/raise-d10-beyond-rcdq5p, sha256 bd021b1f8113115ffc9686c3fb7ea078adb03a96e737ec119f019105d2e4911e.
+
+======== Mac mini: research/structured/tools/haarcheck_psl.c (master; clang -O3), exit 0, 2564 s ========
+from (e,A): reached A 3916474380/3916474380, B 3916474380/3916474380 within 10, ecc 10
+from (e,B): reached A 3916474380/3916474380, B 3916474380/3916474380 within 10, ecc 10
+VALID d=17 D=10 group=psl 181 x Z_1321 N=3916474380 vertices=7832948760 (distinct generators, 17-regular simple)
+======== Mac mini: research/frontier/haarcheck_gen.c (master; clang -O3), exit 0, 2122 s ========
+from (e,A): reached A 3916474380/3916474380, B 3916474380/3916474380 within 10; ecc 10; level sizes [1, 17, 272, 4352, 69612, 1113252, 17766442, 274524047, 2677974178, 3640832712, 1220663875]  (1035s)
+from (e,B): reached A 3916474380/3916474380, B 3916474380/3916474380 within 10; ecc 10; level sizes [1, 17, 272, 4352, 69612, 1113252, 17766412, 274524047, 2677932694, 3640832712, 1220705389]  (2122s)
+VALID d=17 D=10 group=psl 181 x Z_1321 N=3916474380 vertices=7832948760 (distinct generators, 17-regular simple; every vertex within 10 of both (e,A) and (e,B); ecc 10; 2122s)
