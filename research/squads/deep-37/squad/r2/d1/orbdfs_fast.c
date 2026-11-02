@@ -109,21 +109,40 @@ static void del_edges(int (*eb)[2], int m) { for (int i = m - 1; i >= 0; i--) { 
 /* collisions(v) = (number of non-backtracking walks of even length <= L from v) - (number of distinct endpoints of
    them). Iterative walk with an explicit stack; returns 1 iff collisions(v) > delta. Both counts only grow along a
    walk, so the walk stops as soon as the difference exceeds delta. NB walk = never reverses the edge just used. */
-static int wstamp[MAXN], wcur = 1;
-static int stv[512], stf[512], stl[512];
+/* level-synchronous: level k holds the NB walks of length k as (end vertex, previous vertex) pairs; the endpoints of
+   the even levels are marked in a bitset, whose popcount is the number of distinct endpoints. */
+static int *lvv[2], *lvf[2];   /* allocated in main */
+static int W;                  /* 64-bit words in the endpoint bitset */
 static int coll_gt(int v) {
-    int sp = 1, wc = 0, wd = 0; wcur++;
-    stv[0] = v; stf[0] = -1; stl[0] = 0;
-    while (sp > 0) {
-        sp--; int u = stv[sp], f = stf[sp], len = stl[sp];
+    uint64_t bits[8];
+    for (int i = 0; i < W; i++) bits[i] = 0;
+    int cur = 0, cnt = 1, wc = 0;
+    lvv[0][0] = v; lvf[0][0] = -1;
+    for (int len = 0; ; len++) {
+        int *cv = lvv[cur], *cf = lvf[cur];
         if (!(len & 1)) {
-            wc++;
-            if (wstamp[u] != wcur) { wstamp[u] = wcur; wd++; }
-            else if (wc - wd > delta) return 1;
+            wc += cnt;
+            for (int i = 0; i < cnt; i++) { int u = cv[i]; bits[u >> 6] |= 1ULL << (u & 63); }
+            int wd = 0; for (int i = 0; i < W; i++) wd += __builtin_popcountll(bits[i]);
+            if (wc - wd > delta) return 1;
         }
-        if (len < L) for (int j = 0; j < deg[u]; j++) { int w = adj[u][j]; if (w != f) { stv[sp] = w; stf[sp] = u; stl[sp] = len + 1; sp++; } }
+        if (len == L) break;
+        if (len + 1 == L) { /* last level: only its endpoints matter (and only if L is even) */
+            if (L & 1) break;
+            int add = 0;
+            for (int i = 0; i < cnt; i++) { int u = cv[i], f = cf[i];
+                for (int j = 0; j < deg[u]; j++) { int w = adj[u][j]; int m = (w != f);
+                    bits[w >> 6] |= (uint64_t)m << (w & 63); add += m; } }
+            wc += add;
+            int wd = 0; for (int i = 0; i < W; i++) wd += __builtin_popcountll(bits[i]);
+            return wc - wd > delta;
+        }
+        int *nv = lvv[cur ^ 1], *nf = lvf[cur ^ 1], nc = 0;
+        for (int i = 0; i < cnt; i++) { int u = cv[i], f = cf[i];
+            for (int j = 0; j < deg[u]; j++) { int w = adj[u][j]; nv[nc] = w; nf[nc] = u; nc += (w != f); } }
+        cur ^= 1; cnt = nc;
     }
-    return wc - wd > delta;
+    return 0;
 }
 /* prune after the edges of an option were added: 0 iff some discovered representative has collisions > delta.
    The representative that failed last is tested first; it is the same boolean as testing in discorder order. */
@@ -266,6 +285,8 @@ int main(int argc, char **argv) {
     FILE *f = fopen(argv[1], "r"); if (!f) { perror(argv[1]); return 2; }
     if (fscanf(f, "%d %d", &n, &ng) != 2) return 2;
     D = atoi(argv[2]); L = D - 1; half = n / 2; delta = (1 << D) - 1 - half;
+    W = (n + 63) / 64;
+    for (int s = 0; s < 2; s++) { lvv[s] = malloc(sizeof(int) * ((size_t)3 << L) + 16); lvf[s] = malloc(sizeof(int) * ((size_t)3 << L) + 16); }
     P = malloc(sizeof(short) * (size_t)n * ng);
     for (int g = 0; g < ng; g++) for (int v = 0; v < n; v++) { int t; if (fscanf(f, "%d", &t) != 1) return 3; PERM(g, v) = t; }
     for (int v = 0; v < n; v++) if (fscanf(f, "%d", &col[v]) != 1) return 4;

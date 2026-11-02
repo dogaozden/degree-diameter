@@ -49,3 +49,23 @@ nice 0, equal to the director's whole pipeline); the director raised the pipelin
 `echo -10 > /proc/<pid>/autogroup` and lowered the cards' groups to 15.
 Kept: haarex6 for the sweep; no family lead worth more CPU (the 704 lift is an isolated local minimum, the new
 families are far). The order-384 sweep continues; orders 401-450 started on the spare core.
+
+## deep-37 round 1 (2026-11-01 23:45Z, Opus session claude/deep-37-d3d7-c59pr7; goal: bipartite (3,7) graph on >= 169 vertices, record 168)
+Cards (research/squads/deep-37/squad/r1/CARDS.md): c1 census of 168 graphs with an order-7 symmetry (orbdfs); c2 seeds -> 170 by
+pair insertion + repair; c3 n = 169 with a symmetry rotating the three degree-2 vertices; c4 {2,3}-group hub families at 170;
+c5 exact symmetric families at 180; c6 LNS with exact completion on the far-46 / far-60 graphs; c7 wildcard.
+Context: Opus's exact orbit solver (orbdfs) found a second 168 graph (AGammaL(1,8)) and settled the F20 colour-reversing
+families at 170. Results (best per card, verified by Opus where marked V): c1 census168 (running at 00:40Z);
+c2 far 46 at 170 (floor reproduced from fresh starts, relocation and designed insertions nothing lower); c3 far 122 at
+169; c4 1,502 {2,3}-group G-sets settled exactly, none (V: 6-sample rerun), best heuristic 132; c5 n180 (running);
+c6 **far 43 at 170** (V: score37 + apsp D=8), exact LNS from the far-60 F20 graph, new best near miss (old 46);
+c7 far 123 at 169. c4 found a real bug in orbdfs SHARD (fixed). Kept: c6's LNS (round-2 card d3: same engine from many
+starts); new round-2 cards d1 (faster orbdfs, validated) and d2 (exact n = 169 with symmetry).
+
+## deep-37 round 2 (00:20Z) and round 3 (01:10Z), same session and goal
+Round 2 cards: d1 faster orbdfs (identical search tree): 1.6-1.7x, validated by Opus (same nodes and SOL lines);
+d2 exact n = 169 with symmetry (orbdfs variant with per-orbit degrees; running); d3 = c6 resumed: exact LNS from 9 other
+starts: the second far-60 graph (r3b fresh56) also reaches far 43, the same isomorphism class; all other starts
+(59, 65, 78, 80, 90 -> 86, 115, 132, 160) stuck. Kept: "colour-reversing symmetric seed -> symmetry-breaking exact LNS".
+Round 3 cards: e1 colour-reversing seeds (F20, D5-rev, C10-rev) -> LNS; e2 colour-preserving hub seeds (D5, C10, C15)
+-> LNS; e3 far-43 deep dive (vertex-pair relocation, 3-switches, vertex-centred regions). Results: below.

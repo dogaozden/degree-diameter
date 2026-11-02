@@ -5,7 +5,7 @@ import sys, subprocess, os, time, re
 from concurrent.futures import ThreadPoolExecutor
 par, tl = int(sys.argv[1]), int(sys.argv[2])
 done = set()
-R = "runs/sweep/results.tsv"
+R = os.environ.get("RESULTS", "runs/sweep/results.tsv")
 if os.path.exists(R):
     for ln in open(R): done.add(ln.split("\t")[0])
 jobs = []
@@ -22,7 +22,7 @@ def run(j):
     env = dict(os.environ, MAXSOL="50", SOLPREFIX=pre)
     t0 = time.time()
     try:
-        out = subprocess.run(["bin/orbdfs", f, "7"], capture_output=True, text=True, timeout=tl, env=env).stdout
+        out = subprocess.run([os.environ.get("BIN", "bin/orbdfs"), f, "7"], capture_output=True, text=True, timeout=tl, env=env).stdout
         m = re.search(r"DONE nodes=(\d+) sols=(\d+)", out)
         st, nodes, sols = ("DONE", m.group(1), m.group(2)) if m else ("ERR", "-", "-")
     except subprocess.TimeoutExpired as e:

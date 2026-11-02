@@ -1,0 +1,1646 @@
+Syntax warning: Unbound global variable in /home/user/degree-diameter/research\
+/squads/deep-37/squad/r2/d2/gsets169.g:48
+  byk := function(list) local r, z, k; r := List([1..MP], k -> []); for z in l\
+ist do Add(r[Length(z)], z); od; return r; end;
+  ^^^
+Syntax warning: Unbound global variable in /home/user/degree-diameter/research\
+/squads/deep-37/squad/r2/d2/gsets169.g:49
+  L3k := byk(L3); LBk := byk(LB);
+  ^^^
+Syntax warning: Unbound global variable in /home/user/degree-diameter/research\
+/squads/deep-37/squad/r2/d2/gsets169.g:49
+  L3k := byk(L3); LBk := byk(LB);
+         ^^^
+Syntax warning: Unbound global variable in /home/user/degree-diameter/research\
+/squads/deep-37/squad/r2/d2/gsets169.g:49
+  L3k := byk(L3); LBk := byk(LB);
+                  ^^^
+Syntax warning: Unbound global variable in /home/user/degree-diameter/research\
+/squads/deep-37/squad/r2/d2/gsets169.g:49
+  L3k := byk(L3); LBk := byk(LB);
+                         ^^^
+Syntax warning: Unbound global variable in /home/user/degree-diameter/research\
+/squads/deep-37/squad/r2/d2/gsets169.g:51
+  for T in [3..3+2*MP] do
+      ^
+Syntax warning: Unbound global variable in /home/user/degree-diameter/research\
+/squads/deep-37/squad/r2/d2/gsets169.g:52
+    for c in L2 do for k in [1..MP] do for kb in [1..MP] do
+                       ^
+Syntax warning: Unbound global variable in /home/user/degree-diameter/research\
+/squads/deep-37/squad/r2/d2/gsets169.g:52
+    for c in L2 do for k in [1..MP] do for kb in [1..MP] do
+                                           ^^
+Syntax warning: Unbound global variable in /home/user/degree-diameter/research\
+/squads/deep-37/squad/r2/d2/gsets169.g:54
+        for x in L3k[k] do for p3 in LBk[kb] do Add(combos, [T, c, x, p3]); od\
+; od;
+                 ^^^
+Syntax warning: Unbound global variable in /home/user/degree-diameter/research\
+/squads/deep-37/squad/r2/d2/gsets169.g:54
+        for x in L3k[k] do for p3 in LBk[kb] do Add(combos, [T, c, x, p3]); od\
+; od;
+                                     ^^^
+# C3 : Q16 |G|=48 classes=18 index=[ 48, 24, 16, 12, 12, 12, 8, 6, 6, 6, 4, 
+  4, 4, 3, 2, 2, 2, 1 ] |L2|=5 |L3|=24 |LB|=31
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_1.t\
+xt 8 A2:[ 3 ] A3:[ 48, 24, 8, 2 ] B:[ 48, 24, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_2.t\
+xt 8 A2:[ 3 ] A3:[ 48, 24, 8, 2 ] B:[ 48, 24, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_3.t\
+xt 8 A2:[ 3 ] A3:[ 48, 24, 8, 2 ] B:[ 48, 24, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_4.t\
+xt 8 A2:[ 3 ] A3:[ 48, 24, 8, 2 ] B:[ 48, 24, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_5.t\
+xt 8 A2:[ 3 ] A3:[ 48, 24, 8, 2 ] B:[ 48, 24, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_6.t\
+xt 8 A2:[ 3 ] A3:[ 48, 24, 8, 2 ] B:[ 48, 24, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_7.t\
+xt 8 A2:[ 3 ] A3:[ 48, 24, 8, 2 ] B:[ 48, 24, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_8.t\
+xt 8 A2:[ 3 ] A3:[ 48, 24, 8, 2 ] B:[ 48, 24, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_9.t\
+xt 8 A2:[ 3 ] A3:[ 48, 24, 8, 2 ] B:[ 48, 24, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_10.\
+txt 8 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 24, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_11.\
+txt 8 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 24, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_12.\
+txt 8 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 24, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_13.\
+txt 8 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 24, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_14.\
+txt 8 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 24, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_15.\
+txt 8 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 24, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_16.\
+txt 8 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 24, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_17.\
+txt 8 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 24, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_18.\
+txt 8 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 24, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_19.\
+txt 8 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 24, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_20.\
+txt 8 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 24, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_21.\
+txt 8 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 24, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_22.\
+txt 8 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 24, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_23.\
+txt 8 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 24, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_24.\
+txt 8 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 24, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_25.\
+txt 8 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 24, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_26.\
+txt 8 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 24, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_27.\
+txt 8 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 24, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_28.\
+txt 8 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 24, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_29.\
+txt 8 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 24, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_30.\
+txt 8 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 24, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_31.\
+txt 8 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 24, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_32.\
+txt 8 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 24, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_33.\
+txt 8 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 24, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_34.\
+txt 8 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 24, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_35.\
+txt 8 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 24, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_36.\
+txt 8 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 24, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_37.\
+txt 8 A2:[ 3 ] A3:[ 48, 16, 16, 2 ] B:[ 48, 24, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_38.\
+txt 8 A2:[ 3 ] A3:[ 48, 16, 16, 2 ] B:[ 48, 24, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_39.\
+txt 8 A2:[ 3 ] A3:[ 48, 16, 16, 2 ] B:[ 48, 24, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_40.\
+txt 8 A2:[ 3 ] A3:[ 48, 16, 16, 2 ] B:[ 48, 24, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_41.\
+txt 8 A2:[ 3 ] A3:[ 48, 16, 16, 2 ] B:[ 48, 24, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_42.\
+txt 8 A2:[ 3 ] A3:[ 48, 16, 16, 2 ] B:[ 48, 24, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_43.\
+txt 8 A2:[ 3 ] A3:[ 48, 16, 16, 2 ] B:[ 48, 24, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_44.\
+txt 8 A2:[ 3 ] A3:[ 48, 16, 16, 2 ] B:[ 48, 24, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_45.\
+txt 8 A2:[ 3 ] A3:[ 48, 16, 16, 2 ] B:[ 48, 24, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_46.\
+txt 8 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 24, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_47.\
+txt 8 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 24, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_48.\
+txt 8 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 24, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_49.\
+txt 8 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 24, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_50.\
+txt 8 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 24, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_51.\
+txt 8 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 24, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_52.\
+txt 8 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 24, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_53.\
+txt 8 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 24, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_54.\
+txt 8 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 24, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_55.\
+txt 8 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 24, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_56.\
+txt 8 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 24, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_57.\
+txt 8 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 24, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_58.\
+txt 8 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 24, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_59.\
+txt 8 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 24, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_60.\
+txt 8 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 24, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_61.\
+txt 8 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 24, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_62.\
+txt 8 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 24, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_63.\
+txt 8 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 24, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_64.\
+txt 8 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 24, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_65.\
+txt 8 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 24, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_66.\
+txt 8 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 24, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_67.\
+txt 8 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 24, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_68.\
+txt 8 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 24, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_69.\
+txt 8 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 24, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_70.\
+txt 8 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 24, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_71.\
+txt 8 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 24, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_72.\
+txt 8 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 24, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_73.\
+txt 9 A2:[ 3 ] A3:[ 48, 24, 8, 2 ] B:[ 48, 24, 8, 4 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_74.\
+txt 9 A2:[ 3 ] A3:[ 48, 24, 8, 2 ] B:[ 48, 24, 8, 4 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_75.\
+txt 9 A2:[ 3 ] A3:[ 48, 24, 8, 2 ] B:[ 48, 24, 8, 4 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_76.\
+txt 9 A2:[ 3 ] A3:[ 48, 24, 8, 2 ] B:[ 48, 24, 6, 6 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_77.\
+txt 9 A2:[ 3 ] A3:[ 48, 24, 8, 2 ] B:[ 48, 24, 6, 6 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_78.\
+txt 9 A2:[ 3 ] A3:[ 48, 24, 8, 2 ] B:[ 48, 24, 6, 6 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_79.\
+txt 9 A2:[ 3 ] A3:[ 48, 24, 8, 2 ] B:[ 48, 24, 6, 6 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_80.\
+txt 9 A2:[ 3 ] A3:[ 48, 24, 8, 2 ] B:[ 48, 24, 6, 6 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_81.\
+txt 9 A2:[ 3 ] A3:[ 48, 24, 8, 2 ] B:[ 48, 24, 6, 6 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_82.\
+txt 9 A2:[ 3 ] A3:[ 48, 24, 8, 2 ] B:[ 48, 16, 16, 4 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_83.\
+txt 9 A2:[ 3 ] A3:[ 48, 24, 8, 2 ] B:[ 48, 16, 16, 4 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_84.\
+txt 9 A2:[ 3 ] A3:[ 48, 24, 8, 2 ] B:[ 48, 16, 16, 4 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_85.\
+txt 9 A2:[ 3 ] A3:[ 48, 24, 8, 2 ] B:[ 48, 16, 12, 8 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_86.\
+txt 9 A2:[ 3 ] A3:[ 48, 24, 8, 2 ] B:[ 48, 16, 12, 8 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_87.\
+txt 9 A2:[ 3 ] A3:[ 48, 24, 8, 2 ] B:[ 48, 16, 12, 8 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_88.\
+txt 9 A2:[ 3 ] A3:[ 48, 24, 8, 2 ] B:[ 48, 12, 12, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_89.\
+txt 9 A2:[ 3 ] A3:[ 48, 24, 8, 2 ] B:[ 48, 12, 12, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_90.\
+txt 9 A2:[ 3 ] A3:[ 48, 24, 8, 2 ] B:[ 48, 12, 12, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_91.\
+txt 9 A2:[ 3 ] A3:[ 48, 24, 8, 2 ] B:[ 48, 12, 12, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_92.\
+txt 9 A2:[ 3 ] A3:[ 48, 24, 8, 2 ] B:[ 48, 12, 12, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_93.\
+txt 9 A2:[ 3 ] A3:[ 48, 24, 8, 2 ] B:[ 48, 12, 12, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_94.\
+txt 9 A2:[ 3 ] A3:[ 48, 24, 8, 2 ] B:[ 48, 12, 12, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_95.\
+txt 9 A2:[ 3 ] A3:[ 48, 24, 8, 2 ] B:[ 48, 12, 12, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_96.\
+txt 9 A2:[ 3 ] A3:[ 48, 24, 8, 2 ] B:[ 48, 12, 12, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_97.\
+txt 9 A2:[ 3 ] A3:[ 48, 24, 8, 2 ] B:[ 48, 12, 12, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_98.\
+txt 9 A2:[ 3 ] A3:[ 48, 24, 8, 2 ] B:[ 24, 24, 24, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_99.\
+txt 9 A2:[ 3 ] A3:[ 48, 24, 8, 2 ] B:[ 24, 24, 24, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_100\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 8, 2 ] B:[ 24, 24, 24, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_101\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 8, 2 ] B:[ 48, 24, 8, 4 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_102\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 8, 2 ] B:[ 48, 24, 8, 4 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_103\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 8, 2 ] B:[ 48, 24, 8, 4 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_104\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 8, 2 ] B:[ 48, 24, 6, 6 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_105\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 8, 2 ] B:[ 48, 24, 6, 6 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_106\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 8, 2 ] B:[ 48, 24, 6, 6 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_107\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 8, 2 ] B:[ 48, 24, 6, 6 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_108\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 8, 2 ] B:[ 48, 24, 6, 6 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_109\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 8, 2 ] B:[ 48, 24, 6, 6 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_110\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 8, 2 ] B:[ 48, 16, 16, 4 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_111\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 8, 2 ] B:[ 48, 16, 16, 4 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_112\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 8, 2 ] B:[ 48, 16, 16, 4 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_113\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 8, 2 ] B:[ 48, 16, 12, 8 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_114\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 8, 2 ] B:[ 48, 16, 12, 8 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_115\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 8, 2 ] B:[ 48, 16, 12, 8 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_116\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 8, 2 ] B:[ 48, 12, 12, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_117\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 8, 2 ] B:[ 48, 12, 12, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_118\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 8, 2 ] B:[ 48, 12, 12, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_119\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 8, 2 ] B:[ 48, 12, 12, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_120\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 8, 2 ] B:[ 48, 12, 12, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_121\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 8, 2 ] B:[ 48, 12, 12, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_122\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 8, 2 ] B:[ 48, 12, 12, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_123\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 8, 2 ] B:[ 48, 12, 12, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_124\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 8, 2 ] B:[ 48, 12, 12, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_125\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 8, 2 ] B:[ 48, 12, 12, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_126\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 8, 2 ] B:[ 24, 24, 24, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_127\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 8, 2 ] B:[ 24, 24, 24, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_128\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 8, 2 ] B:[ 24, 24, 24, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_129\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 8, 2 ] B:[ 48, 24, 8, 4 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_130\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 8, 2 ] B:[ 48, 24, 8, 4 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_131\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 8, 2 ] B:[ 48, 24, 8, 4 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_132\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 8, 2 ] B:[ 48, 24, 6, 6 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_133\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 8, 2 ] B:[ 48, 24, 6, 6 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_134\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 8, 2 ] B:[ 48, 24, 6, 6 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_135\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 8, 2 ] B:[ 48, 24, 6, 6 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_136\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 8, 2 ] B:[ 48, 24, 6, 6 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_137\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 8, 2 ] B:[ 48, 24, 6, 6 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_138\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 8, 2 ] B:[ 48, 16, 16, 4 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_139\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 8, 2 ] B:[ 48, 16, 16, 4 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_140\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 8, 2 ] B:[ 48, 16, 16, 4 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_141\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 8, 2 ] B:[ 48, 16, 12, 8 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_142\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 8, 2 ] B:[ 48, 16, 12, 8 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_143\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 8, 2 ] B:[ 48, 16, 12, 8 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_144\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 8, 2 ] B:[ 48, 12, 12, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_145\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 8, 2 ] B:[ 48, 12, 12, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_146\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 8, 2 ] B:[ 48, 12, 12, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_147\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 8, 2 ] B:[ 48, 12, 12, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_148\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 8, 2 ] B:[ 48, 12, 12, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_149\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 8, 2 ] B:[ 48, 12, 12, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_150\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 8, 2 ] B:[ 48, 12, 12, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_151\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 8, 2 ] B:[ 48, 12, 12, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_152\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 8, 2 ] B:[ 48, 12, 12, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_153\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 8, 2 ] B:[ 48, 12, 12, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_154\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 8, 2 ] B:[ 24, 24, 24, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_155\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 8, 2 ] B:[ 24, 24, 24, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_156\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 8, 2 ] B:[ 24, 24, 24, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_157\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 24, 8, 4 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_158\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 24, 8, 4 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_159\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 24, 8, 4 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_160\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 24, 6, 6 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_161\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 24, 6, 6 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_162\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 24, 6, 6 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_163\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 24, 6, 6 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_164\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 24, 6, 6 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_165\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 24, 6, 6 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_166\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 16, 16, 4 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_167\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 16, 16, 4 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_168\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 16, 16, 4 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_169\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 16, 12, 8 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_170\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 16, 12, 8 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_171\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 16, 12, 8 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_172\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 12, 12, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_173\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 12, 12, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_174\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 12, 12, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_175\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 12, 12, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_176\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 12, 12, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_177\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 12, 12, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_178\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 12, 12, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_179\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 12, 12, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_180\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 12, 12, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_181\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 12, 12, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_182\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 24, 24, 24, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_183\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 24, 24, 24, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_184\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 24, 24, 24, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_185\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 24, 8, 4 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_186\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 24, 8, 4 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_187\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 24, 8, 4 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_188\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 24, 6, 6 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_189\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 24, 6, 6 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_190\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 24, 6, 6 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_191\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 24, 6, 6 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_192\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 24, 6, 6 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_193\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 24, 6, 6 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_194\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 16, 16, 4 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_195\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 16, 16, 4 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_196\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 16, 16, 4 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_197\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 16, 12, 8 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_198\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 16, 12, 8 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_199\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 16, 12, 8 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_200\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 12, 12, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_201\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 12, 12, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_202\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 12, 12, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_203\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 12, 12, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_204\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 12, 12, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_205\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 12, 12, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_206\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 12, 12, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_207\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 12, 12, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_208\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 12, 12, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_209\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 12, 12, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_210\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 24, 24, 24, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_211\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 24, 24, 24, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_212\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 24, 24, 24, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_213\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 24, 8, 4 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_214\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 24, 8, 4 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_215\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 24, 8, 4 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_216\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 24, 6, 6 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_217\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 24, 6, 6 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_218\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 24, 6, 6 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_219\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 24, 6, 6 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_220\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 24, 6, 6 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_221\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 24, 6, 6 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_222\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 16, 16, 4 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_223\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 16, 16, 4 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_224\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 16, 16, 4 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_225\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 16, 12, 8 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_226\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 16, 12, 8 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_227\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 16, 12, 8 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_228\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 12, 12, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_229\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 12, 12, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_230\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 12, 12, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_231\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 12, 12, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_232\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 12, 12, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_233\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 12, 12, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_234\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 12, 12, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_235\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 12, 12, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_236\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 12, 12, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_237\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 12, 12, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_238\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 24, 24, 24, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_239\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 24, 24, 24, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_240\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 24, 24, 24, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_241\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 24, 8, 4 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_242\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 24, 8, 4 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_243\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 24, 8, 4 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_244\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 24, 6, 6 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_245\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 24, 6, 6 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_246\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 24, 6, 6 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_247\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 24, 6, 6 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_248\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 24, 6, 6 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_249\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 24, 6, 6 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_250\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 16, 16, 4 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_251\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 16, 16, 4 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_252\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 16, 16, 4 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_253\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 16, 12, 8 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_254\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 16, 12, 8 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_255\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 16, 12, 8 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_256\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 12, 12, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_257\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 12, 12, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_258\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 12, 12, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_259\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 12, 12, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_260\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 12, 12, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_261\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 12, 12, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_262\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 12, 12, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_263\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 12, 12, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_264\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 12, 12, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_265\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 12, 12, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_266\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 24, 24, 24, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_267\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 24, 24, 24, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_268\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 24, 24, 24, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_269\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 24, 8, 4 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_270\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 24, 8, 4 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_271\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 24, 8, 4 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_272\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 24, 6, 6 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_273\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 24, 6, 6 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_274\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 24, 6, 6 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_275\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 24, 6, 6 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_276\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 24, 6, 6 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_277\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 24, 6, 6 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_278\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 16, 16, 4 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_279\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 16, 16, 4 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_280\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 16, 16, 4 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_281\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 16, 12, 8 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_282\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 16, 12, 8 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_283\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 16, 12, 8 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_284\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 12, 12, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_285\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 12, 12, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_286\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 12, 12, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_287\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 12, 12, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_288\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 12, 12, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_289\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 12, 12, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_290\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 12, 12, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_291\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 12, 12, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_292\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 12, 12, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_293\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 12, 12, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_294\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 24, 24, 24, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_295\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 24, 24, 24, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_296\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 24, 24, 24, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_297\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 24, 8, 4 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_298\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 24, 8, 4 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_299\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 24, 8, 4 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_300\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 24, 6, 6 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_301\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 24, 6, 6 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_302\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 24, 6, 6 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_303\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 24, 6, 6 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_304\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 24, 6, 6 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_305\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 24, 6, 6 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_306\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 16, 16, 4 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_307\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 16, 16, 4 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_308\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 16, 16, 4 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_309\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 16, 12, 8 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_310\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 16, 12, 8 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_311\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 16, 12, 8 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_312\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 12, 12, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_313\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 12, 12, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_314\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 12, 12, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_315\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 12, 12, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_316\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 12, 12, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_317\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 12, 12, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_318\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 12, 12, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_319\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 12, 12, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_320\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 12, 12, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_321\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 12, 12, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_322\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 24, 24, 24, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_323\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 24, 24, 24, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_324\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 24, 24, 24, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_325\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 24, 8, 4 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_326\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 24, 8, 4 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_327\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 24, 8, 4 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_328\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 24, 6, 6 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_329\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 24, 6, 6 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_330\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 24, 6, 6 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_331\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 24, 6, 6 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_332\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 24, 6, 6 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_333\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 24, 6, 6 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_334\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 16, 16, 4 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_335\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 16, 16, 4 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_336\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 16, 16, 4 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_337\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 16, 12, 8 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_338\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 16, 12, 8 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_339\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 16, 12, 8 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_340\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 12, 12, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_341\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 12, 12, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_342\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 12, 12, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_343\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 12, 12, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_344\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 12, 12, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_345\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 12, 12, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_346\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 12, 12, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_347\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 12, 12, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_348\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 12, 12, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_349\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 12, 12, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_350\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 24, 24, 24, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_351\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 24, 24, 24, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_352\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 24, 24, 24, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_353\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 24, 8, 4 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_354\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 24, 8, 4 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_355\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 24, 8, 4 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_356\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 24, 6, 6 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_357\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 24, 6, 6 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_358\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 24, 6, 6 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_359\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 24, 6, 6 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_360\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 24, 6, 6 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_361\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 24, 6, 6 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_362\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 16, 16, 4 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_363\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 16, 16, 4 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_364\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 16, 16, 4 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_365\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 16, 12, 8 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_366\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 16, 12, 8 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_367\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 16, 12, 8 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_368\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 12, 12, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_369\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 12, 12, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_370\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 12, 12, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_371\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 12, 12, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_372\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 12, 12, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_373\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 12, 12, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_374\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 12, 12, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_375\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 12, 12, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_376\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 12, 12, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_377\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 12, 12, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_378\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 24, 24, 24, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_379\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 24, 24, 24, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_380\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 24, 24, 24, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_381\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 24, 8, 4 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_382\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 24, 8, 4 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_383\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 24, 8, 4 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_384\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 24, 6, 6 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_385\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 24, 6, 6 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_386\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 24, 6, 6 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_387\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 24, 6, 6 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_388\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 24, 6, 6 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_389\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 24, 6, 6 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_390\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 16, 16, 4 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_391\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 16, 16, 4 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_392\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 16, 16, 4 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_393\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 16, 12, 8 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_394\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 16, 12, 8 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_395\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 16, 12, 8 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_396\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 12, 12, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_397\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 12, 12, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_398\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 12, 12, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_399\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 12, 12, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_400\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 12, 12, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_401\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 12, 12, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_402\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 12, 12, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_403\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 12, 12, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_404\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 12, 12, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_405\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 12, 12, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_406\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 24, 24, 24, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_407\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 24, 24, 24, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_408\
+.txt 9 A2:[ 3 ] A3:[ 48, 24, 6, 4 ] B:[ 24, 24, 24, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_409\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 16, 2 ] B:[ 48, 24, 8, 4 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_410\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 16, 2 ] B:[ 48, 24, 8, 4 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_411\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 16, 2 ] B:[ 48, 24, 8, 4 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_412\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 16, 2 ] B:[ 48, 24, 6, 6 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_413\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 16, 2 ] B:[ 48, 24, 6, 6 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_414\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 16, 2 ] B:[ 48, 24, 6, 6 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_415\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 16, 2 ] B:[ 48, 24, 6, 6 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_416\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 16, 2 ] B:[ 48, 24, 6, 6 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_417\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 16, 2 ] B:[ 48, 24, 6, 6 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_418\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 16, 2 ] B:[ 48, 16, 16, 4 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_419\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 16, 2 ] B:[ 48, 16, 16, 4 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_420\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 16, 2 ] B:[ 48, 16, 16, 4 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_421\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 16, 2 ] B:[ 48, 16, 12, 8 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_422\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 16, 2 ] B:[ 48, 16, 12, 8 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_423\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 16, 2 ] B:[ 48, 16, 12, 8 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_424\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 16, 2 ] B:[ 48, 12, 12, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_425\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 16, 2 ] B:[ 48, 12, 12, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_426\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 16, 2 ] B:[ 48, 12, 12, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_427\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 16, 2 ] B:[ 48, 12, 12, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_428\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 16, 2 ] B:[ 48, 12, 12, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_429\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 16, 2 ] B:[ 48, 12, 12, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_430\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 16, 2 ] B:[ 48, 12, 12, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_431\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 16, 2 ] B:[ 48, 12, 12, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_432\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 16, 2 ] B:[ 48, 12, 12, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_433\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 16, 2 ] B:[ 48, 12, 12, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_434\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 16, 2 ] B:[ 24, 24, 24, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_435\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 16, 2 ] B:[ 24, 24, 24, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_436\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 16, 2 ] B:[ 24, 24, 24, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_437\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 16, 2 ] B:[ 48, 24, 8, 4 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_438\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 16, 2 ] B:[ 48, 24, 8, 4 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_439\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 16, 2 ] B:[ 48, 24, 8, 4 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_440\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 16, 2 ] B:[ 48, 24, 6, 6 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_441\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 16, 2 ] B:[ 48, 24, 6, 6 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_442\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 16, 2 ] B:[ 48, 24, 6, 6 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_443\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 16, 2 ] B:[ 48, 24, 6, 6 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_444\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 16, 2 ] B:[ 48, 24, 6, 6 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_445\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 16, 2 ] B:[ 48, 24, 6, 6 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_446\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 16, 2 ] B:[ 48, 16, 16, 4 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_447\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 16, 2 ] B:[ 48, 16, 16, 4 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_448\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 16, 2 ] B:[ 48, 16, 16, 4 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_449\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 16, 2 ] B:[ 48, 16, 12, 8 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_450\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 16, 2 ] B:[ 48, 16, 12, 8 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_451\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 16, 2 ] B:[ 48, 16, 12, 8 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_452\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 16, 2 ] B:[ 48, 12, 12, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_453\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 16, 2 ] B:[ 48, 12, 12, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_454\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 16, 2 ] B:[ 48, 12, 12, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_455\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 16, 2 ] B:[ 48, 12, 12, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_456\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 16, 2 ] B:[ 48, 12, 12, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_457\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 16, 2 ] B:[ 48, 12, 12, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_458\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 16, 2 ] B:[ 48, 12, 12, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_459\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 16, 2 ] B:[ 48, 12, 12, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_460\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 16, 2 ] B:[ 48, 12, 12, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_461\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 16, 2 ] B:[ 48, 12, 12, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_462\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 16, 2 ] B:[ 24, 24, 24, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_463\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 16, 2 ] B:[ 24, 24, 24, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_464\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 16, 2 ] B:[ 24, 24, 24, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_465\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 16, 2 ] B:[ 48, 24, 8, 4 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_466\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 16, 2 ] B:[ 48, 24, 8, 4 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_467\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 16, 2 ] B:[ 48, 24, 8, 4 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_468\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 16, 2 ] B:[ 48, 24, 6, 6 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_469\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 16, 2 ] B:[ 48, 24, 6, 6 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_470\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 16, 2 ] B:[ 48, 24, 6, 6 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_471\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 16, 2 ] B:[ 48, 24, 6, 6 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_472\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 16, 2 ] B:[ 48, 24, 6, 6 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_473\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 16, 2 ] B:[ 48, 24, 6, 6 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_474\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 16, 2 ] B:[ 48, 16, 16, 4 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_475\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 16, 2 ] B:[ 48, 16, 16, 4 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_476\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 16, 2 ] B:[ 48, 16, 16, 4 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_477\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 16, 2 ] B:[ 48, 16, 12, 8 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_478\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 16, 2 ] B:[ 48, 16, 12, 8 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_479\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 16, 2 ] B:[ 48, 16, 12, 8 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_480\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 16, 2 ] B:[ 48, 12, 12, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_481\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 16, 2 ] B:[ 48, 12, 12, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_482\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 16, 2 ] B:[ 48, 12, 12, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_483\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 16, 2 ] B:[ 48, 12, 12, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_484\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 16, 2 ] B:[ 48, 12, 12, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_485\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 16, 2 ] B:[ 48, 12, 12, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_486\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 16, 2 ] B:[ 48, 12, 12, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_487\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 16, 2 ] B:[ 48, 12, 12, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_488\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 16, 2 ] B:[ 48, 12, 12, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_489\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 16, 2 ] B:[ 48, 12, 12, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_490\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 16, 2 ] B:[ 24, 24, 24, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_491\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 16, 2 ] B:[ 24, 24, 24, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_492\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 16, 2 ] B:[ 24, 24, 24, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_493\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 24, 8, 4 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_494\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 24, 8, 4 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_495\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 24, 8, 4 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_496\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 24, 6, 6 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_497\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 24, 6, 6 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_498\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 24, 6, 6 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_499\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 24, 6, 6 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_500\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 24, 6, 6 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_501\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 24, 6, 6 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_502\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 16, 16, 4 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_503\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 16, 16, 4 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_504\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 16, 16, 4 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_505\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 16, 12, 8 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_506\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 16, 12, 8 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_507\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 16, 12, 8 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_508\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 12, 12, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_509\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 12, 12, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_510\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 12, 12, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_511\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 12, 12, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_512\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 12, 12, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_513\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 12, 12, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_514\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 12, 12, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_515\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 12, 12, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_516\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 12, 12, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_517\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 12, 12, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_518\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 24, 24, 24, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_519\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 24, 24, 24, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_520\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 24, 24, 24, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_521\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 24, 8, 4 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_522\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 24, 8, 4 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_523\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 24, 8, 4 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_524\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 24, 6, 6 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_525\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 24, 6, 6 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_526\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 24, 6, 6 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_527\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 24, 6, 6 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_528\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 24, 6, 6 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_529\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 24, 6, 6 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_530\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 16, 16, 4 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_531\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 16, 16, 4 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_532\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 16, 16, 4 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_533\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 16, 12, 8 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_534\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 16, 12, 8 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_535\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 16, 12, 8 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_536\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 12, 12, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_537\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 12, 12, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_538\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 12, 12, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_539\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 12, 12, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_540\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 12, 12, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_541\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 12, 12, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_542\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 12, 12, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_543\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 12, 12, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_544\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 12, 12, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_545\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 12, 12, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_546\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 24, 24, 24, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_547\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 24, 24, 24, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_548\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 24, 24, 24, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_549\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 24, 8, 4 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_550\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 24, 8, 4 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_551\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 24, 8, 4 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_552\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 24, 6, 6 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_553\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 24, 6, 6 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_554\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 24, 6, 6 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_555\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 24, 6, 6 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_556\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 24, 6, 6 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_557\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 24, 6, 6 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_558\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 16, 16, 4 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_559\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 16, 16, 4 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_560\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 16, 16, 4 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_561\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 16, 12, 8 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_562\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 16, 12, 8 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_563\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 16, 12, 8 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_564\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 12, 12, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_565\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 12, 12, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_566\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 12, 12, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_567\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 12, 12, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_568\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 12, 12, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_569\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 12, 12, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_570\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 12, 12, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_571\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 12, 12, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_572\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 12, 12, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_573\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 12, 12, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_574\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 24, 24, 24, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_575\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 24, 24, 24, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_576\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 24, 24, 24, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_577\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 24, 8, 4 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_578\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 24, 8, 4 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_579\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 24, 8, 4 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_580\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 24, 6, 6 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_581\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 24, 6, 6 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_582\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 24, 6, 6 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_583\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 24, 6, 6 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_584\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 24, 6, 6 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_585\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 24, 6, 6 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_586\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 16, 16, 4 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_587\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 16, 16, 4 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_588\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 16, 16, 4 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_589\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 16, 12, 8 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_590\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 16, 12, 8 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_591\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 16, 12, 8 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_592\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 12, 12, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_593\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 12, 12, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_594\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 12, 12, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_595\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 12, 12, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_596\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 12, 12, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_597\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 12, 12, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_598\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 12, 12, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_599\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 12, 12, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_600\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 12, 12, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_601\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 12, 12, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_602\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 24, 24, 24, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_603\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 24, 24, 24, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_604\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 24, 24, 24, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_605\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 24, 8, 4 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_606\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 24, 8, 4 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_607\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 24, 8, 4 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_608\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 24, 6, 6 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_609\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 24, 6, 6 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_610\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 24, 6, 6 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_611\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 24, 6, 6 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_612\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 24, 6, 6 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_613\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 24, 6, 6 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_614\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 16, 16, 4 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_615\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 16, 16, 4 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_616\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 16, 16, 4 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_617\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 16, 12, 8 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_618\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 16, 12, 8 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_619\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 16, 12, 8 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_620\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 12, 12, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_621\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 12, 12, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_622\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 12, 12, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_623\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 12, 12, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_624\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 12, 12, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_625\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 12, 12, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_626\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 12, 12, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_627\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 12, 12, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_628\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 12, 12, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_629\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 12, 12, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_630\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 24, 24, 24, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_631\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 24, 24, 24, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_632\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 24, 24, 24, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_633\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 24, 8, 4 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_634\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 24, 8, 4 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_635\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 24, 8, 4 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_636\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 24, 6, 6 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_637\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 24, 6, 6 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_638\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 24, 6, 6 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_639\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 24, 6, 6 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_640\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 24, 6, 6 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_641\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 24, 6, 6 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_642\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 16, 16, 4 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_643\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 16, 16, 4 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_644\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 16, 16, 4 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_645\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 16, 12, 8 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_646\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 16, 12, 8 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_647\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 16, 12, 8 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_648\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 12, 12, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_649\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 12, 12, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_650\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 12, 12, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_651\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 12, 12, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_652\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 12, 12, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_653\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 12, 12, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_654\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 12, 12, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_655\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 12, 12, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_656\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 12, 12, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_657\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 12, 12, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_658\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 24, 24, 24, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_659\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 24, 24, 24, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_660\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 24, 24, 24, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_661\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 24, 8, 4 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_662\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 24, 8, 4 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_663\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 24, 8, 4 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_664\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 24, 6, 6 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_665\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 24, 6, 6 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_666\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 24, 6, 6 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_667\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 24, 6, 6 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_668\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 24, 6, 6 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_669\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 24, 6, 6 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_670\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 16, 16, 4 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_671\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 16, 16, 4 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_672\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 16, 16, 4 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_673\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 16, 12, 8 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_674\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 16, 12, 8 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_675\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 16, 12, 8 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_676\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 12, 12, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_677\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 12, 12, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_678\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 12, 12, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_679\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 12, 12, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_680\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 12, 12, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_681\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 12, 12, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_682\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 12, 12, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_683\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 12, 12, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_684\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 12, 12, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_685\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 12, 12, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_686\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 24, 24, 24, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_687\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 24, 24, 24, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_688\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 24, 24, 24, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_689\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 24, 8, 4 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_690\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 24, 8, 4 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_691\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 24, 8, 4 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_692\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 24, 6, 6 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_693\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 24, 6, 6 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_694\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 24, 6, 6 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_695\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 24, 6, 6 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_696\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 24, 6, 6 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_697\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 24, 6, 6 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_698\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 16, 16, 4 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_699\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 16, 16, 4 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_700\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 16, 16, 4 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_701\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 16, 12, 8 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_702\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 16, 12, 8 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_703\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 16, 12, 8 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_704\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 12, 12, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_705\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 12, 12, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_706\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 12, 12, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_707\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 12, 12, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_708\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 12, 12, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_709\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 12, 12, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_710\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 12, 12, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_711\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 12, 12, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_712\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 12, 12, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_713\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 12, 12, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_714\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 24, 24, 24, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_715\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 24, 24, 24, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_716\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 24, 24, 24, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_717\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 24, 8, 4 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_718\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 24, 8, 4 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_719\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 24, 8, 4 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_720\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 24, 6, 6 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_721\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 24, 6, 6 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_722\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 24, 6, 6 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_723\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 24, 6, 6 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_724\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 24, 6, 6 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_725\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 24, 6, 6 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_726\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 16, 16, 4 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_727\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 16, 16, 4 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_728\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 16, 16, 4 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_729\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 16, 12, 8 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_730\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 16, 12, 8 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_731\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 16, 12, 8 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_732\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 12, 12, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_733\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 12, 12, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_734\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 12, 12, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_735\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 12, 12, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_736\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 12, 12, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_737\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 12, 12, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_738\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 12, 12, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_739\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 12, 12, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_740\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 12, 12, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_741\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 12, 12, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_742\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 24, 24, 24, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_743\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 24, 24, 24, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_744\
+.txt 9 A2:[ 3 ] A3:[ 48, 16, 12, 6 ] B:[ 24, 24, 24, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_745\
+.txt 9 A2:[ 2, 1 ] A3:[ 48, 24, 8, 2 ] B:[ 48, 24, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_746\
+.txt 9 A2:[ 2, 1 ] A3:[ 48, 24, 8, 2 ] B:[ 48, 24, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_747\
+.txt 9 A2:[ 2, 1 ] A3:[ 48, 24, 8, 2 ] B:[ 48, 24, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_748\
+.txt 9 A2:[ 2, 1 ] A3:[ 48, 24, 8, 2 ] B:[ 48, 24, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_749\
+.txt 9 A2:[ 2, 1 ] A3:[ 48, 24, 8, 2 ] B:[ 48, 24, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_750\
+.txt 9 A2:[ 2, 1 ] A3:[ 48, 24, 8, 2 ] B:[ 48, 24, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_751\
+.txt 9 A2:[ 2, 1 ] A3:[ 48, 24, 8, 2 ] B:[ 48, 24, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_752\
+.txt 9 A2:[ 2, 1 ] A3:[ 48, 24, 8, 2 ] B:[ 48, 24, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_753\
+.txt 9 A2:[ 2, 1 ] A3:[ 48, 24, 8, 2 ] B:[ 48, 24, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_754\
+.txt 9 A2:[ 2, 1 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 24, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_755\
+.txt 9 A2:[ 2, 1 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 24, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_756\
+.txt 9 A2:[ 2, 1 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 24, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_757\
+.txt 9 A2:[ 2, 1 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 24, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_758\
+.txt 9 A2:[ 2, 1 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 24, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_759\
+.txt 9 A2:[ 2, 1 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 24, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_760\
+.txt 9 A2:[ 2, 1 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 24, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_761\
+.txt 9 A2:[ 2, 1 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 24, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_762\
+.txt 9 A2:[ 2, 1 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 24, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_763\
+.txt 9 A2:[ 2, 1 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 24, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_764\
+.txt 9 A2:[ 2, 1 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 24, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_765\
+.txt 9 A2:[ 2, 1 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 24, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_766\
+.txt 9 A2:[ 2, 1 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 24, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_767\
+.txt 9 A2:[ 2, 1 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 24, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_768\
+.txt 9 A2:[ 2, 1 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 24, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_769\
+.txt 9 A2:[ 2, 1 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 24, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_770\
+.txt 9 A2:[ 2, 1 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 24, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_771\
+.txt 9 A2:[ 2, 1 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 24, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_772\
+.txt 9 A2:[ 2, 1 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 24, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_773\
+.txt 9 A2:[ 2, 1 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 24, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_774\
+.txt 9 A2:[ 2, 1 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 24, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_775\
+.txt 9 A2:[ 2, 1 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 24, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_776\
+.txt 9 A2:[ 2, 1 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 24, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_777\
+.txt 9 A2:[ 2, 1 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 24, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_778\
+.txt 9 A2:[ 2, 1 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 24, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_779\
+.txt 9 A2:[ 2, 1 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 24, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_780\
+.txt 9 A2:[ 2, 1 ] A3:[ 48, 24, 6, 4 ] B:[ 48, 24, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_781\
+.txt 9 A2:[ 2, 1 ] A3:[ 48, 16, 16, 2 ] B:[ 48, 24, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_782\
+.txt 9 A2:[ 2, 1 ] A3:[ 48, 16, 16, 2 ] B:[ 48, 24, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_783\
+.txt 9 A2:[ 2, 1 ] A3:[ 48, 16, 16, 2 ] B:[ 48, 24, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_784\
+.txt 9 A2:[ 2, 1 ] A3:[ 48, 16, 16, 2 ] B:[ 48, 24, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_785\
+.txt 9 A2:[ 2, 1 ] A3:[ 48, 16, 16, 2 ] B:[ 48, 24, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_786\
+.txt 9 A2:[ 2, 1 ] A3:[ 48, 16, 16, 2 ] B:[ 48, 24, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_787\
+.txt 9 A2:[ 2, 1 ] A3:[ 48, 16, 16, 2 ] B:[ 48, 24, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_788\
+.txt 9 A2:[ 2, 1 ] A3:[ 48, 16, 16, 2 ] B:[ 48, 24, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_789\
+.txt 9 A2:[ 2, 1 ] A3:[ 48, 16, 16, 2 ] B:[ 48, 24, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_790\
+.txt 9 A2:[ 2, 1 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 24, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_791\
+.txt 9 A2:[ 2, 1 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 24, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_792\
+.txt 9 A2:[ 2, 1 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 24, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_793\
+.txt 9 A2:[ 2, 1 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 24, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_794\
+.txt 9 A2:[ 2, 1 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 24, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_795\
+.txt 9 A2:[ 2, 1 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 24, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_796\
+.txt 9 A2:[ 2, 1 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 24, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_797\
+.txt 9 A2:[ 2, 1 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 24, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_798\
+.txt 9 A2:[ 2, 1 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 24, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_799\
+.txt 9 A2:[ 2, 1 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 24, 12 ]
+/home/user/degree-diameter/research/squads/deep-37/squad/r2/d2/gs/g48_18/s_800\
+.txt 9 A2:[ 2, 1 ] A3:[ 48, 16, 12, 6 ] B:[ 48, 24, 12 ]
+GROUP 48 18 files=800

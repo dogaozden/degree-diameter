@@ -22,7 +22,13 @@ for f in files:
     if time.time() - t0 > BUDGET:
         break
     k += 1
-    deg2 = open(f[:-4] + ".deg2").read().strip()
+    try:
+        deg2 = open(f[:-4] + ".deg2").read().strip()
+        assert len(open(f).read().split("\n")) >= 3
+    except Exception:
+        with open(RUNS, "a") as fh:
+            fh.write("\t".join([f, "ERR", "-", "-", "0.0", "-", "incomplete file"]) + "\n")
+        continue
     desc = ""
     env = dict(os.environ, DEG2=deg2, MAXSOL="20", SOLPREFIX=f[:-4] + "_sol")
     ts = time.time()
@@ -43,7 +49,7 @@ for f in files:
         i = 1
         while os.path.exists(f[:-4] + "_sol_%d.edges" % i):
             r = subprocess.run([BASE + "/bin/score37", f[:-4] + "_sol_%d.edges" % i], capture_output=True, text=True, timeout=60)
-            fars.append(r.stdout.strip().split()[-1] if r.stdout.strip() else "?")
+            mm = re.search(r"far=(\d+)", r.stdout); fars.append(mm.group(1) if mm else "?")
             i += 1
         far = ",".join(fars)
     with open(RUNS, "a") as fh:
