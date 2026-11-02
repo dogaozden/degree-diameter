@@ -245,3 +245,18 @@ Findings: (1) at load ~20 the Δ >= 9 cells get 3-28 s per evaluation, so 95-s c
 e08); those cells moved to director seed loops (dloop.sh) for round 3. (2) Rungs above model K ~ 9 did not solve in
 ~10 seeds per card; K <= 8 solved at about 1 in 2-4 seeds. (3) Several cards again made stray read-only
 list_sessions calls (no effect).
+
+### Round 3 (12 cards, 23:41-00:10 UTC, research/squads/raise11/r3/; one group per card, fresh seeds only)
+Cards: f01 (7,11) SL(2,67) x Z19; f02 (7,11) SL(2,179); f03 (8,11) SL(2,107) x Z19; f04 (8,11) PSL(2,103) x Z43;
+f05 (9,11) PSL(2,137) x Z61; f06 (9,11) SL(2,137) x Z31; f07 (6,11) PSL(2,37) x Z43; f08 (6,11) SL(2,103); f10 (5,11)
+Frobenius cost-2 groups of round 2; f11 (6,11)/(5,11) Frobenius with haar_meta; f12 (7,11) other groups (f09 dropped:
+its group was round 2's e04, 16-38 in 10 seeds).
+Best per card: f10 **(5,11) 311,942** (Z8209 x|_477 Z19, 1 of 6 fresh seeds; metacheck + build_haar2.py VALID); cost 2:
+f03 (8,11) SL(2,107) x Z19 (1 in 10), f06 (9,11) SL(2,137) x Z31, f08 (6,11) SL(2,103) (2 of 14), f11 (6,11) Z15053 x|
+Z71; f05 3, f02 12, f04 12, f12 33; f01, f07 still running.
+Finding (process): under load 15-20 a (7,11) evaluation took ~0.5 s against 0.02 s on an idle core (f02); a fair CPU share
+explains 4-5x, the rest is cache and memory-bandwidth contention. With ~20 concurrent searches on 4 cores the total search
+throughput drops several-fold; from here on the director keeps at most ~6 searches running.
+Director meanwhile: (10,11) **469,768,992** (SL(2,617), dloop, 4th seed; check running); (12,11) 3,039,136,800 check
+past root (e,A); loops on (11,11) SL(2,449) x Z7 (best 6), (12,11) SL(2,491) x Z13 (8), (13,11) SL(2,643) x Z13 (12)
+stopped to cut load.
