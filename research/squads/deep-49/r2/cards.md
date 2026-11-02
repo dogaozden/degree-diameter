@@ -48,3 +48,28 @@ descending), run `tools/mkmeta.py m k r prefix` and hx LIMIT 0 (chunks under 100
 and 0 (a cost-0 set exists: give it) or ">0". Also add the SmallGroups-library groups of these orders (GAP
 SmallGroupsAvailable; export with tools/export_group.g) with |G/G'| <= 309 that are not metacyclic. Goal: the list of
 orders <= 2,485 that have a diameter-9 Haar graph. Score = 0 or ">0" per group (one scoreboard line per group).
+
+## r2d: auditor (independent re-checks of the exact claims)
+
+The round-1 certificates all rest on tools/hx.c (exact Haar search with an Aut(G) reduction written by the director).
+Check them independently:
+(1) Read hx.c and look for any way it could skip a set S = {e, x, y, z} (orbit representatives of x under Aut(G),
+y over Stab(x)-orbit representatives, z over all elements with orbit index >= that of y; Schreier generators for the
+stabiliser). Write down any doubt precisely.
+(2) Independent code: the handsoff-49 exhaustive searcher exh3.c (git show
+origin/claude/handsoff-49-bipartite-search-hy5axz:research/squads/handsoff-49/w11/exh3.c > exh3.c; it reduces only by
+inner automorphisms, "tab FILE" mode reads the same table format as hx) or your own brute force. Re-run, with it:
+(a) the record group (tools/mkmeta.py 71 35 49): cost 0 must exist; (b) Z_101 x|_5 Z_25: minimum 2;
+(c) SL(2,5) x (C7:C3) (r1/c1/g/SL25x_C7C3.tab): minimum 4 claimed (so: no set of cost <= 3, and one of cost 4);
+(d) three groups certified ">0" by hx, chosen at random from r1/c2 and results/smallgroups_*_hx.log (tables: rebuild with
+mkmeta.py or with GAP from the .exp/.g files); (e) c4's constrained minimum 8 for Z_104 x|_7 Z_24 with the central
+involution 52 covered on both sides (r1/c4/hx.c HX_MUST option; check one witness set of cost 8 in python and that no
+cost <= 7 set exists, with your own code if feasible). Report agreement or any disagreement. Score = number of claims
+re-checked and number confirmed.
+
+## r2e: extend the metacyclic certificate to orders 2,531..2,600
+
+Same job as round-1 card c2 (read r1/c2/NOTES.md and reuse r1/c2/driver.py and mkcand.py), for the orders in
+2,531..2,600 that GAP's SmallGroups library does NOT have (check with SmallGroupsAvailable; the available ones are already
+done in results/smallgroups_2531_2600_hx.log). Split metacyclic Z_m x|_r Z_k, deduplicated, |G/G'| <= 309, order d of r
+>= 3, sorted by d descending; hx LIMIT 0 in chunks. Score per group: ">0" or 0 (give the set). One line per group.

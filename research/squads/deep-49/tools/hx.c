@@ -77,13 +77,13 @@ static int cost(int x, int y, int z, int lim) {
     int missed[8], c = 0;
     if (H == 4) {
         int nx = build_X(T1, n1);
-        if (nx * nx < N) return lim + 1;
+        if (N - nx * nx > lim) return lim + 1;
         for (int i = 0; i < nk; i++) if (!inXX(killer[i], nx)) { c++; if (c > lim) { kpush(killer[i]); return lim + 1; } }
         int nx2 = 0, c2 = 0;
         full++;
         int m1 = miss_full(nx, lim, missed); if (m1 > lim) { for (int i = 0; i < (m1 < 8 ? m1 : 8) && i < 2; i++) kpush(missed[i]); return lim + 1; }
         nx2 = build_X(T2, n2);
-        if (nx2 * nx2 < N) return lim + 1;
+        if (N - nx2 * nx2 > lim) return lim + 1;
         for (int i = 0; i < nk; i++) if (!inXX(killer[i], nx2)) { c2++; if (m1 + c2 > lim) { kpush(killer[i]); return lim + 1; } }
         int m2 = miss_full(nx2, lim - m1, missed); if (m1 + m2 > lim) { if (m2 > 0) kpush(missed[0]); return lim + 1; }
         return m1 + m2;

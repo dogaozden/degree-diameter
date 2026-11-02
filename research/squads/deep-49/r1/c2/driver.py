@@ -134,10 +134,13 @@ def process(key, c, st):
     e = st.get(key, {'status': 'new', 'next': 1})
     st[key] = e
     if e['status'] == 'new':
-        if left() < 25:
+        if left() < 12:
             return
-        if MODE == 'gap':
+        if MODE == 'gap' and not e.get('gap_to'):
             rc, to = gapbuild(key, m, k, r, N, timeout=left() - 3)
+            if to:
+                e['gap_to'] = True; save_state(st)  # GAP too slow for this group: use mkmeta instead
+                return
         else:
             rc, to = run(['nice', '-n', '10', 'python3', C2 + '/mkmeta.py', str(m), str(k), str(r), key],
                          timeout=left() - 3, out=f"{RUNS}/{key}.mk.out", err=f"{RUNS}/{key}.mk.err")
@@ -146,7 +149,7 @@ def process(key, c, st):
         if rc != 0:
             e['status'] = 'error'; e['why'] = f'build rc={rc} timeout={to}'
             return
-        e['build'] = MODE
+        e['build'] = 'gap' if (MODE == 'gap' and not e.get('gap_to')) else 'mkmeta'
         Nt, MT = read_tab(f"{RUNS}/{key}.tab")
         assert Nt == N
         ok, na = check_auts(N, MT, f"{RUNS}/{key}.aut")

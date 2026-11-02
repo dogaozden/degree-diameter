@@ -12,7 +12,7 @@ SB = '/home/user/degree-diameter/research/squads/deep-49/r1/scoreboard.jsonl'
 BUDGET = float(sys.argv[1]) if len(sys.argv) > 1 else 70.0
 T0 = time.time()
 LEVELS = [0, 1, 2, 4, 6, 8, 10]
-CH = 2
+CH = 1
 APSP = '/home/user/degree-diameter/research/squads/deep-49/tools/apsp'
 HAAR = '/home/user/degree-diameter/research/squads/deep-49/tools/haar_edges.py'
 

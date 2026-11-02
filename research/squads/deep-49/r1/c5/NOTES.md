@@ -25,3 +25,23 @@ Families (exhaustive unless noted):
 Rerun: ./fam D1 best_D1.edges; ./fam D2 best_D2.edges; ./fam D3 best_D3.edges; ./fam D3m best_D3m.edges;
 ./fam D7 best_D7.edges 0 12 (then 12 24, 24 40 in separate commands; each under 100 s).
 Verify a best file: ../../tools/score48 best_X.edges 4 9.
+
+## Structured local families (added after the twin families)
+
+Key identity: for any surgery, P = a* neighbours in B (4, or 3 + b*), Q = b* neighbours in A (4, or 3 + a*), and the
+deleted edges must be a perfect matching between Q and P in X (degrees 4 are preserved only that way).
+
+- GEN4 R=1: no a*b* edge; 4-matching with e0 = (0, N(0)[t]) fixed WLOG and the others within distance 1: 2160 graphs, best 162
+  (start: (0,4701),(924,3409),(1300,3572),(2429,3381)).
+- SWAP round 1 (exhaustive single-edge swaps of the GEN4 best, 4 x 9940): best 154 = best154.edges
+  (deleted (0,4701),(924,3409),(1300,3572),(177,4934)). Verified with score48: far = 154.
+- SWAP round 2 from 154: no swap below 154 (local minimum).
+- GEN3 R=1 (540 graphs) and R=2 (about 10k graphs, index-chunked): best 166.
+- SWAP3 round 1 (single swaps of the GEN3 R=2 best, a*b* edge kept): best 149 = best149.edges
+  (deleted (0,2485),(2252,3154),(1609,3881); a* ~ 2485,3154,3881,b*; b* ~ 0,2252,1609,a*). Verified with score48: far = 149.
+- SWAP3 round 2 from 149: best neighbour 151, so 149 is a local minimum for single swaps.
+
+Commands: START="q1,p1;q2,p2;q3,p3;q4,p4" ./fam SWAP OUT.edges FROM TO (4-matchings) and START=... ./fam SWAP3 OUT FROM TO
+(3-matchings with a*b*). Each chunk is under 100 s; the best file is written per process, so chunk files are not merged.
+- SWAP3 multi-start from the second GEN3 R=2 design (0,2485;1300,3572;2216,4701; far 166): best neighbour 149 with
+  (1926,2864) replacing (0,2485). Different edge set from the first 149; same value (not isomorphism-checked).
