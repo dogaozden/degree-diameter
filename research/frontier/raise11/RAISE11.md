@@ -23,6 +23,33 @@ orbit shape solves at mu ~ 15 within a few fresh runs.
 - Fresh seeds beat resumed chains (cards c07, c08, c16): near the limit the annealer's cost 2-6 states are local minima.
 - The model over-penalises moderate n with PSL: (7,11) PSL(2,47) x Z109 (model K 17) solved at mu 15.2 (card c04).
 
+## Results (all independently checked; table rows in research/frontier/beyond/BEYOND_TABLE.md)
+
+| cell | was | now | gain | group | found by | checks |
+|---|---:|---:|---:|---|---|---|
+| (5,11) | 311,426 | 312,206 | +0.25 % | Frobenius Z4219 x\|_2565 Z37, plain random S | squad r5/h02 (haar_meta) | metacheck, build_haar2.py |
+| (6,11) | 2,122,518 | 2,137,526 | +0.71 % | Frobenius Z15053 x\|_5955 Z71, plain random S | squad r4/g05 (haar_meta) | metacheck, build_haar2.py |
+| (7,11) | 11,012,976 | 11,426,448 | +3.75 % | SL(2,67) x Z19, ORBIT "3 2 1" | squad r3/f01 | haarcheck_gen, haarcheck_lean |
+| (8,11) | 45,329,808 | 46,547,568 | +2.69 % | SL(2,107) x Z19, ORBIT "3 2 2" | squad r4/g02 | haarcheck_gen, haarcheck_lean |
+| (9,11) | 155,250,816 | 159,415,392 | +2.68 % | SL(2,137) x Z31, ORBIT "3 3 0" | director loop (600-s run) | haarcheck_gen, haarcheck_lean |
+| (10,11) | 460,691,568 | 469,768,992 | +1.97 % | SL(2,617), ORBIT "3 3 1" | director loop | haarcheck_gen |
+| (12,11) | 2,976,066,240 | 3,039,136,800 | +2.12 % | SL(2,601) x Z7, ORBIT "3 4 0" | director (5 evaluations) | haarcheck_gen (3,781 s) |
+| (16,11) | 29,961,590,400 | 33,763,363,200 | +12.69 % | PSL(2,449) x Z373, ORBIT "3 5 1", first random S | director | haarcheck_gen (see the run log) |
+
+Intermediate values also found and checked: (5,11) 311,942 (Z8209 x| Z19); (6,11) 2,124,866 (Z25913 x| Z41) and
+2,135,280 (PSL(2,41) x Z31, orbit search); (7,11) 11,311,584 (PSL(2,47) x Z109); (8,11) 46,309,200 (SL(2,149) x Z7) and
+45,445,680 (PSL(2,71) x Z127, card check only); (10,11) 461,335,200 (SL(2,151) x Z67).
+
+Not raised: (11,11) (SL(2,449) x Z7 at +2.09 % reached cost 6-8 in 600-s runs of ~70 evaluations; the (9,11) solve needed
+851), (13,11), (14,11), (15,11) (searches stopped to keep the machine free for checks), (3,11), (4,11).
+
+## Lesson on run length
+
+At Δ >= 9 a lineage needs ~10^3 evaluations before it reaches cost 0 (the (9,11) solve came at evaluation 851 of a 600-s
+run). Under load a 95-s card run gets 70-100 evaluations there, so cards stalled at cost 2 on the very group that the
+director then solved on the first 600-s run. "Fresh seeds beat resumes" is still true, but each fresh seed needs a full
+run. For card rounds: give Δ >= 9 to longer director loops, or let cards chain resumes of the same lineage.
+
 ## Negative results
 
 - Inverse-closed S (S = S^-1, so the Haar graph is the bipartite double of a Cayley graph and only one side needs
