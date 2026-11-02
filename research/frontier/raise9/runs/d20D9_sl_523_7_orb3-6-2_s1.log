@@ -1,0 +1,8 @@
+group sl 523 x Z_7, N=1001386008 (2N=2002772016), rows 273528 x 3661 bits (doubled row 136 words), memory 0.86 GB, threads 2
+alpha: conj by mat(0,522,1,522), z -> 2 z on Z_7 (fixed z: 1); ORBIT k=3 m=6 f=2; W=1.79271e+10 lambda=17.902 mu=16.82
+setup 0.0s
+fixed generators: 1 chosen among 521 alpha-fixed elements
+start cost=78 (2.8s per eval)
+t=11 step=1 evals=5 slot=3 cand=36 cost=36 best=36 T=1.26
+t=16 step=2 evals=7 slot=1 cand=30 cost=30 best=30 T=1.06
+RESULT d=20 D=9 group=sl 523 x Z_7 N=1001386008 vertices=2002772016 best=30 evals=7 steps=2 time=16.4 orbit k=3 m=6 f=2 mu=16.82

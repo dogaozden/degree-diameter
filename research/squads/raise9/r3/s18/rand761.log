@@ -1,0 +1,6 @@
+group sl 761 x Z_1, N=440710320 (2N=881420640), rows 579120 x 761 bits (doubled row 48 words), memory 0.82 GB, threads 1
+alpha: conj by mat(0,760,1,760), z -> 0 z on Z_1 (fixed z: 1); ORBIT k=3 m=6 f=0; W=7.41174e+09 lambda=16.818 mu=21.89
+setup 0.0s
+RANDORB sample 0 cost 58 (49.2s) zq 1.000
+RANDORB sample 1 cost 72 (88.0s) zq 1.000
+RANDORB d=18 D=9 group=sl 761 x Z_1 N=440710320 samples=2 min=58 p10=58 median=72 mean=65.00 mu=21.89 time=88.0

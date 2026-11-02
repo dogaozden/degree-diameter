@@ -20,3 +20,152 @@ RANDORB sample 4 cost 116 (50.4s) zq 1.049
 RANDORB sample 5 cost 118 (59.5s) zq 1.000
 RANDORB sample 6 cost 88 (68.4s) zq 1.051
 RANDORB sample 7 cost 60 (75.9s) zq 1.436
+RANDORB sample 8 cost 160 (83.1s) zq 2.812
+RANDORB sample 9 cost 1558 (90.4s) zq 124.170
+RANDORB d=16 D=9 group=sl 157 x Z_45 N=174138120 samples=10 min=60 p10=74 median=144 mean=340.40 mu=24.69 time=90.5
+rc=0
+=== 23:41:21 ORBIT=3 5 1 seed=22 samples=10 group=sl 101 169
+group sl 101 x Z_169, N=174103800 (2N=348207600), rows 10200 x 17069 bits (doubled row 552 words), memory 0.14 GB, threads 1
+alpha: conj by mat(0,100,1,100), z -> 22 z on Z_169 (fixed z: 1); ORBIT k=3 m=5 f=1; W=2.74595e+09 lambda=15.772 mu=24.61
+setup 0.0s
+RANDORB sample 0 cost 112 (5.1s) zq 1.068
+RANDORB sample 1 cost 60 (10.1s) zq 1.292
+RANDORB sample 2 cost 36 (14.9s) zq 1.000
+RANDORB sample 3 cost 60 (19.0s) zq 1.000
+RANDORB sample 4 cost 52 (23.8s) zq 1.003
+RANDORB sample 5 cost 60 (28.8s) zq 1.007
+RANDORB sample 6 cost 102 (33.2s) zq 1.000
+RANDORB sample 7 cost 62 (37.8s) zq 1.000
+RANDORB sample 8 cost 60 (42.5s) zq 1.000
+RANDORB sample 9 cost 64 (47.3s) zq 1.000
+RANDORB d=16 D=9 group=sl 101 x Z_169 N=174103800 samples=10 min=36 p10=52 median=60 mean=66.80 mu=24.61 time=47.3
+rc=0
+=== 23:42:12 ORBIT=3 5 1 seed=23 samples=10 group=sl 139 65
+group sl 139 x Z_65, N=174556200 (2N=349112400), rows 19320 x 9035 bits (doubled row 304 words), memory 0.15 GB, threads 1
+alpha: conj by mat(0,138,1,138), z -> 16 z on Z_65 (fixed z: 5); ORBIT k=3 m=5 f=1; W=2.74595e+09 lambda=15.731 mu=25.71
+setup 0.1s
+RANDORB sample 0 cost 72 (7.4s) zq 1.000
+RANDORB sample 1 cost 104 (14.0s) zq 1.000
+RANDORB sample 2 cost 72 (20.7s) zq 1.000
+RANDORB sample 3 cost 96 (26.9s) zq 1.000
+RANDORB sample 4 cost 82 (34.2s) zq 1.000
+RANDORB sample 5 cost 84 (43.2s) zq 1.037
+RANDORB sample 6 cost 70 (52.0s) zq 1.059
+RANDORB sample 7 cost 74 (61.0s) zq 1.000
+RANDORB sample 8 cost 106 (70.5s) zq 1.015
+RANDORB sample 9 cost 70 (79.9s) zq 1.000
+RANDORB d=16 D=9 group=sl 139 x Z_65 N=174556200 samples=10 min=70 p10=70 median=82 mean=83.00 mu=25.71 time=79.9
+rc=0
+=== 23:43:35 ORBIT=3 5 1 seed=24 samples=10 group=sl 89 248
+group sl 89 x Z_248, N=174810240 (2N=349620480), rows 7920 x 22072 bits (doubled row 712 words), memory 0.14 GB, threads 1
+alpha: conj by mat(0,88,1,88), z -> 25 z on Z_248 (fixed z: 8); ORBIT k=3 m=5 f=1; W=2.74595e+09 lambda=15.708 mu=26.34
+setup 0.0s
+RANDORB sample 0 cost 174810242 (26.3s) zq 3318598.076
+RANDORB sample 1 cost 296 (32.8s) zq 12.978
+RANDORB sample 2 cost 140 (39.0s) zq 1.927
+RANDORB sample 3 cost 62 (45.3s) zq 1.000
+RANDORB sample 4 cost 140 (51.9s) zq 2.712
+RANDORB sample 5 cost 106 (58.1s) zq 1.001
+RANDORB sample 6 cost 106 (64.1s) zq 1.008
+RANDORB sample 7 cost 88 (70.3s) zq 1.000
+RANDORB sample 8 cost 82 (76.5s) zq 1.001
+RANDORB sample 9 cost 128 (83.0s) zq 2.034
+RANDORB d=16 D=9 group=sl 89 x Z_248 N=174810240 samples=10 min=62 p10=82 median=128 mean=17481139.00 mu=26.34 time=83.0
+rc=0
+=== 23:45:01 ORBIT=3 5 1 seed=25 samples=10 group=sl 83 305
+group sl 83 x Z_305, N=174369720 (2N=348739440), rows 6888 x 25315 bits (doubled row 816 words), memory 0.14 GB, threads 1
+alpha: conj by mat(0,82,1,82), z -> 196 z on Z_305 (fixed z: 5); ORBIT k=3 m=5 f=1; W=2.74595e+09 lambda=15.748 mu=25.25
+setup 0.0s
+RANDORB sample 0 cost 1604 (6.6s) zq 123.205
+RANDORB sample 1 cost 98 (12.3s) zq 1.007
+RANDORB sample 2 cost 66 (17.9s) zq 1.000
+RANDORB sample 3 cost 13482 (23.8s) zq 1409.254
+RANDORB sample 4 cost 1156 (29.8s) zq 71.087
+RANDORB sample 5 cost 2772 (36.1s) zq 174.538
+RANDORB sample 6 cost 88 (42.0s) zq 1.055
+RANDORB sample 7 cost 74 (47.9s) zq 1.054
+RANDORB sample 8 cost 62 (54.0s) zq 1.108
+RANDORB sample 9 cost 62 (59.9s) zq 1.000
+RANDORB d=16 D=9 group=sl 83 x Z_305 N=174369720 samples=10 min=62 p10=62 median=98 mean=1946.40 mu=25.25 time=59.9
+rc=0
+=== 23:46:03 ORBIT=5 3 1 seed=26 samples=10 group=psl 179 61
+group psl 179 x Z_61, N=174922380 (2N=349844760), rows 16020 x 10919 bits (doubled row 360 words), memory 0.14 GB, threads 1
+alpha: conj by mat(0,178,1,74), z -> 9 z on Z_61 (fixed z: 1); ORBIT k=5 m=3 f=1; W=2.74595e+09 lambda=15.698 mu=26.62
+setup 0.0s
+RANDORB sample 0 cost 91 (9.7s) zq 1.000
+RANDORB sample 1 cost 51 (18.6s) zq 1.000
+RANDORB sample 2 cost 93 (27.5s) zq 1.001
+RANDORB sample 3 cost 63 (35.8s) zq 1.000
+RANDORB sample 4 cost 86 (44.8s) zq 1.000
+RANDORB sample 5 cost 124 (52.6s) zq 1.000
+RANDORB sample 6 cost 61 (61.2s) zq 1.000
+RANDORB sample 7 cost 101 (69.2s) zq 1.000
+RANDORB sample 8 cost 83 (77.4s) zq 1.000
+RANDORB sample 9 cost 95 (86.2s) zq 1.000
+RANDORB d=16 D=9 group=psl 179 x Z_61 N=174922380 samples=10 min=51 p10=61 median=91 mean=84.80 mu=26.62 time=86.2
+rc=0
+=== 23:47:33 ORBIT=5 3 1 seed=27 samples=10 group=psl 109 271
+group psl 109 x Z_271, N=175461660 (2N=350923320), rows 5940 x 29539 bits (doubled row 944 words), memory 0.14 GB, threads 1
+alpha: conj by mat(0,108,1,10), z -> 10 z on Z_271 (fixed z: 1); ORBIT k=5 m=3 f=1; W=2.74595e+09 lambda=15.650 mu=28.02
+setup 0.0s
+RANDORB sample 0 cost 106 (7.8s) zq 1.002
+RANDORB sample 1 cost 121 (14.1s) zq 1.000
+RANDORB sample 2 cost 67 (20.5s) zq 1.000
+RANDORB sample 3 cost 64 (26.7s) zq 1.000
+RANDORB sample 4 cost 87 (32.3s) zq 1.000
+RANDORB sample 5 cost 64 (37.9s) zq 1.000
+RANDORB sample 6 cost 56 (44.5s) zq 1.000
+RANDORB sample 7 cost 79 (51.1s) zq 1.000
+RANDORB sample 8 cost 92 (57.6s) zq 1.000
+RANDORB sample 9 cost 51 (63.4s) zq 1.002
+RANDORB d=16 D=9 group=psl 109 x Z_271 N=175461660 samples=10 min=51 p10=56 median=79 mean=78.70 mu=28.02 time=63.4
+rc=0
+=== 23:48:40 ORBIT=3 4 4 seed=28 samples=10 group=sl 101 169
+group sl 101 x Z_169, N=174103800 (2N=348207600), rows 10200 x 17069 bits (doubled row 552 words), memory 0.14 GB, threads 1
+alpha: conj by mat(0,100,1,100), z -> 22 z on Z_169 (fixed z: 1); ORBIT k=3 m=4 f=4; W=2.74595e+09 lambda=15.772 mu=24.61
+setup 0.0s
+fixed generators: 3 chosen among 101 alpha-fixed elements
+RANDORB sample 0 cost 84 (8.1s) zq 1.002
+RANDORB sample 1 cost 162 (14.1s) zq 2.759
+RANDORB sample 2 cost 774 (21.1s) zq 43.916
+RANDORB sample 3 cost 120 (28.0s) zq 2.088
+RANDORB sample 4 cost 60 (35.8s) zq 1.001
+RANDORB sample 5 cost 96 (42.8s) zq 1.377
+RANDORB sample 6 cost 78 (49.9s) zq 1.139
+RANDORB sample 7 cost 84 (57.1s) zq 1.145
+RANDORB sample 8 cost 132 (64.0s) zq 1.120
+RANDORB sample 9 cost 66 (70.9s) zq 1.312
+RANDORB d=16 D=9 group=sl 101 x Z_169 N=174103800 samples=10 min=60 p10=66 median=96 mean=165.60 mu=24.61 time=70.9
+rc=0
+=== 23:49:54 ORBIT=3 5 1 seed=29 samples=10 group=psl 157 90
+group psl 157 x Z_90, N=174138120 (2N=348276240), rows 12324 x 14130 bits (doubled row 464 words), memory 0.14 GB, threads 1
+alpha: conj by mat(0,156,1,156), z -> 31 z on Z_90 (fixed z: 30); ORBIT k=3 m=5 f=1; W=2.74595e+09 lambda=15.769 mu=24.69
+setup 0.0s
+RANDORB sample 0 cost 466 (8.6s) zq 20.653
+RANDORB sample 1 cost 104 (16.0s) zq 1.313
+RANDORB sample 2 cost 174138124 (41.5s) zq 3526025.396
+RANDORB sample 3 cost 128 (48.8s) zq 2.588
+RANDORB sample 4 cost 118 (55.8s) zq 1.479
+RANDORB sample 5 cost 167 (63.4s) zq 1.836
+RANDORB sample 6 cost 155 (70.5s) zq 1.083
+RANDORB sample 7 cost 152 (77.4s) zq 1.304
+RANDORB sample 8 cost 741 (84.4s) zq 40.502
+RANDORB sample 9 cost 90 (91.3s) zq 1.150
+RANDORB d=16 D=9 group=psl 157 x Z_90 N=174138120 samples=10 min=90 p10=104 median=155 mean=17414024.50 mu=24.69 time=91.3
+rc=0
+=== 23:54:59 ORBIT=5 3 1 seed=33 samples=10 group=psl 139 131
+group psl 139 x Z_131, N=175898940 (2N=351797880), rows 9660 x 18209 bits (doubled row 592 words), memory 0.14 GB, threads 1
+alpha: conj by mat(0,138,1,63), z -> 53 z on Z_131 (fixed z: 1); ORBIT k=5 m=3 f=1; W=2.74595e+09 lambda=15.611 mu=29.21
+setup 0.0s
+RANDORB sample 0 cost 89 (6.4s) zq 1.001
+RANDORB sample 1 cost 113 (12.4s) zq 1.000
+RANDORB sample 2 cost 94 (18.7s) zq 1.000
+RANDORB sample 3 cost 102 (24.8s) zq 1.192
+RANDORB sample 4 cost 61 (30.8s) zq 1.000
+RANDORB sample 5 cost 39 (36.9s) zq 1.000
+RANDORB sample 6 cost 67 (43.2s) zq 1.000
+RANDORB sample 7 cost 77 (49.3s) zq 1.000
+RANDORB sample 8 cost 77 (55.1s) zq 1.000
+RANDORB sample 9 cost 106 (61.5s) zq 1.000
+RANDORB d=16 D=9 group=psl 139 x Z_131 N=175898940 samples=10 min=39 p10=61 median=89 mean=82.50 mu=29.21 time=61.5
+rc=0

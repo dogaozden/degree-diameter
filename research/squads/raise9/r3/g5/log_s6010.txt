@@ -1,0 +1,6 @@
+group meta 1559 41 1490 x Z_1, N=63919, identity 0, H order 41, rows 1559, threads 1, setup 0.00s
+start cost=50
+t=30 steps=1956 evals=15649 cost=10 best=10 T=0.53
+t=60 steps=3833 evals=30665 cost=6 best=6 T=0.19
+t=90 steps=5795 evals=46361 cost=6 best=6 T=0.15
+RESULT d=6 D=9 group=meta 1559 41 1490 x Z_1 N=63919 best=6 evals=46361 time=90.1

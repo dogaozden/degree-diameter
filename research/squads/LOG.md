@@ -248,3 +248,29 @@ No card solved. Machine load ~20: cards got ~1/10 core (50 ms per evaluation at 
 (11,9)/(12,9), single-orbit S, Frobenius at (7,9)-(9,9).
 Process: 5 more stray session-tool calls (archive_session, interrupt_session), all rejected; one card ran two jobs at once.
 Director meanwhile: (18,9) 850,056,960 (SL(2,191) x Z61 "3 5 3", mu 11.35, 81 evals) and (20,9) 1,972,000,272 (VALID).
+
+### Round 3 (16 cards, 23:44-00:12 UTC, research/squads/raise9/r3/)
+
+Mostly director support: shape measurements for the next rungs at (15..20, 9), four more (6,9) Frobenius farms, and
+four idea cards. Cards (best result):
+- Shapes (RANDORB, 1-16 samples each; samples took 10-115 s under load, and haar_big0 needs ~2x its printed N/2 bytes):
+  s17 keep SL(2,277) x Z13 "3 5 2" ("3 4 5" worse, "3 3 8" hopeless); s18 on SL(2,241) x Z31 "3 6 0" min/median 16/31 vs
+  "3 5 3" 26/36 vs "3 4 6" 132; s19 "3 6 1" beats "3 5 4" and "3 4 7"; s15 PSL(2,151) x Z61 "5 3 0" 80 vs "3 5 0" 72,
+  anneal to 24; s16 (16,9) SL(2,139) x Z65 "3 5 1" annealed to 26 (current group 32 in the same time); s20 could not run
+  (1.5 GB at N = 1e9). **w07 f-split at (18,9) on SL(2,191) x Z61: f = 0 median 24, f = 3 42, f = 6 84; -I is a hole on both
+  sides for f = 0 and f = 3; no central (+-I, z != 0) holes in 6 sides, against ~9 predicted by the rotation clump model.**
+- (6,9) farms on Z1559 x| Z41: g1 17 seeds best 4, g2 16 seeds best 4 (K = 16 >= K = 8 > K = 4), g5 12 seeds best 4 (and a
+  screen of all 15 Frobenius groups up to N = 67,000: only odd k = 37-43 competitive), g4 Z2377 x| Z27 best 6, Z1777 x| Z37 12.
+  Load ~13-20: each 90 s seed got 5 s of CPU on some cards.
+- i02 (10,9) k = 5 on SL groups: stalls at 56-98 (control PSL(2,59) x Z41 13); i03 (13,9) SL(2,89) x Z49 / SL(2,139) x Z13 48,
+  control 34; w08 bi-coset graphs for (3,9) on D254 (weak negative, unverified code); **w09: covers of a solved D = 9 Haar
+  graph cannot have diameter 9: every solved base has a same-side vertex reached by exactly one non-backtracking walk of
+  length <= 8, so in any regular M >= 2 cover the other M - 1 lifts are at distance > 8 (Z2, Z3 central covers of (5,9):
+  cost 2,166 and 10,486).**
+No card solved. What the director took from it: the (17,9) cost-2 plateau at SL(2,277) x Z13 is an inverse pair of
+alpha-fixed TORUS elements (a I + b g, z = 0; EVAL + UNCPRINT), and central holes are rarer than modelled (w07), so the next
+rungs use small p (~100-240) and large n with one alpha-fixed z (gcd(r - 1, n) = 1). Result: (20,9) SL(2,233) x Z79 at mu
+16.16 solved in 57 evaluations and (19,9) SL(2,151) x Z193 at mu 15.71 in 17, where SL(2,457) x Z7 (mu 17.4), SL(2,313) x Z9
+and SL(2,523) x Z7 had stalled at cost 6-30.
+Process: i03 dumped 87 non-JSON lines into the scoreboard (moved to r3/i03/scoreboard_spill.txt); 6 more stray
+session-tool calls (archive_session, interrupt_session, read_documentation), all rejected or read-only.
