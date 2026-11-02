@@ -2,10 +2,17 @@ machine: vm; nproc=4; free -g: total 15G used 3G free 11G avail 12G; Linux 6.18.
 sha256: e24c4bf877da0bdf559348c82a95f1e48b291c439b54f79bda7e37c0c5384d7e  research/frontier/sols/d18D10_psl_211_1361_orb5-3-3_s2.txt  (copied with git show from origin/claude/raise-d10-beyond-rcdq5p, commit 0b49288a8f72ea6c339aaa0f4f42267915984492; 648 bytes; cell Δ18·D10; 12,784,852,920 vertices)
 checker: haarcheck_psl, source git show origin/master:research/structured/tools/haarcheck_psl.c (sha256 ba816e278a1fa0616d55b563301644c443971a1d361293c00e4f98c36f9976b4), built with: gcc -O3 -o haarcheck_psl haarcheck_psl.c (in the session scratchpad, not committed)
 job: gencheck-v, reference checker only (haarcheck_gen is run by the search session; not repeated here). Single run, single thread; expected about 4.6 GB and about 2.5 h.
-status: RUNNING; started 2026-11-02T05:31:20Z
+status: DONE (exit 0); started 2026-11-02T05:31:20Z, finished 2026-11-02T08:30Z approx. (time -v elapsed 3:01:35)
 progress 2026-11-02T06:02:10Z: still running, elapsed 30:50, RSS 4683648 KB, 98.9% CPU; no output yet (the checker prints only after each BFS).
 progress 2026-11-02T06:32:18Z: running, elapsed 01:00:58, RSS 4683648 KB, 98.8% CPU; exit file: (not finished); stdout so far: 0 lines.
 progress 2026-11-02T07:02:31Z: running, elapsed 01:31:11, RSS 4683716 KB, 98.8% CPU; exit file: (not finished); stdout so far: 0 lines.
 progress 2026-11-02T07:32:39Z: running, elapsed 02:01:19, RSS 4683716 KB, 98.8% CPU; exit file: (not finished); stdout so far: 0 lines.
 progress 2026-11-02T08:02:48Z: running, elapsed 02:31:28, RSS 4683716 KB, 98.9% CPU; exit file: (not finished); stdout so far: 0 lines.
 progress 2026-11-02T08:32:57Z: process gone; exit file: 0; stdout so far: 3 lines.
+
+################ haarcheck_psl (reference checker, research/structured/tools/haarcheck_psl.c, built gcc -O3): /usr/bin/time -v -o <time report> /tmp/claude-0/-home-user-degree-diameter/4f47edf0-e3e0-52ec-b9d1-288b217c9fc9/scratchpad/checkers/haarcheck_psl research/frontier/sols/d18D10_psl_211_1361_orb5-3-3_s2.txt   (stdout, complete; single run, single thread; stderr empty)
+from (e,A): reached A 6392426460/6392426460, B 6392426460/6392426460 within 10, ecc 10
+from (e,B): reached A 6392426460/6392426460, B 6392426460/6392426460 within 10, ecc 10
+VALID d=18 D=10 group=psl 211 x Z_1361 N=6392426460 vertices=12784852920 (distinct generators, 18-regular simple)
+[exit 0; wall 10895s (3:01:35); peak RSS 4574 MB (4683604 KB); 1 thread]
+(time -v: User 10751.56 s, System 26.50 s, CPU 98%, max RSS 4683604 KB, exit status 0)
