@@ -1,0 +1,10 @@
+checker: haarcheck_gen
+command: ../beyond13/bin/haarcheck_gen runs/d10D13_sl_601_67_orb3-3-1_s1.out
+start: 2026-11-02T00:31:02Z
+sha256 e52e247f4a92a474f49ff0d5d438660ba0b557bbdfd4a8e24311ca881ff3f17c  ../beyond13/bin/haarcheck_gen
+sha256 45cf57ffd3f89f6ca090e63da755e270241c7e5c24500bfa1c91d24d57d19470  runs/d10D13_sl_601_67_orb3-3-1_s1.out
+selftest sl 601: |M| = 217081200, index round trip over all elements ok
+selftest group multiplication: associativity, identity, inverse on 20000 random triples ok
+file runs/d10D13_sl_601_67_orb3-3-1_s1.out
+header: 10 13 sl 601 n 67 N 14544440400
+group sl 601 x Z_67, |G| = 14544440400 = N, vertices 2N = 29088880800; 10 distinct generators

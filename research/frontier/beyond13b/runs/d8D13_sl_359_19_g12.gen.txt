@@ -8,3 +8,8 @@ selftest group multiplication: associativity, identity, inverse on 20000 random 
 file runs/d8D13_sl_359_19_g12.txt
 header: 8 13 sl 359 n 19 N 879090480
 group sl 359 x Z_19, |G| = 879090480 = N, vertices 2N = 1758180960; 8 distinct generators
+from (e,A): reached A 879090480/879090480, B 879090480/879090480 within 13; ecc 13; level sizes [1, 8, 56, 392, 2744, 19208, 134438, 940562, 6562118, 44870188, 268019146, 769390187, 604371977, 63869935]  (230s)
+from (e,B): reached A 879090480/879090480, B 879090480/879090480 within 13; ecc 13; level sizes [1, 8, 56, 392, 2744, 19208, 134438, 940562, 6562142, 44870188, 268019674, 769390187, 604371425, 63869935]  (459s)
+VALID d=8 D=13 group=sl 359 x Z_19 N=879090480 vertices=1758180960 (distinct generators, 8-regular simple; every vertex within 13 of both (e,A) and (e,B); ecc 13; 459s)
+exit: 0
+end: 2026-11-02T00:29:17Z (459 s)
