@@ -1,0 +1,23 @@
+Coordinator report (Mac mini coordinator, 2026-11-02T01:56:51Z): d8D11_sl_107_19_orb3-2-2_r4g02.txt from origin/claude/raise-d11-frontier-26r11l, sha256 2fbbede3c8c835e6a7f6c40cfc52a5d4a77c6ecb2d78d4a3768f449a7380f4a1.
+
+======== cloud haarcheck_gen report research/frontier/raise11/runs/d8D11_sl_107_19_orb3-2-2_r4g02.gen.txt from origin/claude/raise-d11-frontier-26r11l (unedited) ========
+checker: haarcheck_gen
+command: ./bin/haarcheck_gen runs/d8D11_sl_107_19_orb3-2-2_r4g02.out
+start: 2026-11-02T00:27:05Z
+sha256 0262672f6433fe9806f8319443cd58fb87c68a60277b9dd3beb89559a59e93c9  ./bin/haarcheck_gen
+sha256 2fbbede3c8c835e6a7f6c40cfc52a5d4a77c6ecb2d78d4a3768f449a7380f4a1  runs/d8D11_sl_107_19_orb3-2-2_r4g02.out
+selftest sl 107: |M| = 1224936, index round trip over all elements ok
+selftest group multiplication: associativity, identity, inverse on 20000 random triples ok
+file runs/d8D11_sl_107_19_orb3-2-2_r4g02.out
+header: 8 11 sl 107 n 19 N 23273784
+group sl 107 x Z_19, |G| = 23273784 = N, vertices 2N = 46547568; 8 distinct generators
+from (e,A): reached A 23273784/23273784, B 23273784/23273784 within 11; ecc 11; level sizes [1, 8, 56, 392, 2744, 19208, 134060, 920965, 5697236, 19225757, 17439687, 3107454]  (10s)
+from (e,B): reached A 23273784/23273784, B 23273784/23273784 within 11; ecc 11; level sizes [1, 8, 56, 392, 2744, 19208, 134066, 920965, 5697058, 19225757, 17439859, 3107454]  (20s)
+VALID d=8 D=11 group=sl 107 x Z_19 N=23273784 vertices=46547568 (distinct generators, 8-regular simple; every vertex within 11 of both (e,A) and (e,B); ecc 11; 20s)
+exit: 0
+end: 2026-11-02T00:27:25Z (20 s)
+
+======== Mac mini: research/frontier/haarcheck_sl.c (master; clang -O3), exit 0, 9 s ========
+from (e,A): reached A 23273784/23273784, B 23273784/23273784 within 11, ecc 11
+from (e,B): reached A 23273784/23273784, B 23273784/23273784 within 11, ecc 11
+VALID d=8 D=11 group=sl 107 x Z_19 N=23273784 vertices=46547568 (distinct generators, 8-regular simple)
