@@ -141,6 +141,57 @@ int main(int argc, char **argv) {
         }
         return 0;
     }
+    if (getenv("EXH") && !getenv("NOCRT")) {   /* composite squarefree n: classes over Z_n = product of classes over Z_p (CRT) */
+        long fac[16]; int nf_ = 0; long mrem = n;
+        for (long q = 2; q * q <= mrem; q++) if (mrem % q == 0) { fac[nf_++] = q; mrem /= q; if (mrem % q == 0) { nf_ = -1; break; } }
+        if (nf_ >= 0 && mrem > 1) fac[nf_++] = mrem;
+        if (nf_ >= 2) {
+            int va[MAXV], vi[MAXV];
+            for (int a = 0; a < nsrc; a++) { int x = src[a]; for (int i = 0; i < kord; i++) { va[x] = a; vi[x] = i; x = perm[x]; } }
+            static int *REP[16]; long RN[16]; int FREE[16][MAXE], NFREE[16];
+            long ecrt[16];
+            for (int f = 0; f < nf_; f++) {
+                long P = fac[f], lp[64]; lp[0] = 1 % P; for (int i = 1; i < 64; i++) lp[i] = lp[i - 1] * (lam % P) % P;
+                static long Mq[MAXE][MAXV], Bq[MAXV][MAXV]; int pv[MAXE] = {0}, pcol[MAXV], nb = 0;
+                for (int o = 0; o < norb; o++) { int e = orbrep[o]; for (int a = 0; a < nsrc; a++) Mq[o][a] = 0;
+                    Mq[o][va[ev[e]]] = (Mq[o][va[ev[e]]] + lp[vi[ev[e]]]) % P; Mq[o][va[eu[e]]] = (Mq[o][va[eu[e]]] + P - lp[vi[eu[e]]]) % P; }
+                for (int o = 0; o < norb && nb < nsrc; o++) {
+                    long row[MAXV]; for (int a = 0; a < nsrc; a++) row[a] = Mq[o][a];
+                    for (int t = 0; t < nb; t++) { long g = row[pcol[t]]; if (g) for (int a = 0; a < nsrc; a++) row[a] = ((row[a] - g * Bq[t][a]) % P + P) % P; }
+                    int pc = -1; for (int a = 0; a < nsrc; a++) if (row[a]) { pc = a; break; }
+                    if (pc < 0) continue;
+                    long iv = invmod(row[pc], P); for (int a = 0; a < nsrc; a++) row[a] = row[a] * iv % P;
+                    for (int t = 0; t < nb; t++) { long g = Bq[t][pc]; if (g) for (int a = 0; a < nsrc; a++) Bq[t][a] = ((Bq[t][a] - g * row[a]) % P + P) % P; }
+                    for (int a = 0; a < nsrc; a++) Bq[nb][a] = row[a]; pcol[nb] = pc; nb++; pv[o] = 1;
+                }
+                NFREE[f] = 0; for (int o = 0; o < norb; o++) if (!pv[o]) FREE[f][NFREE[f]++] = o;
+                int fq = NFREE[f]; long R = 0; for (int lead = 0; lead < fq; lead++) { long t = 1; for (int j = 0; j < fq - lead - 1; j++) t *= P; R += t; }
+                RN[f] = R; REP[f] = malloc(sizeof(int) * (R ? R : 1) * (fq ? fq : 1)); long r = 0;
+                for (int lead = 0; lead < fq; lead++) { long t = 1; for (int j = 0; j < fq - lead - 1; j++) t *= P;
+                    for (long c = 0; c < t; c++, r++) { int *v = REP[f] + r * fq; for (int j = 0; j < fq; j++) v[j] = 0; v[lead] = 1;
+                        long c2 = c; for (int j = lead + 1; j < fq; j++) { v[j] = (int)(c2 % P); c2 /= P; } } }
+                long Mi = n / P; ecrt[f] = Mi % n * invmod(Mi % P, P) % n;
+                fprintf(stderr, "CRT: p=%ld lambda mod p=%ld gauge rank %d, %d free, %ld classes\n", P, lam % P, nb, fq, R);
+            }
+            long tot = 1; for (int f = 0; f < nf_; f++) tot *= RN[f];
+            fprintf(stderr, "CRT: %ld combinations\n", tot);
+            long bestc = 1L << 60, cnt = 0, nsol = 0; int bxx[MAXE]; double te = now(); long idx[16] = {0};
+            for (long code = 0; code < tot; code++) {
+                long c2 = code; for (int f = 0; f < nf_; f++) { idx[f] = c2 % RN[f]; c2 /= RN[f]; }
+                for (int o = 0; o < norb; o++) ox[o] = 0;
+                long acc[MAXE]; for (int o = 0; o < norb; o++) acc[o] = 0;
+                for (int f = 0; f < nf_; f++) { int *v = REP[f] + idx[f] * NFREE[f];
+                    for (int j = 0; j < NFREE[f]; j++) acc[FREE[f][j]] = (acc[FREE[f][j]] + (long)v[j] * ecrt[f]) % n; }
+                for (int o = 0; o < norb; o++) ox[o] = (int)acc[o];
+                long c = cost(bestc == 0 ? 0 : bestc); cnt++;
+                if (c < bestc || c == 0) { if (c < bestc) { bestc = c; memcpy(bxx, ox, sizeof(int) * norb); }
+                    if (c == 0) { nsol++; if (nsol == 1) { apply(); save(pre, ".best"); save_edges(pre); } } }
+            }
+            memcpy(ox, bxx, sizeof(int) * norb); apply(); if (bestc > 0) save(pre, ".best");
+            printf("EXHRESULT b=%d k=%d lambda=%ld n=%d N=%ld D=%d crt=%d evals=%ld min_cost=%ld solutions=%ld secs=%.1f\n", b, kord, lam, n, N, D, nf_, cnt, bestc, nsol, now() - te);
+            return 0;
+        }
+    }
     if (getenv("EXH")) {   /* exhaustive over gauge classes: zero a maximal gauge-independent set of edge orbits, scale */
         /* vertex v = rho^i(src[a]): find (a, i) */
         int va[MAXV], vi[MAXV];
