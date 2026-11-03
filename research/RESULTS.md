@@ -396,3 +396,5 @@ by the coordinator with build_haar.py, two BFS from both sides, ecc ≤ D, nothi
 - Nov 01 21:33 PT (harvest): (17,10) 7,832,948,760 (was 7,022,052,336), psl 181 n 1321; claude/raise-d10-beyond-rcdq5p.
 
 - Nov 02 02:34 PT (harvest): (18,10) 12,784,852,920 (was 11,787,972,672), psl 211 n 1361; claude/raise-d10-beyond-rcdq5p.
+
+- Nov 02 23:35 PT (harvest): (19,10) 20,785,224,720 (was 19,233,722,496), psl 311 n 691; claude/raise-d10-beyond-rcdq5p.
