@@ -1,0 +1,10 @@
+machine: cloud worker (job gencheck-r); nproc=4; free -g: total 15G used 0G free 14G avail 15G; Linux 6.18.44-fc-v185; gcc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0; /usr/bin/time (apt package time 1.9-0.2build1)
+sha256: baab08bfdd34d66eee2dca57e3a51516e13c480e7bb8a9cf2405755e2c8a5dca  research/frontier/sols/d12D12_psl_241_2143_orb3-4-0_s1.txt  (copied from branch claude/beyond-d11-d12-new-cells-3t3djx; 452 bytes; header 12 12 psl 241 n 2143 N 14998085520; 2N = 29,996,171,040 vertices)
+checker: research/structured/tools/haarcheck_psl.c on master (commit 4e23493, sha256 ba816e278a1fa0616d55b563301644c443971a1d361293c00e4f98c36f9976b4), built with gcc -O3 -Wall -o haarcheck_psl haarcheck_psl.c; only the BFS from (e,B) is run (the other half is run by another job).
+
+################ haarcheck_psl (reference, research/structured/tools/haarcheck_psl.c): /usr/bin/time -v haarcheck_psl research/frontier/sols/d12D12_psl_241_2143_orb3-4-0_s1.txt B   (stdout, complete)
+from (e,B): reached A 14998085520/14998085520, B 14998085520/14998085520 within 12, ecc 12
+HALF-VALID from (e,B) d=12 D=12 group=psl 241 x Z_2143 N=14998085520 vertices=29996171040
+[exit 0; wall 8545s; peak RSS 10729 MB; 1 thread; user 8430.30 s; sys 41.21 s; started 2026-11-01T16:31:52Z, ended 2026-11-01T18:54:17Z]
+
+note: only the (e,B) half was run here. HALF-VALID is not a full VALID. The coordinator combines this with the (e,A) BFS run by another job and the haarcheck_gen report from the search session.
