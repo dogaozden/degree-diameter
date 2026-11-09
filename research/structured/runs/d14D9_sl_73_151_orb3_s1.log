@@ -1,0 +1,23 @@
+group sl 73 x Z_151, N=58730544, identity 793656, H order 37, rows 1587312, threads 1, setup 1.95s
+wide rows: HW order 151, rows 388944, setup 5.15s
+alpha: conj by mat(55,55,15,19) (index 297052), z -> 32 z on Z_151
+ORBIT k=3 m=4 f=2: |Fix(alpha)| = 71 (+e); mu = 17.14, mu/k = 5.71, fixed-point misses ~ 0.96
+start cost=80
+t=31 steps=7 evals=57 cost=18 best=18 T=0.51
+t=65 steps=15 evals=121 cost=12 best=12 T=0.16
+t=96 steps=22 evals=177 cost=12 best=12 T=0.15
+t=129 steps=30 evals=241 cost=12 best=12 T=0.15
+t=162 steps=37 evals=297 cost=12 best=12 T=0.15
+t=194 steps=45 evals=361 cost=12 best=12 T=0.15
+t=226 steps=53 evals=425 cost=12 best=12 T=0.15
+t=258 steps=61 evals=489 cost=12 best=12 T=0.15
+t=293 steps=69 evals=553 cost=12 best=12 T=0.15
+t=325 steps=76 evals=609 cost=12 best=12 T=0.15
+t=358 steps=84 evals=673 cost=12 best=12 T=0.15
+t=389 steps=91 evals=729 cost=12 best=12 T=0.15
+t=423 steps=99 evals=793 cost=6 best=6 T=0.15
+RESULT d=14 D=9 group=sl 73 x Z_151 N=58730544 best=0 evals=833 time=444.2 orbit k=3 m=4 f=2 fix=71
+full diameter check: OK
+wrote /tmp/claude-0/-home-user-degree-diameter/d970605a-f2c2-5050-9b43-1586729b22cf/scratchpad/out/20-sl_73_151/d14D9_sl_73_151_orb3_s1.txt
+VALID d=14 D=9 group=sl 73 x Z_151 N=58730544 vertices=117461088 (distinct generators, 14-regular simple)
+VALID d=14 D=9 vertices=117461088 eccA=9 eccB=9

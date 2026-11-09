@@ -1,0 +1,13 @@
+group sl 59 x Z_283, N=58105560, identity 968426, H order 60, rows 968426, threads 1, setup 3.20s
+wide rows: HW order 118, rows 492420, setup 6.61s
+alpha: conj by mat(5,36,27,53) (index 19497), z -> 44 z on Z_283
+ORBIT k=3 m=4 f=2: |Fix(alpha)| = 59 (+e); mu = 14.43, mu/k = 4.81, fixed-point misses ~ 0.75
+start cost=106
+t=30 steps=13 evals=105 cost=14 best=14 T=0.53
+t=60 steps=27 evals=217 cost=8 best=8 T=0.18
+t=93 steps=43 evals=345 cost=8 best=8 T=0.15
+RESULT d=14 D=9 group=sl 59 x Z_283 N=58105560 best=0 evals=441 time=117.9 orbit k=3 m=4 f=2 fix=59
+full diameter check: OK
+wrote /tmp/claude-0/-home-user-degree-diameter/d970605a-f2c2-5050-9b43-1586729b22cf/scratchpad/out/30-sl59_283/d14D9_sl_59_283_orb3_s1.txt
+VALID d=14 D=9 group=sl 59 x Z_283 N=58105560 vertices=116211120 (distinct generators, 14-regular simple)
+VALID d=14 D=9 vertices=116211120 eccA=9 eccB=9
