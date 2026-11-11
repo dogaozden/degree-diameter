@@ -1,0 +1,47 @@
+group sl 149 x Z_103, N=340703400, identity 2271356, H order 50, rows 6814068, threads 1, setup 8.73s
+wide rows: HW order 206, rows 1653900, setup 18.34s
+alpha: conj by mat(75,60,126,73) (index 1673992), z -> 46 z on Z_103
+ORBIT k=3 m=4 f=1: |Fix(alpha)| = 149 (+e); mu = 22.77, mu/k = 7.59, fixed-point misses ~ 0.61
+start cost=45
+t=30 steps=2 evals=17 cost=19 best=19 T=0.52
+t=74 steps=5 evals=41 cost=12 best=12 T=0.15
+t=115 steps=8 evals=65 cost=12 best=12 T=0.15
+t=154 steps=11 evals=89 cost=10 best=10 T=0.15
+t=196 steps=14 evals=113 cost=10 best=10 T=0.15
+t=238 steps=17 evals=137 cost=10 best=10 T=0.15
+t=271 steps=19 evals=153 cost=8 best=8 T=0.15
+t=314 steps=22 evals=177 cost=8 best=8 T=0.15
+t=353 steps=25 evals=201 cost=8 best=8 T=0.15
+t=392 steps=28 evals=225 cost=6 best=6 T=0.15
+t=433 steps=31 evals=249 cost=6 best=6 T=0.15
+t=475 steps=34 evals=273 cost=7 best=6 T=0.15
+t=517 steps=37 evals=297 cost=7 best=6 T=0.15
+t=560 steps=40 evals=321 cost=7 best=6 T=0.15
+t=603 steps=43 evals=345 cost=4 best=4 T=0.15
+t=646 steps=46 evals=369 cost=4 best=4 T=0.15
+t=685 steps=49 evals=393 cost=4 best=4 T=0.15
+t=725 steps=52 evals=417 cost=4 best=4 T=0.15
+t=766 steps=55 evals=441 cost=4 best=4 T=0.15
+t=803 steps=58 evals=465 cost=4 best=4 T=0.15
+t=843 steps=61 evals=489 cost=4 best=4 T=0.15
+t=888 steps=64 evals=513 cost=4 best=4 T=0.15
+t=918 steps=66 evals=529 cost=4 best=4 T=0.15
+t=949 steps=68 evals=545 cost=4 best=4 T=0.15
+t=979 steps=70 evals=561 cost=4 best=4 T=0.15
+t=1020 steps=73 evals=585 cost=4 best=4 T=0.15
+t=1059 steps=76 evals=609 cost=4 best=4 T=0.15
+t=1100 steps=79 evals=633 cost=4 best=4 T=0.15
+t=1140 steps=82 evals=657 cost=4 best=4 T=0.15
+t=1182 steps=85 evals=681 cost=4 best=4 T=0.15
+t=1223 steps=88 evals=705 cost=4 best=4 T=0.15
+t=1264 steps=91 evals=729 cost=4 best=4 T=0.15
+t=1303 steps=94 evals=753 cost=4 best=4 T=0.15
+t=1345 steps=97 evals=777 cost=4 best=4 T=0.15
+t=1386 steps=100 evals=801 cost=4 best=4 T=0.15
+t=1427 steps=103 evals=825 cost=4 best=4 T=0.15
+t=1467 steps=106 evals=849 cost=4 best=4 T=0.15
+RESULT d=13 D=10 group=sl 149 x Z_103 N=340703400 best=0 evals=857 time=1480.7 orbit k=3 m=4 f=1 fix=149
+full diameter check: OK
+wrote runs/raise13_10/out/d13D10_sl_149_103_orb3_s1.txt
+VALID d=13 D=10 group=sl 149 x Z_103 N=340703400 vertices=681406800 (distinct generators, 13-regular simple)
+VALID d=13 D=10 vertices=681406800 eccA=10 eccB=10

@@ -1,0 +1,7 @@
+group sl 137 x Z_133, N=341971728, identity 2478056, H order 57, rows 5999504, threads 1, setup 9.70s
+wide rows: HW order 238, rows 1436856, setup 19.07s
+alpha: conj by mat(101,135,50,37) (index 1914077), z -> 11 z on Z_133
+ORBIT k=3 m=4 f=1: |Fix(alpha)| = 137 (+e); mu = 24.29, mu/k = 8.10, fixed-point misses ~ 0.57
+start cost=27
+t=36 steps=6 evals=49 cost=12 best=12 T=0.43
+RESULT d=13 D=10 group=sl 137 x Z_133 N=341971728 best=12 evals=65 time=48.1 orbit k=3 m=4 f=1 fix=137
