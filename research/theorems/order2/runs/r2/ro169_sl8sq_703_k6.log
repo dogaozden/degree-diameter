@@ -1,0 +1,8 @@
+group prod sl 8 poly x^3+x+1 sl 8 poly x^3+x+1 x Z_703, N=178573248, identity 19880840, H order 63, rows 2834496, threads 1, setup 22.78s
+wide rows: HW order 222, rows 804384, setup 45.54s
+alpha: (x1, x2) -> (c x2 c^-1, x1), c = mat(0,7,4,1) (index 49), z -> 11 z on Z_703
+OSUB=3: 9567 elements with alpha-orbit of size 3 (3189 orbits)
+ORBIT k=6 m=2 f=1: |Fix(alpha)| = 8 (+e); mu = 37.46, mu/k = 6.24, fixed-point misses ~ 1.39
+RANDORB d=16 D=9 group=prod sl 8 poly x^3+x+1 sl 8 poly x^3+x+1 x Z_703 N=178573248 k=6 m=2 f=1 fix=8 samples=16 min=51 p1=51 p10=90 median=162 mean=44644.19 var=29100186891.8 mu=37.46 time=45.6
+RANDORB hist (cost/k): 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 3 1 0 0 1 1 0 0 0 0 0 1 1 0 0 0 7
+RANDORB cost0=0 of 16 (P=0); cost counts 0..24: 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0

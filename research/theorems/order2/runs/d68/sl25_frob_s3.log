@@ -1,0 +1,9 @@
+group sl 25 poly x^2+2 x Z_1, N=15600, identity 600, H order 26, rows 600, threads 1, setup 0.00s
+wide rows: no cyclic subgroup of order >= 64 found (best 26); using haar_gen3's evaluation
+alpha: Frobenius x -> x^5 on entries, z -> 0 z on Z_1
+ORBIT k=2 m=3 f=0: |Fix(alpha)| = 119 (+e); mu = 29.82, mu/k = 14.91, fixed-point misses ~ 5.25
+start cost=5849
+RESULT d=6 D=8 group=sl 25 poly x^2+2 x Z_1 N=15600 best=0 evals=129457 time=5.2 orbit k=2 m=3 f=0 fix=119
+full diameter check: OK
+full diameter check after normalising s_0 = e: OK
+wrote d68/sol_sl25_frob_s3.txt

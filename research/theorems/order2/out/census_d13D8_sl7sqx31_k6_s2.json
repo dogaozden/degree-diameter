@@ -1,0 +1,47 @@
+{
+ "cost": 0,
+ "levels": [
+  13,
+  157,
+  1885,
+  22561,
+  260992,
+  2111975,
+  3499776
+ ],
+ "census": {
+  "2": {
+   "words": 312,
+   "twisted": 0,
+   "involutive": 0,
+   "twisted_relators": 0.0,
+   "involutive_relators": 0.0
+  },
+  "4": {
+   "words": 44928,
+   "twisted": 144,
+   "involutive": 0,
+   "twisted_relators": 9.0,
+   "involutive_relators": 0.0
+  },
+  "6": {
+   "words": 6469632,
+   "twisted": 15960,
+   "involutive": 0,
+   "twisted_relators": 665.0,
+   "involutive_relators": 0.0
+  }
+ },
+ "shots_mean": 11.091507570770244,
+ "shots_var": 11.321068020186265,
+ "shots_zero_exact_length": 6,
+ "file": "sols/d13D8_prod_sl_7_sl_7_31_orb6swc_s2.txt",
+ "group": "prod sl 7 sl 7 x Z_31",
+ "N": 3499776,
+ "d": 13,
+ "D": 8,
+ "symmetric_frame": true,
+ "fix": 336,
+ "anti": 10416,
+ "involutions": 4
+}

@@ -1,0 +1,45 @@
+group sl 64 poly x^6+x+1 x Z_403, N=105618240, identity 1624896, H order 63, rows 1676480, threads 1, setup 4.50s
+wide rows: HW order 217, rows 486720, setup 7.98s
+alpha: Frobenius x -> x^2 on entries, z -> 367 z on Z_403
+OSUB=3: 6546 elements with alpha-orbit of size 3 (2182 orbits)
+ORBIT k=6 m=2 f=0: |Fix(alpha)| = 5 (+e); mu = 30.80, mu/k = 5.13, fixed-point misses ~ 0.98
+OSTAB: 6606 non-free elements weighted by |Stab|
+resumed from /home/user/degree-diameter/research/theorems/order2/runs/ckpt/an159_sl64_403_k6sub3_ostab_s2.ckpt: evals 14377, 12569 s spent, best 2
+start cost=2
+t=12601 steps=4 evals=14410 cost=2 best=2 T=0.50
+t=12634 steps=9 evals=14450 cost=2 best=2 T=0.16
+t=12668 steps=14 evals=14490 cost=2 best=2 T=0.15
+t=12705 steps=19 evals=14530 cost=2 best=2 T=0.15
+t=12743 steps=24 evals=14570 cost=2 best=2 T=0.15
+t=12780 steps=29 evals=14610 cost=2 best=2 T=0.15
+t=12817 steps=34 evals=14650 cost=2 best=2 T=0.15
+t=12852 steps=39 evals=14690 cost=2 best=2 T=0.15
+t=12882 steps=43 evals=14722 cost=2 best=2 T=0.15
+t=12913 steps=47 evals=14754 cost=2 best=2 T=0.15
+t=12948 steps=52 evals=14794 cost=2 best=2 T=0.15
+t=12984 steps=57 evals=14834 cost=2 best=2 T=0.15
+t=13015 steps=61 evals=14866 cost=2 best=2 T=0.15
+t=13053 steps=66 evals=14906 cost=2 best=2 T=0.15
+t=13087 steps=71 evals=14946 cost=2 best=2 T=0.15
+t=13120 steps=76 evals=14986 cost=2 best=2 T=0.15
+t=13155 steps=81 evals=15026 cost=2 best=2 T=0.15
+t=13187 steps=85 evals=15058 cost=2 best=2 T=0.15
+t=13218 steps=89 evals=15090 cost=2 best=2 T=0.15
+t=13248 steps=93 evals=15122 cost=2 best=2 T=0.15
+t=13280 steps=97 evals=15154 cost=2 best=2 T=0.15
+t=13315 steps=101 evals=15186 cost=2 best=2 T=0.15
+t=13352 steps=106 evals=15226 cost=2 best=2 T=0.15
+t=13386 steps=111 evals=15266 cost=2 best=2 T=0.15
+t=13422 steps=116 evals=15306 cost=2 best=2 T=0.15
+t=13457 steps=121 evals=15346 cost=2 best=2 T=0.15
+t=13488 steps=125 evals=15378 cost=2 best=2 T=0.15
+t=13522 steps=130 evals=15418 cost=2 best=2 T=0.15
+t=13552 steps=134 evals=15450 cost=2 best=2 T=0.15
+t=13583 steps=138 evals=15482 cost=2 best=2 T=0.15
+t=13619 steps=143 evals=15522 cost=2 best=2 T=0.15
+t=13653 steps=148 evals=15562 cost=2 best=2 T=0.15
+t=13689 steps=153 evals=15602 cost=2 best=2 T=0.15
+t=13724 steps=158 evals=15642 cost=2 best=2 T=0.15
+t=13760 steps=163 evals=15682 cost=2 best=2 T=0.15
+t=13797 steps=168 evals=15722 cost=2 best=2 T=0.15
+RESULT d=15 D=9 group=sl 64 poly x^6+x+1 x Z_403 N=105618240 best=2 evals=15730 time=13805.2 orbit k=6 m=2 f=0 fix=5

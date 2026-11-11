@@ -1,0 +1,11 @@
+group sl 25 poly x^2+2 x Z_1, N=15600, identity 600, H order 26, rows 600, threads 1, setup 0.00s
+wide rows: no cyclic subgroup of order >= 64 found (best 26); using haar_gen3's evaluation
+alpha: conj by mat(5,21,12,20) (index 3637), z -> 0 z on Z_1
+ORBIT k=2 m=3 f=0: |Fix(alpha)| = 23 (+e); mu = 29.82, mu/k = 14.91, fixed-point misses ~ 1.05
+RANDORB sample 76092 has cost 0
+full diameter check: OK
+full diameter check after normalising s_0 = e: OK
+wrote /tmp/claude-0/-home-user-degree-diameter/a6c59fab-444e-5347-94c2-554d7c4d893d/scratchpad/runs/ro68_conj_1e7.txt
+RANDORB d=6 D=8 group=sl 25 poly x^2+2 x Z_1 N=15600 k=2 m=3 f=0 fix=23 samples=10000000 min=0 p1=20 p10=41 median=141 mean=467.66 var=1045816.0 mu=29.82 time=766.7
+RANDORB hist (cost/k): 23 112 574 1550 3427 6498 11206 17083 24296 32698 42064 50722 60803 70768 78962 87330 94517 100887 105647 110446 114342 116841 118837 119194 119508 119750 119630 118589 116673 115668 113254 7808101
+RANDORB cost0=17 of 10000000 (P=1.7e-06); cost counts 0..8: 17 6 66 46 328 246 903 647 1967

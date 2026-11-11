@@ -1,0 +1,7 @@
+group prod psl 25 poly x^2+2 psl 25 poly x^2+2 x Z_1, N=60840000, identity 2340300, H order 60, rows 1014000, threads 1, setup 4.47s
+wide rows: HW order 156, rows 390000, setup 9.28s
+alpha: (x1, x2) -> (c x2 c^-1, x1), c = mat(10,1,12,16) (index 4712), z -> 0 z on Z_1
+ORBIT k=6 m=2 f=2: |Fix(alpha)| = 11 (+e); mu = 29.92, mu/k = 4.99, fixed-point misses ~ 2.13
+RANDORB d=14 D=9 group=prod psl 25 poly x^2+2 psl 25 poly x^2+2 x Z_1 N=60840000 k=6 m=2 f=2 fix=11 samples=40 min=180 p1=180 p10=232 median=308 mean=610.50 var=461514.7 mu=29.92 time=39.3
+RANDORB hist (cost/k): 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 39
+RANDORB cost0=0 of 40 (P=0); cost counts 0..24: 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0

@@ -1,0 +1,12 @@
+group psl 11 x Z_24, N=15840, identity 1320, H order 60, rows 264, threads 1, setup 0.00s
+wide rows: HW order 132, rows 120, setup 0.00s
+alpha: conj by mat(5,1,7,6) (index 557), z -> 23 z on Z_24
+ORBIT k=2 m=3 f=0: |Fix(alpha)| = 23 (+e); mu = 33.29, mu/k = 16.64, fixed-point misses ~ 1.10
+levels: 6 29 124 489 1612 3318 3958 cost 11882
+levels: 6 31 148 653 2616 7997 14567 cost 1273
+levels: 6 31 154 652 2214 3777 3958 cost 11882
+levels: 6 29 136 612 2584 8476 15337 cost 503
+levels: 6 31 148 618 1858 2621 2640 cost 13200
+RANDORB d=6 D=8 group=psl 11 x Z_24 N=15840 k=2 m=3 f=0 fix=23 samples=2000 min=34 p1=60 p10=129 median=1179 mean=3625.44 var=16943109.2 mu=33.29 time=0.0
+RANDORB hist (cost/k): 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 1 3 1 0 2 2 3 2 3 2 2 1978
+RANDORB cost0=0 of 2000 (P=0); cost counts 0..8: 0 0 0 0 0 0 0 0 0

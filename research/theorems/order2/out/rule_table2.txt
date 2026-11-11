@@ -1,0 +1,23 @@
+second session (ORDER2.md 3.5, 5.5): odd D.  mu_A0 = mu/k + fixed + anti + inv (clumps, both sides), anti with
+the palindrome term, inv = G's own involutions (THRESHOLD Cor. 5.2); anti_old = the first session's anti term;
+E[cost]/2k = expected uncovered elements over both sides / 2k, the unit of the observed RANDORB columns
+case                                                 lam     mu   mu/k  fixed anti_old   anti    inv  mu_A0 Ecost/2k   evals0  | observed (cost/2k)
+(6,9) SL(2,25)xZ4, conj order 2                     7.83   24.9  12.47   0.90    51.89  38.56   0.85   52.8     32.4  4.3e+13  | Anti missed at 0.69-0.85 sqrt(p)
+(6,9) SL(2,25)xZ4, Frobenius order 2                7.83   24.9  12.47   4.74    10.31   5.26   0.85   23.3     17.7  1.7e+07  | Anti missed at 0.48-0.70 sqrt(p)
+(12,7) SL(2,64), Frobenius order 6                  7.44  154.6  25.77   6.18     3.69   0.17  45.48   77.6     47.0  1.1e+19  | p1 41.7, p10 57.6
+(12,7) SL(2,64), Frobenius order 3                  7.44  154.6  51.53   3.69     0.00   0.00  74.75  130.0     87.2  2.5e+30  | p1 75.2, p10 92.8
+(12,7) SL(2,64), conjugation order 3                7.44  154.6  51.53   5.20     0.00   0.00  66.31  123.0     86.4  7.8e+28  | p1 79.5, p10 98.3
+(12,7) SL(2,64), Frobenius order 2                  7.44  154.6  77.30  10.69    11.08   0.51 117.56  206.1    136.8  8.4e+46  | p1 144.5, p10 180
+(12,7) SL(2,64), random S                           7.44  154.6 154.60   0.00     0.00   0.00 198.92  353.5    254.1  8.7e+78  | p1 247, p10 278.5
+(12,7) SL(2,8)^2, swap-conj order 6                 7.67  118.3  19.72   8.40     3.17   0.13  35.18   63.4     38.7    9e+15  | p1 35.6, p10 50.3
+(12,7) SL(2,8)^2, conj order 3                      7.67  118.3  39.45   6.20     0.00   0.00  58.92  104.6     71.0  7.7e+24  | p1 69.3, p10 87.5
+(12,7) SL(2,8)^2, swap order 2                      7.67  118.3  59.17   9.50     9.50   0.40 105.54  174.6    112.3  1.2e+40  | p1 118, p10 153
+(12,7) SL(2,8)^2, random S                          7.67  118.3 118.34   0.00     0.00   0.00 176.77  295.1    206.7  1.8e+66  | p1 201.5, p10 232
+(14,9) PSL(2,25)^2, swap-conj order 6 (f=2)        14.53   29.9   4.99   3.15     1.75   0.02  31.26   39.4     20.1  5.5e+10  | min 15.0, p10 19.3 (40 samples)
+(14,9) PSL(2,25)^2, conj order 3 (f=2)             14.53   29.9   9.97   1.11     0.00   0.00  50.22   61.3     35.3  3.1e+15  | min 29.5, p10 35.0 (40 samples)
+(15,9) SL(2,64)xZ403, Frobenius order 6, 6+6+3     15.05   30.8   5.13   1.55     2.89   0.18   4.34   11.2      6.8  4.1e+04  | min 3.2, p10 6.3 (16 samples)
+(15,9) SL(2,64)xZ403, Frobenius order 3            15.05   30.8  10.27   0.29     0.00   0.00   3.91   14.5     11.5  2.1e+05  | min 10.3, p10 13.8 (16 samples)
+(15,9) ... order 6, alpha^3 negates Z403 (r=212)   15.05   30.8   5.13   0.46    37.71  30.52   4.34   40.5     21.4  9.2e+10  | min 113.6, p10 141
+(15,9) ... order 6, alpha^3 fixes Z403 (r=315)     15.05   30.8   5.13  36.94     0.08   0.00   4.34   46.4     24.4  1.8e+12  | min 56.5, p10 57.5
+(13,9) SL(2,64)xZ133, Frobenius order 6, e+6+6     13.46   49.9   8.31   1.94     3.91   0.33   6.22   16.8     10.8  6.7e+05  | min 4.9, p10 10.5 (16 samples)
+(13,9) SL(2,64)xZ133, Frobenius order 3            13.46   49.9  16.63   0.50     0.00   0.00   6.44   23.6     18.9    2e+07  | min 14.8, p10 18.5 (16 samples)

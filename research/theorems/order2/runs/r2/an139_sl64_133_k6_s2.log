@@ -1,0 +1,35 @@
+group sl 64 poly x^6+x+1 x Z_133, N=34856640, identity 536256, H order 63, rows 553280, threads 1, setup 1.65s
+wide rows: HW order 247, rows 141120, setup 3.00s
+alpha: Frobenius x -> x^2 on entries, z -> 65 z on Z_133
+ORBIT k=6 m=2 f=1: |Fix(alpha)| = 5 (+e); mu = 49.88, mu/k = 8.31, fixed-point misses ~ 1.27
+start cost=241
+t=31 steps=19 evals=153 cost=61 best=61 T=0.51
+t=62 steps=37 evals=297 cost=61 best=61 T=0.18
+t=93 steps=56 evals=449 cost=61 best=61 T=0.15
+t=125 steps=74 evals=593 cost=61 best=61 T=0.15
+t=155 steps=90 evals=721 cost=61 best=61 T=0.15
+t=186 steps=108 evals=865 cost=61 best=61 T=0.15
+t=218 steps=126 evals=1009 cost=37 best=37 T=0.15
+t=248 steps=143 evals=1145 cost=37 best=37 T=0.15
+t=278 steps=159 evals=1273 cost=37 best=37 T=0.15
+t=308 steps=176 evals=1409 cost=37 best=37 T=0.15
+t=339 steps=194 evals=1553 cost=37 best=37 T=0.15
+t=371 steps=211 evals=1689 cost=37 best=37 T=0.15
+t=403 steps=229 evals=1833 cost=37 best=37 T=0.15
+t=433 steps=247 evals=1977 cost=33 best=33 T=0.15
+t=464 steps=264 evals=2113 cost=33 best=33 T=0.15
+t=494 steps=281 evals=2249 cost=33 best=33 T=0.15
+t=526 steps=299 evals=2393 cost=33 best=33 T=0.15
+t=557 steps=317 evals=2537 cost=33 best=33 T=0.15
+t=588 steps=336 evals=2689 cost=33 best=33 T=0.15
+t=619 steps=354 evals=2833 cost=33 best=33 T=0.15
+t=649 steps=370 evals=2961 cost=33 best=33 T=0.15
+t=680 steps=385 evals=3081 cost=33 best=33 T=0.15
+t=712 steps=399 evals=3193 cost=33 best=33 T=0.15
+t=743 steps=414 evals=3313 cost=33 best=33 T=0.15
+t=775 steps=430 evals=3441 cost=33 best=33 T=0.15
+t=806 steps=446 evals=3569 cost=35 best=33 T=0.15
+t=837 steps=463 evals=3705 cost=35 best=33 T=0.15
+t=867 steps=482 evals=3857 cost=35 best=33 T=0.15
+t=897 steps=498 evals=3985 cost=35 best=33 T=0.15
+RESULT d=13 D=9 group=sl 64 poly x^6+x+1 x Z_133 N=34856640 best=33 evals=4113 time=926.4 orbit k=6 m=2 f=1 fix=5

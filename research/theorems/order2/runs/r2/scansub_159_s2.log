@@ -1,0 +1,18 @@
+group sl 64 poly x^6+x+1 x Z_403, N=105618240, identity 1624896, H order 63, rows 1676480, threads 1, setup 6.91s
+wide rows: HW order 217, rows 486720, setup 13.75s
+alpha: Frobenius x -> x^2 on entries, z -> 367 z on Z_403
+OSUB=3: 6546 elements with alpha-orbit of size 3 (2182 orbits)
+ORBIT k=6 m=2 f=0: |Fix(alpha)| = 5 (+e); mu = 30.80, mu/k = 5.13, fixed-point misses ~ 0.98
+resumed from /tmp/claude-0/-home-user-degree-diameter/a6c59fab-444e-5347-94c2-554d7c4d893d/scratchpad/runs/scan159s2.ckpt: evals 7929, 6975 s spent, best 2
+start cost=2
+SCANSUB 200 tried, 80 s
+SCANSUB 400 tried, 158 s
+SCANSUB 600 tried, 236 s
+SCANSUB 800 tried, 313 s
+SCANSUB 1000 tried, 397 s
+SCANSUB 1200 tried, 486 s
+SCANSUB 1400 tried, 570 s
+SCANSUB 1600 tried, 654 s
+SCANSUB 1800 tried, 739 s
+SCANSUB 2000 tried, 828 s
+SCANSUB done: 2182 sub-orbits tried in 910.7 s, solution none

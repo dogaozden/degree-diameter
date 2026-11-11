@@ -1,0 +1,7 @@
+group prod sl 8 poly x^3+x+1 sl 8 poly x^3+x+1 x Z_1, N=254016, identity 28280, H order 63, rows 4032, threads 1, setup 0.02s
+wide rows: no cyclic subgroup of order >= 64 found (best 63); using haar_gen3's evaluation
+alpha: conj by prod[mat(5,2,4,4);mat(2,4,3,3)] (index 167483), z -> 0 z on Z_1
+ORBIT k=3 m=4 f=0: |Fix(alpha)| = 80 (+e); mu = 118.34, mu/k = 39.45, fixed-point misses ~ 12.56
+RANDORB d=12 D=7 group=prod sl 8 poly x^3+x+1 sl 8 poly x^3+x+1 x Z_1 N=254016 k=3 m=4 f=0 fix=80 samples=3000 min=318 p1=416 p10=525 median=865 mean=1559.14 var=48723300.1 mu=118.34 time=7.2
+RANDORB hist (cost/k): 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 3000
+RANDORB cost0=0 of 3000 (P=0); cost counts 0..12: 0 0 0 0 0 0 0 0 0 0 0 0 0

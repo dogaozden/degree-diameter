@@ -1,0 +1,47 @@
+{
+ "cost": 0,
+ "levels": [
+  13,
+  157,
+  1885,
+  22573,
+  261668,
+  2093246,
+  3407040
+ ],
+ "census": {
+  "2": {
+   "words": 312,
+   "twisted": 0,
+   "involutive": 0,
+   "twisted_relators": 0.0,
+   "involutive_relators": 0.0
+  },
+  "4": {
+   "words": 44928,
+   "twisted": 192,
+   "involutive": 0,
+   "twisted_relators": 12.0,
+   "involutive_relators": 0.0
+  },
+  "6": {
+   "words": 6469632,
+   "twisted": 14520,
+   "involutive": 7416,
+   "twisted_relators": 605.0,
+   "involutive_relators": 309.0
+  }
+ },
+ "shots_mean": 11.393406593406594,
+ "shots_var": 11.793442015859597,
+ "shots_zero_exact_length": 6,
+ "file": "sols/d13D8_sl_64_13_orb6frob_s2.txt",
+ "group": "sl 64 poly x^6+x+1 x Z_13",
+ "N": 3407040,
+ "d": 13,
+ "D": 8,
+ "symmetric_frame": true,
+ "fix": 504,
+ "anti": 6760,
+ "involutions": 4096
+}

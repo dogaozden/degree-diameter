@@ -1,0 +1,6 @@
+# UNCPRINT of the best S of (15,9) seed 1 (checkpoint copy; ORDER2.md 5.5). Command:
+# UNCPRINT=1 ORBIT="6 2 0" OSUB=3 AFROB=1 AR=367 CKPT=<copy of runs/ckpt/an159_sl64_403_k6sub3_s1.ckpt> haar_order2 15 9 1 99 8 /dev/null sl 64 403
+CKPT d=15 evals=7017 elapsed=5701.4 best=9
+resumed from /tmp/claude-0/-home-user-degree-diameter/a6c59fab-444e-5347-94c2-554d7c4d893d/scratchpad/runs/peek159b.ckpt: evals 7017, 5701 s spent, best 9
+UNCPRINT cost 9: A:25742834 mat(15,39,6,15) z=0[orbit 6,involution] A:26010829 mat(15,49,31,15) z=0[orbit 6,involution] A:37251708 mat(22,37,20,22) z=0[orbit 6,involution] A:37873134 mat(22,61,26,22) z=0[orbit 6,involution] A:40453140 mat(24,33,28,24) z=0[orbit 6,involution] A:40781585 mat(24,46,11,24) z=0[orbit 6,involution] B:1650688 mat(1,1,0,1) z=0[orbit 1,involution] B:3120832 mat(1,58,0,1) z=0[orbit 2,involution] B:3146624 mat(1,59,0,1) z=0[orbit 2,involution]
+RESULT d=15 D=9 group=sl 64 poly x^6+x+1 x Z_403 N=105618240 best=9 evals=7018 time=5701.8 orbit k=6 m=2 f=0 fix=5
