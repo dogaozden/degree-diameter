@@ -1,0 +1,45 @@
+group sl 23 x Z_1, N=12144, identity 506, H order 46, rows 264, threads 1, setup 0.00s
+wide rows: no cyclic subgroup of order >= 64 found (best 46); using haar_gen3's evaluation
+start cost=256
+t=30 steps=219272 evals=1754177 cost=70 best=70 T=0.53
+t=60 steps=438731 evals=3509849 cost=66 best=66 T=0.19
+t=90 steps=659570 evals=5276561 cost=64 best=64 T=0.15
+t=120 steps=873217 evals=6985737 cost=64 best=64 T=0.15
+t=150 steps=1094904 evals=8759233 cost=56 best=56 T=0.15
+t=180 steps=1307872 evals=10462977 cost=56 best=56 T=0.15
+t=210 steps=1515206 evals=12121649 cost=56 best=56 T=0.15
+t=240 steps=1723343 evals=13786745 cost=60 best=56 T=0.15
+t=270 steps=1928138 evals=15425105 cost=60 best=56 T=0.15
+t=300 steps=2138270 evals=17106161 cost=56 best=56 T=0.57
+t=330 steps=2347659 evals=18781273 cost=56 best=56 T=0.20
+t=360 steps=2557288 evals=20458305 cost=56 best=56 T=0.15
+t=390 steps=2768644 evals=22149153 cost=56 best=56 T=0.15
+t=420 steps=2983749 evals=23869993 cost=56 best=56 T=0.15
+t=450 steps=3199890 evals=25599121 cost=56 best=56 T=0.57
+t=480 steps=3414218 evals=27313745 cost=72 best=56 T=0.20
+t=510 steps=3624297 evals=28994377 cost=72 best=56 T=0.15
+t=540 steps=3836422 evals=30691377 cost=72 best=56 T=0.15
+t=570 steps=4050433 evals=32403465 cost=72 best=56 T=0.15
+t=600 steps=4255567 evals=34044537 cost=56 best=56 T=0.57
+t=630 steps=4459553 evals=35676425 cost=76 best=56 T=0.20
+t=660 steps=4671221 evals=37369769 cost=76 best=56 T=0.15
+t=690 steps=4885973 evals=39087785 cost=64 best=56 T=0.15
+t=720 steps=5086449 evals=40691593 cost=64 best=56 T=0.15
+t=750 steps=5293124 evals=42344993 cost=56 best=56 T=0.57
+t=780 steps=5502499 evals=44019993 cost=62 best=56 T=0.20
+t=810 steps=5706272 evals=45650177 cost=62 best=56 T=0.15
+t=840 steps=5916064 evals=47328513 cost=62 best=56 T=0.15
+t=870 steps=6128585 evals=49028681 cost=62 best=56 T=0.15
+t=900 steps=6342265 evals=50738121 cost=56 best=56 T=0.57
+t=930 steps=6560662 evals=52485297 cost=56 best=56 T=0.20
+t=960 steps=6769850 evals=54158801 cost=56 best=56 T=0.15
+t=990 steps=6980786 evals=55846289 cost=56 best=56 T=0.15
+t=1020 steps=7195123 evals=57560985 cost=70 best=56 T=0.15
+t=1050 steps=7413343 evals=59306745 cost=56 best=56 T=0.57
+t=1080 steps=7628795 evals=61030361 cost=62 best=56 T=0.20
+t=1110 steps=7841661 evals=62733289 cost=62 best=56 T=0.15
+t=1140 steps=8048107 evals=64384857 cost=62 best=56 T=0.15
+t=1170 steps=8249837 evals=65998697 cost=62 best=56 T=0.15
+t=1200 steps=8463165 evals=67705321 cost=56 best=56 T=0.57
+t=1230 steps=8674571 evals=69396569 cost=56 best=56 T=0.20
+RESULT d=7 D=7 group=sl 23 x Z_1 N=12144 best=56 evals=69801497 time=1237.3

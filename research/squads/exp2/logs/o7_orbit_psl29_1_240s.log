@@ -1,0 +1,13 @@
+group psl 29 x Z_1, N=12180, identity 406, H order 29, rows 420, threads 1, setup 0.00s
+wide rows: no cyclic subgroup of order >= 64 found (best 29); using haar_gen3's evaluation
+alpha: conj by mat(1,7,4,0) (index 613), z -> 0 z on Z_1
+ORBIT k=3 m=2 f=1: |Fix(alpha)| = 14 (+e); mu = 122.84, mu/k = 40.95, fixed-point misses ~ 6.48
+start cost=1369
+t=30 steps=74480 evals=595841 cost=117 best=117 T=0.53
+t=60 steps=157732 evals=1261857 cost=117 best=117 T=0.19
+t=90 steps=246209 evals=1969673 cost=117 best=117 T=0.15
+t=120 steps=338258 evals=2706065 cost=117 best=117 T=0.15
+t=150 steps=426776 evals=3414209 cost=117 best=117 T=0.15
+t=180 steps=514362 evals=4114897 cost=117 best=117 T=0.74
+t=210 steps=602231 evals=4817849 cost=117 best=117 T=0.26
+RESULT d=7 D=7 group=psl 29 x Z_1 N=12180 best=117 evals=5527505 time=240.0 orbit k=3 m=2 f=1 fix=14

@@ -1,0 +1,11 @@
+group psl 29 x Z_1, N=12180, identity 406, H order 29, rows 420, threads 1, setup 0.00s
+wide rows: no cyclic subgroup of order >= 64 found (best 29); using haar_gen3's evaluation
+start cost=616
+t=30 steps=109857 evals=878857 cost=144 best=133 T=0.53
+t=60 steps=238660 evals=1909281 cost=136 best=133 T=0.19
+t=90 steps=376850 evals=3014801 cost=136 best=133 T=0.15
+t=120 steps=517018 evals=4136145 cost=136 best=133 T=0.15
+t=150 steps=651464 evals=5211713 cost=136 best=133 T=0.15
+t=180 steps=791070 evals=6328561 cost=133 best=133 T=0.66
+t=210 steps=927282 evals=7418257 cost=133 best=133 T=0.23
+RESULT d=7 D=7 group=psl 29 x Z_1 N=12180 best=133 evals=8535049 time=240.0
