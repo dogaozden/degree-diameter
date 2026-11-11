@@ -1,0 +1,42 @@
+group prod psl 9 poly x^2+1 sl 11 x Z_7, N=3326400, identity 333410, H order 60, rows 55440, threads 1, setup 0.11s
+start cost=31
+t=30 steps=653 evals=5225 cost=9 best=9 T=0.53
+t=60 steps=1270 evals=10161 cost=9 best=9 T=0.19
+t=90 steps=1866 evals=14929 cost=9 best=9 T=0.15
+t=120 steps=2436 evals=19489 cost=9 best=9 T=0.15
+t=150 steps=2899 evals=23193 cost=9 best=9 T=0.15
+t=180 steps=3447 evals=27577 cost=14 best=9 T=0.66
+t=210 steps=4039 evals=32313 cost=11 best=9 T=0.23
+t=240 steps=4635 evals=37081 cost=8 best=8 T=0.15
+t=270 steps=5224 evals=41793 cost=8 best=8 T=0.15
+t=300 steps=5760 evals=46081 cost=7 best=7 T=0.15
+t=330 steps=6284 evals=50273 cost=7 best=7 T=0.15
+t=360 steps=6854 evals=54833 cost=7 best=7 T=0.15
+t=390 steps=7334 evals=58673 cost=7 best=7 T=0.15
+t=420 steps=7909 evals=63273 cost=7 best=7 T=0.15
+t=450 steps=8506 evals=68049 cost=7 best=7 T=1.41
+t=480 steps=9147 evals=73177 cost=7 best=7 T=0.50
+t=510 steps=9757 evals=78057 cost=7 best=7 T=0.18
+t=540 steps=10435 evals=83481 cost=7 best=7 T=0.15
+t=570 steps=11060 evals=88481 cost=7 best=7 T=0.15
+t=600 steps=11703 evals=93625 cost=7 best=7 T=1.40
+t=631 steps=12282 evals=98257 cost=7 best=7 T=0.50
+t=661 steps=12918 evals=103345 cost=7 best=7 T=0.18
+t=691 steps=13501 evals=108009 cost=7 best=7 T=0.15
+t=721 steps=14086 evals=112689 cost=7 best=7 T=0.15
+t=751 steps=14675 evals=117401 cost=7 best=7 T=1.40
+t=781 steps=15301 evals=122409 cost=5 best=5 T=0.50
+t=811 steps=15877 evals=127017 cost=5 best=5 T=0.18
+t=841 steps=16480 evals=131841 cost=5 best=5 T=0.15
+t=871 steps=17112 evals=136897 cost=5 best=5 T=0.15
+t=901 steps=17753 evals=142025 cost=5 best=5 T=0.15
+t=931 steps=18385 evals=147081 cost=5 best=5 T=1.10
+t=961 steps=19021 evals=152169 cost=5 best=5 T=0.39
+t=991 steps=19698 evals=157585 cost=5 best=5 T=0.15
+t=1021 steps=20340 evals=162721 cost=5 best=5 T=0.15
+t=1051 steps=20968 evals=167745 cost=5 best=5 T=0.15
+t=1081 steps=21552 evals=172417 cost=5 best=5 T=1.10
+t=1111 steps=22085 evals=176681 cost=5 best=5 T=0.39
+t=1141 steps=22605 evals=180841 cost=5 best=5 T=0.15
+t=1171 steps=23169 evals=185353 cost=5 best=5 T=0.15
+RESULT d=13 D=8 group=prod psl 9 poly x^2+1 sl 11 x Z_7 N=3326400 best=5 evals=189505 time=1200.1
