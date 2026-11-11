@@ -1,0 +1,8 @@
+group sl 8 poly x^3+x+1 x Z_19, N=9576, identity 1064, H order 57, rows 168, threads 1, setup 0.00s
+wide rows: HW order 171, rows 56, setup 0.00s
+alpha: conj by mat(5,5,6,4) (index 358), z -> 7 z on Z_19
+ORBIT k=3 m=2 f=1: |Fix(alpha)| = 8 (+e); mu = 27.67, mu/k = 9.22, fixed-point misses ~ 2.56
+start cost=1192
+RESULT d=7 D=7 group=sl 8 poly x^3+x+1 x Z_19 N=9576 best=0 evals=4505 time=0.1 orbit k=3 m=2 f=1 fix=8
+full diameter check: OK
+wrote sols/d7D7_orb_sl_8_19_s1.txt

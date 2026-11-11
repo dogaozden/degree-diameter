@@ -1,0 +1,12 @@
+group sl 9 poly x^2+1 x Z_13, N=9360, identity 936, H order 52, rows 180, threads 1, setup 0.00s
+start cost=52
+t=30 steps=239695 evals=1917561 cost=2 best=2 T=0.53
+t=60 steps=473508 evals=3788065 cost=6 best=2 T=0.19
+t=90 steps=708421 evals=5667369 cost=6 best=2 T=0.15
+t=120 steps=945723 evals=7565785 cost=6 best=2 T=0.15
+t=150 steps=1190212 evals=9521697 cost=6 best=2 T=0.15
+t=180 steps=1437951 evals=11503609 cost=2 best=2 T=0.58
+t=210 steps=1687987 evals=13503897 cost=2 best=2 T=0.21
+t=240 steps=1933220 evals=15465761 cost=2 best=2 T=0.15
+t=270 steps=2163592 evals=17308737 cost=2 best=2 T=0.15
+RESULT d=7 D=7 group=sl 9 poly x^2+1 x Z_13 N=9360 best=2 evals=19291553 time=300.0

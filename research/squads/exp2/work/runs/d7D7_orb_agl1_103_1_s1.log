@@ -1,0 +1,23 @@
+group agl1 103 x Z_1, N=10506, identity 0, H order 51, rows 206, threads 1, setup 0.00s
+wide rows: HW order 103, rows 102, setup 0.00s
+alpha: conj by aff(46,64) (index 4699), z -> 0 z on Z_1
+ORBIT k=3 m=2 f=1: |Fix(alpha)| = 101 (+e); mu = 50.94, mu/k = 16.98, fixed-point misses ~ 34.53
+start cost=16076
+t=30 steps=172895 evals=1383161 cost=14252 best=14252 T=0.53
+t=60 steps=344851 evals=2758809 cost=14252 best=14252 T=0.19
+t=90 steps=510873 evals=4086985 cost=14252 best=14252 T=0.15
+t=120 steps=676208 evals=5409665 cost=14252 best=14252 T=0.15
+t=150 steps=832763 evals=6662105 cost=14252 best=14252 T=0.15
+t=180 steps=986348 evals=7890785 cost=14252 best=14252 T=0.53
+t=210 steps=1146603 evals=9172825 cost=14252 best=14252 T=0.19
+t=240 steps=1306944 evals=10455553 cost=14252 best=14252 T=0.15
+t=270 steps=1451878 evals=11615025 cost=14252 best=14252 T=0.15
+t=300 steps=1587573 evals=12700585 cost=14252 best=14252 T=0.15
+t=330 steps=1740065 evals=13920521 cost=14252 best=14252 T=0.53
+t=360 steps=1899026 evals=15192209 cost=14252 best=14252 T=0.19
+t=390 steps=2071803 evals=16574425 cost=14252 best=14252 T=0.15
+t=420 steps=2245152 evals=17961217 cost=14252 best=14252 T=0.15
+t=450 steps=2418963 evals=19351705 cost=14252 best=14252 T=0.15
+t=480 steps=2594669 evals=20757353 cost=14252 best=14252 T=0.53
+t=510 steps=2759481 evals=22075849 cost=14252 best=14252 T=0.19
+RESULT d=7 D=7 group=agl1 103 x Z_1 N=10506 best=14252 evals=23432585 time=540.0 orbit k=3 m=2 f=1 fix=101

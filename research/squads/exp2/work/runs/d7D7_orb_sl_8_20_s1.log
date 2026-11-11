@@ -1,0 +1,23 @@
+group sl 8 poly x^3+x+1 x Z_20, N=10080, identity 1120, H order 60, rows 168, threads 1, setup 0.00s
+wide rows: HW order 180, rows 56, setup 0.00s
+alpha: conj by mat(5,5,6,4) (index 358), z -> 1 z on Z_20
+ORBIT k=3 m=2 f=1: |Fix(alpha)| = 179 (+e); mu = 39.02, mu/k = 13.01, fixed-point misses ~ 56.52
+start cost=10525
+t=30 steps=277119 evals=2216953 cost=607 best=607 T=0.53
+t=60 steps=566913 evals=4535305 cost=607 best=607 T=0.19
+t=90 steps=880871 evals=7046969 cost=607 best=607 T=0.15
+t=120 steps=1188879 evals=9511033 cost=607 best=607 T=0.15
+t=150 steps=1502762 evals=12022097 cost=607 best=607 T=0.15
+t=180 steps=1811399 evals=14491193 cost=607 best=607 T=0.53
+t=210 steps=2119091 evals=16952729 cost=607 best=607 T=0.19
+t=240 steps=2426296 evals=19410369 cost=607 best=607 T=0.15
+t=270 steps=2744189 evals=21953513 cost=607 best=607 T=0.15
+t=300 steps=3066628 evals=24533025 cost=607 best=607 T=0.15
+t=330 steps=3380989 evals=27047913 cost=607 best=607 T=0.53
+t=360 steps=3690404 evals=29523233 cost=607 best=607 T=0.19
+t=390 steps=3992760 evals=31942081 cost=607 best=607 T=0.15
+t=420 steps=4318613 evals=34548905 cost=607 best=607 T=0.15
+t=450 steps=4635448 evals=37083585 cost=607 best=607 T=0.15
+t=480 steps=4936051 evals=39488409 cost=607 best=607 T=0.53
+t=510 steps=5256824 evals=42054593 cost=607 best=607 T=0.19
+RESULT d=7 D=7 group=sl 8 poly x^3+x+1 x Z_20 N=10080 best=607 evals=44573313 time=540.0 orbit k=3 m=2 f=1 fix=179

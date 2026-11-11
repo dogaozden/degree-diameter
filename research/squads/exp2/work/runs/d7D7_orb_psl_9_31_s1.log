@@ -1,0 +1,23 @@
+group psl 9 poly x^2+1 x Z_31, N=11160, identity 1116, H order 62, rows 180, threads 1, setup 0.00s
+wide rows: HW order 155, rows 72, setup 0.00s
+alpha: conj by mat(1,2,0,1) (index 54), z -> 5 z on Z_31
+ORBIT k=3 m=2 f=1: |Fix(alpha)| = 8 (+e); mu = 73.95, mu/k = 24.65, fixed-point misses ~ 3.38
+start cost=1851
+t=30 steps=253330 evals=2026641 cost=33 best=33 T=0.53
+t=60 steps=517703 evals=4141625 cost=33 best=33 T=0.19
+t=90 steps=779491 evals=6235929 cost=33 best=33 T=0.15
+t=120 steps=1048075 evals=8384601 cost=33 best=33 T=0.15
+t=150 steps=1316341 evals=10530729 cost=33 best=33 T=0.15
+t=180 steps=1582973 evals=12663785 cost=33 best=33 T=0.53
+t=210 steps=1842088 evals=14736705 cost=33 best=33 T=0.19
+t=240 steps=2104238 evals=16833905 cost=33 best=33 T=0.15
+t=270 steps=2368744 evals=18949953 cost=33 best=33 T=0.15
+t=300 steps=2624791 evals=20998329 cost=33 best=33 T=0.15
+t=330 steps=2886620 evals=23092961 cost=42 best=33 T=0.53
+t=360 steps=3142260 evals=25138081 cost=42 best=33 T=0.19
+t=390 steps=3393334 evals=27146673 cost=42 best=33 T=0.15
+t=420 steps=3640475 evals=29123801 cost=42 best=33 T=0.15
+t=450 steps=3883456 evals=31067649 cost=33 best=33 T=0.15
+t=480 steps=4134285 evals=33074281 cost=39 best=33 T=0.53
+t=510 steps=4390198 evals=35121585 cost=39 best=33 T=0.19
+RESULT d=7 D=7 group=psl 9 poly x^2+1 x Z_31 N=11160 best=33 evals=37108249 time=540.0 orbit k=3 m=2 f=1 fix=8

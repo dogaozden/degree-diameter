@@ -1,0 +1,12 @@
+group sl 7 x Z_28, N=9408, identity 1176, H order 56, rows 168, threads 1, setup 0.00s
+start cost=526
+t=30 steps=255284 evals=2042273 cost=6 best=6 T=0.53
+t=60 steps=522683 evals=4181465 cost=6 best=6 T=0.19
+t=90 steps=781620 evals=6252961 cost=6 best=6 T=0.15
+t=120 steps=1045313 evals=8362505 cost=6 best=6 T=0.15
+t=150 steps=1295569 evals=10364553 cost=6 best=6 T=0.15
+t=180 steps=1553288 evals=12426305 cost=6 best=4 T=0.58
+t=210 steps=1807793 evals=14462345 cost=4 best=4 T=0.21
+t=240 steps=2065474 evals=16523793 cost=4 best=4 T=0.15
+t=270 steps=2322154 evals=18577233 cost=4 best=4 T=0.15
+RESULT d=7 D=7 group=sl 7 x Z_28 N=9408 best=4 evals=20676265 time=300.0

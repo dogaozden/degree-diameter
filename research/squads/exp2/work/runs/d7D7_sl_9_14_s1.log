@@ -1,0 +1,20 @@
+group sl 9 poly x^2+1 x Z_14, N=10080, identity 1008, H order 56, rows 180, threads 1, setup 0.00s
+start cost=396
+t=30 steps=241189 evals=1929513 cost=12 best=12 T=0.53
+t=60 steps=485855 evals=3886841 cost=12 best=12 T=0.19
+t=90 steps=720709 evals=5765673 cost=16 best=12 T=0.15
+t=120 steps=947004 evals=7576033 cost=14 best=12 T=0.15
+t=150 steps=1177906 evals=9423249 cost=14 best=12 T=0.15
+t=180 steps=1423164 evals=11385313 cost=16 best=12 T=0.58
+t=210 steps=1668253 evals=13346025 cost=16 best=12 T=0.20
+t=240 steps=1908829 evals=15270633 cost=14 best=12 T=0.15
+t=270 steps=2144983 evals=17159865 cost=14 best=12 T=0.15
+t=300 steps=2388046 evals=19104369 cost=14 best=12 T=0.15
+t=330 steps=2616166 evals=20929329 cost=12 best=12 T=0.58
+t=360 steps=2854822 evals=22838577 cost=12 best=12 T=0.20
+t=390 steps=3078083 evals=24624665 cost=10 best=10 T=0.15
+t=420 steps=3315819 evals=26526553 cost=18 best=10 T=0.15
+t=450 steps=3554422 evals=28435377 cost=12 best=10 T=0.15
+t=480 steps=3785261 evals=30282089 cost=12 best=10 T=0.15
+t=510 steps=4020223 evals=32161785 cost=12 best=10 T=0.15
+RESULT d=7 D=7 group=sl 9 poly x^2+1 x Z_14 N=10080 best=10 evals=34064161 time=540.0

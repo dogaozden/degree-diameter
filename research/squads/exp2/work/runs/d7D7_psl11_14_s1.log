@@ -1,0 +1,12 @@
+group psl 11 x Z_14, N=9240, identity 770, H order 42, rows 220, threads 1, setup 0.00s
+start cost=389
+t=30 steps=178422 evals=1427377 cost=2 best=2 T=0.53
+t=60 steps=336873 evals=2694985 cost=2 best=2 T=0.19
+t=90 steps=519448 evals=4155585 cost=5 best=2 T=0.15
+t=120 steps=710606 evals=5684849 cost=5 best=2 T=0.15
+t=150 steps=882713 evals=7061705 cost=5 best=2 T=0.15
+t=180 steps=1049615 evals=8396921 cost=11 best=2 T=1.14
+t=210 steps=1202966 evals=9623729 cost=2 best=2 T=0.40
+t=240 steps=1341928 evals=10735425 cost=2 best=2 T=0.15
+t=270 steps=1517432 evals=12139457 cost=5 best=2 T=0.15
+RESULT d=7 D=7 group=psl 11 x Z_14 N=9240 best=2 evals=13603081 time=300.0
