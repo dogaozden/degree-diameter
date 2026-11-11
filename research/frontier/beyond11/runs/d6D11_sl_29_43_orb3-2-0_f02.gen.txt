@@ -1,0 +1,15 @@
+checker: haarcheck_gen
+command: ./bin/haarcheck_gen runs/d6D11_sl_29_43_orb3-2-0_f02.out
+start: 2026-11-01T07:19:41Z
+sha256 e52e247f4a92a474f49ff0d5d438660ba0b557bbdfd4a8e24311ca881ff3f17c  ./bin/haarcheck_gen
+sha256 e784d735908a10ae456284a7b1dc9460d33318d2f95af6db9125220a8dbc251c  runs/d6D11_sl_29_43_orb3-2-0_f02.out
+selftest sl 29: |M| = 24360, det-1 matrices 24360
+selftest group multiplication: associativity, identity, inverse on 20000 random triples ok
+file runs/d6D11_sl_29_43_orb3-2-0_f02.out
+header: 6 11 sl 29 n 43 N 1047480
+group sl 29 x Z_43, |G| = 1047480 = N, vertices 2N = 2094960; 6 distinct generators
+from (e,A): reached A 1047480/1047480, B 1047480/1047480 within 11; ecc 11; level sizes [1, 6, 30, 150, 750, 3750, 18609, 88950, 365262, 843942, 662828, 110682]  (0s)
+from (e,B): reached A 1047480/1047480, B 1047480/1047480 within 11; ecc 11; level sizes [1, 6, 30, 150, 750, 3750, 18609, 88950, 365080, 843942, 663010, 110682]  (1s)
+VALID d=6 D=11 group=sl 29 x Z_43 N=1047480 vertices=2094960 (distinct generators, 6-regular simple; every vertex within 11 of both (e,A) and (e,B); ecc 11; 1s)
+exit: 0
+end: 2026-11-01T07:19:42Z (1 s)

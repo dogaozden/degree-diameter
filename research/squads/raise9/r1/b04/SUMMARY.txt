@@ -1,0 +1,9 @@
+b04 (14,9): random-S screen, ORBIT "3 4 2", RANDORB=100 each, cost = uncovered count (haar_big0 units)
+group                 N            mu     median  p10  min   mean
+sl 107 x Z49 (bar)    60021864     24.22  62      38   6     64
+sl 167 x Z13          60544848     27.74  66      38   30    65
+sl 163 x Z14          60628176     28.34  76      42   36    204
+sl 229 x Z5           60043800     24.36  90      64   44    71340  (r3=0: alpha trivial on Z5)
+sl 131 x Z27          60694920     28.83  114     74   32    1.2e6  (3 | n: alpha not free on Z27)
+psl 211 x Z13         61059180     31.64  114     81   59    126    (PSL control: involution holes)
+Anneal sl 167 x Z13 (K=4/6, 95 s each, 6 runs): best cost 12 (seeds 11, 12, 31, 47), fresh seed 21 best 18.

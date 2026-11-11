@@ -1,0 +1,18 @@
+card b03, (13,9), shape SL(2,p) x Z_n small n, ORBIT "3 4 1" (e + 4 orbits of size 3). No cost-0 state found. Bar: N >= 33,871,345.
+RANDORB medians (random symmetric S, cost = #holes; mu = N exp(-W/N), W = 469,070,941):
+  sl 103 x Z31   N=33,871,344 (equals current value, control)  mu 32.77  median 84 (40 samples)
+  sl 257 x Z2    N=33,948,672  mu 33.90  median 104 (40 samples)
+  sl 101 x Z33   N=33,996,600  mu 34.61  median 2086 (40 samples)
+  psl 283 x Z3   N=33,997,356  mu 34.62  median 192 (40 samples)
+  sl 107 x Z28   N=34,298,208  mu 39.42  median 148 (30 samples)
+  sl 179 x Z6    N=34,410,960  mu 41.37  median 192 (30 samples)
+  sl 163 x Z8    N=34,644,672  mu 45.66  median 214 (30 samples)
+  sl 191 x Z5    N=34,838,400  mu 49.50  median 174 (30 samples)
+  sl 127 x Z17   N=34,820,352  mu 49.13  median 376 (12 samples)
+Annealing (95 s, K=4, one thread, ~0.4-0.7 s per eval):
+  sl 103 x Z31 (control): best 20 (seed 1, 353 evals), 26 (seed 2, 133 evals)
+  sl 257 x Z2: best 40 (seed 1, 161 evals), 40 (seed 2, 165 evals, resumed from seed 1), 40 (seed 3, 233 evals)
+  sl 257 x Z2 with K=16: best 76 (63 evals)
+  sl 107 x Z28: best 44 (seed 5, 197 evals)
+Hole anatomy: the holes of the small-n sets are generic elements in inverse pairs (x and x^-1 with z -> -z), as the
+lemma of ODD_D_HOLES.md predicts. No central or involution clump dominated at the plateau.

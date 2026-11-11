@@ -1,0 +1,22 @@
+group sl 233 x Z_79, N=999279216 (2N=1998558432), rows 54288 x 18407 bits (doubled row 600 words), memory 0.68 GB, threads 2
+alpha: conj by mat(0,232,1,232), z -> 23 z on Z_79 (fixed z: 1); ORBIT k=3 m=6 f=2; W=1.79271e+10 lambda=17.940 mu=16.16
+setup 0.0s
+fixed generators: 1 chosen among 233 alpha-fixed elements
+start cost=20 (2.0s per eval)
+t=6 step=1 evals=5 slot=3 cand=14 cost=14 best=14 T=1.26
+t=12 step=2 evals=9 slot=1 cand=24 cost=14 best=14 T=1.06
+t=18 step=3 evals=13 slot=1 cand=18 cost=14 best=14 T=0.89
+t=24 step=4 evals=17 slot=0 cand=26 cost=14 best=14 T=0.75
+t=30 step=5 evals=21 slot=3 cand=30 cost=14 best=14 T=0.63
+t=36 step=6 evals=25 slot=4 cand=24 cost=14 best=14 T=0.53
+t=41 step=7 evals=29 slot=1 cand=12 cost=12 best=12 T=0.45
+t=44 step=8 evals=33 slot=3 cand=18 cost=12 best=12 T=0.38
+t=50 step=9 evals=37 slot=5 cand=32 cost=12 best=12 T=0.32
+t=56 step=10 evals=41 slot=1 cand=12 cost=12 best=12 T=0.27
+t=62 step=11 evals=45 slot=1 cand=20 cost=12 best=12 T=0.22
+t=67 step=12 evals=49 slot=0 cand=24 cost=12 best=12 T=0.19
+t=73 step=13 evals=53 slot=2 cand=14 cost=12 best=12 T=0.16
+t=77 step=14 evals=57 slot=4 cand=0 cost=0 best=0 T=0.15
+RESULT d=20 D=9 group=sl 233 x Z_79 N=999279216 vertices=1998558432 best=0 evals=57 steps=14 time=76.8 orbit k=3 m=6 f=2 mu=16.16
+re-evaluation of the best S: cost 0
+wrote runs/d20D9_sl_233_79_orb3-6-2_s1.out

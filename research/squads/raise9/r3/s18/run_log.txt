@@ -1,0 +1,46 @@
+group sl 241 x Z_31, N=433915680 (2N=867831360), rows 58080 x 7471 bits (doubled row 256 words), memory 0.39 GB, threads 1
+alpha: conj by mat(0,240,1,240), z -> 5 z on Z_31 (fixed z: 1); ORBIT k=3 m=6 f=0; W=7.41174e+09 lambda=17.081 mu=16.57
+setup 0.0s
+RANDORB sample 0 cost 24 (26.5s) zq 1.000
+RANDORB sample 1 cost 16 (48.0s) zq 1.000
+RANDORB sample 2 cost 18 (70.0s) zq 1.000
+RANDORB d=18 D=9 group=sl 241 x Z_31 N=433915680 samples=3 min=16 p10=16 median=18 mean=19.33 mu=16.57 time=70.0
+group sl 241 x Z_31, N=433915680 (2N=867831360), rows 58080 x 7471 bits (doubled row 256 words), memory 0.39 GB, threads 1
+alpha: conj by mat(0,240,1,240), z -> 5 z on Z_31 (fixed z: 1); ORBIT k=3 m=6 f=0; W=7.41174e+09 lambda=17.081 mu=16.57
+setup 0.0s
+RANDORB sample 0 cost 38 (24.3s) zq 1.000
+RANDORB sample 1 cost 58 (48.9s) zq 1.000
+RANDORB sample 2 cost 50 (78.7s) zq 1.000
+RANDORB d=18 D=9 group=sl 241 x Z_31 N=433915680 samples=3 min=38 p10=38 median=50 mean=48.67 mu=16.57 time=78.8
+group sl 241 x Z_31, N=433915680 (2N=867831360), rows 58080 x 7471 bits (doubled row 256 words), memory 0.39 GB, threads 1
+alpha: conj by mat(0,240,1,240), z -> 5 z on Z_31 (fixed z: 1); ORBIT k=3 m=4 f=6; W=7.41174e+09 lambda=17.081 mu=16.57
+setup 0.1s
+fixed generators: 5 chosen among 239 alpha-fixed elements
+RANDORB sample 0 cost 132 (30.9s) zq 1.086
+RANDORB sample 1 cost 108 (60.9s) zq 1.000
+RANDORB sample 2 cost 138 (90.0s) zq 1.003
+RANDORB d=18 D=9 group=sl 241 x Z_31 N=433915680 samples=3 min=108 p10=108 median=132 mean=126.00 mu=16.57 time=90.0
+group sl 241 x Z_31, N=433915680 (2N=867831360), rows 58080 x 7471 bits (doubled row 256 words), memory 0.39 GB, threads 1
+alpha: conj by mat(0,240,1,240), z -> 5 z on Z_31 (fixed z: 1); ORBIT k=3 m=5 f=3; W=7.41174e+09 lambda=17.081 mu=16.57
+setup 0.1s
+fixed generators: 2 chosen among 239 alpha-fixed elements
+RANDORB sample 0 cost 38 (31.6s) zq 1.000
+RANDORB sample 1 cost 30 (60.9s) zq 1.000
+RANDORB sample 2 cost 26 (90.1s) zq 1.000
+RANDORB d=18 D=9 group=sl 241 x Z_31 N=433915680 samples=3 min=26 p10=26 median=30 mean=31.33 mu=16.57 time=90.1
+group sl 193 x Z_61, N=438520704 (2N=877041408), rows 37248 x 11773 bits (doubled row 392 words), memory 0.37 GB, threads 1
+alpha: conj by mat(0,192,1,192), z -> 13 z on Z_61 (fixed z: 1); ORBIT k=3 m=6 f=0; W=7.41174e+09 lambda=16.902 mu=20.03
+setup 0.0s
+RANDORB sample 0 cost 56 (28.4s) zq 1.000
+RANDORB sample 1 cost 38 (51.7s) zq 1.000
+RANDORB sample 2 cost 38 (76.5s) zq 1.000
+RANDORB d=18 D=9 group=sl 193 x Z_61 N=438520704 samples=3 min=38 p10=38 median=38 mean=44.00 mu=20.03 time=76.5
+group sl 397 x Z_7, N=437992632 (2N=875985264), rows 157608 x 2779 bits (doubled row 112 words), memory 0.47 GB, threads 1
+alpha: conj by mat(0,396,1,396), z -> 2 z on Z_7 (fixed z: 1); ORBIT k=3 m=6 f=0; W=7.41174e+09 lambda=16.922 mu=19.60
+setup 0.0s
+RANDORB sample 0 cost 60 (42.6s) zq 1.000
+RANDORB sample 1 cost 36 (79.4s) zq 1.000
+group sl 761 x Z_1, N=440710320 (2N=881420640), rows 579120 x 761 bits (doubled row 48 words), memory 0.82 GB, threads 1
+alpha: conj by mat(0,760,1,760), z -> 0 z on Z_1 (fixed z: 1); ORBIT k=3 m=6 f=0; W=7.41174e+09 lambda=16.818 mu=21.89
+setup 0.0s
+RANDORB sample 0 cost 58 (69.3s) zq 1.000

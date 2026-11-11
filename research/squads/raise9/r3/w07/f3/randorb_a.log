@@ -1,0 +1,9 @@
+group sl 191 x Z_61, N=425028480 (2N=850056960), rows 36480 x 11651 bits (doubled row 384 words), memory 0.36 GB, threads 1
+alpha: conj by mat(0,190,1,190), z -> 13 z on Z_61 (fixed z: 1); ORBIT k=3 m=5 f=3; W=7.41174e+09 lambda=17.438 mu=11.35
+setup 0.0s
+fixed generators: 2 chosen among 191 alpha-fixed elements
+RANDORB sample 0 cost 30 (36.2s) zq 1.000
+RANDORB sample 1 cost 26 (62.8s) zq 1.000
+RANDORB sample 2 cost 54 (88.7s) zq 1.033
+RANDORB sample 3 cost 54 (115.2s) zq 1.000
+RANDORB d=18 D=9 group=sl 191 x Z_61 N=425028480 samples=4 min=26 p10=26 median=54 mean=41.00 mu=11.35 time=115.2

@@ -1,0 +1,8 @@
+group meta 33073 53 144 x Z_1, N=1752869, identity 0, H order 53, rows 33073, threads 1, setup 0.90s
+START loaded from b_k53_s1.txt (9 generators)
+start cost=28
+t=31 steps=64 evals=513 cost=26 best=26 T=0.52
+t=61 steps=124 evals=993 cost=26 best=26 T=0.18
+moves accepted/proposed: plain 1/153 pair 0/0 local 0/0
+  move 0: mean candidate cost 63.3 min 26, candidates within +1 of final cost: 1
+RESULT d=9 D=9 group=meta 33073 53 144 x Z_1 N=1752869 best=26 evals=1225 time=75.2

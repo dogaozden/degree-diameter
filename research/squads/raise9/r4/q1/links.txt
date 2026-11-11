@@ -1,0 +1,13 @@
+link1 | seed 1 | fresh | best cost 42 (log: start 74, killed at 108 s, .best written) | evals ~5
+link2 | seed 2 | start OUT_s1.txt.best.orb | best cost 30 | evals ~5
+link3 | seed 3 | start OUT_s2.txt.best.orb | best cost 26 | evals ~5
+link4 | seed 4 | start OUT_s3.txt.best.orb | best cost 26 (no gain) | evals ~5
+link5 | seed 5 | start OUT_s3.txt.best.orb (OUT_s4 never improved, so no .best written) | best cost 26 (no gain) | evals ~5
+link6 | seed 6 | start OUT_s3.txt.best.orb | best cost 24 (improved, RESULT line, 9 evals) | evals 9
+link7 | seed 7 | start OUT_s6.txt.best.orb | best cost 24 (no gain; killed at 108 s, no RESULT line) | evals ~9
+link8 | seed 8 | start OUT_s6.txt.best.orb | best cost 24 (no gain) | evals ~5
+link9 | seed 9 | start OUT_s6.txt.best.orb | best cost 24 (no gain) | evals ~5. Three non-improving links: lineage restarts fresh (seed 10)
+link10 | seed 10 | fresh | best cost 28 (RESULT line, 9 evals; start 96)
+link11 | seed 11 | start OUT_s10.txt.best.orb | best cost 26 (improved from 28; 9 evals)
+link12 | seed 12 | start OUT_s11.txt.best.orb | best cost 26 (no gain; killed at 108 s)
+link13 | seed 13 | start OUT_s11.txt.best.orb | best cost 26 (no gain; killed at 108 s)

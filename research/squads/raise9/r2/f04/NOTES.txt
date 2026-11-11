@@ -1,0 +1,8 @@
+f04: anatomy and sampled single-swap scan for the cost-6 Frobenius states (cell (6,9)).
+Code: /home/user/degree-diameter/research/squads/raise9/r2/f04/f04.c (anat | scan STATE POS K_LO K_HI LOG; candidate x = k*7919 mod N).
+Anatomy (anat2551.txt, anat1559.txt): uncovered sets are inverse-closed (balls S^-1S and SS^-1 are inverse-closed; K and p odd, so
+no involutions); cost parity is always even. Z2551 x| Z25 state: A side 0, B side 6 = 3 inverse pairs with j = (0,0), (3,22), (7,18);
+ecc(e,B) = 10. Z1559 x| Z41 state: A side 2 (j = 28,13), B side 4 (j = 0,0; 8,33); ecc(e,A) = ecc(e,B) = 10.
+Swap scan: 1499 random candidates per position (k*7919 mod N), positions 1-5, both states: 14,990 swaps total (about 4.7 %
+of the 319k full scan). No swap reached cost < 6 (cost < 6 needs both sides <= 4). Minimum A-side cost among swaps: 2 (1559, pos 2).
+Full scan not done: machine load ~20 on 4 cores gave ~50 ms wall per evaluation at nice 10.

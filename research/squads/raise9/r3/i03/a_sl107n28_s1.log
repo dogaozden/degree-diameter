@@ -1,0 +1,32 @@
+group sl 107 x Z_28, N=34298208 (2N=68596416), rows 11448 x 2996 bits (doubled row 112 words), memory 0.03 GB, threads 1
+alpha: conj by mat(0,106,1,106), z -> 9 z on Z_28 (fixed z: 4); ORBIT k=3 m=4 f=1; W=4.69071e+08 lambda=13.676 mu=39.42
+setup 0.0s
+start cost=104 (1.1s per eval)
+t=4 step=1 evals=5 slot=0 cand=90 cost=90 best=90 T=1.26
+t=7 step=2 evals=9 slot=2 cand=80 cost=80 best=80 T=1.06
+t=10 step=3 evals=13 slot=3 cand=62 cost=62 best=62 T=0.89
+t=14 step=4 evals=17 slot=2 cand=76 cost=62 best=62 T=0.75
+t=17 step=5 evals=21 slot=0 cand=76 cost=62 best=62 T=0.63
+t=21 step=6 evals=25 slot=0 cand=64 cost=64 best=62 T=0.53
+t=24 step=7 evals=29 slot=2 cand=76 cost=64 best=62 T=0.45
+t=28 step=8 evals=33 slot=0 cand=96 cost=64 best=62 T=0.38
+t=31 step=9 evals=37 slot=3 cand=110 cost=64 best=62 T=0.32
+t=34 step=10 evals=41 slot=3 cand=102 cost=64 best=62 T=0.27
+t=38 step=11 evals=45 slot=2 cand=122 cost=64 best=62 T=0.22
+t=41 step=12 evals=49 slot=3 cand=52 cost=52 best=52 T=0.19
+t=45 step=13 evals=53 slot=0 cand=74 cost=52 best=52 T=0.16
+t=48 step=14 evals=57 slot=1 cand=92 cost=52 best=52 T=0.15
+t=52 step=15 evals=61 slot=3 cand=86 cost=52 best=52 T=0.15
+t=56 step=16 evals=65 slot=0 cand=96 cost=52 best=52 T=0.15
+t=59 step=17 evals=69 slot=2 cand=106 cost=52 best=52 T=0.15
+t=62 step=18 evals=73 slot=1 cand=76 cost=52 best=52 T=0.15
+t=66 step=19 evals=77 slot=1 cand=96 cost=52 best=52 T=0.15
+t=70 step=20 evals=81 slot=0 cand=96 cost=52 best=52 T=0.15
+t=73 step=21 evals=85 slot=2 cand=84 cost=52 best=52 T=0.15
+t=77 step=22 evals=89 slot=3 cand=76 cost=52 best=52 T=0.15
+t=80 step=23 evals=93 slot=2 cand=108 cost=52 best=52 T=0.15
+t=85 step=24 evals=97 slot=1 cand=86 cost=52 best=52 T=0.15
+t=90 step=25 evals=101 slot=3 cand=72 cost=52 best=52 T=0.15
+t=94 step=26 evals=105 slot=2 cand=108 cost=52 best=52 T=0.15
+t=98 step=27 evals=109 slot=2 cand=110 cost=52 best=52 T=0.15
+RESULT d=13 D=9 group=sl 107 x Z_28 N=34298208 vertices=68596416 best=52 evals=109 steps=27 time=98.4 orbit k=3 m=4 f=1 mu=39.42

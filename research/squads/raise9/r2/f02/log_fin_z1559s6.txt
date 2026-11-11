@@ -1,0 +1,8 @@
+group meta 1559 41 84 x Z_1, N=63919, identity 0, H order 41, rows 1559, threads 1, setup 0.08s
+START loaded from /home/user/degree-diameter/research/squads/raise9/r2/f02/b_z1559s6.txt (6 generators)
+start cost=2
+t=30 steps=1976 evals=15809 cost=2 best=2 T=0.53
+t=60 steps=3921 evals=31369 cost=2 best=2 T=0.19
+moves accepted/proposed: plain 0/5608 pair 0/0 local 0/0
+  move 0: mean candidate cost 64.4 min 10, candidates within +1 of final cost: 0
+RESULT d=6 D=9 group=meta 1559 41 84 x Z_1 N=63919 best=2 evals=44865 time=85.0

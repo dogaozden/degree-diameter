@@ -1,0 +1,8 @@
+group sl 263 x Z_79, N=1437103536 (2N=2874207072), rows 69168 x 20777 bits (doubled row 672 words), memory 0.90 GB, threads 2
+alpha: conj by mat(0,262,1,262), z -> 23 z on Z_79 (fixed z: 1); ORBIT k=3 m=4 f=0; W=2.85312e+10 lambda=19.853 mu=3.43
+setup 0.0s
+start cost=6 (4.0s per eval)
+t=7 step=1 evals=5 slot=0 cand=0 cost=0 best=0 T=1.26
+RESULT d=12 D=11 group=sl 263 x Z_79 N=1437103536 vertices=2874207072 best=0 evals=5 steps=1 time=7.3 orbit k=3 m=4 f=0 mu=3.43
+re-evaluation of the best S: cost 0
+wrote runs/d12D11_sl_263_79_orb3-4-0_s1.out

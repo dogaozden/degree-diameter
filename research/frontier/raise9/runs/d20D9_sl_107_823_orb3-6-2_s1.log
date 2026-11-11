@@ -1,0 +1,9 @@
+group sl 107 x Z_823, N=1008122328 (2N=2016244656), rows 11448 x 88061 bits (doubled row 2776 words), memory 0.65 GB, threads 2
+alpha: conj by mat(0,106,1,106), z -> 174 z on Z_823 (fixed z: 1); ORBIT k=3 m=6 f=2; W=1.79271e+10 lambda=17.783 mu=19.08
+setup 0.0s
+fixed generators: 1 chosen among 107 alpha-fixed elements
+FIXF: 107 alpha-fixed elements other than e (0.1s); FIXTRY 200 FIXMAX 0
+start cost=72 (2.3s per eval)
+t=11 step=1 evals=5 slot=3 cand=90 cost=72 best=72 T=1.26 screened=4 (0s) fh=0,0,0,0
+t=16 step=2 evals=8 slot=5 cand=66 cost=66 best=66 T=1.06 screened=10 (1s) fh=0,0,0,0
+RESULT d=20 D=9 group=sl 107 x Z_823 N=1008122328 vertices=2016244656 best=66 evals=8 steps=2 time=16.2 orbit k=3 m=6 f=2 mu=19.08

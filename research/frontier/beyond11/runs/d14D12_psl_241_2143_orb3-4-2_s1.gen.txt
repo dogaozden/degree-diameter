@@ -1,0 +1,15 @@
+checker: haarcheck_gen
+command: ./bin/haarcheck_gen runs/d14D12_psl_241_2143_orb3-4-2_s1.out
+start: 2026-11-01T14:32:15Z
+sha256 e52e247f4a92a474f49ff0d5d438660ba0b557bbdfd4a8e24311ca881ff3f17c  ./bin/haarcheck_gen
+sha256 95577f6c539c1e534722cb2dbf49baa66b7c37f786aef905390a85e2c6623d50  runs/d14D12_psl_241_2143_orb3-4-2_s1.out
+selftest psl 241: |M| = 6998640, index round trip over all elements ok
+selftest group multiplication: associativity, identity, inverse on 20000 random triples ok
+file runs/d14D12_psl_241_2143_orb3-4-2_s1.out
+header: 14 12 psl 241 n 2143 N 14998085520
+group psl 241 x Z_2143, |G| = 14998085520 = N, vertices 2N = 29996171040; 14 distinct generators
+from (e,A): reached A 14998085520/14998085520, B 14998085520/14998085520 within 12; ecc 12; level sizes [1, 14, 181, 2340, 30252, 391089, 5054490, 65182944, 819412111, 7652690091, 14171487009, 7279819042, 2101476]  (1430s)
+from (e,B): reached A 14998085520/14998085520, B 14998085520/14998085520 within 12; ecc 12; level sizes [1, 14, 181, 2340, 30252, 391089, 5054472, 65182944, 819407520, 7652690091, 14171499263, 7279819042, 2093831]  (2859s)
+VALID d=14 D=12 group=psl 241 x Z_2143 N=14998085520 vertices=29996171040 (distinct generators, 14-regular simple; every vertex within 12 of both (e,A) and (e,B); ecc 12; 2859s)
+exit: 0
+end: 2026-11-01T15:19:55Z (2860 s)

@@ -1,0 +1,9 @@
+group sl 137 x Z_109, N=280262544 (2N=560525088), rows 18768 x 14933 bits (doubled row 488 words), memory 0.23 GB, threads 1
+alpha: conj by mat(0,136,1,136), z -> 45 z on Z_109 (fixed z: 1); ORBIT k=3 m=5 f=2; W=4.5813e+09 lambda=16.346 mu=22.30
+setup 0.0s
+fixed generators: 1 chosen among 137 alpha-fixed elements
+start cost=30 (10.2s per eval)
+t=41 step=1 evals=5 slot=2 cand=36 cost=30 best=30 T=1.26
+t=72 step=2 evals=9 slot=2 cand=26 cost=26 best=26 T=1.06
+t=102 step=3 evals=13 slot=4 cand=26 cost=26 best=26 T=0.89
+RESULT d=17 D=9 group=sl 137 x Z_109 N=280262544 vertices=560525088 best=26 evals=13 steps=3 time=102.4 orbit k=3 m=5 f=2 mu=22.30

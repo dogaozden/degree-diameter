@@ -1,0 +1,10 @@
+sl 193 38 | ORBIT=3 5 2 | seed=2 | memory 0.24 GB | RANDORB d=17 D=9 group=sl 193 x Z_38 N=273176832 samples=4 min=14 p10=14 median=38 mean=31.00 mu=14.23 time=69.4
+sl 193 38 | ORBIT=3 5 2 | seed=1 | memory 0.24 GB | RANDORB d=17 D=9 group=sl 193 x Z_38 N=273176832 samples=4 min=26 p10=26 median=48 mean=40.50 mu=14.23 time=54.3 (run in test, same command)
+sl 199 35 | ORBIT=3 5 2 | seed=1 | memory 0.24 GB | RANDORB d=17 D=9 group=sl 199 x Z_35 N=275814000 samples=4 min=34 p10=34 median=40 mean=42.00 mu=16.86 time=50.5
+sl 197 36 | ORBIT=3 5 2 | seed=1 | memory 0.24 GB | RANDORB d=17 D=9 group=sl 197 x Z_36 N=275226336 samples=4 min=36 p10=36 median=62 mean=61.00 mu=16.24 time=55.9
+sl 313 9 | ORBIT=3 5 2 | seed=1 | memory 0.29 GB | RANDORB d=17 D=9 group=sl 313 x Z_9 N=275975856 samples=4 min=34 p10=34 median=54 mean=49.00 mu=17.04 time=104.6
+sl 277 13 | ORBIT=3 5 2 | seed=1 | memory 0.27 GB | RANDORB d=17 D=9 group=sl 277 x Z_13 N=276297528 samples=3 min=32 p10=32 median=38 mean=37.33 mu=17.39 time=66.2
+sl 653 1 | ORBIT=3 5 2 | seed=1 | memory 0.52 GB | RANDORB d=17 D=9 group=sl 653 x Z_1 N=278444424 samples=3 min=34 p10=34 median=38 mean=38.00 mu=19.92 time=134.1
+sl 199 35 | ORBIT=3 4 5 | seed=1 | memory 0.24 GB | RANDORB d=17 D=9 group=sl 199 x Z_35 N=275814000 samples=3 min=44 p10=44 median=56 mean=73.33 mu=16.86 time=49.9
+sl 199 35 | ORBIT=3 3 8 | seed=1 | memory 0.24 GB | RANDORB d=17 D=9 group=sl 199 x Z_35 N=275814000 samples=3 min=1314 p10=1314 median=1536 mean=2258.00 mu=16.86 time=50.8
+sl 277 13 | ORBIT=3 4 5 | seed=1 | memory 0.27 GB | RANDORB d=17 D=9 group=sl 277 x Z_13 N=276297528 samples=3 min=60 p10=60 median=90 mean=82.00 mu=17.39 time=57.6

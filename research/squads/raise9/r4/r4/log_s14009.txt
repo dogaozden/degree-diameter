@@ -1,0 +1,6 @@
+group meta 2551 25 7 x Z_1, N=63775, identity 0, H order 25, rows 2551, threads 1, setup 0.05s
+start cost=80
+t=30 steps=864 evals=13825 cost=10 best=8 T=0.53
+t=60 steps=1690 evals=27041 cost=10 best=8 T=0.19
+t=90 steps=2520 evals=40321 cost=10 best=8 T=0.15
+RESULT d=6 D=9 group=meta 2551 25 7 x Z_1 N=63775 best=8 evals=40321 time=90.1

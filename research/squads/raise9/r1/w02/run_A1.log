@@ -1,0 +1,8 @@
+group sl 27 poly x^3+2x+1 x Z_35, N=687960, identity 24570, H order 42, rows 16380, threads 1, setup 0.18s
+wide rows: HW order 210, rows 3276, setup 0.29s
+alpha: Frobenius x -> x^3 on entries, z -> 11 z on Z_35
+ORBIT k=3 m=2 f=2: |Fix(alpha)| = 119 (+e); mu = 39.07, mu/k = 13.02, fixed-point misses ~ 9.23
+start cost=23434
+t=30 steps=711 evals=11377 cost=40 best=40 T=0.53
+t=60 steps=1385 evals=22161 cost=36 best=36 T=0.19
+RESULT d=8 D=9 group=sl 27 poly x^3+2x+1 x Z_35 N=687960 best=30 evals=33905 time=90.0 orbit k=3 m=2 f=2 fix=119

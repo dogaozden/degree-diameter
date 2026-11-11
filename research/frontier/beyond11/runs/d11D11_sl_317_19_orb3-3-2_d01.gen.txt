@@ -1,0 +1,15 @@
+checker: haarcheck_gen
+command: ./bin/haarcheck_gen runs/d11D11_sl_317_19_orb3-3-2_d01.out
+start: 2026-11-01T07:51:13Z
+sha256 e52e247f4a92a474f49ff0d5d438660ba0b557bbdfd4a8e24311ca881ff3f17c  ./bin/haarcheck_gen
+sha256 aa593171ebecdce26206e4456bf6d3631b7ff2f1eee779abe83894cd78d4d372  runs/d11D11_sl_317_19_orb3-3-2_d01.out
+selftest sl 317: |M| = 31854696, index round trip over all elements ok
+selftest group multiplication: associativity, identity, inverse on 20000 random triples ok
+file runs/d11D11_sl_317_19_orb3-3-2_d01.out
+header: 11 11 sl 317 n 19 N 605239224
+group sl 317 x Z_19, |G| = 605239224 = N, vertices 2N = 1210478448; 11 distinct generators
+from (e,A): reached A 605239224/605239224, B 605239224/605239224 within 11; ecc 11; level sizes [1, 11, 110, 1100, 10988, 109725, 1094095, 10830313, 99582824, 495673936, 504551206, 98624139]  (273s)
+from (e,B): reached A 605239224/605239224, B 605239224/605239224 within 11; ecc 11; level sizes [1, 11, 110, 1100, 10990, 109725, 1094351, 10830313, 99604276, 495673936, 504529496, 98624139]  (549s)
+VALID d=11 D=11 group=sl 317 x Z_19 N=605239224 vertices=1210478448 (distinct generators, 11-regular simple; every vertex within 11 of both (e,A) and (e,B); ecc 11; 549s)
+exit: 0
+end: 2026-11-01T08:00:22Z (549 s)

@@ -1,0 +1,6 @@
+group sl 293 x Z_7, N=176074248 (2N=352148496), rows 85848 x 2051 bits (doubled row 88 words), memory 0.20 GB, threads 1
+alpha: conj by mat(0,292,1,292), z -> 2 z on Z_7 (fixed z: 1); ORBIT k=3 m=5 f=1; W=2.74595e+09 lambda=15.595 mu=29.70
+setup 0.0s
+start cost=36 (16.5s per eval)
+t=76 step=1 evals=5 slot=1 cand=56 cost=36 best=36 T=1.26
+t=112 step=2 evals=8 slot=1 cand=60 cost=36 best=36 T=1.06

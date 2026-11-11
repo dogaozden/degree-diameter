@@ -1,0 +1,14 @@
+# p2 links: seed | start file | best cost | evals (fill in)
+s101 | fresh | start 90, best 38 at t=29 (killed at 108 s, ~13 evals, 5.3 s/eval) | 13
+s102 | OUT_s101.txt.best | start 38, best 34 (killed at 108 s, ~10 evals, 10 s/eval under load 19) | 10
+s103 | OUT_s102.txt.best | start 34, best 34 (no gain, ~13 evals, 9.8 s/eval) | 13
+s104 | OUT_s102.txt.best | start 34, best 30 (RESULT line, 13 evals, 105 s) | 13
+s105 | OUT_s104.txt.best | start 30, best 30 (killed at 108 s, ~13 evals, 9.8 s/eval) | 13
+s106 | OUT_s104.txt.best | start 30, best 12 (RESULT line, 17 evals, 7.5 s/eval) | 17
+s107 | OUT_s106.txt.best | start 12, best 12 (killed at 108 s, 17 evals, 7.5 s/eval) | 17
+s108 | OUT_s106.txt.best | start 12, best 12 (RESULT line, 21 evals, 7.1 s/eval) | 21
+s109 | OUT_s106.txt.best | start 12, best 12 (RESULT, 17 evals, 7.0 s/eval) | 17  -- 3 links without gain: switch to fresh seed
+s110 | fresh | start 78, best 36 (RESULT, 17 evals, 7.5 s/eval) | 17
+s111 | OUT_s110.txt.best | start 36, best 26 (killed at 108 s, 17 evals, 7.6 s/eval) | 17
+s112 | OUT_s111.txt.best | start 26, best 26 (RESULT, 17 evals, 8.2 s/eval) | 17
+s113 | OUT_s111.txt.best | start 26, best 26 (killed at 108 s, 13 evals, 9.7 s/eval) | 13

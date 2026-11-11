@@ -1,0 +1,5 @@
+group sl 457 x Z_7, N=668104752 (2N=1336209504), rows 208848 x 3199 bits (doubled row 120 words), memory 0.63 GB, threads 1
+alpha: conj by mat(0,456,1,456), z -> 2 z on Z_7 (fixed z: 1); ORBIT k=3 m=6 f=1; W=1.16682e+10 lambda=17.465 mu=17.38
+setup 0.1s
+RANDORB sample 0 cost 28 (86.6s) zq 1.000
+RANDORB d=19 D=9 group=sl 457 x Z_7 N=668104752 samples=1 min=28 p10=28 median=28 mean=28.00 mu=17.38 time=86.6
