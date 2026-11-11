@@ -1,0 +1,122 @@
+Omega H_8 reading 2 types ababa sigma id: vertices 2246940 (copies 25 x 74898 + K1-vertices 374490), edges 12170925
+  copy-vertex degree 11..11, K1-vertex degree 10..10, loops/multi-edges 0, connected yes, bipartite yes
+source 1872450 = K(t=0, k=0): eccentricity 9; counts by distance: 1 10 94 780 6255 50040 400320 581120 716800 491520
+  witness: d(1872450, 73) = 9, target copy 0 (block 0 type a, i=0) point 73
+  witness base vertex 73: d_H(point t, it) = 6, d_H(line sigma(t), it) = 5; source meets its copy: no
+  source meets 10 of 25 copies; 491520 vertices at distance >= 9: 491520 in copies it misses; 491520 points opposite point t, 0 lines opposite line sigma(t), 0 other
+  Theorem 2 check: in a missed copy, at most 0 opposite vertices of the odd class are within distance 7
+source 2059695 = K(t=0, kbar=0): eccentricity 9; counts by distance: 1 10 94 780 6255 50040 400320 581120 716800 491520
+  witness: d(2059695, 37458) = 9, target copy 0 (block 0 type a, i=0) line 9
+  witness base vertex 37458: d_H(point t, it) = 5, d_H(line sigma(t), it) = 6; source meets its copy: no
+  source meets 10 of 25 copies; 491520 vertices at distance >= 9: 491520 in copies it misses; 0 points opposite point t, 491520 lines opposite line sigma(t), 0 other
+  Theorem 2 check: in a missed copy, at most 0 opposite vertices of the odd class are within distance 7
+Omega H_8 reading 1 types ababa sigma rand:1: vertices 2246940 (copies 25 x 74898 + K1-vertices 374490), edges 12170925
+  copy-vertex degree 11..11, K1-vertex degree 10..10, loops/multi-edges 0, connected yes, bipartite yes
+source 1872450 = K(t=0, k=0): eccentricity 9; counts by distance: 1 10 94 807 6552 55355 432054 784866 684769 282432
+  witness: d(1872450, 37450) = 9, target copy 0 (block 0 type a, i=0) line 1
+  witness base vertex 37450: d_H(point t, it) = 1, d_H(line sigma(t), it) = 6; source meets its copy: no
+  source meets 10 of 25 copies; 282432 vertices at distance >= 9: 282432 in copies it misses; 113070 points opposite point t, 169362 lines opposite line sigma(t), 0 other
+  Theorem 2 check: in a missed copy, at most 13950 opposite vertices of the odd class are within distance 7
+source 2059695 = K(t=0, kbar=0): eccentricity 9; counts by distance: 1 10 94 807 6552 55375 432084 784765 684739 282513
+  witness: d(2059695, 73) = 9, target copy 0 (block 0 type a, i=0) point 73
+  witness base vertex 73: d_H(point t, it) = 6, d_H(line sigma(t), it) = 5; source meets its copy: no
+  source meets 10 of 25 copies; 282513 vertices at distance >= 9: 282513 in copies it misses; 169605 points opposite point t, 112908 lines opposite line sigma(t), 0 other
+  Theorem 2 check: in a missed copy, at most 13950 opposite vertices of the odd class are within distance 7
+Omega H_9 reading 2 types aaabbb sigma id: vertices 4650100 (copies 30 x 132860 + K1-vertices 664300), edges 27900600
+  copy-vertex degree 12..12, K1-vertex degree 12..12, loops/multi-edges 0, connected yes, bipartite yes
+source 3985800 = K(t=0, k=0): eccentricity 9; counts by distance: 1 12 124 1148 10350 93150 838350 1167858 1476225 1062882
+  witness: d(3985800, 91) = 9, target copy 0 (block 0 type a, i=0) point 91
+  witness base vertex 91: d_H(point t, it) = 6, d_H(line sigma(t), it) = 5; source meets its copy: no
+  source meets 12 of 30 copies; 1062882 vertices at distance >= 9: 1062882 in copies it misses; 1062882 points opposite point t, 0 lines opposite line sigma(t), 0 other
+  Theorem 2 check: in a missed copy, at most 0 opposite vertices of the odd class are within distance 7
+source 4317950 = K(t=0, kbar=0): eccentricity 9; counts by distance: 1 12 124 1148 10350 93150 838350 1167858 1476225 1062882
+  witness: d(4317950, 66440) = 9, target copy 0 (block 0 type a, i=0) line 10
+  witness base vertex 66440: d_H(point t, it) = 5, d_H(line sigma(t), it) = 6; source meets its copy: no
+  source meets 12 of 30 copies; 1062882 vertices at distance >= 9: 1062882 in copies it misses; 0 points opposite point t, 1062882 lines opposite line sigma(t), 0 other
+  Theorem 2 check: in a missed copy, at most 0 opposite vertices of the odd class are within distance 7
+source 0 = copy 0 (block 0 type a, i=0) point 0: eccentricity 9; counts by distance: 1 12 130 1283 11559 103950 404109 2042658 1909251 177147
+  witness: d(0, 3985891) = 9, target K(t=91, k=0)
+source 66430 = copy 0 (block 0 type a, i=0) line 0: eccentricity 9; counts by distance: 1 12 130 1283 11559 103950 404109 2042658 1909251 177147
+  witness: d(66430, 4317960) = 9, target K(t=10, kbar=0)
+source 1992900 = copy 15 (block 3 type b, i=0) point 0: eccentricity 9; counts by distance: 1 12 130 1283 11559 103950 404109 2042658 1909251 177147
+  witness: d(1992900, 3985891) = 9, target K(t=91, k=0)
+source 2059330 = copy 15 (block 3 type b, i=0) line 0: eccentricity 9; counts by distance: 1 12 130 1283 11559 103950 404109 2042658 1909251 177147
+  witness: d(2059330, 4317960) = 9, target K(t=10, kbar=0)
+Omega H_9 reading 1 types aaabbb sigma rand:1: vertices 4650100 (copies 30 x 132860 + K1-vertices 664300), edges 27900600
+  copy-vertex degree 12..12, K1-vertex degree 12..12, loops/multi-edges 0, connected yes, bipartite yes
+source 3985800 = K(t=0, k=0): eccentricity 9; counts by distance: 1 12 124 1178 10740 101030 891387 1569466 1422798 653364
+  witness: d(3985800, 66430) = 9, target copy 0 (block 0 type a, i=0) line 0
+  witness base vertex 66430: d_H(point t, it) = 1, d_H(line sigma(t), it) = 6; source meets its copy: no
+  source meets 12 of 30 copies; 653364 vertices at distance >= 9: 653364 in copies it misses; 326502 points opposite point t, 326862 lines opposite line sigma(t), 0 other
+  Theorem 2 check: in a missed copy, at most 22771 opposite vertices of the odd class are within distance 7
+source 4317950 = K(t=0, kbar=0): eccentricity 9; counts by distance: 1 12 124 1178 10740 101030 891387 1569466 1422798 653364
+  witness: d(4317950, 91) = 9, target copy 0 (block 0 type a, i=0) point 91
+  witness base vertex 91: d_H(point t, it) = 6, d_H(line sigma(t), it) = 5; source meets its copy: no
+  source meets 12 of 30 copies; 653364 vertices at distance >= 9: 653364 in copies it misses; 326502 points opposite point t, 326862 lines opposite line sigma(t), 0 other
+  Theorem 2 check: in a missed copy, at most 22771 opposite vertices of the odd class are within distance 7
+Omega H_9 reading 1 types ababab sigma rand:2: vertices 4650100 (copies 30 x 132860 + K1-vertices 664300), edges 27900600
+  copy-vertex degree 12..12, K1-vertex degree 12..12, loops/multi-edges 0, connected yes, bipartite yes
+source 3985800 = K(t=0, k=0): eccentricity 9; counts by distance: 1 12 124 1178 10740 101033 891522 1570120 1422663 652707
+  witness: d(3985800, 66431) = 9, target copy 0 (block 0 type a, i=0) line 1
+  witness base vertex 66431: d_H(point t, it) = 1, d_H(line sigma(t), it) = 6; source meets its copy: no
+  source meets 12 of 30 copies; 652707 vertices at distance >= 9: 652707 in copies it misses; 326016 points opposite point t, 326691 lines opposite line sigma(t), 0 other
+  Theorem 2 check: in a missed copy, at most 22825 opposite vertices of the odd class are within distance 7
+Omega H_11 reading 2 types abababa sigma id: vertices 14172480 (copies 35 x 354312 + K1-vertices 1771560), edges 99207360
+  copy-vertex degree 14..14, K1-vertex degree 14..14, loops/multi-edges 0, connected yes, bipartite yes
+source 12400920 = K(t=0, k=0): eccentricity 9; counts by distance: 1 14 172 1929 21240 233640 2570040 3468586 4494787 3382071
+  witness: d(12400920, 133) = 9, target copy 0 (block 0 type a, i=0) point 133
+  witness base vertex 133: d_H(point t, it) = 6, d_H(line sigma(t), it) = 5; source meets its copy: no
+  source meets 14 of 35 copies; 3382071 vertices at distance >= 9: 3382071 in copies it misses; 3382071 points opposite point t, 0 lines opposite line sigma(t), 0 other
+  Theorem 2 check: in a missed copy, at most 0 opposite vertices of the odd class are within distance 7
+source 13286700 = K(t=0, kbar=0): eccentricity 9; counts by distance: 1 14 172 1929 21240 233640 2570040 3468586 4494787 3382071
+  witness: d(13286700, 177168) = 9, target copy 0 (block 0 type a, i=0) line 12
+  witness base vertex 177168: d_H(point t, it) = 5, d_H(line sigma(t), it) = 6; source meets its copy: no
+  source meets 14 of 35 copies; 3382071 vertices at distance >= 9: 3382071 in copies it misses; 0 points opposite point t, 3382071 lines opposite line sigma(t), 0 other
+  Theorem 2 check: in a missed copy, at most 0 opposite vertices of the odd class are within distance 7
+Omega H_11 reading 1 types abababa sigma rand:1: vertices 14172480 (copies 35 x 354312 + K1-vertices 1771560), edges 99207360
+  copy-vertex degree 14..14, K1-vertex degree 14..14, loops/multi-edges 0, connected yes, bipartite yes
+source 12400920 = K(t=0, k=0): eccentricity 9; counts by distance: 1 14 172 1965 21792 247337 2681217 4554062 4383058 2282862
+  witness: d(12400920, 177156) = 9, target copy 0 (block 0 type a, i=0) line 0
+  witness base vertex 177156: d_H(point t, it) = 1, d_H(line sigma(t), it) = 6; source meets its copy: no
+  source meets 14 of 35 copies; 2282862 vertices at distance >= 9: 2282862 in copies it misses; 978714 points opposite point t, 1304148 lines opposite line sigma(t), 0 other
+  Theorem 2 check: in a missed copy, at most 52372 opposite vertices of the odd class are within distance 7
+Omega H_13 reading 2 types abababab sigma id: vertices 36201060 (copies 40 x 804468 + K1-vertices 4022340), edges 289608480
+  copy-vertex degree 16..16, K1-vertex degree 16..16, loops/multi-edges 0, connected yes, bipartite yes
+source 32178720 = K(t=0, k=0): eccentricity 9; counts by distance: 1 16 228 3006 39102 508326 6608238 8678150 11452961 8911032
+  witness: d(32178720, 183) = 9, target copy 0 (block 0 type a, i=0) point 183
+  witness base vertex 183: d_H(point t, it) = 6, d_H(line sigma(t), it) = 5; source meets its copy: no
+  source meets 16 of 40 copies; 8911032 vertices at distance >= 9: 8911032 in copies it misses; 8911032 points opposite point t, 0 lines opposite line sigma(t), 0 other
+  Theorem 2 check: in a missed copy, at most 0 opposite vertices of the odd class are within distance 7
+Omega H_13 reading 1 types abababab sigma rand:1: vertices 36201060 (copies 40 x 804468 + K1-vertices 4022340), edges 289608480
+  copy-vertex degree 16..16, K1-vertex degree 16..16, loops/multi-edges 0, connected yes, bipartite yes
+source 32178720 = K(t=0, k=0): eccentricity 9; counts by distance: 1 16 228 3048 39844 530058 6815469 11152136 11244988 6415272
+  witness: d(32178720, 402234) = 9, target copy 0 (block 0 type a, i=0) line 0
+  witness base vertex 402234: d_H(point t, it) = 1, d_H(line sigma(t), it) = 6; source meets its copy: no
+  source meets 16 of 40 copies; 6415272 vertices at distance >= 9: 6415272 in copies it misses; 3210456 points opposite point t, 3204816 lines opposite line sigma(t), 0 other
+  Theorem 2 check: in a missed copy, at most 104225 opposite vertices of the odd class are within distance 7
+
+# exact diameter of Omega H_9 (omegaref mode exact, 4 threads, 1080 s): automorphisms checked edge by edge, BFS from every orbit representative
+Omega H_9 reading 2 types aaabbb sigma id: vertices 4650100 (copies 30 x 132860 + K1-vertices 664300), edges 27900600
+  copy-vertex degree 12..12, K1-vertex degree 12..12, loops/multi-edges 0, connected yes, bipartite yes
+  rotation: bijection, maps every edge to an edge
+  swap of blocks 0 and 1: bijection, maps every edge to an edge
+  swap of blocks 0 and 2: bijection, maps every edge to an edge
+  swap of blocks 3 and 4: bijection, maps every edge to an edge
+  swap of blocks 3 and 5: bijection, maps every edge to an edge
+  398580 sources (all K(t,0,bar); all vertices of the first copy of each block type): unreached pairs 0
+  eccentricity of K1-vertex sources: 9:132860
+  eccentricity of copy-vertex sources: 9:265720
+  DIAMETER 9 (every vertex is in the orbit of a source; largest eccentricity at 3985800 = K(t=0, k=0))
+
+# exact diameter of Omega H_9, reading 1, random sigma (omegaref mode exact, 4 threads, 1909 s)
+Omega H_9 reading 1 types aaabbb sigma rand:1: vertices 4650100 (copies 30 x 132860 + K1-vertices 664300), edges 27900600
+  copy-vertex degree 12..12, K1-vertex degree 12..12, loops/multi-edges 0, connected yes, bipartite yes
+  rotation: bijection, maps every edge to an edge
+  swap of blocks 0 and 1: bijection, maps every edge to an edge
+  swap of blocks 0 and 2: bijection, maps every edge to an edge
+  swap of blocks 3 and 4: bijection, maps every edge to an edge
+  swap of blocks 3 and 5: bijection, maps every edge to an edge
+  398580 sources (all K(t,0,bar); all vertices of the first copy of each block type): unreached pairs 0
+  eccentricity of K1-vertex sources: 9:132860
+  eccentricity of copy-vertex sources: 9:265720
+  DIAMETER 9 (every vertex is in the orbit of a source; largest eccentricity at 3985800 = K(t=0, k=0))

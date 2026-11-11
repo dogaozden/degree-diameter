@@ -1,0 +1,87 @@
+# hexgen (pair loop, prime q) and hexgf (kernel, prime powers): builds
+q=3 points 364 (expected 364)
+collinear pairs 2184 (expected 2184), lines 364 (expected 364)
+points not on exactly q+1 lines: 0
+q=5 points 3906 (expected 3906)
+collinear pairs 58590 (expected 58590), lines 3906 (expected 3906)
+points not on exactly q+1 lines: 0
+q=7 points 19608 (expected 19608)
+collinear pairs 549024 (expected 549024), lines 19608 (expected 19608)
+points not on exactly q+1 lines: 0
+q=2 (p=2, e=1) points 63 (expected 63)
+lines 63 (expected 63); points not on exactly q+1 lines: 0; kernel vectors off the quadric: 0
+q=3 (p=3, e=1) points 364 (expected 364)
+lines 364 (expected 364); points not on exactly q+1 lines: 0; kernel vectors off the quadric: 0
+q=4 (p=2, e=2) points 1365 (expected 1365)
+lines 1365 (expected 1365); points not on exactly q+1 lines: 0; kernel vectors off the quadric: 0
+q=5 (p=5, e=1) points 3906 (expected 3906)
+lines 3906 (expected 3906); points not on exactly q+1 lines: 0; kernel vectors off the quadric: 0
+q=7 (p=7, e=1) points 19608 (expected 19608)
+lines 19608 (expected 19608); points not on exactly q+1 lines: 0; kernel vectors off the quadric: 0
+q=8 (p=2, e=3) points 37449 (expected 37449)
+lines 37449 (expected 37449); points not on exactly q+1 lines: 0; kernel vectors off the quadric: 0
+q=9 (p=3, e=2) points 66430 (expected 66430)
+lines 66430 (expected 66430); points not on exactly q+1 lines: 0; kernel vectors off the quadric: 0
+q=11 (p=11, e=1) points 177156 (expected 177156)
+lines 177156 (expected 177156); points not on exactly q+1 lines: 0; kernel vectors off the quadric: 0
+q=13 (p=13, e=1) points 402234 (expected 402234)
+lines 402234 (expected 402234); points not on exactly q+1 lines: 0; kernel vectors off the quadric: 0
+# hexgen and hexgf give the same line sets (q = 3, 5, 7)
+q=3: same line sets: True
+q=5: same line sets: True
+q=7: same line sets: True
+# bitapsp (all pairs, no symmetry) on the incidence graphs
+## H(2)
+n=126 edges=189 degree min=3 max=3 multi-edges=0 bipartite=yes components=1
+sphere sizes summed over all 126 sources: 378 756 1512 3024 6048 4032
+unreached pairs=0 diameter=6
+all spheres maximal up to radius 5 -> girth 12
+## H(3)
+n=728 edges=1456 degree min=4 max=4 multi-edges=0 bipartite=yes components=1
+sphere sizes summed over all 728 sources: 2912 8736 26208 78624 235872 176904
+unreached pairs=0 diameter=6
+all spheres maximal up to radius 5 -> girth 12
+## H(4)
+n=2730 edges=6825 degree min=5 max=5 multi-edges=0 bipartite=yes components=1
+sphere sizes summed over all 2730 sources: 13650 54600 218400 873600 3494400 2795520
+unreached pairs=0 diameter=6
+all spheres maximal up to radius 5 -> girth 12
+## H(5)
+n=7812 edges=23436 degree min=6 max=6 multi-edges=0 bipartite=yes components=1
+sphere sizes summed over all 7812 sources: 46872 234360 1171800 5859000 29295000 24412500
+unreached pairs=0 diameter=6
+all spheres maximal up to radius 5 -> girth 12
+## H(7)
+n=39216 edges=156864 degree min=8 max=8 multi-edges=0 bipartite=yes components=1
+sphere sizes summed over all 39216 sources: 313728 2196096 15372672 107608704 753260928 659103312
+unreached pairs=0 diameter=6
+all spheres maximal up to radius 5 -> girth 12
+## H(8)
+n=74898 edges=337041 degree min=9 max=9 multi-edges=0 bipartite=yes components=1
+sphere sizes summed over all 74898 sources: 674082 5392656 43141248 345129984 2761039872 2454257664
+unreached pairs=0 diameter=6
+all spheres maximal up to radius 5 -> girth 12
+## H(9)
+n=132860 edges=664300 degree min=10 max=10 multi-edges=0 bipartite=yes components=1
+sphere sizes summed over all 132860 sources: 1328600 11957400 107616600 968549400 8716944600 7845250140
+unreached pairs=0 diameter=6
+all spheres maximal up to radius 5 -> girth 12
+## H(11)
+n=354312 edges=2125872 degree min=12 max=12 multi-edges=0 bipartite=yes components=1
+sphere sizes summed over all 354312 sources: 4251744 46769184 514461024 5659071264 62249783904 57062301912
+unreached pairs=0 diameter=6
+all spheres maximal up to radius 5 -> girth 12
+## H(13)
+n=804468 edges=5631276 degree min=14 max=14 multi-edges=0 bipartite=yes components=1
+sphere sizes summed over all 804468 sources: 11262552 146413176 1903371288 24743826744 321669747672 298693337124
+unreached pairs=0 diameter=6
+all spheres maximal up to radius 5 -> girth 12
+9926f30dd92b0bfeee289df43a865280  g11.txt
+aeca9b2ebf515e4081d5c823d57cbabb  g13.txt
+7e7a9c4c262dde3596b883b04802b6b2  g2.txt
+705c4384bcb38d3a7ed27e81a738dcd5  g3.txt
+e566aa1d4be21173ca4750538ea61785  g4.txt
+e559a8f4b435534625e925b0adc4e065  g5.txt
+a0c02aadb17d0b5d77ed0eafd6952ed9  g7.txt
+e076439b109bdcf29f84d7b0b0fdb174  g8.txt
+30b08783db46161256e9e9ccb99db4e2  g9.txt
