@@ -747,7 +747,8 @@ static void scan_unc_w(int t, const uint64_t *Vw, int startB, int sd) {
 static uint32_t AVOIDMASK = 0;   /* orbit mode: generators the targeted walks must not use (besides avoid) */
 static int walk(int g, int *side, int len, int avoid) {
     for (int s = 0; s < len; s++) {
-        int j; do j = rnd() % d; while (j == avoid || ((AVOIDMASK >> j) & 1));
+        /* bounded: with f = 0, m = 1 the one orbit is all of S and every index is masked (endless loop) */
+        int j, tries = 0; do j = rnd() % d; while ((j == avoid || ((AVOIDMASK >> j) & 1)) && ++tries < 64);
         g = (*side == 0) ? gmul(S[j], g) : gmul(SI[j], g);
         *side ^= 1;
     }
