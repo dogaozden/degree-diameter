@@ -1,0 +1,6 @@
+file research/frontier/sols/d6D11_meta_20809_51_12972_b5k07.txt sha256 ec92d402720289ca6bba5e06c9fbd31749f63a0872b884e63a2913e9baebc4c5
+checker research/frontier/beyond13/metacheck.py (branch claude/beyond-d13-search-z35z61, sha256 453f9b3e451f1cda3397e11563a64bca4f5416c4f2c5b6390eb301fbdb6b011a)
+from (e,A): reached A 1061259/1061259, B 1061259/1061259 within 11; level sizes [1, 6, 30, 150, 750, 3750, 18626, 89712, 373162, 862186, 668690, 105455]
+from (e,B): reached A 1061259/1061259, B 1061259/1061259 within 11; level sizes [1, 6, 30, 150, 750, 3750, 18626, 89712, 373092, 862186, 668760, 105455]
+VALID d=6 D=11 group=meta 20809 51 12972 x Z_1 N=1061259 vertices=2122518 (6s)
+exit 0
