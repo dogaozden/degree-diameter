@@ -49,3 +49,25 @@ nice 0, equal to the director's whole pipeline); the director raised the pipelin
 `echo -10 > /proc/<pid>/autogroup` and lowered the cards' groups to 15.
 Kept: haarex6 for the sweep; no family lead worth more CPU (the 704 lift is an isolated local minimum, the new
 families are far). The order-384 sweep continues; orders 401-450 started on the spare core.
+
+### deep-49 (Opus-led squad on the bipartite (4,9) cell), 2026-11-01 22:39Z - 2026-11-02 ~01:00Z
+Session session_01QYEEyH81pZHeSQtpD99oPr, branch claude/deep-49-bipartite-cell-3tog1a. Goal: (4,9) bipartite graph on >= 4,971
+vertices (table 4,970), with depth on the handsoff-49 leads. Report: research/squads/deep-49/REPORT.md.
+Before the squad the director wrote hx (exact Haar search reduced by Aut(G)), installed GAP, certified all 67 SmallGroups
+candidates of order 2,486..2,600 (no cost 0) and ran the bi-coset Frobenius family (bicos, best 88).
+Round r1 (23:10Z, 8 cards, research/squads/deep-49/r1/): c1 non-solvable 2,520 exact · c2 split metacyclic of the orders
+missing from SmallGroups · c3 exact minima of Frobenius groups 2,200..2,800 · c4 constrained searches at the walls ·
+c5 vertex insertion by design · c6 bi-coset graphs with point stabilisers, composite kernels · c7 non-metacyclic solvable
+groups of the missing orders · c8 wildcard (chose 2+2 lifts).
+Best per card: c1 SL(2,5) x F21 exact 4 (n 5,040; new), A7 6, S5 x C21 7 · c2 263 groups, no cost 0 · c3 cost 0 only at
+2,211, 2,265, 2,485; 2 at 2,329 and 2,525 · c4 central involution missed by all cost-4 sets of both 2,496 groups; forcing it
+costs 8 / 12; 5,050 misses only in classes +-6, +-9 · c5 149 (design + swaps), twins 775 · c6 best 16 (a Haar subfamily),
+28 non-Haar · c7 368 groups, no cost 0 · c8 2+2 lift cost 12 at 5,004.
+Round r2 (rolling, 23:35-01:00Z, research/squads/deep-49/r2/): a non-direct non-solvable 2,520 groups + SL(2,5) x F21 wall
+(fibred products > 8; its cost-4 sets miss order-30 or order-12/3 elements, never involutions) · b mixed-orbit and hub-orbit
+screens (17 and 25) · c luck curve 2,440..2,485 (cost 0 only at 2,485 and 2,440 = Z_61 x|_8 Z_40, apsp VALID n 4,880) ·
+d auditor (independent exh3 confirms 8 of 9 claims, 1 unfinished; one latent early-exit bound in hx fixed) · e metacyclic
+2,531..2,600 missing orders (see report).
+Director's own: surgery designs exhaustive (alternating paths 2,916 designs, linked designs 41,040): 149, and every far pair
+of the best design is a slack-0 critical pair. Kept: nothing for a record; the squad's value here was breadth of exact
+certificates (several hundred groups) at about 6% of the spend.
