@@ -1,0 +1,676 @@
+import itertools
+import random
+import time
+
+import lib
+
+
+# ----------------------------------------------------------------------------
+# C engine: bi-Cayley voltage TABU search over Z_m x| Z_k2.
+#
+# Changed from the previous annealer. Two things are different:
+#   1. Search dynamics: each step evaluates a small sampled neighbourhood
+#      (defect-targeted voltage changes and layer swaps), applies the best
+#      non-tabu move (aspiration if it beats the best cost), and restarts from
+#      the best state of the previous run with a small perturbation.
+#   2. Regime: the base may have up to 12 blocks per side (was 4), so the group
+#      order is much smaller for the same vertex count. Reach masks are 32-bit.
+#
+# Vertices: A_{i,g} = i*G + g (i < K), B_{p,h} = (K+p)*G + h.
+# Layer l pairs A_i with B_{lay[l][i]} through voltage s: A_{i,g} ~ B_{p,g*s}.
+# Each layer is a permutation, so every vertex has degree DEG exactly.
+# Left multiplication is an automorphism, so reach masks over the 2K block
+# representatives decide the diameter. Cost = unreached (vertex, block) pairs
+# + PEN * duplicate (block, block, voltage) keys. Cost 0 gives a valid simple
+# bipartite graph of diameter <= DIAM.
+# ----------------------------------------------------------------------------
+
+C_SOURCE = r"""
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <stdint.h>
+#include <math.h>
+#include <time.h>
+
+#define MAXK 12
+#define MAXDEG 16
+#define NCHOICE 20
+#define PEN 1000
+#define NCAND 12
+#define TENURE 7
+#define STALL 150
+#define MAXITER 1200
+#define MAXRESTART 4
+
+typedef struct { int type, l, e1, e2, ov, nv; } Move;
+
+static uint64_t rs;
+static uint64_t rnd64(void) {
+    uint64_t x = rs;
+    x ^= x >> 12;
+    x ^= x << 25;
+    x ^= x >> 27;
+    rs = x;
+    return x * 2685821657736338717ULL;
+}
+static double rnd01(void) {
+    return (double)(rnd64() >> 11) * (1.0 / 9007199254740992.0);
+}
+static int rndint(int n) {
+    return (int)(rnd64() % (uint64_t)n);
+}
+
+static const int K2_CHOICES[NCHOICE] = {1,1,2,2,3,4,5,6,7,8,9,10,12,14,16,18,20,24,30,36};
+
+static int DEG, DIAM, CAP;
+static int K, K2, M, R, G, N;
+static int64_t PWR[64];
+static int *AA, *BB;
+static int *nbr, *lay, *vol;
+static uint32_t *cur, *scr, *tmpr;
+static int *defects;
+static int *bestnbr;
+static int blay[MAXDEG * MAXK], bvol[MAXDEG * MAXK];
+static int tabu_until[MAXDEG * MAXK];
+static uint32_t FULL;
+static int timed_out;
+static double TL, tstart;
+static int have_best, best_K, best_G, best_N;
+static int64_t LASTCOST;
+
+static double elapsed(void) {
+    return (double)clock() / CLOCKS_PER_SEC - tstart;
+}
+
+static int64_t powmod(int64_t b, int64_t e, int64_t m) {
+    int64_t r = 1 % m;
+    b %= m;
+    while (e > 0) {
+        if (e & 1) r = r * b % m;
+        b = b * b % m;
+        e >>= 1;
+    }
+    return r;
+}
+
+static int64_t gcd64(int64_t a, int64_t b) {
+    while (b) {
+        int64_t t = a % b;
+        a = b;
+        b = t;
+    }
+    return a;
+}
+
+static int sample_group(int64_t target) {
+    for (int attempt = 0; attempt < 200; attempt++) {
+        int k2 = K2_CHOICES[rndint(NCHOICE)];
+        int64_t m = (target + k2 - 1) / k2;
+        if (m < 2) m = 2;
+        int64_t r = -1;
+        if (k2 == 1) {
+            r = 1;
+        } else if (k2 == 2 && rnd01() < 0.3) {
+            r = m - 1;
+            if (powmod(r, 2, m) != 1 % m) continue;
+        } else {
+            for (int tries = 0; tries < 60; tries++) {
+                int64_t c = (m > 2) ? 2 + rndint((int)(m - 2)) : 1;
+                if (gcd64(c, m) == 1 && powmod(c, k2, m) == 1 % m) {
+                    r = c;
+                    break;
+                }
+            }
+            if (r < 0) continue;
+        }
+        M = (int)m;
+        K2 = k2;
+        R = (int)r;
+        G = M * K2;
+        return 1;
+    }
+    return 0;
+}
+
+static void setup_group(void) {
+    for (int t = 0; t < K2; t++) PWR[t] = powmod(R, t, M);
+    for (int x = 0; x < G; x++) {
+        AA[x] = x / K2;
+        BB[x] = x % K2;
+    }
+}
+
+/* (a,b)(c,e) = (a + r^b c, b + e) */
+static inline int gmul(int x, int y) {
+    int bx = BB[x];
+    int64_t a2 = (AA[x] + PWR[bx] * (int64_t)AA[y]) % M;
+    int b2 = (bx + BB[y]) % K2;
+    return (int)(a2 * K2 + b2);
+}
+
+/* inverse of (a,b) is (-r^{-b} a, -b) */
+static inline int ginv(int x) {
+    int b = BB[x];
+    int nb = (K2 - b) % K2;
+    int64_t a2 = (M - (PWR[nb] * (int64_t)AA[x]) % M) % M;
+    return (int)(a2 * K2 + nb);
+}
+
+static void set_dart(int l, int i, int p, int s) {
+    int is = ginv(s);
+    int *row = nbr + (size_t)l * N;
+    int Ab = i * G, Bb = (K + p) * G;
+    for (int g = 0; g < G; g++) {
+        row[Ab + g] = Bb + gmul(g, s);
+        row[Bb + g] = Ab + gmul(g, is);
+    }
+}
+
+static void rebuild(void) {
+    for (int l = 0; l < DEG; l++)
+        for (int i = 0; i < K; i++)
+            set_dart(l, i, lay[l * K + i], vol[l * K + i]);
+}
+
+static void compute_reach(uint32_t *out) {
+    for (int v = 0; v < N; v++) out[v] = 0;
+    for (int b = 0; b < 2 * K; b++) out[(size_t)b * G] = 1u << b;
+    for (int t = 0; t < DIAM; t++) {
+        int changed = 0;
+        for (int v = 0; v < N; v++) {
+            uint32_t x = out[v];
+            for (int l = 0; l < DEG; l++) x |= out[nbr[(size_t)l * N + v]];
+            tmpr[v] = x;
+            if (x != out[v]) changed = 1;
+        }
+        if (!changed) break;
+        memcpy(out, tmpr, sizeof(uint32_t) * (size_t)N);
+    }
+}
+
+static inline int pop32(uint32_t x) {
+    x = x - ((x >> 1) & 0x55555555u);
+    x = (x & 0x33333333u) + ((x >> 2) & 0x33333333u);
+    x = (x + (x >> 4)) & 0x0F0F0F0Fu;
+    return (int)((x * 0x01010101u) >> 24);
+}
+
+static int64_t unreached(const uint32_t *r) {
+    int64_t s = 0;
+    for (int v = 0; v < N; v++) s += pop32(r[v]);
+    return (int64_t)2 * K * N - s;
+}
+
+static int dupcount(void) {
+    int n = DEG * K, dup = 0;
+    for (int e = 0; e < n; e++) {
+        int i = e % K;
+        for (int f = i; f < e; f += K) {
+            if (lay[f] == lay[e] && vol[f] == vol[e]) {
+                dup++;
+                break;
+            }
+        }
+    }
+    return dup;
+}
+
+static int64_t total_cost(const uint32_t *r) {
+    return unreached(r) + (int64_t)PEN * dupcount();
+}
+
+static void apply_move(const Move *mv, int forward) {
+    int l = mv->l;
+    if (mv->type == 0) {
+        int e = mv->e1;
+        int v = forward ? mv->nv : mv->ov;
+        vol[e] = v;
+        set_dart(l, e - l * K, lay[e], v);
+    } else {
+        int e1 = mv->e1, e2 = mv->e2;
+        int t = lay[e1];
+        lay[e1] = lay[e2];
+        lay[e2] = t;
+        set_dart(l, e1 - l * K, lay[e1], vol[e1]);
+        set_dart(l, e2 - l * K, lay[e2], vol[e2]);
+    }
+}
+
+static int64_t eval_move(const Move *mv) {
+    apply_move(mv, 1);
+    compute_reach(scr);
+    int64_t c = total_cost(scr);
+    apply_move(mv, 0);
+    return c;
+}
+
+static int gen_move(Move *mv, int nd) {
+    if (K >= 2 && rnd01() < 0.15) {
+        int l = rndint(DEG);
+        int i1 = rndint(K);
+        int i2 = rndint(K - 1);
+        if (i2 >= i1) i2++;
+        mv->type = 1;
+        mv->l = l;
+        mv->e1 = l * K + i1;
+        mv->e2 = l * K + i2;
+        mv->ov = 0;
+        mv->nv = 0;
+        return 1;
+    }
+    int l, i = -1;
+    if (nd > 0 && rnd01() < 0.6) {
+        int u = defects[rndint(nd)];
+        int block = u / G;
+        l = rndint(DEG);
+        if (block < K) {
+            i = block;
+        } else {
+            for (int j = 0; j < K; j++) {
+                if (lay[l * K + j] == block - K) {
+                    i = j;
+                    break;
+                }
+            }
+            if (i < 0) return 0;
+        }
+    } else {
+        l = rndint(DEG);
+        i = rndint(K);
+    }
+    int e = l * K + i;
+    int nw = rndint(G);
+    if (nw == vol[e]) return 0;
+    mv->type = 0;
+    mv->l = l;
+    mv->e1 = e;
+    mv->e2 = e;
+    mv->ov = vol[e];
+    mv->nv = nw;
+    return 1;
+}
+
+static int is_tabu(const Move *mv, int it) {
+    if (tabu_until[mv->e1] > it) return 1;
+    if (mv->type == 1 && tabu_until[mv->e2] > it) return 1;
+    return 0;
+}
+
+static void mark_tabu(const Move *mv, int it) {
+    tabu_until[mv->e1] = it + TENURE;
+    if (mv->type == 1) tabu_until[mv->e2] = it + TENURE;
+}
+
+static void reinit_random(void) {
+    for (int l = 0; l < DEG; l++) {
+        int perm[MAXK];
+        for (int i = 0; i < K; i++) perm[i] = i;
+        for (int i = K - 1; i > 0; i--) {
+            int j = rndint(i + 1);
+            int t = perm[i];
+            perm[i] = perm[j];
+            perm[j] = t;
+        }
+        for (int i = 0; i < K; i++) lay[l * K + i] = perm[i];
+    }
+    for (int e = 0; e < DEG * K; e++) vol[e] = rndint(G);
+    rebuild();
+}
+
+/* Tabu search from the current lay/vol. Leaves the best state in blay/bvol.
+   Returns 1 if a cost-0 state was reached (then lay/vol/nbr hold it). */
+static int tabu_run(int max_iter, int stall) {
+    memset(tabu_until, 0, sizeof(tabu_until));
+    rebuild();
+    compute_reach(cur);
+    int64_t cost = total_cost(cur);
+    int64_t best = cost;
+    memcpy(blay, lay, sizeof(int) * (size_t)(DEG * K));
+    memcpy(bvol, vol, sizeof(int) * (size_t)(DEG * K));
+    int last = 0;
+
+    for (int it = 0; it < max_iter && cost != 0; it++) {
+        if (it - last > stall) break;
+        if (elapsed() > TL) {
+            timed_out = 1;
+            break;
+        }
+        int nd = 0;
+        for (int v = 0; v < N; v++)
+            if (cur[v] != FULL) defects[nd++] = v;
+
+        int have = 0;
+        int64_t bc = 0;
+        Move bm;
+        for (int c = 0; c < NCAND; c++) {
+            Move mv;
+            if (!gen_move(&mv, nd)) continue;
+            int tb = is_tabu(&mv, it);
+            int64_t cc = eval_move(&mv);
+            if (tb && cc >= best) continue;
+            if (!have || cc < bc || (cc == bc && rnd01() < 0.5)) {
+                have = 1;
+                bc = cc;
+                bm = mv;
+            }
+        }
+        if (!have) continue;
+
+        apply_move(&bm, 1);
+        compute_reach(cur);
+        cost = total_cost(cur);
+        mark_tabu(&bm, it);
+        if (cost < best) {
+            best = cost;
+            last = it;
+            memcpy(blay, lay, sizeof(int) * (size_t)(DEG * K));
+            memcpy(bvol, vol, sizeof(int) * (size_t)(DEG * K));
+        }
+    }
+    LASTCOST = best;
+    return cost == 0;
+}
+
+static int pick_k(const double *tr, const double *wn) {
+    if (rnd01() < 0.2) return 1 + rndint(MAXK);
+    int bk = 1;
+    double bv = -1.0;
+    for (int k = 1; k <= MAXK; k++) {
+        double v = (wn[k] + 1.0) / (tr[k] + 2.0) + 0.02 * rnd01();
+        if (v > bv) {
+            bv = v;
+            bk = k;
+        }
+    }
+    return bk;
+}
+
+int main(int argc, char **argv) {
+    if (argc < 7) {
+        fprintf(stderr, "usage: d D target cap seed time\n");
+        return 1;
+    }
+    DEG = atoi(argv[1]);
+    DIAM = atoi(argv[2]);
+    long long found = atoll(argv[3]);
+    CAP = atoi(argv[4]);
+    unsigned long long seed = strtoull(argv[5], NULL, 10);
+    TL = atof(argv[6]);
+    tstart = (double)clock() / CLOCKS_PER_SEC;
+
+    rs = (seed + 1) * 0x9E3779B97F4A7C15ULL ^ 0xD1B54A32D192ED03ULL;
+    if (rs == 0) rs = 1;
+    for (int i = 0; i < 8; i++) rnd64();
+
+    if (DEG < 3 || DEG > MAXDEG || DIAM < 3 || CAP < 8) {
+        printf("0 0\n");
+        return 0;
+    }
+
+    AA = malloc(sizeof(int) * (size_t)(CAP + 1));
+    BB = malloc(sizeof(int) * (size_t)(CAP + 1));
+    nbr = malloc(sizeof(int) * (size_t)DEG * CAP);
+    lay = malloc(sizeof(int) * (size_t)DEG * MAXK);
+    vol = malloc(sizeof(int) * (size_t)DEG * MAXK);
+    cur = malloc(sizeof(uint32_t) * (size_t)CAP);
+    scr = malloc(sizeof(uint32_t) * (size_t)CAP);
+    tmpr = malloc(sizeof(uint32_t) * (size_t)CAP);
+    defects = malloc(sizeof(int) * (size_t)CAP);
+    bestnbr = malloc(sizeof(int) * (size_t)DEG * CAP);
+    if (!AA || !BB || !nbr || !lay || !vol || !cur || !scr || !tmpr || !defects || !bestnbr) {
+        printf("0 0\n");
+        return 0;
+    }
+
+    double tr[MAXK + 1] = {0}, wn[MAXK + 1] = {0};
+
+    while (elapsed() < TL) {
+        if (found >= CAP) break;
+        int k = pick_k(tr, wn);
+        int64_t base = found / (2 * k);
+        int64_t span = base / 8 + 1;
+        if (span < 2) span = 2;
+        int64_t target = base + 1 + rndint((int)span);
+        if (target < 2) target = 2;
+        if (!sample_group(target)) continue;
+        long long Nn = 2LL * k * G;
+        if (Nn <= found || Nn > CAP) continue;
+
+        K = k;
+        N = (int)Nn;
+        FULL = (uint32_t)((1ULL << (2 * K)) - 1);
+        setup_group();
+        tr[k] += 1.0;
+
+        int ok = 0;
+        for (int rr = 0; rr < MAXRESTART && !ok && !timed_out && elapsed() < TL; rr++) {
+            if (rr == 0 || rnd01() < 0.5) {
+                reinit_random();
+            } else {
+                /* restart from the best state of the previous run, perturbed */
+                memcpy(lay, blay, sizeof(int) * (size_t)(DEG * K));
+                memcpy(vol, bvol, sizeof(int) * (size_t)(DEG * K));
+                for (int j = 0; j < 2; j++) {
+                    int e = rndint(DEG * K);
+                    vol[e] = rndint(G);
+                }
+            }
+            ok = tabu_run(MAXITER, STALL);
+        }
+        if (ok) {
+            wn[k] += 1.0;
+            found = N;
+            memcpy(bestnbr, nbr, sizeof(int) * (size_t)DEG * N);
+            best_K = K;
+            best_G = G;
+            best_N = N;
+            have_best = 1;
+        }
+        if (timed_out) break;
+    }
+
+    if (!have_best) {
+        printf("0 0\n");
+        return 0;
+    }
+    int KG = best_K * best_G;
+    long long m = (long long)KG * DEG;
+    printf("%d %lld\n", best_N, m);
+    for (int u = 0; u < KG; u++)
+        for (int l = 0; l < DEG; l++)
+            printf("%d %d\n", u, bestnbr[(size_t)l * best_N + u]);
+    return 0;
+}
+"""
+
+
+# ----------------------------------------------------------------------------
+# Safe baseline families.
+# ----------------------------------------------------------------------------
+
+def _best_pg(d):
+    """Incidence graph of PG(2, q) for the largest prime power q with q + 1 <= d."""
+    for q in range(d - 1, 1, -1):
+        if lib.is_prime_power(q):
+            return lib.projective_plane_incidence(q)
+    return None
+
+
+def _gq_w(q):
+    """Incidence graph of points and lines of the generalized quadrangle W(q); diameter 4."""
+    F = lib.GF(q)
+    pts = [v for v in itertools.product(range(q), repeat=4)
+           if any(v) and next(c for c in v if c) == 1]
+    index = {v: i for i, v in enumerate(pts)}
+    P = len(pts)
+
+    def norm(v):
+        c = next(x for x in v if x)
+        inv = F.inv(c)
+        return tuple(F.mul(inv, x) for x in v)
+
+    def form(x, y):
+        t = F.sub(F.mul(x[0], y[1]), F.mul(x[1], y[0]))
+        return F.add(t, F.sub(F.mul(x[2], y[3]), F.mul(x[3], y[2])))
+
+    covered = set()
+    lines = []
+    for i in range(P):
+        x = pts[i]
+        for j in range(i + 1, P):
+            if (i, j) in covered:
+                continue
+            y = pts[j]
+            if form(x, y) != 0:
+                continue
+            L = set()
+            for a in range(q):
+                for b in range(q):
+                    if a == 0 and b == 0:
+                        continue
+                    v = tuple(F.add(F.mul(a, x[k]), F.mul(b, y[k])) for k in range(4))
+                    if any(v):
+                        L.add(index[norm(v)])
+            L = sorted(L)
+            lines.append(L)
+            for p in L:
+                for r in L:
+                    if p < r:
+                        covered.add((p, r))
+
+    edges = []
+    for j, L in enumerate(lines):
+        for p in L:
+            edges.append((p, P + j))
+    return 2 * P, edges
+
+
+def _best_gq(d):
+    """W(q) for the largest prime power q with q + 1 <= d, restricted to small q for speed."""
+    for q in range(min(d - 1, 9), 1, -1):
+        if lib.is_prime_power(q):
+            return _gq_w(q)
+    return None
+
+
+# ----------------------------------------------------------------------------
+# Slack extension: add new vertices using spare degree, accepting only
+# graphs that pass lib.is_valid.
+# ----------------------------------------------------------------------------
+
+def _bipartition(n, adj):
+    """Return the 2-colouring of the graph, or None if it is not bipartite."""
+    color = [-1] * n
+    for s in range(n):
+        if color[s] != -1:
+            continue
+        color[s] = 0
+        stack = [s]
+        while stack:
+            u = stack.pop()
+            for v in adj[u]:
+                if color[v] == -1:
+                    color[v] = 1 - color[u]
+                    stack.append(v)
+                elif color[v] == color[u]:
+                    return None
+    return color
+
+
+def _slack_extend(n, edges, d, D, rng, deadline):
+    """Greedily add new vertices using spare degree; returns (n, edges), always valid."""
+    edges = [tuple(e) for e in edges]
+    adj = lib.adjacency(n, edges)
+    color = _bipartition(n, adj)
+    if color is None:
+        return n, edges
+    deg = [len(a) for a in adj]
+    grew = True
+    while grew and time.monotonic() < deadline:
+        grew = False
+        for side in (0, 1):
+            spare = [v for v in range(n) if color[v] == side and deg[v] < d]
+            if len(spare) < d:
+                continue
+            for _ in range(30):
+                if time.monotonic() > deadline or len(spare) < d:
+                    break
+                pick = rng.sample(spare, d)
+                w = n
+                cand = edges + [(v, w) for v in pick]
+                if lib.is_valid(n + 1, cand, d, D):
+                    edges = cand
+                    n += 1
+                    color.append(1 - side)
+                    deg.append(d)
+                    for v in pick:
+                        deg[v] += 1
+                    spare = [v for v in spare if deg[v] < d]
+                    grew = True
+                    break
+    return n, edges
+
+
+# ----------------------------------------------------------------------------
+# Main build: exact constructions first, then the C tabu search, then slack.
+# ----------------------------------------------------------------------------
+
+def build(d, D, seed, time_limit):
+    start = time.monotonic()
+    budget = max(1.0, min(0.85 * time_limit, time_limit - 6.0))
+    final_deadline = start + max(1.0, time_limit - 3.0)
+    rng = random.Random(seed)
+
+    if d < 1 or D < 1:
+        return 1, []
+    if D == 1:
+        return 2, [(0, 1)]
+
+    # Safe fallback: K_{d,d} has diameter 2, so it is valid for D >= 2.
+    best = lib.haar_graph(d, range(d))
+    best_n = best[0]
+
+    def consider(n, e):
+        nonlocal best, best_n
+        if n > best_n and lib.is_valid(n, e, d, D):
+            best = (n, e)
+            best_n = n
+
+    # Exact constructions: return immediately (calibration-style cases).
+    if D >= 3:
+        pg = _best_pg(d)
+        if pg is not None:
+            consider(pg[0], pg[1])
+            if D == 3 and lib.is_prime_power(d - 1):
+                return best
+
+    if D >= 4 and time.monotonic() < start + budget:
+        gq = _best_gq(d)
+        if gq is not None:
+            consider(gq[0], gq[1])
+            if D == 4 and d - 1 <= 9 and lib.is_prime_power(d - 1):
+                return best
+
+    # Main search, entirely in C (group sampling, bandit, tabu voltage search).
+    if d >= 3 and D >= 3:
+        remaining = start + budget - time.monotonic()
+        if remaining > 2.0:
+            cap = lib.moore_bound(d, D)
+            try:
+                text = lib.run_c(C_SOURCE,
+                                 [d, D, best_n, cap, int(seed) & 0x7FFFFFFF, round(remaining, 2)],
+                                 timeout=remaining + 20.0)
+                n2, e2 = lib.parse_graph_text(text)
+                consider(n2, e2)
+            except Exception:
+                pass
+
+    # Use any spare degree in the best graph to add vertices.
+    if time.monotonic() < final_deadline:
+        n2, e2 = _slack_extend(best[0], best[1], d, D, rng, final_deadline)
+        consider(n2, e2)
+
+    if not lib.is_valid(best[0], best[1], d, D):
+        best = lib.haar_graph(d, range(d))
+    return best
