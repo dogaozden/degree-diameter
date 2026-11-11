@@ -1,0 +1,12 @@
+group sl 163 x Z_7, N=30314088, identity 184842, H order 63, rows 481176, threads 1, setup 1.48s
+wide rows: HW order 189, rows 160392, setup 2.78s
+alpha: conj by mat(9,38,122,153) (index 245274), z -> 2 z on Z_7
+ORBIT k=3 m=3 f=1: |Fix(alpha)| = 161 (+e); mu = 17.28, mu/k = 5.76, fixed-point misses ~ 1.34
+start cost=22
+t=30 steps=63 evals=505 cost=9 best=1 T=0.52
+t=61 steps=128 evals=1025 cost=3 best=1 T=0.18
+t=91 steps=194 evals=1553 cost=3 best=1 T=0.15
+t=122 steps=257 evals=2057 cost=1 best=1 T=0.15
+t=152 steps=323 evals=2585 cost=1 best=1 T=0.15
+t=182 steps=389 evals=3113 cost=1 best=1 T=0.15
+RESULT d=10 D=10 group=sl 163 x Z_7 N=30314088 best=1 evals=3281 time=192.2 orbit k=3 m=3 f=1 fix=161

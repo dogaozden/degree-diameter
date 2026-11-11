@@ -1,0 +1,31 @@
+group psl 61 x Z_281, N=31882260, identity 514230, H order 61, rows 522660, threads 1, setup 0.75s
+wide rows: no cyclic subgroup of order >= 64 found (best 61); using haar_gen3's evaluation
+alpha: conj by mat(7,44,57,36) (index 26897), z -> 86 z on Z_281
+ORBIT k=5 m=2 f=0: |Fix(alpha)| = 29 (+e); mu = 36.86, mu/k = 7.37, fixed-point misses ~ 1.95
+ORBW=5: an uncovered fixed element weighs 5; start energy 95
+start cost=79
+t=30 steps=57 evals=457 cost=25 best=20 T=0.53 energy=25 bestE=20
+t=60 steps=114 evals=913 cost=5 best=5 T=0.19 energy=5 bestE=5
+t=90 steps=170 evals=1361 cost=5 best=5 T=0.15 energy=5 bestE=5
+t=121 steps=227 evals=1817 cost=5 best=5 T=0.15 energy=5 bestE=5
+t=151 steps=281 evals=2249 cost=5 best=5 T=0.15 energy=5 bestE=5
+t=181 steps=338 evals=2705 cost=5 best=5 T=0.15 energy=5 bestE=5
+t=211 steps=395 evals=3161 cost=5 best=5 T=0.15 energy=5 bestE=5
+t=241 steps=454 evals=3633 cost=5 best=5 T=0.15 energy=5 bestE=5
+t=272 steps=512 evals=4097 cost=5 best=5 T=0.59 energy=5 bestE=5
+t=302 steps=570 evals=4561 cost=5 best=5 T=0.21 energy=5 bestE=5
+t=332 steps=628 evals=5025 cost=5 best=5 T=0.15 energy=5 bestE=5
+t=362 steps=686 evals=5489 cost=5 best=5 T=0.15 energy=5 bestE=5
+t=393 steps=742 evals=5937 cost=5 best=5 T=0.15 energy=5 bestE=5
+t=423 steps=799 evals=6393 cost=5 best=5 T=0.15 energy=5 bestE=5
+t=453 steps=857 evals=6857 cost=5 best=5 T=0.15 energy=5 bestE=5
+t=483 steps=913 evals=7305 cost=5 best=5 T=0.58 energy=5 bestE=5
+t=513 steps=970 evals=7761 cost=5 best=5 T=0.21 energy=5 bestE=5
+t=544 steps=1027 evals=8217 cost=5 best=5 T=0.15 energy=5 bestE=5
+t=574 steps=1086 evals=8689 cost=5 best=5 T=0.15 energy=5 bestE=5
+t=604 steps=1143 evals=9145 cost=5 best=5 T=0.15 energy=5 bestE=5
+RESULT d=10 D=10 group=psl 61 x Z_281 N=31882260 best=0 evals=9177 time=606.4 orbit k=5 m=2 f=0 fix=29
+full diameter check: OK
+full diameter check after normalising s_0 = e: OK
+wrote runs/raise-d10D10/d10D10_psl_61_281_orb5f0_ORBW5_s2.txt
+VALID d=10 D=10 group=psl 61 x Z_281 N=31882260 vertices=63764520 (distinct generators, 10-regular simple)
