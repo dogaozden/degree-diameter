@@ -1,0 +1,12 @@
+group psl 29 x Z_21, N=255780, identity 8526, H order 42, rows 6090, threads 1, setup 0.01s
+start cost=501
+t=30 steps=11211 evals=89689 cost=4 best=4 T=0.53
+t=60 steps=22697 evals=181577 cost=3 best=3 T=0.19
+t=90 steps=33631 evals=269049 cost=3 best=3 T=0.15
+t=120 steps=44684 evals=357473 cost=3 best=3 T=0.15
+t=150 steps=55895 evals=447161 cost=3 best=3 T=0.15
+t=180 steps=67130 evals=537041 cost=3 best=3 T=0.15
+t=210 steps=78311 evals=626489 cost=5 best=3 T=0.78
+t=240 steps=89625 evals=717001 cost=4 best=3 T=0.27
+t=270 steps=100611 evals=804889 cost=3 best=3 T=0.15
+RESULT d=6 D=10 group=psl 29 x Z_21 N=255780 best=3 evals=894633 time=300.0

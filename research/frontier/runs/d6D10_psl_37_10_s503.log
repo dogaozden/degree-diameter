@@ -1,0 +1,12 @@
+group psl 37 x Z_10, N=253080, identity 6660, H order 45, rows 5624, threads 1, setup 0.01s
+start cost=23
+t=30 steps=11290 evals=90321 cost=5 best=4 T=0.53
+t=60 steps=22838 evals=182705 cost=3 best=3 T=0.19
+t=90 steps=34334 evals=274673 cost=3 best=3 T=0.15
+t=120 steps=45633 evals=365065 cost=3 best=3 T=0.15
+t=150 steps=57232 evals=457857 cost=3 best=3 T=0.15
+t=180 steps=68827 evals=550617 cost=3 best=3 T=0.15
+t=210 steps=80374 evals=642993 cost=13 best=3 T=1.46
+t=240 steps=91616 evals=732929 cost=4 best=3 T=0.52
+t=270 steps=102863 evals=822905 cost=2 best=2 T=0.18
+RESULT d=6 D=10 group=psl 37 x Z_10 N=253080 best=2 evals=913937 time=300.0
