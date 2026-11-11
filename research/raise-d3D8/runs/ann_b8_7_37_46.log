@@ -1,0 +1,171 @@
+meta 37 1 1 :: RESULT anneal group=meta 37 1 1 b=8 n=296 D=8 iters=200000 best=8 none
+meta 1 37 0 :: RESULT anneal group=meta 1 37 0 b=8 n=296 D=8 iters=200000 best=8 none
+meta 19 2 1 :: RESULT anneal group=meta 19 2 1 b=8 n=304 D=8 iters=200000 best=32 none
+meta 38 1 1 :: RESULT anneal group=meta 38 1 1 b=8 n=304 D=8 iters=200000 best=26 none
+meta 1 38 0 :: RESULT anneal group=meta 1 38 0 b=8 n=304 D=8 iters=200000 best=26 none
+prod meta 19 1 1 cyc 2 :: RESULT anneal group=prod meta 19 1 1 cyc 2 b=8 n=304 D=8 iters=200000 best=24 none
+meta 19 2 18 :: RESULT anneal group=meta 19 2 18 b=8 n=304 D=8 iters=400000 best=92 none
+meta 2 19 1 :: RESULT anneal group=meta 2 19 1 b=8 n=304 D=8 iters=400000 best=14 none
+prod meta 2 1 1 cyc 19 :: RESULT anneal group=prod meta 2 1 1 cyc 19 b=8 n=304 D=8 iters=200000 best=32 none
+prod meta 1 19 0 cyc 2 :: RESULT anneal group=prod meta 1 19 0 cyc 2 b=8 n=304 D=8 iters=200000 best=24 none
+prod meta 1 2 0 cyc 19 :: RESULT anneal group=prod meta 1 2 0 cyc 19 b=8 n=304 D=8 iters=200000 best=32 none
+meta 39 1 1 :: RESULT anneal group=meta 39 1 1 b=8 n=312 D=8 iters=200000 best=24 none
+meta 13 3 1 :: RESULT anneal group=meta 13 3 1 b=8 n=312 D=8 iters=200000 best=34 none
+meta 13 3 3 :: RESULT anneal group=meta 13 3 3 b=8 n=312 D=8 iters=200000 best=46 none
+meta 13 3 9 :: RESULT anneal group=meta 13 3 9 b=8 n=312 D=8 iters=200000 best=36 none
+meta 1 39 0 :: RESULT anneal group=meta 1 39 0 b=8 n=312 D=8 iters=200000 best=24 none
+meta 3 13 1 :: RESULT anneal group=meta 3 13 1 b=8 n=312 D=8 iters=200000 best=24 none
+prod meta 13 1 1 cyc 3 :: RESULT anneal group=prod meta 13 1 1 cyc 3 b=8 n=312 D=8 iters=200000 best=24 none
+prod meta 1 13 0 cyc 3 :: RESULT anneal group=prod meta 1 13 0 cyc 3 b=8 n=312 D=8 iters=200000 best=24 none
+prod meta 3 1 1 cyc 13 :: RESULT anneal group=prod meta 3 1 1 cyc 13 b=8 n=312 D=8 iters=200000 best=34 none
+prod meta 1 3 0 cyc 13 :: RESULT anneal group=prod meta 1 3 0 cyc 13 b=8 n=312 D=8 iters=200000 best=34 none
+meta 40 1 1 :: RESULT anneal group=meta 40 1 1 b=8 n=320 D=8 iters=200000 best=24 none
+meta 20 2 1 :: RESULT anneal group=meta 20 2 1 b=8 n=320 D=8 iters=200000 best=36 none
+meta 20 2 9 :: RESULT anneal group=meta 20 2 9 b=8 n=320 D=8 iters=200000 best=76 none
+meta 20 2 11 :: RESULT anneal group=meta 20 2 11 b=8 n=320 D=8 iters=200000 best=62 none
+meta 20 2 19 :: RESULT anneal group=meta 20 2 19 b=8 n=320 D=8 iters=400000 best=156 none
+meta 10 4 1 :: RESULT anneal group=meta 10 4 1 b=8 n=320 D=8 iters=200000 best=22 none
+meta 10 4 3 :: RESULT anneal group=meta 10 4 3 b=8 n=320 D=8 iters=200000 best=112 none
+meta 10 4 7 :: RESULT anneal group=meta 10 4 7 b=8 n=320 D=8 iters=200000 best=89 none
+meta 10 4 9 :: RESULT anneal group=meta 10 4 9 b=8 n=320 D=8 iters=200000 best=18 none
+meta 8 5 1 :: RESULT anneal group=meta 8 5 1 b=8 n=320 D=8 iters=200000 best=32 none
+meta 5 8 1 :: RESULT anneal group=meta 5 8 1 b=8 n=320 D=8 iters=200000 best=46 none
+meta 5 8 2 :: RESULT anneal group=meta 5 8 2 b=8 n=320 D=8 iters=200000 best=56 none
+meta 5 8 3 :: RESULT anneal group=meta 5 8 3 b=8 n=320 D=8 iters=200000 best=50 none
+meta 4 10 1 :: RESULT anneal group=meta 4 10 1 b=8 n=320 D=8 iters=200000 best=36 none
+meta 5 8 4 :: RESULT anneal group=meta 5 8 4 b=8 n=320 D=8 iters=200000 best=48 none
+meta 4 10 3 :: RESULT anneal group=meta 4 10 3 b=8 n=320 D=8 iters=200000 best=61 none
+meta 2 20 1 :: RESULT anneal group=meta 2 20 1 b=8 n=320 D=8 iters=200000 best=42 none
+meta 1 40 0 :: RESULT anneal group=meta 1 40 0 b=8 n=320 D=8 iters=200000 best=24 none
+zp2 2 10 0 1 1 0 :: RESULT anneal group=zp2 2 10 0 1 1 0 b=8 n=320 D=8 iters=200000 best=54 none
+zp2 2 10 1 0 0 1 :: RESULT anneal group=zp2 2 10 1 0 0 1 b=8 n=320 D=8 iters=200000 best=64 none
+zp2 2 10 1 1 0 1 :: RESULT anneal group=zp2 2 10 1 1 0 1 b=8 n=320 D=8 iters=200000 best=64 none
+zp2 2 10 1 0 1 1 :: RESULT anneal group=zp2 2 10 1 0 1 1 b=8 n=320 D=8 iters=200000 best=76 none
+prod meta 20 1 1 cyc 2 :: RESULT anneal group=prod meta 20 1 1 cyc 2 b=8 n=320 D=8 iters=200000 best=42 none
+prod meta 10 2 1 cyc 2 :: RESULT anneal group=prod meta 10 2 1 cyc 2 b=8 n=320 D=8 iters=200000 best=74 none
+prod meta 5 4 1 cyc 2 :: RESULT anneal group=prod meta 5 4 1 cyc 2 b=8 n=320 D=8 iters=200000 best=40 none
+prod meta 5 4 2 cyc 2 :: RESULT anneal group=prod meta 5 4 2 cyc 2 b=8 n=320 D=8 iters=200000 best=105 none
+prod meta 5 4 3 cyc 2 :: RESULT anneal group=prod meta 5 4 3 cyc 2 b=8 n=320 D=8 iters=200000 best=87 none
+prod meta 10 2 9 cyc 2 :: RESULT anneal group=prod meta 10 2 9 cyc 2 b=8 n=320 D=8 iters=400000 best=192 none
+prod meta 5 4 4 cyc 2 :: RESULT anneal group=prod meta 5 4 4 cyc 2 b=8 n=320 D=8 iters=200000 best=36 none
+prod meta 4 5 1 cyc 2 :: RESULT anneal group=prod meta 4 5 1 cyc 2 b=8 n=320 D=8 iters=200000 best=41 none
+prod meta 1 20 0 cyc 2 :: RESULT anneal group=prod meta 1 20 0 cyc 2 b=8 n=320 D=8 iters=200000 best=42 none
+prod zp2 2 5 1 0 0 1 cyc 2 :: RESULT anneal group=prod zp2 2 5 1 0 0 1 cyc 2 b=8 n=320 D=8 iters=200000 best=64 none
+prod meta 2 10 1 cyc 2 :: RESULT anneal group=prod meta 2 10 1 cyc 2 b=8 n=320 D=8 iters=400000 best=64 none
+prod meta 10 1 1 cyc 4 :: RESULT anneal group=prod meta 10 1 1 cyc 4 b=8 n=320 D=8 iters=200000 best=36 none
+prod meta 5 2 1 cyc 4 :: RESULT anneal group=prod meta 5 2 1 cyc 4 b=8 n=320 D=8 iters=200000 best=40 none
+prod meta 2 5 1 cyc 4 :: RESULT anneal group=prod meta 2 5 1 cyc 4 b=8 n=320 D=8 iters=200000 best=54 none
+prod meta 5 2 4 cyc 4 :: RESULT anneal group=prod meta 5 2 4 cyc 4 b=8 n=320 D=8 iters=200000 best=103 none
+prod meta 1 10 0 cyc 4 :: RESULT anneal group=prod meta 1 10 0 cyc 4 b=8 n=320 D=8 iters=200000 best=36 none
+prod meta 8 1 1 cyc 5 :: RESULT anneal group=prod meta 8 1 1 cyc 5 b=8 n=320 D=8 iters=200000 best=46 none
+prod meta 4 2 1 cyc 5 :: RESULT anneal group=prod meta 4 2 1 cyc 5 b=8 n=320 D=8 iters=200000 best=22 none
+prod meta 4 2 3 cyc 5 :: RESULT anneal group=prod meta 4 2 3 cyc 5 b=8 n=320 D=8 iters=200000 best=52 none
+prod meta 2 4 1 cyc 5 :: RESULT anneal group=prod meta 2 4 1 cyc 5 b=8 n=320 D=8 iters=200000 best=46 none
+prod meta 1 8 0 cyc 5 :: RESULT anneal group=prod meta 1 8 0 cyc 5 b=8 n=320 D=8 iters=200000 best=46 none
+prod zp2 2 2 1 0 0 1 cyc 5 :: RESULT anneal group=prod zp2 2 2 1 0 0 1 cyc 5 b=8 n=320 D=8 iters=200000 best=64 none
+prod zp2 2 2 1 0 1 1 cyc 5 :: RESULT anneal group=prod zp2 2 2 1 0 1 1 cyc 5 b=8 n=320 D=8 iters=200000 best=40 none
+prod zp2 2 2 1 1 0 1 cyc 5 :: RESULT anneal group=prod zp2 2 2 1 1 0 1 cyc 5 b=8 n=320 D=8 iters=200000 best=49 none
+prod zp2 2 2 0 1 1 0 cyc 5 :: RESULT anneal group=prod zp2 2 2 0 1 1 0 cyc 5 b=8 n=320 D=8 iters=400000 best=36 none
+prod meta 5 1 1 cyc 8 :: RESULT anneal group=prod meta 5 1 1 cyc 8 b=8 n=320 D=8 iters=200000 best=32 none
+prod meta 1 5 0 cyc 8 :: RESULT anneal group=prod meta 1 5 0 cyc 8 b=8 n=320 D=8 iters=200000 best=32 none
+prod meta 4 1 1 cyc 10 :: RESULT anneal group=prod meta 4 1 1 cyc 10 b=8 n=320 D=8 iters=200000 best=22 none
+prod meta 1 4 0 cyc 10 :: RESULT anneal group=prod meta 1 4 0 cyc 10 b=8 n=320 D=8 iters=200000 best=22 none
+prod meta 2 2 1 cyc 10 :: RESULT anneal group=prod meta 2 2 1 cyc 10 b=8 n=320 D=8 iters=400000 best=64 none
+prod meta 2 1 1 cyc 20 :: RESULT anneal group=prod meta 2 1 1 cyc 20 b=8 n=320 D=8 iters=200000 best=36 none
+prod zp2 2 1 1 0 0 1 cyc 10 :: RESULT anneal group=prod zp2 2 1 1 0 0 1 cyc 10 b=8 n=320 D=8 iters=400000 best=64 none
+prod meta 1 2 0 cyc 20 :: RESULT anneal group=prod meta 1 2 0 cyc 20 b=8 n=320 D=8 iters=200000 best=36 none
+meta 41 1 1 :: RESULT anneal group=meta 41 1 1 b=8 n=328 D=8 iters=200000 best=24 none
+meta 1 41 0 :: RESULT anneal group=meta 1 41 0 b=8 n=328 D=8 iters=200000 best=24 none
+meta 42 1 1 :: RESULT anneal group=meta 42 1 1 b=8 n=336 D=8 iters=200000 best=56 none
+meta 21 2 1 :: RESULT anneal group=meta 21 2 1 b=8 n=336 D=8 iters=200000 best=64 none
+meta 21 2 8 :: RESULT anneal group=meta 21 2 8 b=8 n=336 D=8 iters=200000 best=64 none
+meta 21 2 13 :: RESULT anneal group=meta 21 2 13 b=8 n=336 D=8 iters=200000 best=97 none
+meta 14 3 1 :: RESULT anneal group=meta 14 3 1 b=8 n=336 D=8 iters=200000 best=24 none
+meta 21 2 20 :: RESULT anneal group=meta 21 2 20 b=8 n=336 D=8 iters=400000 best=170 none
+meta 14 3 9 :: RESULT anneal group=meta 14 3 9 b=8 n=336 D=8 iters=200000 best=62 none
+meta 14 3 11 :: RESULT anneal group=meta 14 3 11 b=8 n=336 D=8 iters=200000 best=44 none
+meta 7 6 1 :: RESULT anneal group=meta 7 6 1 b=8 n=336 D=8 iters=200000 best=66 none
+meta 7 6 2 :: RESULT anneal group=meta 7 6 2 b=8 n=336 D=8 iters=200000 best=64 none
+meta 7 6 3 :: RESULT anneal group=meta 7 6 3 b=8 n=336 D=8 iters=200000 best=86 none
+meta 7 6 4 :: RESULT anneal group=meta 7 6 4 b=8 n=336 D=8 iters=200000 best=52 none
+meta 7 6 5 :: RESULT anneal group=meta 7 6 5 b=8 n=336 D=8 iters=200000 best=108 none
+meta 7 6 6 :: RESULT anneal group=meta 7 6 6 b=8 n=336 D=8 iters=200000 best=86 none
+meta 6 7 1 :: RESULT anneal group=meta 6 7 1 b=8 n=336 D=8 iters=200000 best=54 none
+meta 3 14 1 :: RESULT anneal group=meta 3 14 1 b=8 n=336 D=8 iters=200000 best=46 none
+meta 3 14 2 :: RESULT anneal group=meta 3 14 2 b=8 n=336 D=8 iters=200000 best=79 none
+meta 2 21 1 :: RESULT anneal group=meta 2 21 1 b=8 n=336 D=8 iters=200000 best=52 none
+meta 1 42 0 :: RESULT anneal group=meta 1 42 0 b=8 n=336 D=8 iters=200000 best=56 none
+prod meta 21 1 1 cyc 2 :: RESULT anneal group=prod meta 21 1 1 cyc 2 b=8 n=336 D=8 iters=200000 best=52 none
+prod meta 7 3 1 cyc 2 :: RESULT anneal group=prod meta 7 3 1 cyc 2 b=8 n=336 D=8 iters=200000 best=58 none
+prod meta 7 3 2 cyc 2 :: RESULT anneal group=prod meta 7 3 2 cyc 2 b=8 n=336 D=8 iters=200000 best=62 none
+prod meta 7 3 4 cyc 2 :: RESULT anneal group=prod meta 7 3 4 cyc 2 b=8 n=336 D=8 iters=200000 best=72 none
+prod meta 3 7 1 cyc 2 :: RESULT anneal group=prod meta 3 7 1 cyc 2 b=8 n=336 D=8 iters=200000 best=54 none
+prod meta 1 21 0 cyc 2 :: RESULT anneal group=prod meta 1 21 0 cyc 2 b=8 n=336 D=8 iters=200000 best=52 none
+prod meta 14 1 1 cyc 3 :: RESULT anneal group=prod meta 14 1 1 cyc 3 b=8 n=336 D=8 iters=200000 best=46 none
+prod meta 7 2 1 cyc 3 :: RESULT anneal group=prod meta 7 2 1 cyc 3 b=8 n=336 D=8 iters=200000 best=50 none
+prod meta 2 7 1 cyc 3 :: RESULT anneal group=prod meta 2 7 1 cyc 3 b=8 n=336 D=8 iters=200000 best=54 none
+prod meta 7 2 6 cyc 3 :: RESULT anneal group=prod meta 7 2 6 cyc 3 b=8 n=336 D=8 iters=200000 best=88 none
+prod meta 1 14 0 cyc 3 :: RESULT anneal group=prod meta 1 14 0 cyc 3 b=8 n=336 D=8 iters=200000 best=46 none
+prod meta 7 1 1 cyc 6 :: RESULT anneal group=prod meta 7 1 1 cyc 6 b=8 n=336 D=8 iters=200000 best=54 none
+prod meta 6 1 1 cyc 7 :: RESULT anneal group=prod meta 6 1 1 cyc 7 b=8 n=336 D=8 iters=200000 best=66 none
+prod meta 1 7 0 cyc 6 :: RESULT anneal group=prod meta 1 7 0 cyc 6 b=8 n=336 D=8 iters=200000 best=54 none
+prod meta 3 2 1 cyc 7 :: RESULT anneal group=prod meta 3 2 1 cyc 7 b=8 n=336 D=8 iters=200000 best=52 none
+prod meta 2 3 1 cyc 7 :: RESULT anneal group=prod meta 2 3 1 cyc 7 b=8 n=336 D=8 iters=200000 best=48 none
+prod meta 3 2 2 cyc 7 :: RESULT anneal group=prod meta 3 2 2 cyc 7 b=8 n=336 D=8 iters=200000 best=73 none
+prod meta 1 6 0 cyc 7 :: RESULT anneal group=prod meta 1 6 0 cyc 7 b=8 n=336 D=8 iters=200000 best=66 none
+prod meta 3 1 1 cyc 14 :: RESULT anneal group=prod meta 3 1 1 cyc 14 b=8 n=336 D=8 iters=200000 best=24 none
+prod meta 1 3 0 cyc 14 :: RESULT anneal group=prod meta 1 3 0 cyc 14 b=8 n=336 D=8 iters=200000 best=24 none
+prod meta 2 1 1 cyc 21 :: RESULT anneal group=prod meta 2 1 1 cyc 21 b=8 n=336 D=8 iters=200000 best=64 none
+prod meta 1 2 0 cyc 21 :: RESULT anneal group=prod meta 1 2 0 cyc 21 b=8 n=336 D=8 iters=200000 best=64 none
+meta 43 1 1 :: RESULT anneal group=meta 43 1 1 b=8 n=344 D=8 iters=200000 best=54 none
+meta 1 43 0 :: RESULT anneal group=meta 1 43 0 b=8 n=344 D=8 iters=200000 best=54 none
+meta 22 2 1 :: RESULT anneal group=meta 22 2 1 b=8 n=352 D=8 iters=200000 best=80 none
+meta 44 1 1 :: RESULT anneal group=meta 44 1 1 b=8 n=352 D=8 iters=200000 best=72 none
+meta 22 2 21 :: RESULT anneal group=meta 22 2 21 b=8 n=352 D=8 iters=200000 best=232 none
+meta 11 4 1 :: RESULT anneal group=meta 11 4 1 b=8 n=352 D=8 iters=200000 best=66 none
+meta 11 4 10 :: RESULT anneal group=meta 11 4 10 b=8 n=352 D=8 iters=200000 best=56 none
+meta 4 11 1 :: RESULT anneal group=meta 4 11 1 b=8 n=352 D=8 iters=200000 best=76 none
+meta 2 22 1 :: RESULT anneal group=meta 2 22 1 b=8 n=352 D=8 iters=200000 best=82 none
+meta 1 44 0 :: RESULT anneal group=meta 1 44 0 b=8 n=352 D=8 iters=200000 best=72 none
+prod meta 22 1 1 cyc 2 :: RESULT anneal group=prod meta 22 1 1 cyc 2 b=8 n=352 D=8 iters=200000 best=82 none
+zp2 2 11 1 0 0 1 :: RESULT anneal group=zp2 2 11 1 0 0 1 b=8 n=352 D=8 iters=200000 best=68 none
+prod meta 11 2 1 cyc 2 :: RESULT anneal group=prod meta 11 2 1 cyc 2 b=8 n=352 D=8 iters=200000 best=94 none
+prod meta 1 22 0 cyc 2 :: RESULT anneal group=prod meta 1 22 0 cyc 2 b=8 n=352 D=8 iters=200000 best=82 none
+prod meta 2 11 1 cyc 2 :: RESULT anneal group=prod meta 2 11 1 cyc 2 b=8 n=352 D=8 iters=200000 best=68 none
+prod meta 11 2 10 cyc 2 :: RESULT anneal group=prod meta 11 2 10 cyc 2 b=8 n=352 D=8 iters=400000 best=220 none
+prod meta 11 1 1 cyc 4 :: RESULT anneal group=prod meta 11 1 1 cyc 4 b=8 n=352 D=8 iters=200000 best=76 none
+prod meta 1 11 0 cyc 4 :: RESULT anneal group=prod meta 1 11 0 cyc 4 b=8 n=352 D=8 iters=200000 best=76 none
+prod meta 4 1 1 cyc 11 :: RESULT anneal group=prod meta 4 1 1 cyc 11 b=8 n=352 D=8 iters=200000 best=66 none
+prod meta 2 2 1 cyc 11 :: RESULT anneal group=prod meta 2 2 1 cyc 11 b=8 n=352 D=8 iters=200000 best=68 none
+prod meta 1 4 0 cyc 11 :: RESULT anneal group=prod meta 1 4 0 cyc 11 b=8 n=352 D=8 iters=200000 best=66 none
+prod zp2 2 1 1 0 0 1 cyc 11 :: RESULT anneal group=prod zp2 2 1 1 0 0 1 cyc 11 b=8 n=352 D=8 iters=200000 best=68 none
+prod meta 2 1 1 cyc 22 :: RESULT anneal group=prod meta 2 1 1 cyc 22 b=8 n=352 D=8 iters=200000 best=80 none
+prod meta 1 2 0 cyc 22 :: RESULT anneal group=prod meta 1 2 0 cyc 22 b=8 n=352 D=8 iters=200000 best=80 none
+meta 45 1 1 :: RESULT anneal group=meta 45 1 1 b=8 n=360 D=8 iters=200000 best=90 none
+meta 15 3 1 :: RESULT anneal group=meta 15 3 1 b=8 n=360 D=8 iters=200000 best=62 none
+meta 9 5 1 :: RESULT anneal group=meta 9 5 1 b=8 n=360 D=8 iters=200000 best=72 none
+meta 5 9 1 :: RESULT anneal group=meta 5 9 1 b=8 n=360 D=8 iters=200000 best=100 none
+meta 3 15 1 :: RESULT anneal group=meta 3 15 1 b=8 n=360 D=8 iters=200000 best=72 none
+meta 1 45 0 :: RESULT anneal group=meta 1 45 0 b=8 n=360 D=8 iters=200000 best=90 none
+zp2 3 5 1 0 0 1 :: RESULT anneal group=zp2 3 5 1 0 0 1 b=8 n=360 D=8 iters=200000 best=62 none
+prod meta 15 1 1 cyc 3 :: RESULT anneal group=prod meta 15 1 1 cyc 3 b=8 n=360 D=8 iters=200000 best=72 none
+prod meta 5 3 1 cyc 3 :: RESULT anneal group=prod meta 5 3 1 cyc 3 b=8 n=360 D=8 iters=200000 best=74 none
+prod meta 3 5 1 cyc 3 :: RESULT anneal group=prod meta 3 5 1 cyc 3 b=8 n=360 D=8 iters=200000 best=62 none
+prod meta 1 15 0 cyc 3 :: RESULT anneal group=prod meta 1 15 0 cyc 3 b=8 n=360 D=8 iters=200000 best=72 none
+prod meta 9 1 1 cyc 5 :: RESULT anneal group=prod meta 9 1 1 cyc 5 b=8 n=360 D=8 iters=200000 best=100 none
+prod meta 3 3 1 cyc 5 :: RESULT anneal group=prod meta 3 3 1 cyc 5 b=8 n=360 D=8 iters=200000 best=64 none
+prod meta 1 9 0 cyc 5 :: RESULT anneal group=prod meta 1 9 0 cyc 5 b=8 n=360 D=8 iters=200000 best=100 none
+prod zp2 3 1 1 0 0 1 cyc 5 :: RESULT anneal group=prod zp2 3 1 1 0 0 1 cyc 5 b=8 n=360 D=8 iters=200000 best=64 none
+prod meta 5 1 1 cyc 9 :: RESULT anneal group=prod meta 5 1 1 cyc 9 b=8 n=360 D=8 iters=200000 best=72 none
+prod meta 1 5 0 cyc 9 :: RESULT anneal group=prod meta 1 5 0 cyc 9 b=8 n=360 D=8 iters=200000 best=72 none
+prod meta 3 1 1 cyc 15 :: RESULT anneal group=prod meta 3 1 1 cyc 15 b=8 n=360 D=8 iters=200000 best=62 none
+prod meta 1 3 0 cyc 15 :: RESULT anneal group=prod meta 1 3 0 cyc 15 b=8 n=360 D=8 iters=200000 best=62 none
+meta 23 2 1 :: RESULT anneal group=meta 23 2 1 b=8 n=368 D=8 iters=200000 best=102 none
+meta 46 1 1 :: RESULT anneal group=meta 46 1 1 b=8 n=368 D=8 iters=200000 best=118 none
+meta 2 23 1 :: RESULT anneal group=meta 2 23 1 b=8 n=368 D=8 iters=200000 best=94 none
+meta 1 46 0 :: RESULT anneal group=meta 1 46 0 b=8 n=368 D=8 iters=200000 best=118 none
+prod meta 23 1 1 cyc 2 :: RESULT anneal group=prod meta 23 1 1 cyc 2 b=8 n=368 D=8 iters=200000 best=94 none
+meta 23 2 22 :: RESULT anneal group=meta 23 2 22 b=8 n=368 D=8 iters=400000 best=270 none
+prod meta 1 23 0 cyc 2 :: RESULT anneal group=prod meta 1 23 0 cyc 2 b=8 n=368 D=8 iters=200000 best=94 none
+prod meta 2 1 1 cyc 23 :: RESULT anneal group=prod meta 2 1 1 cyc 23 b=8 n=368 D=8 iters=200000 best=102 none
+prod meta 1 2 0 cyc 23 :: RESULT anneal group=prod meta 1 2 0 cyc 23 b=8 n=368 D=8 iters=200000 best=102 none
