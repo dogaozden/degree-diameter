@@ -1,0 +1,50 @@
+group prod psl 9 poly x^2+1 psl 9 poly x^2+1 x Z_71, N=9201600, identity 922716, H order 20, rows 460080, threads 1, setup 0.26s
+wide rows: HW order 213, rows 43200, setup 0.48s
+alpha: conj by prod[mat(5,5,7,2);mat(1,5,7,7)] (index 119248), z -> 5 z on Z_71
+ORBIT k=5 m=3 f=0: |Fix(alpha)| = 24 (+e); mu = 40.35, mu/k = 8.07, fixed-point misses ~ 2.12
+ORBW=5: an uncovered fixed element weighs 5; start energy 90
+start cost=82
+t=30 steps=228 evals=1825 cost=15 best=7 T=0.53 energy=15 bestE=15
+t=60 steps=460 evals=3681 cost=5 best=5 T=0.19 energy=5 bestE=5
+t=90 steps=726 evals=5809 cost=5 best=5 T=0.15 energy=5 bestE=5
+t=120 steps=965 evals=7721 cost=5 best=5 T=0.15 energy=5 bestE=5
+t=150 steps=1153 evals=9225 cost=5 best=5 T=0.15 energy=5 bestE=5
+t=180 steps=1362 evals=10897 cost=5 best=5 T=0.15 energy=5 bestE=5
+t=211 steps=1554 evals=12433 cost=6 best=5 T=0.68 energy=10 bestE=5
+t=241 steps=1735 evals=13881 cost=6 best=5 T=0.24 energy=10 bestE=5
+t=271 steps=1898 evals=15185 cost=5 best=5 T=0.15 energy=5 bestE=5
+t=301 steps=2092 evals=16737 cost=5 best=5 T=0.15 energy=5 bestE=5
+t=331 steps=2264 evals=18113 cost=5 best=5 T=0.15 energy=5 bestE=5
+t=361 steps=2470 evals=19761 cost=20 best=5 T=0.67 energy=20 bestE=5
+t=391 steps=2673 evals=21385 cost=11 best=5 T=0.24 energy=15 bestE=5
+t=421 steps=2850 evals=22801 cost=6 best=5 T=0.15 energy=10 bestE=5
+t=451 steps=3048 evals=24385 cost=10 best=5 T=0.15 energy=10 bestE=5
+t=481 steps=3222 evals=25777 cost=10 best=5 T=0.15 energy=10 bestE=5
+t=511 steps=3419 evals=27353 cost=7 best=5 T=0.66 energy=15 bestE=5
+t=541 steps=3597 evals=28777 cost=15 best=5 T=0.23 energy=15 bestE=5
+t=572 steps=3788 evals=30305 cost=11 best=5 T=0.15 energy=15 bestE=5
+t=602 steps=3985 evals=31881 cost=5 best=5 T=0.15 energy=5 bestE=5
+t=632 steps=4172 evals=33377 cost=5 best=5 T=0.15 energy=5 bestE=5
+t=662 steps=4359 evals=34873 cost=10 best=5 T=0.66 energy=10 bestE=5
+t=692 steps=4540 evals=36321 cost=7 best=5 T=0.23 energy=15 bestE=5
+t=722 steps=4714 evals=37713 cost=15 best=5 T=0.15 energy=15 bestE=5
+t=752 steps=4898 evals=39185 cost=10 best=5 T=0.15 energy=10 bestE=5
+t=782 steps=5082 evals=40657 cost=10 best=5 T=0.15 energy=10 bestE=5
+t=812 steps=5266 evals=42129 cost=10 best=5 T=0.65 energy=10 bestE=5
+t=842 steps=5453 evals=43625 cost=10 best=5 T=0.23 energy=10 bestE=5
+t=872 steps=5636 evals=45089 cost=6 best=5 T=0.15 energy=10 bestE=5
+t=902 steps=5820 evals=46561 cost=10 best=5 T=0.15 energy=10 bestE=5
+t=932 steps=5984 evals=47873 cost=10 best=5 T=0.15 energy=10 bestE=5
+t=962 steps=6163 evals=49305 cost=6 best=5 T=0.65 energy=10 bestE=5
+t=992 steps=6323 evals=50585 cost=6 best=5 T=0.23 energy=10 bestE=5
+t=1022 steps=6503 evals=52025 cost=5 best=5 T=0.15 energy=5 bestE=5
+t=1053 steps=6680 evals=53441 cost=5 best=5 T=0.15 energy=5 bestE=5
+t=1083 steps=6848 evals=54785 cost=5 best=5 T=0.15 energy=5 bestE=5
+t=1113 steps=7025 evals=56201 cost=17 best=5 T=0.64 energy=25 bestE=5
+RESULT d=15 D=8 group=prod psl 9 poly x^2+1 psl 9 poly x^2+1 x Z_71 N=9201600 best=0 evals=57033 time=1129.6 orbit k=5 m=3 f=0 fix=24
+full diameter check: OK
+full diameter check after normalising s_0 = e: OK
+wrote runs/raise_d15D8_r3/out/w1a/d15D8_prod_psl_9_psl_9_71_orb5f0_ORBW5_s1.txt
+n = 18403200 edges = 138024000 max degree = 15 min degree = 15 duplicate edges = 0
+edge list sha256 = 6f9c1203ad76ebed196a33efbc005ff893e0640d2da2a14beb0ea641d80f639d
+VALID d=15 D=8 group=prod psl 9 poly x^2+1 psl 9 poly x^2+1 x Z_71 N=9201600 vertices=18403200

@@ -1,0 +1,6 @@
+group pgl 25 poly x^2+2 x Z_589, N=9188400, identity 0, H order 62, rows 148200, threads 1, setup 0.38s
+wide rows: HW order 248, rows 37050, setup 0.77s
+alpha: conj by mat(1,14,1,23) (index 8446), z -> 87 z on Z_589
+ORBIT k=3 m=5 f=0: |Fix(alpha)| = 23 (+e); mu = 39.59, mu/k = 13.20, fixed-point misses ~ 0.39
+RANDORB d=15 D=8 group=pgl 25 poly x^2+2 x Z_589 N=9188400 k=3 m=5 f=0 fix=23 samples=300 min=36 p1=40 p10=57 median=87 mean=292352.45 var=1251691060702.0 mu=39.59 time=8.2
+RANDORB hist (cost/k): 0 0 0 0 0 0 0 0 0 0 0 0 2 2 4 4 4 5 5 12 10 14 17 13 11 11 14 10 10 8 10 134

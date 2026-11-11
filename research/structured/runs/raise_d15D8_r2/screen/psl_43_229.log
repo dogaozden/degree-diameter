@@ -1,0 +1,6 @@
+group psl 43 x Z_229, N=9098628, identity 206787, H order 43, rows 211596, threads 1, setup 0.59s
+wide rows: HW order 229, rows 39732, setup 1.34s
+alpha: conj by mat(13,40,18,29) (index 24829), z -> 94 z on Z_229
+ORBIT k=3 m=5 f=0: |Fix(alpha)| = 20 (+e); mu = 34.70, mu/k = 11.57, fixed-point misses ~ 0.33
+RANDORB d=15 D=8 group=psl 43 x Z_229 N=9098628 k=3 m=5 f=0 fix=20 samples=300 min=18 p1=24 p10=36 median=54 mean=209.89 var=5603084.0 mu=34.70 time=13.3
+RANDORB hist (cost/k): 0 0 0 0 0 0 2 1 4 1 10 10 19 18 21 22 24 13 22 20 20 12 12 9 6 7 4 8 3 3 3 26
