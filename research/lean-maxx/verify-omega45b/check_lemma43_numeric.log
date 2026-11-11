@@ -1,0 +1,27 @@
+seed 1
+singular points: 19608
+(a) |<y,y'>^perp cap Q| (value, y perp y'): [(2401, 0), (2401, 1)]
+(a) triple perp zero counts (random triples): [(301, 9), (343, 35), (385, 16)]
+(b) min pair overlap |C_y cap C_y'| over random independent (t,y,y'): 336 (Lean/note: >= 336)
+(b) max |a^perp cap b^perp cap c^perp cap Q| points over random independent triples: 64 (Lean/note: <= (q+1)^2 = 64)
+(c) configurations with < 4 close pairs tested: 565 (structured attempts 1650 )
+(c) max union size by number of close pairs: {0: 9068, 1: 9084, 2: 9085, 3: 9291} ; overall max 9291 (Lean/note worst case 9621; threshold 7^5 - 140*49 = 9947 )
+OK
+seed 2
+singular points: 19608
+(a) |<y,y'>^perp cap Q| (value, y perp y'): [(2401, 0), (2401, 1)]
+(a) triple perp zero counts (random triples): [(301, 18), (343, 19), (385, 23)]
+(b) min pair overlap |C_y cap C_y'| over random independent (t,y,y'): 336 (Lean/note: >= 336)
+(b) max |a^perp cap b^perp cap c^perp cap Q| points over random independent triples: 64 (Lean/note: <= (q+1)^2 = 64)
+(c) configurations with < 4 close pairs tested: 583 (structured attempts 1652 )
+(c) max union size by number of close pairs: {0: 9062, 1: 9104, 2: 9083, 3: 9298} ; overall max 9298 (Lean/note worst case 9621; threshold 7^5 - 140*49 = 9947 )
+OK
+seed 3
+singular points: 19608
+(a) |<y,y'>^perp cap Q| (value, y perp y'): [(2401, 0), (2401, 1)]
+(a) triple perp zero counts (random triples): [(301, 14), (343, 24), (385, 22)]
+(b) min pair overlap |C_y cap C_y'| over random independent (t,y,y'): 336 (Lean/note: >= 336)
+(b) max |a^perp cap b^perp cap c^perp cap Q| points over random independent triples: 64 (Lean/note: <= (q+1)^2 = 64)
+(c) configurations with < 4 close pairs tested: 562 (structured attempts 1644 )
+(c) max union size by number of close pairs: {0: 9069, 1: 9081, 2: 9089, 3: 9298} ; overall max 9298 (Lean/note worst case 9621; threshold 7^5 - 140*49 = 9947 )
+OK

@@ -1,0 +1,24 @@
+== args 1 8 100
+negative control: elations with a non-hexagon singular axis that FAIL to preserve the hexagon: 20 / 20
+random products of 8 elations: 100 sampled, 57 fixed-point-free
+fixed-point counts histogram: {0: 57, 1: 9, 2: 17, 3: 8, 4: 5, 6: 4}
+fixed-point-free: |Perp(h)| min 2752, max 2850 (Lemma 4.4 bound 4144)
+all-element |Perp| max (incl. elements with fixed points; Perp counts fixed points too): 2850
+== args 2 3 300
+negative control: elations with a non-hexagon singular axis that FAIL to preserve the hexagon: 20 / 20
+random products of 3 elations: 300 sampled, 153 fixed-point-free
+fixed-point counts histogram: {0: 153, 1: 21, 2: 85, 3: 10, 4: 9, 6: 10, 8: 8, 16: 3, 24: 1}
+fixed-point-free: |Perp(h)| min 2752, max 2850 (Lemma 4.4 bound 4144)
+all-element |Perp| max (incl. elements with fixed points; Perp counts fixed points too): 5202
+== args 3 20 300
+negative control: elations with a non-hexagon singular axis that FAIL to preserve the hexagon: 20 / 20
+random products of 20 elations: 300 sampled, 179 fixed-point-free
+fixed-point counts histogram: {0: 179, 1: 20, 2: 66, 3: 20, 4: 6, 6: 8, 24: 1}
+fixed-point-free: |Perp(h)| min 2752, max 2850 (Lemma 4.4 bound 4144)
+all-element |Perp| max (incl. elements with fixed points; Perp counts fixed points too): 3144
+== args 4 1 200
+long root elations (hexagon-line axes) mapping sampled hexagon-line pairs to hexagon-line pairs: 20 / 20
+negative control: elations with a non-hexagon singular axis that FAIL to preserve the hexagon: 20 / 20
+random products of 1 elations: 200 sampled, 0 fixed-point-free
+fixed-point counts histogram: {400: 200}
+all-element |Perp| max (incl. elements with fixed points; Perp counts fixed points too): 19608
