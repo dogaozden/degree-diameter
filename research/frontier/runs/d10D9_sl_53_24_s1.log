@@ -1,0 +1,11 @@
+group sl 53 x Z_24, N=3571776, identity 66144
+start cost=10
+t=38 steps=3 evals=25 cost=6 best=6 T=0.40
+t=75 steps=6 evals=49 cost=4 best=4 T=0.15
+t=110 steps=9 evals=73 cost=4 best=4 T=0.15
+t=144 steps=12 evals=97 cost=4 best=4 T=0.15
+t=180 steps=15 evals=121 cost=2 best=2 T=0.15
+t=214 steps=18 evals=145 cost=2 best=2 T=0.15
+RESULT d=10 D=9 group=sl 53 x Z_24 N=3571776 best=0 evals=153 time=229.9
+full diameter check: OK
+wrote sols/d10D9_sl_53_24_s1.txt
