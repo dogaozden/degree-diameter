@@ -1,0 +1,13 @@
+group sl 59 x Z_17, N=3490440, identity 58174
+start cost=10
+t=51 steps=2 evals=17 cost=4 best=4 T=0.26
+t=105 steps=4 evals=33 cost=3 best=3 T=0.15
+t=158 steps=6 evals=49 cost=1 best=1 T=0.15
+t=210 steps=8 evals=65 cost=1 best=1 T=0.15
+t=258 steps=10 evals=81 cost=1 best=1 T=0.15
+t=296 steps=12 evals=97 cost=1 best=1 T=0.15
+t=334 steps=14 evals=113 cost=1 best=1 T=0.15
+t=372 steps=16 evals=129 cost=1 best=1 T=0.15
+RESULT d=8 D=10 group=sl 59 x Z_17 N=3490440 best=0 evals=137 time=394.8
+full diameter check: OK
+wrote sols/d8D10_sl_59_17_s1.txt

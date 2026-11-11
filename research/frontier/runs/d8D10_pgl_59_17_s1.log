@@ -1,0 +1,20 @@
+group pgl 59 x Z_17, N=3490440, identity 58174
+start cost=12
+t=50 steps=2 evals=17 cost=3 best=3 T=0.27
+t=99 steps=4 evals=33 cost=1 best=1 T=0.15
+t=145 steps=6 evals=49 cost=1 best=1 T=0.15
+t=194 steps=8 evals=65 cost=1 best=1 T=0.15
+t=242 steps=10 evals=81 cost=1 best=1 T=0.15
+t=283 steps=12 evals=97 cost=1 best=1 T=0.15
+t=321 steps=14 evals=113 cost=1 best=1 T=0.15
+t=360 steps=16 evals=129 cost=1 best=1 T=0.15
+t=399 steps=18 evals=145 cost=1 best=1 T=0.15
+t=435 steps=20 evals=161 cost=1 best=1 T=0.15
+t=471 steps=22 evals=177 cost=1 best=1 T=0.15
+t=506 steps=24 evals=193 cost=1 best=1 T=0.15
+t=546 steps=26 evals=209 cost=1 best=1 T=0.15
+t=582 steps=28 evals=225 cost=1 best=1 T=0.15
+t=621 steps=30 evals=241 cost=0 best=0 T=0.15
+RESULT d=8 D=10 group=pgl 59 x Z_17 N=3490440 best=0 evals=241 time=622.7
+full diameter check: OK
+wrote sols/d8D10_pgl_59_17_s1.txt

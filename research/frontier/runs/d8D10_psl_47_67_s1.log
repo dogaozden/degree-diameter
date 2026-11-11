@@ -1,0 +1,21 @@
+group psl 47 x Z_67, N=3476496, identity 72427
+start cost=6
+t=40 steps=2 evals=17 cost=2 best=2 T=0.37
+t=75 steps=4 evals=33 cost=2 best=2 T=0.15
+t=113 steps=6 evals=49 cost=2 best=2 T=0.15
+t=145 steps=8 evals=65 cost=2 best=2 T=0.15
+t=179 steps=10 evals=81 cost=2 best=2 T=0.15
+t=216 steps=12 evals=97 cost=2 best=2 T=0.15
+t=251 steps=14 evals=113 cost=2 best=2 T=0.15
+t=287 steps=16 evals=129 cost=1 best=1 T=0.15
+t=322 steps=18 evals=145 cost=1 best=1 T=0.15
+t=356 steps=20 evals=161 cost=1 best=1 T=0.15
+t=394 steps=22 evals=177 cost=1 best=1 T=0.15
+t=426 steps=24 evals=193 cost=1 best=1 T=0.15
+t=463 steps=26 evals=209 cost=1 best=1 T=0.15
+t=499 steps=28 evals=225 cost=1 best=1 T=0.15
+t=531 steps=30 evals=241 cost=1 best=1 T=0.15
+t=565 steps=32 evals=257 cost=0 best=0 T=0.15
+RESULT d=8 D=10 group=psl 47 x Z_67 N=3476496 best=0 evals=257 time=566.0
+full diameter check: OK
+wrote sols/d8D10_psl_47_67_s1.txt
