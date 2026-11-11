@@ -1,0 +1,23 @@
+PSL2_23 h=2 n=6072: 1 classes, sampling 12.9s
+PSL2_23_h2_H0_K0_c0 n=6072 usable=[12, 1512, 0, 0] RESULT_KBI M=3036 n=6072 evals=200000 best_cost=88 S=4,322
+Traceback (most recent call last):
+  File "/home/user/degree-diameter/research/squads/handsoff-49/w14/kscan.py", line 45, in <module>
+    main()
+    ~~~~^^
+  File "/home/user/degree-diameter/research/squads/handsoff-49/w14/kscan.py", line 36, in main
+    r = subprocess.run(["nice", "-n", "10", os.path.join(HERE, "kbi"), binp, "exh", os.environ.get("KLIMIT", "0"), edges],
+                       capture_output=True, text=True, timeout=int(os.environ.get("KTIMEOUT", "540")))
+  File "/usr/local/lib/python3.13/subprocess.py", line 557, in run
+    stdout, stderr = process.communicate(input, timeout=timeout)
+                     ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.13/subprocess.py", line 1223, in communicate
+    stdout, stderr = self._communicate(input, endtime, timeout)
+                     ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.13/subprocess.py", line 2156, in _communicate
+    self._check_timeout(endtime, orig_timeout, stdout, stderr)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.13/subprocess.py", line 1270, in _check_timeout
+    raise TimeoutExpired(
+    ...<2 lines>...
+            stderr=b''.join(stderr_seq) if stderr_seq else None)
+subprocess.TimeoutExpired: Command '['nice', '-n', '10', '/home/user/degree-diameter/research/squads/handsoff-49/w14/kbi', '/home/user/degree-diameter/research/squads/handsoff-49/w14/runs/K_PSL2_23_h2_H0_K0_c1.bin', 'exh', '200000', '/home/user/degree-diameter/research/squads/handsoff-49/w14/runs/K_PSL2_23_h2_H0_K0_c1.edges']' timed out after 60 seconds

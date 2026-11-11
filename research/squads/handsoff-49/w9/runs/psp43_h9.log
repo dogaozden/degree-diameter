@@ -1,0 +1,33 @@
+group PSp43: order 25920, degree 40  (sampling 6.8s)
+subgroup classes of order 9: 4
+[PSp43_h9_K0] H element orders {1: 1, 3: 2, 9: 6}  M=2880 h=9 n=5760 orbits: size1=3 size2=0 size3=23 size4=0 larger=312
+RESULT_EXH M=2880 h=9 n=5760 evals=69 best_cost=11232 L=15,77,73,0 time=0.0s
+new best cost 11484  L={1,27,29,0} t=0.0s nev=1
+  new best cost 11232  L={15,77,73,0} t=0.0s nev=7
+partition exhaustive, count 69
+partition {3,1}: count of orbit choices (see nev), minimum cost 11232 (overall best 11232)
+[PSp43_h9_K1] H element orders {1: 1, 3: 8}  M=2880 h=9 n=5760 orbits: size1=12 size2=0 size3=92 size4=0 larger=288
+RESULT_EXH M=2880 h=9 n=5760 evals=1599 best_cost=7942 L=21,59,43,85 time=0.1s
+  new best cost 11232  L={21,59,43,7} t=0.0s nev=2
+  new best cost 7942  L={21,59,43,85} t=0.0s nev=4
+partition exhaustive, count 1104
+partition {3,1}: count of orbit choices (see nev), minimum cost 7942 (overall best 7942)
+partition exhaustive, count 495
+partition {1,1,1,1}: count of orbit choices (see nev), minimum cost 11472 (overall best 7942)
+[PSp43_h9_K2] H element orders {1: 1, 3: 8}  M=2880 h=9 n=5760 orbits: size1=18 size2=0 size3=36 size4=0 larger=306
+RESULT_EXH M=2880 h=9 n=5760 evals=3708 best_cost=11448 L=13,37,63,6 time=0.1s
+  new best cost 11472  L={13,37,63,5} t=0.0s nev=2
+  new best cost 11448  L={13,37,63,6} t=0.0s nev=3
+partition exhaustive, count 648
+partition {3,1}: count of orbit choices (see nev), minimum cost 11448 (overall best 11448)
+partition exhaustive, count 3060
+partition {1,1,1,1}: count of orbit choices (see nev), minimum cost 11448 (overall best 11448)
+[PSp43_h9_K3] H element orders {1: 1, 3: 8}  M=2880 h=9 n=5760 orbits: size1=24 size2=0 size3=16 size4=0 larger=312
+RESULT_EXH M=2880 h=9 n=5760 evals=11010 best_cost=11424 L=0,19,123,2856 time=0.3s
+  new best cost 11472  L={87,162,550,2855} t=0.0s nev=10
+partition exhaustive, count 384
+partition {3,1}: count of orbit choices (see nev), minimum cost 11472 (overall best 11472)
+  new best cost 11424  L={0,19,123,2856} t=0.0s nev=412
+partition exhaustive, count 10626
+partition {1,1,1,1}: count of orbit choices (see nev), minimum cost 11424 (overall best 11424)
+done 91.4s

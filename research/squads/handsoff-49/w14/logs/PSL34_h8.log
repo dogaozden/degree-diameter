@@ -1,0 +1,48 @@
+group PSL34: order 20160, degree 21  (sampling 0.4s)
+subgroup classes of order 8: 9
+[PSL34_h8_K0] H element orders {1: 1, 2: 5, 4: 2}  M=2520 h=8 n=5040 orbits: size1=2 size2=11 size3=0 size4=32 larger=296
+RESULT_EXH M=2520 h=8 n=5040 evals=98 best_cost=354 L=233,289,266,1197 time=0.0s
+partition {2,2}: count of orbit choices (see nev), minimum cost 354 (overall best 354)
+partition exhaustive, count 11
+partition {2,1,1}: count of orbit choices (see nev), minimum cost 10032 (overall best 354)
+[PSL34_h8_K1] H element orders {1: 1, 4: 6, 2: 1}  M=2520 h=8 n=5040 orbits: size1=2 size2=3 size3=0 size4=0 larger=314
+RESULT_EXH M=2520 h=8 n=5040 evals=6 best_cost=10064 L=14,2035,25,502 time=0.0s
+partition {2,2}: count of orbit choices (see nev), minimum cost 10064 (overall best 10064)
+partition exhaustive, count 3
+partition {2,1,1}: count of orbit choices (see nev), minimum cost 10064 (overall best 10064)
+[PSL34_h8_K2] H element orders {1: 1, 2: 5, 4: 2}  M=2520 h=8 n=5040 orbits: size1=2 size2=11 size3=0 size4=32 larger=296
+RESULT_EXH M=2520 h=8 n=5040 evals=98 best_cost=354 L=6,1429,752,866 time=0.0s
+partition {2,2}: count of orbit choices (see nev), minimum cost 354 (overall best 354)
+partition exhaustive, count 11
+partition {2,1,1}: count of orbit choices (see nev), minimum cost 10032 (overall best 354)
+[PSL34_h8_K3] H element orders {1: 1, 2: 3, 4: 4}  M=2520 h=8 n=5040 orbits: size1=8 size2=8 size3=0 size4=0 larger=312
+RESULT_EXH M=2520 h=8 n=5040 evals=322 best_cost=9984 L=190,2501,0,66 time=0.0s
+partition {2,1,1}: count of orbit choices (see nev), minimum cost 9984 (overall best 9984)
+partition exhaustive, count 70
+partition {1,1,1,1}: count of orbit choices (see nev), minimum cost 10048 (overall best 9984)
+[PSL34_h8_K4] H element orders {1: 1, 2: 3, 4: 4}  M=2520 h=8 n=5040 orbits: size1=8 size2=8 size3=0 size4=0 larger=312
+RESULT_EXH M=2520 h=8 n=5040 evals=322 best_cost=9984 L=171,722,0,23 time=0.0s
+partition {2,1,1}: count of orbit choices (see nev), minimum cost 9984 (overall best 9984)
+partition exhaustive, count 70
+partition {1,1,1,1}: count of orbit choices (see nev), minimum cost 10048 (overall best 9984)
+[PSL34_h8_K5] H element orders {1: 1, 2: 5, 4: 2}  M=2520 h=8 n=5040 orbits: size1=2 size2=11 size3=0 size4=32 larger=296
+RESULT_EXH M=2520 h=8 n=5040 evals=98 best_cost=354 L=2,2230,858,860 time=0.0s
+partition {2,2}: count of orbit choices (see nev), minimum cost 354 (overall best 354)
+partition exhaustive, count 11
+partition {2,1,1}: count of orbit choices (see nev), minimum cost 10032 (overall best 354)
+[PSL34_h8_K6] H element orders {1: 1, 2: 3, 4: 4}  M=2520 h=8 n=5040 orbits: size1=8 size2=8 size3=0 size4=0 larger=312
+RESULT_EXH M=2520 h=8 n=5040 evals=322 best_cost=9984 L=147,1312,0,92 time=0.0s
+partition {2,1,1}: count of orbit choices (see nev), minimum cost 9984 (overall best 9984)
+partition exhaustive, count 70
+partition {1,1,1,1}: count of orbit choices (see nev), minimum cost 10048 (overall best 9984)
+[PSL34_h8_K7] H element orders {1: 1, 2: 7}  M=2520 h=8 n=5040 orbits: size1=8 size2=56 size3=0 size4=0 larger=300
+RESULT_EXH M=2520 h=8 n=5040 evals=3178 best_cost=9600 L=5,61,1015,2390 time=0.1s
+partition {2,1,1}: count of orbit choices (see nev), minimum cost 9600 (overall best 9600)
+partition exhaustive, count 70
+partition {1,1,1,1}: count of orbit choices (see nev), minimum cost 10048 (overall best 9600)
+[PSL34_h8_K8] H element orders {1: 1, 2: 7}  M=2520 h=8 n=5040 orbits: size1=8 size2=56 size3=0 size4=0 larger=300
+RESULT_EXH M=2520 h=8 n=5040 evals=3178 best_cost=9600 L=1,104,730,1219 time=0.0s
+partition {2,1,1}: count of orbit choices (see nev), minimum cost 9600 (overall best 9600)
+partition exhaustive, count 70
+partition {1,1,1,1}: count of orbit choices (see nev), minimum cost 10048 (overall best 9600)
+done 45.7s

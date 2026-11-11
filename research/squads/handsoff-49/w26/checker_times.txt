@@ -1,0 +1,7 @@
+apsp	4-reg n=4970 (valid4970)	median_ms=38.89	min_ms=21.23	max_ms=157.91	load1_before=6.74	last_line=RESULT VALID d=4 D=9 n=4970
+apsp	3-reg n=170 (random)	median_ms=3.26	min_ms=2.12	max_ms=7.73	load1_before=6.84	last_line=RESULT INVALID
+apsp	6-reg n=686 (random)	median_ms=3.79	min_ms=2.47	max_ms=9.28	load1_before=6.84	last_line=RESULT INVALID
+score48	4-reg n=4970 (valid4970)	median_ms=32.31	min_ms=16.32	max_ms=144.38	load1_before=6.84	last_line=RESULT VALID d=4 D=9 n=4970
+score48	3-reg n=170 (random)	median_ms=3.32	min_ms=2.67	max_ms=5.91	load1_before=6.84	last_line=RESULT INVALID n=170 far=1617 reason=diameter
+score48	6-reg n=686 (random)	median_ms=3.82	min_ms=2.42	max_ms=8.39	load1_before=6.84	last_line=RESULT INVALID n=686 far=11000 reason=diameter
+apsp tiny4cycle (process start only) median_ms=5.25 min_ms=3.85

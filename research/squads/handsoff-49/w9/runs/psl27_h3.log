@@ -1,0 +1,11 @@
+group PSL2_3^3: order 9828, degree 28  (sampling 0.1s)
+subgroup classes of order 3: 1
+[PSL2_3^3_h3_K0] H element orders {1: 1, 3: 2}  M=3276 h=3 n=6552 orbits: size1=9 size2=0 size3=1089 size4=0 larger=0
+RESULT_EXH M=3276 h=3 n=6552 evals=9927 best_cost=176 L=6,171,1663,1634 time=1.6s
+  new best cost 420  L={1,693,2343,2612} t=0.0s nev=6
+  new best cost 176  L={6,171,1663,1634} t=0.0s nev=49
+partition exhaustive, count 9801
+partition {3,1}: count of orbit choices (see nev), minimum cost 176 (overall best 176)
+partition exhaustive, count 126
+partition {1,1,1,1}: count of orbit choices (see nev), minimum cost 13068 (overall best 176)
+done 7.9s

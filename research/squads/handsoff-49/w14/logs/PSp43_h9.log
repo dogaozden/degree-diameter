@@ -1,0 +1,23 @@
+group PSp43: order 25920, degree 40  (sampling 0.7s)
+subgroup classes of order 9: 4
+[PSp43_h9_K0] H element orders {1: 1, 3: 2, 9: 6}  M=2880 h=9 n=5760 orbits: size1=3 size2=0 size3=23 size4=0 larger=312
+RESULT_EXH M=2880 h=9 n=5760 evals=69 best_cost=11232 L=116,2489,937,0 time=0.0s
+  new best cost 11232  L={116,2489,937,0} t=0.0s nev=13
+partition exhaustive, count 69
+partition {3,1}: count of orbit choices (see nev), minimum cost 11232 (overall best 11232)
+[PSp43_h9_K1] H element orders {1: 1, 3: 8}  M=2880 h=9 n=5760 orbits: size1=12 size2=0 size3=92 size4=0 larger=288
+RESULT_EXH M=2880 h=9 n=5760 evals=1599 best_cost=7942 L=3,1995,276,457 time=0.0s
+partition {3,1}: count of orbit choices (see nev), minimum cost 7942 (overall best 7942)
+partition exhaustive, count 495
+partition {1,1,1,1}: count of orbit choices (see nev), minimum cost 11472 (overall best 7942)
+[PSp43_h9_K2] H element orders {1: 1, 3: 8}  M=2880 h=9 n=5760 orbits: size1=24 size2=0 size3=16 size4=0 larger=312
+RESULT_EXH M=2880 h=9 n=5760 evals=11010 best_cost=11424 L=0,4,33,824 time=0.3s
+  new best cost 11424  L={0,4,33,824} t=0.0s nev=408
+partition exhaustive, count 10626
+partition {1,1,1,1}: count of orbit choices (see nev), minimum cost 11424 (overall best 11424)
+[PSp43_h9_K3] H element orders {1: 1, 3: 8}  M=2880 h=9 n=5760 orbits: size1=18 size2=0 size3=36 size4=0 larger=306
+RESULT_EXH M=2880 h=9 n=5760 evals=3708 best_cost=11448 L=5,309,313,6 time=0.1s
+partition {3,1}: count of orbit choices (see nev), minimum cost 11448 (overall best 11448)
+partition exhaustive, count 3060
+partition {1,1,1,1}: count of orbit choices (see nev), minimum cost 11448 (overall best 11448)
+done 55.4s

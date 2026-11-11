@@ -1,0 +1,11 @@
+group S7: order 5040, degree 7  (sampling 0.0s)
+subgroup classes of order 2: 3
+[S7_h2_K0] H element orders {1: 1, 2: 1}  M=2520 h=2 n=5040 orbits: size1=120 size2=1200 size3=0 size4=0 larger=0
+RESULT_EXH M=2520 h=2 n=5040 evals=4719400 best_cost=140 L=2340,2369,1401,1122 time=434.9s
+  new best cost 203  L={1275,2049,470,266} t=48.1s nev=719514
+  new best cost 180  L={593,1285,272,28} t=48.1s nev=719798
+  new best cost 140  L={2340,2369,1401,1122} t=48.2s nev=720198
+partition {2,1,1}: count of orbit choices (see nev), minimum cost 140 (overall best 140)
+partition sampled 2000000 of 8.21e+06
+partition {1,1,1,1}: count of orbit choices (see nev), minimum cost 9600 (overall best 140)
+[S7_h2_K1] H element orders {1: 1, 2: 1}  M=2520 h=2 n=5040 orbits: size1=24 size2=1248 size3=0 size4=0 larger=0
