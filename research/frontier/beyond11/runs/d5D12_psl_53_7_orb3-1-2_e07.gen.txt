@@ -1,0 +1,15 @@
+checker: haarcheck_gen
+command: ./bin/haarcheck_gen runs/d5D12_psl_53_7_orb3-1-2_e07.out
+start: 2026-11-01T07:19:42Z
+sha256 e52e247f4a92a474f49ff0d5d438660ba0b557bbdfd4a8e24311ca881ff3f17c  ./bin/haarcheck_gen
+sha256 f32011561c401c3508eb78dacad19f980cd6e872ca5033b96440cd3e06d59d5f  runs/d5D12_psl_53_7_orb3-1-2_e07.out
+selftest psl 53: |M| = 74412, det-1 matrices 148824
+selftest group multiplication: associativity, identity, inverse on 20000 random triples ok
+file runs/d5D12_psl_53_7_orb3-1-2_e07.out
+header: 5 12 psl 53 n 7 N 520884
+group psl 53 x Z_7, |G| = 520884 = N, vertices 2N = 1041768; 5 distinct generators
+from (e,A): reached A 520884/520884, B 520884/520884 within 12; ecc 12; level sizes [1, 5, 20, 80, 320, 1280, 5096, 20083, 75211, 234213, 406232, 265223, 34004]  (0s)
+from (e,B): reached A 520884/520884, B 520884/520884 within 12; ecc 12; level sizes [1, 5, 20, 80, 320, 1280, 5096, 20083, 75202, 234213, 406091, 265223, 34154]  (0s)
+VALID d=5 D=12 group=psl 53 x Z_7 N=520884 vertices=1041768 (distinct generators, 5-regular simple; every vertex within 12 of both (e,A) and (e,B); ecc 12; 0s)
+exit: 0
+end: 2026-11-01T07:19:42Z (0 s)

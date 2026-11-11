@@ -1,0 +1,33 @@
+checker: haarcheck_lean
+command: ./bin/haarcheck_lean runs/d9D11_sl_137_31_orb3-3-0_s91.out
+start: 2026-11-02T00:49:17Z
+sha256 179df797fd8985860df27b329e0c084f00e67a52ef21f25f5de424699e8868c5  ./bin/haarcheck_lean
+sha256 cec2b3a6a508c1ab81be7508681e62c5ecec2dfd275c923473548ff94e6183f6  runs/d9D11_sl_137_31_orb3-3-0_s91.out
+haarcheck_lean: sl 137 x Z_31, N = 79707696, vertices 159415392, d = 9, D = 11; self-tests ok (1000000 index round trips)
+  root (e,A) step 1 (push): side B has 9 of 79707696   [0 s]
+  root (e,A) step 2 (push): side A has 73 of 79707696   [0 s]
+  root (e,A) step 3 (push): side B has 585 of 79707696   [0 s]
+  root (e,A) step 4 (push): side A has 4681 of 79707696   [0 s]
+  root (e,A) step 5 (push): side B has 37449 of 79707696   [0 s]
+  root (e,A) step 6 (push): side A has 298910 of 79707696   [0 s]
+  root (e,A) step 7 (push): side B has 2357675 of 79707696   [0 s]
+  root (e,A) step 8 (push): side A has 16992128 of 79707696   [2 s]
+  root (e,A) step 9 (push): side B has 67923118 of 79707696   [7 s]
+  root (e,A) step 10 (pull): side A has 79707696 of 79707696   [11 s]
+  root (e,A) step 11 (pull): side B has 79707696 of 79707696   [12 s]
+root (e,A): complete, every vertex within 11 at step 11 (unreached A 0, B 0), 12 s
+  root (e,B) step 1 (push): side A has 9 of 79707696   [0 s]
+  root (e,B) step 2 (push): side B has 73 of 79707696   [0 s]
+  root (e,B) step 3 (push): side A has 585 of 79707696   [0 s]
+  root (e,B) step 4 (push): side B has 4681 of 79707696   [0 s]
+  root (e,B) step 5 (push): side A has 37449 of 79707696   [0 s]
+  root (e,B) step 6 (push): side B has 298910 of 79707696   [0 s]
+  root (e,B) step 7 (push): side A has 2357675 of 79707696   [0 s]
+  root (e,B) step 8 (push): side B has 16989910 of 79707696   [2 s]
+  root (e,B) step 9 (push): side A has 67923118 of 79707696   [7 s]
+  root (e,B) step 10 (pull): side B has 79707696 of 79707696   [12 s]
+  root (e,B) step 11 (pull): side A has 79707696 of 79707696   [13 s]
+root (e,B): complete, every vertex within 11 at step 11 (unreached A 0, B 0), 13 s
+VALID d=9 D=11 group=sl 137 x Z_31 N=79707696 vertices=159415392
+exit: 0
+end: 2026-11-02T00:49:41Z (24 s)

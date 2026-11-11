@@ -1,0 +1,8 @@
+group sl 607 x Z_7, N=1565535552 (2N=3131071104), rows 368448 x 4249 bits (doubled row 152 words), memory 1.14 GB, threads 1
+alpha: conj by mat(0,606,1,606), z -> 2 z on Z_7 (fixed z: 1); ORBIT k=3 m=4 f=0; W=2.85312e+10 lambda=18.225 mu=19.05
+setup 0.0s
+start cost=46 (40.5s per eval)
+t=198 step=1 evals=5 slot=2 cand=38 cost=38 best=38 T=1.26
+t=389 step=2 evals=9 slot=0 cand=32 cost=32 best=32 T=1.06
+t=477 step=3 evals=11 slot=1 cand=44 cost=32 best=32 T=0.89
+RESULT d=12 D=11 group=sl 607 x Z_7 N=1565535552 vertices=3131071104 best=32 evals=11 steps=3 time=476.8 orbit k=3 m=4 f=0 mu=19.05

@@ -1,0 +1,26 @@
+haarcheck_lean: sl 67 x Z_19, N = 5713224, vertices 11426448, d = 7, D = 11; self-tests ok (5713224 index round trips)
+  root (e,A) step 1 (push): side B has 7 of 5713224   [0 s]
+  root (e,A) step 2 (push): side A has 43 of 5713224   [0 s]
+  root (e,A) step 3 (push): side B has 259 of 5713224   [0 s]
+  root (e,A) step 4 (push): side A has 1555 of 5713224   [0 s]
+  root (e,A) step 5 (push): side B has 9331 of 5713224   [0 s]
+  root (e,A) step 6 (push): side A has 55753 of 5713224   [0 s]
+  root (e,A) step 7 (push): side B has 326003 of 5713224   [0 s]
+  root (e,A) step 8 (push): side A has 1695383 of 5713224   [0 s]
+  root (e,A) step 9 (push): side B has 5015985 of 5713224   [0 s]
+  root (e,A) step 10 (pull): side A has 5713224 of 5713224   [1 s]
+  root (e,A) step 11 (pull): side B has 5713224 of 5713224   [1 s]
+root (e,A): complete, every vertex within 11 at step 11 (unreached A 0, B 0), 1 s
+  root (e,B) step 1 (push): side A has 7 of 5713224   [0 s]
+  root (e,B) step 2 (push): side B has 43 of 5713224   [0 s]
+  root (e,B) step 3 (push): side A has 259 of 5713224   [0 s]
+  root (e,B) step 4 (push): side B has 1555 of 5713224   [0 s]
+  root (e,B) step 5 (push): side A has 9331 of 5713224   [0 s]
+  root (e,B) step 6 (push): side B has 55753 of 5713224   [0 s]
+  root (e,B) step 7 (push): side A has 326003 of 5713224   [0 s]
+  root (e,B) step 8 (push): side B has 1695665 of 5713224   [0 s]
+  root (e,B) step 9 (push): side A has 5015985 of 5713224   [0 s]
+  root (e,B) step 10 (pull): side B has 5713224 of 5713224   [1 s]
+  root (e,B) step 11 (pull): side A has 5713224 of 5713224   [1 s]
+root (e,B): complete, every vertex within 11 at step 11 (unreached A 0, B 0), 1 s
+VALID d=7 D=11 group=sl 67 x Z_19 N=5713224 vertices=11426448

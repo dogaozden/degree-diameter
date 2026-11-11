@@ -1,0 +1,8 @@
+checker: haarcheck_psl
+command: ./bin/haarcheck_psl runs/d16D11_psl_449_373_orb3-5-1_s1.out B
+start: 2026-11-01T23:17:50Z
+sha256 915564641cfdddd2b1be217a950d65969df65bec62221187e29d713d012839f2  ./bin/haarcheck_psl
+sha256 8e592f8719676652dc31ca7436211e32edb6a8f598075c4df60440b361f9017d  runs/d16D11_psl_449_373_orb3-5-1_s1.out
+../beyond11/check_one.sh: line 5: 30566 Killed                  "$@"
+exit: 137
+end: 2026-11-01T23:18:27Z (37 s)

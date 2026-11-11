@@ -1,0 +1,7 @@
+group psl 449 x Z_331, N=14980795200 (2N=29961590400), rows 100800 x 148619 bits (doubled row 4664 words), memory 7.70 GB, threads 4
+alpha: conj by mat(0,448,1,448), z -> 31 z on Z_331 (fixed z: 1); ORBIT k=3 m=5 f=1; W=6.1784e+11 lambda=41.242 mu=0.00
+setup 0.0s
+start cost=0 (37.0s per eval)
+RESULT d=16 D=11 group=psl 449 x Z_331 N=14980795200 vertices=29961590400 best=0 evals=1 steps=0 time=37.0 orbit k=3 m=5 f=1 mu=0.00
+re-evaluation of the best S: cost 0
+wrote runs/d16D11_psl_449_331_orb3-5-1_s1.out

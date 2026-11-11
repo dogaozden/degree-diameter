@@ -1,0 +1,8 @@
+group sl 601 x Z_7, N=1519568400 (2N=3039136800), rows 361200 x 4207 bits (doubled row 152 words), memory 1.12 GB, threads 1
+alpha: conj by mat(0,600,1,600), z -> 2 z on Z_7 (fixed z: 1); ORBIT k=3 m=4 f=0; W=2.85312e+10 lambda=18.776 mu=10.65
+setup 0.0s
+start cost=66 (28.8s per eval)
+t=72 step=1 evals=5 slot=1 cand=0 cost=0 best=0 T=1.26
+RESULT d=12 D=11 group=sl 601 x Z_7 N=1519568400 vertices=3039136800 best=0 evals=5 steps=1 time=71.9 orbit k=3 m=4 f=0 mu=10.65
+re-evaluation of the best S: cost 0
+wrote runs/d12D11_sl_601_7_orb3-4-0_s12.out

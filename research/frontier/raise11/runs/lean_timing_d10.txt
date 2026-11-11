@@ -1,0 +1,14 @@
+haarcheck_lean: sl 151 x Z_67, N = 230667600, vertices 461335200, d = 10, D = 11; self-tests ok (1000000 index round trips)
+  root (e,A) step 1 (push): side B has 10 of 230667600   [0 s]
+  root (e,A) step 2 (push): side A has 91 of 230667600   [0 s]
+  root (e,A) step 3 (push): side B has 820 of 230667600   [0 s]
+  root (e,A) step 4 (push): side A has 7381 of 230667600   [0 s]
+  root (e,A) step 5 (push): side B has 66355 of 230667600   [1 s]
+  root (e,A) step 6 (push): side A has 595843 of 230667600   [1 s]
+  root (e,A) step 7 (push): side B has 5300058 of 230667600   [3 s]
+  root (e,A) step 8 (push): side A has 43471155 of 230667600   [11 s]
+  root (e,A) step 9 (push): side B has 195277048 of 230667600   [33 s]
+  root (e,A) step 10 (pull): side A has 230667600 of 230667600   [51 s]
+  root (e,A) step 11 (pull): side B has 230667600 of 230667600   [53 s]
+root (e,A): complete, every vertex within 11 at step 11 (unreached A 0, B 0), 53 s
+HALF-VALID d=10 D=11 group=sl 151 x Z_67 N=230667600 vertices=461335200 (root (e,A) only)
