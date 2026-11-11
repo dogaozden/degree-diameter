@@ -1,0 +1,55 @@
+# Third session: RANDORB (20,000 random symmetric S) vs RANDSAMPLE (3,000 random S) on small groups with mu_A ~ 3-5.
+# orb_*: haar_sym ORBIT="k m f" RANDORB=20000; orbfm_*: same with FIXMIN=5; rnd_*: RANDSAMPLE=3000. Commands: see STRUCTURE.md section 9.
+## rnd_10_8_psl_29_41.txt
+RANDSAMPLE d=10 D=8 group=psl 29 x Z_41 N=499380 samples=3000 min=2 p1=5 p10=9 median=15
+## rnd_10_8_sl_19_71.txt
+RANDSAMPLE d=10 D=8 group=sl 19 x Z_71 N=485640 samples=3000 min=2 p1=5 p10=9 median=15
+## rnd_8_8_psl_17_43.txt
+RANDSAMPLE d=8 D=8 group=psl 17 x Z_43 N=105264 samples=3000 min=3 p1=7 p10=13 median=23
+## rnd_8_8_psl_19_31.txt
+RANDSAMPLE d=8 D=8 group=psl 19 x Z_31 N=106020 samples=3000 min=4 p1=7 p10=12 median=22
+## rnd_8_8_psl_25_13.txt
+RANDSAMPLE d=8 D=8 group=psl 25 poly x^2+2 x Z_13 N=101400 samples=3000 min=1 p1=3 p10=7 median=13
+## orb_10_8_psl_29_41.txt
+ORBIT k=5 m=2 f=0: |Fix(alpha)| = 14 (+e); mu = 10.44, mu/k = 2.09, fixed-point misses ~ 1.74
+RANDORB d=10 D=8 group=psl 29 x Z_41 N=499380 k=5 m=2 f=0 fix=14 samples=20000 min=0 p1=1 p10=7 median=22 mean=1294.36 var=369197963.1 mu=10.44 time=12.7
+RANDORB hist (cost/k): 951 2188 2831 2853 2246 1635 1170 831 598 431 360 269 220 208 166 143 118 119 117 91 71 92 73 72 68 56 61 56 63 54 64 1725
+RANDORB cost0=127 of 20000 (P=0.00635); cost counts 0..20: 127 272 305 182 65 352 643 650 378 165 475 825 814 500 217 460 874 824 447 248 396
+## orb_10_8_sl_19_71.txt
+ORBIT k=5 m=2 f=0: |Fix(alpha)| = 19 (+e); mu = 7.49, mu/k = 1.50, fixed-point misses ~ 2.18
+RANDORB d=10 D=8 group=sl 19 x Z_71 N=485640 k=5 m=2 f=0 fix=19 samples=20000 min=0 p1=1 p10=6 median=20 mean=2334.58 var=685305881.6 mu=7.49 time=10.9
+RANDORB hist (cost/k): 1159 2546 3205 2857 2294 1621 1154 760 490 365 279 228 186 170 110 93 98 107 71 76 51 40 41 34 28 42 32 38 38 39 28 1720
+RANDORB cost0=127 of 20000 (P=0.00635); cost counts 0..20: 127 279 316 278 159 323 645 698 567 313 479 731 878 685 432 432 688 722 608 407 378
+## orb_8_8_psl_17_43.txt
+ORBIT k=3 m=2 f=2: |Fix(alpha)| = 8 (+e); mu = 11.44, mu/k = 3.81, fixed-point misses ~ 0.43
+RANDORB d=8 D=8 group=psl 17 x Z_43 N=105264 k=3 m=2 f=2 fix=8 samples=20000 min=0 p1=6 p10=15 median=51 mean=1114.80 var=33706400.3 mu=11.44 time=2.3
+RANDORB hist (cost/k): 33 143 329 528 655 736 818 813 797 755 702 650 643 611 520 481 441 455 420 353 342 312 278 274 265 223 222 191 188 166 196 6460
+RANDORB cost0=32 of 20000 (P=0.0016); cost counts 0..12: 32 1 0 124 18 1 297 30 2 484 41 3 590
+## orb_8_8_psl_19_31.txt
+ORBIT k=3 m=2 f=2: |Fix(alpha)| = 8 (+e); mu = 12.29, mu/k = 4.10, fixed-point misses ~ 0.44
+RANDORB d=8 D=8 group=psl 19 x Z_31 N=106020 k=3 m=2 f=2 fix=8 samples=20000 min=0 p1=6 p10=15 median=46 mean=1025.43 var=60706159.7 mu=12.29 time=2.8
+RANDORB hist (cost/k): 41 148 356 519 723 839 926 879 884 894 773 681 636 647 574 503 445 413 383 355 303 280 295 256 208 212 203 189 170 162 159 5944
+RANDORB cost0=38 of 20000 (P=0.0019); cost counts 0..12: 38 3 0 124 24 0 308 45 3 448 66 5 624
+## orb_8_8_psl_25_13.txt
+ORBIT k=3 m=2 f=2: |Fix(alpha)| = 11 (+e); mu = 7.78, mu/k = 2.59, fixed-point misses ~ 0.51
+RANDORB d=8 D=8 group=psl 25 poly x^2+2 x Z_13 N=101400 k=3 m=2 f=2 fix=11 samples=20000 min=0 p1=3 p10=9 median=33 mean=1306.96 var=92162184.4 mu=7.78 time=2.5
+RANDORB hist (cost/k): 198 593 1013 1180 1231 1156 1093 966 876 803 693 549 499 500 421 395 325 337 279 258 244 208 203 180 144 171 166 130 134 131 130 4794
+RANDORB cost0=162 of 20000 (P=0.0081); cost counts 0..12: 162 32 4 482 85 26 805 176 32 935 194 51 951
+## orbfm_8_8_psl_17_43.txt
+FIXMIN=5: 6 of 8 fixed elements eligible as generators
+ORBIT k=3 m=2 f=2: |Fix(alpha)| = 8 (+e); mu = 11.44, mu/k = 3.81, fixed-point misses ~ 0.43
+RANDORB d=8 D=8 group=psl 17 x Z_43 N=105264 k=3 m=2 f=2 fix=8 samples=20000 min=0 p1=3 p10=15 median=45 mean=876.24 var=24238405.1 mu=11.44 time=2.4
+RANDORB hist (cost/k): 53 185 363 617 745 846 941 924 911 873 727 716 645 613 518 510 480 437 401 354 330 316 289 287 254 232 227 186 176 164 189 5491
+RANDORB cost0=49 of 20000 (P=0.00245); cost counts 0..12: 49 4 0 165 20 0 329 34 0 570 47 0 680
+## orbfm_8_8_psl_19_31.txt
+FIXMIN=5: 6 of 8 fixed elements eligible as generators
+ORBIT k=3 m=2 f=2: |Fix(alpha)| = 8 (+e); mu = 12.29, mu/k = 4.10, fixed-point misses ~ 0.44
+RANDORB d=8 D=8 group=psl 19 x Z_31 N=106020 k=3 m=2 f=2 fix=8 samples=20000 min=0 p1=3 p10=12 median=39 mean=895.50 var=55644086.8 mu=12.29 time=2.6
+RANDORB hist (cost/k): 56 198 401 618 853 982 1035 1011 1002 982 874 791 674 649 582 512 466 410 349 329 303 284 261 265 204 172 176 152 178 127 120 4984
+RANDORB cost0=50 of 20000 (P=0.0025); cost counts 0..12: 50 6 0 172 26 0 360 41 0 516 102 0 772
+## orbfm_8_8_psl_25_13.txt
+FIXMIN=5: 6 of 11 fixed elements eligible as generators
+ORBIT k=3 m=2 f=2: |Fix(alpha)| = 11 (+e); mu = 7.78, mu/k = 2.59, fixed-point misses ~ 0.51
+RANDORB d=8 D=8 group=psl 25 poly x^2+2 x Z_13 N=101400 k=3 m=2 f=2 fix=11 samples=20000 min=0 p1=0 p10=6 median=24 mean=1151.37 var=87676307.7 mu=7.78 time=2.5
+RANDORB hist (cost/k): 296 778 1227 1488 1556 1459 1287 1203 962 840 752 582 473 431 417 338 304 271 226 204 200 185 172 159 142 129 129 112 106 101 91 3380
+RANDORB cost0=237 of 20000 (P=0.01185); cost counts 0..12: 237 44 15 639 108 31 992 197 38 1164 261 63 1209

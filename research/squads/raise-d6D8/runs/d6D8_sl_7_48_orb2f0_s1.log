@@ -1,0 +1,35 @@
+group sl 7 x Z_48, N=16128, identity 2016, H order 56, rows 288, threads 1, setup 0.00s
+wide rows: HW order 168, rows 96, setup 0.00s
+alpha: conj by mat(6,1,5,1) (index 299), z -> 23 z on Z_48
+ORBIT k=2 m=3 f=0: |Fix(alpha)| = 15 (+e); mu = 37.84, mu/k = 18.92, fixed-point misses ~ 0.77
+start cost=8066
+t=30 steps=335543 evals=2684345 cost=13 best=13 T=0.53
+t=60 steps=691348 evals=5530785 cost=8 best=8 T=0.19
+t=90 steps=1062664 evals=8501313 cost=8 best=8 T=0.15
+t=120 steps=1429749 evals=11437993 cost=8 best=8 T=0.15
+t=150 steps=1764663 evals=14117305 cost=20 best=8 T=0.15
+t=180 steps=2112198 evals=16897585 cost=18 best=8 T=0.15
+t=210 steps=2469655 evals=19757241 cost=13 best=8 T=0.71
+t=240 steps=2845152 evals=22761217 cost=18 best=8 T=0.25
+t=270 steps=3201827 evals=25614617 cost=21 best=8 T=0.15
+t=300 steps=3525602 evals=28204817 cost=21 best=8 T=0.15
+t=330 steps=3860090 evals=30880721 cost=21 best=8 T=0.15
+t=360 steps=4209155 evals=33673241 cost=8 best=8 T=0.71
+t=390 steps=4558401 evals=36467209 cost=8 best=8 T=0.25
+t=420 steps=4916597 evals=39332777 cost=18 best=8 T=0.15
+t=450 steps=5296777 evals=42374217 cost=25 best=8 T=0.15
+t=480 steps=5680791 evals=45446329 cost=25 best=8 T=0.15
+t=510 steps=6046064 evals=48368513 cost=8 best=8 T=0.71
+t=540 steps=6409381 evals=51275049 cost=8 best=8 T=0.25
+t=570 steps=6762041 evals=54096329 cost=8 best=8 T=0.15
+t=600 steps=7136186 evals=57089489 cost=8 best=8 T=0.15
+t=630 steps=7491529 evals=59932233 cost=8 best=8 T=0.15
+t=660 steps=7861137 evals=62889097 cost=21 best=8 T=0.71
+t=690 steps=8212223 evals=65697785 cost=16 best=8 T=0.25
+t=720 steps=8548525 evals=68388201 cost=16 best=8 T=0.15
+t=750 steps=8874193 evals=70993545 cost=20 best=8 T=0.15
+t=780 steps=9231010 evals=73848081 cost=20 best=8 T=0.15
+t=810 steps=9572069 evals=76576553 cost=18 best=8 T=0.71
+t=840 steps=9915395 evals=79323161 cost=18 best=8 T=0.25
+t=870 steps=10293846 evals=82350769 cost=18 best=8 T=0.15
+RESULT d=6 D=8 group=sl 7 x Z_48 N=16128 best=8 evals=85145897 time=900.0 orbit k=2 m=3 f=0 fix=15

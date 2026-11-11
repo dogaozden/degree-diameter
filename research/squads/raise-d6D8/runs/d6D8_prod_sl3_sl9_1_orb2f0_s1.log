@@ -1,0 +1,25 @@
+group prod sl 3 sl 9 poly x^2+1 x Z_1, N=17280, identity 4392, H order 30, rows 576, threads 1, setup 0.00s
+wide rows: no cyclic subgroup of order >= 64 found (best 30); using haar_gen3's evaluation
+alpha: conj by prod[mat(0,2,1,0);mat(0,7,4,0)] (index 2214), z -> 0 z on Z_1
+ORBIT k=2 m=3 f=0: |Fix(alpha)| = 31 (+e); mu = 60.70, mu/k = 30.35, fixed-point misses ~ 1.90
+start cost=208
+t=30 steps=65749 evals=525993 cost=11 best=11 T=0.53
+t=60 steps=130156 evals=1041249 cost=11 best=11 T=0.19
+t=90 steps=199254 evals=1594033 cost=11 best=11 T=0.15
+t=120 steps=267757 evals=2142057 cost=11 best=11 T=0.15
+t=150 steps=339241 evals=2713929 cost=11 best=11 T=0.15
+t=180 steps=408357 evals=3266857 cost=15 best=11 T=0.72
+t=210 steps=479174 evals=3833393 cost=15 best=11 T=0.25
+t=240 steps=549620 evals=4396961 cost=14 best=11 T=0.15
+t=270 steps=618557 evals=4948457 cost=14 best=11 T=0.15
+t=300 steps=688507 evals=5508057 cost=14 best=11 T=0.15
+t=330 steps=760938 evals=6087505 cost=9 best=9 T=0.72
+t=360 steps=834683 evals=6677465 cost=9 best=9 T=0.25
+t=390 steps=905643 evals=7245145 cost=9 best=9 T=0.15
+t=420 steps=977351 evals=7818809 cost=9 best=9 T=0.15
+t=450 steps=1052379 evals=8419033 cost=9 best=9 T=0.15
+t=480 steps=1123396 evals=8987169 cost=15 best=9 T=0.96
+t=510 steps=1195473 evals=9563785 cost=9 best=9 T=0.34
+t=540 steps=1260265 evals=10082121 cost=9 best=9 T=0.15
+t=570 steps=1327138 evals=10617105 cost=9 best=9 T=0.15
+RESULT d=6 D=8 group=prod sl 3 sl 9 poly x^2+1 x Z_1 N=17280 best=9 evals=11185145 time=600.0 orbit k=2 m=3 f=0 fix=31

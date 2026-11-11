@@ -1,0 +1,35 @@
+group psl 11 x Z_25, N=16500, identity 1375, H order 55, rows 300, threads 1, setup 0.00s
+wide rows: HW order 150, rows 110, setup 0.00s
+alpha: conj by mat(5,1,7,6) (index 557), z -> 24 z on Z_25
+ORBIT k=2 m=3 f=0: |Fix(alpha)| = 11 (+e); mu = 44.37, mu/k = 22.19, fixed-point misses ~ 0.62
+start cost=104
+t=30 steps=301654 evals=2413233 cost=15 best=15 T=0.53
+t=60 steps=604893 evals=4839145 cost=24 best=15 T=0.19
+t=90 steps=922066 evals=7376529 cost=24 best=15 T=0.15
+t=120 steps=1225155 evals=9801241 cost=24 best=15 T=0.15
+t=150 steps=1545429 evals=12363433 cost=24 best=15 T=0.15
+t=180 steps=1854222 evals=14833777 cost=18 best=15 T=0.60
+t=210 steps=2161240 evals=17289921 cost=24 best=15 T=0.21
+t=240 steps=2483651 evals=19869209 cost=24 best=15 T=0.15
+t=270 steps=2788496 evals=22307969 cost=14 best=14 T=0.15
+t=300 steps=3075852 evals=24606817 cost=14 best=14 T=0.15
+t=330 steps=3378833 evals=27030665 cost=14 best=14 T=0.15
+t=360 steps=3686915 evals=29495321 cost=14 best=14 T=0.15
+t=390 steps=4009872 evals=32078977 cost=20 best=14 T=0.15
+t=420 steps=4352902 evals=34823217 cost=17 best=14 T=0.70
+t=450 steps=4675963 evals=37407705 cost=17 best=14 T=0.25
+t=480 steps=5004362 evals=40034897 cost=17 best=14 T=0.15
+t=510 steps=5325746 evals=42605969 cost=17 best=14 T=0.15
+t=540 steps=5654167 evals=45233337 cost=17 best=14 T=0.15
+t=570 steps=5979767 evals=47838137 cost=14 best=14 T=0.70
+t=600 steps=6290569 evals=50324553 cost=14 best=14 T=0.25
+t=630 steps=6603221 evals=52825769 cost=14 best=14 T=0.15
+t=660 steps=6884435 evals=55075481 cost=14 best=14 T=0.15
+t=690 steps=7171370 evals=57370961 cost=19 best=14 T=0.15
+t=720 steps=7504198 evals=60033585 cost=14 best=14 T=0.70
+t=750 steps=7805397 evals=62443177 cost=18 best=14 T=0.25
+t=780 steps=8131353 evals=65050825 cost=18 best=14 T=0.15
+t=810 steps=8431444 evals=67451553 cost=18 best=14 T=0.15
+t=840 steps=8739890 evals=69919121 cost=18 best=14 T=0.15
+t=870 steps=9051605 evals=72412841 cost=18 best=14 T=0.70
+RESULT d=6 D=8 group=psl 11 x Z_25 N=16500 best=14 evals=74761929 time=900.0 orbit k=2 m=3 f=0 fix=11
