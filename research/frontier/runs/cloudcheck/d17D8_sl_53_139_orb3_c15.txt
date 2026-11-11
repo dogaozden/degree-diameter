@@ -1,0 +1,32 @@
+machine: vm | nproc=4 | free -g (total used free shared buff/cache available): 15 0 14 0 0 15
+sha256: 8222511cc764e1628c606b0a062200617b2f04989568c3c1d9fc3f9627996bff  d17D8_sl_53_139_orb3_c15.txt
+# reference: haarcheck_sl  [rc=0 wall_s=17.5 peak_rss_mb=16]
+from (e,A): reached A 20686536/20686536, B 20686536/20686536 within 8, ecc 8
+from (e,B): reached A 20686536/20686536, B 20686536/20686536 within 8, ecc 8
+VALID d=17 D=8 group=sl 53 x Z_139 N=20686536 vertices=41373072 (distinct generators, 17-regular simple)
+# independent: haarcheck2  [rc=0 wall_s=19.6 peak_rss_mb=13]
+file=d17D8_sl_53_139_orb3_c15.txt d=17 D=8 p=53 n=139 |G|=20686536 vertices=41373072
+selfcheck: SL(2,53) index is a bijection onto det-1 matrices (|SL|=148824), fastmod ok (0.00s)
+generators: 17 read, all in SL(2,53) x Z_139, all distinct
+selfcheck: generator inverses verified
+BFS from (e,A):
+  from (e,A) level 1: new=17  reached=18 / 41373072
+  from (e,A) level 2: new=272  reached=290 / 41373072
+  from (e,A) level 3: new=4346  reached=4636 / 41373072
+  from (e,A) level 4: new=69320  reached=73956 / 41373072
+  from (e,A) level 5: new=1078478  reached=1152434 / 41373072
+  from (e,A) level 6: new=11835052  reached=12987486 / 41373072
+  from (e,A) level 7: new=19603695  reached=32591181 / 41373072
+  from (e,A) level 8: new=8781891  reached=41373072 / 41373072
+  done in 9.92s, eccA=8, reached 41373072 / 41373072
+BFS from (e,B):
+  from (e,B) level 1: new=17  reached=18 / 41373072
+  from (e,B) level 2: new=272  reached=290 / 41373072
+  from (e,B) level 3: new=4346  reached=4636 / 41373072
+  from (e,B) level 4: new=69320  reached=73956 / 41373072
+  from (e,B) level 5: new=1078478  reached=1152434 / 41373072
+  from (e,B) level 6: new=11835142  reached=12987576 / 41373072
+  from (e,B) level 7: new=19603695  reached=32591271 / 41373072
+  from (e,B) level 8: new=8781801  reached=41373072 / 41373072
+  done in 9.67s, eccB=8, reached 41373072 / 41373072
+VALID d=17 D=8 vertices=41373072 eccA=8 eccB=8

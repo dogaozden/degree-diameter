@@ -1,0 +1,17 @@
+machine: vm | nproc=4 | free -g (total used free shared buff/cache available): 15 0 14 0 0 15
+sha256: 8d9b8fb03f3994ccce31e7f5e079544e55d7bf689ef7096ad5742186f654b0c3  d15D8_psl_41_271_orb5f0_ORBW5_s1.txt
+# reference: haarcheck_psl  [rc=0 wall_s=11.2 peak_rss_mb=13]
+from (e,A): reached A 9333240/9333240, B 9333240/9333240 within 8, ecc 8
+from (e,B): reached A 9333240/9333240, B 9333240/9333240 within 8, ecc 8
+VALID d=15 D=8 group=psl 41 x Z_271 N=9333240 vertices=18666480 (distinct generators, 15-regular simple)
+# independent: check_haar_indep.py  [rc=0 wall_s=18.3 peak_rss_mb=578]
+file d15D8_psl_41_271_orb5f0_ORBW5_s1.txt
+header: d=15 D=8 spec=psl 41 NCYC=271 N=9333240
+group order |G|=34440 (factors [34440]), x Z_271 -> 9333240; vertices 2N=18666480
+distinct generators (as full group elements): 15 of d=15
+permutations built (0s)
+BFS from A: ecc=8 reached 18666480 of 18666480 (unreached 0); level sizes [1, 15, 210, 2940, 41120, 559890, 5380429, 8770395, 3911480]
+BFS from B: ecc=8 reached 18666480 of 18666480 (unreached 0); level sizes [1, 15, 210, 2940, 41120, 559890, 5383478, 8770395, 3908431]
+every vertex has exactly 15 distinct neighbours: True
+RESULT VALID d=15 D=8 eccA=8 eccB=8 n=18666480 (18s)
+

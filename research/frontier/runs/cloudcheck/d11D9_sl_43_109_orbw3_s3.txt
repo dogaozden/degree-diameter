@@ -1,0 +1,34 @@
+machine: vm | nproc=4 | free -g (total used free shared buff/cache available): 15 0 14 0 0 15
+sha256: 8ba98a828a37d8decfef6356f387c2e287a02197b933d4251763ff8027e24931  d11D9_sl_43_109_orbw3_s3.txt
+# reference: haarcheck_sl  [rc=0 wall_s=5.5 peak_rss_mb=13]
+from (e,A): reached A 8661576/8661576, B 8661576/8661576 within 9, ecc 9
+from (e,B): reached A 8661576/8661576, B 8661576/8661576 within 9, ecc 9
+VALID d=11 D=9 group=sl 43 x Z_109 N=8661576 vertices=17323152 (distinct generators, 11-regular simple)
+# independent: haarcheck2  [rc=0 wall_s=5.2 peak_rss_mb=13]
+file=d11D9_sl_43_109_orbw3_s3.txt d=11 D=9 p=43 n=109 |G|=8661576 vertices=17323152
+selfcheck: SL(2,43) index is a bijection onto det-1 matrices (|SL|=79464), fastmod ok (0.00s)
+generators: 11 read, all in SL(2,43) x Z_109, all distinct
+selfcheck: generator inverses verified
+BFS from (e,A):
+  from (e,A) level 1: new=11  reached=12 / 17323152
+  from (e,A) level 2: new=110  reached=122 / 17323152
+  from (e,A) level 3: new=1100  reached=1222 / 17323152
+  from (e,A) level 4: new=11000  reached=12222 / 17323152
+  from (e,A) level 5: new=109584  reached=121806 / 17323152
+  from (e,A) level 6: new=1033949  reached=1155755 / 17323152
+  from (e,A) level 7: new=6147321  reached=7303076 / 17323152
+  from (e,A) level 8: new=7616516  reached=14919592 / 17323152
+  from (e,A) level 9: new=2403560  reached=17323152 / 17323152
+  done in 2.66s, eccA=9, reached 17323152 / 17323152
+BFS from (e,B):
+  from (e,B) level 1: new=11  reached=12 / 17323152
+  from (e,B) level 2: new=110  reached=122 / 17323152
+  from (e,B) level 3: new=1100  reached=1222 / 17323152
+  from (e,B) level 4: new=11000  reached=12222 / 17323152
+  from (e,B) level 5: new=109584  reached=121806 / 17323152
+  from (e,B) level 6: new=1034087  reached=1155893 / 17323152
+  from (e,B) level 7: new=6147321  reached=7303214 / 17323152
+  from (e,B) level 8: new=7616378  reached=14919592 / 17323152
+  from (e,B) level 9: new=2403560  reached=17323152 / 17323152
+  done in 2.58s, eccB=9, reached 17323152 / 17323152
+VALID d=11 D=9 vertices=17323152 eccA=9 eccB=9
