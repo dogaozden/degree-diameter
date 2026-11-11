@@ -1,0 +1,12 @@
+group pgl 17 x Z_23, N=112608, identity 0, H order 46, rows 2448, threads 1, setup 0.01s
+start cost=27
+t=30 steps=18766 evals=150129 cost=4 best=4 T=0.53
+t=60 steps=38199 evals=305593 cost=3 best=3 T=0.19
+t=90 steps=57900 evals=463201 cost=3 best=3 T=0.15
+t=120 steps=77822 evals=622577 cost=3 best=3 T=0.15
+t=150 steps=96943 evals=775545 cost=3 best=3 T=0.15
+t=180 steps=116001 evals=928009 cost=3 best=3 T=0.15
+t=210 steps=134796 evals=1078369 cost=7 best=3 T=0.78
+t=240 steps=154087 evals=1232697 cost=4 best=3 T=0.27
+t=270 steps=173079 evals=1384633 cost=4 best=3 T=0.15
+RESULT d=8 D=8 group=pgl 17 x Z_23 N=112608 best=3 evals=1531817 time=300.0
