@@ -1,0 +1,10 @@
+q=17 N=1508598 e1=1 e6=88741 v(line)=35
+c=3 (-c nonsquare), c0=1 c1=0
+|S|=4914 (q^3+1=4914)  |points(Pi)|=88452 ((q+1)(q^3+1)=88452)  |L_v|=306 (q^2+q=306)
+|W|=83232 (q^2(q^2-1)=83232)  lines-with-no-z=88434 ambiguous=0 zero-z=0
+levels: 2:1 1:4931 0:171972 -1:2840292
+doubled graph: n=3203968 vertices
+degrees: min 18 max 19 (q+m = 19); histogram: 18:186124 19:3017844
+edges=30344634
+BFS sources=96 (random 60 + local 36): max eccentricity 6
+RESULT VALID-SAMPLED q=17 m=2 n=3203968 maxdeg=19 maxecc_sampled=6

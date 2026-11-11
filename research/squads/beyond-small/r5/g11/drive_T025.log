@@ -1,0 +1,13 @@
+=== chunk 1 seed 12001 start 06:54:35 best=45
+setup 0.94s
+pool side 0: 0 covers, 0 lines (rejected: format 0, keys 0, cover 0)
+pool side 1: 39910 covers, 159640 lines (rejected: format 0, keys 0, cover 0)
+start: K0=0 K1=45 conflict-degree-sum=0 (1.73s)
+t=10 T=0.234 K0=0 K1=31 C=0 | acc ins 32/3482 del 46/2331 rep 835/4329 line 1752/2874
+t=20 T=0.218 K0=0 K1=30 C=0 | acc ins 66/6904 del 81/4137 rep 1834/8377 line 3227/5081
+t=30 T=0.204 K0=0 K1=32 C=0 | acc ins 85/10338 del 98/5894 rep 3003/12320 line 4587/7199
+t=40 T=0.191 K0=0 K1=33 C=0 | acc ins 100/13779 del 112/7709 rep 4178/16455 line 6039/9433
+t=50 T=0.179 K0=0 K1=33 C=0 | acc ins 111/17503 del 123/9698 rep 5640/21133 line 7580/11840
+t=60 T=0.167 K0=0 K1=35 C=0 | acc ins 127/20969 del 137/11581 rep 7004/25350 line 9022/14156
+t=70 T=0.156 K0=0 K1=35 C=0 | acc ins 132/24697 del 142/13391 rep 8245/29842 line 10536/16559
+t=80 T=0.146 K0=0 K1=34 C=0 | acc ins 133/29055 del 144/15620 rep 9428/34890 line 12165/19244

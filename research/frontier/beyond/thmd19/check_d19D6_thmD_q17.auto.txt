@@ -1,0 +1,44 @@
+Theorem D, q = 17, m = 2: research/frontier/beyond/thmd19/thmd_auto ../hex6/hex/hex_q17.bin 0 1 thmd_q17.edges thmd_q17.aut (job beyond-small, 2026-11-01T05:18:08Z)
+levels: 2:1 1:4931 0:171972 -1:2840292
+torus t(a=1,b=2): preserves the levels
+torus t(a=1,b=3): preserves the levels
+torus t(a=1,b=4): preserves the levels
+torus t(a=1,b=5): preserves the levels
+torus t(a=1,b=6): preserves the levels
+torus t(a=1,b=7): preserves the levels
+torus t(a=1,b=8): preserves the levels
+torus t(a=1,b=9): preserves the levels
+torus t(a=1,b=10): preserves the levels
+torus t(a=1,b=11): preserves the levels
+torus t(a=1,b=12): preserves the levels
+torus t(a=1,b=13): preserves the levels
+torus t(a=1,b=14): preserves the levels
+torus t(a=1,b=15): preserves the levels
+torus t(a=1,b=16): preserves the levels
+torus t(a=-1,b=1): moves the levels
+torus t(a=-1,b=2): moves the levels
+torus t(a=-1,b=3): moves the levels
+torus t(a=-1,b=4): moves the levels
+torus t(a=-1,b=5): moves the levels
+torus t(a=-1,b=6): moves the levels
+torus t(a=-1,b=7): moves the levels
+torus t(a=-1,b=8): moves the levels
+torus t(a=-1,b=9): moves the levels
+torus t(a=-1,b=10): moves the levels
+torus t(a=-1,b=11): moves the levels
+torus t(a=-1,b=12): moves the levels
+torus t(a=-1,b=13): moves the levels
+torus t(a=-1,b=14): moves the levels
+torus t(a=-1,b=15): moves the levels
+torus t(a=-1,b=16): moves the levels
+doubled graph: n=3203968 vertices
+degrees: min 18 max 19 (q+m = 19); histogram: 18:186124 19:3017844
+generator 0: t(a=1,b=3)
+edge list sha256: 8e2e42d2fca629eeebff80c12ff0fb76df7268007c980e16af5e8c72f9262157
+n=3203968 edges=30344634 degree min=18 max=19 bipartite=yes automorphisms verified=1 orbits=200486
+diameter=6 (BFS from 200486 orbit representatives)
+RESULT VALID d=19 D=6 n=3203968
+
+real	150m43.106s
+user	83m16.105s
+sys	0m5.226s

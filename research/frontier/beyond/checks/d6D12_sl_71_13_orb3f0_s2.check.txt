@@ -1,0 +1,6 @@
+check: hcheck5 (THREADS=1), director 2026-10-26T16:03:09Z
+loaded ../sols/d6D12_sl_71_13_orb3f0_s2.txt: d=6 D=12 p=71 n=13 N=4651920; idx-column mismatches=0
+generators distinct: yes
+from (e,A): all reached within 12, ecc 12 (1.424 s)
+from (e,B): all reached within 12, ecc 12 (1.490 s)
+VALID d=6 D=12 group=sl 71 x Z_13 N=4651920 vertices=9303840 threads=1 time=2.919 bfs_A=1.424 bfs_B=1.490

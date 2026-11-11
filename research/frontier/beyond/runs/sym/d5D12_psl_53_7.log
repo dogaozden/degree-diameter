@@ -1,0 +1,23 @@
+group psl 53 x Z_7, N=520884, identity 9646, H order 63, rows 8268, threads 1, setup 0.10s
+wide rows: HW order 189, rows 2756, setup 0.19s
+start cost=446
+t=30 steps=1719 evals=13753 cost=3 best=2 T=0.53
+t=60 steps=3470 evals=27761 cost=2 best=2 T=0.19
+t=90 steps=5197 evals=41577 cost=2 best=2 T=0.15
+t=120 steps=6826 evals=54609 cost=1 best=1 T=0.15
+t=150 steps=8519 evals=68153 cost=1 best=1 T=0.15
+t=180 steps=10127 evals=81017 cost=1 best=1 T=0.15
+t=210 steps=11566 evals=92529 cost=1 best=1 T=0.15
+t=240 steps=12855 evals=102841 cost=1 best=1 T=0.15
+t=270 steps=14057 evals=112457 cost=6 best=1 T=1.09
+t=300 steps=15230 evals=121841 cost=2 best=1 T=0.39
+t=330 steps=16397 evals=131177 cost=2 best=1 T=0.15
+t=360 steps=17562 evals=140497 cost=2 best=1 T=0.15
+t=390 steps=18698 evals=149585 cost=2 best=1 T=0.15
+t=420 steps=19754 evals=158033 cost=4 best=1 T=1.09
+t=450 steps=20836 evals=166689 cost=3 best=1 T=0.38
+t=480 steps=22025 evals=176201 cost=2 best=1 T=0.15
+t=510 steps=23240 evals=185921 cost=2 best=1 T=0.15
+t=540 steps=24509 evals=196073 cost=2 best=1 T=0.15
+t=570 steps=25753 evals=206025 cost=5 best=1 T=1.08
+RESULT d=5 D=12 group=psl 53 x Z_7 N=520884 best=1 evals=216281 time=600.0

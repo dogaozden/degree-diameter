@@ -1,0 +1,20 @@
+# (16,5) bipartite on 32,768 vertices: bipartite double cover G x K2 of the (16,4) graph G of Amarel, DeBardeleben,
+# Grosskopf, Job, Lawrence, Monroe, Somasundaram (LANL, communicated to the Comellas degree-diameter table Sep 18, 2026;
+# 'graph-lift construction found using the agentic tool URSA', LA-UR-26-28353). Credit for G is theirs; ours is the
+# observation that G x K2 has diameter 5 (beats the (16,5) bipartite table value 27,300 and the PG(4,3) flag graph 31,460).
+# Source: https://web.mat.upc.edu/francesc.comellas/delta-d/desc_g/adjacencies/adjD4/deg16D4_edges.txt
+# source sha256 14f3137cad45b4f3f13be505405e5d10c008f7ab0f038375eb42b88733dc0f23 (16384 vertices, 131072 edges, 16-regular, simple)
+== python3 -I research/theorems/squad165/double_cover.py deg16D4_edges.txt d16D5_n32768.edges
+G: n 16384 edges 131072 -> G x K2: n 32768 edges 262144
+uncompressed sha256 20401e90cc823102268424d9efb27939bd1dee2ad1e51d560c644e493490f23d  (graphs/d16D5_n32768_doublecover_lanl_d16D4.edges.gz)
+== apsp d16D5_n32768.edges 16 5   (research/lifts/coordinator_check/apsp.c, all pairs, bit-parallel)
+n=32768 edges=262144 degree min=16 max=16 bipartite=yes diameter=5
+RESULT VALID d=16 D=5 n=32768
+== bfs_all d16D5_n32768.edges   (research/theorems/squad165/bfs_all.c, plain BFS from every vertex)
+n=32768 edges=262144 degree 16..16 bipartite=yes max_ecc=5
+  dist 0: 32768 ordered pairs
+  dist 1: 524288 ordered pairs
+  dist 2: 6651904 ordered pairs
+  dist 3: 81592320 ordered pairs
+  dist 4: 530186240 ordered pairs
+  dist 5: 454754304 ordered pairs

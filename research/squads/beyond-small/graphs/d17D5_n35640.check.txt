@@ -1,0 +1,5 @@
+n=35640 edges=300190 degree min=16 max=17 bipartite=yes diameter=5
+RESULT VALID d=17 D=5 n=35640
+edge list sha256 d5cc7325df37963a6f1de8f58ff591d375d8729585dadb1089b8660f89265fe8
+orbits: 42 with N in B (A-hubs), 42 with N in A (B-hubs); 22 hubs each
+rebuild: python3 research/squads/beyond-small/graphs/build_d17D5_hubs.py OUT.edges --orbits research/squads/beyond-small/graphs/d17D5_n35640_orbit_bases.txt

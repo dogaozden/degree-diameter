@@ -1,0 +1,7 @@
+check: hcheckpsl (THREADS=1), director 2026-10-26T16:02:22Z
+# threads=1 bfsA=0.296s bfsB=0.251s total=0.548s maxrss=4MB
+VALID d=5 D=12 group=psl 97 x Z_1 N=456288 vertices=912576
+ecc(e,A)=12 ecc(e,B)=12
+
+check: build_haar2.py
+VALID d=5 D=12 group=psl 97 x Z_1 N=456288 vertices=912576

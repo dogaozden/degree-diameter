@@ -1,0 +1,10 @@
+check: hcheck5 (THREADS=2), director
+loaded ../sols/d6D12_sl_47_43_orb3f0_s1.txt: d=6 D=12 p=47 n=43 N=4462368; idx-column mismatches=0
+generators distinct: yes
+from (e,A): all reached within 12, ecc 12 (1.783 s)
+from (e,B): all reached within 12, ecc 12 (1.708 s)
+VALID d=6 D=12 group=sl 47 x Z_43 N=4462368 vertices=8924736 threads=2 time=3.491 bfs_A=1.783 bfs_B=1.708
+
+check: build_haar2.py
+edge list sha256 = 8d8f98a597b97a1b1b236f6e9e657de4a47957d8193f7fd0dea3f1164ab3b1a7
+VALID d=6 D=12 group=sl 47 x Z_43 N=4462368 vertices=8924736

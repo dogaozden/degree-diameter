@@ -1,0 +1,15 @@
+setup 1.0s
+existing hubs 1056 (bases 48)
+T=1 free lines 27324
+T=1 covers 33 from 7838 tries
+side 0: 33 covers, 1 survive self+compat
+T=0 free lines 33506
+T=0 covers 47 from 7457 tries
+side 1: 47 covers, 1 survive self+compat
+pool survivors 2 (68.2s)
+side 0: P=1 edges=0 density=0.0000 (68.2s)
+  side 0 clique 1 (68.2s)
+side 1: P=1 edges=0 density=0.0000 (72.2s)
+  side 1 clique 1 (72.2s)
+wrote 1078 hubs (1056 existing + 22 new Z11 hubs from 2 bases)
+pool 2 best_new_hubs 22 bases 2 total_hubs 1078 n 34870

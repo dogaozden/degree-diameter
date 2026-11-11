@@ -1,0 +1,8 @@
+setup 0.92s
+pool side 0: 36565 covers, 146260 lines (rejected: format 0, keys 0, cover 0)
+pool side 1: 0 covers, 0 lines (rejected: format 0, keys 0, cover 0)
+start: K0=43 K1=0 conflict-degree-sum=0 (1.49s)
+t=10 T=0.317 K0=30 K1=0 C=0 | acc ins 70/1726 del 83/1616 rep 2009/2984 line 1139/1982
+t=20 T=0.288 K0=32 K1=0 C=0 | acc ins 133/3107 del 144/3225 rep 4508/6292 line 2304/4002
+t=30 T=0.261 K0=29 K1=0 C=0 | acc ins 178/4353 del 192/4869 rep 6823/9564 line 3613/6205
+t=40 T=0.237 K0=32 K1=0 C=2 | acc ins 208/5405 del 219/6450 rep 8766/12416 line 4747/8250

@@ -1,0 +1,7 @@
+group sl 4 poly x^2+x+1 x Z_311, N=18660, identity 3732, H order 5, rows 3732, threads 1, setup 0.03s
+wide rows: no cyclic subgroup of order >= 64 found (best 5); using haar_gen3's evaluation
+alpha: conj by mat(1,3,3,3) (index 27), z -> 6 z on Z_311
+ORBIT k=5 m=3 f=2: |Fix(alpha)| = 4 (+e); mu = 440.49, mu/k = 88.10, fixed-point misses ~ 4.73
+start cost=980
+t=30 steps=2023 evals=16185 cost=450 best=450 T=0.53
+RESULT d=17 D=5 group=sl 4 poly x^2+x+1 x Z_311 N=18660 best=450 evals=21865 time=40.0 orbit k=5 m=3 f=2 fix=4

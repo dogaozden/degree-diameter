@@ -1,0 +1,39 @@
+it 1 t=45s style=region mode=one_j2 c=37 |R|=8 dropped=8 seed=13012 fixed=37 new=45 ok=True accepted=True cur=45 reward=0.5 dt=45s
+it 2 t=126s style=big dropped=10 seed=13025 fixed=35 new=44 ok=True accepted=False cur=45 reward=0.0 dt=80s
+it 3 t=196s style=conflict drop=[34, 41] seed=13040 fixed=43 new=45 ok=True accepted=True cur=45 reward=0.5 dt=70s
+it 4 t=286s style=small dropped=4 seed=13045 fixed=41 new=44 ok=True accepted=False cur=45 reward=0.0 dt=90s
+it 5 t=355s style=conflict drop=[42, 43] seed=13057 fixed=43 new=45 ok=True accepted=True cur=45 reward=0.5 dt=69s
+it 6 t=400s style=region mode=one_j1 c=20 |R|=8 dropped=8 seed=13075 fixed=37 new=43 ok=True accepted=False cur=45 reward=0.0 dt=45s
+it 7 t=445s style=region mode=one_j1 c=213 |R|=8 dropped=8 seed=13077 fixed=37 new=43 ok=True accepted=False cur=45 reward=0.0 dt=45s
+it 8 t=526s style=big dropped=9 seed=13091 fixed=36 new=45 ok=True accepted=True cur=45 reward=0.5 dt=81s
+it 9 t=595s style=conflict drop=[5, 34] seed=13103 fixed=43 new=45 ok=True accepted=True cur=45 reward=0.5 dt=70s
+it 10 t=641s style=region mode=one_j1 c=185 |R|=8 dropped=7 seed=13119 fixed=38 new=45 ok=True accepted=True cur=45 reward=0.5 dt=45s
+it 11 t=721s style=big dropped=9 seed=13128 fixed=36 new=42 ok=True accepted=False cur=45 reward=0.0 dt=80s
+it 12 t=791s style=conflict drop=[15, 28, 38] seed=13133 fixed=42 new=45 ok=True accepted=True cur=45 reward=0.5 dt=70s
+it 13 t=837s style=region mode=all_j c=253 |R|=12 dropped=9 seed=13147 fixed=36 new=42 ok=True accepted=False cur=45 reward=0.0 dt=45s
+it 14 t=906s style=conflict drop=[16, 23, 39] seed=13157 fixed=42 new=45 ok=True accepted=True cur=45 reward=0.5 dt=69s
+it 15 t=974s style=conflict drop=[6, 27] seed=13169 fixed=43 new=45 ok=True accepted=True cur=45 reward=0.5 dt=68s
+it 16 t=1064s style=small dropped=3 seed=13177 fixed=42 new=45 ok=True accepted=True cur=45 reward=0.5 dt=90s
+it 17 t=1134s style=conflict drop=[30, 41] seed=13187 fixed=43 new=45 ok=True accepted=True cur=45 reward=0.5 dt=70s
+it 18 t=1203s style=conflict drop=[34, 36, 38] seed=13204 fixed=42 new=45 ok=True accepted=True cur=45 reward=0.5 dt=69s
+it 19 t=1271s style=conflict drop=[34, 42] seed=13211 fixed=43 new=45 ok=True accepted=True cur=45 reward=0.5 dt=68s
+it 20 t=1317s style=region mode=one_j2 c=109 |R|=8 dropped=8 seed=13228 fixed=37 new=44 ok=True accepted=False cur=45 reward=0.0 dt=45s
+it 21 t=1397s style=big dropped=11 seed=13236 fixed=34 new=43 ok=True accepted=False cur=45 reward=0.0 dt=81s
+it 22 t=1466s style=conflict drop=[18, 38] seed=13245 fixed=43 new=45 ok=True accepted=True cur=45 reward=0.5 dt=69s
+it 23 t=1546s style=big dropped=8 seed=13262 fixed=37 new=44 ok=True accepted=False cur=45 reward=0.0 dt=80s
+it 24 t=1637s style=small dropped=4 seed=13270 fixed=41 new=45 ok=True accepted=True cur=45 reward=0.5 dt=90s
+it 25 t=1705s style=conflict drop=[16, 20, 39, 41] seed=13276 fixed=41 new=45 ok=True accepted=True cur=45 reward=0.5 dt=69s
+it 26 t=1751s style=region mode=one_j2 c=165 |R|=8 dropped=8 seed=13290 fixed=37 new=43 ok=True accepted=False cur=45 reward=0.0 dt=45s
+it 27 t=1841s style=small dropped=3 seed=13306 fixed=42 new=45 ok=True accepted=True cur=45 reward=0.5 dt=90s
+it 28 t=1931s style=small dropped=3 seed=13308 fixed=42 new=45 ok=True accepted=True cur=45 reward=0.5 dt=90s
+it 29 t=2021s style=small dropped=4 seed=13322 fixed=41 new=45 ok=True accepted=True cur=45 reward=0.5 dt=90s
+it 30 t=2102s style=big dropped=9 seed=13338 fixed=36 new=44 ok=True accepted=False cur=45 reward=0.0 dt=81s
+it 31 t=2147s style=region mode=one_j2 c=36 |R|=8 dropped=8 seed=13346 fixed=37 new=44 ok=True accepted=False cur=45 reward=0.0 dt=45s
+it 32 t=2237s style=small dropped=4 seed=13358 fixed=41 new=45 ok=True accepted=True cur=45 reward=0.5 dt=90s
+it 33 t=2327s style=small dropped=4 seed=13371 fixed=41 new=45 ok=True accepted=True cur=45 reward=0.5 dt=90s
+it 34 t=2417s style=small dropped=4 seed=13380 fixed=41 new=45 ok=True accepted=True cur=45 reward=0.5 dt=90s
+it 35 t=2482s style=conflict drop=[28, 34, 41] seed=13390 fixed=42 new=44 ok=True accepted=False cur=45 reward=0.0 dt=65s
+it 36 t=2548s style=conflict drop=[13, 23, 38, 39] seed=13405 fixed=41 new=45 ok=True accepted=True cur=45 reward=0.5 dt=65s
+it 37 t=2593s style=region mode=one_j2 c=9 |R|=8 dropped=8 seed=13407 fixed=37 new=44 ok=True accepted=False cur=45 reward=0.0 dt=45s
+it 38 t=2683s style=small dropped=5 seed=13422 fixed=40 new=45 ok=True accepted=True cur=45 reward=0.5 dt=90s
+DONE 45

@@ -1,0 +1,11 @@
+group sl 127 x Z_193, N=395313408 (2N=790626816), rows 16128 x 24511 bits (doubled row 784 words), memory 0.32 GB, threads 2
+alpha: conj by mat(0,126,1,126), z -> 84 z on Z_193 (fixed z: 1); ORBIT k=3 m=5 f=3; W=7.41174e+09 lambda=18.749 mu=2.85
+setup 0.0s
+fixed generators: 2 chosen among 125 alpha-fixed elements
+start cost=12 (4.2s per eval)
+t=16 step=1 evals=5 slot=3 cand=2 cost=2 best=2 T=1.26
+t=31 step=2 evals=9 slot=0 cand=6 cost=6 best=2 T=1.06
+t=44 step=3 evals=13 slot=2 cand=0 cost=0 best=0 T=0.89
+RESULT d=18 D=9 group=sl 127 x Z_193 N=395313408 vertices=790626816 best=0 evals=13 steps=3 time=43.6 orbit k=3 m=5 f=3 mu=2.85
+re-evaluation of the best S: cost 0
+wrote runs/d18D9_sl_127_193_orb3_s2.out

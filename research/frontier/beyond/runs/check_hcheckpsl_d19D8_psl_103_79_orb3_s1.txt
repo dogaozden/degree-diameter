@@ -1,0 +1,10 @@
+checker: hcheckpsl
+command: ./bin/hcheckpsl runs/d19D8_psl_103_79_orb3_s1.out
+start: 2026-10-26T15:50:54Z
+sha256 61bda6d680d612f4668db8482bbd8637b8bfa11fcff27378e7045ee709bef12b  ./bin/hcheckpsl
+sha256 25addf1b10b293ff1238b43d8cdc97a381e139be2332ca68756f340f4ebdd768  runs/d19D8_psl_103_79_orb3_s1.out
+# threads=2 bfsA=21.918s bfsB=19.832s total=41.750s maxrss=24MB
+VALID d=19 D=8 group=psl 103 x Z_79 N=43158648 vertices=86317296
+ecc(e,A)=8 ecc(e,B)=8
+exit: 0
+end: 2026-10-26T15:51:36Z (42 s)
