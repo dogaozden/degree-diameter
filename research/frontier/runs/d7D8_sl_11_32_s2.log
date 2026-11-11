@@ -1,0 +1,22 @@
+group sl 11 x Z_32, N=42240, identity 3520
+start cost=205
+t=30 steps=1421 evals=11369 cost=3 best=3 T=0.53
+t=60 steps=2884 evals=23073 cost=3 best=3 T=0.19
+t=90 steps=4353 evals=34825 cost=3 best=3 T=0.15
+t=120 steps=5816 evals=46529 cost=3 best=3 T=0.15
+t=150 steps=7304 evals=58433 cost=3 best=3 T=0.15
+t=180 steps=8800 evals=70401 cost=6 best=3 T=0.92
+t=210 steps=10294 evals=82353 cost=5 best=3 T=0.32
+t=240 steps=11811 evals=94489 cost=2 best=2 T=0.15
+t=270 steps=13293 evals=106345 cost=2 best=2 T=0.15
+t=300 steps=14772 evals=118177 cost=2 best=2 T=0.15
+t=330 steps=16239 evals=129913 cost=2 best=2 T=0.15
+t=360 steps=17707 evals=141657 cost=2 best=2 T=0.15
+t=390 steps=19171 evals=153369 cost=2 best=2 T=1.06
+t=420 steps=20624 evals=164993 cost=2 best=2 T=0.37
+t=450 steps=22118 evals=176945 cost=2 best=2 T=0.15
+t=480 steps=23604 evals=188833 cost=2 best=2 T=0.15
+t=510 steps=25112 evals=200897 cost=2 best=2 T=0.15
+t=540 steps=26616 evals=212929 cost=2 best=2 T=1.05
+t=570 steps=28106 evals=224849 cost=2 best=2 T=0.37
+RESULT d=7 D=8 group=sl 11 x Z_32 N=42240 best=2 evals=236737 time=600.0

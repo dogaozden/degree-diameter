@@ -1,0 +1,22 @@
+group pgl 11 x Z_32, N=42240, identity 3520
+start cost=820
+t=30 steps=1435 evals=11481 cost=2 best=2 T=0.53
+t=60 steps=2872 evals=22977 cost=2 best=2 T=0.19
+t=90 steps=4327 evals=34617 cost=2 best=2 T=0.15
+t=120 steps=5763 evals=46105 cost=2 best=2 T=0.15
+t=150 steps=7280 evals=58241 cost=2 best=2 T=0.15
+t=180 steps=8769 evals=70153 cost=6 best=2 T=1.23
+t=210 steps=10266 evals=82129 cost=3 best=2 T=0.43
+t=240 steps=11748 evals=93985 cost=3 best=2 T=0.15
+t=270 steps=13238 evals=105905 cost=2 best=2 T=0.15
+t=300 steps=14719 evals=117753 cost=2 best=2 T=0.15
+t=330 steps=16179 evals=129433 cost=5 best=2 T=1.23
+t=360 steps=17622 evals=140977 cost=6 best=2 T=0.43
+t=390 steps=19100 evals=152801 cost=5 best=2 T=0.15
+t=420 steps=20547 evals=164377 cost=2 best=2 T=0.15
+t=450 steps=22024 evals=176193 cost=2 best=2 T=0.15
+t=480 steps=23501 evals=188009 cost=2 best=2 T=1.22
+t=510 steps=25013 evals=200105 cost=2 best=2 T=0.43
+t=540 steps=26510 evals=212081 cost=2 best=2 T=0.15
+t=570 steps=27986 evals=223889 cost=2 best=2 T=0.15
+RESULT d=7 D=8 group=pgl 11 x Z_32 N=42240 best=2 evals=235729 time=600.0
