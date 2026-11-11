@@ -1,0 +1,12 @@
+group psl 81 poly x^4+x+2 x Z_15, N=3985200, identity 48600, H order 60, rows 66420, threads 1, setup 0.15s
+start cost=44
+t=30 steps=199 evals=1593 cost=16 best=14 T=0.53
+t=60 steps=396 evals=3169 cost=12 best=12 T=0.19
+t=90 steps=600 evals=4801 cost=12 best=12 T=0.15
+t=120 steps=790 evals=6321 cost=12 best=12 T=0.15
+t=151 steps=989 evals=7913 cost=12 best=12 T=0.15
+t=181 steps=1179 evals=9433 cost=12 best=12 T=0.15
+t=211 steps=1371 evals=10969 cost=19 best=12 T=1.22
+t=241 steps=1562 evals=12497 cost=13 best=12 T=0.43
+t=271 steps=1762 evals=14097 cost=13 best=12 T=0.15
+RESULT d=8 D=10 group=psl 81 poly x^4+x+2 x Z_15 N=3985200 best=11 evals=15497 time=299.0

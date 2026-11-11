@@ -1,0 +1,12 @@
+group sl 73 x Z_10, N=3889440, identity 52560, H order 60, rows 64824, threads 1, setup 0.20s
+start cost=85
+t=30 steps=178 evals=1425 cost=10 best=10 T=0.53
+t=60 steps=347 evals=2777 cost=9 best=9 T=0.19
+t=90 steps=526 evals=4209 cost=8 best=8 T=0.15
+t=120 steps=692 evals=5537 cost=8 best=8 T=0.15
+t=151 steps=858 evals=6865 cost=8 best=8 T=0.15
+t=181 steps=1020 evals=8161 cost=4 best=4 T=0.15
+t=211 steps=1178 evals=9425 cost=4 best=4 T=0.15
+t=241 steps=1338 evals=10705 cost=4 best=4 T=0.15
+t=271 steps=1510 evals=12081 cost=4 best=4 T=0.15
+RESULT d=8 D=10 group=sl 73 x Z_10 N=3889440 best=4 evals=13233 time=299.7

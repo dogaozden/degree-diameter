@@ -1,0 +1,12 @@
+group sl 83 x Z_7, N=4001928, identity 47642, H order 42, rows 95284, threads 1, setup 0.19s
+start cost=40
+t=30 steps=150 evals=1201 cost=18 best=17 T=0.53
+t=60 steps=293 evals=2345 cost=17 best=17 T=0.19
+t=90 steps=441 evals=3529 cost=16 best=16 T=0.15
+t=120 steps=584 evals=4673 cost=16 best=16 T=0.15
+t=151 steps=731 evals=5849 cost=11 best=11 T=0.15
+t=181 steps=876 evals=7009 cost=11 best=11 T=0.15
+t=211 steps=1020 evals=8161 cost=11 best=11 T=0.15
+t=241 steps=1162 evals=9297 cost=11 best=11 T=0.15
+t=271 steps=1310 evals=10481 cost=11 best=11 T=0.15
+RESULT d=8 D=10 group=sl 83 x Z_7 N=4001928 best=11 evals=11545 time=299.4
