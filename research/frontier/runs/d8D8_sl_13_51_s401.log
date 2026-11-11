@@ -1,0 +1,12 @@
+group sl 13 x Z_51, N=111384, identity 7956, H order 51, rows 2184, threads 1, setup 0.00s
+start cost=54
+t=30 steps=32715 evals=261721 cost=4 best=4 T=0.53
+t=60 steps=65430 evals=523441 cost=4 best=4 T=0.19
+t=90 steps=97578 evals=780625 cost=4 best=4 T=0.15
+t=120 steps=130511 evals=1044089 cost=4 best=4 T=0.15
+t=150 steps=163412 evals=1307297 cost=4 best=4 T=0.15
+t=180 steps=195486 evals=1563889 cost=7 best=4 T=1.00
+t=210 steps=228279 evals=1826233 cost=6 best=4 T=0.36
+t=240 steps=260481 evals=2083849 cost=5 best=4 T=0.15
+t=270 steps=293273 evals=2346185 cost=5 best=4 T=0.15
+RESULT d=8 D=8 group=sl 13 x Z_51 N=111384 best=4 evals=2609737 time=300.0
