@@ -1,0 +1,22 @@
+group sl 53 x Z_11, N=1637064, identity 30316, H order 54, rows 30316, threads 1, setup 0.04s
+start cost=32
+t=30 steps=1126 evals=9009 cost=6 best=6 T=0.53
+t=60 steps=2276 evals=18209 cost=6 best=6 T=0.19
+t=90 steps=3383 evals=27065 cost=6 best=6 T=0.15
+t=120 steps=4471 evals=35769 cost=4 best=4 T=0.15
+t=150 steps=5584 evals=44673 cost=4 best=4 T=0.15
+t=180 steps=6691 evals=53529 cost=4 best=4 T=0.15
+t=210 steps=7824 evals=62593 cost=4 best=4 T=0.15
+t=240 steps=8996 evals=71969 cost=4 best=4 T=0.15
+t=270 steps=10130 evals=81041 cost=4 best=4 T=1.01
+t=300 steps=11253 evals=90025 cost=4 best=4 T=0.36
+t=330 steps=12393 evals=99145 cost=4 best=4 T=0.15
+t=360 steps=13506 evals=108049 cost=4 best=4 T=0.15
+t=390 steps=14641 evals=117129 cost=2 best=2 T=0.15
+t=420 steps=15741 evals=125929 cost=2 best=2 T=0.15
+t=450 steps=16807 evals=134457 cost=2 best=2 T=0.15
+t=480 steps=17908 evals=143265 cost=2 best=2 T=0.15
+t=510 steps=18982 evals=151857 cost=2 best=2 T=0.15
+RESULT d=9 D=9 group=sl 53 x Z_11 N=1637064 best=0 evals=153857 time=517.2
+full diameter check: OK
+wrote sols/d9D9_sl_53_11_s303.txt
