@@ -1,0 +1,61 @@
+group pgl 25 poly x^2+2 x Z_271, N=4227600, identity 0, H order 26, rows 162600, threads 1, setup 0.17s
+wide rows: no cyclic subgroup of order >= 64 found (best 26); using haar_gen3's evaluation
+alpha: conj by mat(1,10,13,9) (index 6320), z -> 10 z on Z_271
+ORBIT k=5 m=2 f=0: |Fix(alpha)| = 24 (+e); mu = 44.79, mu/k = 8.96, fixed-point misses ~ 5.06
+ORBW=5: an uncovered fixed element weighs 5; start energy 4227600
+start cost=4227600
+t=30 steps=126 evals=1009 cost=62 best=62 T=0.53 energy=70 bestE=70
+t=60 steps=243 evals=1945 cost=52 best=52 T=0.19 energy=60 bestE=60
+t=90 steps=374 evals=2993 cost=52 best=52 T=0.15 energy=60 bestE=60
+t=120 steps=505 evals=4041 cost=52 best=52 T=0.15 energy=60 bestE=60
+t=151 steps=634 evals=5073 cost=52 best=52 T=0.15 energy=60 bestE=60
+t=181 steps=761 evals=6089 cost=40 best=40 T=0.15 energy=40 bestE=40
+t=211 steps=891 evals=7129 cost=40 best=40 T=0.15 energy=40 bestE=40
+t=241 steps=1030 evals=8241 cost=40 best=40 T=0.15 energy=40 bestE=40
+t=271 steps=1169 evals=9353 cost=40 best=40 T=0.15 energy=40 bestE=40
+t=301 steps=1310 evals=10481 cost=40 best=40 T=0.15 energy=40 bestE=40
+t=331 steps=1441 evals=11529 cost=75 best=40 T=0.56 energy=75 bestE=40
+t=361 steps=1577 evals=12617 cost=62 best=40 T=0.20 energy=70 bestE=40
+t=392 steps=1706 evals=13649 cost=62 best=40 T=0.15 energy=70 bestE=40
+t=422 steps=1839 evals=14713 cost=62 best=40 T=0.15 energy=70 bestE=40
+t=452 steps=1968 evals=15745 cost=38 best=40 T=0.15 energy=70 bestE=40
+t=482 steps=2109 evals=16873 cost=87 best=40 T=0.55 energy=95 bestE=40
+t=512 steps=2245 evals=17961 cost=28 best=40 T=0.19 energy=60 bestE=40
+t=542 steps=2385 evals=19081 cost=28 best=40 T=0.15 energy=60 bestE=40
+t=572 steps=2519 evals=20153 cost=28 best=40 T=0.15 energy=60 bestE=40
+t=603 steps=2661 evals=21289 cost=28 best=40 T=0.15 energy=60 bestE=40
+t=633 steps=2796 evals=22369 cost=77 best=40 T=0.54 energy=85 bestE=40
+t=663 steps=2934 evals=23473 cost=77 best=40 T=0.19 energy=85 bestE=40
+t=693 steps=3064 evals=24513 cost=77 best=40 T=0.15 energy=85 bestE=40
+t=723 steps=3187 evals=25497 cost=72 best=40 T=0.15 energy=80 bestE=40
+t=753 steps=3321 evals=26569 cost=70 best=40 T=0.15 energy=70 bestE=40
+t=783 steps=3459 evals=27673 cost=102 best=40 T=0.53 energy=110 bestE=40
+t=813 steps=3593 evals=28745 cost=85 best=40 T=0.19 energy=85 bestE=40
+t=843 steps=3719 evals=29753 cost=62 best=40 T=0.15 energy=70 bestE=40
+t=873 steps=3838 evals=30705 cost=54 best=40 T=0.15 energy=70 bestE=40
+t=904 steps=3978 evals=31825 cost=190 best=40 T=1.50 energy=190 bestE=40
+t=934 steps=4100 evals=32801 cost=67 best=40 T=0.53 energy=75 bestE=40
+t=964 steps=4239 evals=33913 cost=67 best=40 T=0.19 energy=75 bestE=40
+t=994 steps=4376 evals=35009 cost=67 best=40 T=0.15 energy=75 bestE=40
+t=1024 steps=4506 evals=36049 cost=62 best=40 T=0.15 energy=70 bestE=40
+t=1054 steps=4631 evals=37049 cost=162 best=40 T=1.47 energy=170 bestE=40
+t=1084 steps=4747 evals=37977 cost=45 best=40 T=0.52 energy=45 bestE=40
+t=1115 steps=4868 evals=38945 cost=45 best=40 T=0.18 energy=45 bestE=40
+t=1145 steps=4978 evals=39825 cost=45 best=40 T=0.15 energy=45 bestE=40
+t=1175 steps=5090 evals=40721 cost=45 best=40 T=0.15 energy=45 bestE=40
+t=1205 steps=5209 evals=41673 cost=253120 best=40 T=1.47 energy=253120 bestE=40
+t=1235 steps=5328 evals=42625 cost=57 best=40 T=0.52 energy=65 bestE=40
+t=1265 steps=5450 evals=43601 cost=57 best=40 T=0.18 energy=65 bestE=40
+t=1295 steps=5573 evals=44585 cost=57 best=40 T=0.15 energy=65 bestE=40
+t=1325 steps=5697 evals=45577 cost=57 best=40 T=0.15 energy=65 bestE=40
+t=1355 steps=5828 evals=46625 cost=112 best=40 T=1.45 energy=120 bestE=40
+t=1386 steps=5949 evals=47593 cost=90 best=40 T=0.51 energy=90 bestE=40
+t=1416 steps=6064 evals=48513 cost=72 best=40 T=0.18 energy=80 bestE=40
+t=1446 steps=6175 evals=49401 cost=59 best=40 T=0.15 energy=75 bestE=40
+t=1476 steps=6292 evals=50337 cost=59 best=40 T=0.15 energy=75 bestE=40
+t=1506 steps=6406 evals=51249 cost=117 best=40 T=1.43 energy=125 bestE=40
+t=1536 steps=6538 evals=52305 cost=82 best=40 T=0.50 energy=90 bestE=40
+t=1566 steps=6668 evals=53345 cost=55 best=40 T=0.18 energy=55 bestE=40
+t=1597 steps=6797 evals=54377 cost=55 best=40 T=0.15 energy=55 bestE=40
+t=1627 steps=6930 evals=55441 cost=55 best=40 T=0.15 energy=55 bestE=40
+RESULT d=10 D=9 group=pgl 25 poly x^2+2 x Z_271 N=4227600 best=40 evals=56305 time=1651.2 orbit k=5 m=2 f=0 fix=24

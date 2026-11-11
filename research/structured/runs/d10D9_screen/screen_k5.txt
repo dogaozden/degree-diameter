@@ -1,0 +1,9 @@
+sl 25 271 :: fix=49 samples=1500 min=66 p1=124 p10=180 median=428 mean=106506.27 var=623144738363.4 mu=44.79 time=65.9
+pgl 25 271 :: fix=24 samples=1500 min=52 p1=96 p10=186 median=4227600 mean=2146399.27 var=4517589985013.2 mu=44.79 time=68.8
+psl 19 1231 :: fix=9 samples=1500 min=110 p1=191 p10=291 median=451 mean=45368.74 var=181791099588.4 mu=42.52 time=78.9
+psl 25 541 :: fix=24 samples=1500 min=38 p1=102 p10=174 median=354 mean=79569.92 var=423040564468.6 mu=43.77 time=118.6
+psl 59 41 :: fix=29 samples=1500 min=23 p1=51 p10=81 median=140 mean=13550.47 var=76337273540.8 mu=42.40 time=15.9
+sl 41 61 :: fix=39 samples=1500 min=20 p1=52 p10=90 median=156 mean=4805.76 var=9238539242.4 mu=41.48 time=16.4
+sl 16 1031 :: fix=14 samples=1500 min=130 p1=196 p10=313 median=562 mean=136776.95 var=884436878249.2 mu=42.08 time=87.0
+xargs: bash: terminated by signal 15
+prod psl 5 psl 5 1171 and 1181 (A5xA5xZ_n, fix 25): stopped after >10 min per run (slow evaluator path); not screened

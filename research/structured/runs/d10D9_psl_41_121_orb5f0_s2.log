@@ -1,0 +1,37 @@
+group psl 41 x Z_121, N=4167240, identity 99220, H order 55, rows 75768, threads 1, setup 0.10s
+wide rows: HW order 242, rows 17220, setup 0.20s
+alpha: conj by mat(0,8,5,7) (index 294), z -> 3 z on Z_121
+ORBIT k=5 m=2 f=0: |Fix(alpha)| = 19 (+e); mu = 37.40, mu/k = 7.48, fixed-point misses ~ 3.91
+start cost=117
+t=30 steps=647 evals=5177 cost=19 best=19 T=0.53
+t=60 steps=1290 evals=10321 cost=10 best=10 T=0.19
+t=90 steps=1945 evals=15561 cost=11 best=10 T=0.15
+t=120 steps=2571 evals=20569 cost=5 best=5 T=0.15
+t=150 steps=3199 evals=25593 cost=5 best=5 T=0.15
+t=180 steps=3818 evals=30545 cost=5 best=5 T=0.15
+t=210 steps=4450 evals=35601 cost=5 best=5 T=0.15
+t=240 steps=5139 evals=41113 cost=5 best=5 T=0.15
+t=270 steps=5816 evals=46529 cost=5 best=5 T=0.91
+t=300 steps=6470 evals=51761 cost=5 best=5 T=0.32
+t=330 steps=7135 evals=57081 cost=5 best=5 T=0.15
+t=360 steps=7782 evals=62257 cost=5 best=5 T=0.15
+t=390 steps=8462 evals=67697 cost=5 best=5 T=0.15
+t=420 steps=9137 evals=73097 cost=19 best=5 T=0.90
+t=450 steps=9798 evals=78385 cost=12 best=5 T=0.32
+t=480 steps=10458 evals=83665 cost=12 best=5 T=0.15
+t=510 steps=11143 evals=89145 cost=12 best=5 T=0.15
+t=540 steps=11792 evals=94337 cost=12 best=5 T=0.15
+t=570 steps=12442 evals=99537 cost=5 best=5 T=0.90
+t=600 steps=13090 evals=104721 cost=5 best=5 T=0.32
+t=631 steps=13754 evals=110033 cost=3 best=3 T=0.15
+t=661 steps=14433 evals=115465 cost=3 best=3 T=0.15
+t=691 steps=15074 evals=120593 cost=3 best=3 T=0.15
+t=721 steps=15670 evals=125361 cost=3 best=3 T=0.15
+t=751 steps=16265 evals=130121 cost=3 best=3 T=0.15
+RESULT d=10 D=9 group=psl 41 x Z_121 N=4167240 best=0 evals=131481 time=758.5 orbit k=5 m=2 f=0 fix=19
+full diameter check: OK
+full diameter check after normalising s_0 = e: OK
+wrote /tmp/claude-0/-home-user-degree-diameter/a477625a-c770-5298-9170-372ab679235b/scratchpad/out/k5f0_psl41_121_s2/d10D9_psl_41_121_orb5f0_s2.txt
+n = 8334480 edges = 41672400 max degree = 10 min degree = 10 duplicate edges = 0
+edge list sha256 = c389da106681b74203b4a3cef560264903a82ec4848a74df305984b89c08fb9c
+VALID d=10 D=9 group=psl 41 x Z_121 N=4167240 vertices=8334480
