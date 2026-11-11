@@ -1,0 +1,51 @@
+q=3 N=364 diameter=6
+[point sets] spread points: 16 lines (q^3+1=28), |F|=64, segment=1, failing pairs=0
+[point sets] random maximal segment set 0: |F|=77, collinear pairs=40, failing pairs=0
+[point sets]   + one turning point: failing pairs=36 (expected > 0)
+[point sets] random maximal segment set 1: |F|=79, collinear pairs=45, failing pairs=0
+[point sets]   + one turning point: failing pairs=72 (expected > 0)
+[point sets] random maximal segment set 2: |F|=76, collinear pairs=34, failing pairs=0
+[point sets]   + one turning point: failing pairs=72 (expected > 0)
+[point sets] random maximal (R1) set: |F|=74, partner pairs=29, failing pairs=0
+[dual (line sets in H^D)] spread points: 19 lines (q^3+1=28), |F|=76, segment=1, failing pairs=0
+[dual (line sets in H^D)] random maximal segment set 0: |F|=81, collinear pairs=36, failing pairs=0
+[dual (line sets in H^D)]   + one turning point: failing pairs=132 (expected > 0)
+[dual (line sets in H^D)] random maximal segment set 1: |F|=75, collinear pairs=32, failing pairs=0
+[dual (line sets in H^D)]   + one turning point: failing pairs=72 (expected > 0)
+[dual (line sets in H^D)] random maximal segment set 2: |F|=77, collinear pairs=34, failing pairs=0
+[dual (line sets in H^D)]   + one turning point: failing pairs=120 (expected > 0)
+[dual (line sets in H^D)] random maximal (R1) set: |F|=77, partner pairs=35, failing pairs=0
+q=4 N=1365 diameter=6
+[point sets] spread points: 33 lines (q^3+1=65), |F|=165, segment=1, failing pairs=0
+[point sets] random maximal segment set 0: |F|=202, collinear pairs=86, failing pairs=0
+[point sets]   + one turning point: failing pairs=176 (expected > 0)
+[point sets] random maximal segment set 1: |F|=209, collinear pairs=110, failing pairs=0
+[point sets]   + one turning point: failing pairs=96 (expected > 0)
+[point sets] random maximal segment set 2: |F|=203, collinear pairs=116, failing pairs=0
+[point sets]   + one turning point: failing pairs=160 (expected > 0)
+[point sets] random maximal (R1) set: |F|=204, partner pairs=84, failing pairs=0
+[dual (line sets in H^D)] spread points: 19 lines (q^3+1=65), |F|=95, segment=1, failing pairs=0
+[dual (line sets in H^D)] random maximal segment set 0: |F|=215, collinear pairs=108, failing pairs=0
+[dual (line sets in H^D)]   + one turning point: failing pairs=160 (expected > 0)
+[dual (line sets in H^D)] random maximal segment set 1: |F|=203, collinear pairs=104, failing pairs=0
+[dual (line sets in H^D)]   + one turning point: failing pairs=256 (expected > 0)
+[dual (line sets in H^D)] random maximal segment set 2: |F|=197, collinear pairs=120, failing pairs=0
+[dual (line sets in H^D)]   + one turning point: failing pairs=80 (expected > 0)
+[dual (line sets in H^D)] random maximal (R1) set: |F|=200, partner pairs=84, failing pairs=0
+q=5 N=3906 diameter=6
+[point sets] spread points: 31 lines (q^3+1=126), |F|=186, segment=1, failing pairs=0
+[point sets] random maximal segment set 0: |F|=452, collinear pairs=234, failing pairs=0
+[point sets]   + one turning point: failing pairs=260 (expected > 0)
+[point sets] random maximal segment set 1: |F|=442, collinear pairs=219, failing pairs=0
+[point sets]   + one turning point: failing pairs=200 (expected > 0)
+[point sets] random maximal segment set 2: |F|=431, collinear pairs=231, failing pairs=0
+[point sets]   + one turning point: failing pairs=320 (expected > 0)
+[point sets] random maximal (R1) set: |F|=435, partner pairs=183, failing pairs=0
+[dual (line sets in H^D)] spread points: 30 lines (q^3+1=126), |F|=180, segment=1, failing pairs=0
+[dual (line sets in H^D)] random maximal segment set 0: |F|=449, collinear pairs=227, failing pairs=0
+[dual (line sets in H^D)]   + one turning point: failing pairs=300 (expected > 0)
+[dual (line sets in H^D)] random maximal segment set 1: |F|=442, collinear pairs=219, failing pairs=0
+[dual (line sets in H^D)]   + one turning point: failing pairs=120 (expected > 0)
+[dual (line sets in H^D)] random maximal segment set 2: |F|=452, collinear pairs=233, failing pairs=0
+[dual (line sets in H^D)]   + one turning point: failing pairs=140 (expected > 0)
+[dual (line sets in H^D)] random maximal (R1) set: |F|=423, partner pairs=175, failing pairs=0

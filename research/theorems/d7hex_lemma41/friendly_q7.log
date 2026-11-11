@@ -1,0 +1,10 @@
+q=7 N=19608: spread in x0 = 1 x4 + 1 x3: 344 lines; |F| = 2752 = (q+1)(q^3+1) = 2752; every line off the spread meets F at most once: True
+two levels H -> D, identity on points minus F: n = 78432, wrote fr7b.edges
+-- apsp_mt fr7.edges 9 7 4
+n=78432 edges=330584 degree min=8 max=9 bipartite=yes diameter=7
+RESULT VALID d=9 D=7 n=78432
+
+real	0m1.346s
+user	0m4.990s
+sys	0m0.008s
+ec314088f7afdd9171dcb54a7ca30bc615e1262e04139e0e1907a1e280d109ca  hex/hex_q7.bin

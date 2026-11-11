@@ -1,0 +1,8 @@
+q=5 N=3906 seed=1
+mirrored set |R|=35, distance-4 pairs 8, (H1,H2,H3)=(True, True, True)
+  HHH types HHH r=1: free A-slots per level [35, 35, 35], B-slots [35, 35, 35]; K = 35 hubs per side (hub graph degree <= 4, 1 draws)
+    n=23506 edges=82264 degree min=6 max=7 bipartite=yes diameter=7 | RESULT VALID d=7 D=7 n=23506 (0.2s)
+  HDH types HDH r=1: free A-slots per level [756, 446, 35], B-slots [35, 756, 446]; K = 35 hubs per side (hub graph degree <= 4, 1 draws)
+    n=23506 edges=81135 degree min=6 max=7 bipartite=yes diameter=7 | RESULT VALID d=7 D=7 n=23506 (0.2s)
+  HDHDH types HDHDH r=2: free A-slots per level [791, 481, 791, 892, 473], B-slots [481, 1194, 481, 791, 481]; K = 61 hubs per side (hub graph degree <= 3, 91 draws)
+    n=39182 edges=153605 degree min=6 max=8 bipartite=yes diameter=7 | RESULT VALID d=8 D=7 n=39182 (14.3s)

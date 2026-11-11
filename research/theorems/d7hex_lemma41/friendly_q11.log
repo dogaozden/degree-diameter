@@ -1,0 +1,10 @@
+q=11 N=177156: spread in x0 = 1 x4 + 2 x3: 1332 lines; |F| = 15984 = (q+1)(q^3+1) = 15984; every line off the spread meets F at most once: True
+two levels H -> D, identity on points minus F: n = 708624, wrote fr11b.edges
+-- apsp_mt fr11.edges 13 7 4
+n=708624 edges=4412916 degree min=12 max=13 bipartite=yes diameter=7
+RESULT VALID d=13 D=7 n=708624
+
+real	3m46.539s
+user	14m52.312s
+sys	0m0.520s
+e60db3690f2bd0dfc0fd0447df7c574c25797467a8b18c28800027de1eb49a19  hex/hex_q11.bin

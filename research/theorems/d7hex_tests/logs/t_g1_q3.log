@@ -1,0 +1,21 @@
+q=3 N=364 seed=1; Hermitian spread in x0 = 1 x4 + 1 x3: 28 lines
+-- point sets, H -> D
+  two-level H->D spread points: |F|=112 G1=True collinear pairs=168: n=1456 edges=3164 degree min=4 max=5 bipartite=yes diameter=7 | RESULT VALID d=5 D=7 n=1456 (0.0s)
+  two-level H->D greedy G1 #0: |F|=79 G1=True collinear pairs=47: n=1456 edges=3197 degree min=4 max=5 bipartite=yes diameter=7 | RESULT VALID d=5 D=7 n=1456 (0.0s)
+  two-level H->D greedy G1 #1: |F|=79 G1=True collinear pairs=38: n=1456 edges=3197 degree min=4 max=5 bipartite=yes diameter=7 | RESULT VALID d=5 D=7 n=1456 (0.0s)
+  two-level H->D greedy G1 from half spread: |F|=103 G1=True collinear pairs=146: n=1456 edges=3173 degree min=4 max=5 bipartite=yes diameter=7 | RESULT VALID d=5 D=7 n=1456 (0.0s)
+  two-level H->D R1 pairs only: |F|=66 G1=True collinear pairs=33: n=1456 edges=3210 degree min=4 max=5 bipartite=yes diameter=7 | RESULT VALID d=5 D=7 n=1456 (0.0s)
+  two-level H->D R1 at most one partner: |F|=71 G1=True collinear pairs=27: n=1456 edges=3205 degree min=4 max=5 bipartite=yes diameter=7 | RESULT VALID d=5 D=7 n=1456 (0.0s)
+-- line sets, D -> H
+  two-level D->H pencils of a partial ovoid (16 pts): |F|=64 G1=True collinear pairs=96: n=1456 edges=3212 degree min=4 max=5 bipartite=yes diameter=7 | RESULT VALID d=5 D=7 n=1456 (0.0s)
+  two-level D->H greedy dual G1 #0: |F|=77 G1=True collinear pairs=46: n=1456 edges=3199 degree min=4 max=5 bipartite=yes diameter=7 | RESULT VALID d=5 D=7 n=1456 (0.0s)
+  two-level D->H greedy dual G1 #1: |F|=80 G1=True collinear pairs=42: n=1456 edges=3196 degree min=4 max=5 bipartite=yes diameter=7 | RESULT VALID d=5 D=7 n=1456 (0.0s)
+  two-level D->H R1 pairs only (lines): |F|=68 G1=True collinear pairs=34: n=1456 edges=3208 degree min=4 max=5 bipartite=yes diameter=7 | RESULT VALID d=5 D=7 n=1456 (0.0s)
+-- negative controls (G1 violated by one extra point), two-level H -> D
+  spread points + point 298: |F|=113 G1=False: far ordered pairs (d > 7) = 432
+  greedy G1 #0 + point 215: |F|=80 G1=False: far ordered pairs (d > 7) = 72
+-- five levels H D H D H, r = 2, all six friendly transitions freed, main graph (no hubs)
+  0->1: greedy G1 #0 (79); 1->2: greedy dual G1 #1 (80); 2->3: greedy G1 from half spread (103); 3->4: pencils of a partial ovoid (16 pts) (64); 3->0: greedy dual G1 #0 (77); 4->1: spread points (112)
+  variant 0: n=3640 edges=10405 degree min=4 max=6 bipartite=yes diameter=7 | RESULT VALID d=6 D=7 n=3640 (0.0s)
+  0->1: greedy G1 #1 (79); 1->2: R1 pairs only (lines) (68); 2->3: R1 pairs only (66); 3->4: greedy dual G1 #0 (77); 3->0: greedy dual G1 #1 (80); 4->1: greedy G1 #0 (79)
+  variant 1: n=3640 edges=10471 degree min=4 max=6 bipartite=yes diameter=7 | RESULT VALID d=6 D=7 n=3640 (0.0s)
