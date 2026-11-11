@@ -1,0 +1,15 @@
+group psl 271 x Z_67, N=666725040, identity 2451195, H order 45, rows 14816112, threads 4, setup 19.27s
+alpha: conj by mat(42,39,44,228) (index 3058279), z -> 29 z on Z_67
+ORBIT k=3 m=4 f=2: |Fix(alpha)| = 134 (+e); mu = 21.91, mu/k = 7.30, fixed-point misses ~ 0.43
+start cost=30
+t=36 steps=3 evals=25 cost=10 best=10 T=0.43
+t=68 steps=6 evals=49 cost=10 best=10 T=0.15
+t=100 steps=9 evals=73 cost=6 best=6 T=0.15
+t=131 steps=12 evals=97 cost=6 best=6 T=0.15
+t=164 steps=15 evals=121 cost=3 best=3 T=0.15
+t=197 steps=18 evals=145 cost=3 best=3 T=0.15
+t=230 steps=21 evals=169 cost=0 best=0 T=0.15
+RESULT d=14 D=10 group=psl 271 x Z_67 N=666725040 best=0 evals=169 time=233.9 orbit k=3 m=4 f=2 fix=134
+full diameter check: OK
+wrote /home/user/degree-diameter/research/squads/cells/raise-d14D10/runs/d14D10_psl_271_67_orb3_s2.txt
+UNCHECKED: > 20M vertices and no low-memory checker for psl
