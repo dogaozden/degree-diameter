@@ -1,0 +1,98 @@
+group prod sl 8 poly x^3+x+1 sl 11 x Z_1, N=665280, identity 74030, H order 45, rows 14784, threads 1, setup 0.03s
+wide rows: HW order 198, rows 3360, setup 0.05s
+alpha: conj by prod[mat(0,5,2,1);mat(7,8,8,3)] (index 44492), z -> 0 z on Z_1
+ORBIT k=3 m=2 f=2: |Fix(alpha)| = 107 (+e); mu = 27.07, mu/k = 9.02, fixed-point misses ~ 7.43
+start cost=209
+t=30 steps=4270 evals=34161 cost=18 best=14 T=0.53
+t=60 steps=8530 evals=68241 cost=8 best=8 T=0.19
+t=90 steps=13063 evals=104505 cost=8 best=8 T=0.15
+t=120 steps=17788 evals=142305 cost=8 best=8 T=0.15
+t=150 steps=22231 evals=177849 cost=8 best=8 T=0.15
+t=180 steps=26714 evals=213713 cost=8 best=8 T=0.15
+t=210 steps=31386 evals=251089 cost=8 best=8 T=0.73
+t=240 steps=35992 evals=287937 cost=8 best=8 T=0.26
+t=270 steps=40581 evals=324649 cost=8 best=8 T=0.15
+t=300 steps=45161 evals=361289 cost=8 best=8 T=0.15
+t=330 steps=49750 evals=398001 cost=8 best=8 T=0.15
+t=360 steps=54247 evals=433977 cost=14 best=8 T=0.73
+t=390 steps=58874 evals=470993 cost=8 best=8 T=0.26
+t=420 steps=63642 evals=509137 cost=8 best=8 T=0.15
+t=450 steps=68297 evals=546377 cost=8 best=8 T=0.15
+t=480 steps=72879 evals=583033 cost=8 best=8 T=0.15
+t=510 steps=77339 evals=618713 cost=11 best=8 T=0.73
+t=540 steps=81877 evals=655017 cost=10 best=8 T=0.26
+t=570 steps=86692 evals=693537 cost=10 best=8 T=0.15
+t=600 steps=91432 evals=731457 cost=10 best=8 T=0.15
+t=630 steps=95812 evals=766497 cost=10 best=8 T=0.15
+t=660 steps=100139 evals=801113 cost=8 best=8 T=0.73
+t=690 steps=104261 evals=834089 cost=8 best=8 T=0.26
+t=720 steps=108668 evals=869345 cost=8 best=8 T=0.15
+t=750 steps=112952 evals=903617 cost=8 best=8 T=0.15
+t=780 steps=117161 evals=937289 cost=8 best=8 T=0.15
+t=810 steps=121553 evals=972425 cost=14 best=8 T=0.73
+t=840 steps=125895 evals=1007161 cost=12 best=8 T=0.26
+t=870 steps=130181 evals=1041449 cost=12 best=8 T=0.15
+t=900 steps=134558 evals=1076465 cost=8 best=8 T=0.15
+t=930 steps=139059 evals=1112473 cost=8 best=8 T=0.15
+t=960 steps=143184 evals=1145473 cost=14 best=8 T=0.73
+t=990 steps=147610 evals=1180881 cost=20 best=8 T=0.26
+t=1020 steps=152014 evals=1216113 cost=18 best=8 T=0.15
+t=1050 steps=156302 evals=1250417 cost=14 best=8 T=0.15
+t=1080 steps=160776 evals=1286209 cost=14 best=8 T=0.15
+t=1110 steps=165322 evals=1322577 cost=19 best=8 T=0.73
+t=1140 steps=169666 evals=1357329 cost=18 best=8 T=0.26
+t=1170 steps=174210 evals=1393681 cost=14 best=8 T=0.15
+t=1200 steps=178956 evals=1431649 cost=14 best=8 T=0.15
+t=1230 steps=183555 evals=1468441 cost=14 best=8 T=0.15
+t=1260 steps=187882 evals=1503057 cost=14 best=8 T=0.73
+t=1290 steps=192268 evals=1538145 cost=18 best=8 T=0.26
+t=1320 steps=196302 evals=1570417 cost=18 best=8 T=0.15
+t=1350 steps=200365 evals=1602921 cost=18 best=8 T=0.15
+t=1380 steps=204356 evals=1634849 cost=18 best=8 T=0.15
+t=1410 steps=208109 evals=1664873 cost=5 best=5 T=0.73
+t=1440 steps=212064 evals=1696513 cost=5 best=5 T=0.26
+t=1470 steps=216117 evals=1728937 cost=5 best=5 T=0.15
+t=1500 steps=219898 evals=1759185 cost=5 best=5 T=0.15
+t=1530 steps=223633 evals=1789065 cost=5 best=5 T=0.15
+t=1560 steps=227449 evals=1819593 cost=14 best=5 T=0.89
+t=1590 steps=231378 evals=1851025 cost=6 best=5 T=0.32
+t=1620 steps=235647 evals=1885177 cost=6 best=5 T=0.15
+t=1650 steps=239714 evals=1917713 cost=6 best=5 T=0.15
+t=1680 steps=244023 evals=1952185 cost=6 best=5 T=0.15
+t=1710 steps=248357 evals=1986857 cost=5 best=5 T=0.89
+t=1740 steps=252555 evals=2020441 cost=5 best=5 T=0.32
+t=1770 steps=256604 evals=2052833 cost=5 best=5 T=0.15
+t=1800 steps=260947 evals=2087577 cost=5 best=5 T=0.15
+t=1830 steps=265283 evals=2122265 cost=5 best=5 T=0.15
+t=1860 steps=269342 evals=2154737 cost=5 best=5 T=0.89
+t=1890 steps=273580 evals=2188641 cost=5 best=5 T=0.32
+t=1920 steps=277972 evals=2223777 cost=5 best=5 T=0.15
+t=1950 steps=282416 evals=2259329 cost=5 best=5 T=0.15
+t=1980 steps=287187 evals=2297497 cost=5 best=5 T=0.15
+t=2010 steps=291852 evals=2334817 cost=5 best=5 T=0.89
+t=2040 steps=296249 evals=2369993 cost=5 best=5 T=0.32
+t=2070 steps=300890 evals=2407121 cost=5 best=5 T=0.15
+t=2100 steps=305597 evals=2444777 cost=5 best=5 T=0.15
+t=2130 steps=310186 evals=2481489 cost=18 best=5 T=0.15
+t=2160 steps=314908 evals=2519265 cost=5 best=5 T=0.89
+t=2190 steps=319725 evals=2557801 cost=5 best=5 T=0.32
+t=2220 steps=324584 evals=2596673 cost=5 best=5 T=0.15
+t=2250 steps=329304 evals=2634433 cost=5 best=5 T=0.15
+t=2280 steps=334023 evals=2672185 cost=5 best=5 T=0.15
+t=2310 steps=338644 evals=2709153 cost=14 best=5 T=0.89
+t=2340 steps=343249 evals=2745993 cost=14 best=5 T=0.31
+t=2370 steps=347768 evals=2782145 cost=14 best=5 T=0.15
+t=2400 steps=352442 evals=2819537 cost=14 best=5 T=0.15
+t=2430 steps=357067 evals=2856537 cost=14 best=5 T=0.15
+t=2460 steps=361221 evals=2889769 cost=5 best=5 T=0.89
+t=2490 steps=365739 evals=2925913 cost=5 best=5 T=0.31
+t=2520 steps=370310 evals=2962481 cost=5 best=5 T=0.15
+t=2550 steps=374927 evals=2999417 cost=5 best=5 T=0.15
+t=2580 steps=379500 evals=3036001 cost=5 best=5 T=0.15
+t=2610 steps=383803 evals=3070425 cost=5 best=5 T=0.89
+RESULT d=8 D=9 group=prod sl 8 poly x^3+x+1 sl 11 x Z_1 N=665280 best=0 evals=3094273 time=2630.1 orbit k=3 m=2 f=2 fix=107
+full diameter check: OK
+wrote research/frontier/runs/raise-d8D9/b2/d8D9_prod_sl_8_sl_11_1_orb3_s2.txt
+n = 1330560 edges = 5322240 max degree = 8 min degree = 8 duplicate edges = 0
+edge list sha256 = 15d7aa6b6662c7a3aee6d936f39b7b00e70a145fb8e27c790a6c4143b56f15b9
+VALID d=8 D=9 group=prod sl 8 poly x^3+x+1 sl 11 x Z_1 N=665280 vertices=1330560

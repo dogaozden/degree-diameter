@@ -1,0 +1,36 @@
+group sl 25 poly x^2+2 x Z_43, N=670800, identity 25800, H order 43, rows 15600, threads 1, setup 0.04s
+wide rows: HW order 215, rows 3120, setup 0.06s
+alpha: conj by mat(13,12,7,16) (index 8407), z -> 6 z on Z_43
+ORBIT k=3 m=2 f=2: |Fix(alpha)| = 23 (+e); mu = 29.67, mu/k = 9.89, fixed-point misses ~ 1.70
+start cost=102
+t=30 steps=5082 evals=40657 cost=12 best=12 T=0.53
+t=60 steps=10694 evals=85553 cost=12 best=12 T=0.19
+t=90 steps=16499 evals=131993 cost=12 best=12 T=0.15
+t=120 steps=22351 evals=178809 cost=12 best=12 T=0.15
+t=150 steps=28258 evals=226065 cost=6 best=6 T=0.15
+t=180 steps=34233 evals=273865 cost=6 best=6 T=0.15
+t=210 steps=40253 evals=322025 cost=6 best=6 T=0.15
+t=240 steps=46137 evals=369097 cost=6 best=6 T=0.15
+t=270 steps=52288 evals=418305 cost=6 best=6 T=0.15
+t=300 steps=58032 evals=464257 cost=6 best=6 T=0.88
+t=330 steps=63926 evals=511409 cost=6 best=6 T=0.31
+t=360 steps=70072 evals=560577 cost=6 best=6 T=0.15
+t=390 steps=76124 evals=608993 cost=6 best=6 T=0.15
+t=420 steps=82229 evals=657833 cost=6 best=6 T=0.15
+t=450 steps=87958 evals=703665 cost=20 best=6 T=0.88
+t=480 steps=93733 evals=749865 cost=6 best=6 T=0.31
+t=510 steps=99555 evals=796441 cost=6 best=6 T=0.15
+t=540 steps=105224 evals=841793 cost=6 best=6 T=0.15
+t=570 steps=111109 evals=888873 cost=6 best=6 T=0.15
+t=600 steps=116840 evals=934721 cost=6 best=6 T=0.88
+t=630 steps=122040 evals=976321 cost=6 best=6 T=0.31
+t=660 steps=127619 evals=1020953 cost=6 best=6 T=0.15
+t=690 steps=133327 evals=1066617 cost=6 best=6 T=0.15
+t=720 steps=138897 evals=1111177 cost=6 best=6 T=0.15
+t=750 steps=144656 evals=1157249 cost=6 best=6 T=0.88
+RESULT d=8 D=9 group=sl 25 poly x^2+2 x Z_43 N=670800 best=0 evals=1185057 time=768.0 orbit k=3 m=2 f=2 fix=23
+full diameter check: OK
+wrote research/frontier/runs/raise-d8D9/b4/d8D9_sl_25_43_orb3_s1.txt
+n = 1341600 edges = 5366400 max degree = 8 min degree = 8 duplicate edges = 0
+edge list sha256 = 3123f00165185157550dc90db9f425bc90995dc4fb19ba13cd5c4e3f1510f728
+VALID d=8 D=9 group=sl 25 poly x^2+2 x Z_43 N=670800 vertices=1341600
