@@ -1,0 +1,44 @@
+# d7huge check job "check-d7huge-a" (worker a): all-pairs check of two new diameter-7 cells, source ranges a
+
+Branch of the solutions: claude/conics-2-diameter-7-ic0oat (not checked out in this branch; its sols are read from there).
+Checker: research/synthetic/conics/apsp_fast.c, built with cc -O3 -march=native -pthread (copied to the work directory).
+
+## Machine
+nproc: 4
+free -g (before the run; total/used/free/shared/buff-cache/available):
+               total        used        free      shared  buff/cache   available
+Mem:              15           0          15           0           0          15
+Swap:              0           0           0
+
+## sha256 checks
+hex_q16.bin (cc -O2 -o hexgen2 research/d10D7/hexgen2.c && ./hexgen2 16, run in a work directory with a hex/ subdirectory; copied to hex_q16.bin):
+  f7a701a11c2edcdc0014bd8a0eaa2a0ecce11e5953fd4bc63cc8a61c327a4394  (matches the expected value)
+(19,7) edge list g19.edges (typed_build.py build, sha256 printed by the builder and by sha256sum):
+  d71baea19994d2fb013823260b5c8f44e8407207eaa52c0b24fcc78dd1fc7fc1  (matches the expected value)
+  edges = 107433784, n = 11316940, degree min 17 max 19, hub graph edges 924838
+
+## Commands (work directory outside the repository; only this file is committed)
+cc -O2 -o hexgen2 /home/user/degree-diameter/research/d10D7/hexgen2.c
+./hexgen2 16                       # writes hex/hex_q16.bin
+cp hex/hex_q16.bin hex_q16.bin
+python3 /home/user/degree-diameter/research/synthetic/conics2/typed_build.py build hex_q16.bin /home/user/degree-diameter/research/frontier/sols/d19D7_hex16_typedwhisk_nu0_n11316940.sol g19.edges
+cp /home/user/degree-diameter/research/synthetic/conics/apsp_fast.c . && cc -O3 -march=native -pthread -o apsp_fast apsp_fast.c
+./apsp_fast g19.edges 19 7 4 2829236 3536545     # range 5 = (5-1)*707309 .. 5*707309
+./apsp_fast g19.edges 19 7 4 4243854 4951163     # range 7 = (7-1)*707309 .. 7*707309 (run after range 5)
+Each range run under nohup (runa.sh), 4 threads, one range at a time.
+
+## Ranges (d19 (11,316,940), (19,7))
+
+### range 5 (sources 2829236..3536545): output file d19_i5.out, last lines unedited
+n=11316940 edges=107433784 degree min=17 max=19 bipartite=yes diameter=7 sources=2829236..3536545
+RESULT VALID d=19 D=7 n=11316940 (sources in the range only)
+exit 0
+
+
+### range 7 (sources 4243854..4951163): output file d19_i7.out, last lines unedited
+n=11316940 edges=107433784 degree min=17 max=19 bipartite=yes diameter=7 sources=4243854..4951163
+RESULT VALID d=19 D=7 n=11316940 (sources in the range only)
+exit 0
+
+## Status of worker a
+Both assigned ranges (d19 5, d19 7) are VALID. Assigned ranges of worker a are complete; no (20,7) range is assigned to worker a.
