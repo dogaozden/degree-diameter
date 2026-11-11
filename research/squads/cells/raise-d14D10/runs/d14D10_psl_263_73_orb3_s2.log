@@ -1,0 +1,14 @@
+group psl 263 x Z_73, N=663978216, identity 2515069, H order 44, rows 15090414, threads 4, setup 32.27s
+alpha: conj by mat(35,26,25,229) (index 2393062), z -> 8 z on Z_73
+ORBIT k=3 m=4 f=2: |Fix(alpha)| = 131 (+e); mu = 20.32, mu/k = 6.77, fixed-point misses ~ 0.41
+start cost=21
+t=36 steps=3 evals=25 cost=9 best=9 T=0.42
+t=71 steps=6 evals=49 cost=6 best=6 T=0.15
+t=104 steps=9 evals=73 cost=6 best=6 T=0.15
+t=135 steps=12 evals=97 cost=6 best=6 T=0.15
+t=168 steps=15 evals=121 cost=6 best=6 T=0.15
+t=199 steps=18 evals=145 cost=6 best=6 T=0.15
+RESULT d=14 D=10 group=psl 263 x Z_73 N=663978216 best=0 evals=153 time=215.4 orbit k=3 m=4 f=2 fix=131
+full diameter check: OK
+wrote raise-d14D10/runs/d14D10_psl_263_73_orb3_s2.txt
+UNCHECKED: > 20M vertices and no low-memory checker for psl
