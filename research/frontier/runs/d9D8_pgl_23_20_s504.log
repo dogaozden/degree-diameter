@@ -1,0 +1,13 @@
+group pgl 23 x Z_20, N=242880, identity 0, H order 60, rows 4048, threads 1, setup 0.01s
+start cost=17
+t=30 steps=16446 evals=131569 cost=2 best=1 T=0.53
+t=60 steps=32502 evals=260017 cost=2 best=1 T=0.19
+t=90 steps=48397 evals=387177 cost=2 best=1 T=0.15
+t=120 steps=64876 evals=519009 cost=1 best=1 T=0.15
+t=150 steps=81000 evals=648001 cost=1 best=1 T=0.15
+t=180 steps=97596 evals=780769 cost=5 best=1 T=0.74
+t=210 steps=114127 evals=913017 cost=2 best=1 T=0.26
+t=240 steps=129954 evals=1039633 cost=1 best=1 T=0.15
+RESULT d=9 D=8 group=pgl 23 x Z_20 N=242880 best=0 evals=1119985 time=258.9
+full diameter check: OK
+wrote sols/d9D8_pgl_23_20_s504.txt
