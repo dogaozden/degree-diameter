@@ -1,0 +1,15 @@
+group sl 5 x Z_49, N=5880, identity 980, H order 49, rows 120, threads 1, setup 0.00s
+wide rows: HW order 245, rows 24, setup 0.01s
+alpha: conj by mat(3,4,2,3) (index 92), z -> 18 z on Z_49
+ORBIT k=3 m=2 f=0: |Fix(alpha)| = 5 (+e); mu = 212.24, mu/k = 70.75, fixed-point misses ~ 3.97
+start cost=1540
+t=30 steps=715672 evals=5725377 cost=224 best=224 T=0.53
+t=60 steps=1483768 evals=11870145 cost=224 best=224 T=0.19
+t=90 steps=2326588 evals=18612705 cost=224 best=224 T=0.15
+t=120 steps=3035034 evals=24280273 cost=224 best=224 T=0.15
+t=150 steps=3834663 evals=30677305 cost=224 best=224 T=0.15
+t=180 steps=4640287 evals=37122297 cost=224 best=224 T=0.53
+t=210 steps=5399864 evals=43198913 cost=224 best=224 T=0.19
+t=240 steps=6207705 evals=49661641 cost=224 best=224 T=0.15
+t=270 steps=6999970 evals=55999761 cost=224 best=224 T=0.15
+RESULT d=6 D=7 group=sl 5 x Z_49 N=5880 best=224 evals=62278177 time=300.0 orbit k=3 m=2 f=0 fix=5

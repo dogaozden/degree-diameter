@@ -1,0 +1,12 @@
+group sl 5 x Z_37, N=4440, identity 740, H order 37, rows 120, threads 1, setup 0.00s
+wide rows: HW order 222, rows 20, setup 0.00s
+alpha: conj by mat(3,4,2,3) (index 92), z -> 10 z on Z_37
+ORBIT k=3 m=2 f=0: |Fix(alpha)| = 5 (+e); mu = 54.57, mu/k = 18.19, fixed-point misses ~ 2.77
+start cost=312
+RESULT d=6 D=7 group=sl 5 x Z_37 N=4440 best=0 evals=2705 time=0.0 orbit k=3 m=2 f=0 fix=5
+full diameter check: OK
+full diameter check after normalising s_0 = e: OK
+wrote /home/user/degree-diameter/research/structured/runs/raise_d6D7/d6D7_sl_5_37_orb3f0_s3.txt
+n = 8880 edges = 26640 max degree = 6 min degree = 6 duplicate edges = 0
+edge list sha256 = cbc4c011e62fb5208ac80811a3847697478c5e8150821620a1f7c61b5de33763
+VALID d=6 D=7 group=sl 5 x Z_37 N=4440 vertices=8880

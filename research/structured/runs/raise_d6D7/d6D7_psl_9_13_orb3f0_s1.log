@@ -1,0 +1,15 @@
+group psl 9 poly x^2+1 x Z_13, N=4680, identity 468, H order 52, rows 90, threads 1, setup 0.00s
+wide rows: HW order 65, rows 72, setup 0.00s
+alpha: conj by mat(1,2,0,1) (index 54), z -> 3 z on Z_13
+ORBIT k=3 m=2 f=0: |Fix(alpha)| = 8 (+e); mu = 72.08, mu/k = 24.03, fixed-point misses ~ 4.48
+start cost=316
+t=30 steps=296954 evals=2375633 cost=25 best=25 T=0.53
+t=60 steps=590921 evals=4727369 cost=25 best=25 T=0.19
+t=90 steps=902663 evals=7221305 cost=25 best=25 T=0.15
+t=120 steps=1179929 evals=9439433 cost=25 best=25 T=0.15
+t=150 steps=1474969 evals=11799753 cost=25 best=25 T=0.15
+t=180 steps=1743084 evals=13944673 cost=25 best=25 T=0.53
+t=210 steps=2053259 evals=16426073 cost=25 best=25 T=0.19
+t=240 steps=2372128 evals=18977025 cost=25 best=25 T=0.15
+t=270 steps=2687497 evals=21499977 cost=25 best=25 T=0.15
+RESULT d=6 D=7 group=psl 9 poly x^2+1 x Z_13 N=4680 best=25 evals=23785689 time=300.0 orbit k=3 m=2 f=0 fix=8

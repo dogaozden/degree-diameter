@@ -1,0 +1,15 @@
+group psl 3 x Z_373, N=4476, identity 1119, H order 3, rows 1492, threads 1, setup 0.01s
+wide rows: no cyclic subgroup of order >= 64 found (best 3); using haar_gen3's evaluation
+alpha: conj by mat(1,2,1,0) (index 10), z -> 88 z on Z_373
+ORBIT k=3 m=2 f=0: |Fix(alpha)| = 2 (+e); mu = 57.00, mu/k = 19.00, fixed-point misses ~ 1.40
+start cost=3820
+t=30 steps=30979 evals=247833 cost=3388 best=3388 T=0.53
+t=60 steps=62070 evals=496561 cost=3388 best=3388 T=0.19
+t=90 steps=93301 evals=746409 cost=3388 best=3388 T=0.15
+t=120 steps=123934 evals=991473 cost=3388 best=3388 T=0.15
+t=150 steps=153847 evals=1230777 cost=3388 best=3388 T=1.50
+t=180 steps=185458 evals=1483665 cost=3388 best=3388 T=0.53
+t=210 steps=215997 evals=1727977 cost=3388 best=3388 T=0.19
+t=240 steps=247126 evals=1977009 cost=3388 best=3388 T=0.15
+t=270 steps=277548 evals=2220385 cost=3388 best=3388 T=0.15
+RESULT d=6 D=7 group=psl 3 x Z_373 N=4476 best=3388 evals=2471905 time=300.0 orbit k=3 m=2 f=0 fix=2

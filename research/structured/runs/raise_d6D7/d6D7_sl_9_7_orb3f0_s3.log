@@ -1,0 +1,65 @@
+group sl 9 poly x^2+1 x Z_7, N=5040, identity 504, H order 56, rows 90, threads 1, setup 0.00s
+wide rows: HW order 70, rows 72, setup 0.00s
+alpha: conj by mat(4,7,8,7) (index 386), z -> 2 z on Z_7
+ORBIT k=3 m=2 f=0: |Fix(alpha)| = 17 (+e); mu = 104.58, mu/k = 34.86, fixed-point misses ~ 9.89
+start cost=334
+t=30 steps=300590 evals=2404721 cost=48 best=48 T=0.53
+t=60 steps=596100 evals=4768801 cost=48 best=48 T=0.19
+t=90 steps=887371 evals=7098969 cost=48 best=48 T=0.15
+t=120 steps=1181630 evals=9453041 cost=48 best=48 T=0.15
+t=150 steps=1473596 evals=11788769 cost=48 best=48 T=0.15
+t=180 steps=1761023 evals=14088185 cost=48 best=48 T=0.53
+t=210 steps=2056935 evals=16455481 cost=48 best=48 T=0.19
+t=240 steps=2361603 evals=18892825 cost=48 best=48 T=0.15
+t=270 steps=2675935 evals=21407481 cost=48 best=48 T=0.15
+t=300 steps=2973465 evals=23787721 cost=48 best=48 T=0.15
+t=330 steps=3263605 evals=26108841 cost=48 best=48 T=0.53
+t=360 steps=3564408 evals=28515265 cost=48 best=48 T=0.19
+t=390 steps=3880513 evals=31044105 cost=48 best=48 T=0.15
+t=420 steps=4174335 evals=33394681 cost=48 best=48 T=0.15
+t=450 steps=4455786 evals=35646289 cost=48 best=48 T=0.15
+t=480 steps=4748808 evals=37990465 cost=48 best=48 T=0.53
+t=510 steps=5020799 evals=40166393 cost=48 best=48 T=0.19
+t=540 steps=5318418 evals=42547345 cost=48 best=48 T=0.15
+t=570 steps=5610841 evals=44886729 cost=48 best=48 T=0.15
+t=600 steps=5889253 evals=47114025 cost=48 best=48 T=1.50
+t=630 steps=6160899 evals=49287193 cost=48 best=48 T=0.53
+t=660 steps=6425522 evals=51404177 cost=48 best=48 T=0.19
+t=690 steps=6701216 evals=53609729 cost=48 best=48 T=0.15
+t=720 steps=6986190 evals=55889521 cost=48 best=48 T=0.15
+t=750 steps=7235317 evals=57882537 cost=48 best=48 T=1.50
+t=780 steps=7471612 evals=59772897 cost=48 best=48 T=0.53
+t=810 steps=7715837 evals=61726697 cost=48 best=48 T=0.19
+t=840 steps=7994739 evals=63957913 cost=48 best=48 T=0.15
+t=870 steps=8279662 evals=66237297 cost=48 best=48 T=0.15
+t=900 steps=8543569 evals=68348553 cost=48 best=48 T=1.50
+t=930 steps=8844158 evals=70753265 cost=48 best=48 T=0.53
+t=960 steps=9130156 evals=73041249 cost=48 best=48 T=0.19
+t=990 steps=9413044 evals=75304353 cost=48 best=48 T=0.15
+t=1020 steps=9673547 evals=77388377 cost=48 best=48 T=0.15
+t=1050 steps=9920538 evals=79364305 cost=48 best=48 T=1.50
+t=1080 steps=10207151 evals=81657209 cost=48 best=48 T=0.53
+t=1110 steps=10478134 evals=83825073 cost=48 best=48 T=0.19
+t=1140 steps=10743680 evals=85949441 cost=48 best=48 T=0.15
+t=1170 steps=11018846 evals=88150769 cost=48 best=48 T=0.15
+t=1200 steps=11287590 evals=90300721 cost=48 best=48 T=1.50
+t=1230 steps=11557615 evals=92460921 cost=48 best=48 T=0.53
+t=1260 steps=11803003 evals=94424025 cost=48 best=48 T=0.19
+t=1290 steps=12104802 evals=96838417 cost=48 best=48 T=0.15
+t=1320 steps=12372992 evals=98983937 cost=48 best=48 T=0.15
+t=1350 steps=12614200 evals=100913601 cost=48 best=48 T=1.50
+t=1380 steps=12864453 evals=102915625 cost=48 best=48 T=0.53
+t=1410 steps=13151339 evals=105210713 cost=48 best=48 T=0.19
+t=1440 steps=13412852 evals=107302817 cost=48 best=48 T=0.15
+t=1470 steps=13685895 evals=109487161 cost=48 best=48 T=0.15
+t=1500 steps=13952459 evals=111619673 cost=48 best=48 T=1.50
+t=1530 steps=14189085 evals=113512681 cost=48 best=48 T=0.53
+t=1560 steps=14480308 evals=115842465 cost=48 best=48 T=0.19
+t=1590 steps=14772832 evals=118182657 cost=48 best=48 T=0.15
+t=1620 steps=15060154 evals=120481233 cost=48 best=48 T=0.15
+t=1650 steps=15361446 evals=122891569 cost=48 best=48 T=1.50
+t=1680 steps=15650229 evals=125201833 cost=48 best=48 T=0.53
+t=1710 steps=15932800 evals=127462401 cost=48 best=48 T=0.19
+t=1740 steps=16213889 evals=129711113 cost=48 best=48 T=0.15
+t=1770 steps=16500467 evals=132003737 cost=48 best=48 T=0.15
+RESULT d=6 D=7 group=sl 9 poly x^2+1 x Z_7 N=5040 best=48 evals=134428889 time=1800.0 orbit k=3 m=2 f=0 fix=17

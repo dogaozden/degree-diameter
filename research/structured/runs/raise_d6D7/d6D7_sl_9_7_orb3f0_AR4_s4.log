@@ -1,0 +1,35 @@
+group sl 9 poly x^2+1 x Z_7, N=5040, identity 504, H order 56, rows 90, threads 1, setup 0.00s
+wide rows: HW order 70, rows 72, setup 0.00s
+alpha: conj by mat(4,7,8,7) (index 386), z -> 4 z on Z_7
+ORBIT k=3 m=2 f=0: |Fix(alpha)| = 17 (+e); mu = 104.58, mu/k = 34.86, fixed-point misses ~ 9.89
+start cost=396
+t=30 steps=278920 evals=2231361 cost=48 best=48 T=0.53
+t=60 steps=527859 evals=4222873 cost=48 best=48 T=0.19
+t=90 steps=706593 evals=5652745 cost=48 best=48 T=0.15
+t=120 steps=908240 evals=7265921 cost=48 best=48 T=0.15
+t=150 steps=1111956 evals=8895649 cost=48 best=48 T=0.15
+t=180 steps=1373406 evals=10987249 cost=48 best=48 T=0.53
+t=210 steps=1665017 evals=13320137 cost=48 best=48 T=0.19
+t=240 steps=1962107 evals=15696857 cost=48 best=48 T=0.15
+t=270 steps=2254994 evals=18039953 cost=48 best=48 T=0.15
+t=300 steps=2532471 evals=20259769 cost=48 best=48 T=0.15
+t=330 steps=2829917 evals=22639337 cost=48 best=48 T=0.53
+t=360 steps=3121006 evals=24968049 cost=48 best=48 T=0.19
+t=390 steps=3426748 evals=27413985 cost=48 best=48 T=0.15
+t=420 steps=3703986 evals=29631889 cost=48 best=48 T=0.15
+t=450 steps=3958366 evals=31666929 cost=48 best=48 T=0.15
+t=480 steps=4214717 evals=33717737 cost=48 best=48 T=0.53
+t=510 steps=4504035 evals=36032281 cost=48 best=48 T=0.19
+t=540 steps=4801776 evals=38414209 cost=48 best=48 T=0.15
+t=570 steps=5101933 evals=40815465 cost=48 best=48 T=0.15
+t=600 steps=5387601 evals=43100809 cost=48 best=48 T=0.15
+t=630 steps=5675453 evals=45403625 cost=48 best=48 T=0.53
+t=660 steps=5984002 evals=47872017 cost=48 best=48 T=0.19
+t=690 steps=6288876 evals=50311009 cost=48 best=48 T=0.15
+t=720 steps=6609806 evals=52878449 cost=48 best=48 T=0.15
+t=750 steps=6918375 evals=55347001 cost=48 best=48 T=0.15
+t=780 steps=7221119 evals=57768953 cost=48 best=48 T=0.53
+t=810 steps=7523009 evals=60184073 cost=48 best=48 T=0.19
+t=840 steps=7816098 evals=62528785 cost=48 best=48 T=0.15
+t=870 steps=8108237 evals=64865897 cost=48 best=48 T=0.15
+RESULT d=6 D=7 group=sl 9 poly x^2+1 x Z_7 N=5040 best=48 evals=67182729 time=900.0 orbit k=3 m=2 f=0 fix=17

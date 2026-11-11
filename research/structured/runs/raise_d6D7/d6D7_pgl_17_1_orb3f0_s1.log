@@ -1,0 +1,25 @@
+group pgl 17 x Z_1, N=4896, identity 0, H order 18, rows 272, threads 1, setup 0.00s
+wide rows: no cyclic subgroup of order >= 64 found (best 18); using haar_gen3's evaluation
+alpha: conj by mat(1,10,14,3) (index 2947), z -> 0 z on Z_1
+ORBIT k=3 m=2 f=0: |Fix(alpha)| = 17 (+e); mu = 90.65, mu/k = 30.22, fixed-point misses ~ 9.52
+start cost=4911
+t=30 steps=128482 evals=1027857 cost=118 best=118 T=0.53
+t=60 steps=259677 evals=2077417 cost=118 best=118 T=0.19
+t=90 steps=390839 evals=3126713 cost=118 best=118 T=0.15
+t=120 steps=526000 evals=4208001 cost=118 best=118 T=0.15
+t=150 steps=657448 evals=5259585 cost=118 best=118 T=0.15
+t=180 steps=789878 evals=6319025 cost=118 best=118 T=0.53
+t=210 steps=923893 evals=7391145 cost=118 best=118 T=0.19
+t=240 steps=1055259 evals=8442073 cost=118 best=118 T=0.15
+t=270 steps=1190794 evals=9526353 cost=118 best=118 T=0.15
+t=300 steps=1326026 evals=10608209 cost=118 best=118 T=0.15
+t=330 steps=1460018 evals=11680145 cost=118 best=118 T=0.53
+t=360 steps=1594172 evals=12753377 cost=118 best=118 T=0.19
+t=390 steps=1727554 evals=13820433 cost=118 best=118 T=0.15
+t=420 steps=1856522 evals=14852177 cost=118 best=118 T=0.15
+t=450 steps=1987884 evals=15903073 cost=118 best=118 T=0.15
+t=480 steps=2117398 evals=16939185 cost=118 best=118 T=0.53
+t=510 steps=2250061 evals=18000489 cost=118 best=118 T=0.19
+t=540 steps=2376735 evals=19013881 cost=118 best=118 T=0.15
+t=570 steps=2507228 evals=20057825 cost=118 best=118 T=0.15
+RESULT d=6 D=7 group=pgl 17 x Z_1 N=4896 best=118 evals=21087233 time=600.0 orbit k=3 m=2 f=0 fix=17
