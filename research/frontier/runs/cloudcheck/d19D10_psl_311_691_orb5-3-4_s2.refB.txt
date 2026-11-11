@@ -1,0 +1,16 @@
+machine: vm; nproc=4; free -g: total 15G used 0G free 14G avail 15G; Linux 6.18.44-fc-v185; gcc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0
+sha256: f447fdd437559b5d84781ae5746e11b2d9cc4fa0dee6296282004166398e8060  research/frontier/sols/d19D10_psl_311_691_orb5-3-4_s2.txt  (from branch claude/raise-d10-beyond-rcdq5p; cell d19D10; vertices 20,785,224,720)
+progress 2026-11-02T05:31:26Z: job started; BFS from (e,B) running; checker prints only at the end, so no stdout yet
+progress 2026-11-02T06:02:16Z: still running, elapsed 30:49, RSS 7613468 KB (about 7.6 GB, bitsets filling); no exit yet
+progress 2026-11-02T06:32:24Z: still running, elapsed 01:00:57, RSS 7613468 KB; no exit yet
+progress 2026-11-02T07:02:29Z: still running, elapsed 01:31:03, RSS 7613468 KB; no exit yet
+progress 2026-11-02T07:32:34Z: still running, elapsed 02:01:08, RSS 7613468 KB; no exit yet
+progress 2026-11-02T07:45:42Z: run finished, exit 0; final result below
+
+################ haarcheck_psl (reference checker, research/structured/tools/haarcheck_psl.c from master f816dbc7c0 or later, built with gcc -O3): /usr/bin/time -v haarcheck_psl research/frontier/sols/d19D10_psl_311_691_orb5-3-4_s2.txt B   (BFS from (e,B) only; the other half, (e,A), is run by another job)
+from (e,B): reached A 10392612360/10392612360, B 10392612360/10392612360 within 10, ecc 10
+HALF-VALID from (e,B) d=19 D=10 group=psl 311 x Z_691 N=10392612360 vertices=20785224720
+[exit 0; wall 8035s (2:13:55); peak RSS 7436 MB (7613396 KB)]
+
+time -v details: user 7901.54 s, system 44.99 s, exit status 0 (from /tmp/claude-0/-home-user-degree-diameter/93724fd7-0f10-56c0-b06c-a37f4e8b1842/scratchpad/refB.time)
+note: brief estimated 3 to 3.5 h and about 11 GB; this run took 2 h 14 min and 7.4 GB peak.
