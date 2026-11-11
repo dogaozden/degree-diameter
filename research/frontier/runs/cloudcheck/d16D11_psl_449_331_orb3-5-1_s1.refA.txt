@@ -1,0 +1,16 @@
+machine: vm; nproc=4; free -g: total 15G used 0G free 14G avail 15G at start; Linux 6.18.44-fc-v185; gcc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0
+sha256: 1467494757357932d28c0e064db3672226ab99a90815580d6ea0f43b83870d68  research/frontier/sols/d16D11_psl_449_331_orb3-5-1_s1.txt  (copied with git show from branch claude/beyond-d11-d12-new-cells-3t3djx; checker source research/structured/tools/haarcheck_psl.c on master f816dbc7c0 / c3b542a)
+progress: 2026-11-01 13:47 UTC, run started 13:45:37 UTC (one-sided BFS from (e,A) only, PID 758), elapsed 2 min, still running, RSS about 1.8 GB and climbing
+progress: 2026-11-01 14:16 UTC, run started 13:45:37 UTC, elapsed 31 min, still running (PID 758), RSS about 10.97 GB (near the full ~11.2 GB of bitsets), no output yet (the checker prints only when the BFS ends)
+progress: 2026-11-01 14:47 UTC, run started 13:45:37 UTC, elapsed 61 min, still running (PID 758), RSS steady at about 10.97 GB, no output yet
+progress: 2026-11-01 15:17 UTC, run started 13:45:37 UTC, elapsed 91 min, still running (PID 758), RSS steady at about 10.97 GB, no output yet
+progress: 2026-11-01 15:47 UTC, run started 13:45:37 UTC, elapsed 121 min, still running (PID 758), RSS steady at about 10.97 GB, no output yet
+progress: 2026-11-01 16:17 UTC, run started 13:45:37 UTC, elapsed 151 min, still running (PID 758), RSS steady at about 10.97 GB, no output yet
+progress: 2026-11-01 16:47 UTC, run started 13:45:37 UTC, elapsed 181 min, still running (PID 758), RSS steady at about 10.97 GB, no output yet; expected end at about 3 to 3.5 h, cap 5.5 h
+progress: 2026-11-01 17:17 UTC, run started 13:45:37 UTC, elapsed 211 min, still running (PID 758), RSS steady at about 10.97 GB, no output yet; cap 5.5 h, not stopped early
+progress: 2026-11-01 17:22 UTC, run finished (exit 0, wall 3:36:41), final section below
+
+################ haarcheck_psl (reference checker, research/structured/tools/haarcheck_psl.c on master c3b542a, built with gcc -O3 -o haarcheck_psl research/structured/tools/haarcheck_psl.c; one side only, BFS from (e,A)): cd /home/user/degree-diameter && /usr/bin/time -v -o /tmp/claude-0/-home-user-degree-diameter/1719b04c-6812-55ef-a363-9e53a7bbbdf0/scratchpad/time.txt /tmp/claude-0/-home-user-degree-diameter/1719b04c-6812-55ef-a363-9e53a7bbbdf0/scratchpad/haarcheck_psl research/frontier/sols/d16D11_psl_449_331_orb3-5-1_s1.txt A   (stdout, complete; binary and time file kept in the session scratchpad, not committed)
+from (e,A): reached A 14980795200/14980795200, B 14980795200/14980795200 within 11, ecc 11
+HALF-VALID from (e,A) d=16 D=11 group=psl 449 x Z_331 N=14980795200 vertices=29961590400
+[exit 0; wall 13001s (3:36:41); peak RSS 10717 MB (10973908 KB); 1 thread, user 12820 s, sys 66 s]
