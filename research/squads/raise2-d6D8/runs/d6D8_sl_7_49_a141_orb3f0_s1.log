@@ -1,0 +1,35 @@
+group sl 7 x Z_49, N=16464, identity 2058, H order 56, rows 294, threads 1, setup 0.00s
+wide rows: HW order 196, rows 84, setup 0.01s
+alpha: conj by mat(3,0,1,5) (index 141), z -> 18 z on Z_49
+ORBIT k=3 m=2 f=0: |Fix(alpha)| = 5 (+e); mu = 43.70, mu/k = 14.57, fixed-point misses ~ 0.83
+start cost=239
+t=30 steps=230670 evals=1845361 cost=3 best=3 T=0.53
+t=60 steps=465215 evals=3721721 cost=3 best=3 T=0.19
+t=90 steps=653600 evals=5228801 cost=3 best=3 T=0.15
+t=120 steps=860142 evals=6881137 cost=3 best=3 T=0.15
+t=150 steps=1063280 evals=8506241 cost=3 best=3 T=0.15
+t=180 steps=1287738 evals=10301905 cost=3 best=3 T=0.54
+t=210 steps=1517996 evals=12143969 cost=3 best=3 T=0.19
+t=240 steps=1755090 evals=14040721 cost=3 best=3 T=0.15
+t=270 steps=2002534 evals=16020273 cost=3 best=3 T=0.15
+t=300 steps=2238645 evals=17909161 cost=3 best=3 T=0.15
+t=330 steps=2484111 evals=19872889 cost=6 best=3 T=0.54
+t=360 steps=2727069 evals=21816553 cost=3 best=3 T=0.19
+t=390 steps=2969117 evals=23752937 cost=3 best=3 T=0.15
+t=420 steps=3198570 evals=25588561 cost=3 best=3 T=0.15
+t=450 steps=3435381 evals=27483049 cost=3 best=3 T=0.15
+t=480 steps=3667640 evals=29341121 cost=9 best=3 T=0.54
+t=510 steps=3910392 evals=31283137 cost=3 best=3 T=0.19
+t=540 steps=4157047 evals=33256377 cost=3 best=3 T=0.15
+t=570 steps=4396230 evals=35169841 cost=3 best=3 T=0.15
+t=600 steps=4624092 evals=36992737 cost=3 best=3 T=0.15
+t=630 steps=4839650 evals=38717201 cost=3 best=3 T=0.54
+t=660 steps=5080139 evals=40641113 cost=3 best=3 T=0.19
+t=690 steps=5320839 evals=42566713 cost=3 best=3 T=0.15
+t=720 steps=5554082 evals=44432657 cost=3 best=3 T=0.15
+t=750 steps=5776761 evals=46214089 cost=3 best=3 T=0.15
+t=780 steps=6010155 evals=48081241 cost=3 best=3 T=0.54
+t=810 steps=6221221 evals=49769769 cost=3 best=3 T=0.19
+t=840 steps=6443500 evals=51548001 cost=3 best=3 T=0.15
+t=870 steps=6682014 evals=53456113 cost=3 best=3 T=0.15
+RESULT d=6 D=8 group=sl 7 x Z_49 N=16464 best=3 evals=55206361 time=900.0 orbit k=3 m=2 f=0 fix=5

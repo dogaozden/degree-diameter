@@ -1,0 +1,35 @@
+group psl 7 x Z_95, N=15960, identity 1995, H order 57, rows 280, threads 1, setup 0.00s
+wide rows: HW order 190, rows 84, setup 0.01s
+alpha: conj by mat(0,3,2,1) (index 15), z -> 11 z on Z_95
+ORBIT k=3 m=2 f=0: |Fix(alpha)| = 14 (+e); mu = 35.13, mu/k = 11.71, fixed-point misses ~ 1.95
+start cost=169
+t=30 steps=233524 evals=1868193 cost=15 best=11 T=0.53
+t=60 steps=470385 evals=3763081 cost=11 best=11 T=0.19
+t=90 steps=691517 evals=5532137 cost=11 best=11 T=0.15
+t=120 steps=922681 evals=7381449 cost=11 best=11 T=0.15
+t=150 steps=1152413 evals=9219305 cost=11 best=11 T=0.15
+t=180 steps=1392065 evals=11136521 cost=11 best=11 T=0.53
+t=210 steps=1639773 evals=13118185 cost=11 best=11 T=0.19
+t=240 steps=1886089 evals=15088713 cost=11 best=11 T=0.15
+t=270 steps=2115565 evals=16924521 cost=11 best=11 T=0.15
+t=300 steps=2346709 evals=18773673 cost=11 best=11 T=0.15
+t=330 steps=2580792 evals=20646337 cost=12 best=11 T=0.53
+t=360 steps=2827600 evals=22620801 cost=11 best=11 T=0.19
+t=390 steps=3071037 evals=24568297 cost=11 best=11 T=0.15
+t=420 steps=3321237 evals=26569897 cost=11 best=11 T=0.15
+t=450 steps=3566961 evals=28535689 cost=11 best=11 T=0.15
+t=480 steps=3804118 evals=30432945 cost=11 best=11 T=0.53
+t=510 steps=4022979 evals=32183833 cost=11 best=11 T=0.19
+t=540 steps=4244840 evals=33958721 cost=11 best=11 T=0.15
+t=570 steps=4477798 evals=35822385 cost=11 best=11 T=0.15
+t=600 steps=4701282 evals=37610257 cost=11 best=11 T=0.15
+t=630 steps=4919801 evals=39358409 cost=12 best=11 T=0.53
+t=660 steps=5123982 evals=40991857 cost=11 best=11 T=0.19
+t=690 steps=5346614 evals=42772913 cost=11 best=11 T=0.15
+t=720 steps=5567145 evals=44537161 cost=11 best=11 T=0.15
+t=750 steps=5803345 evals=46426761 cost=11 best=11 T=0.15
+t=780 steps=6036574 evals=48292593 cost=11 best=11 T=0.53
+t=810 steps=6273922 evals=50191377 cost=11 best=11 T=0.19
+t=840 steps=6520231 evals=52161849 cost=11 best=11 T=0.15
+t=870 steps=6755076 evals=54040609 cost=11 best=11 T=0.15
+RESULT d=6 D=8 group=psl 7 x Z_95 N=15960 best=11 evals=55919657 time=900.0 orbit k=3 m=2 f=0 fix=14

@@ -1,0 +1,35 @@
+group psl 7 x Z_98, N=16464, identity 2058, H order 49, rows 336, threads 1, setup 0.00s
+wide rows: HW order 196, rows 84, setup 0.00s
+alpha: conj by mat(0,3,2,1) (index 15), z -> 67 z on Z_98
+ORBIT k=3 m=2 f=0: |Fix(alpha)| = 5 (+e); mu = 43.70, mu/k = 14.57, fixed-point misses ~ 0.83
+start cost=8232
+t=30 steps=237920 evals=1903361 cost=9 best=6 T=0.53
+t=60 steps=476343 evals=3810745 cost=6 best=6 T=0.19
+t=90 steps=710733 evals=5685865 cost=6 best=6 T=0.15
+t=120 steps=926359 evals=7410873 cost=6 best=6 T=0.15
+t=150 steps=1159517 evals=9276137 cost=6 best=6 T=0.15
+t=180 steps=1400440 evals=11203521 cost=6 best=6 T=0.53
+t=210 steps=1651077 evals=13208617 cost=6 best=6 T=0.19
+t=240 steps=1891266 evals=15130129 cost=6 best=6 T=0.15
+t=270 steps=2120440 evals=16963521 cost=6 best=6 T=0.15
+t=300 steps=2340192 evals=18721537 cost=6 best=6 T=0.15
+t=330 steps=2575694 evals=20605553 cost=6 best=6 T=0.53
+t=360 steps=2822334 evals=22578673 cost=6 best=6 T=0.19
+t=390 steps=3064945 evals=24519561 cost=6 best=6 T=0.15
+t=420 steps=3313645 evals=26509161 cost=6 best=6 T=0.15
+t=450 steps=3562944 evals=28503553 cost=6 best=6 T=0.15
+t=480 steps=3811734 evals=30493873 cost=6 best=6 T=0.53
+t=510 steps=4044896 evals=32359169 cost=6 best=6 T=0.19
+t=540 steps=4272003 evals=34176025 cost=6 best=6 T=0.15
+t=570 steps=4503236 evals=36025889 cost=6 best=6 T=0.15
+t=600 steps=4714206 evals=37713649 cost=6 best=6 T=0.15
+t=630 steps=4932364 evals=39458913 cost=9 best=6 T=0.53
+t=660 steps=5150517 evals=41204137 cost=6 best=6 T=0.19
+t=690 steps=5366797 evals=42934377 cost=6 best=6 T=0.15
+t=720 steps=5584161 evals=44673289 cost=6 best=6 T=0.15
+t=750 steps=5825796 evals=46606369 cost=6 best=6 T=0.15
+t=780 steps=6059705 evals=48477641 cost=9 best=6 T=0.53
+t=810 steps=6298804 evals=50390433 cost=6 best=6 T=0.19
+t=840 steps=6545410 evals=52363281 cost=6 best=6 T=0.15
+t=870 steps=6784405 evals=54275241 cost=6 best=6 T=0.15
+RESULT d=6 D=8 group=psl 7 x Z_98 N=16464 best=6 evals=56134329 time=900.0 orbit k=3 m=2 f=0 fix=5

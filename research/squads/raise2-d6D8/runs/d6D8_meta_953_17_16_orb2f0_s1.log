@@ -1,0 +1,14 @@
+group meta 953 17 16 x Z_1, N=16201, identity 0, H order 17, rows 953, threads 1, setup 0.01s
+wide rows: no cyclic subgroup of order >= 64 found (best 17); using haar_gen3's evaluation
+alpha: meta scaling a -> 952 a, z -> 0 z on Z_1
+ORBIT k=2 m=3 f=0: |Fix(alpha)| = 16 (+e); mu = 39.06, mu/k = 19.53, fixed-point misses ~ 0.83
+start cost=47
+t=30 steps=39019 evals=312153 cost=16 best=12 T=0.53
+t=60 steps=78766 evals=630129 cost=15 best=12 T=0.19
+t=90 steps=116693 evals=933545 cost=16 best=12 T=0.15
+t=120 steps=152989 evals=1223913 cost=15 best=12 T=0.15
+t=150 steps=192336 evals=1538689 cost=15 best=12 T=0.15
+t=180 steps=232171 evals=1857369 cost=12 best=12 T=0.54
+t=210 steps=269066 evals=2152529 cost=12 best=12 T=0.19
+t=240 steps=298944 evals=2391553 cost=12 best=12 T=0.15
+RESULT d=6 D=8 group=meta 953 17 16 x Z_1 N=16201 best=12 evals=2576705 time=258.4 orbit k=2 m=3 f=0 fix=16
