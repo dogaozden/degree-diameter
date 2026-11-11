@@ -1,0 +1,15 @@
+group sl 7 x Z_127, N=42672, identity 5334, H order 14, rows 3048, threads 1, setup 0.01s
+wide rows: HW order 254, rows 168, setup 0.03s
+alpha: conj by mat(4,0,1,2) (index 190), z -> 19 z on Z_127
+ORBIT k=3 m=3 f=0: |Fix(alpha)| = 5 (+e); mu = 38.11, mu/k = 12.70, fixed-point misses ~ 1.16
+start cost=210
+t=30 steps=117731 evals=941849 cost=12 best=12 T=0.53
+t=60 steps=235848 evals=1886785 cost=12 best=12 T=0.19
+t=90 steps=361313 evals=2890505 cost=12 best=12 T=0.15
+t=120 steps=485745 evals=3885961 cost=12 best=12 T=0.15
+t=150 steps=607980 evals=4863841 cost=12 best=12 T=0.15
+t=180 steps=730949 evals=5847593 cost=14 best=12 T=0.54
+t=210 steps=856645 evals=6853161 cost=12 best=12 T=0.19
+t=240 steps=982813 evals=7862505 cost=12 best=12 T=0.15
+t=270 steps=1112241 evals=8897929 cost=12 best=12 T=0.15
+RESULT d=9 D=7 group=sl 7 x Z_127 N=42672 best=12 evals=9910009 time=300.0 orbit k=3 m=3 f=0 fix=5

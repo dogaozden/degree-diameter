@@ -1,0 +1,8 @@
+group pgl 9 poly x^2+1 x Z_7, N=5040, identity 0, H order 56, rows 90, threads 1, setup 0.00s
+wide rows: HW order 70, rows 72, setup 0.00s
+alpha: conj by mat(1,7,8,7) (index 574), z -> 2 z on Z_7
+ORBIT k=3 m=2 f=1: |Fix(alpha)| = 8 (+e); mu = 0.08, mu/k = 0.03, fixed-point misses ~ 0.44
+start cost=3
+RESULT d=7 D=7 group=pgl 9 poly x^2+1 x Z_7 N=5040 best=0 evals=9 time=0.0 orbit k=3 m=2 f=1 fix=8
+full diameter check: OK
+wrote /tmp/claude-0/-home-user-degree-diameter/1875b87c-6e2f-50f4-8dda-46afc7cbd0f2/scratchpad/h/ladder/d7_pgl9_7.txt
