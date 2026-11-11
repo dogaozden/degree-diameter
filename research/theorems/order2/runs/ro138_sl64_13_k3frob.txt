@@ -1,0 +1,7 @@
+group sl 64 poly x^6+x+1 x Z_13, N=3407040, identity 52416, H order 63, rows 54080, threads 1, setup 0.11s
+wide rows: HW order 117, rows 29120, setup 0.16s
+alpha: Frobenius x -> x^4 on entries, z -> 3 z on Z_13
+ORBIT k=3 m=4 f=1: |Fix(alpha)| = 59 (+e); mu = 35.46, mu/k = 11.82, fixed-point misses ~ 1.31
+RANDORB d=13 D=8 group=sl 64 poly x^6+x+1 x Z_13 N=3407040 k=3 m=4 f=1 fix=59 samples=60 min=18 p1=18 p10=28 median=50 mean=111.08 var=71351.3 mu=35.46 time=0.5
+RANDORB hist (cost/k): 0 0 0 0 0 0 1 0 4 2 5 3 5 3 3 3 4 6 2 3 2 3 1 0 0 1 0 0 1 0 0 8
+RANDORB cost0=0 of 60 (P=0); cost counts 0..12: 0 0 0 0 0 0 0 0 0 0 0 0 0

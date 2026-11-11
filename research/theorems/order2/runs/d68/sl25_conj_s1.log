@@ -1,0 +1,10 @@
+group sl 25 poly x^2+2 x Z_1, N=15600, identity 600, H order 26, rows 600, threads 1, setup 0.00s
+wide rows: no cyclic subgroup of order >= 64 found (best 26); using haar_gen3's evaluation
+alpha: conj by mat(5,21,12,20) (index 3637), z -> 0 z on Z_1
+ORBIT k=2 m=3 f=0: |Fix(alpha)| = 23 (+e); mu = 29.82, mu/k = 14.91, fixed-point misses ~ 1.05
+start cost=67
+t=30 steps=93564 evals=748513 cost=2 best=2 T=0.53
+t=60 steps=184269 evals=1474153 cost=2 best=2 T=0.19
+t=90 steps=278148 evals=2225185 cost=2 best=2 T=0.15
+t=120 steps=372208 evals=2977665 cost=2 best=2 T=0.15
+RESULT d=6 D=8 group=sl 25 poly x^2+2 x Z_1 N=15600 best=2 evals=3711201 time=150.0 orbit k=2 m=3 f=0 fix=23

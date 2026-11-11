@@ -1,0 +1,15 @@
+group prod sl 7 sl 7 x Z_31, N=3499776, identity 438774, H order 62, rows 56448, threads 1, setup 0.13s
+wide rows: HW order 248, rows 14112, setup 0.24s
+alpha: (x1, x2) -> (c x2 c^-1, x1), c = mat(2,0,4,4) (index 95), z -> 6 z on Z_31
+ORBIT k=6 m=2 f=1: |Fix(alpha)| = 5 (+e); mu = 49.36, mu/k = 8.23, fixed-point misses ~ 0.93
+start cost=144
+t=30 steps=678 evals=5425 cost=12 best=8 T=0.53
+t=60 steps=1312 evals=10497 cost=6 best=6 T=0.19
+t=90 steps=1809 evals=14473 cost=6 best=6 T=0.15
+t=120 steps=2259 evals=18073 cost=6 best=6 T=0.15
+t=150 steps=2862 evals=22897 cost=6 best=6 T=0.15
+t=180 steps=3515 evals=28121 cost=6 best=6 T=0.15
+t=210 steps=4136 evals=33089 cost=14 best=6 T=0.66
+t=240 steps=4819 evals=38553 cost=7 best=6 T=0.23
+t=270 steps=5546 evals=44369 cost=7 best=6 T=0.15
+RESULT d=13 D=8 group=prod sl 7 sl 7 x Z_31 N=3499776 best=6 evals=50089 time=300.0 orbit k=6 m=2 f=1 fix=5

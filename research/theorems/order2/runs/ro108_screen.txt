@@ -1,0 +1,21 @@
+group sl 16 poly x^4+x+1 x Z_145, N=591600, identity 34800, H order 58, rows 10200, threads 1, setup 0.10s
+wide rows: HW order 145, rows 4080, setup 0.14s
+alpha: Frobenius x -> x^2 on entries, z -> 12 z on Z_145
+OSUB=2: 54 elements with alpha-orbit of size 2 (27 orbits)
+ORBIT k=4 m=2 f=0: |Fix(alpha)| = 5 (+e); mu = 66.37, mu/k = 16.59, fixed-point misses ~ 0.62
+RANDORB d=10 D=8 group=sl 16 poly x^4+x+1 x Z_145 N=591600 k=4 m=2 f=0 fix=5 samples=200 min=152 p1=189 p10=356 median=1676 mean=41982.35 var=12917888979.9 mu=66.37 time=0.1
+group sl 16 poly x^4+x+1 x Z_146, N=595680, identity 35040, H order 34, rows 17520, threads 1, setup 0.02s
+wide rows: HW order 219, rows 2720, setup 0.04s
+alpha: Frobenius x -> x^2 on entries, z -> 27 z on Z_146
+OSUB=2: 108 elements with alpha-orbit of size 2 (54 orbits)
+ORBIT k=4 m=2 f=0: |Fix(alpha)| = 11 (+e); mu = 71.12, mu/k = 17.78, fixed-point misses ~ 1.25
+RANDORB d=10 D=8 group=sl 16 poly x^4+x+1 x Z_146 N=595680 k=4 m=2 f=0 fix=11 samples=200 min=220 p1=242 p10=494 median=11602 mean=105195.23 var=18288251007.2 mu=71.12 time=0.1
+group sl 16 poly x^4+x+1 x Z_149, N=607920, identity 35760, H order 17, rows 35760, threads 1, setup 0.04s
+wide rows: HW order 149, rows 4080, setup 0.07s
+alpha: Frobenius x -> x^2 on entries, z -> 44 z on Z_149
+OSUB=2: 54 elements with alpha-orbit of size 2 (27 orbits)
+ORBIT k=4 m=2 f=0: |Fix(alpha)| = 5 (+e); mu = 87.06, mu/k = 21.76, fixed-point misses ~ 0.66
+RANDORB d=10 D=8 group=sl 16 poly x^4+x+1 x Z_149 N=607920 k=4 m=2 f=0 fix=5 samples=200 min=204 p1=237 p10=484 median=3194 mean=15159.32 var=1911467120.6 mu=87.06 time=0.2
+alpha: conj by mat(1,3,15,0) (index 337), z -> 35 z on Z_97
+ORBIT k=3 m=3 f=1: |Fix(alpha)| = 11 (+e); mu = 63.46, mu/k = 21.15, fixed-point misses ~ 0.57
+RANDORB d=10 D=8 group=psl 23 x Z_97 N=588984 k=3 m=3 f=1 fix=11 samples=200 min=36 p1=52 p10=78 median=135 mean=416.01 var=2519120.5 mu=63.46 time=0.1
