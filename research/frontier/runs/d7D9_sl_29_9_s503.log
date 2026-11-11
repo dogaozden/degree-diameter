@@ -1,0 +1,12 @@
+group sl 29 x Z_9, N=219240, identity 7308, H order 63, rows 3480, threads 1, setup 0.00s
+start cost=60
+t=30 steps=10209 evals=81673 cost=10 best=10 T=0.53
+t=60 steps=20217 evals=161737 cost=10 best=10 T=0.19
+t=90 steps=29999 evals=239993 cost=10 best=10 T=0.15
+t=120 steps=39979 evals=319833 cost=10 best=10 T=0.15
+t=150 steps=50024 evals=400193 cost=10 best=10 T=0.15
+t=180 steps=59884 evals=479073 cost=8 best=8 T=0.55
+t=210 steps=69812 evals=558497 cost=8 best=8 T=0.20
+t=240 steps=79708 evals=637665 cost=8 best=8 T=0.15
+t=270 steps=89417 evals=715337 cost=4 best=4 T=0.15
+RESULT d=7 D=9 group=sl 29 x Z_9 N=219240 best=4 evals=793257 time=300.0

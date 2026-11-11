@@ -1,0 +1,12 @@
+group sl 23 x Z_18, N=218592, identity 9108, H order 46, rows 4752, threads 1, setup 0.01s
+start cost=178
+t=30 steps=8402 evals=67217 cost=12 best=12 T=0.53
+t=60 steps=16700 evals=133601 cost=12 best=12 T=0.19
+t=90 steps=24762 evals=198097 cost=10 best=10 T=0.15
+t=120 steps=33013 evals=264105 cost=10 best=10 T=0.15
+t=150 steps=41237 evals=329897 cost=10 best=10 T=0.15
+t=180 steps=49429 evals=395433 cost=10 best=10 T=0.15
+t=210 steps=57573 evals=460585 cost=10 best=10 T=0.15
+t=240 steps=65797 evals=526377 cost=10 best=10 T=0.68
+t=270 steps=73851 evals=590809 cost=10 best=10 T=0.24
+RESULT d=7 D=9 group=sl 23 x Z_18 N=218592 best=10 evals=656033 time=300.0
