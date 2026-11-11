@@ -1,0 +1,25 @@
+group sl 29 x Z_24, N=584640, identity 19488
+start cost=52
+t=30 steps=35 evals=281 cost=6 best=6 T=0.52
+t=61 steps=71 evals=569 cost=6 best=6 T=0.18
+t=91 steps=108 evals=865 cost=4 best=4 T=0.15
+t=121 steps=144 evals=1153 cost=4 best=4 T=0.15
+t=151 steps=180 evals=1441 cost=4 best=4 T=0.15
+t=182 steps=215 evals=1721 cost=2 best=2 T=0.15
+t=212 steps=250 evals=2001 cost=2 best=2 T=0.15
+t=242 steps=285 evals=2281 cost=2 best=2 T=0.15
+t=273 steps=322 evals=2577 cost=2 best=2 T=0.15
+t=303 steps=359 evals=2873 cost=2 best=2 T=0.15
+t=334 steps=397 evals=3177 cost=2 best=2 T=0.15
+t=364 steps=435 evals=3481 cost=2 best=2 T=0.15
+t=395 steps=472 evals=3777 cost=2 best=2 T=0.15
+t=425 steps=509 evals=4073 cost=2 best=2 T=0.15
+t=455 steps=546 evals=4369 cost=2 best=2 T=0.15
+t=486 steps=582 evals=4657 cost=2 best=2 T=0.15
+t=516 steps=619 evals=4953 cost=2 best=2 T=0.65
+t=546 steps=656 evals=5249 cost=2 best=2 T=0.23
+t=577 steps=693 evals=5545 cost=2 best=2 T=0.15
+t=607 steps=731 evals=5849 cost=2 best=2 T=0.15
+RESULT d=8 D=9 group=sl 29 x Z_24 N=584640 best=0 evals=6033 time=626.6
+full diameter check: OK
+wrote sols/d8D9_sl_29_24_s1.txt
