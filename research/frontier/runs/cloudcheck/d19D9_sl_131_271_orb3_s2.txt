@@ -1,0 +1,39 @@
+machine: vm nproc=4; free -g: total 15G used 0G free 14G avail 15G; kernel 6.18.44-fc-v185
+sha256 06d11888f99e1517ffb8d2f479dd9cbd78d6006f3f824c23ffa9c0c076ac117a  file research/frontier/sols/d19D9_sl_131_271_orb3_s2.txt (from origin/claude/new-cells-beyond-etos3t:research/frontier/sols/d19D9_sl_131_271_orb3_s2.txt)
+header: 19 9 sl 131 n 271 N 609197160
+
+################ reference checker: haarcheck_sl (research/frontier/haarcheck_sl.c, gcc -O3)
+from (e,A): reached A 609197160/609197160, B 609197160/609197160 within 9, ecc 9
+from (e,B): reached A 609197160/609197160, B 609197160/609197160 within 9, ecc 9
+VALID d=19 D=9 group=sl 131 x Z_271 N=609197160 vertices=1218394320 (distinct generators, 19-regular simple)
+[exit 0; wall 594.2s; cpu 588.3s; peak RSS 437 MB]
+
+################ independent checker: haarcheck2 (research/frontier/haarcheck2.c, gcc -O3)
+file=/home/user/degree-diameter/research/frontier/sols/d19D9_sl_131_271_orb3_s2.txt d=19 D=9 p=131 n=271 |G|=609197160 vertices=1218394320
+selfcheck: SL(2,131) index is a bijection onto det-1 matrices (|SL|=2247960), fastmod ok (0.02s)
+generators: 19 read, all in SL(2,131) x Z_271, all distinct
+selfcheck: generator inverses verified
+BFS from (e,A):
+  from (e,A) level 1: new=19  reached=20 / 1218394320
+  from (e,A) level 2: new=342  reached=362 / 1218394320
+  from (e,A) level 3: new=6153  reached=6515 / 1218394320
+  from (e,A) level 4: new=110676  reached=117191 / 1218394320
+  from (e,A) level 5: new=1987500  reached=2104691 / 1218394320
+  from (e,A) level 6: new=34761527  reached=36866218 / 1218394320
+  from (e,A) level 7: new=396109752  reached=432975970 / 1218394320
+  from (e,A) level 8: new=574324614  reached=1007300584 / 1218394320
+  from (e,A) level 9: new=211093736  reached=1218394320 / 1218394320
+  done in 292.77s, eccA=9, reached 1218394320 / 1218394320
+BFS from (e,B):
+  from (e,B) level 1: new=19  reached=20 / 1218394320
+  from (e,B) level 2: new=342  reached=362 / 1218394320
+  from (e,B) level 3: new=6153  reached=6515 / 1218394320
+  from (e,B) level 4: new=110676  reached=117191 / 1218394320
+  from (e,B) level 5: new=1987500  reached=2104691 / 1218394320
+  from (e,B) level 6: new=34761515  reached=36866206 / 1218394320
+  from (e,B) level 7: new=396109752  reached=432975958 / 1218394320
+  from (e,B) level 8: new=574324626  reached=1007300584 / 1218394320
+  from (e,B) level 9: new=211093736  reached=1218394320 / 1218394320
+  done in 288.10s, eccB=9, reached 1218394320 / 1218394320
+VALID d=19 D=9 vertices=1218394320 eccA=9 eccB=9
+[exit 0; wall 581.2s; cpu 575.1s; peak RSS 292 MB]
