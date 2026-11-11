@@ -1,0 +1,12 @@
+f74_a09_t1 seed=301 K=4 TFULL=1 TARGP=100 start=f74_s213c.best
+RESULT d=6 D=12 group=meta 74719 63 37726 x Z_1 N=4707297 best=1 evals=909 time=90.6
+f74_a09_t2 seed=302 K=4 TMAX=0.6 start=f74_a09_t1.best
+RESULT d=6 D=12 group=meta 74719 63 37726 x Z_1 N=4707297 best=1 evals=857 time=90.3
+f74_a09_t3 seed=303 K=8 TFULL=1 TARGP=100 TMAX=1.0 start=f74_a09_t2.best
+RESULT d=6 D=12 group=meta 74719 63 37726 x Z_1 N=4707297 best=1 evals=849 time=90.6
+f74_a09_t4 seed=304 K=4 TMAX=0.6 start=f74_a09_t3.best
+RESULT d=6 D=12 group=meta 74719 63 37726 x Z_1 N=4707297 best=1 evals=649 time=90.6
+swap2_t1 seed=305 start=swap2_c3.best (cost-3 single swap of f74_s213c)
+RESULT d=6 D=12 group=meta 74719 63 37726 x Z_1 N=4707297 best=1 evals=573 time=88.5
+swap2_t1 seed=305 start=swap2_c3.best (cost-3 single swap, gen 2 -> (57658,41))
+RESULT d=6 D=12 group=meta 74719 63 37726 x Z_1 N=4707297 best=1 evals=565 time=85.4

@@ -1,0 +1,7 @@
+group psl 197 x Z_3924, N=14999835312 (2N=29999670624), rows 19404 x 773028 bits (doubled row 24176 words), memory 7.65 GB, threads 4
+alpha: conj by mat(0,196,1,196), z -> 481 z on Z_3924 (fixed z: 12); ORBIT k=3 m=5 f=0; W=4.36107e+12 lambda=290.741 mu=0.00
+setup 0.0s
+start cost=0 (15.4s per eval)
+RESULT d=15 D=12 group=psl 197 x Z_3924 N=14999835312 vertices=29999670624 best=0 evals=1 steps=0 time=15.4 orbit k=3 m=5 f=0 mu=0.00
+re-evaluation of the best S: cost 0
+wrote runs/d15D12_psl_197_3924_orb3-5-0_s1.out

@@ -1,0 +1,16 @@
+checker: haarcheck_gen (research/frontier/haarcheck_gen.c, cc -O3 -march=native -fopenmp)
+command: OMP_NUM_THREADS=4 haarcheck_gen research/frontier/sols/d15D12_psl_197_3924_orb3-5-0_s1.txt
+start: 2026-11-01T22:50:14Z
+e52e247f4a92a474f49ff0d5d438660ba0b557bbdfd4a8e24311ca881ff3f17c  /home/user/bin/haarcheck_gen
+cf153334da9f37dca1bc416594993cd3574e0fd6564ff7851089b8fa5bf0c71f  research/frontier/haarcheck_gen.c
+c2ec63f237e8d27b2a4016014f600c2c1f17a843ae21f1a3be9a6cfec9b3385d  research/frontier/sols/d15D12_psl_197_3924_orb3-5-0_s1.txt
+selftest psl 197: |M| = 3822588, index round trip over all elements ok
+selftest group multiplication: associativity, identity, inverse on 20000 random triples ok
+file research/frontier/sols/d15D12_psl_197_3924_orb3-5-0_s1.txt
+header: 15 12 psl 197 n 3924 N 14999835312
+group psl 197 x Z_3924, |G| = 14999835312 = N, vertices 2N = 29999670624; 15 distinct generators
+from (e,A): reached A 14999835312/14999835312, B 14999835312/14999835312 within 12; ecc 12; level sizes [1, 15, 210, 2940, 41160, 576225, 8064804, 112488956, 1499040139, 11476481547, 13492688930, 3410285629, 68]  (1789s)
+from (e,B): reached A 14999835312/14999835312, B 14999835312/14999835312 within 12; ecc 12; level sizes [1, 15, 210, 2940, 41160, 576225, 8064798, 112488956, 1499035651, 11476481547, 13492693431, 3410285629, 61]  (4120s)
+VALID d=15 D=12 group=psl 197 x Z_3924 N=14999835312 vertices=29999670624 (distinct generators, 15-regular simple; every vertex within 12 of both (e,A) and (e,B); ecc 12; 4120s)
+exit: 0
+end: 2026-11-01T23:58:55Z (4121 s)

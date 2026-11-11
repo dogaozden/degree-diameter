@@ -1,0 +1,7 @@
+group psl 211 x Z_1, N=4696860, identity 22155, H order 53, rows 88620, threads 1, setup 3.35s
+wide rows: HW order 211, rows 22260, setup 6.37s
+alpha: conj by mat(58,77,109,152) (index 2576208), z -> 0 z on Z_1
+ORBIT k=3 m=2 f=0: |Fix(alpha)| = 104 (+e); mu = 10.67, mu/k = 3.56, fixed-point misses ~ 1.38
+start cost=34
+t=31 steps=29 evals=233 cost=5 best=5 T=0.51
+RESULT d=6 D=12 group=psl 211 x Z_1 N=4696860 best=5 evals=449 time=60.2 orbit k=3 m=2 f=0 fix=104

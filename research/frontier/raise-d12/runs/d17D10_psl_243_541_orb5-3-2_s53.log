@@ -1,0 +1,19 @@
+group psl 243 poly x^5+2x+1 x Z_541, N=3881313612 (2N=7762627224), rows 59292 x 65461 bits (doubled row 2064 words), memory 2.12 GB, threads 2
+alpha: Frobenius x -> x^(p^AFROB) (identity matrix 1,0,0,1), z -> 48 zsetup 0.0s
+fixed generators: 1 chosen among 8 alpha-fixed elements of the given order [31814046 mat(1,0,2,1) z=0, order 3]
+start cost=25 (10.3s per eval)
+t=23 step=1 evals=5 slot=0 cand=15 cost=15 best=15 T=1.26
+t=36 step=2 evals=9 slot=0 cand=15 cost=15 best=15 T=1.06
+t=49 step=3 evals=13 slot=0 cand=10 cost=10 best=10 T=0.89
+t=62 step=4 evals=17 slot=0 cand=15 cost=10 best=10 T=0.75
+t=74 step=5 evals=21 slot=0 cand=10 cost=10 best=10 T=0.63
+t=86 step=6 evals=25 slot=0 cand=5 cost=5 best=5 T=0.53
+t=98 step=7 evals=29 slot=1 cand=15 cost=5 best=5 T=0.45
+t=111 step=8 evals=33 slot=2 cand=15 cost=15 best=5 T=0.38
+t=122 step=9 evals=37 slot=2 cand=15 cost=15 best=5 T=0.32
+t=136 step=10 evals=41 slot=1 cand=30 cost=15 best=5 T=0.27
+t=149 step=11 evals=45 slot=0 cand=25 cost=15 best=5 T=0.22
+t=161 step=12 evals=49 slot=2 cand=0 cost=0 best=0 T=0.19
+RESULT d=17 D=10 group=psl 243 poly x^5+2x+1 x Z_541 N=3881313612 vertices=7762627224 best=0 evals=49 steps=12 time=160.6 orbit k=5 m=3 f=2 mu=24.38
+re-evaluation of the best S: cost 0
+wrote d17D10_psl_243_541_orb5-3-2_s53.out

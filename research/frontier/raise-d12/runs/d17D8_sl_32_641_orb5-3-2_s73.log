@@ -1,0 +1,81 @@
+group sl 32 poly x^5+x^2+1 x Z_641, N=20983776 (2N=41967552), rows 1056 x 19871 bits (doubled row 640 words), memory 0.02 GB, threads 1
+alpha: Frobenius x -> x^(p^AFROB) (identity matrix 1,0,0,1), z -> 357 zsetup 0.0s
+fixed generators: 1 chosen among 2 alpha-fixed elements of the given order [20367775 mat(0,1,1,1) z=0, order 3]
+start cost=25 (0.1s per eval)
+t=0 step=1 evals=5 slot=2 cand=30 cost=25 best=25 T=1.26
+t=0 step=2 evals=9 slot=2 cand=45 cost=25 best=25 T=1.06
+t=0 step=3 evals=13 slot=2 cand=30 cost=25 best=25 T=0.89
+t=1 step=4 evals=17 slot=0 cand=10 cost=10 best=10 T=0.75
+t=1 step=5 evals=21 slot=0 cand=30 cost=10 best=10 T=0.63
+t=1 step=6 evals=25 slot=0 cand=27 cost=10 best=10 T=0.53
+t=1 step=7 evals=29 slot=1 cand=20 cost=10 best=10 T=0.45
+t=1 step=8 evals=33 slot=2 cand=10 cost=10 best=10 T=0.38
+t=1 step=9 evals=37 slot=0 cand=10 cost=10 best=10 T=0.32
+t=1 step=10 evals=41 slot=2 cand=20 cost=10 best=10 T=0.27
+t=1 step=11 evals=45 slot=2 cand=15 cost=10 best=10 T=0.22
+t=1 step=12 evals=49 slot=1 cand=10 cost=10 best=10 T=0.19
+t=1 step=13 evals=53 slot=0 cand=20 cost=10 best=10 T=0.16
+t=1 step=14 evals=57 slot=2 cand=15 cost=10 best=10 T=0.15
+t=1 step=15 evals=61 slot=1 cand=25 cost=10 best=10 T=0.15
+t=2 step=16 evals=65 slot=1 cand=20 cost=10 best=10 T=0.15
+t=2 step=17 evals=69 slot=0 cand=25 cost=10 best=10 T=0.15
+t=2 step=18 evals=73 slot=1 cand=25 cost=10 best=10 T=0.15
+t=2 step=19 evals=77 slot=1 cand=20 cost=10 best=10 T=0.15
+t=2 step=20 evals=81 slot=1 cand=20 cost=10 best=10 T=0.15
+t=2 step=21 evals=85 slot=0 cand=20 cost=10 best=10 T=0.15
+t=2 step=22 evals=89 slot=1 cand=20 cost=10 best=10 T=0.15
+t=2 step=23 evals=93 slot=1 cand=25 cost=10 best=10 T=0.15
+t=2 step=24 evals=97 slot=2 cand=20 cost=10 best=10 T=0.15
+t=2 step=25 evals=101 slot=2 cand=30 cost=10 best=10 T=0.15
+t=2 step=26 evals=105 slot=0 cand=20 cost=10 best=10 T=0.15
+t=2 step=27 evals=109 slot=0 cand=15 cost=10 best=10 T=0.15
+t=3 step=28 evals=113 slot=2 cand=20 cost=10 best=10 T=0.15
+t=3 step=29 evals=117 slot=2 cand=20 cost=10 best=10 T=0.15
+t=3 step=30 evals=121 slot=2 cand=25 cost=10 best=10 T=0.15
+t=3 step=31 evals=125 slot=2 cand=35 cost=10 best=10 T=0.15
+t=3 step=32 evals=129 slot=1 cand=25 cost=10 best=10 T=0.15
+t=3 step=33 evals=133 slot=2 cand=20 cost=10 best=10 T=0.15
+t=3 step=34 evals=137 slot=2 cand=15 cost=10 best=10 T=0.15
+t=3 step=35 evals=141 slot=2 cand=25 cost=10 best=10 T=0.15
+t=3 step=36 evals=145 slot=1 cand=25 cost=10 best=10 T=0.15
+t=3 step=37 evals=149 slot=0 cand=40 cost=10 best=10 T=0.15
+t=3 step=38 evals=153 slot=1 cand=15 cost=10 best=10 T=0.15
+t=3 step=39 evals=157 slot=1 cand=20 cost=10 best=10 T=0.15
+t=3 step=40 evals=161 slot=1 cand=15 cost=10 best=10 T=0.15
+t=4 step=41 evals=165 slot=0 cand=25 cost=10 best=10 T=0.15
+t=4 step=42 evals=169 slot=0 cand=15 cost=10 best=10 T=0.15
+t=4 step=43 evals=173 slot=1 cand=35 cost=10 best=10 T=0.15
+t=4 step=44 evals=177 slot=1 cand=30 cost=10 best=10 T=0.15
+t=4 step=45 evals=181 slot=1 cand=20 cost=10 best=10 T=0.15
+t=4 step=46 evals=185 slot=2 cand=15 cost=10 best=10 T=0.15
+t=4 step=47 evals=189 slot=2 cand=5 cost=5 best=5 T=0.15
+t=4 step=48 evals=193 slot=2 cand=25 cost=5 best=5 T=0.15
+t=4 step=49 evals=197 slot=0 cand=20 cost=5 best=5 T=0.15
+t=4 step=50 evals=201 slot=2 cand=35 cost=5 best=5 T=0.15
+t=4 step=51 evals=205 slot=1 cand=40 cost=5 best=5 T=0.15
+t=4 step=52 evals=209 slot=0 cand=35 cost=5 best=5 T=0.15
+t=4 step=53 evals=213 slot=1 cand=31 cost=5 best=5 T=0.15
+t=4 step=54 evals=217 slot=0 cand=35 cost=5 best=5 T=0.15
+t=4 step=55 evals=221 slot=2 cand=25 cost=5 best=5 T=0.15
+t=5 step=56 evals=225 slot=0 cand=30 cost=5 best=5 T=0.15
+t=5 step=57 evals=229 slot=0 cand=25 cost=5 best=5 T=0.15
+t=5 step=58 evals=233 slot=1 cand=31 cost=5 best=5 T=0.15
+t=5 step=59 evals=237 slot=1 cand=35 cost=5 best=5 T=0.15
+t=5 step=60 evals=241 slot=2 cand=25 cost=5 best=5 T=0.15
+t=5 step=61 evals=245 slot=0 cand=31 cost=5 best=5 T=0.15
+t=5 step=62 evals=249 slot=0 cand=30 cost=5 best=5 T=0.15
+t=5 step=63 evals=253 slot=1 cand=21 cost=5 best=5 T=0.15
+t=5 step=64 evals=257 slot=2 cand=30 cost=5 best=5 T=0.15
+t=5 step=65 evals=261 slot=2 cand=35 cost=5 best=5 T=0.15
+t=5 step=66 evals=265 slot=2 cand=25 cost=5 best=5 T=0.15
+t=5 step=67 evals=269 slot=2 cand=20 cost=5 best=5 T=0.15
+t=5 step=68 evals=273 slot=1 cand=20 cost=5 best=5 T=0.15
+t=6 step=69 evals=277 slot=1 cand=20 cost=5 best=5 T=0.15
+t=6 step=70 evals=281 slot=0 cand=16 cost=5 best=5 T=0.15
+t=6 step=71 evals=285 slot=0 cand=15 cost=5 best=5 T=0.15
+t=6 step=72 evals=289 slot=0 cand=40 cost=5 best=5 T=0.15
+t=6 step=73 evals=293 slot=1 cand=15 cost=5 best=5 T=0.15
+t=6 step=74 evals=297 slot=2 cand=0 cost=0 best=0 T=0.15
+RESULT d=17 D=8 group=sl 32 poly x^5+x^2+1 x Z_641 N=20983776 vertices=41967552 best=0 evals=297 steps=74 time=6.1 orbit k=5 m=3 f=2 mu=24.88
+re-evaluation of the best S: cost 0
+wrote d17D8_sl_32_641_orb5-3-2_s73.out

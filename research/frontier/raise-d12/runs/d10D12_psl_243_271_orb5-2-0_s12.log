@@ -1,0 +1,20 @@
+group psl 243 poly x^5+2x+1 x Z_271, N=1944243972 (2N=3888487944), rows 59292 x 32791 bits (doubled row 1048 words), memory 1.14 GB, threads 1
+alpha: Frobenius x -> x^(p^AFROB) (identity matrix 1,0,0,1), z -> 10 zsetup 0.0s
+start cost=25 (14.7s per eval)
+t=35 step=1 evals=5 slot=1 cand=11 cost=11 best=11 T=1.26
+t=56 step=2 evals=9 slot=1 cand=20 cost=11 best=11 T=1.06
+t=77 step=3 evals=13 slot=0 cand=15 cost=11 best=11 T=0.89
+t=97 step=4 evals=17 slot=0 cand=15 cost=11 best=11 T=0.75
+t=119 step=5 evals=21 slot=0 cand=21 cost=11 best=11 T=0.63
+t=141 step=6 evals=25 slot=1 cand=30 cost=11 best=11 T=0.53
+t=163 step=7 evals=29 slot=0 cand=20 cost=11 best=11 T=0.45
+t=184 step=8 evals=33 slot=1 cand=15 cost=11 best=11 T=0.38
+t=205 step=9 evals=37 slot=1 cand=26 cost=11 best=11 T=0.32
+t=227 step=10 evals=41 slot=1 cand=26 cost=11 best=11 T=0.27
+t=245 step=11 evals=45 slot=1 cand=22 cost=11 best=11 T=0.22
+t=259 step=12 evals=49 slot=1 cand=11 cost=11 best=11 T=0.19
+t=272 step=13 evals=53 slot=1 cand=20 cost=11 best=11 T=0.16
+t=282 step=14 evals=57 slot=0 cand=0 cost=0 best=0 T=0.15
+RESULT d=10 D=12 group=psl 243 poly x^5+2x+1 x Z_271 N=1944243972 vertices=3888487944 best=0 evals=57 steps=14 time=281.5 orbit k=5 m=2 f=0 mu=25.28
+re-evaluation of the best S: cost 0
+wrote d10D12_psl_243_271_orb5-2-0_s12.out

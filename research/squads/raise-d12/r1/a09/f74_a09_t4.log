@@ -1,0 +1,9 @@
+group meta 74719 63 37726 x Z_1, N=4707297, identity 0, H order 63, rows 74719, threads 1, setup 6.39s
+START loaded from /home/user/degree-diameter/research/squads/raise-d12/r1/a09/f74_a09_t3.best (6 generators)
+start cost=1
+t=30 steps=55 evals=221 cost=1 best=1 T=0.21
+t=60 steps=111 evals=445 cost=1 best=1 T=0.15
+t=90 steps=162 evals=649 cost=1 best=1 T=0.15
+moves accepted/proposed: plain 0/162 pair 0/0 local 0/0
+  move 0: mean candidate cost 18.7 min 4, candidates within +1 of final cost: 0
+RESULT d=6 D=12 group=meta 74719 63 37726 x Z_1 N=4707297 best=1 evals=649 time=90.6

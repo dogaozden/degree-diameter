@@ -1,0 +1,30 @@
+== run r=1 g=305 seed=405 start=random 00:07:56
+   tail: t=3.3 it=95417 best 16
+   group 305 best now 16
+== run r=1 g=309 seed=409 start=random 00:09:36
+   tail: t=0.9 it=24968 best 28
+   group 309 best now 28
+== run r=2 g=305 seed=505 start=START=g305.best 00:11:16
+   tail: t=3.0 it=87616 best 14
+   group 305 best now 14
+== run r=2 g=309 seed=509 start=START=g309.best 00:12:56
+   tail: t=1.0 it=25880 best 18
+   group 309 best now 18
+== run r=3 g=305 seed=605 start=START=g305.best 00:14:36
+   tail: group N=305 id=1 g305_Z61x9Z5xZ1 p=4 n=2440 start 14
+== run r=3 g=309 seed=609 start=START=g309.best 00:16:16
+   tail: group N=309 id=1 g309_Z103x46Z3xZ1 p=4 n=2472 start 18
+== run r=4 g=305 seed=705 start=START=g305.best 00:17:56
+   tail: t=3.4 it=97489 best 10
+   group 305 best now 10
+== run r=4 g=309 seed=709 start=START=g309.best 00:19:36
+   tail: group N=309 id=1 g309_Z103x46Z3xZ1 p=4 n=2472 start 18
+== run r=5 g=305 seed=805 start=START=g305.best 00:21:16
+   tail: group N=305 id=1 g305_Z61x9Z5xZ1 p=4 n=2440 start 10
+== run r=5 g=309 seed=809 start=START=g309.best 00:22:56
+   tail: group N=309 id=1 g309_Z103x46Z3xZ1 p=4 n=2472 start 18
+== run r=6 g=305 seed=905 start=START=g305.best 00:24:37
+   tail: group N=305 id=1 g305_Z61x9Z5xZ1 p=4 n=2440 start 10
+== run r=6 g=309 seed=909 start=START=g309.best 00:26:17
+   tail: end best 18 its 1144640
+CHAIN_DONE

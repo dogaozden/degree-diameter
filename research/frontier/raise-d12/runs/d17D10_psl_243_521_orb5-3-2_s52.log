@@ -1,0 +1,14 @@
+group psl 243 poly x^5+2x+1 x Z_521, N=3737826972 (2N=7475653944), rows 59292 x 63041 bits (doubled row 1992 words), memory 2.05 GB, threads 2
+alpha: Frobenius x -> x^(p^AFROB) (identity matrix 1,0,0,1), z -> 25 zsetup 0.0s
+fixed generators: 1 chosen among 8 alpha-fixed elements of the given order [30637926 mat(1,0,2,1) z=0, order 3]
+start cost=6 (9.6s per eval)
+t=17 step=1 evals=5 slot=2 cand=5 cost=5 best=5 T=1.26
+t=26 step=2 evals=9 slot=2 cand=1 cost=1 best=1 T=1.06
+t=33 step=3 evals=13 slot=0 cand=10 cost=1 best=1 T=0.89
+t=41 step=4 evals=17 slot=0 cand=5 cost=5 best=1 T=0.75
+t=49 step=5 evals=21 slot=0 cand=25 cost=5 best=1 T=0.63
+t=57 step=6 evals=25 slot=0 cand=10 cost=10 best=1 T=0.53
+t=65 step=7 evals=29 slot=1 cand=0 cost=0 best=0 T=0.45
+RESULT d=17 D=10 group=psl 243 poly x^5+2x+1 x Z_521 N=3737826972 vertices=7475653944 best=0 evals=29 steps=7 time=64.7 orbit k=5 m=3 f=2 mu=11.37
+re-evaluation of the best S: cost 0
+wrote d17D10_psl_243_521_orb5-3-2_s52.out

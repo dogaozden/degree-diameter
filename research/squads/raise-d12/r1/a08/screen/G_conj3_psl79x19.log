@@ -1,0 +1,6 @@
+group psl 79 x Z_19, N=4683120, identity 58539, H order 57, rows 82160, threads 1, setup 3.23s
+wide rows: HW order 247, rows 18960, setup 5.73s
+alpha: conj by mat(14,11,67,64) (index 85150), z -> 7 z on Z_19
+ORBIT k=3 m=2 f=0: |Fix(alpha)| = 38 (+e); mu = 10.24, mu/k = 3.41, fixed-point misses ~ 0.51
+RANDORB d=6 D=12 group=psl 79 x Z_19 N=4683120 k=3 m=2 f=0 fix=38 samples=120 min=4 p1=6 p10=9 median=24 mean=1960.92 var=146044198.9 mu=10.24 time=20.6
+RANDORB hist (cost/k): 0 1 7 11 6 13 9 12 7 2 3 4 0 2 1 2 1 1 2 0 2 0 0 0 0 1 1 0 0 0 1 31

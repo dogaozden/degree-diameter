@@ -1,0 +1,6 @@
+group psl 211 x Z_1, N=4696860, identity 22155, H order 53, rows 88620, threads 1, setup 4.05s
+wide rows: HW order 211, rows 22260, setup 5.71s
+alpha: conj by mat(58,77,109,152) (index 2576208), z -> 0 z on Z_1
+ORBIT k=3 m=2 f=0: |Fix(alpha)| = 104 (+e); mu = 10.67, mu/k = 3.56, fixed-point misses ~ 1.38
+RANDORB d=6 D=12 group=psl 211 x Z_1 N=4696860 k=3 m=2 f=0 fix=104 samples=120 min=7 p1=7 p10=15 median=34 mean=6930.18 var=4071960054.7 mu=10.67 time=24.3
+RANDORB hist (cost/k): 0 0 2 4 4 4 4 11 13 8 6 9 6 0 5 1 2 1 0 1 1 2 0 0 0 1 0 1 1 1 1 31

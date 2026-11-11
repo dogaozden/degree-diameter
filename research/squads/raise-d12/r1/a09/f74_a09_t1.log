@@ -1,0 +1,8 @@
+group meta 74719 63 37726 x Z_1, N=4707297, identity 0, H order 63, rows 74719, threads 1, setup 2.45s
+START loaded from /home/user/degree-diameter/research/squads/beyond11b/r5/k10/f74_s213c.best (6 generators)
+start cost=1
+t=30 steps=93 evals=373 cost=1 best=1 T=0.53
+t=60 steps=159 evals=637 cost=1 best=1 T=0.18
+moves accepted/proposed: plain 1/227 pair 0/0 local 0/0
+  move 0: mean candidate cost 18.1 min 1, candidates within +1 of final cost: 1
+RESULT d=6 D=12 group=meta 74719 63 37726 x Z_1 N=4707297 best=1 evals=909 time=90.6

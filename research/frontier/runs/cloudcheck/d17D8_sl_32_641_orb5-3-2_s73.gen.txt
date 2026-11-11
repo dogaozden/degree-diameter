@@ -1,0 +1,16 @@
+checker: haarcheck_gen (research/frontier/haarcheck_gen.c, cc -O3 -march=native -fopenmp)
+command: OMP_NUM_THREADS=1 haarcheck_gen research/frontier/sols/d17D8_sl_32_641_orb5-3-2_s73.txt
+start: 2026-11-02T00:43:57Z
+e52e247f4a92a474f49ff0d5d438660ba0b557bbdfd4a8e24311ca881ff3f17c  /home/user/bin/haarcheck_gen
+cf153334da9f37dca1bc416594993cd3574e0fd6564ff7851089b8fa5bf0c71f  research/frontier/haarcheck_gen.c
+3fa5be36fc0b40bfab854b2db3552cd321ca2fcf6a9e276c4ad724061de08fbf  research/frontier/sols/d17D8_sl_32_641_orb5-3-2_s73.txt
+selftest sl 32 poly x^5+x^2+1: |M| = 32736, det-1 matrices 32736
+selftest group multiplication: associativity, identity, inverse on 20000 random triples ok
+file research/frontier/sols/d17D8_sl_32_641_orb5-3-2_s73.txt
+header: 17 8 sl 32 poly x^5+x^2+1 n 641 N 20983776
+group sl 32 poly x^5+x^2+1 x Z_641, |G| = 20983776 = N, vertices 2N = 41967552; 17 distinct generators
+from (e,A): reached A 20983776/20983776, B 20983776/20983776 within 8; ecc 8; level sizes [1, 17, 272, 4351, 69520, 1081130, 11895445, 19898278, 9018538]  (13s)
+from (e,B): reached A 20983776/20983776, B 20983776/20983776 within 8; ecc 8; level sizes [1, 17, 272, 4351, 69520, 1081130, 11892676, 19898278, 9021307]  (24s)
+VALID d=17 D=8 group=sl 32 poly x^5+x^2+1 x Z_641 N=20983776 vertices=41967552 (distinct generators, 17-regular simple; every vertex within 8 of both (e,A) and (e,B); ecc 8; 24s)
+exit: 0
+end: 2026-11-02T00:44:20Z (23 s)
