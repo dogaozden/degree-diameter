@@ -1,0 +1,7 @@
+group pgl 5 x Z_91, N=10920, identity 0, H order 52, rows 210, threads 4, setup 0.00s
+wide rows: HW order 182, rows 60, setup 0.01s
+alpha: conj by mat(1,4,3,3) (index 94), z -> 9 z on Z_91
+ORBIT k=3 m=5 f=1: |Fix(alpha)| = 5 (+e); mu = 76.04, mu/k = 25.35, fixed-point misses ~ 2.29
+start cost=484
+t=30 steps=513364 evals=4106913 cost=21 best=18 T=0.53
+RESULT d=16 D=5 group=pgl 5 x Z_91 N=10920 best=18 evals=8676481 time=60.0 orbit k=3 m=5 f=1 fix=5

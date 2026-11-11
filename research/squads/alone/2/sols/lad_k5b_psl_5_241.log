@@ -1,0 +1,7 @@
+group psl 5 x Z_241, N=14460, identity 2410, H order 5, rows 2892, threads 4, setup 0.01s
+wide rows: HW order 241, rows 60, setup 0.01s
+alpha: conj by mat(1,4,4,2) (index 34), z -> 87 z on Z_241
+ORBIT k=5 m=3 f=1: |Fix(alpha)| = 4 (+e); mu = 339.69, mu/k = 67.94, fixed-point misses ~ 4.72
+start cost=1556
+t=30 steps=578588 evals=4628705 cost=259 best=259 T=0.53
+RESULT d=16 D=5 group=psl 5 x Z_241 N=14460 best=259 evals=9211121 time=60.0 orbit k=5 m=3 f=1 fix=4

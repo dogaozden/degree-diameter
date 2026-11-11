@@ -1,0 +1,9 @@
+group pgl 4 poly x^2+x+1 x Z_217, N=13020, identity 0, H order 62, rows 210, threads 4, setup 0.01s
+wide rows: HW order 217, rows 60, setup 0.01s
+alpha: conj by mat(1,2,0,3) (index 26), z -> 25 z on Z_217
+ORBIT k=3 m=5 f=1: |Fix(alpha)| = 2 (+e); mu = 202.00, mu/k = 67.33, fixed-point misses ~ 1.50
+start cost=1473
+t=30 steps=518269 evals=4146153 cost=183 best=156 T=0.53
+t=60 steps=1026709 evals=8213673 cost=185 best=156 T=0.19
+t=90 steps=1584711 evals=12677689 cost=185 best=156 T=0.15
+RESULT d=16 D=5 group=pgl 4 poly x^2+x+1 x Z_217 N=13020 best=156 evals=16913409 time=120.0 orbit k=3 m=5 f=1 fix=2

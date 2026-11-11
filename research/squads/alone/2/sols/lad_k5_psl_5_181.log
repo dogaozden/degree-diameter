@@ -1,0 +1,8 @@
+group psl 5 x Z_181, N=10860, identity 1810, H order 5, rows 2172, threads 4, setup 0.01s
+wide rows: HW order 181, rows 60, setup 0.01s
+alpha: conj by mat(1,4,4,2) (index 34), z -> 42 z on Z_181
+ORBIT k=5 m=3 f=1: |Fix(alpha)| = 4 (+e); mu = 73.57, mu/k = 14.71, fixed-point misses ~ 3.68
+start cost=2944
+RESULT d=16 D=5 group=psl 5 x Z_181 N=10860 best=0 evals=30601 time=0.2 orbit k=5 m=3 f=1 fix=4
+full diameter check: OK
+wrote runs/lad_k5_psl_5_181.txt

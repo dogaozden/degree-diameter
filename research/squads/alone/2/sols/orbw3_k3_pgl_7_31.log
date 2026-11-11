@@ -1,0 +1,16 @@
+group pgl 7 x Z_31, N=10416, identity 0, H order 62, rows 168, threads 4, setup 0.00s
+wide rows: HW order 248, rows 42, setup 0.00s
+alpha: conj by mat(1,0,4,2) (index 25), z -> 5 z on Z_31
+ORBIT k=3 m=5 f=1: |Fix(alpha)| = 5 (+e); mu = 57.03, mu/k = 19.01, fixed-point misses ~ 2.12
+ORBW=3: an uncovered fixed element weighs 3; start energy 159
+start cost=153
+t=30 steps=765566 evals=6124529 cost=13 best=6 T=0.53 energy=15 bestE=6
+t=60 steps=1537629 evals=12301033 cost=12 best=6 T=0.19 energy=12 bestE=6
+t=90 steps=2299549 evals=18396393 cost=13 best=6 T=0.15 energy=15 bestE=6
+t=120 steps=3061465 evals=24491721 cost=19 best=6 T=0.15 energy=21 bestE=6
+t=150 steps=3810999 evals=30487993 cost=7 best=6 T=0.15 energy=9 bestE=6
+t=180 steps=4596760 evals=36774081 cost=10 best=6 T=0.57 energy=12 bestE=6
+t=210 steps=5370231 evals=42961849 cost=10 best=6 T=0.20 energy=12 bestE=6
+t=240 steps=6132559 evals=49060473 cost=12 best=6 T=0.15 energy=12 bestE=6
+t=270 steps=6922814 evals=55382513 cost=7 best=6 T=0.15 energy=9 bestE=6
+RESULT d=16 D=5 group=pgl 7 x Z_31 N=10416 best=6 evals=61402329 time=300.0 orbit k=3 m=5 f=1 fix=5

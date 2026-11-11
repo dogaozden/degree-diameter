@@ -1,0 +1,24 @@
+{"idea": "k=3 orbit S (f=1,m=5) random screen, pgl 5 x Z133, 60 samples", "command": "ORBIT=\"3 5 1\" RANDORB=60 haar_sym 16 5 ... pgl 5 133 (orb_screen.py 16 5 15731 16600 \"3 5 1\")", "score": 851, "valid": false}
+{"idea": "k=3 orbit anneal 120s (THREADS=4), pgl 5 x Z133, N=15960 (2N=31920)", "command": "ORBIT=\"3 5 1\" ./haar_sym 16 5 120 1 8 out pgl 5 133", "score": 579, "valid": false}
+{"idea": "k=3 orbit anneal 120s (THREADS=4), sl 9 x Z19, N=13680 (2N=27360)", "command": "ORBIT=\"3 5 1\" ./haar_sym 16 5 120 1 8 out sl 9 19", "score": 166, "valid": false}
+{"idea": "k=3 orbit anneal 120s (THREADS=4), sl 7 x Z43, N=14448 (2N=28896)", "command": "ORBIT=\"3 5 1\" ./haar_sym 16 5 120 1 8 out sl 7 43", "score": 266, "valid": false}
+{"idea": "k=3 orbit anneal 120s (THREADS=4), pgl 4 x Z217, N=13020 (2N=26040)", "command": "ORBIT=\"3 5 1\" ./haar_sym 16 5 120 1 8 out pgl 4 217", "score": 156, "valid": false}
+{"idea": "k=3 orbit anneal 60s (THREADS=4), pgl 4 x Z151, f=1 m=5; solved in 0.0 s", "command": "ORBIT=\"3 5 1\" ./haar_sym 16 5 60 1 8 out pgl 4 151", "score": 18120, "valid": true}
+{"idea": "k=3 orbit anneal 60s (THREADS=4), psl 7 x Z61, f=1 m=5; solved in 0.8 s", "command": "ORBIT=\"3 5 1\" ./haar_sym 16 5 60 1 8 out psl 7 61", "score": 20496, "valid": true}
+{"idea": "k=5 orbit (f=1,m=3) anneal 60s, psl 5 x Z151", "command": "ORBIT=\"5 3 1\" ./haar_sym 16 5 60 1 8 out psl 5 151", "score": 18120, "valid": true}
+{"idea": "k=5 orbit anneal 60s, psl 5 x Z181", "command": "ORBIT=\"5 3 1\" ./haar_sym 16 5 60 1 8 out psl 5 181", "score": 21720, "valid": true}
+{"idea": "k=5 orbit anneal 60s, psl 9 x Z31 (best valid so far)", "command": "ORBIT=\"5 3 1\" ./haar_sym 16 5 60 1 8 out psl 9 31", "score": 22320, "valid": true}
+{"idea": "k=5 orbit anneal 60s, pgl 4 x Z191", "command": "ORBIT=\"5 3 1\" ./haar_sym 16 5 60 1 8 out pgl 4 191", "score": 14, "valid": false}
+{"idea": "k=5 orbit anneal 60s, pgl 5 x Z101", "command": "ORBIT=\"5 3 1\" ./haar_sym 16 5 60 1 8 out pgl 5 101", "score": 29, "valid": false}
+{"idea": "k=5 orbit anneal 60s, pgl 4 x Z211", "command": "ORBIT=\"5 3 1\" ./haar_sym 16 5 60 1 8 out pgl 4 211", "score": 72, "valid": false}
+{"idea": "k=5 orbit anneal 60s, psl 29 (n=1)", "command": "ORBIT=\"5 3 1\" ./haar_sym 16 5 60 1 8 out psl 29 1", "score": 111, "valid": false}
+{"idea": "k=5 orbit anneal 60s, psl 5 x Z241", "command": "ORBIT=\"5 3 1\" ./haar_sym 16 5 60 1 8 out psl 5 241", "score": 259, "valid": false}
+{"idea": "k=3 orbit anneal 60s, pgl 4 x Z181", "command": "ORBIT=\"3 5 1\" ./haar_sym 16 5 60 1 8 out pgl 4 181", "score": 18, "valid": false}
+{"idea": "k=3 orbit anneal 60s, psl 9 x Z31", "command": "ORBIT=\"3 5 1\" ./haar_sym 16 5 60 1 8 out psl 9 31", "score": 14, "valid": false}
+{"idea": "k=3 orbit anneal 60s, pgl 7 x Z31 (cost 3)", "command": "ORBIT=\"3 5 1\" ./haar_sym 16 5 60 1 8 out pgl 7 31", "score": 3, "valid": false}
+{"idea": "k=3 orbit anneal 300s, pgl 7 x Z31 (cost 1 at 6.2e7 evals)", "command": "ORBIT=\"3 5 1\" ./haar_sym 16 5 300 1 8 out pgl 7 31", "score": 1, "valid": false}
+{"idea": "k=3 orbit anneal 60s, psl 7 x Z67", "command": "ORBIT=\"3 5 1\" ./haar_sym 16 5 60 1 8 out psl 7 67", "score": 23, "valid": false}
+{"idea": "k=5 orbit anneal 300s seed 2 (ORBW=1), pgl 4 x Z191", "command": "ORBIT=\"5 3 1\" ./haar_sym 16 5 300 2 8 out pgl 4 191", "score": 12, "valid": false}
+{"idea": "k=5 orbit anneal 120s ORBW=5, pgl 4 x Z191", "command": "ORBW=5 ORBIT=\"5 3 1\" ./haar_sym 16 5 120 1 8 out pgl 4 191", "score": 12, "valid": false}
+{"idea": "k=5 orbit anneal 120s ORBW=5, pgl 5 x Z101", "command": "ORBW=5 ORBIT=\"5 3 1\" ./haar_sym 16 5 120 1 8 out pgl 5 101", "score": 22, "valid": false}
+{"idea": "k=3 orbit anneal 300s ORBW=3, pgl 7 x Z31", "command": "ORBW=3 ORBIT=\"3 5 1\" ./haar_sym 16 5 300 1 8 out pgl 7 31", "score": 6, "valid": false}
