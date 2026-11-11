@@ -1,0 +1,20 @@
+FIXDUP t 0 p 2415: v 13 -> 12 cost 217 dup 2
+FIXDUP t 1 p 2415: v 0 -> 1 cost 117 dup 1
+FIXDUP t 0 p 3429: v 3 -> 0 cost 117 dup 1
+FIXDUP t 1 p 3429: v 4 -> 10 cost 16 dup 0
+q=5 m=15 J=2 lift vertices 117180 initial cost 16 dup 0
+it 0 temp 1.000 best 16
+it 49 temp 0.850 best 15
+it 261 temp 0.419 best 14
+it 350 temp 0.312 best 13
+it 359 temp 0.303 best 12
+it 384 temp 0.279 best 11
+it 387 temp 0.276 best 10
+it 423 temp 0.245 best 8
+it 434 temp 0.236 best 7
+it 469 temp 0.210 best 6
+it 552 temp 0.159 best 5
+it 576 temp 0.147 best 4
+it 604 temp 0.134 best 3
+it 644 temp 0.117 best 2
+it 698 temp 0.098 best 1

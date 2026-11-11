@@ -1,0 +1,27 @@
+group sl 23 x Z_49, N=595056, identity 24794, H order 56, rows 10626, threads 1, setup 0.08s
+wide rows: HW order 196, rows 3036, setup 0.17s
+alpha: conj by mat(11,12,8,13) (index 6080), z -> 18 z on Z_49
+ORBIT k=3 m=3 f=1: |Fix(alpha)| = 23 (+e); mu = 70.37, mu/k = 23.46, fixed-point misses ~ 1.18
+ORBW=3: an uncovered fixed element weighs 3; start energy 192
+start cost=184
+t=30 steps=7079 evals=56633 cost=21 best=21 T=0.37 energy=21 bestE=21
+t=60 steps=12673 evals=101385 cost=16 best=16 T=0.15 energy=18 bestE=18
+CHAIN 1 min 18 secs 61 evals 103849 S 24794 319072 410185 233789 256130 463960 562534 469499 3872 155054
+chain 2: fresh start (global best 16)
+t=90 steps=18032 evals=144257 cost=31 best=16 T=0.40 energy=33 bestE=18
+CHAIN 2 min 27 secs 43 evals 60192 S 24794 488593 360941 166138 531924 224060 31054 192579 228894 250268
+chain 3: fresh start (global best 16)
+t=120 steps=23161 evals=185289 cost=33 best=16 T=0.73 energy=33 bestE=18
+t=150 steps=28353 evals=226825 cost=16 best=16 T=0.18 energy=18 bestE=18
+CHAIN 3 min 18 secs 63 evals 90592 S 24794 201986 467359 478676 444260 211462 411057 431860 281037 562769
+chain 4: fresh start (global best 16)
+t=180 steps=34176 evals=273409 cost=30 best=16 T=0.82 energy=30 bestE=18
+CHAIN 4 min 27 secs 39 evals 54296 S 24794 187263 519424 234750 396550 172109 486899 511174 555719 46289
+chain 5: fresh start (global best 16)
+t=210 steps=39234 evals=313873 cost=22 best=16 T=1.28 energy=24 bestE=18
+CHAIN 5 min 24 secs 31 evals 42616 S 24794 119065 431992 163265 109666 322590 582632 401487 63848 409511
+chain 6: fresh start (global best 16)
+t=240 steps=44428 evals=355425 cost=39 best=16 T=1.32 energy=39 bestE=18
+t=270 steps=49572 evals=396577 cost=22 best=16 T=0.33 energy=24 bestE=18
+CHAIN 6 min 24 secs 34 evals 46496 S 24794 149877 500822 380849 178197 379413 540088 384351 402396 362842
+chain 7: fresh start (global best 16)

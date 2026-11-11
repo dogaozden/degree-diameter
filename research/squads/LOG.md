@@ -49,3 +49,20 @@ nice 0, equal to the director's whole pipeline); the director raised the pipelin
 `echo -10 > /proc/<pid>/autogroup` and lowered the cards' groups to 15.
 Kept: haarex6 for the sweep; no family lead worth more CPU (the 704 lift is an isolated local minimum, the new
 families are far). The order-384 sweep continues; orders 401-450 started on the spare core.
+
+## 2026-10-31 21:40 – 2026-11-01 03:30 UTC · handsoff-108 (Opus coordinator, hands-off) · Δ10·D8 (> 1,176,480)
+
+Experiment: the Haikus do the work, the coordinator only plans, checks in, verifies and redirects (target 50/50 spend).
+Round 1 cards (one line each): c1 grind psl 23 × Z97 + prod (2 processes) · c2 two-orbit repair of the 119 best states ·
+c3 twisted cyclic factor (tpgl, csl) · c4 screen of direct-product groups · c5 twisted self-dual pairing with order-3 α ·
+c6 hexagon lifts at small q · c7 grind throughput (schedules, early abort) · c8 wildcard.
+Best per card: c1 energy 6 (prod) / 9 (psl); c2 no move improves any state; c3 tpgl worse; c4 psl 29 × Z49 ≈ reference;
+c5 far worse; c6 valid lifts H(3)/Z24, H(4)/Z20, H(5)/Z15 (other cells); c7 no gain, one energy-3 chain; c8 new route:
+bipartite coset graphs X(G,H,HgH) over PSL/PGL(2,181).
+Relaunches (12, built from the hand-backs): c3b SL(2,23)×Z49 (worse) · c8b fast coset evaluator + annealing (3× worse
+than Haar) · c5b coset family screen (family K best) · c6b exhaustive K (min 4) · c5c exhaustive C (min 44) · c6c h = 12
+families (min 501) · c1b statistic for good sets (none useful) · c8c smoother objective (no effect) · c7b structure of the
+hexagon lifts (symmetric lifts: 30 copies at q = 3, 21 at q = 5; first-moment thresholds) · c2b running digest ·
+c3c, c8d extra grinds. 5 nudges to stalled workers.
+Kept: nothing for the record; coset families K and C closed exhaustively. Spend: Haiku 30 % of budget units (Opus 0.663, Haiku 0.286).
+Report: research/squads/handsoff-108/REPORT.md. No record.

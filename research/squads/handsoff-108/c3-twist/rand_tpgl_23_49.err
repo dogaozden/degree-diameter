@@ -1,0 +1,4 @@
+group tpgl 23 x Z_49, N=595056, identity 0, H order 49, rows 12144, threads 1, setup 0.01s
+wide rows: HW order 196, rows 3036, setup 0.03s
+alpha: conj by mat(1,13,2,6) (index 6627), z -> 18 z on Z_49
+ORBIT k=3 m=3 f=1: |Fix(alpha)| = 23 (+e); mu = 70.37, mu/k = 23.46, fixed-point misses ~ 1.18

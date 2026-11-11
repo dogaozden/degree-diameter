@@ -1,0 +1,13 @@
+start e3_psl_a line 2 Sat Oct 31 23:26:46 UTC 2026
+end e3_psl_a rc=1 Sat Oct 31 23:40:52 UTC 2026
+start e3_psl_b line 3 Sat Oct 31 23:40:52 UTC 2026
+end e3_psl_b rc=1 Sat Oct 31 23:52:42 UTC 2026
+start e6_prod_a line 4 Sat Oct 31 23:52:42 UTC 2026
+end e6_prod_a rc=1 Sun Nov  1 00:07:54 UTC 2026
+start e6_prod_b line 5 Sun Nov  1 00:07:54 UTC 2026
+prod_b finished (driver2) Sun Nov  1 00:23:38 UTC 2026
+start e6_psl_a line 8 Sun Nov  1 00:23:38 UTC 2026
+end e6_psl_a rc=1 Sun Nov  1 00:37:07 UTC 2026
+skip e6_psl_b (deadline) Sun Nov  1 00:37:07 UTC 2026
+skip e6_psl_c (deadline) Sun Nov  1 00:37:07 UTC 2026
+driver2 done Sun Nov  1 00:37:08 UTC 2026

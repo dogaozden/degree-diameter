@@ -1,0 +1,6 @@
+group prod psl 5 psl 27 poly x^3+2x+1 x Z_1, N=589680, identity 98631, H order 42, rows 14040, threads 1, setup 0.20s
+alpha: conj by prod[mat(2,1,2,4);mat(12,10,15,25)] (index 418515), z -> 0 z on Z_1
+BETA2SEARCH: 300 candidates; beta2 = conj(mat(16,21,4,23)); iota-fixed in factor 2: 378, of them involutions: 13
+INVPAIR=2: beta = conjugation by mat(0,1,3,0) (det 2, non-square) on the first factor
+INVPAIR: S = {e} + O + O^-1 + alpha-orbit of involutions; 1506 involution orbits
+ORBIT k=3 m=3 f=1: |Fix(alpha)| = 80 (+e); mu = 64.22, mu/k = 21.41, fixed-point misses ~ 3.87

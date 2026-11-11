@@ -1,0 +1,10 @@
+group psl 23 x Z_97, N=588984, identity 24541, H order 23, rows 25608, threads 1, setup 0.16s
+alpha: conj by mat(1,3,15,0) (index 337), z -> 35 z on Z_97
+INVPAIR=2: beta = conjugation by mat(1,6,7,22) (det 3, non-square) on the first factor
+INVPAIR: S = {e} + O + O^-1 + alpha-orbit of involutions; 84 involution orbits
+ORBIT k=3 m=3 f=1: |Fix(alpha)| = 11 (+e); mu = 63.46, mu/k = 21.15, fixed-point misses ~ 0.57
+VERIFY: S closed under alpha and iota, iota anti-automorphism, iota^2 = 1, iota alpha = alpha iota: OK
+VERIFY sample 0: S closed OK, cost 164569
+verify: uncovered 164569 (iota-fixed among them 1; iota-fixed elements of G 253), iota-violations 0, alpha-violations 0
+VERIFY sample 1: S closed OK, cost 127614
+verify: uncovered 127614 (iota-fixed among them 0; iota-fixed elements of G 253), iota-violations 0, alpha-violations 0

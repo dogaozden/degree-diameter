@@ -1,0 +1,24 @@
+A4: classes 6016, members covered 13797 of 13797 (complete), B-root known for 584 classes
+lower bound P = uBA+uAA over members: min 501 p0.1 557 p1 752 median 49072 (median per unit of h: 4089.3)
+exact full C known for 2898 classes = 5639 members (self-inverse classes: 2606)
+exact C over known members: min 501 p0.1 527 p1 664 median 29434
+top 10 exact C (C, members, class key, uBA uAA uBB, partition):
+  C 501  w 2  key 382.45928  uBA 501 uAA 0 uBB 0  6+4
+  C 501  w 2  key 46305.49590  uBA 501 uAA 0 uBB 0  6+4
+  C 527  w 2  key 23673.49953  uBA 527 uAA 0 uBB 0  6+4
+  C 527  w 2  key 380.49872  uBA 527 uAA 0 uBB 0  6+4
+  C 548  w 2  key 45349.48476  uBA 548 uAA 0 uBB 0  6+4
+  C 548  w 2  key 49634.50021  uBA 548 uAA 0 uBB 0  6+4
+  C 557  w 2  key 1049.45923  uBA 557 uAA 0 uBB 0  6+4
+  C 557  w 2  key 47859.49688  uBA 557 uAA 0 uBB 0  6+4
+  C 582  w 2  key 45349.45928  uBA 582 uAA 0 uBB 0  6+4
+  C 582  w 2  key 49590.50021  uBA 582 uAA 0 uBB 0  6+4
+lowest lower bounds of classes without exact C (P, members, key, partition):
+  P 1501  w 2  key 45349.49590  6+4
+  P 1510  w 2  key 380.36460  6+4
+  P 1511  w 2  key 380.45869  6+4
+  P 1520  w 2  key 382.33129  6+4
+  P 1520  w 2  key 48510.48634  6+4
+per partition (members, median P, min P) over scanned classes:
+  4+4+1+1        members   7875 min P   13754 median P   47852 (per unit 3987.7)
+  6+4            members   5922 min P     501 median P  599072 (per unit 49922.7)

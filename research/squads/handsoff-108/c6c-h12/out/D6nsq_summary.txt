@@ -1,0 +1,26 @@
+D6nsq: classes 15888, members covered 27408 of 27408 (complete), B-root known for 268 classes
+lower bound P = uBA+uAA over members: min 1266 p0.1 1644 p1 1998 median 6642 (median per unit of h: 553.5)
+exact full C known for 10262 classes = 16156 members (self-inverse classes: 10128)
+exact C over known members: min 1266 p0.1 1632 p1 1908 median 7914
+top 10 exact C (C, members, class key, uBA uAA uBB, partition):
+  C 1266  w 2  key 11304.34241.44927  uBA 1266 uAA 0 uBB 0  6+2+2
+  C 1266  w 2  key 11305.34046.48016  uBA 1266 uAA 0 uBB 0  6+2+2
+  C 1464  w 2  key 11305.28098.43103  uBA 1464 uAA 0 uBB 0  6+2+2
+  C 1464  w 2  key 44043.44926.44927  uBA 1464 uAA 0 uBB 0  6+2+2
+  C 1494  w 2  key 11304.41099.42255  uBA 1494 uAA 0 uBB 0  6+2+2
+  C 1494  w 2  key 3371.34046.34047  uBA 1494 uAA 0 uBB 0  6+2+2
+  C 1596  w 2  key 1.30110.34046  uBA 1596 uAA 0 uBB 0  6+2+2
+  C 1596  w 2  key 11304.38700.49113  uBA 1596 uAA 0 uBB 0  6+2+2
+  C 1632  w 2  key 20591.45599.49005  uBA 1632 uAA 0 uBB 0  6+2+2
+  C 1632  w 2  key 42254.48018.49006  uBA 1632 uAA 0 uBB 0  6+2+2
+lowest lower bounds of classes without exact C (P, members, key, partition):
+  P 2202  w 2  key 20591.42254.42632  6+2+2
+  P 2202  w 2  key 42254.44043.49006  6+2+2
+  P 2205  w 2  key 42254.44927.49645  6+2+2
+  P 2208  w 2  key 1.20591.40311  6+2+2
+  P 2208  w 2  key 1.34046.49057  6+2+2
+per partition (members, median P, min P) over scanned classes:
+  2+2+2+2+1+1    members   1365 min P 1198080 median P 1198080 (per unit 99840.0)
+  2+2+2+2+2      members   3003 min P 1198080 median P 1198080 (per unit 99840.0)
+  6+2+1+1        members   2880 min P   15020 median P   29818 (per unit 2484.8)
+  6+2+2          members  20160 min P    1266 median P    5020 (per unit  418.3)
