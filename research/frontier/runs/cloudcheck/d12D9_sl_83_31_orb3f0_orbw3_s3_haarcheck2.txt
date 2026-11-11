@@ -1,0 +1,27 @@
+file=/tmp/claude-0/-home-user-degree-diameter/e0bf3bd2-945e-54c0-98f9-bf5ec87cd1eb/scratchpad/sols/d12D9r3_sl83_31_s3.txt d=12 D=9 p=83 n=31 |G|=17722824 vertices=35445648
+selfcheck: SL(2,83) index is a bijection onto det-1 matrices (|SL|=571704), fastmod ok (0.01s)
+generators: 12 read, all in SL(2,83) x Z_31, all distinct
+selfcheck: generator inverses verified
+BFS from (e,A):
+  from (e,A) level 1: new=12  reached=13 / 35445648
+  from (e,A) level 2: new=132  reached=145 / 35445648
+  from (e,A) level 3: new=1452  reached=1597 / 35445648
+  from (e,A) level 4: new=15972  reached=17569 / 35445648
+  from (e,A) level 5: new=174768  reached=192337 / 35445648
+  from (e,A) level 6: new=1827140  reached=2019477 / 35445648
+  from (e,A) level 7: new=12244377  reached=14263854 / 35445648
+  from (e,A) level 8: new=15879579  reached=30143433 / 35445648
+  from (e,A) level 9: new=5302215  reached=35445648 / 35445648
+  done in 5.92s, eccA=9, reached 35445648 / 35445648
+BFS from (e,B):
+  from (e,B) level 1: new=12  reached=13 / 35445648
+  from (e,B) level 2: new=132  reached=145 / 35445648
+  from (e,B) level 3: new=1452  reached=1597 / 35445648
+  from (e,B) level 4: new=15972  reached=17569 / 35445648
+  from (e,B) level 5: new=174768  reached=192337 / 35445648
+  from (e,B) level 6: new=1826960  reached=2019297 / 35445648
+  from (e,B) level 7: new=12244377  reached=14263674 / 35445648
+  from (e,B) level 8: new=15879759  reached=30143433 / 35445648
+  from (e,B) level 9: new=5302215  reached=35445648 / 35445648
+  done in 5.85s, eccB=9, reached 35445648 / 35445648
+VALID d=12 D=9 vertices=35445648 eccA=9 eccB=9
