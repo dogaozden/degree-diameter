@@ -1,0 +1,14 @@
+group sl 41 x Z_51, N=3512880, identity 83640
+start cost=6
+t=35 steps=6 evals=49 cost=3 best=3 T=0.45
+t=69 steps=12 evals=97 cost=3 best=3 T=0.15
+t=102 steps=18 evals=145 cost=3 best=3 T=0.15
+t=134 steps=24 evals=193 cost=2 best=2 T=0.15
+t=168 steps=30 evals=241 cost=2 best=2 T=0.15
+t=202 steps=36 evals=289 cost=1 best=1 T=0.15
+t=234 steps=42 evals=337 cost=1 best=1 T=0.15
+t=267 steps=48 evals=385 cost=1 best=1 T=0.15
+t=299 steps=54 evals=433 cost=1 best=1 T=0.15
+RESULT d=8 D=10 group=sl 41 x Z_51 N=3512880 best=0 evals=441 time=305.5
+full diameter check: OK
+wrote sols/d8D10_sl_41_51_s2.txt

@@ -1,0 +1,18 @@
+group psl 89 x Z_10, N=3524400, identity 39160
+start cost=13
+t=35 steps=5 evals=41 cost=2 best=2 T=0.45
+t=68 steps=10 evals=81 cost=2 best=2 T=0.15
+t=100 steps=15 evals=121 cost=2 best=2 T=0.15
+t=134 steps=20 evals=161 cost=2 best=2 T=0.15
+t=166 steps=25 evals=201 cost=2 best=2 T=0.15
+t=199 steps=30 evals=241 cost=1 best=1 T=0.15
+t=232 steps=35 evals=281 cost=1 best=1 T=0.15
+t=265 steps=40 evals=321 cost=1 best=1 T=0.15
+t=297 steps=45 evals=361 cost=1 best=1 T=0.15
+t=330 steps=50 evals=401 cost=1 best=1 T=0.15
+t=363 steps=55 evals=441 cost=1 best=1 T=0.15
+t=397 steps=60 evals=481 cost=1 best=1 T=0.15
+t=430 steps=65 evals=521 cost=0 best=0 T=0.15
+RESULT d=8 D=10 group=psl 89 x Z_10 N=3524400 best=0 evals=521 time=432.3
+full diameter check: OK
+wrote sols/d8D10_psl_89_10_s1.txt
