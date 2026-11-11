@@ -1,0 +1,12 @@
+q=2 pattern=ab eps0=0:
+hubs=630  far pairs (dist>=9 or unreachable, source a hub) = 120960  per-hub min/max = 192/192  max finite dist = 9  unreachable = 0
+q=3 pattern=aba eps0=0:
+hubs=3640  far pairs (dist>=9 or unreachable, source a hub) = 7960680  per-hub min/max = 2187/2187  max finite dist = 9  unreachable = 0
+q=3 pattern=aab eps0=0:
+hubs=3640  far pairs (dist>=9 or unreachable, source a hub) = 7960680  per-hub min/max = 2187/2187  max finite dist = 9  unreachable = 0
+q=3 pattern=bbb eps0=0:
+hubs=3640  far pairs (dist>=9 or unreachable, source a hub) = 10909080  per-hub min/max = 2997/2997  max finite dist = 10  unreachable = 0
+q=2 pattern=ab eps0=1:
+hubs=630  far pairs (dist>=9 or unreachable, source a hub) = 120960  per-hub min/max = 192/192  max finite dist = 9  unreachable = 0
+q=3 pattern=aba eps0=1:
+hubs=3640  far pairs (dist>=9 or unreachable, source a hub) = 7960680  per-hub min/max = 2187/2187  max finite dist = 9  unreachable = 0
