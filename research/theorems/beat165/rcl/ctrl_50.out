@@ -1,0 +1,14 @@
+group 50 1 sub 0 |G0|=25 best=5 (a=1 b=4) hits=0
+HIT n=50 id=2 sub=0 |G0|=25 a=4 b=10
+HIT n=50 id=2 sub=0 |G0|=25 a=4 b=18
+HIT n=50 id=2 sub=0 |G0|=25 a=4 b=25
+group 50 2 sub 0 |G0|=25 best=25 (a=4 b=10) hits=160
+HIT n=50 id=3 sub=0 |G0|=25 a=4 b=10
+HIT n=50 id=3 sub=0 |G0|=25 a=4 b=18
+HIT n=50 id=3 sub=0 |G0|=25 a=4 b=28
+group 50 3 sub 0 |G0|=25 best=25 (a=4 b=10) hits=160
+group 50 4 sub 0 |G0|=25 best=5 (a=1 b=4) hits=0
+HIT n=50 id=5 sub=0 |G0|=25 a=4 b=5
+HIT n=50 id=5 sub=0 |G0|=25 a=4 b=10
+HIT n=50 id=5 sub=0 |G0|=25 a=4 b=11
+group 50 5 sub 0 |G0|=25 best=25 (a=4 b=5) hits=480

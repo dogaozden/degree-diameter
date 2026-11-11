@@ -1,0 +1,11 @@
+LoadPackage("tomlib");
+Print(GAPInfo.Version, "\n");
+t := TableOfMarks("L3(7)");
+G := UnderlyingGroup(t);
+Print(Size(G), " ", NrMovedPoints(G), "\n");
+o := OrdersTom(t);
+H := RepresentativeTom(t, Position(o, 336));
+Print(Size(H), " idx ", Index(G,H), "\n");
+L := LowIndexSubgroups(H, 16);
+Print(Length(L), " low index subgroups of H; indices ", Collected(List(L, x -> Index(H,x))), "\n");
+QUIT;

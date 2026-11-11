@@ -1,0 +1,68 @@
+/* Controllers as permutation-voltage lifts: vertices (v, g), v in base [0,2k) (v<k: side A), g in group (table).
+   sigma_t(v,g) = (pi_t(v), phi_t[v] * g) for t in {a, b}; pi_t swaps sides. Inverse labels: sigma_t^-1.
+   Objective = (# same-side vertices at distance > 4 from the 2k base sources) + 50 * (# base vertices without a
+   label-reduced closed walk of length 4). Random restarts + hill climbing on voltages and base permutations.
+   usage: pvctrl TABLE k seed restarts steps  -> prints controllers with objective 0 as "CTRL k m pi_a pi_b phi_a phi_b" */
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+static int m, T[256][256], inv_[256], e, k, nb;
+static int pa[16], pb[16], fa[16], fb[16];      /* base permutations and voltages */
+static unsigned long long rs = 88172645463325252ULL;
+static unsigned long long rnd(void) { rs ^= rs << 13; rs ^= rs >> 7; rs ^= rs << 17; return rs; }
+static int pai[16], pbi[16];
+static int good4[256], goodD2[16];
+static inline int stepv(int t, int x) { int v = x / m, g = x % m;   /* t: 0 a, 1 A, 2 b, 3 B */
+    switch (t) { case 0: return pa[v] * m + T[fa[v]][g];
+                 case 1: { int w = pai[v]; return w * m + T[inv_[fa[w]]][g]; }
+                 case 2: return pb[v] * m + T[fb[v]][g];
+                 default: { int w = pbi[v]; return w * m + T[inv_[fb[w]]][g]; } } }
+static int objective(void) {
+    for (int v = 0; v < nb; v++) { pai[pa[v]] = v; pbi[pb[v]] = v; }
+    int N = nb * m, miss = 0; static int dist[8192], q[8192], cert[8192];
+    for (int v = 0; v < nb; v++) {
+        int s = v * m + e; for (int i = 0; i < N; i++) { dist[i] = -1; cert[i] = 0; } int h = 0, tl = 0; dist[s] = 0; q[tl++] = s;
+        while (h < tl) { int x = q[h++]; if (dist[x] >= 4) continue; for (int t = 0; t < 4; t++) { int y = stepv(t, x); if (dist[y] < 0) { dist[y] = dist[x] + 1; q[tl++] = y; } } }
+        for (int t1 = 0; t1 < 4; t1++) { int x1 = stepv(t1, s);
+          for (int t2 = 0; t2 < 4; t2++) { if (t2 == (t1 ^ 1)) continue; int x2 = stepv(t2, x1);
+            if (goodD2[t1 * 4 + t2] && x2 != s) cert[x2] = 1;
+            for (int t3 = 0; t3 < 4; t3++) { if (t3 == (t2 ^ 1)) continue; int x3 = stepv(t3, x2);
+              for (int t4 = 0; t4 < 4; t4++) { if (t4 == (t3 ^ 1)) continue; if (good4[t1*64 + t2*16 + t3*4 + t4]) cert[stepv(t4, x3)] = 1; } } } }
+        int side = v < k ? 0 : 1;
+        for (int w = 0; w < nb; w++) if ((w < k ? 0 : 1) == side) for (int g = 0; g < m; g++) { int x = w * m + g; if (dist[x] < 0) miss += 4; else if (!cert[x]) miss++; }
+    }
+    return miss; }
+static void randperm_swap(int *p) {  /* random permutation of [0,2k) mapping side A to side B and vice versa */
+    int x[16], y[16]; for (int i = 0; i < k; i++) { x[i] = k + i; y[i] = i; }
+    for (int i = k - 1; i > 0; i--) { int j = rnd() % (i + 1); int t = x[i]; x[i] = x[j]; x[j] = t; j = rnd() % (i + 1); t = y[i]; y[i] = y[j]; y[j] = t; }
+    for (int i = 0; i < k; i++) { p[i] = x[i]; p[k + i] = y[i]; } }
+int main(int argc, char **argv) {
+    FILE *f = fopen(argv[1], "r"); char line[16384]; m = 0;
+    while (fgets(line, sizeof line, f)) { if (strlen(line) < 2) continue; char *p = line; int j = 0; while (*p) { while (*p == ' ') p++; if (*p == '\n' || !*p) break; T[m][j++] = strtol(p, &p, 10); } m++; }
+    for (int i = 0; i < m; i++) { int ok = 1; for (int j = 0; j < m; j++) if (T[i][j] != j) { ok = 0; break; } if (ok) { e = i; break; } }
+    for (int i = 0; i < m; i++) for (int j = 0; j < m; j++) if (T[i][j] == e) inv_[i] = j;
+    { FILE *tf = fopen(argv[6], "r"); char l1[400], l2[100]; if (!fgets(l1, sizeof l1, tf) || !fgets(l2, sizeof l2, tf)) return 1;
+      for (int i = 0; i < 256; i++) good4[i] = l1[i] == '1'; for (int i = 0; i < 16; i++) goodD2[i] = l2[i] == '1'; }
+    k = atoi(argv[2]); nb = 2 * k; rs ^= (unsigned long long)atoll(argv[3]) * 0x9E3779B97F4A7C15ULL;
+    int restarts = atoi(argv[4]); long steps = atol(argv[5]); int found = 0, bestall = 1 << 30; int bpa[16], bpb[16], bfa[16], bfb[16];
+    for (int r = 0; r < restarts; r++) {
+        randperm_swap(pa); randperm_swap(pb);
+        for (int v = 0; v < nb; v++) { fa[v] = rnd() % m; fb[v] = rnd() % m; }
+        int c = objective();
+        for (long it = 0; it < steps && c > 0; it++) {
+            int spa[16], spb[16], sfa[16], sfb[16]; memcpy(spa, pa, sizeof pa); memcpy(spb, pb, sizeof pb); memcpy(sfa, fa, sizeof fa); memcpy(sfb, fb, sizeof fb);
+            int w = rnd() % 10;
+            if (w == 0 && k > 1) randperm_swap(rnd() & 1 ? pa : pb);
+            else if (w < 5) fa[rnd() % nb] = rnd() % m; else fb[rnd() % nb] = rnd() % m;
+            int c2 = objective();
+            if (c2 <= c) c = c2; else { memcpy(pa, spa, sizeof pa); memcpy(pb, spb, sizeof pb); memcpy(fa, sfa, sizeof fa); memcpy(fb, sfb, sizeof fb); }
+        }
+        if (c < bestall) { bestall = c; memcpy(bpa, pa, sizeof pa); memcpy(bpb, pb, sizeof pb); memcpy(bfa, fa, sizeof fa); memcpy(bfb, fb, sizeof fb); }
+        if (c == 0) { found++; printf("CTRL k=%d m=%d pa", k, m); for (int v = 0; v < nb; v++) printf(" %d", pa[v]); printf(" pb"); for (int v = 0; v < nb; v++) printf(" %d", pb[v]);
+            printf(" fa"); for (int v = 0; v < nb; v++) printf(" %d", fa[v]); printf(" fb"); for (int v = 0; v < nb; v++) printf(" %d", fb[v]); printf("\n"); fflush(stdout);
+            if (found >= 5) break; }
+    }
+    printf("BEST %d k=%d m=%d pa", bestall, k, m); for (int v = 0; v < nb; v++) printf(" %d", bpa[v]); printf(" pb"); for (int v = 0; v < nb; v++) printf(" %d", bpb[v]);
+    printf(" fa"); for (int v = 0; v < nb; v++) printf(" %d", bfa[v]); printf(" fb"); for (int v = 0; v < nb; v++) printf(" %d", bfb[v]); printf("\n");
+    printf("done m=%d k=%d best objective %d, found %d\n", m, k, bestall, found);
+    return 0; }

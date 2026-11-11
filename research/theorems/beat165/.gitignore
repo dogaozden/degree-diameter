@@ -1,0 +1,33 @@
+# compiled C programs (sources rcl/*.c and ../coordinator_check/apsp.c are committed; rebuild with gcc -O2 -o NAME NAME.c -lm)
+gap/apsp
+rcl/anneal45
+rcl/chart2
+rcl/chart4
+rcl/chart4b
+rcl/chart4c
+rcl/chart4m
+rcl/chartcrit
+rcl/charteval
+rcl/chartfield
+rcl/chartfit
+rcl/chartfit2
+rcl/chartfit3
+rcl/chartfit4
+rcl/charttables
+rcl/ctrlsearch
+rcl/ctrlsearch2
+rcl/fitq
+rcl/fitqv
+rcl/fitqv2
+rcl/grow45
+rcl/haarctrl
+rcl/liftmiss
+rcl/pvctrl
+rcl/pvctrl2
+rcl/pvctrl3
+rcl/pvctrl4
+# large generated edge lists (gap/test_export.g writes flag_test.edges, rcl/rebuild_gap.g writes rebuild_gap.edges)
+gap/flag_test.edges
+rcl/rebuild_gap.edges
+# GAP stdout captures (empty: all output goes to the .log files)
+*.stdout
