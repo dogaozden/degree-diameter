@@ -1,0 +1,6 @@
+file l1
+header: d=5 D=15 factors=1 [Z112253 x|_76172 Z211] x Z1  N=23685383 (file says 23685383)
+selftest: r^k = 1, associativity/identity/inverse on 20000 random triples, index round trip ok; 5 distinct generators
+from (e,A): reached A 23685383/23685383, B 23685383/23685383 within 15; eccentricity 15; levels 1 5 20 80 320 1280 5120 20480 81848 325752 1273086 4644736 13141276 18159114 9183712 533936 (41.5 s)
+from (e,B): reached A 23685383/23685383, B 23685383/23685383 within 15; eccentricity 15; levels 1 5 20 80 320 1280 5120 20480 81848 325752 1273072 4644736 13139488 18159114 9185514 533936 (41.8 s)
+VALID d=5 D=15 N=23685383 vertices=47370766 diameter=15 (83.4 s, 1 threads)

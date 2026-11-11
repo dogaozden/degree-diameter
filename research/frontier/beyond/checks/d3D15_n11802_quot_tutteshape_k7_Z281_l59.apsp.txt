@@ -1,0 +1,9 @@
+checker: apsp
+command: ./bin/apsp ../../squads/beyond15/r3/k03/exh_n281_l59.edges 3 15
+start: 2026-11-01T23:51:13Z
+sha256 8bce5713d2a2b5ab0019ae5209fe3a6acce43005bc4bd9cc932ae966ec1afdf2  ./bin/apsp
+sha256 c8d9349bc5aea7c153bc5063b3f8fa6f576708466d677c6fbbfc5ed4c761a7b8  ../../squads/beyond15/r3/k03/exh_n281_l59.edges
+n=11802 edges=17703 degree min=3 max=3 bipartite=yes diameter=15
+RESULT VALID d=3 D=15 n=11802
+exit: 0
+end: 2026-11-01T23:51:14Z (1 s)

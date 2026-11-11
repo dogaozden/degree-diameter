@@ -1,0 +1,15 @@
+checker: haarcheck_gen
+command: ./bin/haarcheck_gen runs/d6D15_sl_241_31_orb3-2-0_s3.out
+start: 2026-11-01T23:18:08Z
+sha256 e52e247f4a92a474f49ff0d5d438660ba0b557bbdfd4a8e24311ca881ff3f17c  ./bin/haarcheck_gen
+sha256 e420f0be4abe175a6d73aaf2a1b6ac7899bd0511f64bf37027da3f4acd3450e2  runs/d6D15_sl_241_31_orb3-2-0_s3.out
+selftest sl 241: |M| = 13997280, index round trip over all elements ok
+selftest group multiplication: associativity, identity, inverse on 20000 random triples ok
+file runs/d6D15_sl_241_31_orb3-2-0_s3.out
+header: 6 15 sl 241 n 31 N 433915680
+group sl 241 x Z_31, |G| = 433915680 = N, vertices 2N = 867831360; 6 distinct generators
+from (e,A): reached A 433915680/433915680, B 433915680/433915680 within 15; ecc 15; level sizes [1, 6, 30, 150, 750, 3750, 18728, 93501, 466616, 2323907, 11466414, 54030925, 205453021, 363911891, 216510120, 13551550]  (206s)
+from (e,B): reached A 433915680/433915680, B 433915680/433915680 within 15; ecc 15; level sizes [1, 6, 30, 150, 750, 3750, 18726, 93501, 466572, 2323907, 11465376, 54030925, 205450769, 363911891, 216513456, 13551550]  (288s)
+VALID d=6 D=15 group=sl 241 x Z_31 N=433915680 vertices=867831360 (distinct generators, 6-regular simple; every vertex within 15 of both (e,A) and (e,B); ecc 15; 288s)
+exit: 0
+end: 2026-11-01T23:22:56Z (288 s)

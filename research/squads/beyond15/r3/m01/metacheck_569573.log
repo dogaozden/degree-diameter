@@ -1,0 +1,6 @@
+file found_5_16_569573.sol
+header: d=5 D=16 factors=1 [Z569573 x|_342015 Z151] x Z1  N=86005523 (file says 86005523)
+selftest: r^k = 1, associativity/identity/inverse on 20000 random triples, index round trip ok; 5 distinct generators
+from (e,A): reached A 86005523/86005523, B 86005523/86005523 within 16; eccentricity 16; levels 1 5 20 80 320 1280 5120 20480 81920 327375 1300876 5067063 18297210 50133610 64955628 30455630 1364428 (70.2 s)
+from (e,B): reached A 86005523/86005523, B 86005523/86005523 within 16; eccentricity 16; levels 1 5 20 80 320 1280 5120 20480 81920 327375 1300876 5067063 18297290 50133610 64957038 30455630 1362938 (61.1 s)
+VALID d=5 D=16 N=86005523 vertices=172011046 diameter=16 (131.4 s, 1 threads)

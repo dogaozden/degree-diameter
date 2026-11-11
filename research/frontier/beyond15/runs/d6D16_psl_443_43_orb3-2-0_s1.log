@@ -1,0 +1,9 @@
+group psl 443 x Z_43, N=1869164076 (2N=3738328152), rows 98124 x 19049 bits (doubled row 616 words), memory 1.12 GB, threads 3
+alpha: conj by mat(0,442,1,442), z -> 6 z on Z_43 (fixed z: 1); ORBIT k=3 m=2 f=0; W=3.8147e+10 lambda=20.409 mu=2.56
+setup 0.0s
+start cost=6 (2.8s per eval)
+t=7 step=1 evals=9 slot=1 cand=3 cost=3 best=3 T=1.26
+t=10 step=2 evals=17 slot=0 cand=0 cost=0 best=0 T=1.06
+RESULT d=6 D=16 group=psl 443 x Z_43 N=1869164076 vertices=3738328152 best=0 evals=17 steps=2 time=10.4 orbit k=3 m=2 f=0 mu=2.56
+re-evaluation of the best S: cost 0
+wrote runs/t616.out

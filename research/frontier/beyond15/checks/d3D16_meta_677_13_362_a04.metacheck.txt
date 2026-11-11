@@ -1,0 +1,13 @@
+checker: metacheck
+command: ./bin/metacheck sols/d3D16_meta_677_13_362_a04.txt
+start: 2026-11-01T23:07:59Z
+sha256 b896147c93ee6271f74ea274ea8a47fcb894acf2d5fbdf3a90a1ee96366eb24b  ./bin/metacheck
+sha256 61cb78f1670b13b7c721de301922a6fc47f4fe31386dec6924c4afcf988ef6c3  sols/d3D16_meta_677_13_362_a04.txt
+file sols/d3D16_meta_677_13_362_a04.txt
+header: d=3 D=16 factors=1 [Z677 x|_362 Z13] x Z1  N=8801 (file says 8801)
+selftest: r^k = 1, associativity/identity/inverse on 20000 random triples, index round trip ok; 3 distinct generators
+from (e,A): reached A 8801/8801, B 8801/8801 within 16; eccentricity 16; levels 1 3 6 12 24 48 96 192 384 759 1450 2552 3794 4209 2938 1026 108 (0.0 s)
+from (e,B): reached A 8801/8801, B 8801/8801 within 16; eccentricity 16; levels 1 3 6 12 24 48 96 192 384 759 1450 2552 3786 4209 2948 1026 106 (0.0 s)
+VALID d=3 D=16 N=8801 vertices=17602 diameter=16 (0.0 s, 1 threads)
+exit: 0
+end: 2026-11-01T23:07:59Z (0 s)

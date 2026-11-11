@@ -1,0 +1,9 @@
+checker: apsp
+command: ./bin/apsp /tmp/u677.edges 3 16
+start: 2026-11-01T23:08:06Z
+sha256 8bce5713d2a2b5ab0019ae5209fe3a6acce43005bc4bd9cc932ae966ec1afdf2  ./bin/apsp
+sha256 c49d56ea62977dc9a54443588dc040ff74f14183dd303ea69cb1baf00bd4eabc  /tmp/u677.edges
+n=17602 edges=26403 degree min=3 max=3 bipartite=yes diameter=16
+RESULT VALID d=3 D=16 n=17602
+exit: 0
+end: 2026-11-01T23:08:06Z (0 s)

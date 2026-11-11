@@ -1,0 +1,9 @@
+checker: apsp
+command: ./bin/apsp lsym/out/gray_D16_n379_l84.edges 3 16
+start: 2026-11-01T23:19:00Z
+sha256 8bce5713d2a2b5ab0019ae5209fe3a6acce43005bc4bd9cc932ae966ec1afdf2  ./bin/apsp
+sha256 a6944c67b469c366886d8f94d9939201608a96c8eba8882bcc83c2c499747841  lsym/out/gray_D16_n379_l84.edges
+n=20466 edges=30699 degree min=3 max=3 bipartite=yes diameter=16
+RESULT VALID d=3 D=16 n=20466
+exit: 0
+end: 2026-11-01T23:19:01Z (1 s)

@@ -1,0 +1,10 @@
+checker: haarcheck_gen
+command: ./bin/haarcheck_gen runs/d6D16_psl_443_43_orb3-2-0_s1.out
+start: 2026-11-01T22:42:17Z
+sha256 e52e247f4a92a474f49ff0d5d438660ba0b557bbdfd4a8e24311ca881ff3f17c  ./bin/haarcheck_gen
+sha256 964e6d5327f3c9d6b998a3c8bc5ca1cddd9190691bb89bd95cfee2e6650f2449  runs/d6D16_psl_443_43_orb3-2-0_s1.out
+selftest psl 443: |M| = 43468932, index round trip over all elements ok
+selftest group multiplication: associativity, identity, inverse on 20000 random triples ok
+file runs/d6D16_psl_443_43_orb3-2-0_s1.out
+header: 6 16 psl 443 n 43 N 1869164076
+group psl 443 x Z_43, |G| = 1869164076 = N, vertices 2N = 3738328152; 6 distinct generators

@@ -1,0 +1,5 @@
+a01 (3,15): Z_n lifts of GP(10,3), D=15. Base: /home/user/degree-diameter/research/frontier/beyond13/lifts/bases/gp10_3.txt
+lift 520 15 90 1 2.0 0.05 1200 -> cost 49; scan 520 (95 s) x2 -> cost 12 (stall)
+lift 500 15 95 5 -> cost 20; scan -> 14; lift T0=0.5 from it -> 14; scan -> 12; scan -> 12
+lift 500 15 95 21 -> cost 22; scan -> 8; scan -> 6; scan -> 6; scan -> 6 (S500g,h,i)
+No cost-0 state reached, so no EDGES file and no apsp check. Score 0.

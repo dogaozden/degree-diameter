@@ -1,0 +1,9 @@
+checker: apsp
+command: ./bin/apsp ../../squads/beyond15/r2/e06/out/t393a.edges 3 15
+start: 2026-11-01T23:25:10Z
+sha256 8bce5713d2a2b5ab0019ae5209fe3a6acce43005bc4bd9cc932ae966ec1afdf2  ./bin/apsp
+sha256 0d159ec25d91f5b90a0049eba22cba9dc21ff1176c93e161a9726eace108af76  ../../squads/beyond15/r2/e06/out/t393a.edges
+n=11790 edges=17685 degree min=3 max=3 bipartite=yes diameter=15
+RESULT VALID d=3 D=15 n=11790
+exit: 0
+end: 2026-11-01T23:25:11Z (1 s)
