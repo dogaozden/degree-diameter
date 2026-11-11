@@ -1,0 +1,7 @@
+== metacheck
+from (e,A): reached A 96529/96529, B 96529/96529 within 13; level sizes [1, 4, 12, 36, 108, 324, 972, 2916, 8548, 23252, 50728, 65276, 36160, 4721]
+from (e,B): reached A 96529/96529, B 96529/96529 within 13; level sizes [1, 4, 12, 36, 108, 324, 972, 2916, 8548, 23252, 50674, 65276, 36214, 4721]
+VALID d=4 D=13 group=meta 1163 83 102 x Z_1 N=96529 vertices=193058 (2s)
+== apsp (edges from meta2edges.py)
+n=193058 edges=386116 degree min=4 max=4 bipartite=yes diameter=13
+RESULT VALID d=4 D=13 n=193058

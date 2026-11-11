@@ -1,0 +1,9 @@
+== metacheck
+from (e,A): reached A 249399/249399, B 249399/249399 within 14; level sizes [1, 4, 12, 36, 108, 324, 970, 2904, 8648, 25039, 66414, 138562, 164624, 82530, 8622]
+from (e,B): reached A 249399/249399, B 249399/249399 within 14; level sizes [1, 4, 12, 36, 108, 324, 970, 2904, 8648, 25039, 66440, 138562, 164562, 82530, 8658]
+VALID d=4 D=14 group=meta 3079 81 568 x Z_1 N=249399 vertices=498798 (3s)
+== apsp
+n=498798 edges=997596 degree min=4 max=4 bipartite=yes diameter=14
+RESULT VALID d=4 D=14 n=498798
+== apsp at D=13
+(apsp at D = 13 not run to completion: stopped to free CPU)
