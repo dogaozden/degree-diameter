@@ -1,0 +1,12 @@
+group pgl 11 x Z_35, N=46200, identity 0, H order 60, rows 770, threads 1, setup 0.00s
+start cost=85
+t=30 steps=97067 evals=776537 cost=8 best=8 T=0.53
+t=60 steps=194019 evals=1552153 cost=8 best=8 T=0.19
+t=90 steps=290715 evals=2325721 cost=8 best=8 T=0.15
+t=120 steps=387852 evals=3102817 cost=8 best=8 T=0.15
+t=150 steps=487678 evals=3901425 cost=8 best=8 T=0.15
+t=180 steps=583197 evals=4665577 cost=8 best=8 T=1.36
+t=210 steps=681182 evals=5449457 cost=7 best=7 T=0.48
+t=240 steps=778380 evals=6227041 cost=7 best=7 T=0.17
+t=270 steps=875602 evals=7004817 cost=7 best=7 T=0.15
+RESULT d=7 D=8 group=pgl 11 x Z_35 N=46200 best=7 evals=7796857 time=300.0

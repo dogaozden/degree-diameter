@@ -1,0 +1,12 @@
+group sl 11 x Z_35, N=46200, identity 3850, H order 60, rows 770, threads 1, setup 0.00s
+start cost=10599
+t=30 steps=101121 evals=808969 cost=5 best=5 T=0.53
+t=60 steps=201422 evals=1611377 cost=5 best=5 T=0.19
+t=90 steps=304956 evals=2439649 cost=5 best=5 T=0.15
+t=120 steps=406959 evals=3255673 cost=5 best=5 T=0.15
+t=150 steps=509651 evals=4077209 cost=5 best=5 T=0.15
+t=180 steps=612755 evals=4902041 cost=5 best=5 T=0.98
+t=210 steps=717084 evals=5736673 cost=5 best=5 T=0.35
+t=240 steps=821378 evals=6571025 cost=8 best=5 T=0.15
+t=270 steps=925486 evals=7403889 cost=7 best=5 T=0.15
+RESULT d=7 D=8 group=sl 11 x Z_35 N=46200 best=5 evals=8229769 time=300.0

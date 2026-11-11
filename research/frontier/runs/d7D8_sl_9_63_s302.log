@@ -1,0 +1,12 @@
+group sl 9 poly x^2+1 x Z_63, N=45360, identity 4536, H order 63, rows 720, threads 1, setup 0.00s
+start cost=73
+t=30 steps=105905 evals=847241 cost=13 best=10 T=0.53
+t=60 steps=207091 evals=1656729 cost=11 best=10 T=0.19
+t=90 steps=312991 evals=2503929 cost=9 best=9 T=0.15
+t=120 steps=418254 evals=3346033 cost=9 best=9 T=0.15
+t=150 steps=525899 evals=4207193 cost=9 best=9 T=0.15
+t=180 steps=632502 evals=5060017 cost=9 best=9 T=0.15
+t=210 steps=734990 evals=5879921 cost=9 best=9 T=0.15
+t=240 steps=840959 evals=6727673 cost=10 best=9 T=0.77
+t=270 steps=948580 evals=7588641 cost=8 best=8 T=0.27
+RESULT d=7 D=8 group=sl 9 poly x^2+1 x Z_63 N=45360 best=8 evals=8448665 time=300.0

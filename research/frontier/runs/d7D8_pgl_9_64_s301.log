@@ -1,0 +1,12 @@
+group pgl 9 poly x^2+1 x Z_64, N=46080, identity 0, H order 48, rows 960, threads 1, setup 0.00s
+start cost=98
+t=30 steps=77950 evals=623601 cost=8 best=8 T=0.53
+t=60 steps=156598 evals=1252785 cost=8 best=8 T=0.19
+t=90 steps=235182 evals=1881457 cost=8 best=8 T=0.15
+t=120 steps=314126 evals=2513009 cost=8 best=8 T=0.15
+t=150 steps=394662 evals=3157297 cost=8 best=8 T=0.15
+t=180 steps=473592 evals=3788737 cost=8 best=8 T=1.03
+t=210 steps=553964 evals=4431713 cost=8 best=8 T=0.36
+t=240 steps=634845 evals=5078761 cost=8 best=8 T=0.15
+t=270 steps=714217 evals=5713737 cost=8 best=8 T=0.15
+RESULT d=7 D=8 group=pgl 9 poly x^2+1 x Z_64 N=46080 best=8 evals=6355609 time=300.0
