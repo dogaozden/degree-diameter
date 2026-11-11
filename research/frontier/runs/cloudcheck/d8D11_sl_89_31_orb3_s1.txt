@@ -1,0 +1,18 @@
+machine: nproc=4; free -g: total=15 GB, used=0 GB, free=14 GB (cloud sandbox, Linux 6.18.44-fc-v153)
+== check_haar_indep.py research/frontier/sols/d8D11_sl_89_31_orb3_s1.txt: exit=0 peak_rss_mb=1214 ==
+file research/frontier/sols/d8D11_sl_89_31_orb3_s1.txt
+header: d=8 D=11 spec=sl 89 NCYC=31 N=21851280
+group order |G|=704880 (factors [704880]), x Z_31 -> 21851280; vertices 2N=43702560
+distinct generators (as full group elements): 8 of d=8
+permutations built (3s)
+BFS from A: ecc=11 reached 43702560 of 43702560 (unreached 0); level sizes [1, 8, 56, 392, 2744, 19178, 133648, 915755, 5609804, 18307071, 16105027, 2608876]
+BFS from B: ecc=11 reached 43702560 of 43702560 (unreached 0); level sizes [1, 8, 56, 392, 2744, 19178, 133646, 915755, 5609722, 18307071, 16105111, 2608876]
+every vertex has exactly 8 distinct neighbours: True
+RESULT VALID d=8 D=11 eccA=11 eccB=11 n=43702560 (33s)
+
+== build_haar2.py research/frontier/sols/d8D11_sl_89_31_orb3_s1.txt /tmp/e.txt: exit=0 peak_rss_mb=2194 ==
+ecc from A = 11 unreached 0
+ecc from B = 11 unreached 0
+n = 43702560 edges = 174810240 max degree = 8 min degree = 8 duplicate edges = 0
+edge list sha256 = 0982dcc950a0254fff4d9dd10bee4b568c9d96df2edef8a8c900c3c6acc292ec
+VALID d=8 D=11 group=sl 89 x Z_31 N=21851280 vertices=43702560

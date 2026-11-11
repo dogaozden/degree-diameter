@@ -1,0 +1,18 @@
+machine: nproc=4; free -g: total=15 GB, used=0 GB, free=14 GB (cloud sandbox, Linux 6.18.44-fc-v153)
+== check_haar_indep.py research/frontier/sols/d7D12_psl_163_13_orb3_s1.txt: exit=0 peak_rss_mb=1604 ==
+file research/frontier/sols/d7D12_psl_163_13_orb3_s1.txt
+header: d=7 D=12 spec=psl 163 NCYC=13 N=28148796
+group order |G|=2165292 (factors [2165292]), x Z_13 -> 28148796; vertices 2N=56297592
+distinct generators (as full group elements): 7 of d=7
+permutations built (15s)
+BFS from A: ecc=12 reached 56297592 of 56297592 (unreached 0); level sizes [1, 7, 42, 252, 1512, 9072, 54372, 324006, 1881629, 9440555, 24000130, 18374904, 2211110]
+BFS from B: ecc=12 reached 56297592 of 56297592 (unreached 0); level sizes [1, 7, 42, 252, 1512, 9072, 54372, 324006, 1881665, 9440555, 24003018, 18374904, 2208186]
+every vertex has exactly 7 distinct neighbours: True
+RESULT VALID d=7 D=12 eccA=12 eccB=12 n=56297592 (49s)
+
+== build_haar2.py research/frontier/sols/d7D12_psl_163_13_orb3_s1.txt /tmp/e.txt: exit=0 peak_rss_mb=2644 ==
+ecc from A = 12 unreached 0
+ecc from B = 12 unreached 0
+n = 56297592 edges = 197041572 max degree = 7 min degree = 7 duplicate edges = 0
+edge list sha256 = a3d4c1b2b0d4022fc4277598b6d761b2d300c2406d1d0e3beabf3ae773cbbc3a
+VALID d=7 D=12 group=psl 163 x Z_13 N=28148796 vertices=56297592
