@@ -1,0 +1,10 @@
+== apsp.c (research/lifts/coordinator_check/apsp.c), D = 5
+n=704 edges=2112 degree min=6 max=6 bipartite=yes diameter=5
+RESULT VALID d=6 D=5 n=704
+== apsp.c, D = 4
+n=704 edges=2112 degree min=6 max=6 bipartite=yes diameter=5
+RESULT INVALID
+== score65
+SCORE n=704 edges=2112 maxdeg=6 bipartite=yes simple=yes bad=0 diam=5
+== sha256
+85b88c13999f3b0f36798a43a57e5f8cca11e7bf93888f3e37a4232d1335aece  d6D5_n704_split_c11xm16.edges

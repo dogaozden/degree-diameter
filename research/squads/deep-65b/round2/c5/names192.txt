@@ -1,0 +1,60 @@
+sg_192_1 C3 : C64 abelian=false
+sg_192_1000 C2 x (((C2 x C2 x C2 x C2) : C2) : C3) abelian=false
+sg_192_1021 ((C2 x C2 x C2) : Q8) : C3 abelian=false
+sg_192_1043 C2 x (((C4 x C2) : C2) x S3) abelian=false
+sg_192_1064 C2 x (C3 : ((C4 x C2 x C2) : C2)) abelian=false
+sg_192_108 C3 : ((C2 x C2) : C16) abelian=false
+sg_192_1085 C3 : ((C4 : Q8) : C2) abelian=false
+sg_192_1107 C3 : (C4 : ((C4 x C2) : C2)) abelian=false
+sg_192_1128 C3 : (Q8 : Q8) abelian=false
+sg_192_1150 C3 : ((C2 x C2) : ((C4 x C2) : C2)) abelian=false
+sg_192_1171 C3 : ((C2 x C2) : ((C4 x C2) : C2)) abelian=false
+sg_192_1193 C3 : ((C2 x C2 x C2) : Q8) abelian=false
+sg_192_1214 C3 : (C4 : ((C4 x C2) : C2)) abelian=false
+sg_192_1236 C3 : ((C2 x C2) : ((C4 x C2) : C2)) abelian=false
+sg_192_1257 C3 : (((C2 x C2) . (C2 x C2 x C2)) : C2) abelian=false
+sg_192_1278 C3 : (((C4 x C2 x C2) : C2) : C2) abelian=false
+sg_192_1300 C2 x (C3 : ((C8 x C2) : C2)) abelian=false
+sg_192_1321 C3 : ((C8 : C2) : (C2 x C2)) abelian=false
+sg_192_1343 C2 x (C3 : ((C2 x Q8) : C2)) abelian=false
+sg_192_1364 C3 : ((C4 x C2) : D8) abelian=false
+sg_192_1386 C3 : (Q8 : (C4 x C2)) abelian=false
+sg_192_1473 D8 : S4 abelian=false
+sg_192_1495 (C2 x C2) : (A4 : C4) abelian=false
+sg_192_1516 C2 x (C3 : ((C2 x C2 x C2) : (C2 x C2))) abelian=false
+sg_192_175 C96 x C2 abelian=true
+sg_192_201 ((C4 x C2) : D8) : C3 abelian=false
+sg_192_22 C3 : (C8 . D8 = C4 . (C8 x C2)) abelian=false
+sg_192_222 ((C4 x C2) : C4) x S3 abelian=false
+sg_192_244 C3 : ((C4 x C2) : C8) abelian=false
+sg_192_265 C3 : ((C2 x C2) : (C8 : C2)) abelian=false
+sg_192_286 C3 : (((C8 x C2) : C2) : C2) abelian=false
+sg_192_308 C3 : ((C4 . D8 = C4 . (C4 x C2)) : C2) abelian=false
+sg_192_329 C3 : ((C2 x D8) : C4) abelian=false
+sg_192_351 C3 : ((C2 x C2) . (C2 x D8) = (C4 x C2) . (C2 x C2 x C2)) abelian=false
+sg_192_372 C3 : ((C2 x C2) : Q16) abelian=false
+sg_192_394 C3 : ((C8 : C4) : C2) abelian=false
+sg_192_415 C3 : (C8 : Q8) abelian=false
+sg_192_43 C3 : (Q8 : C8) abelian=false
+sg_192_437 C3 : ((C2 x C2) . (C2 x D8) = (C4 x C2) . (C2 x C2 x C2)) abelian=false
+sg_192_458 C2 x C16 x S3 abelian=false
+sg_192_480 C2 x (C3 : (C8 : C4)) abelian=false
+sg_192_501 C3 : (C4 : ((C4 x C2) : C2)) abelian=false
+sg_192_522 C2 x (C3 : (C8 : C4)) abelian=false
+sg_192_544 C3 : ((C2 x C2 x C2) . (C2 x C2 x C2)) abelian=false
+sg_192_565 C3 : ((C2 x Q8) : C4) abelian=false
+sg_192_587 C3 : ((Q8 : C4) : C2) abelian=false
+sg_192_608 C3 : (C8 : D8) abelian=false
+sg_192_630 C3 : (((C8 x C2) : C2) : C2) abelian=false
+sg_192_65 C3 : (C4 . D16 = C8 . (C4 x C2)) abelian=false
+sg_192_651 C3 : (C4 : Q16) abelian=false
+sg_192_673 C3 : ((C2 x C2) : QD16) abelian=false
+sg_192_694 C3 : (C8 : D8) abelian=false
+sg_192_715 C3 : ((C2 x C2) : D16) abelian=false
+sg_192_737 C2 x (C3 : QD32) abelian=false
+sg_192_758 C3 : ((C4 . D8 = C4 . (C4 x C2)) : C2) abelian=false
+sg_192_780 C3 : ((C4 x C2) : D8) abelian=false
+sg_192_801 C3 : ((C8 : C2) : (C2 x C2)) abelian=false
+sg_192_86 C3 : (((C4 x C2) : C2) : C4) abelian=false
+sg_192_957 (C2 x C2) : (C3 : Q16) abelian=false
+sg_192_978 (C2 x C2) : (C2 . S4 = SL(2,3) . C2) abelian=false

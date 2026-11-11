@@ -1,0 +1,2 @@
+#!/bin/sh
+exec /usr/local/lib/python3.13/site-packages/gap/gap -l /usr/local/lib/python3.13/site-packages/gap -A -q "$@"

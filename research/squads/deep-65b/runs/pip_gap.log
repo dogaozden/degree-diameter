@@ -1,0 +1,171 @@
+Collecting passagemath-gap
+  Downloading passagemath_gap-10.8.13-cp313-cp313-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl.metadata (24 kB)
+Collecting cysignals!=1.12.0,>=1.11.2 (from passagemath-gap)
+  Downloading cysignals-1.13.1-cp313-cp313-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (3.9 kB)
+Collecting dot2tex>=2.12.0 (from passagemath-gap)
+  Downloading dot2tex-2.12.0-py3-none-any.whl.metadata (1.4 kB)
+Collecting memory_allocator<0.2 (from passagemath-gap)
+  Downloading memory_allocator-0.1.4.tar.gz (19 kB)
+  Installing build dependencies: started
+  Installing build dependencies: finished with status 'done'
+  Getting requirements to build wheel: started
+  Getting requirements to build wheel: finished with status 'done'
+  Preparing metadata (pyproject.toml): started
+  Preparing metadata (pyproject.toml): finished with status 'done'
+Collecting pexpect>=4.8.0 (from passagemath-gap)
+  Downloading pexpect-4.9.0-py2.py3-none-any.whl.metadata (2.5 kB)
+Collecting passagemath-environment~=10.8.13.0 (from passagemath-gap)
+  Downloading passagemath_environment-10.8.13-py3-none-any.whl.metadata (6.8 kB)
+Collecting passagemath-categories~=10.8.13.0 (from passagemath-gap)
+  Downloading passagemath_categories-10.8.13-cp313-cp313-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl.metadata (9.7 kB)
+Collecting passagemath-gap-pkg-factint-data~=10.8.13.0 (from passagemath-gap)
+  Downloading passagemath_gap_pkg_factint_data-10.8.13-py3-none-any.whl.metadata (5.1 kB)
+Collecting passagemath-gap-pkg-primgrp-data~=10.8.13.0 (from passagemath-gap)
+  Downloading passagemath_gap_pkg_primgrp_data-10.8.13-py3-none-any.whl.metadata (5.1 kB)
+Collecting passagemath-gap-pkg-smallgrp-data~=10.8.13.0 (from passagemath-gap)
+  Downloading passagemath_gap_pkg_smallgrp_data-10.8.13-py3-none-any.whl.metadata (5.1 kB)
+Collecting passagemath-repl~=10.8.13.0 (from passagemath-gap)
+  Downloading passagemath_repl-10.8.13-py3-none-any.whl.metadata (5.9 kB)
+Requirement already satisfied: pyparsing in /usr/lib/python3/dist-packages (from dot2tex>=2.12.0->passagemath-gap) (3.1.1)
+Requirement already satisfied: setuptools in /usr/lib/python3/dist-packages (from dot2tex>=2.12.0->passagemath-gap) (68.1.2)
+Collecting Cython (from memory_allocator<0.2->passagemath-gap)
+  Using cached cython-3.3.1-cp313-cp313-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (13 kB)
+Collecting passagemath-objects~=10.8.13.0 (from passagemath-categories~=10.8.13.0->passagemath-gap)
+  Downloading passagemath_objects-10.8.13-cp313-cp313-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (6.2 kB)
+Requirement already satisfied: packaging>=24.2 in /usr/local/lib/python3.13/site-packages (from passagemath-environment~=10.8.13.0->passagemath-gap) (26.3)
+Collecting platformdirs (from passagemath-environment~=10.8.13.0->passagemath-gap)
+  Downloading platformdirs-4.14.3-py3-none-any.whl.metadata (5.4 kB)
+Collecting ipykernel>=5.2.1 (from passagemath-repl~=10.8.13.0->passagemath-gap)
+  Downloading ipykernel-7.4.0-py3-none-any.whl.metadata (3.4 kB)
+Collecting ipython>=7.13.0 (from passagemath-repl~=10.8.13.0->passagemath-gap)
+  Downloading ipython-9.18.0-py3-none-any.whl.metadata (4.6 kB)
+Collecting ipywidgets>=7.5.1 (from passagemath-repl~=10.8.13.0->passagemath-gap)
+  Downloading ipywidgets-8.1.9-py3-none-any.whl.metadata (2.4 kB)
+Collecting jupyter-client (from passagemath-repl~=10.8.13.0->passagemath-gap)
+  Downloading jupyter_client-8.10.0-py3-none-any.whl.metadata (8.5 kB)
+Requirement already satisfied: typing_extensions>=4.13.0 in /usr/local/lib/python3.13/site-packages (from passagemath-repl~=10.8.13.0->passagemath-gap) (4.16.0)
+Collecting ptyprocess>=0.5 (from pexpect>=4.8.0->passagemath-gap)
+  Downloading ptyprocess-0.7.0-py2.py3-none-any.whl.metadata (1.3 kB)
+Collecting comm>=0.1.1 (from ipykernel>=5.2.1->passagemath-repl~=10.8.13.0->passagemath-gap)
+  Downloading comm-0.2.3-py3-none-any.whl.metadata (3.7 kB)
+Collecting debugpy>=1.6.5 (from ipykernel>=5.2.1->passagemath-repl~=10.8.13.0->passagemath-gap)
+  Downloading debugpy-1.8.22-cp313-cp313-manylinux_2_34_x86_64.whl.metadata (1.4 kB)
+Collecting jupyter-core!=6.0.*,>=5.1 (from ipykernel>=5.2.1->passagemath-repl~=10.8.13.0->passagemath-gap)
+  Downloading jupyter_core-5.9.1-py3-none-any.whl.metadata (1.5 kB)
+Collecting matplotlib-inline>=0.1 (from ipykernel>=5.2.1->passagemath-repl~=10.8.13.0->passagemath-gap)
+  Downloading matplotlib_inline-0.2.2-py3-none-any.whl.metadata (2.4 kB)
+Collecting nest-asyncio2>=1.7.0 (from ipykernel>=5.2.1->passagemath-repl~=10.8.13.0->passagemath-gap)
+  Downloading nest_asyncio2-1.7.4-py3-none-any.whl.metadata (7.0 kB)
+Collecting pyzmq>=25 (from ipykernel>=5.2.1->passagemath-repl~=10.8.13.0->passagemath-gap)
+  Downloading pyzmq-27.2.0-cp312-abi3-manylinux_2_26_x86_64.manylinux_2_28_x86_64.whl.metadata (3.8 kB)
+Collecting tornado>=6.5.7 (from ipykernel>=5.2.1->passagemath-repl~=10.8.13.0->passagemath-gap)
+  Downloading tornado-6.6-cp311-abi3-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl.metadata (2.6 kB)
+Collecting traitlets>=5.4.0 (from ipykernel>=5.2.1->passagemath-repl~=10.8.13.0->passagemath-gap)
+  Downloading traitlets-5.16.1-py3-none-any.whl.metadata (10 kB)
+Collecting ipython-pygments-lexers>=1.0.0 (from ipython>=7.13.0->passagemath-repl~=10.8.13.0->passagemath-gap)
+  Downloading ipython_pygments_lexers-1.1.1-py3-none-any.whl.metadata (1.1 kB)
+Collecting jedi>=0.18.2 (from ipython>=7.13.0->passagemath-repl~=10.8.13.0->passagemath-gap)
+  Downloading jedi-0.20.1-py2.py3-none-any.whl.metadata (23 kB)
+Collecting prompt_toolkit<3.1.0,>=3.0.41 (from ipython>=7.13.0->passagemath-repl~=10.8.13.0->passagemath-gap)
+  Downloading prompt_toolkit-3.0.53-py3-none-any.whl.metadata (6.4 kB)
+Collecting psutil>=7 (from ipython>=7.13.0->passagemath-repl~=10.8.13.0->passagemath-gap)
+  Downloading psutil-7.2.2-cp36-abi3-manylinux2010_x86_64.manylinux_2_12_x86_64.manylinux_2_28_x86_64.whl.metadata (22 kB)
+Collecting pygments>=2.14.0 (from ipython>=7.13.0->passagemath-repl~=10.8.13.0->passagemath-gap)
+  Downloading pygments-2.21.0-py3-none-any.whl.metadata (2.5 kB)
+Collecting stack_data>=0.6.0 (from ipython>=7.13.0->passagemath-repl~=10.8.13.0->passagemath-gap)
+  Downloading stack_data-0.6.3-py3-none-any.whl.metadata (18 kB)
+Collecting widgetsnbextension~=4.0.16 (from ipywidgets>=7.5.1->passagemath-repl~=10.8.13.0->passagemath-gap)
+  Downloading widgetsnbextension-4.0.16-py3-none-any.whl.metadata (1.6 kB)
+Collecting jupyterlab_widgets~=3.0.17 (from ipywidgets>=7.5.1->passagemath-repl~=10.8.13.0->passagemath-gap)
+  Downloading jupyterlab_widgets-3.0.17-py3-none-any.whl.metadata (20 kB)
+Requirement already satisfied: python-dateutil>=2.8.2 in /root/.local/lib/python3.13/site-packages (from jupyter-client->passagemath-repl~=10.8.13.0->passagemath-gap) (2.9.0.post0)
+Collecting gmpy2~=2.1.b999 (from passagemath-objects~=10.8.13.0->passagemath-categories~=10.8.13.0->passagemath-gap)
+  Downloading gmpy2-2.4.0a1-cp313-cp313-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (2.4 kB)
+Collecting parso<0.9.0,>=0.8.7 (from jedi>=0.18.2->ipython>=7.13.0->passagemath-repl~=10.8.13.0->passagemath-gap)
+  Downloading parso-0.8.7-py2.py3-none-any.whl.metadata (8.2 kB)
+Collecting wcwidth>=0.1.4 (from prompt_toolkit<3.1.0,>=3.0.41->ipython>=7.13.0->passagemath-repl~=10.8.13.0->passagemath-gap)
+  Downloading wcwidth-0.9.4-cp310-abi3-manylinux2014_x86_64.manylinux_2_17_x86_64.whl.metadata (23 kB)
+Requirement already satisfied: six>=1.5 in /root/.local/lib/python3.13/site-packages (from python-dateutil>=2.8.2->jupyter-client->passagemath-repl~=10.8.13.0->passagemath-gap) (1.17.0)
+Collecting executing>=1.2.0 (from stack_data>=0.6.0->ipython>=7.13.0->passagemath-repl~=10.8.13.0->passagemath-gap)
+  Downloading executing-2.3.0-py3-none-any.whl.metadata (9.1 kB)
+Collecting asttokens>=2.1.0 (from stack_data>=0.6.0->ipython>=7.13.0->passagemath-repl~=10.8.13.0->passagemath-gap)
+  Downloading asttokens-3.0.2-py3-none-any.whl.metadata (5.7 kB)
+Collecting pure-eval (from stack_data>=0.6.0->ipython>=7.13.0->passagemath-repl~=10.8.13.0->passagemath-gap)
+  Downloading pure_eval-0.2.4-py3-none-any.whl.metadata (6.4 kB)
+Downloading passagemath_gap-10.8.13-cp313-cp313-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl (90.7 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 90.7/90.7 MB 1.4 MB/s eta 0:00:00
+Downloading cysignals-1.13.1-cp313-cp313-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (271 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 271.3/271.3 kB 2.7 MB/s eta 0:00:00
+Downloading dot2tex-2.12.0-py3-none-any.whl (40 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 40.2/40.2 kB 2.8 MB/s eta 0:00:00
+Downloading passagemath_categories-10.8.13-cp313-cp313-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl (49.0 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 49.0/49.0 MB 714.8 kB/s eta 0:00:00
+Downloading passagemath_environment-10.8.13-py3-none-any.whl (144 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 144.4/144.4 kB 415.1 kB/s eta 0:00:00
+Downloading passagemath_gap_pkg_factint_data-10.8.13-py3-none-any.whl (10.9 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 10.9/10.9 MB 765.8 kB/s eta 0:00:00
+Downloading passagemath_gap_pkg_primgrp_data-10.8.13-py3-none-any.whl (14.3 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 14.3/14.3 MB 452.1 kB/s eta 0:00:00
+Downloading passagemath_gap_pkg_smallgrp_data-10.8.13-py3-none-any.whl (20.3 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 20.3/20.3 MB 2.1 MB/s eta 0:00:00
+Downloading passagemath_repl-10.8.13-py3-none-any.whl (627 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 627.1/627.1 kB 1.8 MB/s eta 0:00:00
+Downloading pexpect-4.9.0-py2.py3-none-any.whl (63 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 63.8/63.8 kB 2.3 MB/s eta 0:00:00
+Downloading ipykernel-7.4.0-py3-none-any.whl (123 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 123.2/123.2 kB 2.1 MB/s eta 0:00:00
+Downloading ipython-9.18.0-py3-none-any.whl (649 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 649.6/649.6 kB 2.3 MB/s eta 0:00:00
+Downloading ipywidgets-8.1.9-py3-none-any.whl (140 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 140.1/140.1 kB 1.4 MB/s eta 0:00:00
+Downloading jupyter_client-8.10.0-py3-none-any.whl (110 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 110.2/110.2 kB 1.4 MB/s eta 0:00:00
+Downloading passagemath_objects-10.8.13-cp313-cp313-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (19.3 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 19.3/19.3 MB 1.3 MB/s eta 0:00:00
+Downloading ptyprocess-0.7.0-py2.py3-none-any.whl (13 kB)
+Using cached cython-3.3.1-cp313-cp313-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (3.4 MB)
+Downloading platformdirs-4.14.3-py3-none-any.whl (35 kB)
+Downloading comm-0.2.3-py3-none-any.whl (7.3 kB)
+Downloading debugpy-1.8.22-cp313-cp313-manylinux_2_34_x86_64.whl (4.0 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 4.0/4.0 MB 2.1 MB/s eta 0:00:00
+Downloading gmpy2-2.4.0a1-cp313-cp313-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (1.8 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.8/1.8 MB 3.2 MB/s eta 0:00:00
+Downloading ipython_pygments_lexers-1.1.1-py3-none-any.whl (8.1 kB)
+Downloading jedi-0.20.1-py2.py3-none-any.whl (4.9 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 4.9/4.9 MB 4.7 MB/s eta 0:00:00
+Downloading jupyter_core-5.9.1-py3-none-any.whl (29 kB)
+Downloading jupyterlab_widgets-3.0.17-py3-none-any.whl (217 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 217.3/217.3 kB 3.8 MB/s eta 0:00:00
+Downloading matplotlib_inline-0.2.2-py3-none-any.whl (9.5 kB)
+Downloading nest_asyncio2-1.7.4-py3-none-any.whl (8.5 kB)
+Downloading prompt_toolkit-3.0.53-py3-none-any.whl (392 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 392.3/392.3 kB 2.8 MB/s eta 0:00:00
+Downloading psutil-7.2.2-cp36-abi3-manylinux2010_x86_64.manylinux_2_12_x86_64.manylinux_2_28_x86_64.whl (155 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 155.6/155.6 kB 1.4 MB/s eta 0:00:00
+Downloading pygments-2.21.0-py3-none-any.whl (1.3 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.3/1.3 MB 1.3 MB/s eta 0:00:00
+Downloading pyzmq-27.2.0-cp312-abi3-manylinux_2_26_x86_64.manylinux_2_28_x86_64.whl (872 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 872.3/872.3 kB 1.2 MB/s eta 0:00:00
+Downloading stack_data-0.6.3-py3-none-any.whl (24 kB)
+Downloading tornado-6.6-cp311-abi3-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl (529 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 529.5/529.5 kB 1.6 MB/s eta 0:00:00
+Downloading traitlets-5.16.1-py3-none-any.whl (86 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 86.2/86.2 kB 2.2 MB/s eta 0:00:00
+Downloading widgetsnbextension-4.0.16-py3-none-any.whl (2.2 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.2/2.2 MB 1.5 MB/s eta 0:00:00
+Downloading asttokens-3.0.2-py3-none-any.whl (28 kB)
+Downloading executing-2.3.0-py3-none-any.whl (29 kB)
+Downloading parso-0.8.7-py2.py3-none-any.whl (107 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 107.0/107.0 kB 816.7 kB/s eta 0:00:00
+Downloading wcwidth-0.9.4-cp310-abi3-manylinux2014_x86_64.manylinux_2_17_x86_64.whl (785 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 785.9/785.9 kB 1.5 MB/s eta 0:00:00
+Downloading pure_eval-0.2.4-py3-none-any.whl (11 kB)
+Building wheels for collected packages: memory_allocator
+  Building wheel for memory_allocator (pyproject.toml): started
+  Building wheel for memory_allocator (pyproject.toml): finished with status 'done'
+  Created wheel for memory_allocator: filename=memory_allocator-0.1.4-cp313-cp313-linux_x86_64.whl size=398663 sha256=f5dfa4ad62ed3ad9284d81eb4edb802fa4322828ef105002f61f94c60266ab4f
+  Stored in directory: /root/.cache/pip/wheels/ec/90/b8/bd51254f756ff9478e4a7a39ac530b2675a2643181069b32d9
+Successfully built memory_allocator
+Installing collected packages: pure-eval, ptyprocess, widgetsnbextension, wcwidth, traitlets, tornado, pyzmq, pygments, psutil, platformdirs, pexpect, parso, nest-asyncio2, jupyterlab_widgets, gmpy2, executing, dot2tex, debugpy, Cython, cysignals, comm, asttokens, stack_data, prompt_toolkit, passagemath-objects, passagemath-environment, memory_allocator, matplotlib-inline, jupyter-core, jedi, ipython-pygments-lexers, passagemath-gap-pkg-smallgrp-data, passagemath-gap-pkg-primgrp-data, passagemath-gap-pkg-factint-data, passagemath-categories, jupyter-client, ipython, ipywidgets, ipykernel, passagemath-repl, passagemath-gap
+Successfully installed Cython-3.3.1 asttokens-3.0.2 comm-0.2.3 cysignals-1.13.1 debugpy-1.8.22 dot2tex-2.12.0 executing-2.3.0 gmpy2-2.4.0a1 ipykernel-7.4.0 ipython-9.18.0 ipython-pygments-lexers-1.1.1 ipywidgets-8.1.9 jedi-0.20.1 jupyter-client-8.10.0 jupyter-core-5.9.1 jupyterlab_widgets-3.0.17 matplotlib-inline-0.2.2 memory_allocator-0.1.4 nest-asyncio2-1.7.4 parso-0.8.7 passagemath-categories-10.8.13 passagemath-environment-10.8.13 passagemath-gap-10.8.13 passagemath-gap-pkg-factint-data-10.8.13 passagemath-gap-pkg-primgrp-data-10.8.13 passagemath-gap-pkg-smallgrp-data-10.8.13 passagemath-objects-10.8.13 passagemath-repl-10.8.13 pexpect-4.9.0 platformdirs-4.14.3 prompt_toolkit-3.0.53 psutil-7.2.2 ptyprocess-0.7.0 pure-eval-0.2.4 pygments-2.21.0 pyzmq-27.2.0 stack_data-0.6.3 tornado-6.6 traitlets-5.16.1 wcwidth-0.9.4 widgetsnbextension-4.0.16
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv
