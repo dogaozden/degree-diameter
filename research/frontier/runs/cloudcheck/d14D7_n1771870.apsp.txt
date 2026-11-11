@@ -1,0 +1,37 @@
+# Independent all-pairs check: (14,7) on 1,771,870 vertices (job check-d7big)
+#
+# Graph: 155 type-2 units on the DGQ polygon cover of H(11) (2 matchings over Z5), branch
+#   claude/bipartite-cell-14-7-3xbvg8, research/cell147/units/sols/d14D7_n1771870.{state,units,hubs}.
+# Checker: research/lifts/coordinator_check/apsp.c on origin/master (the same source as the (13,7) report).
+#
+# Machine: nproc = 4; free -g:
+#   Mem:  total 15, used 0, free 14, shared 0, buff/cache 0, available 15 (GB); Swap 0
+#   kernel 6.18.44-fc-v153 (sandbox VM)
+#
+# Edge list (apsp.c format: first line n, then "u v" per line):
+#   sha256  47590cdc1a6baf20e5bc91223fe90d2bce1cc3ac683dc94d83250f2b387210be  d14D7_n1771870.edges
+#   n = 1771870, edges = 12403090 (equal to the recorded sha256 in units/sols/d14D7_n1771870.edges.sha256)
+#   GH(11) file data/gh_11.txt sha256 e3a4d834c7bfded4958f6f4d0e8640088e52e042321d9d382ae15dc301c6eb9d
+#   (equal to the value in units/README.md).
+#
+# Build commands:
+#   git archive origin/claude/bipartite-cell-14-7-3xbvg8 | tar -x -C W14
+#   git archive origin/master | tar -x -C WM
+#   gcc -O2 -o /tmp/apsp WM/research/lifts/coordinator_check/apsp.c
+#   cd W14/research/cell147 && gcc -O2 -o gh_build gh_build.c && mkdir -p data && ./gh_build 11 > data/gh_11.txt
+#   cd units && gunzip -k sols/d14D7_n1771870.state.gz
+#   python3 unit_edges2.py ../data/gh_11.txt sols/d14D7_n1771870.state sols/d14D7_n1771870.units sols/d14D7_n1771870.hubs d14D7_n1771870.edges   (34 s)
+# Checks (two processes on the 4 cores; both under nice):
+#   nice /tmp/apsp d14D7_n1771870.edges 14 7
+#   nice /tmp/apsp d14D7_n1771870.edges 14 6     (negative control)
+#   Timing: the first pair was started 2026-10-25 00:29 UTC and lost when the worker was restarted at
+#   about 03:27 UTC, with no output. The pair was started again at 03:27:33 UTC and finished at
+#   07:06:08 UTC (D=7) and 07:06:21 UTC (D=6). Only the second run's output is reported here.
+#
+# ---- output of: nice /tmp/apsp d14D7_n1771870.edges 14 7 ----
+n=1771870 edges=12403090 degree min=14 max=14 bipartite=yes diameter=7
+RESULT VALID d=14 D=7 n=1771870
+#
+# ---- output of: nice /tmp/apsp d14D7_n1771870.edges 14 6 (D lowered by one) ----
+n=1771870 edges=12403090 degree min=14 max=14 bipartite=yes diameter=7
+RESULT INVALID
