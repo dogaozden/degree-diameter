@@ -1,0 +1,48 @@
+group sl 97 x Z_19, N=17338944, identity 176928, H order 57, rows 304192, threads 1, setup 0.90s
+wide rows: HW order 228, rows 76048, setup 1.62s
+alpha: conj by mat(55,52,38,43) (index 522480), z -> 7 z on Z_19
+ORBIT k=3 m=4 f=0: |Fix(alpha)| = 95 (+e); mu = 21.53, mu/k = 7.18, fixed-point misses ~ 2.06
+start cost=46
+t=30 steps=48 evals=385 cost=14 best=10 T=0.53
+t=60 steps=95 evals=761 cost=6 best=6 T=0.18
+t=91 steps=139 evals=1113 cost=6 best=6 T=0.15
+t=121 steps=184 evals=1473 cost=6 best=6 T=0.15
+t=151 steps=228 evals=1825 cost=4 best=4 T=0.15
+t=181 steps=268 evals=2145 cost=2 best=2 T=0.15
+t=212 steps=314 evals=2513 cost=2 best=2 T=0.15
+t=242 steps=356 evals=2849 cost=2 best=2 T=0.15
+t=273 steps=399 evals=3193 cost=2 best=2 T=0.15
+t=304 steps=443 evals=3545 cost=2 best=2 T=0.15
+t=334 steps=486 evals=3889 cost=2 best=2 T=0.15
+t=364 steps=533 evals=4265 cost=2 best=2 T=0.15
+t=395 steps=574 evals=4593 cost=2 best=2 T=0.15
+t=425 steps=619 evals=4953 cost=2 best=2 T=0.15
+t=456 steps=664 evals=5313 cost=2 best=2 T=1.45
+t=486 steps=709 evals=5673 cost=2 best=2 T=0.51
+t=516 steps=754 evals=6033 cost=2 best=2 T=0.18
+t=547 steps=798 evals=6385 cost=2 best=2 T=0.15
+t=577 steps=843 evals=6745 cost=2 best=2 T=0.15
+t=607 steps=888 evals=7105 cost=2 best=2 T=0.15
+t=637 steps=929 evals=7433 cost=2 best=2 T=0.15
+t=668 steps=976 evals=7809 cost=2 best=2 T=0.15
+t=698 steps=1020 evals=8161 cost=2 best=2 T=0.15
+t=728 steps=1067 evals=8537 cost=2 best=2 T=1.41
+t=758 steps=1113 evals=8905 cost=2 best=2 T=0.49
+t=789 steps=1156 evals=9249 cost=2 best=2 T=0.17
+t=819 steps=1198 evals=9585 cost=2 best=2 T=0.15
+t=850 steps=1242 evals=9937 cost=2 best=2 T=0.15
+t=880 steps=1287 evals=10297 cost=2 best=2 T=0.15
+t=910 steps=1331 evals=10649 cost=2 best=2 T=0.15
+t=940 steps=1374 evals=10993 cost=2 best=2 T=0.15
+t=971 steps=1416 evals=11329 cost=2 best=2 T=0.15
+t=1001 steps=1457 evals=11657 cost=2 best=2 T=0.15
+RESULT d=12 D=9 group=sl 97 x Z_19 N=17338944 best=0 evals=11817 time=1015.4 orbit k=3 m=4 f=0 fix=95
+full diameter check: OK
+full diameter check after normalising s_0 = e: OK
+wrote /tmp/claude-0/-home-user-degree-diameter/2e2f9f76-c024-5e89-bfbf-0e4058abe474/scratchpad/runs/sl_97_19_s1.txt
+exit 0
+SOLUTION_FOUND sl_97_19_s1 N=17338944 fam=sl
+done
+--- independent checks (run after the search):
+VALID d=12 D=9 group=sl 97 x Z_19 N=17338944 vertices=34677888 (distinct generators, 12-regular simple)
+VALID d=12 D=9 vertices=34677888 eccA=9 eccB=9

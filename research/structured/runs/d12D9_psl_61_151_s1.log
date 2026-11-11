@@ -1,0 +1,39 @@
+group psl 61 x Z_151, N=17132460, identity 276330, H order 61, rows 280860, threads 1, setup 1.90s
+wide rows: HW order 151, rows 113460, setup 3.49s
+alpha: conj by mat(20,18,50,42) (index 73677), z -> 32 z on Z_151
+ORBIT k=3 m=4 f=0: |Fix(alpha)| = 29 (+e); mu = 18.06, mu/k = 6.02, fixed-point misses ~ 0.61
+start cost=384
+t=30 steps=20 evals=161 cost=12 best=12 T=0.52
+t=61 steps=41 evals=329 cost=6 best=6 T=0.18
+t=91 steps=64 evals=513 cost=6 best=6 T=0.15
+t=123 steps=92 evals=737 cost=6 best=6 T=0.15
+t=153 steps=118 evals=945 cost=6 best=6 T=0.15
+t=184 steps=147 evals=1177 cost=6 best=6 T=0.15
+t=215 steps=173 evals=1385 cost=6 best=6 T=0.15
+t=246 steps=201 evals=1609 cost=6 best=6 T=0.15
+t=276 steps=226 evals=1809 cost=6 best=6 T=0.15
+t=306 steps=253 evals=2025 cost=6 best=6 T=0.15
+t=337 steps=280 evals=2241 cost=6 best=6 T=0.15
+t=367 steps=305 evals=2441 cost=6 best=6 T=0.15
+t=398 steps=331 evals=2649 cost=6 best=6 T=0.15
+t=428 steps=359 evals=2873 cost=6 best=6 T=0.15
+t=459 steps=387 evals=3097 cost=6 best=6 T=0.15
+t=489 steps=416 evals=3329 cost=6 best=6 T=0.15
+t=519 steps=446 evals=3569 cost=6 best=6 T=0.84
+t=550 steps=477 evals=3817 cost=6 best=6 T=0.29
+t=580 steps=505 evals=4041 cost=6 best=6 T=0.15
+t=611 steps=536 evals=4289 cost=6 best=6 T=0.15
+t=641 steps=563 evals=4505 cost=6 best=6 T=0.15
+t=671 steps=592 evals=4737 cost=6 best=6 T=0.15
+t=702 steps=620 evals=4961 cost=6 best=6 T=0.15
+t=733 steps=651 evals=5209 cost=6 best=6 T=0.15
+t=763 steps=680 evals=5441 cost=6 best=6 T=0.15
+t=793 steps=712 evals=5697 cost=6 best=6 T=0.15
+t=824 steps=743 evals=5945 cost=6 best=6 T=0.15
+t=854 steps=774 evals=6193 cost=6 best=6 T=0.15
+RESULT d=12 D=9 group=psl 61 x Z_151 N=17132460 best=0 evals=6377 time=877.5 orbit k=3 m=4 f=0 fix=29
+full diameter check: OK
+full diameter check after normalising s_0 = e: OK
+wrote /tmp/claude-0/-home-user-degree-diameter/2e2f9f76-c024-5e89-bfbf-0e4058abe474/scratchpad/runs/psl_61_151_s1.txt
+exit 0
+SOLUTION_FOUND psl_61_151_s1 N=17132460 fam=psl
