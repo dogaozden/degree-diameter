@@ -49,3 +49,26 @@ nice 0, equal to the director's whole pipeline); the director raised the pipelin
 `echo -10 > /proc/<pid>/autogroup` and lowered the cards' groups to 15.
 Kept: haarex6 for the sweep; no family lead worth more CPU (the 704 lift is an isolated local minimum, the new
 families are far). The order-384 sweep continues; orders 401-450 started on the spare core.
+
+## deep-65 round 1 (Nov 1, 2026, 02:38-03:20 UTC; Opus-led job deep-65, cell (6,5), target > 684)
+Session claude/deep-65-bipartite-d6-d5-8dgdq1. 4 Haiku cards (research/squads/deep-65/round1/cards.md), written after
+Opus closed the 1,6|1,6 hub family exactly on all groups of order 294 (and 300-312) and 1,3|1,3 (5,1,1,1) on 258_2.
+- h1 lead (a) by design (684 graph + vertex pair): 144 at 686 (ties the best; 6 deletions, no a-b edge); structured
+  designs 154-234; 117 damaged pairs stay unrepairable (54 of kind (0,3), 63 of kind (1,2)), as Opus's damage analysis predicts.
+- h2 "1,6,6|1,6,6" (Haar degree 4 + two C6 hub orbits per side), orders 258/264/270: far (bad 1634+).
+- h3 "1,1,3|1,1,3" on orders 147/150: bad 294 at 686 on SmallGroup(147,3) (Aut order 147, not isomorphic to the
+  294_11 graph; Opus: also a C7xC7 lift, no cost-0 within 2 voltage changes, 922k checked).
+- h4 tabu with the algebraic cost of tools/hubk.c: k = 4 on SmallGroup(280,35) cost 3 (n = 700, bad 560); k = 2 best
+  cost 7 (234_1, n = 702).
+Kept: the 147-family near miss (deepen), k = 4 at 700 (Opus runs the exact search), hubtabu for wider k sweeps.
+
+## deep-65 round 2 (Nov 1, 2026, 03:22-04:05 UTC)
+3 Haiku cards (research/squads/deep-65/round2/cards.md), evolved from round 1.
+- h5 deepen "1,1,3|1,1,3" (147_3 bad 294): exact 2-change neighbourhood 1.92M pairs, none below 294 (132 ties, next
+  1323); kicked tabu restarts and 14 more seeds per group: nothing better.
+- h6 hubtabu sweeps: k = 2: 240_112 cost 4 (n = 720), 238_1 6; k = 3: 264_12 = C11 x SL(2,3) and C11 x S4 cost 4
+  (n = 704), 270 best 6; k = 4: 288 best 13 (sampled), 284 300.
+- h7 lifts of the 14-vertex hub bases by the order-50 groups (n = 700) vs C7xC7/C49: all 72-211; random-start tabu too
+  slow to separate groups (cannot re-find the structured 12 over C7xC7).
+Kept: the two cost-4 points at 704 went to Opus's exact search (tools/hubk.c k = 3). No round 3: the leads are closed
+or explained, and two rounds added no new direction.

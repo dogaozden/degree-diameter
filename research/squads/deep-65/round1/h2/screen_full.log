@@ -1,0 +1,346 @@
+COMB 0 0 0 0 stabgens 0 4 4 0 4 4 n 4 1 1 1 0 0 1 0 0 vertices 688 best 27 evals 46387
+COMB 0 0 0 1 stabgens 0 4 4 0 4 9 n 4 1 1 1 0 0 1 0 0 vertices 688 best 42 evals 56627
+COMB 0 0 1 1 stabgens 0 4 4 0 9 9 n 4 1 1 1 0 0 1 0 0 vertices 688 best 51 evals 53555
+COMB 0 1 0 0 stabgens 0 4 9 0 4 4 n 4 1 1 1 0 0 1 0 0 vertices 688 best 35 evals 54579
+COMB 0 1 0 1 stabgens 0 4 9 0 4 9 n 4 1 1 1 0 0 1 0 0 vertices 688 best 49 evals 54579
+COMB 0 1 1 1 stabgens 0 4 9 0 9 9 n 4 1 1 1 0 0 1 0 0 vertices 688 best 43 evals 61028
+RESULT best 27 combinations 6 secs 24.4
+COMB 0 0 0 0 stabgens 0 4 4 0 4 4 n 4 1 1 1 0 0 1 0 0 vertices 688 best 197 evals 55603
+COMB 0 0 0 1 stabgens 0 4 4 0 4 9 n 4 1 1 1 0 0 1 0 0 vertices 688 best 165 evals 58675
+COMB 0 0 1 1 stabgens 0 4 4 0 9 9 n 4 1 1 1 0 0 1 0 0 vertices 688 best 169 evals 61028
+COMB 0 1 0 0 stabgens 0 4 9 0 4 4 n 4 1 1 1 0 0 1 0 0 vertices 688 best 193 evals 56627
+COMB 0 1 0 1 stabgens 0 4 9 0 4 9 n 4 1 1 1 0 0 1 0 0 vertices 688 best 177 evals 54579
+COMB 0 1 1 1 stabgens 0 4 9 0 9 9 n 4 1 1 1 0 0 1 0 0 vertices 688 best 189 evals 53555
+RESULT best 165 combinations 6 secs 24.2
+COMB 0 0 0 0 stabgens 0 4 4 0 4 4 n 4 1 1 1 0 0 1 0 0 vertices 688 best 474 evals 57651
+COMB 0 0 0 1 stabgens 0 4 4 0 4 9 n 4 1 1 1 0 0 1 0 0 vertices 688 best 480 evals 43315
+COMB 0 0 1 1 stabgens 0 4 4 0 9 9 n 4 1 1 1 0 0 1 0 0 vertices 688 best 505 evals 68196
+COMB 0 1 0 0 stabgens 0 4 9 0 4 4 n 4 1 1 1 0 0 1 0 0 vertices 688 best 484 evals 67172
+COMB 0 1 0 1 stabgens 0 4 9 0 4 9 n 4 1 1 1 0 0 1 0 0 vertices 688 best 486 evals 70244
+COMB 0 1 1 1 stabgens 0 4 9 0 9 9 n 4 1 1 1 0 0 1 0 0 vertices 688 best 488 evals 86628
+RESULT best 474 combinations 6 secs 24.2
+COMB 0 0 0 0 stabgens 0 16 16 0 16 16 n 4 1 1 1 0 0 1 0 0 vertices 704 best 992 evals 125126
+RESULT best 992 combinations 1 secs 4.0
+COMB 0 0 0 0 stabgens 0 12 12 0 12 12 n 4 1 1 1 0 0 1 0 0 vertices 704 best 1017 evals 141510
+COMB 0 0 0 1 stabgens 0 12 12 0 12 27 n 4 1 1 1 0 0 1 0 0 vertices 704 best 1017 evals 144582
+COMB 0 0 1 1 stabgens 0 12 12 0 27 27 n 4 1 1 1 0 0 1 0 0 vertices 704 best 1017 evals 141510
+COMB 0 1 0 0 stabgens 0 12 27 0 12 12 n 4 1 1 1 0 0 1 0 0 vertices 704 best 1017 evals 145606
+COMB 0 1 0 1 stabgens 0 12 27 0 12 27 n 4 1 1 1 0 0 1 0 0 vertices 704 best 1017 evals 122054
+COMB 0 1 1 1 stabgens 0 12 27 0 27 27 n 4 1 1 1 0 0 1 0 0 vertices 704 best 1017 evals 124102
+RESULT best 1017 combinations 6 secs 24.1
+COMB 0 0 0 0 stabgens 0 13 13 0 13 13 n 4 1 1 1 0 0 1 0 0 vertices 704 best 1060 evals 144582
+RESULT best 1060 combinations 1 secs 4.0
+COMB 0 0 0 0 stabgens 0 8 8 0 8 8 n 4 1 1 1 0 0 1 0 0 vertices 704 best 511 evals 66148
+COMB 0 0 0 1 stabgens 0 8 8 0 8 13 n 4 1 1 1 0 0 1 0 0 vertices 704 best 469 evals 75364
+COMB 0 0 0 2 stabgens 0 8 8 0 8 21 n 4 1 1 1 0 0 1 0 0 vertices 704 best 527 evals 70244
+COMB 0 0 1 1 stabgens 0 8 8 0 13 13 n 4 1 1 1 0 0 1 0 0 vertices 704 best 684 evals 82532
+COMB 0 0 1 2 stabgens 0 8 8 0 13 21 n 4 1 1 1 0 0 1 0 0 vertices 704 best 474 evals 71268
+COMB 0 0 2 2 stabgens 0 8 8 0 21 21 n 4 1 1 1 0 0 1 0 0 vertices 704 best 480 evals 70244
+RESULT best 469 combinations 6 secs 24.1
+COMB 0 0 0 0 stabgens 0 13 13 0 13 13 n 4 1 1 1 0 0 1 0 0 vertices 704 best 1604 evals 137414
+RESULT best 1604 combinations 1 secs 4.0
+COMB 0 0 0 0 stabgens 0 13 13 0 13 13 n 4 1 1 1 0 0 1 0 0 vertices 704 best 1660 evals 107413
+RESULT best 1660 combinations 1 secs 4.0
+COMB 0 0 0 0 stabgens 0 8 8 0 8 8 n 4 1 1 1 0 0 1 0 0 vertices 704 best 511 evals 73316
+COMB 0 0 0 1 stabgens 0 8 8 0 8 13 n 4 1 1 1 0 0 1 0 0 vertices 704 best 469 evals 73316
+COMB 0 0 0 2 stabgens 0 8 8 0 8 21 n 4 1 1 1 0 0 1 0 0 vertices 704 best 514 evals 56627
+COMB 0 0 1 1 stabgens 0 8 8 0 13 13 n 4 1 1 1 0 0 1 0 0 vertices 704 best 662 evals 70244
+COMB 0 0 1 2 stabgens 0 8 8 0 13 21 n 4 1 1 1 0 0 1 0 0 vertices 704 best 469 evals 64100
+COMB 0 0 2 2 stabgens 0 8 8 0 21 21 n 4 1 1 1 0 0 1 0 0 vertices 704 best 491 evals 68196
+RESULT best 469 combinations 6 secs 24.1
+COMB 0 0 0 0 stabgens 0 8 8 0 8 8 n 4 1 1 1 0 0 1 0 0 vertices 704 best 482 evals 61028
+COMB 0 0 0 1 stabgens 0 8 8 0 8 13 n 4 1 1 1 0 0 1 0 0 vertices 704 best 553 evals 55603
+COMB 0 0 0 2 stabgens 0 8 8 0 8 21 n 4 1 1 1 0 0 1 0 0 vertices 704 best 493 evals 53555
+COMB 0 0 1 1 stabgens 0 8 8 0 13 13 n 4 1 1 1 0 0 1 0 0 vertices 704 best 719 evals 77412
+COMB 0 0 1 2 stabgens 0 8 8 0 13 21 n 4 1 1 1 0 0 1 0 0 vertices 704 best 511 evals 54579
+COMB 0 0 2 2 stabgens 0 8 8 0 21 21 n 4 1 1 1 0 0 1 0 0 vertices 704 best 484 evals 61028
+RESULT best 482 combinations 6 secs 24.2
+COMB 0 0 0 0 stabgens 0 13 13 0 13 13 n 4 1 1 1 0 0 1 0 0 vertices 704 best 1660 evals 106389
+RESULT best 1660 combinations 1 secs 4.0
+COMB 0 0 0 0 stabgens 0 13 13 0 13 13 n 4 1 1 1 0 0 1 0 0 vertices 704 best 1604 evals 128198
+RESULT best 1604 combinations 1 secs 4.0
+COMB 0 0 0 0 stabgens 0 10 10 0 10 10 n 4 1 1 1 0 0 1 0 0 vertices 704 best 246 evals 49459
+COMB 0 0 0 1 stabgens 0 10 10 0 10 19 n 4 1 1 1 0 0 1 0 0 vertices 704 best 246 evals 50483
+COMB 0 0 1 1 stabgens 0 10 10 0 19 19 n 4 1 1 1 0 0 1 0 0 vertices 704 best 246 evals 43315
+COMB 0 1 0 0 stabgens 0 10 19 0 10 10 n 4 1 1 1 0 0 1 0 0 vertices 704 best 246 evals 40243
+COMB 0 1 0 1 stabgens 0 10 19 0 10 19 n 4 1 1 1 0 0 1 0 0 vertices 704 best 246 evals 40243
+COMB 0 1 1 1 stabgens 0 10 19 0 19 19 n 4 1 1 1 0 0 1 0 0 vertices 704 best 246 evals 49459
+RESULT best 246 combinations 6 secs 24.3
+COMB 0 0 0 0 stabgens 0 14 14 0 14 14 n 4 1 1 1 0 0 1 0 0 vertices 704 best 1623 evals 108437
+COMB 0 0 0 1 stabgens 0 14 14 0 14 31 n 4 1 1 1 0 0 1 0 0 vertices 704 best 1623 evals 118677
+COMB 0 0 1 1 stabgens 0 14 14 0 31 31 n 4 1 1 1 0 0 1 0 0 vertices 704 best 1623 evals 106389
+COMB 0 1 0 0 stabgens 0 14 31 0 14 14 n 4 1 1 1 0 0 1 0 0 vertices 704 best 1623 evals 102293
+COMB 0 1 0 1 stabgens 0 14 31 0 14 31 n 4 1 1 1 0 0 1 0 0 vertices 704 best 1623 evals 98197
+COMB 0 1 1 1 stabgens 0 14 31 0 31 31 n 4 1 1 1 0 0 1 0 0 vertices 704 best 1623 evals 99221
+RESULT best 1623 combinations 6 secs 24.1
+COMB 0 0 0 0 stabgens 0 7 7 0 7 7 n 4 1 1 1 0 0 1 0 0 vertices 704 best 475 evals 54579
+COMB 0 0 0 1 stabgens 0 7 7 0 7 14 n 4 1 1 1 0 0 1 0 0 vertices 704 best 527 evals 66148
+COMB 0 0 0 2 stabgens 0 7 7 0 7 21 n 4 1 1 1 0 0 1 0 0 vertices 704 best 498 evals 61028
+COMB 0 0 0 3 stabgens 0 7 7 0 7 22 n 4 1 1 1 0 0 1 0 0 vertices 704 best 516 evals 53555
+COMB 0 0 0 4 stabgens 0 7 7 0 7 31 n 4 1 1 1 0 0 1 0 0 vertices 704 best 527 evals 50483
+COMB 0 0 0 5 stabgens 0 7 7 0 7 42 n 4 1 1 1 0 0 1 0 0 vertices 704 best 484 evals 58675
+RESULT best 475 combinations 6 secs 24.3
+COMB 0 0 0 0 stabgens 0 7 7 0 7 7 n 4 1 1 1 0 0 1 0 0 vertices 704 best 531 evals 54579
+COMB 0 0 0 1 stabgens 0 7 7 0 7 14 n 4 1 1 1 0 0 1 0 0 vertices 704 best 549 evals 62052
+COMB 0 0 0 2 stabgens 0 7 7 0 7 18 n 4 1 1 1 0 0 1 0 0 vertices 704 best 578 evals 55603
+COMB 0 0 0 3 stabgens 0 7 7 0 7 21 n 4 1 1 1 0 0 1 0 0 vertices 704 best 556 evals 62052
+COMB 0 0 0 4 stabgens 0 7 7 0 7 31 n 4 1 1 1 0 0 1 0 0 vertices 704 best 543 evals 68196
+COMB 0 0 0 5 stabgens 0 7 7 0 7 37 n 4 1 1 1 0 0 1 0 0 vertices 704 best 555 evals 47411
+RESULT best 531 combinations 6 secs 24.2
+COMB 0 0 0 0 stabgens 0 10 10 0 10 10 n 4 1 1 1 0 0 1 0 0 vertices 704 best 1017 evals 101269
+COMB 0 0 0 1 stabgens 0 10 10 0 10 14 n 4 1 1 1 0 0 1 0 0 vertices 704 best 1020 evals 100245
+COMB 0 0 0 2 stabgens 0 10 10 0 10 26 n 4 1 1 1 0 0 1 0 0 vertices 704 best 1017 evals 107413
+COMB 0 0 0 3 stabgens 0 10 10 0 10 27 n 4 1 1 1 0 0 1 0 0 vertices 704 best 963 evals 86628
+COMB 0 0 0 4 stabgens 0 10 10 0 10 31 n 4 1 1 1 0 0 1 0 0 vertices 704 best 1020 evals 94101
+COMB 0 0 0 5 stabgens 0 10 10 0 10 48 n 4 1 1 1 0 0 1 0 0 vertices 704 best 963 evals 78436
+RESULT best 963 combinations 6 secs 24.1
+COMB 0 0 0 0 stabgens 0 7 7 0 7 7 n 4 1 1 1 0 0 1 0 0 vertices 704 best 501 evals 52531
+COMB 0 0 0 1 stabgens 0 7 7 0 7 10 n 4 1 1 1 0 0 1 0 0 vertices 704 best 500 evals 51507
+COMB 0 0 0 2 stabgens 0 7 7 0 7 14 n 4 1 1 1 0 0 1 0 0 vertices 704 best 493 evals 59699
+COMB 0 0 0 3 stabgens 0 7 7 0 7 21 n 4 1 1 1 0 0 1 0 0 vertices 704 best 467 evals 55603
+COMB 0 0 0 4 stabgens 0 7 7 0 7 26 n 4 1 1 1 0 0 1 0 0 vertices 704 best 489 evals 58675
+COMB 0 0 0 5 stabgens 0 7 7 0 7 31 n 4 1 1 1 0 0 1 0 0 vertices 704 best 499 evals 65124
+RESULT best 467 combinations 6 secs 24.3
+COMB 0 0 0 0 stabgens 0 16 16 0 16 16 n 4 1 1 1 0 0 1 0 0 vertices 704 best 1007 evals 113557
+RESULT best 1007 combinations 1 secs 4.1
+COMB 0 0 0 0 stabgens 0 16 16 0 16 16 n 4 1 1 1 0 0 1 0 0 vertices 704 best 1010 evals 93077
+RESULT best 1010 combinations 1 secs 4.0
+COMB 0 0 0 0 stabgens 0 16 16 0 16 16 n 4 1 1 1 0 0 1 0 0 vertices 704 best 1012 evals 96149
+RESULT best 1012 combinations 1 secs 4.0
+COMB 0 0 0 0 stabgens 0 12 12 0 12 12 n 4 1 1 1 0 0 1 0 0 vertices 704 best 996 evals 103317
+COMB 0 0 0 1 stabgens 0 12 12 0 12 16 n 4 1 1 1 0 0 1 0 0 vertices 704 best 748 evals 87652
+COMB 0 0 0 2 stabgens 0 12 12 0 12 29 n 4 1 1 1 0 0 1 0 0 vertices 704 best 745 evals 95125
+COMB 0 0 1 1 stabgens 0 12 12 0 16 16 n 4 1 1 1 0 0 1 0 0 vertices 704 best 756 evals 102293
+COMB 0 0 1 2 stabgens 0 12 12 0 16 29 n 4 1 1 1 0 0 1 0 0 vertices 704 best 713 evals 80484
+COMB 0 0 2 2 stabgens 0 12 12 0 29 29 n 4 1 1 1 0 0 1 0 0 vertices 704 best 756 evals 103317
+RESULT best 713 combinations 6 secs 24.1
+COMB 0 0 0 0 stabgens 0 12 12 0 12 12 n 4 1 1 1 0 0 1 0 0 vertices 704 best 490 evals 71268
+COMB 0 0 0 1 stabgens 0 12 12 0 12 16 n 4 1 1 1 0 0 1 0 0 vertices 704 best 481 evals 86628
+COMB 0 0 0 2 stabgens 0 12 12 0 12 29 n 4 1 1 1 0 0 1 0 0 vertices 704 best 490 evals 82532
+COMB 0 0 1 1 stabgens 0 12 12 0 16 16 n 4 1 1 1 0 0 1 0 0 vertices 704 best 576 evals 77412
+COMB 0 0 1 2 stabgens 0 12 12 0 16 29 n 4 1 1 1 0 0 1 0 0 vertices 704 best 481 evals 70244
+COMB 0 0 2 2 stabgens 0 12 12 0 29 29 n 4 1 1 1 0 0 1 0 0 vertices 704 best 490 evals 72292
+RESULT best 481 combinations 6 secs 24.2
+COMB 0 0 0 0 stabgens 0 13 13 0 13 13 n 4 1 1 1 0 0 1 0 0 vertices 704 best 1704 evals 91029
+RESULT best 1704 combinations 1 secs 4.0
+COMB 0 0 0 0 stabgens 0 13 13 0 13 13 n 4 1 1 1 0 0 1 0 0 vertices 704 best 1704 evals 111509
+RESULT best 1704 combinations 1 secs 4.0
+COMB 0 0 0 0 stabgens 0 13 13 0 13 13 n 4 1 1 1 0 0 1 0 0 vertices 704 best 1704 evals 113557
+RESULT best 1704 combinations 1 secs 4.0
+COMB 0 0 0 0 stabgens 0 11 11 0 11 11 n 4 1 1 1 0 0 1 0 0 vertices 704 best 1111 evals 123078
+COMB 0 0 0 1 stabgens 0 11 11 0 11 13 n 4 1 1 1 0 0 1 0 0 vertices 704 best 1094 evals 101269
+COMB 0 0 0 2 stabgens 0 11 11 0 11 26 n 4 1 1 1 0 0 1 0 0 vertices 704 best 1028 evals 92053
+COMB 0 0 1 1 stabgens 0 11 11 0 13 13 n 4 1 1 1 0 0 1 0 0 vertices 704 best 1159 evals 100245
+COMB 0 0 1 2 stabgens 0 11 11 0 13 26 n 4 1 1 1 0 0 1 0 0 vertices 704 best 1064 evals 94101
+COMB 0 0 2 2 stabgens 0 11 11 0 26 26 n 4 1 1 1 0 0 1 0 0 vertices 704 best 1036 evals 143558
+RESULT best 1028 combinations 6 secs 24.1
+COMB 0 0 0 0 stabgens 0 11 11 0 11 11 n 4 1 1 1 0 0 1 0 0 vertices 704 best 1010 evals 107413
+COMB 0 0 0 1 stabgens 0 11 11 0 11 13 n 4 1 1 1 0 0 1 0 0 vertices 704 best 1056 evals 100245
+COMB 0 0 0 2 stabgens 0 11 11 0 11 26 n 4 1 1 1 0 0 1 0 0 vertices 704 best 1010 evals 81508
+COMB 0 0 1 1 stabgens 0 11 11 0 13 13 n 4 1 1 1 0 0 1 0 0 vertices 704 best 1134 evals 93077
+COMB 0 0 1 2 stabgens 0 11 11 0 13 26 n 4 1 1 1 0 0 1 0 0 vertices 704 best 1056 evals 88676
+COMB 0 0 2 2 stabgens 0 11 11 0 26 26 n 4 1 1 1 0 0 1 0 0 vertices 704 best 1010 evals 89700
+RESULT best 1010 combinations 6 secs 24.2
+COMB 0 0 0 0 stabgens 0 7 7 0 7 7 n 4 1 1 1 0 0 1 0 0 vertices 704 best 517 evals 74340
+COMB 0 0 0 1 stabgens 0 7 7 0 7 10 n 4 1 1 1 0 0 1 0 0 vertices 704 best 423 evals 63076
+COMB 0 0 0 2 stabgens 0 7 7 0 7 15 n 4 1 1 1 0 0 1 0 0 vertices 704 best 489 evals 67172
+COMB 0 0 0 3 stabgens 0 7 7 0 7 21 n 4 1 1 1 0 0 1 0 0 vertices 704 best 517 evals 68196
+COMB 0 0 0 4 stabgens 0 7 7 0 7 26 n 4 1 1 1 0 0 1 0 0 vertices 704 best 423 evals 63076
+COMB 0 0 0 5 stabgens 0 7 7 0 7 32 n 4 1 1 1 0 0 1 0 0 vertices 704 best 489 evals 67172
+RESULT best 423 combinations 6 secs 24.2
+COMB 0 0 0 0 stabgens 0 15 15 0 15 15 n 4 1 1 1 0 0 1 0 0 vertices 704 best 1054 evals 124102
+COMB 0 0 0 1 stabgens 0 15 15 0 15 32 n 4 1 1 1 0 0 1 0 0 vertices 704 best 1054 evals 106389
+COMB 0 0 1 1 stabgens 0 15 15 0 32 32 n 4 1 1 1 0 0 1 0 0 vertices 704 best 1054 evals 103317
+COMB 0 1 0 0 stabgens 0 15 32 0 15 15 n 4 1 1 1 0 0 1 0 0 vertices 704 best 1054 evals 109461
+COMB 0 1 0 1 stabgens 0 15 32 0 15 32 n 4 1 1 1 0 0 1 0 0 vertices 704 best 1054 evals 108437
+COMB 0 1 1 1 stabgens 0 15 32 0 32 32 n 4 1 1 1 0 0 1 0 0 vertices 704 best 1054 evals 108437
+RESULT best 1054 combinations 6 secs 24.2
+COMB 0 0 0 0 stabgens 0 6 6 0 6 6 n 4 1 1 1 0 0 1 0 0 vertices 704 best 74 evals 57651
+COMB 0 0 0 1 stabgens 0 6 6 0 6 18 n 4 1 1 1 0 0 1 0 0 vertices 704 best 84 evals 49459
+COMB 0 0 1 1 stabgens 0 6 6 0 18 18 n 4 1 1 1 0 0 1 0 0 vertices 704 best 80 evals 48435
+COMB 0 1 0 0 stabgens 0 6 18 0 6 6 n 4 1 1 1 0 0 1 0 0 vertices 704 best 86 evals 45363
+COMB 0 1 0 1 stabgens 0 6 18 0 6 18 n 4 1 1 1 0 0 1 0 0 vertices 704 best 107 evals 45363
+COMB 0 1 1 1 stabgens 0 6 18 0 18 18 n 4 1 1 1 0 0 1 0 0 vertices 704 best 72 evals 51507
+RESULT best 72 combinations 6 secs 24.3
+COMB 0 0 0 0 stabgens 0 8 8 0 8 8 n 4 1 1 1 0 0 1 0 0 vertices 704 best 500 evals 57651
+COMB 0 0 0 1 stabgens 0 8 8 0 8 13 n 4 1 1 1 0 0 1 0 0 vertices 704 best 501 evals 73316
+COMB 0 0 0 2 stabgens 0 8 8 0 8 21 n 4 1 1 1 0 0 1 0 0 vertices 704 best 542 evals 60002
+COMB 0 0 1 1 stabgens 0 8 8 0 13 13 n 4 1 1 1 0 0 1 0 0 vertices 704 best 732 evals 79460
+COMB 0 0 1 2 stabgens 0 8 8 0 13 21 n 4 1 1 1 0 0 1 0 0 vertices 704 best 523 evals 66148
+COMB 0 0 2 2 stabgens 0 8 8 0 21 21 n 4 1 1 1 0 0 1 0 0 vertices 704 best 506 evals 59699
+RESULT best 500 combinations 6 secs 24.1
+COMB 0 0 0 0 stabgens 0 6 6 0 6 6 n 4 1 1 1 0 0 1 0 0 vertices 704 best 241 evals 57651
+COMB 0 0 0 1 stabgens 0 6 6 0 6 18 n 4 1 1 1 0 0 1 0 0 vertices 704 best 241 evals 48435
+COMB 0 0 1 1 stabgens 0 6 6 0 18 18 n 4 1 1 1 0 0 1 0 0 vertices 704 best 241 evals 52531
+COMB 0 1 0 0 stabgens 0 6 18 0 6 6 n 4 1 1 1 0 0 1 0 0 vertices 704 best 241 evals 52531
+COMB 0 1 0 1 stabgens 0 6 18 0 6 18 n 4 1 1 1 0 0 1 0 0 vertices 704 best 241 evals 54579
+COMB 0 1 1 1 stabgens 0 6 18 0 18 18 n 4 1 1 1 0 0 1 0 0 vertices 704 best 241 evals 56627
+RESULT best 241 combinations 6 secs 24.2
+COMB 0 0 0 0 stabgens 0 8 8 0 8 8 n 4 1 1 1 0 0 1 0 0 vertices 704 best 535 evals 72292
+COMB 0 0 0 1 stabgens 0 8 8 0 8 11 n 4 1 1 1 0 0 1 0 0 vertices 704 best 551 evals 57651
+COMB 0 0 0 2 stabgens 0 8 8 0 8 13 n 4 1 1 1 0 0 1 0 0 vertices 704 best 527 evals 72292
+COMB 0 0 0 3 stabgens 0 8 8 0 8 19 n 4 1 1 1 0 0 1 0 0 vertices 704 best 576 evals 75364
+COMB 0 0 0 4 stabgens 0 8 8 0 8 21 n 4 1 1 1 0 0 1 0 0 vertices 704 best 596 evals 71268
+COMB 0 0 0 5 stabgens 0 8 8 0 8 23 n 4 1 1 1 0 0 1 0 0 vertices 704 best 535 evals 61028
+RESULT best 527 combinations 6 secs 24.2
+COMB 0 0 0 0 stabgens 0 12 12 0 12 12 n 4 1 1 1 0 0 1 0 0 vertices 704 best 1026 evals 98197
+COMB 0 0 0 1 stabgens 0 12 12 0 12 14 n 4 1 1 1 0 0 1 0 0 vertices 704 best 733 evals 86628
+COMB 0 0 0 2 stabgens 0 12 12 0 12 27 n 4 1 1 1 0 0 1 0 0 vertices 704 best 733 evals 85604
+COMB 0 0 1 1 stabgens 0 12 12 0 14 14 n 4 1 1 1 0 0 1 0 0 vertices 704 best 740 evals 89700
+COMB 0 0 1 2 stabgens 0 12 12 0 14 27 n 4 1 1 1 0 0 1 0 0 vertices 704 best 713 evals 85604
+COMB 0 0 2 2 stabgens 0 12 12 0 27 27 n 4 1 1 1 0 0 1 0 0 vertices 704 best 740 evals 92053
+RESULT best 713 combinations 6 secs 24.2
+COMB 0 0 0 0 stabgens 0 11 11 0 11 11 n 4 1 1 1 0 0 1 0 0 vertices 704 best 1704 evals 105365
+COMB 0 0 0 1 stabgens 0 11 11 0 11 13 n 4 1 1 1 0 0 1 0 0 vertices 704 best 1370 evals 132294
+COMB 0 0 0 2 stabgens 0 11 11 0 11 26 n 4 1 1 1 0 0 1 0 0 vertices 704 best 1370 evals 107413
+COMB 0 0 1 1 stabgens 0 11 11 0 13 13 n 4 1 1 1 0 0 1 0 0 vertices 704 best 1373 evals 112533
+COMB 0 0 1 2 stabgens 0 11 11 0 13 26 n 4 1 1 1 0 0 1 0 0 vertices 704 best 1298 evals 108437
+COMB 0 0 2 2 stabgens 0 11 11 0 26 26 n 4 1 1 1 0 0 1 0 0 vertices 704 best 1373 evals 109461
+RESULT best 1298 combinations 6 secs 24.1
+COMB 0 0 0 0 stabgens 0 8 8 0 8 8 n 4 1 1 1 0 0 1 0 0 vertices 720 best 453 evals 55603
+COMB 0 0 0 1 stabgens 0 8 8 0 8 27 n 4 1 1 1 0 0 1 0 0 vertices 720 best 453 evals 55603
+COMB 0 0 1 1 stabgens 0 8 8 0 27 27 n 4 1 1 1 0 0 1 0 0 vertices 720 best 447 evals 51507
+COMB 0 1 0 0 stabgens 0 8 27 0 8 8 n 4 1 1 1 0 0 1 0 0 vertices 720 best 447 evals 66148
+COMB 0 1 0 1 stabgens 0 8 27 0 8 27 n 4 1 1 1 0 0 1 0 0 vertices 720 best 455 evals 63076
+COMB 0 1 1 1 stabgens 0 8 27 0 27 27 n 4 1 1 1 0 0 1 0 0 vertices 720 best 447 evals 67172
+RESULT best 447 combinations 6 secs 24.2
+COMB 0 0 0 0 stabgens 0 6 6 0 6 6 n 4 1 1 1 0 0 1 0 0 vertices 720 best 447 evals 47411
+COMB 0 0 0 1 stabgens 0 6 6 0 6 8 n 4 1 1 1 0 0 1 0 0 vertices 720 best 223 evals 45363
+COMB 0 0 0 2 stabgens 0 6 6 0 6 20 n 4 1 1 1 0 0 1 0 0 vertices 720 best 447 evals 53555
+COMB 0 0 0 3 stabgens 0 6 6 0 6 22 n 4 1 1 1 0 0 1 0 0 vertices 720 best 238 evals 38195
+COMB 0 0 0 4 stabgens 0 6 6 0 6 27 n 4 1 1 1 0 0 1 0 0 vertices 720 best 223 evals 41267
+COMB 0 0 0 5 stabgens 0 6 6 0 6 48 n 4 1 1 1 0 0 1 0 0 vertices 720 best 217 evals 47411
+RESULT best 217 combinations 6 secs 24.2
+COMB 0 0 0 0 stabgens 0 6 6 0 6 6 n 4 1 1 1 0 0 1 0 0 vertices 720 best 48 evals 47411
+COMB 0 0 0 1 stabgens 0 6 6 0 6 7 n 4 1 1 1 0 0 1 0 0 vertices 720 best 94 evals 44339
+COMB 0 0 0 2 stabgens 0 6 6 0 6 8 n 4 1 1 1 0 0 1 0 0 vertices 720 best 84 evals 43315
+COMB 0 0 0 3 stabgens 0 6 6 0 6 20 n 4 1 1 1 0 0 1 0 0 vertices 720 best 107 evals 44339
+COMB 0 0 0 4 stabgens 0 6 6 0 6 21 n 4 1 1 1 0 0 1 0 0 vertices 720 best 81 evals 41267
+COMB 0 0 0 5 stabgens 0 6 6 0 6 24 n 4 1 1 1 0 0 1 0 0 vertices 720 best 66 evals 42291
+RESULT best 48 combinations 6 secs 24.2
+COMB 0 0 0 0 stabgens 0 6 6 0 6 6 n 4 1 1 1 0 0 1 0 0 vertices 720 best 91 evals 39219
+COMB 0 0 0 1 stabgens 0 6 6 0 6 8 n 4 1 1 1 0 0 1 0 0 vertices 720 best 81 evals 39219
+COMB 0 0 0 2 stabgens 0 6 6 0 6 20 n 4 1 1 1 0 0 1 0 0 vertices 720 best 115 evals 36147
+COMB 0 0 0 3 stabgens 0 6 6 0 6 27 n 4 1 1 1 0 0 1 0 0 vertices 720 best 79 evals 41267
+COMB 0 0 1 1 stabgens 0 6 6 0 8 8 n 4 1 1 1 0 0 1 0 0 vertices 720 best 158 evals 44339
+COMB 0 0 1 2 stabgens 0 6 6 0 8 20 n 4 1 1 1 0 0 1 0 0 vertices 720 best 76 evals 47411
+RESULT best 76 combinations 6 secs 24.2
+COMB 0 0 0 0 stabgens 0 6 6 0 6 6 n 4 1 1 1 0 0 1 0 0 vertices 720 best 426 evals 53555
+COMB 0 0 0 1 stabgens 0 6 6 0 6 20 n 4 1 1 1 0 0 1 0 0 vertices 720 best 399 evals 54579
+COMB 0 0 1 1 stabgens 0 6 6 0 20 20 n 4 1 1 1 0 0 1 0 0 vertices 720 best 426 evals 46387
+COMB 0 1 0 0 stabgens 0 6 20 0 6 6 n 4 1 1 1 0 0 1 0 0 vertices 720 best 399 evals 49459
+COMB 0 1 0 1 stabgens 0 6 20 0 6 20 n 4 1 1 1 0 0 1 0 0 vertices 720 best 399 evals 48435
+COMB 0 1 1 1 stabgens 0 6 20 0 20 20 n 4 1 1 1 0 0 1 0 0 vertices 720 best 426 evals 61028
+RESULT best 399 combinations 6 secs 24.3
+COMB 0 0 0 0 stabgens 0 8 8 0 8 8 n 4 1 1 1 0 0 1 0 0 vertices 720 best 448 evals 60002
+COMB 0 0 0 1 stabgens 0 8 8 0 8 27 n 4 1 1 1 0 0 1 0 0 vertices 720 best 443 evals 58675
+COMB 0 0 1 1 stabgens 0 8 8 0 27 27 n 4 1 1 1 0 0 1 0 0 vertices 720 best 443 evals 70244
+COMB 0 1 0 0 stabgens 0 8 27 0 8 8 n 4 1 1 1 0 0 1 0 0 vertices 720 best 443 evals 75364
+COMB 0 1 0 1 stabgens 0 8 27 0 8 27 n 4 1 1 1 0 0 1 0 0 vertices 720 best 448 evals 57651
+COMB 0 1 1 1 stabgens 0 8 27 0 27 27 n 4 1 1 1 0 0 1 0 0 vertices 720 best 443 evals 56627
+RESULT best 443 combinations 6 secs 24.2
+COMB 0 0 0 0 stabgens 0 6 6 0 6 6 n 4 1 1 1 0 0 1 0 0 vertices 720 best 90 evals 42291
+COMB 0 0 0 1 stabgens 0 6 6 0 6 20 n 4 1 1 1 0 0 1 0 0 vertices 720 best 81 evals 46387
+COMB 0 0 1 1 stabgens 0 6 6 0 20 20 n 4 1 1 1 0 0 1 0 0 vertices 720 best 91 evals 46387
+COMB 0 1 0 0 stabgens 0 6 20 0 6 6 n 4 1 1 1 0 0 1 0 0 vertices 720 best 91 evals 46387
+COMB 0 1 0 1 stabgens 0 6 20 0 6 20 n 4 1 1 1 0 0 1 0 0 vertices 720 best 81 evals 40243
+COMB 0 1 1 1 stabgens 0 6 20 0 20 20 n 4 1 1 1 0 0 1 0 0 vertices 720 best 91 evals 48435
+RESULT best 81 combinations 6 secs 24.4
+COMB 0 0 0 0 stabgens 0 6 6 0 6 6 n 4 1 1 1 0 0 1 0 0 vertices 720 best 88 evals 35123
+COMB 0 0 0 1 stabgens 0 6 6 0 6 20 n 4 1 1 1 0 0 1 0 0 vertices 720 best 88 evals 43315
+COMB 0 0 1 1 stabgens 0 6 6 0 20 20 n 4 1 1 1 0 0 1 0 0 vertices 720 best 88 evals 49459
+COMB 0 1 0 0 stabgens 0 6 20 0 6 6 n 4 1 1 1 0 0 1 0 0 vertices 720 best 81 evals 50483
+COMB 0 1 0 1 stabgens 0 6 20 0 6 20 n 4 1 1 1 0 0 1 0 0 vertices 720 best 91 evals 46387
+COMB 0 1 1 1 stabgens 0 6 20 0 20 20 n 4 1 1 1 0 0 1 0 0 vertices 720 best 84 evals 45363
+RESULT best 81 combinations 6 secs 24.4
+COMB 0 0 0 0 stabgens 0 6 6 0 6 6 n 4 1 1 1 0 0 1 0 0 vertices 720 best 587 evals 54579
+COMB 0 0 0 1 stabgens 0 6 6 0 6 20 n 4 1 1 1 0 0 1 0 0 vertices 720 best 586 evals 57651
+COMB 0 0 1 1 stabgens 0 6 6 0 20 20 n 4 1 1 1 0 0 1 0 0 vertices 720 best 593 evals 50483
+COMB 0 1 0 0 stabgens 0 6 20 0 6 6 n 4 1 1 1 0 0 1 0 0 vertices 720 best 585 evals 53555
+COMB 0 1 0 1 stabgens 0 6 20 0 6 20 n 4 1 1 1 0 0 1 0 0 vertices 720 best 603 evals 58675
+COMB 0 1 1 1 stabgens 0 6 20 0 20 20 n 4 1 1 1 0 0 1 0 0 vertices 720 best 583 evals 52531
+RESULT best 583 combinations 6 secs 24.4
+COMB 0 0 0 0 stabgens 0 7 7 0 7 7 n 4 1 1 1 0 0 1 0 0 vertices 720 best 452 evals 43315
+COMB 0 0 0 1 stabgens 0 7 7 0 7 24 n 4 1 1 1 0 0 1 0 0 vertices 720 best 434 evals 57651
+COMB 0 0 1 1 stabgens 0 7 7 0 24 24 n 4 1 1 1 0 0 1 0 0 vertices 720 best 452 evals 75364
+COMB 0 1 0 0 stabgens 0 7 24 0 7 7 n 4 1 1 1 0 0 1 0 0 vertices 720 best 434 evals 64100
+COMB 0 1 0 1 stabgens 0 7 24 0 7 24 n 4 1 1 1 0 0 1 0 0 vertices 720 best 450 evals 62052
+COMB 0 1 1 1 stabgens 0 7 24 0 24 24 n 4 1 1 1 0 0 1 0 0 vertices 720 best 443 evals 59699
+RESULT best 434 combinations 6 secs 24.1
+COMB 0 0 0 0 stabgens 0 6 6 0 6 6 n 4 1 1 1 0 0 1 0 0 vertices 720 best 101 evals 49459
+COMB 0 0 0 1 stabgens 0 6 6 0 6 20 n 4 1 1 1 0 0 1 0 0 vertices 720 best 106 evals 51507
+COMB 0 0 1 1 stabgens 0 6 6 0 20 20 n 4 1 1 1 0 0 1 0 0 vertices 720 best 133 evals 40243
+COMB 0 1 0 0 stabgens 0 6 20 0 6 6 n 4 1 1 1 0 0 1 0 0 vertices 720 best 116 evals 51507
+COMB 0 1 0 1 stabgens 0 6 20 0 6 20 n 4 1 1 1 0 0 1 0 0 vertices 720 best 92 evals 57651
+COMB 0 1 1 1 stabgens 0 6 20 0 20 20 n 4 1 1 1 0 0 1 0 0 vertices 720 best 98 evals 43315
+RESULT best 92 combinations 6 secs 24.3
+COMB 0 0 0 0 stabgens 0 6 6 0 6 6 n 4 1 1 1 0 0 1 0 0 vertices 720 best 103 evals 47411
+COMB 0 0 0 1 stabgens 0 6 6 0 6 20 n 4 1 1 1 0 0 1 0 0 vertices 720 best 105 evals 43315
+COMB 0 0 1 1 stabgens 0 6 6 0 20 20 n 4 1 1 1 0 0 1 0 0 vertices 720 best 119 evals 42291
+COMB 0 1 0 0 stabgens 0 6 20 0 6 6 n 4 1 1 1 0 0 1 0 0 vertices 720 best 99 evals 40243
+COMB 0 1 0 1 stabgens 0 6 20 0 6 20 n 4 1 1 1 0 0 1 0 0 vertices 720 best 95 evals 43315
+COMB 0 1 1 1 stabgens 0 6 20 0 20 20 n 4 1 1 1 0 0 1 0 0 vertices 720 best 92 evals 42291
+RESULT best 92 combinations 6 secs 24.4
+COMB 0 0 0 0 stabgens 0 9 9 0 9 9 n 4 1 1 1 0 0 1 0 0 vertices 720 best 395 evals 48435
+COMB 0 0 0 1 stabgens 0 9 9 0 9 29 n 4 1 1 1 0 0 1 0 0 vertices 720 best 395 evals 51507
+COMB 0 0 1 1 stabgens 0 9 9 0 29 29 n 4 1 1 1 0 0 1 0 0 vertices 720 best 395 evals 57651
+COMB 0 1 0 0 stabgens 0 9 29 0 9 9 n 4 1 1 1 0 0 1 0 0 vertices 720 best 395 evals 53555
+COMB 0 1 0 1 stabgens 0 9 29 0 9 29 n 4 1 1 1 0 0 1 0 0 vertices 720 best 395 evals 45363
+COMB 0 1 1 1 stabgens 0 9 29 0 29 29 n 4 1 1 1 0 0 1 0 0 vertices 720 best 395 evals 48435
+RESULT best 395 combinations 6 secs 24.3
+COMB 0 0 0 0 stabgens 0 9 9 0 9 9 n 4 1 1 1 0 0 1 0 0 vertices 720 best 570 evals 56627
+COMB 0 0 0 1 stabgens 0 9 9 0 9 29 n 4 1 1 1 0 0 1 0 0 vertices 720 best 567 evals 65124
+COMB 0 0 1 1 stabgens 0 9 9 0 29 29 n 4 1 1 1 0 0 1 0 0 vertices 720 best 535 evals 55603
+COMB 0 1 0 0 stabgens 0 9 29 0 9 9 n 4 1 1 1 0 0 1 0 0 vertices 720 best 535 evals 53555
+COMB 0 1 0 1 stabgens 0 9 29 0 9 29 n 4 1 1 1 0 0 1 0 0 vertices 720 best 553 evals 51507
+COMB 0 1 1 1 stabgens 0 9 29 0 29 29 n 4 1 1 1 0 0 1 0 0 vertices 720 best 562 evals 61028
+RESULT best 535 combinations 6 secs 24.2
+COMB 0 0 0 0 stabgens 0 6 6 0 6 6 n 4 1 1 1 0 0 1 0 0 vertices 720 best 343 evals 58675
+COMB 0 0 0 1 stabgens 0 6 6 0 6 7 n 4 1 1 1 0 0 1 0 0 vertices 720 best 249 evals 56627
+COMB 0 0 0 2 stabgens 0 6 6 0 6 9 n 4 1 1 1 0 0 1 0 0 vertices 720 best 354 evals 80484
+COMB 0 0 0 3 stabgens 0 6 6 0 6 20 n 4 1 1 1 0 0 1 0 0 vertices 720 best 343 evals 76388
+COMB 0 0 0 4 stabgens 0 6 6 0 6 21 n 4 1 1 1 0 0 1 0 0 vertices 720 best 275 evals 58675
+COMB 0 0 0 5 stabgens 0 6 6 0 6 24 n 4 1 1 1 0 0 1 0 0 vertices 720 best 249 evals 57651
+RESULT best 249 combinations 6 secs 24.2
+COMB 0 0 0 0 stabgens 0 7 7 0 7 7 n 4 1 1 1 0 0 1 0 0 vertices 720 best 336 evals 60002
+COMB 0 0 0 1 stabgens 0 7 7 0 7 9 n 4 1 1 1 0 0 1 0 0 vertices 720 best 352 evals 65124
+COMB 0 0 0 2 stabgens 0 7 7 0 7 24 n 4 1 1 1 0 0 1 0 0 vertices 720 best 344 evals 54579
+COMB 0 0 0 3 stabgens 0 7 7 0 7 29 n 4 1 1 1 0 0 1 0 0 vertices 720 best 352 evals 47411
+COMB 0 0 1 1 stabgens 0 7 7 0 9 9 n 4 1 1 1 0 0 1 0 0 vertices 720 best 502 evals 58675
+COMB 0 0 1 2 stabgens 0 7 7 0 9 24 n 4 1 1 1 0 0 1 0 0 vertices 720 best 352 evals 57651
+RESULT best 336 combinations 6 secs 24.1
+COMB 0 0 0 0 stabgens 0 6 6 0 6 6 n 4 1 1 1 0 0 1 0 0 vertices 720 best 456 evals 50483
+COMB 0 0 0 1 stabgens 0 6 6 0 6 7 n 4 1 1 1 0 0 1 0 0 vertices 720 best 212 evals 51507
+COMB 0 0 0 2 stabgens 0 6 6 0 6 8 n 4 1 1 1 0 0 1 0 0 vertices 720 best 212 evals 54579
+COMB 0 0 0 3 stabgens 0 6 6 0 6 20 n 4 1 1 1 0 0 1 0 0 vertices 720 best 456 evals 58675
+COMB 0 0 0 4 stabgens 0 6 6 0 6 21 n 4 1 1 1 0 0 1 0 0 vertices 720 best 236 evals 47411
+COMB 0 0 0 5 stabgens 0 6 6 0 6 22 n 4 1 1 1 0 0 1 0 0 vertices 720 best 212 evals 44339
+RESULT best 212 combinations 6 secs 24.3
+COMB 0 0 0 0 stabgens 0 6 6 0 6 6 n 4 1 1 1 0 0 1 0 0 vertices 720 best 448 evals 54579
+COMB 0 0 0 1 stabgens 0 6 6 0 6 7 n 4 1 1 1 0 0 1 0 0 vertices 720 best 224 evals 53555
+COMB 0 0 0 2 stabgens 0 6 6 0 6 20 n 4 1 1 1 0 0 1 0 0 vertices 720 best 448 evals 64100
+COMB 0 0 0 3 stabgens 0 6 6 0 6 21 n 4 1 1 1 0 0 1 0 0 vertices 720 best 249 evals 57651
+COMB 0 0 0 4 stabgens 0 6 6 0 6 24 n 4 1 1 1 0 0 1 0 0 vertices 720 best 224 evals 54579
+COMB 0 0 0 5 stabgens 0 6 6 0 6 47 n 4 1 1 1 0 0 1 0 0 vertices 720 best 256 evals 52531
+RESULT best 224 combinations 6 secs 24.2
+COMB 0 0 0 0 stabgens 0 6 6 0 6 6 n 4 1 1 1 0 0 1 0 0 vertices 720 best 482 evals 47411
+COMB 0 0 0 1 stabgens 0 6 6 0 6 7 n 4 1 1 1 0 0 1 0 0 vertices 720 best 246 evals 47411
+COMB 0 0 0 2 stabgens 0 6 6 0 6 20 n 4 1 1 1 0 0 1 0 0 vertices 720 best 439 evals 50483
+COMB 0 0 0 3 stabgens 0 6 6 0 6 21 n 4 1 1 1 0 0 1 0 0 vertices 720 best 252 evals 45363
+COMB 0 0 0 4 stabgens 0 6 6 0 6 24 n 4 1 1 1 0 0 1 0 0 vertices 720 best 235 evals 45363
+COMB 0 0 0 5 stabgens 0 6 6 0 6 47 n 4 1 1 1 0 0 1 0 0 vertices 720 best 255 evals 44339
+RESULT best 235 combinations 6 secs 24.3
+COMB 0 0 0 0 stabgens 0 6 6 0 6 6 n 4 1 1 1 0 0 1 0 0 vertices 720 best 415 evals 59699
+COMB 0 0 0 1 stabgens 0 6 6 0 6 20 n 4 1 1 1 0 0 1 0 0 vertices 720 best 415 evals 61028
+COMB 0 0 1 1 stabgens 0 6 6 0 20 20 n 4 1 1 1 0 0 1 0 0 vertices 720 best 415 evals 62052
+COMB 0 1 0 0 stabgens 0 6 20 0 6 6 n 4 1 1 1 0 0 1 0 0 vertices 720 best 415 evals 52531
+COMB 0 1 0 1 stabgens 0 6 20 0 6 20 n 4 1 1 1 0 0 1 0 0 vertices 720 best 415 evals 51507
+COMB 0 1 1 1 stabgens 0 6 20 0 20 20 n 4 1 1 1 0 0 1 0 0 vertices 720 best 415 evals 44339
+RESULT best 415 combinations 6 secs 24.2
+COMB 0 0 0 0 stabgens 0 6 6 0 6 6 n 4 1 1 1 0 0 1 0 0 vertices 720 best 635 evals 56627
+COMB 0 0 0 1 stabgens 0 6 6 0 6 20 n 4 1 1 1 0 0 1 0 0 vertices 720 best 594 evals 68196
+COMB 0 0 1 1 stabgens 0 6 6 0 20 20 n 4 1 1 1 0 0 1 0 0 vertices 720 best 594 evals 62052
+COMB 0 1 0 0 stabgens 0 6 20 0 6 6 n 4 1 1 1 0 0 1 0 0 vertices 720 best 633 evals 62052
+COMB 0 1 0 1 stabgens 0 6 20 0 6 20 n 4 1 1 1 0 0 1 0 0 vertices 720 best 590 evals 61028
+COMB 0 1 1 1 stabgens 0 6 20 0 20 20 n 4 1 1 1 0 0 1 0 0 vertices 720 best 616 evals 61028
+RESULT best 590 combinations 6 secs 24.3

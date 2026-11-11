@@ -1,0 +1,20 @@
+group order 300, 11 subgroups of order 6 in 3 classes: [0: size 5] [1: size 1] [2: size 5]
+pair 0 (KA class 0, HB class 0): |N(KA)| 60 |N(HB)| 60, KA-dc 30, HB-dc 30, cosets 50, orbits 3
+pair 0 done: enumerated 368192628, pass (6)(3) 0, pass (2)(5) 0, solutions 0, best miss(1)+(4) 1073741824, 7.5 s
+  hist:
+pair 1 (KA class 0, HB class 1): |N(KA)| 60 |N(HB)| 300, KA-dc 30, HB-dc 50, cosets 50, orbits 1
+pair 1 done: enumerated 326380626, pass (6)(3) 0, pass (2)(5) 0, solutions 0, best miss(1)+(4) 1073741824, 6.4 s
+  hist:
+pair 2 (KA class 0, HB class 2): |N(KA)| 60 |N(HB)| 60, KA-dc 30, HB-dc 30, cosets 50, orbits 3
+pair 2 done: enumerated 368192628, pass (6)(3) 0, pass (2)(5) 0, solutions 0, best miss(1)+(4) 1073741824, 7.7 s
+  hist:
+pair 3 (KA class 1, HB class 1): |N(KA)| 300 |N(HB)| 300, KA-dc 50, HB-dc 50, cosets 50, orbits 1
+pair 3 done: enumerated 326380626, pass (6)(3) 0, pass (2)(5) 0, solutions 0, best miss(1)+(4) 1073741824, 6.8 s
+  hist:
+pair 4 (KA class 1, HB class 2): |N(KA)| 300 |N(HB)| 60, KA-dc 50, HB-dc 30, cosets 50, orbits 1
+pair 4 done: enumerated 326380626, pass (6)(3) 0, pass (2)(5) 0, solutions 0, best miss(1)+(4) 1073741824, 6.6 s
+  hist:
+pair 5 (KA class 2, HB class 2): |N(KA)| 60 |N(HB)| 60, KA-dc 30, HB-dc 30, cosets 50, orbits 3
+pair 5 done: enumerated 368192628, pass (6)(3) 0, pass (2)(5) 0, solutions 0, best miss(1)+(4) 1073741824, 8.1 s
+  hist:
+TOTAL solutions 0 best miss 1073741824

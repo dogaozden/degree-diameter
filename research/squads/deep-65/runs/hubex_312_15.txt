@@ -1,0 +1,20 @@
+group order 312, 27 subgroups of order 6 in 3 classes: [0: size 13] [1: size 1] [2: size 13]
+pair 0 (KA class 0, HB class 0): |N(KA)| 24 |N(HB)| 24, KA-dc 28, HB-dc 28, cosets 52, orbits 7
+pair 0 done: enumerated 703891181, pass (6)(3) 0, pass (2)(5) 0, solutions 0, best miss(1)+(4) 1073741824, 20.2 s
+  hist:
+pair 1 (KA class 0, HB class 1): |N(KA)| 24 |N(HB)| 312, KA-dc 28, HB-dc 52, cosets 52, orbits 1
+pair 1 done: enumerated 382313855, pass (6)(3) 0, pass (2)(5) 0, solutions 0, best miss(1)+(4) 1073741824, 11.5 s
+  hist:
+pair 2 (KA class 0, HB class 2): |N(KA)| 24 |N(HB)| 24, KA-dc 28, HB-dc 28, cosets 52, orbits 7
+pair 2 done: enumerated 703891181, pass (6)(3) 0, pass (2)(5) 0, solutions 0, best miss(1)+(4) 1073741824, 22.1 s
+  hist:
+pair 3 (KA class 1, HB class 1): |N(KA)| 312 |N(HB)| 312, KA-dc 52, HB-dc 52, cosets 52, orbits 1
+pair 3 done: enumerated 382313855, pass (6)(3) 0, pass (2)(5) 0, solutions 0, best miss(1)+(4) 1073741824, 15.7 s
+  hist:
+pair 4 (KA class 1, HB class 2): |N(KA)| 312 |N(HB)| 24, KA-dc 52, HB-dc 28, cosets 52, orbits 1
+pair 4 done: enumerated 382313855, pass (6)(3) 0, pass (2)(5) 0, solutions 0, best miss(1)+(4) 1073741824, 11.5 s
+  hist:
+pair 5 (KA class 2, HB class 2): |N(KA)| 24 |N(HB)| 24, KA-dc 28, HB-dc 28, cosets 52, orbits 7
+pair 5 done: enumerated 703891181, pass (6)(3) 0, pass (2)(5) 0, solutions 0, best miss(1)+(4) 1073741824, 21.2 s
+  hist:
+TOTAL solutions 0 best miss 1073741824
