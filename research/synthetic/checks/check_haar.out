@@ -1,0 +1,42 @@
+1-2. right multiplication regular on points and lines; exact diameter = max(ecc(point e), ecc(line e)); word conditions (one for even D, two for odd D) agree with the diameter for D = 2..14: 126 random (G, S): checked
+   the two odd-D conditions differ: Z13 x|_3 Z3, S = {(0,0), (0,1), (1,0)}, D = 7: |(S^-1 S)^3| = 37 < 39 = |(S S^-1)^3|; eccentricity 8 from the point e, 7 from the line e
+3. H(G,S) = H(G, S s0^-1) and H(G,S) = H(G, phi(S)) (phi conjugation) as incidence structures: checked
+4. Singer difference sets in Z7, Z13, Z21, Z31: the Haar structures are projective planes of order 2, 3, 4, 5 with N = W(q+1, 3): checked
+5. reduced words of length l: Delta (Delta-1)^(l-1) (enumerated, Delta = 3..5, l <= 6); W(Delta, D) = M_b(Delta, D)/2 for Delta = 3..20, D = 3..14: checked
+6. SL(2,7) x Z7 with alpha = (conjugation by an element of order 3) x (z -> 2z): |Fix(alpha)| = 6; random alpha-invariant S (Delta = 4, 7): alpha is an automorphism fixing the point e and the line e, the elements at distance more than rho from the point e or the line e form a union of alpha-orbits (rho = 0..9; 510068 far elements seen), (S^-1 S)^h is inverse-closed, central elements are far on both sides or on neither: checked
+7. d5D9_meta_346_43_29_s613_n29756.txt: 5-regular, 29,756 vertices, eccentricity 9 from the point e and 9 from the line e, diameter 9: checked
+7. d6D9_sl_17_13_orb3f0_s2.txt: 6-regular, 127,296 vertices, eccentricity 9 from the point e and 9 from the line e, diameter 9: checked
+7. d7D9_psl_29_19_orb3_s1.txt: 7-regular, 462,840 vertices, eccentricity 9 from the point e and 9 from the line e, diameter 9; S is mapped onto itself by (conjugation by (22, 9, 1, 0)) x (z -> 7 z), fixing 1 of the generators: checked
+7. d8D9_sl_25_43_orb3_s1.txt: 8-regular, 1,341,600 vertices, eccentricity 9 from the point e and 9 from the line e, diameter 9: checked
+7. d6D10_prod_sl_5_psl_7_13_orb3f0_s1.txt: 6-regular, 524,160 vertices, eccentricity 10 from the point e and 10 from the line e, diameter 10: checked
+7. d4D11_meta_523_29_9_b2h01.txt: 4-regular, 30,334 vertices, eccentricity 11 from the point e and 11 from the line e, diameter 11: checked
+7. d5D11_meta_5023_31_2886_b5k05.txt: 5-regular, 311,426 vertices, eccentricity 11 from the point e and 11 from the line e, diameter 11: checked
+7. d6D11_meta_20809_51_12972_b5k07.txt: 6-regular, 2,122,518 vertices, eccentricity 11 from the point e and 11 from the line e, diameter 11: checked
+7. d4D12_meta_731_48_7_b5k02.txt: 4-regular, 70,176 vertices, eccentricity 12 from the point e and 12 from the line e, diameter 12: checked
+7. d4D12_meta_1277_29_964_h08.txt: 4-regular, 74,066 vertices, eccentricity 12 from the point e and 12 from the line e, diameter 12: checked
+7. d5D12_meta_8969_59_205_b6l03.txt: 5-regular, 1,058,342 vertices, eccentricity 12 from the point e and 12 from the line e, diameter 12: checked
+7. d4D13_meta_2237_43_1984_h03.txt: 4-regular, 192,382 vertices, eccentricity 13 from the point e and 13 from the line e, diameter 13: checked
+7. d4D14_meta_2731_91_i04.txt: 4-regular, 497,042 vertices, eccentricity 14 from the point e and 14 from the line e, diameter 14: checked
+7. d5D13_prodmeta_11_5_2971_11_i06.txt: 5-regular, 3,594,910 vertices, eccentricity 13 from the point e and 13 from the line e, diameter 13: checked
+7. d5D14_meta_148781_43_i07.txt: 5-regular, 12,795,166 vertices, eccentricity 14 from the point e and 14 from the line e, diameter 14: checked
+7. d4D10_n12416_haar_meta97_64_19.txt: 4-regular, 12,416 vertices, eccentricity 10 from the point e and 10 from the line e, diameter 10: checked
+7. d5D10_n95472_haar_meta1989_24_461.txt: 5-regular, 95,472 vertices, eccentricity 10 from the point e and 10 from the line e, diameter 10: checked
+7. d3D10_n810_c3xheis27.edges: 810 vertices, cubic, bipartite, diameter 10 (all pairs): checked
+7. d3D11_n1474_meta67_11_9.edges.gz: 1,474 vertices, cubic, bipartite, diameter 11 (all pairs): checked
+7. d3D12_n2368_meta37_8.edges: 2,368 vertices, cubic, bipartite, diameter 12 (all pairs): checked
+7. d3D13_n3400_lift_gp10_Z170.edges.gz: 3,400 vertices, cubic, bipartite, diameter 13 (all pairs): checked
+7. d3D14_n5706_lift_pappus_Z317.edges.gz: 5,706 vertices, cubic, bipartite, diameter 14 (all pairs): checked
+7. d3D13_n3400_lift_gp10_Z170.edges.gz: Z170 acts by i -> i+1 and the quotient is the Desargues graph GP(10,3): checked
+7. d3D14_n5706_lift_pappus_Z317.edges.gz: Z317 acts by i -> i+1 and the quotient is the Pappus graph: checked
+7. (3,11): H(Z67 x|_9 Z11, {(0,0), (0,1), (1,5)}) has eccentricities 11, 11, and the edge list d3D11_n1474_meta67_11_9.edges.gz is exactly this structure: checked
+7. alpha found from S alone, with f and k as in the values list, for all 34 symmetric sets containing e in SL(2,p) or PSL(2,p) times a cyclic group: checked
+7. d11D10_psl_243_11_orb10_frob1d_ar3_s201.txt: S (11 elements) is mapped onto itself by (x -> x^3 on the entries) x (z -> 3 z), an automorphism of order 5 fixing only e: checked
+8. Values table and Appendix B: 74 values agree with their files (2N from the headers, n from the edge lists), the orbit shapes add up to Delta, and the tables in SYNTHETIC.tex are the ones generated from this data: checked
+   size law (Haar values, capped cells excluded): mu from 2.62 to 60.6, ln N from 6.6 to 23.4; 2N/M_b by D: D=9: 0.170..0.051, D=10: 0.210..0.045, D=11: 0.360..0.046, D=12: 0.139..0.048, D=13: 0.121..0.050, D=14: 0.104..0.050
+   D=9: (5) mu=41.9 17.0%, (6) mu=29.7 13.0%, (7) mu=38.2 11.5%, (8) mu=29.7 10.0%, (9) mu=30.5 9.1%, (10) mu=42.4 8.7%, (11) mu=23.3 7.8%, (12) mu=29.5 7.5%, (13) mu=32.8 7.2%, (14) mu=24.2 6.8%, (15) mu=24.9 6.6%, (16) mu=24.6 6.3%, (17) mu=2.9 5.5%, (18) mu=2.8 5.3%, (19) mu=2.9 5.2%, (20) mu=2.6 5.1%
+   D=10: (4) mu=53.4 21.0%, (5) mu=31.5 13.7%, (6) mu=23.6 10.7%, (7) mu=30.9 9.5%, (8) mu=33.2 8.5%, (9) mu=35.7 7.9%, (10) mu=41.6 7.4%, (11) mu=60.6 7.1%, (12) mu=28.3 6.4%, (13) mu=24.3 6.1%, (14) mu=27.6 5.9%, (15) mu=37.9 5.8%, (16) mu=59.4 5.7%, (17) mu=3.0 4.8%, (18) mu=3.1 4.7%, (19) mu=3.1 4.6%, (20) mu=3.1 4.5%
+   D=11: (3) mu=45.8 36.0%, (4) mu=44.1 17.1%, (5) mu=19.6 11.1%, (6) mu=10.7 8.7%, (7) mu=10.4 7.6%, (8) mu=11.0 6.9%, (9) mu=10.6 6.3%, (10) mu=9.3 5.9%, (11) mu=10.4 5.6%, (12) mu=7.0 5.2%, (13) mu=7.6 5.0%, (14) mu=6.9 4.8%, (15) mu=5.2 4.6%
+   D=12: (4) mu=28.3 13.9%, (5) mu=13.6 9.5%, (6) mu=10.2 7.7%, (7) mu=14.3 6.9%, (8) mu=12.6 6.2%, (9) mu=10.7 5.6%, (10) mu=10.2 5.3%, (11) mu=13.3 5.0%, (12) mu=12.3 4.8%
+   D=13: (4) mu=24.2 12.1%, (5) mu=7.1 8.0%, (6) mu=9.3 6.8%, (7) mu=8.4 6.0%, (8) mu=7.5 5.4%, (9) mu=9.8 5.0%
+   D=14: (4) mu=16.5 10.4%, (5) mu=5.4 7.1%, (6) mu=8.4 6.2%, (7) mu=6.2 5.3%, (8) mu=12.1 5.0%
+ALL CHECKS PASSED
