@@ -1,0 +1,12 @@
+group prod psl 8 poly x^3+x+1 meta 19 1 1 x Z_1, N=9576, identity 1064, H order 57, rows 168, threads 1, setup 0.00s
+start cost=191
+t=30 steps=85525 evals=1710501 cost=8 best=6 T=0.53
+t=60 steps=169709 evals=3394181 cost=8 best=6 T=0.19
+t=90 steps=254520 evals=5090401 cost=8 best=6 T=0.15
+t=120 steps=340299 evals=6805981 cost=8 best=6 T=0.15
+t=150 steps=424637 evals=8492741 cost=8 best=6 T=0.15
+t=180 steps=509591 evals=10191821 cost=10 best=6 T=0.63
+t=210 steps=595730 evals=11914601 cost=6 best=6 T=0.22
+t=240 steps=679981 evals=13599621 cost=6 best=6 T=0.15
+t=270 steps=766296 evals=15325921 cost=6 best=6 T=0.15
+RESULT d=16 D=5 group=prod psl 8 poly x^3+x+1 meta 19 1 1 x Z_1 N=9576 best=6 evals=17061701 time=300.0

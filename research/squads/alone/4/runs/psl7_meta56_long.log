@@ -1,0 +1,11 @@
+group prod psl 7 meta 56 1 1 x Z_1, N=9408, identity 1176, H order 56, rows 168, threads 1, setup 0.00s
+start cost=70
+t=30 steps=85920 evals=1718401 cost=3 best=3 T=0.53
+t=60 steps=172417 evals=3448341 cost=3 best=3 T=0.19
+t=90 steps=262169 evals=5243381 cost=8 best=3 T=0.15
+t=120 steps=350556 evals=7011121 cost=4 best=3 T=0.15
+t=150 steps=441479 evals=8829581 cost=4 best=3 T=0.15
+t=180 steps=530344 evals=10606881 cost=14 best=3 T=1.00
+RESULT d=16 D=5 group=prod psl 7 meta 56 1 1 x Z_1 N=9408 best=0 evals=10933261 time=185.4
+full diameter check: OK
+wrote /home/user/degree-diameter/research/squads/alone/4/runs/psl7_meta56_long.txt

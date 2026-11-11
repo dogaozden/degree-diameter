@@ -1,0 +1,5 @@
+group prod psl 7 meta 50 1 1 x Z_1, N=8400, identity 1050, H order 50, rows 168, threads 1, setup 0.00s
+start cost=41
+RESULT d=16 D=5 group=prod psl 7 meta 50 1 1 x Z_1 N=8400 best=0 evals=39141 time=0.8
+full diameter check: OK
+wrote /home/user/degree-diameter/research/squads/alone/4/runs/psl7_meta50.txt

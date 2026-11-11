@@ -1,0 +1,6 @@
+group prod psl 5 psl 5 x Z_2, N=7200, identity 1220, H order 30, rows 240, threads 1, setup 0.00s
+start cost=62
+t=30 steps=61272 evals=1225441 cost=2 best=2 T=0.53
+RESULT d=16 D=5 group=prod psl 5 psl 5 x Z_2 N=7200 best=0 evals=1993741 time=48.2
+full diameter check: OK
+wrote /home/user/degree-diameter/research/squads/alone/4/runs/psl5_psl5_n2.txt

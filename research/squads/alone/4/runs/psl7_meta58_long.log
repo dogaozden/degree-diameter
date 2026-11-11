@@ -1,0 +1,42 @@
+group prod psl 7 meta 58 1 1 x Z_1, N=9744, identity 1218, H order 58, rows 168, threads 1, setup 0.02s
+start cost=204
+t=30 steps=83027 evals=1660541 cost=6 best=6 T=0.53
+t=60 steps=159520 evals=3190401 cost=6 best=6 T=0.19
+t=90 steps=246769 evals=4935381 cost=6 best=6 T=0.15
+t=120 steps=334091 evals=6681821 cost=6 best=6 T=0.15
+t=150 steps=421837 evals=8436741 cost=6 best=6 T=0.15
+t=180 steps=508486 evals=10169721 cost=13 best=6 T=0.70
+t=210 steps=593414 evals=11868281 cost=13 best=6 T=0.25
+t=240 steps=677096 evals=13541921 cost=13 best=6 T=0.15
+t=270 steps=759932 evals=15198641 cost=13 best=6 T=0.15
+t=300 steps=847226 evals=16944521 cost=13 best=6 T=0.15
+t=330 steps=931878 evals=18637561 cost=11 best=6 T=0.70
+t=360 steps=1018344 evals=20366881 cost=10 best=6 T=0.25
+t=390 steps=1103272 evals=22065441 cost=10 best=6 T=0.15
+t=420 steps=1192817 evals=23856341 cost=10 best=6 T=0.15
+t=450 steps=1281416 evals=25628321 cost=10 best=6 T=0.15
+t=480 steps=1367627 evals=27352541 cost=9 best=6 T=0.70
+t=510 steps=1454186 evals=29083721 cost=9 best=6 T=0.25
+t=540 steps=1543571 evals=30871421 cost=9 best=6 T=0.15
+t=570 steps=1632307 evals=32646141 cost=9 best=6 T=0.15
+t=600 steps=1719571 evals=34391421 cost=9 best=6 T=0.15
+t=630 steps=1808331 evals=36166621 cost=7 best=5 T=0.70
+t=660 steps=1894365 evals=37887301 cost=5 best=5 T=0.25
+t=690 steps=1981070 evals=39621401 cost=5 best=5 T=0.15
+t=720 steps=2068046 evals=41360921 cost=5 best=5 T=0.15
+t=750 steps=2153188 evals=43063761 cost=5 best=5 T=0.15
+t=780 steps=2239791 evals=44795821 cost=8 best=5 T=0.79
+t=810 steps=2327126 evals=46542521 cost=6 best=5 T=0.28
+t=840 steps=2415274 evals=48305481 cost=12 best=5 T=0.15
+t=870 steps=2504107 evals=50082141 cost=12 best=5 T=0.15
+t=900 steps=2593531 evals=51870621 cost=7 best=5 T=0.15
+t=930 steps=2681081 evals=53621621 cost=10 best=5 T=0.79
+t=960 steps=2771426 evals=55428521 cost=8 best=5 T=0.28
+t=990 steps=2863929 evals=57278581 cost=8 best=5 T=0.15
+t=1020 steps=2957045 evals=59140901 cost=8 best=5 T=0.15
+t=1050 steps=3046348 evals=60926961 cost=8 best=5 T=0.15
+t=1080 steps=3135756 evals=62715121 cost=8 best=5 T=0.79
+t=1110 steps=3219685 evals=64393701 cost=8 best=5 T=0.28
+t=1140 steps=3306374 evals=66127481 cost=10 best=5 T=0.15
+t=1170 steps=3393488 evals=67869761 cost=10 best=5 T=0.15
+RESULT d=16 D=5 group=prod psl 7 meta 58 1 1 x Z_1 N=9744 best=5 evals=69610961 time=1200.0

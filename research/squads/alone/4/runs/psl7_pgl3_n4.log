@@ -1,0 +1,10 @@
+group prod psl 7 pgl 3 x Z_4, N=16128, identity 2016, H order 42, rows 384, threads 1, setup 0.00s
+start cost=1718
+t=30 steps=33487 evals=669741 cost=718 best=718 T=0.53
+t=60 steps=71561 evals=1431221 cost=689 best=689 T=0.19
+t=90 steps=111251 evals=2225021 cost=689 best=689 T=0.15
+t=120 steps=151228 evals=3024561 cost=689 best=689 T=0.15
+t=150 steps=190924 evals=3818481 cost=689 best=689 T=0.15
+t=180 steps=231509 evals=4630181 cost=689 best=689 T=0.15
+t=210 steps=272180 evals=5443601 cost=689 best=689 T=0.76
+RESULT d=16 D=5 group=prod psl 7 pgl 3 x Z_4 N=16128 best=689 evals=6250921 time=240.0

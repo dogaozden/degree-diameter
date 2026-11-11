@@ -1,0 +1,10 @@
+group prod agl1 11 agl1 13 x Z_1, N=17160, identity 0, H order 60, rows 286, threads 1, setup 0.00s
+start cost=1414
+t=30 steps=53338 evals=1066761 cost=789 best=789 T=0.53
+t=60 steps=103867 evals=2077341 cost=789 best=789 T=0.19
+t=90 steps=155068 evals=3101361 cost=789 best=789 T=0.15
+t=120 steps=205444 evals=4108881 cost=789 best=789 T=0.15
+t=150 steps=255634 evals=5112681 cost=789 best=789 T=0.15
+t=180 steps=306491 evals=6129821 cost=789 best=789 T=0.75
+t=210 steps=354660 evals=7093201 cost=789 best=789 T=0.26
+RESULT d=16 D=5 group=prod agl1 11 agl1 13 x Z_1 N=17160 best=789 evals=8108121 time=240.0
