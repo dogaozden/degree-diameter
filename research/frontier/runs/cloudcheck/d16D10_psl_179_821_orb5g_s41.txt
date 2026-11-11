@@ -1,0 +1,29 @@
+machine: vm; nproc=4; free -g: total 15G used 0G free 14G avail 15G; Linux 6.18.44-fc-v185; gcc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0
+sha256: d5885a25fc0d9a18c70cb25238a95e33353fd8a3874e843945b1de0bf8444f68  research/frontier/sols/d16D10_psl_179_821_orb5g_s41.txt  (from origin/claude/resume-cell-16-10-io255o:research/frontier/sols/d16D10_psl_179_821_orb5g_s41.txt)
+
+################ reference checker: haarcheck_psl (research/structured/tools/haarcheck_psl.c, gcc -O3; built from origin/master in the scratchpad): gcc -O3 -o haarcheck_psl haarcheck_psl.c && ./haarcheck_psl research/frontier/sols/d16D10_psl_179_821_orb5g_s41.txt   (stdout, complete)
+from (e,A): reached A 2354283180/2354283180, B 2354283180/2354283180 within 10, ecc 10
+from (e,B): reached A 2354283180/2354283180, B 2354283180/2354283180 within 10, ecc 10
+VALID d=16 D=10 group=psl 179 x Z_821 N=2354283180 vertices=4708566360 (distinct generators, 16-regular simple)
+[exit 0; wall 9571.0s; peak RSS 1686 MB]
+
+
+################ haarcheck_gen (new low-memory checker, research/frontier/haarcheck_gen.c, built from origin/master 4cf75a4 in the scratchpad): gcc -O3 -fopenmp -o haarcheck_gen haarcheck_gen.c && ./haarcheck_gen research/frontier/sols/d16D10_psl_179_821_orb5g_s41.txt   (stdout, complete)
+selftest psl 179: |M| = 2867580, index round trip over all elements ok
+selftest group multiplication: associativity, identity, inverse on 20000 random triples ok
+file research/frontier/sols/d16D10_psl_179_821_orb5g_s41.txt
+header: 16 10 psl 179 n 821 N 2354283180
+group psl 179 x Z_821, |G| = 2354283180 = N, vertices 2N = 4708566360; 16 distinct generators
+from (e,A): reached A 2354283180/2354283180, B 2354283180/2354283180 within 10; ecc 10; level sizes [1, 16, 240, 3600, 54000, 809835, 12115775, 175206402, 1607612920, 2178263327, 734500244]  (313s)
+from (e,B): reached A 2354283180/2354283180, B 2354283180/2354283180 within 10; ecc 10; level sizes [1, 16, 240, 3600, 54000, 809835, 12115725, 175206402, 1607589056, 2178263327, 734524158]  (618s)
+VALID d=16 D=10 group=psl 179 x Z_821 N=2354283180 vertices=4708566360 (distinct generators, 16-regular simple; every vertex within 10 of both (e,A) and (e,B); ecc 10; 618s)
+[exit 0; wall 618.1s; peak RSS 1686 MB]
+
+################ comparison (computed mechanically from the two sections above; verdict lines and numbers are copied from the checker outputs)
+reference verdict line (verbatim, from the reference section): VALID d=16 D=10 group=psl 179 x Z_821 N=2354283180 vertices=4708566360 (distinct generators, 16-regular simple)
+haarcheck_gen verdict line (verbatim, from its section; exit 0): VALID d=16 D=10 group=psl 179 x Z_821 N=2354283180 vertices=4708566360 (distinct generators, 16-regular simple; every vertex within 10 of both (e,A) and (e,B); ecc 10; 618s)
+same verdict word from both checkers: yes
+BFS from (e,A): reference reached/ecc ('2354283180', '2354283180', '2354283180', '2354283180') ecc 10; haarcheck_gen reached/ecc ('2354283180', '2354283180', '2354283180', '2354283180') ecc 10; reached and ecc agree: yes
+BFS level sizes from (e,A): the reference checker does not print level sizes, so there is no comparison; haarcheck_gen prints [1, 16, 240, 3600, 54000, 809835, 12115775, 175206402, 1607612920, 2178263327, 734500244]
+BFS from (e,B): reference reached/ecc ('2354283180', '2354283180', '2354283180', '2354283180') ecc 10; haarcheck_gen reached/ecc ('2354283180', '2354283180', '2354283180', '2354283180') ecc 10; reached and ecc agree: yes
+BFS level sizes from (e,B): the reference checker does not print level sizes, so there is no comparison; haarcheck_gen prints [1, 16, 240, 3600, 54000, 809835, 12115725, 175206402, 1607589056, 2178263327, 734524158]
