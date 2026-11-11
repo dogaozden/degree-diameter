@@ -1,0 +1,35 @@
+group psl 25 poly x^2+2 x Z_37, N=288600, identity 11100, H order 37, rows 7800, threads 1, setup 0.01s
+wide rows: HW order 222, rows 1300, setup 0.02s
+alpha: conj by mat(10,22,23,0) (index 5248), z -> 6 z on Z_37
+ORBIT k=4 m=2 f=1: |Fix(alpha)| = 11 (+e); mu = 71.38, mu/k = 17.85, fixed-point misses ~ 1.50
+start cost=5484
+t=30 steps=14704 evals=117633 cost=42 best=42 T=0.53
+t=60 steps=29983 evals=239865 cost=42 best=42 T=0.19
+t=90 steps=40935 evals=327481 cost=42 best=42 T=0.15
+t=120 steps=52564 evals=420513 cost=42 best=42 T=0.15
+t=150 steps=64915 evals=519321 cost=42 best=42 T=0.15
+t=180 steps=75260 evals=602081 cost=42 best=42 T=0.84
+t=210 steps=86150 evals=689201 cost=42 best=42 T=0.30
+t=240 steps=96963 evals=775705 cost=42 best=42 T=0.15
+t=270 steps=109763 evals=878105 cost=42 best=42 T=0.15
+t=300 steps=126197 evals=1009577 cost=42 best=42 T=0.15
+t=330 steps=141417 evals=1131337 cost=42 best=42 T=0.84
+t=360 steps=156281 evals=1250249 cost=42 best=42 T=0.30
+t=390 steps=172335 evals=1378681 cost=42 best=42 T=0.15
+t=420 steps=190488 evals=1523905 cost=42 best=42 T=0.15
+t=450 steps=208594 evals=1668753 cost=42 best=42 T=0.15
+t=480 steps=226712 evals=1813697 cost=42 best=42 T=0.84
+t=510 steps=244665 evals=1957321 cost=42 best=42 T=0.30
+t=540 steps=260950 evals=2087601 cost=42 best=42 T=0.15
+t=570 steps=278238 evals=2225905 cost=42 best=42 T=0.15
+t=600 steps=293406 evals=2347249 cost=42 best=42 T=0.15
+t=630 steps=308540 evals=2468321 cost=42 best=42 T=0.84
+t=660 steps=324311 evals=2594489 cost=42 best=42 T=0.30
+t=690 steps=341242 evals=2729937 cost=42 best=42 T=0.15
+t=720 steps=356925 evals=2855401 cost=42 best=42 T=0.15
+t=750 steps=372284 evals=2978273 cost=58 best=42 T=0.15
+t=780 steps=389457 evals=3115657 cost=42 best=42 T=0.84
+t=810 steps=406157 evals=3249257 cost=42 best=42 T=0.30
+t=840 steps=423154 evals=3385233 cost=42 best=42 T=0.15
+t=870 steps=441252 evals=3530017 cost=42 best=42 T=0.15
+RESULT d=9 D=8 group=psl 25 poly x^2+2 x Z_37 N=288600 best=42 evals=3666137 time=900.0 orbit k=4 m=2 f=1 fix=11

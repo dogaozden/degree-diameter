@@ -1,0 +1,35 @@
+group psl 17 x Z_113, N=276624, identity 15368, H order 17, rows 16272, threads 1, setup 0.03s
+wide rows: HW order 226, rows 1224, setup 0.05s
+alpha: conj by mat(5,8,10,6) (index 1438), z -> 15 z on Z_113
+ORBIT k=4 m=2 f=1: |Fix(alpha)| = 7 (+e); mu = 47.76, mu/k = 11.94, fixed-point misses ~ 0.92
+start cost=823
+t=30 steps=17725 evals=141801 cost=48 best=48 T=0.53
+t=60 steps=35162 evals=281297 cost=48 best=48 T=0.19
+t=90 steps=46928 evals=375425 cost=48 best=48 T=0.15
+t=120 steps=59687 evals=477497 cost=48 best=48 T=0.15
+t=150 steps=74095 evals=592761 cost=48 best=48 T=0.15
+t=180 steps=86982 evals=695857 cost=48 best=48 T=1.31
+t=210 steps=98475 evals=787801 cost=48 best=48 T=0.46
+t=240 steps=110357 evals=882857 cost=48 best=48 T=0.16
+t=270 steps=123998 evals=991985 cost=48 best=48 T=0.15
+t=300 steps=142826 evals=1142609 cost=48 best=48 T=0.15
+t=330 steps=159053 evals=1272425 cost=48 best=48 T=1.31
+t=360 steps=176448 evals=1411585 cost=48 best=48 T=0.46
+t=390 steps=195290 evals=1562321 cost=48 best=48 T=0.16
+t=420 steps=215074 evals=1720593 cost=48 best=48 T=0.15
+t=450 steps=235361 evals=1882889 cost=49 best=48 T=0.15
+t=480 steps=255369 evals=2042953 cost=64 best=48 T=1.31
+t=510 steps=275217 evals=2201737 cost=64 best=48 T=0.46
+t=540 steps=293590 evals=2348721 cost=64 best=48 T=0.16
+t=570 steps=313497 evals=2507977 cost=64 best=48 T=0.15
+t=600 steps=330509 evals=2644073 cost=64 best=48 T=0.15
+t=630 steps=347349 evals=2778793 cost=52 best=48 T=1.31
+t=660 steps=364638 evals=2917105 cost=49 best=48 T=0.46
+t=690 steps=383607 evals=3068857 cost=49 best=48 T=0.16
+t=720 steps=400952 evals=3207617 cost=49 best=48 T=0.15
+t=750 steps=418115 evals=3344921 cost=49 best=48 T=0.15
+t=780 steps=435018 evals=3480145 cost=48 best=48 T=1.31
+t=810 steps=453357 evals=3626857 cost=48 best=48 T=0.46
+t=840 steps=472555 evals=3780441 cost=48 best=48 T=0.16
+t=870 steps=491857 evals=3934857 cost=48 best=48 T=0.15
+RESULT d=9 D=8 group=psl 17 x Z_113 N=276624 best=48 evals=4084801 time=900.0 orbit k=4 m=2 f=1 fix=7
