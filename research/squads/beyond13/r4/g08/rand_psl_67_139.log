@@ -1,0 +1,44 @@
+group psl 67 x Z_139, N=20898372 (2N=41796744), rows 2244 x 9313 bits (doubled row 312 words), memory 0.01 GB, threads 1
+alpha: conj by mat(0,66,1,66), z -> 42 z on Z_139 (fixed z: 1); ORBIT k=3 m=2 f=0; W=3.05176e+08 lambda=14.603 mu=9.51
+setup 0.1s
+RANDORB sample 0 cost 42 (0.7s) zq 1.000
+RANDORB sample 1 cost 441 (1.0s) zq 1.003
+RANDORB sample 2 cost 80 (1.5s) zq 1.066
+RANDORB sample 3 cost 99 (2.0s) zq 1.066
+RANDORB sample 4 cost 48 (2.4s) zq 1.000
+RANDORB sample 5 cost 30 (2.9s) zq 1.000
+RANDORB sample 6 cost 90 (3.4s) zq 1.004
+RANDORB sample 7 cost 63 (3.9s) zq 1.000
+RANDORB sample 8 cost 25352040 (7.6s) zq 1.066
+RANDORB sample 9 cost 434 (7.8s) zq 1.000
+RANDORB sample 10 cost 300 (8.2s) zq 18.662
+RANDORB sample 11 cost 33150 (8.4s) zq 4075.434
+RANDORB sample 12 cost 3198 (8.7s) zq 404.464
+RANDORB sample 13 cost 37860 (9.0s) zq 4075.434
+RANDORB sample 14 cost 589 (9.4s) zq 1.008
+RANDORB sample 15 cost 39 (9.6s) zq 1.118
+RANDORB sample 16 cost 46 (9.9s) zq 1.000
+RANDORB sample 17 cost 51 (10.3s) zq 1.834
+RANDORB sample 18 cost 75 (10.6s) zq 1.415
+RANDORB sample 19 cost 45 (11.0s) zq 1.000
+RANDORB sample 20 cost 552 (11.3s) zq 1.112
+RANDORB sample 21 cost 80 (11.6s) zq 1.003
+RANDORB sample 22 cost 54 (12.0s) zq 1.003
+RANDORB sample 23 cost 62 (12.3s) zq 1.412
+RANDORB sample 24 cost 60 (12.6s) zq 1.834
+RANDORB sample 25 cost 204 (12.9s) zq 1.112
+RANDORB sample 26 cost 56 (13.1s) zq 1.004
+RANDORB sample 27 cost 5807 (13.5s) zq 1.003
+RANDORB sample 28 cost 55 (13.8s) zq 1.118
+RANDORB sample 29 cost 1621 (14.2s) zq 18.662
+RANDORB sample 30 cost 113 (14.5s) zq 1.000
+RANDORB sample 31 cost 24 (14.8s) zq 1.118
+RANDORB sample 32 cost 25217295 (18.4s) zq 1.004
+RANDORB sample 33 cost 646 (18.7s) zq 1.004
+RANDORB sample 34 cost 81 (19.0s) zq 1.833
+RANDORB sample 35 cost 501 (19.3s) zq 1.833
+RANDORB sample 36 cost 14102874 (21.5s) zq 819760.503
+RANDORB sample 37 cost 27 (21.8s) zq 1.008
+RANDORB sample 38 cost 39 (22.1s) zq 1.000
+RANDORB sample 39 cost 4570 (22.5s) zq 1.000
+RANDORB d=6 D=13 group=psl 67 x Z_139 N=20898372 samples=40 min=24 p10=39 median=90 mean=1619086.02 mu=9.51 time=22.5

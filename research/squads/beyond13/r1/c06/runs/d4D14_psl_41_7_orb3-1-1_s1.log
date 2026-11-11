@@ -1,0 +1,11 @@
+group psl 41 x Z_7, N=241080 (2N=482160), rows 840 x 287 bits (doubled row 32 words), memory 0.00 GB, threads 1
+alpha: conj by mat(0,40,1,40), z -> 2 z on Z_7 (fixed z: 1); ORBIT k=3 m=1 f=1; W=2.39148e+06 lambda=9.920 mu=11.86
+setup 0.0s
+start cost=82 (0.0s per eval)
+t=0 step=1 evals=9 slot=0 cand=30 cost=30 best=30 T=1.26
+t=0 step=2 evals=17 slot=0 cand=10 cost=10 best=10 T=1.06
+t=0 step=3 evals=25 slot=0 cand=10 cost=10 best=10 T=0.89
+t=0 step=4 evals=33 slot=0 cand=0 cost=0 best=0 T=0.75
+RESULT d=4 D=14 group=psl 41 x Z_7 N=241080 vertices=482160 best=0 evals=33 steps=4 time=0.1 orbit k=3 m=1 f=1 mu=11.86
+re-evaluation of the best S: cost 0
+wrote /home/user/degree-diameter/research/squads/beyond13/r1/c06/runs/d4D14_psl_41_7_orb3-1-1_s1.out

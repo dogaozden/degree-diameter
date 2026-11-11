@@ -1,0 +1,10 @@
+checker: metacheck
+command: nice -n 3 python3 metacheck.py sols/d4D14_meta_2731_91_i04.txt
+start: 2026-11-01T14:07:20Z
+sha256 453f9b3e451f1cda3397e11563a64bca4f5416c4f2c5b6390eb301fbdb6b011a  metacheck.py
+sha256 cad2fc2124a5ac6bb22ea282034e3194f1ceda4c53bd5d6f96ed86f49f968910  sols/d4D14_meta_2731_91_i04.txt
+from (e,A): reached A 248521/248521, B 248521/248521 within 14; level sizes [1, 4, 12, 36, 108, 324, 972, 2916, 8684, 25185, 67002, 139094, 163636, 80962, 8106]
+from (e,B): reached A 248521/248521, B 248521/248521 within 14; level sizes [1, 4, 12, 36, 108, 324, 972, 2916, 8684, 25185, 67006, 139094, 163556, 80962, 8182]
+VALID d=4 D=14 group=meta 2731 91 2400 x Z_1 N=248521 vertices=497042 (6s)
+exit: 0
+end: 2026-11-01T14:07:27Z (7 s)

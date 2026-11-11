@@ -1,0 +1,9 @@
+checker: apsp
+command: ./bin/apsp graphs/d4D11_n28418_meta1093_13.edges 4 11
+start: 2026-11-01T14:07:39Z
+sha256 67868fe99e872fa1a10f3e5c1da1afff87989679e8b6e4f2a06d6e9b7265b265  ./bin/apsp
+sha256 dd2dbb3b79f477c12df055ae217fb91258cd5f6ab77670c49c25639009ecd9a6  graphs/d4D11_n28418_meta1093_13.edges
+n=28418 edges=56836 degree min=4 max=4 bipartite=yes diameter=11
+RESULT VALID d=4 D=11 n=28418
+exit: 0
+end: 2026-11-01T14:07:41Z (2 s)

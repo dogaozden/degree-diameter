@@ -1,0 +1,7 @@
+group prod meta 79 13 64 meta 59 29 4 x Z_1, N=1757197, identity 0, H order 59, rows 29783, threads 1, setup 1.93s
+start cost=32
+t=30 steps=49 evals=393 cost=10 best=10 T=0.52
+t=60 steps=102 evals=817 cost=8 best=8 T=0.18
+RESULT d=5 D=13 group=prod meta 79 13 64 meta 59 29 4 x Z_1 N=1757197 best=0 evals=849 time=62.9
+full diameter check: OK
+wrote runs/prodC_79_59.sol

@@ -1,0 +1,10 @@
+checker: metacheck
+command: python3 metacheck.py sols/d4D10_meta_157_39_dir.txt
+start: 2026-11-01T15:42:30Z
+sha256 453f9b3e451f1cda3397e11563a64bca4f5416c4f2c5b6390eb301fbdb6b011a  metacheck.py
+sha256 7cbbe6da7fe7015bbfd6b11a2a4e004eb5beb4997c01569736989cf06d6877c1  sols/d4D10_meta_157_39_dir.txt
+from (e,A): reached A 6123/6123, B 6123/6123 within 10; level sizes [1, 4, 12, 36, 108, 324, 940, 2438, 4172, 3321, 890]
+from (e,B): reached A 6123/6123, B 6123/6123 within 10; level sizes [1, 4, 12, 36, 108, 324, 940, 2438, 4210, 3321, 852]
+VALID d=4 D=10 group=meta 157 39 9 x Z_1 N=6123 vertices=12246 (0s)
+exit: 0
+end: 2026-11-01T15:42:31Z (1 s)

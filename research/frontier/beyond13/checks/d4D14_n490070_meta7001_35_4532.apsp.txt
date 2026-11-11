@@ -1,0 +1,9 @@
+checker: apsp
+command: ./bin/apsp graphs/d4D14_n490070_meta7001_35_4532.edges 4 14
+start: 2026-11-01T13:12:43Z
+sha256 67868fe99e872fa1a10f3e5c1da1afff87989679e8b6e4f2a06d6e9b7265b265  ./bin/apsp
+sha256 0e35bbeebd4f6882942ab5ab8edc4b4ed22afa4094420466ae8026f96ee2fecb  graphs/d4D14_n490070_meta7001_35_4532.edges
+n=490070 edges=980140 degree min=4 max=4 bipartite=yes diameter=14
+RESULT VALID d=4 D=14 n=490070
+exit: 0
+end: 2026-11-01T13:25:43Z (780 s)

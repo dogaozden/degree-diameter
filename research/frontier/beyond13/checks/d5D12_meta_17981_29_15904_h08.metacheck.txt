@@ -1,0 +1,10 @@
+checker: metacheck
+command: python3 metacheck.py sols/d5D12_meta_17981_29_15904_h08.txt
+start: 2026-11-01T13:36:01Z
+sha256 453f9b3e451f1cda3397e11563a64bca4f5416c4f2c5b6390eb301fbdb6b011a  metacheck.py
+sha256 5307c64970367fd9cd0d0cf4c2871a5931483ed7651c0fa0b92758ddec77febe  sols/d5D12_meta_17981_29_15904_h08.txt
+from (e,A): reached A 521449/521449, B 521449/521449 within 12; level sizes [1, 5, 20, 80, 320, 1280, 5114, 20175, 75870, 236112, 406734, 263797, 33390]
+from (e,B): reached A 521449/521449, B 521449/521449 within 12; level sizes [1, 5, 20, 80, 320, 1280, 5114, 20175, 75874, 236112, 406820, 263797, 33300]
+VALID d=5 D=12 group=meta 17981 29 15904 x Z_1 N=521449 vertices=1042898 (5s)
+exit: 0
+end: 2026-11-01T13:36:07Z (6 s)

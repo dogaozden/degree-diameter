@@ -1,0 +1,8 @@
+selftest sl 31: |M| = 29760, det-1 matrices 29760
+selftest group multiplication: associativity, identity, inverse on 20000 random triples ok
+file out/test414_1.txt
+header: 4 14 sl 31 n 7 N 208320
+group sl 31 x Z_7, |G| = 208320 = N, vertices 2N = 416640; 4 distinct generators
+from (e,A): reached A 208320/208320, B 208320/208320 within 14; ecc 14; level sizes [1, 4, 12, 36, 108, 324, 972, 2896, 8534, 24345, 62964, 123138, 131623, 57577, 4106]  (1s)
+from (e,B): reached A 208320/208320, B 208320/208320 within 14; ecc 14; level sizes [1, 4, 12, 36, 108, 324, 972, 2896, 8536, 24345, 62994, 123138, 131153, 57577, 4544]  (2s)
+VALID d=4 D=14 group=sl 31 x Z_7 N=208320 vertices=416640 (distinct generators, 4-regular simple; every vertex within 14 of both (e,A) and (e,B); ecc 14; 2s)

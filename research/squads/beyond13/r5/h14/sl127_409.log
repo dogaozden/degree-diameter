@@ -1,0 +1,12 @@
+group sl 127 x Z_409, N=837736704 (2N=1675473408), rows 16128 x 51943 bits (doubled row 1648 words), memory 0.52 GB, threads 1
+alpha: conj by mat(0,126,1,126), z -> 53 z on Z_409 (fixed z: 1); ORBIT k=3 m=2 f=1; W=1.56728e+10 lambda=18.709 mu=6.28
+setup 0.0s
+start cost=16 (17.9s per eval)
+t=107 step=1 evals=9 slot=1 cand=9 cost=9 best=9 T=1.26
+RESULT d=7 D=14 group=sl 127 x Z_409 N=837736704 vertices=1675473408 best=9 evals=9 steps=1 time=106.8 orbit k=3 m=2 f=1 mu=6.28
+group sl 127 x Z_409, N=837736704 (2N=1675473408), rows 16128 x 51943 bits (doubled row 1648 words), memory 0.52 GB, threads 1
+alpha: conj by mat(0,126,1,126), z -> 53 z on Z_409 (fixed z: 1); ORBIT k=3 m=2 f=1; W=1.56728e+10 lambda=18.709 mu=6.28
+setup 0.1s
+start cost=9 (13.9s per eval)
+t=33 step=1 evals=3 slot=0 cand=12 cost=12 best=9 T=1.26
+RESULT d=7 D=14 group=sl 127 x Z_409 N=837736704 vertices=1675473408 best=9 evals=3 steps=1 time=33.0 orbit k=3 m=2 f=1 mu=6.28

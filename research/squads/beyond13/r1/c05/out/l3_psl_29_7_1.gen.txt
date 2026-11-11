@@ -1,0 +1,8 @@
+selftest psl 29: |M| = 12180, det-1 matrices 24360
+selftest group multiplication: associativity, identity, inverse on 20000 random triples ok
+file out/l3_psl_29_7_1.txt
+header: 4 13 psl 29 n 7 N 85260
+group psl 29 x Z_7, |G| = 85260 = N, vertices 2N = 170520; 4 distinct generators
+from (e,A): reached A 85260/85260, B 85260/85260 within 13; ecc 13; level sizes [1, 4, 12, 36, 108, 324, 972, 2892, 8187, 21355, 45091, 56477, 30889, 4172]  (1s)
+from (e,B): reached A 85260/85260, B 85260/85260 within 13; ecc 13; level sizes [1, 4, 12, 36, 108, 324, 972, 2892, 8184, 21355, 45164, 56477, 30819, 4172]  (2s)
+VALID d=4 D=13 group=psl 29 x Z_7 N=85260 vertices=170520 (distinct generators, 4-regular simple; every vertex within 13 of both (e,A) and (e,B); ecc 13; 2s)

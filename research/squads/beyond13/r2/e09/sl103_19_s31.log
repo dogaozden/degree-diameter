@@ -1,0 +1,12 @@
+group sl 103 x Z_19, N=20759856 (2N=41519712), rows 10608 x 1957 bits (doubled row 80 words), memory 0.02 GB, threads 1
+alpha: conj by mat(0,102,1,102), z -> 7 z on Z_19 (fixed z: 1); ORBIT k=3 m=2 f=0; W=3.05176e+08 lambda=14.700 mu=8.57
+setup 0.0s
+start cost=4 (0.7s per eval)
+t=7 step=1 evals=17 slot=0 cand=16 cost=4 best=4 T=1.26
+t=13 step=2 evals=33 slot=1 cand=20 cost=4 best=4 T=1.06
+t=19 step=3 evals=49 slot=0 cand=14 cost=4 best=4 T=0.89
+t=29 step=4 evals=65 slot=1 cand=8 cost=4 best=4 T=0.75
+t=44 step=5 evals=81 slot=1 cand=0 cost=0 best=0 T=0.63
+RESULT d=6 D=13 group=sl 103 x Z_19 N=20759856 vertices=41519712 best=0 evals=81 steps=5 time=44.5 orbit k=3 m=2 f=0 mu=8.57
+re-evaluation of the best S: cost 0
+wrote sl103_19_s31.out

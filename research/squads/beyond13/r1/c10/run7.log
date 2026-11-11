@@ -1,0 +1,8 @@
+group psl 101 x Z_163, N=83961300 (2N=167922600), rows 5100 x 16463 bits (doubled row 536 words), memory 0.05 GB, threads 1
+alpha: conj by mat(0,100,1,100), z -> 58 z on Z_163 (fixed z: 1); ORBIT k=3 m=2 f=0; W=1.52588e+09 lambda=18.174 mu=1.07
+setup 0.0s
+start cost=123 (1.1s per eval)
+t=5 step=1 evals=9 slot=1 cand=0 cost=0 best=0 T=1.26
+RESULT d=6 D=14 group=psl 101 x Z_163 N=83961300 vertices=167922600 best=0 evals=9 steps=1 time=5.2 orbit k=3 m=2 f=0 mu=1.07
+re-evaluation of the best S: cost 0
+wrote /home/user/degree-diameter/research/squads/beyond13/r1/c10/psl101_163.sol

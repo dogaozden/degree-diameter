@@ -1,0 +1,7 @@
+group prod meta 29 7 7 meta 67 11 9 x Z_1, N=149611, identity 0, H order 29, rows 5159, threads 1, setup 0.22s
+start cost=62
+t=30 steps=301 evals=2409 cost=4 best=4 T=0.53
+t=60 steps=663 evals=5305 cost=4 best=4 T=0.19
+RESULT d=5 D=11 group=prod meta 29 7 7 meta 67 11 9 x Z_1 N=149611 best=0 evals=8169 time=88.4
+full diameter check: OK
+wrote runs2/B2.sol

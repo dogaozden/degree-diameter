@@ -1,0 +1,8 @@
+selftest psl 29: |M| = 12180, det-1 matrices 24360
+selftest group multiplication: associativity, identity, inverse on 20000 random triples ok
+file d4D14_psl_29_19_orb3-1-1_s1.out
+header: 4 14 psl 29 n 19 N 231420
+group psl 29 x Z_19, |G| = 231420 = N, vertices 2N = 462840; 4 distinct generators
+from (e,A): reached A 231420/231420, B 231420/231420 within 14; ecc 14; level sizes [1, 4, 12, 36, 108, 324, 972, 2916, 8700, 25108, 65558, 133160, 150143, 69872, 5926]  (1s)
+from (e,B): reached A 231420/231420, B 231420/231420 within 14; ecc 14; level sizes [1, 4, 12, 36, 108, 324, 972, 2916, 8700, 25108, 65617, 133160, 149985, 69872, 6025]  (3s)
+VALID d=4 D=14 group=psl 29 x Z_19 N=231420 vertices=462840 (distinct generators, 4-regular simple; every vertex within 14 of both (e,A) and (e,B); ecc 14; 3s)

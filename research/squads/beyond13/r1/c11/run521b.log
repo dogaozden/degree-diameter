@@ -1,0 +1,9 @@
+group sl 521 x Z_1, N=141420240 (2N=282840480), rows 271440 x 521 bits (doubled row 40 words), memory 0.23 GB, threads 1
+alpha: conj by mat(0,520,1,520), z -> 0 z on Z_1 (fixed z: 1); ORBIT k=3 m=2 f=1; W=2.61214e+09 lambda=18.471 mu=1.35
+setup 0.0s
+start cost=8 (13.6s per eval)
+t=48 step=1 evals=5 slot=1 cand=2 cost=2 best=2 T=1.26
+t=68 step=2 evals=9 slot=0 cand=0 cost=0 best=0 T=1.06
+RESULT d=7 D=13 group=sl 521 x Z_1 N=141420240 vertices=282840480 best=0 evals=9 steps=2 time=67.9 orbit k=3 m=2 f=1 mu=1.35
+re-evaluation of the best S: cost 0
+wrote /home/user/degree-diameter/research/squads/beyond13/r1/c11/s521b.sol

@@ -1,0 +1,12 @@
+== random S (10 samples)
+group sl 37 x Z_397, N=20094552, identity 528804, H order 38, rows 528804, threads 1, setup 12.79s
+wide rows: HW order 74, rows 271548, setup 23.97s
+RANDSAMPLE d=6 D=13 group=sl 37 x Z_397 N=20094552 samples=10 min=202 p1=202 p10=214 median=254
+== ORBIT 3 2 0 (10 symmetric S)
+group sl 37 x Z_397, N=20094552, identity 528804, H order 38, rows 528804, threads 1, setup 10.66s
+wide rows: HW order 74, rows 271548, setup 21.67s
+alpha: conj by mat(18,23,6,18) (index 25462), z -> 34 z on Z_397
+ORBIT k=3 m=2 f=0: |Fix(alpha)| = 35 (+e); mu = 5.10, mu/k = 1.70, fixed-point misses ~ 0.46
+RANDORB d=6 D=13 group=sl 37 x Z_397 N=20094552 k=3 m=2 f=0 fix=35 samples=10 min=198 p1=198 p10=306 median=1266 mean=880401.40 var=2747297298708.8 mu=5.10 time=22.3
+RANDORB hist (cost/k): 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 10
+DONE

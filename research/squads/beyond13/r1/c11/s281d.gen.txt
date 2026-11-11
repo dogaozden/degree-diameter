@@ -1,0 +1,8 @@
+selftest sl 281: |M| = 22187760, index round trip over all elements ok
+selftest group multiplication: associativity, identity, inverse on 20000 random triples ok
+file /home/user/degree-diameter/research/squads/beyond13/r1/c11/s281d.sol
+header: 7 13 sl 281 n 7 N 155314320
+group sl 281 x Z_7, |G| = 155314320 = N, vertices 2N = 310628640; 7 distinct generators
+from (e,A): reached A 155314320/155314320, B 155314320/155314320 within 13; ecc 13; level sizes [1, 7, 42, 252, 1512, 9072, 54396, 325950, 1943778, 11274238, 55808124, 134134882, 97506467, 9569919]  (204s)
+from (e,B): reached A 155314320/155314320, B 155314320/155314320 within 13; ecc 13; level sizes [1, 7, 42, 252, 1512, 9072, 54396, 325950, 1943774, 11274238, 55807676, 134134882, 97506919, 9569919]  (458s)
+VALID d=7 D=13 group=sl 281 x Z_7 N=155314320 vertices=310628640 (distinct generators, 7-regular simple; every vertex within 13 of both (e,A) and (e,B); ecc 13; 458s)

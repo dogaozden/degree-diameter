@@ -1,0 +1,8 @@
+selftest psl 101: |M| = 515100, index round trip over all elements ok
+selftest group multiplication: associativity, identity, inverse on 20000 random triples ok
+file /home/user/degree-diameter/research/squads/beyond13/r1/c10/psl101_163.sol
+header: 6 14 psl 101 n 163 N 83961300
+group psl 101 x Z_163, |G| = 83961300 = N, vertices 2N = 167922600; 6 distinct generators
+from (e,A): reached A 83961300/83961300, B 83961300/83961300 within 14; ecc 14; level sizes [1, 6, 30, 150, 750, 3750, 18744, 93627, 466764, 2302390, 10804225, 40516596, 70151680, 41044781, 2519106]  (77s)
+from (e,B): reached A 83961300/83961300, B 83961300/83961300 within 14; ecc 14; level sizes [1, 6, 30, 150, 750, 3750, 18744, 93627, 466758, 2302390, 10804523, 40516596, 70152173, 41044781, 2518321]  (160s)
+VALID d=6 D=14 group=psl 101 x Z_163 N=83961300 vertices=167922600 (distinct generators, 6-regular simple; every vertex within 14 of both (e,A) and (e,B); ecc 14; 160s)

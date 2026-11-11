@@ -1,0 +1,8 @@
+selftest psl 43: |M| = 39732, det-1 matrices 79464
+selftest group multiplication: associativity, identity, inverse on 20000 random triples ok
+file ./sol_psl_43_149.txt
+header: 5 14 psl 43 n 149 N 5920068
+group psl 43 x Z_149, |G| = 5920068 = N, vertices 2N = 11840136; 5 distinct generators
+from (e,A): reached A 5920068/5920068, B 5920068/5920068 within 14; ecc 14; level sizes [1, 5, 20, 80, 320, 1280, 5114, 20376, 80726, 313479, 1135289, 3207195, 4532730, 2377653, 165868]  (6s)
+from (e,B): reached A 5920068/5920068, B 5920068/5920068 within 14; ecc 14; level sizes [1, 5, 20, 80, 320, 1280, 5114, 20376, 80726, 313479, 1135257, 3207195, 4534227, 2377653, 164403]  (13s)
+VALID d=5 D=14 group=psl 43 x Z_149 N=5920068 vertices=11840136 (distinct generators, 5-regular simple; every vertex within 14 of both (e,A) and (e,B); ecc 14; 13s)

@@ -1,0 +1,12 @@
+group psl 29 x Z_19, N=231420 (2N=462840), rows 420 x 551 bits (doubled row 40 words), memory 0.00 GB, threads 1
+alpha: conj by mat(0,28,1,28), z -> 7 z on Z_19 (fixed z: 1); ORBIT k=3 m=1 f=1; W=2.39148e+06 lambda=10.334 mu=7.52
+setup 0.0s
+start cost=8845 (0.0s per eval)
+t=0 step=1 evals=9 slot=0 cand=6 cost=6 best=6 T=1.26
+t=0 step=2 evals=17 slot=0 cand=33 cost=6 best=6 T=1.06
+t=0 step=3 evals=25 slot=0 cand=35 cost=6 best=6 T=0.89
+t=0 step=4 evals=33 slot=0 cand=19 cost=6 best=6 T=0.75
+t=0 step=5 evals=41 slot=0 cand=0 cost=0 best=0 T=0.63
+RESULT d=4 D=14 group=psl 29 x Z_19 N=231420 vertices=462840 best=0 evals=41 steps=5 time=0.2 orbit k=3 m=1 f=1 mu=7.52
+re-evaluation of the best S: cost 0
+wrote /home/user/degree-diameter/research/squads/beyond13/r1/c06/runs/d4D14_psl_29_19_orb3-1-1_s1.out

@@ -1,0 +1,13 @@
+group prod meta 7 3 4 meta 12041 7 6302 x Z_1, N=1770027, identity 0, H order 21, rows 84287, threads 1, setup 2.94s
+wide rows: no cyclic subgroup of order >= 64 found (best 21); using haar_gen3's evaluation
+start cost=2246
+t=31 steps=20 evals=161 cost=72 best=72 T=0.51
+t=62 steps=38 evals=305 cost=72 best=72 T=0.18
+t=92 steps=54 evals=433 cost=72 best=72 T=0.15
+t=122 steps=73 evals=585 cost=72 best=72 T=0.15
+t=153 steps=91 evals=729 cost=72 best=72 T=0.15
+t=183 steps=109 evals=873 cost=72 best=72 T=0.15
+t=214 steps=127 evals=1017 cost=72 best=72 T=0.15
+t=245 steps=145 evals=1161 cost=72 best=72 T=0.15
+t=275 steps=162 evals=1297 cost=68 best=68 T=0.15
+RESULT d=5 D=13 group=prod meta 7 3 4 meta 12041 7 6302 x Z_1 N=1770027 best=68 evals=1425 time=301.4

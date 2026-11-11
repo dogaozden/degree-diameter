@@ -1,0 +1,30 @@
+=== sl 37 31
+# sl p=37 n=31 N=1569096 vertices=3138192 W=22369621 lambda=14.2564 CMAX=40 samples_used=92
+class                 |T|    entries  per_sample  B-side%  rate/elt/sample    fit c
+central_z              60        768        8.35     50.0        1.391e-01     7.23
+-I                      1         26        0.28     50.0        2.826e-01    11.28
+involution              0          0        0.00      0.0              nan      nan
+order4               1406         16        0.17     37.5        1.237e-04     1.58
+alpha-fixed            32         82        0.89     46.3        2.785e-02     3.98
+other             1567597        942       10.24     46.5        6.532e-06     1.19
+# total hole entries: 1834  enrichment = (entries share)/(|T|/N):
+=== psl 79 7
+# psl p=79 n=7 N=1725360 vertices=3450720 W=22369621 lambda=12.9652 CMAX=40 samples_used=95
+class                 |T|    entries  per_sample  B-side%  rate/elt/sample    fit c
+central_z               6         12        0.13     50.0        2.105e-02     3.36
+-I                      0          0        0.00      0.0              nan      nan
+involution           3081       1038       10.93     51.4        3.546e-03     2.30
+order4                  0          0        0.00      0.0              nan      nan
+alpha-fixed            38        108        1.14     48.1        2.992e-02     3.69
+other             1722235       1374       14.46     46.7        8.398e-06     1.11
+# total hole entries: 2532  enrichment = (entries share)/(|T|/N):
+=== psl 47 31
+# psl p=47 n=31 N=1608528 vertices=3217056 W=22369621 lambda=13.9069 CMAX=40 samples_used=99
+class                 |T|    entries  per_sample  B-side%  rate/elt/sample    fit c
+central_z              30        372        3.76     50.0        1.253e-01     6.69
+-I                      0          0        0.00      0.0              nan      nan
+involution           1081        462        4.67     48.1        4.317e-03     2.55
+order4                  0          0        0.00      0.0              nan      nan
+alpha-fixed            22        138        1.39     44.9        6.336e-02     5.04
+other             1607395       1218       12.30     45.3        7.654e-06     1.18
+# total hole entries: 2190  enrichment = (entries share)/(|T|/N):

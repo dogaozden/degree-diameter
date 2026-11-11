@@ -1,0 +1,8 @@
+selftest psl 229: |M| = 6004380, index round trip over all elements ok
+selftest group multiplication: associativity, identity, inverse on 20000 random triples ok
+file ./sol_psl_229_1.txt
+header: 5 14 psl 229 n 1 N 6004380
+group psl 229 x Z_1, |G| = 6004380 = N, vertices 2N = 12008760; 5 distinct generators
+from (e,A): reached A 6004380/6004380, B 6004380/6004380 within 14; ecc 14; level sizes [1, 5, 20, 80, 320, 1280, 5111, 20380, 80820, 315158, 1147218, 3265913, 4611548, 2401564, 159342]  (9s)
+from (e,B): reached A 6004380/6004380, B 6004380/6004380 within 14; ecc 14; level sizes [1, 5, 20, 80, 320, 1280, 5111, 20380, 80821, 315158, 1147327, 3265913, 4611680, 2401564, 159100]  (16s)
+VALID d=5 D=14 group=psl 229 x Z_1 N=6004380 vertices=12008760 (distinct generators, 5-regular simple; every vertex within 14 of both (e,A) and (e,B); ecc 14; 16s)

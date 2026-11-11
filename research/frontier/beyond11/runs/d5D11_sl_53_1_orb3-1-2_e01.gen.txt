@@ -1,0 +1,15 @@
+checker: haarcheck_gen
+command: ./bin/haarcheck_gen runs/d5D11_sl_53_1_orb3-1-2_e01.out
+start: 2026-11-01T07:19:42Z
+sha256 e52e247f4a92a474f49ff0d5d438660ba0b557bbdfd4a8e24311ca881ff3f17c  ./bin/haarcheck_gen
+sha256 4914d7f9b4bdadfd9608394177a96420473279a7095008b6db91c8e7a6926b62  runs/d5D11_sl_53_1_orb3-1-2_e01.out
+selftest sl 53: |M| = 148824, det-1 matrices 148824
+selftest group multiplication: associativity, identity, inverse on 20000 random triples ok
+file runs/d5D11_sl_53_1_orb3-1-2_e01.out
+header: 5 11 sl 53 n 1 N 148824
+group sl 53 x Z_1, |G| = 148824 = N, vertices 2N = 297648; 5 distinct generators
+from (e,A): reached A 148824/148824, B 148824/148824 within 11; ecc 11; level sizes [1, 5, 20, 80, 320, 1280, 5084, 18957, 59993, 112795, 83406, 15707]  (0s)
+from (e,B): reached A 148824/148824, B 148824/148824 within 11; ecc 11; level sizes [1, 5, 20, 80, 320, 1280, 5084, 18957, 59993, 112795, 83406, 15707]  (0s)
+VALID d=5 D=11 group=sl 53 x Z_1 N=148824 vertices=297648 (distinct generators, 5-regular simple; every vertex within 11 of both (e,A) and (e,B); ecc 11; 0s)
+exit: 0
+end: 2026-11-01T07:19:42Z (0 s)

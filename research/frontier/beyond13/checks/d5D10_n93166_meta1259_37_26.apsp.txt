@@ -1,0 +1,9 @@
+checker: apsp
+command: ./bin/apsp graphs/d5D10_n93166_meta1259_37_26.edges 5 10
+start: 2026-11-01T14:52:10Z
+sha256 67868fe99e872fa1a10f3e5c1da1afff87989679e8b6e4f2a06d6e9b7265b265  ./bin/apsp
+sha256 3515a5d52b4a979e06564ac3a8f5919c8fc6043a2fd44b90b20f3ae0a4996cc0  graphs/d5D10_n93166_meta1259_37_26.edges
+n=93166 edges=232915 degree min=5 max=5 bipartite=yes diameter=10
+RESULT VALID d=5 D=10 n=93166
+exit: 0
+end: 2026-11-01T14:52:17Z (7 s)

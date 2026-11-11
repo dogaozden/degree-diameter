@@ -1,0 +1,9 @@
+group psl 23 x Z_13, N=78936 (2N=157872), rows 264 x 299 bits (doubled row 32 words), memory 0.00 GB, threads 1
+alpha: conj by mat(0,22,1,22), z -> 3 z on Z_13 (fixed z: 1); ORBIT k=3 m=1 f=1; W=797161 lambda=10.099 mu=3.25
+setup 0.0s
+start cost=18 (0.0s per eval)
+t=0 step=1 evals=9 slot=0 cand=2 cost=2 best=2 T=1.26
+t=0 step=2 evals=17 slot=0 cand=0 cost=0 best=0 T=1.06
+RESULT d=4 D=13 group=psl 23 x Z_13 N=78936 vertices=157872 best=0 evals=17 steps=2 time=0.1 orbit k=3 m=1 f=1 mu=3.25
+re-evaluation of the best S: cost 0
+wrote sols/psl_23_13.sol

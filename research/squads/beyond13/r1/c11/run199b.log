@@ -1,0 +1,9 @@
+group sl 199 x Z_19, N=149727600 (2N=299455200), rows 39600 x 3781 bits (doubled row 144 words), memory 0.11 GB, threads 1
+alpha: conj by mat(0,198,1,198), z -> 7 z on Z_19 (fixed z: 1); ORBIT k=3 m=2 f=1; W=2.61214e+09 lambda=17.446 mu=3.97
+setup 0.0s
+start cost=4 (4.1s per eval)
+t=15 step=1 evals=5 slot=0 cand=6 cost=6 best=4 T=1.26
+t=24 step=2 evals=9 slot=0 cand=0 cost=0 best=0 T=1.06
+RESULT d=7 D=13 group=sl 199 x Z_19 N=149727600 vertices=299455200 best=0 evals=9 steps=2 time=23.7 orbit k=3 m=2 f=1 mu=3.97
+re-evaluation of the best S: cost 0
+wrote /home/user/degree-diameter/research/squads/beyond13/r1/c11/s199b.sol

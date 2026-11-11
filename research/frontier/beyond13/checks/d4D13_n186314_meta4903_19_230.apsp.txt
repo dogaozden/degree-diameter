@@ -1,0 +1,9 @@
+checker: apsp
+command: ./bin/apsp graphs/d4D13_n186314_meta4903_19_230.edges 4 13
+start: 2026-11-01T11:56:40Z
+sha256 67868fe99e872fa1a10f3e5c1da1afff87989679e8b6e4f2a06d6e9b7265b265  ./bin/apsp
+sha256 95ec2dc4296106acd2a1e4a170ee648f78cc7f0fda09f713d7c508830b6c1c28  graphs/d4D13_n186314_meta4903_19_230.edges
+n=186314 edges=372628 degree min=4 max=4 bipartite=yes diameter=13
+RESULT VALID d=4 D=13 n=186314
+exit: 0
+end: 2026-11-01T11:57:37Z (57 s)

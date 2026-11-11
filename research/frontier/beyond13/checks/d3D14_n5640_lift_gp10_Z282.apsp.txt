@@ -1,0 +1,9 @@
+checker: apsp
+command: ./bin/apsp graphs/d3D14_n5640_lift_gp10_Z282.edges 3 14
+start: 2026-11-01T13:46:44Z
+sha256 67868fe99e872fa1a10f3e5c1da1afff87989679e8b6e4f2a06d6e9b7265b265  ./bin/apsp
+sha256 5328575c1809850f47ee0e6f6224966e2c64109b0be38ac79191afb2b390768e  graphs/d3D14_n5640_lift_gp10_Z282.edges
+n=5640 edges=8460 degree min=3 max=3 bipartite=yes diameter=14
+RESULT VALID d=3 D=14 n=5640
+exit: 0
+end: 2026-11-01T13:46:44Z (0 s)

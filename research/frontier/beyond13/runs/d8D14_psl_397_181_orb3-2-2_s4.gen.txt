@@ -1,0 +1,15 @@
+checker: haarcheck_gen
+command: ./bin/haarcheck_gen runs/d8D14_psl_397_181_orb3-2-2_s4.out
+start: 2026-11-01T14:02:29Z
+sha256 e52e247f4a92a474f49ff0d5d438660ba0b557bbdfd4a8e24311ca881ff3f17c  ./bin/haarcheck_gen
+sha256 5df43bd1f08c280876474a8c8e8579292d41f6f6823623ac3fa7ac39c204f92e  runs/d8D14_psl_397_181_orb3-2-2_s4.out
+selftest psl 397: |M| = 31285188, index round trip over all elements ok
+selftest group multiplication: associativity, identity, inverse on 20000 random triples ok
+file runs/d8D14_psl_397_181_orb3-2-2_s4.out
+header: 8 14 psl 397 n 181 N 5662619028
+group psl 397 x Z_181, |G| = 5662619028 = N, vertices 2N = 11325238056; 8 distinct generators
+from (e,A): reached A 5662619028/5662619028, B 5662619028/5662619028 within 14; ecc 14; level sizes [1, 8, 56, 392, 2744, 19208, 134426, 940683, 6579122, 45866350, 312856750, 1843984364, 5012726525, 3771808023, 330319404]  (1688s)
+from (e,B): reached A 5662619028/5662619028, B 5662619028/5662619028 within 14; ecc 14; level sizes [1, 8, 56, 392, 2744, 19208, 134428, 940683, 6579240, 45866350, 312862565, 1843984364, 5012771255, 3771808023, 330268739]  (3053s)
+VALID d=8 D=14 group=psl 397 x Z_181 N=5662619028 vertices=11325238056 (distinct generators, 8-regular simple; every vertex within 14 of both (e,A) and (e,B); ecc 14; 3053s)
+exit: 0
+end: 2026-11-01T14:53:23Z (3054 s)
