@@ -1,0 +1,72 @@
+group psl 17 x Z_109, N=266832, identity 14824, H order 17, rows 15696, threads 1, setup 0.02s
+wide rows: HW order 218, rows 1224, setup 0.03s
+alpha: conj by mat(2,8,6,16) (index 567), z -> 45 z on Z_109
+ORBIT k=3 m=2 f=0: |Fix(alpha)| = 8 (+e); mu = 28.35, mu/k = 9.45, fixed-point misses ~ 0.43
+start cost=8192
+t=30 steps=19854 evals=158833 cost=3 best=3 T=0.53
+t=60 steps=39005 evals=312041 cost=4 best=3 T=0.19
+t=90 steps=59720 evals=477761 cost=4 best=3 T=0.15
+t=120 steps=80084 evals=640673 cost=4 best=3 T=0.15
+t=150 steps=99473 evals=795785 cost=4 best=3 T=0.15
+t=180 steps=119587 evals=956697 cost=3 best=3 T=0.56
+t=210 steps=139187 evals=1113497 cost=3 best=3 T=0.20
+t=240 steps=158378 evals=1267025 cost=1 best=1 T=0.15
+t=270 steps=175968 evals=1407745 cost=1 best=1 T=0.15
+t=300 steps=193818 evals=1550545 cost=1 best=1 T=0.15
+t=330 steps=214007 evals=1712057 cost=1 best=1 T=0.15
+t=360 steps=234128 evals=1873025 cost=1 best=1 T=0.15
+t=390 steps=252888 evals=2023105 cost=7 best=1 T=0.98
+t=420 steps=272910 evals=2183281 cost=3 best=1 T=0.35
+t=450 steps=292088 evals=2336705 cost=3 best=1 T=0.15
+t=480 steps=311332 evals=2490657 cost=3 best=1 T=0.15
+t=510 steps=331424 evals=2651393 cost=1 best=1 T=0.15
+t=540 steps=351778 evals=2814225 cost=6 best=1 T=0.98
+t=570 steps=368338 evals=2946705 cost=1 best=1 T=0.35
+t=600 steps=388433 evals=3107465 cost=1 best=1 T=0.15
+t=630 steps=406424 evals=3251393 cost=1 best=1 T=0.15
+t=660 steps=425261 evals=3402089 cost=1 best=1 T=0.15
+t=690 steps=443196 evals=3545569 cost=3 best=1 T=0.98
+t=720 steps=463556 evals=3708449 cost=1 best=1 T=0.35
+t=750 steps=482646 evals=3861169 cost=1 best=1 T=0.15
+t=780 steps=500236 evals=4001889 cost=1 best=1 T=0.15
+t=810 steps=518443 evals=4147545 cost=1 best=1 T=0.15
+t=840 steps=538348 evals=4306785 cost=7 best=1 T=0.98
+t=870 steps=558001 evals=4464009 cost=3 best=1 T=0.35
+t=900 steps=576572 evals=4612577 cost=3 best=1 T=0.15
+t=930 steps=595692 evals=4765537 cost=3 best=1 T=0.15
+t=960 steps=614977 evals=4919817 cost=3 best=1 T=0.15
+t=990 steps=633262 evals=5066097 cost=12 best=1 T=0.98
+t=1020 steps=652070 evals=5216561 cost=3 best=1 T=0.35
+t=1050 steps=671332 evals=5370657 cost=3 best=1 T=0.15
+t=1080 steps=690234 evals=5521873 cost=6 best=1 T=0.15
+t=1110 steps=711438 evals=5691505 cost=1 best=1 T=0.15
+t=1140 steps=730719 evals=5845753 cost=6 best=1 T=0.98
+t=1170 steps=749753 evals=5998025 cost=6 best=1 T=0.35
+t=1200 steps=769852 evals=6158817 cost=3 best=1 T=0.15
+t=1230 steps=787251 evals=6298009 cost=3 best=1 T=0.15
+t=1260 steps=805068 evals=6440545 cost=3 best=1 T=0.15
+t=1290 steps=823554 evals=6588433 cost=3 best=1 T=0.98
+t=1320 steps=842641 evals=6741129 cost=6 best=1 T=0.35
+t=1350 steps=863258 evals=6906065 cost=3 best=1 T=0.15
+t=1380 steps=881808 evals=7054465 cost=3 best=1 T=0.15
+t=1410 steps=900861 evals=7206889 cost=3 best=1 T=0.15
+t=1440 steps=919680 evals=7357441 cost=18 best=1 T=0.98
+t=1470 steps=937876 evals=7503009 cost=9 best=1 T=0.35
+t=1500 steps=957467 evals=7659737 cost=3 best=1 T=0.15
+t=1530 steps=977251 evals=7818009 cost=3 best=1 T=0.15
+t=1560 steps=995357 evals=7962857 cost=3 best=1 T=0.15
+t=1590 steps=1014769 evals=8118153 cost=6 best=1 T=0.98
+t=1620 steps=1034153 evals=8273225 cost=3 best=1 T=0.35
+t=1650 steps=1052317 evals=8418537 cost=3 best=1 T=0.15
+t=1680 steps=1072175 evals=8577401 cost=3 best=1 T=0.15
+t=1710 steps=1091670 evals=8733361 cost=3 best=1 T=0.15
+t=1740 steps=1111467 evals=8891737 cost=7 best=1 T=0.98
+t=1770 steps=1128757 evals=9030057 cost=3 best=1 T=0.35
+t=1800 steps=1146540 evals=9172321 cost=3 best=1 T=0.15
+t=1830 steps=1164878 evals=9319025 cost=3 best=1 T=0.15
+t=1860 steps=1184067 evals=9472537 cost=3 best=1 T=0.15
+t=1890 steps=1200864 evals=9606913 cost=24 best=1 T=0.98
+t=1920 steps=1218690 evals=9749521 cost=3 best=1 T=0.35
+t=1950 steps=1238176 evals=9905409 cost=3 best=1 T=0.15
+t=1980 steps=1257416 evals=10059329 cost=3 best=1 T=0.15
+RESULT d=6 D=10 group=psl 17 x Z_109 N=266832 best=1 evals=10166553 time=2000.0 orbit k=3 m=2 f=0 fix=8

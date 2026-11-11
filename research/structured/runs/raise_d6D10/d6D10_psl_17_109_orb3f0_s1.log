@@ -1,0 +1,45 @@
+group psl 17 x Z_109, N=266832, identity 14824, H order 17, rows 15696, threads 1, setup 0.02s
+wide rows: HW order 218, rows 1224, setup 0.03s
+alpha: conj by mat(2,8,6,16) (index 567), z -> 45 z on Z_109
+ORBIT k=3 m=2 f=0: |Fix(alpha)| = 8 (+e); mu = 28.35, mu/k = 9.45, fixed-point misses ~ 0.43
+start cost=70
+t=30 steps=15823 evals=126585 cost=3 best=3 T=0.53
+t=60 steps=31590 evals=252721 cost=3 best=3 T=0.19
+t=90 steps=50017 evals=400137 cost=3 best=3 T=0.15
+t=120 steps=68291 evals=546329 cost=3 best=3 T=0.15
+t=150 steps=87455 evals=699641 cost=3 best=3 T=0.15
+t=180 steps=105971 evals=847769 cost=3 best=3 T=0.60
+t=210 steps=125438 evals=1003505 cost=3 best=3 T=0.21
+t=240 steps=145659 evals=1165273 cost=3 best=3 T=0.15
+t=270 steps=165946 evals=1327569 cost=3 best=3 T=0.15
+t=300 steps=186042 evals=1488337 cost=3 best=3 T=0.15
+t=330 steps=206646 evals=1653169 cost=3 best=3 T=0.60
+t=360 steps=227398 evals=1819185 cost=3 best=3 T=0.21
+t=390 steps=248767 evals=1990137 cost=3 best=3 T=0.15
+t=420 steps=268673 evals=2149385 cost=3 best=3 T=0.15
+t=450 steps=288878 evals=2311025 cost=3 best=3 T=0.15
+t=480 steps=307749 evals=2461993 cost=3 best=3 T=0.60
+t=510 steps=328250 evals=2626001 cost=3 best=3 T=0.21
+t=540 steps=347228 evals=2777825 cost=3 best=3 T=0.15
+t=570 steps=366675 evals=2933401 cost=3 best=3 T=0.15
+t=600 steps=386506 evals=3092049 cost=3 best=3 T=0.15
+t=630 steps=405942 evals=3247537 cost=3 best=3 T=0.60
+t=660 steps=424703 evals=3397625 cost=3 best=3 T=0.21
+t=690 steps=443210 evals=3545681 cost=3 best=3 T=0.15
+t=720 steps=460322 evals=3682577 cost=3 best=3 T=0.15
+t=750 steps=478286 evals=3826289 cost=3 best=3 T=0.15
+t=780 steps=497721 evals=3981769 cost=3 best=3 T=0.60
+t=810 steps=517880 evals=4143041 cost=3 best=3 T=0.21
+t=840 steps=538769 evals=4310153 cost=3 best=3 T=0.15
+t=870 steps=559238 evals=4473905 cost=3 best=3 T=0.15
+t=900 steps=579442 evals=4635537 cost=3 best=3 T=0.15
+t=930 steps=599699 evals=4797593 cost=3 best=3 T=0.60
+t=960 steps=620167 evals=4961337 cost=7 best=3 T=0.21
+t=990 steps=639978 evals=5119825 cost=6 best=3 T=0.15
+t=1020 steps=659438 evals=5275505 cost=3 best=3 T=0.15
+t=1050 steps=678700 evals=5429601 cost=3 best=3 T=0.15
+t=1080 steps=699193 evals=5593545 cost=6 best=3 T=0.60
+t=1110 steps=718256 evals=5746049 cost=10 best=3 T=0.21
+t=1140 steps=737494 evals=5899953 cost=3 best=3 T=0.15
+t=1170 steps=757509 evals=6060073 cost=3 best=3 T=0.15
+RESULT d=6 D=10 group=psl 17 x Z_109 N=266832 best=3 evals=6237889 time=1200.0 orbit k=3 m=2 f=0 fix=8
