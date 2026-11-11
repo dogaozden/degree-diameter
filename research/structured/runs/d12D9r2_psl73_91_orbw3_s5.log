@@ -1,0 +1,125 @@
+group psl 73 x Z_91, N=17696952, identity 239148, H order 63, rows 280904, threads 1, setup 0.34s
+wide rows: HW order 252, rows 70226, setup 0.88s
+alpha: conj by mat(16,3,55,56) (index 82837), z -> 9 z on Z_91
+ORBIT k=3 m=4 f=0: |Fix(alpha)| = 35 (+e); mu = 28.93, mu/k = 9.64, fixed-point misses ~ 0.85
+ORBW=3: an uncovered fixed element weighs 3; start energy 138
+start cost=138
+t=30 steps=117 evals=937 cost=18 best=18 T=0.53 energy=18 bestE=18
+t=60 steps=240 evals=1921 cost=18 best=18 T=0.19 energy=18 bestE=18
+t=90 steps=356 evals=2849 cost=18 best=18 T=0.15 energy=18 bestE=18
+t=121 steps=477 evals=3817 cost=18 best=18 T=0.15 energy=18 bestE=18
+t=151 steps=601 evals=4809 cost=18 best=18 T=0.15 energy=18 bestE=18
+t=181 steps=718 evals=5745 cost=18 best=18 T=0.54 energy=18 bestE=18
+t=211 steps=848 evals=6785 cost=18 best=18 T=0.19 energy=18 bestE=18
+t=241 steps=970 evals=7761 cost=18 best=18 T=0.15 energy=18 bestE=18
+t=271 steps=1093 evals=8745 cost=18 best=18 T=0.15 energy=18 bestE=18
+t=301 steps=1215 evals=9721 cost=18 best=18 T=1.50 energy=18 bestE=18
+t=332 steps=1338 evals=10705 cost=18 best=18 T=0.53 energy=18 bestE=18
+t=362 steps=1455 evals=11641 cost=18 best=15 T=0.19 energy=18 bestE=15
+t=392 steps=1574 evals=12593 cost=18 best=15 T=0.15 energy=18 bestE=15
+t=422 steps=1695 evals=13561 cost=18 best=15 T=0.15 energy=18 bestE=15
+t=452 steps=1813 evals=14505 cost=18 best=15 T=0.15 energy=18 bestE=15
+t=482 steps=1932 evals=15457 cost=18 best=15 T=0.15 energy=18 bestE=15
+t=512 steps=2052 evals=16417 cost=15 best=15 T=0.73 energy=15 bestE=15
+t=542 steps=2180 evals=17441 cost=15 best=15 T=0.25 energy=15 bestE=15
+t=572 steps=2299 evals=18393 cost=15 best=15 T=0.15 energy=15 bestE=15
+t=603 steps=2422 evals=19377 cost=15 best=15 T=0.15 energy=15 bestE=15
+t=633 steps=2544 evals=20353 cost=15 best=15 T=0.15 energy=15 bestE=15
+t=663 steps=2668 evals=21345 cost=15 best=15 T=0.72 energy=15 bestE=15
+t=693 steps=2797 evals=22377 cost=15 best=15 T=0.25 energy=15 bestE=15
+t=723 steps=2922 evals=23377 cost=15 best=15 T=0.15 energy=15 bestE=15
+t=753 steps=3043 evals=24345 cost=15 best=15 T=0.15 energy=15 bestE=15
+t=783 steps=3168 evals=25345 cost=15 best=15 T=0.15 energy=15 bestE=15
+t=813 steps=3292 evals=26337 cost=15 best=15 T=0.71 energy=15 bestE=15
+t=844 steps=3417 evals=27337 cost=12 best=12 T=0.25 energy=12 bestE=12
+t=874 steps=3548 evals=28385 cost=9 best=9 T=0.15 energy=9 bestE=9
+t=904 steps=3672 evals=29377 cost=9 best=9 T=0.15 energy=9 bestE=9
+t=934 steps=3801 evals=30409 cost=9 best=9 T=0.15 energy=9 bestE=9
+t=964 steps=3928 evals=31425 cost=9 best=9 T=0.15 energy=9 bestE=9
+t=994 steps=4051 evals=32409 cost=9 best=9 T=0.15 energy=9 bestE=9
+t=1024 steps=4179 evals=33433 cost=9 best=9 T=0.77 energy=9 bestE=9
+t=1054 steps=4312 evals=34497 cost=9 best=9 T=0.27 energy=9 bestE=9
+t=1084 steps=4445 evals=35561 cost=9 best=9 T=0.15 energy=9 bestE=9
+t=1115 steps=4574 evals=36593 cost=9 best=9 T=0.15 energy=9 bestE=9
+t=1145 steps=4700 evals=37601 cost=9 best=9 T=0.15 energy=9 bestE=9
+t=1175 steps=4824 evals=38593 cost=9 best=9 T=0.77 energy=9 bestE=9
+t=1205 steps=4951 evals=39609 cost=9 best=9 T=0.27 energy=9 bestE=9
+t=1235 steps=5079 evals=40633 cost=9 best=9 T=0.15 energy=9 bestE=9
+t=1265 steps=5201 evals=41609 cost=9 best=9 T=0.15 energy=9 bestE=9
+t=1295 steps=5327 evals=42617 cost=9 best=9 T=0.15 energy=9 bestE=9
+t=1325 steps=5450 evals=43601 cost=9 best=9 T=0.75 energy=9 bestE=9
+t=1356 steps=5580 evals=44641 cost=9 best=9 T=0.26 energy=9 bestE=9
+t=1386 steps=5704 evals=45633 cost=9 best=9 T=0.15 energy=9 bestE=9
+t=1416 steps=5829 evals=46633 cost=9 best=9 T=0.15 energy=9 bestE=9
+t=1446 steps=5946 evals=47569 cost=9 best=9 T=0.15 energy=9 bestE=9
+t=1476 steps=6066 evals=48529 cost=12 best=9 T=0.73 energy=12 bestE=9
+t=1506 steps=6184 evals=49473 cost=12 best=9 T=0.26 energy=12 bestE=9
+t=1537 steps=6305 evals=50441 cost=12 best=9 T=0.15 energy=12 bestE=9
+t=1567 steps=6423 evals=51385 cost=12 best=9 T=0.15 energy=12 bestE=9
+t=1597 steps=6552 evals=52417 cost=12 best=9 T=0.15 energy=12 bestE=9
+t=1627 steps=6674 evals=53393 cost=9 best=9 T=0.71 energy=9 bestE=9
+t=1658 steps=6804 evals=54433 cost=9 best=9 T=0.25 energy=9 bestE=9
+t=1688 steps=6930 evals=55441 cost=9 best=9 T=0.15 energy=9 bestE=9
+t=1718 steps=7056 evals=56449 cost=9 best=9 T=0.15 energy=9 bestE=9
+t=1748 steps=7175 evals=57401 cost=9 best=9 T=0.15 energy=9 bestE=9
+t=1778 steps=7305 evals=58441 cost=15 best=9 T=0.70 energy=15 bestE=9
+t=1808 steps=7435 evals=59481 cost=6 best=6 T=0.24 energy=6 bestE=6
+t=1838 steps=7562 evals=60497 cost=6 best=6 T=0.15 energy=6 bestE=6
+t=1869 steps=7684 evals=61473 cost=6 best=6 T=0.15 energy=6 bestE=6
+t=1899 steps=7807 evals=62457 cost=6 best=6 T=0.15 energy=6 bestE=6
+t=1929 steps=7930 evals=63441 cost=6 best=6 T=0.15 energy=6 bestE=6
+t=1959 steps=8058 evals=64465 cost=6 best=6 T=0.65 energy=6 bestE=6
+t=1989 steps=8183 evals=65465 cost=6 best=6 T=0.23 energy=6 bestE=6
+t=2019 steps=8306 evals=66449 cost=6 best=6 T=0.15 energy=6 bestE=6
+t=2049 steps=8431 evals=67449 cost=6 best=6 T=0.15 energy=6 bestE=6
+t=2079 steps=8555 evals=68441 cost=6 best=6 T=0.15 energy=6 bestE=6
+t=2109 steps=8674 evals=69393 cost=6 best=6 T=0.64 energy=6 bestE=6
+t=2140 steps=8790 evals=70321 cost=6 best=6 T=0.22 energy=6 bestE=6
+t=2170 steps=8906 evals=71249 cost=6 best=6 T=0.15 energy=6 bestE=6
+t=2200 steps=9035 evals=72281 cost=6 best=6 T=0.15 energy=6 bestE=6
+t=2230 steps=9156 evals=73249 cost=6 best=6 T=0.15 energy=6 bestE=6
+t=2260 steps=9285 evals=74281 cost=6 best=6 T=0.63 energy=6 bestE=6
+t=2290 steps=9408 evals=75265 cost=6 best=6 T=0.22 energy=6 bestE=6
+t=2320 steps=9528 evals=76225 cost=6 best=6 T=0.15 energy=6 bestE=6
+t=2350 steps=9654 evals=77233 cost=6 best=6 T=0.15 energy=6 bestE=6
+t=2380 steps=9785 evals=78281 cost=6 best=6 T=0.15 energy=6 bestE=6
+t=2410 steps=9912 evals=79297 cost=6 best=6 T=0.63 energy=6 bestE=6
+t=2440 steps=10034 evals=80273 cost=6 best=6 T=0.22 energy=6 bestE=6
+t=2470 steps=10156 evals=81249 cost=6 best=6 T=0.15 energy=6 bestE=6
+t=2501 steps=10281 evals=82249 cost=6 best=6 T=0.15 energy=6 bestE=6
+t=2531 steps=10407 evals=83257 cost=6 best=6 T=0.15 energy=6 bestE=6
+t=2561 steps=10536 evals=84289 cost=6 best=6 T=0.62 energy=6 bestE=6
+t=2591 steps=10666 evals=85329 cost=6 best=6 T=0.22 energy=6 bestE=6
+t=2621 steps=10792 evals=86337 cost=6 best=6 T=0.15 energy=6 bestE=6
+t=2651 steps=10916 evals=87329 cost=6 best=6 T=0.15 energy=6 bestE=6
+t=2682 steps=11038 evals=88305 cost=6 best=6 T=0.15 energy=6 bestE=6
+t=2712 steps=11161 evals=89289 cost=6 best=6 T=0.61 energy=6 bestE=6
+t=2742 steps=11288 evals=90305 cost=6 best=6 T=0.22 energy=6 bestE=6
+t=2772 steps=11408 evals=91265 cost=6 best=6 T=0.15 energy=6 bestE=6
+t=2802 steps=11533 evals=92265 cost=6 best=6 T=0.15 energy=6 bestE=6
+t=2832 steps=11650 evals=93201 cost=6 best=6 T=0.15 energy=6 bestE=6
+t=2862 steps=11767 evals=94137 cost=6 best=6 T=0.61 energy=6 bestE=6
+t=2892 steps=11884 evals=95073 cost=6 best=6 T=0.21 energy=6 bestE=6
+t=2923 steps=12002 evals=96017 cost=6 best=6 T=0.15 energy=6 bestE=6
+t=2953 steps=12120 evals=96961 cost=6 best=6 T=0.15 energy=6 bestE=6
+t=2983 steps=12235 evals=97881 cost=6 best=6 T=0.15 energy=6 bestE=6
+t=3013 steps=12357 evals=98857 cost=6 best=6 T=0.59 energy=6 bestE=6
+t=3043 steps=12481 evals=99849 cost=6 best=6 T=0.21 energy=6 bestE=6
+t=3073 steps=12602 evals=100817 cost=6 best=6 T=0.15 energy=6 bestE=6
+t=3103 steps=12724 evals=101793 cost=6 best=6 T=0.15 energy=6 bestE=6
+t=3133 steps=12847 evals=102777 cost=6 best=6 T=0.15 energy=6 bestE=6
+t=3164 steps=12971 evals=103769 cost=12 best=6 T=0.59 energy=12 bestE=6
+t=3194 steps=13096 evals=104769 cost=12 best=6 T=0.21 energy=12 bestE=6
+t=3224 steps=13223 evals=105785 cost=7 best=6 T=0.15 energy=9 bestE=6
+t=3254 steps=13345 evals=106761 cost=7 best=6 T=0.15 energy=9 bestE=6
+t=3284 steps=13465 evals=107721 cost=7 best=6 T=0.15 energy=9 bestE=6
+t=3314 steps=13587 evals=108697 cost=6 best=6 T=0.57 energy=6 bestE=6
+t=3345 steps=13715 evals=109721 cost=6 best=6 T=0.20 energy=6 bestE=6
+t=3375 steps=13836 evals=110689 cost=6 best=6 T=0.15 energy=6 bestE=6
+RESULT d=12 D=9 group=psl 73 x Z_91 N=17696952 best=0 evals=110761 time=3377.0 orbit k=3 m=4 f=0 fix=35
+full diameter check: OK
+full diameter check after normalising s_0 = e: OK
+wrote /tmp/claude-0/-home-user-degree-diameter/7164b4cc-d991-548c-801c-86b6071bbc04/scratchpad/sols/d12D9r2_psl73_91_orbw3_s5.txt
+EXIT 0
+--- checker verdict (round 2, independent, PSL checker):
+VALID d=12 D=9 group=psl 73 x Z_91 N=17696952 vertices=35393904 (distinct generators, 12-regular simple)

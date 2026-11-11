@@ -1,0 +1,40 @@
+group sl 47 x Z_169, N=17538144, identity 365378, H order 52, rows 337272, threads 1, setup 0.74s
+wide rows: HW order 208, rows 84318, setup 1.40s
+alpha: conj by mat(44,18,28,4) (index 98023), z -> 22 z on Z_169
+ORBIT k=3 m=4 f=0: |Fix(alpha)| = 47 (+e); mu = 25.41, mu/k = 8.47, fixed-point misses ~ 1.09
+ORBW=3: an uncovered fixed element weighs 3; start energy 78
+start cost=78
+t=30 steps=92 evals=737 cost=24 best=24 T=0.53 energy=24 bestE=24
+t=60 steps=185 evals=1481 cost=24 best=24 T=0.19 energy=24 bestE=24
+t=90 steps=275 evals=2201 cost=24 best=24 T=0.15 energy=24 bestE=24
+t=121 steps=370 evals=2961 cost=24 best=24 T=0.15 energy=24 bestE=24
+t=151 steps=463 evals=3705 cost=18 best=18 T=0.15 energy=18 bestE=18
+t=181 steps=549 evals=4393 cost=18 best=18 T=0.15 energy=18 bestE=18
+t=211 steps=635 evals=5081 cost=14 best=18 T=0.15 energy=18 bestE=18
+t=241 steps=723 evals=5785 cost=14 best=18 T=0.15 energy=18 bestE=18
+t=271 steps=814 evals=6513 cost=14 best=18 T=0.15 energy=18 bestE=18
+t=301 steps=906 evals=7249 cost=18 best=18 T=1.23 energy=18 bestE=18
+t=331 steps=997 evals=7977 cost=18 best=18 T=0.43 energy=18 bestE=18
+t=362 steps=1084 evals=8673 cost=18 best=18 T=0.15 energy=18 bestE=18
+t=392 steps=1171 evals=9369 cost=18 best=18 T=0.15 energy=18 bestE=18
+t=422 steps=1258 evals=10065 cost=18 best=18 T=0.15 energy=18 bestE=18
+t=452 steps=1344 evals=10753 cost=18 best=18 T=1.21 energy=18 bestE=18
+t=482 steps=1430 evals=11441 cost=6 best=6 T=0.43 energy=6 bestE=6
+t=512 steps=1516 evals=12129 cost=6 best=6 T=0.15 energy=6 bestE=6
+t=542 steps=1602 evals=12817 cost=6 best=6 T=0.15 energy=6 bestE=6
+t=572 steps=1688 evals=13505 cost=6 best=6 T=0.15 energy=6 bestE=6
+t=603 steps=1769 evals=14153 cost=6 best=6 T=0.15 energy=6 bestE=6
+t=633 steps=1852 evals=14817 cost=6 best=6 T=0.97 energy=6 bestE=6
+t=663 steps=1936 evals=15489 cost=6 best=6 T=0.34 energy=6 bestE=6
+t=693 steps=2018 evals=16145 cost=6 best=6 T=0.15 energy=6 bestE=6
+t=723 steps=2107 evals=16857 cost=6 best=6 T=0.15 energy=6 bestE=6
+t=753 steps=2198 evals=17585 cost=6 best=6 T=0.15 energy=6 bestE=6
+t=784 steps=2284 evals=18273 cost=6 best=6 T=0.96 energy=6 bestE=6
+RESULT d=12 D=9 group=sl 47 x Z_169 N=17538144 best=0 evals=18537 time=795.7 orbit k=3 m=4 f=0 fix=47
+full diameter check: OK
+full diameter check after normalising s_0 = e: OK
+wrote /tmp/claude-0/-home-user-degree-diameter/7164b4cc-d991-548c-801c-86b6071bbc04/scratchpad/sols/d12D9r2_sl47_169_orbw3_s6.txt
+EXIT 0
+--- checker verdicts (round 2, independent):
+VALID d=12 D=9 group=sl 47 x Z_169 N=17538144 vertices=35076288 (distinct generators, 12-regular simple)
+VALID d=12 D=9 vertices=35076288 eccA=9 eccB=9
