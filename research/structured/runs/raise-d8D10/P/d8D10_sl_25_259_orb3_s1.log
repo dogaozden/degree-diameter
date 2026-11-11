@@ -1,0 +1,47 @@
+group sl 25 poly x^2+2 x Z_259, N=4040400, identity 155400, H order 56, rows 72150, threads 1, setup 0.10s
+wide rows: HW order 222, rows 18200, setup 0.19s
+alpha: conj by mat(13,12,7,16) (index 8407), z -> 100 z on Z_259
+ORBIT k=3 m=2 f=2: |Fix(alpha)| = 23 (+e); mu = 35.15, mu/k = 11.72, fixed-point misses ~ 0.49
+start cost=63
+t=30 steps=1438 evals=11505 cost=30 best=30 T=0.53
+t=60 steps=2936 evals=23489 cost=30 best=30 T=0.19
+t=90 steps=4429 evals=35433 cost=30 best=30 T=0.15
+t=120 steps=5913 evals=47305 cost=27 best=27 T=0.15
+t=150 steps=7377 evals=59017 cost=27 best=27 T=0.15
+t=180 steps=8803 evals=70425 cost=27 best=27 T=0.15
+t=210 steps=10214 evals=81713 cost=27 best=27 T=0.15
+t=240 steps=11689 evals=93513 cost=27 best=27 T=0.15
+t=270 steps=13121 evals=104969 cost=27 best=27 T=0.70
+t=300 steps=14579 evals=116633 cost=27 best=27 T=0.25
+t=330 steps=16013 evals=128105 cost=27 best=27 T=0.15
+t=360 steps=17449 evals=139593 cost=18 best=18 T=0.15
+t=390 steps=18909 evals=151273 cost=18 best=18 T=0.15
+t=420 steps=20365 evals=162921 cost=18 best=18 T=0.15
+t=450 steps=21845 evals=174761 cost=18 best=18 T=0.15
+t=480 steps=23289 evals=186313 cost=18 best=18 T=0.15
+t=510 steps=24782 evals=198257 cost=18 best=18 T=0.79
+t=540 steps=26261 evals=210089 cost=18 best=18 T=0.28
+t=570 steps=27707 evals=221657 cost=18 best=18 T=0.15
+t=600 steps=29162 evals=233297 cost=18 best=18 T=0.15
+t=630 steps=30550 evals=244401 cost=18 best=18 T=0.15
+t=660 steps=32005 evals=256041 cost=18 best=18 T=0.79
+t=690 steps=33485 evals=267881 cost=18 best=18 T=0.28
+t=720 steps=34940 evals=279521 cost=18 best=18 T=0.15
+t=750 steps=36427 evals=291417 cost=18 best=18 T=0.15
+t=780 steps=37904 evals=303233 cost=18 best=18 T=0.15
+t=810 steps=39389 evals=315113 cost=18 best=18 T=0.79
+t=840 steps=40881 evals=327049 cost=18 best=18 T=0.28
+t=870 steps=42340 evals=338721 cost=18 best=18 T=0.15
+t=900 steps=43804 evals=350433 cost=18 best=18 T=0.15
+t=930 steps=45292 evals=362337 cost=18 best=18 T=0.15
+t=960 steps=46753 evals=374025 cost=18 best=18 T=0.79
+t=990 steps=48222 evals=385777 cost=18 best=18 T=0.28
+t=1020 steps=49704 evals=397633 cost=18 best=18 T=0.15
+t=1050 steps=51176 evals=409409 cost=18 best=18 T=0.15
+t=1080 steps=52684 evals=421473 cost=18 best=18 T=0.15
+t=1110 steps=54134 evals=433073 cost=18 best=18 T=0.79
+t=1140 steps=55590 evals=444721 cost=18 best=18 T=0.28
+t=1170 steps=57032 evals=456257 cost=18 best=18 T=0.15
+t=1200 steps=58514 evals=468113 cost=18 best=18 T=0.15
+t=1230 steps=59943 evals=479545 cost=18 best=18 T=0.15
+RESULT d=8 D=10 group=sl 25 poly x^2+2 x Z_259 N=4040400 best=18 evals=482473 time=1238.1 orbit k=3 m=2 f=2 fix=23

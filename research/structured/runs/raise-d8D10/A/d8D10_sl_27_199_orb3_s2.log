@@ -1,0 +1,18 @@
+group sl 27 poly x^3+2x+1 x Z_199, N=3911544, identity 139698, H order 28, rows 139698, threads 1, setup 0.11s
+wide rows: HW order 199, rows 19656, setup 0.20s
+alpha: conj by mat(10,15,2,19) (index 7670), z -> 92 z on Z_199
+ORBIT k=3 m=2 f=2: |Fix(alpha)| = 53 (+e); mu = 23.18, mu/k = 7.73, fixed-point misses ~ 0.98
+start cost=279
+t=30 steps=1169 evals=9353 cost=12 best=12 T=0.53
+t=60 steps=2381 evals=19049 cost=9 best=9 T=0.19
+t=90 steps=3578 evals=28625 cost=9 best=9 T=0.15
+t=120 steps=4778 evals=38225 cost=9 best=9 T=0.15
+t=150 steps=5976 evals=47809 cost=7 best=7 T=0.15
+t=180 steps=7184 evals=57473 cost=7 best=7 T=0.15
+t=210 steps=8400 evals=67201 cost=9 best=7 T=0.15
+t=240 steps=9603 evals=76825 cost=9 best=7 T=0.15
+t=270 steps=10809 evals=86473 cost=9 best=7 T=0.15
+t=300 steps=12037 evals=96297 cost=31 best=7 T=1.21
+t=330 steps=13255 evals=106041 cost=12 best=7 T=0.43
+t=360 steps=14386 evals=115089 cost=12 best=7 T=0.15
+RESULT d=8 D=10 group=sl 27 poly x^3+2x+1 x Z_199 N=3911544 best=7 evals=119713 time=374.8 orbit k=3 m=2 f=2 fix=53
