@@ -1,0 +1,13 @@
+group sl 97 x Z_4, N=3650304, identity 37248
+start cost=32
+t=32 steps=2 evals=17 cost=10 best=10 T=0.49
+t=63 steps=4 evals=33 cost=8 best=8 T=0.17
+t=94 steps=6 evals=49 cost=8 best=8 T=0.15
+t=126 steps=8 evals=65 cost=6 best=6 T=0.15
+t=156 steps=10 evals=81 cost=6 best=6 T=0.15
+t=187 steps=12 evals=97 cost=6 best=6 T=0.15
+t=218 steps=14 evals=113 cost=6 best=6 T=0.15
+t=248 steps=16 evals=129 cost=0 best=0 T=0.15
+RESULT d=10 D=9 group=sl 97 x Z_4 N=3650304 best=0 evals=129 time=252.5
+full diameter check: OK
+wrote sols/d10D9_sl_97_4_s1.txt

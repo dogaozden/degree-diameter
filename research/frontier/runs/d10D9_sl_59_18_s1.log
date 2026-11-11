@@ -1,0 +1,33 @@
+group sl 59 x Z_18, N=3695760, identity 61596
+start cost=32
+t=30 steps=2 evals=17 cost=8 best=8 T=0.53
+t=72 steps=5 evals=41 cost=8 best=8 T=0.15
+t=112 steps=8 evals=65 cost=8 best=8 T=0.15
+t=152 steps=11 evals=89 cost=8 best=8 T=0.15
+t=192 steps=14 evals=113 cost=8 best=8 T=0.15
+t=232 steps=17 evals=137 cost=8 best=8 T=0.15
+t=272 steps=20 evals=161 cost=8 best=8 T=0.15
+t=314 steps=23 evals=185 cost=8 best=8 T=0.15
+t=354 steps=26 evals=209 cost=8 best=8 T=0.15
+t=396 steps=29 evals=233 cost=6 best=6 T=0.15
+t=438 steps=32 evals=257 cost=6 best=6 T=0.15
+t=479 steps=35 evals=281 cost=6 best=6 T=0.15
+t=519 steps=38 evals=305 cost=6 best=6 T=0.15
+t=559 steps=41 evals=329 cost=6 best=6 T=0.15
+t=600 steps=44 evals=353 cost=6 best=6 T=0.15
+t=642 steps=47 evals=377 cost=6 best=6 T=0.15
+t=682 steps=50 evals=401 cost=6 best=6 T=0.15
+t=723 steps=53 evals=425 cost=6 best=6 T=0.15
+t=763 steps=56 evals=449 cost=6 best=6 T=0.15
+t=805 steps=59 evals=473 cost=4 best=4 T=0.15
+t=845 steps=62 evals=497 cost=4 best=4 T=0.15
+t=884 steps=65 evals=521 cost=4 best=4 T=0.15
+t=921 steps=68 evals=545 cost=4 best=4 T=0.15
+t=960 steps=71 evals=569 cost=4 best=4 T=0.15
+t=995 steps=74 evals=593 cost=4 best=4 T=0.15
+t=1031 steps=77 evals=617 cost=4 best=4 T=0.15
+t=1068 steps=80 evals=641 cost=4 best=4 T=0.15
+t=1105 steps=83 evals=665 cost=0 best=0 T=0.15
+RESULT d=10 D=9 group=sl 59 x Z_18 N=3695760 best=0 evals=665 time=1106.6
+full diameter check: OK
+wrote sols/d10D9_sl_59_18_s1.txt
