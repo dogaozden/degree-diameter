@@ -1,0 +1,9 @@
+$ apsp_mt work/q2_best.edges 5 8 2   (twist file work/q2_best.bin)
+n=1890 edges=4410 degree min=4 max=5 bipartite=yes diameter=9
+RESULT INVALID
+$ apsp_mt work/q3_best.edges 6 8 2   (twist file work/q3_best.bin)
+n=14560 edges=43680 degree min=6 max=6 bipartite=yes diameter=9
+RESULT INVALID
+$ apsp_mt work/q3_id.edges 6 8 2   (twist file work/q3_id.bin)
+n=14560 edges=43680 degree min=6 max=6 bipartite=yes diameter=9
+RESULT INVALID

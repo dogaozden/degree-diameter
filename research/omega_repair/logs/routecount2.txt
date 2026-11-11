@@ -1,0 +1,501 @@
+$ ./routecount2 sweep 3 9
+alpha=3 q=3: worst pattern a^1 b^2: m4=4 m2=48, uncovered per hub >= -432 open
+alpha=3 q=4: worst pattern a^1 b^2: m4=4 m2=48, uncovered per hub >= -512 open
+alpha=4 q=5: worst pattern a^2 b^2: m4=5 m2=89, uncovered per hub >= -1600 open
+alpha=4 q=6: worst pattern a^2 b^2: m4=5 m2=89, uncovered per hub >= -612 open
+alpha=5 q=7: worst pattern a^2 b^3: m4=6 m2=134, uncovered per hub >= -1764 open
+alpha=5 q=8: worst pattern a^2 b^3: m4=6 m2=134, uncovered per hub >= 3712 IMPOSSIBLE
+alpha=6 q=9: worst pattern a^3 b^3: m4=7 m2=197, uncovered per hub >= 3726 IMPOSSIBLE
+alpha=6 q=10: worst pattern a^3 b^3: m4=7 m2=197, uncovered per hub >= 20300 IMPOSSIBLE
+alpha=7 q=11: worst pattern a^3 b^4: m4=8 m2=262, uncovered per hub >= 26862 IMPOSSIBLE
+alpha=7 q=12: worst pattern a^3 b^4: m4=8 m2=262, uncovered per hub >= 65952 IMPOSSIBLE
+alpha=8 q=13: worst pattern a^4 b^4: m4=9 m2=347, uncovered per hub >= 84162 IMPOSSIBLE
+alpha=8 q=14: worst pattern a^4 b^4: m4=9 m2=347, uncovered per hub >= 162484 IMPOSSIBLE
+alpha=9 q=15: worst pattern a^4 b^5: m4=10 m2=432, uncovered per hub >= 206550 IMPOSSIBLE
+alpha=9 q=16: worst pattern a^4 b^5: m4=10 m2=432, uncovered per hub >= 348160 IMPOSSIBLE
+$ ./routecount2 7 5 all
+q=7 blocks=bLbLbLbLbL (reading 2): best X=0 c'=0 m4..m0=6,0,104,0,0  uncovered per hub >= -294
+q=7 blocks=bPbLbLbLbL : best X=0 c'=0 m4..m0=6,0,104,0,0  uncovered per hub >= -294
+q=7 blocks=bPbPbLbLbL : best X=0 c'=0 m4..m0=6,0,104,0,0  uncovered per hub >= -294
+q=7 blocks=bPbPbPbLbL : best X=0 c'=0 m4..m0=6,0,104,0,0  uncovered per hub >= -294
+q=7 blocks=bPbPbPbPbL : best X=0 c'=0 m4..m0=6,0,104,0,0  uncovered per hub >= -294
+q=7 blocks=bPbPbPbPbP : best X=0 c'=0 m4..m0=6,0,104,0,0  uncovered per hub >= -294
+q=7 blocks=aLbLbLbLbL (reading 1): best X=5 c'=8 m4..m0=6,0,122,0,0  uncovered per hub >= -1176
+q=7 blocks=aLbPbLbLbL : best X=5 c'=8 m4..m0=6,0,122,0,0  uncovered per hub >= -1176
+q=7 blocks=aLbPbPbLbL : best X=5 c'=8 m4..m0=6,0,122,0,0  uncovered per hub >= -1176
+q=7 blocks=aLbPbPbPbL : best X=5 c'=8 m4..m0=6,0,122,0,0  uncovered per hub >= -1176
+q=7 blocks=aLbPbPbPbP : best X=5 c'=8 m4..m0=6,0,122,0,0  uncovered per hub >= -1176
+q=7 blocks=aLaLbLbLbL (reading 1): best X=5 c'=13 m4..m0=6,0,134,0,0  uncovered per hub >= -1764
+q=7 blocks=aLaLbPbLbL : best X=5 c'=13 m4..m0=6,0,134,0,0  uncovered per hub >= -1764
+q=7 blocks=aLaLbPbPbL : best X=5 c'=13 m4..m0=6,0,134,0,0  uncovered per hub >= -1764
+q=7 blocks=aLaLbPbPbP : best X=5 c'=13 m4..m0=6,0,134,0,0  uncovered per hub >= -1764
+q=7 blocks=aLaLaLbLbL (reading 1): best X=0 c'=3 m4..m0=6,0,134,0,0  uncovered per hub >= -1764
+q=7 blocks=aLaLaLbPbL : best X=0 c'=3 m4..m0=6,0,134,0,0  uncovered per hub >= -1764
+q=7 blocks=aLaLaLbPbP : best X=0 c'=3 m4..m0=6,0,134,0,0  uncovered per hub >= -1764
+q=7 blocks=aLaLaLaLbL (reading 1): best X=0 c'=3 m4..m0=6,0,122,0,0  uncovered per hub >= -1176
+q=7 blocks=aLaLaLaLbP : best X=0 c'=3 m4..m0=6,0,122,0,0  uncovered per hub >= -1176
+q=7 blocks=aLaLaLaLaL (reading 1): best X=0 c'=2 m4..m0=6,0,104,0,0  uncovered per hub >= -294
+q=7 blocks=aPbLbLbLbL (reading 2): best X=5 c'=8 m4..m0=6,0,122,0,0  uncovered per hub >= -1176
+q=7 blocks=aPbPbLbLbL : best X=5 c'=8 m4..m0=6,0,122,0,0  uncovered per hub >= -1176
+q=7 blocks=aPbPbPbLbL : best X=5 c'=8 m4..m0=6,0,122,0,0  uncovered per hub >= -1176
+q=7 blocks=aPbPbPbPbL : best X=5 c'=8 m4..m0=6,0,122,0,0  uncovered per hub >= -1176
+q=7 blocks=aPbPbPbPbP : best X=5 c'=8 m4..m0=6,0,122,0,0  uncovered per hub >= -1176
+q=7 blocks=aPaLbLbLbL : best X=5 c'=13 m4..m0=6,0,134,0,0  uncovered per hub >= -1764
+q=7 blocks=aPaLbPbLbL : best X=5 c'=13 m4..m0=6,0,134,0,0  uncovered per hub >= -1764
+q=7 blocks=aPaLbPbPbL : best X=5 c'=13 m4..m0=6,0,134,0,0  uncovered per hub >= -1764
+q=7 blocks=aPaLbPbPbP : best X=5 c'=13 m4..m0=6,0,134,0,0  uncovered per hub >= -1764
+q=7 blocks=aPaLaLbLbL : best X=0 c'=3 m4..m0=6,0,134,0,0  uncovered per hub >= -1764
+q=7 blocks=aPaLaLbPbL : best X=0 c'=3 m4..m0=6,0,134,0,0  uncovered per hub >= -1764
+q=7 blocks=aPaLaLbPbP : best X=0 c'=3 m4..m0=6,0,134,0,0  uncovered per hub >= -1764
+q=7 blocks=aPaLaLaLbL : best X=0 c'=3 m4..m0=6,0,122,0,0  uncovered per hub >= -1176
+q=7 blocks=aPaLaLaLbP : best X=0 c'=3 m4..m0=6,0,122,0,0  uncovered per hub >= -1176
+q=7 blocks=aPaLaLaLaL : best X=0 c'=2 m4..m0=6,0,104,0,0  uncovered per hub >= -294
+q=7 blocks=aPaPbLbLbL (reading 2): best X=5 c'=13 m4..m0=6,0,134,0,0  uncovered per hub >= -1764
+q=7 blocks=aPaPbPbLbL : best X=5 c'=13 m4..m0=6,0,134,0,0  uncovered per hub >= -1764
+q=7 blocks=aPaPbPbPbL : best X=5 c'=13 m4..m0=6,0,134,0,0  uncovered per hub >= -1764
+q=7 blocks=aPaPbPbPbP : best X=5 c'=13 m4..m0=6,0,134,0,0  uncovered per hub >= -1764
+q=7 blocks=aPaPaLbLbL : best X=0 c'=3 m4..m0=6,0,134,0,0  uncovered per hub >= -1764
+q=7 blocks=aPaPaLbPbL : best X=0 c'=3 m4..m0=6,0,134,0,0  uncovered per hub >= -1764
+q=7 blocks=aPaPaLbPbP : best X=0 c'=3 m4..m0=6,0,134,0,0  uncovered per hub >= -1764
+q=7 blocks=aPaPaLaLbL : best X=0 c'=3 m4..m0=6,0,122,0,0  uncovered per hub >= -1176
+q=7 blocks=aPaPaLaLbP : best X=0 c'=3 m4..m0=6,0,122,0,0  uncovered per hub >= -1176
+q=7 blocks=aPaPaLaLaL : best X=0 c'=2 m4..m0=6,0,104,0,0  uncovered per hub >= -294
+q=7 blocks=aPaPaPbLbL (reading 2): best X=0 c'=3 m4..m0=6,0,134,0,0  uncovered per hub >= -1764
+q=7 blocks=aPaPaPbPbL : best X=0 c'=3 m4..m0=6,0,134,0,0  uncovered per hub >= -1764
+q=7 blocks=aPaPaPbPbP : best X=0 c'=3 m4..m0=6,0,134,0,0  uncovered per hub >= -1764
+q=7 blocks=aPaPaPaLbL : best X=0 c'=3 m4..m0=6,0,122,0,0  uncovered per hub >= -1176
+q=7 blocks=aPaPaPaLbP : best X=0 c'=3 m4..m0=6,0,122,0,0  uncovered per hub >= -1176
+q=7 blocks=aPaPaPaLaL : best X=0 c'=2 m4..m0=6,0,104,0,0  uncovered per hub >= -294
+q=7 blocks=aPaPaPaPbL (reading 2): best X=0 c'=3 m4..m0=6,0,122,0,0  uncovered per hub >= -1176
+q=7 blocks=aPaPaPaPbP : best X=0 c'=3 m4..m0=6,0,122,0,0  uncovered per hub >= -1176
+q=7 blocks=aPaPaPaPaL : best X=0 c'=2 m4..m0=6,0,104,0,0  uncovered per hub >= -294
+q=7 blocks=aPaPaPaPaP (reading 2): best X=0 c'=2 m4..m0=6,0,104,0,0  uncovered per hub >= -294
+$ ./routecount2 8 5 all
+q=8 blocks=bLbLbLbLbL (reading 2): best X=0 c'=0 m4..m0=6,0,104,0,0  uncovered per hub >= 5632  IMPOSSIBLE
+q=8 blocks=bPbLbLbLbL : best X=0 c'=0 m4..m0=6,0,104,0,0  uncovered per hub >= 5632  IMPOSSIBLE
+q=8 blocks=bPbPbLbLbL : best X=0 c'=0 m4..m0=6,0,104,0,0  uncovered per hub >= 5632  IMPOSSIBLE
+q=8 blocks=bPbPbPbLbL : best X=0 c'=0 m4..m0=6,0,104,0,0  uncovered per hub >= 5632  IMPOSSIBLE
+q=8 blocks=bPbPbPbPbL : best X=0 c'=0 m4..m0=6,0,104,0,0  uncovered per hub >= 5632  IMPOSSIBLE
+q=8 blocks=bPbPbPbPbP : best X=0 c'=0 m4..m0=6,0,104,0,0  uncovered per hub >= 5632  IMPOSSIBLE
+q=8 blocks=aLbLbLbLbL (reading 1): best X=5 c'=8 m4..m0=6,0,122,0,0  uncovered per hub >= 4480  IMPOSSIBLE
+q=8 blocks=aLbPbLbLbL : best X=5 c'=8 m4..m0=6,0,122,0,0  uncovered per hub >= 4480  IMPOSSIBLE
+q=8 blocks=aLbPbPbLbL : best X=5 c'=8 m4..m0=6,0,122,0,0  uncovered per hub >= 4480  IMPOSSIBLE
+q=8 blocks=aLbPbPbPbL : best X=5 c'=8 m4..m0=6,0,122,0,0  uncovered per hub >= 4480  IMPOSSIBLE
+q=8 blocks=aLbPbPbPbP : best X=5 c'=8 m4..m0=6,0,122,0,0  uncovered per hub >= 4480  IMPOSSIBLE
+q=8 blocks=aLaLbLbLbL (reading 1): best X=5 c'=13 m4..m0=6,0,134,0,0  uncovered per hub >= 3712  IMPOSSIBLE
+q=8 blocks=aLaLbPbLbL : best X=5 c'=13 m4..m0=6,0,134,0,0  uncovered per hub >= 3712  IMPOSSIBLE
+q=8 blocks=aLaLbPbPbL : best X=5 c'=13 m4..m0=6,0,134,0,0  uncovered per hub >= 3712  IMPOSSIBLE
+q=8 blocks=aLaLbPbPbP : best X=5 c'=13 m4..m0=6,0,134,0,0  uncovered per hub >= 3712  IMPOSSIBLE
+q=8 blocks=aLaLaLbLbL (reading 1): best X=0 c'=3 m4..m0=6,0,134,0,0  uncovered per hub >= 3712  IMPOSSIBLE
+q=8 blocks=aLaLaLbPbL : best X=0 c'=3 m4..m0=6,0,134,0,0  uncovered per hub >= 3712  IMPOSSIBLE
+q=8 blocks=aLaLaLbPbP : best X=0 c'=3 m4..m0=6,0,134,0,0  uncovered per hub >= 3712  IMPOSSIBLE
+q=8 blocks=aLaLaLaLbL (reading 1): best X=0 c'=3 m4..m0=6,0,122,0,0  uncovered per hub >= 4480  IMPOSSIBLE
+q=8 blocks=aLaLaLaLbP : best X=0 c'=3 m4..m0=6,0,122,0,0  uncovered per hub >= 4480  IMPOSSIBLE
+q=8 blocks=aLaLaLaLaL (reading 1): best X=0 c'=2 m4..m0=6,0,104,0,0  uncovered per hub >= 5632  IMPOSSIBLE
+q=8 blocks=aPbLbLbLbL (reading 2): best X=5 c'=8 m4..m0=6,0,122,0,0  uncovered per hub >= 4480  IMPOSSIBLE
+q=8 blocks=aPbPbLbLbL : best X=5 c'=8 m4..m0=6,0,122,0,0  uncovered per hub >= 4480  IMPOSSIBLE
+q=8 blocks=aPbPbPbLbL : best X=5 c'=8 m4..m0=6,0,122,0,0  uncovered per hub >= 4480  IMPOSSIBLE
+q=8 blocks=aPbPbPbPbL : best X=5 c'=8 m4..m0=6,0,122,0,0  uncovered per hub >= 4480  IMPOSSIBLE
+q=8 blocks=aPbPbPbPbP : best X=5 c'=8 m4..m0=6,0,122,0,0  uncovered per hub >= 4480  IMPOSSIBLE
+q=8 blocks=aPaLbLbLbL : best X=5 c'=13 m4..m0=6,0,134,0,0  uncovered per hub >= 3712  IMPOSSIBLE
+q=8 blocks=aPaLbPbLbL : best X=5 c'=13 m4..m0=6,0,134,0,0  uncovered per hub >= 3712  IMPOSSIBLE
+q=8 blocks=aPaLbPbPbL : best X=5 c'=13 m4..m0=6,0,134,0,0  uncovered per hub >= 3712  IMPOSSIBLE
+q=8 blocks=aPaLbPbPbP : best X=5 c'=13 m4..m0=6,0,134,0,0  uncovered per hub >= 3712  IMPOSSIBLE
+q=8 blocks=aPaLaLbLbL : best X=0 c'=3 m4..m0=6,0,134,0,0  uncovered per hub >= 3712  IMPOSSIBLE
+q=8 blocks=aPaLaLbPbL : best X=0 c'=3 m4..m0=6,0,134,0,0  uncovered per hub >= 3712  IMPOSSIBLE
+q=8 blocks=aPaLaLbPbP : best X=0 c'=3 m4..m0=6,0,134,0,0  uncovered per hub >= 3712  IMPOSSIBLE
+q=8 blocks=aPaLaLaLbL : best X=0 c'=3 m4..m0=6,0,122,0,0  uncovered per hub >= 4480  IMPOSSIBLE
+q=8 blocks=aPaLaLaLbP : best X=0 c'=3 m4..m0=6,0,122,0,0  uncovered per hub >= 4480  IMPOSSIBLE
+q=8 blocks=aPaLaLaLaL : best X=0 c'=2 m4..m0=6,0,104,0,0  uncovered per hub >= 5632  IMPOSSIBLE
+q=8 blocks=aPaPbLbLbL (reading 2): best X=5 c'=13 m4..m0=6,0,134,0,0  uncovered per hub >= 3712  IMPOSSIBLE
+q=8 blocks=aPaPbPbLbL : best X=5 c'=13 m4..m0=6,0,134,0,0  uncovered per hub >= 3712  IMPOSSIBLE
+q=8 blocks=aPaPbPbPbL : best X=5 c'=13 m4..m0=6,0,134,0,0  uncovered per hub >= 3712  IMPOSSIBLE
+q=8 blocks=aPaPbPbPbP : best X=5 c'=13 m4..m0=6,0,134,0,0  uncovered per hub >= 3712  IMPOSSIBLE
+q=8 blocks=aPaPaLbLbL : best X=0 c'=3 m4..m0=6,0,134,0,0  uncovered per hub >= 3712  IMPOSSIBLE
+q=8 blocks=aPaPaLbPbL : best X=0 c'=3 m4..m0=6,0,134,0,0  uncovered per hub >= 3712  IMPOSSIBLE
+q=8 blocks=aPaPaLbPbP : best X=0 c'=3 m4..m0=6,0,134,0,0  uncovered per hub >= 3712  IMPOSSIBLE
+q=8 blocks=aPaPaLaLbL : best X=0 c'=3 m4..m0=6,0,122,0,0  uncovered per hub >= 4480  IMPOSSIBLE
+q=8 blocks=aPaPaLaLbP : best X=0 c'=3 m4..m0=6,0,122,0,0  uncovered per hub >= 4480  IMPOSSIBLE
+q=8 blocks=aPaPaLaLaL : best X=0 c'=2 m4..m0=6,0,104,0,0  uncovered per hub >= 5632  IMPOSSIBLE
+q=8 blocks=aPaPaPbLbL (reading 2): best X=0 c'=3 m4..m0=6,0,134,0,0  uncovered per hub >= 3712  IMPOSSIBLE
+q=8 blocks=aPaPaPbPbL : best X=0 c'=3 m4..m0=6,0,134,0,0  uncovered per hub >= 3712  IMPOSSIBLE
+q=8 blocks=aPaPaPbPbP : best X=0 c'=3 m4..m0=6,0,134,0,0  uncovered per hub >= 3712  IMPOSSIBLE
+q=8 blocks=aPaPaPaLbL : best X=0 c'=3 m4..m0=6,0,122,0,0  uncovered per hub >= 4480  IMPOSSIBLE
+q=8 blocks=aPaPaPaLbP : best X=0 c'=3 m4..m0=6,0,122,0,0  uncovered per hub >= 4480  IMPOSSIBLE
+q=8 blocks=aPaPaPaLaL : best X=0 c'=2 m4..m0=6,0,104,0,0  uncovered per hub >= 5632  IMPOSSIBLE
+q=8 blocks=aPaPaPaPbL (reading 2): best X=0 c'=3 m4..m0=6,0,122,0,0  uncovered per hub >= 4480  IMPOSSIBLE
+q=8 blocks=aPaPaPaPbP : best X=0 c'=3 m4..m0=6,0,122,0,0  uncovered per hub >= 4480  IMPOSSIBLE
+q=8 blocks=aPaPaPaPaL : best X=0 c'=2 m4..m0=6,0,104,0,0  uncovered per hub >= 5632  IMPOSSIBLE
+q=8 blocks=aPaPaPaPaP (reading 2): best X=0 c'=2 m4..m0=6,0,104,0,0  uncovered per hub >= 5632  IMPOSSIBLE
+$ ./routecount2 9 6 all
+q=9 blocks=bLbLbLbLbLbL (reading 2): best X=0 c'=0 m4..m0=7,0,149,0,0  uncovered per hub >= 7614  IMPOSSIBLE
+q=9 blocks=bPbLbLbLbLbL : best X=0 c'=0 m4..m0=7,0,149,0,0  uncovered per hub >= 7614  IMPOSSIBLE
+q=9 blocks=bPbPbLbLbLbL : best X=0 c'=0 m4..m0=7,0,149,0,0  uncovered per hub >= 7614  IMPOSSIBLE
+q=9 blocks=bPbPbPbLbLbL : best X=0 c'=0 m4..m0=7,0,149,0,0  uncovered per hub >= 7614  IMPOSSIBLE
+q=9 blocks=bPbPbPbPbLbL : best X=0 c'=0 m4..m0=7,0,149,0,0  uncovered per hub >= 7614  IMPOSSIBLE
+q=9 blocks=bPbPbPbPbPbL : best X=0 c'=0 m4..m0=7,0,149,0,0  uncovered per hub >= 7614  IMPOSSIBLE
+q=9 blocks=bPbPbPbPbPbP : best X=0 c'=0 m4..m0=7,0,149,0,0  uncovered per hub >= 7614  IMPOSSIBLE
+q=9 blocks=aLbLbLbLbLbL (reading 1): best X=5 c'=8 m4..m0=7,0,171,0,0  uncovered per hub >= 5832  IMPOSSIBLE
+q=9 blocks=aLbPbLbLbLbL : best X=5 c'=8 m4..m0=7,0,171,0,0  uncovered per hub >= 5832  IMPOSSIBLE
+q=9 blocks=aLbPbPbLbLbL : best X=5 c'=8 m4..m0=7,0,171,0,0  uncovered per hub >= 5832  IMPOSSIBLE
+q=9 blocks=aLbPbPbPbLbL : best X=5 c'=8 m4..m0=7,0,171,0,0  uncovered per hub >= 5832  IMPOSSIBLE
+q=9 blocks=aLbPbPbPbPbL : best X=5 c'=8 m4..m0=7,0,171,0,0  uncovered per hub >= 5832  IMPOSSIBLE
+q=9 blocks=aLbPbPbPbPbP : best X=5 c'=8 m4..m0=7,0,171,0,0  uncovered per hub >= 5832  IMPOSSIBLE
+q=9 blocks=aLaLbLbLbLbL (reading 1): best X=5 c'=13 m4..m0=7,0,187,0,0  uncovered per hub >= 4536  IMPOSSIBLE
+q=9 blocks=aLaLbPbLbLbL : best X=5 c'=13 m4..m0=7,0,187,0,0  uncovered per hub >= 4536  IMPOSSIBLE
+q=9 blocks=aLaLbPbPbLbL : best X=5 c'=13 m4..m0=7,0,187,0,0  uncovered per hub >= 4536  IMPOSSIBLE
+q=9 blocks=aLaLbPbPbPbL : best X=5 c'=13 m4..m0=7,0,187,0,0  uncovered per hub >= 4536  IMPOSSIBLE
+q=9 blocks=aLaLbPbPbPbP : best X=5 c'=13 m4..m0=7,0,187,0,0  uncovered per hub >= 4536  IMPOSSIBLE
+q=9 blocks=aLaLaLbLbLbL (reading 1): best X=0 c'=3 m4..m0=7,0,197,0,0  uncovered per hub >= 3726  IMPOSSIBLE
+q=9 blocks=aLaLaLbPbLbL : best X=0 c'=3 m4..m0=7,0,197,0,0  uncovered per hub >= 3726  IMPOSSIBLE
+q=9 blocks=aLaLaLbPbPbL : best X=0 c'=3 m4..m0=7,0,197,0,0  uncovered per hub >= 3726  IMPOSSIBLE
+q=9 blocks=aLaLaLbPbPbP : best X=0 c'=3 m4..m0=7,0,197,0,0  uncovered per hub >= 3726  IMPOSSIBLE
+q=9 blocks=aLaLaLaLbLbL (reading 1): best X=0 c'=3 m4..m0=7,0,187,0,0  uncovered per hub >= 4536  IMPOSSIBLE
+q=9 blocks=aLaLaLaLbPbL : best X=0 c'=3 m4..m0=7,0,187,0,0  uncovered per hub >= 4536  IMPOSSIBLE
+q=9 blocks=aLaLaLaLbPbP : best X=0 c'=3 m4..m0=7,0,187,0,0  uncovered per hub >= 4536  IMPOSSIBLE
+q=9 blocks=aLaLaLaLaLbL (reading 1): best X=0 c'=3 m4..m0=7,0,171,0,0  uncovered per hub >= 5832  IMPOSSIBLE
+q=9 blocks=aLaLaLaLaLbP : best X=0 c'=3 m4..m0=7,0,171,0,0  uncovered per hub >= 5832  IMPOSSIBLE
+q=9 blocks=aLaLaLaLaLaL (reading 1): best X=0 c'=2 m4..m0=7,0,149,0,0  uncovered per hub >= 7614  IMPOSSIBLE
+q=9 blocks=aPbLbLbLbLbL (reading 2): best X=5 c'=8 m4..m0=7,0,171,0,0  uncovered per hub >= 5832  IMPOSSIBLE
+q=9 blocks=aPbPbLbLbLbL : best X=5 c'=8 m4..m0=7,0,171,0,0  uncovered per hub >= 5832  IMPOSSIBLE
+q=9 blocks=aPbPbPbLbLbL : best X=5 c'=8 m4..m0=7,0,171,0,0  uncovered per hub >= 5832  IMPOSSIBLE
+q=9 blocks=aPbPbPbPbLbL : best X=5 c'=8 m4..m0=7,0,171,0,0  uncovered per hub >= 5832  IMPOSSIBLE
+q=9 blocks=aPbPbPbPbPbL : best X=5 c'=8 m4..m0=7,0,171,0,0  uncovered per hub >= 5832  IMPOSSIBLE
+q=9 blocks=aPbPbPbPbPbP : best X=5 c'=8 m4..m0=7,0,171,0,0  uncovered per hub >= 5832  IMPOSSIBLE
+q=9 blocks=aPaLbLbLbLbL : best X=5 c'=13 m4..m0=7,0,187,0,0  uncovered per hub >= 4536  IMPOSSIBLE
+q=9 blocks=aPaLbPbLbLbL : best X=5 c'=13 m4..m0=7,0,187,0,0  uncovered per hub >= 4536  IMPOSSIBLE
+q=9 blocks=aPaLbPbPbLbL : best X=5 c'=13 m4..m0=7,0,187,0,0  uncovered per hub >= 4536  IMPOSSIBLE
+q=9 blocks=aPaLbPbPbPbL : best X=5 c'=13 m4..m0=7,0,187,0,0  uncovered per hub >= 4536  IMPOSSIBLE
+q=9 blocks=aPaLbPbPbPbP : best X=5 c'=13 m4..m0=7,0,187,0,0  uncovered per hub >= 4536  IMPOSSIBLE
+q=9 blocks=aPaLaLbLbLbL : best X=0 c'=3 m4..m0=7,0,197,0,0  uncovered per hub >= 3726  IMPOSSIBLE
+q=9 blocks=aPaLaLbPbLbL : best X=0 c'=3 m4..m0=7,0,197,0,0  uncovered per hub >= 3726  IMPOSSIBLE
+q=9 blocks=aPaLaLbPbPbL : best X=0 c'=3 m4..m0=7,0,197,0,0  uncovered per hub >= 3726  IMPOSSIBLE
+q=9 blocks=aPaLaLbPbPbP : best X=0 c'=3 m4..m0=7,0,197,0,0  uncovered per hub >= 3726  IMPOSSIBLE
+q=9 blocks=aPaLaLaLbLbL : best X=0 c'=3 m4..m0=7,0,187,0,0  uncovered per hub >= 4536  IMPOSSIBLE
+q=9 blocks=aPaLaLaLbPbL : best X=0 c'=3 m4..m0=7,0,187,0,0  uncovered per hub >= 4536  IMPOSSIBLE
+q=9 blocks=aPaLaLaLbPbP : best X=0 c'=3 m4..m0=7,0,187,0,0  uncovered per hub >= 4536  IMPOSSIBLE
+q=9 blocks=aPaLaLaLaLbL : best X=0 c'=3 m4..m0=7,0,171,0,0  uncovered per hub >= 5832  IMPOSSIBLE
+q=9 blocks=aPaLaLaLaLbP : best X=0 c'=3 m4..m0=7,0,171,0,0  uncovered per hub >= 5832  IMPOSSIBLE
+q=9 blocks=aPaLaLaLaLaL : best X=0 c'=2 m4..m0=7,0,149,0,0  uncovered per hub >= 7614  IMPOSSIBLE
+q=9 blocks=aPaPbLbLbLbL (reading 2): best X=5 c'=13 m4..m0=7,0,187,0,0  uncovered per hub >= 4536  IMPOSSIBLE
+q=9 blocks=aPaPbPbLbLbL : best X=5 c'=13 m4..m0=7,0,187,0,0  uncovered per hub >= 4536  IMPOSSIBLE
+q=9 blocks=aPaPbPbPbLbL : best X=5 c'=13 m4..m0=7,0,187,0,0  uncovered per hub >= 4536  IMPOSSIBLE
+q=9 blocks=aPaPbPbPbPbL : best X=5 c'=13 m4..m0=7,0,187,0,0  uncovered per hub >= 4536  IMPOSSIBLE
+q=9 blocks=aPaPbPbPbPbP : best X=5 c'=13 m4..m0=7,0,187,0,0  uncovered per hub >= 4536  IMPOSSIBLE
+q=9 blocks=aPaPaLbLbLbL : best X=0 c'=3 m4..m0=7,0,197,0,0  uncovered per hub >= 3726  IMPOSSIBLE
+q=9 blocks=aPaPaLbPbLbL : best X=0 c'=3 m4..m0=7,0,197,0,0  uncovered per hub >= 3726  IMPOSSIBLE
+q=9 blocks=aPaPaLbPbPbL : best X=0 c'=3 m4..m0=7,0,197,0,0  uncovered per hub >= 3726  IMPOSSIBLE
+q=9 blocks=aPaPaLbPbPbP : best X=0 c'=3 m4..m0=7,0,197,0,0  uncovered per hub >= 3726  IMPOSSIBLE
+q=9 blocks=aPaPaLaLbLbL : best X=0 c'=3 m4..m0=7,0,187,0,0  uncovered per hub >= 4536  IMPOSSIBLE
+q=9 blocks=aPaPaLaLbPbL : best X=0 c'=3 m4..m0=7,0,187,0,0  uncovered per hub >= 4536  IMPOSSIBLE
+q=9 blocks=aPaPaLaLbPbP : best X=0 c'=3 m4..m0=7,0,187,0,0  uncovered per hub >= 4536  IMPOSSIBLE
+q=9 blocks=aPaPaLaLaLbL : best X=0 c'=3 m4..m0=7,0,171,0,0  uncovered per hub >= 5832  IMPOSSIBLE
+q=9 blocks=aPaPaLaLaLbP : best X=0 c'=3 m4..m0=7,0,171,0,0  uncovered per hub >= 5832  IMPOSSIBLE
+q=9 blocks=aPaPaLaLaLaL : best X=0 c'=2 m4..m0=7,0,149,0,0  uncovered per hub >= 7614  IMPOSSIBLE
+q=9 blocks=aPaPaPbLbLbL (reading 2): best X=0 c'=3 m4..m0=7,0,197,0,0  uncovered per hub >= 3726  IMPOSSIBLE
+q=9 blocks=aPaPaPbPbLbL : best X=0 c'=3 m4..m0=7,0,197,0,0  uncovered per hub >= 3726  IMPOSSIBLE
+q=9 blocks=aPaPaPbPbPbL : best X=0 c'=3 m4..m0=7,0,197,0,0  uncovered per hub >= 3726  IMPOSSIBLE
+q=9 blocks=aPaPaPbPbPbP : best X=0 c'=3 m4..m0=7,0,197,0,0  uncovered per hub >= 3726  IMPOSSIBLE
+q=9 blocks=aPaPaPaLbLbL : best X=0 c'=3 m4..m0=7,0,187,0,0  uncovered per hub >= 4536  IMPOSSIBLE
+q=9 blocks=aPaPaPaLbPbL : best X=0 c'=3 m4..m0=7,0,187,0,0  uncovered per hub >= 4536  IMPOSSIBLE
+q=9 blocks=aPaPaPaLbPbP : best X=0 c'=3 m4..m0=7,0,187,0,0  uncovered per hub >= 4536  IMPOSSIBLE
+q=9 blocks=aPaPaPaLaLbL : best X=0 c'=3 m4..m0=7,0,171,0,0  uncovered per hub >= 5832  IMPOSSIBLE
+q=9 blocks=aPaPaPaLaLbP : best X=0 c'=3 m4..m0=7,0,171,0,0  uncovered per hub >= 5832  IMPOSSIBLE
+q=9 blocks=aPaPaPaLaLaL : best X=0 c'=2 m4..m0=7,0,149,0,0  uncovered per hub >= 7614  IMPOSSIBLE
+q=9 blocks=aPaPaPaPbLbL (reading 2): best X=0 c'=3 m4..m0=7,0,187,0,0  uncovered per hub >= 4536  IMPOSSIBLE
+q=9 blocks=aPaPaPaPbPbL : best X=0 c'=3 m4..m0=7,0,187,0,0  uncovered per hub >= 4536  IMPOSSIBLE
+q=9 blocks=aPaPaPaPbPbP : best X=0 c'=3 m4..m0=7,0,187,0,0  uncovered per hub >= 4536  IMPOSSIBLE
+q=9 blocks=aPaPaPaPaLbL : best X=0 c'=3 m4..m0=7,0,171,0,0  uncovered per hub >= 5832  IMPOSSIBLE
+q=9 blocks=aPaPaPaPaLbP : best X=0 c'=3 m4..m0=7,0,171,0,0  uncovered per hub >= 5832  IMPOSSIBLE
+q=9 blocks=aPaPaPaPaLaL : best X=0 c'=2 m4..m0=7,0,149,0,0  uncovered per hub >= 7614  IMPOSSIBLE
+q=9 blocks=aPaPaPaPaPbL (reading 2): best X=0 c'=3 m4..m0=7,0,171,0,0  uncovered per hub >= 5832  IMPOSSIBLE
+q=9 blocks=aPaPaPaPaPbP : best X=0 c'=3 m4..m0=7,0,171,0,0  uncovered per hub >= 5832  IMPOSSIBLE
+q=9 blocks=aPaPaPaPaPaL : best X=0 c'=2 m4..m0=7,0,149,0,0  uncovered per hub >= 7614  IMPOSSIBLE
+q=9 blocks=aPaPaPaPaPaP (reading 2): best X=0 c'=2 m4..m0=7,0,149,0,0  uncovered per hub >= 7614  IMPOSSIBLE
+$ ./routecount2 11 7 all
+q=11 blocks=bLbLbLbLbLbLbL (reading 2): best X=0 c'=0 m4..m0=8,0,202,0,0  uncovered per hub >= 34122  IMPOSSIBLE
+q=11 blocks=bPbLbLbLbLbLbL : best X=0 c'=0 m4..m0=8,0,202,0,0  uncovered per hub >= 34122  IMPOSSIBLE
+q=11 blocks=bPbPbLbLbLbLbL : best X=0 c'=0 m4..m0=8,0,202,0,0  uncovered per hub >= 34122  IMPOSSIBLE
+q=11 blocks=bPbPbPbLbLbLbL : best X=0 c'=0 m4..m0=8,0,202,0,0  uncovered per hub >= 34122  IMPOSSIBLE
+q=11 blocks=bPbPbPbPbLbLbL : best X=0 c'=0 m4..m0=8,0,202,0,0  uncovered per hub >= 34122  IMPOSSIBLE
+q=11 blocks=bPbPbPbPbPbLbL : best X=0 c'=0 m4..m0=8,0,202,0,0  uncovered per hub >= 34122  IMPOSSIBLE
+q=11 blocks=bPbPbPbPbPbPbL : best X=0 c'=0 m4..m0=8,0,202,0,0  uncovered per hub >= 34122  IMPOSSIBLE
+q=11 blocks=bPbPbPbPbPbPbP : best X=0 c'=0 m4..m0=8,0,202,0,0  uncovered per hub >= 34122  IMPOSSIBLE
+q=11 blocks=aLbLbLbLbLbLbL (reading 1): best X=5 c'=8 m4..m0=8,0,228,0,0  uncovered per hub >= 30976  IMPOSSIBLE
+q=11 blocks=aLbPbLbLbLbLbL : best X=5 c'=8 m4..m0=8,0,228,0,0  uncovered per hub >= 30976  IMPOSSIBLE
+q=11 blocks=aLbPbPbLbLbLbL : best X=5 c'=8 m4..m0=8,0,228,0,0  uncovered per hub >= 30976  IMPOSSIBLE
+q=11 blocks=aLbPbPbPbLbLbL : best X=5 c'=8 m4..m0=8,0,228,0,0  uncovered per hub >= 30976  IMPOSSIBLE
+q=11 blocks=aLbPbPbPbPbLbL : best X=5 c'=8 m4..m0=8,0,228,0,0  uncovered per hub >= 30976  IMPOSSIBLE
+q=11 blocks=aLbPbPbPbPbPbL : best X=5 c'=8 m4..m0=8,0,228,0,0  uncovered per hub >= 30976  IMPOSSIBLE
+q=11 blocks=aLbPbPbPbPbPbP : best X=5 c'=8 m4..m0=8,0,228,0,0  uncovered per hub >= 30976  IMPOSSIBLE
+q=11 blocks=aLaLbLbLbLbLbL (reading 1): best X=5 c'=13 m4..m0=8,0,248,0,0  uncovered per hub >= 28556  IMPOSSIBLE
+q=11 blocks=aLaLbPbLbLbLbL : best X=5 c'=13 m4..m0=8,0,248,0,0  uncovered per hub >= 28556  IMPOSSIBLE
+q=11 blocks=aLaLbPbPbLbLbL : best X=5 c'=13 m4..m0=8,0,248,0,0  uncovered per hub >= 28556  IMPOSSIBLE
+q=11 blocks=aLaLbPbPbPbLbL : best X=5 c'=13 m4..m0=8,0,248,0,0  uncovered per hub >= 28556  IMPOSSIBLE
+q=11 blocks=aLaLbPbPbPbPbL : best X=5 c'=13 m4..m0=8,0,248,0,0  uncovered per hub >= 28556  IMPOSSIBLE
+q=11 blocks=aLaLbPbPbPbPbP : best X=5 c'=13 m4..m0=8,0,248,0,0  uncovered per hub >= 28556  IMPOSSIBLE
+q=11 blocks=aLaLaLbLbLbLbL (reading 1): best X=5 c'=18 m4..m0=8,0,262,0,0  uncovered per hub >= 26862  IMPOSSIBLE
+q=11 blocks=aLaLaLbPbLbLbL : best X=5 c'=18 m4..m0=8,0,262,0,0  uncovered per hub >= 26862  IMPOSSIBLE
+q=11 blocks=aLaLaLbPbPbLbL : best X=5 c'=18 m4..m0=8,0,262,0,0  uncovered per hub >= 26862  IMPOSSIBLE
+q=11 blocks=aLaLaLbPbPbPbL : best X=5 c'=18 m4..m0=8,0,262,0,0  uncovered per hub >= 26862  IMPOSSIBLE
+q=11 blocks=aLaLaLbPbPbPbP : best X=5 c'=18 m4..m0=8,0,262,0,0  uncovered per hub >= 26862  IMPOSSIBLE
+q=11 blocks=aLaLaLaLbLbLbL (reading 1): best X=0 c'=3 m4..m0=8,0,262,0,0  uncovered per hub >= 26862  IMPOSSIBLE
+q=11 blocks=aLaLaLaLbPbLbL : best X=0 c'=3 m4..m0=8,0,262,0,0  uncovered per hub >= 26862  IMPOSSIBLE
+q=11 blocks=aLaLaLaLbPbPbL : best X=0 c'=3 m4..m0=8,0,262,0,0  uncovered per hub >= 26862  IMPOSSIBLE
+q=11 blocks=aLaLaLaLbPbPbP : best X=0 c'=3 m4..m0=8,0,262,0,0  uncovered per hub >= 26862  IMPOSSIBLE
+q=11 blocks=aLaLaLaLaLbLbL (reading 1): best X=0 c'=3 m4..m0=8,0,248,0,0  uncovered per hub >= 28556  IMPOSSIBLE
+q=11 blocks=aLaLaLaLaLbPbL : best X=0 c'=3 m4..m0=8,0,248,0,0  uncovered per hub >= 28556  IMPOSSIBLE
+q=11 blocks=aLaLaLaLaLbPbP : best X=0 c'=3 m4..m0=8,0,248,0,0  uncovered per hub >= 28556  IMPOSSIBLE
+q=11 blocks=aLaLaLaLaLaLbL (reading 1): best X=0 c'=3 m4..m0=8,0,228,0,0  uncovered per hub >= 30976  IMPOSSIBLE
+q=11 blocks=aLaLaLaLaLaLbP : best X=0 c'=3 m4..m0=8,0,228,0,0  uncovered per hub >= 30976  IMPOSSIBLE
+q=11 blocks=aLaLaLaLaLaLaL (reading 1): best X=0 c'=2 m4..m0=8,0,202,0,0  uncovered per hub >= 34122  IMPOSSIBLE
+q=11 blocks=aPbLbLbLbLbLbL (reading 2): best X=5 c'=8 m4..m0=8,0,228,0,0  uncovered per hub >= 30976  IMPOSSIBLE
+q=11 blocks=aPbPbLbLbLbLbL : best X=5 c'=8 m4..m0=8,0,228,0,0  uncovered per hub >= 30976  IMPOSSIBLE
+q=11 blocks=aPbPbPbLbLbLbL : best X=5 c'=8 m4..m0=8,0,228,0,0  uncovered per hub >= 30976  IMPOSSIBLE
+q=11 blocks=aPbPbPbPbLbLbL : best X=5 c'=8 m4..m0=8,0,228,0,0  uncovered per hub >= 30976  IMPOSSIBLE
+q=11 blocks=aPbPbPbPbPbLbL : best X=5 c'=8 m4..m0=8,0,228,0,0  uncovered per hub >= 30976  IMPOSSIBLE
+q=11 blocks=aPbPbPbPbPbPbL : best X=5 c'=8 m4..m0=8,0,228,0,0  uncovered per hub >= 30976  IMPOSSIBLE
+q=11 blocks=aPbPbPbPbPbPbP : best X=5 c'=8 m4..m0=8,0,228,0,0  uncovered per hub >= 30976  IMPOSSIBLE
+q=11 blocks=aPaLbLbLbLbLbL : best X=5 c'=13 m4..m0=8,0,248,0,0  uncovered per hub >= 28556  IMPOSSIBLE
+q=11 blocks=aPaLbPbLbLbLbL : best X=5 c'=13 m4..m0=8,0,248,0,0  uncovered per hub >= 28556  IMPOSSIBLE
+q=11 blocks=aPaLbPbPbLbLbL : best X=5 c'=13 m4..m0=8,0,248,0,0  uncovered per hub >= 28556  IMPOSSIBLE
+q=11 blocks=aPaLbPbPbPbLbL : best X=5 c'=13 m4..m0=8,0,248,0,0  uncovered per hub >= 28556  IMPOSSIBLE
+q=11 blocks=aPaLbPbPbPbPbL : best X=5 c'=13 m4..m0=8,0,248,0,0  uncovered per hub >= 28556  IMPOSSIBLE
+q=11 blocks=aPaLbPbPbPbPbP : best X=5 c'=13 m4..m0=8,0,248,0,0  uncovered per hub >= 28556  IMPOSSIBLE
+q=11 blocks=aPaLaLbLbLbLbL : best X=5 c'=18 m4..m0=8,0,262,0,0  uncovered per hub >= 26862  IMPOSSIBLE
+q=11 blocks=aPaLaLbPbLbLbL : best X=5 c'=18 m4..m0=8,0,262,0,0  uncovered per hub >= 26862  IMPOSSIBLE
+q=11 blocks=aPaLaLbPbPbLbL : best X=5 c'=18 m4..m0=8,0,262,0,0  uncovered per hub >= 26862  IMPOSSIBLE
+q=11 blocks=aPaLaLbPbPbPbL : best X=5 c'=18 m4..m0=8,0,262,0,0  uncovered per hub >= 26862  IMPOSSIBLE
+q=11 blocks=aPaLaLbPbPbPbP : best X=5 c'=18 m4..m0=8,0,262,0,0  uncovered per hub >= 26862  IMPOSSIBLE
+q=11 blocks=aPaLaLaLbLbLbL : best X=0 c'=3 m4..m0=8,0,262,0,0  uncovered per hub >= 26862  IMPOSSIBLE
+q=11 blocks=aPaLaLaLbPbLbL : best X=0 c'=3 m4..m0=8,0,262,0,0  uncovered per hub >= 26862  IMPOSSIBLE
+q=11 blocks=aPaLaLaLbPbPbL : best X=0 c'=3 m4..m0=8,0,262,0,0  uncovered per hub >= 26862  IMPOSSIBLE
+q=11 blocks=aPaLaLaLbPbPbP : best X=0 c'=3 m4..m0=8,0,262,0,0  uncovered per hub >= 26862  IMPOSSIBLE
+q=11 blocks=aPaLaLaLaLbLbL : best X=0 c'=3 m4..m0=8,0,248,0,0  uncovered per hub >= 28556  IMPOSSIBLE
+q=11 blocks=aPaLaLaLaLbPbL : best X=0 c'=3 m4..m0=8,0,248,0,0  uncovered per hub >= 28556  IMPOSSIBLE
+q=11 blocks=aPaLaLaLaLbPbP : best X=0 c'=3 m4..m0=8,0,248,0,0  uncovered per hub >= 28556  IMPOSSIBLE
+q=11 blocks=aPaLaLaLaLaLbL : best X=0 c'=3 m4..m0=8,0,228,0,0  uncovered per hub >= 30976  IMPOSSIBLE
+q=11 blocks=aPaLaLaLaLaLbP : best X=0 c'=3 m4..m0=8,0,228,0,0  uncovered per hub >= 30976  IMPOSSIBLE
+q=11 blocks=aPaLaLaLaLaLaL : best X=0 c'=2 m4..m0=8,0,202,0,0  uncovered per hub >= 34122  IMPOSSIBLE
+q=11 blocks=aPaPbLbLbLbLbL (reading 2): best X=5 c'=13 m4..m0=8,0,248,0,0  uncovered per hub >= 28556  IMPOSSIBLE
+q=11 blocks=aPaPbPbLbLbLbL : best X=5 c'=13 m4..m0=8,0,248,0,0  uncovered per hub >= 28556  IMPOSSIBLE
+q=11 blocks=aPaPbPbPbLbLbL : best X=5 c'=13 m4..m0=8,0,248,0,0  uncovered per hub >= 28556  IMPOSSIBLE
+q=11 blocks=aPaPbPbPbPbLbL : best X=5 c'=13 m4..m0=8,0,248,0,0  uncovered per hub >= 28556  IMPOSSIBLE
+q=11 blocks=aPaPbPbPbPbPbL : best X=5 c'=13 m4..m0=8,0,248,0,0  uncovered per hub >= 28556  IMPOSSIBLE
+q=11 blocks=aPaPbPbPbPbPbP : best X=5 c'=13 m4..m0=8,0,248,0,0  uncovered per hub >= 28556  IMPOSSIBLE
+q=11 blocks=aPaPaLbLbLbLbL : best X=5 c'=18 m4..m0=8,0,262,0,0  uncovered per hub >= 26862  IMPOSSIBLE
+q=11 blocks=aPaPaLbPbLbLbL : best X=5 c'=18 m4..m0=8,0,262,0,0  uncovered per hub >= 26862  IMPOSSIBLE
+q=11 blocks=aPaPaLbPbPbLbL : best X=5 c'=18 m4..m0=8,0,262,0,0  uncovered per hub >= 26862  IMPOSSIBLE
+q=11 blocks=aPaPaLbPbPbPbL : best X=5 c'=18 m4..m0=8,0,262,0,0  uncovered per hub >= 26862  IMPOSSIBLE
+q=11 blocks=aPaPaLbPbPbPbP : best X=5 c'=18 m4..m0=8,0,262,0,0  uncovered per hub >= 26862  IMPOSSIBLE
+q=11 blocks=aPaPaLaLbLbLbL : best X=0 c'=3 m4..m0=8,0,262,0,0  uncovered per hub >= 26862  IMPOSSIBLE
+q=11 blocks=aPaPaLaLbPbLbL : best X=0 c'=3 m4..m0=8,0,262,0,0  uncovered per hub >= 26862  IMPOSSIBLE
+q=11 blocks=aPaPaLaLbPbPbL : best X=0 c'=3 m4..m0=8,0,262,0,0  uncovered per hub >= 26862  IMPOSSIBLE
+q=11 blocks=aPaPaLaLbPbPbP : best X=0 c'=3 m4..m0=8,0,262,0,0  uncovered per hub >= 26862  IMPOSSIBLE
+q=11 blocks=aPaPaLaLaLbLbL : best X=0 c'=3 m4..m0=8,0,248,0,0  uncovered per hub >= 28556  IMPOSSIBLE
+q=11 blocks=aPaPaLaLaLbPbL : best X=0 c'=3 m4..m0=8,0,248,0,0  uncovered per hub >= 28556  IMPOSSIBLE
+q=11 blocks=aPaPaLaLaLbPbP : best X=0 c'=3 m4..m0=8,0,248,0,0  uncovered per hub >= 28556  IMPOSSIBLE
+q=11 blocks=aPaPaLaLaLaLbL : best X=0 c'=3 m4..m0=8,0,228,0,0  uncovered per hub >= 30976  IMPOSSIBLE
+q=11 blocks=aPaPaLaLaLaLbP : best X=0 c'=3 m4..m0=8,0,228,0,0  uncovered per hub >= 30976  IMPOSSIBLE
+q=11 blocks=aPaPaLaLaLaLaL : best X=0 c'=2 m4..m0=8,0,202,0,0  uncovered per hub >= 34122  IMPOSSIBLE
+q=11 blocks=aPaPaPbLbLbLbL (reading 2): best X=5 c'=18 m4..m0=8,0,262,0,0  uncovered per hub >= 26862  IMPOSSIBLE
+q=11 blocks=aPaPaPbPbLbLbL : best X=5 c'=18 m4..m0=8,0,262,0,0  uncovered per hub >= 26862  IMPOSSIBLE
+q=11 blocks=aPaPaPbPbPbLbL : best X=5 c'=18 m4..m0=8,0,262,0,0  uncovered per hub >= 26862  IMPOSSIBLE
+q=11 blocks=aPaPaPbPbPbPbL : best X=5 c'=18 m4..m0=8,0,262,0,0  uncovered per hub >= 26862  IMPOSSIBLE
+q=11 blocks=aPaPaPbPbPbPbP : best X=5 c'=18 m4..m0=8,0,262,0,0  uncovered per hub >= 26862  IMPOSSIBLE
+q=11 blocks=aPaPaPaLbLbLbL : best X=0 c'=3 m4..m0=8,0,262,0,0  uncovered per hub >= 26862  IMPOSSIBLE
+q=11 blocks=aPaPaPaLbPbLbL : best X=0 c'=3 m4..m0=8,0,262,0,0  uncovered per hub >= 26862  IMPOSSIBLE
+q=11 blocks=aPaPaPaLbPbPbL : best X=0 c'=3 m4..m0=8,0,262,0,0  uncovered per hub >= 26862  IMPOSSIBLE
+q=11 blocks=aPaPaPaLbPbPbP : best X=0 c'=3 m4..m0=8,0,262,0,0  uncovered per hub >= 26862  IMPOSSIBLE
+q=11 blocks=aPaPaPaLaLbLbL : best X=0 c'=3 m4..m0=8,0,248,0,0  uncovered per hub >= 28556  IMPOSSIBLE
+q=11 blocks=aPaPaPaLaLbPbL : best X=0 c'=3 m4..m0=8,0,248,0,0  uncovered per hub >= 28556  IMPOSSIBLE
+q=11 blocks=aPaPaPaLaLbPbP : best X=0 c'=3 m4..m0=8,0,248,0,0  uncovered per hub >= 28556  IMPOSSIBLE
+q=11 blocks=aPaPaPaLaLaLbL : best X=0 c'=3 m4..m0=8,0,228,0,0  uncovered per hub >= 30976  IMPOSSIBLE
+q=11 blocks=aPaPaPaLaLaLbP : best X=0 c'=3 m4..m0=8,0,228,0,0  uncovered per hub >= 30976  IMPOSSIBLE
+q=11 blocks=aPaPaPaLaLaLaL : best X=0 c'=2 m4..m0=8,0,202,0,0  uncovered per hub >= 34122  IMPOSSIBLE
+q=11 blocks=aPaPaPaPbLbLbL (reading 2): best X=0 c'=3 m4..m0=8,0,262,0,0  uncovered per hub >= 26862  IMPOSSIBLE
+q=11 blocks=aPaPaPaPbPbLbL : best X=0 c'=3 m4..m0=8,0,262,0,0  uncovered per hub >= 26862  IMPOSSIBLE
+q=11 blocks=aPaPaPaPbPbPbL : best X=0 c'=3 m4..m0=8,0,262,0,0  uncovered per hub >= 26862  IMPOSSIBLE
+q=11 blocks=aPaPaPaPbPbPbP : best X=0 c'=3 m4..m0=8,0,262,0,0  uncovered per hub >= 26862  IMPOSSIBLE
+q=11 blocks=aPaPaPaPaLbLbL : best X=0 c'=3 m4..m0=8,0,248,0,0  uncovered per hub >= 28556  IMPOSSIBLE
+q=11 blocks=aPaPaPaPaLbPbL : best X=0 c'=3 m4..m0=8,0,248,0,0  uncovered per hub >= 28556  IMPOSSIBLE
+q=11 blocks=aPaPaPaPaLbPbP : best X=0 c'=3 m4..m0=8,0,248,0,0  uncovered per hub >= 28556  IMPOSSIBLE
+q=11 blocks=aPaPaPaPaLaLbL : best X=0 c'=3 m4..m0=8,0,228,0,0  uncovered per hub >= 30976  IMPOSSIBLE
+q=11 blocks=aPaPaPaPaLaLbP : best X=0 c'=3 m4..m0=8,0,228,0,0  uncovered per hub >= 30976  IMPOSSIBLE
+q=11 blocks=aPaPaPaPaLaLaL : best X=0 c'=2 m4..m0=8,0,202,0,0  uncovered per hub >= 34122  IMPOSSIBLE
+q=11 blocks=aPaPaPaPaPbLbL (reading 2): best X=0 c'=3 m4..m0=8,0,248,0,0  uncovered per hub >= 28556  IMPOSSIBLE
+q=11 blocks=aPaPaPaPaPbPbL : best X=0 c'=3 m4..m0=8,0,248,0,0  uncovered per hub >= 28556  IMPOSSIBLE
+q=11 blocks=aPaPaPaPaPbPbP : best X=0 c'=3 m4..m0=8,0,248,0,0  uncovered per hub >= 28556  IMPOSSIBLE
+q=11 blocks=aPaPaPaPaPaLbL : best X=0 c'=3 m4..m0=8,0,228,0,0  uncovered per hub >= 30976  IMPOSSIBLE
+q=11 blocks=aPaPaPaPaPaLbP : best X=0 c'=3 m4..m0=8,0,228,0,0  uncovered per hub >= 30976  IMPOSSIBLE
+q=11 blocks=aPaPaPaPaPaLaL : best X=0 c'=2 m4..m0=8,0,202,0,0  uncovered per hub >= 34122  IMPOSSIBLE
+q=11 blocks=aPaPaPaPaPaPbL (reading 2): best X=0 c'=3 m4..m0=8,0,228,0,0  uncovered per hub >= 30976  IMPOSSIBLE
+q=11 blocks=aPaPaPaPaPaPbP : best X=0 c'=3 m4..m0=8,0,228,0,0  uncovered per hub >= 30976  IMPOSSIBLE
+q=11 blocks=aPaPaPaPaPaPaL : best X=0 c'=2 m4..m0=8,0,202,0,0  uncovered per hub >= 34122  IMPOSSIBLE
+q=11 blocks=aPaPaPaPaPaPaP (reading 2): best X=0 c'=2 m4..m0=8,0,202,0,0  uncovered per hub >= 34122  IMPOSSIBLE
+$ ./routecount2 13 8 all
+q=13 blocks=bLbLbLbLbLbLbLbL (reading 2): best X=0 c'=0 m4..m0=9,0,263,0,0  uncovered per hub >= 98358  IMPOSSIBLE
+q=13 blocks=bPbLbLbLbLbLbLbL : best X=0 c'=0 m4..m0=9,0,263,0,0  uncovered per hub >= 98358  IMPOSSIBLE
+q=13 blocks=bPbPbLbLbLbLbLbL : best X=0 c'=0 m4..m0=9,0,263,0,0  uncovered per hub >= 98358  IMPOSSIBLE
+q=13 blocks=bPbPbPbLbLbLbLbL : best X=0 c'=0 m4..m0=9,0,263,0,0  uncovered per hub >= 98358  IMPOSSIBLE
+q=13 blocks=bPbPbPbPbLbLbLbL : best X=0 c'=0 m4..m0=9,0,263,0,0  uncovered per hub >= 98358  IMPOSSIBLE
+q=13 blocks=bPbPbPbPbPbLbLbL : best X=0 c'=0 m4..m0=9,0,263,0,0  uncovered per hub >= 98358  IMPOSSIBLE
+q=13 blocks=bPbPbPbPbPbPbLbL : best X=0 c'=0 m4..m0=9,0,263,0,0  uncovered per hub >= 98358  IMPOSSIBLE
+q=13 blocks=bPbPbPbPbPbPbPbL : best X=0 c'=0 m4..m0=9,0,263,0,0  uncovered per hub >= 98358  IMPOSSIBLE
+q=13 blocks=bPbPbPbPbPbPbPbP : best X=0 c'=0 m4..m0=9,0,263,0,0  uncovered per hub >= 98358  IMPOSSIBLE
+q=13 blocks=aLbLbLbLbLbLbLbL (reading 1): best X=5 c'=8 m4..m0=9,0,293,0,0  uncovered per hub >= 93288  IMPOSSIBLE
+q=13 blocks=aLbPbLbLbLbLbLbL : best X=5 c'=8 m4..m0=9,0,293,0,0  uncovered per hub >= 93288  IMPOSSIBLE
+q=13 blocks=aLbPbPbLbLbLbLbL : best X=5 c'=8 m4..m0=9,0,293,0,0  uncovered per hub >= 93288  IMPOSSIBLE
+q=13 blocks=aLbPbPbPbLbLbLbL : best X=5 c'=8 m4..m0=9,0,293,0,0  uncovered per hub >= 93288  IMPOSSIBLE
+q=13 blocks=aLbPbPbPbPbLbLbL : best X=5 c'=8 m4..m0=9,0,293,0,0  uncovered per hub >= 93288  IMPOSSIBLE
+q=13 blocks=aLbPbPbPbPbPbLbL : best X=5 c'=8 m4..m0=9,0,293,0,0  uncovered per hub >= 93288  IMPOSSIBLE
+q=13 blocks=aLbPbPbPbPbPbPbL : best X=5 c'=8 m4..m0=9,0,293,0,0  uncovered per hub >= 93288  IMPOSSIBLE
+q=13 blocks=aLbPbPbPbPbPbPbP : best X=5 c'=8 m4..m0=9,0,293,0,0  uncovered per hub >= 93288  IMPOSSIBLE
+q=13 blocks=aLaLbLbLbLbLbLbL (reading 1): best X=5 c'=13 m4..m0=9,0,317,0,0  uncovered per hub >= 89232  IMPOSSIBLE
+q=13 blocks=aLaLbPbLbLbLbLbL : best X=5 c'=13 m4..m0=9,0,317,0,0  uncovered per hub >= 89232  IMPOSSIBLE
+q=13 blocks=aLaLbPbPbLbLbLbL : best X=5 c'=13 m4..m0=9,0,317,0,0  uncovered per hub >= 89232  IMPOSSIBLE
+q=13 blocks=aLaLbPbPbPbLbLbL : best X=5 c'=13 m4..m0=9,0,317,0,0  uncovered per hub >= 89232  IMPOSSIBLE
+q=13 blocks=aLaLbPbPbPbPbLbL : best X=5 c'=13 m4..m0=9,0,317,0,0  uncovered per hub >= 89232  IMPOSSIBLE
+q=13 blocks=aLaLbPbPbPbPbPbL : best X=5 c'=13 m4..m0=9,0,317,0,0  uncovered per hub >= 89232  IMPOSSIBLE
+q=13 blocks=aLaLbPbPbPbPbPbP : best X=5 c'=13 m4..m0=9,0,317,0,0  uncovered per hub >= 89232  IMPOSSIBLE
+q=13 blocks=aLaLaLbLbLbLbLbL (reading 1): best X=5 c'=18 m4..m0=9,0,335,0,0  uncovered per hub >= 86190  IMPOSSIBLE
+q=13 blocks=aLaLaLbPbLbLbLbL : best X=5 c'=18 m4..m0=9,0,335,0,0  uncovered per hub >= 86190  IMPOSSIBLE
+q=13 blocks=aLaLaLbPbPbLbLbL : best X=5 c'=18 m4..m0=9,0,335,0,0  uncovered per hub >= 86190  IMPOSSIBLE
+q=13 blocks=aLaLaLbPbPbPbLbL : best X=5 c'=18 m4..m0=9,0,335,0,0  uncovered per hub >= 86190  IMPOSSIBLE
+q=13 blocks=aLaLaLbPbPbPbPbL : best X=5 c'=18 m4..m0=9,0,335,0,0  uncovered per hub >= 86190  IMPOSSIBLE
+q=13 blocks=aLaLaLbPbPbPbPbP : best X=5 c'=18 m4..m0=9,0,335,0,0  uncovered per hub >= 86190  IMPOSSIBLE
+q=13 blocks=aLaLaLaLbLbLbLbL (reading 1): best X=0 c'=3 m4..m0=9,0,347,0,0  uncovered per hub >= 84162  IMPOSSIBLE
+q=13 blocks=aLaLaLaLbPbLbLbL : best X=0 c'=3 m4..m0=9,0,347,0,0  uncovered per hub >= 84162  IMPOSSIBLE
+q=13 blocks=aLaLaLaLbPbPbLbL : best X=0 c'=3 m4..m0=9,0,347,0,0  uncovered per hub >= 84162  IMPOSSIBLE
+q=13 blocks=aLaLaLaLbPbPbPbL : best X=0 c'=3 m4..m0=9,0,347,0,0  uncovered per hub >= 84162  IMPOSSIBLE
+q=13 blocks=aLaLaLaLbPbPbPbP : best X=0 c'=3 m4..m0=9,0,347,0,0  uncovered per hub >= 84162  IMPOSSIBLE
+q=13 blocks=aLaLaLaLaLbLbLbL (reading 1): best X=0 c'=3 m4..m0=9,0,335,0,0  uncovered per hub >= 86190  IMPOSSIBLE
+q=13 blocks=aLaLaLaLaLbPbLbL : best X=0 c'=3 m4..m0=9,0,335,0,0  uncovered per hub >= 86190  IMPOSSIBLE
+q=13 blocks=aLaLaLaLaLbPbPbL : best X=0 c'=3 m4..m0=9,0,335,0,0  uncovered per hub >= 86190  IMPOSSIBLE
+q=13 blocks=aLaLaLaLaLbPbPbP : best X=0 c'=3 m4..m0=9,0,335,0,0  uncovered per hub >= 86190  IMPOSSIBLE
+q=13 blocks=aLaLaLaLaLaLbLbL (reading 1): best X=0 c'=3 m4..m0=9,0,317,0,0  uncovered per hub >= 89232  IMPOSSIBLE
+q=13 blocks=aLaLaLaLaLaLbPbL : best X=0 c'=3 m4..m0=9,0,317,0,0  uncovered per hub >= 89232  IMPOSSIBLE
+q=13 blocks=aLaLaLaLaLaLbPbP : best X=0 c'=3 m4..m0=9,0,317,0,0  uncovered per hub >= 89232  IMPOSSIBLE
+q=13 blocks=aLaLaLaLaLaLaLbL (reading 1): best X=0 c'=3 m4..m0=9,0,293,0,0  uncovered per hub >= 93288  IMPOSSIBLE
+q=13 blocks=aLaLaLaLaLaLaLbP : best X=0 c'=3 m4..m0=9,0,293,0,0  uncovered per hub >= 93288  IMPOSSIBLE
+q=13 blocks=aLaLaLaLaLaLaLaL (reading 1): best X=0 c'=2 m4..m0=9,0,263,0,0  uncovered per hub >= 98358  IMPOSSIBLE
+q=13 blocks=aPbLbLbLbLbLbLbL (reading 2): best X=5 c'=8 m4..m0=9,0,293,0,0  uncovered per hub >= 93288  IMPOSSIBLE
+q=13 blocks=aPbPbLbLbLbLbLbL : best X=5 c'=8 m4..m0=9,0,293,0,0  uncovered per hub >= 93288  IMPOSSIBLE
+q=13 blocks=aPbPbPbLbLbLbLbL : best X=5 c'=8 m4..m0=9,0,293,0,0  uncovered per hub >= 93288  IMPOSSIBLE
+q=13 blocks=aPbPbPbPbLbLbLbL : best X=5 c'=8 m4..m0=9,0,293,0,0  uncovered per hub >= 93288  IMPOSSIBLE
+q=13 blocks=aPbPbPbPbPbLbLbL : best X=5 c'=8 m4..m0=9,0,293,0,0  uncovered per hub >= 93288  IMPOSSIBLE
+q=13 blocks=aPbPbPbPbPbPbLbL : best X=5 c'=8 m4..m0=9,0,293,0,0  uncovered per hub >= 93288  IMPOSSIBLE
+q=13 blocks=aPbPbPbPbPbPbPbL : best X=5 c'=8 m4..m0=9,0,293,0,0  uncovered per hub >= 93288  IMPOSSIBLE
+q=13 blocks=aPbPbPbPbPbPbPbP : best X=5 c'=8 m4..m0=9,0,293,0,0  uncovered per hub >= 93288  IMPOSSIBLE
+q=13 blocks=aPaLbLbLbLbLbLbL : best X=5 c'=13 m4..m0=9,0,317,0,0  uncovered per hub >= 89232  IMPOSSIBLE
+q=13 blocks=aPaLbPbLbLbLbLbL : best X=5 c'=13 m4..m0=9,0,317,0,0  uncovered per hub >= 89232  IMPOSSIBLE
+q=13 blocks=aPaLbPbPbLbLbLbL : best X=5 c'=13 m4..m0=9,0,317,0,0  uncovered per hub >= 89232  IMPOSSIBLE
+q=13 blocks=aPaLbPbPbPbLbLbL : best X=5 c'=13 m4..m0=9,0,317,0,0  uncovered per hub >= 89232  IMPOSSIBLE
+q=13 blocks=aPaLbPbPbPbPbLbL : best X=5 c'=13 m4..m0=9,0,317,0,0  uncovered per hub >= 89232  IMPOSSIBLE
+q=13 blocks=aPaLbPbPbPbPbPbL : best X=5 c'=13 m4..m0=9,0,317,0,0  uncovered per hub >= 89232  IMPOSSIBLE
+q=13 blocks=aPaLbPbPbPbPbPbP : best X=5 c'=13 m4..m0=9,0,317,0,0  uncovered per hub >= 89232  IMPOSSIBLE
+q=13 blocks=aPaLaLbLbLbLbLbL : best X=5 c'=18 m4..m0=9,0,335,0,0  uncovered per hub >= 86190  IMPOSSIBLE
+q=13 blocks=aPaLaLbPbLbLbLbL : best X=5 c'=18 m4..m0=9,0,335,0,0  uncovered per hub >= 86190  IMPOSSIBLE
+q=13 blocks=aPaLaLbPbPbLbLbL : best X=5 c'=18 m4..m0=9,0,335,0,0  uncovered per hub >= 86190  IMPOSSIBLE
+q=13 blocks=aPaLaLbPbPbPbLbL : best X=5 c'=18 m4..m0=9,0,335,0,0  uncovered per hub >= 86190  IMPOSSIBLE
+q=13 blocks=aPaLaLbPbPbPbPbL : best X=5 c'=18 m4..m0=9,0,335,0,0  uncovered per hub >= 86190  IMPOSSIBLE
+q=13 blocks=aPaLaLbPbPbPbPbP : best X=5 c'=18 m4..m0=9,0,335,0,0  uncovered per hub >= 86190  IMPOSSIBLE
+q=13 blocks=aPaLaLaLbLbLbLbL : best X=0 c'=3 m4..m0=9,0,347,0,0  uncovered per hub >= 84162  IMPOSSIBLE
+q=13 blocks=aPaLaLaLbPbLbLbL : best X=0 c'=3 m4..m0=9,0,347,0,0  uncovered per hub >= 84162  IMPOSSIBLE
+q=13 blocks=aPaLaLaLbPbPbLbL : best X=0 c'=3 m4..m0=9,0,347,0,0  uncovered per hub >= 84162  IMPOSSIBLE
+q=13 blocks=aPaLaLaLbPbPbPbL : best X=0 c'=3 m4..m0=9,0,347,0,0  uncovered per hub >= 84162  IMPOSSIBLE
+q=13 blocks=aPaLaLaLbPbPbPbP : best X=0 c'=3 m4..m0=9,0,347,0,0  uncovered per hub >= 84162  IMPOSSIBLE
+q=13 blocks=aPaLaLaLaLbLbLbL : best X=0 c'=3 m4..m0=9,0,335,0,0  uncovered per hub >= 86190  IMPOSSIBLE
+q=13 blocks=aPaLaLaLaLbPbLbL : best X=0 c'=3 m4..m0=9,0,335,0,0  uncovered per hub >= 86190  IMPOSSIBLE
+q=13 blocks=aPaLaLaLaLbPbPbL : best X=0 c'=3 m4..m0=9,0,335,0,0  uncovered per hub >= 86190  IMPOSSIBLE
+q=13 blocks=aPaLaLaLaLbPbPbP : best X=0 c'=3 m4..m0=9,0,335,0,0  uncovered per hub >= 86190  IMPOSSIBLE
+q=13 blocks=aPaLaLaLaLaLbLbL : best X=0 c'=3 m4..m0=9,0,317,0,0  uncovered per hub >= 89232  IMPOSSIBLE
+q=13 blocks=aPaLaLaLaLaLbPbL : best X=0 c'=3 m4..m0=9,0,317,0,0  uncovered per hub >= 89232  IMPOSSIBLE
+q=13 blocks=aPaLaLaLaLaLbPbP : best X=0 c'=3 m4..m0=9,0,317,0,0  uncovered per hub >= 89232  IMPOSSIBLE
+q=13 blocks=aPaLaLaLaLaLaLbL : best X=0 c'=3 m4..m0=9,0,293,0,0  uncovered per hub >= 93288  IMPOSSIBLE
+q=13 blocks=aPaLaLaLaLaLaLbP : best X=0 c'=3 m4..m0=9,0,293,0,0  uncovered per hub >= 93288  IMPOSSIBLE
+q=13 blocks=aPaLaLaLaLaLaLaL : best X=0 c'=2 m4..m0=9,0,263,0,0  uncovered per hub >= 98358  IMPOSSIBLE
+q=13 blocks=aPaPbLbLbLbLbLbL (reading 2): best X=5 c'=13 m4..m0=9,0,317,0,0  uncovered per hub >= 89232  IMPOSSIBLE
+q=13 blocks=aPaPbPbLbLbLbLbL : best X=5 c'=13 m4..m0=9,0,317,0,0  uncovered per hub >= 89232  IMPOSSIBLE
+q=13 blocks=aPaPbPbPbLbLbLbL : best X=5 c'=13 m4..m0=9,0,317,0,0  uncovered per hub >= 89232  IMPOSSIBLE
+q=13 blocks=aPaPbPbPbPbLbLbL : best X=5 c'=13 m4..m0=9,0,317,0,0  uncovered per hub >= 89232  IMPOSSIBLE
+q=13 blocks=aPaPbPbPbPbPbLbL : best X=5 c'=13 m4..m0=9,0,317,0,0  uncovered per hub >= 89232  IMPOSSIBLE
+q=13 blocks=aPaPbPbPbPbPbPbL : best X=5 c'=13 m4..m0=9,0,317,0,0  uncovered per hub >= 89232  IMPOSSIBLE
+q=13 blocks=aPaPbPbPbPbPbPbP : best X=5 c'=13 m4..m0=9,0,317,0,0  uncovered per hub >= 89232  IMPOSSIBLE
+q=13 blocks=aPaPaLbLbLbLbLbL : best X=5 c'=18 m4..m0=9,0,335,0,0  uncovered per hub >= 86190  IMPOSSIBLE
+q=13 blocks=aPaPaLbPbLbLbLbL : best X=5 c'=18 m4..m0=9,0,335,0,0  uncovered per hub >= 86190  IMPOSSIBLE
+q=13 blocks=aPaPaLbPbPbLbLbL : best X=5 c'=18 m4..m0=9,0,335,0,0  uncovered per hub >= 86190  IMPOSSIBLE
+q=13 blocks=aPaPaLbPbPbPbLbL : best X=5 c'=18 m4..m0=9,0,335,0,0  uncovered per hub >= 86190  IMPOSSIBLE
+q=13 blocks=aPaPaLbPbPbPbPbL : best X=5 c'=18 m4..m0=9,0,335,0,0  uncovered per hub >= 86190  IMPOSSIBLE
+q=13 blocks=aPaPaLbPbPbPbPbP : best X=5 c'=18 m4..m0=9,0,335,0,0  uncovered per hub >= 86190  IMPOSSIBLE
+q=13 blocks=aPaPaLaLbLbLbLbL : best X=0 c'=3 m4..m0=9,0,347,0,0  uncovered per hub >= 84162  IMPOSSIBLE
+q=13 blocks=aPaPaLaLbPbLbLbL : best X=0 c'=3 m4..m0=9,0,347,0,0  uncovered per hub >= 84162  IMPOSSIBLE
+q=13 blocks=aPaPaLaLbPbPbLbL : best X=0 c'=3 m4..m0=9,0,347,0,0  uncovered per hub >= 84162  IMPOSSIBLE
+q=13 blocks=aPaPaLaLbPbPbPbL : best X=0 c'=3 m4..m0=9,0,347,0,0  uncovered per hub >= 84162  IMPOSSIBLE
+q=13 blocks=aPaPaLaLbPbPbPbP : best X=0 c'=3 m4..m0=9,0,347,0,0  uncovered per hub >= 84162  IMPOSSIBLE
+q=13 blocks=aPaPaLaLaLbLbLbL : best X=0 c'=3 m4..m0=9,0,335,0,0  uncovered per hub >= 86190  IMPOSSIBLE
+q=13 blocks=aPaPaLaLaLbPbLbL : best X=0 c'=3 m4..m0=9,0,335,0,0  uncovered per hub >= 86190  IMPOSSIBLE
+q=13 blocks=aPaPaLaLaLbPbPbL : best X=0 c'=3 m4..m0=9,0,335,0,0  uncovered per hub >= 86190  IMPOSSIBLE
+q=13 blocks=aPaPaLaLaLbPbPbP : best X=0 c'=3 m4..m0=9,0,335,0,0  uncovered per hub >= 86190  IMPOSSIBLE
+q=13 blocks=aPaPaLaLaLaLbLbL : best X=0 c'=3 m4..m0=9,0,317,0,0  uncovered per hub >= 89232  IMPOSSIBLE
+q=13 blocks=aPaPaLaLaLaLbPbL : best X=0 c'=3 m4..m0=9,0,317,0,0  uncovered per hub >= 89232  IMPOSSIBLE
+q=13 blocks=aPaPaLaLaLaLbPbP : best X=0 c'=3 m4..m0=9,0,317,0,0  uncovered per hub >= 89232  IMPOSSIBLE
+q=13 blocks=aPaPaLaLaLaLaLbL : best X=0 c'=3 m4..m0=9,0,293,0,0  uncovered per hub >= 93288  IMPOSSIBLE
+q=13 blocks=aPaPaLaLaLaLaLbP : best X=0 c'=3 m4..m0=9,0,293,0,0  uncovered per hub >= 93288  IMPOSSIBLE
+q=13 blocks=aPaPaLaLaLaLaLaL : best X=0 c'=2 m4..m0=9,0,263,0,0  uncovered per hub >= 98358  IMPOSSIBLE
+q=13 blocks=aPaPaPbLbLbLbLbL (reading 2): best X=5 c'=18 m4..m0=9,0,335,0,0  uncovered per hub >= 86190  IMPOSSIBLE
+q=13 blocks=aPaPaPbPbLbLbLbL : best X=5 c'=18 m4..m0=9,0,335,0,0  uncovered per hub >= 86190  IMPOSSIBLE
+q=13 blocks=aPaPaPbPbPbLbLbL : best X=5 c'=18 m4..m0=9,0,335,0,0  uncovered per hub >= 86190  IMPOSSIBLE
+q=13 blocks=aPaPaPbPbPbPbLbL : best X=5 c'=18 m4..m0=9,0,335,0,0  uncovered per hub >= 86190  IMPOSSIBLE
+q=13 blocks=aPaPaPbPbPbPbPbL : best X=5 c'=18 m4..m0=9,0,335,0,0  uncovered per hub >= 86190  IMPOSSIBLE
+q=13 blocks=aPaPaPbPbPbPbPbP : best X=5 c'=18 m4..m0=9,0,335,0,0  uncovered per hub >= 86190  IMPOSSIBLE
+q=13 blocks=aPaPaPaLbLbLbLbL : best X=0 c'=3 m4..m0=9,0,347,0,0  uncovered per hub >= 84162  IMPOSSIBLE
+q=13 blocks=aPaPaPaLbPbLbLbL : best X=0 c'=3 m4..m0=9,0,347,0,0  uncovered per hub >= 84162  IMPOSSIBLE
+q=13 blocks=aPaPaPaLbPbPbLbL : best X=0 c'=3 m4..m0=9,0,347,0,0  uncovered per hub >= 84162  IMPOSSIBLE
+q=13 blocks=aPaPaPaLbPbPbPbL : best X=0 c'=3 m4..m0=9,0,347,0,0  uncovered per hub >= 84162  IMPOSSIBLE
+q=13 blocks=aPaPaPaLbPbPbPbP : best X=0 c'=3 m4..m0=9,0,347,0,0  uncovered per hub >= 84162  IMPOSSIBLE
+q=13 blocks=aPaPaPaLaLbLbLbL : best X=0 c'=3 m4..m0=9,0,335,0,0  uncovered per hub >= 86190  IMPOSSIBLE
+q=13 blocks=aPaPaPaLaLbPbLbL : best X=0 c'=3 m4..m0=9,0,335,0,0  uncovered per hub >= 86190  IMPOSSIBLE
+q=13 blocks=aPaPaPaLaLbPbPbL : best X=0 c'=3 m4..m0=9,0,335,0,0  uncovered per hub >= 86190  IMPOSSIBLE
+q=13 blocks=aPaPaPaLaLbPbPbP : best X=0 c'=3 m4..m0=9,0,335,0,0  uncovered per hub >= 86190  IMPOSSIBLE
+q=13 blocks=aPaPaPaLaLaLbLbL : best X=0 c'=3 m4..m0=9,0,317,0,0  uncovered per hub >= 89232  IMPOSSIBLE
+q=13 blocks=aPaPaPaLaLaLbPbL : best X=0 c'=3 m4..m0=9,0,317,0,0  uncovered per hub >= 89232  IMPOSSIBLE
+q=13 blocks=aPaPaPaLaLaLbPbP : best X=0 c'=3 m4..m0=9,0,317,0,0  uncovered per hub >= 89232  IMPOSSIBLE
+q=13 blocks=aPaPaPaLaLaLaLbL : best X=0 c'=3 m4..m0=9,0,293,0,0  uncovered per hub >= 93288  IMPOSSIBLE
+q=13 blocks=aPaPaPaLaLaLaLbP : best X=0 c'=3 m4..m0=9,0,293,0,0  uncovered per hub >= 93288  IMPOSSIBLE
+q=13 blocks=aPaPaPaLaLaLaLaL : best X=0 c'=2 m4..m0=9,0,263,0,0  uncovered per hub >= 98358  IMPOSSIBLE
+q=13 blocks=aPaPaPaPbLbLbLbL (reading 2): best X=0 c'=3 m4..m0=9,0,347,0,0  uncovered per hub >= 84162  IMPOSSIBLE
+q=13 blocks=aPaPaPaPbPbLbLbL : best X=0 c'=3 m4..m0=9,0,347,0,0  uncovered per hub >= 84162  IMPOSSIBLE
+q=13 blocks=aPaPaPaPbPbPbLbL : best X=0 c'=3 m4..m0=9,0,347,0,0  uncovered per hub >= 84162  IMPOSSIBLE
+q=13 blocks=aPaPaPaPbPbPbPbL : best X=0 c'=3 m4..m0=9,0,347,0,0  uncovered per hub >= 84162  IMPOSSIBLE
+q=13 blocks=aPaPaPaPbPbPbPbP : best X=0 c'=3 m4..m0=9,0,347,0,0  uncovered per hub >= 84162  IMPOSSIBLE
+q=13 blocks=aPaPaPaPaLbLbLbL : best X=0 c'=3 m4..m0=9,0,335,0,0  uncovered per hub >= 86190  IMPOSSIBLE
+q=13 blocks=aPaPaPaPaLbPbLbL : best X=0 c'=3 m4..m0=9,0,335,0,0  uncovered per hub >= 86190  IMPOSSIBLE
+q=13 blocks=aPaPaPaPaLbPbPbL : best X=0 c'=3 m4..m0=9,0,335,0,0  uncovered per hub >= 86190  IMPOSSIBLE
+q=13 blocks=aPaPaPaPaLbPbPbP : best X=0 c'=3 m4..m0=9,0,335,0,0  uncovered per hub >= 86190  IMPOSSIBLE
+q=13 blocks=aPaPaPaPaLaLbLbL : best X=0 c'=3 m4..m0=9,0,317,0,0  uncovered per hub >= 89232  IMPOSSIBLE
+q=13 blocks=aPaPaPaPaLaLbPbL : best X=0 c'=3 m4..m0=9,0,317,0,0  uncovered per hub >= 89232  IMPOSSIBLE
+q=13 blocks=aPaPaPaPaLaLbPbP : best X=0 c'=3 m4..m0=9,0,317,0,0  uncovered per hub >= 89232  IMPOSSIBLE
+q=13 blocks=aPaPaPaPaLaLaLbL : best X=0 c'=3 m4..m0=9,0,293,0,0  uncovered per hub >= 93288  IMPOSSIBLE
+q=13 blocks=aPaPaPaPaLaLaLbP : best X=0 c'=3 m4..m0=9,0,293,0,0  uncovered per hub >= 93288  IMPOSSIBLE
+q=13 blocks=aPaPaPaPaLaLaLaL : best X=0 c'=2 m4..m0=9,0,263,0,0  uncovered per hub >= 98358  IMPOSSIBLE
+q=13 blocks=aPaPaPaPaPbLbLbL (reading 2): best X=0 c'=3 m4..m0=9,0,335,0,0  uncovered per hub >= 86190  IMPOSSIBLE
+q=13 blocks=aPaPaPaPaPbPbLbL : best X=0 c'=3 m4..m0=9,0,335,0,0  uncovered per hub >= 86190  IMPOSSIBLE
+q=13 blocks=aPaPaPaPaPbPbPbL : best X=0 c'=3 m4..m0=9,0,335,0,0  uncovered per hub >= 86190  IMPOSSIBLE
+q=13 blocks=aPaPaPaPaPbPbPbP : best X=0 c'=3 m4..m0=9,0,335,0,0  uncovered per hub >= 86190  IMPOSSIBLE
+q=13 blocks=aPaPaPaPaPaLbLbL : best X=0 c'=3 m4..m0=9,0,317,0,0  uncovered per hub >= 89232  IMPOSSIBLE
+q=13 blocks=aPaPaPaPaPaLbPbL : best X=0 c'=3 m4..m0=9,0,317,0,0  uncovered per hub >= 89232  IMPOSSIBLE
+q=13 blocks=aPaPaPaPaPaLbPbP : best X=0 c'=3 m4..m0=9,0,317,0,0  uncovered per hub >= 89232  IMPOSSIBLE
+q=13 blocks=aPaPaPaPaPaLaLbL : best X=0 c'=3 m4..m0=9,0,293,0,0  uncovered per hub >= 93288  IMPOSSIBLE
+q=13 blocks=aPaPaPaPaPaLaLbP : best X=0 c'=3 m4..m0=9,0,293,0,0  uncovered per hub >= 93288  IMPOSSIBLE
+q=13 blocks=aPaPaPaPaPaLaLaL : best X=0 c'=2 m4..m0=9,0,263,0,0  uncovered per hub >= 98358  IMPOSSIBLE
+q=13 blocks=aPaPaPaPaPaPbLbL (reading 2): best X=0 c'=3 m4..m0=9,0,317,0,0  uncovered per hub >= 89232  IMPOSSIBLE
+q=13 blocks=aPaPaPaPaPaPbPbL : best X=0 c'=3 m4..m0=9,0,317,0,0  uncovered per hub >= 89232  IMPOSSIBLE
+q=13 blocks=aPaPaPaPaPaPbPbP : best X=0 c'=3 m4..m0=9,0,317,0,0  uncovered per hub >= 89232  IMPOSSIBLE
+q=13 blocks=aPaPaPaPaPaPaLbL : best X=0 c'=3 m4..m0=9,0,293,0,0  uncovered per hub >= 93288  IMPOSSIBLE
+q=13 blocks=aPaPaPaPaPaPaLbP : best X=0 c'=3 m4..m0=9,0,293,0,0  uncovered per hub >= 93288  IMPOSSIBLE
+q=13 blocks=aPaPaPaPaPaPaLaL : best X=0 c'=2 m4..m0=9,0,263,0,0  uncovered per hub >= 98358  IMPOSSIBLE
+q=13 blocks=aPaPaPaPaPaPaPbL (reading 2): best X=0 c'=3 m4..m0=9,0,293,0,0  uncovered per hub >= 93288  IMPOSSIBLE
+q=13 blocks=aPaPaPaPaPaPaPbP : best X=0 c'=3 m4..m0=9,0,293,0,0  uncovered per hub >= 93288  IMPOSSIBLE
+q=13 blocks=aPaPaPaPaPaPaPaL : best X=0 c'=2 m4..m0=9,0,263,0,0  uncovered per hub >= 98358  IMPOSSIBLE
+q=13 blocks=aPaPaPaPaPaPaPaP (reading 2): best X=0 c'=2 m4..m0=9,0,263,0,0  uncovered per hub >= 98358  IMPOSSIBLE

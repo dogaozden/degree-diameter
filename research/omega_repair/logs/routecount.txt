@@ -1,0 +1,61 @@
+$ ./routecount 2 2
+q=2 types=bb: m4 range 2..4; best pair X=0 c'=0 m4=2 m2=17 id4=1: uncovered >= q^5 - m4 q^4 - m2 q^2 = -68 per t
+q=2 types=ab: m4 range 2..4; best pair X=0 c'=6 m4=3 m2=18 id4=1: uncovered >= q^5 - m4 q^4 - m2 q^2 = -88 per t
+q=2 types=aa: m4 range 2..4; best pair X=0 c'=2 m4=2 m2=17 id4=1: uncovered >= q^5 - m4 q^4 - m2 q^2 = -68 per t
+$ ./routecount 3 3
+q=3 types=bbb: m4 range 3..6; best pair X=0 c'=0 m4=3 m2=38 id4=1: uncovered >= q^5 - m4 q^4 - m2 q^2 = -342 per t
+q=3 types=abb: m4 range 3..6; best pair X=5 c'=8 m4=3 m2=48 id4=1: uncovered >= q^5 - m4 q^4 - m2 q^2 = -432 per t
+q=3 types=aab: m4 range 3..6; best pair X=0 c'=3 m4=3 m2=48 id4=1: uncovered >= q^5 - m4 q^4 - m2 q^2 = -432 per t
+q=3 types=aaa: m4 range 3..6; best pair X=0 c'=2 m4=3 m2=38 id4=1: uncovered >= q^5 - m4 q^4 - m2 q^2 = -342 per t
+$ ./routecount 4 3
+q=4 types=bbb: m4 range 3..6; best pair X=0 c'=0 m4=3 m2=38 id4=1: uncovered >= q^5 - m4 q^4 - m2 q^2 = -352 per t
+q=4 types=abb: m4 range 3..6; best pair X=5 c'=8 m4=3 m2=48 id4=1: uncovered >= q^5 - m4 q^4 - m2 q^2 = -512 per t
+q=4 types=aab: m4 range 3..6; best pair X=0 c'=3 m4=3 m2=48 id4=1: uncovered >= q^5 - m4 q^4 - m2 q^2 = -512 per t
+q=4 types=aaa: m4 range 3..6; best pair X=0 c'=2 m4=3 m2=38 id4=1: uncovered >= q^5 - m4 q^4 - m2 q^2 = -352 per t
+$ ./routecount 5 4
+q=5 types=bbbb: m4 range 4..8; best pair X=0 c'=0 m4=4 m2=67 id4=1: uncovered >= q^5 - m4 q^4 - m2 q^2 = -1050 per t
+q=5 types=abbb: m4 range 4..8; best pair X=5 c'=8 m4=4 m2=81 id4=1: uncovered >= q^5 - m4 q^4 - m2 q^2 = -1400 per t
+q=5 types=aabb: m4 range 4..8; best pair X=0 c'=3 m4=4 m2=89 id4=1: uncovered >= q^5 - m4 q^4 - m2 q^2 = -1600 per t
+q=5 types=aaab: m4 range 4..8; best pair X=0 c'=3 m4=4 m2=81 id4=1: uncovered >= q^5 - m4 q^4 - m2 q^2 = -1400 per t
+q=5 types=aaaa: m4 range 4..8; best pair X=0 c'=2 m4=4 m2=67 id4=1: uncovered >= q^5 - m4 q^4 - m2 q^2 = -1050 per t
+$ ./routecount 7 5
+q=7 types=bbbbb: m4 range 5..10; best pair X=0 c'=0 m4=5 m2=104 id4=1: uncovered >= q^5 - m4 q^4 - m2 q^2 = -294 per t
+q=7 types=abbbb: m4 range 5..10; best pair X=5 c'=8 m4=5 m2=122 id4=1: uncovered >= q^5 - m4 q^4 - m2 q^2 = -1176 per t
+q=7 types=aabbb: m4 range 5..10; best pair X=5 c'=13 m4=5 m2=134 id4=1: uncovered >= q^5 - m4 q^4 - m2 q^2 = -1764 per t
+q=7 types=aaabb: m4 range 5..10; best pair X=0 c'=3 m4=5 m2=134 id4=1: uncovered >= q^5 - m4 q^4 - m2 q^2 = -1764 per t
+q=7 types=aaaab: m4 range 5..10; best pair X=0 c'=3 m4=5 m2=122 id4=1: uncovered >= q^5 - m4 q^4 - m2 q^2 = -1176 per t
+q=7 types=aaaaa: m4 range 5..10; best pair X=0 c'=2 m4=5 m2=104 id4=1: uncovered >= q^5 - m4 q^4 - m2 q^2 = -294 per t
+$ ./routecount 8 5
+q=8 types=bbbbb: m4 range 5..10; best pair X=0 c'=0 m4=5 m2=104 id4=1: uncovered >= q^5 - m4 q^4 - m2 q^2 = 5632 per t
+q=8 types=abbbb: m4 range 5..10; best pair X=5 c'=8 m4=5 m2=122 id4=1: uncovered >= q^5 - m4 q^4 - m2 q^2 = 4480 per t
+q=8 types=aabbb: m4 range 5..10; best pair X=5 c'=13 m4=5 m2=134 id4=1: uncovered >= q^5 - m4 q^4 - m2 q^2 = 3712 per t
+q=8 types=aaabb: m4 range 5..10; best pair X=0 c'=3 m4=5 m2=134 id4=1: uncovered >= q^5 - m4 q^4 - m2 q^2 = 3712 per t
+q=8 types=aaaab: m4 range 5..10; best pair X=0 c'=3 m4=5 m2=122 id4=1: uncovered >= q^5 - m4 q^4 - m2 q^2 = 4480 per t
+q=8 types=aaaaa: m4 range 5..10; best pair X=0 c'=2 m4=5 m2=104 id4=1: uncovered >= q^5 - m4 q^4 - m2 q^2 = 5632 per t
+$ ./routecount 9 6
+q=9 types=bbbbbb: m4 range 6..12; best pair X=0 c'=0 m4=6 m2=149 id4=1: uncovered >= q^5 - m4 q^4 - m2 q^2 = 7614 per t
+q=9 types=abbbbb: m4 range 6..12; best pair X=5 c'=8 m4=6 m2=171 id4=1: uncovered >= q^5 - m4 q^4 - m2 q^2 = 5832 per t
+q=9 types=aabbbb: m4 range 6..12; best pair X=5 c'=13 m4=6 m2=187 id4=1: uncovered >= q^5 - m4 q^4 - m2 q^2 = 4536 per t
+q=9 types=aaabbb: m4 range 6..12; best pair X=0 c'=3 m4=6 m2=197 id4=1: uncovered >= q^5 - m4 q^4 - m2 q^2 = 3726 per t
+q=9 types=aaaabb: m4 range 6..12; best pair X=0 c'=3 m4=6 m2=187 id4=1: uncovered >= q^5 - m4 q^4 - m2 q^2 = 4536 per t
+q=9 types=aaaaab: m4 range 6..12; best pair X=0 c'=3 m4=6 m2=171 id4=1: uncovered >= q^5 - m4 q^4 - m2 q^2 = 5832 per t
+q=9 types=aaaaaa: m4 range 6..12; best pair X=0 c'=2 m4=6 m2=149 id4=1: uncovered >= q^5 - m4 q^4 - m2 q^2 = 7614 per t
+$ ./routecount 11 7
+q=11 types=bbbbbbb: m4 range 7..14; best pair X=0 c'=0 m4=7 m2=202 id4=1: uncovered >= q^5 - m4 q^4 - m2 q^2 = 34122 per t
+q=11 types=abbbbbb: m4 range 7..14; best pair X=5 c'=8 m4=7 m2=228 id4=1: uncovered >= q^5 - m4 q^4 - m2 q^2 = 30976 per t
+q=11 types=aabbbbb: m4 range 7..14; best pair X=5 c'=13 m4=7 m2=248 id4=1: uncovered >= q^5 - m4 q^4 - m2 q^2 = 28556 per t
+q=11 types=aaabbbb: m4 range 7..14; best pair X=5 c'=18 m4=7 m2=262 id4=1: uncovered >= q^5 - m4 q^4 - m2 q^2 = 26862 per t
+q=11 types=aaaabbb: m4 range 7..14; best pair X=0 c'=3 m4=7 m2=262 id4=1: uncovered >= q^5 - m4 q^4 - m2 q^2 = 26862 per t
+q=11 types=aaaaabb: m4 range 7..14; best pair X=0 c'=3 m4=7 m2=248 id4=1: uncovered >= q^5 - m4 q^4 - m2 q^2 = 28556 per t
+q=11 types=aaaaaab: m4 range 7..14; best pair X=0 c'=3 m4=7 m2=228 id4=1: uncovered >= q^5 - m4 q^4 - m2 q^2 = 30976 per t
+q=11 types=aaaaaaa: m4 range 7..14; best pair X=0 c'=2 m4=7 m2=202 id4=1: uncovered >= q^5 - m4 q^4 - m2 q^2 = 34122 per t
+$ ./routecount 13 8
+q=13 types=bbbbbbbb: m4 range 8..16; best pair X=0 c'=0 m4=8 m2=263 id4=1: uncovered >= q^5 - m4 q^4 - m2 q^2 = 98358 per t
+q=13 types=abbbbbbb: m4 range 8..16; best pair X=5 c'=8 m4=8 m2=293 id4=1: uncovered >= q^5 - m4 q^4 - m2 q^2 = 93288 per t
+q=13 types=aabbbbbb: m4 range 8..16; best pair X=5 c'=13 m4=8 m2=317 id4=1: uncovered >= q^5 - m4 q^4 - m2 q^2 = 89232 per t
+q=13 types=aaabbbbb: m4 range 8..16; best pair X=5 c'=18 m4=8 m2=335 id4=1: uncovered >= q^5 - m4 q^4 - m2 q^2 = 86190 per t
+q=13 types=aaaabbbb: m4 range 8..16; best pair X=0 c'=3 m4=8 m2=347 id4=1: uncovered >= q^5 - m4 q^4 - m2 q^2 = 84162 per t
+q=13 types=aaaaabbb: m4 range 8..16; best pair X=0 c'=3 m4=8 m2=335 id4=1: uncovered >= q^5 - m4 q^4 - m2 q^2 = 86190 per t
+q=13 types=aaaaaabb: m4 range 8..16; best pair X=0 c'=3 m4=8 m2=317 id4=1: uncovered >= q^5 - m4 q^4 - m2 q^2 = 89232 per t
+q=13 types=aaaaaaab: m4 range 8..16; best pair X=0 c'=3 m4=8 m2=293 id4=1: uncovered >= q^5 - m4 q^4 - m2 q^2 = 93288 per t
+q=13 types=aaaaaaaa: m4 range 8..16; best pair X=0 c'=2 m4=8 m2=263 id4=1: uncovered >= q^5 - m4 q^4 - m2 q^2 = 98358 per t
