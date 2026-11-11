@@ -1,0 +1,47 @@
+{
+ "cost": 0,
+ "levels": [
+  6,
+  31,
+  156,
+  781,
+  3626,
+  11598,
+  15840
+ ],
+ "census": {
+  "2": {
+   "words": 60,
+   "twisted": 0,
+   "involutive": 0,
+   "twisted_relators": 0.0,
+   "involutive_relators": 0.0
+  },
+  "4": {
+   "words": 1500,
+   "twisted": 0,
+   "involutive": 0,
+   "twisted_relators": 0.0,
+   "involutive_relators": 0.0
+  },
+  "6": {
+   "words": 37500,
+   "twisted": 1352,
+   "involutive": 232,
+   "twisted_relators": 56.333333333333336,
+   "involutive_relators": 9.666666666666666
+  }
+ },
+ "shots_mean": 5.918560606060606,
+ "shots_var": 5.192988837235996,
+ "shots_zero_exact_length": 20,
+ "file": "sols/d6D8_psl_11_24_orb2f0_s1.txt",
+ "group": "psl 11 x Z_24",
+ "N": 15840,
+ "d": 6,
+ "D": 8,
+ "symmetric_frame": true,
+ "fix": 24,
+ "anti": 672,
+ "involutions": 112
+}
