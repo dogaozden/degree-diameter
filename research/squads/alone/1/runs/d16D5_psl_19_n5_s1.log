@@ -1,0 +1,10 @@
+group psl 19 x Z_5, N=17100, identity 855, H order 45, rows 380, threads 1, setup 0.00s
+start cost=1573
+t=30 steps=861211 evals=861212 cost=813 best=813 T=0.53
+t=60 steps=1745549 evals=1745550 cost=813 best=813 T=0.19
+t=90 steps=2600335 evals=2600336 cost=813 best=813 T=0.15
+t=120 steps=3485724 evals=3485725 cost=843 best=813 T=0.15
+t=150 steps=4369958 evals=4369959 cost=843 best=813 T=0.15
+t=180 steps=5261055 evals=5261056 cost=813 best=813 T=1.44
+t=210 steps=6107054 evals=6107055 cost=843 best=793 T=0.51
+RESULT d=16 D=5 group=psl 19 x Z_5 N=17100 best=793 evals=6972430 time=240.0

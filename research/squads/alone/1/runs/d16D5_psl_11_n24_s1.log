@@ -1,0 +1,10 @@
+group psl 11 x Z_24, N=15840, identity 1320, H order 60, rows 264, threads 1, setup 0.00s
+start cost=1153
+t=30 steps=1171403 evals=1171404 cost=540 best=540 T=0.53
+t=60 steps=2324241 evals=2324242 cost=540 best=540 T=0.19
+t=90 steps=3467282 evals=3467283 cost=540 best=540 T=0.15
+t=120 steps=4607262 evals=4607263 cost=540 best=540 T=0.15
+t=150 steps=5755757 evals=5755758 cost=540 best=540 T=0.15
+t=180 steps=6946266 evals=6946267 cost=541 best=540 T=1.25
+t=210 steps=8120180 evals=8120181 cost=526 best=526 T=0.44
+RESULT d=16 D=5 group=psl 11 x Z_24 N=15840 best=526 evals=9308564 time=240.0
