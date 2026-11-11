@@ -1,0 +1,7 @@
+group sl 101 x Z_101, N=104050200, identity 1020100, H order 51, rows 2040200, threads 1, setup 2.67s
+wide rows: HW order 202, rows 515100, setup 7.49s
+alpha: conj by mat(17,43,0,6) (index 177659), z -> 36 z on Z_101
+ORBIT k=5 m=3 f=0: |Fix(alpha)| = 99 (+e); mu = 24.19, mu/k = 4.84, fixed-point misses ~ 9.43
+start cost=58
+t=35 steps=7 evals=57 cost=20 best=20 T=0.44
+RESULT d=15 D=9 group=sl 101 x Z_101 N=104050200 best=20 evals=81 time=52.8 orbit k=5 m=3 f=0 fix=99
