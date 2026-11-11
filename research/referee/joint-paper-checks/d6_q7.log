@@ -1,0 +1,10 @@
+table q=3: -c non-square True, G zero-free True
+table q=5: -c non-square True, G zero-free True
+table q=7: -c non-square True, G zero-free True
+table q=9: -c non-square True, G zero-free True
+table q=11: -c non-square True, G zero-free True
+table q=13: -c non-square True, G zero-free True
+q=7: Lemma 5.1 (a)-(e) ok for all 49 z; free points 16464; |W|=2352 (q^2(q^2-1)=2352); exact: True
+   Lemma 5.6(c) failures: 0; Lemma 5.7 key identity failures over all free p and z in A_p: 0
+   doubling m=2: 45428 vertices, Theorem 5.8 formula 45428; written d6_q7_m2.edges
+n=45428 m=201384 maxdeg=9 simple=1 bipartite=1 connected=1 diameter=6

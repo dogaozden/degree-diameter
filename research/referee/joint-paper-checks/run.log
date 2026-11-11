@@ -1,0 +1,294 @@
+== Section 3 (fourth hat)
+q=4: 2 (a,c) pairs ok: Table 2 rows equal (C1)-(C6), |V|=52, diam G=R=3, R 6-regular; without rotation diam=4, without H1~K0 diam=4
+q=5: 6 (a,c) pairs ok: Table 2 rows equal (C1)-(C6), |V|=72, diam G=R=3, R 7-regular; without rotation diam=4, without H1~K0 diam=4
+q=7: 20 (a,c) pairs ok: Table 2 rows equal (C1)-(C6), |V|=124, diam G=R=3, R 9-regular; without rotation diam=4, without H1~K0 diam=4
+q=8: 30 (a,c) pairs ok: Table 2 rows equal (C1)-(C6), |V|=156, diam G=R=3, R 10-regular; without rotation diam=4, without H1~K0 diam=4
+q=9: 42 (a,c) pairs ok: Table 2 rows equal (C1)-(C6), |V|=192, diam G=R=3, R 11-regular; without rotation diam=4, without H1~K0 diam=4
+q=11: 3 (a,c) pairs ok: Table 2 rows equal (C1)-(C6), |V|=276, diam G=R=3, R 13-regular; without rotation diam=4, without H1~K0 diam=4
+q=13: 3 (a,c) pairs ok: Table 2 rows equal (C1)-(C6), |V|=376, diam G=R=3, R 15-regular; without rotation diam=4, without H1~K0 diam=4
+q=3: all 24 ordered choices of 4 hat points on ell: order 36, diameter 3, degrees [5]
+q=4: all 120 ordered choices of 4 hat points on ell: order 52, diameter 3, degrees [5, 6]
+q=5: all 360 ordered choices of 4 hat points on ell: order 72, diameter 3, degrees [6, 7]
+== Section 4.2 (AS(q))
+q=3: AS(q) 27 points, 45 lines, GQ sample ok; line sums with kappa=(1/2,1/(2eps)): {2}; all kappa1*kappa2=1/(4eps): True
+   Cor 4.8 graph: 90 vertices (2q^2(q+2)=90), written as_cor48_q3.edges
+q=5: AS(q) 125 points, 175 lines, GQ sample ok; line sums with kappa=(1/2,1/(2eps)): {2}; all kappa1*kappa2=1/(4eps): True
+   Cor 4.8 graph: 350 vertices (2q^2(q+2)=350), written as_cor48_q5.edges
+q=7: AS(q) 343 points, 441 lines, GQ sample ok; line sums with kappa=(1/2,1/(2eps)): {2}; all kappa1*kappa2=1/(4eps): True
+   Cor 4.8 graph: 882 vertices (2q^2(q+2)=882), written as_cor48_q7.edges
+q=9: AS(q) 729 points, 891 lines, GQ sample ok; line sums with kappa=(1/2,1/(2eps)): {2}; all kappa1*kappa2=1/(4eps): True
+   Cor 4.8 graph: 1782 vertices (2q^2(q+2)=1782), written as_cor48_q9.edges
+AS(3) has a 1-ovoid: False (so no 2-ovoid either: complement of a 2-ovoid in 3-point lines is a 1-ovoid)
+as_cor48_q3: n=90 m=225 maxdeg=5 simple=1 bipartite=1 connected=1 diameter=4
+as_cor48_q5: n=350 m=1225 maxdeg=7 simple=1 bipartite=1 connected=1 diameter=4
+as_cor48_q7: n=882 m=3969 maxdeg=9 simple=1 bipartite=1 connected=1 diameter=4
+as_cor48_q9: n=1782 m=9801 maxdeg=11 simple=1 bipartite=1 connected=1 diameter=4
+== Section 4.3 (Singer 2-ovoids)
+q=3: lines of PG(3,q) meet a class in at most 2 points; t.i. lines 40; pairs (a,c) giving 2-ovoids: [(0, 3), (1, 2)]; expected {a,q-a}: [(0, 3), (1, 2)]
+   remark after Prop 4.10 (delta0 general): 24 (delta0,a,b) cases, mismatches between '2-ovoid' and 'h^(a+b) delta0^2 in F*': 0
+   Cor 4.11 graph: 120 vertices (2(q^2+1)(q+3)=120)
+q=5: lines of PG(3,q) meet a class in at most 2 points; t.i. lines 156; pairs (a,c) giving 2-ovoids: [(0, 5), (1, 4), (2, 3)]; expected {a,q-a}: [(0, 5), (1, 4), (2, 3)]
+   remark after Prop 4.10 (delta0 general): 90 (delta0,a,b) cases, mismatches between '2-ovoid' and 'h^(a+b) delta0^2 in F*': 0
+   Cor 4.11 graph: 416 vertices (2(q^2+1)(q+3)=416)
+q=7: lines of PG(3,q) meet a class in at most 2 points; t.i. lines 400; pairs (a,c) giving 2-ovoids: [(0, 7), (1, 6), (2, 5), (3, 4)]; expected {a,q-a}: [(0, 7), (1, 6), (2, 5), (3, 4)]
+   remark after Prop 4.10 (delta0 general): 224 (delta0,a,b) cases, mismatches between '2-ovoid' and 'h^(a+b) delta0^2 in F*': 0
+   Cor 4.11 graph: 1000 vertices (2(q^2+1)(q+3)=1000)
+singer_cor411_q3: n=120 m=320 maxdeg=6 simple=1 bipartite=1 connected=1 diameter=4
+singer_cor411_q3_reg: n=120 m=360 maxdeg=6 simple=1 bipartite=1 connected=1 diameter=4
+singer_cor411_q5: n=416 m=1560 maxdeg=8 simple=1 bipartite=1 connected=1 diameter=4
+singer_cor411_q5_reg: n=416 m=1664 maxdeg=8 simple=1 bipartite=1 connected=1 diameter=4
+singer_cor411_q7: n=1000 m=4800 maxdeg=10 simple=1 bipartite=1 connected=1 diameter=4
+singer_cor411_q7_reg: n=1000 m=5000 maxdeg=10 simple=1 bipartite=1 connected=1 diameter=4
+== Appendix A
+pairs of rows that meet: {(1, 2): [(0, 1, 0, 0, 0)], (4, 9): [(1, 2, 3, 3, 1)], (13, 14): [(1, 4, 1, 0, 0)], (20, 21): [(1, 2, 3, 2, 4)]}
+starred: [(2, (0, 1, 0, 0, 0)), (9, (1, 2, 3, 3, 1)), (14, (1, 4, 1, 0, 0)), (21, (1, 2, 3, 2, 4))]  all starred on ovoid: True
+written app359.edges with 359 vertices
+app359: n=359 m=1218 maxdeg=7 simple=1 bipartite=1 connected=1 diameter=4
+== H(q) from Tits' equations
+q=2: |P|=|L|=63, each point on q+1 lines; lines through e0 in <e0,e5,e6>: True; Lemma 2.4(c) mismatches: 0; SL(3) map preserves lines: True
+q=3: |P|=|L|=364, each point on q+1 lines; lines through e0 in <e0,e5,e6>: True; Lemma 2.4(c) mismatches: 0; SL(3) map preserves lines: True
+q=4: |P|=|L|=1365, each point on q+1 lines; lines through e0 in <e0,e5,e6>: True; Lemma 2.4(c) mismatches: 0; SL(3) map preserves lines: True
+q=5: |P|=|L|=3906, each point on q+1 lines; lines through e0 in <e0,e5,e6>: True; Lemma 2.4(c) mismatches: 0; SL(3) map preserves lines: True
+H2: n=126 m=189 maxdeg=3 simple=1 bipartite=1 connected=1 diameter=6
+H3: n=728 m=1456 maxdeg=4 simple=1 bipartite=1 connected=1 diameter=6
+H4: n=2730 m=6825 maxdeg=5 simple=1 bipartite=1 connected=1 diameter=6
+H5: n=7812 m=23436 maxdeg=6 simple=1 bipartite=1 connected=1 diameter=6
+== Section 5 identities (symbolic)
+Lemma 5.6 odd: J^2=-c: True  Q_z(Jx)=cQ_z(x): True  b_z(x,Jx)=0: True  Q(lift)=Q_z: True
+   (b) differences equal Q_z(x)*(1,0,0,-c,alpha,-beta): [True, True, True, True, True, True]
+   (d) num and den scale by s^2+c t^2: (True, True)
+Lemma 5.11 even: J^2+J+delta=0: True  Q(Jx)=delta Q(x): True  b(x,Jx)=Q(x): True
+   (b) differences equal Q(x)*(1,0,0,delta,alpha,beta) mod 2: [True, True, True, True, True, True]
+   (d) num, den scale by s^2+st+delta t^2 mod 2: (True, True)
+odd q: g J_0 g^-1 - J_z on Pi_z = [0, 0, 0, 0, 0, 0, 0]
+even q: g J_0 g^-1 = J_z mod 2 on Pi_z: [True, True, True, True, True, True, True]
+odd q: g_z(Pi_0) in Pi_z: True
+even q: g_z(Pi_0) in Pi_z (mod 2): True
+== Section 5 (odd q)
+table q=3: -c non-square True, G zero-free True
+table q=5: -c non-square True, G zero-free True
+table q=7: -c non-square True, G zero-free True
+table q=9: -c non-square True, G zero-free True
+table q=11: -c non-square True, G zero-free True
+table q=13: -c non-square True, G zero-free True
+q=3: Lemma 5.1 (a)-(e) ok for all 9 z; free points 216; |W|=72 (q^2(q^2-1)=72); exact: True
+   Lemma 5.6(c) failures: 0; Lemma 5.7 key identity failures over all free p and z in A_p: 0
+   doubling m=2: 1020 vertices, Theorem 5.8 formula 1020; written d6_q3_m2.edges
+   doubling m=3: 1386 vertices, Theorem 5.8 formula 1386; written d6_q3_m3.edges
+q=5: Lemma 5.1 (a)-(e) ok for all 25 z; free points 3000; |W|=600 (q^2(q^2-1)=600); exact: True
+   Lemma 5.6(c) failures: 0; Lemma 5.7 key identity failures over all free p and z in A_p: 0
+   doubling m=2: 9592 vertices, Theorem 5.8 formula 9592; written d6_q5_m2.edges
+d6_q3_m2: n=1020 m=2420 maxdeg=5 simple=1 bipartite=1 connected=1 diameter=6
+d6_q3_m3: n=1386 m=3672 maxdeg=6 simple=1 bipartite=1 connected=1 diameter=6
+d6_q5_m2: n=9592 m=32718 maxdeg=7 simple=1 bipartite=1 connected=1 diameter=6
+== Section 5.5 and Appendix B (even q)
+q=2: delta=1; Lemma 5.9 ok; free points 24; zero-free (c0,c1): 0 pairs; Appendix B: 12 lines of H(2), opposite v, not in S; exact: True
+   doubling m=2: 208 vertices; formula 208
+q=4: delta=2; Lemma 5.9 ok; free points 960; zero-free (c0,c1): 4 pairs; with (c0,c1)=(2, 0): |W|=240, exact True; Lemma 5.12 failures 0
+   doubling m=2: 3524 vertices; formula 3524
+d6even_q2_m2: n=208 m=384 maxdeg=4 simple=1 bipartite=1 connected=1 diameter=6
+d6even_q4_m2: n=3524 m=10200 maxdeg=6 simple=1 bipartite=1 connected=1 diameter=6
+== Theorem 5.18
+q=3 m=2: after deletion 484 points, 484 lines, deficits <= 1; T=208; swaps 2; order 968 (formula 968)
+q=3 m=3: after deletion 612 points, 612 lines, deficits <= 2; T=648; swaps 4; order 1224 (formula 1224)
+q=5 m=2: after deletion 4674 points, 4674 lines, deficits <= 1; T=1464; swaps 1; order 9348 (formula 9348)
+thmR_q3_m2: n=968 m=2420 maxdeg=5 simple=1 bipartite=1 connected=1 diameter=6
+thmR_q3_m3: n=1224 m=3672 maxdeg=6 simple=1 bipartite=1 connected=1 diameter=6
+thmR_q5_m2: n=9348 m=32718 maxdeg=7 simple=1 bipartite=1 connected=1 diameter=6
+== Corollary 6.20
+q=4: |R|=17 pairwise opposite; spread 65 lines; (H1),(H2),(H3) = True,True,True; K=7 (kappa(q-1)=7); order 8204 = 6N+2K = 8204; written d7_cor619_q4.edges
+q=5: |R|=26 pairwise opposite; spread 126 lines; (H1),(H2),(H3) = True,True,True; K=26 (kappa(q-1)=35); order 23488 = 6N+2K = 23488; written d7_cor619_q5.edges
+q=5: |R|=26 pairwise opposite; spread 126 lines; (H1),(H2),(H3) = True,True,False; K=26 (kappa(q-1)=35); order 23488 = 6N+2K = 23488; written d7_cor619_q5_control.edges
+d7_cor619_q4: n=8204 m=24582 maxdeg=6 simple=1 bipartite=1 connected=1 diameter=7
+d7_cor619_q5: n=23488 m=82163 maxdeg=7 simple=1 bipartite=1 connected=1 diameter=7
+d7_cor619_q5_control: n=23488 m=82163 maxdeg=7 simple=1 bipartite=1 connected=1 diameter=8
+== Section 7 lemmas, Fact 7.14
+Lemma 7.10, q=3: d(t,z) -> {(|B(z,4)&opp(t)|, |B(z,2)&opp(t)|)}: {0: {(0, 0)}, 2: {(81, 0)}, 4: {(81, 9)}, 6: {(81, 9)}}; q^4=81, q^2=9
+Lemma 7.10, q=4: d(t,z) -> {(|B(z,4)&opp(t)|, |B(z,2)&opp(t)|)}: {0: {(0, 0)}, 2: {(256, 0)}, 4: {(256, 16)}, 6: {(256, 16)}}; q^4=256, q^2=16
+alpha=3: min r4 over all pairs 3; Lemma 7.13 pairs starved: True; max m2 over starved pairs 52; max over patterns of the best starved m2: 48; 8a^2-1=71
+alpha=4: min r4 over all pairs 4; Lemma 7.13 pairs starved: True; max m2 over starved pairs 91; max over patterns of the best starved m2: 89; 8a^2-1=127
+alpha=5: min r4 over all pairs 5; Lemma 7.13 pairs starved: True; max m2 over starved pairs 140; max over patterns of the best starved m2: 134; 8a^2-1=199
+alpha=6: min r4 over all pairs 6; Lemma 7.13 pairs starved: True; max m2 over starved pairs 201; max over patterns of the best starved m2: 197; 8a^2-1=287
+alpha=7: min r4 over all pairs 7; Lemma 7.13 pairs starved: True; max m2 over starved pairs 272; max over patterns of the best starved m2: 262; 8a^2-1=391
+alpha=8: min r4 over all pairs 8; Lemma 7.13 pairs starved: True; max m2 over starved pairs 353; max over patterns of the best starved m2: 347; 8a^2-1=511
+Lemma 7.17(a), q=3: 300 random triples; violations of 'empty' case 0; min size otherwise 24 (q^3-q=24)
+Lemma 7.17(a), q=5: 200 random triples; violations of 'empty' case 0; min size otherwise 120 (q^3-q=120)
+Lemma 7.20 sanity check, q=7: 12 fixed-point-free elements of SL(3,7) inside G2(7); max |Perp(h)| = 2850 (bound 4144)
+== Omega_q (Definition 7.1) with the thesis labelling
+omega_q2_ab_r1.edges 1890
+omega_q2_ab_r2.edges 1890
+omega_q2_aa_r2.edges 1890
+omega_q3_aab_r1.edges 14560
+omega_q3_abb_r2.edges 14560
+omega_q3_aaa_r2.edges 14560
+omega_q3_bbb_r1.edges 14560
+omega_q2_ab_r1: n=1890 m=4410 maxdeg=5 simple=1 bipartite=1 connected=1 diameter=9
+omega_q2_ab_r2: n=1890 m=4410 maxdeg=5 simple=1 bipartite=1 connected=1 diameter=9
+omega_q2_aa_r2: n=1890 m=4410 maxdeg=5 simple=1 bipartite=1 connected=1 diameter=10
+omega_q3_aab_r1: n=14560 m=43680 maxdeg=6 simple=1 bipartite=1 connected=1 diameter=9
+omega_q3_abb_r2: n=14560 m=43680 maxdeg=6 simple=1 bipartite=1 connected=1 diameter=9
+omega_q3_aaa_r2: n=14560 m=43680 maxdeg=6 simple=1 bipartite=1 connected=1 diameter=10
+omega_q3_bbb_r1: n=14560 m=43680 maxdeg=6 simple=1 bipartite=1 connected=1 diameter=10
+== Section 8
+(7,5) S4xZ24: reached [1152, 1152] of 1152 ecc [5, 5]
+(9,5) Heis(11): reached [2662, 2662] of 2662 ecc [5, 5]
+(7,8) PSL(2,19)xZ14: reached [95760, 95760] of 95760 ecc [8, 8]
+   order of g in PSL(2,19): 3 ; alpha(s_i) = s_j map: [0, 2, 3, 1, 5, 6, 4]
+== Tables
+ok  (11,3): paper 192, recomputed 192
+ok  (13,3): paper 276, recomputed 276
+ok  (15,3): paper 376, recomputed 376
+ok  Mb(11, 3): paper 222, recomputed 222
+ok  Mb(13, 3): paper 314, recomputed 314
+ok  Mb(15, 3): paper 422, recomputed 422
+ok  Mb(7, 4): paper 518, recomputed 518
+ok  Mb(11, 4): paper 2222, recomputed 2222
+ok  Mb(13, 4): paper 3770, recomputed 3770
+ok  Mb(15, 4): paper 5910, recomputed 5910
+ok  Mb(16, 4): paper 7232, recomputed 7232
+ok  Mb(7, 5): paper 3110, recomputed 3110
+ok  Mb(9, 5): paper 9362, recomputed 9362
+ok  Mb(7, 6): paper 18662, recomputed 18662
+ok  Mb(11, 6): paper 222222, recomputed 222222
+ok  Mb(13, 6): paper 542906, recomputed 542906
+ok  Mb(15, 6): paper 1158390, recomputed 1158390
+ok  Mb(16, 6): paper 1627232, recomputed 1627232
+ok  Mb(7, 7): paper 111974, recomputed 111974
+ok  Mb(9, 7): paper 599186, recomputed 599186
+ok  Mb(10, 7): paper 1195742, recomputed 1195742
+ok  Mb(11, 7): paper 2222222, recomputed 2222222
+ok  Mb(12, 7): paper 3897434, recomputed 3897434
+ok  Mb(13, 7): paper 6514874, recomputed 6514874
+ok  Mb(14, 7): paper 10458086, recomputed 10458086
+ok  Mb(15, 7): paper 16217462, recomputed 16217462
+ok  Mb(16, 7): paper 24408482, recomputed 24408482
+ok  Cor4.8 (11,4): paper 1782, recomputed 1782
+ok  Cor4.8 (13,4): paper 3146, recomputed 3146
+ok  Cor4.8 (15,4): paper 5070, recomputed 5070
+ok  Cor4.8 (7,4): paper 350, recomputed 350
+ok  (16,4) Cor 4.11: paper 5440, recomputed 5440
+ok  (7,4) 359: paper 359, recomputed 359
+ok  (7,6) Thm D: paper 9592, recomputed 9592
+ok  (7,6) Thm R: paper 9348, recomputed 9348
+ok  (7,6) Delorme: paper 8992, recomputed 8992
+ok  (11,6) Thm D: paper 148944, recomputed 148944
+ok  (11,6) Thm R: paper 147500, recomputed 147500
+ok  (11,6) Delorme: paper 142464, recomputed 142464
+ok  (13,6) Thm D: paper 388972, recomputed 388972
+ok  (13,6) Thm R: paper 386328, recomputed 386328
+ok  (13,6) Delorme: paper 374452, recomputed 374452
+ok  (15,6) Thm D: paper 870440, recomputed 870440
+ok  (15,6) Thm R: paper 866068, recomputed 866068
+ok  (15,6) Delorme: paper 842048, recomputed 842048
+ok  (16,6) Thm D: paper 940846, recomputed 940846
+ok  (16,6) Thm R: paper 927724, recomputed 927724
+ok  (16,6) Delorme: paper 884062, recomputed 884062
+ok  (7,4) Delorme: paper 346, recomputed 346
+ok  (11,4) Delorme: paper 1734, recomputed 1734
+ok  (13,4) Delorme: paper 3064, recomputed 3064
+ok  (15,4) Delorme: paper 4946, recomputed 4946
+ok  (16,4) Delorme: paper 5134, recomputed 5134
+ok  Thm D m=2 closed form q=7: paper 45428, recomputed 45428
+ok  Thm D m=3 closed form q=7: paper 52354, recomputed 52354
+ok  q=4,m=3 at (7,6): paper 4468, recomputed 4468
+ok  (7, 7) 2013=(2r+1)2N: paper 23436, recomputed 23436
+ok  (9, 7) 2013=(2r+1)2N: paper 117648, recomputed 117648
+ok  (10, 7) 2013=(2r+1)2N: paper 224694, recomputed 224694
+ok  (11, 7) 2013=(2r+1)2N: paper 398580, recomputed 398580
+ok  (12, 7) 2013=(2r+1)2N: paper 664300, recomputed 664300
+ok  (13, 7) 2013=(2r+1)2N: paper 1062936, recomputed 1062936
+ok  (14, 7) 2013=(2r+1)2N: paper 1771560, recomputed 1771560
+ok  (15, 7) 2013=(2r+1)2N: paper 2480184, recomputed 2480184
+ok  (16, 7) 2013=(2r+1)2N: paper 4022340, recomputed 4022340
+ok  kappa(3): paper 7, recomputed 7
+ok  kappa(4): paper 35, recomputed 35
+ok  kappa(7): paper 315, recomputed 315
+ok  kappa(8): paper 527, recomputed 527
+ok  kappa(9): paper 868, recomputed 868
+ok  kappa(10): paper 1271, recomputed 1271
+ok  kappa(11): paper 1938, recomputed 1938
+ok  Table 6 (7,7): paper 23488, recomputed 23488
+ok  Table 6 (9,7): paper 117748, recomputed 117748
+ok  Table 6 (10,7): paper 224824, recomputed 224824
+ok  Table 6 (11,7): paper 399634, recomputed 399634
+ok  Table 6 (12,7): paper 664930, recomputed 664930
+ok  Table 6 (13,7): paper 1063180, recomputed 1063180
+ok  Table 6 (14,7): paper 1773296, recomputed 1773296
+ok  Table 6 (15,7): paper 2480916, recomputed 2480916
+ok  Table 6 (16,7): paper 4026216, recomputed 4026216
+ok  Table 6 q=4 Cor6.19: paper 8204, recomputed 8204
+ok  Table 5 (7,7): paper 23598, recomputed 23598
+ok  Table 5 (9,7): paper 118238, recomputed 118238
+ok  Table 5 (10,7): paper 225152, recomputed 225152
+ok  Table 5 (13,7): paper 1064472, recomputed 1064472
+ok  Table 5 (11,7): paper 413180, recomputed 413180
+ok  Table 5 (12,7): paper 693500, recomputed 693500
+ok  Table 5 (14,7): paper 1789588, recomputed 1789588
+ok  Table 5 (15,7): paper 2501491, recomputed 2501491
+ok  Table 5 (16,7): paper 4052108, recomputed 4052108
+ok  Table 5 Remark 6.26: paper 1791240, recomputed 1791240
+ok  Omega (10, 8): paper 1176480, recomputed 1176480
+ok  Omega (11, 8): paper 2246940, recomputed 2246940
+ok  Omega (12, 8): paper 4650100, recomputed 4650100
+ok  Omega (14, 8): paper 14172480, recomputed 14172480
+ok  Omega (16, 8): paper 36201060, recomputed 36201060
+ok  Omega_5: paper 195300, recomputed 195300
+ok  Omega_3: paper 14560, recomputed 14560
+ok  Omega_2: paper 1890, recomputed 1890
+ok  A(q=7): paper 15073, recomputed 15073
+ok  B(q=7): paper 385, recomputed 385
+    q=7: q^5-(A+B+1) = 1348
+ok  A(q=8): paper 24994, recomputed 24994
+ok  B(q=8): paper 487, recomputed 487
+    q=8: q^5-(A+B+1) = 7286
+ok  A(q=9): paper 39161, recomputed 39161
+ok  B(q=9): paper 601, recomputed 601
+    q=9: q^5-(A+B+1) = 19286
+ok  A(q=11): paper 84625, recomputed 84625
+ok  B(q=11): paper 865, recomputed 865
+    q=11: q^5-(A+B+1) = 75560
+ok  A(q=13): paper 161449, recomputed 161449
+ok  B(q=13): paper 1177, recomputed 1177
+    q=13: q^5-(A+B+1) = 208666
+ok  Table 8 (3, 8) order=2|G|: paper 288, recomputed 288
+ok  Table 8 (5, 8) order=2|G|: paper 9760, recomputed 9760
+ok  Table 8 (6, 8) order=2|G|: paper 31680, recomputed 31680
+ok  Table 8 (7, 8) order=2|G|: paper 95760, recomputed 95760
+ok  Table 8 (8, 8) order=2|G|: paper 239904, recomputed 239904
+ok  Table 8 (9, 8) order=2|G|: paper 540360, recomputed 540360
+ok  Table 8 (11, 8) order=2|G|: paper 2258520, recomputed 2258520
+ok  Table 8 (13, 8) order=2|G|: paper 6999552, recomputed 6999552
+ok  Table 8 (15, 8) order=2|G|: paper 18128880, recomputed 18128880
+ok  Table 8 (5, 9) order=2|G|: paper 29540, recomputed 29540
+ok  Table 8 (6, 9) order=2|G|: paper 127296, recomputed 127296
+ok  Table 8 (7, 9) order=2|G|: paper 462840, recomputed 462840
+ok  Table 8 (8, 9) order=2|G|: paper 1341600, recomputed 1341600
+ok  Table 8 (9, 9) order=2|G|: paper 3499776, recomputed 3499776
+ok  Table 8 (10, 9) order=2|G|: paper 8003856, recomputed 8003856
+ok  Table 8 (11, 9) order=2|G|: paper 16792080, recomputed 16792080
+ok  Table 8 (12, 9) order=2|G|: paper 34026720, recomputed 34026720
+ok  Table 8 (13, 9) order=2|G|: paper 67742688, recomputed 67742688
+ok  Table 8 (14, 9) order=2|G|: paper 116068656, recomputed 116068656
+ok  Table 8 (15, 9) order=2|G|: paper 208029120, recomputed 208029120
+ok  Table 8 (16, 9) order=2|G|: paper 337394400, recomputed 337394400
+ok  Table 8 (4, 10) order=2|G|: paper 12416, recomputed 12416
+ok  Table 8 (5, 10) order=2|G|: paper 95472, recomputed 95472
+ok  Table 8 (6, 10) order=2|G|: paper 524160, recomputed 524160
+ok  Table 8 (7, 10) order=2|G|: paper 2237760, recomputed 2237760
+ok  Table 8 (8, 10) order=2|G|: paper 7818096, recomputed 7818096
+ok  Table 8 (9, 10) order=2|G|: paper 23975280, recomputed 23975280
+ok  Table 8 (10, 10) order=2|G|: paper 60141120, recomputed 60141120
+ok  Table 8 (11, 10) order=2|G|: paper 148729680, recomputed 148729680
+ok  Table 8 (12, 10) order=2|G|: paper 325832976, recomputed 325832976
+ok  Table 8 (13, 10) order=2|G|: paper 677714400, recomputed 677714400
+ok  Table 8 (14, 10) order=2|G|: paper 1326627120, recomputed 1326627120
+ok  Table 8 (15, 10) order=2|G|: paper 2467618800, recomputed 2467618800
+ok  Table 8 (16, 10) order=2|G|: paper 4220872800, recomputed 4220872800
+ok  (15,8) vs 14978080 %: paper 21.0, recomputed 21.0
+ok  Ex 8.5 % of Moore: paper 14.3, recomputed 14.3
+ok  Mb(7,8): paper 671846, recomputed 671846
+ok  metacyclic Z61 x|_8 Z80: r^l mod m = 1
+ok  metacyclic Z422 x|_5 Z35: r^l mod m = 1
+ok  metacyclic Z97 x|_19 Z64: r^l mod m = 1
+ok  metacyclic Z1989 x|_461 Z24: r^l mod m = 1
+ok  girth-30 cage order 2|SL(2,83)|: paper 1143408, recomputed 1143408
