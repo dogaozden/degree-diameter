@@ -1,0 +1,8 @@
+group sl 11 x Z_7, N=9240, identity 770, H order 42, rows 220, threads 1, setup 0.00s
+wide rows: HW order 154, rows 60, setup 0.00s
+alpha: conj by mat(7,8,8,3) (index 932), z -> 2 z on Z_7
+ORBIT k=3 m=2 f=1: |Fix(alpha)| = 11 (+e); mu = 21.59, mu/k = 7.20, fixed-point misses ~ 3.18
+start cost=84
+RESULT d=7 D=7 group=sl 11 x Z_7 N=9240 best=0 evals=585 time=0.0 orbit k=3 m=2 f=1 fix=11
+full diameter check: OK
+wrote /tmp/claude-0/-home-user-degree-diameter/22fcf788-bca2-56eb-b8e1-2b34529582b4/scratchpad/sols/o_sl_11_n7_s2.txt

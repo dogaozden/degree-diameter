@@ -1,0 +1,19 @@
+group psl 5 x Z_163, N=9780, identity 1630, H order 5, rows 1956, threads 1, setup 0.02s
+wide rows: HW order 163, rows 60, setup 0.03s
+alpha: conj by mat(1,3,3,0) (index 28), z -> 58 z on Z_163
+ORBIT k=3 m=2 f=1: |Fix(alpha)| = 2 (+e); mu = 31.93, mu/k = 10.64, fixed-point misses ~ 0.89
+start cost=846
+t=30 steps=171496 evals=1371969 cost=36 best=36 T=0.53
+t=60 steps=356382 evals=2851057 cost=36 best=36 T=0.19
+t=90 steps=582641 evals=4661129 cost=36 best=36 T=0.15
+t=120 steps=877639 evals=7021113 cost=36 best=36 T=0.15
+t=150 steps=1156000 evals=9248001 cost=36 best=36 T=0.15
+t=180 steps=1431876 evals=11455009 cost=36 best=36 T=0.53
+t=210 steps=1714723 evals=13717785 cost=36 best=36 T=0.19
+t=240 steps=2011254 evals=16090033 cost=36 best=36 T=0.15
+t=270 steps=2311180 evals=18489441 cost=36 best=36 T=0.15
+t=300 steps=2604272 evals=20834177 cost=36 best=36 T=0.15
+t=330 steps=2885085 evals=23080681 cost=36 best=36 T=0.53
+t=360 steps=3140962 evals=25127697 cost=36 best=36 T=0.19
+t=390 steps=3431739 evals=27453913 cost=36 best=36 T=0.15
+RESULT d=7 D=7 group=psl 5 x Z_163 N=9780 best=36 evals=28260705 time=400.0 orbit k=3 m=2 f=1 fix=2

@@ -1,0 +1,22 @@
+group psl 11 x Z_15, N=9900, identity 825, H order 55, rows 180, threads 1, setup 0.00s
+start cost=117
+t=30 steps=247521 evals=1980169 cost=11 best=8 T=0.53
+t=60 steps=488877 evals=3911017 cost=11 best=8 T=0.19
+t=90 steps=731094 evals=5848753 cost=11 best=8 T=0.15
+t=120 steps=947781 evals=7582249 cost=11 best=8 T=0.15
+t=150 steps=1182713 evals=9461705 cost=11 best=8 T=0.15
+t=180 steps=1412893 evals=11303145 cost=6 best=6 T=0.76
+t=210 steps=1638634 evals=13109073 cost=6 best=6 T=0.27
+t=240 steps=1859666 evals=14877329 cost=10 best=6 T=0.15
+t=270 steps=2085437 evals=16683497 cost=10 best=6 T=0.15
+t=300 steps=2324235 evals=18593881 cost=10 best=6 T=0.15
+t=330 steps=2557035 evals=20456281 cost=6 best=6 T=0.96
+t=360 steps=2792200 evals=22337601 cost=6 best=6 T=0.34
+t=390 steps=3031416 evals=24251329 cost=9 best=6 T=0.15
+t=420 steps=3261764 evals=26094113 cost=9 best=6 T=0.15
+t=450 steps=3508069 evals=28064553 cost=7 best=6 T=0.15
+t=480 steps=3737388 evals=29899105 cost=17 best=6 T=0.96
+t=510 steps=3973080 evals=31784641 cost=9 best=6 T=0.34
+t=540 steps=4215292 evals=33722337 cost=9 best=6 T=0.15
+t=570 steps=4454292 evals=35634337 cost=11 best=6 T=0.15
+RESULT d=7 D=7 group=psl 11 x Z_15 N=9900 best=6 evals=37445137 time=600.0
