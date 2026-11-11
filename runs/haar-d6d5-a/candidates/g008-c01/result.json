@@ -1,0 +1,23 @@
+{
+  "cases": {
+    "d3D3": {
+      "case_id": "d3D3",
+      "reason": "",
+      "score": 1.0,
+      "status": "ok",
+      "valid": true,
+      "value": 14.0,
+      "wall_s": 0.11579678999987664
+    },
+    "d6D5": {
+      "case_id": "d6D5",
+      "reason": "crash: 8, in build\n    return run(d, D, seed, time_limit, PLAN, FALLBACK)\n  File \"/home/user/degree-diameter/runs/haar-d6d5-a/candidates/g008-c01/program.py\", line 279, in run\n    for _name, builder, S0, _w in plan:\n        ^^^^^^^^^^^^^^^^^^^^^^\nValueError: not enough values to unpack (expected 4, got 3)\n",
+      "score": 0.0,
+      "status": "crash",
+      "valid": false,
+      "value": 0.0,
+      "wall_s": 0.16939415400065627
+    }
+  },
+  "fitness": 0.047619047619047616
+}

@@ -1,0 +1,32 @@
+# Haar-graph cloud island d6d5-a: d6D5 (table 684, group order > 342 wins), exploit mix. One cloud session, 4 vCPU. Seeds: the Haar near-miss program (near-miss S over
+# the best near-miss group, local search on S) and the group-family program (Heisenberg / AGL / SL(2,p) times cyclic groups just
+# above the threshold). Ends within about 4 hours: 18 generations x 28 candidates (504 Haiku calls, cap 800), and the
+# babysitter runs it under scripts/guarded.sh 4.
+run_id = "haar-d6d5-a"
+problem = "problems.bipartite_dd.islands_haar:D6D5"
+seed = 701
+generations = 18
+candidates_per_generation = 28
+eval_seeds = [0]
+time_limit_s = 60
+workers = 4
+seed_programs = [
+  "seeds/haar/d6_nearmiss.py",
+  "seeds/haar/d6_family.py",
+]
+
+[mutator]
+kind = "claude"
+model = "claude-haiku-5-5"
+concurrency = 4
+timeout_s = 300
+max_calls = 800
+stop_at = 0.9
+
+[selection]
+elite_k = 6
+roles = { default = 0.35, crossover = 0.2, invent = 0.25, moonshot = 0.2 }
+
+[git]
+enabled = true
+push = true

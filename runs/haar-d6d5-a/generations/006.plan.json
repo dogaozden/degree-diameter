@@ -1,0 +1,237 @@
+{
+  "generation": 6,
+  "tasks": [
+    {
+      "cid": "g006-c00",
+      "parents": [
+        "g000-i01"
+      ],
+      "role": "default",
+      "status": "made"
+    },
+    {
+      "cid": "g006-c01",
+      "parents": [
+        "g000-i00"
+      ],
+      "role": "invent",
+      "status": "made"
+    },
+    {
+      "cid": "g006-c02",
+      "parents": [
+        "g001-c00"
+      ],
+      "role": "default",
+      "status": "made"
+    },
+    {
+      "cid": "g006-c03",
+      "parents": [
+        "g000-i00"
+      ],
+      "role": "default",
+      "status": "made"
+    },
+    {
+      "cid": "g006-c04",
+      "parents": [
+        "g002-c21",
+        "g000-i01"
+      ],
+      "role": "crossover",
+      "status": "made"
+    },
+    {
+      "cid": "g006-c05",
+      "parents": [
+        "g004-c09",
+        "g002-c21"
+      ],
+      "role": "crossover",
+      "status": "made"
+    },
+    {
+      "cid": "g006-c06",
+      "parents": [
+        "g001-c00"
+      ],
+      "role": "default",
+      "status": "made"
+    },
+    {
+      "cid": "g006-c07",
+      "parents": [
+        "g004-c09"
+      ],
+      "role": "default",
+      "status": "made"
+    },
+    {
+      "cid": "g006-c08",
+      "parents": [
+        "g002-c21"
+      ],
+      "role": "default",
+      "status": "made"
+    },
+    {
+      "cid": "g006-c09",
+      "parents": [
+        "g004-c09",
+        "g002-c21"
+      ],
+      "role": "crossover",
+      "status": "made"
+    },
+    {
+      "cid": "g006-c10",
+      "parents": [
+        "g002-c21"
+      ],
+      "role": "moonshot",
+      "status": "made"
+    },
+    {
+      "cid": "g006-c11",
+      "parents": [
+        "g004-c09"
+      ],
+      "role": "invent",
+      "status": "made"
+    },
+    {
+      "cid": "g006-c12",
+      "parents": [
+        "g004-c09"
+      ],
+      "role": "moonshot",
+      "status": "made"
+    },
+    {
+      "cid": "g006-c13",
+      "parents": [
+        "g000-i01",
+        "g002-c21"
+      ],
+      "role": "crossover",
+      "status": "made"
+    },
+    {
+      "cid": "g006-c14",
+      "parents": [
+        "g002-c21"
+      ],
+      "role": "default",
+      "status": "made"
+    },
+    {
+      "cid": "g006-c15",
+      "parents": [
+        "g000-i00"
+      ],
+      "role": "invent",
+      "status": "made"
+    },
+    {
+      "cid": "g006-c16",
+      "parents": [
+        "g004-c11"
+      ],
+      "role": "invent",
+      "status": "made"
+    },
+    {
+      "cid": "g006-c17",
+      "parents": [
+        "g002-c21"
+      ],
+      "role": "default",
+      "status": "made"
+    },
+    {
+      "cid": "g006-c18",
+      "parents": [
+        "g000-i01"
+      ],
+      "role": "default",
+      "status": "made"
+    },
+    {
+      "cid": "g006-c19",
+      "parents": [
+        "g004-c09"
+      ],
+      "role": "default",
+      "status": "made"
+    },
+    {
+      "cid": "g006-c20",
+      "parents": [
+        "g000-i00"
+      ],
+      "role": "invent",
+      "status": "made"
+    },
+    {
+      "cid": "g006-c21",
+      "parents": [
+        "g002-c21"
+      ],
+      "role": "default",
+      "status": "made"
+    },
+    {
+      "cid": "g006-c22",
+      "parents": [
+        "g001-c00",
+        "g002-c21"
+      ],
+      "role": "crossover",
+      "status": "made"
+    },
+    {
+      "cid": "g006-c23",
+      "parents": [
+        "g004-c11",
+        "g000-i01"
+      ],
+      "role": "crossover",
+      "status": "made"
+    },
+    {
+      "cid": "g006-c24",
+      "parents": [
+        "g004-c09",
+        "g004-c11"
+      ],
+      "role": "crossover",
+      "status": "made"
+    },
+    {
+      "cid": "g006-c25",
+      "parents": [
+        "g004-c11",
+        "g002-c21"
+      ],
+      "role": "crossover",
+      "status": "made"
+    },
+    {
+      "cid": "g006-c26",
+      "parents": [
+        "g000-i01"
+      ],
+      "role": "invent",
+      "status": "made"
+    },
+    {
+      "cid": "g006-c27",
+      "parents": [
+        "g004-c11"
+      ],
+      "role": "default",
+      "status": "made"
+    }
+  ]
+}
