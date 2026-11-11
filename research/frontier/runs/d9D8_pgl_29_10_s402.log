@@ -1,0 +1,12 @@
+group pgl 29 x Z_10, N=243600, identity 0, H order 58, rows 4200, threads 1, setup 0.01s
+start cost=17
+t=30 steps=8697 evals=69577 cost=4 best=2 T=0.53
+t=60 steps=17639 evals=141113 cost=1 best=1 T=0.19
+t=90 steps=26654 evals=213233 cost=1 best=1 T=0.15
+t=120 steps=35736 evals=285889 cost=1 best=1 T=0.15
+t=150 steps=44925 evals=359401 cost=1 best=1 T=0.15
+t=180 steps=54238 evals=433905 cost=1 best=1 T=0.15
+t=210 steps=63192 evals=505537 cost=4 best=1 T=0.91
+t=240 steps=72222 evals=577777 cost=3 best=1 T=0.32
+t=270 steps=81377 evals=651017 cost=2 best=1 T=0.15
+RESULT d=9 D=8 group=pgl 29 x Z_10 N=243600 best=1 evals=721913 time=300.0

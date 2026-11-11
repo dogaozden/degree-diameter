@@ -1,0 +1,12 @@
+group sl 17 x Z_51, N=249696, identity 13872, H order 51, rows 4896, threads 1, setup 0.01s
+start cost=34
+t=30 steps=8759 evals=70073 cost=3 best=3 T=0.53
+t=60 steps=16991 evals=135929 cost=3 best=3 T=0.19
+t=90 steps=24815 evals=198521 cost=3 best=3 T=0.15
+t=120 steps=32733 evals=261865 cost=3 best=3 T=0.15
+t=150 steps=41117 evals=328937 cost=3 best=3 T=0.15
+t=180 steps=49678 evals=397425 cost=10 best=3 T=0.77
+t=210 steps=57742 evals=461937 cost=5 best=3 T=0.27
+t=240 steps=66065 evals=528521 cost=5 best=3 T=0.15
+t=270 steps=74089 evals=592713 cost=5 best=3 T=0.15
+RESULT d=9 D=8 group=sl 17 x Z_51 N=249696 best=3 evals=658913 time=300.0
