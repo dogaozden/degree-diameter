@@ -1,0 +1,20 @@
+group psl 31 x Z_67, N=996960, identity 31155
+start cost=9
+t=30 steps=16 evals=129 cost=1 best=1 T=0.52
+t=62 steps=33 evals=265 cost=1 best=1 T=0.18
+t=93 steps=51 evals=409 cost=1 best=1 T=0.15
+t=123 steps=67 evals=537 cost=1 best=1 T=0.15
+t=154 steps=88 evals=705 cost=1 best=1 T=0.15
+t=185 steps=109 evals=873 cost=1 best=1 T=0.15
+t=216 steps=130 evals=1041 cost=1 best=1 T=0.15
+t=247 steps=151 evals=1209 cost=1 best=1 T=0.15
+t=277 steps=171 evals=1369 cost=1 best=1 T=0.15
+t=307 steps=192 evals=1537 cost=1 best=1 T=0.15
+t=337 steps=213 evals=1705 cost=1 best=1 T=0.15
+t=368 steps=234 evals=1873 cost=1 best=1 T=0.15
+t=399 steps=255 evals=2041 cost=1 best=1 T=0.15
+t=429 steps=277 evals=2217 cost=1 best=1 T=0.15
+t=461 steps=299 evals=2393 cost=1 best=1 T=0.15
+RESULT d=7 D=10 group=psl 31 x Z_67 N=996960 best=0 evals=2529 time=485.2
+full diameter check: OK
+wrote sols/d7D10_psl_31_67_s2.txt
