@@ -1,0 +1,32 @@
+group prod psl 9 poly x^2+1 sl 17 x Z_1, N=1762560, identity 176528, H order 51, rows 34560, threads 1, setup 0.06s
+start cost=96
+t=30 steps=914 evals=7313 cost=31 best=31 T=0.53
+t=60 steps=1828 evals=14625 cost=26 best=26 T=0.19
+t=90 steps=2723 evals=21785 cost=26 best=26 T=0.15
+t=120 steps=3669 evals=29353 cost=26 best=26 T=0.15
+t=150 steps=4587 evals=36697 cost=26 best=26 T=0.15
+t=180 steps=5507 evals=44057 cost=26 best=26 T=0.15
+t=210 steps=6432 evals=51457 cost=26 best=26 T=1.23
+t=240 steps=7349 evals=58793 cost=26 best=26 T=0.44
+t=270 steps=8256 evals=66049 cost=26 best=26 T=0.15
+t=300 steps=9173 evals=73385 cost=26 best=26 T=0.15
+t=330 steps=10102 evals=80817 cost=26 best=26 T=0.15
+t=360 steps=11023 evals=88185 cost=26 best=26 T=1.23
+t=390 steps=11970 evals=95761 cost=24 best=24 T=0.44
+t=420 steps=12901 evals=103209 cost=22 best=22 T=0.15
+t=450 steps=13814 evals=110513 cost=22 best=22 T=0.15
+t=480 steps=14727 evals=117817 cost=22 best=22 T=0.15
+t=510 steps=15637 evals=125097 cost=22 best=22 T=0.15
+t=540 steps=16547 evals=132377 cost=22 best=22 T=0.15
+t=570 steps=17467 evals=139737 cost=22 best=22 T=1.06
+t=600 steps=18380 evals=147041 cost=22 best=22 T=0.38
+t=630 steps=19301 evals=154409 cost=22 best=22 T=0.15
+t=660 steps=20207 evals=161657 cost=22 best=22 T=0.15
+t=690 steps=21112 evals=168897 cost=22 best=22 T=0.15
+t=720 steps=21979 evals=175833 cost=22 best=22 T=1.06
+t=750 steps=22858 evals=182865 cost=22 best=22 T=0.38
+t=781 steps=23738 evals=189905 cost=22 best=22 T=0.15
+t=811 steps=24621 evals=196969 cost=22 best=22 T=0.15
+t=841 steps=25523 evals=204185 cost=22 best=22 T=0.15
+t=871 steps=26404 evals=211233 cost=22 best=22 T=1.06
+RESULT d=9 D=9 group=prod psl 9 poly x^2+1 sl 17 x Z_1 N=1762560 best=22 evals=218257 time=900.0
