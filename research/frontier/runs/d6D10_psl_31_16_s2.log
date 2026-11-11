@@ -1,0 +1,56 @@
+group psl 31 x Z_16, N=238080, identity 7440
+start cost=12
+t=30 steps=193 evals=1545 cost=3 best=2 T=0.53
+t=60 steps=394 evals=3153 cost=2 best=2 T=0.19
+t=90 steps=596 evals=4769 cost=2 best=2 T=0.15
+t=120 steps=795 evals=6361 cost=2 best=2 T=0.15
+t=150 steps=995 evals=7961 cost=2 best=2 T=0.15
+t=180 steps=1199 evals=9593 cost=1 best=1 T=0.56
+t=210 steps=1398 evals=11185 cost=1 best=1 T=0.20
+t=240 steps=1606 evals=12849 cost=1 best=1 T=0.15
+t=270 steps=1809 evals=14473 cost=1 best=1 T=0.15
+t=301 steps=2011 evals=16089 cost=1 best=1 T=0.15
+t=331 steps=2209 evals=17673 cost=1 best=1 T=0.71
+t=361 steps=2407 evals=19257 cost=1 best=1 T=0.25
+t=391 steps=2610 evals=20881 cost=1 best=1 T=0.15
+t=421 steps=2814 evals=22513 cost=1 best=1 T=0.15
+t=451 steps=3017 evals=24137 cost=1 best=1 T=0.15
+t=481 steps=3211 evals=25689 cost=1 best=1 T=0.71
+t=511 steps=3415 evals=27321 cost=2 best=1 T=0.25
+t=541 steps=3608 evals=28865 cost=1 best=1 T=0.15
+t=571 steps=3807 evals=30457 cost=1 best=1 T=0.15
+t=601 steps=4014 evals=32113 cost=1 best=1 T=0.15
+t=631 steps=4211 evals=33689 cost=4 best=1 T=0.70
+t=661 steps=4410 evals=35281 cost=1 best=1 T=0.25
+t=691 steps=4607 evals=36857 cost=1 best=1 T=0.15
+t=722 steps=4808 evals=38465 cost=1 best=1 T=0.15
+t=752 steps=5013 evals=40105 cost=1 best=1 T=0.15
+t=782 steps=5214 evals=41713 cost=1 best=1 T=0.70
+t=812 steps=5409 evals=43273 cost=1 best=1 T=0.25
+t=842 steps=5610 evals=44881 cost=1 best=1 T=0.15
+t=872 steps=5809 evals=46473 cost=1 best=1 T=0.15
+t=902 steps=6002 evals=48017 cost=1 best=1 T=0.15
+t=932 steps=6202 evals=49617 cost=1 best=1 T=0.69
+t=962 steps=6405 evals=51241 cost=1 best=1 T=0.24
+t=992 steps=6603 evals=52825 cost=1 best=1 T=0.15
+t=1022 steps=6805 evals=54441 cost=1 best=1 T=0.15
+t=1052 steps=7003 evals=56025 cost=1 best=1 T=0.15
+t=1082 steps=7199 evals=57593 cost=5 best=1 T=0.68
+t=1112 steps=7383 evals=59065 cost=2 best=1 T=0.24
+t=1142 steps=7583 evals=60665 cost=2 best=1 T=0.15
+t=1173 steps=7781 evals=62249 cost=2 best=1 T=0.15
+t=1203 steps=7983 evals=63865 cost=2 best=1 T=0.15
+t=1233 steps=8179 evals=65433 cost=3 best=1 T=0.68
+t=1263 steps=8378 evals=67025 cost=2 best=1 T=0.24
+t=1293 steps=8582 evals=68657 cost=2 best=1 T=0.15
+t=1323 steps=8761 evals=70089 cost=2 best=1 T=0.15
+t=1353 steps=8953 evals=71625 cost=2 best=1 T=0.15
+t=1383 steps=9154 evals=73233 cost=2 best=1 T=0.67
+t=1413 steps=9351 evals=74809 cost=2 best=1 T=0.24
+t=1443 steps=9546 evals=76369 cost=1 best=1 T=0.15
+t=1473 steps=9751 evals=78009 cost=1 best=1 T=0.15
+t=1503 steps=9948 evals=79585 cost=1 best=1 T=0.15
+t=1533 steps=10150 evals=81201 cost=1 best=1 T=0.67
+RESULT d=6 D=10 group=psl 31 x Z_16 N=238080 best=0 evals=82177 time=1552.7
+full diameter check: OK
+wrote sols/d6D10_psl_31_16_s2.txt

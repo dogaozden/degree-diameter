@@ -1,0 +1,39 @@
+group psl 43 x Z_6, N=238392, identity 5418
+start cost=52
+t=30 steps=176 evals=1409 cost=2 best=2 T=0.53
+t=60 steps=355 evals=2841 cost=2 best=2 T=0.19
+t=90 steps=532 evals=4257 cost=1 best=1 T=0.15
+t=120 steps=715 evals=5721 cost=1 best=1 T=0.15
+t=150 steps=899 evals=7193 cost=1 best=1 T=0.15
+t=180 steps=1076 evals=8609 cost=1 best=1 T=0.15
+t=210 steps=1260 evals=10081 cost=1 best=1 T=0.15
+t=241 steps=1441 evals=11529 cost=3 best=1 T=0.57
+t=271 steps=1631 evals=13049 cost=3 best=1 T=0.20
+t=301 steps=1822 evals=14577 cost=3 best=1 T=0.15
+t=331 steps=2014 evals=16113 cost=3 best=1 T=0.15
+t=361 steps=2204 evals=17633 cost=3 best=1 T=0.15
+t=391 steps=2392 evals=19137 cost=1 best=1 T=0.57
+t=421 steps=2576 evals=20609 cost=1 best=1 T=0.20
+t=451 steps=2763 evals=22105 cost=1 best=1 T=0.15
+t=481 steps=2942 evals=23537 cost=1 best=1 T=0.15
+t=511 steps=3113 evals=24905 cost=1 best=1 T=0.15
+t=541 steps=3276 evals=26209 cost=3 best=1 T=0.56
+t=571 steps=3449 evals=27593 cost=1 best=1 T=0.20
+t=602 steps=3622 evals=28977 cost=1 best=1 T=0.15
+t=632 steps=3805 evals=30441 cost=1 best=1 T=0.15
+t=662 steps=3987 evals=31897 cost=1 best=1 T=0.15
+t=692 steps=4163 evals=33305 cost=4 best=1 T=0.56
+t=722 steps=4347 evals=34777 cost=3 best=1 T=0.20
+t=752 steps=4533 evals=36265 cost=3 best=1 T=0.15
+t=782 steps=4716 evals=37729 cost=2 best=1 T=0.15
+t=812 steps=4899 evals=39193 cost=1 best=1 T=0.15
+t=842 steps=5076 evals=40609 cost=2 best=1 T=0.55
+t=872 steps=5262 evals=42097 cost=2 best=1 T=0.19
+t=902 steps=5440 evals=43521 cost=2 best=1 T=0.15
+t=932 steps=5621 evals=44969 cost=2 best=1 T=0.15
+t=963 steps=5808 evals=46465 cost=2 best=1 T=0.15
+t=993 steps=5996 evals=47969 cost=1 best=1 T=0.55
+t=1023 steps=6189 evals=49513 cost=1 best=1 T=0.19
+RESULT d=6 D=10 group=psl 43 x Z_6 N=238392 best=0 evals=50505 time=1041.8
+full diameter check: OK
+wrote sols/d6D10_psl_43_6_s1.txt
