@@ -1,0 +1,16 @@
+group psl 9 poly x^2+1 x Z_337, N=121320, identity 12132, H order 5, rows 24264, threads 1, setup 0.02s
+wide rows: no cyclic subgroup of order >= 64 found (best 5); using haar_gen3's evaluation
+alpha: conj by mat(1,2,0,1) (index 54), z -> 128 z on Z_337
+ORBIT k=3 m=2 f=2: |Fix(alpha)| = 8 (+e); mu = 44.11, mu/k = 14.70, fixed-point misses ~ 0.64
+ORBW=3: an uncovered fixed element weighs 3; start energy 474
+start cost=468
+t=30 steps=2614 evals=20913 cost=90 best=90 T=0.53 energy=90 bestE=90
+t=60 steps=5251 evals=42009 cost=78 best=78 T=0.19 energy=78 bestE=78
+t=90 steps=7888 evals=63105 cost=78 best=78 T=0.15 energy=78 bestE=78
+t=120 steps=10460 evals=83681 cost=63 best=63 T=0.15 energy=63 bestE=63
+t=150 steps=13118 evals=104945 cost=63 best=63 T=0.15 energy=63 bestE=63
+t=180 steps=15727 evals=125817 cost=63 best=63 T=0.15 energy=63 bestE=63
+t=210 steps=18308 evals=146465 cost=63 best=63 T=0.15 energy=63 bestE=63
+t=240 steps=20735 evals=165881 cost=63 best=63 T=0.15 energy=63 bestE=63
+t=270 steps=23225 evals=185801 cost=63 best=63 T=0.67 energy=63 bestE=63
+RESULT d=8 D=8 group=psl 9 poly x^2+1 x Z_337 N=121320 best=63 evals=207849 time=300.0 orbit k=3 m=2 f=2 fix=8

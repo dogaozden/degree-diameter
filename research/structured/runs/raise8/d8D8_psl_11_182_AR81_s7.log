@@ -1,0 +1,45 @@
+group psl 11 x Z_182, N=120120, identity 10010, H order 42, rows 2860, threads 1, setup 0.01s
+wide rows: HW order 182, rows 660, setup 0.02s
+alpha: conj by mat(5,2,6,7) (index 567), z -> 81 z on Z_182
+ORBIT k=3 m=2 f=2: |Fix(alpha)| = 11 (+e); mu = 40.35, mu/k = 13.45, fixed-point misses ~ 0.83
+start cost=20675
+t=30 steps=34518 evals=276145 cost=4 best=4 T=0.53
+t=60 steps=69698 evals=557585 cost=4 best=4 T=0.19
+t=90 steps=103277 evals=826217 cost=4 best=4 T=0.15
+t=120 steps=138671 evals=1109369 cost=4 best=4 T=0.15
+t=150 steps=174175 evals=1393401 cost=4 best=4 T=0.15
+t=180 steps=208568 evals=1668545 cost=21 best=4 T=0.90
+t=210 steps=244175 evals=1953401 cost=12 best=4 T=0.32
+t=240 steps=281375 evals=2251001 cost=9 best=4 T=0.15
+t=270 steps=317250 evals=2538001 cost=6 best=4 T=0.15
+t=300 steps=353878 evals=2831025 cost=6 best=4 T=0.15
+t=330 steps=390000 evals=3120001 cost=9 best=3 T=0.90
+t=360 steps=423962 evals=3391697 cost=7 best=3 T=0.32
+t=390 steps=455073 evals=3640585 cost=6 best=3 T=0.15
+t=420 steps=490079 evals=3920633 cost=7 best=3 T=0.15
+t=450 steps=526299 evals=4210393 cost=6 best=3 T=0.15
+t=480 steps=561129 evals=4489033 cost=28 best=3 T=1.23
+t=510 steps=597365 evals=4778921 cost=3 best=3 T=0.44
+t=540 steps=631875 evals=5055001 cost=3 best=3 T=0.15
+t=570 steps=668803 evals=5350425 cost=3 best=3 T=0.15
+t=600 steps=704316 evals=5634529 cost=3 best=3 T=0.15
+t=630 steps=738870 evals=5910961 cost=18 best=3 T=1.23
+t=660 steps=776084 evals=6208673 cost=17 best=3 T=0.44
+t=690 steps=813939 evals=6511513 cost=4 best=3 T=0.15
+t=720 steps=849866 evals=6798929 cost=4 best=3 T=0.15
+t=750 steps=887150 evals=7097201 cost=4 best=3 T=0.15
+t=780 steps=924380 evals=7395041 cost=24 best=3 T=1.23
+t=810 steps=962832 evals=7702657 cost=13 best=3 T=0.44
+t=840 steps=1001609 evals=8012873 cost=13 best=3 T=0.15
+t=870 steps=1038590 evals=8308721 cost=13 best=3 T=0.15
+t=900 steps=1074247 evals=8593977 cost=13 best=3 T=0.15
+t=930 steps=1109883 evals=8879065 cost=9 best=3 T=1.23
+t=960 steps=1146514 evals=9172113 cost=15 best=3 T=0.44
+t=990 steps=1185676 evals=9485409 cost=10 best=3 T=0.15
+t=1020 steps=1223843 evals=9790745 cost=9 best=3 T=0.15
+t=1050 steps=1263373 evals=10106985 cost=9 best=3 T=0.15
+t=1080 steps=1299871 evals=10398969 cost=9 best=3 T=1.23
+t=1110 steps=1339220 evals=10713761 cost=3 best=3 T=0.44
+t=1140 steps=1374920 evals=10999361 cost=3 best=3 T=0.15
+t=1170 steps=1411964 evals=11295713 cost=3 best=3 T=0.15
+RESULT d=8 D=8 group=psl 11 x Z_182 N=120120 best=3 evals=11598745 time=1200.0 orbit k=3 m=2 f=2 fix=11

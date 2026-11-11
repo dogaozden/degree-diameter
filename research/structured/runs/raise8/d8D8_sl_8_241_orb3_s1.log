@@ -1,0 +1,15 @@
+group sl 8 poly x^3+x+1 x Z_241, N=121464, identity 13496, H order 9, rows 13496, threads 1, setup 0.03s
+wide rows: HW order 241, rows 504, setup 0.05s
+alpha: conj by mat(5,5,6,4) (index 358), z -> 15 z on Z_241
+ORBIT k=3 m=2 f=2: |Fix(alpha)| = 8 (+e); mu = 44.58, mu/k = 14.86, fixed-point misses ~ 0.64
+start cost=234
+t=30 steps=47500 evals=380001 cost=27 best=24 T=0.53
+t=60 steps=95041 evals=760329 cost=21 best=21 T=0.19
+t=90 steps=142458 evals=1139665 cost=21 best=21 T=0.15
+t=120 steps=190434 evals=1523473 cost=21 best=21 T=0.15
+t=150 steps=237357 evals=1898857 cost=21 best=21 T=0.15
+t=180 steps=288377 evals=2307017 cost=21 best=21 T=0.15
+t=210 steps=339772 evals=2718177 cost=24 best=21 T=0.67
+t=240 steps=389270 evals=3114161 cost=21 best=21 T=0.24
+t=270 steps=440717 evals=3525737 cost=21 best=21 T=0.15
+RESULT d=8 D=8 group=sl 8 poly x^3+x+1 x Z_241 N=121464 best=21 evals=3931497 time=300.0 orbit k=3 m=2 f=2 fix=8
