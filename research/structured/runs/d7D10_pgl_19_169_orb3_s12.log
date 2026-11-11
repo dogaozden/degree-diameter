@@ -1,0 +1,15 @@
+group pgl 19 x Z_169, N=1155960, identity 0, H order 52, rows 22230, threads 1, setup 0.07s
+wide rows: HW order 247, rows 4680, setup 0.13s
+alpha: conj by mat(1,12,10,15) (index 4298), z -> 22 z on Z_169
+ORBIT k=3 m=2 f=1: |Fix(alpha)| = 17 (+e); mu = 33.08, mu/k = 11.03, fixed-point misses ~ 0.55
+start cost=1200
+t=30 steps=3904 evals=31233 cost=15 best=15 T=0.53
+t=60 steps=7830 evals=62641 cost=12 best=12 T=0.19
+t=90 steps=11784 evals=94273 cost=12 best=12 T=0.15
+t=120 steps=15511 evals=124089 cost=12 best=12 T=0.15
+t=150 steps=19080 evals=152641 cost=12 best=12 T=0.15
+t=180 steps=22713 evals=181705 cost=12 best=12 T=0.15
+t=210 steps=26413 evals=211305 cost=27 best=12 T=0.79
+t=240 steps=29978 evals=239825 cost=15 best=12 T=0.28
+t=270 steps=33711 evals=269689 cost=15 best=12 T=0.15
+RESULT d=7 D=10 group=pgl 19 x Z_169 N=1155960 best=12 evals=276753 time=277.6 orbit k=3 m=2 f=1 fix=17
