@@ -1,0 +1,137 @@
+## hat4.py (Theorem 2.2, table of 2.3, rotation/link removal)
+(4, 2, 3, 52, 'n=52 m=153 maxdeg=6 mindeg=5 bipartite=1 diameter=3', 'n=52 m=156 maxdeg=6 mindeg=6 bipartite=1 diameter=3', 'deficient:', 6, 'expected', 6, 'table rows wrong:', 0, [])
+(4, 3, 2, 52, 'n=52 m=153 maxdeg=6 mindeg=5 bipartite=1 diameter=3', 'n=52 m=156 maxdeg=6 mindeg=6 bipartite=1 diameter=3', 'deficient:', 6, 'expected', 6, 'table rows wrong:', 0, [])
+(5, 2, 3, 72, 'n=72 m=244 maxdeg=7 mindeg=6 bipartite=1 diameter=3', 'n=72 m=252 maxdeg=7 mindeg=7 bipartite=1 diameter=3', 'deficient:', 16, 'expected', 16, 'table rows wrong:', 0, [])
+(5, 2, 4, 72, 'n=72 m=244 maxdeg=7 mindeg=6 bipartite=1 diameter=3', 'n=72 m=252 maxdeg=7 mindeg=7 bipartite=1 diameter=3', 'deficient:', 16, 'expected', 16, 'table rows wrong:', 0, [])
+(5, 3, 2, 72, 'n=72 m=244 maxdeg=7 mindeg=6 bipartite=1 diameter=3', 'n=72 m=252 maxdeg=7 mindeg=7 bipartite=1 diameter=3', 'deficient:', 16, 'expected', 16, 'table rows wrong:', 0, [])
+(5, 3, 4, 72, 'n=72 m=244 maxdeg=7 mindeg=6 bipartite=1 diameter=3', 'n=72 m=252 maxdeg=7 mindeg=7 bipartite=1 diameter=3', 'deficient:', 16, 'expected', 16, 'table rows wrong:', 0, [])
+(5, 4, 2, 72, 'n=72 m=244 maxdeg=7 mindeg=6 bipartite=1 diameter=3', 'n=72 m=252 maxdeg=7 mindeg=7 bipartite=1 diameter=3', 'deficient:', 16, 'expected', 16, 'table rows wrong:', 0, [])
+(5, 4, 3, 72, 'n=72 m=244 maxdeg=7 mindeg=6 bipartite=1 diameter=3', 'n=72 m=252 maxdeg=7 mindeg=7 bipartite=1 diameter=3', 'deficient:', 16, 'expected', 16, 'table rows wrong:', 0, [])
+(7, 4, 5, 124, 'n=124 m=534 maxdeg=9 mindeg=8 bipartite=1 diameter=3', 'n=124 m=558 maxdeg=9 mindeg=9 bipartite=1 diameter=3', 'deficient:', 48, 'expected', 48, 'table rows wrong:', 0, [])
+(7, 3, 2, 124, 'n=124 m=534 maxdeg=9 mindeg=8 bipartite=1 diameter=3', 'n=124 m=558 maxdeg=9 mindeg=9 bipartite=1 diameter=3', 'deficient:', 48, 'expected', 48, 'table rows wrong:', 0, [])
+(7, 5, 2, 124, 'n=124 m=534 maxdeg=9 mindeg=8 bipartite=1 diameter=3', 'n=124 m=558 maxdeg=9 mindeg=9 bipartite=1 diameter=3', 'deficient:', 48, 'expected', 48, 'table rows wrong:', 0, [])
+(8, 3, 5, 156, 'n=156 m=745 maxdeg=10 mindeg=9 bipartite=1 diameter=3', 'n=156 m=780 maxdeg=10 mindeg=10 bipartite=1 diameter=3', 'deficient:', 70, 'expected', 70, 'table rows wrong:', 0, [])
+(8, 4, 3, 156, 'n=156 m=745 maxdeg=10 mindeg=9 bipartite=1 diameter=3', 'n=156 m=780 maxdeg=10 mindeg=10 bipartite=1 diameter=3', 'deficient:', 70, 'expected', 70, 'table rows wrong:', 0, [])
+(8, 4, 5, 156, 'n=156 m=745 maxdeg=10 mindeg=9 bipartite=1 diameter=3', 'n=156 m=780 maxdeg=10 mindeg=10 bipartite=1 diameter=3', 'deficient:', 70, 'expected', 70, 'table rows wrong:', 0, [])
+(9, 6, 8, 192, 'n=192 m=1008 maxdeg=11 mindeg=10 bipartite=1 diameter=3', 'n=192 m=1056 maxdeg=11 mindeg=11 bipartite=1 diameter=3', 'deficient:', 96, 'expected', 96, 'table rows wrong:', 0, [])
+(9, 8, 5, 192, 'n=192 m=1008 maxdeg=11 mindeg=10 bipartite=1 diameter=3', 'n=192 m=1056 maxdeg=11 mindeg=11 bipartite=1 diameter=3', 'deficient:', 96, 'expected', 96, 'table rows wrong:', 0, [])
+(9, 5, 8, 192, 'n=192 m=1008 maxdeg=11 mindeg=10 bipartite=1 diameter=3', 'n=192 m=1056 maxdeg=11 mindeg=11 bipartite=1 diameter=3', 'deficient:', 96, 'expected', 96, 'table rows wrong:', 0, [])
+(11, 9, 3, 276, 'n=276 m=1714 maxdeg=13 mindeg=12 bipartite=1 diameter=3', 'n=276 m=1794 maxdeg=13 mindeg=13 bipartite=1 diameter=3', 'deficient:', 160, 'expected', 160, 'table rows wrong:', 0, [])
+(11, 10, 9, 276, 'n=276 m=1714 maxdeg=13 mindeg=12 bipartite=1 diameter=3', 'n=276 m=1794 maxdeg=13 mindeg=13 bipartite=1 diameter=3', 'deficient:', 160, 'expected', 160, 'table rows wrong:', 0, [])
+(11, 9, 5, 276, 'n=276 m=1714 maxdeg=13 mindeg=12 bipartite=1 diameter=3', 'n=276 m=1794 maxdeg=13 mindeg=13 bipartite=1 diameter=3', 'deficient:', 160, 'expected', 160, 'table rows wrong:', 0, [])
+(13, 5, 6, 376, 'n=376 m=2700 maxdeg=15 mindeg=14 bipartite=1 diameter=3', 'n=376 m=2820 maxdeg=15 mindeg=15 bipartite=1 diameter=3', 'deficient:', 240, 'expected', 240, 'table rows wrong:', 0, [])
+(13, 5, 10, 376, 'n=376 m=2700 maxdeg=15 mindeg=14 bipartite=1 diameter=3', 'n=376 m=2820 maxdeg=15 mindeg=15 bipartite=1 diameter=3', 'deficient:', 240, 'expected', 240, 'table rows wrong:', 0, [])
+(13, 10, 9, 376, 'n=376 m=2700 maxdeg=15 mindeg=14 bipartite=1 diameter=3', 'n=376 m=2820 maxdeg=15 mindeg=15 bipartite=1 diameter=3', 'deficient:', 240, 'expected', 240, 'table rows wrong:', 0, [])
+no rotation (5, 2, 3, 72, 'n=72 m=241 maxdeg=7 mindeg=6 bipartite=1 diameter=4', 'n=72 m=249 maxdeg=7 mindeg=6 bipartite=1 diameter=4', 'deficient:', 22, 'expected', 16)
+no link H1-K0 (5, 2, 3, 72, 'n=72 m=243 maxdeg=7 mindeg=6 bipartite=1 diameter=4', 'n=72 m=251 maxdeg=7 mindeg=6 bipartite=1 diameter=4', 'deficient:', 18, 'expected', 16)
+no rotation (7, 2, 3, 124, 'n=124 m=531 maxdeg=9 mindeg=8 bipartite=1 diameter=4', 'n=124 m=555 maxdeg=9 mindeg=8 bipartite=1 diameter=4', 'deficient:', 54, 'expected', 48)
+no link H1-K0 (7, 2, 3, 124, 'n=124 m=533 maxdeg=9 mindeg=8 bipartite=1 diameter=4', 'n=124 m=557 maxdeg=9 mindeg=8 bipartite=1 diameter=4', 'deficient:', 50, 'expected', 48)
+## hat4free.py (coordinate-free fourth hat, random frames)
+(3, 36, 36, 'n=36 m=90 maxdeg=5 mindeg=5 bipartite=1 diameter=3')
+(3, 36, 36, 'n=36 m=90 maxdeg=5 mindeg=5 bipartite=1 diameter=3')
+(3, 36, 36, 'n=36 m=90 maxdeg=5 mindeg=5 bipartite=1 diameter=3')
+(4, 52, 52, 'n=52 m=153 maxdeg=6 mindeg=5 bipartite=1 diameter=3')
+(4, 52, 52, 'n=52 m=153 maxdeg=6 mindeg=5 bipartite=1 diameter=3')
+(4, 52, 52, 'n=52 m=153 maxdeg=6 mindeg=5 bipartite=1 diameter=3')
+(5, 72, 72, 'n=72 m=244 maxdeg=7 mindeg=6 bipartite=1 diameter=3')
+(5, 72, 72, 'n=72 m=244 maxdeg=7 mindeg=6 bipartite=1 diameter=3')
+(5, 72, 72, 'n=72 m=244 maxdeg=7 mindeg=6 bipartite=1 diameter=3')
+(7, 124, 124, 'n=124 m=534 maxdeg=9 mindeg=8 bipartite=1 diameter=3')
+(7, 124, 124, 'n=124 m=534 maxdeg=9 mindeg=8 bipartite=1 diameter=3')
+(7, 124, 124, 'n=124 m=534 maxdeg=9 mindeg=8 bipartite=1 diameter=3')
+## hat3.py (Remark 2.7, AL20 three hats)
+5 printed index set F\{0,1,a}: (70, 70, 'n=70 m=233 maxdeg=7 mindeg=6 bipartite=1 diameter=3', 'n=70 m=243 maxdeg=7 mindeg=6 bipartite=1 diameter=3', ["('l', (2, 0, 1))", "('l', (4, 0, 1))", "('p', (1, 1, 0))", "('p', (3, 1, 0))"])
+5 index set F*: (70, 70, 'n=70 m=233 maxdeg=7 mindeg=6 bipartite=1 diameter=3', 'n=70 m=245 maxdeg=7 mindeg=7 bipartite=1 diameter=3')
+7 printed index set F\{0,1,a}: (122, 122, 'n=122 m=519 maxdeg=9 mindeg=8 bipartite=1 diameter=3', 'n=122 m=547 maxdeg=9 mindeg=8 bipartite=1 diameter=3', ["('l', (3, 0, 1))", "('l', (6, 0, 1))", "('p', (1, 1, 0))", "('p', (4, 1, 0))"])
+7 index set F*: (122, 122, 'n=122 m=519 maxdeg=9 mindeg=8 bipartite=1 diameter=3', 'n=122 m=549 maxdeg=9 mindeg=9 bipartite=1 diameter=3')
+9 printed index set F\{0,1,a}: (190, 190, 'n=190 m=989 maxdeg=11 mindeg=10 bipartite=1 diameter=3', 'n=190 m=1043 maxdeg=11 mindeg=10 bipartite=1 diameter=3', ["('l', (2, 0, 1))", "('l', (8, 0, 1))", "('p', (1, 1, 0))", "('p', (4, 1, 0))"])
+9 index set F*: (190, 190, 'n=190 m=989 maxdeg=11 mindeg=10 bipartite=1 diameter=3', 'n=190 m=1045 maxdeg=11 mindeg=11 bipartite=1 diameter=3')
+## thmA.py (Theorem 4.1, Corollary 4.2)
+3 line sums {2} w(e)= 2 max w elsewhere 1 order 90 expected 90 n=90 m=225 maxdeg=5 mindeg=5 bipartite=1 diameter=4
+5 line sums {2} w(e)= 2 max w elsewhere 1 order 350 expected 350 n=350 m=1225 maxdeg=7 mindeg=7 bipartite=1 diameter=4
+7 line sums {2} w(e)= 2 max w elsewhere 1 order 882 expected 882 n=882 m=3969 maxdeg=9 mindeg=9 bipartite=1 diameter=4
+9 line sums {2} w(e)= 2 max w elsewhere 1 order 1782 expected 1782 n=1782 m=9801 maxdeg=11 mindeg=11 bipartite=1 diameter=4
+## singer.py (Proposition 5.1, its remark, Corollary 5.2)
+q 3 max |L cap C_a| over all lines: 2 2-ovoid pairs: [(0, 3), (1, 2)] expected [(0, 3), (1, 2)]
+   form d*h (e=1): pairs [(0, 1), (2, 3)] predicted a+b = -3 mod q+1: [(0, 1), (2, 3)]
+   Cor C1: 120 expected 120 n=120 m=320 maxdeg=6 mindeg=4 bipartite=1 diameter=4
+   regular completion: n=120 m=360 maxdeg=6 mindeg=6 bipartite=1 diameter=4 multi-edges: 0
+q 5 max |L cap C_a| over all lines: 2 2-ovoid pairs: [(0, 5), (1, 4), (2, 3)] expected [(0, 5), (1, 4), (2, 3)]
+   form d*h (e=1): pairs [(0, 3), (1, 2), (4, 5)] predicted a+b = -3 mod q+1: [(0, 3), (1, 2), (4, 5)]
+   Cor C1: 416 expected 416 n=416 m=1560 maxdeg=8 mindeg=6 bipartite=1 diameter=4
+   regular completion: n=416 m=1664 maxdeg=8 mindeg=8 bipartite=1 diameter=4 multi-edges: 0
+q 7 max |L cap C_a| over all lines: 2 2-ovoid pairs: [(0, 7), (1, 6), (2, 5), (3, 4)] expected [(0, 7), (1, 6), (2, 5), (3, 4)]
+## hexD.py 3 2,3 (Theorems 6.3/6.5/D/R)
+q 3 |W| 72 expected 72 free cover counts [1]
+  D: m 2 order 1020 expected 1020 n=1020 m=2420 maxdeg=5 mindeg=4 bipartite=1 diameter=6
+  R: m 2 order 968 expected 968 swaps 2 n=968 m=2420 maxdeg=5 mindeg=5 bipartite=1 diameter=6
+  D: m 3 order 1386 expected 1386 n=1386 m=3672 maxdeg=6 mindeg=4 bipartite=1 diameter=6
+  R: m 3 order 1224 expected 1224 swaps 1 n=1224 m=3672 maxdeg=6 mindeg=6 bipartite=1 diameter=6
+## hexD.py 5 2
+q 5 |W| 600 expected 600 free cover counts [1]
+  D: m 2 order 9592 expected 9592 n=9592 m=32718 maxdeg=7 mindeg=6 bipartite=1 diameter=6
+  R: m 2 order 9348 expected 9348 swaps 3 n=9348 m=32718 maxdeg=7 mindeg=7 bipartite=1 diameter=6
+## hexD q=7 whiskers only
+q 7 |W| 2352 expected 2352 free cover counts [1]
+## haar.py (Section 8)
+(7,5) f.h: n=1152 m=4032 maxdeg=7 mindeg=7 bipartite=1 diameter=5
+(7,5) h.f: n=1152 m=4032 maxdeg=7 mindeg=7 bipartite=1 diameter=5
+(9,5): n=2662 m=11979 maxdeg=9 mindeg=9 bipartite=1 diameter=5
+(8,5): n=1764 m=7056 maxdeg=8 mindeg=8 bipartite=1 diameter=5
+## appA.py (Appendix A)
+ovoid size 26 each line meets O once: True
+21 rows parsed, all are lines of Q(4,5): True distinct: 21
+points on >1 listed line: [((0, 1, 0, 0, 0), 2, True), ((1, 2, 3, 3, 1), 2, True), ((1, 4, 1, 0, 0), 2, True), ((1, 2, 3, 2, 4), 2, True)]
+starred: [(0, 1, 0, 0, 0), (1, 2, 3, 3, 1), (1, 4, 1, 0, 0), (1, 2, 3, 2, 4)] all in O: True
+(0, 1, 0, 0, 0) rows [1, 2] starred in rows [2]
+(1, 2, 3, 3, 1) rows [4, 9] starred in rows [9]
+(1, 4, 1, 0, 0) rows [13, 14] starred in rows [14]
+(1, 2, 3, 2, 4) rows [20, 21] starred in rows [21]
+n=359 m=1218 maxdeg=7 mindeg=6 bipartite=1 diameter=4
+## randtests.py (Theorem B with stand-ins; Corollary 1.4)
+3 line sums {2} w(e)= 2 max w elsewhere 1 order 90 expected 90 n=90 m=225 maxdeg=5 mindeg=5 bipartite=1 diameter=4
+5 line sums {2} w(e)= 2 max w elsewhere 1 order 350 expected 350 n=350 m=1225 maxdeg=7 mindeg=7 bipartite=1 diameter=4
+7 line sums {2} w(e)= 2 max w elsewhere 1 order 882 expected 882 n=882 m=3969 maxdeg=9 mindeg=9 bipartite=1 diameter=4
+9 line sums {2} w(e)= 2 max w elsewhere 1 order 1782 expected 1782 n=1782 m=9801 maxdeg=11 mindeg=11 bipartite=1 diameter=4
+Theorem B random stand-in tests passed on AS(3)
+Theorem B random stand-in tests passed on AS(5)
+PG(2,3) Corollary 1.4 agreement 150 / 150 (trees-ok cases: 35 )
+AS(3) Corollary 1.4 agreement 150 / 150 (trees-ok cases: 98 )
+## lemma66.py
+Q_z formula as printed: True
+(a) J^2=-c: True
+(a) Q(Jx)=cQ(x): True
+(a) B(x,Jx)=0: True
+(b) differences = Q_z*(1,0,0,-c,alpha,-beta): [True, True, True, True, True, True]
+(d): True True J_0 as printed: True
+Lemma 6.7 solve: True True
+Lemma 6.7 identity: True
+## formulas.py
+Moore bounds: True
+fourth hat 2(q^2+q+6): [192, 276, 376] AL20 2(q^2+q+5): [190, 274, 374]
+Delorme D=4: [346, 1734, 3064, 4946] [346, 1734, 3064, 4946] m=3,q=13: 5134
+Theorem A 2q^2(q+2): [350, 1782, 3146, 5070] gain q^2-3q-6: [True, True, True, True, True, True, True, True, True]
+Cor C1 2(q^2+1)(q+3): [120, 416, 5440]
+D=6 q=5: Delorme 8992 Theorem D 9592
+D=6 q=9: Delorme 142464 Theorem D 148944
+D=6 q=11: Delorme 374452 Theorem D 388972
+D=6 q=13: Delorme 842048 Theorem D 870440
+q=13,m=3: Delorme 884062 Theorem D 940846
+Theorem R: [9348, 147500, 386328, 866068] 927724 M_b(.,5): [3110, 22222, 45242, 82742, 108482]
+free points q^3(q^2-1): True
+counting bound equality: True
+Delorme D=6 point side minus line side: [356, 5036, 11876, 24020, 43662]
+## movoid.py (m-ovoids of AS(3), AS(5), HiGHS)
+AS(3) 1-ovoid: Infeasible
+AS(3) 2-ovoid: Infeasible
+AS(5) 1-ovoid: Infeasible
+AS(5) 2-ovoid: Infeasible
+AS(5) 3-ovoid: Infeasible
+AS(5) 4-ovoid: Infeasible
+## lemma64.py (Lemma 6.4 table)
+q=3: -c non-square: True; zeros of G: []
+q=5: -c non-square: True; zeros of G: []
+q=7: -c non-square: True; zeros of G: []
+q=9: -c non-square: True; zeros of G: []
+q=11: -c non-square: True; zeros of G: []
+q=13: -c non-square: True; zeros of G: []
