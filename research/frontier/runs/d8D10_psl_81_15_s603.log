@@ -1,0 +1,42 @@
+group psl 81 poly x^4+x+2 x Z_15, N=3985200, identity 48600, H order 60, rows 66420, threads 1, setup 0.12s
+start cost=43
+t=30 steps=404 evals=3233 cost=16 best=14 T=0.53
+t=60 steps=801 evals=6409 cost=14 best=14 T=0.19
+t=90 steps=1211 evals=9689 cost=14 best=14 T=0.15
+t=120 steps=1628 evals=13025 cost=14 best=14 T=0.15
+t=150 steps=2021 evals=16169 cost=11 best=11 T=0.15
+t=180 steps=2431 evals=19449 cost=11 best=11 T=0.15
+t=210 steps=2859 evals=22873 cost=11 best=11 T=0.15
+t=240 steps=3287 evals=26297 cost=11 best=11 T=0.15
+t=270 steps=3721 evals=29769 cost=11 best=11 T=0.15
+t=300 steps=4150 evals=33201 cost=11 best=11 T=0.64
+t=330 steps=4532 evals=36257 cost=11 best=11 T=0.23
+t=361 steps=4909 evals=39273 cost=11 best=11 T=0.15
+t=391 steps=5309 evals=42473 cost=11 best=11 T=0.15
+t=421 steps=5731 evals=45849 cost=11 best=11 T=0.15
+t=451 steps=6129 evals=49033 cost=12 best=11 T=0.64
+t=481 steps=6528 evals=52225 cost=12 best=11 T=0.23
+t=511 steps=6953 evals=55625 cost=12 best=11 T=0.15
+t=541 steps=7333 evals=58665 cost=12 best=11 T=0.15
+t=571 steps=7736 evals=61889 cost=12 best=11 T=0.15
+t=601 steps=8125 evals=65001 cost=11 best=11 T=0.64
+t=631 steps=8529 evals=68233 cost=11 best=11 T=0.22
+t=661 steps=8933 evals=71465 cost=11 best=11 T=0.15
+t=691 steps=9341 evals=74729 cost=11 best=11 T=0.15
+t=721 steps=9753 evals=78025 cost=11 best=11 T=0.15
+t=751 steps=10151 evals=81209 cost=11 best=11 T=0.63
+t=781 steps=10549 evals=84393 cost=11 best=11 T=0.22
+t=811 steps=10938 evals=87505 cost=11 best=11 T=0.15
+t=841 steps=11334 evals=90673 cost=11 best=11 T=0.15
+t=871 steps=11727 evals=93817 cost=11 best=11 T=0.15
+t=902 steps=12128 evals=97025 cost=13 best=11 T=0.63
+t=932 steps=12510 evals=100081 cost=13 best=11 T=0.22
+t=962 steps=12867 evals=102937 cost=13 best=11 T=0.15
+t=992 steps=13218 evals=105745 cost=13 best=11 T=0.15
+t=1022 steps=13569 evals=108553 cost=13 best=11 T=0.15
+t=1052 steps=13915 evals=111321 cost=11 best=11 T=0.63
+t=1082 steps=14281 evals=114249 cost=11 best=11 T=0.22
+t=1112 steps=14665 evals=117321 cost=11 best=11 T=0.15
+t=1142 steps=15052 evals=120417 cost=11 best=11 T=0.15
+t=1172 steps=15445 evals=123561 cost=11 best=11 T=0.15
+RESULT d=8 D=10 group=psl 81 poly x^4+x+2 x Z_15 N=3985200 best=11 evals=126377 time=1200.0
