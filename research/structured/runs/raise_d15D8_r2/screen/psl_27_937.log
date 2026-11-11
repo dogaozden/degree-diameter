@@ -1,0 +1,6 @@
+group psl 27 poly x^3+2x+1 x Z_937, N=9208836, identity 328887, H order 14, rows 657774, threads 1, setup 0.45s
+wide rows: no cyclic subgroup of order >= 64 found (best 14); using haar_gen3's evaluation
+alpha: conj by mat(17,8,19,23) (index 9334), z -> 322 z on Z_937
+ORBIT k=3 m=5 f=0: |Fix(alpha)| = 26 (+e); mu = 40.78, mu/k = 13.59, fixed-point misses ~ 0.44
+RANDORB d=15 D=8 group=psl 27 poly x^3+2x+1 x Z_937 N=9208836 k=3 m=5 f=0 fix=26 samples=300 min=24 p1=45 p10=61 median=91 mean=370.75 var=6797887.0 mu=40.78 time=121.8
+RANDORB hist (cost/k): 0 0 0 0 0 0 0 0 1 0 0 0 0 0 2 3 1 5 4 12 6 12 11 16 16 11 10 10 15 7 13 145

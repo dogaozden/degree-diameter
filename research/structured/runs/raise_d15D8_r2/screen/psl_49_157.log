@@ -1,0 +1,6 @@
+group psl 49 poly x^2+1 x Z_157, N=9231600, identity 184632, H order 25, rows 369264, threads 1, setup 0.36s
+wide rows: HW order 157, rows 58800, setup 0.67s
+alpha: conj by mat(12,26,1,43) (index 21659), z -> 12 z on Z_157
+ORBIT k=3 m=5 f=0: |Fix(alpha)| = 23 (+e); mu = 42.14, mu/k = 14.05, fixed-point misses ~ 0.40
+RANDORB d=15 D=8 group=psl 49 poly x^2+1 x Z_157 N=9231600 k=3 m=5 f=0 fix=23 samples=300 min=18 p1=27 p10=42 median=60 mean=75.65 var=21714.7 mu=42.14 time=18.9
+RANDORB hist (cost/k): 0 0 0 0 0 0 1 0 2 2 2 2 5 10 15 12 21 23 25 17 27 24 24 10 10 11 6 3 8 2 9 29
