@@ -1,0 +1,12 @@
+group sl 17 x Z_43, N=210528, identity 11696, H order 43, rows 4896, threads 1, setup 0.01s
+start cost=3456
+t=30 steps=9633 evals=77065 cost=12 best=12 T=0.53
+t=60 steps=19701 evals=157609 cost=12 best=12 T=0.19
+t=90 steps=29407 evals=235257 cost=6 best=6 T=0.15
+t=120 steps=38848 evals=310785 cost=6 best=6 T=0.15
+t=150 steps=49181 evals=393449 cost=6 best=6 T=0.15
+t=180 steps=58774 evals=470193 cost=6 best=6 T=0.15
+t=210 steps=68584 evals=548673 cost=6 best=6 T=0.15
+t=240 steps=78544 evals=628353 cost=6 best=6 T=1.06
+t=270 steps=87872 evals=702977 cost=6 best=6 T=0.38
+RESULT d=7 D=9 group=sl 17 x Z_43 N=210528 best=6 evals=780017 time=300.0

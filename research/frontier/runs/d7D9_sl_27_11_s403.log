@@ -1,0 +1,12 @@
+group sl 27 poly x^3+2x+1 x Z_11, N=216216, identity 7722, H order 44, rows 4914, threads 1, setup 0.00s
+start cost=82
+t=30 steps=9025 evals=72201 cost=8 best=8 T=0.53
+t=60 steps=17519 evals=140153 cost=8 best=8 T=0.19
+t=90 steps=26184 evals=209473 cost=6 best=6 T=0.15
+t=120 steps=35148 evals=281185 cost=6 best=6 T=0.15
+t=150 steps=44092 evals=352737 cost=6 best=6 T=0.15
+t=180 steps=53075 evals=424601 cost=6 best=6 T=0.15
+t=210 steps=62192 evals=497537 cost=6 best=6 T=0.15
+t=240 steps=71025 evals=568201 cost=10 best=6 T=0.96
+t=270 steps=79984 evals=639873 cost=8 best=6 T=0.34
+RESULT d=7 D=9 group=sl 27 poly x^3+2x+1 x Z_11 N=216216 best=6 evals=709961 time=300.0

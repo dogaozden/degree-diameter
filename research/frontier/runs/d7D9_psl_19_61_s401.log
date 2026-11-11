@@ -1,0 +1,12 @@
+group psl 19 x Z_61, N=208620, identity 10431, H order 61, rows 3420, threads 1, setup 0.01s
+start cost=124
+t=30 steps=13118 evals=104945 cost=6 best=6 T=0.53
+t=60 steps=26063 evals=208505 cost=6 best=6 T=0.19
+t=90 steps=39355 evals=314841 cost=6 best=6 T=0.15
+t=120 steps=52838 evals=422705 cost=6 best=6 T=0.15
+t=150 steps=66493 evals=531945 cost=3 best=3 T=0.15
+t=180 steps=80247 evals=641977 cost=3 best=3 T=0.15
+t=210 steps=93884 evals=751073 cost=3 best=3 T=0.15
+t=240 steps=107524 evals=860193 cost=3 best=3 T=0.15
+t=270 steps=121491 evals=971929 cost=3 best=3 T=0.15
+RESULT d=7 D=9 group=psl 19 x Z_61 N=208620 best=3 evals=1085793 time=300.0

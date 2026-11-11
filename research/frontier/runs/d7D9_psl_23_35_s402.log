@@ -1,0 +1,12 @@
+group psl 23 x Z_35, N=212520, identity 8855, H order 60, rows 3542, threads 1, setup 0.01s
+start cost=52
+t=30 steps=13096 evals=104769 cost=10 best=10 T=0.53
+t=60 steps=26204 evals=209633 cost=6 best=6 T=0.19
+t=90 steps=39483 evals=315865 cost=6 best=6 T=0.15
+t=120 steps=52303 evals=418425 cost=6 best=6 T=0.15
+t=150 steps=65259 evals=522073 cost=6 best=6 T=0.15
+t=180 steps=78057 evals=624457 cost=6 best=6 T=0.15
+t=210 steps=90920 evals=727361 cost=6 best=6 T=1.12
+t=240 steps=103888 evals=831105 cost=6 best=6 T=0.40
+t=270 steps=117303 evals=938425 cost=6 best=6 T=0.15
+RESULT d=7 D=9 group=psl 23 x Z_35 N=212520 best=6 evals=1044993 time=300.0

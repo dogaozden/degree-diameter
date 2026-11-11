@@ -1,0 +1,12 @@
+group prod psl 11 sl 7 x Z_1, N=221760, identity 18522, H order 44, rows 5040, threads 1, setup 0.01s
+start cost=74
+t=30 steps=8567 evals=68537 cost=14 best=12 T=0.53
+t=60 steps=16819 evals=134553 cost=11 best=11 T=0.19
+t=90 steps=25128 evals=201025 cost=11 best=11 T=0.15
+t=120 steps=33388 evals=267105 cost=10 best=10 T=0.15
+t=150 steps=41749 evals=333993 cost=7 best=7 T=0.15
+t=180 steps=49802 evals=398417 cost=7 best=7 T=0.15
+t=210 steps=57892 evals=463137 cost=7 best=7 T=0.15
+t=240 steps=66214 evals=529713 cost=7 best=7 T=0.15
+t=270 steps=74481 evals=595849 cost=7 best=7 T=0.15
+RESULT d=7 D=9 group=prod psl 11 sl 7 x Z_1 N=221760 best=7 evals=666177 time=300.0

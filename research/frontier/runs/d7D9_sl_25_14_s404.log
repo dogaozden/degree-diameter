@@ -1,0 +1,12 @@
+group sl 25 poly x^2+2 x Z_14, N=218400, identity 8400, H order 56, rows 3900, threads 1, setup 0.00s
+start cost=116
+t=30 steps=11653 evals=93225 cost=14 best=12 T=0.53
+t=60 steps=23583 evals=188665 cost=14 best=12 T=0.19
+t=90 steps=35037 evals=280297 cost=8 best=8 T=0.15
+t=120 steps=46067 evals=368537 cost=6 best=6 T=0.15
+t=150 steps=57801 evals=462409 cost=6 best=6 T=0.15
+t=180 steps=69094 evals=552753 cost=6 best=6 T=0.15
+t=210 steps=80384 evals=643073 cost=6 best=6 T=0.15
+t=240 steps=91780 evals=734241 cost=6 best=6 T=0.15
+t=270 steps=103174 evals=825393 cost=6 best=6 T=0.72
+RESULT d=7 D=9 group=sl 25 poly x^2+2 x Z_14 N=218400 best=6 evals=920785 time=300.0
