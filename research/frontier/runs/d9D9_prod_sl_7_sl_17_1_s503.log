@@ -1,0 +1,33 @@
+group prod sl 7 sl 17 x Z_1, N=1645056, identity 205904, H order 63, rows 26112, threads 1, setup 0.09s
+start cost=38
+t=30 steps=659 evals=5273 cost=6 best=6 T=0.53
+t=60 steps=1309 evals=10473 cost=6 best=6 T=0.19
+t=90 steps=1959 evals=15673 cost=6 best=6 T=0.15
+t=120 steps=2634 evals=21073 cost=6 best=6 T=0.15
+t=150 steps=3309 evals=26473 cost=4 best=4 T=0.15
+t=180 steps=4022 evals=32177 cost=4 best=4 T=0.15
+t=210 steps=4653 evals=37225 cost=4 best=4 T=0.15
+t=240 steps=5324 evals=42593 cost=4 best=4 T=0.15
+t=270 steps=5982 evals=47857 cost=4 best=4 T=0.15
+t=300 steps=6640 evals=53121 cost=4 best=4 T=0.96
+t=330 steps=7318 evals=58545 cost=4 best=4 T=0.34
+t=360 steps=7972 evals=63777 cost=4 best=4 T=0.15
+t=390 steps=8599 evals=68793 cost=4 best=4 T=0.15
+t=420 steps=9261 evals=74089 cost=4 best=4 T=0.15
+t=450 steps=9925 evals=79401 cost=6 best=4 T=0.96
+t=480 steps=10523 evals=84185 cost=6 best=4 T=0.34
+t=510 steps=11151 evals=89209 cost=6 best=4 T=0.15
+t=540 steps=11792 evals=94337 cost=4 best=4 T=0.15
+t=570 steps=12458 evals=99665 cost=4 best=4 T=0.15
+t=600 steps=13114 evals=104913 cost=4 best=4 T=0.95
+t=630 steps=13791 evals=110329 cost=4 best=4 T=0.34
+t=660 steps=14469 evals=115753 cost=4 best=4 T=0.15
+t=691 steps=15157 evals=121257 cost=4 best=4 T=0.15
+t=721 steps=15852 evals=126817 cost=4 best=4 T=0.15
+t=751 steps=16525 evals=132201 cost=4 best=4 T=0.95
+t=781 steps=17221 evals=137769 cost=4 best=4 T=0.34
+t=811 steps=17889 evals=143113 cost=4 best=4 T=0.15
+t=841 steps=18587 evals=148697 cost=4 best=4 T=0.15
+RESULT d=9 D=9 group=prod sl 7 sl 17 x Z_1 N=1645056 best=0 evals=152721 time=861.9
+full diameter check: OK
+wrote sols/d9D9_prod_sl_7_sl_17_1_s503.txt

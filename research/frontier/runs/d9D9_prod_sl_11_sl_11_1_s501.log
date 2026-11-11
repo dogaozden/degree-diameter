@@ -1,0 +1,32 @@
+group prod sl 11 sl 11 x Z_1, N=1742400, identity 145310, H order 60, rows 29040, threads 1, setup 0.09s
+start cost=120
+t=30 steps=669 evals=5353 cost=24 best=24 T=0.53
+t=60 steps=1324 evals=10593 cost=20 best=20 T=0.19
+t=90 steps=1991 evals=15929 cost=20 best=20 T=0.15
+t=120 steps=2639 evals=21113 cost=18 best=18 T=0.15
+t=150 steps=3309 evals=26473 cost=18 best=18 T=0.15
+t=180 steps=3985 evals=31881 cost=18 best=18 T=0.15
+t=210 steps=4652 evals=37217 cost=18 best=18 T=0.15
+t=240 steps=5321 evals=42569 cost=18 best=18 T=0.15
+t=270 steps=5976 evals=47809 cost=18 best=18 T=0.74
+t=300 steps=6626 evals=53009 cost=18 best=18 T=0.26
+t=330 steps=7286 evals=58289 cost=16 best=16 T=0.15
+t=360 steps=7941 evals=63529 cost=16 best=16 T=0.15
+t=390 steps=8592 evals=68737 cost=16 best=16 T=0.15
+t=420 steps=9243 evals=73945 cost=16 best=16 T=0.15
+t=450 steps=9901 evals=79209 cost=16 best=16 T=0.15
+t=480 steps=10561 evals=84489 cost=16 best=16 T=0.91
+t=510 steps=11220 evals=89761 cost=16 best=16 T=0.32
+t=540 steps=11876 evals=95009 cost=16 best=16 T=0.15
+t=570 steps=12537 evals=100297 cost=16 best=16 T=0.15
+t=601 steps=13181 evals=105449 cost=16 best=16 T=0.15
+t=631 steps=13814 evals=110513 cost=16 best=16 T=0.91
+t=661 steps=14422 evals=115377 cost=16 best=16 T=0.32
+t=691 steps=15085 evals=120681 cost=16 best=16 T=0.15
+t=721 steps=15720 evals=125761 cost=16 best=16 T=0.15
+t=751 steps=16372 evals=130977 cost=16 best=16 T=0.15
+t=781 steps=17027 evals=136217 cost=16 best=16 T=0.91
+t=811 steps=17686 evals=141489 cost=16 best=16 T=0.32
+t=841 steps=18347 evals=146777 cost=16 best=16 T=0.15
+t=871 steps=19000 evals=152001 cost=16 best=16 T=0.15
+RESULT d=9 D=9 group=prod sl 11 sl 11 x Z_1 N=1742400 best=16 evals=157081 time=900.1
