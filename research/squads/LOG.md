@@ -49,3 +49,17 @@ nice 0, equal to the director's whole pipeline); the director raised the pipelin
 `echo -10 > /proc/<pid>/autogroup` and lowered the cards' groups to 15.
 Kept: haarex6 for the sweep; no family lead worth more CPU (the 704 lift is an isolated local minimum, the new
 families are far). The order-384 sweep continues; orders 401-450 started on the spare core.
+
+### Round lean-cyc-r1 (2026-11-01, about 22:58-23:08 UTC, job lean-small-beyond, branch claude/lean-graph-proofs-l7h72e)
+Goal: independent checks of the six new CycLift Lean data files ((3,13) 3,400, (3,14) 5,706, (4,11) 30,334,
+(4,12) 74,066, (4,13) 192,382, (4,14) 497,042), which the director had already proved in Lean. A checking round, not a
+search: the scorer is "every check passes", and the cards were told not to read the generators.
+Cards: c1–c6 one graph each (own parser of the `.lean` literal, own lift, comparison with the edge file through the
+Haar coordinate map for c3–c6, BFS diameter) · c7 line-by-line Python port of every Boolean check in Lift.lean and
+Aut.lean, evaluated at D and D - 1 · c8 soundness attack: mutants of the 3,400 data keeping arcsOK and symOK, looking
+for eccOK true with real diameter > 13.
+Scores: c1–c6 all 1 (all checks pass; all-pairs diameter for 3,400, 5,706, 30,334) · c7 6/6 (true at D, false at
+D - 1 on all six) · c8 0 counterexamples (7,070 mutants, 27 pass eccOK at 13, all with true diameter 13).
+Director's checks: re-ran c1, c4, c6, c7 (same output; no generator imports). Kept: the scoreboard and code as the
+independent check cited in research/lean-haarD/STATUS-lean-small-beyond.md. The squad added confidence, not proofs: the
+Lean statements were already kernel-checked, and these cards confirm the link to the edge files independently.

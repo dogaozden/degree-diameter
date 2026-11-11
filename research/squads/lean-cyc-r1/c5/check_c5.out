@@ -1,0 +1,19 @@
+PASS parse_outA_86_rows_of_4_arcs_in_range rows=86 arcs=344
+PASS lift_no_loops_all_degree_4 loops=0 degree_hist={4: 192382}
+PASS lift_edge_count edges=384764 expected=384764
+PASS edge_file_header_is_N header=192382
+PASS edge_file_simple_no_duplicates lines=384764 distinct=384764 loops=0
+PASS edge_file_all_degree_4 degree_hist={4: 192382}
+PASS haar_map_is_bijection_on_vertices distinct_images=192382
+PASS mapped_edge_file_equals_lift_edge_set mapped=384764 lift=384764 equal=True
+PASS haar_map_sends_identities_0_and_HALF_to_themselves img[0]=0 img[HALF]=96191
+PASS bipartite_lift_BFS_2colouring 
+PASS bipartite_edge_file_BFS_2colouring 
+PASS edge_file_connected reached=192382,192382
+PASS edge_file_diameter_exactly_13 ecc(vertex 0)=13 ecc(vertex HALF=96191)=13
+distance profile from vertex 0 (edge file): [1, 4, 12, 36, 108, 324, 972, 2902, 8464, 22993, 50506, 65304, 36128, 4628]
+PASS random_50_sources_ecc_le_13 max=13 min=13 on_A_side=28
+PASS lift_BFS_from_0_and_HALF_matches_edge_file_under_map lift ecc(0)=13 lift ecc(HALF)=13
+PASS lift_diameter_exactly_13 max=13
+SUMMARY checks=16 failed=none
+SCORE 1

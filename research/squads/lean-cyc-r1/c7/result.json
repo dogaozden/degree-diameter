@@ -1,0 +1,204 @@
+{
+ "card": "c7",
+ "score": 6,
+ "valid": true,
+ "selftests": {
+  "rotR_testBit_property": true,
+  "nat_helpers": true
+ },
+ "elapsed_s": 0.22,
+ "results": [
+  {
+   "file": "N3400",
+   "n": 3400,
+   "m": 170,
+   "b": 20,
+   "d": 3,
+   "D": 13,
+   "kind": "checks",
+   "side": "side3400",
+   "at_D": {
+    "hn_rfl(n=b*m)": true,
+    "hm(0<m)": true,
+    "arcsOK": true,
+    "symOK": true,
+    "degOK(d)": true,
+    "colOK": true,
+    "eccOK(D)": true
+   },
+   "at_D_minus_1": {
+    "eccOK(D-1)": false
+   },
+   "first_full_radius": 13,
+   "ok": true
+  },
+  {
+   "file": "N5706",
+   "n": 5706,
+   "m": 317,
+   "b": 18,
+   "d": 3,
+   "D": 14,
+   "kind": "checks",
+   "side": "side5706",
+   "at_D": {
+    "hn_rfl(n=b*m)": true,
+    "hm(0<m)": true,
+    "arcsOK": true,
+    "symOK": true,
+    "degOK(d)": true,
+    "colOK": true,
+    "eccOK(D)": true
+   },
+   "at_D_minus_1": {
+    "eccOK(D-1)": false
+   },
+   "first_full_radius": 14,
+   "ok": true
+  },
+  {
+   "file": "N30334",
+   "n": 30334,
+   "m": 523,
+   "b": 58,
+   "d": 4,
+   "D": 11,
+   "kind": "srcs",
+   "side": "side30334",
+   "srcs": [
+    0,
+    29
+   ],
+   "mu": 465,
+   "mu_inv": 9,
+   "K": 29,
+   "pi": "if w < 29 then (w + 1) % 29 else 29 + (w - 29 + 1) % 29",
+   "pi_inv": "if w < 29 then (w + 28) % 29 else 29 + (w - 29 + 28) % 29",
+   "at_D": {
+    "hn_rfl(n=b*m)": true,
+    "hm(0<m)": true,
+    "arcsOK": true,
+    "symOK": true,
+    "degOK(d)": true,
+    "colOK": true,
+    "autOK": true,
+    "invOK": true,
+    "orbOK": true,
+    "eccSrcOK(D)": true
+   },
+   "at_D_minus_1": {
+    "eccSrcOK(D-1)": false
+   },
+   "first_full_radius": 11,
+   "ok": true
+  },
+  {
+   "file": "N74066",
+   "n": 74066,
+   "m": 1277,
+   "b": 58,
+   "d": 4,
+   "D": 12,
+   "kind": "srcs",
+   "side": "side74066",
+   "srcs": [
+    0,
+    29
+   ],
+   "mu": 1175,
+   "mu_inv": 964,
+   "K": 29,
+   "pi": "if w < 29 then (w + 1) % 29 else 29 + (w - 29 + 1) % 29",
+   "pi_inv": "if w < 29 then (w + 28) % 29 else 29 + (w - 29 + 28) % 29",
+   "at_D": {
+    "hn_rfl(n=b*m)": true,
+    "hm(0<m)": true,
+    "arcsOK": true,
+    "symOK": true,
+    "degOK(d)": true,
+    "colOK": true,
+    "autOK": true,
+    "invOK": true,
+    "orbOK": true,
+    "eccSrcOK(D)": true
+   },
+   "at_D_minus_1": {
+    "eccSrcOK(D-1)": false
+   },
+   "first_full_radius": 12,
+   "ok": true
+  },
+  {
+   "file": "N192382",
+   "n": 192382,
+   "m": 2237,
+   "b": 86,
+   "d": 4,
+   "D": 13,
+   "kind": "srcs",
+   "side": "side192382",
+   "srcs": [
+    0,
+    43
+   ],
+   "mu": 2069,
+   "mu_inv": 1984,
+   "K": 43,
+   "pi": "if w < 43 then (w + 1) % 43 else 43 + (w - 43 + 1) % 43",
+   "pi_inv": "if w < 43 then (w + 42) % 43 else 43 + (w - 43 + 42) % 43",
+   "at_D": {
+    "hn_rfl(n=b*m)": true,
+    "hm(0<m)": true,
+    "arcsOK": true,
+    "symOK": true,
+    "degOK(d)": true,
+    "colOK": true,
+    "autOK": true,
+    "invOK": true,
+    "orbOK": true,
+    "eccSrcOK(D)": true
+   },
+   "at_D_minus_1": {
+    "eccSrcOK(D-1)": false
+   },
+   "first_full_radius": 13,
+   "ok": true
+  },
+  {
+   "file": "N497042",
+   "n": 497042,
+   "m": 2731,
+   "b": 182,
+   "d": 4,
+   "D": 14,
+   "kind": "srcs",
+   "side": "side497042",
+   "srcs": [
+    0,
+    91
+   ],
+   "mu": 33,
+   "mu_inv": 2400,
+   "K": 91,
+   "pi": "if w < 91 then (w + 1) % 91 else 91 + (w - 91 + 1) % 91",
+   "pi_inv": "if w < 91 then (w + 90) % 91 else 91 + (w - 91 + 90) % 91",
+   "at_D": {
+    "hn_rfl(n=b*m)": true,
+    "hm(0<m)": true,
+    "arcsOK": true,
+    "symOK": true,
+    "degOK(d)": true,
+    "colOK": true,
+    "autOK": true,
+    "invOK": true,
+    "orbOK": true,
+    "eccSrcOK(D)": true
+   },
+   "at_D_minus_1": {
+    "eccSrcOK(D-1)": false
+   },
+   "first_full_radius": 14,
+   "ok": true
+  }
+ ]
+}

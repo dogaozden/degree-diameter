@@ -1,0 +1,115 @@
+{
+ "card": "c3",
+ "file": "N30334.lean",
+ "edges": "/home/user/degree-diameter/research/lean-haarD/cyclift/d4D11_n30334_meta523_29_9.edges.gz",
+ "stated": {
+  "degree": 4,
+  "diameter": 11,
+  "M": 523,
+  "K": 29,
+  "R": 9
+ },
+ "score": 1,
+ "failed": [],
+ "ecc_from_0": 11,
+ "ecc_from_N": 11,
+ "all_pairs_exact_diameter": 11,
+ "checks": {
+  "parse_58_rows": {
+   "ok": true,
+   "detail": "rows=58"
+  },
+  "parse_4_arcs_per_row": {
+   "ok": true,
+   "detail": "lens=[4]"
+  },
+  "parse_ranges": {
+   "ok": true,
+   "detail": ""
+  },
+  "lift_no_loops": {
+   "ok": true,
+   "detail": "loops=0"
+  },
+  "lift_no_dup_raw_arcs": {
+   "ok": true,
+   "detail": "dup_raw=0"
+  },
+  "lift_degree_exactly_4": {
+   "ok": true,
+   "detail": "degset=[4]"
+  },
+  "lift_edge_count": {
+   "ok": true,
+   "detail": "edges=60668"
+  },
+  "edge_file_header_n": {
+   "ok": true,
+   "detail": "n=30334"
+  },
+  "edge_file_count": {
+   "ok": true,
+   "detail": "count=60668"
+  },
+  "edge_file_in_range": {
+   "ok": true,
+   "detail": ""
+  },
+  "edge_file_no_loops": {
+   "ok": true,
+   "detail": ""
+  },
+  "edge_file_no_dups": {
+   "ok": true,
+   "detail": "unique=60668"
+  },
+  "Rinv_is_465": {
+   "ok": true,
+   "detail": "R^-1 mod M=465"
+  },
+  "Rminusj_consistent": {
+   "ok": true,
+   "detail": ""
+  },
+  "map_is_bijection": {
+   "ok": true,
+   "detail": "distinct=30334"
+  },
+  "mapped_edges_equal_lift_edges": {
+   "ok": true,
+   "detail": "mapped=60668 lift=60668 onlymapped=0 onlylift=0"
+  },
+  "file_degree_exactly_4": {
+   "ok": true,
+   "detail": "degset=[4]"
+  },
+  "file_graph_bipartite": {
+   "ok": true,
+   "detail": ""
+  },
+  "lift_bipartite": {
+   "ok": true,
+   "detail": ""
+  },
+  "file_bipartition_is_sides": {
+   "ok": true,
+   "detail": "classes=15167/15167"
+  },
+  "connected_from_0_and_N": {
+   "ok": true,
+   "detail": "ecc0=11 eccN=11"
+  },
+  "max_ecc_0_N_equals_D": {
+   "ok": true,
+   "detail": "ecc0=11 eccN=11 stated=11"
+  },
+  "random50_all_le_D": {
+   "ok": true,
+   "detail": "max=11 min=11"
+  },
+  "all_pairs_exact_diameter_equals_D": {
+   "ok": true,
+   "detail": "exact_diameter=11"
+  }
+ }
+}

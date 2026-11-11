@@ -1,0 +1,41 @@
+{
+ "summary": {
+  "card": "c6",
+  "graph": "N497042.lean",
+  "score": 1,
+  "failed_checks": [],
+  "ecc_file_0": 14,
+  "ecc_file_N": 14,
+  "sampled_ecc_range": [
+   14,
+   14
+  ],
+  "max_rss_mb": 410.0,
+  "seconds": 15.3
+ },
+ "log": [
+  "[PASS] lean: theorem statement is IsBipartiteDegDiam G497042 4 14",
+  "[PASS] lean: liftGraph n m outA with n = 497042, m = 2731, table outA497042",
+  "[PASS] lean: isBipartiteDegDiam_of_srcs params b = 182, mu = 33, mu' = 2400, K = 91",
+  "[PASS] lean: outA has b = 182 rows, each with 4 arcs  (rows=182)",
+  "[PASS] lean: b*m = n  (182*2731=497042)",
+  "[PASS] lean: voltages u < b and beta < m",
+  "[PASS] lift: no loops among the arcs  (loops=0)",
+  "[PASS] lift: 497042 vertices, every vertex has exactly 4 distinct neighbours  (min deg=4 max deg=4 undirected edges=994084)",
+  "[PASS] lift: arc set is symmetric (2*|E| == number of distinct directed arcs)  (1988168 directed arcs)",
+  "[PASS] file: header n = 497042 and 994084 edge lines  (n=497042 edges=994084)",
+  "[PASS] file: all endpoints in [0, n)",
+  "[PASS] file: no loops, no repeated edges, every vertex degree exactly 4  (loops=0 distinct=994084)",
+  "[PASS] Haar: mu = R^-1 mod m is 33, and R^K = 1 mod m (group is well defined)  (R^-1=33 R^K mod m=1)",
+  "[PASS] Haar: claimed vertex map is a bijection on 0..n-1",
+  "[PASS] Haar: side A goes to base rows < 91, side B to base rows >= 91 (as in side497042)",
+  "[PASS] Haar: mapped edge set == lift edge set (exact equality of the undirected edge sets)  (mapped distinct=994084 lift=994084 loops=0)",
+  "[PASS] bipartite: lift has a 2-colouring (BFS parity, verified on all edges), connected",
+  "[PASS] bipartite: edge-file graph has a 2-colouring (BFS parity, verified on all edges), connected",
+  "[PASS] bipartite: Lean side497042 is a proper 2-colouring of the lift",
+  "[PASS] diameter: edge-file graph connected from vertex 0 and vertex N",
+  "[PASS] diameter: max eccentricity over sources 0 and N is exactly 14  (ecc(0)=14 ecc(N)=14)",
+  "[PASS] diameter sanity: 50 random BFS sources all reach every vertex with ecc <= 14  (max sampled ecc=14 min=14)",
+  "[PASS] extra: lift BFS from image of file vertex N gives ecc 14 (matches the edge file)  (ecc=14)"
+ ]
+}

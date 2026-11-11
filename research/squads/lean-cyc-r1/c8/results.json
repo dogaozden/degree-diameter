@@ -1,0 +1,204 @@
+{
+ "stats": {
+  "mutants": 7070,
+  "invalid_arcsOK_or_symOK": 0,
+  "eccOK13_pass": 27,
+  "eccOK_pass_some_radius_le_40": 7069,
+  "counterexamples_eccOK13_and_real_gt_13": 0,
+  "port_inconsistent_eccOK13_vs_mask": 0,
+  "pass_by_family": {
+   "rand": 27
+  },
+  "pass_real_diam_hist": {
+   "13": 27
+  },
+  "fail_sample_checked": 400,
+  "strong_real_gt_mask": 0,
+  "strong_real_ne_mask": 0,
+  "sample_fail_mask_hist": {
+   "15": 109,
+   "14": 277,
+   "16": 11,
+   "17": 3
+  },
+  "mask_diam_hist_all_valid": {
+   "14": 5112,
+   "15": 1758,
+   "13": 27,
+   "16": 154,
+   "17": 15,
+   "18": 3
+  },
+  "fail_mutants_at_13": 7043
+ },
+ "counterexamples": [],
+ "passers": [
+  {
+   "desc": "switch edges 7,4; switch edges 8,12",
+   "family": "rand",
+   "real": 13,
+   "mask_diam": 13
+  },
+  {
+   "desc": "rewire edge29 end 19->0",
+   "family": "rand",
+   "real": 13,
+   "mask_diam": 13
+  },
+  {
+   "desc": "rewire edge27 end 17->0",
+   "family": "rand",
+   "real": 13,
+   "mask_diam": 13
+  },
+  {
+   "desc": "switch edges 24,0; rewire edge4 end 13->6",
+   "family": "rand",
+   "real": 13,
+   "mask_diam": 13
+  },
+  {
+   "desc": "rewire edge29 end 19->8",
+   "family": "rand",
+   "real": 13,
+   "mask_diam": 13
+  },
+  {
+   "desc": "switch edges 12,24",
+   "family": "rand",
+   "real": 13,
+   "mask_diam": 13
+  },
+  {
+   "desc": "volt edge9->65; rewire edge26 end 19->0; volt edge8->28",
+   "family": "rand",
+   "real": 13,
+   "mask_diam": 13
+  },
+  {
+   "desc": "switch edges 17,13",
+   "family": "rand",
+   "real": 13,
+   "mask_diam": 13
+  },
+  {
+   "desc": "switch edges 13,22",
+   "family": "rand",
+   "real": 13,
+   "mask_diam": 13
+  },
+  {
+   "desc": "switch edges 15,10",
+   "family": "rand",
+   "real": 13,
+   "mask_diam": 13
+  },
+  {
+   "desc": "switch edges 28,23",
+   "family": "rand",
+   "real": 13,
+   "mask_diam": 13
+  },
+  {
+   "desc": "rewire edge0 end 10->5",
+   "family": "rand",
+   "real": 13,
+   "mask_diam": 13
+  },
+  {
+   "desc": "rewire edge0 end 10->2",
+   "family": "rand",
+   "real": 13,
+   "mask_diam": 13
+  },
+  {
+   "desc": "rewire edge14 end 17->8",
+   "family": "rand",
+   "real": 13,
+   "mask_diam": 13
+  },
+  {
+   "desc": "rewire edge25 end 15->1; switch edges 2,26",
+   "family": "rand",
+   "real": 13,
+   "mask_diam": 13
+  },
+  {
+   "desc": "rewire edge16 end 13->2",
+   "family": "rand",
+   "real": 13,
+   "mask_diam": 13
+  },
+  {
+   "desc": "rewire edge26 end 19->0",
+   "family": "rand",
+   "real": 13,
+   "mask_diam": 13
+  },
+  {
+   "desc": "switch edges 12,8",
+   "family": "rand",
+   "real": 13,
+   "mask_diam": 13
+  },
+  {
+   "desc": "volt edge11->44; rewire edge16 end 13->8",
+   "family": "rand",
+   "real": 13,
+   "mask_diam": 13
+  },
+  {
+   "desc": "rewire edge26 end 19->9",
+   "family": "rand",
+   "real": 13,
+   "mask_diam": 13
+  },
+  {
+   "desc": "rewire edge15 end 12->0; volt edge15->95",
+   "family": "rand",
+   "real": 13,
+   "mask_diam": 13
+  },
+  {
+   "desc": "rewire edge2 end 19->9",
+   "family": "rand",
+   "real": 13,
+   "mask_diam": 13
+  },
+  {
+   "desc": "switch edges 18,20",
+   "family": "rand",
+   "real": 13,
+   "mask_diam": 13
+  },
+  {
+   "desc": "rewire edge13 end 16->3; rewire edge29 end 19->15",
+   "family": "rand",
+   "real": 13,
+   "mask_diam": 13
+  },
+  {
+   "desc": "rewire edge1 end 11->6",
+   "family": "rand",
+   "real": 13,
+   "mask_diam": 13
+  },
+  {
+   "desc": "switch edges 22,17",
+   "family": "rand",
+   "real": 13,
+   "mask_diam": 13
+  },
+  {
+   "desc": "rewire edge27 end 17->0",
+   "family": "rand",
+   "real": 13,
+   "mask_diam": 13
+  }
+ ],
+ "seconds": 94.4,
+ "families": {
+  "volt1": 5070,
+  "rand": 2000
+ }
+}
