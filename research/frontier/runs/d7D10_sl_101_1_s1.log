@@ -1,0 +1,12 @@
+group sl 101 x Z_1, N=1030200, identity 10100
+start cost=17
+t=34 steps=6 evals=49 cost=2 best=2 T=0.46
+t=67 steps=12 evals=97 cost=2 best=2 T=0.15
+t=101 steps=18 evals=145 cost=2 best=2 T=0.15
+t=135 steps=24 evals=193 cost=2 best=2 T=0.15
+t=169 steps=30 evals=241 cost=2 best=2 T=0.15
+t=203 steps=36 evals=289 cost=2 best=2 T=0.15
+t=237 steps=42 evals=337 cost=0 best=0 T=0.15
+RESULT d=7 D=10 group=sl 101 x Z_1 N=1030200 best=0 evals=337 time=238.9
+full diameter check: OK
+wrote sols/d7D10_sl_101_1_s1.txt
