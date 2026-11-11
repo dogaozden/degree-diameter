@@ -1,0 +1,5 @@
+n=4324 edges=6486 degree min=3 max=3 bipartite=yes diameter=13
+RESULT VALID d=3 D=13 n=4324
+at D = 12: RESULT INVALID
+edge list sha256 0aacab30acead0c249b86e4986a70a9292bd37b2282ffffb97c44b849674b20a
+built by research/frontier/beyond14/ownsmall/build_lift.py SOL 47 23 2 OUT (group Z47 x|_2 Z23, element (x,j) <-> index 23x + j); found by the director (salift_s, p = 2, D = 13, 30 CPU-s)

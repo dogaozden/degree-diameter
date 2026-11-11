@@ -1,0 +1,14 @@
+checker: haarcheck_gen
+command: OMP_NUM_THREADS=1 ./bin/haarcheck_gen sols/d7D14_psl_167_367_orb3-2-1_d15.txt
+start: 2026-11-01T23:30:14Z
+aee2ee10e717f8e10f6c8b072b44dc937fb678ff2dd47b8a6125f2d90a56f1a8  sols/d7D14_psl_167_367_orb3-2-1_d15.txt
+selftest psl 167: |M| = 2328648, index round trip over all elements ok
+selftest group multiplication: associativity, identity, inverse on 20000 random triples ok
+file sols/d7D14_psl_167_367_orb3-2-1_d15.txt
+header: 7 14 psl 167 n 367 N 854613816
+group psl 167 x Z_367, |G| = 854613816 = N, vertices 2N = 1709227632; 7 distinct generators
+from (e,A): reached A 854613816/854613816, B 854613816/854613816 within 14; ecc 14; level sizes [1, 7, 42, 252, 1512, 9072, 54414, 326298, 1954548, 11645025, 67317769, 327637957, 743971799, 514995205, 41313731]  (266s)
+from (e,B): reached A 854613816/854613816, B 854613816/854613816 within 14; ecc 14; level sizes [1, 7, 42, 252, 1512, 9072, 54414, 326298, 1954536, 11645025, 67317504, 327637957, 743961899, 514995205, 41323908]  (655s)
+VALID d=7 D=14 group=psl 167 x Z_367 N=854613816 vertices=1709227632 (distinct generators, 7-regular simple; every vertex within 14 of both (e,A) and (e,B); ecc 14; 655s)
+exit: 0
+end: 2026-11-01T23:41:09Z (655 s)

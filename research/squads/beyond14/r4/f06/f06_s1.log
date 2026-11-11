@@ -1,0 +1,15 @@
+OPT1 from cost 1 (N=251813)
+CHUNK slot=1 x=[1,251813) evals=66559 no cost 0 (85.4s) STOPAT=66560
+PARTIAL slot=1 next_x=66560 (rerun with OPT1SLOT=1 OPT1LO=66560)
+OPT1 from cost 1 (N=251813)
+CHUNK slot=1 x=[66560,251813) evals=57856 no cost 0 (85.4s) STOPAT=124416
+PARTIAL slot=1 next_x=124416 (rerun with OPT1SLOT=1 OPT1LO=124416)
+OPT1 from cost 1 (N=251813)
+CHUNK slot=1 x=[124416,251813) evals=56832 no cost 0 (85.2s) STOPAT=181248
+PARTIAL slot=1 next_x=181248 (rerun with OPT1SLOT=1 OPT1LO=181248)
+OPT1 from cost 1 (N=251813)
+CHUNK slot=1 x=[181248,251813) evals=60414 no cost 0 (85.1s) STOPAT=241664
+PARTIAL slot=1 next_x=241664 (rerun with OPT1SLOT=1 OPT1LO=241664)
+OPT1 from cost 1 (N=251813)
+CHUNK slot=1 x=[241664,251813) evals=10149 no cost 0 (15.4s) STOPAT=251813
+RESULT d=4 D=14 group=meta 8123 31 938 N=251813 best=1 opt1 exhausted slots=[1,2) x=[241664,251813)

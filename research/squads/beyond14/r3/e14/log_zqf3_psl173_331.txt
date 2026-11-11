@@ -1,0 +1,20 @@
+group psl 173 x Z_331, N=856883532 (2N=1713767064), rows 14964 x 57263 bits (doubled row 1808 words), memory 0.53 GB, threads 1
+alpha: conj by mat(0,172,1,172), z -> 31 z on Z_331 (fixed z: 1); ORBIT k=3 m=2 f=1; W=1.56728e+10 lambda=18.291 mu=9.76
+setup 0.1s
+RANDORB sample 0 cost 7 (9.5s) zq 1.000
+RANDORB sample 4 cost 117 (16.5s) zq 1.001
+RANDORB sample 5 cost 22 (23.9s) zq 1.000
+RANDORB sample 9 cost 129 (31.1s) zq 1.000
+RANDORB sample 10 cost 13 (37.2s) zq 1.000
+RANDORB sample 11 cost 165 (43.6s) zq 1.000
+RANDORB sample 15 cost 1 (50.5s) zq 1.000
+RANDORB sample 25 cost 12 (57.1s) zq 1.000
+RANDORB sample 31 cost 15 (63.7s) zq 1.000
+RANDORB sample 33 cost 15 (69.9s) zq 1.002
+RANDORB sample 36 cost 12 (76.3s) zq 1.000
+RANDORB sample 39 cost 31 (83.0s) zq 1.002
+RANDORB sample 41 cost 16 (90.2s) zq 1.000
+RANDORB sample 43 cost 0 (97.2s) zq 1.000
+RANDORB sample 45 cost 21 (103.8s) zq 1.000
+RANDORB sample 43 has cost 0, wrote /home/user/degree-diameter/research/squads/beyond14/r3/e14/cost0_psl173_331c.sol
+RANDORB d=7 D=14 group=psl 173 x Z_331 N=856883532 samples=46 min=0 p10=12 median=4000000000000000000 mean=12.52 mu=9.76 time=103.9

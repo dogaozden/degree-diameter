@@ -1,0 +1,13 @@
+group sl 107 x Z_79, N=96769944 (2N=193539888), rows 11448 x 8453 bits (doubled row 288 words), memory 0.06 GB, threads 1
+alpha: conj by mat(0,106,1,106), z -> 23 z on Z_79 (fixed z: 1); ORBIT k=3 m=2 f=0; W=1.52588e+09 lambda=15.768 mu=13.73
+setup 0.0s
+start cost=881458 (3.2s per eval)
+t=11 step=1 evals=17 slot=0 cand=11 cost=11 best=11 T=1.26
+t=19 step=2 evals=33 slot=1 cand=12 cost=12 best=11 T=1.06
+t=28 step=3 evals=49 slot=1 cand=9 cost=9 best=9 T=0.89
+t=36 step=4 evals=65 slot=0 cand=10 cost=10 best=9 T=0.75
+t=46 step=5 evals=81 slot=0 cand=9 cost=9 best=9 T=0.63
+t=54 step=6 evals=97 slot=1 cand=0 cost=0 best=0 T=0.53
+RESULT d=6 D=14 group=sl 107 x Z_79 N=96769944 vertices=193539888 best=0 evals=97 steps=6 time=54.2 orbit k=3 m=2 f=0 mu=13.73
+re-evaluation of the best S: cost 0
+wrote /home/user/degree-diameter/research/squads/beyond14/r5/g09/a_sl107_79_s11.sol

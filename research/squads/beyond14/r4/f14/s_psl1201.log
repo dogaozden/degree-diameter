@@ -1,0 +1,11 @@
+group psl 1201 x Z_1, N=866161200 (2N=1732322400), rows 721200 x 1201 bits (doubled row 56 words), memory 0.86 GB, threads 1
+alpha: conj by mat(0,1200,1,1200), z -> 0 z on Z_1 (fixed z: 1); ORBIT k=3 m=2 f=1; W=1.56728e+10 lambda=18.095 mu=12.00
+setup 0.0s
+RANDORB sample 0 cost 40 (16.8s) zq 1.000
+RANDORB sample 1 cost 15 (27.6s) zq 1.000
+RANDORB sample 2 cost 14 (38.1s) zq 1.000
+RANDORB sample 3 cost 0 (49.3s) zq 1.000
+RANDORB sample 4 cost 8 (60.5s) zq 1.000
+RANDORB sample 5 cost 9 (71.8s) zq 1.000
+RANDORB sample 3 has cost 0, wrote /home/user/degree-diameter/research/squads/beyond14/r4/f14/s_psl1201
+RANDORB d=7 D=14 group=psl 1201 x Z_1 N=866161200 samples=6 min=0 p10=0 median=14 mean=14.33 mu=12.00 time=71.9

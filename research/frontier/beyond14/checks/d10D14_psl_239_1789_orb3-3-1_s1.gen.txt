@@ -1,0 +1,11 @@
+checker: haarcheck_gen (research/frontier/haarcheck_gen.c, built here as bin/haarcheck_gen)
+command: OMP_NUM_THREADS=2 ./bin/haarcheck_gen sols/d10D14_psl_239_1789_orb3-3-1_s1.txt
+start: 2026-11-02T00:17:31Z
+e52e247f4a92a474f49ff0d5d438660ba0b557bbdfd4a8e24311ca881ff3f17c  bin/haarcheck_gen
+d9cfa21d0c70dc449873d2beb31187cbb5c6417cbf951b8eb4803cefeae715bf  sols/d10D14_psl_239_1789_orb3-3-1_s1.txt
+selftest psl 239: |M| = 6825840, index round trip over all elements ok
+selftest group multiplication: associativity, identity, inverse on 20000 random triples ok
+file sols/d10D14_psl_239_1789_orb3-3-1_s1.txt
+header: 10 14 psl 239 n 1789 N 12211427760
+group psl 239 x Z_1789, |G| = 12211427760 = N, vertices 2N = 24422855520; 10 distinct generators
+from (e,A): reached A 12211427760/12211427760, B 12211427760/12211427760 within 14; ecc 14; level sizes [1, 10, 90, 810, 7290, 65610, 590397, 5311245, 47696082, 422158935, 3298458097, 11093429829, 8864675773, 690461321, 30]  (2073s)

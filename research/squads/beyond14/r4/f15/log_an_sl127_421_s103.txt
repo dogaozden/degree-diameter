@@ -1,0 +1,8 @@
+group sl 127 x Z_421, N=862315776 (2N=1724631552), rows 16128 x 53467 bits (doubled row 1696 words), memory 0.53 GB, threads 1
+alpha: conj by mat(0,126,1,126), z -> 20 z on Z_421 (fixed z: 1); ORBIT k=3 m=2 f=1; W=1.56728e+10 lambda=18.175 mu=11.02
+setup 0.0s
+start cost=21 (6.1s per eval)
+t=42 step=1 evals=9 slot=0 cand=0 cost=0 best=0 T=1.26
+RESULT d=7 D=14 group=sl 127 x Z_421 N=862315776 vertices=1724631552 best=0 evals=9 steps=1 time=42.0 orbit k=3 m=2 f=1 mu=11.02
+re-evaluation of the best S: cost 0
+wrote /home/user/degree-diameter/research/squads/beyond14/r4/f15/an_sl127_421.sol

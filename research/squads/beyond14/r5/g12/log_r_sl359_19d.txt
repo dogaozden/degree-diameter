@@ -1,0 +1,13 @@
+group sl 359 x Z_19, N=879090480 (2N=1758180960), rows 128880 x 6821 bits (doubled row 232 words), memory 0.60 GB, threads 1
+alpha: conj by mat(0,358,1,358), z -> 7 z on Z_19 (fixed z: 1); ORBIT k=3 m=2 f=1; W=1.56728e+10 lambda=17.828 mu=15.89
+setup 0.0s
+RANDORB sample 0 cost 9 (9.8s) zq 1.000
+RANDORB sample 1 cost 26 (17.4s) zq 1.000
+RANDORB sample 2 cost 12 (25.8s) zq 1.000
+RANDORB sample 3 cost 6 (33.9s) zq 1.000
+RANDORB sample 4 cost 23 (41.7s) zq 1.004
+RANDORB sample 5 cost 36 (48.6s) zq 1.000
+RANDORB sample 6 cost 28 (54.8s) zq 1.004
+RANDORB sample 7 cost 35 (62.8s) zq 1.000
+RANDORB sample 8 cost 22 (70.9s) zq 1.004
+RANDORB d=7 D=14 group=sl 359 x Z_19 N=879090480 samples=9 min=6 p10=6 median=23 mean=21.89 mu=15.89 time=70.9
