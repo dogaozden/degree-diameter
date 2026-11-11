@@ -1,0 +1,12 @@
+group psl 149 x Z_19, N=31424100, identity 209494, H order 57, rows 551300, threads 1, setup 1.83s
+wide rows: HW order 149, rows 210900, setup 3.61s
+alpha: conj by mat(30,112,1,118) (index 671544), z -> 7 z on Z_19
+ORBIT k=3 m=6 f=0: |Fix(alpha)| = 74 (+e); mu = 29.63, mu/k = 9.88, fixed-point misses ~ 0.74
+start cost=25
+t=31 steps=39 evals=313 cost=9 best=9 T=0.52
+t=61 steps=79 evals=633 cost=6 best=6 T=0.18
+t=91 steps=121 evals=969 cost=6 best=6 T=0.15
+t=121 steps=165 evals=1321 cost=6 best=6 T=0.15
+t=152 steps=210 evals=1681 cost=6 best=6 T=0.15
+t=182 steps=254 evals=2033 cost=6 best=6 T=0.15
+RESULT d=18 D=8 group=psl 149 x Z_19 N=31424100 best=6 evals=2177 time=193.5 orbit k=3 m=6 f=0 fix=74

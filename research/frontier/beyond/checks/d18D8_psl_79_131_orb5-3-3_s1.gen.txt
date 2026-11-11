@@ -1,0 +1,9 @@
+# d18D8_psl_79_131_orb5-3-3_s1: haarcheck_gen (research/frontier/haarcheck_gen.c) on 6eedea7bcc2de644..., Sun Nov  1 23:09:08 UTC 2026
+selftest psl 79: |M| = 246480, det-1 matrices 492960
+selftest group multiplication: associativity, identity, inverse on 20000 random triples ok
+file runs/d18D8_psl_79_131_orb5-3-3_s1.sol
+header: 18 8 psl 79 n 131 N 32288880
+group psl 79 x Z_131, |G| = 32288880 = N, vertices 2N = 64577760; 18 distinct generators
+from (e,A): reached A 32288880/32288880, B 32288880/32288880 within 8; ecc 8; level sizes [1, 18, 306, 5199, 88262, 1467251, 17579764, 30816412, 14620547]  (7s)
+from (e,B): reached A 32288880/32288880, B 32288880/32288880 within 8; ecc 8; level sizes [1, 18, 306, 5199, 88262, 1467251, 17582524, 30816412, 14617787]  (15s)
+VALID d=18 D=8 group=psl 79 x Z_131 N=32288880 vertices=64577760 (distinct generators, 18-regular simple; every vertex within 8 of both (e,A) and (e,B); ecc 8; 15s)

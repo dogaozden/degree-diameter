@@ -1,0 +1,21 @@
+group psl 41 x Z_953, N=32821320 (2N=65642640), rows 840 x 39073 bits (doubled row 1240 words), memory 0.03 GB, threads 1
+alpha: conj by mat(0,40,1,4), z -> 431 z on Z_953 (fixed z: 1); ORBIT k=7 m=2 f=4; W=4.35985e+08 lambda=13.284 mu=55.87
+setup 0.0s
+fixed generators: 3 chosen among 20 alpha-fixed elements
+RANDORB sample 0 cost 84 (0.0s) zq 1.348
+RANDORB sample 1 cost 336 (0.0s) zq 1.205
+RANDORB sample 2 cost 98 (0.1s) zq 1.259
+RANDORB sample 3 cost 63 (0.1s) zq 1.077
+RANDORB sample 4 cost 98 (0.1s) zq 2.063
+RANDORB sample 5 cost 112 (0.1s) zq 1.139
+RANDORB sample 6 cost 133 (0.1s) zq 1.035
+RANDORB sample 7 cost 175 (0.1s) zq 1.035
+RANDORB sample 8 cost 105 (0.2s) zq 1.018
+RANDORB sample 9 cost 112 (0.2s) zq 1.060
+RANDORB sample 10 cost 105 (0.2s) zq 1.017
+RANDORB sample 11 cost 84 (0.2s) zq 1.033
+RANDORB sample 12 cost 105 (0.2s) zq 1.348
+RANDORB sample 13 cost 133 (0.2s) zq 1.035
+RANDORB sample 14 cost 301 (0.3s) zq 4.305
+RANDORB sample 15 cost 119 (0.3s) zq 1.017
+RANDORB d=18 D=8 group=psl 41 x Z_953 N=32821320 samples=16 min=63 p10=84 median=112 mean=135.19 mu=55.87 time=0.3

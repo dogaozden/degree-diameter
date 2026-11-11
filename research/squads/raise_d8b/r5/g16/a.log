@@ -1,0 +1,6 @@
+group pgl 281 x Z_1, N=22187760, identity 0, H order 56, rows 396210, threads 1, setup 44.60s
+wide rows: HW order 141, rows 157360, setup 97.07s
+alpha: conj by mat(1,236,257,230) (index 18640670), z -> 0 z on Z_1
+ORBIT k=5 m=3 f=2: |Fix(alpha)| = 279 (+e); mu = 55.15, mu/k = 11.03, fixed-point misses ~ 21.20
+start cost=191
+RESULT d=17 D=8 group=pgl 281 x Z_1 N=22187760 best=191 evals=1 time=2.7 orbit k=5 m=3 f=2 fix=279

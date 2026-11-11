@@ -1,0 +1,18 @@
+hex_q13.bin: q = 13, N = 402234, sha256 57aa5dfc92fa33c743e80cea0f60d4041b3c61137f0c46df248dfe30736a328a
+q = 13, (c, c0, c1) = (2, 1, 1); spread |S| = 2198, v = 27; R_H = spread points (30772, segment set), R_L = lines meeting v + exact whiskers + the q^2 spread lines with nu = 0 (28743, dual segment set; |W| = 28392, every free point on exactly one whisker; spread lines != v: 169 with nu = 0 carry no whisker, the others one whisker at each point)
+non-friendly (multi): |R'| = 792 non-collinear, sigma(R') non-concurrent, sigma a local duality at all 792
+types HHDHDHDHD: free A-slots per level [63128, 63128, 59070, 63128, 59070, 63128, 87021, 63128, 87021], B-slots [59070, 59070, 93108, 59070, 93108, 59070, 63128, 59070, 63128] -> at most 59070 line-side and 59070 point-side hubs; hub-graph degree <= 9
+hubs per side 34440 34440
+cluster level 0 (A-slots, spread-line capacity 28): 3444 cosets of size 10, one spread line each (pairwise distance <= 2 in the level)
+cluster level 1 (A-slots, spread-line capacity 28): 1640 cosets of size 21, one spread line each (pairwise distance <= 2 in the level)
+cluster level 3 (A-slots, spread-line capacity 28): 1722 cosets of size 20, one spread line each (pairwise distance <= 2 in the level)
+cluster level 5 (A-slots, spread-line capacity 28): 1722 cosets of size 20, one spread line each (pairwise distance <= 2 in the level)
+cluster level 7 (A-slots, spread-line capacity 28): 1640 cosets of size 21, one spread line each (pairwise distance <= 2 in the level)
+cluster level 2 (B-slots, spread-line capacity 42): 1640 cosets of size 21, one spread line each (pairwise distance <= 2 in the level)
+cluster level 4 (B-slots, spread-line capacity 42): 3444 cosets of size 10, one spread line each (pairwise distance <= 2 in the level)
+cluster level 6 (B-slots, spread-line capacity 28): 1640 cosets of size 21, one spread line each (pairwise distance <= 2 in the level)
+cluster level 8 (B-slots, spread-line capacity 28): 1640 cosets of size 21, one spread line each (pairwise distance <= 2 in the level)
+hub graph: 309960 edges, degrees <= 9; 654360 same-side pairs beyond 6 in the hub graph alone, to be joined through the cluster levels (clhub.py; check with research/d15D7b/hubfar.c)
+wrote /tmp/claude-0/-home-user-degree-diameter/eaffb32a-7387-51bd-b7af-b22a3404fbf2/scratchpad/d18c/d18.sol
+n = 7309092, edges = 65483966, degree min 14 max 18, hub graph edges 309960
+wrote /tmp/claude-0/-home-user-degree-diameter/eaffb32a-7387-51bd-b7af-b22a3404fbf2/scratchpad/d18c/g.edges sha256 314d5db9f3f3c4af613a56f09f93bcf149d215603adc70ba3ddb4db4deace37d

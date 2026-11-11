@@ -1,0 +1,9 @@
+# d19D8_sl_101_43_orb3-6-1_r1c08: haarcheck_gen (research/frontier/haarcheck_gen.c) on 3975c601deae33d8..., Sun Nov  1 22:58:12 UTC 2026
+selftest sl 101: |M| = 1030200, index round trip over all elements ok
+selftest group multiplication: associativity, identity, inverse on 20000 random triples ok
+file /home/user/degree-diameter/research/squads/raise_d8b/r1/c08/a.sol
+header: 19 8 sl 101 n 43 N 44298600
+group sl 101 x Z_43, |G| = 44298600 = N, vertices 2N = 88597200; 19 distinct generators
+from (e,A): reached A 44298600/44298600, B 44298600/44298600 within 8; ecc 8; level sizes [1, 19, 342, 6156, 110676, 1950295, 24530329, 42342130, 19657252]  (12s)
+from (e,B): reached A 44298600/44298600, B 44298600/44298600 within 8; ecc 8; level sizes [1, 19, 342, 6156, 110676, 1950295, 24533937, 42342130, 19653644]  (22s)
+VALID d=19 D=8 group=sl 101 x Z_43 N=44298600 vertices=88597200 (distinct generators, 19-regular simple; every vertex within 8 of both (e,A) and (e,B); ecc 8; 22s)

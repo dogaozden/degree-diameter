@@ -49,3 +49,353 @@ nice 0, equal to the director's whole pipeline); the director raised the pipelin
 `echo -10 > /proc/<pid>/autogroup` and lowered the cards' groups to 15.
 Kept: haarex6 for the sweep; no family lead worth more CPU (the 704 lift is an isolated local minimum, the new
 families are far). The order-384 sweep continues; orders 401-450 started on the spare core.
+
+## 2026-11-01, beyond-d11, round 1 (16 cards, 04:47 UTC)
+
+Session: Opus director, job beyond-d11 (branch claude/new-cells-d11-d12-beyond-8sas9r). Goal: first values for
+(11..14, 11) and (11..13, 12), Haar graphs of SL/PSL(2,p) x Z_n with alpha-orbit generator sets, at most 20 billion
+vertices. Files: research/squads/beyond11/r1/ (HEADER.md, cards c01-c16, scoreboard.jsonl). Before the round the
+director had (11,11) 1,170,162,000 (VALID), (12,11) 2,874,207,072 (f = 0, new in haar_big0), and the three D = 12
+values (5, 1 and 1 evaluations). Machine: 4 cores, 15 GB, shared with the director's checks.
+
+Cards (best result):
+- c01 (11,11) SL ladder "3 3 2": SL(2,443) x Z7 (mu 7.2) to cost 2, then stopped: the director's memory cap (0.4 GB)
+  was below what N > 5.85e8 needs. Director's mistake, not the card's.
+- c02 (11,11) PSL ladder: PSL(2,257) x Z73 (mu 10.1) stalls at cost 9 (K = 4 and 8 alike).
+- c03 (11,11) k = 5 ("5 2 1"): start costs 16-54 (k = 3: 2), best 6 at mu 6.1. Worse at this cell.
+- **c04 (12,11) SL ladder "3 4 0": SL(2,239) x Z109, mu 7.0, 2,976,066,240 vertices** (+3.5 %, search cost 0 in 9 evals;
+  director's haarcheck_gen pending); SL(2,193) x Z211 (mu 10.3) to cost 2.
+- c05 (12,11) PSL bold ladder (mu 9-14): stalled at 27-155.
+- c06 (12,11) other free-orbit orders: k = 2 bad (460), k = 4 degenerate (cost 2.6e9), k = 6 "no orbit". Led to a bug:
+  haar_big's choose_alpha took the first g with g^k = +-I, so k = 4, 6, 10 got an alpha of order 2 or 3 (fixed in haar_big0;
+  c09 found the same bug and used AT = trace as a workaround).
+- c07 (13,11) "3 4 1": SL(2,229) x Z277 (mu 5.05) to cost 2 (1-5 evals per 100 s chunk under load).
+- c08 (13,9) structure tournament: only "3 4 1" solved (PSL(2,101) x Z61, mu 10.3, VALID); "4 3 1", "6 2 1", "2 6 1" at
+  116-432; n = 1 (PSL(2,401)) 87-111 and n = 5 (PSL(2,233)) 34-42 also bad. Same choose_alpha bug, worked around with AT.
+- c09 (14,9) tournament at mu ~10: "3 4 2" best (66), "7 2 0" 82, k = 4 / 6 (with correct alpha) 3,204 / 62,568, "2 7 0" 9,786.
+- c10 (11,9) tournament: "5 2 1" solved mu 22.6 (PSL(2,41) x Z251, VALID), "3 3 2" mu 10.4 (VALID); "2 5 1", "3 2 5",
+  "10 1 1" far behind. One seed per rung.
+- c11 (13,9) group shapes at mu ~15: PSL(2,59) x Z313 best (cost 4-6); n = 1 (PSL(2,401)) 87-111; n/p >= 40 also bad.
+- c12 self-dual S (transpose-closed, one BFS per eval): implemented and verified, but random S get far worse (start 180
+  versus 9 evals to solve for plain haar_big0). Negative.
+- c13 tuning (K, TARGP, BOUNDCUR): within seed noise. (11,9) 15,760,800 VALID as a by-product.
+- c14 theory note: odd-D Haar criterion needs both (S^-1 S)^h = G and (S S^-1)^h = G (D6 counterexample); claims the
+  D = 12 upper bound is only M_b - 4 (from memory; round 2 card d14 checks the paper).
+- c15 calibration from 161 lab runs: mu ~7 solves within ~300 evals, mu ~10 within ~1,000 (P = 0.5); start cost > 30 at
+  mu >= 8 rarely solves.
+- c16 RANDORB at (11,11), mu ~5.5: SL(2,359) x Z13 and SL(2,241) x Z43 lowest (median 21-22), n > p worse (40-44), PSL(2,1063)
+  with n = 1 much worse (151).
+
+Director's reading: the near misses fail at special elements. SL(2,193) x Z211 misses only -I (both sides); SL(2,443) x Z7
+misses two alpha-fixed torus elements. At odd D = 2h+1 the words reaching a central element are closed under cyclic
+rotation by two letters, so central elements behave as if they had about lambda/h words instead of lambda; SL has 2n
+central elements including -I, PSL has n. Kept for round 2: k = 3; PSL with small n (no -I); finishing near misses;
+moving the fixed generator (never moved by haar_big); the n = 1 anomaly as a question. Dropped: k = 2, 4, 6, self-dual S,
+tuning knobs. Process notes: cards stopped after 5-12 minutes of their 25; the kernel's autogroup scheduling had made
+the cards' nice 10 meaningless (each Bash call is its own group); the director turned autogroup off at 04:58.
+
+## 2026-11-01, beyond-d11, round 2 (16 cards, 05:10 UTC)
+
+Same session. Files: research/squads/beyond11/r2/. Cards built on round 1: PSL with small n (my reading of the -I hole),
+near-miss finishing, fixed-generator moves, hole anatomy, n-scans at odd and even D, k = 5, the (7..10, 11) cells, the
+upper-bound citation, two wildcards. At 05:21 the director redirected seven cards from PSL to SL after d04's result.
+
+Cards (best result; finds with N > 1e8 checked by the director, see BEYOND_TABLE):
+- **d04 hole anatomy at (11,11)**: PSL(2,1063) x Z1 holes are all involutions (about 130 per seed); PSL(2,557) x Z7 also
+  involution-dominated (35-59); SL(2,149) x Z181 central-dominated (24-26 central holes); SL(2,251) x Z37 2-22. Rates fit
+  exp(-lambda/2) for involutions and exp(-lambda/5) for central elements. This turned the round: at odd D use SL (one
+  involution) with small n (few central elements). Write-up: research/frontier/beyond11/ODD_D_HOLES.md.
+- **d01 (11,11) SL(2,317) x Z19, mu 6.4: 1,210,478,448** (after the redirect; PSL rungs had stalled at 12-21).
+- **d13 (10,11) SL(2,613) x Z1, mu 9.3: 460,691,568** (was 445,709,568) and SL(2,229) x Z19 456,332,880; PSL(2,401) x Z7 stalled at 15.
+- **d08 (9,11) SL(2,223) x Z7, "3 3 0", mu 10.6: 155,250,816** (was 145,258,344; haarcheck_gen VALID by the card).
+- **d09 (8,11) PSL(2,113) x Z31: 44,726,304** (was 43,702,560) and **(7,11) SL(2,53) x Z37: 11,012,976** (was 10,648,176), both VALID by the card.
+- d02 SL(2,443) x Z7 near miss: stays at cost 2 over 11 seeds. d03 fixed-generator moves (FXMOVE): no gain.
+- d05 (12,11): SL(2,487) x Z13 (mu 8.4) to cost 8, PSL(2,541) x Z19 18 (25-40 s per eval on one loaded core).
+- d06 (12,11) n-scan: PSL n = 1 start 294, n = 7 60, n = 37 18, n = 151 21; SL n = 7 14, n = 1 14 (few evals each).
+- d07 (13,11): PSL(2,599) x Z31 to cost 10; the SL rungs needed 2.1-3.4 GB, over its cap (not run).
+- d10/d11 odd/even n-scans at D = 9, 10: inconclusive (mu not matched, few seeds); d11's SL(2,67) x Z499 at (12,10),
+  300,094,608, is below the table value 300,383,050.
+- d12 k = 5 at (11,9), mu ~20: 2 of 5 seeds solved (PSL(2,41) x Z251, VALID) against 0 of 3 for k = 3. At (11,11) too slow
+  to judge. (At D = 11, k = 5 pays exp(-lambda/5) per alpha-fixed element, so it needs small p and then large n.)
+- d14 upper bounds: read arXiv 1010.5651; Prop. 6.4 (p. 25) gives N_b <= M_b - 6 for 5 <= D <= 187, D != 6, so the table's
+  bound stands for D = 11 and 12; round 1's c14 claim (M_b - 4 at D = 12) was wrong.
+- d15 wildcard: SL(2,199) x Z1 solves (11,9) quickly, PSL(2,251) x Z1 stalls at 33-36 (consistent with d04).
+- d16 central cover (fixed generator -I or x with x^2 = -I): -I as a generator is bad; x^2 = -I solved 1 of 6 at (13,9)
+  where plain solved 0 of 6. Weak.
+
+Director during the round: (13,11) 6,508,747,920 VALID; (14,11) solved at mu 6.9, SL(2,1009) x Z7, 14,381,398,080
+(49 evals, 522 s at 2 threads). Kept: SL with small n at odd D (now the job's rule), f = 0 when 3 | Δ. Dropped: PSL at odd D,
+k = 5 at D = 11, fixed-generator moves, central covers. Round 3 applies the rule to the cheap cells (5..10, 11) and (5..10, 12).
+
+## 2026-11-01, beyond-d11, round 3 (16 cards, 05:38 UTC)
+
+Same session. Files: research/squads/beyond11/r3/. Selection from round 2: apply "SL with small n at odd D, f = 0 when
+3 | Δ" to the cheap cells (5..10, 11) and test PSL with smaller p at even D on (5..10, 12); one even-D hole anatomy, one
+quantitative test of the hole model, one real-scale (11,11) card, one wildcard.
+
+Cards (best result; card-checked VALID or director-checked, see BEYOND_TABLE):
+- **e01 (5,11) SL(2,53) x Z1: 297,648** (was 253,080), VALID by the card.
+- **e02 (6,11) SL(2,53) x Z7: 2,083,536** (was 1,971,744), VALID by the card; SL(2,103) x Z1 (mu 15.4) to cost 2.
+- e03 (7,11): SL(2,67) x Z19 (mu 17.4) to cost 2; no gain.
+- **e04 (8,11) SL(2,283) x Z1: 45,329,808** (was 44,726,304), search cost 0.
+- e05 (9,11): SL(2,137) x Z31 (mu 16.4) to cost 2. e06 (10,11): SL(2,617) x Z1 (mu 13.1) to cost 8.
+- **e07 (5,12) PSL(2,53) x Z7: 1,041,768** (was 912,576), VALID by the card.
+- **e08 (6,12) PSL(2,79) x Z19: 9,366,240** (was 9,303,840), VALID by the card.
+- **e09 (7,12) PSL(2,67) x Z199: 59,838,504** (was 56,297,592).
+- **e10 (8,12) SL(2,113) x Z97: 279,900,096** (was 268,496,208).
+- **e11 (9,12) PSL(2,241) x Z79: 1,105,785,120** (was 1,055,973,600).
+- **e12 (10,12) PSL(2,239) x Z271: 3,699,605,280** (was 3,500,976,768).
+- e13 even-D anatomy at (8,12): no involution or rotation clumps at even D (as predicted); alpha-fixed holes enriched
+  but most holes ordinary; smaller p did not help; S with a generator of projective order 2 cost > 1e4.
+- e14 model fit at (11,9), 22 groups: generic term mu (not mu/3); model 1.3-2.3x low; involution and central terms of
+  the predicted form (central ~ exp(-lambda/4) at h = 4).
+- e15 (11,11) SL(2,853) x Z1: stopped, memory cap too low for n = 1 (rows are padded; 0.86 GB, the director's error).
+- e16 composite n (products of primes = 1 mod 3) fill gaps in the group list: PSL(2,97) x Z301 at (8,12), 274,685,376
+  (below e10); n >= ~900 starts at huge cost.
+
+Even-D "prefer PSL with smaller p" was not confirmed (e07, e10, e13: mixed; SL and PSL with moderate n both solve).
+Director during the round: (12,11) 2,976,066,240 VALID; (11,12) pushed to 11,189,148,096 (PSL(2,223) x Z1009, mu 13.3,
+17 evals); mu 28 stalled at 8. Kept for round 4: the many cost 1-3 near misses on cheap cells.
+
+## 2026-11-01, beyond-d11, round 4 (16 cards, 06:05 UTC)
+
+Same session. Files: research/squads/beyond11/r4/. Selection from round 3: finish the cost 1-3 near misses and climb
+the cheap cells (4..10, 11) and (4..10, 12) with the rules found so far; one near-miss finisher tool; composite n.
+
+Cards (best result):
+- **f02 (6,11) SL(2,29) x Z43: 2,094,960** (was 2,083,536 from e02), VALID by the card, 3,731 evals.
+- **f10 (8,12) PSL(2,167) x Z61: 284,095,056** (was 279,900,096); SL(2,89) x Z199 280,542,240 from the e10 state.
+- **f12 (10,12) PSL(2,337) x Z97: 3,712,424,352** (was 3,699,605,280); PSL(2,211) x Z397 (mu 11.2) to cost 3.
+- **f13 (4,11) PSL(2,29): 24,360** (was 19,152), VALID by the card, 4.6 s.
+- **f14 (4,12) SL(2,17) x Z7: 68,544** (was 50,160), VALID by the card; PSL(2,17) x Z13 63,648 also VALID.
+- No gain: f01 (5,11) SL(2,17) x Z31 stuck at 26 (PSL(2,67): all 42 holes trace-0 involutions, as predicted);
+  f03 (7,11) SL(2,67) x Z19 stays at cost 2; f04 (8,11) best 8; f05 (9,11) SL(2,137) x Z31 stays at 2; f06 (10,11)
+  SL(2,617) stays at 8; f07 (5,12) PSL(2,29) x Z43 stays at 9; f08 (6,12) PSL(2,211) stays at cost 1 over ~2,500 evals;
+  f09 (7,12) 3-4; f11 (9,12) stays at 3; f16 composite n: (7,11) has no composite-n SL group in range with small mu,
+  (9,11) SL(2,71) x Z217 to cost 12.
+- f15 near-miss finisher (meet-in-the-middle coverage test per hole, validated exactly against the BFS): did not break
+  the cost-2 plateau at (6,11); 2.5 s per iteration against 0.1 s per plain evaluation.
+
+Reading: the cost 1-3 plateaus are stable over thousands of evaluations; the solved cells are those where a fresh
+group of similar mu solved quickly. Rounds 2-4 together raised 14 of last week's cells (4..10, 11/12) by 1-37 %.
+The squad stopped here: the remaining near misses look like true floors at this budget, and the director's checks of
+the 6-20 billion-vertex graphs needed the CPU.
+
+## 2026-11-01, beyond-d11: wrap-up (director)
+
+Goal cells, all checked by haarcheck_gen (logs research/frontier/runs/cloudcheck/<stem>.gen.txt; final status in
+research/frontier/beyond/BEYOND_TABLE.md):
+- (11,11) 1,241,299,248 (SL(2,853), mu 10.4, director); earlier 1,210,478,448 (r2/d01) and 1,170,162,000.
+- (12,11) 2,976,066,240 (SL(2,239) x Z109, f = 0, r1/c04); earlier 2,874,207,072.
+- (13,11) 6,781,213,392 (SL(2,563) x Z19, director); earlier 6,508,747,920.
+- (14,11) 14,381,398,080 (SL(2,1009) x Z7, director).
+- (11,12) 11,189,148,096 (PSL(2,223) x Z1009, director).
+- (12,12) 19,980,294,768 and (13,12) 19,993,487,976 (PSL; at the job's 20-billion cap).
+Plus 14 of last week's cells raised: (4..10, 11) and (4..10, 12), 1-37 % (rounds 2-4).
+
+Who found what: the D = 12 values and the pushes of (11,11), (13,11), (14,11), (11,12) came from the director's runs;
+(12,11) and all 14 small-cell improvements came from cards (c04, d01, d08, d09, d13, e01, e02, e04, e07-e12, f02, f10,
+f12-f14). The decisive idea of the job, that at odd D involutions and central elements are the hard holes (so SL with
+small n, not PSL), came from a card (r2/d04's hole anatomy) answering a question the director asked, and was then
+confirmed by r3/e14. The director's own contributions were haar_big0's f = 0 mode, the redirect of seven running cards,
+the exact lemma behind the effect, and the big runs and checks.
+
+Process lessons: (1) on a 4-core box, 16 concurrent cards get ~0.1-0.2 core each; cheap cells (N <= 3e8) are where they
+can still finish real runs, and that is where they produced values. (2) Autogroup scheduling made `nice` meaningless
+until it was switched off. (3) Memory caps must come from the program's own estimate (n = 1 groups pad rows); three
+cards lost their box to caps the director set too low. (4) Cards still stop early (5-12 minutes of 25) unless told
+explicitly to use the box; with that sentence in the header, rounds 2-4 used 20-25 minutes. (5) Mid-round redirects
+work: four of the seven redirected cards produced values after switching.
+
+## 2026-11-01, raise-d8b, round 1 (16 cards, 22:51 UTC)
+
+Session: Opus director, job raise-d8b (branch claude/raise-d8-d7-beyond-table-8mozbm). Goal: raise the beyond-table
+D = 8 values (17..20, 8) (Haar graphs at mu ~ 8-20, job new-cells-beyond) and the D = 7 beyond-table cells. Files:
+research/squads/raise_d8b/r1/ (HEADER.md, cards.md, scoreboard.jsonl, card folders). Machine: 4 cores, 15 GB, shared by
+16 cards and the director (load ~18-21, so ~0.2 core per search). Before the round the director found that haar_big0
+(64-bit orbit search, START continuation) is ~4x faster per evaluation than haar_sym at N ~ 3e7, and moved all cards to it.
+
+D = 7 first (no cards): the conics-2 job's (19,7) 11,316,940 and (20,7) 15,795,219 had 9 of 16 and 9 of 24 all-pairs
+source ranges recorded when that job ended. The other ranges had finished in their cloud sessions afterwards; a Haiku
+reader and the director read the RESULT lines and edge-list sha256 from the 22 transcripts: all VALID, coverage complete
+(research/frontier/beyond/checks/d19D7_*_ranges_complete.txt, d20D7_*).
+
+Cards (best result; every find re-checked by the director with haarcheck_gen):
+- c01 (17,8) PSL k = 3 ladder, redirected to k = 5: psl 59 x Z211 "5 3 2" (mu 39.4) to cost 2.
+- c02 (17,8) SL k = 3 ladder: sl 31 x Z703 to cost 3; redirected k = 5: sl 89 x Z31 (mu 44.5) 14, sl 41 x Z311 6.
+- **c03 (17,8) orbits of order 5, "5 3 2": sl 31 x Z701, 41,723,520** (and sl 59 x Z101, 41,474,640); k = 5 solved in
+  seconds where k = 3 on the same group was hopeless (that group had no order-3 scaling on Z101, so the comparison was
+  unfair, but the speed was the signal). Redirected climb psl 29 x Z1811 (mu 50.8): cost 15.
+- c04 (18,8) SL "3 6 0": sl 59 x Z151 (mu 24.2) to cost 3-6. Redirected k = 5 sl 101 x Z31 (mu 37.6): cost 8.
+- c05 (18,8) card said k = 5 but ran k = 3 first; redirected psl 29 x Z2621 (mu 37.4) "5 3 3": cost 5.
+- c06 (18,8) n = 1 shapes: RANDORB medians psl 397 x Z1 41, sl 313 x Z1 26, psl 149 x Z19 36; searches killed early by
+  the card (the director sent it back). Redirected: RANDORB k = 7 "7 2 4" psl 83 x Z113 median 63 vs k = 5 psl 71 x Z181
+  median 75; search psl 71 x Z181 "5 3 3" (mu 46.1) to cost 5.
+- **c07 (19,8) PSL k = 3 ladder (cost 3 at psl 71 x Z247, 79 x Z181), redirected k = 5 "5 3 4": psl 109 x Z71 (mu 34.5),
+  91,939,320** (3,727 evaluations).
+- **c08 (19,8) SL k = 3: sl 101 x Z43 (mu 19.6), 88,597,200**; redirected "5 3 4" sl 41 x Z671: cost 90-100.
+- c09 hole anatomy at (19,8), k = 3: the stalled states (cost 3) miss one ordinary alpha-orbit (unipotent / order-57
+  elements), never fixed points or torus elements. At even D nothing special blocks the search.
+- **c10 (20,8) PSL "3 6 2": psl 109 x Z97, 125,607,240** (145 evaluations); redirected "5 4 0" psl 41 x Z1901 (mu 36.1): 6.
+- **c11 (20,8) orbits of order 5, f = 0, "5 4 0": psl 41 x Z1831, 126,119,280** (257 evaluations); climb sl 29 x Z2741
+  (mu 48.7) to 20, then psl 41 x Z1891.
+- c12 (20,8) SL "3 6 2": sl 61 x Z277, 125,713,680; redirected k = 5 sl 29 x Z2711 (mu 41.2, n/p = 93): cost 16.
+- c13 haar_sym product groups at (19,8): RANDORB prod sl 3 sl 31 x Z61 median 21 at mu 15; search never ran. Negative.
+- c14 shape tournament at (19,8), k = 3, mu ~ 24: RANDORB medians sl 353 x Z1 22, sl 151 x Z13 25, sl 53 x Z301 30,
+  psl 83 x Z157 33, psl 41 x Z1303 36, sl 29 x Z1843 48: small n is best, n/p >~ 40 worst.
+- c15 near-miss finisher on the director's k = 3 (18,8) state: stayed at cost 3 (6,583 evaluations, K 16/32, TARGP 90).
+  Redirected: k = 7 "7 2 3" sl 29 x Z883 median 282 vs k = 5 psl 89 x Z61 median 37 at (17,8); psl 89 x Z61 to cost 1.
+- c16 wildcard, 2+2 voltage lifts of K_{2,2} over SL(2,p) (multi-Haar graphs) at (8,8) scale: no better than Haar graphs
+  at equal order (both solve ~2e5 with similar effort). Negative.
+
+Director during the round: k = 5 "5 3 3" on psl 101 x Z61 solved (18,8) at mu 29.6 in 97 evaluations (k = 3 "3 6 0" on
+psl 79 x Z127, mu 28.0, was at cost 3 after 12,000 and solved only after ~30 minutes): 62,842,200; then psl 79 x Z131
+(mu 44.2) in 18,549 evaluations: **(18,8) 64,577,760** (+12.0 %). Midway the director redirected eleven cards from
+k = 3 to k = 5 rungs at mu 34-51 and two to k = 7 tests.
+
+Reading: orbits of order 5 are the step change at D = 8, d = 17..20 (as k = 5 already won (11,8) and (15,8) in the lab).
+Keep f small: the fixed letters all lie in the abelian centralizer of alpha, so 3+ of them make 6-cycles; "5 3 4" still
+worked on PSL(2,109) x Z71 but not on SL(2,41) x Z671. k = 9 and k = 7 screened worse than k = 5. Walls in ~25 minutes at
+~0.2 core: k = 5 near mu 35-46. Round 2: one high rung per card (mu 27-51), k = 5 everywhere, two k = 7 probes, a k = 3
+control, and a product group whose alpha acts on one factor only (non-abelian centralizer for the (19,8) fixed letters).
+Process: four cards stopped after 2 minutes of a 25-minute box (killed their own searches); the director sent them back
+with explicit run lengths. Killing a wrapper PID left a card's haar_big0 running (c02); the director made the same mistake once.
+
+## 2026-11-01, raise-d8b, round 2 (16 cards, 23:24 UTC)
+
+Same session. Files: research/squads/raise_d8b/r2/. Design change from round 1: every card ran ONE given rung (one cell,
+one orbit type, one group) for a full 1400-s haar_big0 run, instead of climbing from the bottom; the director chose the
+rungs (k = 5 at mu 30-51, k = 7 probes, one k = 3 control) after redirecting round 1 to k = 5. Most cards handed back
+within a minute with their search still running; the director harvested every log and solution itself
+(raise_d8/harvest.py, roundsum.py).
+
+Cards (group, ORBIT, mu: result):
+- **d01 (17,8) sl 41 x Z311 "5 3 2" mu 33.6: solved, 42,843,360** (8,858 evaluations).
+- d02 (17,8) psl 89 x Z61 "5 3 2" mu 35.3, from r1/c15's cost-1 state: cost 1.
+- d03 (17,8) sl 29 x Z883 "7 2 3" mu 35.6: cost 77 (RANDORB median/k 40 against 12 for k = 5 on sl 29 x Z881).
+- d04 (18,8) psl 181 x Z11 "5 3 3" mu 51.0: 13. d05 sl 31 x Z1091 "5 3 3" mu 47.8: 10.
+- **d06 (18,8) psl 97 x Z71 "7 2 4" mu 46.3: solved, 64,792,896** (2,140 evaluations; k = 5 needed 18,549 at mu 44.2).
+- **d07 (19,8) psl 131 x Z41 "5 3 4" mu 35.9: solved, 92,166,360** (409 evaluations).
+- d08 (19,8) k = 3 control psl 43 x Z1159 "3 6 1" mu 35.5: 13.
+- d09 (19,8) psl 89 x Z131 "5 3 4" mu 36.9: 5. d10 psl 59 x Z451 mu 38.5: 5.
+- d11 (20,8) sl 79 x Z131 "5 4 0" mu 29.1: 5. d12 psl 61 x Z571 mu 30.6: 2. d13 psl 109 x Z101 mu 35.4: 1 (the director
+  continues it). d14 psl 509 x Z1 mu 40.2: 21 (1.5 s per evaluation; n = 1 is slow and poor here).
+- d15 wildcard, alpha acting on one factor of PSL(2,41) x SL(2,5) x Z11 (non-abelian centralizer for the four fixed
+  letters at (19,8)): the centralizer has 2,400 elements, each missed with probability ~e^(-lambda/5), and RANDORB was
+  far worse (median 2,935 against 47 for the automatic alpha). Negative, and it explains why: big centralizers mean many
+  fixed points.
+- d16 wildcard, cyclic / coset-union Haar graphs: a counting bound (|4D| <= 2 C(m+3,4)^2 for d = 2m) caps them near 1e6
+  vertices at d = 18. Negative.
+
+Director during the round: continued r1/c11's cost-1 state on psl 41 x Z1891 "5 4 0" (mu 33.3): **(20,8) 130,252,080**;
+psl 71 x Z121 "5 3 2" (mu 39.0, 35,928 evaluations): **(17,8) 43,298,640**. SL(2,181) x Z11 "5 4 0" (mu 34.0) stalled at 6.
+
+Reading: k = 7 can beat k = 5 by 10x in evaluations (d06), but not on every group (d03); the difference is visible in a
+16-sample RANDORB screen (median cost divided by k), so round 3 screens three candidates per card before searching.
+Walls this round (~0.2 core, 1400 s): k = 5 near mu 36-40 at (19,8) and (20,8), near 46-51 at (18,8) with f = 3.
+
+## 2026-11-01, raise-d8b, round 3 (16 cards, 23:49 UTC)
+
+Same session. Files: research/squads/raise_d8b/r3/. Each search card screened three candidates (cell, orbit type, group)
+with RANDORB=16 and searched the one with the lowest median cost per orbit (median/k) for 1400 s; two analysis cards,
+two wildcards.
+
+Cards (searched group, ORBIT, mu: result; screens in the card folders):
+- **e01 (17,8): screen put "7 2 3" on psl 41 x Z631 (median/k 8.0) ahead of "5 3 2" on psl 41 x Z631 (15.0) and
+  psl 61 x Z191 (10.2); solved at mu 41.2 in 1,860 evaluations: 43,463,280.**
+- e02 (17,8) psl 31 x Z1481 "5 3 2" mu 50.2: 10. e03 sl 43 x Z281 "7 2 3" mu 60.2: 11.
+- e04 (18,8) psl 181 x Z11 "5 3 3" mu 51.0: 13. e05 psl 41 x Z961 "5 3 3" mu 62.9: 15.
+- e06 (19,8) psl 79 x Z191 "5 3 4" mu 49.3: 5. e07 psl 59 x Z461 mu 53.3: 15. e08 psl 61 x Z421 mu 61.0: 20.
+- e09 (20,8) psl 229 x Z11 "5 4 0" mu 41.3: 7. e10 psl 79 x Z271 mu 49.0: 7. e11 psl 89 x Z191 mu 55.1: 8.
+  e12 psl 149 x Z41 mu 61.4: 23. Their screens: "7 2 6" medians/k 97-261 against 11-15 for "5 4 0".
+- e13 hole anatomy of ten round-2 near misses: with f = 0 ("5 4 0") every remaining hole is alpha-fixed (z = 0, in the
+  torus of the order-5 element), 1-5 of them, as expected from (torus size) x e^(-lambda/5); with f = 3-4 the remaining
+  holes are whole free orbits of 5. No fixed holes there, because words in the fixed letters cover the torus.
+- e14 small centralizers for k = 7 at (20,8): psl 167 x Z29 screened best (median/7 = 24) but "7 2 6" is far behind
+  "5 4 0"; search stalled at 84.
+- e15 wildcard: orbits of order 4, "4 4 2" on sl 47 x Z313 (mu 48.1): 53. Negative.
+- e16 wildcard (D = 7): extra hubs on the spare slots of the typed level graphs. At q = 5 ((7,7) analogue, 23,598) one
+  to 200 extra hubs on levels 2-6 always leave 170-220 level-0 vertices at distance 8: level 0, whose freed slots set the
+  hub cap, is the blind spot. Negative for the naive version.
+
+Director during the round: added ORBW to haar_big0 (raise_d8/haar_big0w.c: an uncovered alpha-fixed element weighs w in
+the energy, as haar_sym's ORBW, which the lab's (15,8) record used with f = 0; for f = 0 the hole x of H(G, S s0^-1) is
+tested as x s0). On d13's (20,8) state (one fixed hole) the weighted start cost is 5, as it should be. Screened "5 3 5"
+against "5 4 0" at (20,8): 3-8x worse (four commuting fixed letters). SL(2,71) x Z61 "5 3 2" at (17,8) (mu 43.9) reached
+cost 1 after 84,000 evaluations.
+
+Reading: one more solve this round, at (17,8) by the screen's choice of k = 7. Walls at ~0.2 core and 1400 s:
+(17,8) mu ~42-44, (18,8) ~47, (19,8) ~37-49 (cost 5 states), (20,8) ~33-36 with f = 0 because of fixed holes. Round 4:
+continue the saved near misses (cost 5-13) with START, use haar_big0w ORBW=5 on every f = 0 run, two k = 7 rungs at
+(18,8) mu 56-57, and a fit of evaluations against mu/k.
+
+## 2026-11-02, raise-d8b, round 4 (16 cards, 00:13 UTC)
+
+Same session. Files: research/squads/raise_d8b/r4/. Cards continued the saved near misses of rounds 2-3 with START and
+new seeds, ran every "5 4 0" search with haar_big0w ORBW=5, tried two k = 7 rungs at (18,8), and one analysis card fit
+search cost against mu/k.
+
+Cards (group, ORBIT, mu: result):
+- **f04 (20,8) psl 59 x Z641 "5 4 0" ORBW=5, fresh, mu 39.0: solved in 2,156 evaluations, 131,610,120.**
+- f01 (20,8) psl 41 x Z1901 ORBW=5 from r1/c10's state, mu 36.1: weighted 5 (one fixed hole). f02 psl 229 x Z11
+  mu 41.3: 25 (torus of 115 elements: ~6 expected fixed holes). f03 psl 79 x Z271 mu 49.0: 15. f05 psl 89 x Z191 mu
+  55.1: 20.
+- f06, f07, f08 (19,8) "5 3 4" continuations at mu 36.9, 38.5, 49.3: all stayed at cost 5 (one free orbit). f09 sl 71 x
+  Z131 mu 46.3: 65-71 (SL with f = 4 is bad again).
+- f10 (18,8) psl 41 x Z953 "7 2 4" mu 55.9: 14. f11 psl 43 x Z827 mu 56.8: 70. f12 psl 181 x Z11 "5 3 3" mu 51.0: 10.
+- f13 (17,8) psl 31 x Z1481 "5 3 2" mu 50.2 from e02's state: 5. f14 sl 89 x Z31 mu 44.5: 14.
+- **f15 fit over 74 finished runs of this job (censored log-normal): log(evals) = 1.00 + 1.21 mu/k, sigma 1.9; median
+  ~1.2k evaluations at mu/k = 5, ~13k at 7, ~45k at 8; P(solve within ~7,000 evaluations) 0.62 at mu/k 6, 0.37 at 7,
+  0.16 at 8, 0.05 at 9.** f and ln N add nothing clear. k = 3 runs solve less often than k = 5 at equal mu/k.
+- f16 wildcard: PGL(2,281) at (17,8) with haar_sym, did not get past setup in the box.
+
+Director during the round: SL(2,71) x Z61 "5 3 2" (17,8) ended at cost 1 after 109,000 evaluations; its last hole is
+alpha-fixed (weighted 5 under ORBW), continued with ORBW=5. (20,8) PSL(2,109) x Z101 ORBW=5 stayed at one fixed hole
+(torus of 55 elements) for 16,000 evaluations; replaced by PSL(2,41) x Z1931 (mu 45.8, torus 20), which screened like
+groups at lower mu. (19,8) PSL(2,59) x Z451 from d10's state: cost 5.
+
+Reading: ORBW=5 plus a small torus solved (20,8) at mu 39 where unweighted runs stalled at mu 33-36. The fit says
+mu/k ~ 8 is the practical ceiling here, so round 5 aims k = 7 at mu 54-60 for (17,8) and (18,8) and keeps k = 5 at
+mu 36-49 for (19,8) and (20,8), with a coding card for a D = 8 fixed-hole screen.
+
+## 2026-11-02, raise-d8b, round 5 (16 cards, 00:37 UTC)
+
+Same session. Files: research/squads/raise_d8b/r5/. Cards: k = 7 at mu 54-60 for (17,8) and (18,8), k = 5 continuations
+and fresh rungs for (19,8) and (20,8) (ORBW=5 for "5 4 0"), a coding card for a D = 8 fixed-hole screen, a wildcard.
+
+Cards (group, ORBIT, mu: result): nothing new solved.
+- (17,8): g01, g02 sl 281 x Z1 "7 2 3" mu 55.2: 47 and 44-55 (1.6 s per evaluation with n = 1). g03 sl 43 x Z281 mu 60.2
+  from e03's state: 10, flat. g04 psl 31 x Z1481 "5 3 2" mu 50.2 ORBW from f13's state: 5.
+- (18,8): g05 psl 29 x Z2689 "7 2 4" mu 54.2: 91 (n/p 93). g06, g07 psl 41 x Z953 mu 55.9: 14, 35.
+- (19,8): g08 psl 79 x Z191 "5 3 4" mu 49.3 from f08's state: 5 (third run at cost 5). g09, g10 psl 41 x Z1361 mu 46.2:
+  10, 40.
+- (20,8): g11 re-found PSL(2,59) x Z641 (the f04 state was already a solution; a fresh seed stalled at 5). g12 psl 41 x
+  Z1901 mu 36.1: 5. g13 psl 79 x Z271 mu 49.0: 15. g14 psl 41 x Z1931 mu 45.8: 15.
+- g15 wrote a D = 8 fixed-hole screen (x in Y_7 iff v x in Y_3 for some v in (S S^-1)^2, one v per alpha-orbit) in a copy
+  of haar_big0w (r5/g15/haar_big0w8.c, FIXF=1 at D = 8, f >= 1 only). Its count equals the full evaluation on 100
+  random S (psl 13 x Z7, psl 29 x Z7); but 0.18-0.28 s per candidate at d = 20 against 0.04 s for a full evaluation, so
+  not yet useful.
+- g16 PGL(2,281) for (17,8) in haar_sym: setup did not finish in the box (second time). Untested.
+
+Director during the round: (19,8) PSL(2,59) x Z451 from d10's cost-5 state solved after 51,658 evaluations (mu 38.5):
+**(19,8) 92,599,320**. (20,8) PSL(2,41) x Z1931 and PSL(2,31) x Z4441 with ORBW=5 and (17,8) SL(2,71) x Z61 with ORBW=5
+running.
+
+Reading: as the fit predicts, mu/k ~ 8 rungs (k = 7 at mu 55) do not solve in one 1400-s run at ~0.2 core, and
+cost-5 states (one orbit) do not finish by reseeding. The cells are near the wall of this method at this compute.
+Round 6 (the last) continues the best states once more with ORBW where it applies.
+
+## 2026-11-02, raise-d8b, round 6 (16 cards, 01:02 UTC; stopped at 01:11 on Doğa's instruction)
+
+Same session. Files: research/squads/raise_d8b/r6/. Continuations of the best states with ORBW where it applies, fresh
+small-torus (20,8) groups, a coding card and a wildcard. Stopped about 8 minutes in (budget); no new values.
+- h15 made the D = 8 fixed-hole screen fast: 0.015-0.025 s per candidate at d = 17-20 (r5's version 0.08-0.17 s), equal
+  to full evaluation on 50 random S in each of 8 configurations (r6/h15/haar_big0w8.c). Not yet used in a search.
+- h16 wildcard: orbits of order 6 ("6 3 2") at (20,8) on PSL(2,191) x Z19: cost 18 after 89 evaluations. Weak.
+- Director: (20,8) PSL(2,41) x Z1931 ORBW (mu 45.8) ended at one fixed hole after 44,738 evaluations; (17,8) SL(2,71) x
+  Z61 ORBW ended at one fixed hole; PSL(2,31) x Z4441 at cost 5 when stopped.
+
+Job summary (squad vs director): the step change (orbits of order 5) came from a card (r1/c03) and was confirmed and
+spread by the director; k = 7 was first tried on the director's card list and won at (18,8) (r2/d06) and, chosen by a
+card's own screen, at (17,8) (r3/e01). Of the eight value-raising finds, five were card runs and three director runs
+(two of them continuing card states). Status: research/frontier/raise_d8/STATUS.md.

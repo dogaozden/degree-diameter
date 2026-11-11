@@ -1,0 +1,25 @@
+group psl 29 x Z_7, N=85260 (2N=170520), rows 420 x 203 bits (doubled row 32 words), memory 0.00 GB, threads 1
+alpha: conj by mat(0,28,1,28), z -> 2 z on Z_7 (fixed z: 1); ORBIT k=3 m=1 f=3; W=97656 lambda=1.145 mu=27121.18
+setup 0.0s
+fixed generators: 2 chosen among 14 alpha-fixed elements
+FIXF: 14 alpha-fixed elements other than e (0.0s); FIXTRY 200 FIXMAX 0
+RANDORB sample 0 cost 38280 (0.0s) zq 1.000 full-eval 0.0007s fixed holes: full 0 screen 0 (screen 0.0001s)
+RANDORB sample 1 cost 34005 (0.1s) zq 1.000 full-eval 0.0004s fixed holes: full 0 screen 0 (screen 0.0001s)
+RANDORB sample 2 cost 35268 (0.1s) zq 1.000 full-eval 0.0005s fixed holes: full 0 screen 0 (screen 0.0001s)
+RANDORB sample 3 cost 41580 (0.1s) zq 1.000 full-eval 0.0006s fixed holes: full 0 screen 0 (screen 0.0001s)
+RANDORB sample 4 cost 34230 (0.2s) zq 1.000 full-eval 0.0005s fixed holes: full 0 screen 0 (screen 0.0442s)
+RANDORB sample 5 cost 41748 (0.2s) zq 1.000 full-eval 0.0005s fixed holes: full 0 screen 0 (screen 0.0001s)
+RANDORB sample 6 cost 74250 (0.3s) zq 2.695 full-eval 0.0409s fixed holes: full 0 screen 0 (screen 0.0001s) (list capped)
+RANDORB sample 7 cost 83157 (0.3s) zq 2.695 full-eval 0.0008s fixed holes: full 0 screen 0 (screen 0.0001s) (list capped)
+RANDORB sample 8 cost 33300 (0.4s) zq 1.000 full-eval 0.0005s fixed holes: full 0 screen 0 (screen 0.0001s)
+RANDORB sample 9 cost 34932 (0.4s) zq 1.000 full-eval 0.0005s fixed holes: full 0 screen 0 (screen 0.0001s)
+RANDORB sample 10 cost 38949 (0.5s) zq 1.000 full-eval 0.0005s fixed holes: full 0 screen 0 (screen 0.0001s)
+RANDORB sample 11 cost 42663 (0.5s) zq 1.000 full-eval 0.0005s fixed holes: full 0 screen 0 (screen 0.0001s)
+RANDORB sample 12 cost 34992 (0.5s) zq 1.000 full-eval 0.0005s fixed holes: full 0 screen 0 (screen 0.0001s)
+RANDORB sample 13 cost 41199 (0.6s) zq 1.000 full-eval 0.0005s fixed holes: full 0 screen 0 (screen 0.0001s)
+RANDORB sample 14 cost 78900 (0.6s) zq 2.695 full-eval 0.0008s fixed holes: full 0 screen 0 (screen 0.0001s) (list capped)
+RANDORB sample 15 cost 34317 (0.7s) zq 1.000 full-eval 0.0006s fixed holes: full 0 screen 0 (screen 0.0001s)
+RANDORB sample 16 cost 56502 (0.8s) zq 1.000 full-eval 0.0009s fixed holes: full 0 screen 0 (screen 0.0001s)
+RANDORB sample 17 cost 48195 (0.8s) zq 1.000 full-eval 0.0006s fixed holes: full 0 screen 0 (screen 0.0001s)
+RANDORB sample 18 cost 74136 (0.9s) zq 2.695 full-eval 0.0411s fixed holes: full 0 screen 0 (screen 0.0001s) (list capped)
+RANDORB sample 19 cost 47211 (1.0s) zq 1.000 full-eval 0.0006s fixed holes: full 0 screen 0 (screen 0.0001s)

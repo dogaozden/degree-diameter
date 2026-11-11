@@ -1,0 +1,9 @@
+# d19D8_psl_131_41_orb5-3-4_r2d07: haarcheck_gen (research/frontier/haarcheck_gen.c) on 68dda4f6f4602db7..., Sun Nov  1 23:27:44 UTC 2026
+selftest psl 131: |M| = 1123980, index round trip over all elements ok
+selftest group multiplication: associativity, identity, inverse on 20000 random triples ok
+file ../../squads/raise_d8b/r2/d07/a.sol
+header: 19 8 psl 131 n 41 N 46083180
+group psl 131 x Z_41, |G| = 46083180 = N, vertices 2N = 92166360; 19 distinct generators
+from (e,A): reached A 46083180/46083180, B 46083180/46083180 within 8; ecc 8; level sizes [1, 19, 342, 6144, 110202, 1939236, 24714045, 44137781, 21258590]  (15s)
+from (e,B): reached A 46083180/46083180, B 46083180/46083180 within 8; ecc 8; level sizes [1, 19, 342, 6144, 110202, 1939236, 24711985, 44137781, 21260650]  (30s)
+VALID d=19 D=8 group=psl 131 x Z_41 N=46083180 vertices=92166360 (distinct generators, 19-regular simple; every vertex within 8 of both (e,A) and (e,B); ecc 8; 30s)

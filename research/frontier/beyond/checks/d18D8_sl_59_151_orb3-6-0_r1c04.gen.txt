@@ -1,0 +1,9 @@
+# d18D8_sl_59_151_orb3-6-0_r1c04: haarcheck_gen (research/frontier/haarcheck_gen.c) on 848d496c68e499bb..., Sun Nov  1 23:25:19 UTC 2026
+selftest sl 59: |M| = 205320, det-1 matrices 205320
+selftest group multiplication: associativity, identity, inverse on 20000 random triples ok
+file ../../squads/raise_d8b/r1/c04/r3.sol
+header: 18 8 sl 59 n 151 N 31003320
+group sl 59 x Z_151, |G| = 31003320 = N, vertices 2N = 62006640; 18 distinct generators
+from (e,A): reached A 31003320/31003320, B 31003320/31003320 within 8; ecc 8; level sizes [1, 18, 306, 5199, 88166, 1462965, 17298099, 29535138, 13616748]  (8s)
+from (e,B): reached A 31003320/31003320, B 31003320/31003320 within 8; ecc 8; level sizes [1, 18, 306, 5199, 88164, 1462965, 17297017, 29535138, 13617832]  (16s)
+VALID d=18 D=8 group=sl 59 x Z_151 N=31003320 vertices=62006640 (distinct generators, 18-regular simple; every vertex within 8 of both (e,A) and (e,B); ecc 8; 16s)

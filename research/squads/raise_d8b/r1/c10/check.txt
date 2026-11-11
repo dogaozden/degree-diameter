@@ -1,0 +1,8 @@
+selftest psl 109: |M| = 647460, index round trip over all elements ok
+selftest group multiplication: associativity, identity, inverse on 20000 random triples ok
+file a.sol
+header: 20 8 psl 109 n 97 N 62803620
+group psl 109 x Z_97, |G| = 62803620 = N, vertices 2N = 125607240; 20 distinct generators
+from (e,A): reached A 62803620/62803620, B 62803620/62803620 within 8; ecc 8; level sizes [1, 20, 380, 7217, 136928, 2549283, 34112350, 60247100, 28553961]  (216s)
+from (e,B): reached A 62803620/62803620, B 62803620/62803620 within 8; ecc 8; level sizes [1, 20, 380, 7217, 136928, 2549283, 34119165, 60247100, 28547146]  (422s)
+VALID d=20 D=8 group=psl 109 x Z_97 N=62803620 vertices=125607240 (distinct generators, 20-regular simple; every vertex within 8 of both (e,A) and (e,B); ecc 8; 422s)

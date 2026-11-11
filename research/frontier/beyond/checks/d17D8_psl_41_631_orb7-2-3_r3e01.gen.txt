@@ -1,0 +1,9 @@
+# d17D8_psl_41_631_orb7-2-3_r3e01: haarcheck_gen (research/frontier/haarcheck_gen.c) on 0c7467d923c8d479..., Sun Nov  1 23:50:37 UTC 2026
+selftest psl 41: |M| = 34440, det-1 matrices 68880
+selftest group multiplication: associativity, identity, inverse on 20000 random triples ok
+file ../../squads/raise_d8b/r3/e01/a.sol
+header: 17 8 psl 41 n 631 N 21731640
+group psl 41 x Z_631, |G| = 21731640 = N, vertices 2N = 43463280; 17 distinct generators
+from (e,A): reached A 21731640/21731640, B 21731640/21731640 within 8; ecc 8; level sizes [1, 17, 272, 4349, 69480, 1083343, 12080686, 20643931, 9581201]  (5s)
+from (e,B): reached A 21731640/21731640, B 21731640/21731640 within 8; ecc 8; level sizes [1, 17, 272, 4349, 69480, 1083343, 12081631, 20643931, 9580256]  (11s)
+VALID d=17 D=8 group=psl 41 x Z_631 N=21731640 vertices=43463280 (distinct generators, 17-regular simple; every vertex within 8 of both (e,A) and (e,B); ecc 8; 11s)

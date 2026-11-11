@@ -1,0 +1,5 @@
+selftest sl 41: |M| = 68880, det-1 matrices 68880
+selftest group multiplication: associativity, identity, inverse on 20000 random triples ok
+file a.sol
+header: 17 8 sl 41 n 311 N 21421680
+group sl 41 x Z_311, |G| = 21421680 = N, vertices 2N = 42843360; 17 distinct generators

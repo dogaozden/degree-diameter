@@ -1,0 +1,9 @@
+# d18D8_psl_97_71_orb7-2-4_r2d06: haarcheck_gen (research/frontier/haarcheck_gen.c) on 25904aca2dd6e30b..., Sun Nov  1 23:32:51 UTC 2026
+selftest psl 97: |M| = 456288, index round trip over all elements ok
+selftest group multiplication: associativity, identity, inverse on 20000 random triples ok
+file ../../squads/raise_d8b/r2/d06/d06.sol
+header: 18 8 psl 97 n 71 N 32396448
+group psl 97 x Z_71, |G| = 32396448 = N, vertices 2N = 64792896; 18 distinct generators
+from (e,A): reached A 32396448/32396448, B 32396448/32396448 within 8; ecc 8; level sizes [1, 18, 306, 5188, 87792, 1455952, 17471128, 30935290, 14837221]  (9s)
+from (e,B): reached A 32396448/32396448, B 32396448/32396448 within 8; ecc 8; level sizes [1, 18, 306, 5188, 87792, 1455952, 17472409, 30935290, 14835940]  (17s)
+VALID d=18 D=8 group=psl 97 x Z_71 N=32396448 vertices=64792896 (distinct generators, 18-regular simple; every vertex within 8 of both (e,A) and (e,B); ecc 8; 17s)

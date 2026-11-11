@@ -1,0 +1,77 @@
+runs in fit (completed, solved or censored at evals): 74  solved: 17  censored (unsolved): 57
+
+MODEL A (censored log-normal AFT): log(evals) = a + b*mu/k
+  a=1.004  b=1.214  sigma=1.906  nll=49.36
+MODEL B: log(evals) = a + b*mu/k + c*f
+  a=1.406  b=1.232  c=-0.305  sigma=1.864  nll=48.49
+MODEL C: log(evals) = a + b*mu/k + c*ln(N)
+  a=5.212  b=1.203  c=-0.238  sigma=1.888  nll=49.32
+
+SOLVED-ONLY OLS (n=17): log(evals) = 0.975 + 0.966*mu/k, residual sd 1.456, R2 0.502
+SOLVED-ONLY OLS + f: log(evals) = 1.419 + 0.962*mu/k + -0.210*f, residual sd 1.474
+
+median observed s/eval over completed runs: 0.197 ; 1400 s / 0.2 s = 7000 evals
+
+Model A predicted P(solved within 7000 evals) and median evals by mu/k:
+  mu/k= 4.0  median evals      350  P(solve<=7000) 0.94
+  mu/k= 5.0  median evals     1179  P(solve<=7000) 0.82
+  mu/k= 6.0  median evals     3969  P(solve<=7000) 0.62
+  mu/k= 7.0  median evals    13359  P(solve<=7000) 0.37
+  mu/k= 8.0  median evals    44965  P(solve<=7000) 0.16
+  mu/k= 9.0  median evals   151350  P(solve<=7000) 0.05
+  mu/k=10.0  median evals   509439  P(solve<=7000) 0.01
+  mu/k=11.0  median evals  1714760  P(solve<=7000) 0.00
+  mu/k=12.0  median evals  5771844  P(solve<=7000) 0.00
+  mu/k=13.0  median evals 19427894  P(solve<=7000) 0.00
+
+EMPIRICAL by mu/k bin (completed runs): n, solved, solved within 7000 evals, median evals of solved, unsolved censor range
+  [ 0.0, 6.0): n= 9 solved= 5 within7000= 5 median_solved=257 unsolved_evals=185-18526
+  [ 6.0, 7.0): n=13 solved= 7 within7000= 5 median_solved=2140 unsolved_evals=1282-10919
+  [ 7.0, 8.0): n=20 solved= 2 within7000= 1 median_solved=18168 unsolved_evals=264-13531
+  [ 8.0, 9.0): n=10 solved= 2 within7000= 1 median_solved=10786 unsolved_evals=106-12705
+  [ 9.0,10.0): n=10 solved= 1 within7000= 0 median_solved=22044 unsolved_evals=85-11832
+  [10.0,11.0): n= 5 solved= 0 within7000= 0 median_solved=- unsolved_evals=3423-19991
+  [11.0,15.0): n= 7 solved= 0 within7000= 0 median_solved=- unsolved_evals=1796-26035
+
+UNSOLVED with mu/k >= 9 (all completed unsolved runs, evals at end, best cost):
+  mu/k=10.164 (17,8) psl 29 x Z1811   k=5 m=3 f=2 evals= 19991 best=15
+  mu/k= 9.877 (18,8) psl 149 x Z19    k=3 m=6 f=0 evals=    85 best=15
+  mu/k= 9.877 (18,8) psl 149 x Z19    k=3 m=6 f=0 evals=  3310 best=3
+  mu/k= 9.216 (18,8) psl 71 x Z181    k=5 m=3 f=3 evals=  4937 best=5
+  mu/k= 9.742 (20,8) sl 29 x Z2741    k=5 m=4 f=0 evals=  1888 best=20
+  mu/k= 9.327 (18,8) psl 79 x Z127    k=3 m=6 f=0 evals=  4886 best=3
+  mu/k= 9.327 (18,8) psl 79 x Z127    k=3 m=6 f=0 evals=  1697 best=3
+  mu/k=10.198 (18,8) psl 181 x Z11    k=5 m=3 f=3 evals=  3696 best=13
+  mu/k= 9.566 (18,8) sl 31 x Z1091    k=5 m=3 f=3 evals= 11832 best=10
+  mu/k=11.820 (19,8) psl 43 x Z1159   k=3 m=6 f=1 evals=  6910 best=13
+  mu/k=10.032 (17,8) psl 31 x Z1481   k=5 m=3 f=2 evals= 19414 best=10
+  mu/k=10.198 (18,8) psl 181 x Z11    k=5 m=3 f=3 evals=  3423 best=13
+  mu/k=12.584 (18,8) psl 41 x Z961    k=5 m=3 f=3 evals= 10725 best=15
+  mu/k= 9.860 (19,8) psl 79 x Z191    k=5 m=3 f=4 evals=  4785 best=5
+  mu/k=10.654 (19,8) psl 59 x Z461    k=5 m=3 f=4 evals=  5803 best=15
+  mu/k=12.202 (19,8) psl 61 x Z421    k=5 m=3 f=4 evals=  5642 best=20
+  mu/k= 9.798 (20,8) psl 79 x Z271    k=5 m=4 f=0 evals=  3191 best=7
+  mu/k=11.012 (20,8) psl 89 x Z191    k=5 m=4 f=0 evals=  3223 best=8
+  mu/k=12.286 (20,8) psl 149 x Z41    k=5 m=4 f=0 evals=  1796 best=23
+  mu/k=12.030 (18,8) sl 47 x Z313     k=4 m=4 f=2 evals=  6771 best=53
+  mu/k=13.570 (18,8) psl 61 x Z283    k=3 m=6 f=0 evals= 26035 best=9
+
+SOLVED with mu/k >= 9:
+  mu/k= 9.327 (18,8) psl 79 x Z127    k=3 m=6 f=0 evals= 22044
+k=5 m=4 f=0 c11       mu/k=  4.01 evals=   257 pred_median=     127 log_resid=+0.70
+k=5 m=3 f=2 c03       mu/k=  4.18 evals=   129 pred_median=     150 log_resid=-0.15
+k=5 m=3 f=2 c03       mu/k=  4.57 evals=   609 pred_median=     218 log_resid=+1.03
+k=7 m=2 f=3 e01       mu/k=  5.89 evals=  1860 pred_median=     781 log_resid=+0.87
+k=5 m=3 f=3 director  mu/k=  5.92 evals=    97 pred_median=     806 log_resid=-2.12
+k=3 m=6 f=2 c10       mu/k=  6.26 evals=   145 pred_median=    1118 log_resid=-2.04
+k=3 m=6 f=2 c12       mu/k=  6.34 evals=   153 pred_median=    1211 log_resid=-2.07
+k=3 m=6 f=1 c08       mu/k=  6.52 evals=   777 pred_median=    1437 log_resid=-0.61
+k=7 m=2 f=4 d06       mu/k=  6.62 evals=  2140 pred_median=    1585 log_resid=+0.30
+k=5 m=4 f=0 director  mu/k=  6.65 evals= 15216 pred_median=    1634 log_resid=+2.23
+k=5 m=3 f=2 d01       mu/k=  6.71 evals=  8858 pred_median=    1738 log_resid=+1.63
+k=5 m=3 f=4 c07       mu/k=  6.91 evals=  3727 pred_median=    2097 log_resid=+0.58
+k=5 m=3 f=4 d07       mu/k=  7.17 evals=   409 pred_median=    2701 log_resid=-1.89
+k=5 m=3 f=2 director  mu/k=  7.81 evals= 35928 pred_median=    5002 log_resid=+1.97
+k=3 m=6 f=0 c04       mu/k=  8.07 evals=  3022 pred_median=    6463 log_resid=-0.76
+k=5 m=3 f=3 director  mu/k=  8.83 evals= 18549 pred_median=   13424 log_resid=+0.32
+k=3 m=6 f=0 director  mu/k=  9.33 evals= 22044 pred_median=   21690 log_resid=+0.02
