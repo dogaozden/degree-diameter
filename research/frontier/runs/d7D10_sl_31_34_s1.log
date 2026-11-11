@@ -1,0 +1,9 @@
+group sl 31 x Z_34, N=1011840, identity 31620
+start cost=3
+t=34 steps=8 evals=65 cost=4 best=3 T=0.47
+t=66 steps=16 evals=129 cost=4 best=3 T=0.15
+t=98 steps=24 evals=193 cost=1 best=1 T=0.15
+t=131 steps=32 evals=257 cost=1 best=1 T=0.15
+RESULT d=7 D=10 group=sl 31 x Z_34 N=1011840 best=0 evals=313 time=160.3
+full diameter check: OK
+wrote sols/d7D10_sl_31_34_s1.txt
