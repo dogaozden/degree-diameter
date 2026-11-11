@@ -1,0 +1,8 @@
+group pgl 71 x Z_8, N=2862720, identity 39760
+start cost=12
+t=32 steps=5 evals=41 cost=3 best=3 T=0.50
+t=64 steps=10 evals=81 cost=3 best=3 T=0.16
+t=96 steps=16 evals=129 cost=1 best=1 T=0.15
+RESULT d=13 D=8 group=pgl 71 x Z_8 N=2862720 best=0 evals=145 time=107.3
+full diameter check: OK
+wrote sols/d13D8_pgl_71_8_s1.txt
