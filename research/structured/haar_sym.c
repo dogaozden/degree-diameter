@@ -991,6 +991,11 @@ static int orbit_main(ctx **C, int nth, int K, double secs, const char *out) {
     fprintf(stderr, "start cost=%lld\n", c);
     int nslots = OM + (OF > 1 ? OF - 1 : 0);
     char obuf[96]; int OABORT = getenv("ABORT") ? atoi(getenv("ABORT")) : 1;
+    /* EXH=1: when the raw cost is <= EXHT, scan every orbit representative for each orbit slot with the other slots
+     * fixed (exhaustive one-slot neighbourhood) and move to the best energy; at most once per EXHGAP seconds. */
+    int OEXH = getenv("EXH") ? atoi(getenv("EXH")) : 0; long long EXHT = getenv("EXHT") ? atoll(getenv("EXHT")) : 5;
+    double EXHGAP = getenv("EXHGAP") ? atof(getenv("EXHGAP")) : 0.0, lastexh = t0 - 1e9;
+    long long lastexhE = 1LL << 62;   /* scan only when the best energy has improved since the last scan */
     while (!stop_flag && ONOW - t0 < secs && best > 0 && (!OMAXSTEPS || steps < OMAXSTEPS)) {
         int slot = rnd() % nslots, isorb = slot < OM, j = slot, fs = isorb ? -1 : 1 + (slot - OM);
         for (int t = 0; t < K; t++) {
@@ -1038,6 +1043,35 @@ static int orbit_main(ctx **C, int nth, int K, double secs, const char *out) {
             for (int u = 0; u < d; u++) { SI[u] = ginv(S[u]); mktab(S[u], TF[u], TI[u]); }
             c = cost_any(C[0], TF, TI, &sc0, SV[0], &NOBOUND, 0); ce = c + (ORBW > 1 ? (ORBW - 1) * fixmiss(SV[0]) : 0);
             cE = (double)ce / OK_; collect(C[0]); lastimp = ONOW; lastimpstep = steps;
+        }
+        if (OEXH && c <= EXHT && c > 0 && bestE < lastexhE && ONOW - lastexh > EXHGAP) {   /* exhaustive scan of each orbit slot */
+            lastexh = ONOW; lastexhE = bestE;
+            for (int jj = 0; jj < OM && best > 0 && !stop_flag; jj++) {
+                uint32_t *etf[MAXD], *eti[MAXD]; memcpy(etf, TF, sizeof(uint32_t *) * d); memcpy(eti, TI, sizeof(uint32_t *) * d);
+                long long eb = ce, nsc = 0; int bo[MAXD]; double sc, t1 = ONOW; int have = 0;
+                for (int x = 0; x < N && !stop_flag; x++) {
+                    int o2[MAXD];
+                    if (x == ident || !orbit_of(x, o2)) continue;
+                    int mn = 1; for (int i = 1; i < OK_; i++) if (o2[i] < x) { mn = 0; break; }
+                    if (!mn || !orbit_free(o2, jj)) continue;
+                    for (int i = 0; i < OK_; i++) { mktab(o2[i], OTF[0][i], OTI[0][i]); etf[ostart(jj) + i] = OTF[0][i]; eti[ostart(jj) + i] = OTI[0][i]; }
+                    long long r = cost_any(C[0], etf, eti, &sc, SV[0], OABORT ? &eb : &NOBOUND, 0);
+                    nsc++;
+                    if (r < 0) continue;
+                    if (ORBW > 1) r += (ORBW - 1) * fixmiss(SV[0]);
+                    if (r >= eb) continue;
+                    eb = r; have = 1; memcpy(bo, o2, sizeof(int) * OK_);
+                }
+                if (have) {
+                    for (int i = 0; i < OK_; i++) { int u = ostart(jj) + i; S[u] = bo[i]; SI[u] = ginv(S[u]); mktab(S[u], TF[u], TI[u]); }
+                    long long c0 = c, ce0 = ce;
+                    c = cost_any(C[0], TF, TI, &sc0, SV[0], &NOBOUND, 0); ce = c + (ORBW > 1 ? (ORBW - 1) * fixmiss(SV[0]) : 0);
+                    cE = (double)ce / OK_; collect(C[0]);
+                    if (ce < bestE) { best = c; bestE = ce; memcpy(bestS2, S, sizeof(int) * d); lastimp = ONOW; lastimpstep = steps; }
+                    fprintf(stderr, "EXH slot %d: %lld candidates in %.0f s, cost %lld -> %lld (energy %lld -> %lld), best %lld\n",
+                            jj, nsc, ONOW - t1, c0, c, ce0, ce, best);
+                } else fprintf(stderr, "EXH slot %d: %lld candidates in %.0f s, no better orbit (energy %lld)\n", jj, nsc, ONOW - t1, ce);
+            }
         }
         if (ONOW - lastprint > 30) { fprintf(stderr, "t=%.0f steps=%lld evals=%lld cost=%lld best=%lld T=%.2f%s\n", ONOW - t0, steps, evals, c, best, T,
                                                   ORBW > 1 ? (sprintf(obuf, " energy=%lld bestE=%lld", ce, bestE), obuf) : ""); lastprint = ONOW; }
