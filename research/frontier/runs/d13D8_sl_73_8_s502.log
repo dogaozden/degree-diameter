@@ -1,0 +1,36 @@
+group sl 73 x Z_8, N=3111552, identity 42048, H order 37, rows 84096, threads 1, setup 0.10s
+start cost=14
+t=30 steps=526 evals=4209 cost=2 best=2 T=0.53
+t=60 steps=1027 evals=8217 cost=2 best=2 T=0.19
+t=90 steps=1562 evals=12497 cost=2 best=2 T=0.15
+t=120 steps=2109 evals=16873 cost=2 best=2 T=0.15
+t=150 steps=2650 evals=21201 cost=2 best=2 T=0.15
+t=180 steps=3180 evals=25441 cost=3 best=2 T=0.59
+t=210 steps=3714 evals=29713 cost=2 best=2 T=0.21
+t=240 steps=4310 evals=34481 cost=1 best=1 T=0.15
+t=270 steps=4887 evals=39097 cost=1 best=1 T=0.15
+t=300 steps=5442 evals=43537 cost=1 best=1 T=0.15
+t=330 steps=6022 evals=48177 cost=1 best=1 T=0.15
+t=360 steps=6586 evals=52689 cost=1 best=1 T=0.15
+t=390 steps=7146 evals=57169 cost=6 best=1 T=1.11
+t=420 steps=7709 evals=61673 cost=1 best=1 T=0.39
+t=450 steps=8282 evals=66257 cost=1 best=1 T=0.15
+t=480 steps=8860 evals=70881 cost=1 best=1 T=0.15
+t=510 steps=9448 evals=75585 cost=1 best=1 T=0.15
+t=540 steps=10014 evals=80113 cost=4 best=1 T=1.11
+t=570 steps=10554 evals=84433 cost=2 best=1 T=0.39
+t=600 steps=11083 evals=88665 cost=1 best=1 T=0.15
+t=630 steps=11614 evals=92913 cost=1 best=1 T=0.15
+t=661 steps=12179 evals=97433 cost=1 best=1 T=0.15
+t=691 steps=12748 evals=101985 cost=3 best=1 T=1.11
+t=721 steps=13293 evals=106345 cost=2 best=1 T=0.39
+t=751 steps=13839 evals=110713 cost=1 best=1 T=0.15
+t=781 steps=14382 evals=115057 cost=1 best=1 T=0.15
+t=811 steps=14961 evals=119689 cost=1 best=1 T=0.15
+t=841 steps=15523 evals=124185 cost=4 best=1 T=1.10
+t=871 steps=16082 evals=128657 cost=2 best=1 T=0.39
+t=901 steps=16647 evals=133177 cost=2 best=1 T=0.15
+t=931 steps=17187 evals=137497 cost=2 best=1 T=0.15
+RESULT d=13 D=8 group=sl 73 x Z_8 N=3111552 best=0 evals=139233 time=941.9
+full diameter check: OK
+wrote sols/d13D8_sl_73_8_s502.txt
