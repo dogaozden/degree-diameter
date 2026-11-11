@@ -1,0 +1,11 @@
+'BipartiteDD.HexagonD.exists_unique_wline' depends on axioms: [propext, Classical.choice, Quot.sound]
+'BipartiteDD.HexagonD.wset_whiskers' depends on axioms: [propext, Classical.choice, Quot.sound]
+@BipartiteDD.HexagonD.exists_unique_wline : ∀ {F : Type u_1} [inst : Field F] [inst_1 : Fintype F] [inst_2 : NeZero 2]
+  {c : F},
+  ¬IsSquare (-c) →
+    ∀ {c0 c1 : F},
+      BipartiteDD.HexagonD.GoodCubic c c0 c1 →
+        ∀ {p : BipartiteDD.Hexagon.SPt F},
+          ¬BipartiteDD.HexagonD.OnPi c p →
+            (¬∃ M, BipartiteDD.Hexagon.hexInc p M ∧ BipartiteDD.HexagonD.Meets BipartiteDD.HexagonD.vStd M) →
+              ∃! m, m ∈ BipartiteDD.HexagonD.Wset c c0 c1 ∧ BipartiteDD.Hexagon.hexInc p m

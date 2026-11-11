@@ -29,3 +29,17 @@ NEW: hand proofs for the two computer-only statements, via a complex structure J
 B(x, J_z x) = 0, and ⟨x, J_z x⟩ is the S_z-line through x): (A) ν = N/D is constant on S-lines since N, D scale by
 a² + cb² on ⟨x, Jx⟩; (B) closed form Φ_p(z) = (p2 p3 − p4 p5 + β p2²)/(c p2² + p5²), affine in β, which gives Lemma 6.6.
 Checked with sympy. Replaces Remark 6.7 and Appendix A.
+
+# Revision of 2026-10-25 (thm-polish)
+
+Applied with research/theorems/POLISHED.md (which lists the same corrections):
+- Table 1: new "2013" column (Miller–Širáň DS14v2, Table 4). It differs from the current table only at (13,3), (15,3):
+  270 and 370 in 2013, 274 and 374 after AL20.
+- Coordinates and neighbourhoods: full incidence table of the four-hat structure (Table 2, from coords.tex); Remark on
+  the normalisation κ1 = 1/2, κ2 = 1/(2ε) of Theorem A and the incidences of the clones; Remark: Corollary C1 written
+  inside W(q) (regular spread twice + Singer 2-ovoid), the form proved in Lean; Remark listing the incidences of every
+  version in Theorem 6.3; valid (c; c0, c1) for q = 3..13.
+- Theorem R: explicit choice of the deleted repeated lines; remark that the completing flags are only proved to exist.
+- New Section 9 (Verification): what is Lean-checked, statement by statement, and what is not.
+- New Appendix A: the (7,4) example (Q(4,5), 21 shadow lines with stand-ins) in coordinates.
+No theorem or value changed. Compiled with TeX Live (latexmk), no undefined references, no overfull boxes.

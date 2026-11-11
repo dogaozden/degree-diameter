@@ -1,0 +1,25 @@
+3 order 90 = 90 degrees {5} diam 4
+5 order 350 = 350 degrees {7} diam 4
+7 order 882 = 882 degrees {9} diam 4
+9 order 1782 = 1782 degrees {11} diam 4
+q 3 order 120 expected 120 degrees [4, 6]
+diameter 4
+q 5 order 416 expected 416 degrees [6, 8]
+diameter 4
+J^2=-c: True
+Q(Jx)=cQ(x): True
+B(x,Jx)=0: True
+Tits diffs: [True, True, True, True, True, True]
+J0 matches: True
+num scales: True den scales: True
+key identity: True
+lambda(X)=0: True
+(7,5) S4xZ24: (1152, 5)
+(9,5) Heis11: (2662, 5)
+(8,5) AGL(1,7)xZ21: (1764, 5)
+3 c 1 (c0,c1) (1, 2)
+5 c 2 (c0,c1) (1, 0)
+7 c 1 (c0,c1) (1, 0)
+11 c 1 (c0,c1) (1, 3)
+13 c 2 (c0,c1) (1, 1)
+q=9 c 1+1i (c0,c1) 0+1i 0+2i
