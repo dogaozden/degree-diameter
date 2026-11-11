@@ -1,0 +1,20 @@
+e16 (4,10), target beat 12,416 (N >= 6209). No valid find. Start 23:20:05, end ~23:38 UTC.
+All runs: THREADS=1, haar_gen3s/haar_gen3t/hmeta, d=4, D=10, random S (e in S), 75 s each. Cost = uncovered count.
+
+- prod meta 11 5 3 x meta 19 6 8 (N 6270), seed 201 K 12: best 4 (SAVEBEST a1_pm6270.best)
+- prod meta 19 3 7 x meta 11 10 2 (N 6270), seed 202 K 12: best 4
+- prod meta 23 2 22 x meta 9 15 4 (N 6210), seed 203: best 426 (9 15 4 is not exact order; bad)
+- chain from round-1 state pm6270_best2.sol, haar_gen3t TFULL=1 TARGP=100, seed 204: best 4
+- chain from a1 best, haar_gen3s seed 501 K 20: best 4
+- chain from a1 best, haar_gen3t TFULL seed 702: best 4
+- prod meta 13 4 5 x meta 30 4 7 (N 6240), seed 401: best 46
+- prod meta 14 3 9 x meta 37 4 6 (N 6216), seed 402: best 12
+- prod meta 15 4 2 x meta 26 4 5 (N 6240), seed 601: best 38
+- prod meta 13 3 3 x meta 40 4 3 (N 6240), seed 801: best 5 (SAVEBEST c4_6240c.best)
+- prod meta 13 3 9 x meta 40 4 3 (N 6240), seed 901 K 20: best 5
+- prod meta 19 3 7 x meta 11 10 2 (N 6270), haar_gen3t TFULL seed 1001: best 6
+- single metacyclic meta 1254 5 115 (N 6270), hmeta seed 301: best 2296 (metacyclic with huge cyclic normal part is bad)
+
+Not done: exhaustive 1-opt / 2-opt. The best state has cost 4, and the card asks for it only at cost <= 2.
+Best state file: research/squads/raise10/r2/e16/a1_pm6270.best (cost 4, prod meta 11 5 3 x meta 19 6 8).
+No cost-0 solution, so no build_haar2.py or apsp check was run.

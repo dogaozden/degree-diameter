@@ -1,0 +1,10 @@
+c02 (12,10), k=5 orbits (ORBIT="5 2 2" FIXF=1 BOUNDCUR=1 THREADS=1) on SL/PSL(2,p) x Z_n. Target N >= 166,398,649.
+Runs (cost = uncovered B-side elements; 0 needed):
+- sl 109 x Z131 (N 169,634,520): start cost 54; chain best cost 20 (sl109_131.sol.best). Plateau at 20 over 4 links.
+- sl 179 x Z31 (N 177,789,960): start cost 77, run stalled and was killed by me (no step after 3 min).
+- psl 331 x Z11 (N 199,453,980): start cost 1087, stalled and was killed by me.
+- sl 101 x Z181 (N 186,466,200): start cost 17080, killed.
+Not run (time): psl 239 x Z31, sl 109 x Z151, psl 149 x Z101 (c01 territory).
+Observation: haar_big0 overruns its seconds limit (a step takes 30-60 s at N ~ 2e8); timeout SIGTERM is not honoured
+promptly, so use `timeout -s KILL 100` and seconds <= 40-60.
+Logs: research/squads/raise10/r1/c02/*.log. No valid graph found; nothing beats 332,797,296.

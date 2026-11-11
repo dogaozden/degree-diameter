@@ -1,0 +1,10 @@
+checker: hcheckpsl
+command: ./bin/hcheckpsl runs/d18D10_psl_211_1361_orb5-3-3_s2.out
+start: 2026-11-02T00:09:54Z
+sha256 0067206181abf04aa82928c2f89f61494f24a40a60edcc8fe54700e83f0a47a7  ./bin/hcheckpsl
+sha256 e24c4bf877da0bdf559348c82a95f1e48b291c439b54f79bda7e37c0c5384d7e  runs/d18D10_psl_211_1361_orb5-3-3_s2.out
+# threads=2 bfsA=608.709s bfsB=566.273s total=1174.982s maxrss=3052MB
+VALID d=18 D=10 group=psl 211 x Z_1361 N=6392426460 vertices=12784852920
+ecc(e,A)=10 ecc(e,B)=10
+exit: 0
+end: 2026-11-02T00:29:29Z (1175 s)

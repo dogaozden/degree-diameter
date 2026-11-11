@@ -1,0 +1,8 @@
+c13 (6,10) Frobenius / odd Frobenius products, random S, haar_gen3s/haar_gen3t, THREADS=1, K=8 (one K=16 chain).
+Target: N >= 262081 (2N > 524160). No cost-0 state found, so no graph to check.
+Frobenius Z_p x| Z_k, N = pk in [262081, 268000] (list: frob_list.txt, enum.py):
+  Z6397 x| Z41 (N 262277): cost 3 in runs t2 (90 s), g41_s3 (haar_gen3t TFULL), g41 chains s5, s9, s12 (all cost 3); restart run cost 6.
+  Z5641 x| Z47 (N 265127): cost 6.   Z13121 x| Z20 (N 262420): cost 121 in 90 s.
+  Z9049 x| Z29 (N 262421): cost 7.   Z8053 x| Z33 (N 265749): cost 8.   Z6073 x| Z44 (N 267212): cost 30.
+Odd products (prod_list.txt): (Z13 x| Z3) x (Z233 x| Z29) (N 263523): cost 7 in 90 s.
+Best state: g41_best.sol (cost 3, header has "cost"). Summary: odd k near 41 looked best; even k worse.

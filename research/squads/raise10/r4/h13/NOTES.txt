@@ -1,0 +1,13 @@
+h13 (8,10): products Q x Frobenius, A4 x F, (Z7 x| Z3) x F, single Frobenius. Target N >= 4,021,921 (value 8,043,840).
+Tool: research/squads/raise10/tools/bin/haar_gen3s, THREADS=1, d=8 D=10, K=8, SAVEBEST per run. pick.py in this folder lists groups.
+Runs (best cost reached, holes; lower is better):
+ s1  meta 96517 42 91635 (N 4053714), 80 s          best 148
+ s2  prod psl 3 meta 42473 8 31373 (A4 x F, N 4077408), 80 s   best 2978
+ s3  prod meta 7 3 2 meta 64591 3 58106 ((Z7 x| Z3) x F, N 4069233), killed at 110 s (too slow, start cost 296052)
+ s4  prod meta 67 22 8 meta 919 3 866 (N 4063818), 60 s      best 54
+ s5  prod meta 193 6 85 meta 701 5 210 (N 4058790), 60 s + chain s5b   best 34
+ s6  prod meta 619 3 366 meta 199 11 125 (N 4064973), 60 s + chain s6b  best 40
+ s7  prod meta 211 5 107 meta 547 7 81 (N 4039595), 60 s + chain s7b    best 25 -> 20 (s7b.best)
+No state reached cost 0, so nothing beats 8,043,840. Best state: h13/s7b.best (group prod meta 211 5 107 meta 547 7 81, N 4039595).
+Next: longer chains from s7b.best (START=), and the same odd-k F x F pairs with other seeds.
+ s7c chain 60 s from s7b.best: no gain (best 20)

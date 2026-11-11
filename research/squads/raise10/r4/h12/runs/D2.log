@@ -1,0 +1,8 @@
+group prod psl 3 meta 3307 29 265 x Z_1, N=1150836, identity 287709, H order 58, rows 19842, threads 1, setup 1.55s
+START loaded from research/squads/raise10/r4/h12/runs/D.best (7 generators)
+start cost=14
+t=33 steps=10 evals=641 cost=14 best=14 T=0.48
+t=66 steps=20 evals=1281 cost=14 best=14 T=0.15
+moves accepted/proposed: plain 0/23 pair 0/0 local 0/0
+  move 0: mean candidate cost 52.5 min 16, candidates within +1 of final cost: 0
+RESULT d=7 D=10 group=prod psl 3 meta 3307 29 265 x Z_1 N=1150836 best=14 evals=1473 time=76.0

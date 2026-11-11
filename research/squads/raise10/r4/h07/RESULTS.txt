@@ -1,0 +1,7 @@
+h07 (6,10): hmeta d=6 D=10 K=32, 75 s per run, THREADS=1, one fresh run per group (seed 11-20), then chains.
+Group Z_p x| Z_k (r of order k mod p, enum.py), N in [262081, 266000], k in 31..63, not in the done list (10 groups):
+  4861x|54 (N 262494) cost 17 | 6917x|38 (262846) 32 | 7309x|36 (263124) 27 | 7753x|34 (263602) 43
+  7561x|35 (264635) 6 -> chains 5, 4, 4, 4 (best; state g5d.sol.best) | 6301x|42 (264642) 26
+  5521x|48 (265008) 25 | 6029x|44 (265276) 27 | 8053x|33 (265749) 6 -> chain 6 (g9c) | 4583x|58 (265814) 16
+Best cost 4 at 7561 x| 35 (N = 264635, 529,270 vertices): no cost 0, nothing to check. Not a record (need N >= 262081, cost 0).
+Logs: research/squads/raise10/r4/h07/g*.log, state files g*.sol.best. Next: longer chains (300+ s, several seeds) on 7561x|35 and 8053x|33.

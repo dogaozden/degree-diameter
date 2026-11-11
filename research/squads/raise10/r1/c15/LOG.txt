@@ -1,0 +1,12 @@
+c15 (8,10): haar_big0 ORBIT="3 2 2" FIXF=1 BOUNDCUR=1 TMAX=TMIN=0.15 K=64, chains of ~100 s, THREADS=1.
+Start 22:53 UTC, stop about 23:13 UTC.
+Links (cost = uncovered B-side elements, incumbent 8,043,840 needs cost 0):
+  psl 29 x Z331 (N 4031580, mu 34.19): 101 -> 33 (100 s), 102 -> 30, 103 -> 30 (no gain), 105 (TMAX 0.6) -> 30.
+  psl 31 x Z271 (N 4032480, mu 34.29): 201 -> 24, 202 -> 21, 203 -> 21, 204/205 (TMAX 0.4, START from s202) -> 21, 206 -> 21, 207 (TMAX 0.25) -> 21.
+  sl 17 x Z823 (N 4029408): 301 -> 648.
+  psl 23 x Z673 (N 4086456): 401 -> 774.
+  ORBIT "5 1 3" RANDORB=20 on psl 29 x Z331: random start costs min 305, median 1080 (too rigid, dropped).
+Observed: about 35 evaluations per second at N ~ 4e6 with FIXF=1 (card said ~150). Chains plateau at cost 21-30 after
+about 300 evaluations; START from a best-state file with TMAX above TMIN restarted at T=0.15 (schedule not re-heated).
+No cost-0 state found, so nothing to verify with build_haar2.py. Best state: c15/psl31_271_s202.sol.best (cost 21).
+RESULT d=8 D=10 group=psl 31 x Z_271 N=4032480 vertices=8064960 best=18 evals=12675 steps=198 time=90.2 orbit k=3 m=2 f=2 mu=34.29

@@ -1,0 +1,18 @@
+g10 (card: exhaustive 1-opt / 2-opt on product near misses, group (Z11 x|_3 Z5) x (Z19 x|_8 Z6), N = 6270, D = 10, d = 4)
+Tool: g10/prodopt.c (compiled to g10/prodopt). Naive BFS Haar cost (haar_gen3 definition for even D); eval reproduces the saved
+cost-4 state (start_cost4.sol = r2/e16/a1_pm6270.best) as cost 4. Init (multiplication table) ~7 s.
+Full group check: rows are permutations (sampled), inverses found, associativity on 200k random triples.
+
+Results:
+- Exhaustive 1-opt from start_cost4.sol (18,801 moves, all 3 slots): min cost 4, no move below the start (one1_best.sol).
+  Histogram: cost 4: 4 moves, 6: 1, 7: 3, 8: 1, 9: 9, 10: 10, 11: 6 (rest not listed, all >= 12 or absent).
+- 2-opt (3 keep-slot choices x C(6268,2) pairs = 5.9e7 moves): NOT exhaustive. Evaluation costs ~1.9 ms (machine load ~19 on
+  4 cores), so ~38k moves per 70-s command. Sampled 444,165 moves in 11 chunks (keep 1 x 2531, 4600, 6000; keep 2 x 4100, 5000; keep 3 x 2000, 4000, 5800; fresh states x 800, 3000): contiguous row ranges (first element x of the new pair)
+  2531-2540 (keep 1), 4100-4117 (keep 2), 5800-5887 (keep 3), 2000-2008 (keep 3), plus 3000-3012 (keep 2) and 800-807 (keep 1)
+  from the fresh states. Best seen: cost 4 (keep 2 at x 4100-4117 and keep 3 at x 4000-4014), never below 4.
+  Coverage is about 0.75 percent of the 2-opt neighborhood; no cost 0 found, so nothing to verify with build_haar2/apsp.
+- Fresh annealing (haar_gen3s, 75 / 70 / 70 s, seeds 101, 202, 303, K=1, THREADS=1): every run plateaus at cost 4
+  (fresh1.best, fresh202.best, fresh303.best; ~0.37 ms per eval, ~200k evals per run). Cost 4 looks like a floor for this group
+  under random S and under the 2-opt neighborhood we sampled.
+Conclusion: no beat of 12,416 in this group. The exhaustive 2-opt needs about 6e7 evals x ~0.4-2 ms, i.e. many hours on this
+machine; a faster evaluator (bitset BFS as in haar_gen3, or pruning) would be required before that is feasible.

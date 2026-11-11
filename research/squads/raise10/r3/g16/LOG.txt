@@ -1,0 +1,7 @@
+g16 (6,10), group (Z43 x|_36 Z3) x (Z157 x|_130 Z13), N=263289 (vertices 2N=526578 would beat 524160 at cost 0). Not valid: no cost-0 solution found.
+Runs (all THREADS=1, 80 s program time, 110 s timeout):
+- haar_gen3s seeds 101 (cost 7), 102 (cost 8), 104 (chain from cost-7 state: 7), 105 (cost 6), 108 (chain from cost-3: 3), 110 (cost 7)
+- haar_gen3t TFULL=1 TARGP=100: chain 102 -> 7; seed 105 from cost-6 -> 3 (f105t.best); 107 from f105t -> 3; 111 from f110 -> 6; 112 fresh -> 5; 113 from g112 -> 5; 115 fresh -> 7; 116 from f105t -> 3.
+Best state: cost 3, file g16/f105t.best (solution-file format). Stuck at cost 3 under both annealing and the finisher.
+Second product (Z127 x| Z3) x (Z53 x| Z13) not run (no r given in card; out of time).
+Check status: no valid record; no build_haar2 run (nothing at cost 0).

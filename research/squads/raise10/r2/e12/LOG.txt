@@ -1,0 +1,9 @@
+e12 (3,10) cyclic voltage lifts, 2026-11-01 23:20-23:39 UTC. THREADS=1, every run 80 s program time under timeout 110.
+Runs (lift = tools/bin/lift BASE n 10 80 seed PREFIX 2 0.1 1200; scan_h02 = same CLI with START=<prev>.best, 80 s):
+  heawood n=58 (N=812) lift seed21: 46 -> scan_h02 seed22: 8 -> seed23 chain: 8 -> seed91 T0=1 T1=0.2: 6 (hw58_scan3.best)
+  heawood n=59 (N=826) lift seed31: 34 -> scan seed32: 6 (hw59_scan.best) -> seed33 T0=1: 6 -> seed61 T0=0.5: 6
+  heawood n=59 fresh seed71 T0=3: 32 -> scan seed72: 12 -> seed81 T0=0.6: 12 (hw59_scan5.best)
+  gp8_3 (Moebius-Kantor, 16) n=52 (N=832) seed41: 80 -> scan seed42: 50
+  rnd8_0 (16 vertices, file name misleading) n=102 (N=1632) seed51: 3070 (too big, not pursued)
+Best: cost 6 at N=812 (hw58_scan3.best, Heawood base n=58) and N=826 (hw59_scan.best). No cost 0, so no checker run, no .edges.
+Plateau: scan_h02 chains stall at 6 on both heawood states. Fresh Moebius-Kantor/Heawood lifts (46-80 cost) did not beat it in one run.

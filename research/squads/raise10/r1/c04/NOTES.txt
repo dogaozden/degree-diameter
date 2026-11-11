@@ -1,0 +1,6 @@
+c04 (13,10) FIXF orbit search, ORBIT="3 4 1", haar_big0, THREADS=1. No cost-0 graph found; no valid find.
+Group orders checked: SL(2,97) x Z373 (2N = 680,781,696) and SL(2,167) x Z73 (2N = 679,965,216) cannot beat 683,943,456.
+Best state: SL(2,163) x Z79 (2N = 684,232,272), cost 9 (seed 11 link, then chained links, no further gain).
+SL(2,103) x Z313 (2N = 683,982,624): cost 18 -> 15 -> 12 over chained links, then stuck at 12.
+PSL(2,73) x Z1759 (2N = 684,152,496): cost 24 after one link.
+Logs: research/squads/raise10/r1/c04/*.log, best states *.sol.best in the same folder.

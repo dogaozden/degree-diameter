@@ -1,0 +1,22 @@
+h14 log (card: exhaustive 1-opt of cost-1 states, fast evaluator). Start 00:09:30 UTC 2026-11-02.
+Tool: hmeta1.c = copy of research/squads/raise10/tools/hmeta.c with OPT1 chunking (env OPT1SLOT, OPT1FROM, OPT1TO),
+min and histogram of neighbour costs (build: gcc -O3 -march=native -fopenmp -o hmeta1 hmeta1.c -lm). Cost = hmeta rule
+(D even: #B not reached from (e,A)); unrestricted (no Sidon). Start states copied from r3/g03, r2/e08 (st*.sol).
+
+1) (5,10) Z1453 x|_11 Z33, N=47949, start st1453.sol (cost 1, from r3/g03/s1453_201.sol.best).
+   EXHAUSTIVE: slots 1..4, x = 1..N-1 (191,792 evaluations, all chunks), command pattern
+   THREADS=1 OPT1=1 START=st1453.sol OPT1SLOT=s OPT1FROM=a OPT1TO=b ./hmeta1 5 10 1 1 1 x.out 1453 33 11
+   Chunks: s1 1-3000, 3001-40000, 40001-50000; s2 1-30000, 30001-50000; s3 1-30000, 30001-50000; s4 1-30000, 30001-50000.
+   Result: NO neighbour of cost 0. Cost-1 neighbours: only the state itself (one per slot). Minimum over the other
+   neighbours: cost 2 (slot 1, x=7208). So the cost-1 state is a strict unrestricted 1-opt local minimum (min 2).
+   Per-chunk histograms (cost 0..7) are the OPT1CHUNK lines printed by each run; the Z1453 cost-1 self entries are one per slot.
+
+2) (6,10) Z6397 x|_5330 Z41, N=262277, start st6397.sol (cost 1, from r2/e08/s102.sol.best).
+   PARTIAL (time box): 203,000 of 1,049,108 neighbours (19.3%): slot1 x 1-48000, slot2 1-55000, slot3 1-48000,
+   slot4 1-52000 (sampling is a prefix in x; the last chunks of the run are in this order). Result: no cost-0 neighbour. Cost-1: only the state itself. Min over the
+   other sampled neighbours: cost 3 (one neighbour: slot 4, x=47900); cost 4 in 10+ neighbours; no cost 0, cost 2 found. Full 1-opt not finished (~0.85M evaluations left at 3-4 ms, about an hour).
+
+3) Not done: A4 x (Z239 x| Z17) finish of prodopt5 (165k evaluations left at 40-65 ms each, too slow for the time box);
+   Z2857 x|_64 Z17 cost-2 state (r3/g05) not run.
+
+Scoreboard line appended 00:28 (before the last 60,000 evals); idea line updated to the final numbers.

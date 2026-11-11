@@ -1,0 +1,15 @@
+c10 (4,10), target beat 12,416 (N >= 6209). No valid find.
+Runs (haar_gen3 / haar_gen3s, THREADS=1, random S, d=4, D=10; best cost = uncovered count):
+- sl 5 x Z52 (N 6240): 44 (90 s)
+- psl 7 x Z37 (N 6216): 11 (50 s), 11 (100 s chain, pm best file psl7z37_best.sol)
+- agl1 11 x Z57 (N 6270): 2264; pgl 7 x Z19 (N 6384): 15; sl 7 x Z19 (N 6384): 16
+- prod sl 5 meta 13 4 5 (N 6240): 7
+- prod meta 7 6 3 x meta 37 4 6 (N 6216): 22
+- prod meta 11 5 3 x meta 19 6 8 (N 6270): 4 (45 s; chain 95 s + 95 s resume, stuck at 4)
+- prod meta 19 3 7 x meta 11 10 2 (N 6270): 4 (45 s)
+- prod meta 17 4 4 x meta 31 3 5 (N 6324): 6
+- prod meta 11 5 3 x meta 29 4 12 (N 6380): 8
+- prod meta 19 2 18 x meta 41 4 9 (N 6232): 1004; prod meta 23 2 22 x meta 17 8 2 (N 6256): 613
+- agl1 q with q=109 was a typo (N 671004), ignored.
+Best state files: research/squads/raise10/r1/c10/pm6270_best2.sol (cost 4). Not checked (no cost-0 solution).
+- prod meta 11 5 3 x meta 19 6 8, seed 21 K=12, 95 s: see last RESULT line above (appended after scoreboard write)

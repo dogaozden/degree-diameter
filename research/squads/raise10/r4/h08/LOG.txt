@@ -1,0 +1,20 @@
+h08 (4,10): odd-order products Q x F with Q in {Z7x|Z3, Z13x|Z3, Z19x|Z3, Z11x|Z5}, F Frobenius or metacyclic, N in [6209,6500].
+All runs: haar_gen3s (or haar_gen3t TFULL=1 TARGP=100 for finisher), d=4 D=10, THREADS=1, K=8 unless noted.
+Best cost reached: 3, group Z7 x|2 Z3 x (Z43 x|4 Z7), N=6321 (state h08/A5f.best, also A5c/A5d/A5e .best). No cost 0; nothing to check.
+Runs (cost at end):
+- Z19x|Z3 x (Z37x|Z3), N=6327, 40 s: 74
+- Z11x|Z5 x (Z29x|Z4), N=6380, 40 s: 8
+- Z13x|Z3 x (Z41x|Z4), N=6396, 40 s: 7; chain 45 s from A3.best: 7
+- Z19x|Z3 x (Z11x|Z10), N=6270, 40 s: 7
+- Z11x|Z5 x (Z19x|Z6), N=6270, 40 s: 4 (E1.best); chain 60 s: 4
+- Z7x|Z3 x (Z43x|Z7), N=6321, fresh 40 s seed 5: 4 (A5.best); haar_gen3t TFULL 60 s: 4
+  chain seed 19 K=32 60 s: 3 (A5c.best); chain seed 20 K=32 60 s: 3; haar_gen3t TFULL 70 s: 3; chain seed 23 K=32 70 s: 3
+- Z7x|Z3 x (Z37x|Z8 with r=6), N=6216, 35 s: 5 (B1.best); chain 45 s: 5
+- Z7x|Z3 x (Z19x|Z16 with r=18), N=6384, 35 s: 63
+- Z7x|Z3 x (Z9x|Z33 with r=4), N=6237, 35 s: 706
+- Z7x|Z3 x (Z25x|Z12 with r=7), N=6300, 35 s: 10
+- Z7x|Z3 x (Z6x|Z50 with r=5), N=6300, 35 s: 505
+- Z7x|Z3 x (Z3x|Z100 with r=2), N=6300, 45 s: 556
+- Z7x|Z3 x (Z61x|Z5), N=6405, 35 s: 5
+Ranking: the Z7x|Z3 x (Z43x|Z7) family stays the best; the cost plateau at 3 is flat under chains and the targeted finisher.
+- final chain from A5f.best, K=48, 75 s, seed 26: 3 (A5g.best). Plateau at 3 throughout. Stopped 00:28 UTC (card started 00:09).

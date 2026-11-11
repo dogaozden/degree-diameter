@@ -1,0 +1,12 @@
+e03 (4,10) non-Frobenius metacyclic, N in [6209,6450]. Candidates: enum.py -> cands.txt (2837 classes, prime-m shape first).
+Screens (hmeta 4 10 T seed 8 outfile m k r; cost = unreached, lower is better; need 0):
+  139 46 6  (N 6394) 60s: 5 ; chain 80s: 5
+  211 30 19 (N 6330) 60s: 6
+  401 16 45 (N 6416) 60s: 116
+  311 20 95 (N 6220) 60s: 21
+  113 56 2  (N 6328) 60s: 2 ; chain 80s: 2 ; fresh seed 3 80s: 4 ; fresh seed 7 80s: 3 ; chain 80s: 3
+  797 8 215 (N 6376) 80s: 3284
+  113 56 4  (N 6328) 80s: 7
+  197 32 14 (N 6304) 80s: 443
+  631 10 228 (N 6310) 80s: 33
+No cost-0 state found; nothing to check with build_haar2.py/apsp. Best files: s*.sol.best in this folder.

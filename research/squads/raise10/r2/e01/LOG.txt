@@ -1,0 +1,15 @@
+e01 log (Haar card, Z251 x|_25 Z25 at D = 10, then redirect to (5,10)). Started 23:19 UTC, 2026-11-01.
+
+(4,10), group meta 251 25 25 (N = 6275), hmeta, THREADS=1:
+- OPT1 (exhaustive 1-opt) from r1/c09/g6275_s61b.best (cost 2): exhausted, no cost 0, so it is a 1-opt local minimum.
+- Fresh lineages, 80 s each (command: timeout -s KILL 110 nice -n 10 research/squads/raise10/tools/bin/hmeta 4 10 80 <seed> 8 <out> 251 25 25):
+  seed 101: best 4; seed 102: best 4; seed 103 (T0=8 REHEAT=400): best 2; seed 104 (T0=8 REHEAT=400): best 2; seed 106: best 2.
+- Chain from f104.sol.best (START, T0=8 REHEAT=400, seed 105): best 2.
+- Throughput: about 4500 evals/s (about 220 microseconds each). Full 2-opt is therefore about 3.9e7 evals per slot pair,
+  roughly 2.4 h per pair on this box, so the 2-opt was not run. Not a valid cost-0 graph.
+- Director's exh4 result (min cost 2 over all S) makes this line closed.
+
+Redirect to (5,10), Frobenius Z_p x| Z_k, k odd in 35..63, N = pk in [47737, 48600]:
+- Enumerated all p prime with k | p-1 for those k. Only one group falls in the window: Z881 x| Z55 (N = 48455, r = 2 has order 55).
+- That group is already run by card e05 (research/squads/raise10/r2/e05/g881_s103.log, best cost 5, 60 s). Per the director's
+  instruction, I did not duplicate it. No (5,10) search was run by e01.

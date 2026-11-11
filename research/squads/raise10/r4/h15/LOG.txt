@@ -1,0 +1,18 @@
+h15 (cell 3,10 wildcard; approach: abelian counting bound + exhaustive cubic Haar scans)
+
+1. Counting bound for ABELIAN Haar graphs H(G,S), |S| = Delta, diameter D = 10. Even-side vertices reachable within 10
+   steps from (0,0) are sums of t plus-terms and t minus-terms (t <= 5), so |G| <= sum_{t=0}^{5} C(Delta+t-1,t)^2.
+   Values: Delta 3: 812; 4: 4878; 5: 22252; 6: 82994; 7: 265434; 8: 751925.
+   Current records need |G| = 405 (Delta 3), 6208, 47736, 262080, 1149120, 4021920. So abelian Haar graphs cannot beat
+   (Delta,10) for Delta >= 4 at all. For Delta 3 the bound (812) is not the binding constraint: see 2.
+2. Exhaustive cyclic cubic Haar, H(Z_N,{0,a,b}), N = 2..812 (abl3.c; a restricted to divisors of N by unit scaling).
+   Largest N with diameter <= 10 is N = 70 (2N = 140). minholes at N = 300 is 434 and grows linearly: a cyclic S with
+   |S|=3 reaches only ~166 vertices within distance 10 for large N (the difference lattice has rank 2, so balls grow
+   polynomially). Logs: run_cyc_41_300.txt, run_cyc_300_812.txt (N 2..40 printed by a test run only).
+3. Metacyclic cubic Haar, H(Z_m x|_r Z_k,{e,a,b}), exhaustive over all pairs (feasibility mode, holes must be 0),
+   N = 406..430 (meta3.c, resumable by group index). Coverage is tiny: the machine was heavily shared, one group
+   (N = 406) takes 20-50 s. Groups checked: indices 0..17 (N = 406, Z_m x| Z_k with k = 2,7,14; index 2 = Z203 x|_146 Z2
+   had the best unthresholded holes = 225, run_meta_406_412.txt). No solution found. Logs: run_meta_*.txt.
+   Checks: holes counted from BFS at (e,0) and (e,1), so a zero result is a full diameter check of H(G,S) for
+   this family (not yet verified by build_haar2.py; no solved case exists in this run).
+Conclusion: no beat of (3,10). The abelian route is closed for Delta >= 4; for Delta 3 abelian graphs stop near 2N = 140.

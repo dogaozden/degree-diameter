@@ -1,0 +1,14 @@
+c09 (4,10), Frobenius metacyclic Z_p x|_r Z_k, random S, haar_gen3s chains + haar_gen3t TFULL finisher. 22:53-23:16 UTC.
+Target N >= 6209 (2N > 12416). Enumerated 60 (p,k) groups with N in [6209,6600] (enum.py); k=2 and k=3 skipped as dihedral/collapsing.
+Runs (4 10, 8 generators incl. e, 80-90 s each, final best cost):
+- Z251 x| Z25 (N 6275) seeds 1, 21, 61: cost 2 each; chains from best (seed 2, 62), TFULL finisher (seed 3, 51): stuck at 2
+- Z421 x| Z15 (6315): cost 7
+- Z277 x| Z23 (6371): cost 4
+- Z911 x| Z7 (6377): cost 11
+- Z199 x| Z33 (6567): cost 5
+- Z113 x| Z56 (6328): cost 7
+- Z211 x| Z30 (6330): cost 12
+- Z1553 x| Z4 (6212): cost 4078 (r = 1214 has order 4, degenerate)
+- Z1291 x| Z5 (6455): cost 81
+Result: no valid graph beats 12,416. Best closest: Z251 x| Z25, N 6275, cost 2 (state c09/g6275_s61b.best).
+Command example: THREADS=1 SAVEBEST=research/squads/raise10/r1/c09/g6275_s61.best timeout 110 nice -n 10 research/squads/raise10/tools/bin/haar_gen3s 4 10 85 61 8 research/squads/raise10/r1/c09/g6275_s61.sol meta 251 25 25 1

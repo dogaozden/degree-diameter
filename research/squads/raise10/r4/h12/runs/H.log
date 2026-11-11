@@ -1,0 +1,5 @@
+group prod psl 3 meta 1783 54 630 x Z_1, N=1155384, identity 288846, H order 54, rows 21396, threads 1, setup 1.50s
+start cost=425
+t=32 steps=10 evals=641 cost=28 best=28 T=0.49
+t=65 steps=21 evals=1345 cost=21 best=21 T=0.16
+RESULT d=7 D=10 group=prod psl 3 meta 1783 54 630 x Z_1 N=1155384 best=21 evals=1601 time=78.3

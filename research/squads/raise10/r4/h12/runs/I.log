@@ -1,0 +1,5 @@
+group prod psl 3 meta 9631 10 3403 x Z_1, N=1155720, identity 288930, H order 30, rows 38524, threads 1, setup 2.39s
+start cost=11868
+t=30 steps=5 evals=321 cost=460 best=460 T=0.53
+t=60 steps=10 evals=641 cost=333 best=333 T=0.18
+RESULT d=7 D=10 group=prod psl 3 meta 9631 10 3403 x Z_1 N=1155720 best=330 evals=833 time=78.3

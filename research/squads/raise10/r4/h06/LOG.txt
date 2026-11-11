@@ -1,0 +1,12 @@
+h06 (6,10), target beat 524,160 (N >= 262,081). Runs (THREADS=1, 80 s program time each, timeout 110 s, haar_gen3s K=4 unless noted)
+- fresh F(127,3) x F(53,13) (N 262,509), seed 201: cost 6 (a201.best). Farm haar_gen3t TFULL=1 TARGP=100 seed 301: stays 6 (a301t.best).
+- fresh F(37,3) x F(113,7) x Z3 (N 263,403), seed 202: cost 10 (b202.best). Not farmed.
+- fresh F(19,3) x F(419,11) (N 262,713), seed 203: cost 7 (c203.best). Farm haar_gen3t seed 304: cost 5 (c304t.best).
+  Chains: haar_gen3t seed 305 from cost 5: 5; haar_gen3s seed 306 from cost 5: 5; haar_gen3s REHEAT=20 COOL=10 seed 307: 5;
+  haar_gen3t seed 308 from c307: 5 (c308t.best, final).
+- fresh F(19,3) x F(659,7) (N 262,941), seed 401: cost 7 (d401.best). Farm haar_gen3t seed 402: 7.
+- fresh F(13,3) x F(967,7) (N 263,991), seed 501: cost 17.
+- fresh F(19,3) x F(71,5) x Z13 (N 263,055), seed 601: cost 21.
+Best state: cost 5, F(19,3) x F(419,11), file c304t.best (solution format). No cost-0 state, so no build_haar2 check. Not valid, score 0.
+Enumeration of odd coprime Frobenius pairs and (Z7 x| Z3) x F products in the window: h06enum.py.
+Extra runs after scoreboard line: F(127,3)xF(53,13) reheat chain seed 309 -> cost 6 (a309.best); F(19,3)xF(419,11) haar_gen3t seed 310 from c308t -> cost 5 (c310t.best). Final best stays cost 5.

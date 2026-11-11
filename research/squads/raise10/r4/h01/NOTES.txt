@@ -1,0 +1,6 @@
+h01 (cell 5,10), group Z1453 x|_11 Z33 (N 47949, 2N 95898 > 95472 target).
+Runs (all SIDON=1 THREADS=1 hmeta_sidon 5 10 70 seed 8 ... 1453 33 11; logs in runs/):
+fresh lineages seeds 401-410 (401 T0=2 default; 404,407 T0=8 REHEAT=400): best costs 3,3,4,5,4,4,5,3,4,4.
+chains from cost-3/4 states (c402a, c408, c401, c405, c405b) stayed at 3 except c405 4->3.
+chains from r3 cost-1 state (runs/r3_cost1.sol; T0=8 or T0=3, REHEAT 200/400; c1a, c1b, c1c): stayed at cost 1.
+No cost-0 state, so no checker run. Best new state: cost 3 (runs/c405.sol.best). Cost-1 only from r3.

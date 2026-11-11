@@ -1,0 +1,6 @@
+group psl 281 x Z_31, N=343910280 (2N=687820560), rows 39480 x 8711 bits (doubled row 296 words), memory 0.27 GB, threads 1
+alpha: conj by mat(0,280,1,37), z -> 2 z on Z_31 (fixed z: 1); ORBIT k=5 m=2 f=3; W=5.62885e+09 lambda=16.367 mu=26.81
+setup 0.0s
+fixed generators: 2 chosen among 139 alpha-fixed elements
+FIXF: 139 alpha-fixed elements other than e (21.2s); FIXTRY 200 FIXMAX 0
+start cost=193 (11.1s per eval)

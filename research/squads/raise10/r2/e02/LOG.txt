@@ -1,0 +1,17 @@
+e02 log, round 2 (raise10). Start 23:19:19 UTC.
+Phase 1, cell (4,10) (target N >= 6209). hmeta 4 10, 75 s, seed 1, K 8, one fresh run per group (not the 5 per group of the card, time box):
+  Z449 x| Z14 (N 6286, r 5):  best cost 42
+  Z463 x| Z14 (N 6482, r 51): best cost 46
+  Z631 x| Z10 (N 6310, r 119): best cost 97
+  Z641 x| Z10 (N 6410, r 79):  best cost 116
+  Z401 x| Z16 (N 6416, r 30): best cost 41
+  Z139 x| Z46 (N 6394, r 8):  best cost 9   (closest in this phase)
+  Z541 x| Z12 (N 6492, r 216): best cost 81
+Director redirect (message during run): (4,10) is covered by exhaustive search; moved to (6,10).
+Phase 2, cell (6,10) (target N >= 262081). Enumeration: Frobenius Z_p x| Z_k, k odd in 45..63, N = pk in [262081, 264500],
+  only one group exists: Z5851 x| Z45 (N 263295, r 111, order 45 mod 5851). (e09 folder has g25/g27/g29 logs, no overlap.)
+  hmeta 6 10: fresh seed 1, 60 s: cost 5. fresh seed 2, 60 s: cost 5.
+  chain seed 3 from s1 best, T0 8 REHEAT 400, 60 s: cost 5 (no .best written, no improvement).
+  chain seed 4 from s2 best, same settings, 60 s: cost 5.
+  haar_gen3t TFULL=1 TARGP=100 from s1 best, 75 s: best 5, no move reached cost < 5.
+Result: no cost 0 found for any group at (4,10) or (6,10). No graph beats a current value. No checker run (no cost-0 solution).

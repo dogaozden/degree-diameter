@@ -1,0 +1,5 @@
+group prod psl 3 meta 2237 43 1984 x Z_1, N=1154292, identity 288573, H order 43, rows 26844, threads 1, setup 1.46s
+start cost=75
+t=32 steps=7 evals=449 cost=16 best=16 T=0.49
+t=64 steps=14 evals=897 cost=13 best=13 T=0.17
+RESULT d=7 D=10 group=prod psl 3 meta 2237 43 1984 x Z_1 N=1154292 best=13 evals=1089 time=76.3

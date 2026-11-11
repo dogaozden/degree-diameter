@@ -1,0 +1,7 @@
+h10 (3,10) non-abelian lifts, base cost (holes), 75 s each, THREADS=1, seeds 1-12
+bases: 16 classes of connected cubic bipartite 5+5 multigraphs (bases/c0..c15.txt; sampled, 3000 configuration draws, dedupe by row/col perms)
+group m7_12_2 = Z7 x| Z12 (r=2, order 84 = Z4 x F21), TABU=1:
+  c5 cost 10 (out/m7_12_2_c5.best; chained twice, stuck at 10); c2 28; c12 34; c7 24
+group m21_4_13 = Z3 x Dic7 (order 84): c0 44 (no tabu), c9 30, c4 54
+group m22_4_21 = Z2 x (Z11 x| Z4) (order 88): c3 142 (no tabu), c1 96
+no state reached cost 0; no graph to check.

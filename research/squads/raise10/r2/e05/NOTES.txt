@@ -1,0 +1,7 @@
+e05 (5,10), odd-k Frobenius groups Z_p x| Z_k with N = pk in [47737, 48600], excluding Z1453 x| Z33 (e04).
+Candidates: Z1783x|Z27 (r=255), Z3719x|Z13 (r=200), Z881x|Z55 (r=2), Z2311x|Z21 (r=227), Z2857x|Z17 (r=64).
+Fresh hmeta 5 10 60 s, one run each: 1783/27 best 3; 3719/13 best 5; 881/55 best 5; 2311/21 best 6; 2857/17 best 4.
+Chains (START, T0=8, REHEAT=400, 60 s each): 1783/27 stays 3 over 2 chains plus a fresh run with r=298 (chain also 3).
+2857/17: chains take it 4 -> 3 (g2857_c2.sol.best), then 5 further chains stay 3 (c3..c7).
+No cost-0 state, so no build_haar2/apsp check was needed. All runs: THREADS=1, time 60 s, outputs in this folder.
+Extra after scoreboard line (23:38-23:42): g2857_c8, c9 and g1783_c3 chains all stayed at cost 3.

@@ -1,0 +1,8 @@
+group meta 5851 45 111 x Z_1, N=263295, identity 0, H order 45, rows 5851, threads 1, setup 0.13s
+START loaded from research/squads/raise10/r2/e02/g263295_s1.sol.best (6 generators)
+start cost=5
+t=30 steps=1194 evals=9553 cost=5 best=5 T=0.53
+t=60 steps=2347 evals=18777 cost=5 best=5 T=0.19
+moves accepted/proposed: plain 1/2931 pair 0/0 local 0/0
+  move 0: mean candidate cost 35.1 min 5, candidates within +1 of final cost: 3
+RESULT d=6 D=10 group=meta 5851 45 111 x Z_1 N=263295 best=5 evals=23449 time=75.1

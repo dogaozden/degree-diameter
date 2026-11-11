@@ -1,0 +1,8 @@
+e08 (6,10): Z6397 x| Z41 (N 262277, r=5330, order 41 checked) and Z5641 x| Z47 (N 265127, r=59). THREADS=1, 80 s each.
+Fresh hmeta lineages (default T0=2): seed 101 cost 4, seed 102 cost 1, seed 103 cost 2, seed 104 cost 5, seed 105 (T0=3) cost 4, seed 106 cost 3.
+Chains (START from best, T0=8 REHEAT=400): from s102 cost 1 (seed 201) cost 1; from s103 cost 2 (seed 501) cost 2; seed 602 from s102 cost 1.
+Cool chain T0=1 from s102 (seed 601): cost 1.
+Finisher haar_gen3t TFULL=1 TARGP=100 from s102 (seeds 401, 402): cost 1 both.
+hmeta OPT1 (exhaustive 1-opt) from s102: killed at 110 s, too slow for the full 5 x 262276 scan (no result).
+Z5641 x| Z47 fresh (seed 701): cost 4.
+Best state: s102.sol.best (cost 1, Z6397 x| Z41, N 262277). No cost-0 state, so no graph to check; 524,160 not beaten.

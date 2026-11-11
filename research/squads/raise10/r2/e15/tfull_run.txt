@@ -1,0 +1,7 @@
+group psl 7 x Z_37, N=6216, identity 777, H order 37, rows 168, threads 1, setup 0.00s
+start cost=108
+t=30 steps=465804 evals=465805 cost=14 best=14 T=0.53
+t=60 steps=914752 evals=914753 cost=14 best=14 T=0.19
+moves accepted/proposed: plain 130/1143157 pair 0/0 local 0/0
+  move 0: mean candidate cost 743.2 min 14, candidates within +1 of final cost: 117
+RESULT d=4 D=10 group=psl 7 x Z_37 N=6216 best=14 evals=1143158 time=75.0

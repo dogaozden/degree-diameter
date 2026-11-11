@@ -1,0 +1,8 @@
+group prod sl 3 meta 157 13 14 x Z_1, N=48984, identity 12246, H order 52, rows 942, threads 1, setup 0.07s
+START loaded from research/squads/raise10/r3/g02/d_sl157.best (5 generators)
+start cost=6
+t=30 steps=14027 evals=28055 cost=6 best=6 T=0.53
+t=60 steps=27140 evals=54281 cost=6 best=6 T=0.19
+moves accepted/proposed: plain 9/35079 pair 0/0 local 0/0
+  move 0: mean candidate cost 136.2 min 6, candidates within +1 of final cost: 13
+RESULT d=5 D=10 group=prod sl 3 meta 157 13 14 x Z_1 N=48984 best=6 evals=70159 time=80.0

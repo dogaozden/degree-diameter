@@ -1,0 +1,23 @@
+e15 log (Haar graphs, D = 10, Delta = 4,5,6 wildcard). Start 23:20:02 UTC, end ~23:32 UTC.
+
+1. Random-S baselines (haar_gen3, 70 s, THREADS=1):
+   haar_gen3 4 10 70 1 1 psl7_z37_s1.sol psl 7 37   -> N=6216 (would beat 12416), best cost 9 (plateau from t=30 s)
+   haar_gen3 4 10 70 3 1 sl5_z52_s3.sol sl 5 52     -> N=6240, best cost 50
+   Both files are not cost-0; no checker needed.
+
+2. New approach: orbit-symmetric Haar graphs on Frobenius groups G = Z_p x|_r Z_k (src/symhaar.c).
+   S = {e} + t orbits + f fixed points of phi(a,b) = (u a, b), u of order m in Z_p^* (phi is an automorphism of G).
+   Cost = #(vertex, source) pairs at distance > D from (e,A) and (e,B), summed.
+   Scan file symhaar_d4_scan.txt (m = 2, 3; 2500 samples each; the m=2 rows have f = 1 fixed point, orbit size 2).
+   Order-3 exhaustive families (symhaar_d4_m3.txt, all orbit reps, 2000-2250 members each), best costs:
+     p=2083 k=3 N=6249 m=3: 24122;  p=2131 k=3 N=6393: 24698;  p=2203 k=3 N=6609: 25562;  p=2251 k=3 N=6753: 26138;
+     p=139 k=46 N=6394: 19860.
+   Finding: the orbit-invariant S gives a degenerate reach. For b = 0 the set S lies in Z_p; for the orbit (x,b),(ux,b),(u^2 x,b)
+   with b != 0, the words of length <= 10 are sums c0 x + c1 u x + c2 u^2 x (a commutative 3-generator count, about C(13,3)
+   = 286 values per coset) so the reach stays a few hundred elements per side (checked: 437 reached on the b = 0 case;
+   the A-side component is the whole group for b != 0 but its distances exceed 10 by thousands of vertices).
+   So automorphism symmetry of order 3 or 2 (and any m) kills diameter for these degree-4 Frobenius Haar graphs; dead end.
+
+3. Verdict: no find for (4,10), (5,10) or (6,10) from this card. Closest attempt: random S on PSL(2,7) x Z37 (N = 6216), cost 9.
+
+4. Extra: haar_gen3t TFULL=1 TARGP=100, PSL(2,7) x Z37, 75 s, seed 2: best cost 14 (tfull_run.txt). No cost-0 graph; no file to check.
