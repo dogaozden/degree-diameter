@@ -1,0 +1,7 @@
+group meta 601 25 4 x Z_1, N=15025, identity 0, H order 25, rows 601, threads 1, setup 0.00s
+start cost=120
+t=30 steps=50859 evals=406873 cost=10 best=8 T=0.53
+t=60 steps=105082 evals=840657 cost=10 best=8 T=0.19
+t=90 steps=161286 evals=1290289 cost=10 best=8 T=0.15
+t=120 steps=211421 evals=1691369 cost=10 best=8 T=0.15
+RESULT d=5 D=9 group=meta 601 25 4 x Z_1 N=15025 best=8 evals=2077161 time=150.0

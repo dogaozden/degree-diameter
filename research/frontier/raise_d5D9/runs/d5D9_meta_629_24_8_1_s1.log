@@ -1,0 +1,12 @@
+group meta 629 24 8 x Z_1, N=15096, identity 0, H order 51, rows 296, threads 1, setup 0.00s
+start cost=126
+t=30 steps=108031 evals=864249 cost=6 best=6 T=0.53
+t=60 steps=217462 evals=1739697 cost=9 best=6 T=0.19
+t=90 steps=327561 evals=2620489 cost=9 best=6 T=0.15
+t=120 steps=453167 evals=3625337 cost=9 best=6 T=0.15
+t=150 steps=572198 evals=4577585 cost=9 best=6 T=0.15
+t=180 steps=694244 evals=5553953 cost=6 best=6 T=0.70
+t=210 steps=798397 evals=6387177 cost=6 best=6 T=0.25
+t=240 steps=913803 evals=7310425 cost=6 best=6 T=0.15
+t=270 steps=1021481 evals=8171849 cost=6 best=6 T=0.15
+RESULT d=5 D=9 group=meta 629 24 8 x Z_1 N=15096 best=6 evals=9062345 time=300.0

@@ -1,0 +1,10 @@
+group meta 964 15 265 x Z_1, N=14460, identity 0, H order 60, rows 241, threads 1, setup 0.00s
+start cost=2170
+t=30 steps=120709 evals=965673 cost=4 best=4 T=0.53
+t=60 steps=241331 evals=1930649 cost=4 best=4 T=0.19
+t=90 steps=361262 evals=2890097 cost=4 best=4 T=0.15
+t=120 steps=484449 evals=3875593 cost=4 best=4 T=0.15
+t=150 steps=628306 evals=5026449 cost=4 best=4 T=0.15
+RESULT d=5 D=9 group=meta 964 15 265 x Z_1 N=14460 best=0 evals=5420617 time=161.2
+full diameter check: OK
+wrote sols/d5D9_meta_964_15_265_1_s4.txt
