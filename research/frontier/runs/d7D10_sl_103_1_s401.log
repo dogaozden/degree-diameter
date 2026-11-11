@@ -1,0 +1,22 @@
+group sl 103 x Z_1, N=1092624, identity 10506, H order 52, rows 21012, threads 1, setup 0.04s
+start cost=145
+t=30 steps=1479 evals=11833 cost=3 best=3 T=0.53
+t=60 steps=2872 evals=22977 cost=3 best=3 T=0.19
+t=90 steps=4271 evals=34169 cost=3 best=3 T=0.15
+t=120 steps=5679 evals=45433 cost=3 best=3 T=0.15
+t=150 steps=7079 evals=56633 cost=3 best=3 T=0.15
+t=180 steps=8580 evals=68641 cost=7 best=3 T=1.18
+t=210 steps=10101 evals=80809 cost=7 best=3 T=0.42
+t=240 steps=11594 evals=92753 cost=2 best=2 T=0.15
+t=270 steps=13158 evals=105265 cost=2 best=2 T=0.15
+t=300 steps=14651 evals=117209 cost=2 best=2 T=0.15
+t=330 steps=16162 evals=129297 cost=2 best=2 T=0.15
+t=360 steps=17648 evals=141185 cost=2 best=2 T=0.15
+t=390 steps=19118 evals=152945 cost=2 best=2 T=1.24
+t=420 steps=20696 evals=165569 cost=4 best=2 T=0.44
+t=450 steps=22271 evals=178169 cost=2 best=2 T=0.16
+t=480 steps=23780 evals=190241 cost=2 best=2 T=0.15
+t=510 steps=25237 evals=201897 cost=2 best=2 T=0.15
+t=540 steps=26806 evals=214449 cost=5 best=2 T=1.24
+t=570 steps=28422 evals=227377 cost=6 best=2 T=0.44
+RESULT d=7 D=10 group=sl 103 x Z_1 N=1092624 best=2 evals=240297 time=600.0
