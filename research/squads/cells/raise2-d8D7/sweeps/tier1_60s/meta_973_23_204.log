@@ -1,0 +1,7 @@
+group meta 973 23 204 x Z_1, N=22379, identity 0, H order 23, rows 973, threads 1, setup 0.00s
+wide rows: HW order 161, rows 139, setup 0.00s
+alpha: meta scaling a -> 235 a, z -> 0 z on Z_1
+ORBIT k=3 m=2 f=2: |Fix(alpha)| = 22 (+e); mu = 48.55, mu/k = 16.18, fixed-point misses ~ 5.95
+start cost=25800
+t=30 steps=163988 evals=1311905 cost=34 best=34 T=0.53
+RESULT d=8 D=7 group=meta 973 23 204 x Z_1 N=22379 best=34 evals=2598953 time=60.0 orbit k=3 m=2 f=2 fix=22

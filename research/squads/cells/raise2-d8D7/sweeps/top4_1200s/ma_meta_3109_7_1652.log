@@ -1,0 +1,45 @@
+group meta 3109 7 1652 x Z_1, N=21763, identity 0, H order 7, rows 3109, threads 1, setup 0.01s
+wide rows: no cyclic subgroup of order >= 64 found (best 7); using haar_gen3's evaluation
+alpha: meta scaling a -> 1085 a, z -> 0 z on Z_1
+ORBIT k=3 m=2 f=2: |Fix(alpha)| = 6 (+e); mu = 39.69, mu/k = 13.23, fixed-point misses ~ 1.71
+start cost=1326
+t=30 steps=10742 evals=85937 cost=12 best=12 T=0.53
+t=60 steps=21653 evals=173225 cost=12 best=12 T=0.19
+t=90 steps=32562 evals=260497 cost=12 best=12 T=0.15
+t=120 steps=43190 evals=345521 cost=12 best=12 T=0.15
+t=150 steps=53778 evals=430225 cost=12 best=12 T=0.15
+t=180 steps=64607 evals=516857 cost=12 best=12 T=0.66
+t=210 steps=75541 evals=604329 cost=12 best=12 T=0.23
+t=240 steps=86453 evals=691625 cost=12 best=12 T=0.15
+t=270 steps=97513 evals=780105 cost=12 best=12 T=0.15
+t=300 steps=108397 evals=867177 cost=12 best=12 T=0.15
+t=330 steps=119145 evals=953161 cost=12 best=12 T=0.66
+t=360 steps=130139 evals=1041113 cost=12 best=12 T=0.23
+t=390 steps=141167 evals=1129337 cost=12 best=12 T=0.15
+t=420 steps=152102 evals=1216817 cost=12 best=12 T=0.15
+t=450 steps=163130 evals=1305041 cost=12 best=12 T=0.15
+t=480 steps=174024 evals=1392193 cost=12 best=12 T=0.66
+t=510 steps=184879 evals=1479033 cost=12 best=12 T=0.23
+t=540 steps=195905 evals=1567241 cost=12 best=12 T=0.15
+t=570 steps=206928 evals=1655425 cost=12 best=12 T=0.15
+t=600 steps=217951 evals=1743609 cost=12 best=12 T=0.15
+t=630 steps=229105 evals=1832841 cost=12 best=12 T=0.66
+t=660 steps=240236 evals=1921889 cost=12 best=12 T=0.23
+t=690 steps=251326 evals=2010609 cost=12 best=12 T=0.15
+t=720 steps=262058 evals=2096465 cost=12 best=12 T=0.15
+t=750 steps=272986 evals=2183889 cost=12 best=12 T=0.15
+t=780 steps=284068 evals=2272545 cost=12 best=12 T=0.66
+t=810 steps=295243 evals=2361945 cost=12 best=12 T=0.23
+t=840 steps=306413 evals=2451305 cost=12 best=12 T=0.15
+t=870 steps=317255 evals=2538041 cost=12 best=12 T=0.15
+t=900 steps=328254 evals=2626033 cost=12 best=12 T=0.15
+t=930 steps=339200 evals=2713601 cost=12 best=12 T=0.66
+t=960 steps=350115 evals=2800921 cost=12 best=12 T=0.23
+t=990 steps=361007 evals=2888057 cost=12 best=12 T=0.15
+t=1020 steps=372089 evals=2976713 cost=12 best=12 T=0.15
+t=1050 steps=383226 evals=3065809 cost=12 best=12 T=0.15
+t=1080 steps=394181 evals=3153449 cost=12 best=12 T=0.66
+t=1110 steps=405409 evals=3243273 cost=12 best=12 T=0.23
+t=1140 steps=416404 evals=3331233 cost=12 best=12 T=0.15
+t=1170 steps=427510 evals=3420081 cost=12 best=12 T=0.15
+RESULT d=8 D=7 group=meta 3109 7 1652 x Z_1 N=21763 best=12 evals=3471561 time=1200.0 orbit k=3 m=2 f=2 fix=6

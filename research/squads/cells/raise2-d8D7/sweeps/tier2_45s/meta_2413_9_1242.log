@@ -1,0 +1,7 @@
+group meta 2413 9 1242 x Z_1, N=21717, identity 0, H order 57, rows 381, threads 1, setup 0.00s
+wide rows: HW order 127, rows 171, setup 0.01s
+alpha: meta scaling a -> 273 a, z -> 0 z on Z_1
+ORBIT k=3 m=2 f=2: |Fix(alpha)| = 8 (+e); mu = 39.08, mu/k = 13.03, fixed-point misses ~ 2.19
+start cost=834
+t=30 steps=121895 evals=975161 cost=42 best=42 T=0.53
+RESULT d=8 D=7 group=meta 2413 9 1242 x Z_1 N=21717 best=42 evals=1469481 time=45.0 orbit k=3 m=2 f=2 fix=8
