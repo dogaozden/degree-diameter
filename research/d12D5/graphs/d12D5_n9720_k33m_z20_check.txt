@@ -1,0 +1,18 @@
+Check of the (12,5) graph on 9720 vertices (job cell-12-5, 2026-10-24T19:42Z). K_{3,3} + matching over Z_20, joint chart/voltage annealing (mlift_joint3, seed 5)
+Builder: research/d12D5/graphs/build_d12D5_n9720.py (self-contained). Edge list: graphs/d12D5_n9720_k33m_z20.edges.gz
+Controller (a b colour): graphs/d12D5_n9720_k33m_z20_controller.txt; chart: graphs/d12D5_n9720_k33m_z20_chart.txt
+Uncompressed edge list sha256 9eb961a0cd69e22b628e139808240902c2462118a376c4838b7da7630f8a3d02 (identical, after sorting, to gf3.py lift of the search output).
+
+$ apsp d12D5_n9720_k33m_z20.edges 12 5   (research/lifts/coordinator_check/apsp.c, all pairs, no symmetry)
+n=9720 edges=58320 degree min=12 max=12 bipartite=yes diameter=5
+RESULT VALID d=12 D=5 n=9720
+
+$ bfs_all d12D5_n9720_k33m_z20.edges   (plain BFS from every vertex)
+n=9720 edges=58320 degree 12..12 bipartite=yes max_ecc=5
+  dist 0: 9720 ordered pairs
+  dist 1: 116640 ordered pairs
+  dist 2: 1117800 ordered pairs
+  dist 3: 10157400 ordered pairs
+  dist 4: 46111680 ordered pairs
+  dist 5: 36965160 ordered pairs
+sum of ordered pairs = 94478400 ; n^2 = 94478400
