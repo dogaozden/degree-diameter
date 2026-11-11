@@ -1,0 +1,21 @@
+group sl 47 x Z_79, N=8198304 (2N=16396608), rows 2208 x 3713 bits (doubled row 136 words), memory 0.01 GB, threads 1
+alpha: conj by mat(0,46,1,46), z -> 23 z on Z_79 (fixed z: 1); ORBIT k=3 m=3 f=2; W=1.11111e+08 lambda=13.553 mu=10.66
+setup 0.0s
+fixed generators: 1 chosen among 47 alpha-fixed elements
+start cost=42 (0.0s per eval)
+t=0 step=1 evals=9 slot=0 cand=14 cost=14 best=14 T=1.26
+t=1 step=2 evals=17 slot=1 cand=18 cost=14 best=14 T=1.06
+t=1 step=3 evals=25 slot=0 cand=18 cost=14 best=14 T=0.89
+t=1 step=4 evals=33 slot=2 cand=12 cost=12 best=12 T=0.75
+t=2 step=5 evals=41 slot=1 cand=12 cost=12 best=12 T=0.63
+t=2 step=6 evals=49 slot=0 cand=34 cost=12 best=12 T=0.53
+t=3 step=7 evals=57 slot=1 cand=14 cost=12 best=12 T=0.45
+t=3 step=8 evals=65 slot=0 cand=18 cost=12 best=12 T=0.38
+t=4 step=9 evals=73 slot=1 cand=24 cost=12 best=12 T=0.32
+t=4 step=10 evals=81 slot=2 cand=12 cost=12 best=12 T=0.27
+t=4 step=11 evals=89 slot=2 cand=2 cost=2 best=2 T=0.22
+t=5 step=12 evals=97 slot=0 cand=18 cost=2 best=2 T=0.19
+t=5 step=13 evals=105 slot=2 cand=0 cost=0 best=0 T=0.16
+RESULT d=11 D=9 group=sl 47 x Z_79 N=8198304 vertices=16396608 best=0 evals=105 steps=13 time=5.1 orbit k=3 m=3 f=2 mu=10.66
+re-evaluation of the best S: cost 0
+wrote /home/user/degree-diameter/research/squads/beyond11/r2/d16/runs/d11D9_sl_47_79_o3-3-2_plain_s3.out

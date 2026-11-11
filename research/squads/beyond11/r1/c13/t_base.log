@@ -1,0 +1,9 @@
+group sl 59 x Z_37, N=7596840 (2N=15193680), rows 3480 x 2183 bits (doubled row 88 words), memory 0.01 GB, threads 1
+alpha: conj by mat(0,58,1,58), z -> 10 z on Z_37 (fixed z: 1); ORBIT k=3 m=3 f=2; W=1.11111e+08 lambda=14.626 mu=3.38
+setup 0.0s
+fixed generators: 1 chosen among 59 alpha-fixed elements
+start cost=6 (0.2s per eval)
+t=0 step=1 evals=9 slot=1 cand=0 cost=0 best=0 T=1.26
+RESULT d=11 D=9 group=sl 59 x Z_37 N=7596840 vertices=15193680 best=0 evals=9 steps=1 time=0.5 orbit k=3 m=3 f=2 mu=3.38
+re-evaluation of the best S: cost 0
+wrote t_base_59_37.out

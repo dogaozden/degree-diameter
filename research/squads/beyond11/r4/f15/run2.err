@@ -1,0 +1,43 @@
+group sl 103 x Z_1, N=1092624 (2N=2185248), rows 10608 x 103 bits (doubled row 24 words), memory 0.01 GB, threads 1
+alpha: conj by mat(0,102,1,102), z -> 0 z on Z_1 (fixed z: 1); ORBIT k=3 m=2 f=0; W=1.2207e+07 lambda=11.172 mu=15.36
+setup 0.0s
+finish: start cost 2 (holes 2) OF0=1 d=6 OM=2 OK=3
+ S0 33201 mat(3,2,14,44) z=0 | TT 1
+ S1 620763 mat(58,89,53,92) z=0 | TT 70
+ S2 455889 mat(42,50,101,5) z=0 | TT 15
+ S3 885717 mat(83,12,51,26) z=0 | TT 85
+ S4 825646 mat(77,52,85,32) z=0 | TT 85
+ S5 157812 mat(14,18,91,95) z=0 | TT 55
+t=3 it=1 slot=0 reduced_holes=65536 cands=30 bestfail=0 cost_new=72 cost=2 best=2 rej
+t=5 it=2 slot=0 reduced_holes=65536 cands=30 bestfail=0 cost_new=150 cost=2 best=2 rej
+t=8 it=3 slot=0 reduced_holes=65536 cands=30 bestfail=0 cost_new=426 cost=2 best=2 rej
+t=10 it=4 slot=0 reduced_holes=65536 cands=30 bestfail=0 cost_new=92 cost=2 best=2 rej
+t=13 it=5 slot=0 reduced_holes=65536 cands=30 bestfail=0 cost_new=1974 cost=2 best=2 rej
+t=15 it=6 slot=0 reduced_holes=65536 cands=30 bestfail=0 cost_new=146 cost=2 best=2 rej
+t=18 it=7 slot=0 reduced_holes=65536 cands=30 bestfail=0 cost_new=34 cost=2 best=2 rej
+t=20 it=8 slot=0 reduced_holes=65536 cands=30 bestfail=0 cost_new=222 cost=2 best=2 rej
+t=23 it=9 slot=1 reduced_holes=65536 cands=30 bestfail=0 cost_new=68 cost=2 best=2 rej
+t=25 it=10 slot=0 reduced_holes=65536 cands=30 bestfail=0 cost_new=60 cost=2 best=2 rej
+t=27 it=11 slot=0 reduced_holes=65536 cands=30 bestfail=0 cost_new=38 cost=2 best=2 rej
+t=30 it=12 slot=1 reduced_holes=65536 cands=30 bestfail=0 cost_new=44 cost=2 best=2 rej
+t=32 it=13 slot=1 reduced_holes=65536 cands=30 bestfail=0 cost_new=100 cost=2 best=2 rej
+t=35 it=14 slot=0 reduced_holes=65536 cands=30 bestfail=0 cost_new=50 cost=2 best=2 rej
+t=37 it=15 slot=0 reduced_holes=65536 cands=30 bestfail=0 cost_new=5214 cost=2 best=2 rej
+t=40 it=16 slot=1 reduced_holes=65536 cands=30 bestfail=0 cost_new=50 cost=2 best=2 rej
+t=42 it=17 slot=0 reduced_holes=65536 cands=30 bestfail=0 cost_new=78 cost=2 best=2 rej
+t=45 it=18 slot=0 reduced_holes=65536 cands=30 bestfail=0 cost_new=322 cost=2 best=2 rej
+t=47 it=19 slot=1 reduced_holes=65536 cands=30 bestfail=0 cost_new=216 cost=2 best=2 rej
+t=50 it=20 slot=1 reduced_holes=65536 cands=30 bestfail=0 cost_new=92 cost=2 best=2 rej
+t=52 it=21 slot=0 reduced_holes=65536 cands=30 bestfail=0 cost_new=2118 cost=2 best=2 rej
+t=55 it=22 slot=0 reduced_holes=65536 cands=30 bestfail=0 cost_new=180 cost=2 best=2 rej
+t=57 it=23 slot=0 reduced_holes=65536 cands=30 bestfail=0 cost_new=968 cost=2 best=2 rej
+t=60 it=24 slot=1 reduced_holes=65536 cands=30 bestfail=0 cost_new=222 cost=2 best=2 rej
+t=63 it=25 slot=0 reduced_holes=65536 cands=30 bestfail=0 cost_new=1692 cost=2 best=2 rej
+t=65 it=26 slot=0 reduced_holes=65536 cands=30 bestfail=0 cost_new=224 cost=2 best=2 rej
+t=68 it=27 slot=0 reduced_holes=65536 cands=30 bestfail=0 cost_new=90 cost=2 best=2 rej
+t=70 it=28 slot=0 reduced_holes=65536 cands=30 bestfail=0 cost_new=42 cost=2 best=2 rej
+t=73 it=29 slot=0 reduced_holes=65536 cands=30 bestfail=0 cost_new=40 cost=2 best=2 rej
+t=75 it=30 slot=0 reduced_holes=65536 cands=30 bestfail=0 cost_new=40 cost=2 best=2 rej
+t=77 it=31 slot=0 reduced_holes=65536 cands=30 bestfail=0 cost_new=74 cost=2 best=2 rej
+t=80 it=32 slot=0 reduced_holes=65536 cands=30 bestfail=0 cost_new=236 cost=2 best=2 rej
+t=82 it=33 slot=0 reduced_holes=65536 cands=30 bestfail=0 cost_new=5992 cost=2 best=2 rej

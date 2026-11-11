@@ -1,0 +1,37 @@
+EVAL /home/user/degree-diameter/research/squads/beyond11/r2/d04/sl149_n181_s2.sol.start cost=32 time=11.792 mu=5.22
+HOLE side=A class=central z=105 mat(1,0,0,1) trace=2 order=1 index=3995137
+HOLE side=A class=central z=62 mat(1,0,0,1) trace=2 order=1 index=3996180
+HOLE side=A class=central z=104 mat(1,0,0,1) trace=2 order=1 index=3997670
+HOLE side=A class=central z=39 mat(1,0,0,1) trace=2 order=1 index=4000501
+HOLE side=A class=central z=28 mat(1,0,0,1) trace=2 order=1 index=4001395
+HOLE side=A class=central z=80 mat(1,0,0,1) trace=2 order=1 index=4004524
+HOLE side=A class=central z=101 mat(1,0,0,1) trace=2 order=1 index=4005269
+HOLE side=A class=central z=153 mat(1,0,0,1) trace=2 order=1 index=4008398
+HOLE side=A class=central z=142 mat(1,0,0,1) trace=2 order=1 index=4009292
+HOLE side=A class=central z=77 mat(1,0,0,1) trace=2 order=1 index=4012123
+HOLE side=A class=central z=119 mat(1,0,0,1) trace=2 order=1 index=4013613
+HOLE side=A class=central z=76 mat(1,0,0,1) trace=2 order=1 index=4014656
+HOLE side=A class=central z=0 mat(148,0,0,148) trace=147 order=1 index=594693419
+HOLE side=B class=other z=42 mat(0,30,144,117) trace=117 order=15 index=3863487
+HOLE side=B class=central z=105 mat(1,0,0,1) trace=2 order=1 index=3995137
+HOLE side=B class=central z=62 mat(1,0,0,1) trace=2 order=1 index=3996180
+HOLE side=B class=central z=104 mat(1,0,0,1) trace=2 order=1 index=3997670
+HOLE side=B class=central z=39 mat(1,0,0,1) trace=2 order=1 index=4000501
+HOLE side=B class=central z=28 mat(1,0,0,1) trace=2 order=1 index=4001395
+HOLE side=B class=central z=80 mat(1,0,0,1) trace=2 order=1 index=4004524
+HOLE side=B class=central z=101 mat(1,0,0,1) trace=2 order=1 index=4005269
+HOLE side=B class=central z=153 mat(1,0,0,1) trace=2 order=1 index=4008398
+HOLE side=B class=central z=142 mat(1,0,0,1) trace=2 order=1 index=4009292
+HOLE side=B class=central z=77 mat(1,0,0,1) trace=2 order=1 index=4012123
+HOLE side=B class=central z=119 mat(1,0,0,1) trace=2 order=1 index=4013613
+HOLE side=B class=central z=76 mat(1,0,0,1) trace=2 order=1 index=4014656
+HOLE side=B class=other z=156 mat(5,144,67,112) trace=117 order=15 index=21878712
+HOLE side=B class=other z=67 mat(30,82,30,87) trace=117 order=15 index=121339752
+HOLE side=B class=other z=114 mat(87,67,119,30) trace=117 order=15 index=352804047
+HOLE side=B class=other z=25 mat(112,5,82,5) trace=117 order=15 index=452257485
+HOLE side=B class=other z=139 mat(117,119,5,0) trace=117 order=15 index=470269452
+HOLE side=B class=central z=0 mat(148,0,0,148) trace=147 order=1 index=594693419
+CLASS side A: central 13 alpha 0 other 0 | side B: central 13 alpha 0 other 6 | total 32
+ORDER (projective order: count): 1:26 15:6
+TRACE (a+d mod p: count): 2:24 117:6 147:2
+Z (z: count): 0:2 25:1 28:2 39:2 42:1 62:2 67:1 76:2 77:2 80:2 101:2 104:2 105:2 114:1 119:2 139:1 142:2 153:2 156:1

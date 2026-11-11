@@ -1,0 +1,1427 @@
+                                                               On bipartite graphs of defect at most 4
+
+                                                                                     Ramiro Feria-Purón∗
+                                                                      School of Electrical Engineering and Computer Science
+                                                                               The University of Newcastle, Australia
+arXiv:1010.5651v2 [math.CO] 7 Jun 2011
+
+
+
+
+                                                                              Guillermo Pineda-Villavicencio†
+                                                                         Centre for Informatics and Applied Optimisation
+                                                                                  University of Ballarat, Australia
+
+
+                                                                                           July 16, 2021
+
+
+
+                                                                                              Abstract
+
+                                               We consider the bipartite version of the degree/diameter problem, namely, given natural numbers
+                                               ∆ ≥ 2 and D ≥ 2, find the maximum number Nb (∆, D) of vertices in a bipartite graph of maximum
+                                               degree ∆ and diameter D. In this context, the Moore bipartite bound Mb (∆, D) represents an upper
+                                               bound for Nb (∆, D).
+                                               Bipartite graphs of maximum degree ∆, diameter D and order Mb (∆, D) – called Moore bipartite
+                                               graphs – turned out to be very rare. Therefore, it is very interesting to investigate bipartite graphs of
+                                               maximum degree ∆ ≥ 2, diameter D ≥ 2 and order Mb (∆, D) − ǫ with small ǫ > 0; that is, bipartite
+                                               (∆, D, −ǫ)-graphs. The parameter ǫ is called the defect.
+                                               This paper considers bipartite graphs of defect at most 4, and presents all the known such graphs.
+                                               Bipartite graphs of defect 2 have been studied in the past; if ∆ ≥ 3 and D ≥ 3, they may only exist
+                                               for D = 3. However, when ǫ > 2 bipartite (∆, D, −ǫ)-graphs represent a wide unexplored area.
+                                               The main results of the paper include several necessary conditions for the existence of bipartite
+                                               (∆, d, −4)-graphs; the complete catalogue of bipartite (3, D, −ǫ)-graphs with D ≥ 2 and 0 ≤ ǫ ≤ 4;
+                                               the complete catalogue of bipartite (∆, D, −ǫ)-graphs with ∆ ≥ 2, 5 ≤ D ≤ 187 (D 6= 6) and
+                                               0 ≤ ǫ ≤ 4; and a non-existence proof of all bipartite (∆, D, −4)-graphs with ∆ ≥ 3 and odd D ≥ 5.
+                                               Finally, we conjecture that there are no bipartite graphs of defect 4 for ∆ ≥ 3 and D ≥ 5, and
+                                               comment on some implications of our results for the upper bounds of Nb (∆, D).
+                                         ∗
+                                             ramiro.feria.puron@gmail.com
+                                         †
+                                             Corresponding author: work@guillermo.com.au
+
+
+
+                                                                                                  1
+Keywords: Moore bipartite bound; Moore bipartite graph; Degree/diameter problem for bipartite graphs;
+defect; repeat.
+
+AMS Subject Classification: 05C35, 05C75.
+
+
+
+1     Introduction
+
+Due to the diverse features and applications of interconnection networks, it is possible to find many
+interpretations about network “optimality” in the literature. Here we are concerned with the following;
+see [8, pp. 18], [10, pp. 168], and [16, pp. 91 ].
+
+
+      An optimal network contains the maximum possible number of nodes, given a limit on the
+      number of connections attached to a node and a limit on the distance between any two nodes
+      of the network.
+
+
+    This interpretation has attracted network designers and the research community in general due to its
+implications in the design of large interconnection networks. In graph-theoretical terms, this interpretation
+leads to the degree/diameter problem (the problem of finding the largest possible number of vertices in
+a graph with given maximum degree and diameter). If the graphs in question are subject to further
+restrictions such as being bipartite, planarity and/or transitivity, we can state the degree/diameter problem
+for the classes of graphs under consideration.
+
+    In this paper we will consider only bipartite graphs, and in this case, the degree/diameter problem can
+be stated as follows.
+
+      Degree/diameter problem for bipartite graphs: Given natural numbers ∆ ≥ 2 and D ≥ 2, find the
+      largest possible number Nb (∆, D) of vertices in a bipartite graph of maximum degree ∆ and diameter
+      D.
+
+Note that Nb (∆, D) is well defined for ∆ ≥ 2 and D ≥ 2. An upper bound for Nb (∆, D) is given by the
+Moore bipartite bound Mb (∆, D), defined below:
+
+                              Mb (∆, D) = 2 1 + (∆ − 1) + · · · + (∆ − 1)D−1 .
+                                                                            
+
+
+Bipartite graphs of degree ∆, diameter D and order Mb (∆, D) are called Moore bipartite graphs. Moore
+bipartite graphs are rare; for ∆ = 2 they are the cycles of length 2D, while for ∆ ≥ 3 Moore bipartite
+graphs exist only for diameters 2, 3, 4 and 6; see [9]. Therefore, we are interested in studying the existence
+or otherwise of bipartite graphs of given maximum degree ∆, diameter D and order Mb (∆, D) −ǫ for ǫ > 0;
+
+
+                                                      2
+that is, bipartite (∆, D, −ǫ)-graphs, where the parameter ǫ is called the defect. For notational convenience,
+we consider Moore bipartite graphs as having defect ǫ = 0.
+
+    Only a few values of Nb (∆, D) are known at present. With the exception of Nb (3, 5) = Mb (3, 5) − 6,
+settled in [11], the other known values of Nb (∆, D) are those for which there is a Moore bipartite graph.
+The paper [14] combined with [5, 6] almost settled the case of bipartite graphs of defect 2; if ∆ ≥ 3 and
+D ≥ 3, then such graphs may only exist for D = 3 and certain values of ∆. Bipartite (∆, D, −ǫ)-graphs
+with ǫ > 2 have been rarely considered in the literature so far.
+
+    In this paper we consider bipartite (∆, D, −4)-graphs with ∆ ≥ 2 and D ≥ 3. By using combinato-
+rial approaches we obtain several important results about bipartite graphs of defect 4, including several
+necessary conditions for the existence of bipartite (∆, d, −4)-graphs; the complete catalogue of bipartite
+(3, D, −ǫ)-graphs with D ≥ 2 and 0 ≤ ǫ ≤ 4; the complete catalogue of bipartite (∆, D, −ǫ)-graphs with
+∆ ≥ 2, 5 ≤ D ≤ 187 (D 6= 6) and 0 ≤ ǫ ≤ 4; and a non-existence proof of all bipartite (∆, D, −4)-graphs
+with ∆ ≥ 3 and odd D ≥ 5. Finally, we conjecture that there are no bipartite graphs of defect 4 for ∆ ≥ 3
+and D ≥ 5.
+
+    The main results in this paper do not apply to bipartite (∆, D, −4)-graphs with ∆ ≥ 4 and D = 3, 4.
+Some of our assertions, however, do offer a partial characterisation of all bipartite (∆, D, −4)-graphs with
+∆ ≥ 3 and D ≥ 3. At the time of writing the paper we do not foresee a conclusive way to take on
+the diameters 3 and 4. To deal with such graphs it would be necessary to either find different ideas or
+complement some of the ones presented here. Section 6.1 contains further comments on such diameters.
+
+
+
+2     Notation and Terminology
+
+The terminology and notation used in this paper is standard and consistent with that used in [7], so only
+those concepts that can vary from texts to texts will be defined.
+
+    All graphs considered are simple. The vertex set of a graph Γ is denoted by V (Γ), and its edge set
+by E(Γ). The difference between the graphs Γ and Γ′ , denoted by Γ − Γ′ , is the graph with vertex set
+V (Γ) − V (Γ′ ) and edge set formed by all the edges with both endvertices in V (Γ) − V (Γ′ ).
+
+    The set of neighbours of a vertex x in Γ is denoted by N(x). For an edge e = {x, y} we write e = xy,
+or alternatively x ∼ y. The set of edges in a graph Γ joining a vertex x in X ⊆ V (Γ) to a vertex y in
+Y ⊆ V (Γ) is denoted by E(X, Y ); for simplicity, we write E(x, Y ) rather than E({x}, Y ).
+
+    A path of length k is called a k-path, and cycle of length k is called a k-cycle. A path from a vertex x
+to a vertex y is denoted by x − y. Whenever we refer to paths we mean shortest paths. We will use the
+following notation for subpaths of a path P = x0 x1 . . . xk : xi P xj = xi . . . xj , where 0 ≤ i ≤ j ≤ k. The
+distance between a vertex x and a vertex y is denoted by d(x, y).
+
+                                                      3
+    The union of three independent paths of length D with common endvertices is denoted by ΘD . In a
+graph Γ a vertex of degree at least 3 is called a branch vertex of Γ.
+
+
+
+3     Known bipartite (∆, D, −ǫ)-graphs with ∆ ≥ 2, D ≥ 2 and
+      0≤ǫ≤4
+
+For ∆ = 2 the Moore bipartite graphs are the cycles on 2D vertices, while for D = 2 and each ∆ ≥ 3 they
+are the complete bipartite graphs of degree ∆ and order 2∆. For D = 3, 4, 6 Moore bipartite graphs of
+degree ∆ have been constructed only when ∆ − 1 is a prime power [1]. Furthermore, Singleton [15] proved
+that the existence of a Moore bipartite graph of diameter 3 is equivalent to the existence of a projective
+plane of order ∆ − 1. The question of whether Moore bipartite graphs of diameter 3, 4 or 6 exist for other
+values of ∆ remains open, and represents one of the most famous problems in combinatorics. For other
+values of D ≥ 2 and ∆ ≥ 3 there are no Moore bipartite graphs (see [15, 9]).
+
+    When ∆ = 2 or D = 2 bipartite (∆, D, −ǫ)-graphs with ǫ ≥ 1 can be obtained by simple observation.
+For a given D ≥ 2 there is only one bipartite (2, D, −ǫ)-graph with ǫ ≥ 1: the path of length D, which has
+defect ǫ = D − 1. For a given ∆ ≥ 2 there are exactly ∆ − 1 bipartite (∆, 2, −ǫ)-graphs with ǫ ≥ 1; they
+are the complete bipartite graphs with partite sets of size ∆ and ∆ − ǫ, where 1 ≤ ǫ ≤ ∆ − 1. Therefore,
+from now on we assume ∆ ≥ 3 and D ≥ 3.
+
+    We continue with some conditions for the regularity of bipartite (∆, D, −ǫ)-graphs, which were obtained
+in [5].
+
+Proposition 3.1 ([5]) For ǫ < 1 + (∆ − 1) + (∆ − 1)2 + . . . + (∆ − 1)D−2 , ∆ ≥ 3 and D ≥ 3, a bipartite
+(∆, D, −ǫ)-graph is regular.
+
+Proposition 3.2 ([5]) For ǫ < 2 (∆ − 1) + (∆ − 1)3 + . . . + (∆ − 1)D−2 , ∆ ≥ 3 and odd D ≥ 3, a
+                                                                       
+
+bipartite (∆, D, −ǫ)-graph is regular.
+
+    By Propositions 3.1 and 3.2, bipartite (∆, D, −ǫ)-graphs with ∆ ≥ 3, D ≥ 3 and ǫ ≤ 3 must be regular,
+implying the non-existence of such graphs for ∆ ≥ 3, D ≥ 3 and ǫ = 1, 3. In the same way, bipartite
+(∆, D, −4)-graphs with ∆ ≥ 3 and D ≥ 4 and bipartite (∆, 3, −4)-graphs with ∆ ≥ 4 must be regular.
+
+    For ∆ ≥ 3 and D ≥ 3, the only known bipartite (∆, D, −2)-graphs are depicted in Fig. 1. Recall that
+such graphs do not exist when ∆ ≥ 3 and D ≥ 4; see [5, 6, 14].
+
+    Bipartite (3, 3, −4)-graphs may be irregular. Figure 2 depicts all such graphs, which were obtained by
+using the program geng from the package nauty written by McKay [13]. The unique bipartite (3, 4, −4)-
+graph is shown in Fig. 3.
+
+                                                     4
+                               (a)                               (b)
+
+
+Figure 1: (a) the unique bipartite (3, 3, −2)-graph and (b) the unique bipartite (4, 3, −2)-graph.
+
+
+
+
+               (a)                   (b)                   (c)                  (d)
+
+
+                          Figure 2: All the bipartite (3, 3, −4)-graphs.
+
+
+
+
+                        Figure 3: The unique bipartite (3, 4, −4)-graph.
+
+
+
+
+                                                5
+      (a)                                            (b)
+
+
+    Figure 4: All the bipartite (4, 3, −4)-graphs.
+
+
+
+
+Figure 5: The only known bipartite (5, 3, −4)-graph.
+
+
+
+
+                          6
+     All the bipartite (4, 3, −4)-graphs are depicted in Fig. 4. These graphs were obtained computationally
+by Meringer [12] using the program genreg. An alternative description of the graph in Fig. 4 (b) was
+communicated to the second author by Charles Delorme: take Z/22Z as the vertex set of the graph, and
+for each even x, add the edges {x, x + 1}, {x, x − 1}, {x, x + 7} and {x, x + 11}.
+
+     The only known bipartite (5, 3, −4)-graph is depicted in Fig. 5; this graph was independently found by
+Charles Delorme and by the first author. Charles Delorme described this graph as follows: take Z/38Z
+as its vertex set, and for each even x, add the edges {x, x − 1}, {x, x + 1}, {x, x + 5}, {x, x + 13} and
+{x, x + 23}.
+
+
+
+4      Preliminary Results
+
+From now on we use the symbol d rather than ∆ to denote the degree of a regular graph, as it is customary.
+Recall that, unless d = 3 and D = 3, a bipartite (d, D, −4)-graph with ∆ ≥ 3 and D ≥ 3 must be regular.
+Therefore, when referring to a regular bipartite (d, D, −4)-graph with ∆ ≥ 3 and D ≥ 3, we are actually
+referring to any bipartite (d, D, −4)-graph with ∆ ≥ 3 and D ≥ 3 other than the ones exhibited in Fig. 2
+(c) and (d).
+
+     In a bipartite (d, D, −4)-graph we call a cycle of length at most 2D − 2 a short cycle.
+
+
+Proposition 4.1 The girth of a regular bipartite (d, D, −4)-graph Γ with d ≥ 3 and D ≥ 3 is 2D − 2.
+Furthermore, any vertex x of Γ lies on the short cycles specified below and no other short cycle, and we
+have the following cases:
+
+     x is contained in exactly three (2D − 2)-cycles. Then
+
+    (i) x is a branch vertex of one ΘD−1 , or
+
+x is contained in two (2D − 2)-cycles. Then
+
+
+ (ii) x lies on exactly two (2D − 2)-cycles, whose intersection is a ℓ-path with ℓ ∈ {0, . . . , D − 1}.
+
+
+Each case is considered as a type. For instance, a vertex satisfying case (i) is called a vertex of Type (i).
+Note that, if x is of Type (ii) and ℓ = D − 1, the two short cycles containing x constitute a ΘD−1 .
+
+Proof. Let xy be an edge of Γ. Let us use the standard decomposition for a bipartite graph of even girth
+with respect to the edge xy [3]. For 0 ≤ i ≤ D − 1, the sets Xi and Yi are defined as follows:
+
+                               Xi   =   {z ∈ V (Γ)|d(x, z) = i, d(y, z) = i + 1}
+                               Yi   =   {z ∈ V (Γ)|d(y, z) = i, d(x, z) = i + 1}.
+
+                                                       7
+   The decomposition of Γ into the sets Xi and Yi is called the standard decomposition for a graph of even
+girth with respect to the edge xy. Since Γ is bipartite, its girth is even and Xi ∩ Yj = ∅ for 0 ≤ i, j ≤ D − 1.
+
+   Claim 1 g(Γ) = 2D − 2.
+
+   Proof of Claim 1. Since the assertion is trivial for D = 3, we suppose that g(Γ) ≤ 2D − 4 for D ≥ 4.
+Assume that the edge xy lies on a cycle of length g(Γ). Then, |Xi | = |Yi | = (d − 1)i for 1 ≤ i ≤ g(Γ)
+                                                                                                     2
+                                                                                                        − 1,
+and
+
+                                              (d − 1)D−3 − 1 (d − 1) + d − 2 = (d − 1)D−2 − 1
+                                                            
+                           |XD−2| ≤
+                                              (d − 1)D−3 − 1 (d − 1) + d − 2 = (d − 1)D−2 − 1
+                                                            
+                            |YD−2| ≤
+                                              (d − 1)D−2 − 1 (d − 1)
+                                                            
+                           |XD−1| ≤
+                                              (d − 1)D−2 − 1 (d − 1).
+                                                            
+                            |YD−1| ≤
+
+Therefore,
+                  D−1
+                  X               D−1
+                                  X
+                                        |Yi | ≤ 2 1 + (d − 1) + (d − 1)2 + · · · + (d − 1)D−3 +
+                                                                                             
+      |V (Γ)| =         |Xi | +
+                  i=0             i=0
+                                               +2(d − 1)D−2 − 2 + 2(d − 1)D−1 − 2(d − 1) =
+                                             = 2 1 + (d − 1) + (d − 1)2 + · · · + (d − 1)D−1 − 2(d − 1) − 2 =
+                                                                                            
+
+                                             = Mb (d, D) − 2d,
+
+   which is a contradiction. Hence, g(Γ) ≥ 2D − 2. If g(Γ) = 2D then the order of Γ would be at least
+Mb (d, D) [2]. Thus, g(Γ) = 2D − 2 and the claim follows.                                                       ✷
+
+   We now proceed to prove the second part of the proposition.
+
+   For a given vertex x, we use again the standard decomposition for a bipartite graph with respect to
+an edge xy in Γ. Suppose that there are at least three edges joining vertices at XD−2 to vertices at YD−2;
+that is, |E(XD−2 , YD−2)| ≥ 3 . In such case
+
+                                                      |XD−1 | ≤ (d − 1)D−1 − 3,
+
+                                                      |YD−1 | ≤ (d − 1)D−1 − 3,
+
+   and therefore
+                           D−1
+                           X                D−1
+                                            X
+                                                  |Yi | ≤ 2 1 + (d − 1) + (d − 1)2 + · · · + (d − 1)D−2 +
+                                                                                                       
+             |V (Γ)| =            |Xi | +
+                            i=0             i=0
+
+                                                         + 2 (d − 1)D−1 − 3 =
+                                                                           
+
+                                                      = 2 1 + (d − 1) + (d − 1)2 + · · · + (d − 1)D−1 − 6 =
+                                                                                                     
+
+                                                         b
+                                                      = Md,D − 6,
+
+
+                                                                  8
+   which is a contradiction. Consequently, 0 ≤ |E(XD−2 , YD−2)| ≤ 2.
+
+   Suppose that |E(XD−2 , YD−2)| = 2. If the two edges are both incident to a common vertex of YD−2
+then x is of Type (i), otherwise x is of Type (ii).
+
+   If instead |E(XD−2, YD−2 )| = 1 then |E(XD−2 , XD−1 )| = |E(YD−2, YD−1 )| = (d − 1)D−1 − 1. Since
+|XD−1 | = |YD−1| = (d − 1)D−1 − 2, there is a vertex u ∈ XD−1 such that |E(u, XD−2)| = 2. Therefore, it
+follows (ii).
+
+   Finally, if |E(XD−2 , YD−2)| = 0 then both types may occur. Indeed, if there is a vertex u ∈ XD−1 such
+that |E(u, XD−2)| = 3 then x is of Type (i) (this case can only occur if d ≥ 4), otherwise there must exist
+two vertices u, v ∈ XD−1 such that |E(u, XD−2)| = |E(v, XD−2)| = 2, in which case x is of Type (ii). This
+completes the proof of the proposition.                                                                       ✷
+
+   We continue with the following observation, which will be implicitly used throughout the paper:
+
+
+Observation 4.1 Let Γ = (V1 ∪ V2 , E) (the sets V1 and V2 are called partite sets) be any bipartite graph
+of even (odd) finite diameter D. The distance between a vertex u ∈ V1 and any vertex v ∈ V2 (w ∈ V1 ) is
+at most D − 1.
+
+
+   In virtue of Proposition 4.1, we define the following concepts:
+
+   If two short cycles C 1 and C 2 are non-disjoint we say that C 1 and C 2 are neighbours.
+
+   For a vertex x lying on a short cycle C, we denote by repC (x) the vertex x′ in C such that d(x, x′ ) =
+D − 1. We say x′ is the repeat of x in C and vice versa, or simply that x and x′ are repeats in C.
+Alternatively, and more generally, we say that x′ is a repeat of x with multiplicity mx (x′ ) (1 ≤ mx (x′ ) ≤ 2)
+if there are exactly mx (x′ ) + 1 different paths of length D − 1 from x to x′ . Proposition 4.1 tells us that
+a vertex in Γ may have a repeat of multiplicity 2. Accordingly, we denote by Rep(x) the multiset of the
+repeats of a vertex x in Γ.
+
+   The concept of repeat can be easily extended to paths. For a path P = x − y of length at most D − 2
+contained in a short cycle C, we denote by repC (P ) the path P ′ ⊂ C defined as repC (x) − repC (y). We
+say that P ′ is the repeat of P in C and vice versa, or simply that P and P ′ are repeats in C.
+
+   Often our arguments revolve around the identification of the elements in the set Sx of short cycles
+containing a given vertex x; we call this process saturating the vertex x. A vertex x is called saturated
+if the elements in Sx have been completely identified. The following lemma will help us in this cycle
+identification process.
+
+
+Lemma 4.1 (Saturating Lemma) Let C be a (2D − 2)-cycle in a regular bipartite (d, D, −4)-graph Γ
+with d ≥ 3 and D ≥ 3, and α, α′ two vertices in C such that α′ = repC (α). Let γ be a neighbour of α not
+
+                                                       9
+contained in C, and µ1 , µ2 , . . . , µd−2 the neighbours of α′ not contained in C. Suppose there is no short
+cycle in Γ containing the edge α ∼ γ and intersecting C at a path of length greater than D − 3.
+
+   Then, in Γ there exist a vertex µ ∈ {µ1 , µ2 , . . . , µd−2 } and a short cycle C 1 such that γ and µ are repeats
+in C 1 , and C ∩ C 1 = ∅.
+
+Proof. Let α1′ , α2′ be the neighbours of α′ contained in C.
+
+   For 1 ≤ i ≤ d − 2, consider the path P i = γ − µi . As g(Γ) = 2D − 2, P i cannot go through α1′ or
+α2′ . If P i went through certain µj (j 6= i), then a cycle γP i µj α′ Cαγ would either have length smaller than
+2D − 2 or be a short cycle intersecting C at a (D − 1)-path. Consequently, P i must go through one of the
+neighbours of µi other than α′ , and must be a (D − 1)-path; see Fig. 6 (a). In addition, V (P i ∩ C) = ∅.
+                      α                            γ                           α                     γ
+
+                                                                                                          ρ
+                                                             ρ
+
+
+
+                      C                                                        C                Pk   C1       Q
+                                        P1 P2          d−2
+                                                   P
+
+                                             ...
+                α1′         α2′         µ1                               α1′        α2′
+                                             µ2
+                      α′                                     µd−2              α′                    µk
+
+                                  (a)                                                     (b)
+
+
+                                        Figure 6: Auxiliary figure for Lemma 4.1
+
+
+   Let ρ be one of the neighbours of γ other than α, not contained in any of the paths P i (there is at
+least one of such vertices). Consider a path Q = ρ − α′ . If Q went through α1′ , then the closed walk
+ρQα1′ Cαγρ would either contain a cycle of length smaller than 2D − 2 or be a short cycle intersecting C
+at a (D − 2)-path. Consequently, Q must go through a certain µk (1 ≤ k ≤ d − 2) and V (Q ∩ C) = {α′ }
+(Fig. 6 (b)). Note that Q must be a (D − 1)-path, and that V (Q ∩ P k ) = {µk }; otherwise there would be
+a cycle in Γ of length smaller than 2D − 2.
+
+   Thus, we have obtained a short cycle C 1 = γρQµk P k γ such that γ and µk are repeats in C 1 , and
+C ∩ C 1 = ∅. By setting µ = µk the lemma follows.                                                                 ✷
+
+Corollary 4.1 Let α, γ be vertices in a regular bipartite (d, D, −4)-graph Γ with d ≥ 3 and D ≥ 3 such
+that γ ∈ N(α). Then, for every α′ ∈ Rep(α) it follows that N(α′ ) contains a repeat of γ.
+
+Proof. Let C be a short cycle containing α and α′ . If the vertex γ is contained in C or the edge αγ belongs
+to a short cycle in Γ intersecting C at a path of length D − 2 or D − 1, then the corollary trivially follows.
+
+                                                                    10
+If we instead assume that γ 6∈ C and there is no short cycle in Γ containing the edge αγ and intersecting
+C at a path of length greater than D − 3, then the corollary follows from the Saturating Lemma.                                                                                             ✷
+
+
+4.1            Repeats of Cycles
+
+In this section we extend the concept of repeat to short cycles; see the Repeat Cycle Lemma.
+
+Lemma 4.2 (Repeat Cycle Lemma) Let C be a short cycle in a regular bipartite (d, D, −4)-graph Γ
+with d ≥ 3 and D ≥ 3, {C 1 , C 2 , . . . , C k } the set of neighbours of C, and Ii = C i ∩C for 1 ≤ i ≤ k. Suppose
+at least one Ij , for j ∈ {1, . . . , k}, is a path of length smaller than D − 2. Then there is an additional
+                                                                                    i
+short cycle C ′ in Γ intersecting C i at Ii′ = repC (Ii ), where 1 ≤ i ≤ k.
+
+Proof. Observe that, according to our premises and Proposition 4.1, k ≥ 3 and Ii ∩Ij = ∅ for 1 ≤ i < j ≤ k.
+We assume the denotation of the neighbours C 1 , C 2 , . . . , C k of C and the corresponding intersection paths
+I1 = x1 − y1 , I2 = x2 − y2 , . . . , Ik = xk − yk is such that C = x1 I1 y1 x2 I2 y2 . . . xk Ik yk x1 . For 1 ≤ i ≤ k, we
+                                                                                                               i                                   i
+also denote the endvertices of Ii′ by x′i and yi′ , where x′i = repC (xi ) and yi′ = repC (yi ) (see Fig. 7 (a)).
+                               I1′        x′1                                                                               I1′        x′1
+                                                             y2′                                                                                             y2′
+                        y1′                                             I2′                                          y1′                                                I2′
+                                                                              x′2                                                                                             x′2
+                                     C1                                                                                           C1
+                                                             C2                                                                                             C2
+                                           I1                                                                                           I1
+                                                y1 x2   I2                                                                                   y1   x2   I2
+         x′k                                                                                             x′k
+                                     x1                                                                                           x1
+                                                        y2                                                                                             y2
+   Ik′                         yk                                                                  Ik′                      yk
+                 Ck                                          x3
+                                                                                    y3′                        Ck                                           x3
+                                                                                                                                                                                    y3′
+                        Ik                                                                                           Ik
+   yk′                                                                                             yk′
+                                                C                  I3         C3        I3′                                                  C                     I3         C3      I3′
+                              xk                                                                                           xk
+                                                             y3                                                                                             y3
+                                                                                    x′3                                                                                             x′3
+                  ...
+
+
+
+
+                                                                                                               ...
+                                                                   ...
+
+
+
+
+                                                                                                                                                                    ...
+
+
+
+
+                                                (a)                                                                                          (b)
+
+
+                                                        Figure 7: Auxiliary figure for Lemma 4.2
+
+
+    For 1 ≤ i ≤ k, consider the cycles C i and C (i mod k)+1 .
+
+    First suppose that Ii is a path of length smaller than D − 2. Since yi is saturated, there cannot be a
+short cycle in Γ, other than C, containing the edge yi ∼ x(i mod k)+1 . Since Ii is a path of length smaller
+than D − 2, we apply the Saturating Lemma (mapping C i to C, yi to α, yi′ to α′ and x(i mod k)+1 to γ) and
+obtain an additional short cycle C 1 in Γ such that x(i mod k)+1 is a repeat in C 1 of a neighbour v 6∈ C i of yi′ ,
+and C 1 ∩ Ci = ∅. Since x(i mod k)+1 is saturated, we have that necessarily C 1 = C (i mod k)+1 , which in turn
+implies v = x′(i mod k)+1 . In other words, it follows that yi′ ∼ x′(i mod k)+1 ∈ E(Γ).
+
+                                                                                              11
+    If instead Ii is a (D − 2)-path then I(i mod k)+1 must be a path of length smaller than D − 2. Therefore,
+we can apply the above reasoning and deduce that x′(i mod k)+1 ∼ yi′ ∈ E(Γ).
+
+   This way we obtain a subgraph Υ = ki=1 Ii′ ∪yi′ ∼ x′(i mod k)+1 = x′1 I1′ y1′ x′2 I2′ y2′ . . . x′k Ik′ yk′ x′1 intersecting
+                                     S                            
+
+C i at Ii′ for 1 ≤ i ≤ k (see Fig. 7 (b), where part of the subgraph Υ is highlighted in bold).
+
+    We next show that Υ must be indeed a cycle.
+
+    Claim 1. Υ is a (2D − 2)-cycle.
+
+    Proof of Claim 1.
+
+    If the paths Ii′ are pairwise disjoint then Υ is obviously a (2D − 2)-cycle.
+
+    Suppose the paths Ii′ are not pairwise disjoint; then |V (Υ)| < 2D − 2 and, according to Proposition
+4.1, Υ contains no cycle. Since Υ is clearly connected it is therefore a tree.
+
+    Let z ∈ C ℓ be an arbitrary leaf in Υ. If the repeat path Iℓ′ = x′ℓ − yℓ′ had length greater than 0, then
+z would have at least two neighbours in Υ. Therefore, Iℓ = C ∩ C ℓ contains exactly one vertex, and thus,
+xℓ = yℓ and z = x′ℓ = yℓ′ .
+
+    Recall we do addition modulo k on the subscripts of the vertices and the superscripts of the cycles.
+
+    Since x′ℓ ∼ yℓ−1
+                 ′
+                     and x′ℓ ∼ x′ℓ+1 are edges in Υ, it holds that yℓ−1
+                                                                    ′
+                                                                        and x′ℓ+1 denote the same vertex.
+            ′
+Let u′ℓ−1, vℓ−1                       ′
+                be the neighbours of yℓ−1 in C ℓ−1 ; u′ℓ+1 , vℓ+1
+                                                              ′
+                                                                  the neighbours of x′ℓ+1 in C ℓ+1 ; and uℓ , vℓ the
+neighbours of xℓ in C ℓ . We have that V (C ℓ−1 ∩ C ℓ+1 ) = {yℓ−1
+                                                              ′
+                                                                  }, otherwise there would be a third short
+cycle in Γ containing xℓ . In particular, the vertices in {u′ℓ−1, vℓ−1
+                                                                   ′
+                                                                       , u′ℓ+1 , vℓ+1
+                                                                                  ′
+                                                                                      , x′ℓ } are pairwise distinct and
+d ≥ 5. See Fig. 8 (a) and (b) for two drawings of this situation.
+
+    Let t1 , t2 , . . . , td−4 denote the vertices in N(xℓ ) − {yℓ−1 , xℓ+1 , uℓ , vℓ }; see Fig. 8 (c). Consider a path
+Qi = ti −yℓ−1
+          ′
+              . Recall that Qi has length at most D−1. Since xℓ cannot be contained in a further short cycle,
+Qi must be a (D − 1)-path and go through a neighbour of yℓ−1
+                                                         ′
+                                                             not contained in {u′ℓ−1, vℓ−1
+                                                                                       ′
+                                                                                           , u′ℓ+1, vℓ+1
+                                                                                                     ′
+                                                                                                         , x′ℓ }.
+Therefore, we have that d ≥ 6 and, by the pigeonhole principle, that there are two paths Qr and Qs
+                                  ′
+containing a common neighbour of yℓ−1 . This way, xℓ would be contained in a third short cycle, a
+contradiction.
+
+    As a result, we conclude that the repeat graph Υ of C is indeed a (2D − 2)-cycle C ′ as claimed. This
+completes the proof of Claim 1, and thus, of the lemma.                                                                     ✷
+
+    While not of primary interest, it is not difficult to prove now that the cycles C 1 , C 2 , . . . , C k in the
+previous lemma are pairwise disjoint.
+
+    We call the aforementioned cycle C ′ the repeat of the cycle C in Γ, and denote it by rep(C). Next some
+simple consequences of the Repeat Cycle Lemma follow.
+
+
+Corollary 4.2 (Repeat Cycle Uniqueness) If a short cycle C has a repeat cycle C ′ then C ′ is unique.
+
+                                                              12
+                                                                                                                                                   u′ℓ−1
+                       ′
+    x′ℓ+1 = yℓ−1
+             ′        vℓ−1                                                                                                                                            x′ℓ+1 = yℓ−1
+                                                                                                                                                                               ′
+
+                                                                                                                                                       ′
+                                                                                                                                                      vℓ−1
+         u′ℓ−1                                                                                                                                                       u′ℓ+1
+                                                        z = x′ℓ = yℓ′                                                                                            ′
+                                                                                                                                                                vℓ+1
+                      C ℓ−1                                                                                            C ℓ−1                              z
+
+                                               Cℓ
+                                                                                                                                                 Cℓ
+             ..
+         .
+                                     uℓ
+                         yℓ−1                                                                                                         uℓ
+                                          vℓ                                                      .
+                                                                                                      ..
+                                                                                                                       yℓ−1
+                              yℓ = x ℓ                                                                                    yℓ = x ℓ         vℓ
+
+                                           xℓ+1                                                                                                               C ℓ+1
+                                                                                                                                  xℓ+1
+                        C                            C ℓ+1            ′
+                                                                     vℓ+1                                             C
+                                                                  x′ℓ+1 = yℓ−1
+                                                                           ′
+
+                                                             u′ℓ+1
+
+
+
+
+                                                                                                                                           ...
+                                               ...
+
+
+
+
+                                    (a)                                                                                                      (b)
+
+
+                                                                         ′
+                                                              ′
+                                                     x′ℓ+1 = yℓ−1       vℓ−1
+
+                                                         u′ℓ−1
+                                                                                                                          z = x′ℓ = yℓ′
+                                                                            ℓ−1
+                                                                        C
+
+                                                         .
+                                                             ..                                                 Cℓ
+                                                                                                  uℓ
+                                                                              yℓ−1
+                                                                                  yℓ = x ℓ                 vℓ
+                                                                                        ..
+                                                                                             .
+                                                                                   t1                       xℓ+1
+                                                                                         td−4
+                                                                             C                                        C ℓ+1            ′
+                                                                                                                                      vℓ+1
+                                                                                                                                              ′
+                                                                                                                                     x′ℓ+1 = yℓ−1
+                                                                                                                              u′ℓ+1
+                                                                                                                ...
+
+
+
+
+                                                                                                 (c)
+
+
+                                    Figure 8: Auxiliary figure for Claim 1 of Lemma 4.2.
+
+
+Corollary 4.3 (Repeat Cycle Symmetry) If C ′ = rep(C) then C = rep(C ′ ).
+
+
+Corollary 4.4 Let C and C 1 be two short cycles in a regular bipartite (d, D, −4)-graph Γ with d ≥ 3 and
+                                                                                                                                                      1
+D ≥ 3 which intersect at a path I of length smaller than D − 2, and let I ′ = repC (I). Then, the repeat
+cycle of C intersects C 1 at I ′ .
+
+
+Corollary 4.5 (Handy Corollary) Let C be a short cycle in a regular bipartite (d, D, −4)-graph Γ with
+d ≥ 3 and D ≥ 3, and x, x′ repeat vertices in C. Let C 1 and C 2 be the other short cycles containing x and
+                                                                                                                                                                                     1
+x′ , respectively. Suppose that I = C 1 ∩ C is a path of length smaller than D − 2. Then, setting y = repC (x)
+                  2
+and y ′ = repC (x′ ), we have that y and y ′ are repeat vertices in the repeat cycle of C.
+
+                                                                              13
+Proof. We denote the k neighbour cycles of C as E 1 , E 2 , . . . E k and their respective intersection paths
+with C as I1 = x1 − y1 , I2 = x2 − y2 , . . . , Ik = xk − yk in such way that C = x1 I1 y1 x2 I2 y2 . . . xk Ik yk x1 . For
+                                                                   j                       j
+1 ≤ j ≤ k, we also denote Ij′ = x′j − yj′ , where x′j = repE (xj ) and yj′ = repE (yj ).
+
+    Obviously, for some r, s (1 ≤ r, s ≤ k) we have that C 1 = E r , C 2 = E s , x ∈ Ir , x′ ∈ Is , y ∈
+Ir′ , and y ′ ∈ Is′ . We may assume r < s. By the Repeat Cycle Lemma, the vertices y and y ′ be-
+long to the repeat cycle C ′ of C.           Then the paths xIr yr xr+1 Ir+1 yr+1 . . . xs−1 Is−1 ys−1xs Is x′ ⊂ C and
+yIr′ yr′ x′r+1 Ir+1
+                ′    ′
+                    yr+1 . . . x′s−1 Is−1
+                                      ′    ′
+                                          ys−1 x′s Is′ y ′ ⊂ C ′ are both (D − 1)-paths in Γ, and the corollary follows.   ✷
+
+
+Proposition 4.2 The set S(Γ) of short cycles in a bipartite (d, D, −4)-graph Γ with d ≥ 3 and D ≥ 3
+can be partitioned into sets SD−1 (Γ), SD−2 (Γ) and SD−3 (Γ), where
+
+
+      SD−1 (Γ) is the set of short cycles whose intersections with neighbour cycles are (D − 1)-paths;
+
+      SD−2 (Γ) is the set of short cycles whose intersections with neighbour cycles are (D − 2)-paths; and
+
+      SD−3 (Γ) is the set of short cycles whose intersections with neighbour cycles are paths of length at
+      most D − 3.
+
+
+Proof. If Γ is one of the non-regular graphs in Fig. 2 the result trivially follows. We then assume that Γ
+is regular.
+
+    Let C be a short cycle in Γ. If C is contained in a ΘD−1 then, according to Proposition 4.1, all the
+intersections of C with its neighbour cycles are (D − 1)-paths, in which case C ∈ SD−1 (Γ).
+
+    Now suppose that, for some short cycle C 1 , P1 = C ∩ C 1 is a path of length D − 2. Note that all
+vertices in P1 are saturated. Let v be an arbitrary vertex in P1 , v ′ = repC (v), and C 2 the short cycle
+other than C containing v ′ . Suppose that P2 = C ∩ C 2 is not a (D − 2)-path. Then clearly P2 cannot be a
+(D − 1)-path, so it has length at most D − 3. But according to Corollary 4.4, the cycle rep(C 2 ) intersects
+C at exactly repC (P2 ), a proper subpath of P1 . This implies that rep(C 2 ) is a third short cycle containing
+the vertex v, a contradiction. Consequently, the intersections of C with its (exactly two) neighbour cycles
+are (D − 2)-paths, and C ∈ SD−2 (Γ).
+
+    Finally, if there is a short cycle intersecting C at a path of length at most D − 3 then, by the above
+reasoning, the intersections of C with all of its neighbour cycles are paths of length at most D − 3, and
+C ∈ SD−3 (Γ).                                                                                                              ✷
+
+    The preceding result could be stated alternatively in term of vertices as follows:
+
+
+Proposition 4.3 The set V (Γ) of vertices in a regular bipartite (d, D, −4)-graph Γ with d ≥ 3 and D ≥ 3
+can be partitioned into sets VD−1 (Γ), VD−2 (Γ) and VD−3 (Γ), where
+
+                                                              14
+      VD−1 (Γ) is the set of vertices contained in cycles of SD−1 (Γ);
+
+      VD−2 (Γ) is the set of vertices contained in cycles of SD−2 (Γ);
+
+      VD−3 (Γ) is the set of vertices contained in cycles of SD−3 (Γ);
+
+
+    and SD−1 (Γ), SD−2 (Γ), SD−3 (Γ) are defined as in Proposition 4.2.                                        ✷
+
+
+
+5     Main results
+
+5.1    Non-existence of subgraphs isomorphic to ΘD−1
+
+Theorem 5.1 A bipartite (d, D, −4)-graph Γ with d ≥ 3 and D ≥ 5 does not contain a subgraph isomor-
+phic to ΘD−1 .
+
+
+Proof. Suppose that Γ has a subgraph Θ isomorphic to ΘD−1 , with branch vertices a and b. Let p1 , p2 , p3 , p4
+and p5 be as in Fig. 9 (a), and let q1 be one of the neighbours of p1 not contained in Θ.
+
+    Since all vertices of Θ are saturated, there cannot be a short cycle in Γ containing any of the incident
+edges of p1 , p2 , p3 , p4 or p5 which are not contained in Θ. According to this and by applying the Saturating
+Lemma, there is an additional short cycle D 1 in Γ such that q1 and one of the neighbours of p2 not
+contained in Θ (say q2 ) are repeats in D 1 , and D 1 ∩ Θ = ∅. Analogously, in Γ there is an additional short
+cycle D 2 such that q2 and one of the neighbours of p3 not contained in Θ (say q3 ) are repeats in D 2 , and
+D 2 ∩ Θ = ∅; an additional short cycle D 3 such that q3 and one of the neighbours of p4 not contained in Θ
+(say q4 ) are repeats in D 3 , and D 3 ∩ Θ = ∅; and an additional short cycle D 4 such that q4 and one of the
+neighbours of p5 not contained in Θ (say q5 ) are repeats in D 4 , and D 4 ∩ Θ = ∅. See Fig. 9 (b).
+
+    Note that D 1 ∩ D 2 is a path of length at most 2 < D − 2; otherwise for some vertex t ∈ D 1 ∩ D 2 the
+closed walk tD 1 q1 p1 bp3 q3 D 2 t would contain a cycle of length at most 2D − 2 to which the vertex b would
+belong, a contradiction. For similar reasons, the intersection paths D 2 ∩ D 3 and D 3 ∩ D 4 all have length
+at most 2, with 2¡D − 2. We now apply the Handy Corollary. By mapping the cycle D 2 to C, the vertex
+q2 to x, the vertex q3 to x′ , the cycle D 1 to C 1 , the cycle D 3 to C 2 , the vertex q1 to y and the vertex q4
+to y ′ , we obtain that q1 and q4 are repeat vertices in the repeat cycle of D 2 . Therefore, since q4 ∈ D 4 , it
+follows that D 2 and D 4 are repeat cycles and q1 = q5 . This way, there would be a cycle q1 p1 bp5 q5 in Γ of
+length 4 < 2D − 2 (since D ≥ 5), a contradiction to the fact that g(Γ) = 2D − 2.                               ✷
+
+
+Proposition 5.1 The number N2D−2 of short cycles in a bipartite (d, D, −4)-graph Γ with d ≥ 3 and
+                                   2× 1+(d−1)+...+(d−1)D−1 −4
+D ≥ 5 is given by the expression               D−1
+                                                                .
+
+                                                       15
+                                                Θ                                                                        Θ
+
+
+
+                                                                                                      D1           D4
+                                                      p5                          q2                                     q5    p5
+       p2                                                               p2
+                                           q1                                                                       q1
+   a                                                       b        a                                                               b
+            p4                                  p1                           p4                                           p1
+                                                                                                                   D2
+                                                                                   q4
+                                                     p3                                                                        p3
+                                                                                                3
+                                                                                                                         q3
+                                                                                            D
+
+
+
+
+                          (a)                                                                       (b)
+
+
+                                  Figure 9: Auxiliary figure for Theorem 5.1
+
+
+Proof. By Theorem 5.1, Γ does not contain a subgraph isomorphic to ΘD−1 . Then, according to Propo-
+sition 4.1, every vertex of Γ is contained in exactly two short cycles. We then count the number N2D−2 of
+short cycles of Γ . Since the order of Γ is 2 × 1 + (d − 1) + . . . + (d − 1)D−1 − 4, we have that
+                                                                                
+
+                                                                
+                               2× 2× 1+(d−1)+...+(d−1)D−1 −4
+                                                                                                           
+                                                                                  2× 1+(d−1)+...+(d−1)D−1 −4
+                     N2D−2 =               2D−2
+                                                                         =                   D−1
+                                                                                                               ,
+
+
+   and the proposition follows.                                                                                                         ✷
+
+
+5.2    Non-existence results on bipartite (d, D, −4)-graphs
+
+Since the number of short cycles in a graph Γ must be an integer, the expression obtained for N2D−2
+in Proposition 5.1 already suffices to prove the non-existence of bipartite (d, D, −4)-graphs for infinitely
+many pairs (d, D).
+
+   Consider first the case in which D − 1 = pq is an odd prime power. Let G = {1, 2, . . . , p − 1} be the
+multiplicative group of the field Z/pZ, let d − 1 6≡ 0, 1 (mod p), and let H be the cyclic subgroup of G
+generated by d − 1. We observe that the sum of the elements of H is null (mod p). Furthermore, since
+the order of H divides the order of G, it must also divide pq − 1 = D − 2. Thus, we have
+                                                 
+                                                  −2 (mod p)              if d − 1 ≡ 0, 1 (mod p),
+                                      D−1 
+    2 × 1 + (d − 1) + . . . + (d − 1)       −4 ≡
+                                                  2(d − 1) − 2 (mod p) if d − 1 6≡ 0, 1 (mod p).
+
+
+   Therefore, it immediately follows
+
+
+                                                               16
+Corollary 5.1 There is no bipartite (d, D, −4)-graph with d ≥ 3 and D ≥ 5 such that D − 1 is an odd
+prime power.                                                                                                          ✷
+
+More generally, if p is an odd prime factor of D − 1 and D − 1 ≡ r (mod p − 1), then
+                                               
+                                                −2 (mod p)                if d − 1 ≡ 0, 1 (mod p),
+                                    D−1 
+  2 × 1 + (d − 1) + . . . + (d − 1)       −4 ≡     (d−1)r+1 −1
+                                                2
+                                                      d−2
+                                                               − 4 (mod p) if d − 1 6≡ 0, 1 (mod p);
+
+
+
+Corollary 5.2 There is no bipartite (d, D, −4)-graph with d ≥ 3 and D ≥ 6 such that d − 1 ≡ 0, 1
+(mod p), where p is an odd prime factor of D − 1.                                                                     ✷
+
+     It is also possible to examine completely the case of some small odd prime factors of D−1. For example,
+it is not difficult to verify that, if D − 1 = 3k then 3 does not divide 2 × 1 + (d − 1) + . . . + (d − 1)D−1 − 4;
+                                                                                                             
+
+thus,
+
+
+Corollary 5.3 There is no bipartite (d, D, −4)-graph with d ≥ 3 and D ≥ 5 such that D − 1 ≡ 0 (mod 3).
+
+
+   Now we turn to structural arguments to obtain other non-existence results.
+
+Lemma 5.1 Any two non-disjoint short cycles in a bipartite (d, D, −4)-graph Γ with d ≥ 3 and D ≥ 7
+intersect at a path of length smaller than D − 2.
+
+Proof. Since Γ does not contain a graph isomorphic to ΘD−1 , it is only necessary to prove here that any
+two non-disjoint short cycles in Γ cannot intersect at a path of length D − 2.
+
+   Suppose, by way of contradiction, that there are two short cycles C 1 and C 2 in Γ intersecting at a path
+I1 of length D − 2. According to Proposition 4.2, C 2 is intersected by exactly two short cycles, namely
+C 1 and C 3 , at two independent (D − 2)-paths. By repeatedly applying this reasoning and considering
+Γ is finite, we obtain a maximal length sequence C 1 , C 2 , C 3 , . . . , C m of pairwise distinct short cycles in
+Γ such that C i intersects C i+1 at a path Ii of length D − 2 (1 ≤ i ≤ m − 1), and C i ∩ C j = ∅ for any
+i, j ∈ {1, . . . , m} such that 2 ≤ |i − j| ≤ m − 2.
+
+   Let us denote the paths I1 = x1 − y1 , . . . , Im−1 = xm−1 − ym−1 in such way that, for 1 ≤ i ≤ m − 2,
+xi ∼ xi+1 and yi ∼ yi+1 are edges in Γ. Also, let x0 ∈ N(x1 ) ∩ (C 1 − I1 ), y0 ∈ N(y1 ) ∩ (C 1 − I1 ),
+xm ∈ N(xm−1 ) ∩ (C m − Im−1 ), and ym ∈ N(ym−1 ) ∩ (C m − Im−1 ); see Fig. 10 (a). Set I0 = x0 − y0 and
+Im = xm − ym . Since the sequence C 1 , C 2 , C 3 , . . . , C m is maximal and all the vertices in I1 , . . . , Im−1 are
+saturated, it follows that I0 = Im , and we have either x0 = xm and y0 = ym (Fig. 10 (b)), or x0 = ym and
+y0 = xm (Fig. 10 (c)).
+
+
+                                                          17
+                          x0                        x1                      x2               x3                      xm−2          xm−1              xm
+                                                                                                       ...
+
+
+                                        C1                     C2                     C3                                 C m−1                 Cm
+
+
+
+
+                                                   D−2
+
+
+
+                                                                        D−2
+
+
+
+                                                                                            D−2
+
+
+
+
+                                                                                                                 D−2
+
+
+
+
+                                                                                                                                                    D−2
+                         D−2
+
+
+
+
+                                                                                                                               D−2
+                                                                                                       ...
+
+                               I0                        I1                      I2               I3                   Im−2          Im−1                 Im
+
+
+                                                                                                       ...
+                          y0                        y1                      y2               y3                      ym−2          ym−1              ym
+
+                                                                                              (a)
+
+                                        y4                                                                                                y4
+
+
+             y5                                                             y3                                  y5                             I4                     y3
+                         C5                   I4    C4                                                                        C5                    C4
+                                                              I3                                                        I5                                 I3
+                   I5                   x4                                                                                                x4
+
+                                                                                                                ...
+                         x5                          x3                     3                                                 x5                    x3           C3
+                                                                        C
+                                                                            I2                                                                                       I2
+             ...
+
+
+
+
+                                                          x2                           y2         ym−1                      xm−1                          x2               y2
+                                                                                                               Im−1
+
+                         xm−1       x1                                  C2                                                                           x1              C2
+                  Im−1      x0 = xm                                                                                                  x0 = ym
+                                                                   I1                                                                                           I1
+                                    I0 = Im
+
+
+
+
+                                                                                                                                     I0 = Im
+
+                                                    C1                          y1                                                                   C1               y1
+           ym−1
+
+
+                                    y0 = y m                                                                                         y0 = xm
+
+
+                                      (b)                                                                                              (c)
+
+
+                                                    Figure 10: Auxiliary figure for Lemma 5.1
+
+
+   If x0 = xm and y0 = ym , then m ≥ 2D; otherwise the cycle x1 x2 . . . xm x1 would have length at most
+2D − 2, contradicting the saturation of x1 . If conversely x0 = ym and y0 = xm then m ≥ D; otherwise
+the cycle x1 x2 . . . xm y1 y2 . . . ym x1 containing x1 would have length at most 2D − 2, a contradiction as well.
+For our purposes, it is enough to state m ≥ D ≥ 7 in any case.
+                                                                                                         i+1
+   Let p1 be the neighbour of y1 on I1 , and pi+1 = repC                                                       (pi ) for 1 ≤ i ≤ 4. Also, let q1 be a neighbour
+of p1 not contained in I1 ; see Fig. 11 (a).
+
+   Since all vertices on I1 are saturated, the edge q1 ∼ p1 cannot be contained in a further short cycle.
+We apply the Saturating Lemma (by mapping C 2 to C, p1 to α, p2 to α′ , and q1 to γ), and obtain in Γ
+an additional short cycle D 1 such that q1 and one of the neighbours of p2 not contained in I2 (say q2 ) are
+repeats in D 1 , and D 1 ∩ C 2 = ∅. Analogously, for 2 ≤ i ≤ 4 we obtain an additional short cycle D i in Γ
+
+
+                                                                                                  18
+such that qi and a neighbour of pi+1 not contained in Ii+1 (say qi+1 ) are repeats in D i , and D i ∩ C i+1 = ∅;
+see Fig. 11 (b).
+                            x1                       x2                    x3                    x4                    x5
+                     ...                                                                                                         ...
+                                                          p2                                          p4
+                                                                C3                                          C5
+
+
+
+
+                                                                                                D−3
+                                                                          D−3
+
+
+
+
+                                                                                                                      D−3
+                                                    D−3
+                           D−3
+
+
+
+
+                           p1        q1   C2                                    p3    C4                                    p5
+                     ...                                                                                                         ...
+                             y1                      y2                    y3                     y4                   y5
+
+                                                                           (a)
+
+
+                                x1                   x2                     x3                    x4                   x5
+                     ...                                                                                                         ...
+                                                          p2                               q4          p4
+                                               q2
+                                                                C3                                          C5
+
+
+                                          D1                                     D3
+                                                           D2                                          D4
+
+
+
+                           p1        q1   C2                         q3         p3    C4                         q5         p5
+                     ...                                                                                                         ...
+                                y1                    y2                    y3                    y4                    y5
+
+                                                                            (b)
+
+
+                                           Figure 11: Auxiliary figure for Lemma 5.1
+
+
+   For i = 1 or 3, D i ∩ D i+1 cannot be a (D − 2)-path; otherwise for some vertex ti ∈ D i ∩ D i+1 , there
+would be a cycle qi pi yi yi+1 yi+2pi+2 qi+2 Di+1 ti Di qi of length at most 6 + D − 4 + D − 4 (since D − 2 ≥ 5),
+a contradiction to the fact that pi is saturated and g(Γ) = 2D − 2. Analogously, D 2 ∩ D 3 cannot be a
+(D − 2)-path.
+
+   We now apply the Handy Corollary. By mapping the cycles D 2 to C, D 1 to C 1 and D 3 to C 2 , and the
+vertices q2 to x, q3 to x′ , q1 to y, and q4 to y ′, it follows that the vertices q1 and q4 are repeat vertices in
+the repeat cycle of D 2 . Since q4 ∈ D 4 , D 2 and D 4 are repeat cycles and q5 = q1 . This way, we obtain a
+cycle q1 p1 y1 y2 y3 y4 y5 p5 q5 in Γ of length 8 < 2D − 2, a contradiction.
+
+   This completes the proof of the lemma.                                                                                              ✷
+
+
+Theorem 5.2 There are no bipartite (d, D, −4)-graphs for d ≥ 3 and odd D ≥ 5.
+
+                                                                           19
+Proof. The case D = 5 can be easily discarded by using Proposition 5.1, so we assume D ≥ 7.
+
+   Suppose there is a bipartite (d, D, −4)-graph Γ with d ≥ 3 and odd D ≥ 7. According to Lemma 5.1,
+any two non-disjoint short cycles in Γ intersect at a path of length smaller than D − 2, which means that
+every short cycle C in Γ has a repeat cycle C ′ (by the Repeat Cycle Lemma). Because of the uniqueness
+and symmetry of repeat cycles, the number N2D−2 of short cycles in Γ must be even.
+                                                                       
+                                                2× 1+(d−1)+...+(d−1)D−1 −4
+   However, since D is odd, the number N2D−2 =             D−1
+                                                                           of short cycles in Γ is odd, a
+contradiction.                                                                                                    ✷
+
+   Furthermore, using Theorem 5.2 and Proposition 5.1 we complete the catalogue of bipartite (d, D, −4)-
+graphs with 5 ≤ D ≤ 187. From Section 3 recall that, for D ≥ 5, the only bipartite (2, D, −4)-graph is
+the path of length 5.
+
+
+Theorem 5.3 The path of length 5 is the only bipartite (∆, D, −4)-graph with ∆ ≥ 2 and 5 ≤ D ≤ 187.
+
+
+5.3    Non-existence of bipartite (3, D, −4)-graphs with D ≥ 5
+
+In this section we complete the catalogue of bipartite (3, D, −4)-graphs. Specifically, we prove the non-
+existence of bipartite (3, D, −4)-graphs with even D ≥ 6.
+
+
+Lemma 5.2 Any two non-disjoint short cycles in a bipartite (3, D, −4)-graph Γ with d ≥ 3 and D ≥ 7
+intersect at a path of length smaller than D − 3.
+
+
+Proof. By Lemma 5.1, it is only necessary to prove here that any two short cycles C and C 1 in Γ cannot
+intersect at a path I = x − y of length D − 3. We proceed by contradiction. Let x′ and y ′ be the
+repeat vertices of x and y in C 1 , respectively. By Corollary 4.4, the repeat cycle C ′ of C intersects C 1 at
+I ′ = x′ − y ′ (the repeat path of I in C 1 ); see Fig. 12. If we denote by z the neighbour of x on C 1 − C, then
+we have that the other short cycle containing z would also contain at least one of the vertices in {x, y ′},
+which contradicts the fact that x and y ′ are both saturated.                                                     ✷
+
+
+Theorem 5.4 There are no bipartite (3, D, −4)-graphs with even D ≥ 6.
+
+
+Proof. Recall that Theorem 5.3 covers the case D = 6.
+
+   Let Γ be a bipartite (3, D, −4)-graph with even D ≥ 8, C 0 a short cycle in Γ, and x0 , x′0 two repeat
+vertices in C 0 . Let x1 and x′1 be the neighbours of x0 and x′0 , respectively, not contained in C 0 . According to
+the Saturating Lemma, there is an additional short cycle C 1 containing x1 and x′1 such that C 0 ∩ C 1 = ∅.
+                                                                               1
+Let y1 be one of the neighbours of x1 contained in C 1 , and y1′ = repC (y1 ). Denote by x2 and x′2 the
+
+
+                                                        20
+                                                                     x         z    y′
+
+
+
+                                                                 I
+
+
+
+
+                                                             D−3
+
+
+
+                                                                                     D−3
+                                                  C                            C1                C′
+
+
+                                                                                     I′
+
+                                                                     y              x′
+
+
+                                          Figure 12: Auxiliary figure for Lemma 5.2
+
+
+neighbours of y1 and y1′ , respectively, not contained in C 1 . Again by the Saturating Lemma, there is an
+                                                             2
+additional short cycle C 2 such that x′2 = repC (x2 ) and C 1 ∩ C 2 = ∅. Since d = 3, we may assume that
+the other short cycle C containing x0 also contains x1 and a neighbour of x0 in C0 (say y0 ). We first prove
+that C 0 ∩ C = y0 x0 .
+           x0                 x1                       x2                                  x0                       x1                     x2
+
+                         y1                           y2                                                       y1               x3     y2
+      y0                                                                             y0
+    z0                                                                              z0      P         D−
+                                                                                                           4                                     C2
+                                                                                                                                      C3
+           C0              C1                          C2                                 C0                    C1
+
+
+                                                                         z2′                                                    y3′                     z2′
+                                                                                                                                       x′3
+                                    y1′                          y2′                                                      y1′                     y2′
+           x′0                x′1                      x′2                                 x′0                      x′1                    x′2
+
+                           (a)                                                                                      (b)
+
+                                      Figure 13: Auxiliary figure for Theorem 5.4.
+
+
+   Claim 1. C 0 ∩ C = y0 x0 .
+
+   Proof of Claim 1. Let y0 , z0 , y2 , y2′ and z2′ be as in Fig. 13 (a).
+
+   Consider a path P = x′2 − y0 . If y1′ ∈ P , then P would go through a neighbour of y1′ contained in
+C 1 and there would be a cycle in Γ of length at most 2D − 4. Therefore, we may assume y2′ ∈ P . If
+{x′2 , y2′ , z2′ } ⊂ V (P ∩ C2) then there would be a short cycle intersecting the cycle C 2 at a path of length
+D − 3, a contradiction to Lemma 5.2. Similarly, we have that z0 6∈ P . Also, P must be a (D − 1)-path
+and x0 6∈ P ; otherwise there would be a short cycle intersecting the cycle C 2 at a path of length D − 2, a
+contradiction to Lemma 5.1.
+
+
+
+                                                                               21
+                              x0                x1                              x2                             x3
+                                                                                                                                     ...
+                         y0                y1                                y2                              y3
+
+
+
+                          C0                 C1                                C2                             C3                           ...
+
+                                                                                                  z2′                          z3′
+                                                      y1′                                   y2′                         y3′          ...
+
+                              x′0               x′1                               x′2                             x′3
+                                                                                  x( D )                          x( D +1)
+                                                                                        2                               2
+                                                                  ...
+                                                                             y( D )
+                                                                                2
+
+
+
+
+                                                            ...              C( 2 )
+                                                                                    D                             D
+                                                                                                            C ( 2 +1)
+
+                                                                                                  z(′ D )                      z(′ D +1)
+                                                                                                        2                          2
+                                                                                                                             ′
+                                                                  ...                       y(′ D )                         y( D +1)
+                                                                                                2                              2
+                                                                                  x′( D )                         x′( D +1)
+                                                                                        2                               2
+
+
+
+
+            Figure 14: Auxiliary figure showing the sequence C 0 , C 1 , . . . , C D/2+1 of short cycles.
+
+
+   For 3 ≤ i ≤ D/2 + 1, let xi and x′i be the neighbours of yi−1 and yi−1
+                                                                      ′
+                                                                          , respectively, not contained
+in C i−1 , and let C i be (in virtue of the Saturating Lemma) the additional short cycle disjoint from C i−1
+which contains xi and x′i . Since P must go through x′i , we denote by yi′ the neighbour of x′i on P ∩ C i
+                     i
+and set yi = repC (yi′ ). We now show that, if i 6= D/2 + 1, P ∩ C i = x′i yi′ . Assume the contrary; that
+is, P ∩ C i = x′i yi′ zi′ (since g(Γ) = 2D − 2, |V (P ∩ C i )| ≤ 3). In such case, there would be a short cycle
+y0 P zi′ C i xi yi−1 xi−1 yi−2xi−2 . . . y1 x1 x0 y0 intersecting C i at a path of length D − 3, contradicting Lemma 5.2
+(see Figures 13 (b) and 14). Consequently, P ∩ C i = x′i yi′ and P must go through a neighbour of yi′ not
+contained in C i .
+
+   This way, for 3 ≤ i ≤ D/2 + 1 we have d(y0 , yi′ ) = d(y0 , yi−1
+                                                                ′
+                                                                    ) − 2 = D − 2(i − 1), which means that
+        ′
+d(y0 , yD/2+1 ) = 0. Since the cycle C D/2+1 contains the vertices y0 ∈ C 0 ∩ C ∩ P and x′D/2+1 ∈ P − C 0 , we
+have C D/2+1 = C, which implies that C 0 ∩ C = y0 x0 .                                                                                           ✷
+
+   As the selection of C 0 and C was arbitrary, basically as a corollary of Claim 1 we have:
+
+   Claim 2. Any two non-disjoint short cycles in Γ intersect at an edge.
+
+   Finally, suppose that C 0 and C intersect at y0 x0 , as stated by Claim 1. Let y0′ be the repeat vertex
+of y0 in C 0 ; then, by Corollary 4.4, the repeat cycle C ′ of C intersects C 0 at y0′ x′0 (the repeat path of
+y0 x0 in C 0 ). Setting Q = x0 C 0 y0′ = x0 w1 . . . wD−3 y0′ , we have Q is a path of length D − 2 with saturated
+endvertices (see Fig. 15). Therefore, by Claim 2, there exists a sequence F 1 , . . . , F D/2−2 of short cycles
+
+
+                                                                        22
+such that F i ∩ C 0 = w2i−1 w2i . However, since D is even, the other short cycle containing wD−3 would also
+contain one of the vertices in {wD−4, y0′ }, which contradicts the fact that wD−4 and y0′ are both saturated.
+This completes the proof of Theorem 5.4.                                                                   ✷
+
+                                                  w2
+                                             w1             wD−3
+                                        x0                         y0′
+                              C                        C0                   C′
+                                        y0                         x′0
+
+
+
+
+                               Figure 15: Auxiliary figure for Theorem 5.4.
+
+
+    Combining Theorems 5.2 and 5.4, we have that the only bipartite (3, D, −4)-graphs with D ≥ 2 are
+those depicted in Figures 2 and 3, completing in this way the catalogue of such graphs.
+
+
+
+6     Conclusions
+
+The main results obtained in this paper are summarised below.
+
+    First we stated important structural properties of bipartite (d, D, −4)-graphs with d ≥ 3 and D ≥ 3.
+We found necessary conditions for the existence of bipartite (d, D, −4)-graphs with d ≥ 3 and D ≥ 5,
+which allowed us to prove the non-existence of such graphs for infinitely many pairs (d, D); this included
+the case in which D − 1 is an odd prime power, and the case in which D − 1 ≡ 0 (mod 3). Afterwards, we
+went on to proving that bipartite (d, D, −4)-graphs for d ≥ 3 and odd D ≥ 5 do not exist. We completed
+the catalogue of bipartite (∆, D, −4)-graphs with ∆ ≥ 2 and 5 ≤ D ≤ 187, which in turn completed the
+catalogue of bipartite (∆, D, −ǫ)-graphs with ∆ ≥ 2, 5 ≤ D ≤ 187, D 6= 6 and 0 ≤ ǫ ≤ 4.
+
+
+Catalogue of bipartite (∆, D, 0)-graphs with ∆ ≥ 2 and 5 ≤ D ≤ 187. For 5 ≤ D ≤ 187 and ∆ = 2
+      the only Moore bipartite graphs are the 2D-cycles, whereas for D = 6 and ∆ ≥ 3 they are incidence
+      graphs of generalised polygons. For other values of 5 ≤ D ≤ 187 and ∆ ≥ 3 there are no Moore
+      bipartite graphs.
+
+Catalogue of bipartite (∆, D, −2)-graphs with ∆ ≥ 2 and 5 ≤ D ≤ 187. The results of [14] combined
+      with [5, 6] showed that there are no such graphs.
+
+Catalogue of bipartite (∆, D, −4)-graphs with ∆ ≥ 2 and 5 ≤ D ≤ 187. The path of length 5 is the
+      only such graph.
+
+                                                       23
+   Another important result of the paper is the completion of the catalogue of bipartite (3, D, −ǫ)-graphs
+with D ≥ 2 and 0 ≤ ǫ ≤ 4.
+
+
+Catalogue of bipartite (3, D, 0)-graphs with D ≥ 2. The cubic Moore bipartite graphs are the com-
+      plete bipartite graph K3,3 for D = 2, the unique incidence graph of the projective plane of order 2
+      for D = 3, the unique incidence graph of the generalised quadrangle of order 2 for D = 4, and the
+      unique incidence graph of the generalised hexagon of order 2 for D = 6.
+
+Catalogue of bipartite (3, D, −2)-graphs with D ≥ 2. There are only two non-isomorphic (3, D, −2)-
+      graphs with D ≥ 2; a unique bipartite (3, 2, −2)-graph (the claw graph), and a unique (3, 3, −2)-
+      graph, which is depicted in Fig. 1 (a).
+
+Catalogue of bipartite (3, D, −4)-graphs with D ≥ 2. There exist no bipartite (3, 2, −4)-graphs. When
+      the diameter is 3, there are four non-isomorphic bipartite (3, 3, −4)-graphs; all of them are shown
+      in Figure 2. For diameter 4, there is a unique bipartite (3, 4, −4)-graph, which is depicted in Fig. 3.
+      The results of this paper, combined with those of [11], assert that there are no bipartite (3, D, −4)-
+      graphs with D ≥ 5, outcome that gives an alternative proof of the optimality of the known bipartite
+      (3, 5, −6)-graph (see [4]).
+
+
+6.1    Bipartite (d, D, −4)-graphs with d ≥ 4 and D = 3, 4
+
+The main results in this paper did not include bipartite (d, D, −4)-graphs with d ≥ 4 and D = 3, 4.
+However, we believe that the structural properties of these graphs provided in Section 4 could bear more
+conclusive results on such diameters.
+
+   For instance, by using Proposition 4.1, Lemma 4.1 (Saturating Lemma), Lemma 4.2 (Repeat Cycle
+Lemma), Proposition 4.2, and Proposition 4.3, we were able to prove analytically the uniqueness of the
+two bipartite (4, 3, −4)-graphs depicted in Fig. 4. We also think there should be no major difficulty to
+complete as well –in a very similar manner– the catalogue of bipartite (5, 3, −4)-graphs, which has so far
+as a unique element, the graph in Fig. 5.
+
+   Unfortunately, the final ideas used in the paper cannot be easily extended to cover bipartite (d, D, −4)-
+graphs with d ≥ 4 and D = 3, 4. With our current approach we cannot have Theorem 5.1 for D = 3, 4.
+In Theorem 5.1 the intersection paths D 1 ∩ D 2 , D 2 ∩ D 3 and D 3 ∩ D 4 have length at most 2, and for us
+to apply the the Repeat Cycle Lemma we need the lengths of such paths to be less than D − 2. Indeed,
+the graph in Fig. 4 (a) offers a good illustration of this. Even if we had Theorem 5.1, something similar
+would occur with Lemma 5.1; see the graphs in Fig. 4 (b) and Fig. 5.
+
+
+
+
+                                                     24
+6.2     Remarks on the upper bound for Nb (∆, D)
+
+                                        b
+Our results improve the upper bound on N∆,D for many combinations of ∆ and D. Recall that a bipartite
+(∆, D, −5)-graph Γ with ∆ ≥ 3 and D ≥ 5 must be regular (by Proposition 3.1) and thus cannot exist.
+
+
+Proposition 6.1 For natural numbers ∆ ≥ 3 and D ≥ 8 such that D − 1 is an odd prime power,
+Nb (∆, D) ≤ Mb (∆, D) − 6.
+
+
+Proposition 6.2 For natural numbers ∆ ≥ 3 and D ≥ 7 such that d − 1 ≡ 0, 1 (mod p), where p is an
+odd prime factor of D − 1, Nb (∆, D) ≤ Mb (∆, D) − 6.
+
+
+Proposition 6.3 For natural numbers ∆ ≥ 3 and D ≥ 5 such that D ≡ 1, 3, 4, 5 (mod 6), Nb (∆, D) ≤
+Mb (∆, D) − 6.
+
+
+Proposition 6.4 For natural numbers ∆ ≥ 3 and 5 ≤ D ≤ 187 (D 6= 6), Nb (∆, D) ≤ Mb (∆, D) − 6.
+
+
+Proposition 6.5 For any natural number D ≥ 5 (D 6= 6), Nb (3, D) ≤ Mb (3, D) − 6.
+
+
+   Finally, we feel that the next conjectures are valid.
+
+
+Conjecture 6.1 There is no bipartite (∆, D, −4)-graph with ∆ ≥ 3 and D ≥ 5.
+
+
+Conjecture 6.2 For natural numbers ∆ ≥ 3 and D ≥ 5 such that D 6= 6, Nb (∆, D) ≤ Mb (∆, D) − 6.
+
+
+
+References
+
+ [1] C. T. Benson, Minimal regular graphs of girths eight and twelve, Canadian Journal of Mathematics
+      18 (1966), 1091–1094.
+
+ [2] N. Biggs, Algebraic Graph Theory, 2nd. ed., Cambridge Mathematical Library, Cambridge University
+      Press, Cambridge, 1993.
+
+ [3] N. L. Biggs and T. Ito, Graphs with even girth and small excess, Mathematical Proceedings of the
+      Cambridge Philosophical Society 88 (1980), no. 1, 1–10, doi:10.1017/S0305004100057303.
+
+ [4] J. Bond and C. Delorme, New large bipartite graphs with given degree and diameter, Ars Combinatoria
+      25 (1988), no. C, 123–132, Eleventh British Combinatorial Conference (London, 1987).
+
+
+
+                                                     25
+ [5] C. Delorme, L. K. Jørgensen, M. Miller, and G.Pineda-Villavicencio, On bipartite graphs of diameter
+    3 and defect 2, Journal of Graph Theory 61 (2009), no. 4, 271–288, doi:10.1002/jgt.20378.
+
+ [6] C. Delorme, L. K. Jørgensen, M. Miller, and G. Pineda-Villavicencio, On bipartite graphs of defect 2,
+    European Journal of Combinatorics 30 (2009), no. 4, 798–808, 10.1016/j.ejc.2008.09.030.
+
+ [7] R. Diestel, Graph Theory, 3rd. ed., Graduate Texts in Mathematics, vol. 173, Springer-Verlag, Berlin,
+    2005.
+
+ [8] J. Duato, S. Yalamanchili, and L. Ni, Interconnection Networks: An Engineering Approach, revised
+    printing ed., Morgan Kaufmann Publishers, San Francisco, CA, 2003.
+
+ [9] W. Feit and G. Higman, The nonexistence of certain generalized polygons, Journal of Algebra 1 (1964),
+    114–131, doi:10.1016/0021-8693(64)90028-6.
+
+[10] M. C. Heydemann, Cayley graphs and interconnection networks, Graph Symmetry: Algebraic Methods
+    and Applications (G. Hahn and G. Sabidussi, eds.), NATO ASI Series, Series C: Mathematical and
+    Physical Sciences, vol. 497, Kluwer Academic Publishers, Dordrecht, 1996.
+
+[11] L. K. Jørgensen, Nonexistence of certain cubic graphs with small diameters, Discrete Mathematics
+    114 (1993), 265–273, doi:10.1016/0012-365X(93)90371-Y.
+
+[12] M. Meringer, Fast generation of regular graphs and construction of cages, Journal of Graph Theory
+    30 (1999), 137–146.
+
+[13] B. D. Mckay, nauty user’s guide (version 2.2), preprint, 2006.
+
+[14] G. Pineda-Villavicencio, Non-existence of bipartite graphs of diameter at least 4 and defect 2, Journal
+    of Algebraic Combinatorics (2010), doi:10.1007/s10801-010-0266-0.
+
+[15] R. C. Singleton, On minimal graphs of maximum even girth, Journal of Combinatorial Theory 1
+    (1966), no. 3, 306–332, doi:10.1016/S0021-9800(66)80054-6.
+
+[16] J. Xu, Topological Structure and Analysis of Interconnection Networks, Network Theory and Appli-
+    cations, vol. 7, Kluwer Academic Publishers, Dordrecht, 2001.
+
+
+
+
+                                                    26
+

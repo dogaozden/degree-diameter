@@ -1,0 +1,10 @@
+group sl 163 x Z_31, N=134248104 (2N=268496208), rows 26568 x 5053 bits (doubled row 176 words), memory 0.10 GB, threads 1
+alpha: conj by mat(0,162,1,162), z -> 5 z on Z_31 (fixed z: 1); ORBIT k=3 m=2 f=2; W=2.30688e+09 lambda=17.184 mu=4.63
+setup 0.0s
+fixed generators: 1 chosen among 161 alpha-fixed elements
+start cost=3 (1.4s per eval)
+t=5 step=1 evals=5 slot=0 cand=3 cost=3 best=3 T=1.26
+t=9 step=2 evals=9 slot=1 cand=0 cost=0 best=0 T=1.06
+RESULT d=8 D=12 group=sl 163 x Z_31 N=134248104 vertices=268496208 best=0 evals=9 steps=2 time=8.9 orbit k=3 m=2 f=2 mu=4.63
+re-evaluation of the best S: cost 0
+wrote /home/user/degree-diameter/research/squads/beyond11/r3/e16/ctl.sol

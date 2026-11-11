@@ -1,0 +1,35 @@
+group sl 53 x Z_931, N=138555144 (2N=277110288), rows 2808 x 49343 bits (doubled row 1560 words), memory 0.09 GB, threads 1
+alpha: conj by mat(0,52,1,52), z -> 30 z on Z_931 (fixed z: 1); ORBIT k=3 m=2 f=2; W=2.30688e+09 lambda=16.650 mu=8.14
+setup 0.0s
+fixed generators: 1 chosen among 53 alpha-fixed elements
+start cost=118368 (1.4s per eval)
+t=4 step=1 evals=5 slot=1 cand=174 cost=174 best=174 T=1.26
+t=8 step=2 evals=9 slot=0 cand=213 cost=174 best=174 T=1.06
+t=11 step=3 evals=13 slot=1 cand=406 cost=174 best=174 T=0.89
+t=14 step=4 evals=17 slot=1 cand=408 cost=174 best=174 T=0.75
+t=20 step=5 evals=21 slot=1 cand=654 cost=174 best=174 T=0.63
+t=24 step=6 evals=25 slot=0 cand=363 cost=174 best=174 T=0.53
+t=27 step=7 evals=29 slot=0 cand=1137 cost=174 best=174 T=0.45
+t=30 step=8 evals=33 slot=0 cand=684 cost=174 best=174 T=0.38
+t=34 step=9 evals=37 slot=1 cand=429 cost=174 best=174 T=0.32
+t=38 step=10 evals=41 slot=0 cand=603 cost=174 best=174 T=0.27
+t=41 step=11 evals=45 slot=0 cand=900 cost=174 best=174 T=0.22
+t=45 step=12 evals=49 slot=1 cand=4569 cost=174 best=174 T=0.19
+t=48 step=13 evals=53 slot=1 cand=456 cost=174 best=174 T=0.16
+t=51 step=14 evals=57 slot=1 cand=294 cost=174 best=174 T=0.15
+t=54 step=15 evals=61 slot=0 cand=411 cost=174 best=174 T=0.15
+t=60 step=16 evals=65 slot=0 cand=405 cost=174 best=174 T=0.15
+t=63 step=17 evals=69 slot=1 cand=465 cost=174 best=174 T=0.15
+t=66 step=18 evals=73 slot=1 cand=330 cost=174 best=174 T=0.15
+t=69 step=19 evals=77 slot=1 cand=534 cost=174 best=174 T=0.15
+t=72 step=20 evals=81 slot=0 cand=4197 cost=174 best=174 T=0.15
+t=75 step=21 evals=85 slot=0 cand=273 cost=174 best=174 T=0.15
+t=78 step=22 evals=89 slot=0 cand=312 cost=174 best=174 T=0.15
+t=81 step=23 evals=93 slot=0 cand=276 cost=174 best=174 T=0.15
+t=84 step=24 evals=97 slot=1 cand=393 cost=174 best=174 T=0.15
+t=88 step=25 evals=101 slot=1 cand=255 cost=174 best=174 T=0.15
+t=91 step=26 evals=105 slot=0 cand=570 cost=174 best=174 T=0.15
+t=95 step=27 evals=109 slot=0 cand=1005 cost=174 best=174 T=0.15
+t=97 step=28 evals=113 slot=0 cand=294 cost=174 best=174 T=0.15
+t=101 step=29 evals=117 slot=1 cand=8211 cost=174 best=174 T=0.15
+RESULT d=8 D=12 group=sl 53 x Z_931 N=138555144 vertices=277110288 best=174 evals=117 steps=29 time=100.6 orbit k=3 m=2 f=2 mu=8.14

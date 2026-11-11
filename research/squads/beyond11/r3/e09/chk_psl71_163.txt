@@ -1,0 +1,7 @@
+selftest psl 71: |M| = 178920, det-1 matrices 357840
+selftest group multiplication: associativity, identity, inverse on 20000 random triples ok
+file /home/user/degree-diameter/research/squads/beyond11/r3/e09/psl71_163_s5.sol
+header: 7 12 psl 71 n 163 N 29163960
+group psl 71 x Z_163, |G| = 29163960 = N, vertices 2N = 58327920; 7 distinct generators
+from (e,A): reached A 29163960/29163960, B 29163960/29163960 within 12; ecc 12; level sizes [1, 7, 42, 252, 1512, 9072, 54402, 324591, 1890513, 9548908, 24764447, 19281130, 2453043]  (59s)
+rc=124

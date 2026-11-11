@@ -1,0 +1,11 @@
+group sl 613 x Z_1, N=230345784 (2N=460691568), rows 375768 x 613 bits (doubled row 40 words), memory 0.37 GB, threads 1
+alpha: conj by mat(0,612,1,612), z -> 0 z on Z_1 (fixed z: 1); ORBIT k=3 m=3 f=1; W=3.92263e+09 lambda=17.029 mu=9.26
+setup 0.0s
+start cost=14 (6.6s per eval)
+t=31 step=1 evals=5 slot=0 cand=18 cost=14 best=14 T=1.26
+t=51 step=2 evals=9 slot=0 cand=18 cost=14 best=14 T=1.06
+t=64 step=3 evals=13 slot=1 cand=12 cost=12 best=12 T=0.89
+t=74 step=4 evals=17 slot=2 cand=0 cost=0 best=0 T=0.75
+RESULT d=10 D=11 group=sl 613 x Z_1 N=230345784 vertices=460691568 best=0 evals=17 steps=4 time=74.0 orbit k=3 m=3 f=1 mu=9.26
+re-evaluation of the best S: cost 0
+wrote /home/user/degree-diameter/research/squads/beyond11/r2/d13/sl613n1.sol

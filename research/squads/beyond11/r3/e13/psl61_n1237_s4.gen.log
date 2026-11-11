@@ -1,0 +1,6 @@
+group psl 61 x Z_1237, N=140350020 (2N=280700040), rows 1860 x 75457 bits (doubled row 2384 words), memory 0.07 GB, threads 1
+alpha: conj by mat(0,60,1,60), z -> 300 z on Z_1237 (fixed z: 1); ORBIT k=3 m=2 f=2; W=2.30688e+09 lambda=16.437 mu=10.21
+setup 0.0s
+fixed generators: 1 chosen among 29 alpha-fixed elements
+start cost=6564 (1.4s per eval)
+RESULT d=8 D=12 group=psl 61 x Z_1237 N=140350020 vertices=280700040 best=6564 evals=1 steps=0 time=1.4 orbit k=3 m=2 f=2 mu=10.21

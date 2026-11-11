@@ -1,0 +1,8 @@
+group psl 401 x Z_19, N=612567600 (2N=1225135200), rows 80400 x 7619 bits (doubled row 264 words), memory 0.47 GB, threads 1
+alpha: conj by mat(0,400,1,400), z -> 7 z on Z_19 (fixed z: 1); ORBIT k=3 m=3 f=2; W=1.11111e+10 lambda=18.139 mu=8.12
+setup 0.0s
+start cost=12 (12.1s per eval)
+t=40 step=1 evals=5 slot=0 cand=24 cost=12 best=12 T=1.26
+t=58 step=2 evals=9 slot=2 cand=24 cost=12 best=12 T=1.06
+t=77 step=3 evals=13 slot=0 cand=20 cost=12 best=12 T=0.89
+RESULT d=11 D=11 group=psl 401 x Z_19 N=612567600 vertices=1225135200 best=12 evals=13 steps=3 time=76.6 orbit k=3 m=3 f=2 mu=8.12

@@ -1,0 +1,11 @@
+group sl 199 x Z_1, N=7880400 (2N=15760800), rows 39600 x 199 bits (doubled row 32 words), memory 0.03 GB, threads 1
+alpha: conj by mat(0,198,1,198), z -> 0 z on Z_1 (fixed z: 1); ORBIT k=3 m=3 f=2; W=1.11111e+08 lambda=14.100 mu=5.93
+setup 0.0s
+fixed generators: 1 chosen among 197 alpha-fixed elements
+start cost=52 (0.2s per eval)
+t=1 step=1 evals=5 slot=2 cand=70 cost=52 best=52 T=1.26
+t=2 step=2 evals=9 slot=1 cand=4 cost=4 best=4 T=1.06
+t=3 step=3 evals=13 slot=1 cand=0 cost=0 best=0 T=0.89
+RESULT d=11 D=9 group=sl 199 x Z_1 N=7880400 vertices=15760800 best=0 evals=13 steps=3 time=2.7 orbit k=3 m=3 f=2 mu=5.93
+re-evaluation of the best S: cost 0
+wrote /home/user/degree-diameter/research/squads/beyond11/r2/d10/sl199_n1_s2.sol

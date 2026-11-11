@@ -1,0 +1,16 @@
+group sl 419 x Z_1, N=73559640 (2N=147119280), rows 175560 x 419 bits (doubled row 32 words), memory 0.15 GB, threads 1
+alpha: conj by mat(0,418,1,418), z -> 0 z on Z_1 (fixed z: 1); ORBIT k=3 m=3 f=2; W=1.11111e+09 lambda=15.105 mu=20.26
+setup 0.0s
+fixed generators: 1 chosen among 419 alpha-fixed elements
+start cost=20 (2.8s per eval)
+t=7 step=1 evals=5 slot=2 cand=9 cost=9 best=9 T=1.26
+t=11 step=2 evals=9 slot=0 cand=12 cost=9 best=9 T=1.06
+t=15 step=3 evals=13 slot=0 cand=7 cost=7 best=7 T=0.89
+t=19 step=4 evals=17 slot=2 cand=14 cost=7 best=7 T=0.75
+t=23 step=5 evals=21 slot=0 cand=13 cost=7 best=7 T=0.63
+t=27 step=6 evals=25 slot=0 cand=11 cost=7 best=7 T=0.53
+t=31 step=7 evals=29 slot=1 cand=10 cost=7 best=7 T=0.45
+t=35 step=8 evals=33 slot=1 cand=9 cost=7 best=7 T=0.38
+t=39 step=9 evals=37 slot=2 cand=8 cost=7 best=7 T=0.32
+t=43 step=10 evals=41 slot=2 cand=24 cost=7 best=7 T=0.27
+RESULT d=11 D=10 group=sl 419 x Z_1 N=73559640 vertices=147119280 best=7 evals=41 steps=10 time=43.4 orbit k=3 m=3 f=2 mu=20.26

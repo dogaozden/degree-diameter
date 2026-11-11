@@ -1,0 +1,12 @@
+group sl 229 x Z_19, N=228166440 (2N=456332880), rows 52440 x 4351 bits (doubled row 160 words), memory 0.18 GB, threads 1
+alpha: conj by mat(0,228,1,228), z -> 7 z on Z_19 (fixed z: 1); ORBIT k=3 m=3 f=1; W=3.92263e+09 lambda=17.192 mu=7.80
+setup 0.0s
+start cost=26 (4.6s per eval)
+t=18 step=1 evals=5 slot=1 cand=6 cost=6 best=6 T=1.26
+t=31 step=2 evals=9 slot=0 cand=12 cost=6 best=6 T=1.06
+t=40 step=3 evals=13 slot=0 cand=8 cost=6 best=6 T=0.89
+t=53 step=4 evals=17 slot=0 cand=16 cost=6 best=6 T=0.75
+t=65 step=5 evals=21 slot=1 cand=0 cost=0 best=0 T=0.63
+RESULT d=10 D=11 group=sl 229 x Z_19 N=228166440 vertices=456332880 best=0 evals=21 steps=5 time=64.8 orbit k=3 m=3 f=1 mu=7.80
+re-evaluation of the best S: cost 0
+wrote /home/user/degree-diameter/research/squads/beyond11/r2/d13/sl229n19.sol

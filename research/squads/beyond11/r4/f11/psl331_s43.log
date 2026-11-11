@@ -1,0 +1,7 @@
+group psl 331 x Z_31, N=562097580 (2N=1124195160), rows 54780 x 10261 bits (doubled row 344 words), memory 0.39 GB, threads 1
+alpha: conj by mat(0,330,1,330), z -> 5 z on Z_31 (fixed z: 1); ORBIT k=3 m=3 f=0; W=9.81707e+09 lambda=17.465 mu=14.62
+setup 0.0s
+start cost=3 (16.5s per eval)
+t=66 step=1 evals=5 slot=0 cand=7 cost=3 best=3 T=1.26
+t=114 step=2 evals=9 slot=2 cand=15 cost=3 best=3 T=1.06
+RESULT d=9 D=12 group=psl 331 x Z_31 N=562097580 vertices=1124195160 best=3 evals=9 steps=2 time=113.8 orbit k=3 m=3 f=0 mu=14.62

@@ -1,0 +1,15 @@
+checker: haarcheck_gen
+command: ./bin/haarcheck_gen runs/d8D12_psl_167_61_orb3-2-2_f10.out
+start: 2026-11-01T07:17:40Z
+sha256 e52e247f4a92a474f49ff0d5d438660ba0b557bbdfd4a8e24311ca881ff3f17c  ./bin/haarcheck_gen
+sha256 0fe8a4bfda5d77e06e2f94f28758ef814d2e4766472732bb75b59c6135d745cc  runs/d8D12_psl_167_61_orb3-2-2_f10.out
+selftest psl 167: |M| = 2328648, index round trip over all elements ok
+selftest group multiplication: associativity, identity, inverse on 20000 random triples ok
+file runs/d8D12_psl_167_61_orb3-2-2_f10.out
+header: 8 12 psl 167 n 61 N 142047528
+group psl 167 x Z_61, |G| = 142047528 = N, vertices 2N = 284095056; 8 distinct generators
+from (e,A): reached A 142047528/142047528, B 142047528/142047528 within 12; ecc 12; level sizes [1, 8, 56, 392, 2744, 19208, 134354, 937418, 6424778, 39048462, 121404207, 102042040, 14081388]  (40s)
+from (e,B): reached A 142047528/142047528, B 142047528/142047528 within 12; ecc 12; level sizes [1, 8, 56, 392, 2744, 19208, 134354, 937418, 6424673, 39048462, 121404084, 102042040, 14081616]  (81s)
+VALID d=8 D=12 group=psl 167 x Z_61 N=142047528 vertices=284095056 (distinct generators, 8-regular simple; every vertex within 12 of both (e,A) and (e,B); ecc 12; 82s)
+exit: 0
+end: 2026-11-01T07:19:02Z (82 s)

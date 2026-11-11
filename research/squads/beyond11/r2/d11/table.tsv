@@ -1,0 +1,18 @@
+# d11 even-D control. Orbit "3 4 0" at (12,10) and "3 3 2" at (11,10); 40 s per run, THREADS=1, K=4. Score = best cost (0 = solved).
+# Groups are N ~ 1.6e8 (12,10) and ~7.2e7 (11,10), not N <= 5e7: at N <= 5e7 the size law gives mu ~ 1e-15 (no hardness).
+# n = 509 is invalid for alpha of order 3 (509 = 2 mod 3); 499 used instead. No prime n = 7/127 group with mu in window for SL (11,10,n=7) or PSL (11,10,n=127).
+cell	family	p	n	N	mu	seed1_best	seed2_best	evals_s1	evals_s2
+(12,10)	psl	683	1	159305652	13.53	11	5	13	13
+(12,10)	sl	541	1	158339880	12.18	8	10	13	13
+(12,10)	psl	359	7	161937720	17.92	7	4	21	25
+(12,10)	sl	283	7	158654328	12.60	7	4	21	21
+(12,10)	psl	137	127	163272216	20.59	6	6	37	81
+(12,10)	sl	109	127	164454840	23.25	15	9	37	89
+(12,10)	sl	67	499	150047304	4.67	0 (solved in 9 s, 300094608 vertices)	not run	9	not run
+(12,10)	psl	89	499	175867560	69.2	not run	not run	-	-
+(11,10)	psl	523	1	71527572	12.83	6	4	25	33
+(11,10)	sl	419	1	73559640	20.26	9	7	25	41
+(11,10)	psl	277	7	74387796	24.24	8	7	45	65
+(11,10)	sl	83	127	72606408	16.40	3	3	85	129
+(11,10)	psl	67	499	75023652	27.75	21	21	109	157
+(11,10)	sl	53	499	74263176	23.60	24	15	109	229

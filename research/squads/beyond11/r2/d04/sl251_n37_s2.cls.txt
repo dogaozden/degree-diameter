@@ -1,0 +1,15 @@
+EVAL /home/user/degree-diameter/research/squads/beyond11/r2/d04/sl251_n37_s2.sol.start cost=10 time=12.819 mu=3.31
+HOLE side=A class=other z=16 mat(38,148,144,224) trace=11 order=125 index=89911348
+HOLE side=A class=other z=9 mat(76,69,103,186) trace=11 order=125 index=178107834
+HOLE side=A class=other z=12 mat(117,107,182,145) trace=11 order=125 index=274414360
+HOLE side=A class=other z=25 mat(145,144,69,117) trace=11 order=125 index=338640712
+HOLE side=A class=other z=28 mat(186,182,148,76) trace=11 order=125 index=434941281
+HOLE side=A class=other z=21 mat(224,103,107,38) trace=11 order=125 index=523141689
+HOLE side=A class=alpha z=0 mat(233,6,245,239) trace=221 order=14 index=545399573
+HOLE side=A class=alpha z=0 mat(239,245,6,233) trace=221 order=14 index=557170679
+HOLE side=A class=central z=0 mat(250,0,0,250) trace=249 order=1 index=582749963
+HOLE side=B class=central z=0 mat(250,0,0,250) trace=249 order=1 index=582749963
+CLASS side A: central 1 alpha 2 other 6 | side B: central 1 alpha 0 other 0 | total 10
+ORDER (projective order: count): 1:2 14:2 125:6
+TRACE (a+d mod p: count): 11:6 221:2 249:2
+Z (z: count): 0:4 9:1 12:1 16:1 21:1 25:1 28:1

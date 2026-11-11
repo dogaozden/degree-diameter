@@ -1,0 +1,15 @@
+checker: haarcheck_gen
+command: ./bin/haarcheck_gen runs/d7D12_psl_67_199_orb3-2-1_e09.out
+start: 2026-11-01T07:19:02Z
+sha256 e52e247f4a92a474f49ff0d5d438660ba0b557bbdfd4a8e24311ca881ff3f17c  ./bin/haarcheck_gen
+sha256 2506fbac01d968196f7b2bf49772785d7c9833a0e30f63bc80188952fe530026  runs/d7D12_psl_67_199_orb3-2-1_e09.out
+selftest psl 67: |M| = 150348, det-1 matrices 300696
+selftest group multiplication: associativity, identity, inverse on 20000 random triples ok
+file runs/d7D12_psl_67_199_orb3-2-1_e09.out
+header: 7 12 psl 67 n 199 N 29919252
+group psl 67 x Z_199, |G| = 29919252 = N, vertices 2N = 59838504; 7 distinct generators
+from (e,A): reached A 29919252/29919252, B 29919252/29919252 within 12; ecc 12; level sizes [1, 7, 42, 252, 1512, 9072, 54396, 324699, 1888659, 9565701, 25257356, 20019521, 2717286]  (7s)
+from (e,B): reached A 29919252/29919252, B 29919252/29919252 within 12; ecc 12; level sizes [1, 7, 42, 252, 1512, 9072, 54396, 324699, 1888680, 9565701, 25256818, 20019521, 2717803]  (14s)
+VALID d=7 D=12 group=psl 67 x Z_199 N=29919252 vertices=59838504 (distinct generators, 7-regular simple; every vertex within 12 of both (e,A) and (e,B); ecc 12; 14s)
+exit: 0
+end: 2026-11-01T07:19:15Z (13 s)

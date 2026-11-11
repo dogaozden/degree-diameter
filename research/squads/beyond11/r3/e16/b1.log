@@ -1,0 +1,28 @@
+group sl 37 x Z_2653, N=134284248 (2N=268568496), rows 1368 x 98161 bits (doubled row 3088 words), memory 0.08 GB, threads 1
+alpha: conj by mat(0,36,1,36), z -> 51 z on Z_2653 (fixed z: 1); ORBIT k=3 m=2 f=2; W=2.30688e+09 lambda=17.179 mu=4.65
+setup 0.0s
+fixed generators: 1 chosen among 35 alpha-fixed elements
+start cost=21094197 (1.2s per eval)
+t=4 step=1 evals=5 slot=1 cand=728283 cost=728283 best=728283 T=1.26
+t=7 step=2 evals=9 slot=1 cand=426036 cost=426036 best=426036 T=1.06
+t=10 step=3 evals=13 slot=1 cand=775998 cost=426036 best=426036 T=0.89
+t=13 step=4 evals=17 slot=1 cand=498501 cost=426036 best=426036 T=0.75
+t=16 step=5 evals=21 slot=0 cand=1053336 cost=426036 best=426036 T=0.63
+t=22 step=6 evals=25 slot=1 cand=698085 cost=426036 best=426036 T=0.53
+t=25 step=7 evals=29 slot=1 cand=555453 cost=426036 best=426036 T=0.45
+t=28 step=8 evals=33 slot=1 cand=652893 cost=426036 best=426036 T=0.38
+t=31 step=9 evals=37 slot=1 cand=385053 cost=385053 best=385053 T=0.32
+t=36 step=10 evals=41 slot=0 cand=3773622 cost=385053 best=385053 T=0.27
+t=38 step=11 evals=45 slot=1 cand=598203 cost=385053 best=385053 T=0.22
+t=50 step=12 evals=49 slot=1 cand=466731 cost=385053 best=385053 T=0.19
+t=56 step=13 evals=53 slot=1 cand=544557 cost=385053 best=385053 T=0.16
+t=61 step=14 evals=57 slot=0 cand=6438426 cost=385053 best=385053 T=0.15
+t=65 step=15 evals=61 slot=1 cand=930525 cost=385053 best=385053 T=0.15
+t=69 step=16 evals=65 slot=0 cand=1107300 cost=385053 best=385053 T=0.15
+t=72 step=17 evals=69 slot=1 cand=728904 cost=385053 best=385053 T=0.15
+t=74 step=18 evals=73 slot=1 cand=415590 cost=385053 best=385053 T=0.15
+t=80 step=19 evals=77 slot=0 cand=611265 cost=385053 best=385053 T=0.15
+t=91 step=20 evals=81 slot=1 cand=8082177 cost=385053 best=385053 T=0.15
+t=94 step=21 evals=85 slot=1 cand=702618 cost=385053 best=385053 T=0.15
+t=102 step=22 evals=89 slot=1 cand=3144627 cost=385053 best=385053 T=0.15
+RESULT d=8 D=12 group=sl 37 x Z_2653 N=134284248 vertices=268568496 best=385053 evals=89 steps=22 time=101.6 orbit k=3 m=2 f=2 mu=4.65
