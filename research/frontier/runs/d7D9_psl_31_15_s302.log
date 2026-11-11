@@ -1,0 +1,12 @@
+group psl 31 x Z_15, N=223200, identity 6975, H order 60, rows 3720, threads 1, setup 0.01s
+start cost=107
+t=30 steps=6529 evals=52233 cost=20 best=20 T=0.53
+t=60 steps=12737 evals=101897 cost=20 best=20 T=0.19
+t=90 steps=18759 evals=150073 cost=20 best=20 T=0.15
+t=120 steps=24897 evals=199177 cost=19 best=19 T=0.15
+t=150 steps=31155 evals=249241 cost=16 best=16 T=0.15
+t=180 steps=37378 evals=299025 cost=16 best=16 T=0.15
+t=210 steps=43663 evals=349305 cost=15 best=15 T=0.15
+t=240 steps=49935 evals=399481 cost=15 best=15 T=0.15
+t=270 steps=56220 evals=449761 cost=15 best=15 T=0.15
+RESULT d=7 D=9 group=psl 31 x Z_15 N=223200 best=15 evals=501281 time=300.0
