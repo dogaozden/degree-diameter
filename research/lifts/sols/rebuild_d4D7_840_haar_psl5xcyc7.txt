@@ -1,0 +1,8 @@
+# lift solution: base bases/dipole4.txt
+lift D 7 Delta 4 k 2 N 420 n 840 cost 0
+group psl 5 x cyc 7
+k 2
+e 0 1 = 1,0,0,1|0
+e 0 1 = 1,4,2,4|5
+e 0 1 = 2,2,0,3|3
+e 0 1 = 2,4,0,3|6

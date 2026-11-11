@@ -1,0 +1,10 @@
+solution sols/d4D10_n12416_haar_meta97_64_19.txt: group meta 97 64 19 (order 6208), base k=2 with 4 edges, D=10; lift n=12416
+edges 24832, degree min 4 max 4, repeated edges 0, loops 0
+edge list sha256 d8543634b743cbf3063102b20d23869210deb0f3c508556d3f723e6316f9419c
+wrote /tmp/claude-0/-home-user-degree-diameter/ee2ddafa-df45-5cb8-b9ed-a65866641afb/scratchpad/d4D10_12416.edges
+bipartite True, connected True
+right translations by 3 generators of G are automorphisms: True
+ecc((u,1)) for u = 0..1: [10, 10]
+diameter (fiber representatives + automorphisms) = 10
+networkx all-pairs diameter = 10
+SUMMARY n=12416 Delta=4 regular=True bipartite=True diameter=10 D=10 -> VALID

@@ -1,0 +1,22 @@
+check sols/c1r_d3D8_n258_b3_3_2_cyc43_s1.txt: group cyc 43 (N=43), base k=6 E=9, lift n=258
+base degrees: min 3 max 3; lift simple (no parallel equal voltages): yes
+  ecc(0,e) = 8
+  ecc(1,e) = 8
+  ecc(2,e) = 8
+  ecc(3,e) = 8
+  ecc(4,e) = 8
+  ecc(5,e) = 8
+RESULT n=258 Delta=3 diameter=8
+target D=8: VALID
+solution sols/c1r_d3D8_n258_b3_3_2_cyc43_s1.txt: group cyc 43 (order 43), base k=6 with 9 edges, D=8; lift n=258
+edges 387, degree min 3 max 3, repeated edges 0, loops 0
+edge list sha256 7dd94ad7fe2b999a87a23979badb0a5eab5f4df1daa2abb54bc740a99eb90f77
+wrote /tmp/claude-0/-home-user-degree-diameter/ee2ddafa-df45-5cb8-b9ed-a65866641afb/scratchpad/d3D8_258.edges
+bipartite True, connected True
+right translations by 1 generators of G are automorphisms: True
+ecc((u,1)) for u = 0..5: [8, 8, 8, 8, 8, 8]
+diameter (fiber representatives + automorphisms) = 8
+networkx all-pairs diameter = 8
+SUMMARY n=258 Delta=3 regular=True bipartite=True diameter=8 D=8 -> VALID
+n=258 m=387 degree min 3 max 3 repeated 0 loops 0 bipartite yes components 1
+RESULT diameter=8 (all-pairs, 258 sources)

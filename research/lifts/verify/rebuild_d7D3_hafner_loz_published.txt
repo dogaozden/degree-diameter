@@ -1,0 +1,23 @@
+check sols/rebuild_d7D3_hafner_loz_published.txt: group meta 5 8 2 (N=40), base k=2 E=7, lift n=80
+base degrees: min 7 max 7; lift simple (no parallel equal voltages): yes
+  ecc(0,e) = 3
+  ecc(1,e) = 3
+RESULT n=80 Delta=7 diameter=3
+target D=3: VALID
+solution sols/rebuild_d7D3_hafner_loz_published.txt: group meta 5 8 2 (order 40), base k=2 with 7 edges, D=3; lift n=80
+edges 280, degree min 7 max 7, repeated edges 0, loops 0
+edge list sha256 ca7d8134413cea5a156bb08972d6dd0c24e097d634accc23d5d6ee86ed9c7b18
+wrote /tmp/claude-0/-home-user-degree-diameter/ee2ddafa-df45-5cb8-b9ed-a65866641afb/scratchpad/rebuild_d7D3_hafner_loz_published.edges
+bipartite True, connected True
+right translations by 3 generators of G are automorphisms: True
+ecc((u,1)) for u = 0..1: [3, 3]
+diameter (fiber representatives + automorphisms) = 3
+networkx all-pairs diameter = 3
+SUMMARY n=80 Delta=7 regular=True bipartite=True diameter=3 D=3 -> VALID
+n=80 m=280 degree min 7 max 7 repeated 0 loops 0 bipartite yes components 1
+RESULT diameter=3 (all-pairs, 80 sources)
+lift: n=80 edges=280 degrees=[7] diameter=3
+published: n=80 edges=280 degrees=[7] diameter=3
+adjacency spectra equal: True
+|Aut| lift = 7680, |Aut| published = 7680
+ISOMORPHIC (BLISS)

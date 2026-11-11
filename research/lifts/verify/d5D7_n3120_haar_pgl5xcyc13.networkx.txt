@@ -1,0 +1,10 @@
+solution sols/d5D7_n3120_haar_pgl5xcyc13.txt: group pgl 5 x cyc 13 (order 1560), base k=2 with 5 edges, D=7; lift n=3120
+edges 7800, degree min 5 max 5, repeated edges 0, loops 0
+edge list sha256 b71c4aec99a5945a643a0ddc107593317996eebc90a76837ce33d9fdad887eba
+wrote /tmp/claude-0/-home-user-degree-diameter/ee2ddafa-df45-5cb8-b9ed-a65866641afb/scratchpad/d5D7_3120.edges
+bipartite True, connected True
+right translations by 3 generators of G are automorphisms: True
+ecc((u,1)) for u = 0..1: [7, 7]
+diameter (fiber representatives + automorphisms) = 7
+networkx all-pairs diameter = 7
+SUMMARY n=3120 Delta=5 regular=True bipartite=True diameter=7 D=7 -> VALID

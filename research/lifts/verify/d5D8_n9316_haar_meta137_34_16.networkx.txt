@@ -1,0 +1,9 @@
+solution sols/d5D8_n9316_haar_meta137_34_16.txt: group meta 137 34 16 (order 4658), base k=2 with 5 edges, D=8; lift n=9316
+edges 23290, degree min 5 max 5, repeated edges 0, loops 0
+edge list sha256 dfc1cd578858203512bb80ad0c78a5c0f1916f27820d3e73d2f9a2f26c3828cb
+bipartite True, connected True
+right translations by 2 generators of G are automorphisms: True
+ecc((u,1)) for u = 0..1: [8, 8]
+diameter (fiber representatives + automorphisms) = 8
+networkx all-pairs diameter = 8
+SUMMARY n=9316 Delta=5 regular=True bipartite=True diameter=8 D=8 -> VALID

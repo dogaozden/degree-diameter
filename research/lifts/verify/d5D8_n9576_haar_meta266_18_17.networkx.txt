@@ -1,0 +1,10 @@
+solution sols/d5D8_n9576_haar_meta266_18_17.txt: group meta 266 18 17 (order 4788), base k=2 with 5 edges, D=8; lift n=9576
+edges 23940, degree min 5 max 5, repeated edges 0, loops 0
+edge list sha256 cbc6b4d3d60c13515edc33db98e53923ac0a8d8596281318466ad77603eb1bf8
+wrote /tmp/claude-0/-home-user-degree-diameter/ee2ddafa-df45-5cb8-b9ed-a65866641afb/scratchpad/d5D8_9576.edges
+bipartite True, connected True
+right translations by 2 generators of G are automorphisms: True
+ecc((u,1)) for u = 0..1: [8, 8]
+diameter (fiber representatives + automorphisms) = 8
+networkx all-pairs diameter = 8
+SUMMARY n=9576 Delta=5 regular=True bipartite=True diameter=8 D=8 -> VALID

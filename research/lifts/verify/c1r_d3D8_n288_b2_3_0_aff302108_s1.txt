@@ -1,0 +1,20 @@
+check sols/c1r_d3D8_n288_b2_3_0_aff302108_s1.txt: group aff 3 0 2 1 0 8 (N=72), base k=4 E=6, lift n=288
+base degrees: min 3 max 3; lift simple (no parallel equal voltages): yes
+  ecc(0,e) = 8
+  ecc(1,e) = 8
+  ecc(2,e) = 8
+  ecc(3,e) = 8
+RESULT n=288 Delta=3 diameter=8
+target D=8: VALID
+solution sols/c1r_d3D8_n288_b2_3_0_aff302108_s1.txt: group aff 3 0 2 1 0 8 (order 72), base k=4 with 6 edges, D=8; lift n=288
+edges 432, degree min 3 max 3, repeated edges 0, loops 0
+edge list sha256 9dbc8e8fdf99fa7a4a8abe8084d57d533cce6125c0b47311117753a09a4c6e95
+wrote /tmp/claude-0/-home-user-degree-diameter/ee2ddafa-df45-5cb8-b9ed-a65866641afb/scratchpad/d3D8_288.edges
+bipartite True, connected True
+right translations by 2 generators of G are automorphisms: True
+ecc((u,1)) for u = 0..3: [8, 8, 8, 8]
+diameter (fiber representatives + automorphisms) = 8
+networkx all-pairs diameter = 8
+SUMMARY n=288 Delta=3 regular=True bipartite=True diameter=8 D=8 -> VALID
+n=288 m=432 degree min 3 max 3 repeated 0 loops 0 bipartite yes components 1
+RESULT diameter=8 (all-pairs, 288 sources)

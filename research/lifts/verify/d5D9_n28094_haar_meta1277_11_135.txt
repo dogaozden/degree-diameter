@@ -1,0 +1,26 @@
+== research/frontier/build_haar2.py (repo checker, unmodified)
+ecc from A = 9 unreached 0
+ecc from B = 9 unreached 0
+n = 28094 edges = 70235 max degree = 5 min degree = 5 duplicate edges = 0
+edge list sha256 = d0a736d47fa59aa89ae6729f75e6d18fe36f9a33b114968e6a072360641e7901
+VALID d=5 D=9 group=meta 1277 11 135 x Z_1 N=14047 vertices=28094
+== lift check
+check sols/d5D9_n28094_haar_meta1277_11_135.txt: group meta 1277 11 135 (N=14047), base k=2 E=5, lift n=28094
+base degrees: min 5 max 5; lift simple (no parallel equal voltages): yes
+  ecc(0,e) = 9
+  ecc(1,e) = 9
+RESULT n=28094 Delta=5 diameter=9
+target D=9: VALID
+== verify_lift.py
+solution sols/d5D9_n28094_haar_meta1277_11_135.txt: group meta 1277 11 135 (order 14047), base k=2 with 5 edges, D=9; lift n=28094
+edges 70235, degree min 5 max 5, repeated edges 0, loops 0
+edge list sha256 e563f7aefbcd226e0002f8daa75b8ff94f6a8b0816c7ba572474354e44a58d79
+wrote /tmp/claude-0/-home-user-degree-diameter/ee2ddafa-df45-5cb8-b9ed-a65866641afb/scratchpad/d5D9b.edges
+bipartite True, connected True
+right translations by 2 generators of G are automorphisms: True
+ecc((u,1)) for u = 0..1: [9, 9]
+diameter (fiber representatives + automorphisms) = 9
+SUMMARY n=28094 Delta=5 regular=True bipartite=True diameter=9 D=9 -> VALID
+== apsp (all-pairs, no symmetry)
+n=28094 m=70235 degree min 5 max 5 repeated 0 loops 0 bipartite yes components 1
+RESULT diameter=9 (all-pairs, 28094 sources)

@@ -1,0 +1,21 @@
+check sols/rebuild_d3D7_n168_b2_3_0_meta732xcyc2.txt: group meta 7 3 2 x cyc 2 (N=42), base k=4 E=6, lift n=168
+base degrees: min 3 max 3; lift simple (no parallel equal voltages): yes
+RESULT n=168 Delta=3 diameter=7
+target D=7: VALID
+solution sols/rebuild_d3D7_n168_b2_3_0_meta732xcyc2.txt: group meta 7 3 2 x cyc 2 (order 42), base k=4 with 6 edges, D=7; lift n=168
+edges 252, degree min 3 max 3, repeated edges 0, loops 0
+edge list sha256 2b134d90c773f614f57787856caccdf0f63e063a5e03dd79e3e80391824bb54a
+wrote /tmp/claude-0/-home-user-degree-diameter/ee2ddafa-df45-5cb8-b9ed-a65866641afb/scratchpad/rebuild_d3D7_n168_b2_3_0_meta732xcyc2.edges
+bipartite True, connected True
+right translations by 2 generators of G are automorphisms: True
+ecc((u,1)) for u = 0..3: [7, 7, 7, 7]
+diameter (fiber representatives + automorphisms) = 7
+networkx all-pairs diameter = 7
+SUMMARY n=168 Delta=3 regular=True bipartite=True diameter=7 D=7 -> VALID
+n=168 m=252 degree min 3 max 3 repeated 0 loops 0 bipartite yes components 1
+RESULT diameter=7 (all-pairs, 168 sources)
+lift: n=168 edges=252 degrees=[3] diameter=7
+published: n=168 edges=252 degrees=[3] diameter=7
+adjacency spectra equal: True
+|Aut| lift = 504, |Aut| published = 504
+ISOMORPHIC (BLISS)
