@@ -1,0 +1,10 @@
+checker: metacheck
+command: python3 ../beyond13/metacheck.py runs/d5D13_meta_32719_57_r2g03.txt
+start: 2026-11-02T01:05:48Z
+sha256 453f9b3e451f1cda3397e11563a64bca4f5416c4f2c5b6390eb301fbdb6b011a  ../beyond13/metacheck.py
+sha256 2529999a3a9c778eb226bf3a3c09f2c9144d70fb0dba861ef715c4382b19b8dc  runs/d5D13_meta_32719_57_r2g03.txt
+from (e,A): reached A 1864983/1864983, B 1864983/1864983 within 13; level sizes [1, 5, 20, 80, 320, 1280, 5116, 20387, 80250, 298949, 904440, 1454775, 874836, 89507]
+from (e,B): reached A 1864983/1864983, B 1864983/1864983 within 13; level sizes [1, 5, 20, 80, 320, 1280, 5116, 20387, 80248, 298949, 904728, 1454775, 874550, 89507]
+VALID d=5 D=13 group=meta 32719 57 29509 x Z_1 N=1864983 vertices=3729966 (16s)
+exit: 0
+end: 2026-11-02T01:06:05Z (17 s)

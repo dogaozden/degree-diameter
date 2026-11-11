@@ -1,0 +1,15 @@
+checker: haarcheck_gen
+command: ../beyond13/bin/haarcheck_gen runs/d7D13_sl_283_7_d1.txt
+start: 2026-11-01T23:08:41Z
+sha256 e52e247f4a92a474f49ff0d5d438660ba0b557bbdfd4a8e24311ca881ff3f17c  ../beyond13/bin/haarcheck_gen
+sha256 2f809e5f445cd0c2ad79798b9c35618863f46760a4acb20ad6878a5c0fddd7f0  runs/d7D13_sl_283_7_d1.txt
+selftest sl 283: |M| = 22664904, index round trip over all elements ok
+selftest group multiplication: associativity, identity, inverse on 20000 random triples ok
+file runs/d7D13_sl_283_7_d1.txt
+header: 7 13 sl 283 n 7 N 158654328
+group sl 283 x Z_7, |G| = 158654328 = N, vertices 2N = 317308656; 7 distinct generators
+from (e,A): reached A 158654328/158654328, B 158654328/158654328 within 13; ecc 13; level sizes [1, 7, 42, 252, 1512, 9072, 54426, 326184, 1944524, 11285061, 56077572, 136686644, 100576251, 10347108]  (62s)
+from (e,B): reached A 158654328/158654328, B 158654328/158654328 within 13; ecc 13; level sizes [1, 7, 42, 252, 1512, 9072, 54426, 326184, 1944530, 11285061, 56077140, 136686644, 100576677, 10347108]  (120s)
+VALID d=7 D=13 group=sl 283 x Z_7 N=158654328 vertices=317308656 (distinct generators, 7-regular simple; every vertex within 13 of both (e,A) and (e,B); ecc 13; 120s)
+exit: 0
+end: 2026-11-01T23:10:41Z (120 s)

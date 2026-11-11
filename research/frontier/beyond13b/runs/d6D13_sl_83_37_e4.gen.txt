@@ -1,0 +1,15 @@
+checker: haarcheck_gen
+command: ../beyond13/bin/haarcheck_gen runs/d6D13_sl_83_37_e4.txt
+start: 2026-11-01T23:08:20Z
+sha256 e52e247f4a92a474f49ff0d5d438660ba0b557bbdfd4a8e24311ca881ff3f17c  ../beyond13/bin/haarcheck_gen
+sha256 fed798e9e28dc0522728adceafcff0072e3ef78fa4894146dc6dbc055b37cf3f  runs/d6D13_sl_83_37_e4.txt
+selftest sl 83: |M| = 571704, index round trip over all elements ok
+selftest group multiplication: associativity, identity, inverse on 20000 random triples ok
+file runs/d6D13_sl_83_37_e4.txt
+header: 6 13 sl 83 n 37 N 21153048
+group sl 83 x Z_37, |G| = 21153048 = N, vertices 2N = 42306096; 6 distinct generators
+from (e,A): reached A 21153048/21153048, B 21153048/21153048 within 13; ecc 13; level sizes [1, 6, 30, 150, 750, 3750, 18750, 93435, 461918, 2197895, 8734854, 17627985, 11936745, 1229827]  (18s)
+from (e,B): reached A 21153048/21153048, B 21153048/21153048 within 13; ecc 13; level sizes [1, 6, 30, 150, 750, 3750, 18750, 93435, 461900, 2197895, 8733036, 17627985, 11938581, 1229827]  (23s)
+VALID d=6 D=13 group=sl 83 x Z_37 N=21153048 vertices=42306096 (distinct generators, 6-regular simple; every vertex within 13 of both (e,A) and (e,B); ecc 13; 23s)
+exit: 0
+end: 2026-11-01T23:08:43Z (23 s)

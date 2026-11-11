@@ -1,0 +1,10 @@
+checker: metacheck
+command: python3 metacheck.py sols/d5D10_meta_919_51_dir.txt
+start: 2026-11-01T14:58:42Z
+sha256 453f9b3e451f1cda3397e11563a64bca4f5416c4f2c5b6390eb301fbdb6b011a  metacheck.py
+sha256 3695443e4c85b92f5c53937b116a7f23702450a167a32f21359ecceb8a8a1a99  sols/d5D10_meta_919_51_dir.txt
+from (e,A): reached A 46869/46869, B 46869/46869 within 10; level sizes [1, 5, 20, 80, 320, 1280, 5008, 17182, 35968, 28322, 5552]
+from (e,B): reached A 46869/46869, B 46869/46869 within 10; level sizes [1, 5, 20, 80, 320, 1280, 5008, 17182, 35942, 28322, 5578]
+VALID d=5 D=10 group=meta 919 51 318 x Z_1 N=46869 vertices=93738 (0s)
+exit: 0
+end: 2026-11-01T14:58:43Z (1 s)

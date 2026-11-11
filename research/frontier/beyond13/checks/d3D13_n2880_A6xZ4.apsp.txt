@@ -1,0 +1,9 @@
+checker: apsp
+command: ./bin/apsp graphs/d3D13_n2880_A6xZ4.edges 3 13
+start: 2026-11-01T11:55:40Z
+sha256 67868fe99e872fa1a10f3e5c1da1afff87989679e8b6e4f2a06d6e9b7265b265  ./bin/apsp
+sha256 fb08210b8255e2d1ce138807aced7e6778ba8619f14f2ba19e88c4246496b6eb  graphs/d3D13_n2880_A6xZ4.edges
+n=2880 edges=4320 degree min=3 max=3 bipartite=yes diameter=13
+RESULT VALID d=3 D=13 n=2880
+exit: 0
+end: 2026-11-01T11:55:40Z (0 s)

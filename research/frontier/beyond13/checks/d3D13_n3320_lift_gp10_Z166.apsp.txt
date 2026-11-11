@@ -1,0 +1,9 @@
+checker: apsp
+command: ./bin/apsp graphs/d3D13_n3320_lift_gp10_Z166.edges 3 13
+start: 2026-11-01T13:34:02Z
+sha256 67868fe99e872fa1a10f3e5c1da1afff87989679e8b6e4f2a06d6e9b7265b265  ./bin/apsp
+sha256 37d953dbb3e6aad67c3a82e450ae06c5d5e98207906f6018e7d13bbac0058e4a  graphs/d3D13_n3320_lift_gp10_Z166.edges
+n=3320 edges=4980 degree min=3 max=3 bipartite=yes diameter=13
+RESULT VALID d=3 D=13 n=3320
+exit: 0
+end: 2026-11-01T13:34:02Z (0 s)

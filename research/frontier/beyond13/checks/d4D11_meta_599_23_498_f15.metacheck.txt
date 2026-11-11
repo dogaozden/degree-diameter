@@ -1,0 +1,10 @@
+checker: metacheck
+command: python3 metacheck.py sols/d4D11_meta_599_23_498_f15.txt
+start: 2026-11-01T12:42:42Z
+sha256 453f9b3e451f1cda3397e11563a64bca4f5416c4f2c5b6390eb301fbdb6b011a  metacheck.py
+sha256 a5301bfcd4b3a234c7d4c95748da6a39922cbfa6ee8e30b20e2a37bf28c81c7f  sols/d4D11_meta_599_23_498_f15.txt
+from (e,A): reached A 13777/13777, B 13777/13777 within 11; level sizes [1, 4, 12, 36, 108, 324, 966, 2715, 6378, 9506, 6312, 1192]
+from (e,B): reached A 13777/13777, B 13777/13777 within 11; level sizes [1, 4, 12, 36, 108, 324, 966, 2715, 6366, 9506, 6324, 1192]
+VALID d=4 D=11 group=meta 599 23 498 x Z_1 N=13777 vertices=27554 (1s)
+exit: 0
+end: 2026-11-01T12:42:44Z (2 s)

@@ -1,0 +1,9 @@
+group psl 409 x Z_157, N=5370775320 (2N=10741550640), rows 83640 x 64213 bits (doubled row 2032 words), memory 2.87 GB, threads 1
+alpha: conj by mat(0,408,1,408), z -> 12 z on Z_157 (fixed z: 1); ORBIT k=3 m=2 f=2; W=1.13037e+11 lambda=21.047 mu=3.89
+setup 0.0s
+fixed generators: 1 chosen among 203 alpha-fixed elements
+start cost=7 (15.0s per eval)
+t=42 step=1 evals=5 slot=0 cand=0 cost=0 best=0 T=1.26
+RESULT d=8 D=14 group=psl 409 x Z_157 N=5370775320 vertices=10741550640 best=0 evals=5 steps=1 time=41.6 orbit k=3 m=2 f=2 mu=3.89
+re-evaluation of the best S: cost 0
+wrote runs/d8D14_psl_409_157_orb3-2-2_s2.out

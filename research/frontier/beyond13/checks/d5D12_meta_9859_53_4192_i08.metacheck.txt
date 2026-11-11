@@ -1,0 +1,10 @@
+checker: metacheck
+command: python3 metacheck.py sols/d5D12_meta_9859_53_4192_i08.txt
+start: 2026-11-01T14:05:01Z
+sha256 453f9b3e451f1cda3397e11563a64bca4f5416c4f2c5b6390eb301fbdb6b011a  metacheck.py
+sha256 fff95af2888da20aac64ac4e507e0edb41364a02cc7df2bab7364e2502027ba2  sols/d5D12_meta_9859_53_4192_i08.txt
+from (e,A): reached A 522527/522527, B 522527/522527 within 12; level sizes [1, 5, 20, 80, 320, 1280, 5114, 20183, 76124, 237928, 408882, 263051, 32066]
+from (e,B): reached A 522527/522527, B 522527/522527 within 12; level sizes [1, 5, 20, 80, 320, 1280, 5114, 20183, 76124, 237928, 408598, 263051, 32350]
+VALID d=5 D=12 group=meta 9859 53 4192 x Z_1 N=522527 vertices=1045054 (9s)
+exit: 0
+end: 2026-11-01T14:05:10Z (9 s)

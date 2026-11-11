@@ -1,0 +1,15 @@
+checker: haarcheck_gen
+command: ./bin/haarcheck_gen runs/d5D14_sl_97_7_g3_h06.out
+start: 2026-11-01T13:39:36Z
+sha256 e52e247f4a92a474f49ff0d5d438660ba0b557bbdfd4a8e24311ca881ff3f17c  ./bin/haarcheck_gen
+sha256 03f5cc547b5750cfa7953b14a01abfb8eda7774949c89dec8ef4a017ebe87715  runs/d5D14_sl_97_7_g3_h06.out
+selftest sl 97: |M| = 912576, index round trip over all elements ok
+selftest group multiplication: associativity, identity, inverse on 20000 random triples ok
+file runs/d5D14_sl_97_7_g3_h06.out
+header: 5 14 sl 97 n 7 N 6388032
+group sl 97 x Z_7, |G| = 6388032 = N, vertices 2N = 12776064; 5 distinct generators
+from (e,A): reached A 6388032/6388032, B 6388032/6388032 within 14; ecc 14; level sizes [1, 5, 20, 80, 320, 1280, 5118, 20443, 81296, 317882, 1165540, 3376229, 4938227, 2672113, 197510]  (3s)
+from (e,B): reached A 6388032/6388032, B 6388032/6388032 within 14; ecc 14; level sizes [1, 5, 20, 80, 320, 1280, 5118, 20443, 81296, 317882, 1165564, 3376229, 4938655, 2672113, 197058]  (7s)
+VALID d=5 D=14 group=sl 97 x Z_7 N=6388032 vertices=12776064 (distinct generators, 5-regular simple; every vertex within 14 of both (e,A) and (e,B); ecc 14; 7s)
+exit: 0
+end: 2026-11-01T13:39:43Z (7 s)

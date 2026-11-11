@@ -1,0 +1,13 @@
+group sl 61 x Z_7, N=1588440 (2N=3176880), rows 3720 x 427 bits (doubled row 32 words), memory 0.00 GB, threads 1
+alpha: conj by mat(0,60,1,60), z -> 2 z on Z_7 (fixed z: 1); ORBIT k=3 m=1 f=2; W=2.23696e+07 lambda=14.083 mu=1.22
+setup 0.0s
+fixed generators: 1 chosen among 59 alpha-fixed elements
+start cost=14 (0.0s per eval)
+t=0 step=1 evals=9 slot=0 cand=16 cost=14 best=14 T=1.26
+t=0 step=2 evals=17 slot=0 cand=24 cost=14 best=14 T=1.06
+t=0 step=3 evals=25 slot=0 cand=16 cost=16 best=14 T=0.89
+t=0 step=4 evals=33 slot=0 cand=2 cost=2 best=2 T=0.75
+t=0 step=5 evals=41 slot=0 cand=0 cost=0 best=0 T=0.63
+RESULT d=5 D=13 group=sl 61 x Z_7 N=1588440 vertices=3176880 best=0 evals=41 steps=5 time=0.2 orbit k=3 m=1 f=2 mu=1.22
+re-evaluation of the best S: cost 0
+wrote runs/d5D13_sl_61_7_orb3-1-2_s1.out

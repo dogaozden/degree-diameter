@@ -1,0 +1,9 @@
+checker: apsp
+command: ./bin/apsp graphs/d5D11_n306182_meta5279_29_1922.edges 5 11
+start: 2026-11-01T13:39:56Z
+sha256 67868fe99e872fa1a10f3e5c1da1afff87989679e8b6e4f2a06d6e9b7265b265  ./bin/apsp
+sha256 5c55b7c35b3348d1d64028916c48dd79a6fe7e5be2c6b1f4459cd5fce4b971fd  graphs/d5D11_n306182_meta5279_29_1922.edges
+n=306182 edges=765455 degree min=5 max=5 bipartite=yes diameter=11
+RESULT VALID d=5 D=11 n=306182
+exit: 0
+end: 2026-11-01T13:46:13Z (377 s)

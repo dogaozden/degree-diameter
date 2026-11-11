@@ -1,0 +1,7 @@
+group psl 503 x Z_157, N=9990147384 (2N=19980294768), rows 126504 x 78971 bits (doubled row 2488 words), memory 5.20 GB, threads 2
+alpha: conj by mat(0,502,1,502), z -> 12 z on Z_157 (fixed z: 1); ORBIT k=3 m=3 f=1; W=3.17733e+11 lambda=31.805 mu=0.00
+setup 0.0s
+start cost=0 (26.2s per eval)
+RESULT d=10 D=13 group=psl 503 x Z_157 N=9990147384 vertices=19980294768 best=0 evals=1 steps=0 time=26.2 orbit k=3 m=3 f=1 mu=0.00
+re-evaluation of the best S: cost 0
+wrote runs/d10D13_psl_503_157_orb3-3-1_s1.out
