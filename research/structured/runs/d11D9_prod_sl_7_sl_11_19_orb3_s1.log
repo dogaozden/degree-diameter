@@ -1,0 +1,19 @@
+group prod sl 7 sl 11 x Z_19, N=8426880, identity 1055450, H order 57, rows 147840, threads 1, setup 0.50s
+wide rows: HW order 228, rows 36960, setup 1.03s
+alpha: conj by prod[mat(0,6,1,1);mat(7,8,8,3)] (index 48452), z -> 7 z on Z_19
+ORBIT k=3 m=3 f=2: |Fix(alpha)| = 71 (+e); mu = 15.83, mu/k = 5.28, fixed-point misses ~ 1.78
+start cost=86
+t=30 steps=138 evals=1105 cost=12 best=10 T=0.53
+t=60 steps=295 evals=2361 cost=6 best=6 T=0.19
+t=90 steps=447 evals=3577 cost=6 best=6 T=0.15
+t=121 steps=594 evals=4753 cost=2 best=2 T=0.15
+t=151 steps=749 evals=5993 cost=2 best=2 T=0.15
+t=181 steps=898 evals=7185 cost=2 best=2 T=0.15
+t=211 steps=1070 evals=8561 cost=2 best=2 T=0.15
+t=241 steps=1244 evals=9953 cost=2 best=2 T=0.15
+t=271 steps=1394 evals=11153 cost=2 best=2 T=0.90
+RESULT d=11 D=9 group=prod sl 7 sl 11 x Z_19 N=8426880 best=0 evals=11545 time=280.6 orbit k=3 m=3 f=2 fix=71
+full diameter check: OK
+wrote /tmp/claude-0/-home-user-degree-diameter/af0fa66c-2d88-5763-bd6d-8f71b3b7ffd5/scratchpad/out/d11D9_prod_sl_7_sl_11_19_orb3_s1.txt
+CHECK hcsl: only 'sl p' (p prime) headers: 11 9 prod sl 7 sl 11 n 19 N 8426880
+CHECK hc2:  INVALID d=0 D=0 vertices=0 eccA=na eccB=na reason=unparseable header
