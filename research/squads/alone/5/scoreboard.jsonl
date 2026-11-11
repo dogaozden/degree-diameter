@@ -1,0 +1,9 @@
+{"idea": "baseline: rebuild PG(4,3) flag graph from flags_pg43.py and check all pairs", "command": "python3 flags_pg43.py base.e; apsp base.e 16 5", "score": 31460, "valid": true}
+{"idea": "control: delete one random edge of the flag graph (rigidity test)", "command": "apsp one_0.e 16 5 (edge removed from base.e)", "score": 31459, "valid": false}
+{"idea": "one 16-edge matching swap plus new A-vertex x on N(b) and new B-vertex y on N(a): cover cost by annealing over matchings", "command": "python3 sa_match.py base.e 3 150000 80 2", "score": 873, "valid": false}
+{"idea": "twin insertion x=twin of a*, y=twin of b*, removed edges form a perfect matching between N(b*) and N(a*): no perfect matching exists", "command": "python3 twin.py base.e t1.e 0 0", "score": 31462, "valid": false}
+{"idea": "twin insertion with free partners (32 removed edges, x twin of a*, y twin of b*)", "command": "python3 twin2.py base.e tw_1.e 0 0 1 any; apsp tw_1.e 16 5", "score": 31462, "valid": false}
+{"idea": "twin insertion plus random repair matching on deficient vertices (16-regular, 31462 vertices)", "command": "python3 repair.py tw_1.e rep_1.e 1; apsp rep_1.e 16 5", "score": 31462, "valid": false}
+{"idea": "partner annealing: S_B = N(a*), partners a_b in N(b) chosen to radius-3 dominate B; best uncovered B", "command": "python3 sa_side.py base.e 0 1 60000 60 1", "score": 540, "valid": false}
+{"idea": "random-start annealing for a 16-set radius-3 dominating A (no neighbourhood structure): best uncovered", "command": "python3 sa_cover.py 2 40000 120 2", "score": 381, "valid": false}
+{"idea": "greedy radius-3 domination of A by B-centres: centres needed", "command": "python3 dom.py", "score": 26, "valid": false}
