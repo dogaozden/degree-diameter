@@ -27,7 +27,7 @@ code that found it, and many are also proved in Lean 4.
 
 **See it:** [dogaozden.com/math/degree-diameter](https://dogaozden.com/math/degree-diameter/) shows the first eight records in 3D and
 how the search found them (that page predates most of the results below). Every record, live:
-[dogaozden.com/math/live](https://dogaozden.com/math/live/degree-diameter/).
+[dogaozden.com/live/degree-diameter](https://dogaozden.com/live/degree-diameter/).
 
 ## The problem
 
