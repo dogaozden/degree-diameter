@@ -12,10 +12,12 @@ code that found it, and many are also proved in Lean 4.
   (13, 9): 67,742,688 against 50,990,610 (+32.9%). The other 94 are beyond the table (Δ > 16 or D > 10), up to 30.5 billion vertices at (20, 10).
   Full list: [`records/RECORDS.csv`](records/RECORDS.csv). What was checked against the literature, and what was not, is spelled out
   [below](#caveats-what-has-been-checked-against-the-literature).
-- **General (non-bipartite) problem: four new records, found on 20 November 2026:**
-  (8, 7) **139,965** (previously 139,867), (10, 7) **625,733** (625,464), (10, 8) **4,538,823** (4,524,979) and (12, 8) **19,240,407**
-  (19,218,539), each against the value in [Comellas's table](https://web.mat.upc.edu/francesc.comellas/delta-d/table_degree_diameter.html)
-  as fetched the same day. Details and how to check them: [below](#general-graph-records).
+- **General (non-bipartite) problem: nine new records, found on 20–21 November 2026:**
+  (8, 7) **139,965** (previously 139,867), (10, 7) **625,733** (625,464), (10, 8) **4,538,823** (4,524,979), (12, 8) **19,240,407**
+  (19,218,539), (10, 9) **34,934,046** (34,913,494), (7, 9) **1,338,558** (1,332,774), (7, 10) **6,692,790** (6,645,690),
+  (9, 10) **90,493,830** (89,658,816) and (8, 10) **27,036,394** (27,019,307), each against the value in
+  [Comellas's table](https://web.mat.upc.edu/francesc.comellas/delta-d/table_degree_diameter.html) as fetched the day it was found.
+  Details and how to check them: [below](#general-graph-records).
 - **Lean 4:** 23 of the bipartite table records below, and (3, 11) and (3, 12) beyond the table, are proved in Lean at the stated size.
 - The wiki's bipartite page (last edited February 2022) does not list the bipartite records yet, and Comellas's table does not list the general ones.
 
@@ -157,19 +159,26 @@ Not covered by that check: (6, 5) and 48 beyond-table cells found after it close
 
 ## General-graph records
 
-Cayley graphs of semidirect products Z_m ⋊ Z_n, found on 20 November 2026 and checked by two independent BFS programs
-(one in numpy, one in plain Python), each of which builds the group from its definition. All four have the stated degree and diameter.
-"Previous" is the value in Comellas's table, fetched on 20 November 2026.
+Cayley graphs of semidirect products, found on 20–21 November 2026. The first four (found 20 November) are Z_m ⋊ Z_n, checked by
+two independent BFS programs (numpy and plain Python), each of which builds the group from its definition. The other five (21 November) use
+non-metabelian groups F_p² ⋊ Q with Q = Z_k ⋊ Z₂ inside GL(2, p) (product (u, v)(x, y) = (ux, ρ(x)⁻¹v + y)) and were checked three ways:
+a bitset BFS, an explicit C BFS and a from-scratch Python or numpy BFS with explicit matrix arithmetic. Every graph has the stated degree and
+diameter. "Previous" is the value in Comellas's table, fetched the day the record was found.
 
 | (Δ, D) | Previous | Ours | Group | Layer sizes from one vertex (the graph is vertex-transitive) |
 |---|---:|---:|---|---|
+| (7, 9) | 1,332,774 | **1,338,558** | F₁₃₁² ⋊ (Z₃₉ ⋊ Z₂) | 1, 7, 42, 252, 1512, 9046, 53161, 279871, 772421, 222245 |
+| (7, 10) | 6,645,690 | **6,692,790** | F₁₃₁² ⋊ (Z₁₉₅ ⋊ Z₂) | 1, 7, 42, 252, 1512, 9057, 54020, 313965, 1587575, 3883419, 842940 |
 | (8, 7) | 139,867 | **139,965** | Z₁₃₃₃ ⋊ Z₁₀₅ | 1, 8, 56, 392, 2736, 18186, 76938, 41648 |
+| (8, 10) | 27,019,307 | **27,036,394** | F₄₁₉² ⋊ (Z₇₇ ⋊ Z₂) | 1, 8, 56, 392, 2744, 19198, 134092, 921239, 5629482, 16660144, 3669038 |
+| (9, 10) | 89,658,816 | **90,493,830** | F₃₇₉² ⋊ (Z₃₁₅ ⋊ Z₂) | 1, 9, 72, 576, 4608, 36859, 294284, 2318622, 16508519, 57814857, 13515423 |
 | (10, 7) | 625,464 | **625,733** | Z₂₁₅₇₇ ⋊ Z₂₉ | 1, 10, 90, 810, 7268, 62236, 343702, 211616 |
 | (10, 8) | 4,524,979 | **4,538,823** | Z₃₆₉₀₁ ⋊ Z₁₂₃ | 1, 10, 90, 810, 7290, 65192, 546590, 2712218, 1206622 |
+| (10, 9) | 34,913,494 | **34,934,046** | Z₃₀₆₄₃₉ ⋊ Z₁₁₄ | 1, 10, 90, 810, 7290, 65526, 584374, 4836060, 21928806, 7511079 |
 | (12, 8) | 19,218,539 | **19,240,407** | Z₁₁₂₅₁₇ ⋊ Z₁₇₁ | 1, 12, 132, 1452, 15972, 175060, 1825758, 11536300, 5685720 |
 
 Each graph is specified in [`records/general_dd/`](records/general_dd/) by a short witness file (the group, the generators), with its
-SHA-256 and the check outputs. These are not bipartite and say nothing about the bipartite table above.
+SHA-256, the check programs (including the C BFS) and their outputs; for the F_p² ⋊ Q graphs the folder also has the small group file and `build_q.py`. These are not bipartite and say nothing about the bipartite table above.
 
 ## Verify a record
 
@@ -181,6 +190,8 @@ python -m venv .venv && .venv/bin/pip install numpy networkx pytest
 
 # a general-graph record: rebuild the Cayley graph from its witness file and run a BFS (pure Python, about a second)
 python3 records/general_dd/check/independent_bfs.py records/general_dd/d8D7/d8D7_N139965.txt
+# an F_p² ⋊ Q record, here (7, 9): explicit C BFS on the group file (arguments: file, degree, |Q|, then level v_row v_col per generator; the last triple is the involution)
+cc -O2 -o /tmp/bfs_g records/general_dd/d7D9/bfs_g.c && /tmp/bfs_g records/general_dd/d7D9/group_F131sq_Z39_Z2.bin 7 78  7 9 56  13 10 112  57 29 63  2 0 68
 # the same graph with the numpy checker (arguments: m n r D then the generators u v, ...)
 python3 records/general_dd/check/verify_mc.py 1333 105 855 7  5 398  53 1317  80 668  96 1108
 
@@ -249,14 +260,14 @@ and rotate three incidences to make room. The general rule, its proof and comput
 - **Hexagon + hub vertices** ([`research/squads/exp2/hexd7/`](research/squads/exp2/hexd7/)): the table's D = 7 values are three copies of a
   generalized hexagon H(q). Freeing a point–line pair and adding two hub vertices gains 2 vertices per pair, with a short proof.
   This gave (7, 7), (9, 7) and (11, 7).
-- **Cayley graphs of Z_m ⋊ Z_n** ([`records/general_dd/`](records/general_dd/)): the four general-graph records.
+- **Cayley graphs of Z_m ⋊ Z_n** ([`records/general_dd/`](records/general_dd/)): the nine general-graph records.
 
 ## Layout
 
 | Path | What it is |
 |---|---|
 | `records/RECORDS.csv` | every bipartite record: cell, table value, ours, date found, literature status |
-| `records/general_dd/` | the four general-graph records, witness files, checkers and check outputs |
+| `records/general_dd/` | the nine general-graph records, witness files, checkers and check outputs |
 | `records/bipartite_dd/` | record graphs with their builders: the first eight, (6, 5), (10, 8), and the literature check of the first eight |
 | `research/frontier/` | Haar graph search, size law, solution files (`sols/`), checkers, check reports |
 | `research/structured/`, `research/theory/`, `research/theorems/` | orbit search and its theory; route-chart lifts, flag graphs |

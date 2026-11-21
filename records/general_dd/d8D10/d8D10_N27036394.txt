@@ -1,0 +1,9 @@
+d=8 D=10 N=27036394  (live UPC (8,10) = 27,019,307 re-fetched 2026-11-21 04:46Z)
+Group file sl_419_77_1_0.bin (int32 p=419, |Q|=154, then |Q| matrices); command-line form (level index, v_row, v_col): 62 111 159 34 117 177 24 369 220 26 119 291
+Product (u,v)(x,y) = (u*x, rho(x)^-1 v + y), vertices = F_p^2 x| Q, edges g ~ s*g.
+Layers 1 8 56 392 2744 19198 134092 921239 5629482 16660144 3669038
+Found by random zsample (hz810_1, fixed level pattern 62 34 24 26), one hit after about 3.7e5 evals; a 6000-eval lsample on the same group put P(defect 0) near 1e-6 per eval. Degree 8 = 4 generators with inverses, no involution.
+Connection set: each generator is (u in Q given by its index in the group file, v in F_419^2):
+  (Q[62]=[[291,384],[227,128]], (111,159))  (Q[34]=[[219,142],[348,200]], (117,177))  (Q[24]=[[335,87],[253,335]], (369,220))  (Q[26]=[[27,161],[290,27]], (119,291)).
+Group: F_419^2 x| Q, Q = Z_77 x| Z_2 < GL(2,419) (order 154; Singer-type element of order 77 and a Frobenius-type involutory twist; non-metabelian), N = 419^2 * 154 = 27,036,394.
+Checks (three independent programs, outputs in this folder): cay_mg eval, bfs_g (explicit C BFS), indep_np.py (numpy BFS with explicit matrix arithmetic; saved as indep_g2_check_*.out): all give order 27036394, degree 8, diameter 10, defect 0, identical layers.

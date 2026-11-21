@@ -1,0 +1,10 @@
+d=7 D=9 N=1338558  (live UPC (7,9) = 1,332,774, re-fetched 2026-11-21 01:45Z)
+Cayley graph of G = F_131^2 x| Q, Q = <M, S> < GL(2,131), |Q| = 78 (Q = Z_39 x| Z_2, non-abelian; M = Singer element of order 39, S = diag(1,-1) = Frobenius), |G| = 131^2 * 78 = 1,338,558.
+Group file group_F131sq_Z39_Z2.bin (int32: p, |Q|, then |Q| matrices (a,b,c,d), element 0 = identity, element 1 = M = [[75,110],[55,75]], element 2 = S = diag(1,130)).
+Product (u,v)(x,y) = (u*x, rho(x)^-1 v + y), u,x in Q (rho = the matrix itself), v,y in F_131^2; vertices = G, edges g ~ s*g for s in the connection set.
+Connection set (degree 7): three generators and their inverses + one involution:
+  (u=Q[7]=[[16,125],[3,115]], v=(9,56))  (u=Q[13]=[[89,17],[57,42]], v=(10,112))  (u=Q[57]=[[101,87],[109,101]], v=(29,63))  and involution (u=Q[2]=diag(1,130), v=(0,68)).
+Command line form (level index, v_row, v_col): 7 9 56  13 10 112  57 29 63  inv 2 0 68  (d=7, diameter 9).
+Result: order 1338558, degree 7, diameter 9, layers 1 7 42 252 1512 9046 53161 279871 772421 222245.
+Found by zsample (fixed level pattern 7 13 57, random v, early abort) on the Mac mini, after about 1.05e5 evals in that process (3 such processes ran in parallel; the hit rate extrapolated from the lsample tail was about 3e-8 per eval, so this was a lucky early hit); group chosen by sl_cell.py (semilinear groups, popt lowq 30.6).
+Checks (three independent programs, all in this folder): cay_mg eval (bitset BFS, the search engine), bfs_g (explicit element-wise BFS in C), indep_g2.py (pure python, explicit matrix arithmetic, also asserts associativity on 3000 random triples and s^-1(s g)=g): all give order 1338558, defect 0, identical layers.
