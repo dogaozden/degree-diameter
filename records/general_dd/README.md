@@ -1,8 +1,9 @@
-# General-graph records (20–21 November 2026)
+# General-graph records
 
 Cayley graphs of Z_m ⋊ Z_n, with product [x, y][u, v] = [x + u, y·r^u + v] (x, u in Z_n; y, v in Z_m; r of order n modulo m).
 A witness file gives d, D, N = m·n, m, n, r and the generating set S (each listed element and its inverse is a generator).
 
+<!-- dd-publish:folders -->
 | Folder | (Δ, D) | Vertices | Previous (Comellas's table, day found) |
 |---|---|---:|---:|
 | `d8D7/` | (8, 7) | 139,965 | 139,867 |
@@ -14,6 +15,7 @@ A witness file gives d, D, N = m·n, m, n, r and the generating set S (each list
 | `d7D10/` | (7, 10) | 6,692,790 | 6,645,690 |
 | `d9D10/` | (9, 10) | 90,493,830 | 89,658,816 |
 | `d8D10/` | (8, 10) | 27,036,394 | 27,019,307 |
+<!-- /dd-publish:folders -->
 
 `check/independent_bfs.py WITNESS` (pure Python) and `check/verify_mc.py m n r D u1 v1 u2 v2 ...` (numpy) each rebuild the graph from the
 group law, check the degree, and run a BFS from the identity (the graph is vertex-transitive, so this is the diameter). The `*.out`

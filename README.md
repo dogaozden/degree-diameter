@@ -5,19 +5,23 @@ This repository holds new lower bounds, the graphs behind them, the programs tha
 The graphs were found by Claude agents. Each one is rebuilt and checked by an exact breadth-first search (BFS) in code independent of the
 code that found it, and many are also proved in Lean 4.
 
-**Where things stand (20 November 2026)**
+**Where things stand (21 November 2026)**
 
+<!-- dd-publish:standing-bipartite -->
 - **Bipartite problem: records in 169 cells.**
   75 are cells of the Combinatorics Wiki's bipartite table (of its 83 cells not known to be optimal, Δ ≤ 16, D ≤ 10), for example
   (13, 9): 67,742,688 against 50,990,610 (+32.9%). The other 94 are beyond the table (Δ > 16 or D > 10), up to 30.5 billion vertices at (20, 10).
   Full list: [`records/RECORDS.csv`](records/RECORDS.csv). What was checked against the literature, and what was not, is spelled out
   [below](#caveats-what-has-been-checked-against-the-literature).
+<!-- /dd-publish:standing-bipartite -->
+<!-- dd-publish:standing-general -->
 - **General (non-bipartite) problem: nine new records, found on 20–21 November 2026:**
   (8, 7) **139,965** (previously 139,867), (10, 7) **625,733** (625,464), (10, 8) **4,538,823** (4,524,979), (12, 8) **19,240,407**
-  (19,218,539), (10, 9) **34,934,046** (34,913,494), (7, 9) **1,338,558** (1,332,774), (7, 10) **6,692,790** (6,645,690),
-  (9, 10) **90,493,830** (89,658,816) and (8, 10) **27,036,394** (27,019,307), each against the value in
-  [Comellas's table](https://web.mat.upc.edu/francesc.comellas/delta-d/table_degree_diameter.html) as fetched the day it was found.
-  Details and how to check them: [below](#general-graph-records).
+  (19,218,539), (10, 9) **34,934,046** (34,913,494), (7, 9) **1,338,558** (1,332,774), (7, 10) **6,692,790** (6,645,690), (9, 10)
+  **90,493,830** (89,658,816) and (8, 10) **27,036,394** (27,019,307), each against the value in [Comellas's
+  table](https://web.mat.upc.edu/francesc.comellas/delta-d/table_degree_diameter.html) as fetched the day it was found. Details and how to
+  check them: [below](#general-graph-records).
+<!-- /dd-publish:standing-general -->
 - **Lean 4:** 23 of the bipartite table records below, and (3, 11) and (3, 12) beyond the table, are proved in Lean at the stated size.
 - The wiki's bipartite page (last edited February 2022) does not list the bipartite records yet, and Comellas's table does not list the general ones.
 
@@ -159,12 +163,13 @@ Not covered by that check: (6, 5) and 48 beyond-table cells found after it close
 
 ## General-graph records
 
-Cayley graphs of semidirect products, found on 20–21 November 2026. The first four (found 20 November) are Z_m ⋊ Z_n, checked by
+Cayley graphs of semidirect products. The first four (found 20 November) are Z_m ⋊ Z_n, checked by
 two independent BFS programs (numpy and plain Python), each of which builds the group from its definition. The other five (21 November) use
 non-metabelian groups F_p² ⋊ Q with Q = Z_k ⋊ Z₂ inside GL(2, p) (product (u, v)(x, y) = (ux, ρ(x)⁻¹v + y)) and were checked three ways:
 a bitset BFS, an explicit C BFS and a from-scratch Python or numpy BFS with explicit matrix arithmetic. Every graph has the stated degree and
 diameter. "Previous" is the value in Comellas's table, fetched the day the record was found.
 
+<!-- dd-publish:general-table -->
 | (Δ, D) | Previous | Ours | Group | Layer sizes from one vertex (the graph is vertex-transitive) |
 |---|---:|---:|---|---|
 | (7, 9) | 1,332,774 | **1,338,558** | F₁₃₁² ⋊ (Z₃₉ ⋊ Z₂) | 1, 7, 42, 252, 1512, 9046, 53161, 279871, 772421, 222245 |
@@ -176,6 +181,7 @@ diameter. "Previous" is the value in Comellas's table, fetched the day the recor
 | (10, 8) | 4,524,979 | **4,538,823** | Z₃₆₉₀₁ ⋊ Z₁₂₃ | 1, 10, 90, 810, 7290, 65192, 546590, 2712218, 1206622 |
 | (10, 9) | 34,913,494 | **34,934,046** | Z₃₀₆₄₃₉ ⋊ Z₁₁₄ | 1, 10, 90, 810, 7290, 65526, 584374, 4836060, 21928806, 7511079 |
 | (12, 8) | 19,218,539 | **19,240,407** | Z₁₁₂₅₁₇ ⋊ Z₁₇₁ | 1, 12, 132, 1452, 15972, 175060, 1825758, 11536300, 5685720 |
+<!-- /dd-publish:general-table -->
 
 Each graph is specified in [`records/general_dd/`](records/general_dd/) by a short witness file (the group, the generators), with its
 SHA-256, the check programs (including the C BFS) and their outputs; for the F_p² ⋊ Q graphs the folder also has the small group file and `build_q.py`. These are not bipartite and say nothing about the bipartite table above.
