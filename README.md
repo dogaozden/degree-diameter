@@ -8,9 +8,9 @@ code that found it, and many are also proved in Lean 4.
 **Where things stand (21 November 2026)**
 
 <!-- dd-publish:standing-bipartite -->
-- **Bipartite problem: records in 169 cells.**
-  75 are cells of the Combinatorics Wiki's bipartite table (of its 83 cells not known to be optimal, Δ ≤ 16, D ≤ 10), for example
-  (13, 9): 67,742,688 against 50,990,610 (+32.9%). The other 94 are beyond the table (Δ > 16 or D > 10), up to 30.5 billion vertices at (20, 10).
+- **Bipartite problem: records in 170 cells.**
+  76 are cells of the Combinatorics Wiki's bipartite table (of its 83 cells not known to be optimal, Δ ≤ 16, D ≤ 10), for example
+  (15, 5): 28,512 against 20,496 (+39.1%). The other 94 are beyond the table (Δ > 16 or D > 10), up to 30.5 billion vertices at (20, 10).
   Full list: [`records/RECORDS.csv`](records/RECORDS.csv). What was checked against the literature, and what was not, is spelled out
   [below](#caveats-what-has-been-checked-against-the-literature).
 <!-- /dd-publish:standing-bipartite -->
