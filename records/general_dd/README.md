@@ -26,3 +26,11 @@ Cayley graphs of F_p² ⋊ Q, Q = Z_k ⋊ Z₂ < GL(2, p) (product (u, v)(x, y) 
 `*.bin` is the list of Q's matrices, `build_q.py` rebuilds it, and three checkers are included with their outputs: `cay_mg.c` (bitset BFS,
 the search engine), `bfs_g.c` (explicit element-wise BFS in C) and `indep_g2.py` / `indep_np.py` (matrix arithmetic in Python / numpy).
 Example: `bfs_g d7D9/group_F131sq_Z39_Z2.bin 7 78  7 9 56  13 10 112  57 29 63  2 0 68`. `d10D9/` has the C BFS `bfs_c.c` next to the Python one.
+
+## How this directory is kept current
+
+`records/RECORDS.csv`, the folders here, the tables between `<!-- dd-publish:… -->` markers in this file and in the top-level `README.md`
+(the "Where things stand" numbers and the general-graph table) are generated from the lab's records directory by an automated publisher,
+which refuses to push if a check fails (consistent counts, every check output verifying the stated order, degree and diameter, a
+privacy/secrets scan of the diff). Edit those parts at the source, not here; text outside the markers is hand-written. A folder is
+written once per cell and replaced only when a larger graph for the same (Δ, D) is filed.
