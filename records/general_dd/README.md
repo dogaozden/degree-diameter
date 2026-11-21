@@ -7,7 +7,6 @@ A witness file gives d, D, N = m·n, m, n, r and the generating set S (each list
 | Folder | (Δ, D) | Vertices | Previous (Comellas's table, day found) |
 |---|---|---:|---:|
 | `d8D7/` | (8, 7) | 139,965 | 139,867 |
-| `d10D7/` | (10, 7) | 625,733 | 625,464 |
 | `d10D8/` | (10, 8) | 4,538,823 | 4,524,979 |
 | `d12D8/` | (12, 8) | 19,240,407 | 19,218,539 |
 | `d10D9/` | (10, 9) | 34,934,046 | 34,913,494 |
@@ -15,6 +14,7 @@ A witness file gives d, D, N = m·n, m, n, r and the generating set S (each list
 | `d7D10/` | (7, 10) | 6,692,790 | 6,645,690 |
 | `d9D10/` | (9, 10) | 90,493,830 | 89,658,816 |
 | `d8D10/` | (8, 10) | 27,036,394 | 27,019,307 |
+| `d10D7/` | (10, 7) | 625,791 | 625,464 |
 <!-- /dd-publish:folders -->
 
 `check/independent_bfs.py WITNESS` (pure Python) and `check/verify_mc.py m n r D u1 v1 u2 v2 ...` (numpy) each rebuild the graph from the
