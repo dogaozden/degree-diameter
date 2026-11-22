@@ -1,5 +1,7 @@
 # degree-diameter
 
+> **🔴 Live lab: [dogaozden.com/live](https://dogaozden.com/live/)**: live trackers for every record here, and the square-packing hunt.
+
 Large graphs for the **degree–diameter problem**: given a maximum degree Δ and a diameter D, how many vertices can a graph have?
 This repository holds new lower bounds, the graphs behind them, the programs that check them, and Lean 4 proofs for many of them.
 The graphs were found by Claude agents. Each one is rebuilt and checked by an exact breadth-first search (BFS) in code independent of the
