@@ -7,7 +7,7 @@ This repository holds new lower bounds, the graphs behind them, the programs tha
 The graphs were found by Claude agents. Each one is rebuilt and checked by an exact breadth-first search (BFS) in code independent of the
 code that found it, and many are also proved in Lean 4.
 
-**Where things stand (21 November 2026)**
+**Where things stand (22 November 2026)**
 
 <!-- dd-publish:standing-bipartite -->
 - **Bipartite problem: records in 170 cells.**
@@ -17,9 +17,9 @@ code that found it, and many are also proved in Lean 4.
   [below](#caveats-what-has-been-checked-against-the-literature).
 <!-- /dd-publish:standing-bipartite -->
 <!-- dd-publish:standing-general -->
-- **General (non-bipartite) problem: ten new records, found on 20–21 November 2026:**
-  (8, 7) **139,965** (previously 139,867), (10, 8) **4,538,823** (4,524,979), (12, 8) **19,240,407** (19,218,539), (10, 9) **34,934,046**
-  (34,913,494), (7, 9) **1,338,558** (1,332,774), (14, 8) **65,658,311** (65,587,703), (7, 10) **6,692,790** (6,645,690), (9, 10)
+- **General (non-bipartite) problem: ten new records, found on 20–22 November 2026:**
+  (8, 7) **139,965** (previously 139,867), (12, 8) **19,240,407** (19,218,539), (10, 9) **34,934,046** (34,913,494), (7, 9) **1,338,558**
+  (1,332,774), (14, 8) **65,658,311** (65,587,703), (7, 10) **6,692,790** (6,645,690), (10, 8) **4,549,381** (4,524,979), (9, 10)
   **90,493,830** (89,658,816), (8, 10) **27,036,394** (27,019,307) and (10, 7) **625,791** (625,464), each against the value in [Comellas's
   table](https://web.mat.upc.edu/francesc.comellas/delta-d/table_degree_diameter.html) as fetched the day it was found. Details and how to
   check them: [below](#general-graph-records).
@@ -180,7 +180,7 @@ diameter. "Previous" is the value in Comellas's table, fetched the day the recor
 | (8, 10) | 27,019,307 | **27,036,394** | F₄₁₉² ⋊ (Z₇₇ ⋊ Z₂) | 1, 8, 56, 392, 2744, 19198, 134092, 921239, 5629482, 16660144, 3669038 |
 | (9, 10) | 89,658,816 | **90,493,830** | F₃₇₉² ⋊ (Z₃₁₅ ⋊ Z₂) | 1, 9, 72, 576, 4608, 36859, 294284, 2318622, 16508519, 57814857, 13515423 |
 | (10, 7) | 625,464 | **625,791** | Z₇₁₉₃ ⋊ Z₈₇ | 1, 10, 90, 810, 7290, 62294, 342536, 212760 |
-| (10, 8) | 4,524,979 | **4,538,823** | Z₃₆₉₀₁ ⋊ Z₁₂₃ | 1, 10, 90, 810, 7290, 65192, 546590, 2712218, 1206622 |
+| (10, 8) | 4,524,979 | **4,549,381** | Z₂₆₂₉₇ ⋊ Z₁₇₃ | 1, 10, 90, 810, 7290, 65070, 545932, 2715762, 1214416 |
 | (10, 9) | 34,913,494 | **34,934,046** | Z₃₀₆₄₃₉ ⋊ Z₁₁₄ | 1, 10, 90, 810, 7290, 65526, 584374, 4836060, 21928806, 7511079 |
 | (12, 8) | 19,218,539 | **19,240,407** | Z₁₁₂₅₁₇ ⋊ Z₁₇₁ | 1, 12, 132, 1452, 15972, 175060, 1825758, 11536300, 5685720 |
 | (14, 8) | 65,587,703 | **65,658,311** | Z₅₈₁₀₄₇ ⋊ Z₁₁₃ | 1, 14, 182, 2366, 30750, 398374, 4962074, 38702824, 21561726 |
