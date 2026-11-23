@@ -16,6 +16,8 @@ A witness file gives d, D, N = m·n, m, n, r and the generating set S (each list
 | `d9D10/` | (9, 10) | 90,493,830 | 89,658,816 |
 | `d8D10/` | (8, 10) | 27,036,394 | 27,019,307 |
 | `d10D7/` | (10, 7) | 625,791 | 625,464 |
+| `d13D9/` | (13, 9) | 366,339,774 | 362,847,996 |
+| `d15D8/` | (15, 8) | 110,251,750 | 110,182,818 |
 <!-- /dd-publish:folders -->
 
 `check/independent_bfs.py WITNESS` (pure Python) and `check/verify_mc.py m n r D u1 v1 u2 v2 ...` (numpy) each rebuild the graph from the
