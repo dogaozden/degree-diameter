@@ -17,14 +17,15 @@ code that found it, and many are also proved in Lean 4.
   [below](#caveats-what-has-been-checked-against-the-literature).
 <!-- /dd-publish:standing-bipartite -->
 <!-- dd-publish:standing-general -->
-- **General (non-bipartite) problem: seventeen new records, found on 20–24 November 2026:**
+- **General (non-bipartite) problem: eighteen new records, found on 20–24 November 2026:**
   (8, 7) **139,965** (previously 139,867), (14, 8) **65,707,429** (65,587,703), (10, 9) **34,934,046** (34,913,494), (7, 9) **1,338,558**
   (1,332,774), (7, 10) **6,692,790** (6,645,690), (9, 10) **90,493,830** (89,658,816), (8, 10) **27,498,631** (27,019,307), (10, 8)
   **4,575,965** (4,524,979), (12, 8) **19,426,693** (19,218,539), (10, 10) **269,448,857** (265,782,337), (10, 7) **625,791** (625,464),
   (11, 10) **702,594,702** (697,429,356), (12, 10) **1,698,992,742** (1,693,260,247), (13, 9) **366,922,490** (362,847,996), (13, 10)
-  **3,820,774,890** (3,789,512,750), (15, 8) **110,624,094** (110,182,818) and (15, 9) **1,322,348,570** (1,315,254,800), each against the
-  value in [Comellas's table](https://web.mat.upc.edu/francesc.comellas/delta-d/table_degree_diameter.html) as fetched the day it was found.
-  Details and how to check them: [below](#general-graph-records).
+  **3,820,774,890** (3,789,512,750), (14, 10) **8,107,032,870** (8,052,194,837), (15, 8) **110,624,094** (110,182,818) and (15, 9)
+  **1,322,348,570** (1,315,254,800), each against the value in [Comellas's
+  table](https://web.mat.upc.edu/francesc.comellas/delta-d/table_degree_diameter.html) as fetched the day it was found. Details and how to
+  check them: [below](#general-graph-records).
 <!-- /dd-publish:standing-general -->
 - **Lean 4:** 23 of the bipartite table records below, and (3, 11) and (3, 12) beyond the table, are proved in Lean at the stated size.
 - The wiki's bipartite page (last edited February 2022) does not list the bipartite records yet, and Comellas's table does not list the general ones.
@@ -191,6 +192,7 @@ diameter. "Previous" is the value in Comellas's table, fetched the day the recor
 | (13, 9) | 362,847,996 | **366,922,490** | F₄₁₉² ⋊ (Z₁₀₄₅ ⋊ Z₂) | 1, 13, 156, 1872, 22464, 269388, 3215841, 36426560, 234778954, 92207241 |
 | (13, 10) | 3,789,512,750 | **3,820,774,890** | F₁₇₂₁² ⋊ (Z₆₄₅ ⋊ Z₂) | 1, 13, 156, 1872, 22460, 269457, 3231234, 38548742, 433084867, 2568127723, 777488365 |
 | (14, 8) | 65,587,703 | **65,707,429** | Z₃₄₀₄₅₃ ⋊ Z₁₉₃ | 1, 14, 182, 2366, 30744, 398498, 4968052, 38758354, 21549218 |
+| (14, 10) | 8,052,194,837 | **8,107,032,870** | F₁₉₇₉² ⋊ (Z₁₀₃₅ ⋊ Z₂) | 1, 14, 182, 2366, 30758, 399838, 5195886, 67235317, 824775663, 5444948749, 1764444096 |
 | (15, 8) | 110,182,818 | **110,624,094** | F₉₃₇² ⋊ (Z₆₃ ⋊ Z₂) | 1, 15, 210, 2940, 41144, 574315, 7731321, 65355237, 36918911 |
 | (15, 9) | 1,315,254,800 | **1,322,348,570** | F₂₇₈₉² ⋊ (Z₈₅ ⋊ Z₂) | 1, 15, 210, 2940, 41156, 575949, 8033796, 107386791, 840079716, 366227996 |
 <!-- /dd-publish:general-table -->
@@ -278,14 +280,14 @@ and rotate three incidences to make room. The general rule, its proof and comput
 - **Hexagon + hub vertices** ([`research/squads/exp2/hexd7/`](research/squads/exp2/hexd7/)): the table's D = 7 values are three copies of a
   generalized hexagon H(q). Freeing a point–line pair and adding two hub vertices gains 2 vertices per pair, with a short proof.
   This gave (7, 7), (9, 7) and (11, 7).
-- **Cayley graphs of Z_m ⋊ Z_n** ([`records/general_dd/`](records/general_dd/)): the seventeen general-graph records.
+- **Cayley graphs of Z_m ⋊ Z_n** ([`records/general_dd/`](records/general_dd/)): the eighteen general-graph records.
 
 ## Layout
 
 | Path | What it is |
 |---|---|
 | `records/RECORDS.csv` | every bipartite record: cell, table value, ours, date found, literature status |
-| `records/general_dd/` | the seventeen general-graph records, witness files, checkers and check outputs |
+| `records/general_dd/` | the eighteen general-graph records, witness files, checkers and check outputs |
 | `records/bipartite_dd/` | record graphs with their builders: the first eight, (6, 5), (10, 8), and the literature check of the first eight |
 | `research/frontier/` | Haar graph search, size law, solution files (`sols/`), checkers, check reports |
 | `research/structured/`, `research/theory/`, `research/theorems/` | orbit search and its theory; route-chart lifts, flag graphs |
