@@ -1,0 +1,5 @@
+d=15 D=9 N=1325402350  (live UPC (15,9) = 1,315,254,800 re-fetched 2026-11-25 12:10Z)
+Group file slk_751_1175_1_0_k1.bin (int32 p=751, -|Q|=-2350, k=1, then |Q| matrices); command-line form (level index j*|Q|+i, v_row, v_col): 1118 329 412 1378 52 422 728 300 455 1389 391 35 166 270 561 1156 13 343 1755 221 3 636 273 334
+G = (F_p^2 x| Q) x Z_k, level (i,j) = (Q[i], j in Z_k); product ((u,a),v)((x,b),y) = ((u*x, a+b), rho(x)^-1 v + y) with rho(x) = Q[x], vertices = G, edges g ~ s*g.
+Layers 1 15 210 2940 41160 576077 8038668 107538871 842046072 367158336
+Found by lane box sk1_d15D9w0r4 (cloud mass hunt, random generators + level optimisation, cay_mgk). Group: (F_751^2 x| Q), N = 1325402350.

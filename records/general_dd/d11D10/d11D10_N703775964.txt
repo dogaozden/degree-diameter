@@ -1,0 +1,5 @@
+d=11 D=10 N=703775964  (live UPC (11,10) = 697,429,356 re-fetched 2026-11-25 12:10Z)
+Group file slk_1259_111_296_1161_k2.bin (int32 p=1259, -|Q|=-222, k=2, then |Q| matrices); command-line form (level index j*|Q|+i, v_row, v_col): 134 1171 1084 83 1046 263 347 968 645 287 998 1188 23 1234 725 171 319 320
+G = (F_p^2 x| Q) x Z_k, level (i,j) = (Q[i], j in Z_k); product ((u,a),v)((x,b),y) = ((u*x, a+b), rho(x)^-1 v + y) with rho(x) = Q[x], vertices = G, edges g ~ s*g.
+Layers 1 11 110 1100 11000 109980 1098310 10880084 99830494 466952901 124891973
+Found by lane box sk1_d11D10w0 (cloud mass hunt, random generators + level optimisation, cay_mgk). Group: (F_1259^2 x| Q) x Z_2, N = 703775964.

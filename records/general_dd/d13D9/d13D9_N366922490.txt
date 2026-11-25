@@ -1,5 +1,0 @@
-d=13 D=9 N=366922490  (live UPC (13,9) = 362,847,996 re-fetched 2026-11-24 16:16Z)
-Group file sl_419_1045_259_163.bin (int32 p=419, |Q|=2090, then |Q| matrices); command-line form (level index, v_row, v_col): 1200 39 21 1521 176 339 1865 36 312 1876 171 362 276 178 321 1548 117 122 265 115 22
-Product (u,v)(x,y) = (u*x, rho(x)^-1 v + y), vertices = F_p^2 x| Q, edges g ~ s*g.
-Layers 1 13 156 1872 22464 269388 3215841 36426560 234778954 92207241
-Found by semilinear mass hunt sl2 (slm.py, zsample on cloud box sl2_d13D9w0r2, about 5e4 evals), defect 0. Checked three ways on a cloud box: cay_mg eval (bitset BFS), bfs_g (explicit C BFS), indep_dist.py (numpy BFS, shared uint8 distance array). Group: F_419^2 x| Q, Q = Z_1045 x| Z_2 < GL(2,419) (order 2090; twist 259,163), product (u,v)(x,y) = (ux, rho(x)^-1 v + y)

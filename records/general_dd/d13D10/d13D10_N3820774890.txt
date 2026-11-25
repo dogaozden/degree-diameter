@@ -1,5 +1,0 @@
-d=13 D=10 N=3820774890  (live UPC (13,10) = 3,789,512,750 re-fetched 2026-11-24 18:44Z)
-Group file sl_1721_645_655_1217.bin (int32 p=1721, |Q|=1290, then |Q| matrices); command-line form (level index, v_row, v_col): 1271 1672 683 1218 827 200 467 1000 1226 910 749 699 1262 969 1652 1017 680 755 1022 760 728
-Product (u,v)(x,y) = (u*x, rho(x)^-1 v + y), vertices = F_p^2 x| Q, edges g ~ s*g.
-Layers 1 13 156 1872 22460 269457 3231234 38548742 433084867 2568127723 777488365
-Found by semilinear mass hunt sl3 (slm.py, zsample on cloud box sl3_d13D10w60r2, about 2e3 evals), defect 0. Checked three ways on a cloud box: cay_mg eval (bitset BFS), bfs_g (explicit C BFS), indep_dist.py (numpy BFS, shared uint8 distance array). Group: F_1721^2 x| Q, Q = Z_645 x| Z_2 < GL(2,1721) (order 1290; twist 655,1217), product (u,v)(x,y) = (ux, rho(x)^-1 v + y)
