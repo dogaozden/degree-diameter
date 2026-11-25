@@ -1,0 +1,9 @@
+checker: haarcheck_sl (research/frontier/haarcheck_sl.c or research/structured/tools/haarcheck_psl.c, cc -O3)
+file: d7D13_sl_229_13_orb3-2-1_e10.txt  sha256 0e13d6f19d91242200509344c45e5b0085a1a646a0c22b7129c3e8aac3aadf34
+start: 2026-11-01T23:02:11Z
+from (e,A): reached A 156113880/156113880, B 156113880/156113880 within 13, ecc 13
+from (e,B): reached A 156113880/156113880, B 156113880/156113880 within 13, ecc 13
+VALID d=7 D=13 group=sl 229 x Z_13 N=156113880 vertices=312227760 (distinct generators, 7-regular simple)
+exit: 0
+seconds: 87
+end: 2026-11-01T23:03:38Z

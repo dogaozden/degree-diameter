@@ -64,6 +64,7 @@ t = tex
 t = re.sub(r'\\begin\{tikzpicture\}.*?\\end\{tikzpicture\}', r'\\emph{[Figure: see SYNTHETIC.pdf.]}', t, flags=re.S)
 t = t.replace('\\emergencystretch=3em', '')
 t = re.sub(r'\\path\{([^}]*)\}', lambda m: r'\texttt{' + m.group(1).replace('_', r'\_') + '}', t)
+t = re.sub(r'--\\ref\{([^}]*)\}', lambda m: '--' + labels.get(m.group(1), '??'), t)  # no space after an en dash
 t = re.sub(r'~?\\ref\{([^}]*)\}', lambda m: ' ' + labels.get(m.group(1), '??'), t)
 t = re.sub(r'~?\\cite(\[[^\]]*\])?\{([^}]*)\}',
            lambda m: ' [' + ', '.join(k.strip() for k in m.group(2).split(',')) + (', ' + m.group(1)[1:-1] if m.group(1) else '') + ']', t)
@@ -139,6 +140,8 @@ for ln in lines:
         title = ln[2:]
         if title.startswith('Coordinates and checks'):
             res.append('# Appendix A. ' + title)
+        elif title.startswith('The values of Section 7'):
+            res.append('# Appendix B. ' + title)
         else:
             res.append(f'# {secno}. {title}')
         continue
@@ -159,6 +162,6 @@ for ln in md.split('\n'):
 md = '\n'.join(out)
 header = ('<!-- Generated from SYNTHETIC.tex by make_md.py; the figures are in SYNTHETIC.pdf. -->\n\n'
           '# Adding points and lines to generalized polygons: the constructions without coordinates\n\n'
-          '*Degree–diameter lab, 30 October 2026. Markdown copy of `SYNTHETIC.tex`; the PDF has the figures.*\n\n')
+          '*Degree–diameter lab, 1 November 2026. Markdown copy of `SYNTHETIC.tex`; the PDF has the figures.*\n\n')
 (HERE / 'SYNTHETIC.md').write_text(header + md)
 print('wrote SYNTHETIC.md,', len(md.split()), 'words')
