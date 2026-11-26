@@ -1,0 +1,5 @@
+d=16 D=10 N=30665814480  (live UPC (16,10) = 30,204,056,429 re-fetched 2026-11-26 00:10Z)
+Group file asl_71_1_k17.bin, stored xz-compressed as asl_71_1_k17.bin.xz (run unxz first; 5,725,452 bytes, md5 36462a866e96b30d8c1cdf90c3d97461; also rebuilt byte-identically by: python3 mk_asl.py q.bin 71 1; python3 mk_k.py q.bin asl_71_1_k17.bin 17) (int32 p=71, -|Q|=-357840, k=17, then |Q| matrices); command-line form (level index j*|Q|+i, v_row, v_col): 1647397 17 49 2235509 27 6 2805257 13 5 4871120 65 54 505322 50 25 981563 53 60 1116811 47 1 1250511 24 14
+G = (F_p^2 x| Q) x Z_k, level (i,j) = (Q[i], j in Z_k); product ((u,a),v)((x,b),y) = ((u*x, a+b), rho(x)^-1 v + y) with rho(x) = Q[x], vertices = G, edges g ~ s*g.
+Layers 1 16 240 3600 54000 809989 12147262 181633540 2598878546 20553934349 7318352937
+Found by lane box as3_d16D10zA71r2 (cloud mass hunt, random generators + level optimisation, cay_mgk). Group: (F_71^2 x| Q) x Z_17, N = 30665814480.
