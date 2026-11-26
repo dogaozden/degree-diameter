@@ -1,0 +1,5 @@
+d=15 D=10 N=16067942190  (live UPC (15,10) = 16,021,711,174 re-fetched 2026-11-26 14:31Z)
+Group file slk_1871_765_1_0_k3.bin (int32 p=1871, -|Q|=-1530, k=3, then |Q| matrices); command-line form (level index j*|Q|+i, v_row, v_col): 1319 42 1394 2200 1797 58 3476 1256 1326 891 159 1670 1240 719 262 2016 937 1340 1708 755 1524 1463 1290 369
+G = (F_p^2 x| Q) x Z_k, level (i,j) = (Q[i], j in Z_k); product ((u,a),v)((x,b),y) = ((u*x, a+b), rho(x)^-1 v + y) with rho(x) = Q[x], vertices = G, edges g ~ s*g.
+Layers 1 15 210 2940 41160 576235 8065194 112481132 1493954089 10797397502 3655423712
+Found by lane box q3_s1871_0 (cloud batch q3: level-set reuse zsample on the best q1 popt group, semilinear family slk, cay_mgk). Group: (F_1871^2 x| (Z_765 x| Z_2)) x Z_3, N = 16,067,942,190. Supersedes our 16,038,190,014 from the same day.
