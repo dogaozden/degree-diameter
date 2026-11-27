@@ -1,0 +1,7 @@
+group psl 181 x Z_5059, N=14998822020 (2N=29997644040), rows 16380 x 915679 bits (doubled row 28640 words), memory 7.65 GB, threads 4
+alpha: conj by mat(0,180,1,180), z -> 1912 z on Z_5059 (fixed z: 1); ORBIT k=3 m=4 f=1; W=8.10555e+11 lambda=54.041 mu=0.00
+setup 0.0s
+start cost=0 (7.0s per eval)
+RESULT d=13 D=12 group=psl 181 x Z_5059 N=14998822020 vertices=29997644040 best=0 evals=1 steps=0 time=7.0 orbit k=3 m=4 f=1 mu=0.00
+re-evaluation of the best S: cost 0
+wrote runs/d13D12_psl_181_5059_orb3-4-1_s1.out

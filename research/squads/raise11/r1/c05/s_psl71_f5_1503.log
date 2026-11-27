@@ -1,0 +1,16 @@
+group psl 71 x Z_127, N=22722840 (2N=45445680), rows 2520 x 9017 bits (doubled row 304 words), memory 0.02 GB, threads 1
+alpha: conj by mat(0,70,1,70), z -> 19 z on Z_127 (fixed z: 1); ORBIT k=3 m=1 f=5; W=3.29554e+08 lambda=14.503 mu=11.42
+setup 0.0s
+fixed generators: 4 chosen among 35 alpha-fixed elements
+start cost=16889418 (1.0s per eval)
+t=8 step=1 evals=9 slot=0 cand=16520634 cost=16520634 best=16520634 T=1.26
+t=15 step=2 evals=17 slot=0 cand=16409622 cost=16409622 best=16409622 T=1.06
+t=22 step=3 evals=25 slot=0 cand=16428108 cost=16409622 best=16409622 T=0.89
+t=29 step=4 evals=33 slot=0 cand=16478100 cost=16409622 best=16409622 T=0.75
+t=36 step=5 evals=41 slot=0 cand=16443708 cost=16409622 best=16409622 T=0.63
+t=43 step=6 evals=49 slot=0 cand=16374708 cost=16374708 best=16374708 T=0.53
+t=49 step=7 evals=57 slot=0 cand=16396500 cost=16374708 best=16374708 T=0.45
+t=67 step=8 evals=65 slot=0 cand=16318434 cost=16318434 best=16318434 T=0.38
+t=85 step=9 evals=73 slot=0 cand=16454736 cost=16318434 best=16318434 T=0.32
+t=100 step=10 evals=81 slot=0 cand=16418196 cost=16318434 best=16318434 T=0.27
+RESULT d=8 D=11 group=psl 71 x Z_127 N=22722840 vertices=45445680 best=16318434 evals=81 steps=10 time=100.1 orbit k=3 m=1 f=5 mu=11.42
